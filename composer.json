@@ -15,6 +15,7 @@
     "ext-readline": "*",
     "ext-redis": "*",
     "propel/propel": "2.0.0-alpha11",
+    "spryker-eco/adyen": "^1.4",
     "spryker-eco/loggly": "^0.1.0",
     "spryker-feature/agent-assist": "^202009.0",
     "spryker-feature/alternative-products": "^202009.0",

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<statemachine
+        xmlns="spryker:oms-01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="AdyenCreditCard01" main="true">
+        <states>
+            <state name="new" reserved="true" />
+            <state name="authorized" reserved="true" />
+            <state name="authorization failed" reserved="false" />
+            <state name="cancellation pending" reserved="false" />
+            <state name="canceled" reserved="false" />
+            <state name="cancellation failed" reserved="false" />
+            <state name="capture pending" reserved="true" />
+            <state name="captured" reserved="true" />
+            <state name="capture failed" reserved="false" />
+            <state name="shipped" reserved="true" />
+            <state name="refund pending" reserved="false" />
+            <state name="refunded" reserved="false" />
+            <state name="refund failed" reserved="false" />
+            <state name="closed" reserved="false" />
+        </states>
+
+        <events>
+            <event name="cancel" manual="true" command="Adyen/Cancel" />
+            <event name="capture" manual="true" command="Adyen/Capture" />
+            <event name="ship" manual="true" />
+            <event name="refund" manual="true" command="Adyen/Refund" />
+            <event name="close" manual="true" />
+        </events>
+
+        <transitions>
+
+            <transition condition="Adyen/IsAuthorized" happy="true">
+                <source>new</source>
+                <target>authorized</target>
+            </transition>
+
+            <transition condition="Adyen/IsAuthorizationFailed">
+                <source>new</source>
+                <target>authorization failed</target>
+            </transition>
+
+            <transition condition="Adyen/IsCancellationReceived">
+                <source>authorized</source>
+                <target>cancellation pending</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition condition="Adyen/IsCanceled" happy="true">
+                <source>cancellation pending</source>
+                <target>canceled</target>
+            </transition>
+
+            <transition condition="Adyen/IsCancellationFailed">
+                <source>cancellation pending</source>
+                <target>cancellation failed</target>
+            </transition>
+
+            <transition condition="Adyen/IsCaptureReceived" happy="true">
+                <source>authorized</source>
+                <target>capture pending</target>
+                <event>capture</event>
+            </transition>
+
+            <transition condition="Adyen/IsCaptured" happy="true">
+                <source>capture pending</source>
+                <target>captured</target>
+            </transition>
+
+            <transition condition="Adyen/IsCaptureFailed">
+                <source>capture pending</source>
+                <target>capture failed</target>
+            </transition>
+
+            <transition condition="Adyen/IsRefundReceived">
+                <source>captured</source>
+                <target>refund pending</target>
+                <event>refund</event>
+            </transition>
+
+            <transition condition="Adyen/IsRefunded" happy="true">
+                <source>refund pending</source>
+                <target>refunded</target>
+            </transition>
+
+            <transition condition="Adyen/IsRefundFailed">
+                <source>refund pending</source>
+                <target>refund failed</target>
+            </transition>
+
+            <transition happy="true">
+                <source>captured</source>
+                <target>shipped</target>
+                <event>ship</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+        </transitions>
+    </process>
+</statemachine>
