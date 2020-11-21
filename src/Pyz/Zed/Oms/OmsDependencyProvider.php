@@ -23,6 +23,22 @@ use Spryker\Zed\SalesInvoice\Communication\Plugin\Oms\GenerateOrderInvoiceComman
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\AuthorizePlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CancelOrRefundPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CancelPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CapturePlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\RefundPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsAuthorizationFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsAuthorizedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCanceledPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCancellationFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCancellationReceivedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCapturedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCaptureFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCaptureReceivedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundReceivedPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -56,6 +72,11 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
             $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
             $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
+            $commandCollection->add(new AuthorizePlugin(), 'Adyen/Authorize');
+            $commandCollection->add(new CancelPlugin(), 'Adyen/Cancel');
+            $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
+            $commandCollection->add(new RefundPlugin(), 'Adyen/Refund');
+            $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
 
             return $commandCollection;
         });
@@ -110,6 +131,19 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
             $conditionCollection
                 ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
+
+            //-- Adyen
+            $conditionCollection->add(new IsAuthorizedPlugin(), 'Adyen/IsAuthorized');
+            $conditionCollection->add(new IsCanceledPlugin(), 'Adyen/IsCanceled');
+            $conditionCollection->add(new IsCancellationReceivedPlugin(), 'Adyen/IsCancellationReceived');
+            $conditionCollection->add(new IsCancellationFailedPlugin(), 'Adyen/IsCancellationFailed');
+            $conditionCollection->add(new IsCapturedPlugin(), 'Adyen/IsCaptured');
+            $conditionCollection->add(new IsCaptureReceivedPlugin(), 'Adyen/IsCaptureReceived');
+            $conditionCollection->add(new IsCaptureFailedPlugin(), 'Adyen/IsCaptureFailed');
+            $conditionCollection->add(new IsRefundedPlugin(), 'Adyen/IsRefunded');
+            $conditionCollection->add(new IsRefundReceivedPlugin(), 'Adyen/IsRefundReceived');
+            $conditionCollection->add(new IsRefundFailedPlugin(), 'Adyen/IsRefundFailed');
+            $conditionCollection->add(new IsAuthorizationFailedPlugin(), 'Adyen/IsAuthorizationFailed');
 
             return $conditionCollection;
         });
