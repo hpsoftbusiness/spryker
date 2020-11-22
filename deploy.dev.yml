@@ -40,6 +40,21 @@ regions:
                         namespace: 2
                     search:
                         namespace: at_search
+    US:
+        services:
+            database:
+                database: us-docker
+                username: spryker
+                password: secret
+        stores:
+            US:
+                services:
+                    broker:
+                        namespace: us-docker
+                    key_value_store:
+                        namespace: 3
+                    search:
+                        namespace: us_search
 groups:
     EU:
         region: EU
@@ -77,6 +92,30 @@ groups:
                         services:
                             session:
                                 namespace: 4
+    US:
+        region: US
+        applications:
+            yves_us:
+                application: yves
+                endpoints:
+                    yves.us.spryker.local:
+                        store: US
+                        services:
+                            session:
+                                namespace: 5
+            glue_us:
+                application: glue
+                endpoints:
+                    glue.us.spryker.local:
+                        store: US
+            zed_us:
+                application: zed
+                endpoints:
+                    zed.us.spryker.local:
+                        store: US
+                        services:
+                            session:
+                                namespace: 6
 services:
     database:
         engine: postgres
