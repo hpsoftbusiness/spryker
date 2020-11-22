@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07d1cd29117d9122931cfa5f6bcc5b1a",
+    "content-hash": "343a97de04fc6cfe5bea670e4ea33973",
     "packages": [
         {
             "name": "brick/math",
@@ -742,6 +742,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -2487,6 +2488,115 @@
                 "search"
             ],
             "time": "2019-01-29T09:38:03+00:00"
+        },
+        {
+            "name": "spryker-eco/adyen",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/adyen.git",
+                "reference": "9ccdc0aa5e16fcfa005ab59d9330c59ff10975f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/adyen/zipball/9ccdc0aa5e16fcfa005ab59d9330c59ff10975f6",
+                "reference": "9ccdc0aa5e16fcfa005ab59d9330c59ff10975f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-eco/adyen-api": "^1.0.0",
+                "spryker-shop/checkout-page": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/calculation": "^4.0.0",
+                "spryker/checkout-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oms": "^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/step-engine": "^2.0.0 || ^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-text": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/shop-application": "*",
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/payment": "*",
+                "spryker/propel": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/shop-application": "Abstract Yves controller provider is used.",
+                "spryker/checkout": "CheckoutPostSaveHookInterface is used.",
+                "spryker/payment": "If you want to use payment method filtering.",
+                "spryker/router": "Abstract router provider is used.",
+                "spryker/silex": "Silex application is used."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Adyen module",
+            "time": "2020-09-28T08:23:47+00:00"
+        },
+        {
+            "name": "spryker-eco/adyen-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/adyen-api.git",
+                "reference": "1e9566e799834befa8fe7ec41f1269c1c13d17a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/adyen-api/zipball/1e9566e799834befa8fe7ec41f1269c1c13d17a6",
+                "reference": "1e9566e799834befa8fe7ec41f1269c1c13d17a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/guzzle": "^2.2.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/log": "^3.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Adyen Api Module",
+            "time": "2018-11-15T08:46:18+00:00"
         },
         {
             "name": "spryker-eco/loggly",
@@ -9779,6 +9889,7 @@
                 "proprietary"
             ],
             "description": "Auth module",
+            "abandoned": "spryker/security-gui",
             "time": "2020-07-03T08:13:47+00:00"
         },
         {
@@ -9825,6 +9936,7 @@
                 "proprietary"
             ],
             "description": "AuthMailConnector module",
+            "abandoned": "spryker/user-password-reset-mail",
             "time": "2020-08-18T13:03:17+00:00"
         },
         {
@@ -9863,6 +9975,7 @@
                 "proprietary"
             ],
             "description": "AuthMailConnectorExtension module",
+            "abandoned": "spryker/user-password-reset-extension",
             "time": "2020-06-24T07:50:38+00:00"
         },
         {
@@ -16167,7 +16280,6 @@
                 "proprietary"
             ],
             "description": "Csv module",
-            "abandoned": true,
             "time": "2018-06-20T12:42:41+00:00"
         },
         {
@@ -32920,6 +33032,7 @@
                 "proprietary"
             ],
             "description": "Zend module",
+            "abandoned": true,
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
