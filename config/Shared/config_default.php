@@ -529,14 +529,14 @@ $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_JS_URL] = 'https://checkoutshopper-
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_CSS_URL] = 'https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.9.4/adyen.css';
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_JS_INTEGRITY_HASH] = 'sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi';
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_CSS_INTEGRITY_HASH] = 'sha384-6qrXvoxlnBlrflZQ9g5Yf5oZapUSSXctPxacP9oRcEukbEO7lXisuSyMKG8pDX8V';
-$config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = 'pub.v2.8015879823200922.aHR0cDovL3l2ZXMuZGUuc3ByeWtlci5sb2NhbA.DOCb0JqY-OLwNgINXlFlAzDauFTMC5clq6j0wYJBHKo';
+$config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = 'pub.v2.8216060629003813.aHR0cDovL3l2ZXMuZGUubXl3b3JsZC5sb2NhbA.vGlSBdB3YtYaGaWAVqJ6_iGkldlIAxfxPcL54NmoW88';
 $config[AdyenConstants::SDK_ENVIRONMENT] = 'test';
-$config[AdyenConstants::SOFORT_RETURN_URL] = 'https://yves.de.spryker.local/adyen/callback/redirect-sofort';
-$config[AdyenConstants::CREDIT_CARD_3D_RETURN_URL] = 'https://yves.de.spryker.local/adyen/callback/redirect-credit-card-3d';
-$config[AdyenConstants::IDEAL_RETURN_URL] = 'https://yves.de.spryker.local/adyen/callback/redirect-ideal';
-$config[AdyenConstants::PAY_PAL_RETURN_URL] = 'https://yves.de.spryker.local/adyen/callback/redirect-paypal';
-$config[AdyenConstants::ALI_PAY_RETURN_URL] = 'https://yves.de.spryker.local/adyen/callback/redirect-alipay';
-$config[AdyenConstants::WE_CHAT_PAY_RETURN_URL] = 'https://yves.de.spryker.local/adyen/callback/redirect-wechatpay';
+$config[AdyenConstants::SOFORT_RETURN_URL] = 'https://yves.de.myworld.local/adyen/callback/redirect-sofort';
+$config[AdyenConstants::CREDIT_CARD_3D_RETURN_URL] = 'https://yves.de.myworld.local/adyen/callback/redirect-credit-card-3d';
+$config[AdyenConstants::IDEAL_RETURN_URL] = 'https://yves.de.myworld.local/adyen/callback/redirect-ideal';
+$config[AdyenConstants::PAY_PAL_RETURN_URL] = 'https://yves.de.myworld.local/adyen/callback/redirect-paypal';
+$config[AdyenConstants::ALI_PAY_RETURN_URL] = 'https://yves.de.myworld.local/adyen/callback/redirect-alipay';
+$config[AdyenConstants::WE_CHAT_PAY_RETURN_URL] = 'https://yves.de.myworld.local/adyen/callback/redirect-wechatpay';
 $config[AdyenConstants::CREDIT_CARD_3D_SECURE_ENABLED] = true;
 $config[AdyenConstants::MULTIPLE_PARTIAL_CAPTURE_ENABLED] = false;
 $config[AdyenConstants::SOCIAL_SECURITY_NUMBER_COUNTRIES_MANDATORY] = [
@@ -560,7 +560,7 @@ $config[AdyenConstants::IDEAL_ISSUERS_LIST] = [
     '1161' => 'Test Issuer Pending',
     '1162' => 'Test Issuer Cancelled',
 ];
-$config[AdyenApiConstants::API_KEY] = 'AQEthmfuXNWTK0Qc+iSDgnYhrOGJe5JeGZZHS0JbxFDxC2Afcv80W8t/1XmkwUQhEMFdWw2+5HzctViMSCJMYAc=-yWob0SnrKzuIm7E+aYQ0zwD5a2ydP6FuOwcscWN04kg=-qu{M5JbBA~kH4^5$';
+$config[AdyenApiConstants::API_KEY] = 'AQE0hmfxJo3GbxVFw0m/n3Q5qf3Ve5tfFJhPSlZP1Wyuk3Vsk8VeFIIVBDMhO7Dt/FfRk5gTPRDBXVsNvuR83LVYjEgiTGAH-Ch84VbVgtIcablapxRlRFV5XKJ26G55L4sEuSt7oF88=-=Q<C753Kg]%6eC>$';
 $config[AdyenApiConstants::GET_PAYMENT_METHODS_ACTION_URL] = 'https://checkout-test.adyen.com/v32/paymentMethods';
 $config[AdyenApiConstants::MAKE_PAYMENT_ACTION_URL] = 'https://checkout-test.adyen.com/v32/payments';
 $config[AdyenApiConstants::PAYMENTS_DETAILS_ACTION_URL] = 'https://checkout-test.adyen.com/v32/payments/details';
