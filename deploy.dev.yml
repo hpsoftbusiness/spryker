@@ -148,7 +148,10 @@ docker:
             platforms:
                 - linux
 
-        docker-sync:
+        mutagen:
             platforms:
                 - macos
+
+        docker-sync:
+            platforms:
                 - windows
