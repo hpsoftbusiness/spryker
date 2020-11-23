@@ -515,7 +515,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'Nopayment01',
     'DummyPayment01',
-    'AdyenCreditCard01'
+    'AdyenCreditCard01',
 ];
 
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [

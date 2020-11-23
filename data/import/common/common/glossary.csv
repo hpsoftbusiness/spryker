@@ -529,10 +529,16 @@ customer.address.address2,House Number,en_US
 customer.address.address2,Hausnummer,de_DE
 customer.address.address3,Additional address field,en_US
 customer.address.address3,Adresszusatz,de_DE
+customer.address.address4,More additional shipping information,en_US
+customer.address.address4,Weitere zusätzliche Versandinformationen,de_DE
 customer.address.zip_code,Postcode,en_US
 customer.address.zip_code,PLZ,de_DE
 customer.address.city,City,en_US
 customer.address.city,Stadt,de_DE
+customer.address.state,State,en_US
+customer.address.state,Bundesstaat,de_DE
+customer.address.vat_number,VAT Number,en_US
+customer.address.vat_number,Umsatzsteuer-Identifikationsnummer,de_DE
 customer.address.country,Country,en_US
 customer.address.country,Land,de_DE
 customer.address.phone,Phone,en_US
