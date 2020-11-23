@@ -46,6 +46,7 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
             ->addAddress1Field($builder, $options)
             ->addAddress2Field($builder, $options)
             ->addAddress3Field($builder)
+            ->addAddress4Field($builder)
             ->addZipCodeField($builder, $options)
             ->addCityField($builder, $options)
             ->addIso2CodeField($builder, $options)
@@ -53,7 +54,6 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
             ->addPhoneField($builder)
             ->addIdCompanyUnitAddressTextField($builder)
             ->addCompanyField($builder)
-            ->addAddress4Field($builder)
             ->addVatNumberField($builder)
             ->addIsAddressSavingSkippedField($builder, $options);
     }
