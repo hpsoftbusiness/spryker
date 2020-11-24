@@ -28,21 +28,12 @@ class AddressForm extends SprykerAddressForm
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
+
         $this
-            ->addFirstNameField($builder, $options)
-            ->addLastNameField($builder, $options)
-            ->addAddress1Field($builder, $options)
-            ->addAddress2Field($builder, $options)
-            ->addAddress3Field($builder)
-            ->addZipCodeField($builder, $options)
-            ->addCityField($builder, $options)
-            ->addIso2CodeField($builder, $options)
             ->addStateField($builder)
-            ->addPhoneField($builder)
-            ->addCompanyField($builder)
             ->addAddress4Field($builder)
-            ->addVatNumberField($builder)
-            ->addIdCustomerAddressField($builder);
+            ->addVatNumberField($builder);
     }
 
     /**

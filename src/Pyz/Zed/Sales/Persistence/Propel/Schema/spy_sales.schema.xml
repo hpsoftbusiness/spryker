@@ -4,12 +4,12 @@
     <table name="spy_sales_order_address">
         <column name="address4" size="255" type="VARCHAR"/>
         <column name="vat_number" size="255" type="VARCHAR"/>
-        <column name="state" size="2" type="VARCHAR"/>
+        <column name="state" size="255" type="VARCHAR"/>
     </table>
 
     <table name="spy_sales_order_address_history">
         <column name="address4" size="255" type="VARCHAR"/>
         <column name="vat_number" size="255" type="VARCHAR"/>
-        <column name="state" size="2" type="VARCHAR"/>
+        <column name="state" size="255" type="VARCHAR"/>
     </table>
 </database>

@@ -3,6 +3,6 @@
     <table name="spy_customer_address" idMethod="native">
         <column name="address4" size="255" type="VARCHAR"/>
         <column name="vat_number" size="255" type="VARCHAR"/>
-        <column name="state" size="2" type="VARCHAR"/>
+        <column name="state" size="255" type="VARCHAR"/>
     </table>
 </database>
