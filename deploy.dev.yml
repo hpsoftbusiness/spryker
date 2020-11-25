@@ -133,7 +133,7 @@ services:
 docker:
 
     ssl:
-        enabled: false
+        enabled: true
         redirect: true
 
     testing:

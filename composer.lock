@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "343a97de04fc6cfe5bea670e4ea33973",
+    "content-hash": "5ccf96bffe851cac3867fcf38f75fdc6",
     "packages": [
         {
             "name": "brick/math",
@@ -2491,20 +2491,20 @@
         },
         {
             "name": "spryker-eco/adyen",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/adyen.git",
-                "reference": "9ccdc0aa5e16fcfa005ab59d9330c59ff10975f6"
+                "reference": "e62a9364c69b033596683d00df9336411b592358"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/adyen/zipball/9ccdc0aa5e16fcfa005ab59d9330c59ff10975f6",
-                "reference": "9ccdc0aa5e16fcfa005ab59d9330c59ff10975f6",
+                "url": "https://api.github.com/repos/spryker-eco/adyen/zipball/e62a9364c69b033596683d00df9336411b592358",
+                "reference": "e62a9364c69b033596683d00df9336411b592358",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker-eco/adyen-api": "^1.0.0",
                 "spryker-shop/checkout-page": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/calculation": "^4.0.0",
@@ -2521,6 +2521,7 @@
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
+                "phpstan/phpstan": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker/checkout": "*",
                 "spryker/code-sniffer": "*",
@@ -2553,7 +2554,7 @@
                 "MIT"
             ],
             "description": "Adyen module",
-            "time": "2020-09-28T08:23:47+00:00"
+            "time": "2020-11-03T12:28:39+00:00"
         },
         {
             "name": "spryker-eco/adyen-api",
@@ -38383,6 +38384,7 @@
                 }
             ],
             "description": "JSONPath implementation for parsing, searching and flattening arrays",
+            "abandoned": "softcreatr/jsonpath",
             "time": "2019-07-15T17:23:22+00:00"
         },
         {
@@ -43306,7 +43308,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -43320,7 +43322,7 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.2.24"
+        "php": "7.3.15"
     },
     "plugin-api-version": "1.1.0"
 }
