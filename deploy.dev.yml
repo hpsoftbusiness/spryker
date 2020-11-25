@@ -32,14 +32,6 @@ regions:
                         namespace: 1
                     search:
                         namespace: de_search
-            AT:
-                services:
-                    broker:
-                        namespace: at-docker
-                    key_value_store:
-                        namespace: 2
-                    search:
-                        namespace: at_search
 groups:
     EU:
         region: EU
@@ -52,18 +44,11 @@ groups:
                         services:
                             session:
                                 namespace: 1
-                    yves.at.myworld.local:
-                        store: AT
-                        services:
-                            session:
-                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
                     glue.de.myworld.local:
                         store: DE
-                    glue.at.myworld.local:
-                        store: AT
             zed_eu:
                 application: zed
                 endpoints:
@@ -72,11 +57,6 @@ groups:
                         services:
                             session:
                                 namespace: 3
-                    zed.at.myworld.local:
-                        store: AT
-                        services:
-                            session:
-                                namespace: 4
 services:
     database:
         engine: mysql

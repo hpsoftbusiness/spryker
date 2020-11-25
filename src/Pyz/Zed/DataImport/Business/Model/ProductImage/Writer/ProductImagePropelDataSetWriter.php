@@ -10,10 +10,14 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
+use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\ProductImage\Persistence\SpyProductImage;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
+use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -42,9 +46,13 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
-        $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
-        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
+        $defaultLocales = Store::getInstance()->getLocalesPerStore(APPLICATION_STORE);
+
+        foreach ($defaultLocales as $key => $localeName) {
+            $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet, $localeName);
+            $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
+            $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
+        }
     }
 
     /**
@@ -57,12 +65,13 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param string $localeName
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
-    protected function createOrUpdateProductImageSet(DataSetInterface $dataSet): SpyProductImageSet
+    protected function createOrUpdateProductImageSet(DataSetInterface $dataSet, string $localeName): SpyProductImageSet
     {
-        $productImageSetEntityTransfer = $this->getProductImageSetTransfer($dataSet);
+        $productImageSetEntityTransfer = $this->getProductImageSetTransfer($dataSet, $localeName);
         $productImageSetEntity = $this->productImageRepository->getProductImageSetEntity(
             $productImageSetEntityTransfer->getName(),
             $productImageSetEntityTransfer->getFkLocale(),
@@ -147,12 +156,39 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param string $localeName
      *
      * @return \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
      */
-    protected function getProductImageSetTransfer(DataSetInterface $dataSet): SpyProductImageSetEntityTransfer
+    protected function getProductImageSetTransfer(DataSetInterface $dataSet, string $localeName): SpyProductImageSetEntityTransfer
     {
-        return $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
+        $spyProductImageSetEntityTransfer = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
+
+        $spyProductImageSetEntityTransfer
+            ->setFkLocale($this->resolveIdLocale($localeName));
+
+        return $spyProductImageSetEntityTransfer;
+    }
+
+    /**
+     * @param string $localeName
+     *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
+     * @return int
+     */
+    protected function resolveIdLocale($localeName)
+    {
+        $query = SpyLocaleQuery::create();
+        $localeEntity = $query->filterByLocaleName($localeName)->findOne();
+
+        if (!$localeEntity) {
+            throw new EntityNotFoundException(sprintf('Locale by name "%s" not found.', $localeName));
+        }
+
+        $localeEntity->save();
+
+        return $localeEntity->getIdLocale();
     }
 
     /**
