@@ -13,6 +13,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class AttributesExtractorStep implements DataImportStepInterface
 {
     public const KEY_ATTRIBUTES = 'attributes';
+    public const KEY_HIDDEN_ATTRIBUTES = 'hidden_attributes';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -23,6 +24,8 @@ class AttributesExtractorStep implements DataImportStepInterface
     {
         $keysToUnset = [];
         $attributes = [];
+        $hiddenAttributes = [];
+
         foreach ($dataSet as $key => $value) {
             if (!preg_match('/^' . $this->getAttributeKeyPrefix() . '(\d+)$/', $key, $match)) {
                 continue;
@@ -33,7 +36,11 @@ class AttributesExtractorStep implements DataImportStepInterface
             $attributeValue = trim($dataSet[$attributeValueKey]);
 
             if ($attributeKey !== '') {
-                $attributes[$attributeKey] = $attributeValue;
+                if (in_array($attributeKey, $this->getAttributeList())) {
+                    $attributes[$attributeKey] = $attributeValue;
+                }
+
+                $hiddenAttributes[$attributeKey] = $attributeValue;
             }
 
             $keysToUnset[] = $match[0];
@@ -45,6 +52,7 @@ class AttributesExtractorStep implements DataImportStepInterface
         }
 
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
+        $dataSet[static::KEY_HIDDEN_ATTRIBUTES] = $hiddenAttributes;
     }
 
     /**
@@ -61,5 +69,25 @@ class AttributesExtractorStep implements DataImportStepInterface
     protected function getAttributeValuePrefix(): string
     {
         return 'value_';
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getAttributeList(): array
+    {
+        return [
+            'mpn',
+            'ean',
+            'color',
+            'size',
+            'material',
+            'manufacturer',
+            'brand',
+            'length',
+            'width',
+            'height',
+            'weight',
+        ];
     }
 }
