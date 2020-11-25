@@ -39,9 +39,4 @@ class CategoryDataImportBusinessFactory extends SprykerCategoryDataImportBusines
 
         return $dataImporter;
     }
-
-    public function createCategoryDataStructureFormatter()
-    {
-
-    }
 }
