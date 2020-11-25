@@ -93,6 +93,19 @@
             </customer-access>
         </pages>
     </customer>
+    <export>
+        <label>Export</label>
+        <title>Export</title>
+        <pages>
+            <posting>
+                <label>Postings</label>
+                <title>Postings</title>
+                <bundle>posting-export</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </posting>
+        </pages>
+    </export>
     <catalog>
         <label>Catalog</label>
         <title>Catalog</title>
