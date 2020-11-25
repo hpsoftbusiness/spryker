@@ -73,7 +73,7 @@ regions:
   EU:
     services:
       database:
-        database: spryker_b2c_eu
+        database: myworld_staging
         username: spryker
         password: secret
 
