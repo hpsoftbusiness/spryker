@@ -19,6 +19,7 @@
             <state name="refund pending" reserved="false" />
             <state name="refunded" reserved="false" />
             <state name="refund failed" reserved="false" />
+            <state name="refused" reserved="false" />
             <state name="closed" reserved="false" />
         </states>
 
@@ -35,6 +36,11 @@
             <transition condition="Adyen/IsAuthorized" happy="true">
                 <source>new</source>
                 <target>authorized</target>
+            </transition>
+
+            <transition condition="Adyen/IsRefused">
+                <source>new</source>
+                <target>refused</target>
             </transition>
 
             <transition condition="Adyen/IsAuthorizationFailed">
