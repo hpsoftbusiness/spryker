@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage;
 
 use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
+use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
@@ -28,6 +29,8 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThr
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
+    public const SERVICE_TRANSLATOR = 'translator';
+
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
@@ -38,6 +41,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container = parent::provideDependencies($container);
         $container = $this->extendPaymentMethodHandler($container);
         $container = $this->extendSubFormPluginCollection($container);
+        $container = $this->addTranslatorService($container);
 
         return $container;
     }
@@ -149,5 +153,19 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return [
             new CustomerAddressExpanderPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function addTranslatorService(Container $container): Container
+    {
+        $container->set(static::SERVICE_TRANSLATOR, function (ContainerInterface $container) {
+            return $container->getApplicationService(static::SERVICE_TRANSLATOR);
+        });
+
+        return $container;
     }
 }
