@@ -83,14 +83,12 @@ class AddressStep extends SprykerShopAddressStep
 
         $quoteTransfer = $this->stepExecutor->execute($request, $quoteTransfer);
 
-        $storeName = $quoteTransfer->getStore()->getName();
-
         foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
             $hiddenAttributes = $itemTransfer->getHiddenConcreteAttributes();
-            $key = sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, $storeName);
-            $isSellable = (bool)$hiddenAttributes[$key];
+            $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
+            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtoupper($countryIso2Code))];
 
-            if (!$isSellable || $itemTransfer->getSku() === '9120050580220-0002') {
+            if (!$isSellable || $itemTransfer->getSku() === '9120050580091-0001') {
                 unset($quoteTransfer->getItems()[$idx]);
                 $this->flashMessenger->addErrorMessage(
                     $this->translator->trans(static::KEY_MESSAGE_IS_NOT_SELLABLE)
