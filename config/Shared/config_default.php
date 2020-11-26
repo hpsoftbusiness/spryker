@@ -56,9 +56,6 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Propel\PropelConfig;
-use SprykerEco\Shared\Adyen\AdyenConfig;
-use SprykerEco\Shared\Adyen\AdyenConstants;
-use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 
 // ############################################################################

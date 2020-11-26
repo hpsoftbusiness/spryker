@@ -1,0 +1,10 @@
+export.posting.order-id,"Order ID"
+export.posting.order-reference,"Order reference"
+export.posting.customer-reference,"Customer reference"
+export.posting.date,"Created At"
+export.posting.grand-total,"Grand Total"
+export.posting.tax-total,"Tax Total"
+export.posting.expense-total,"Expense Total"
+export.posting.error.no-orders-in-time-period-found,"No orders available for the selected period"
+export.posting.form.button,Export
+export.posting.page.title,"Export orders"

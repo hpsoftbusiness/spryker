@@ -39,6 +39,7 @@ use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCaptureReceivedPlu
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundedPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundFailedPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundReceivedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefusedPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -144,6 +145,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new IsRefundReceivedPlugin(), 'Adyen/IsRefundReceived');
             $conditionCollection->add(new IsRefundFailedPlugin(), 'Adyen/IsRefundFailed');
             $conditionCollection->add(new IsAuthorizationFailedPlugin(), 'Adyen/IsAuthorizationFailed');
+            $conditionCollection->add(new IsRefusedPlugin(), 'Adyen/IsRefused');
 
             return $conditionCollection;
         });

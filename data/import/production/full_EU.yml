@@ -16,11 +16,7 @@ actions:
   - data_entity: shipment
     source: data/import/common/common/shipment.csv
   - data_entity: shipment-price
-    source: data/import/common/AT/shipment_price.csv
-  - data_entity: shipment-price
     source: data/import/common/DE/shipment_price.csv
-  - data_entity: sales-order-threshold
-    source: data/import/common/AT/sales_order_threshold.csv
   - data_entity: sales-order-threshold
     source: data/import/common/DE/sales_order_threshold.csv
   - data_entity: stock
@@ -31,15 +27,9 @@ actions:
     source: data/import/common/common/return_reason.csv
     # Store relation
   - data_entity: shipment-method-store
-    source: data/import/common/AT/shipment_method_store.csv
-  - data_entity: shipment-method-store
     source: data/import/common/DE/shipment_method_store.csv
   - data_entity: stock-store
-    source: data/import/common/AT/warehouse_store.csv
-  - data_entity: stock-store
     source: data/import/common/DE/warehouse_store.csv
-  - data_entity: payment-method-store
-    source: data/import/common/AT/payment_method_store.csv
   - data_entity: payment-method-store
     source: data/import/common/DE/payment_method_store.csv
 
@@ -53,27 +43,22 @@ actions:
     source: data/import/common/common/product_attribute_key.csv
   - data_entity: product-management-attribute
     source: data/import/common/common/product_management_attribute.csv
-  - data_entity: product-abstract
-    source: data/import/common/common/product_abstract.csv
-  - data_entity: product-concrete
-    source: data/import/common/common/product_concrete.csv
-  - data_entity: product-image
-    source: data/import/common/common/product_image.csv
-  - data_entity: product-price
-    source: data/import/common/AT/product_price.csv
-  - data_entity: product-price
-    source: data/import/common/DE/product_price.csv
-  - data_entity: product-price-schedule
-    source: data/import/common/AT/product_price_schedule.csv
-  - data_entity: product-price-schedule
-    source: data/import/common/DE/product_price_schedule.csv
-  - data_entity: product-stock
-    source: data/import/common/common/product_stock.csv
-  # Store relation
-  - data_entity: product-abstract-store
-    source: data/import/common/AT/product_abstract_store.csv
-  - data_entity: product-abstract-store
-    source: data/import/common/DE/product_abstract_store.csv
+
+    # Combined product
+  - data_entity: combined-product-abstract
+    source: data/import/common/DE/combined_product.csv
+  - data_entity: combined-product-abstract-store
+    source: data/import/common/DE/combined_product.csv
+  - data_entity: combined-product-concrete
+    source: data/import/common/DE/combined_product.csv
+  - data_entity: combined-product-image
+    source: data/import/common/DE/combined_product.csv
+  - data_entity: combined-product-price
+    source: data/import/common/DE/combined_product.csv
+  - data_entity: combined-product-stock
+    source: data/import/common/DE/combined_product.csv
+  - data_entity: combined-product-group
+    source: data/import/common/DE/combined_product.csv
 
 
 #3. Merchandising Setup import
@@ -81,8 +66,6 @@ actions:
     source: data/import/common/common/discount.csv
   - data_entity: discount-voucher
     source: data/import/common/common/discount_voucher.csv
-  - data_entity: product-group
-    source: data/import/common/common/product_group.csv
   - data_entity: product-relation
     source: data/import/common/common/product_relation.csv
   - data_entity: product-review
@@ -96,8 +79,6 @@ actions:
   - data_entity: product-search-attribute
     source: data/import/common/common/product_search_attribute.csv
   - data_entity: discount-amount
-    source: data/import/common/AT/discount_amount.csv
-  - data_entity: discount-amount
     source: data/import/common/DE/discount_amount.csv
   - data_entity: product-discontinued
     source: data/import/common/common/product_discontinued.csv
@@ -107,15 +88,9 @@ actions:
     source: data/import/common/common/product_quantity.csv
   # Store relation
   - data_entity: discount-store
-    source: data/import/common/AT/discount_store.csv
-  - data_entity: discount-store
     source: data/import/common/DE/discount_store.csv
   - data_entity: product-relation-store
-    source: data/import/common/AT/product_relation_store.csv
-  - data_entity: product-relation-store
     source: data/import/common/DE/product_relation_store.csv
-  - data_entity: product-label-store
-    source: data/import/common/AT/product_label_store.csv
   - data_entity: product-label-store
     source: data/import/common/DE/product_label_store.csv
 
@@ -123,8 +98,6 @@ actions:
 #4. Special Product Types Setup import
   - data_entity: product-option
     source: data/import/common/common/product_option.csv
-  - data_entity: product-option-price
-    source: data/import/common/AT/product_option_price.csv
   - data_entity: product-option-price
     source: data/import/common/DE/product_option_price.csv
   - data_entity: gift-card-abstract-configuration
@@ -167,17 +140,14 @@ actions:
   - data_entity: cms-slot-block
     source: data/import/common/common/cms_slot_block.csv
   - data_entity: cms-page-store
-    source: data/import/common/AT/cms_page_store.csv
-  - data_entity: cms-page-store
     source: data/import/common/DE/cms_page_store.csv
-  - data_entity: cms-block-store
-    source: data/import/common/AT/cms_block_store.csv
   - data_entity: cms-block-store
     source: data/import/common/DE/cms_block_store.csv
   - data_entity: content-navigation
     source: data/import/common/common/content_navigation.csv
   - data_entity: navigation-node
     source: data/import/common/common/navigation_node.csv
+
 
 #6. Miscellaneous Setup import
   - data_entity: mime-type
