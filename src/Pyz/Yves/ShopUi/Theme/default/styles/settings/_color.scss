@@ -46,7 +46,6 @@ $setting-color-statuses: (
     scheme-5-backgound: $setting-color-gray-1,
 );
 
-//myworld colors
-$setting-color-yellow: #f0be00;
-$setting-color-yellow-dark: #cd9e00;
-$setting-color-yellow-darker: #cd9e00;
+$setting-color-yellow-brand: #f0be00;
+$setting-color-yellow-brand-dark: darken($setting-color-yellow-brand, 5%);
+$setting-color-yellow-brand-darker: darken($setting-color-yellow-brand, 10%);

@@ -5,6 +5,7 @@
             border-radius: rem(4);
             display: inline-flex;
             padding: 0 rem(10);
+            overflow: hidden;
 
             &--no-spacing {
                 padding: 0;
