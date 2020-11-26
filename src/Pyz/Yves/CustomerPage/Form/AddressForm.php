@@ -53,6 +53,9 @@ class AddressForm extends SprykerAddressForm
             ],
             'required' => true,
             'trim' => true,
+            'constraints' => [
+                $this->createNotBlankConstraint([]),
+            ],
         ]);
 
         return $this;
