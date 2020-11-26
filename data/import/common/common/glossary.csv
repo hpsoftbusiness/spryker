@@ -541,8 +541,8 @@ customer.address.vat_number,VAT Number,en_US
 customer.address.vat_number,Umsatzsteuer-Identifikationsnummer,de_DE
 customer.address.country,Country,en_US
 customer.address.country,Land,de_DE
-customer.address.phone,Phone,en_US
-customer.address.phone,Telefon,de_DE
+customer.address.phone,Telephone number (for possible questions regarding delivery),en_US
+customer.address.phone,Telefonnummer (für mögliche Rückfragen bei der Zustellung),de_DE
 customer.address.is_default_billing,Is default billing address,en_US
 customer.address.is_default_billing,Standard Rechnungsadresse,de_DE
 customer.address.is_default_shipping,Is default shipping address,en_US

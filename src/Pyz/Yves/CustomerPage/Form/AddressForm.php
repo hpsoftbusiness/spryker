@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CustomerPage\Form;
 
 use SprykerShop\Yves\CustomerPage\Form\AddressForm as SprykerAddressForm;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -19,6 +20,8 @@ class AddressForm extends SprykerAddressForm
     public const FIELD_ADDRESS_4 = 'address4';
     public const FIELD_VAT_NUMBER = 'vat_number';
     public const FIELD_STATE = 'state';
+
+    public const PLACEHOLDER_PHONE = '+00999999999';
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -34,6 +37,25 @@ class AddressForm extends SprykerAddressForm
             ->addStateField($builder)
             ->addAddress4Field($builder)
             ->addVatNumberField($builder);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\AddressForm
+     */
+    protected function addPhoneField(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_PHONE, TelType::class, [
+            'label' => 'customer.address.phone',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_PHONE,
+            ],
+            'required' => true,
+            'trim' => true,
+        ]);
+
+        return $this;
     }
 
     /**
