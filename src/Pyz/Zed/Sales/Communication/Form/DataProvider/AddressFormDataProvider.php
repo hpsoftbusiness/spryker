@@ -40,7 +40,7 @@ class AddressFormDataProvider extends SprykerAddressFormDataProvider
             AddressForm::FIELD_FK_COUNTRY => $address->getFkCountry(),
             AddressForm::FIELD_VAT_NUMBER => $address->getVatNumber(),
             AddressForm::FIELD_ADDRESS_4 => $address->getAddress4(),
-            AddressForm::FIELD_STATE => $address->getState()
+            AddressForm::FIELD_STATE => $address->getState(),
         ];
     }
 }
