@@ -4,6 +4,7 @@ $setting-color-lyconet: #f29533;
 $setting-color-marketplace: #f0be00;
 $setting-color-marketplace-dark: #e5b500;
 $setting-color-marketplace-darker: darken(#e5b500, 5%);
+$setting-color-marketplace-shadow: rgba($setting-color-marketplace-darker, 5%);
 
 $setting-color-marketplace-gray-1: #f5f5f5;
 $setting-color-marketplace-gray-2: #eeeeee;

@@ -34,7 +34,7 @@
         }
 
         &--shadow {
-            box-shadow: 0 10px 30px 0 rgba(240, 190, 0, 0.3);
+            box-shadow: 0 10px 30px 0 $setting-color-marketplace-shadow;
         }
 
         &--alert {
@@ -103,6 +103,7 @@
         &[disabled],
         &--disabled {
             background-color: $setting-color-marketplace-gray-3;
+            box-shadow: none;
             cursor: not-allowed;
 
             &:hover,
@@ -137,6 +138,7 @@
             &--disabled {
                 background-color: transparent;
                 border-color: $setting-color-marketplace-gray-3;
+                box-shadow: none;
                 color: $setting-color-marketplace-gray-3;
 
                 &:hover,
