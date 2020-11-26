@@ -47,22 +47,21 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
     {
         $this
             ->addAddressSelectField($builder, $options)
-            ->addSalutationField($builder, $options)
             ->addFirstNameField($builder, $options)
             ->addLastNameField($builder, $options)
-            ->addCompanyField($builder)
             ->addAddress1Field($builder, $options)
             ->addAddress2Field($builder, $options)
             ->addAddress3Field($builder)
             ->addZipCodeField($builder, $options)
             ->addCityField($builder, $options)
             ->addIso2CodeField($builder, $options)
-            ->addPhoneField($builder, $options)
-            ->addIdCompanyUnitAddressTextField($builder)
-            ->addIsAddressSavingSkippedField($builder, $options)
             ->addStateField($builder)
+            ->addPhoneField($builder, $options)
+            ->addCompanyField($builder)
             ->addAddress4Field($builder)
-            ->addVatNumberField($builder);
+            ->addVatNumberField($builder)
+            ->addIdCompanyUnitAddressTextField($builder)
+            ->addIsAddressSavingSkippedField($builder, $options);
     }
 
     /**
