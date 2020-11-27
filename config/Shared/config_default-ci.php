@@ -239,3 +239,11 @@ require 'common/config_oms-development.php';
 // >>> ADYEN
 
 require 'common/config_adyen-development.php';
+
+// ----------------------------------------------------------------------------
+// --------------------------- Single Sigh On ---------------------------------
+// ----------------------------------------------------------------------------
+
+// >>> SSO
+
+require 'common/config_sso-development.php';
