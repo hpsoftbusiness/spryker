@@ -93,12 +93,4 @@ class SsoConfig extends AbstractBundleConfig
     {
         return $this->getSharedConfig()->getScope();
     }
-
-    /**
-     * @return string|null
-     */
-    public function getState(): ?string
-    {
-        return $this->getSharedConfig()->getState();
-    }
 }

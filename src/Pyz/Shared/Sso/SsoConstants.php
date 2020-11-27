@@ -68,10 +68,4 @@ interface SsoConstants
      * - Requested Scopes, splitted with spaces " ". Mandatory.
      */
     public const SCOPE = 'SSO:SCOPE';
-
-    /**
-     * Specification:
-     * - Some string, which would be delivered back to consumer. Not mandatory.
-     */
-    public const STATE = 'SSO:STATE';
 }

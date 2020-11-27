@@ -90,12 +90,4 @@ class SsoConfig extends AbstractBundleConfig
     {
         return $this->get(SsoConstants::SCOPE);
     }
-
-    /**
-     * @return string|null
-     */
-    public function getState(): ?string
-    {
-        return $this->get(SsoConstants::STATE);
-    }
 }
