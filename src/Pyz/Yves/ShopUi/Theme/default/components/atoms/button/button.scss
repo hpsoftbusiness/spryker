@@ -120,7 +120,7 @@
         }
 
         &--hollow {
-            background-color: transparent;
+            background-color: $setting-color-transparent;
             border: rem(2) solid $setting-color-marketplace;
             color: $setting-color-black;
             padding: rem(14) rem(16);
@@ -128,7 +128,7 @@
             &:hover,
             &:focus,
             &:active {
-                background-color: transparent;
+                background-color: $setting-color-transparent;
                 border-color: $setting-color-marketplace;
                 color: $setting-color-marketplace;
                 text-decoration: none;
@@ -136,7 +136,7 @@
 
             &[disabled],
             &--disabled {
-                background-color: transparent;
+                background-color: $setting-color-transparent;
                 border-color: $setting-color-marketplace-gray-3;
                 box-shadow: none;
                 color: $setting-color-marketplace-gray-3;
