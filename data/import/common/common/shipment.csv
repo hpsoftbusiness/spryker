@@ -1,2 +1,2 @@
 shipment_method_key,name,carrier,taxSetName
-spryker_standard_shipment_method,Standard,Standard,Shipment Taxes
+myworld_standard_shipment_method,Standard,Standard,Shipment Taxes
