@@ -7,6 +7,8 @@ actions:
     # Cannot have a source because we use store.php
   - data_entity: currency
     source: data/import/common/common/currency.csv
+  - data_entity: customer-group
+    source: data/import/common/common/customer_group.csv
   - data_entity: customer
     source: data/import/common/common/customer.csv
   - data_entity: glossary
@@ -108,8 +110,10 @@ actions:
     source: data/import/common/common/product_list.csv
   - data_entity: product-list-category
     source: data/import/common/common/product_list_to_category.csv
-  - data_entity: product-list-product-concrete
-    source: data/import/common/common/product_list_to_concrete_product.csv
+  - data_entity: product-list-customer-group
+    source: data/import/common/common/product_list_to_customer_group.csv
+  - data_entity: combined-product-list-product-concrete
+    source: data/import/common/DE/combined_product.csv
   - data_entity: configurable-bundle-template
     source: data/import/common/common/configurable_bundle_template.csv
   - data_entity: configurable-bundle-template-slot

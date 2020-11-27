@@ -162,7 +162,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-
         $priceProductStoreEntity->setGrossPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100);
         $priceProductStoreEntity->setNetPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100);
         $priceProductStoreEntity->setNetPrice((double)$dataSet[static::COLUMN_PRICE_NET] * 100);

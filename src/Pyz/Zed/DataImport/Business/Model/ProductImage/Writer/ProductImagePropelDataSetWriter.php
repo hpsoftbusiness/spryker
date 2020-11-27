@@ -14,7 +14,6 @@ use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\ProductImage\Persistence\SpyProductImage;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface;
 use Spryker\Shared\Kernel\Store;

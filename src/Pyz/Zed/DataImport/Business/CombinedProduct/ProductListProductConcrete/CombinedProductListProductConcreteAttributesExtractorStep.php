@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductListProductConcrete;
+
+use Pyz\Zed\DataImport\Business\Model\Product\AttributesExtractorStep;
+
+class CombinedProductListProductConcreteAttributesExtractorStep extends AttributesExtractorStep
+{
+    /**
+     * @return string
+     */
+    protected function getAttributeKeyPrefix(): string
+    {
+        return 'product.attribute_key_';
+    }
+
+    /**
+     * @return string
+     */
+    protected function getAttributeValuePrefix(): string
+    {
+        return 'product.value_';
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getAttributeList(): array
+    {
+        return [
+            'customer_group_1',
+            'customer_group_2',
+            'customer_group_3',
+            'customer_group_4',
+            'customer_group_5',
+        ];
+    }
+}

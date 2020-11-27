@@ -35,7 +35,6 @@ use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelDataImpo
 use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelStoreDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListCategoryDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListDataImportPlugin;
-use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListProductConcreteDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationDataImportPlugin;
 use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationStoreDataImportPlugin;
@@ -237,7 +236,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new PaymentMethodDataImportPlugin(),
             new PaymentMethodStoreDataImportPlugin(),
             new ProductListDataImportPlugin(),
-            new ProductListProductConcreteDataImportPlugin(),
             new ProductListCategoryDataImportPlugin(),
             new ConfigurableBundleTemplateDataImportPlugin(),
             new ConfigurableBundleTemplateSlotDataImportPlugin(),
