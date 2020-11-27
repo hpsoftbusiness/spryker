@@ -5,20 +5,18 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\Sales\Communication\Form;
+namespace Pyz\Zed\Customer\Communication\Form;
 
-use Spryker\Zed\Sales\Communication\Form\AddressForm as SprykerAddressForm;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Spryker\Zed\Customer\Communication\Form\AddressForm as SprykerAddressForm;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * @method \Spryker\Zed\Sales\Business\SalesFacadeInterface getFacade()
- * @method \Spryker\Zed\Sales\Communication\SalesCommunicationFactory getFactory()
- * @method \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface getQueryContainer()
- * @method \Spryker\Zed\Sales\SalesConfig getConfig()
- * @method \Spryker\Zed\Sales\Persistence\SalesRepositoryInterface getRepository()
+ * @method \Spryker\Zed\Customer\Business\CustomerFacadeInterface getFacade()
+ * @method \Spryker\Zed\Customer\Communication\CustomerCommunicationFactory getFactory()
+ * @method \Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface getQueryContainer()
+ * @method \Spryker\Zed\Customer\CustomerConfig getConfig()
+ * @method \Spryker\Zed\Customer\Persistence\CustomerRepositoryInterface getRepository()
  */
 class AddressForm extends SprykerAddressForm
 {
@@ -39,23 +37,6 @@ class AddressForm extends SprykerAddressForm
         $this->addAddress4Field($builder);
         $this->addStateField($builder);
         $this->addVatNumberField($builder);
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return $this
-     */
-    protected function addPhoneField(FormBuilderInterface $builder)
-    {
-        $builder->add(static::FIELD_PHONE, TelType::class, [
-            'required' => true,
-            'constraints' => [
-                new NotBlank(),
-            ],
-        ]);
-
-        return $this;
     }
 
     /**

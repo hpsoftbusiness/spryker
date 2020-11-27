@@ -11,6 +11,8 @@ use SprykerShop\Yves\CustomerPage\CustomerPageConfig as SprykerCustomerPageConfi
 
 class CustomerPageConfig extends SprykerCustomerPageConfig
 {
+    public const MAX_LENGTH = 100;
+
     protected const LOGIN_FAILURE_REDIRECT_URL = '/login';
 
     /**
