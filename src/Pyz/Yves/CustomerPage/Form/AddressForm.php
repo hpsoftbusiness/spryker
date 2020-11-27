@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CustomerPage\Form;
 
 use SprykerShop\Yves\CustomerPage\Form\AddressForm as SprykerAddressForm;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -20,6 +21,9 @@ class AddressForm extends SprykerAddressForm
     public const FIELD_VAT_NUMBER = 'vat_number';
     public const FIELD_STATE = 'state';
 
+    public const PLACEHOLDER_PHONE = '+00999999999';
+    public const PLACEHOLDER_OPTIONAL = 'Optional';
+
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array $options
@@ -28,12 +32,83 @@ class AddressForm extends SprykerAddressForm
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
         $this
+            ->addFirstNameField($builder, $options)
+            ->addLastNameField($builder, $options)
+            ->addAddress1Field($builder, $options)
+            ->addAddress2Field($builder, $options)
+            ->addAddress3Field($builder)
+            ->addZipCodeField($builder, $options)
+            ->addCityField($builder, $options)
+            ->addIso2CodeField($builder, $options)
             ->addStateField($builder)
+            ->addPhoneField($builder)
+            ->addCompanyField($builder)
             ->addAddress4Field($builder)
-            ->addVatNumberField($builder);
+            ->addVatNumberField($builder)
+            ->addIsDefaultShippingField($builder)
+            ->addIsDefaultBillingField($builder)
+            ->addIdCustomerAddressField($builder);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\AddressForm
+     */
+    protected function addPhoneField(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_PHONE, TelType::class, [
+            'label' => 'customer.address.phone',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_PHONE,
+            ],
+            'required' => true,
+            'trim' => true,
+            'constraints' => [
+                $this->createNotBlankConstraint([]),
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\AddressForm
+     */
+    protected function addAddress3Field(FormBuilderInterface $builder)
+    {
+        $builder->add(self::FIELD_ADDRESS_3, TextType::class, [
+            'label' => 'customer.address.address3',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_OPTIONAL,
+            ],
+            'required' => false,
+            'trim' => true,
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\AddressForm
+     */
+    protected function addCompanyField(FormBuilderInterface $builder)
+    {
+        $builder->add(self::FIELD_COMPANY, TextType::class, [
+            'label' => 'customer.address.company',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_OPTIONAL,
+            ],
+            'required' => false,
+            'trim' => true,
+        ]);
+
+        return $this;
     }
 
     /**
@@ -45,6 +120,9 @@ class AddressForm extends SprykerAddressForm
     {
         $builder->add(self::FIELD_ADDRESS_4, TextType::class, [
             'label' => 'customer.address.address4',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_OPTIONAL,
+            ],
             'required' => false,
             'trim' => true,
         ]);
@@ -61,6 +139,9 @@ class AddressForm extends SprykerAddressForm
     {
         $builder->add(self::FIELD_VAT_NUMBER, TextType::class, [
             'label' => 'customer.address.vat_number',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_OPTIONAL,
+            ],
             'required' => false,
             'trim' => true,
         ]);
@@ -77,6 +158,9 @@ class AddressForm extends SprykerAddressForm
     {
         $builder->add(self::FIELD_STATE, TextType::class, [
             'label' => 'customer.address.state',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_OPTIONAL,
+            ],
             'required' => false,
             'trim' => true,
         ]);
