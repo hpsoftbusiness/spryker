@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage\Process;
 
-use Pyz\Yves\CheckoutPage\Process\Steps\AddressStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use SprykerShop\Yves\CmsBlockWidget\CmsBlockWidgetDependencyProvider;
@@ -23,8 +23,8 @@ class StepFactory extends SprykerShopStepFactory
         return [
             $this->createEntryStep(),
             $this->createCustomerStep(),
-            $this->createPyzAddressStep(),
-            $this->createShipmentStep(),
+            $this->createAddressStep(),
+            $this->createPyzShipmentStep(),
             $this->createPaymentStep(),
             $this->createSummaryStep(),
             $this->createPlaceOrderStep(),
@@ -34,18 +34,18 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
-     * @return \Pyz\Yves\CheckoutPage\Process\Steps\AddressStep
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep
      */
-    public function createPyzAddressStep(): AddressStep
+    public function createPyzShipmentStep()
     {
-        return new AddressStep(
+        return new ShipmentStep(
             $this->getCalculationClient(),
-            $this->createAddressStepExecutor(),
-            $this->createAddressStepPostConditionChecker(),
-            $this->getConfig(),
-            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ADDRESS,
+            $this->getShipmentPlugins(),
+            $this->createShipmentStepPostConditionChecker(),
+            $this->createGiftCardItemsChecker(),
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SHIPMENT,
             $this->getConfig()->getEscapeRoute(),
-            $this->getCheckoutAddressStepEnterPreCheckPlugins(),
+            $this->getCheckoutShipmentStepEnterPreCheckPlugins(),
             $this->getFlashMessenger(),
             $this->getTranslatorService()
         );

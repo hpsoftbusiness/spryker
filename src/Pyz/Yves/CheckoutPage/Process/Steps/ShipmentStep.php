@@ -1,23 +1,23 @@
 <?php
 
 /**
- * This file is part of the Spryker Commerce OS.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
-use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
+use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
+use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep as SprykerShopAddressStep;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface;
-use Symfony\Component\HttpFoundation\Request;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep as SprykerShopShipmentStep;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class AddressStep extends SprykerShopAddressStep
+class ShipmentStep extends SprykerShopShipmentStep
 {
     protected const KEY_SELLABLE_ATTRIBUTE_PATTERN = 'sellable_%s';
 
@@ -35,34 +35,34 @@ class AddressStep extends SprykerShopAddressStep
 
     /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
-     * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface $stepExecutor
+     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
      * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface $postConditionChecker
-     * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
+     * @param \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface $giftCardItemsChecker
      * @param string $stepRoute
      * @param string|null $escapeRoute
-     * @param \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface[] $checkoutAddressStepEnterPreCheckPlugins
+     * @param \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[] $checkoutShipmentStepEnterPreCheckPlugins
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
      */
     public function __construct(
         CheckoutPageToCalculationClientInterface $calculationClient,
-        StepExecutorInterface $stepExecutor,
+        StepHandlerPluginCollection $shipmentPlugins,
         PostConditionCheckerInterface $postConditionChecker,
-        CheckoutPageConfig $checkoutPageConfig,
+        GiftCardItemsCheckerInterface $giftCardItemsChecker,
         $stepRoute,
         $escapeRoute,
-        array $checkoutAddressStepEnterPreCheckPlugins,
+        array $checkoutShipmentStepEnterPreCheckPlugins,
         FlashMessengerInterface $flashMessenger,
         TranslatorInterface $translator
     ) {
         parent::__construct(
             $calculationClient,
-            $stepExecutor,
+            $shipmentPlugins,
             $postConditionChecker,
-            $checkoutPageConfig,
+            $giftCardItemsChecker,
             $stepRoute,
             $escapeRoute,
-            $checkoutAddressStepEnterPreCheckPlugins
+            $checkoutShipmentStepEnterPreCheckPlugins
         );
 
         $this->flashMessenger = $flashMessenger;
@@ -70,32 +70,28 @@ class AddressStep extends SprykerShopAddressStep
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
+     * @return bool
      */
-    public function execute(Request $request, AbstractTransfer $quoteTransfer)
+    public function preCondition(AbstractTransfer $quoteTransfer)
     {
-        if (!$this->executeCheckoutAddressStepEnterPreCheckPlugins($quoteTransfer)) {
-            return $quoteTransfer;
-        }
-
-        $quoteTransfer = $this->stepExecutor->execute($request, $quoteTransfer);
+        $isQuoteValid = parent::preCondition($quoteTransfer);
 
         foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
             $hiddenAttributes = $itemTransfer->getHiddenConcreteAttributes();
             $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
             $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtoupper($countryIso2Code))];
 
-            if (!$isSellable || $itemTransfer->getSku() === '9120050580091-0001') {
-                unset($quoteTransfer->getItems()[$idx]);
+            if (!$isSellable) {
+                $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
                 $this->flashMessenger->addErrorMessage(
                     $this->translator->trans(static::KEY_MESSAGE_IS_NOT_SELLABLE)
                 );
+                $isQuoteValid = false;
             }
         }
 
-        return $this->calculationClient->recalculate($quoteTransfer);
+        return $isQuoteValid;
     }
 }

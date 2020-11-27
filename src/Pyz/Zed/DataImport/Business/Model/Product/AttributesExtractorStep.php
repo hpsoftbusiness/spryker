@@ -15,6 +15,8 @@ class AttributesExtractorStep implements DataImportStepInterface
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_HIDDEN_ATTRIBUTES = 'hidden_attributes';
 
+    protected const KEY_IS_SELLABLE_PATTERN = 'sellable_';
+
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -40,7 +42,9 @@ class AttributesExtractorStep implements DataImportStepInterface
                     $attributes[$attributeKey] = $attributeValue;
                 }
 
-                $hiddenAttributes[$attributeKey] = $attributeValue;
+                if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
+                    $hiddenAttributes[$attributeKey] = (bool)$attributeValue;
+                }
             }
 
             $keysToUnset[] = $match[0];
