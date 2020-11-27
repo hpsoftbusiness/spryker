@@ -1,2 +1,2 @@
 shipment_method_key,store,currency,value_net,value_gross
-spryker_standard_shipment_method,DE,EUR,495,495
+myworld_standard_shipment_method,DE,EUR,495,495
