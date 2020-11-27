@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\Catalog;
 
+use Pyz\Client\Customer\Plugin\SearchExtension\ProductListQueryExpanderPlugin as CustomerProductListQueryExpanderPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingNameSortConfigTransferBuilderPlugin;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\CategoryFacetConfigTransferBuilderPlugin;
@@ -95,6 +96,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SpellingSuggestionQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
 
             /**
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.

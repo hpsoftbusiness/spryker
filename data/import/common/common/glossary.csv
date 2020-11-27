@@ -917,6 +917,8 @@ discount.quote_change.discount.amount_changed,"The discounts you selected for th
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",de_DE
 product.unavailable,Product is out of stock,en_US
 product.unavailable,Keine Produkte mehr auf Lager,de_DE
+product.access.denied,"Sorry, this product is not available.",en_US
+product.access.denied,"Entschuldigung, dieses Produkt ist nicht verfügbar.",de_DE
 product.attribute.slug,slug,en_US
 product.attribute.slug,slug,de_DE
 product.attribute.variant_id,ID,en_US
