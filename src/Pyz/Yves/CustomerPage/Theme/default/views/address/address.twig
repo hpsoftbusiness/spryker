@@ -9,19 +9,17 @@
 } %}
 
 {% block customerContent %}
-    {% set deleteAddressForm = data.customerDeleteFormClone.getForm.createView %}
-
     <div class="grid grid-justify">
         {% for address in data.addresses %}
             <div class="col--lg-6 col--sm-12">
                 <div class="box">
                     {% embed molecule('title-box', 'CustomerPage') with {
                         data: {
-                            title: data.activePage ~ loop.index
+                            title: data.activePage ~ loop.index,
                         },
                         embed: {
                             address: address,
-                            deleteAddressForm: deleteAddressForm,
+                            deleteAddressForm: data.customerDeleteFormClone
                         },
                     } only %}
                         {% block additionalContent %}
@@ -35,7 +33,7 @@
                                 </li>
 
                                 <li class="menu__item">
-                                    {% set deleteForm = embed.deleteAddressForm %}
+                                    {% set deleteForm = embed.deleteAddressForm.getForm.createView %}
 
                                     {{ form_start(deleteForm, {'action': path('customer/address/delete', {'id': idCustomerAddress}) }) }}
                                         <button class="link link--darkest" data-init-single-click>{{ "customer.profile.address.delete" | trans }}</button>
