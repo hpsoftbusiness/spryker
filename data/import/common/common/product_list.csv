@@ -1,1 +1,7 @@
-"product_list_key","name","type"
+product_list_key,name,type
+customer_group_1,Customer Group 1,whitelist
+customer_group_2,Customer Group 2,whitelist
+customer_group_3,Customer Group 3,whitelist
+customer_group_4,Customer Group 4,whitelist
+customer_group_5,Customer Group 5,whitelist
+
