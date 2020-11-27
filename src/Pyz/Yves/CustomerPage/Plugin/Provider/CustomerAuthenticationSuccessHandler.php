@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CustomerPage\Plugin\Provider;
 
-
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler as SprykerCustomerAuthenticationSuccessHandler;
 
 class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthenticationSuccessHandler

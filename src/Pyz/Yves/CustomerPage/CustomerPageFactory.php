@@ -11,7 +11,9 @@ use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Yves\CustomerPage\Form\FormFactory;
 use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler;
 use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerUserProvider;
+use Pyz\Yves\CustomerPage\UserChecker\CustomerConfirmationUserChecker;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
+use Symfony\Component\Security\Core\User\UserCheckerInterface;
 
 /**
  * @method \Pyz\Client\Customer\CustomerClientInterface getCustomerClient() : CustomerPageToCustomerClientInterface
@@ -48,5 +50,13 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     public function createCustomerAuthenticationSuccessHandler()
     {
         return new CustomerAuthenticationSuccessHandler();
+    }
+
+    /**
+     * @return \Symfony\Component\Security\Core\User\UserCheckerInterface
+     */
+    public function createCustomerConfirmationUserChecker(): UserCheckerInterface
+    {
+        return new CustomerConfirmationUserChecker();
     }
 }

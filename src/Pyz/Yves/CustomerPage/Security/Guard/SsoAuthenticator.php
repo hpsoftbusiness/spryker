@@ -118,11 +118,20 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      * @param mixed $credentials
      * @param \Symfony\Component\Security\Core\User\UserProviderInterface $userProvider
      *
+     * @throws \Symfony\Component\Security\Core\Exception\AuthenticationException
+     *
      * @return \Symfony\Component\Security\Core\User\UserInterface|null
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        return $userProvider->loadUserByUsername($credentials);
+        /** @var \SprykerShop\Yves\CustomerPage\Security\CustomerUserInterface $securityUser */
+        $securityUser = $userProvider->loadUserByUsername($credentials);
+
+        if ($securityUser->getCustomerTransfer()->getIsActive() !== true) {
+            throw new AuthenticationException();
+        }
+
+        return $securityUser;
     }
 
     /**
