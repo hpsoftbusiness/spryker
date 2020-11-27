@@ -8,8 +8,10 @@
 namespace Pyz\Zed\Sales\Communication\Form;
 
 use Spryker\Zed\Sales\Communication\Form\AddressForm as SprykerAddressForm;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @method \Spryker\Zed\Sales\Business\SalesFacadeInterface getFacade()
@@ -37,6 +39,23 @@ class AddressForm extends SprykerAddressForm
         $this->addAddress4Field($builder);
         $this->addStateField($builder);
         $this->addVatNumberField($builder);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return $this
+     */
+    protected function addPhoneField(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_PHONE, TelType::class, [
+            'required' => true,
+            'constraints' => [
+                new NotBlank(),
+            ],
+        ]);
+
+        return $this;
     }
 
     /**
