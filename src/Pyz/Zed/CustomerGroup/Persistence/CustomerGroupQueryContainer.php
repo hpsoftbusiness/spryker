@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\CustomerGroup\Persistence;
 
-use Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductListQuery;
+use Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery;
 use Spryker\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainer as SprykerCustomerGroupQueryContainer;
 
 /**
@@ -22,11 +22,11 @@ class CustomerGroupQueryContainer extends SprykerCustomerGroupQueryContainer imp
      *
      * @param int $idCustomerGroup
      *
-     * @return \Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductListQuery
+     * @return \Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery
      */
     public function queryCustomerGroupToProductListByFkCustomerGroup(
         int $idCustomerGroup
-    ): SpyCustomerGroupToProductListQuery {
+    ): PyzCustomerGroupToProductListQuery {
         return $this->getFactory()
             ->createCustomerGroupToProductListQuery()
             ->filterByFkCustomerGroup($idCustomerGroup);

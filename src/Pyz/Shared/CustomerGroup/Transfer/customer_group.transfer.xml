@@ -8,10 +8,6 @@
         <property name="productListAssignment" type="CustomerGroupToProductListAssignment"/>
     </transfer>
 
-    <transfer name="CustomerGroupToProductList">
-        <property name="fkProductList" type="int"/>
-    </transfer>
-
     <transfer name="CustomerGroupToProductListAssignment">
         <property name="idCustomerGroup" type="int"/>
         <property name="idsProductListToAssign" singular="idProductListToAssign" type="array"/>

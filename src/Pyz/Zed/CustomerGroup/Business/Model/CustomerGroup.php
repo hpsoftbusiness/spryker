@@ -7,17 +7,32 @@
 
 namespace Pyz\Zed\CustomerGroup\Business\Model;
 
+use Generated\Shared\Transfer\CustomerGroupToProductListTransfer;
 use Generated\Shared\Transfer\CustomerGroupTransfer;
 use Orm\Zed\CustomerGroup\Persistence\SpyCustomerGroup;
-use Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductList;
+use Pyz\Zed\CustomerGroupProductList\Business\CustomerGroupProductListFacadeInterface;
 use Spryker\Zed\CustomerGroup\Business\Model\CustomerGroup as SprykerCustomerGroup;
+use Spryker\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface;
 
 class CustomerGroup extends SprykerCustomerGroup
 {
     /**
-     * @var \Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface
+     * @var \Pyz\Zed\CustomerGroupProductList\Business\CustomerGroupProductListFacadeInterface
      */
-    protected $queryContainer;
+    protected $customerGroupProductListFacade;
+
+    /**
+     * @param \Spryker\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface $queryContainer
+     * @param \Pyz\Zed\CustomerGroupProductList\Business\CustomerGroupProductListFacadeInterface $customerGroupProductListFacade
+     */
+    public function __construct(
+        CustomerGroupQueryContainerInterface $queryContainer,
+        CustomerGroupProductListFacadeInterface $customerGroupProductListFacade
+    ) {
+        parent::__construct($queryContainer);
+
+        $this->customerGroupProductListFacade = $customerGroupProductListFacade;
+    }
 
     /**
      * @param \Generated\Shared\Transfer\CustomerGroupTransfer $customerGroupTransfer
@@ -34,7 +49,7 @@ class CustomerGroup extends SprykerCustomerGroup
 
         $this->saveCustomers($customerGroupTransfer, $customerGroupEntity);
 
-        $this->saveProductLists($customerGroupTransfer, $customerGroupEntity);
+        $this->saveProductLists($customerGroupTransfer);
 
         return $customerGroupTransfer;
     }
@@ -57,7 +72,7 @@ class CustomerGroup extends SprykerCustomerGroup
         $this->saveCustomers($customerGroupTransfer, $customerGroupEntity);
 
         $this->removeProductListsFromGroup($customerGroupTransfer);
-        $this->saveProductLists($customerGroupTransfer, $customerGroupEntity);
+        $this->saveProductLists($customerGroupTransfer);
     }
 
     /**
@@ -75,38 +90,35 @@ class CustomerGroup extends SprykerCustomerGroup
             [];
 
         foreach ($idsProductListToDeAssign as $idProductListToDeAssign) {
-            $productListEntity = $this->queryContainer
-                ->queryCustomerGroupToProductListByFkCustomerGroup($customerGroupTransfer->getIdCustomerGroup())
-                ->filterByFkProductList($idProductListToDeAssign)
-                ->findOne();
+            $customerGroupToProductListTransfer = (new CustomerGroupToProductListTransfer())
+                ->setIdCustomerGroup($customerGroupTransfer->getIdCustomerGroup())
+                ->setIdProductList($idProductListToDeAssign);
 
-            if (!$productListEntity) {
-                continue;
-            }
-
-            $productListEntity->delete();
+            $this->customerGroupProductListFacade->deleteCustomerGroupProductList(
+                $customerGroupToProductListTransfer
+            );
         }
     }
 
     /**
      * @param \Generated\Shared\Transfer\CustomerGroupTransfer $customerGroupTransfer
-     * @param \Orm\Zed\CustomerGroup\Persistence\SpyCustomerGroup $customerGroupEntity
      *
      * @return void
      */
-    protected function saveProductLists(
-        CustomerGroupTransfer $customerGroupTransfer,
-        SpyCustomerGroup $customerGroupEntity
-    ): void {
+    protected function saveProductLists(CustomerGroupTransfer $customerGroupTransfer): void
+    {
         $idsProductListToAssign = $customerGroupTransfer->getProductListAssignment() ?
             $customerGroupTransfer->getProductListAssignment()->getIdsProductListToAssign() :
             [];
 
         foreach ($idsProductListToAssign as $idProductListToAssign) {
-            $customerGroupToCustomerEntity = new SpyCustomerGroupToProductList();
-            $customerGroupToCustomerEntity->setFkCustomerGroup($customerGroupEntity->getIdCustomerGroup());
-            $customerGroupToCustomerEntity->setFkProductList($idProductListToAssign);
-            $customerGroupToCustomerEntity->save();
+            $customerGroupToProductListTransfer = (new CustomerGroupToProductListTransfer())
+                ->setIdCustomerGroup($customerGroupTransfer->getIdCustomerGroup())
+                ->setIdProductList($idProductListToAssign);
+
+            $this->customerGroupProductListFacade->createCustomerGroupProductList(
+                $customerGroupToProductListTransfer
+            );
         }
     }
 }

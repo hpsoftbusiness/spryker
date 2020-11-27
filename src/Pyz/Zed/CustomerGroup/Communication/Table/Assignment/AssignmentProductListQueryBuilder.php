@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\CustomerGroup\Communication\Table\Assignment;
 
-use Orm\Zed\CustomerGroupProductList\Persistence\Map\SpyCustomerGroupToProductListTableMap;
+use Orm\Zed\CustomerGroupProductList\Persistence\Map\PyzCustomerGroupToProductListTableMap;
 use Orm\Zed\ProductList\Persistence\Map\SpyProductListTableMap;
 use Orm\Zed\ProductList\Persistence\SpyProductListQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -26,10 +26,10 @@ class AssignmentProductListQueryBuilder implements AssignmentProductListQueryBui
         if ($idCustomerGroup) {
             $query->addJoin(
                 [SpyProductListTableMap::COL_ID_PRODUCT_LIST, $idCustomerGroup],
-                [SpyCustomerGroupToProductListTableMap::COL_FK_PRODUCT_LIST, SpyCustomerGroupToProductListTableMap::COL_FK_CUSTOMER_GROUP],
+                [PyzCustomerGroupToProductListTableMap::COL_FK_PRODUCT_LIST, PyzCustomerGroupToProductListTableMap::COL_FK_CUSTOMER_GROUP],
                 Criteria::LEFT_JOIN
             )
-                ->addAnd(SpyCustomerGroupToProductListTableMap::COL_FK_CUSTOMER_GROUP, null, Criteria::ISNULL);
+                ->addAnd(PyzCustomerGroupToProductListTableMap::COL_FK_CUSTOMER_GROUP, null, Criteria::ISNULL);
         }
 
         return $query;
@@ -43,7 +43,7 @@ class AssignmentProductListQueryBuilder implements AssignmentProductListQueryBui
     public function buildAssignedQuery($idCustomerGroup = null): SpyProductListQuery
     {
         $query = (new SpyProductListQuery())
-            ->useSpyCustomerGroupToProductListQuery()
+            ->usePyzCustomerGroupToProductListQuery()
                 ->filterByFkCustomerGroup($idCustomerGroup)
             ->endUse();
 

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CustomerGroupProductList\Persistence;
 
+use Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery;
 use Orm\Zed\ProductList\Persistence\SpyProductListQuery;
 use Pyz\Zed\CustomerGroupProductList\CustomerGroupProductListDependencyProvider;
 use Pyz\Zed\CustomerGroupProductList\Persistence\Propel\Mapper\CustomerGroupProductListMapper;
@@ -14,9 +15,18 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
  * @method \Pyz\Zed\CustomerGroupProductList\Persistence\CustomerGroupProductListRepositoryInterface getRepository()
+ * @method \Pyz\Zed\CustomerGroupProductList\Persistence\CustomerGroupProductListEntityManagerInterface getEntityManager()
  */
 class CustomerGroupProductListPersistenceFactory extends AbstractPersistenceFactory
 {
+    /**
+     * @return \Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery
+     */
+    public function createCustomerGroupToProductListQuery(): PyzCustomerGroupToProductListQuery
+    {
+        return PyzCustomerGroupToProductListQuery::create();
+    }
+
     /**
      * @return \Orm\Zed\ProductList\Persistence\SpyProductListQuery
      */

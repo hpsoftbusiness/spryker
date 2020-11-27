@@ -8,9 +8,9 @@
 namespace Pyz\Zed\CustomerGroup\Communication\Table;
 
 use Generated\Shared\Transfer\CustomerGroupTransfer;
-use Orm\Zed\CustomerGroupProductList\Persistence\Map\SpyCustomerGroupToProductListTableMap;
-use Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductList;
-use Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductListQuery;
+use Orm\Zed\CustomerGroupProductList\Persistence\Map\PyzCustomerGroupToProductListTableMap;
+use Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductList;
+use Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery;
 use Orm\Zed\ProductList\Persistence\Map\SpyProductListTableMap;
 use Propel\Runtime\Collection\ObjectCollection;
 use Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface;
@@ -72,7 +72,7 @@ class ProductListTable extends AbstractTable
         $config->setUrl(sprintf('table-product-list?id-customer-group=%d', $this->customerGroupTransfer->getIdCustomerGroup()));
 
         $config->setSearchable([
-            SpyCustomerGroupToProductListTableMap::COL_FK_PRODUCT_LIST,
+            PyzCustomerGroupToProductListTableMap::COL_FK_PRODUCT_LIST,
             SpyProductListTableMap::COL_TITLE,
             SpyProductListTableMap::COL_TYPE,
         ]);
@@ -89,7 +89,7 @@ class ProductListTable extends AbstractTable
     {
         $query = $this->prepareQuery();
 
-        /** @var \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductList[] $productListCollection */
+        /** @var \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductList[] $productListCollection */
         $productListCollection = $this->runQuery($query, $config, true);
 
         if ($productListCollection->count() < 1) {
@@ -100,11 +100,11 @@ class ProductListTable extends AbstractTable
     }
 
     /**
-     * @param \Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductList $customerGroupToProductListEntity
+     * @param \Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductList $customerGroupToProductListEntity
      *
      * @return string
      */
-    protected function buildLinks(SpyCustomerGroupToProductList $customerGroupToProductListEntity): string
+    protected function buildLinks(PyzCustomerGroupToProductList $customerGroupToProductListEntity): string
     {
         $buttons = [];
         $buttons[] = $this->generateViewButton(
@@ -116,7 +116,7 @@ class ProductListTable extends AbstractTable
     }
 
     /**
-     * @param \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductList[] $productListCollection
+     * @param \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductList[] $productListCollection
      *
      * @return mixed[]
      */
@@ -132,11 +132,11 @@ class ProductListTable extends AbstractTable
     }
 
     /**
-     * @param \Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductList $customerGroupToProductListEntity
+     * @param \Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductList $customerGroupToProductListEntity
      *
      * @return mixed[]
      */
-    protected function mapProductListRow(SpyCustomerGroupToProductList $customerGroupToProductListEntity): array
+    protected function mapProductListRow(PyzCustomerGroupToProductList $customerGroupToProductListEntity): array
     {
         $productListRow = $customerGroupToProductListEntity->toArray();
 
@@ -148,9 +148,9 @@ class ProductListTable extends AbstractTable
     }
 
     /**
-     * @return \Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductListQuery
+     * @return \Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery
      */
-    protected function prepareQuery(): SpyCustomerGroupToProductListQuery
+    protected function prepareQuery(): PyzCustomerGroupToProductListQuery
     {
         return $this->customerGroupQueryContainer
             ->queryCustomerGroupToProductListByFkCustomerGroup($this->customerGroupTransfer->getIdCustomerGroup())

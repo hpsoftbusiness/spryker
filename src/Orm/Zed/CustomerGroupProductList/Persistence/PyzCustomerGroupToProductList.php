@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\CustomerGroupProductList\Persistence;
 
-use Orm\Zed\CustomerGroupProductList\Persistence\Base\SpyCustomerGroupToProductList as BaseSpyCustomerGroupToProductList;
+use Orm\Zed\CustomerGroupProductList\Persistence\Base\PyzCustomerGroupToProductList as BasePyzCustomerGroupToProductList;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_customer_group_to_product_list' table.
+ * Skeleton subclass for representing a row from the 'pyz_customer_group_to_product_list' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\CustomerGroupProductList\Persistence\Base\SpyCustomerGroupToProductL
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCustomerGroupToProductList extends BaseSpyCustomerGroupToProductList
+class PyzCustomerGroupToProductList extends BasePyzCustomerGroupToProductList
 {
 }

@@ -28,7 +28,7 @@ class CustomerGroupProductListRepository extends AbstractRepository implements C
         /** @var \Orm\Zed\ProductList\Persistence\SpyProductList[] $productListEntities */
         $productListEntities = $this->getFactory()
             ->getProductListQuery()
-            ->useSpyCustomerGroupToProductListQuery()
+            ->usePyzCustomerGroupToProductListQuery()
                 ->useCustomerGroupQuery()
                     ->useSpyCustomerGroupToCustomerQuery()
                         ->filterByFkCustomer($idCustomer)

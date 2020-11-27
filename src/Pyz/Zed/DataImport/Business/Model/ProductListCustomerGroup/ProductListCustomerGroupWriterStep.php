@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductListCustomerGroup;
 
 use Orm\Zed\CustomerGroup\Persistence\SpyCustomerGroupQuery;
-use Orm\Zed\CustomerGroupProductList\Persistence\SpyCustomerGroupToProductListQuery;
+use Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery;
 use Orm\Zed\ProductList\Persistence\SpyProductListQuery;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
@@ -46,7 +46,7 @@ class ProductListCustomerGroupWriterStep implements DataImportStepInterface
             );
         }
 
-        $customerGroupToProductListEntity = SpyCustomerGroupToProductListQuery::create()
+        $customerGroupToProductListEntity = PyzCustomerGroupToProductListQuery::create()
             ->filterByFkCustomerGroup($customerGroupEntity->getIdCustomerGroup())
             ->filterByFkProductList($productListEntity->getIdProductList())
             ->findOneOrCreate();

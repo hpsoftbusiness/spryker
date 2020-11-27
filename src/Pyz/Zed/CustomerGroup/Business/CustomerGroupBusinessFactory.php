@@ -8,11 +8,10 @@
 namespace Pyz\Zed\CustomerGroup\Business;
 
 use Pyz\Zed\CustomerGroup\Business\Model\CustomerGroup;
+use Pyz\Zed\CustomerGroup\CustomerGroupDependencyProvider;
+use Pyz\Zed\CustomerGroupProductList\Business\CustomerGroupProductListFacadeInterface;
 use Spryker\Zed\CustomerGroup\Business\CustomerGroupBusinessFactory as SprykerCustomerGroupBusinessFactory;
 
-/**
- * @method \Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface getQueryContainer()
- */
 class CustomerGroupBusinessFactory extends SprykerCustomerGroupBusinessFactory
 {
     /**
@@ -20,6 +19,17 @@ class CustomerGroupBusinessFactory extends SprykerCustomerGroupBusinessFactory
      */
     public function createCustomerGroup()
     {
-        return new CustomerGroup($this->getQueryContainer());
+        return new CustomerGroup(
+            $this->getQueryContainer(),
+            $this->getCustomerGroupProductListFacade()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\CustomerGroupProductList\Business\CustomerGroupProductListFacadeInterface
+     */
+    public function getCustomerGroupProductListFacade(): CustomerGroupProductListFacadeInterface
+    {
+        return $this->getProvidedDependency(CustomerGroupDependencyProvider::FACADE_CUSTOMER_GROUP_PRODUCT_LIST);
     }
 }

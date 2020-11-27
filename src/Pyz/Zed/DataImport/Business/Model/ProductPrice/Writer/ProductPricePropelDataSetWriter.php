@@ -164,7 +164,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
 
         $priceProductStoreEntity->setGrossPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100);
         $priceProductStoreEntity->setNetPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100);
-        $priceProductStoreEntity->setNetPrice((double)$dataSet[static::COLUMN_PRICE_NET] * 100);
+        $priceProductStoreEntity->setNetPrice((float)$dataSet[static::COLUMN_PRICE_NET] * 100);
 
         $priceProductStoreEntity->setPriceData($dataSet[static::COLUMN_PRICE_DATA]);
         $priceProductStoreEntity->setPriceDataChecksum($dataSet[static::COLUMN_PRICE_DATA_CHECKSUM]);

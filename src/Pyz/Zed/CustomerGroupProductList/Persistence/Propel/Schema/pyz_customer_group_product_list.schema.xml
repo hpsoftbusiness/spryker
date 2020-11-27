@@ -5,28 +5,28 @@
         namespace="Orm\Zed\CustomerGroupProductList\Persistence"
         package="src.Orm.Zed.CustomerGroupProductList.Persistence">
 
-    <table name="spy_customer_group_to_product_list">
+    <table name="pyz_customer_group_to_product_list">
         <column name="id_customer_group_to_product_list" type="INTEGER" autoIncrement="true" primaryKey="true"/>
         <column name="fk_customer_group" type="INTEGER" required="true"/>
         <column name="fk_product_list" type="INTEGER" required="true"/>
 
-        <unique name="spy_customer_group_to_product_list-slot-block">
+        <unique name="pyz_customer_group_to_product_list-slot-block">
             <unique-column name="fk_customer_group"/>
             <unique-column name="fk_product_list"/>
         </unique>
 
-        <foreign-key name="spy_customer_group_to_product_list-fk_customer_group" foreignTable="spy_customer_group" phpName="CustomerGroup">
+        <foreign-key name="pyz_customer_group_to_product_list-fk_customer_group" foreignTable="spy_customer_group" phpName="CustomerGroup">
             <reference local="fk_customer_group" foreign="id_customer_group"/>
         </foreign-key>
 
-        <foreign-key name="spy_customer_group_to_product_list-fk_product_list" foreignTable="spy_product_list" phpName="ProductList">
+        <foreign-key name="pyz_customer_group_to_product_list-fk_product_list" foreignTable="spy_product_list" phpName="ProductList">
             <reference foreign="id_product_list" local="fk_product_list"/>
         </foreign-key>
-        <index name="index-spy_customer_group_to_product_list-fk_product_list">
+        <index name="index-pyz_customer_group_to_product_list-fk_product_list">
             <index-column name="fk_product_list"/>
         </index>
 
-        <id-method-parameter value="spy_customer_group_to_product_list_pk_seq"/>
+        <id-method-parameter value="pyz_customer_group_to_product_list_pk_seq"/>
     </table>
 
 </database>
