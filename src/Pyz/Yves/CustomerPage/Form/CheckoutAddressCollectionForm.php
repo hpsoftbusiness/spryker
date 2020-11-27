@@ -9,6 +9,7 @@ namespace Pyz\Yves\CustomerPage\Form;
 
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm as SprykerCheckoutAddressCollectionForm;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * @method \Pyz\Yves\CustomerPage\CustomerPageConfig getConfig()
@@ -46,5 +47,27 @@ class CheckoutAddressCollectionForm extends SprykerCheckoutAddressCollectionForm
         $builder->add(static::FIELD_BILLING_ADDRESS, CheckoutAddressForm::class, $options);
 
         return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormInterface $form
+     *
+     * @return bool
+     */
+    protected function isIdCustomerAddressExistAndNotEmpty(FormInterface $form): bool
+    {
+        return $form->has(CheckoutAddressForm::FIELD_ID_CUSTOMER_ADDRESS)
+            && (int)$form->get(CheckoutAddressForm::FIELD_ID_CUSTOMER_ADDRESS)->getData() !== (int)CheckoutAddressForm::VALUE_ADD_NEW_ADDRESS;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormInterface $form
+     *
+     * @return bool
+     */
+    protected function isIdCustomerAddressFieldNotEmpty(FormInterface $form): bool
+    {
+        return !$form->has(CheckoutAddressForm::FIELD_ID_CUSTOMER_ADDRESS)
+            || (int)$form->get(CheckoutAddressForm::FIELD_ID_CUSTOMER_ADDRESS)->getData() !== (int)CheckoutAddressForm::VALUE_ADD_NEW_ADDRESS;
     }
 }

@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CustomerPage\Form;
 
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressForm as SprykerCheckoutAddressForm;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -32,6 +33,11 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
     public const FIELD_STATE = 'state';
 
     /**
+     * @uses \Pyz\Yves\CustomerPage\Form\AddressForm::PLACEHOLDER_PHONE
+     */
+    public const PLACEHOLDER_PHONE = '+00999999999';
+
+    /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array $options
      *
@@ -39,12 +45,46 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
         $this
+            ->addAddressSelectField($builder, $options)
+            ->addFirstNameField($builder, $options)
+            ->addLastNameField($builder, $options)
+            ->addAddress1Field($builder, $options)
+            ->addAddress2Field($builder, $options)
+            ->addAddress3Field($builder)
+            ->addZipCodeField($builder, $options)
+            ->addCityField($builder, $options)
+            ->addIso2CodeField($builder, $options)
             ->addStateField($builder)
+            ->addPhoneField($builder, $options)
+            ->addCompanyField($builder)
             ->addAddress4Field($builder)
-            ->addVatNumberField($builder);
+            ->addVatNumberField($builder)
+            ->addIdCompanyUnitAddressTextField($builder)
+            ->addIsAddressSavingSkippedField($builder, $options);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $options
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\AddressForm
+     */
+    protected function addPhoneField(FormBuilderInterface $builder, array $options = [])
+    {
+        $builder->add(static::FIELD_PHONE, TelType::class, [
+            'label' => 'customer.address.phone',
+            'attr' => [
+                'placeholder' => static::PLACEHOLDER_PHONE,
+            ],
+            'required' => true,
+            'trim' => true,
+            'constraints' => [
+                $this->createNotBlankConstraint($options),
+            ],
+        ]);
+
+        return $this;
     }
 
     /**

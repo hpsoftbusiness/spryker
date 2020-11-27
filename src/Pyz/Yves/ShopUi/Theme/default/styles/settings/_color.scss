@@ -1,3 +1,23 @@
+$setting-color-cashback: #5cb885;
+$setting-color-travel: #40b5a8;
+$setting-color-lyconet: #f29533;
+$setting-color-marketplace: #f0be00;
+$setting-color-marketplace-dark: #e5b500;
+$setting-color-marketplace-darker: darken(#e5b500, 5%);
+$setting-color-marketplace-shadow: rgba($setting-color-marketplace-darker, 5%);
+
+$setting-color-marketplace-gray-1: #f5f5f5;
+$setting-color-marketplace-gray-2: #eeeeee;
+$setting-color-marketplace-gray-3: #dddddd;
+$setting-color-marketplace-gray-4: #b6b6b6;
+$setting-color-marketplace-gray-5: #909090;
+$setting-color-marketplace-gray-6: #909090;
+$setting-color-marketplace-black: #333;
+
+$setting-color-marketplace-warning: #f0be01;
+$setting-color-marketplace-success: #5cb886;
+$setting-color-marketplace-error: #d54c4c;
+
 $setting-color-yellow: #ffbf1c;
 $setting-color-blue: #5e3dff;
 
@@ -7,7 +27,7 @@ $setting-color-gray-3: #dedede;
 $setting-color-gray-4: #555;
 $setting-color-gray-5: #444;
 $setting-color-gray-6: #333;
-$setting-color-black: #111;
+$setting-color-black: $setting-color-marketplace-black;
 
 $setting-color-info: #f0ede6;
 
@@ -28,9 +48,9 @@ $setting-color-alpha-9: rgba($setting-color-main, 0.4);
 
 $setting-color-actions: (
     info: $setting-color-info,
-    warning: #f37849,
-    success: #4ac38e,
-    alert: #cb3d49,
+    warning: $setting-color-marketplace-warning,
+    success: $setting-color-marketplace-success,
+    alert: $setting-color-marketplace-error,
 );
 
 $setting-color-statuses: (
