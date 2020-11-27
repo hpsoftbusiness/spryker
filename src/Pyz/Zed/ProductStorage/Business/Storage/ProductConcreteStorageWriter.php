@@ -23,6 +23,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     protected function mapToProductConcreteStorageTransfer(array $productConcreteLocalizedEntity)
     {
         $attributes = $this->getConcreteAttributes($productConcreteLocalizedEntity);
+        $hiddenAttributes = $this->productFacade->decodeProductAttributes($productConcreteLocalizedEntity['SpyProduct']['hidden_attributes']);
 
         $spyProductConcreteEntityArray = $productConcreteLocalizedEntity['SpyProduct'];
         unset($productConcreteLocalizedEntity['attributes']);
@@ -38,6 +39,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->setIdProductAbstract($spyProductConcreteEntityArray[static::COL_FK_PRODUCT_ABSTRACT])
             ->setDescription($this->getDescription($productConcreteLocalizedEntity))
             ->setAttributes($attributes)
+            ->setHiddenAttributes($hiddenAttributes)
             ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes));
 
         return $productStorageTransfer;
