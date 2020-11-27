@@ -13,6 +13,8 @@ use Pyz\Client\Sso\Client\CustomerInformation;
 use Pyz\Client\Sso\Client\CustomerInformationInterface;
 use Pyz\Client\Sso\Client\UserToken;
 use Pyz\Client\Sso\Client\UserTokenInterface;
+use Pyz\Client\Sso\Config\ConfigReader;
+use Pyz\Client\Sso\Config\ConfigReaderInterface;
 use Spryker\Client\Kernel\AbstractFactory;
 
 /**
@@ -48,5 +50,13 @@ class SsoFactory extends AbstractFactory
     public function createGuzzleClient(): ClientInterface
     {
         return new GuzzleClient();
+    }
+
+    /**
+     * @return \Pyz\Client\Sso\Config\ConfigReaderInterface
+     */
+    public function createConfigReader(): ConfigReaderInterface
+    {
+        return new ConfigReader($this->getConfig());
     }
 }

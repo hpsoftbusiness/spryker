@@ -35,4 +35,22 @@ class SsoClient extends AbstractClient implements SsoClientInterface
     {
         return $this->getFactory()->createCustomerInformationClient()->getCustomerInformationBySsoAccessToken($ssoAccessTokenTransfer);
     }
+
+    /**
+     * @return string
+     */
+    public function getLoginCheckPath(): string
+    {
+        return $this->getFactory()->createConfigReader()->getLoginCheckPath();
+    }
+
+    /**
+     * @param string $locale
+     *
+     * @return string
+     */
+    public function getAuthorizeUrl(string $locale): string
+    {
+        return $this->getFactory()->createConfigReader()->getAuthorizeUrl($locale);
+    }
 }

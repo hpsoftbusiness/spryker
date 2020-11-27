@@ -23,6 +23,10 @@ class UserToken implements UserTokenInterface
      */
     protected $ssoConfig;
 
+    /**
+     * @param \GuzzleHttp\ClientInterface $client
+     * @param \Pyz\Client\Sso\SsoConfig $ssoConfig
+     */
     public function __construct(ClientInterface $client, SsoConfig $ssoConfig)
     {
         $this->httpClient = $client;

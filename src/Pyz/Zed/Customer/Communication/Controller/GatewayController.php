@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Customer\Communication\Controller;
 
+use Generated\Shared\Transfer\CustomerResponseTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Zed\Customer\Communication\Controller\GatewayController as SprykerGatewayController;
 
@@ -17,9 +18,8 @@ class GatewayController extends SprykerGatewayController
      *
      * @return \Generated\Shared\Transfer\CustomerResponseTransfer
      */
-    public function addAction(CustomerTransfer $customerTransfer)
+    public function addAction(CustomerTransfer $customerTransfer): CustomerResponseTransfer
     {
-        return $this->getFacade()
-            ->addCustomer($customerTransfer);
+        return $this->getFacade()->addCustomer($customerTransfer);
     }
 }

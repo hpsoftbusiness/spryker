@@ -5,16 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\Sso\Security\Guard;
+namespace Pyz\Yves\CustomerPage\Security\Guard;
 
 use Pyz\Client\Sso\SsoClientInterface;
-use Pyz\Yves\Sso\SsoConfig;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 use Symfony\Component\Security\Http\HttpUtils;
 
 class SsoAuthenticator extends AbstractGuardAuthenticator
@@ -30,9 +31,14 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     protected $ssoClient;
 
     /**
-     * @var \Pyz\Yves\Sso\SsoConfig
+     * @var \Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface
      */
-    protected $ssoConfig;
+    protected $authenticationSuccessHandler;
+
+    /**
+     * @var \Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface
+     */
+    protected $authenticationFailureHandler;
 
     /**
      * @var string
@@ -42,18 +48,21 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     /**
      * @param \Symfony\Component\Security\Http\HttpUtils $httpUtils
      * @param \Pyz\Client\Sso\SsoClientInterface $ssoClient
-     * @param \Pyz\Yves\Sso\SsoConfig $ssoConfig
+     * @param \Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface $authenticationSuccessHandler
+     * @param \Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface $authenticationFailureHandler
      * @param string $locale
      */
     public function __construct(
         HttpUtils $httpUtils,
         SsoClientInterface $ssoClient,
-        SsoConfig $ssoConfig,
+        AuthenticationSuccessHandlerInterface $authenticationSuccessHandler,
+        AuthenticationFailureHandlerInterface $authenticationFailureHandler,
         string $locale
     ) {
         $this->httpUtils = $httpUtils;
         $this->ssoClient = $ssoClient;
-        $this->ssoConfig = $ssoConfig;
+        $this->authenticationSuccessHandler = $authenticationSuccessHandler;
+        $this->authenticationFailureHandler = $authenticationFailureHandler;
         $this->locale = $locale;
     }
 
@@ -65,7 +74,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, ?AuthenticationException $authException = null)
     {
-        return $this->httpUtils->createRedirectResponse($request, $this->buildAuthorizeUrl($this->ssoConfig, $this->locale));
+        return $this->httpUtils->createRedirectResponse($request, $this->ssoClient->getAuthorizeUrl($this->locale));
     }
 
     /**
@@ -75,11 +84,13 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function supports(Request $request)
     {
-        return $this->httpUtils->checkRequestPath($request, '/' . $this->ssoConfig->getLoginCheckPath());
+        return $this->httpUtils->checkRequestPath($request, '/' . $this->ssoClient->getLoginCheckPath());
     }
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AuthenticationException
      *
      * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer|mixed
      */
@@ -87,7 +98,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     {
         $exception = new AuthenticationException();
 
-        if (strpos($request->getPathInfo(), $this->ssoConfig->getLoginCheckPath()) !== false) {
+        if (strpos($request->getPathInfo(), $this->ssoClient->getLoginCheckPath()) !== false) {
             if ($request->query->get('error') !== null) {
                 throw $exception;
             }
@@ -126,19 +137,26 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     }
 
     /**
-     * @return void
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\Security\Core\Exception\AuthenticationException $exception
+     *
+     * @return \Symfony\Component\HttpFoundation\Response|null
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        // TODO: Implement onAuthenticationFailure() method.
+        return $this->authenticationFailureHandler->onAuthenticationFailure($request, $exception);
     }
 
     /**
-     * @return void
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
+     * @param $providerKey
+     *
+     * @return \Symfony\Component\HttpFoundation\Response|null
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // TODO: Implement onAuthenticationSuccess() method.
+        return $this->authenticationSuccessHandler->onAuthenticationSuccess($request, $token);
     }
 
     /**
@@ -147,26 +165,5 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     public function supportsRememberMe()
     {
         return false;
-    }
-
-    /**
-     * @param \Pyz\Yves\Sso\SsoConfig $ssoConfig
-     * @param string $locale
-     *
-     * @return string
-     */
-    protected function buildAuthorizeUrl(SsoConfig $ssoConfig, string $locale): string
-    {
-        $httpQuery = http_build_query(
-            [
-                'response_type' => $ssoConfig->getResponseType(),
-                'client_id' => $ssoConfig->getClientId(),
-                'redirect_uri' => $ssoConfig->getRedirectUrl(),
-                'scope' => $ssoConfig->getScope(),
-                'lang' => str_replace('_', '-', $locale),
-            ]
-        );
-
-        return sprintf('%s?%s', $ssoConfig->getAuthorizeUrl(), $httpQuery);
     }
 }

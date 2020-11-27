@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage\Plugin\Provider;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use Pyz\Client\Sso\SsoClientInterface;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerUserProvider as SprykerCustomerUserProvider;
@@ -51,8 +52,30 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
     protected function loadUserBySsoAccessToken(SsoAccessTokenTransfer $ssoAccessTokenTransfer)
     {
         $customerTransfer = $this->ssoClient->getCustomerInformationBySsoAccessToken($ssoAccessTokenTransfer);
-        $customerResponseTransfer = $this->getFactory()->getCustomerClient()->createCustomer($customerTransfer);
+        $loadedCustomerTransfer = $this->loadCustomerByMyWorldCustomerId($customerTransfer->getMyWorldCustomerId());
 
-        return $this->getFactory()->createSecurityUser($customerResponseTransfer->getCustomerTransfer());
+        if ($loadedCustomerTransfer->getIdCustomer() === null) {
+            $customerResponseTransfer = $this->getFactory()->getCustomerClient()->registerCustomer($customerTransfer);
+            $loadedCustomerTransfer = $customerResponseTransfer->getCustomerTransfer();
+        }
+
+        return $this->getFactory()->createSecurityUser($loadedCustomerTransfer);
+    }
+
+    /**
+     * @param string $myWorldCustomerId
+     *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function loadCustomerByMyWorldCustomerId(string $myWorldCustomerId): CustomerTransfer
+    {
+        $customerTransfer = new CustomerTransfer();
+        $customerTransfer->setMyWorldCustomerId($myWorldCustomerId);
+
+        $customerTransfer = $this->getFactory()
+            ->getCustomerClient()
+            ->getCustomerByEmail($customerTransfer);
+
+        return $customerTransfer;
     }
 }

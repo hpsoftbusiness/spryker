@@ -7,12 +7,34 @@
 
 namespace Pyz\Yves\CustomerPage\Plugin\Security;
 
+use Pyz\Yves\CustomerPage\Security\Guard\SsoAuthenticator;
+use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\SecurityExtension\Configuration\SecurityBuilderInterface;
 use SprykerShop\Shared\CustomerPage\CustomerPageConfig;
 use SprykerShop\Yves\CustomerPage\Plugin\Security\CustomerPageSecurityPlugin as SprykerCustomerPageSecurityPlugin;
 
+/**
+ * @method \Pyz\Yves\CustomerPage\CustomerPageFactory getFactory()
+ */
 class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
 {
+    protected const SERVICE_SECURITY_HTTP_UTILS = 'security.http_utils';
+
+    /**
+     * @param \Spryker\Shared\SecurityExtension\Configuration\SecurityBuilderInterface $securityBuilder
+     * @param \Spryker\Service\Container\ContainerInterface $container
+     *
+     * @return \Spryker\Shared\SecurityExtension\Configuration\SecurityBuilderInterface
+     */
+    public function extend(SecurityBuilderInterface $securityBuilder, ContainerInterface $container): SecurityBuilderInterface
+    {
+        $securityBuilder = parent::extend($securityBuilder, $container);
+
+        $this->addAuthenticator($container);
+
+        return $securityBuilder;
+    }
+
     /**
      * @param \Spryker\Shared\SecurityExtension\Configuration\SecurityBuilderInterface $securityBuilder
      *
@@ -39,5 +61,25 @@ class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
         ]);
 
         return $securityBuilder;
+    }
+
+    /**
+     * @param \Spryker\Service\Container\ContainerInterface $container
+     *
+     * @return \Spryker\Service\Container\ContainerInterface
+     */
+    protected function addAuthenticator(ContainerInterface $container): ContainerInterface
+    {
+        $container->set('security.guard.authenticator.sso', function (ContainerInterface $container) {
+            return new SsoAuthenticator(
+                $container->get(static::SERVICE_SECURITY_HTTP_UTILS),
+                $this->getFactory()->getSsoClient(),
+                $this->getFactory()->createCustomerAuthenticationSuccessHandler(),
+                $this->getFactory()->createCustomerAuthenticationFailureHandler(),
+                $this->getLocale()
+            );
+        });
+
+        return $container;
     }
 }

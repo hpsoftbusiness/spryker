@@ -11,12 +11,5 @@
         <property name="refreshToken" type="string"/>
     </transfer>
 
-    <transfer name="Customer">
-        <property name="myWorldCustomerId" type="string"/>
-        <property name="myWorldCustomerNumber" type="string"/>
-        <property name="customerType" type="int"/>
-        <property name="isActive" type="bool"/>
-    </transfer>
-
 </transfers>
 

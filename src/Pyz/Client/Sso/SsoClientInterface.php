@@ -25,4 +25,16 @@ interface SsoClientInterface
      * @return \Generated\Shared\Transfer\CustomerTransfer|null
      */
     public function getCustomerInformationBySsoAccessToken(SsoAccessTokenTransfer $ssoAccessTokenTransfer): ?CustomerTransfer;
+
+    /**
+     * @return string
+     */
+    public function getLoginCheckPath(): string;
+
+    /**
+     * @param string $locale
+     *
+     * @return string
+     */
+    public function getAuthorizeUrl(string $locale): string;
 }

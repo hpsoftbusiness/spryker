@@ -8,7 +8,6 @@
 namespace Pyz\Yves\Security;
 
 use Pyz\Yves\CustomerPage\Plugin\Security\CustomerPageSecurityPlugin;
-use Pyz\Yves\Sso\Plugin\Security\SsoSecurityPlugin;
 use Spryker\Yves\Security\Plugin\Security\RememberMeSecurityPlugin;
 use Spryker\Yves\Security\SecurityDependencyProvider as SprykerSecurityDependencyProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Security\AgentPageSecurityPlugin;
@@ -22,7 +21,6 @@ class SecurityDependencyProvider extends SprykerSecurityDependencyProvider
     {
         return [
             new RememberMeSecurityPlugin(),
-            new SsoSecurityPlugin(),
             new AgentPageSecurityPlugin(),
             new CustomerPageSecurityPlugin(),
         ];
