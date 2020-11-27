@@ -16,6 +16,6 @@ class ShipmentConfig extends SprykerShipmentConfig
      */
     public function isMultiShipmentSelectionEnabled(): bool
     {
-        return true;
+        return false;
     }
 }
