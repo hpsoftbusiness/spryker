@@ -150,7 +150,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
-     * @param $providerKey
+     * @param string $providerKey
      *
      * @return \Symfony\Component\HttpFoundation\Response|null
      */

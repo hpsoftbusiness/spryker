@@ -9,6 +9,7 @@ namespace Pyz\Yves\CustomerPage;
 
 use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Yves\CustomerPage\Form\FormFactory;
+use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler;
 use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerUserProvider;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
 
@@ -39,5 +40,13 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     public function createCustomerFormFactory()
     {
         return new FormFactory();
+    }
+
+    /**
+     * @return \Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface
+     */
+    public function createCustomerAuthenticationSuccessHandler()
+    {
+        return new CustomerAuthenticationSuccessHandler();
     }
 }
