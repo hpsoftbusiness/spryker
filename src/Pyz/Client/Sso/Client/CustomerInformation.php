@@ -7,10 +7,14 @@
 
 namespace Pyz\Client\Sso\Client;
 
+use Exception;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use GuzzleHttp\ClientInterface;
+use Pyz\Client\Sso\Client\Mapper\CustomerInformationMapperInterface;
+use Pyz\Client\Sso\Client\Validator\CustomerInformationValidatorInterface;
 use Pyz\Client\Sso\SsoConfig;
+use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 
 class CustomerInformation implements CustomerInformationInterface
 {
@@ -20,18 +24,44 @@ class CustomerInformation implements CustomerInformationInterface
     protected $httpClient;
 
     /**
+     * @var \Pyz\Client\Sso\Client\Validator\CustomerInformationValidatorInterface
+     */
+    protected $customerInformationValidator;
+
+    /**
+     * @var \Pyz\Client\Sso\Client\Mapper\CustomerInformationMapperInterface
+     */
+    protected $customerInformationMapper;
+
+    /**
      * @var \Pyz\Client\Sso\SsoConfig
      */
     protected $ssoConfig;
 
     /**
-     * @param \GuzzleHttp\ClientInterface $client
-     * @param \Pyz\Client\Sso\SsoConfig $ssoConfig
+     * @var \Spryker\Shared\ErrorHandler\ErrorLoggerInterface
      */
-    public function __construct(ClientInterface $client, SsoConfig $ssoConfig)
-    {
+    protected $errorLogger;
+
+    /**
+     * @param \GuzzleHttp\ClientInterface $client
+     * @param \Pyz\Client\Sso\Client\Validator\CustomerInformationValidatorInterface $customerInformationValidator
+     * @param \Pyz\Client\Sso\Client\Mapper\CustomerInformationMapperInterface $customerInformationMapper
+     * @param \Pyz\Client\Sso\SsoConfig $ssoConfig
+     * @param \Spryker\Shared\ErrorHandler\ErrorLoggerInterface $errorLogger
+     */
+    public function __construct(
+        ClientInterface $client,
+        CustomerInformationValidatorInterface $customerInformationValidator,
+        CustomerInformationMapperInterface $customerInformationMapper,
+        SsoConfig $ssoConfig,
+        ErrorLoggerInterface $errorLogger
+    ) {
         $this->httpClient = $client;
+        $this->customerInformationValidator = $customerInformationValidator;
+        $this->customerInformationMapper = $customerInformationMapper;
         $this->ssoConfig = $ssoConfig;
+        $this->errorLogger = $errorLogger;
     }
 
     /**
@@ -42,24 +72,25 @@ class CustomerInformation implements CustomerInformationInterface
     public function getCustomerInformationBySsoAccessToken(SsoAccessTokenTransfer $ssoAccessTokenTransfer): ?CustomerTransfer
     {
         $requestParams = $this->geRequestParams($ssoAccessTokenTransfer);
-        $result = $this->httpClient->request(
-            'GET',
-            $this->ssoConfig->getCustomerInformationUrl(),
-            $requestParams
-        );
+        try {
+            $result = $this->httpClient->request(
+                'GET',
+                $this->ssoConfig->getCustomerInformationUrl(),
+                $requestParams
+            );
+        } catch (Exception $e) {
+            $this->errorLogger->log($e);
+
+            return new CustomerTransfer();
+        }
 
         $result = json_decode($result->getBody()->getContents(), true);
 
-        return (new CustomerTransfer())
-            ->setEmail($result['Data']['Email'])
-            ->setMyWorldCustomerId($result['Data']['CustomerID'])
-            ->setMyWorldCustomerNumber($result['Data']['CustomerNumber'])
-            ->setFirstName($result['Data']['Firstname'])
-            ->setLastName($result['Data']['Lastname'])
-            ->setDateOfBirth($result['Data']['BirthdayDate'])
-            ->setPhone($result['Data']['MobilePhoneNumber'])
-            ->setIsActive($result['Data']['Status'] === 'Active')
-            ->setCustomerType($result['Data']['CustomerType'] - 1);
+        if ($this->customerInformationValidator->isValid($result)) {
+            return $this->customerInformationMapper->mapDataToCustomerTransfer($result);
+        }
+
+        return new CustomerTransfer();
     }
 
     /**

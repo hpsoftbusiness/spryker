@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use Pyz\Client\Sso\SsoClientInterface;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerUserProvider as SprykerCustomerUserProvider;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 /**
  * @method \Pyz\Yves\CustomerPage\CustomerPageFactory getFactory()
@@ -47,11 +48,18 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
     /**
      * @param \Generated\Shared\Transfer\SsoAccessTokenTransfer $ssoAccessTokenTransfer
      *
+     * @throws \Symfony\Component\Security\Core\Exception\AuthenticationException
+     *
      * @return \SprykerShop\Yves\CustomerPage\Security\Customer|\Symfony\Component\Security\Core\User\UserInterface
      */
     protected function loadUserBySsoAccessToken(SsoAccessTokenTransfer $ssoAccessTokenTransfer)
     {
         $customerTransfer = $this->ssoClient->getCustomerInformationBySsoAccessToken($ssoAccessTokenTransfer);
+
+        if (!$customerTransfer->getMyWorldCustomerId()) {
+            throw new AuthenticationException();
+        }
+
         $loadedCustomerTransfer = $this->loadCustomerByMyWorldCustomerId($customerTransfer->getMyWorldCustomerId());
 
         if ($loadedCustomerTransfer->getIdCustomer() === null) {

@@ -7,9 +7,11 @@
 
 namespace Pyz\Client\Sso\Client;
 
+use Exception;
 use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use GuzzleHttp\ClientInterface;
 use Pyz\Client\Sso\SsoConfig;
+use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 
 class UserToken implements UserTokenInterface
 {
@@ -24,13 +26,23 @@ class UserToken implements UserTokenInterface
     protected $ssoConfig;
 
     /**
-     * @param \GuzzleHttp\ClientInterface $client
-     * @param \Pyz\Client\Sso\SsoConfig $ssoConfig
+     * @var \Spryker\Shared\ErrorHandler\ErrorLoggerInterface
      */
-    public function __construct(ClientInterface $client, SsoConfig $ssoConfig)
-    {
-        $this->httpClient = $client;
+    protected $errorLogger;
+
+    /**
+     * @param \GuzzleHttp\ClientInterface $httpClient
+     * @param \Pyz\Client\Sso\SsoConfig $ssoConfig
+     * @param \Spryker\Shared\ErrorHandler\ErrorLoggerInterface $errorLogger
+     */
+    public function __construct(
+        ClientInterface $httpClient,
+        SsoConfig $ssoConfig,
+        ErrorLoggerInterface $errorLogger
+    ) {
+        $this->httpClient = $httpClient;
         $this->ssoConfig = $ssoConfig;
+        $this->errorLogger = $errorLogger;
     }
 
     /**
@@ -41,11 +53,17 @@ class UserToken implements UserTokenInterface
     public function getAccessTokenByCode(string $code): SsoAccessTokenTransfer
     {
         $accessTokenRequestParams = $this->getAccessTokenRequestParams($code);
-        $result = $this->httpClient->request(
-            'POST',
-            $this->ssoConfig->getTokenUrl(),
-            $accessTokenRequestParams
-        );
+        try {
+            $result = $this->httpClient->request(
+                'POST',
+                $this->ssoConfig->getTokenUrl(),
+                $accessTokenRequestParams
+            );
+        } catch (Exception $e) {
+            $this->errorLogger->log($e);
+
+            return new SsoAccessTokenTransfer();
+        }
 
         return (new SsoAccessTokenTransfer())->fromArray(json_decode($result->getBody()->getContents(), true));
     }
