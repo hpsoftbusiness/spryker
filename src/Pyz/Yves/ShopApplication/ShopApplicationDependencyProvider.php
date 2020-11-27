@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use Pyz\Yves\CustomerPage\Plugin\Application\SsoSecurityApplicationPlugin;
 use Pyz\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
@@ -179,6 +180,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new HttpApplicationPlugin(),
             new SessionApplicationPlugin(),
             new SecurityApplicationPlugin(),
+            new SsoSecurityApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
             new FlashMessengerApplicationPlugin(),
