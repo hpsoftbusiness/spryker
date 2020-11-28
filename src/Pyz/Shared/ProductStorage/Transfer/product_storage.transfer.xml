@@ -8,6 +8,7 @@
     </transfer>
     <transfer name="ProductConcreteStorage">
         <property name="bundledProductIds" type="array"/>
+        <property name="hiddenAttributes" type="array" singular="hiddenAttributes"/>
     </transfer>
     <transfer name="ProductView">
         <property name="productSetIds" type="array"/>

@@ -515,6 +515,8 @@ customer.address.updated,Address was successfully updated,en_US
 customer.address.updated,Adresse wurde erfolgreich aktualisiert,de_DE
 customer.address.delete.success,Address deleted successfully,en_US
 customer.address.delete.success,Adresse erfolgreich gelöscht,de_DE
+customer.address.delete.failed,Address could not be deleted,en_US
+customer.address.delete.failed,Adresse konnte nicht gelöscht werden,de_DE
 customer.address.added,Address was successfully added,en_US
 customer.address.added,Adresse wurde erfolgreich hinzugefügt,de_DE
 customer.address.first_name,First Name,en_US
@@ -757,20 +759,68 @@ customer.address.number,House Number,en_US
 customer.address.number,Hausnummer,de_DE
 customer.address.save_new_address,Save new address to address book,en_US
 customer.address.save_new_address,Neue Adresse in Adressbuch speichern,de_DE
-countries.iso.AT,Austria,en_US
-countries.iso.AT,Österreich,de_DE
 countries.iso.DE,Germany,en_US
 countries.iso.DE,Deutschland,de_DE
-countries.iso.AT,Österreich,de_DE
 countries.iso.AT,Austria,en_US
+countries.iso.AT,Österreich,de_DE
+countries.iso.CZ,Czech Republic,en_US
+countries.iso.CZ,Tschechische Republik,de_DE
+countries.iso.FI,Finland,en_US
+countries.iso.FI,Finnland,de_DE
+countries.iso.HU,Hungry,en_US
+countries.iso.HU,Hungrig,de_DE
+countries.iso.IT,Italy,en_US
+countries.iso.IT,Italien,de_DE
 countries.iso.NO,Norway,en_US
 countries.iso.NO,Norwegen,de_DE
-countries.iso.CH,Switzerland,en_US
-countries.iso.CH,Schweiz,de_DE
+countries.iso.PL,Poland,en_US
+countries.iso.PL,Polen,de_DE
+countries.iso.PT,Portugal,en_US
+countries.iso.PT,Portugal,de_DE
+countries.iso.CH,Czech Republic,en_US
+countries.iso.CH,Tschechische Republik,de_DE
+countries.iso.SK,Slovakia,en_US
+countries.iso.SK,Slowakei,de_DE
+countries.iso.SI,Slovenia,en_US
+countries.iso.SI,Slowenien,de_DE
+countries.iso.SE,Sweden,en_US
+countries.iso.SE,Schweden,de_DE
+countries.iso.BE,Belgium,en_US
+countries.iso.BE,Belgien,de_DE
+countries.iso.BG,Bulgaria,en_US
+countries.iso.BG,Bulgarien,de_DE
+countries.iso.HR,Croatia,en_US
+countries.iso.HR,Kroatien,de_DE
+countries.iso.CY,Cyprus,en_US
+countries.iso.CY,Zypern,de_DE
+countries.iso.DK,Denmark,en_US
+countries.iso.DK,Dänemark,de_DE
+countries.iso.EE,Estonia,en_US
+countries.iso.EE,Estland,de_DE
+countries.iso.FR,France,en_US
+countries.iso.FR,Frankreich,de_DE
+countries.iso.GR,Greece	Griechenland,en_US
+countries.iso.GR,Greece	Griechenland,de_DE
+countries.iso.IM,Isle of Man,en_US
+countries.iso.IM,Insel Man,de_DE
+countries.iso.LV,Latvia,en_US
+countries.iso.LV,Lettland,de_DE
+countries.iso.LT,Lithuania,en_US
+countries.iso.LT,Litauen,de_DE
+countries.iso.LU,Luxembourg,en_US
+countries.iso.LU,Luxemburg,de_DE
+countries.iso.MT,Malta,en_US
+countries.iso.MT,Malta,de_DE
+countries.iso.MC,Monaco,en_US
+countries.iso.MC,Monaco,de_DE
+countries.iso.NL,Netherlands,en_US
+countries.iso.NL,Niederlande,de_DE
+countries.iso.RO,Romania,en_US
+countries.iso.RO,Rumänien,de_DE
 countries.iso.ES,Spain,en_US
 countries.iso.ES,Spanien,de_DE
 countries.iso.GB,United Kingdom,en_US
-countries.iso.GB,Großbritannien,de_DE
+countries.iso.GB,Vereinigtes Königreich,de_DE
 customer.billingSameAsShipping,Billing address same as shipping address,en_US
 customer.billingSameAsShipping,Liefer- und Rechnungsadresse sind gleich,de_DE
 checkout.customer.proceed_as_user,Proceed as a registered user (sign up),en_US
@@ -867,6 +917,8 @@ discount.quote_change.discount.amount_changed,"The discounts you selected for th
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",de_DE
 product.unavailable,Product is out of stock,en_US
 product.unavailable,Keine Produkte mehr auf Lager,de_DE
+product.access.denied,"Sorry, this product is not available.",en_US
+product.access.denied,"Entschuldigung, dieses Produkt ist nicht verfügbar.",de_DE
 product.attribute.slug,slug,en_US
 product.attribute.slug,slug,de_DE
 product.attribute.variant_id,ID,en_US
@@ -2852,3 +2904,5 @@ customer.authorization.validate_email_address,"Almost there! We send you an emai
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
 customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
+checkout.step.address.is_sellable,"Dear customer, the product you are looking for is unfortunately not sold in your country. It will be automatically removed from the shopping cart.",en_US
+checkout.step.address.is_sellable,"Lieber Kunde, das gewünschte Produkt wird in Ihrem Land leider nicht verkauft. Es wird automatisch aus dem Warenkorb entfernt.",de_DE

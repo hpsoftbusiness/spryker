@@ -26,8 +26,6 @@ class AddressForm extends SprykerAddressForm
     public const FIELD_VAT_NUMBER = 'vat_number';
     public const FIELD_STATE = 'state';
 
-    public const PLACEHOLDER_PHONE = '+00999999999';
-
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array $options

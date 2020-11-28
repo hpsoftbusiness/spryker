@@ -1,0 +1,32 @@
+{% include '@CustomerGroup/_partials/assigment-product-list-table-set.twig' with {
+    sourceTabId: 'available-product-lists-source-tab',
+    sourceTabLabel: 'Available product lists' | trans,
+    destinationTabId: 'available-product-lists-destination-tab',
+    destinationTabLabel: 'Selected product lists to assign' | trans,
+    selectButtonLabel: 'Select all' | trans,
+    selectButtonClass: 'js-select-all-button',
+    table: availableProductListTable
+} %}
+
+{% include '@CustomerGroup/_partials/assigment-product-list-table-set.twig' with {
+    sourceTabId: 'assigned-product-lists-source-tab',
+    sourceTabLabel: 'Assigned product lists' | trans,
+    destinationTabId: 'assigned-product-lists-destination-tab',
+    destinationTabLabel: 'Selected product lists to de-assign' | trans,
+    selectButtonLabel: 'De-select all' | trans,
+    selectButtonClass: 'js-de-select-all-button',
+    table: assignedProductListTable
+} %}
+
+{{ form_row(
+    productListAssignmentForm.idsProductListToAssign,
+    {
+        'id': 'js-product-list-to-assign-ids-csv-field'
+    }
+) }}
+{{ form_row(
+    productListAssignmentForm.idsProductListToDeAssign,
+    {
+        'id': 'js-product-list-to-de-assign-ids-csv-field'
+    }
+) }}
