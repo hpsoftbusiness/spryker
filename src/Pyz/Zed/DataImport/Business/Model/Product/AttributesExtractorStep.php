@@ -40,7 +40,7 @@ class AttributesExtractorStep implements DataImportStepInterface
                     $attributes[$attributeKey] = $attributeValue;
                 }
 
-                $hiddenAttributes[$attributeKey] = $attributeValue;
+                $hiddenAttributes[$attributeKey] = strtolower($attributeValue);
             }
 
             $keysToUnset[] = $match[0];
