@@ -50,8 +50,8 @@
 
                             {% set inputName = 'attribute_values_form' ~ name %}
                             {% set inputId = 'attribute_values_form_' ~ id %}
-                            {% set isSellable = 'sellable' in key %}
-                            {% set inputType = isSellable ? 'text' : 'text' %}
+                            {% set isSellable = 'sellable_' in key %}
+                            {% set inputType = isSellable ? 'checkbox' : 'text' %}
                             {% if productAttributes[localeCode][key] is defined %}
                                 {% set attributeValue = productAttributes[localeCode][key] %}
                                 <td>
@@ -107,6 +107,6 @@
                     </tr>
                 {% endfor %}
             </tbody>
-        </form>
+{#        </form>#}
     </table>
 </div>

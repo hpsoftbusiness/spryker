@@ -17,15 +17,15 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as Spr
  */
 class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFactory
 {
-//    /**
-//     * @return \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeInterface
-//     */
-//    public function createProductAttributeManager()
-//    {
-//        return new ProductAttribute(
-//            $this->createProductAttributeReader(),
-//            $this->createProductAttributeMapper(),
-//            $this->createProductReader()
-//        );
-//    }
+    /**
+     * @return \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeInterface
+     */
+    public function createProductAttributeManager()
+    {
+        return new ProductAttribute(
+            $this->createProductAttributeReader(),
+            $this->createProductAttributeMapper(),
+            $this->createProductReader()
+        );
+    }
 }
