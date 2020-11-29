@@ -7,7 +7,11 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Is1HourNotPassedConditionPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
+use Pyz\Zed\SalesInvoice\Communication\Plugin\Oms\Command\SendInvoicePlugin;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Condition\IsGiftCardConditionPlugin;
@@ -64,32 +68,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function extendCommandPlugins(Container $container): Container
-    {
-        $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
-            $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
-            $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
-            $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
-            $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
-            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
-            $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
-            $commandCollection->add(new AuthorizePlugin(), 'Adyen/Authorize');
-            $commandCollection->add(new CancelPlugin(), 'Adyen/Cancel');
-            $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
-            $commandCollection->add(new RefundPlugin(), 'Adyen/Refund');
-            $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
-
-            return $commandCollection;
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -127,13 +105,43 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
+    protected function extendCommandPlugins(Container $container): Container
+    {
+        $container->extend(static::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
+            $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
+            $commandCollection->add(new SendOrderInProcessingPlugin(), 'Oms/SendOrderInProcessing');
+            $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
+            $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
+            $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
+            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
+            $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
+            $commandCollection->add(new SendInvoicePlugin(), 'Invoice/SendInvoice');
+
+            // ----- Adyen
+            $commandCollection->add(new AuthorizePlugin(), 'Adyen/Authorize');
+            $commandCollection->add(new CancelPlugin(), 'Adyen/Cancel');
+            $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
+            $commandCollection->add(new RefundPlugin(), 'Adyen/Refund');
+            $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
+
+            return $commandCollection;
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
     protected function extendConditionPlugins(Container $container): Container
     {
         $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
             $conditionCollection
                 ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
 
-            //-- Adyen
+            // ----- Adyen
             $conditionCollection->add(new IsAuthorizedPlugin(), 'Adyen/IsAuthorized');
             $conditionCollection->add(new IsCanceledPlugin(), 'Adyen/IsCanceled');
             $conditionCollection->add(new IsCancellationReceivedPlugin(), 'Adyen/IsCancellationReceived');
@@ -146,6 +154,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new IsRefundFailedPlugin(), 'Adyen/IsRefundFailed');
             $conditionCollection->add(new IsAuthorizationFailedPlugin(), 'Adyen/IsAuthorizationFailed');
             $conditionCollection->add(new IsRefusedPlugin(), 'Adyen/IsRefused');
+            $conditionCollection->add(new TrueConditionPlugin(), 'Oms/TrueCondition');
+            $conditionCollection->add(new Is1HourNotPassedConditionPlugin(), 'Oms/Is1HourNotPassed');
 
             return $conditionCollection;
         });
