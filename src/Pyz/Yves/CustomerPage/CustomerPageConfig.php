@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CustomerPage;
 
-use Pyz\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Yves\CustomerPage\CustomerPageConfig as SprykerCustomerPageConfig;
 
 class CustomerPageConfig extends SprykerCustomerPageConfig
@@ -34,13 +33,5 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
     public function isDoubleOptInEnabled(): bool
     {
         return true;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSsoLoginEnabled(): bool
-    {
-        return $this->get(CustomerPageConstants::SSO_LOGIN_ENABLED, false);
     }
 }

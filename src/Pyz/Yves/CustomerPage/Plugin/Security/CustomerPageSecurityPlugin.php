@@ -30,7 +30,7 @@ class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
     {
         $securityBuilder = parent::extend($securityBuilder, $container);
 
-        if ($this->getConfig()->isSsoLoginEnabled()) {
+        if ($this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
             $this->addAuthenticator($container);
         }
 
@@ -44,7 +44,7 @@ class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
      */
     protected function addFirewalls(SecurityBuilderInterface $securityBuilder): SecurityBuilderInterface
     {
-        if (!$this->getConfig()->isSsoLoginEnabled()) {
+        if (!$this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
             return parent::addFirewalls($securityBuilder);
         }
 

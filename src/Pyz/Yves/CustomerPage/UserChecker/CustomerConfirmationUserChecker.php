@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage\UserChecker;
 
-use Pyz\Yves\CustomerPage\CustomerPageConfig;
+use Pyz\Client\Sso\SsoClientInterface;
 use SprykerShop\Yves\CustomerPage\Exception\NotConfirmedAccountException;
 use SprykerShop\Yves\CustomerPage\Security\CustomerUserInterface;
 use SprykerShop\Yves\CustomerPage\UserChecker\CustomerConfirmationUserChecker as SprykerCustomerConfirmationUserChecker;
@@ -16,16 +16,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class CustomerConfirmationUserChecker extends SprykerCustomerConfirmationUserChecker
 {
     /**
-     * @var \Pyz\Yves\CustomerPage\CustomerPageConfig
+     * @var \Pyz\Client\Sso\SsoClientInterface
      */
-    protected $customerPageConfig;
+    protected $ssoClient;
 
     /**
-     * @param \Pyz\Yves\CustomerPage\CustomerPageConfig $customerPageConfig
+     * @param \Pyz\Client\Sso\SsoClientInterface $ssoClient
      */
-    public function __construct(CustomerPageConfig $customerPageConfig)
+    public function __construct(SsoClientInterface $ssoClient)
     {
-        $this->customerPageConfig = $customerPageConfig;
+        $this->ssoClient = $ssoClient;
     }
 
     /**
@@ -37,7 +37,7 @@ class CustomerConfirmationUserChecker extends SprykerCustomerConfirmationUserChe
      */
     public function checkPreAuth(UserInterface $user): void
     {
-        if (!$this->customerPageConfig->isSsoLoginEnabled()) {
+        if (!$this->ssoClient->isSsoLoginEnabled()) {
             parent::checkPreAuth($user);
 
             return;
