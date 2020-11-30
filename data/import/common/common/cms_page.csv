@@ -1,344 +1,2065 @@
 template_name,is_searchable,is_active,publish,page_key,url.de_DE,url.en_US,name.de_DE,name.en_US,meta_title.de_DE,meta_title.en_US,meta_keywords.de_DE,meta_keywords.en_US,meta_description.de_DE,meta_description.en_US,placeholder.title.de_DE,placeholder.title.en_US,placeholder.content.de_DE,placeholder.content.en_US
-Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,<h2>Impressum</h2>,<h2>About</h2>,"<span class=""cms-page__notification"">Bitte beachten Sie, dass dies nur ein Beispiel ist und im Einzelfall immer angepasst werden muss.</span>
-<p>Demoshop<br/>
-    Julie-Wolfthornstraße 1<br/>10555 Berlin</p>
-
-<p>Telefon: 030 5678909<br/>
-    E-Mail: <a href=""mailto:info@spryker.com"">info@spryker.com</a><br/>
-</p>
-
-<p><strong>Vertreten durch:</strong><br/>Spryker<br/>Geschäftsführer: Max Mustermann<br/>Registergericht: Hamburg<br/>Registernummer:
-    56789</p>
-
-<p><strong>Registereintrag:</strong><br/>Eingetragen im Handelsregister.<br/>Registergericht: Hamburg<br/>Registernummer:
-    34567888456789</p>
-
-<p><strong>Umsatzsteuer-ID: </strong><br/>Umsatzsteuer-Identifikationsnummer nach §27a Umsatzsteuergesetz:<br/>34567</p>
-
-<p>Quelle: <a href=""http://www.experten-branchenbuch.de/"">www.experten-branchenbuch.de</a></p><br/><br/>
-
-<h2>Datenschutzerklärung:</h2>
-
-<p><strong>Datenschutz</strong><br/>Nachfolgend möchten wir Sie über unsere Datenschutzerklärung informieren. Sie finden
-    hier Informationen über die Erhebung und Verwendung persönlicher Daten bei der Nutzung unserer Webseite. Wir
-    beachten dabei das für Deutschland geltende Datenschutzrecht. Sie können diese Erklärung jederzeit auf unserer
-    Webseite abrufen.
-    <br/><br/>
-    Wir weisen ausdrücklich darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail)
-    Sicherheitslücken aufweisen und nicht lückenlos vor dem Zugriff durch Dritte geschützt werden kann.
-    <br/><br/>
-    Die Verwendung der Kontaktdaten unseres Impressums zur gewerblichen Werbung ist ausdrücklich nicht erwünscht, es sei
-    denn wir hatten zuvor unsere schriftliche Einwilligung erteilt oder es besteht bereits eine Geschäftsbeziehung. Der
-    Anbieter und alle auf dieser Website genannten Personen widersprechen hiermit jeder kommerziellen Verwendung und
-    Weitergabe ihrer Daten.
-    <br/><br/>
-    <strong>Personenbezogene Daten</strong>
-    <br/>
-    Sie können unsere Webseite ohne Angabe personenbezogener Daten besuchen. Soweit auf unseren Seiten personenbezogene
-    Daten (wie Name, Anschrift oder E-Mail Adresse) erhoben werden, erfolgt dies, soweit möglich, auf freiwilliger
-    Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. Sofern zwischen Ihnen
-    und uns ein Vertragsverhältnis begründet, inhaltlich ausgestaltet oder geändert werden soll oder Sie an uns eine
-    Anfrage stellen, erheben und verwenden wir personenbezogene Daten von Ihnen, soweit dies zu diesen Zwecken
-    erforderlich ist (Bestandsdaten). Wir erheben, verarbeiten und nutzen personenbezogene Daten soweit dies
-    erforderlich ist, um Ihnen die Inanspruchnahme des Webangebots zu ermöglichen (Nutzungsdaten). Sämtliche
-    personenbezogenen Daten werden nur solange gespeichert wie dies für den geannten Zweck (Bearbeitung Ihrer Anfrage
-    oder Abwicklung eines Vertrags) erforderlich ist. Hierbei werden steuer- und handelsrechtliche Aufbewahrungsfristen
-    berücksichtigt. Auf Anordnung der zuständigen Stellen dürfen wir im Einzelfall Auskunft über diese Daten
-    (Bestandsdaten) erteilen, soweit dies für Zwecke der Strafverfolgung, zur Gefahrenabwehr, zur Erfüllung der
-    gesetzlichen Aufgaben der Verfassungsschutzbehörden oder des Militärischen Abschirmdienstes oder zur Durchsetzung
-    der Rechte am geistigen Eigentum erforderlich ist.</p>
-
-<p><strong>Auskunftsrecht</strong><br/>Sie haben das jederzeitige Recht, sich unentgeltlich und unverzüglich über die zu
-    Ihrer Person erhobenen Daten zu erkundigen. Sie haben das jederzeitige Recht, Ihre Zustimmung zur Verwendung Ihrer
-    angegeben persönlichen Daten mit Wirkung für die Zukunft zu widerrufen. Zur Auskunftserteilung wenden Sie sich bitte
-    an den Anbieter unter den Kontaktdaten im Impressum.</p>","<span class=""cms-page__notification"">Please note this is only an example and must always be adapted in individual cases.</span>
-<p>Demoshop<br/>
-    Julie-Wolfthornstraße 1<br/>10555 Berlin</p>
-
-<p>Telephone: 030 5678909<br/>
-    E-Mail: <a href=""mailto:info@spryker.com"">info@spryker.com</a><br/>
-</p>
-
-<p><strong>Represented by</strong><br/>Spryker<br/>Managing Director: Max Mustermann<br/>Register Court: Hamburg<br/>Register Number:
-    56789</p>
-
-<p><strong>Register Entry:</strong><br/>Entry in Handelsregister.<br/>Register Court: Hamburg<br/>Register number:
-    34567888456789</p>
-
-<p>Source: <a href=""http://www.muster-vorlagen.net"" target=""_blank"">Muster-Vorlagen.net – Impressum Generator</a></p><br/><br/>
-
-<h2>Disclaimer:</h2>
-
-<p><strong>Accountability for content</strong><br/>
-   The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy,
-   completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these
-   web pages. In this context, please note that we are accordingly not obliged to monitor merely the transmitted or saved information
-   of third parties, or investigate circumstances pointing to illegal activity. Our obligations to remove or block the use of
-   information under generally applicable laws remain unaffected by this as per §§ 8 to 10 of the Telemedia Act (TMG).
-   <br/><br/>
-
-    <strong>Accountability for links</strong><br/>
-   Responsibility for the content of external links (to web pages of third parties) lies solely with the operators of the
-   linked pages. No violations were evident to us at the time of linking. Should any legal infringement become known to us, we
-   will remove the respective link immediately.</p>
-
-<p><strong>Copyright</strong><br/>
-   Our web pages and their contents are subject to German copyright law. Unless expressly permitted by law (§ 44a et seq.
-   of the copyright law), every form of utilizing, reproducing or processing works subject to copyright protection on our web
-   pages requires the prior consent of the respective owner of the rights. Individual reproductions of a work are allowed only
-   for private use, so must not serve either directly or indirectly for earnings. Unauthorized utilization of copyrighted works
-   is punishable (§ 106 of the copyright law).</p>"
-Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC,AGB,GTC,AGB,GTC,<h2>Allgemeine Geschäftsbedingungen (AGB)</h2>,<h2>General Terms and Conditions (GTC)</h2>,"<span class=""cms-page__notification"">Bitte beachten Sie, dass dies nur ein Beispiel ist und im Einzelfall immer angepasst werden muss.</span>
-
-<br/>
-<br/><br/>
-<b>§ 1 Geltungsbereich & Abwehrklausel</b>
-<br/><br/>
-
-<div align=""justify"">(1) Für die über diesen Internet-Shop begründeten Rechtsbeziehungen zwischen dem Betreiber des
-    Shops (nachfolgend „Anbieter“) und seinen Kunden gelten ausschließlich die folgenden Allgemeinen
-    Geschäftsbedingungen in der jeweiligen Fassung zum Zeitpunkt der Bestellung.
-    <br/><br/>
-    (2) Abweichende Allgemeine Geschäftsbedingungen des Kunden werden zurückgewiesen.
-</div>
-<br/><br/>
-<b>§ 2 Zustandekommen des Vertrages</b>
-<br/><br/>
-
-<div align=""justify"">(1) Die Präsentation der Waren im Internet-Shop stellt kein bindendes Angebot des Anbieters auf
-    Abschluss eines Kaufvertrages dar. Der Kunde wird hierdurch lediglich aufgefordert, durch eine Bestellung ein
-    Angebot abzugeben.
-    <br/><br/>
-    (2) Durch das Absenden der Bestellung im Internet-Shop gibt der Kunde ein verbindliches Angebot gerichtet auf den
-    Abschluss eines Kaufvertrages über die im Warenkorb enthaltenen Waren ab. Mit dem Absenden der Bestellung erkennt
-    der Kunde auch diese Geschäftsbedingungen als für das Rechtsverhältnis mit dem Anbieter allein maßgeblich an.
-    <br/><br/>
-    (3) Der Anbieter bestätigt den Eingang der Bestellung des Kunden durch Versendung einer Bestätigungs-E-Mail. Diese
-    Bestellbestätigung stellt noch nicht die Annahme des Vertragsangebotes durch den Anbieter dar. Sie dient lediglich
-    der Information des Kunden, dass die Bestellung beim Anbieter eingegangen ist. Die Erklärung der Annahme des
-    Vertragsangebotes erfolgt durch die Auslieferung der Ware oder eine ausdrückliche Annahmeerklärung.
-</div>
-<br/><br/>
-
-<b>§ 3 Eigentumsvorbehalt</b>
-<br/><br/>
-
-<div align=""justify"">Die gelieferte Ware verbleibt bis zur vollständigen Bezahlung im Eigentum des Anbieters.
-
-</div>
-<br/><br/>
-<b>§ 4 Fälligkeit</b>
-<br/><br/>
-
-<div align=""justify"">Die Zahlung des Kaufpreises ist mit Vertragsschluss fällig.</div>
-
-<br/><br/>
-<b>§ 5 Gewährleistung</b>
-<br/><br/>
-
-<div align=""justify"">(1) Die Gewährleistungsrechte des Kunden richten sich nach den allgemeinen gesetzlichen
-    Vorschriften, soweit nachfolgend nichts anderes bestimmt ist. Für Schadensersatzansprüche des Kunden gegenüber dem
-    Anbieter gilt die Regelung in § 6 dieser AGB.
-    <br/><br/>
-    (2) Die Verjährungsfrist für Gewährleistungsansprüche des Kunden beträgt bei Verbrauchern bei neu hergestellten
-    Sachen 2 Jahre, bei gebrauchten Sachen 1 Jahr. Gegenüber Unternehmern beträgt die Verjährungsfrist bei neu
-    hergestellten Sachen und bei gebrauchten Sachen 1 Jahr.
-    Die vorstehende Verkürzung der Verjährungsfristen gilt nicht für Schadensersatzansprüche des Kunden aufgrund einer
-    Verletzung des Lebens, des Körpers, der Gesundheit sowie für Schadensersatzansprüche aufgrund einer Verletzung
-    wesentlicher Vertragspflichten. Wesentliche Vertragspflichten sind solche, deren Erfüllung zur Erreichung des Ziels
-    des Vertrags notwendig ist, z.B. hat der Anbieter dem Kunden die Sache frei von Sach- und Rechtsmängeln zu übergeben
-    und
-    das Eigentum an ihr zu verschaffen.
-    Die vorstehende Verkürzung der Verjährungsfristen gilt ebenfalls nicht für Schadensersatzansprüche, die auf einer
-    vorsätzlichen oder grob fahrlässigen Pflichtverletzung des Anbieters, seiner gesetzlichen Vertreter oder
-    Erfüllungsgehilfen beruhen.
-    Gegenüber Unternehmern ebenfalls ausgenommen von der Verkürzung der Verjährungsfristen ist
-    der Rückgriffsanspruch nach § 478 BGB.
-
-    <br/><br/>
-    (3) Eine Garantie wird von dem Anbieter nicht erklärt.
-
-</div>
-<br/><br/>
-<b>§ 6 Haftungsausschluss</b>
-<br/><br/>
-
-<div align=""justify"">(1) Schadensersatzansprüche des Kunden sind ausgeschlossen, soweit nachfolgend nichts anderes
-    bestimmt ist. Der vorstehende Haftungsausschluss gilt auch zugunsten der gesetzlichen Vertreter und
-    Erfüllungsgehilfen des Anbieters, sofern der Kunde Ansprüche gegen diese geltend macht.
-    <br/><br/>
-    (2) Von dem unter Ziffer 1 bestimmten Haftungsausschluss ausgenommen sind Schadensersatzansprüche aufgrund einer
-    Verletzung des Lebens, des Körpers, der Gesundheit und Schadensersatzansprüche aus der Verletzung wesentlicher
-    Vertragspflichten. Wesentliche Vertragspflichten sind solche, deren Erfüllung zur Erreichung des Ziels des Vertrags
-    notwendig ist, z.B. hat der Anbieter dem Kunden die Sache frei von Sach- und Rechtsmängeln zu übergeben und
-    das Eigentum an ihr zu verschaffen. Von dem Haftungsausschluss ebenfalls ausgenommen ist die Haftung für Schäden,
-    die auf einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung des Anbieters, seiner gesetzlichen Vertreter
-    oder Erfüllungsgehilfen beruhen.
-    <br/><br/>
-    (3) Vorschriften des Produkthaftungsgesetzes (ProdHaftG) bleiben unberührt.
-
-</div>
-<br/><br/>
-<b>§ 7 Abtretungs- und Verpfändungsverbot</b>
-<br/><br/>
-
-<div align=""justify"">Die Abtretung oder Verpfändung von dem Kunden gegenüber dem Anbieter zustehenden
-    Ansprüchen oder Rechten ist ohne Zustimmung des Anbieters ausgeschlossen, sofern der Kunde
-    nicht ein berechtigtes Interesse an der Abtretung oder Verpfändung nachweist.
-
-</div>
-<br/><br/>
-<b>§ 8 Aufrechnung</b>
-<br/><br/>
-
-<div align=""justify"">Ein Aufrechnungsrecht des Kunden besteht nur, wenn seine zur Aufrechnung gestellte Forderung
-    rechtskräftig festgestellt wurde oder unbestritten ist.
-
-</div>
-<br/><br/>
-<b>§ 9 Rechtswahl & Gerichtsstand</b>
-<br/><br/>
-
-<div align=""justify"">(1) Auf die vertraglichen Beziehungen zwischen dem Anbieter und dem Kunden findet das Recht der
-    Bundesrepublik Deutschland Anwendung. Von dieser Rechtswahl ausgenommen sind die
-    zwingenden Verbraucherschutzvorschriften des Landes, in dem der Kunde seinen gewöhnlichen
-    Aufenthalt hat. Die Anwendung des UN-Kaufrechts ist ausgeschlossen.
-    <br/><br/>
-    (2) Gerichtsstand für alle Streitigkeiten aus dem Vertragsverhältnis zwischen dem Kunden und dem Anbieter ist der
-    Sitz des Anbieters, sofern es sich bei dem Kunden um einen Kaufmann, eine juristische Person des öffentlichen Rechts
-    oder ein öffentlich-rechtliches Sondervermögen handelt.
-
-</div>
-<br/><br/>
-<b>§ 10 Salvatorische Klausel</b>
-
-<div align=""justify"">Sollte eine Bestimmung dieser Allgemeinen Geschäftsbedingungen unwirksam sein, wird davon die
-    Wirksamkeit der übrigen Bestimmungen nicht berührt.
-</div>
-<br/><br/>
-
-<div style=""font-size:11px;"">
-    <br/>
-    <i>Quelle: <a href=""http://www.kluge-recht.de"">kluge-recht.de</a></i>
-</div>","<span class=""cms-page__notification"">Please note this is only an example and must always be adapted in individual cases.</span>
-<br/>
-<br/><br/>
-<b>General Terms</b>
-<br/><br/>
-
-<div align=""justify"">(1) This privacy policy has been compiled to better serve those who are concerned with how their
-'Personally identifiable information' (PII) is being used online. PII, as used in US privacy law and information security,
-is information that can be used on its own or with other information to identify, contact, or locate a single person, or
-to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect,
-use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
-    <br/><br/>
-    (2) We do not collect information from visitors of our site or other details to help you with your experience.
-</div>
-<br/><br/>
-<b>Using your Information</b>
-<br/><br/>
-
-<div align=""justify""> We may use the information we collect from you when you register, make a purchase, sign up
-for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features
-in the following ways:
-    <br/><br/>
-    To personalize user's experience and to allow us to deliver the type of content and product offerings in which you
-    are most interested.
-</div>
-<br/><br/>
-
-<b>Protecting visitor information</b>
-<br/><br/>
-
-<div align=""justify"">Our website is scanned on a regular basis for security holes and known vulnerabilities in
-order to make your visit to our site as safe as possible. Your personal information is contained behind secured networks
-and is only accessible by a limited number of persons who have special access rights to such systems, and are required to
- keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket
-  Layer (SSL) technology.
-</div>
-<br/><br/>
-<b>Cookies</b>
-<br/><br/>
-
-<div align=""justify"">We do not use cookies for tracking purposes. You can choose to have your computer warn you each time a
-cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer)
-settings. Each browser is a little different, so look at your browser's Help menu to learn the correct way to modify your cookies.
-If you disable cookies off, some features will be disabled that make your site experience more efficient and some of our services will
-not function properly.
-</div>
-
-<br/><br/>
-<b>Google</b>
-<br/><br/>
-
-<div align=""justify"">Google's advertising requirements can be summed up by Google's Advertising Principles. They are put
-in place to provide a positive experience for users. https://support.google.com/adwordspolicy/answer/1316548?hl=en
-We use Google AdSense Advertising on our website. Google, as a third-party vendor, uses cookies to serve ads on our site.
-Google's use of the DART cookie enables it to serve ads to our users based on previous visits to our site and other sites on
-the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.
-</div>
-<br/><br/>
-<b>Implementation</b>
-<br/><br/>
-
-<div align=""justify"">We along with third-party vendors, such as Google use first-party cookies (such as the Google Analytics
-cookies) and third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data
-regarding user interactions with ad impressions and other ad service functions as they relate to our website.
- Users can set preferences for how Google advertises to you using the Google Ad Settings page. Alternatively, you can opt
-  out by visiting the Network Advertising initiative opt out page or permanently using the Google Analytics Opt Out Browser add on.
-</div>
-<br/><br/>
-
-
-<div style=""font-size:11px;"">
-    <br/>
+Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,<h2>Impressum</h2>,<h2>About</h2>,"
+<div>
+    <p><strong data-renderer-mark=""true"">Impressum</strong></p>
+    <p>Medieninhaber, Herausgeber und Hersteller:</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;<strong data-renderer-mark=""true"">mWS myWorld Solutions AG
+        (myWorld)</strong><br>Grazbachgasse 87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+            title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>Website:
+        <a href=""https://de.myworld.com/de-de/""
+           title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">&nbsp;marketplace.myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+    <p>Vorstand: Marko Sedovnik, Kerstin Suppan-Eibinger</p>
+    <p>&nbsp;</p>
+    <p>» Bitte lesen Sie auch die&nbsp;
+        <a href=""https://de.myworld.com/de-de/terms-of-use""
+           title=""https://de.myworld.com/de-de/terms-of-use""
+           data-renderer-mark=""true"">Nutzungsbedingungen</a>&nbsp;für
+        diese Website</p>
+    <p>
+        __________________________________________________________________________________
+    </p>
+    <p>Der technische Betrieb der Website erfolgt durch:</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;&nbsp;
+    </p>
+    <p><br>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+    <p>
+        __________________________________________________________________________________
+    </p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">Genderformen &amp; Political
+        Correctness:</strong></p>
+    <p>Die Tatsache, dass weibliche Formen (wie etwa KundInnen und Kunden) in diesen
+        Texten nicht extra Erwähnung finden, ist keinesfalls als Missachtung des weiblichen Geschlechts zu verstehen. Es
+        handelt sich vielmehr um eine Beibehaltung älterer Schreibweise zum Zweck der besseren Lesbarkeit. Die
+        weiblichen Leserinnen mögen uns diese Vereinfachung verzeihen und sich bitte ebenso angesprochen fühlen.
+    </p>
+    <p>&nbsp;</p>
+    <p>Schlichtungsstelle gemäß Verordnung (EU) Nr. 524/2013 über die Online
+        Streitbeilegung in Verbraucherangelegenheiten:&nbsp;
+        <a href=""http://ec.europa.eu/consumers/odr/""
+           title=""http://ec.europa.eu/consumers/odr/""
+           data-renderer-mark=""true"">ec.europa.eu/consumers/odr/</a>&nbsp;Ihnen
+        stehen grundsätzlich die Rechte auf Berichtigung, Löschung, Einschränkung und Widerspruch zu. Dafür wenden Sie
+        sich an uns. Sollten Sie der Meinung sein, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt
+        oder Ihre datenschutzrechtlichen Ansprüche in anderer Weise verletzt worden sind, wenden Sie sich bitte an
+        unseren Datenschutzbeauftragten. Sollte auch hier keine für Sie akzeptable Lösung gefunden werden, so können Sie
+        sich bei der Aufsichtsbehörde beschweren. Hierfür ist die Datenschutzbehörde in Österreich zuständig.
+    </p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
+    <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
+    <p><strong data-renderer-mark=""true"">Datenschutzbeauftragter</strong></p>
+    <p>Peter Oskar Miller</p>
+    <p>HXS GmbH</p>
+    <p>Ungargasse 37</p>
+    <p>1030 Wien</p>
+    <p>E-Mail:&nbsp;
+        <a href=""mailto:dataprotection.marketplace@myworld.com""
+           title=""mailto:dataprotection.marketplace@myworld.com""
+           data-renderer-mark=""true"">dataprotection.marketplace@myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">Österreichische Datenschutzbehörde</strong></p>
+    <p>Barichgasse 40-42&nbsp;</p>
+    <p>1030 Wien</p>
+    <p>Telefon: +43 1 521 52 25 69</p>
+    <p>E-Mail:&nbsp;
+        <a href=""mailto:dsb@dsb.gv.at""
+           title=""mailto:dsb@dsb.gv.at"" data-renderer-mark=""true"">dsb@dsb.gv.at</a>
+    </p>
+    <p>&nbsp;</p>
+</div>","
+<div>
+    <h1 id=""Imprint"">Imprint</h1>
+    <p>Media Proprietor, Publisher, and Producer</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>Website:
+        <a href=""https://de.myworld.com/de-de/""
+           title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">&nbsp;marketplace.myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+    <p>Vorstand: Marko Sedovnik, Kerstin Suppan-Eibinger</p>
+    <p>&nbsp;</p>
+    <p>Please also read the&nbsp;
+        <a href=""https://de.myworld.com/en-gb/terms-of-use""
+           title=""https://de.myworld.com/en-gb/terms-of-use""
+           data-renderer-mark=""true"">terms of use</a>&nbsp;for
+        this website.<br>__________________________________________________________________________________</p>
+    <p>The technical processing of the website is carried out by</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>Website:
+        <a href=""https://de.myworld.com/de-de/""
+           title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">&nbsp;marketplace.myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657<br>__________________________________________________________________________________
+    </p>
+    <p><br>Gender forms &amp; political correctness</p>
+    <p>The fact that female forms are not mentioned in these texts should in no way be
+        understood as showing disregard for the female sex, but it is rather that an older style is retained for greater
+        ease of reading. We would ask female readers to excuse this simplification on our part and consider themselves
+        addressed equally.</p>
+    <p>Arbitration body pursuant to (EU) Regulation No. 524/2013 concerning online
+        dispute resolution in consumer affairs:<br>
+        <a href=""http://ec.europa.eu/consumers/odr/""
+           title=""http://ec.europa.eu/consumers/odr/""
+           data-renderer-mark=""true"">ec.europa.eu/consumers/odr/</a></p>
+    <p>You are entitled to have your data rectified, deleted, limited and withdrawn. If
+        you wish to exercise these rights, please contact us. If you believe that we are in breach of data protection
+        law or that your data is being violated in any other way, please contact our Data Protection Officer. If they
+        are unable to find a solution that you find acceptable, you can also complain to the data protection supervisory
+        authorities. Austria´s data protection authorities are responsible for us.</p>
+    <p><br>Data Protection Officer</p>
+    <p>Peter Oskar Miller</p>
+    <p>HXS GmbH<br>Ungargasse 37<br>1030 Vienna<br>E-mail:&nbsp;
+        <a href=""mailto:dataprotection.marketplace@myworld.com""
+           title=""mailto:dataprotection.marketplace@myworld.com"" data-renderer-mark=""true"">dataprotection.marketplace@myworld.com</a>
+    </p>
+    <p>Austrian Data Protection Authorities<br>Barichgasse 40-42<br>1030 Vienna<br>Phone:
+        +43 1 521 52 25 69<br>Email:&nbsp;
+        <a href=""mailto:dsb@dsb.gv.at""
+           title=""mailto:dsb@dsb.gv.at"" data-renderer-mark=""true"">dsb@dsb.gv.at</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
 </div>"
-Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,<h2>Datenschutzerklärung</h2>,<h2>Data Privacy Policy</h2>,"<span class=""cms-page__notification"">Bitte beachten Sie, dass dies nur ein Beispiel ist und im Einzelfall immer angepasst werden muss.</span>
-<p>Die Nutzung unserer Seite ist ohne eine Angabe von personenbezogenen Daten möglich. Für die Nutzung einzelner
-    Services unserer Seite können sich hierfür abweichende Regelungen ergeben, die in diesem Falle nachstehend gesondert
-    erläutert werden. Ihre personenbezogenen Daten (z.B. Name, Anschrift, E-Mail, Telefonnummer, u.ä.) werden von uns
-    nur gemäß den Bestimmungen des deutschen Datenschutzrechts verarbeitet. Daten sind dann personenbezogen, wenn sie
-    eindeutig einer bestimmten natürlichen Person zugeordnet werden können. Die rechtlichen Grundlagen des Datenschutzes
-    finden Sie im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG). Nachstehende Regelungen informieren Sie
-    insoweit über die Art, den Umfang und Zweck der Erhebung, die Nutzung und die Verarbeitung von personenbezogenen
-    Daten durch den Anbieter</p>
+Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC,AGB,GTC,AGB,GTC,<h2>Allgemeine Geschäftsbedingungen (AGB)</h2>,<h2>General Terms and Conditions (GTC)</h2>,"
+<div
+    <h1 id=""Allgemeine-Geschäftsbedingungen---myWorld-Marktplatz"">Allgemeine
+        Geschäftsbedingungen - myWorld Marktplatz</h1>
+    <p>Zuletzt geändert: 27.11.2020&nbsp;</p>
+    <p><br>Die vorliegenden Allgemeinen Geschäftsbedingungen regeln die
+        Geschäftsverbindung zwischen der <em data-renderer-mark=""true"">mWS myWorld Solutions AG</em></p>
+    <p>&nbsp;(""myWorld"") und den Nutzern des myWorld Marktplatzes (""Sie"") beim Erwerb vom
+        Waren über den myWorld Marktplatz.</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                     title=""mailto:customerservice.de@myworld.com""
+                                                                     data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;&nbsp;
+    </p>
+    <p><br>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>GELTUNGSBEREICH</p></li>
+    </ol>
+    <p>1.1.&nbsp;&nbsp; &nbsp;myWorld betreibt die Website myWorld Marktplatz, abrufbar
+        unter&nbsp;<a  href=""https://de.myworld.com/de-de/""
+                      title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">marketplace.myworld.com</a>. Über
+        diese Website können Sie Produkte von myWorld oder Dritten kaufen.&nbsp;<br>1.2.&nbsp;&nbsp; &nbsp;In Ergänzung
+        dazu gelten für Sie auch die Nutzungsbedingungen für die unter&nbsp;<a href=""https://de.myworld.com/de-de/""
+                                                                               title=""https://de.myworld.com/de-de/""
+                                                                               data-renderer-mark=""true"">marketplace.myworld.com</a>&nbsp;abrufbare
+        Website. Diese Allgemeinen Geschäftsbedingungen (AGB) regeln die Rechte und Pflichten von myWorld und Ihnen beim
+        Kauf eines Produkts von myWorld über den myWorld Marktplatz.<br>1.3.&nbsp;&nbsp; &nbsp;myWorld richtet sein
+        Angebot am myWorld Marktplatz an Konsumenten im Sinne des Konsumentenschutzgesetzes.<br>1.4.&nbsp;&nbsp; &nbsp;Diese
+        AGB gelten folglich nicht, wenn Sie auf dem myWorld Marktplatz Produkte von Dritten kaufen. Für den Kauf von
+        Produkten von Dritten auf dem myWorld Marktplatz gelten die Allgemeinen Geschäftsbedingungen des jeweiligen
+        Händlers. &nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>MINDERJÄHRIGE</p></li>
+    </ol>
+    <p>myWorld gewährt Minderjährigen, dh Personen, die das 18. Lebensjahr noch nicht
+        erreicht haben und nicht voll geschäftsfähig sind, keinen Zugang zum myWorld Marktplatz. Produkte für Kinder
+        können über den myWorld Marktplatz nur von volljährigen und geschäftsfähigen Personen gekauft werden.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>VERTRAGSSCHLUSS</p></li>
+    </ol>
+    <p>3.1.&nbsp;&nbsp; &nbsp;Ihre Bestellung eines Produktes von myWorld über den
+        myWorld Marktplatz stellt ein Angebot an myWorld zum Abschluss eines Kaufvertrages dar. Wenn Sie eine Bestellung
+        an myWorld aufgeben, schickt Ihnen myWorld eine Nachricht, die den Eingang Ihrer Bestellung bei myWorld
+        bestätigt und deren Einzelheiten aufführt (Bestellbestätigung). Diese Bestellbestätigung stellt keine Annahme
+        Ihres Angebotes dar, sondern informiert Sie darüber, dass Ihre Bestellung bei myWorld eingegangen ist. Ein
+        Kaufvertrag kommt erst dann zustande, wenn myWorld das bestellte Produkt an Sie versendet und Ihnen den Versand
+        mit einer zweiten E-Mail (Versandbestätigung) bestätigt. Wenn Ihre Bestellung in mehr als einem Paket versendet
+        wird, kann es vorkommen, dass Sie für jedes Paket eine eigene Versandbestätigung erhalten. In diesem Fall kommt
+        bezüglich jeder Versandbestätigung ein separater Kaufvertrag zwischen Ihnen und myWorld über die in der
+        jeweiligen Versandbestätigung aufgeführten Produkte zustande. Vertragspartner ist myWorld.</p>
+    <p>3.2.&nbsp;&nbsp; &nbsp;Sofern myWorld während der Bearbeitung Ihrer Bestellung (dh
+        vor Versandbestätigung) feststellt, dass von Ihnen bestellte Produkte nicht verfügbar sind, werden Sie darüber
+        gesondert per E-Mail informiert. Ein Kaufvertrag über das bestellt Produkte kommt folglich nicht zu Stande.<br>3.3&nbsp;&nbsp;
+        &nbsp;myWorld hat die Möglichkeit die Bestellung abzulehnen, wenn diese rechtsmissbräuchlich erfolgt oder gegen
+        diese Allgemeinen Geschäftsbedingungen verstößt.<br>3.4.&nbsp;&nbsp; &nbsp;Um, ungeachtet Ihres Widerrufsrechts
+        nach Punkt 4. dieser AGB Ihre Bestellung für ein Produkt vor Zusendung der zugehörigen Versandbestätigung
+        kostenfrei zu stornieren, wenden Sie sich bitte per Email oder Kontaktformular an den Support.&nbsp;<br>3.5.&nbsp;&nbsp;
+        &nbsp;Sie stimmen zu, dass Sie Rechnungen elektronisch erhalten können. Elektronische Rechnungen werden Ihnen in
+        speicherbarer und ausdruckbarer Version im Bereich ""Mein Konto"" der Webseite zur Verfügung gestellt.&nbsp;<br>3.6.
+        Der Verkauf von Produkten des myWorld Marktplatzes erfolgt in haushaltsüblichen Mengen.</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>WIDERRUFSRECHT</p></li>
+    </ol>
+    <p>WIDERRUFSBELEHRUNG</p>
+    <p><br>Widerrufsrecht<br>Sie haben das Recht, binnen 30 (dreißig) Tagen ohne Angabe
+        von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 30 (dreißig) Tage ab dem Tag, an dem Sie
+        oder ein von Ihnen benannter Dritter, der nicht Beförderer ist, die Ware (oder die letzte Ware, Teilsendung oder
+        Stück im Falle eines Vertrags über mehrere Waren einer einheitlichen Bestellung oder die Lieferung einer Ware in
+        mehreren Teilsendungen oder Stücken) in Besitz genommen haben.<br>Um Ihr Widerrufsrecht auszuüben, müssen Sie
+        uns mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief oder E-Mail) über Ihren
+        Entschluss informieren, diesen Vertrag zu widerrufen. Sie können dafür das beigefügte&nbsp;<a
 
-<p>Wir weisen darauf hin, dass die internetbasierte Datenübertragung Sicherheitslücken aufweist, ein lückenloser Schutz
-    vor Zugriffen durch Dritte somit unmöglich ist.</p>
+            href=""https://public-supportcenter-marketplace.myworld.com/myworld-online-documents/marketplace/de_marketplace_withdrawalfrom_myworld.pdf""
+            title=""https://public-supportcenter-marketplace.myworld.com/myworld-online-documents/marketplace/de_marketplace_withdrawalfrom_myworld.pdf""
+            data-renderer-mark=""true"">Muster-Widerrufsformular</a>&nbsp;verwenden, das jedoch nicht vorgeschrieben ist.
+        Bitte richten Sie Ihren Widerruf an:</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                     title=""mailto:customerservice.de@myworld.com""
+                                                                     data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;
+    </p>
+    <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die
+        Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+    <p><br>Folgen des Widerrufs:<br>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen
+        alle Zahlungen für die erworbene Waren, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit
+        Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von
+        uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens, innerhalb von vierzehn
+        Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen
+        ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion
+        eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden
+        Ihnen wegen dieser Rückzahlung Entgelte berechnet. Wir können die Rückzahlung verweigern, bis wir die Waren
+        wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben, je
+        nachdem, welches der frühere Zeitpunkt ist.<br>Sie haben die Waren unverzüglich und in jedem Fall spätestens
+        binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an folgende
+        Adresse zurückzusenden:</p>
+    <p><br><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
+         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+        data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Deutschland&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen
+        absenden.&nbsp;<br>Sie tragen die unmittelbaren Kosten der Rücksendung der Waren. Sie müssen für einen etwaigen
+        Wertverlust der Waren nur aufkommen, wenn dieser Wertverlust auf einen zur Prüfung der Beschaffenheit,
+        Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang mit ihnen zurückzuführen ist.</p>
+    <p><br>Ausnahmen vom Widerrufsrecht<br>Das Widerrufsrecht besteht nicht bzw. erlischt
+        bei folgenden Verträgen über</p>
+    <p><br>a.&nbsp;&nbsp; &nbsp;Waren oder Dienstleistungen, deren Preis von Schwankungen
+        auf dem Finanzmarkt abhängt, auf die der Unternehmer keinen Einfluss hat und die innerhalb der Rücktrittsfrist
+        auftreten können,<br>b.&nbsp;&nbsp; &nbsp;Waren, die nach Kundenspezifikationen angefertigt werden oder
+        eindeutig auf die persönlichen Bedürfnisse zugeschnitten sind,<br>c.&nbsp;&nbsp; &nbsp;Waren, die schnell
+        verderben können oder deren Verfallsdatum schnell überschritten würde,<br>d.&nbsp;&nbsp; &nbsp;Waren, die
+        versiegelt geliefert werden und aus Gründen des Gesundheitsschutzes oder aus Hygienegründen nicht zur Rückgabe
+        geeignet sind, sofern deren Versiegelung nach der Lieferung entfernt wurde,<br>e.&nbsp;&nbsp; &nbsp;Waren, die
+        nach ihrer Lieferung auf Grund ihrer Beschaffenheit untrennbar mit anderen Gütern vermischt wurden,<br>f.&nbsp;&nbsp;
+        &nbsp;alkoholische Getränke, deren Preis bei Vertragsabschluss vereinbart wurde, die aber nicht früher als 30
+        Tage nach Vertragsabschluss geliefert werden können und deren aktueller Wert von Schwankungen auf dem Markt
+        abhängt, auf die der Unternehmer keinen Einfluss hat,<br>g.&nbsp;&nbsp; &nbsp;Ton- oder Videoaufnahmen oder
+        Computersoftware, die in einer versiegelten Packung geliefert werden, sofern deren Versiegelung nach der
+        Lieferung entfernt wurde,<br>h.&nbsp;&nbsp; &nbsp;Zeitungen, Zeitschriften oder Illustrierte mit Ausnahme von
+        Abonnement-Verträgen über die Lieferung solcher Publikationen.<br>i.&nbsp;&nbsp; &nbsp;die Lieferung von nicht
+        auf einem körperlichen Datenträger gespeicherten digitalen Inhalten, wenn der Unternehmer – mit ausdrücklicher
+        Zustimmung des Verbrauchers, verbunden mit dessen Kenntnisnahme vom Verlust des Rücktrittsrechts bei vorzeitigem
+        Beginn mit der Vertragserfüllung, und nach Zurverfügungstellung einer Ausfertigung oder Bestätigung nach – noch
+        vor Ablauf der Rücktrittsfrist mit der Lieferung begonnen hat.</p>
+    <p><br>ENDE DER WIDERRUFSBELEHRUNG</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>PREISE</p></li>
+    </ol>
+    <p>5.1.&nbsp;&nbsp; &nbsp;Alle auf dem myWorld Marktplatz angegebenen Kaufpreise
+        erhalten die Mehrwertsteuer, dh die Mehrwertsteuer ist bereits inkludiert. Der angegebene Kaufpreis umfasst
+        allerdings nicht die Liefer-, Service- und Versandkosten sowie allfällig anfallende Zollkosten. Zur Ermittlung,
+        ob bzw. in welcher Höhe in Ihrem Land Zollkosten für die von Ihnen bestellten Produkte anfallen, haben Sie sich
+        mit den Zollvorschriften Ihres Landes vertraut zu machen (siehe Punkt 9.). Der Kaufpreis sowie die Liefer-,
+        Service- und Versandkosten sind in der Bestellübersicht aufgelistet.&nbsp;</p>
+    <p>5.2.&nbsp;&nbsp; &nbsp;Trotz größter Bemühungen von myWorld können Produkte im
+        myWorld Katalog mit dem falschen Preis ausgezeichnet sein. myWorld überprüft die Preise, wenn sie Ihre
+        Bestellung bearbeitet und bevor sie die Zahlung auslöst. Wenn ein Produkt mit einem falschen Preis ausgezeichnet
+        und der korrekte Preis höher ist jener auf der Webseite, wird myWorld Sie vor Versand der Ware (dh vor
+        Versandbestätigung) kontaktieren, um Sie zu fragen, ob Sie das Produkt zum korrekten Preis kaufen oder die
+        Bestellung stornieren wollen. Sie können, sofern Sie bereit sind, die Ware zum korrekten Preis zu kaufen,
+        innerhalb von einer Woche die Bestellung der Ware zu diesem Preis abgeben. Wenn wir keine Mitteilung von Ihnen
+        erhalten, kommt kein Kaufvertrag zu Stande (siehe Punkt 3.).&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>BEZAHLUNG UND RECHNUNGSLEGUNG</p></li>
+    </ol>
+    <p>6.1.&nbsp;&nbsp; &nbsp;Die auf dem myWorld Marktplatz angebotenen Zahlungsarten
+        werden Ihnen im Bestellprozesses angezeigt.&nbsp;</p>
+    <p>6.2.&nbsp;&nbsp; &nbsp;Ein Anspruch auf die Verwendung einer bestimmten
+        Zahlungsart besteht nicht.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>EIGENTUMSVORBEHALT</p></li>
+    </ol>
+    <p>Die Waren bleiben bis zur vollständigen Bezahlung des Kaufpreises im Eigentum von
+        myWorld.</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>LIEFERUNG</p></li>
+    </ol>
+    <p>8.1.&nbsp;&nbsp; &nbsp;Die Lieferung erfolgt an die vom Besteller angegebene
+        Lieferadresse. Auf der Webseite finden Sie Hinweise zur Verfügbarkeit von Produkten, die von myWorld verkauft
+        werden (z.B. auf der jeweiligen Produktdetailseite). Die Lieferzeit beträgt ca. 6 Werktage, außer auf der
+        Detailseite des Produktes sind besondere, produktindividuelle Lieferzeiten angegeben.</p>
+    <p>8.2.&nbsp;&nbsp; &nbsp;Soweit eine Lieferung an den Besteller nicht möglich ist,
+        weil die gelieferte Ware nicht durch die Eingangstür, Haustür oder den Treppenaufgang des Bestellers passt oder
+        weil der Besteller nicht unter der von ihm angegebenen Lieferadresse angetroffen wird, obwohl dem Besteller der
+        Lieferzeitpunkt mit angemessener Frist angekündigt wurde, trägt der Besteller die Kosten für die erfolglose
+        Anlieferung.&nbsp;</p>
+    <p>8.3.&nbsp;&nbsp; &nbsp;Transportschäden</p>
+    <p>Offensichtliche Transportschäden sind gegenüber dem Zusteller umgehend zu
+        reklamieren. Zudem sind offensichtliche Transportschäden durch Sie unverzüglich an myWorld zu melden. Ihre
+        gesetzlichen Gewährleistungsrechte bleiben hierdurch unberührt. Die Meldung hat zu erfolgen an:</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                     title=""mailto:customerservice.de@myworld.com""
+                                                                     data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;
+    </p>
+    <p>8.4.&nbsp;&nbsp; &nbsp;Falschlieferung</p>
+    <p>Sollte einmal versehentlich nicht die bestellte Ware bei Ihnen einlangen (also
+        eine Falschlieferung vorliegen), dann kann diese Falschlieferung binnen 14 Tagen ab Erhalt reklamiert werden.
+        Sie verpflichten sich, die im Wege der Falschlieferung erhaltene Ware binnen 14 Tagen ab Erhalt in jenem
+        (unbenutzten) Zustand zu retournieren, in dem Sie die Ware erhalten haben. Ihre gesetzlichen
+        Gewährleistungsrechte bleiben hierdurch unberührt. Die Reklamation hat zu erfolgen an:</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                     title=""mailto:customerservice.de@myworld.com""
+                                                                     data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;
+    </p>
+    <p>Retouren sind zu senden an:</p>
+    <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
+         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+        data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Deutschland&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>ZOLL</p></li>
+    </ol>
+    <p>Wann myWorld die Lieferung an Lieferorte außerhalb der EU anbietet ist aus der
+        Produktdetailseite ersichtlich. Wenn Sie Produkte bei myWorld zur Lieferung außerhalb der EU bestellen und
+        myWorld die Lieferung an diesen Lieferort anbietet, können Sie Importzöllen und -steuern unterliegen, die
+        erhoben werden, sobald das Paket den bestimmten Zielort erreicht. Jegliche zusätzlichen Gebühren für die
+        Zollabfertigung müssen Sie bezahlen; myWorld hat keinen Einfluss auf diese Gebühren. Zollregelungen
+        unterscheiden sich stark von Land zu Land, so dass Sie Ihre örtliche Zollbehörde für nähere Informationen
+        kontaktieren sollten. Ferner beachten Sie bitte, dass Sie bei Bestellungen bei myWorld als Einführender
+        angesehen werden und alle Gesetze und Verordnungen des Landes, in dem Sie die Produkte erhalten, einhalten
+        müssen. Der Schutz Ihrer Daten ist wichtig für myWorld und myWorld möchte Sie darauf aufmerksam machen, dass
+        grenzüberschreitende Lieferungen der Öffnung und Untersuchung durch Zollbehörden unterliegen.&nbsp;</p>
+    <p><br><strong data-renderer-mark=""true"">10.&nbsp;&nbsp;
+        &nbsp;GEWÄHRLEISTUNG</strong></p>
+    <p>10.1&nbsp;&nbsp; &nbsp;Ist Ihr Wohnsitz, der gewöhnliche Aufenthalt oder der Ort
+        der Beschäftigung des Verbrauchers in der Europäischen Union können Sie für einen Zeitraum von zwei Jahre,
+        Unternehmer für einen Zeitraum von einem Jahr, ab der Lieferung der Ware Gewährleistungsrechte und können die
+        Reparatur oder den Ersatz der auf gekauften Produkte verlangen, wenn diese mangelhaft oder nicht wie beschrieben
+        sind. Kann die Ware nicht innerhalb einer angemessenen Zeit oder nicht ohne Schwierigkeiten repariert oder
+        ersetzt werden, steht Ihnen ein Anspruch auf Rückerstattung oder Minderung des Kaufpreises zu.</p>
+    <p>10.2.&nbsp;&nbsp; &nbsp;Ist die Nacherfüllung im Wege der Ersatzlieferung
+        erfolgt, sind Sie verpflichtet, die mangelhafte Ware innerhalb von 30 Tagen an folgende Adresse auf Kosten von
+        myWorld zurückzusenden:</p>
+    <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
+         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+        data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Deutschland&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">11.&nbsp;&nbsp; &nbsp;HAFTUNG VON
+        MYWORLD</strong></p>
+    <p>11.1.&nbsp;&nbsp; &nbsp;myWorld haftet unbeschränkt für Schäden aus der
+        Verletzung des Lebens, des Körpers oder der Gesundheit, die auf einer vorsätzlichen oder fahrlässigen
+        Pflichtverletzung der myWorld beruhen.</p>
+    <p>11.2.&nbsp;&nbsp; &nbsp;Auch für sonstige Schäden, die auf vorsätzlicher
+        Pflichtverletzung von myWorld beruhen, haftet myWorld unbeschränkt. Eine vorsätzliche Pflichtverletzung liegt
+        vor, wenn myWorld oder dessen Erfüllungsgehilfen eine Pflicht absichtlich, dh wissentlich und willentlich, nicht
+        erfüllt.</p>
+    <p>11.3.&nbsp;&nbsp; &nbsp; Für sonstige Schäden, die auf einer grob fahrlässigen
+        Pflichtverletzung von myWorld beruhen, haftet myWorld nur beschränkt auf den typischen und vorhersehbaren
+        Schaden. Eine grob fahrlässige Pflichtverletzung ist gegeben, wenn myWorld oder dessen Erfüllungsgehilfen eine
+        Pflicht aus auffallender Sorglosigkeit nicht erfüllt, dh das Verhalten von der gebotenen Sorgfalt extrem
+        abweicht.&nbsp;</p>
+    <p>11.4.&nbsp;&nbsp; &nbsp; Für Schäden aufgrund einfach fahrlässiger Verletzung
+        solcher Pflichten, die für die angemessene und einwandfreie Vertragsdurchführung grundlegend sind und auf deren
+        Erfüllung der Käufer dementsprechend vertraut und vertrauen darf (Kardinalpflichten), haftet myWorld nur
+        beschränkt auf den typischen und vorhersehbaren Schaden.&nbsp;</p>
+    <p>11.5.&nbsp;&nbsp; &nbsp; Soweit die Haftung von myWorld beschränkt oder
+        ausgeschlossen ist, gelten die Beschränkungen oder Ausschlüsse auch für die persönliche Haftung der Mitarbeiter,
+        der gesetzlichen Vertreter und Erfüllungsgehilfen von myWorld.&nbsp;</p>
+    <p>11.6.&nbsp;&nbsp; &nbsp;Anderweitige Schadenersatzforderungen sind vorbehaltlich
+        nachfolgender Ziffer 11.7. ausgeschlossen. Dies gilt insbesondere für die verschuldensunabhängige Haftung für
+        anfängliche Mängel.&nbsp;</p>
+    <p>11.7.&nbsp;&nbsp; &nbsp;Die Haftungsbeschränkungen und Haftungsausschlüsse gemäß
+        Punkt 11.1. bis 11.6. lassen die Haftung von myWorld gemäß den zwingenden gesetzlichen Vorschriften des
+        Produkthaftungsgesetzes unberührt.&nbsp;</p>
+    <p>11.8.&nbsp;&nbsp; &nbsp;Es besteht die Möglichkeit für den Nutzer, die
+        ausgewählten Produkte nach diversen Kriterien (z.B. nach Preisen) zu sortieren. myWorld haftet jedoch nicht für
+        einen allfälligen Fehler bei der Sortierung der angebotenen Produkte.</p>
+    <p>&nbsp;<br><strong data-renderer-mark=""true"">12.&nbsp;&nbsp; &nbsp;ANWENDBARES
+        RECHT</strong></p>
+    <p>Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts (CISG) und des
+        Kollisionsrechts. Der Verbraucher hat die Wahl zwischen dem Gericht, in dessen Sprengel der Wohnsitz, der
+        gewöhnliche Aufenthalt oder der Ort der Beschäftigung des Verbrauchers liegt und dem Gerichtsstand am Sitz der
+        myWorld. Obwohl auf die vorliegende Geschäftsbeziehung deutsches Recht anwendbar ist, können Sie sich auf die
+        zwingenden verbraucherschutzrechtlichen Vorschriften ihres Staates, in dem Sie ihren gewöhnlichen Aufenthalt
+        haben, berufen, sofern es sich dabei um einen Mitgliedstaat der Europäischen Union handelt. Diesfalls können Sie
+        Ansprüche im Zusammenhang mit diesen Nutzungsbedingungen, die sich aus verbraucherschützenden Normen ergeben,
+        wahlweise sowohl in Deutschland als auch in dem EU-Mitgliedsstaat, in dem Sie leben, einreichen.</p>
+    <p><br>Beschwerden/Online Streitbeilegung/Schlichtungsverfahren<br>Die Europäische
+        Kommission stellt unter&nbsp;<a href=""https://ec.europa.eu/consumers/odr/""
+                                        title=""https://ec.europa.eu/consumers/odr/"" data-renderer-mark=""true"">https://ec.europa.eu/consumers/odr/</a>&nbsp;eine
+        Plattform zur Online-Streitbeilegung („OS-Plattform“) bereit. myWorld ist bemüht, eventuelle
+        Meinungsverschiedenheiten aus diesem Vertrag einvernehmlich beizulegen. Darüber hinaus ist myWorld zu einer
+        Teilnahme an einem Schlichtungsverfahren nicht verpflichtet und kann Ihnen die Teilnahme an einem solchen
+        Verfahren auch nicht anbieten.</p>
+    <p><br><strong data-renderer-mark=""true"">13.&nbsp;&nbsp; &nbsp;SONSTIGE
+        HINWEISE</strong></p>
+    <p>Im Übrigen weisen wir Sie auf unsere Datenschutzerklärung sowie auf unsere
+        Hinweise zu Cookies und internetbasierter Werbung hin, die Sie unter&nbsp;<a href=""http://www.marketplcae.myworld.com""
+                                                                                     title=""http://www.marketplcae.myworld.com""
+                                                                                     data-renderer-mark=""true"">www.marketplcae.myworld.com</a>&nbsp;&nbsp;abrufen
+        können.&nbsp;</p>
+    <p>&nbsp;</p>
+</div>","
+<div>
+    <h1 id=""Terms-and-Conditions---myWorld-Marketplace"" data-renderer-start-pos=""54"">Terms and Conditions - myWorld
+        Marketplace</h1>
+    <p>Last amended: 27.11.2020&nbsp;</p>
+    <p><br>The present Terms &amp; Conditions regulate the business relationship between
+        mWG myWorld Germany GmbH (""myWorld"") and the users of the myWorld Marketplace (""You"" or “you”) when purchasing
+        goods via the myWorld Marketplace.</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                  title=""mailto:customerservice.de@myworld.com""
+                                                                  data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;&nbsp;
+    </p>
+    <p><br>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>SCOPE</p></li>
+    </ol>
+    <p>1.1.&nbsp;&nbsp; &nbsp;myWorld runs the website: “myWorld Marketplace”, which can
+        be found at&nbsp;<a href=""https://de.myworld.com/de-de/""
+                            title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">marketplace.myworld.com</a>.
+        Via this website, you can purchase products from myWorld or other third parties. &nbsp;</p>
+    <p>1.2.&nbsp;&nbsp; &nbsp;In addition to these Terms &amp; Conditions, the Terms of
+        Use, which can be found at:&nbsp;<a href=""https://de.myworld.com/de-de/""
+                                            title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">marketplace.myworld.com</a>,
+        are also applicable to You. These Terms &amp; Conditions regulate myWorld's rights and obligations and you when
+        purchasing a product from myWorld via the myWorld Marketplace.&nbsp;</p>
+    <p>1.3.&nbsp;&nbsp; &nbsp;myWorld addresses its offers on the myWorld Marketplace to
+        consumers according to the Consumer Protection Act.</p>
+    <p>1.4.&nbsp;&nbsp; &nbsp;These Terms &amp; Conditions are not applicable in the
+        event that you purchase products from third parties via the myWorld Marketplace. &nbsp;For the purchase of
+        products from third parties on the myWorld Marketplace, the General Terms and Conditions for the respective
+        merchant are applicable. &nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>MINORS</p></li>
+    </ol>
+    <p>myWorld does not allow minors access, otherwise known as person who are not yet 18
+        years of age and are not yet considered capable in the eyes of the contractual regulators, access to the myWorld
+        Marketplace. &nbsp; Products for children can only be purchased via the myWorld Marketplace by persons over the
+        age of 18 and deemed as capable in the eyes of contractual regulators.&nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>CONCLUSION OF CONTRACT</p></li>
+    </ol>
+    <p>3.1.&nbsp;&nbsp; &nbsp;Your placing of an order for a product from myWorld via the
+        myWorld Marketplace represents an offer to myWorld to complete on a purchase contract. &nbsp;If you place an
+        order with myWorld, myWorld will send you a notification which confirms receipt of the order and includes
+        details of your order (order confirmation). &nbsp;This order confirmation does not represent an acceptance of
+        your offer but rather informs you that your order has been received by myWorld. &nbsp;A purchase contract only
+        exists at the moment that myWorld sends the product which has been ordered by you and confirms the dispatch by
+        sending you a second email (confirmation of dispatch). &nbsp;If your order is to be sent in more than one
+        consignment, you may receive a dispatch confirmation for each consignment. &nbsp;In this case, each confirmation
+        of dispatch constitutes a separate purchase contract between you and myWorld concerning the products listed in
+        the relevant dispatch confirmation. &nbsp;Your contractual partner is myWorld.&nbsp;</p>
+    <p>3.2.&nbsp;&nbsp; &nbsp;Should myWorld establish, whilst processing your order
+        (prior to dispatch confirmation or existance of the applicable purchase contract) that the product which you
+        have ordered is not available, you will be informed of this via separate email. A purchase contract for the
+        ordered product is therefore not concluded</p>
+    <p>3.3.&nbsp;&nbsp; &nbsp;myWorld has the possibility to refuse the order if it is
+        misused or if it violates the General Terms and Conditions.</p>
+    <p>3.4.&nbsp;&nbsp; &nbsp;In order to cancel the order free of charge prior to the
+        arrival of the dispatch confirmation, irrespective of your right to withdraw in according with Clause 4 of these
+        Terms &amp; Conditions, please send an email or a contact form to the support. &nbsp;</p>
+    <p>3.5.&nbsp;&nbsp; &nbsp;You consent to being able to receive invoices
+        electronically. &nbsp;Electronic invoices are made available to you in a format which can be both saved and
+        printed out in your Login area of the website. &nbsp;</p>
+    <p>3.6.&nbsp;&nbsp; &nbsp;Products from the myWorld marketplace are sold in common
+        household quantities.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>RIGHT OF WITHDRAWAL&nbsp;</p></li>
+    </ol>
+    <p>&nbsp;</p>
+    <p>CANCELLATION POLICY</p>
+    <p>Right of Withdrawal<br>You have the right to withdraw from this contract within 30
+        (thirty) days without giving any reason. The withdrawal period is 30 (thirty) days from which you or a third
+        party identified by you, not including the carrier, receives the goods (or the last goods, partial delivery or
+        piece in the case of a contract for a single order of several goods or the partial delivery of items).<br>To
+        exercise the right of withdrawal, you must inform us of your decision to withdraw from this contract by an
+        unequivocal statement (e.g. a letter sent by post or email). You may use the attached&nbsp;<a
 
-<h3>Auskunft/Widerruf/Löschung</h3>
+            href=""https://public-supportcenter-marketplace.myworld.com/myworld-online-documents/marketplace/de-en_marketplace_withdrawalfrom_myworld.pdf""
+            title=""https://public-supportcenter-marketplace.myworld.com/myworld-online-documents/marketplace/de-en_marketplace_withdrawalfrom_myworld.pdf""
+            data-renderer-mark=""true"">withdrawal form template</a>, but it is not obligatory. Please send your
+        withdrawal request to:</p>
+    <p><br><strong data-renderer-mark=""true"">mWS myWorld Solutions AG
+        (myWorld)</strong><br>Grazbachgasse 87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a
+         href=""mailto:customerservice.de@myworld.com""
+        title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;&nbsp;
+    </p>
+    <p>&nbsp;</p>
+    <p>To meet the withdrawal deadline, it is sufficient for you to send your notice
+        concerning your exercise of the right of withdrawal before the withdrawal period has expired.<br>Effects of
+        withdrawal<br>If you withdraw from this contract, we shall reimburse to you all payments received from you,
+        including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a
+        type of delivery other than the least expensive type of standard delivery offered by us), without undue delay
+        and in any event not later than fourteen days from the day on which we are informed about your decision to
+        withdraw from this contract. &nbsp;We will carry out such reimbursement using the same means of payment as you
+        used for the initial transaction, unless you have expressly agreed otherwise; in any event, you will not incur
+        any fees as a result of such reimbursement. &nbsp;We may withhold reimbursement until we have received the
+        returned goods or you have supplied evidence of having sent back the goods, whichever comes first.<br>You must
+        return the goods to the following address without delay and in any case, no later than fourteen days following
+        the day on which you notified us of your withdrawal from this contract:</p>
+    <p><br><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
+         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+        data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Germany&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>The deadline is met if you send back the goods before the period of fourteen days
+        has expired.&nbsp;<br>You will have to bear the direct costs for returning the goods. You are only liable for
+        any diminished value of the goods resulting from the handling other than what is necessary to establish the
+        nature, characteristics and functioning of the goods.</p>
+    <p><br>Exceptions to the right of withdrawal<br>The right of withdrawal does not
+        apply or expire in the following contracts for</p>
+    <p><br>a.&nbsp;&nbsp; &nbsp;goods or services where the price is dependent on the
+        fluctuations of the financial market, over which the business owner has no influence and which could take place
+        during the withdrawal period,&nbsp;<br>b.&nbsp;&nbsp; &nbsp;bespoke goods or goods which have been tailored to
+        personal requirements,&nbsp;<br>c.&nbsp;&nbsp; &nbsp;goods which could spoil within a short time period or if
+        the expiry period is about to run out,&nbsp;<br>d.&nbsp;&nbsp; &nbsp;goods which were sealed on arrival and, for
+        reasons of health, safety and hygiene, cannot be returned should the seal have been removed on receipt,<br>e.&nbsp;&nbsp;
+        &nbsp;goods which, following delivery, were mixed with other goods and are then inseparable from these other
+        goods due to their condition,&nbsp;<br>f.&nbsp;&nbsp; &nbsp;alcoholic drinks, whose price was agreed upon when
+        the contract was drawn up, which cannot be delivered earlier than 30 days before contract completion and where
+        the current value is dependent on fluctuations on the market, over which the business owner has no influence,&nbsp;<br>g.&nbsp;&nbsp;
+        &nbsp;sound or video recordings or computer software, which were delivered in sealed packaging, should this seal
+        have been removed following delivery,<br>h.&nbsp;&nbsp; &nbsp;newspapers, magazines or illustrations with
+        exception of subscription contracts regarding the delivery of such publications,&nbsp;<br>i.&nbsp;&nbsp; &nbsp;the
+        delivery of digital content which has been saved on a data storage device of some kind, if the business owner -
+        with the express consent of the consumer, in connection with the acknowledgement of the loss of right to
+        withdraw should the contract be fulfilled prematurely, and following the provision of a copy of confirmation -
+        prior to expiry of the withdrawal period should the delivery have already been initiated.&nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>PRICES</p></li>
+    </ol>
+    <p>5.1.&nbsp;&nbsp; &nbsp;All prices displayed on the myWorld Marketplace are
+        inclusive of VAT. However, the stated purchase price does not include the cost of delivery, service or shipping
+        as well as any applicable customs costs. To determine whether, and to what extent, custom costs are incurred in
+        your country for the products ordered, you are responsible for familiarising yourself with the customs
+        regulations of your country (see Point 9) The purchase price and the delivery, service and dispatch costs are
+        listed in the order overview. &nbsp;. &nbsp;</p>
+    <p>5.2.&nbsp;&nbsp; &nbsp;Despite the commercially reasonable efforts on the part of
+        myWorld, products can occasionally be displayed with the wrong price. myWorld checks the prices when processing
+        your order and before taking payment. &nbsp;If a product is displayed with an incorrect price and the correct
+        price is higher than that displayed on the website, myWorld will contact you before shipping the goods (prior to
+        dispatch confirmation) in order to ask you whether you would like to purchase the product for the correct price
+        or wish to cancel the order. &nbsp;You can, as long as you are prepared to purchase the goods for the correct
+        price, submit an order for the goods at this price inside a week. &nbsp;If we receive no response from you, no
+        purchase contract will be drawn up (see Point 3.).&nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>PAYMENT AND ACCOUNTING</p></li>
+    </ol>
+    <p>6.1.&nbsp;&nbsp; &nbsp;The offered payment methods on myWorld Marketplace will be
+        displayed during the ordering process.&nbsp;</p>
+    <p>6.2.&nbsp;&nbsp; &nbsp;You are not entitled to a specific payment method.</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>RESERVATION OF PROPIETARY RIGHTS</p></li>
+    </ol>
+    <p>The goods remain the property of myWorld up until such time as you have paid the
+        purchase price in full.&nbsp;</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>DELIVERY</p></li>
+    </ol>
+    <p>8.1.&nbsp;&nbsp; &nbsp;Delivery is made to the delivery address provided by the
+        customer during the order process. &nbsp;On the website, you will find tips relating to the availability of
+        products which are sold by myWorld (for example, on the relevant product details page). The delivery time is
+        approximately 6 working days, unless special, product-specific delivery times are specified on the relevant
+        product detail page. &nbsp;</p>
+    <p>8.2.&nbsp;&nbsp; &nbsp;In the event that the item cannot be delivered to the
+        customer because the goods delivered did not fit through the customer's front door, house entrance or stairway
+        or because the customer was not encountered at the delivery address provided, although the time of deliver was
+        conveyed to the customer in good time, the customer must cover the costs of the failed delivery. &nbsp;</p>
+    <p>8.3.&nbsp;&nbsp; &nbsp;Transport Damage</p>
+    <p>Whenever possible, visible damage resulting from transportation must be
+        immediately reported to the carrier. Additionally, obvious damage resulting from transportation must be reported
+        to myWorld immediately. &nbsp;Your statutory warranty rights remain unaffected. &nbsp;Damage must be reported
+        to:</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
+    <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
+    <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                     title=""mailto:customerservice.de@myworld.com""
+                                                                     data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>8.4.&nbsp;&nbsp; &nbsp;Incorrect Delivery</p>
+    <p>Should goods other than the goods ordered arrive (i.e. incorrect delivery), a
+        complaint can be issued within 14 days after receipt of the incorrect delivery. You undertake to return the
+        incorrect goods (unused) within 14 days of receipt in the condition in which you received them. &nbsp;Your
+        statutory rights remain unaffected. &nbsp;Complaints must be sent to:</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;<a href=""mailto:customerservice.de@myworld.com""
+                                                                     title=""mailto:customerservice.de@myworld.com""
+                                                                     data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;
+    </p>
+    <p>&nbsp;</p>
+    <p>Returns must be sent to</p>
+    <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
+         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+        data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Germany&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>CUSTOMS</p></li>
+    </ol>
+    <p>It is visible on the product details page if myWorld offers delivery to locations
+        outside the EU. &nbsp;If you order products from myWorld with delivery outside of the EU and myWorld offers
+        delivery to such destination, you may be required to pay import duty and taxes which are then lifted once the
+        package reaches the specific destination. &nbsp;Any additional fees for customs clearance must be paid by you;
+        myWorld has no influence over these fees. Custom regulations differ greatly from country to country, meaning
+        that you should contact your customs authorities locally for more information. &nbsp;Please be aware that you
+        are seen as an importer for the purposes of making orders with myWorld and that all laws and regulations of the
+        country in which you receive the products must be observed. &nbsp;Data protection is important to myWorld and
+        myWorld would like to make you aware that cross-border shipments are subject to opening and inspection by the
+        customs authorities. &nbsp;</p>
+    <p><br><strong data-renderer-mark=""true"">10.&nbsp;&nbsp; &nbsp;WARRANTY</strong></p>
+    <p>10.1.&nbsp;&nbsp; &nbsp;If your place of residence, habitual place of residence
+        or place of employment is within the&nbsp;&nbsp; &nbsp;European Union, you have warranty rights for a period of
+        up to two years, business owners for &nbsp;&nbsp; &nbsp;a period of up to one year, beginning from the delivery
+        of goods and may request the repair or &nbsp;&nbsp; &nbsp;replacement of goods purchased should they be
+        defective or not as described. Should the&nbsp;<br>goods not be able to be replaced within a reasonable time or
+        cannot be repaired without difficulty, you are entitled to a refund or a reduction of the purchase price.</p>
+    <p>10.2.&nbsp;&nbsp; &nbsp;If your warranty has been fulfilled in the form of a
+        replacement delivery, you are required to send &nbsp;<br>&nbsp;&nbsp; &nbsp;back the damaged goods, at the
+        expense of myWorld, within 30 days to the following address:</p>
+    <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
+    <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
+         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+        data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Germany&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">11.&nbsp;&nbsp; &nbsp;MYWORLD
+        LIABILITY</strong></p>
+    <p>11.1.&nbsp;&nbsp; &nbsp;myWorld is liable without limitation for damages arising
+        from loss of life, personal injury or&nbsp;damage to health caused by an intentional or negligent breach of duty
+        by myWorld.&nbsp;</p>
+    <p>11.2.&nbsp;&nbsp; &nbsp;myWorld is also liable without limitation for other
+        damages arising from an intentional breach of myWorld's duties. An intentional breach of duty is in existence
+        should myWorld or its vicarious&nbsp;agents not perform a duty on purpose, i.e. knowingly and intentionally.&nbsp;</p>
+    <p>11.3.&nbsp;&nbsp; &nbsp;For other damages caused by a grossly negligent breach of
+        myWorld's duties, myWorld's liability&nbsp;is limited to typical and foreseeable damage. A gross negligent
+        breach of duty comes into&nbsp;existences if myWorld or its vicarious agents not perform a duty due to a notable
+        lack of concern,&nbsp;or that the behaviour deviates from the due diligence and care in the extreme. &nbsp;</p>
+    <p>11.4.&nbsp;&nbsp; &nbsp;myWorld accepts only limited liability for typical and
+        foreseeable damages resulting from slight&nbsp;negligent breach of obligations, which are fundamental for the
+        adequate and proper performance of the contract and on whose fulfilment the seller accordingly trusts and may
+        trust (cardinal obligations).&nbsp;</p>
+    <p>11.5.&nbsp;&nbsp; &nbsp;In as far as the liability of myWorld is limited or
+        excluded, such limitations or exclusions shall&nbsp;also apply for the personal liability of myWorld employees,
+        legal representatives and vicarious agents.&nbsp;</p>
+    <p><br>11.6.&nbsp;&nbsp; &nbsp;Any further claims for damages are excluded, subject
+        to the following information in Clause&nbsp;11.7. This especially applies to any liability regardless of fault
+        for initial defects.&nbsp;</p>
+    <p>11.7.&nbsp;&nbsp; &nbsp;The limitations and exclusions of liability pursuant to
+        this Clause 11.1 to 11.6 shall in no way&nbsp;affect the liability of myWorld in compliance with the mandatory
+        legal provisions of the Product Liability Act.</p>
+    <p>11.8.&nbsp;&nbsp; &nbsp;The user has the opportunity to filter the selected
+        products according to a diverse range of critera&nbsp;<br>(for example, according to price). myWorld accepts no
+        liability, however, for any mistakes which might occur during filtration of the products on offer.<br>&nbsp;</p>
+    <p>&nbsp;<br><strong data-renderer-mark=""true"">12.&nbsp;&nbsp; &nbsp;APPLICABLE LAW&nbsp;</strong>
+    </p>
+    <p>German Law applies with exception of UN Purchase Law (CISG) and the conflict of
+        law. The competent court in Cologne shall have exclusive jurisdiction for all potential disputes arising out of
+        or in connection with these terms and conditions. For contracts involving consumers, the consumer has the choice
+        between the court in whose district the domicile, habitual residence or place of employment of the consumer is
+        located and the jurisdiction located at the myWorld premises. &nbsp;Although German Law is applicable to the
+        present business relationship, you can also call on the mandatory consumer protection regulations implemented by
+        the state in which you live, insofar as this state is a member state of the European Union. &nbsp;In this case,
+        you may file a claim in connection with these conditions of use which are the result of consumer protection
+        norms, both in Germany and the EU member state where you live. &nbsp;</p>
+    <p><br>Complaints/online dispute resolution/arbitration procedure&nbsp;<br>The
+        European Commission makes a platform for the purpose of online dispute resolution available &nbsp;via the
+        following&nbsp;<a href=""https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage""
+                          title=""https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage""
+                          data-renderer-mark=""true"">link&nbsp;</a>&nbsp;('OS Platform'). myWorld strives to resolve all
+        potential differences of opinion which could conceivably arise from this contractual relationship amicably.
+        &nbsp;Furthermore, myWorld is not obliged to participate in an arbitration procedure and cannot offer you the
+        opportunity to partake in such a procedure.&nbsp;</p>
+    <p>13.&nbsp;&nbsp; &nbsp;Additional Instructions&nbsp;</p>
+    <p>We would like to draw your attention to our Data Protection Policy as well as to
+        our tips on cookies &nbsp; and internet-based advertising materials which you can access via <a
+             href=""https://de.myworld.com/de-de/"" title=""https://de.myworld.com/de-de/""
+            data-renderer-mark=""true"">marketplace.myworld.com</a>.</p>
+    <p>&nbsp;</p>
+</div>"
+Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,<h2>Datenschutzerklärung</h2>,<h2>Data Privacy Policy</h2>,"
+<div>
+    <h1 id=""Datenschutzerklärung"">Datenschutzerklärung</h1>
+    <p>
+        <strong data-renderer-mark=""true"">INFORMATION GEMÄSS ART 13 &amp; 14 DSGVO</strong>
+    </p>
+    <p>&nbsp;</p>
+    <p>Wir nehmen den Schutz Ihrer personen- und unternehmensbezogenen Daten sehr ernst
+        und sind bestrebt, die Nutzung unserer Services sicher zu gestalten. Wir verpflichten uns, die gesetzlichen
+        Datenschutzbestimmungen zu beachten. Diese Datenschutzerklärung beschreibt, welche Daten wir von Ihnen erheben
+        und verwenden, zu welchen Zwecken wir dies machen und wie wir Ihre Daten schützen.
+    </p>
+    <p>&nbsp;</p>
+    <p>
+        <strong data-renderer-mark=""true"">Inhaltsverzeichnis</strong>
+    </p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Geltungsbereich</p></li>
+    </ol>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Welche Daten erfasst werden</p></li>
+    </ol>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Cookies und Web Tracking</p></li>
+    </ol>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Datenverwendung</p></li>
+    </ol>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Datensicherheit und Weitergabe</p></li>
+    </ol>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Ihre datenschutzrechtlichen Rechte und Kontakt</p></li>
+    </ol>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>GELTUNGSBEREICH</p></li>
+    </ol>
+    <p>Diese Erklärung gilt für die unter&nbsp;
+        <a href=""https://de.myworld.com/de-de/""
+           title=""https://de.myworld.com/de-de/""
+           data-renderer-mark=""true"">marketplace.myworld.com</a>&nbsp;abrufbare
+        Website.
+    </p>
+    <p>Datenschutzrechtlich Verantwortliche ist die</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;
+    </p>
+    <p>Der Datenschutzbeauftragte ist<br>Peter Oskar Miller<br>c/o HXS GmbH<br>Ungargasse
+        37<br>1030 Wien<br>E-Mail:&nbsp;
+        <a href=""mailto:dataprotection.marketplace@myworld.com""
+           title=""mailto:dataprotection.marketplace@myworld.com""
+           data-renderer-mark=""true"">dataprotection.marketplace@myworld.com
+        </a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Im Zuge der Weiterentwicklung unserer Websites zur Verbesserung unserer Services,
+        kann es vorkommen, dass Ergänzungen dieser Datenschutzerklärung erforderlich werden. In diesem Fall werden wir
+        Sie vorab darüber informieren und allenfalls Ihre gesonderte Zustimmung einholen.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>WELCHE DATEN WERDEN ERFASST</p></li>
+    </ol>
+    <p>Die Art von personenbezogenen Daten und sonstigen Informationen, die wir sammeln
+        und aufbewahren, hängt von Ihrer Interaktion mit unserer Website ab: grundsätzlich können Sie unsere Webseite
+        besuchen und sich über unsere Angebote informieren, ohne dass Sie uns personenbezogene Daten preisgeben. Um in
+        weiterer Folge unsere Dienstleistungen erbringen können, müssen wir gewisse personenbezogene Daten erfassen,
+        welche Sie uns bei der Registrierung oder im Rahmen einer Bestellung zur Verfügung stellen. Dazu gehören Ihre
+        persönlichen Angaben (Vorname, Name, Geburtsdatum) und Ihre Kontaktangaben (E-Mail-Adresse, Telefonnummer,
+        Adresse). Für die Abwicklung von Ticket-Bestellungen werden noch weitere Angaben, z.B. über die Lieferadresse,
+        die von Ihnen bevorzugte Zahlungsweise und gegebenenfalls Ihre Bank- oder Kreditkartendaten erforderlich. Ihre
+        Daten werden ausschließlich zur Abwicklung Ihrer Bestellungen und den Versand von eigenen Newslettern resp.
+        Mailings erhoben. Eine weitere Verwendung der Daten erfolgt nur dann, wenn dies im Rahmen der Auftragserfüllung,
+        des Kundensupports oder der Erfüllung rechtlicher oder wirtschaftlicher Rahmenbedingungen erforderlich ist.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>COOKIES UND WEB TRACKING</p></li>
+    </ol>
+    <p>Unsere Websites verwenden sogenannte Cookies, das sind kleine Textdateien, die auf
+        Ihrem Computer abgelegt werden und dort wieder abgerufen werden können. Cookies dienen dazu, Ihnen die Anmeldung
+        zu unseren Diensten zu ermöglichen und den Webauftritt für Sie zu personalisieren. Sie können einen Teil unseres
+        Webangebots auch nutzen, ohne sich zu registrieren bzw. einzuloggen. Auch in diesem Fall werden bestimmte
+        Informationen automatisch erfasst, um statistische Daten über die Nutzung und Effizienz unseres Webangebots zu
+        sammeln, und um dieses an die Bedürfnisse unserer Nutzer anzupassen. Daher sammeln und verarbeiten wir
+        Informationen über Ihre IP-Adresse, die Zeit und Dauer Ihres Besuchs, die Anzahl Ihrer Besuche, die
+        Formularnutzung, Ihre Sucheinstellungen, Ihre Darstellungsansicht, Ihre Einstellungen zu Favoriten auf unserer
+        Website. Die Speicherdauer der Cookies ist unterschiedlich. Vorwiegend nutzen wir Cookies, die nach Beendigung
+        Ihres Besuchs auf unserer Website automatisch gelöscht werden (so genannte „Session-Cookies“). Wir
+        protokollieren jeden Zugriff auf unsere Website und jeden Abruf einer auf der Website hinterlegten Datei. Die
+        von uns gesetzten Cookies dienen ausschließlich unserer Information und werden zur Auswertung der gesammelten
+        Informationen von der mWS myWorld Solutions AG im Auftrag der mWG myWorld Solutions AG verarbeitet. Wir
+        verwenden JavaScript, um Ihr Nutzungsverhalten auf unserer Website zu erfassen, um unsere Webservices auf die
+        Bedürfnisse unserer Nutzer anzupassen. Dabei ermitteln wir Ihren Browser Typ, Standort, Zeitpunkt und Dauer
+        Ihrer Nutzung, URL und Seitenbezeichnung sowie die verweisende Website. Sie haben die Möglichkeit, die Erfassung
+        dieser Daten abzulehnen, indem Sie JavaScript direkt über Ihren Webbrowser deaktivieren. Zusätzlich verwenden
+        wir folgende Tools:
+    </p>
+    <p>Im Rahmen der Ausspielung von Werbebannern greifen wir auf externe Dienste
+        folgender Anbieter zurück:
+    </p>
+    <p>·&nbsp;
+        <a href=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
+           title=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
+           data-renderer-mark=""true"">Google</a>&nbsp;(Analytics, Tag Manager,
+        Search Ads, Display &amp; Video)</p>
+    <p>·&nbsp;
+        <a href=""https://privacy.microsoft.com/de-de/privacystatement""
+           title=""https://privacy.microsoft.com/de-de/privacystatement""
+           data-renderer-mark=""true"">Bing Ads</a>&nbsp;(Microsoft)</p>
+    <p>·&nbsp;
+        <a href=""https://de-de.facebook.com/privacy/explanation""
+           title=""https://de-de.facebook.com/privacy/explanation""
+           data-renderer-mark=""true"">Facebook</a>/
+        <a href=""https://help.instagram.com/155833707900388""
+           title=""https://help.instagram.com/155833707900388""
+           data-renderer-mark=""true"">Instagram</a>
+    </p>
+    <p>·&nbsp;
+        <a href=""https://privacy.xing.com/de/datenschutzerklaerung""
+           title=""https://privacy.xing.com/de/datenschutzerklaerung""
+           data-renderer-mark=""true"">Xing</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
+           title=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
+           data-renderer-mark=""true"">LinkedIn</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.snap.com/de-DE/privacy/privacy-policy/""
+           title=""https://www.snap.com/de-DE/privacy/privacy-policy/""
+           data-renderer-mark=""true"">Snapchat</a></p>
+    <p>·&nbsp;
+        <a href=""https://twitter.com/de/privacy""
+           title=""https://twitter.com/de/privacy""
+           data-renderer-mark=""true"">Twitter</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.adcrowd.com/de/privacy""
+           title=""https://www.adcrowd.com/de/privacy"" data-renderer-mark=""true"">adcrowd.com</a>
+    </p>
+    <p>·&nbsp;
+        <a href=""https://www.criteo.com/de/privacy/""
+           title=""https://www.criteo.com/de/privacy/"" data-renderer-mark=""true"">criteo.com</a>
+    </p>
+    <p>·&nbsp;
+        <a href=""https://www.luna-park.de/datenschutz/""
+           title=""https://www.luna-park.de/datenschutz/"" data-renderer-mark=""true"">luna-park.de</a>
+    </p>
+    <p>·&nbsp;
+        <a href=""http://www.projecter.de/datenschutz.html""
+           title=""http://www.projecter.de/datenschutz.html""
+           data-renderer-mark=""true"">projecter.de</a></p>
+    <p>·&nbsp;
+        <a href=""https://traffic3.net/traffic3/datenschutz""
+           title=""https://traffic3.net/traffic3/datenschutz""
+           data-renderer-mark=""true"">traffic3</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.eviom.com/datenschutz/""
+           title=""https://www.eviom.com/datenschutz/"" data-renderer-mark=""true"">eviom.de</a>
+    </p>
+    <p>·&nbsp;
+        <a href=""https://www.analyticaa.com/datenschutz/""
+           title=""https://www.analyticaa.com/datenschutz/""
+           data-renderer-mark=""true"">analyticaa.com</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.unitedads.de/datenschutzerklaerung/""
+           title=""https://www.unitedads.de/datenschutzerklaerung/""
+           data-renderer-mark=""true"">unitedads.de</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.awin.com/gb/legal/privacy-policy-gb""
+           title=""https://www.awin.com/gb/legal/privacy-policy-gb""
+           data-renderer-mark=""true"">Awin</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.conversantmedia.com/legal/privacy""
+           title=""https://www.conversantmedia.com/legal/privacy""
+           data-renderer-mark=""true"">CJ Affiliate</a></p>
+    <p>·&nbsp;
+        <a href=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
+           title=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
+           data-renderer-mark=""true"">Ceneo</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.preis.de/impressum/#datenschutz""
+           title=""https://www.preis.de/impressum/#datenschutz""
+           data-renderer-mark=""true"">Preis</a></p>
+    <p>·&nbsp;
+        <a
+            href=""https://company.billiger.de/service/datenschutzunterrichtung/""
+            title=""https://company.billiger.de/service/datenschutzunterrichtung/""
+            data-renderer-mark=""true"">Billiger</a></p>
+    <p>·&nbsp;
+        <a
+            href=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie""
+            title=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie""
+            data-renderer-mark=""true"">Kelkoo</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.ceneje.si/pravila-o-zasebnosti""
+           title=""https://www.ceneje.si/pravila-o-zasebnosti""
+           data-renderer-mark=""true"">Ceneje</a></p>
+    <p>·&nbsp;
+        <a href=""https://connexity.com/privacy-policy/""
+           title=""https://connexity.com/privacy-policy/"" data-renderer-mark=""true"">Connexity</a>
+    </p>
+    <p>·&nbsp;
+        <a href=""https://en.comparis.ch/comparis/info/privacy""
+           title=""https://en.comparis.ch/comparis/info/privacy""
+           data-renderer-mark=""true"">Comparis</a></p>
+    <p>·&nbsp;
+        <a href=""http://ompgroup.de/datenschutz/""
+           title=""http://ompgroup.de/datenschutz/"" data-renderer-mark=""true"">Online
+            Media Partner</a></p>
+    <p>·&nbsp;
+        <a href=""https://www.shopping24.de/datenschutz""
+           title=""https://www.shopping24.de/datenschutz"" data-renderer-mark=""true"">Shopping24.de</a>
+    </p>
+    <p>Bitte beachten Sie, dass die gängigen Internetbrowser gemäß den
+        Standardeinstellungen Cookies akzeptieren. Sie können Ihren Browser auch so einstellen, dass Sie alle oder
+        bestimmte Cookies ablehnen oder dass Sie vor dem Empfang eines neuen Cookies gefragt werden. Die Anleitung dazu
+        bieten Ihnen die meisten Browser unter dem mit „Hilfe“ bezeichneten Menüpunkt in der Menüleiste. Sie erfahren
+        dort auch, wie Sie die bereits erhaltenen Cookies wieder löschen können. Bitte beachten Sie, dass Sie
+        möglicherweise nicht alle Funktionen unserer Websites verwenden können, wenn Sie keine oder nicht alle Cookies
+        akzeptieren. Durch die Nutzung unserer Website bzw., wenn erforderlich, durch die Einwilligung dazu, die wir
+        gesondert einholen, erklären Sie sich damit einverstanden, dass die oben angeführten Cookies und Tools verwendet
+        werden dürfen. Wir weisen an dieser Stelle darauf hin, als Anbieter der Website keine Kenntnis vom Inhalt der
+        übermittelten Daten sowie deren Nutzung durch die sozialen Netzwerke zu erhalten. Weitere Informationen zur
+        Datenverwendung durch die sozialen Netzwerke finden Sie in den Datenschutzerklärungen der genannten sozialen
+        Netzwerke.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>DATENVERWENDUNG</p></li>
+    </ol>
+    <p>Wir verwenden Ihre personen- und unternehmensbezogenen Daten ausschließlich unter
+        Einhaltung der gesetzlichen Vorgaben. Die personen- und unternehmensbezogenen Daten, welche Sie uns bei Ihrer
+        Registrierung zur Verfügung stellen, erfassen und verarbeiten wir ausschließlich im Rahmen der Erfüllung unserer
+        vertraglichen Pflichten Ihnen gegenüber (Art 6 Abs 1 Z b DSGVO). Sofern Sie uns diese Daten nicht zur Verfügung
+        stellen, ist es uns nicht möglich, mit Ihnen einen Vertrag abzuschließen und somit auch keine Leistungen für Sie
+        erbringen. Darüber hinaus verwenden wir Ihre Daten sofern eine rechtliche Verpflichtung besteht (Art 6 Abs 1 Z c
+        DSGVO) sowie nur in Fällen und in dem Umfang, in denen Sie uns eigens Ihre Einwilligung dazu erteilen (Art 6 Abs
+        1 Z a DSGVO).Wir nutzen Ihre Daten etwa zur Kommunikation mit Ihnen, um Ihre Identität zu verifizieren und Ihnen
+        Ihren internen Bereich auf unserer Website zur Verfügung stellen zu können, um Ihre Anfragen und Bestellungen zu
+        verarbeiten und um Ihnen unsere Services zur Verfügung stellen zu können.Wenn Sie uns Ihre gesonderte
+        Einwilligung dazu erteilt haben, verwenden wir Ihre Daten auch im Umfang der Einwilligung, um Sie z.B. über
+        Angebote und Aktionen unserer Partnerunternehmen und unserer B2B Partnerunternehmen zu informieren. Sie können
+        diese Einwilligung jederzeit widerrufen, wobei der Widerruf die weitere Verarbeitung für die Zukunft unzulässig
+        macht. Wir speichern Ihre personenbezogenen Daten solange eine Geschäftsbeziehung mit Ihnen besteht und darüber
+        hinaus sofern es gesetzlich normierte längere Aufbewahrungsfristen gibt oder wir die Daten im Rahmen eines
+        behördlichen Verfahrens benötigen.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>DATENSICHERHEIT UND WEITERGABE</p></li>
+    </ol>
+    <p>Zum Schutz Ihrer Daten nutzen wir unter anderem Verschlüsselungen bei der
+        Datenübertragung (SSL-Verschlüsselung), Firewalls, Hacker-Abwehr Programme und weitere Sicherheitsvorkehrungen
+        nach dem aktuellen Stand der Technik. Bei der Kommunikation per E-Mail kann die Sicherheit der Daten von uns nur
+        nach dem aktuellen Stand der Technik gewährleistet werden. Die Verwendung Ihrer personen- und
+        unternehmensbezogenen Daten erfolgt grundsätzlich durch die <strong data-renderer-mark=""true"">mWS myWorld
+            Solutions AG (myWorld)</strong> als Vertragspartner und für die Verarbeitung Verantwortliche. Die <strong
+            data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld) </strong>bedient sich zur Abwicklung der Deaten
+        als Auftragsverarbeiterin. Die Weitergabe / Überlassung Ihrer personen- und unternehmensbezogenen Daten kann,
+        wie nachfolgend angeführt, an weitere&nbsp;
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-category-service-provider.pdf""
+           title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-category-service-provider.pdf""
+           data-renderer-mark=""true"">Dienstleister</a>&nbsp;sowie an andere
+        Gesellschaften innerhalb der&nbsp;
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
+           title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
+           data-renderer-mark=""true"">myWorld Gruppe</a>,&nbsp;
+        <a
+           href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
+           title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
+           data-renderer-mark=""true"">Lyoness Gruppe</a>&nbsp;und&nbsp;
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
+           title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
+           data-renderer-mark=""true"">Lyconet Gruppe</a>&nbsp;erfolgen.
+        Wir bedienen uns zur Abwicklung unserer Dienstleistungen, für die Kommunikation mit Ihnen und für die Verwaltung
+        unseres Online-Auftritts bestimmter Auftragsverarbeiter. Wir versichern, dass wir diese Auftragsverarbeiter
+        sorgfältig auswählen, um eine rechtmäßige und sichere Datenverarbeitung zu gewährleisten. Zudem haben wir die
+        Auftragsverarbeiter dazu verpflichtet, Ihre personen- und unternehmensbezogenen Daten nur nach unseren
+        dokumentierten Weisungen zweckgebunden und gemäß den österreichischen und europäischen Datenschutzbestimmungen
+        zu verwenden. Eine weitergehende Verwendung der Daten durch diese Auftragsverarbeiter ist ausgeschlossen.
+        Außerdem geben wir Ihre personen- und unternehmensbezogenen Daten unter Gewährleistung der erforderlichen
+        Datensicherheitsmaßnahmen innerhalb der myWorld Gruppe weiter, soweit dies zur Verwaltung ihres Kundenkontos am
+        myWorld Marktplatz, zur Abwicklung der von Ihnen getätigten Einkäufe, Serviceanfragen an uns, sowie der
+        Abrechnung von aus Einkäufen am Marktplatz möglicherwiese resultierenden Mitgliedsvorteilen der Cashback World
+        notwendig ist. Die Gesellschaften der myWorld Gruppe sind uns gegenüber ebenfalls dazu verpflichtet, Ihre
+        personen- und unternehmensbezogenen Daten nur für den jeweils konkreten Zweck und gemäß den deutschen und
+        europäischen Datenschutzbestimmungen zu verwenden. Die betroffenen Dienste sind insbesondere folgende: die
+        Kontaktaufnahme durch elektronische Nachrichten (z.B. E-Mail SMS oder Push Benachrichtigung), per Telefax, per
+        Telefon oder per Brief zur Information über Produkte und Aktionen am myWorld Marktplatz, die Identifizierung von
+        Angeboten, die Ihren Interessen entsprechen, die Durchführung von Zufriedenheitsumfragen, der Betrieb von
+        Hotlines sowie das Bearbeiten von Transaktionen. Falls und soweit dies für die Erbringung einer konkreten
+        Dienstleistung für Sie notwendig ist, oder sofern Sie uns dazu Ihre Einwilligung erteilen, werden wir den
+        Händlern am myWorld Marktplatz die dazu erforderlichen personen- und unternehmensbezogenen Daten übermitteln.
+        Die Händler wiederum sind uns gegenüber dazu verpflichtet, Ihre personen- und unternehmensbezogenen Daten nur
+        für den jeweils konkreten Zweck und gemäß den deutschen und europäischen Datenschutzbestimmungen zu verwenden.
+    </p>
+    <p>Die myWorld Gruppe ist international tätig. Unsere Geschäftstätigkeiten,
+        Managementstrukturen und unsere technische Infrastruktur überschreiten die Landesgrenzen. Wir übermitteln Ihre
+        personen- und unternehmensbezogenen Daten daher soweit dies zur Abwicklung der von Ihnen getätigten Einkäufe
+        notwendig ist auch an andere Gesellschaften der myWorld Gruppe ins Ausland. Eine Übermittlung Ihrer personen-
+        und unternehmensbezogenen Daten in die Mitgliedstaaten des Europäischen Wirtschaftsraums, in die Schweiz und in
+        andere Länder mit angemessenem Datenschutzniveau bedarf keiner weiteren Einwilligung oder behördlichen
+        Genehmigung. Sofern eine Übermittlung Ihrer personen- und unternehmensbezogenen Daten jedoch in andere als die
+        soeben genannten Länder erfolgen soll, werden wir Sie darüber informieren und natürlich die geltenden
+        datenschutzrechtlichen Vorschriften einhalten, geeignete Garantien vorsehen und für die Durchsetzung Ihrer
+        Rechte und Rechtsbehelfe sorgen. An andere Personen als die oben angeführten Händler des Marktplatzes,
+        Auftragsverarbeiter und myWorld-Gesellschaften werden wir Ihre personen- und unternehmensbezogenen Daten nicht
+        weitergeben, es sei denn Sie haben uns Ihre Einwilligung dazu erteilt oder es bestehen rechtliche
+        Verpflichtungen dazu.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>IHRE DATENSCHUTZRECHTLICHEN RECHTE UND KONTAKT</p></li>
+    </ol>
+    <p>Sie haben das Recht, von uns Auskunft zu den über Sie verarbeiteten
+        personenbezogenen Daten zu erhalten und können deren Berichtigung, Löschung oder die Einschränkung der
+        Verarbeitung verlangen. Weiters haben Sie ein Widerspruchsrecht und ein Recht auf Datenübertragbarkeit (das
+        heißt, Sie haben das Recht, die Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu
+        erhalten). Sollten Sie der Ansicht sein, dass die Verarbeitung Ihrer personenbezogenen Daten gegen die
+        EU-Datenschutz-Grundverordnung verstößt, haben Sie das Recht, bei der österreichischen Datenschutzbehörde (
+        <a href=""http://www.dsb.gv.at"" title=""http://www.dsb.gv.at"" data-renderer-mark=""true"">www.dsb.gv.at</a>)
+        oder einer Aufsichtsbehörde eines anderen EU-Mitgliedstaates, Beschwerde zu erheben. Sofern die Verwendung Ihrer
+        personenbezogenen Daten auf dieser Webseite auf Ihrer Einwilligung beruht, können Sie diese Einwilligung zur
+        Verarbeitung Ihrer verwendeten personen- und unternehmensbezogenen Daten für die Zukunft jederzeit ohne Angabe
+        von Gründen widerrufen. Ein solcher Widerruf bewirkt die Unzulässigkeit der weiteren Verwendung der Daten. Der
+        Widerruf ist gegebenenfalls schriftlich (per Brief, Fax oder E-Mail) an folgende Adresse zu richten:
+    </p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>Bitte wenden Sie sich an diese Adresse auch bei Fragen zur Verwendung Ihrer Daten
+        sowie der Durchsetzung Ihrer datenschutzrechtlichen Rechte.
+    </p>
+    <p>&nbsp;</p>
+</div>","
+<div>
+    <h1 id=""Privacy-policy"">Privacy policy</h1>
+    <p><strong data-renderer-mark=""true"">INFORMATION REGARDING ART 13, 14 GDPR</strong></p>
+    <p>We take the protection of your personal and company-related data very seriously and
+        work hard to make sure our services are safe for you to use. We are committed to complying with statutory data
+        protection requirements. This data protection policy describes the type of data that we collect from you, how
+        and for what we use it, and how we protect it.
+    </p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">Table of Contents</strong></p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Area of Applicability</p></li>
+        <li><p>Which data we record</p></li>
+        <li><p>Cookies and Web Tracking</p></li>
+        <li><p>Use of data</p></li>
+        <li><p>Data security and forwarding</p></li>
+        <li><p>Your data protection rights and contact details</p></li>
+    </ol>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>Area of Applicability</p></li>
+    </ol>
+    <p>This policy applies to the website available at&nbsp;
 
-<p>Sie können sich aufgrund des Bundesdatenschutzgesetzes bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer
-    personenbezogenen Daten und deren Berichtigung, Sperrung, Löschung oder einem Widerruf einer erteilten Einwilligung
-    unentgeltlich an uns wenden. Wir weisen darauf hin, dass Ihnen ein Recht auf Berichtigung falscher Daten oder
-    Löschung personenbezogener Daten zusteht, sollte diesem Anspruch keine gesetzliche Aufbewahrungspflicht
-    entgegenstehen.</p>
+        <a href=""https://de.myworld.com/en-gb/de.myworld.com""
+            title=""https://de.myworld.com/en-gb/de.myworld.com""
+            data-renderer-mark=""true"">markteplace.myworld.com</a>.&nbsp;<br>Responsible
+        under data protection law
+    </p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ol>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+            title=""mailto:customerservice.de@myworld.com""
+            data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Data protection officer</p>
+    <p>Peter Oskar Miller<br>HXS GmbH<br>Ungargasse 37<br>1030 Vienna, Austria<br>
+        <a href=""mailto:dataprotection.marketplace@myworld.com""
+           title=""mailto:dataprotection.marketplace@myworld.com"" data-renderer-mark=""true"">dataprotection.marketplace@myworld.com</a>&nbsp;
+    </p>
+    <p><br>In the course of further website development to improve our services, it may
+        occur that supplements to this Data Protection Declaration are necessary. In this case, we will inform you in
+        advance and obtain your separate consent if needed.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>WHICH DATA WE RECORD</p></li>
+    </ol>
+    <p>The type of personal information and other information we collect and store
+        depends on your interaction with our website: in principle, you can visit our website and obtain information
+        about our offers without revealing any personal information. In order to subsequently provide our services, we
+        must collect certain personal information that you provide to us when registering or placing an order. These
+        details include your personal data (your full name, title, gender, date of birth) and your contact data (email
+        address, postal address, telephone number). For processing your orders, further details ac be required, e.g. the
+        delivery address, the preferred method of payment and, if necessary, your bank or credit card details. Your data
+        will be used exclusively to process your orders and to send you newsletters resp. mailings. Further use of the
+        data will only take place if this is necessary in the context of order fulfillment, customer support or the
+        fulfillment of legal or economic conditions.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ol>
+    <p><strong data-renderer-mark=""true"">COOKIES AND WEB TRACKING</strong><br>Our
+        websites use things called cookies, which are small text files that are stored on your computer and can be
+        accessed again when you revisit our website. Cookies enable you to register for our services and help us to
+        personalise the website for you.&nbsp;<br>You can also use some parts of our website without needing to register
+        or log in. Even if you don't log in to the website, we will still record certain information automatically so
+        that we can collate data on how our website is used and how efficient it is in a bid to adjust it to our users'
+        needs. We will therefore collect and process information on your IP address, the time and length of your visit,
+        the number of visits you make, which forms you use, your search settings, your display settings and your
+        favourite settings on our website.&nbsp;<br>Different cookies are stored for different lengths of time. The
+        majority of the cookies we use are automatically deleted when you leave our website (the so-called
+        ""session-cookies""). We log access to our website and downloads of files from the website. The cookies on our
+        websites are used exclusively for information purposes and are processed by mWS myWorld Solutions AG on behalf
+        of mWG myWorld Solutions AG, for the purpose of analysing the data collected.&nbsp;<br>We use JavaScript to
+        track your user behaviour on our website to be able to tailor our web services to the needs of our users. We
+        determine your browser type, location, time and duration of your use, URL and page name, as well as the
+        referring website. You can refuse the collection of this data by deactivating JavaScript directly from your web
+        browser.&nbsp;<br>We also use the following tools:
+    </p>
+    <p>Salesforce Marketing Cloud&nbsp;<br>This is how we record your behaviour on our
+        website to be able to optimise our offer. This way, we find out how many users visit us and record the number of
+        times they access each page. All analysed data is anonymous and is used in automatic processes to improve our
+        offers using predictive intelligence. The behaviour of registered Members on our websites is recorded to improve
+        the user experience and identify relevant content. Salesforce's Cookies are typically sent to a Salesforce
+        server in the US and stored there.<br>As part of our advertising banners, we rely on external services from the
+        following providers:
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
+           title=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
+           data-renderer-mark=""true"">Google</a>&nbsp;(Analytics, Tag Manager, Search Ads,
+        Display &amp; Video)
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://privacy.microsoft.com/de-de/privacystatement""
+           title=""https://privacy.microsoft.com/de-de/privacystatement""
+           data-renderer-mark=""true"">Bing Ads</a>&nbsp;(Microsoft)
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://de-de.facebook.com/privacy/explanation""
+           title=""https://de-de.facebook.com/privacy/explanation""
+           data-renderer-mark=""true"">Facebook</a>/
+        <a href=""https://help.instagram.com/155833707900388""
+           title=""https://help.instagram.com/155833707900388""
+           data-renderer-mark=""true"">Instagram</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://privacy.xing.com/de/datenschutzerklaerung""
+           title=""https://privacy.xing.com/de/datenschutzerklaerung""
+           data-renderer-mark=""true"">Xing</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
+            title=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
+            data-renderer-mark=""true"">LinkedIn</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.snap.com/de-DE/privacy/privacy-policy/""
+           title=""https://www.snap.com/de-DE/privacy/privacy-policy/""
+           data-renderer-mark=""true"">Snapchat</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://twitter.com/de/privacy""
+           title=""https://twitter.com/de/privacy"" data-renderer-mark=""true"">Twitter</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.adcrowd.com/de/privacy""
+           title=""https://www.adcrowd.com/de/privacy"" data-renderer-mark=""true"">adcrowd.com</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.criteo.com/de/privacy/""
+           title=""https://www.criteo.com/de/privacy/""
+           data-renderer-mark=""true"">criteo.com</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.luna-park.de/datenschutz/""
+           title=""https://www.luna-park.de/datenschutz/"" data-renderer-mark=""true"">luna-park.de</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""http://www.projecter.de/datenschutz.html""
+           title=""http://www.projecter.de/datenschutz.html"" data-renderer-mark=""true"">projecter.de</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://traffic3.net/traffic3/datenschutz""
+           title=""https://traffic3.net/traffic3/datenschutz"" data-renderer-mark=""true"">traffic3</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.eviom.com/datenschutz/""
+           title=""https://www.eviom.com/datenschutz/""
+           data-renderer-mark=""true"">eviom.de</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.analyticaa.com/datenschutz/""
+           title=""https://www.analyticaa.com/datenschutz/"" data-renderer-mark=""true"">analyticaa.com</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.unitedads.de/datenschutzerklaerung/""
+           title=""https://www.unitedads.de/datenschutzerklaerung/""
+           data-renderer-mark=""true"">unitedads.de</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.awin.com/gb/privacy""
+           title=""https://www.awin.com/gb/privacy"" data-renderer-mark=""true"">Awin</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.conversantmedia.com/legal/privacy""
+           title=""https://www.conversantmedia.com/legal/privacy""
+           data-renderer-mark=""true"">CJ Affiliate</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
+            title=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
+            data-renderer-mark=""true"">Ceneo</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.preis.de/impressum/#datenschutz""
+           title=""https://www.preis.de/impressum/#datenschutz"" data-renderer-mark=""true"">Preis</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://company.billiger.de/service/datenschutzunterrichtung/""
+           title=""https://company.billiger.de/service/datenschutzunterrichtung/""
+           data-renderer-mark=""true"">Billiger</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie/""
+           title=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie/""
+           data-renderer-mark=""true"">Kelkoo</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.ceneje.si/pravila-o-zasebnosti""
+           title=""https://www.ceneje.si/pravila-o-zasebnosti"" data-renderer-mark=""true"">Ceneje</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://connexity.com/privacy-policy/""
+           title=""https://connexity.com/privacy-policy/"" data-renderer-mark=""true"">Connexity</a>
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://en.comparis.ch/comparis/info/privacy""
+           title=""https://en.comparis.ch/comparis/info/privacy"" data-renderer-mark=""true"">Comparis</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""http://www.ompgroup.de/datenschutz/""
+           title=""http://www.ompgroup.de/datenschutz/"" data-renderer-mark=""true"">Online
+            Media Partner</a>&nbsp;
+    </p>
+    <ul class=""ak-ul"" data-indent-level=""1"">
+        <li><p>&nbsp;</p></li>
+    </ul>
+    <p>
+        <a href=""https://www.shopping24.de/datenschutz""
+           title=""https://www.shopping24.de/datenschutz"" data-renderer-mark=""true"">Shopping24.de</a>&nbsp;<br>Please
+        note that most internet browsers are set to accept cookies by default. You can change the settings in your
+        browser so that certain cookies are rejected or so that you are asked if you would like to accept new cookies.
+        You will find instructions on how to do this under the ""Help"" function in the menu bar on most browsers. These
+        instructions will normally tell you how to delete existing cookies as well.<br>Please note that you may not be
+        able to use all the features and services on our websites if you do not accept any or all cookies.<br>By using
+        our website, or, if necessary, by consent, which we obtain separately, you agree that the above cookies and
+        tools may be used.<br>We hereby point out that, as the provider of the website, we are not aware of the content
+        of the transmitted data and its use by the social net-works. For more information about social media data usage,
+        see the privacy statements of the social networks listed.
+    </p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>USE OF DATA</p></li>
+    </ol>
+    <p>We use your personal and company-related data exclusively in compliance with legal
+        requirements. The personal and company-related data which you provide to us during your registration as a
+        Cashback World Member, as well as during your registration as a Loyalty Merchant and in the course of your
+        participation in the Cashback World Programm, is recorded and processed exclusively within the framework of our
+        contractual obligations (Art 6 Sec 1 lit b GDPR). Unless you provide us with this data, we are unable to
+        conclude a contract with you. In addition, we use your data if there is a legal obligation (Art. 6 Sec 1 lit c
+        GDPR). In addition, we use your personal or company-related data only in cases and to the extent to which you
+        give us your specific consent (Art. 6 Sec 1 lit a GDPR).<br>We use your personal data to communicate with you,
+        in order to verify your identity, to provide you with your personal Login area on our website, to handle your
+        inquiries and orders, and to provide you with our services.&nbsp;<br>If you have given us your separate consent,
+        we will also use your data, in the scope of the given consent, to provide you with, for example, offers and
+        promotions. You can revoke this consent at any time, whereby the revocation makes the further processing for the
+        future inadmissible.<br>We store your personal and company-related data as long as there is a business
+        relationship with you and, furthermore if there are legally standardized longer retention periods or if we need
+        the data in the context of an official procedure.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>DATA SECURITY AND FORWARDING</p></li>
+    </ol>
+    <p>In order to protect your data, we use, among other things, encryption for data
+        transmission (SSL encryption), firewalls, hacker defence programmes and other state-of-the-art security devices.
+        When communicating via e-mail, the security of the data can only be guaranteed by us ac-cording to the latest
+        state of the art technology.<br>The use of your personal and company-related data will be handled by mWG myWorld
+        Solutions AG as the contractual partner and as the responsible entitiy for the processing of your data. mWG
+        myWorld Germany GmbH uses mWS myWorld Solutions AG as a service provider for the processing. Your personal data
+        and company-related data can, however, be transferred / delivered to other service providers, as well as to
+        other companies within the&nbsp;
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
+            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
+            data-renderer-mark=""true"">myWorld Group</a>,&nbsp;
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
+            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
+            data-renderer-mark=""true"">Lyoness
+            Group</a>&nbsp;and&nbsp;
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
+            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
+            data-renderer-mark=""true"">Lyconet Group</a>.&nbsp;<br>To carry out our services,
+        communicate with you and manage our online presence we use the services of certain service providers. We assure
+        you that we carefully select these service providers to ensure legal and secure data processing. In addition, we
+        have obligated the service providers to use your personal data and company-related data only according to our
+        instructions and according to the Data Protection law of Germany and the Data Protection Acts of the European
+        Union. Further use of the data by these service providers is prohibited.<br>In addition, we will pass on your
+        personal data and company-related data to the myWorld Group, insofar as this is necessary for the administration
+        of your customer account at the myWorld marketplace, for the processing of the purchases made by you and the
+        processing of your service inquiries to us. The myWorld Group companies are also obligated only to use your
+        personal data and company-related data for the sole purpose for which it was given, as provided for in the Data
+        Protection Acts of Germany and the European Union. In particular, the affected services are as follows: contact
+        via electronic messages (e.g. e-mail, SMS or push notifications), by fax, by telephone or by letter for
+        information about products and promotions of the myWorld marketplace, identification of promotions which are of
+        interest to you, conducting satisfaction surveys, operating hotlines, and processing transactions. We will
+        transmit your necessary personal data to the marketplace sellers if and as far as it is necessary to be able to
+        provide a concrete service for you or if you give us your explicit consent. The sellers are obliged only to use
+        your personal data and company-related data for the sole purpose for which it was given, as provided for in the
+        Data Protection Acts of Germany and the European Union.<br>myWorld Group is an international corporation. Our
+        business activities, management structure and our technical infrastructure transcend national borders. We can
+        therefore send your personal data and company-related data to other myWorld companies abroad, as far as this is
+        necessary to process your order. A transfer of your personal or company-related data to the Member States of the
+        European Economic Area, to Switzerland and to other countries with adequate level of data protection requires no
+        further consent. If, however, your personal and company-related data is transferred to any country other than
+        those mentioned above, we will inform you and of course comply with the applicable data protection regulations,
+        provide you with appropriate guarantees and ensure the enforcement of your rights and remedies.<br>We will not
+        pass on your personal data and company data to any persons other than the above-mentioned marketplace sellers,
+        service providers and myWorld companies, unless you have given us your consent or if there is a legal obligation
+        to do so.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>YOUR DATA PROTECTION RIGHTS AND CONTACT INFORMATION</p></li>
+    </ol>
+    <p>You have the right to obtain information about the personal or company-related
+        data that we process about you and may request their correction, deletion or restriction of processing. You also
+        have the right of objection and the right to data portability (Which means you have the right to receive the
+        data in a structured, common and machine-readable format).<br>If you believe that the processing of your
+        personal or company-related data violates the EU General Data Protection Regulation, you have the right to lodge
+        a complaint with the Republic of Ireland Data Protection Authority (
+        <a href=""http://www.dataprotection.ie""
+            title=""http://www.dataprotection.ie""
+            data-renderer-mark=""true"">www.dataprotection.ie</a>)
+        or a supervisory authority of another EU Member State.<br>If the use of your personal or company-related data on
+        this website is based on your consent, you have the right to revoke your consent for the processing of this data
+        for the future at any time without having to provide any reasons. &nbsp;By withdrawing your approval, your data
+        may no longer be used. Please inform us in writing of your wish to withdraw approval (by post or e-mail) using
+        the following address:</p>
+    <p><br><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+            title=""mailto:customerservice.de@myworld.com""
+            data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Please also use this contact information for any questions regarding the use of
+        your data as well as for information about the enforcement of your data protection rights.
+    </p>
+    <p>&nbsp;</p>
+</div>"
+Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/terms-of-use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,"
+<div>
+    <p>&nbsp;</p>
+    <h1 id=""Nutzungsbedingungen-für-den-myWorld-Marktplatz-–-Terms-of-Use"">
+        Nutzungsbedingungen für den myWorld Marktplatz – Terms of Use</h1>
+    <p>&nbsp;</p>
+    <p>A.&nbsp;&nbsp;&nbsp;&nbsp; Die nachfolgenden Nutzungsbedingungen regeln die
+        Benutzung dieser Website der&nbsp;mWS myWorld Solutions AG Grazbachgasse 87-93, 8010 Graz, Österreich,&nbsp;(im
+        Folgenden kurz „myWorld“) und den Zugang zum myWorld Marktplatz. Mit dem technischen Betrieb des myWorld
+        Marktplatzes sowie der logistischen und operativen Abwicklung der Bestellungen hat myWorld die mWS myWorld
+        Solutions AG (Grazbachgasse 87-93, 8010 Graz, Österreich, Firmenbuchnummer: FN 389134g), beauftragt. Wenn Sie
+        über den myWorld Marktplatz Käufe tätigen, gelten für sie zusätzlich zu den vorliegenden Nutzungsbedingungen die
+        Verkaufsbedingungen, die Sie unter&nbsp;
+        <a href=""https://de.myworld.com/de-de/""
+           title=""https://de.myworld.com/de-de/"" data-renderer-mark=""true"">marketplace.myworld.com</a>&nbsp;aufrufen
+        können.</p>
+    <p>B.&nbsp;&nbsp;&nbsp;&nbsp; Benutzer dieser Website erklären sich mit der
+        Registrierung mit diesen Nutzungsbedingungen einverstanden. myWorld kann diese Nutzungsbedingungen von Zeit zu
+        Zeit durch Aktualisieren dieser Nutzungsbedingungen ändern und ergänzen. myWorld wird Ihnen geänderte
+        Nutzungsbedingungen per E-Mail übermitteln, Sie haben dann 2 Monate Zeit um den Änderungen zuzustimmen oder sie
+        abzulehnen.</p>
+    <p>C.&nbsp;&nbsp;&nbsp;&nbsp; myWorld behält es sich ausdrücklich vor, Teile der
+        Website oder das gesamte Angebot zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder
+        endgültig einzustellen, insbesondere wenn der Weiterbetrieb des Services oder Teile des Services dem Anbieter
+        wirtschaftlich nicht mehr zumutbar sind.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>LIZENZ UND ZUGANG&nbsp;</p></li>
+    </ol>
+    <p>1.1.&nbsp;Unter den Voraussetzungen der vorliegenden Nutzungsbedingungen gewährt
+        Ihnen myWorld eine Lizenz für den Zugang und die Nutzung des myWorld Marktplatzes. Diesen Zugang dürfen Sie
+        allerdings nur für private Zwecke nutzen, d.h. nur für Zwecke, die nicht zum Betrieb eines Unternehmens gehören.
+        Die Lizenz ist nicht übertragbar und bezieht sich ausschließlich auf das Nutzen des myWorld Marktplatzes.</p>
+    <p>&nbsp;</p>
+    <p>1.2.&nbsp;Die Lizenz berechtigt Sie nicht dazu, die Produktinformationen,
+        Beschreibungen oder Preise zu erfassen oder zu nutzen oder die Inhalte und Kontoinformationen herunterzuladen
+        oder zu kopieren, Data-Mining zu betreiben, Roboter oder ähnliche Datenerfassungs- und Extraktions-Programme zu
+        nutzen.</p>
+    <p>&nbsp;</p>
+    <p>1.3.&nbsp;Bei Nutzung des Zugangs zum myWorld Marktplatz dürfen Sie, sofern keine
+        ausdrückliche Zustimmung von myWorld vorliegt, das Urheberrecht von myWorld nicht verletzten, beschränken oder
+        verkürzen.</p>
+    <p>&nbsp;</p>
+    <p>1.4.&nbsp;myWorld gewährt Minderjährigen, d. h. Personen, die das 18. Lebensjahr
+        noch nicht erreicht haben und nicht voll geschäftsfähig sind, keinen Zugang zum myWorld Marktplatz.</p>
+    <p>&nbsp;</p>
+    <p>1.5.&nbsp;Die Geschäftsverbindung zwischen Ihnen und myWorld bzw. die Lizenz für
+        die Nutzung des myWorld Marktplatzes wird durch Bestätigung Ihrer Registrierung durch myWorld auf die von Ihnen
+        bei Registrierung hinterlegte E-Mail-Adresse erteilt.</p>
+    <p>&nbsp;</p>
+    <p>1.6.&nbsp;Die Registrierung am myWorld Marktplatz sowie dessen Nutzung sind für
+        den Kunden kostenlos. &nbsp;myWorld verrechnet Ihnen hierfür kein Entgelt.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>IHR KONTO</p></li>
+    </ol>
+    <p>2.1.&nbsp;Sie können Einkäufe am myWorld Marktplatz nur über Ihr bestehendes
+        myWorld Konto (siehe Punkt 1. dieser Nutzungsbedingungen) tätigen. Sie können ihr Konto solange verwenden, bis
+        Sie Ihr Konto selbst löschen, löschen lassen oder es von uns gelöscht wird oder wir den Marktplatz
+        stilllegen.</p>
+    <p>&nbsp;</p>
+    <p>2.2.&nbsp;myWorld kann Ihr Marktplatz Konto insbesondere aus folgenden wichtigen
+        Gründen löschen:</p>
+    <p>&nbsp;</p>
+    <p>i.&nbsp;wenn Sie das Konto in einer Weise verwenden, die dazu geeignet ist, den
+        myWorld Marktplatz oder den Zugang dazu zu unterbrechen, zu beschädigen oder in sonstiger Art zu beeinträchtigen
+        (z.B. durch Schadsoftware); oder</p>
+    <p>ii.&nbsp;wenn Sie das Konto in einer den vorliegenden Geschäfts- und
+        Nutzungsbedingungen widersprechenden Weise verwenden; oder</p>
+    <p>iii.&nbsp;wenn Sie das Konto für betrügerische Zwecke oder in Verbindung mit einer
+        Straftat oder rechtswidrigen Aktivitäten, wie insbesondere Geldwäsche oder Betrug, verwenden; oder</p>
+    <p>iv.&nbsp;wenn Sie das Konto dazu nutzen, um Belästigung, Unannehmlichkeiten oder
+        Angst zu verursachen;</p>
+    <p>v.&nbsp;wenn Sie den Marktplatz für das Bewerben oder Anbieten von Waren und
+        Dienstleistungen von anderen Websites benutzen.</p>
+    <p>&nbsp;</p>
+    <p>2.3.&nbsp;Durch das Löschen des Kontos enden die Nutzungsbedingungen zwischen
+        Ihnen und uns womit myWorld Ihnen die Lizenz für den Zugang und das Nutzen des myWorld Marktplatzes mit
+        sofortiger Wirkung entzieht. Sie werden von uns darüber per E-Mail informiert. Davon ungeachtet bleiben
+        allerdings die Bestimmungen nach 4. (Haftungen) bestehen.</p>
+    <p>&nbsp;</p>
+    <p>2.4.&nbsp;Darüber hinaus kann myWorld Ihre Lizenz zur Nutzung des myWorld
+        Marktplatzes und somit Ihr Benutzerkonto ordentlich, unter Berücksichtigung einer Kündigungsfrist von einem
+        Monat, auflösen. Sie erhalten die Benachrichtigung über die ordentliche Kündigung Ihres Marktplatz Kontos per
+        E-Mail.</p>
+    <p>&nbsp;</p>
+    <p>2.5.&nbsp;Wenn Sie ihr myWorld Konto nutzen, sind Sie für das Sicherstellen der
+        Vertraulichkeit Ihres Kontos und Passworts und für das Beschränken des Zugangs zu Ihrem Computer und Ihren
+        mobilen Geräten verantwortlich und erklären sich damit einverstanden, für alle Aktivitäten verantwortlich zu
+        sein, die über Ihr Konto oder Passwort vorgenommen werden. Sie sind verpflichtet, die Zugangsdaten zu Ihrem
+        Konto sowie Ihren Computer und andere mobilen Geräte vor unbefugtem Zugriff Dritter, auch in Ihrem eigenen
+        Interesse, zu schützen und geheim zu halten.</p>
+    <p>&nbsp;</p>
+    <p>2.6.&nbsp;Sie haben uns unverzüglich den Diebstahl, Verlust, die missbräuchliche
+        Verwendung oder die sonst nicht autorisierte Nutzung des myWorld Kontos per E-Mail an&nbsp;
 
-<p>
-    <a target=""_blank"" href=""https://www.ratgeberrecht.eu/leistungen/muster-datenschutzerklaerung.html"">Muster-Datenschutzerklärung</a>
-    der Anwaltskanzlei Weiß &amp; Partner</p>","<span class=""cms-page__notification"">Please note this is only an example and must always be adapted in individual cases.</span>
-<p>Our website may be used without entering personal information. Different rules may apply to certain services on our site,
- however, and are explained separately below. We collect personal information from you (e.g. name, address, email address,
- telephone number, etc.) in accordance with the provisions of German data protection statutes. Information is considered
- personal if it can be associated exclusively to a specific natural person. The legal framework for data protection may be found
- in the German Federal Data Protection Act (BDSG) and the Telemedia Act (TMG). The provisions below serve to provide information
- as to the manner, extent and purpose for collecting, using and processing personal information by the provider.</p>
-
-<p>Please be aware that data transfer via the internet is subject to security risks and, therefore, complete protection
-against third-party access to transferred data cannot be ensured.</p>
-
-<h3>Information/Cancellation/Deletion</h3>
-
-<p>On the basis of the Federal Data Protection Act, you may contact us at no cost if you have questions relating to the
-collection, processing or use of your personal information, if you wish to request the correction, blocking or deletion of the
-same, or if you wish to cancel explicitly granted consent. Please note that you have the right to have incorrect data corrected or
-to have personal data deleted, where such claim is not barred by any legal obligation to retain this data.</p>
-
-<p>
-    <a target=""_blank"" href=""https://www.ratgeberrecht.eu/leistungen/muster-datenschutzerklaerung.html"">Sample Data Privacy Policy Statement</a>
-    provided by the Law Offices of Weiß & Partner</p>"
-Placeholders Title & Content + Slot,1,0,1,page_4,/de/loremde,/en/lorem,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
-Placeholders Title & Content + Slot,1,1,0,page_5,/de/dolorde,/en/dolor,Dolor sit amet,Dolor sit amet,Dolor sit amet,Dolor sit amet,Dolor sit amet,Dolor sit amet,Dolor sit amet,Dolor sit amet,Lorem ipsum,Lorem ipsum,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;anzuzeigen.
+    </p>
+    <p>&nbsp;</p>
+    <p>2.7.&nbsp;Sie sind verpflichtet, gegenüber myWorld wahrheitsgemäße Angaben zu
+        machen und im Fall von Änderungen, diese im Bereich ""mein Konto"" zu ändern oder myWorld per E-Mail an&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>&nbsp;bekannt
+        zu geben. Unterlassen Sie eine der angeführten Pflichten, besteht für myWorld ein wichtiger Grund, um das Konto
+        gemäß dieser Ziffer zu löschen.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>IMMATERIALGÜTERRECHT</p></li>
+    </ol>
+    <p>3.1.&nbsp;Der gesamte Inhalt, der auf dem myWorld Marktplatz enthalten oder durch
+        diesen bereitgestellt wird, wie z. B. Text, Grafik, Logos, Button-Icons, Bilder, Audio-Clips, digitale Downloads
+        und Datensammlungen, sind durch die Rechte des geistigen Eigentums, wie z. B. das Urheberrecht und Markenrecht,
+        geschützt, und stehen ausschließlich myWorld oder den Dritten zu, welche die Inhalte zuliefern oder
+        bereitstellen.</p>
+    <p>&nbsp;</p>
+    <p>3.2.&nbsp;Sie dürfen ohne ausdrückliche schriftliche Zustimmung von myWorld nicht
+        Teile einer myWorld Dienstleistung systematisch extrahieren und/oder wiederverwenden. Insbesondere dürfen Sie
+        ohne die ausdrückliche schriftliche Zustimmung von myWorld kein Data Mining, keine Robots, Data Crawling oder
+        ähnliche Datensammel- und Extraktionsprogramme einsetzen, um irgendwelche wesentlichen Teile des myWorld
+        Marktplatzes zur Wiederverwendung zu extrahieren (gleichgültig ob einmalig oder mehrfach). Sie dürfen ferner
+        ohne die ausdrückliche schriftliche Zustimmung von myWorld keine eigene Datenbank herstellen und/oder
+        veröffentlichen, die wesentlichen Teile einer Dienstleistung von myWorld (z. B. myWorld Preise und
+        Produktinformationen) beinhaltet.</p>
+    <p>&nbsp;</p>
+    <p>3.3.&nbsp;myWorld Grafiken, Logos, Kopfzeilen, Button-Icons, Scripts und
+        Service-Namen, die in einem myWorld Service enthalten oder durch ihn bereitgestellt werden, sind Marken- und
+        Kennzeichenrechte von myWorld. myWorld Marken- und Kennzeichenrechte dürfen nicht in Verbindung mit einem
+        Produkt oder Service, der nicht zu myWorld gehört, in einer Weise verwendet werden, dass die Möglichkeit
+        besteht, Zuordnungsverwechslung bei Kunden zu verursachen, oder in einer Weise, die myWorld herabsetzt oder
+        diskreditiert.</p>
+    <p>&nbsp;</p>
+    <p>3.4.&nbsp;Alle anderen Marken und Kennzeichen, die nicht im Eigentum von myWorld
+        stehen und in einem myWorld Service erscheinen, sind Eigentum der jeweiligen Inhaber. myWorld respektiert die
+        Immaterialgüterrechte Dritter. Wenn Sie der Auffassung sind, dass Ihre Immaterialgüterrechte in einer Art
+        genutzt wurden, der Anlass zur Befürchtung einer Verletzung gibt, informieren Sie bitte myWorld unter&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>.
+    </p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>HAFTUNG VON MYWORLD</p></li>
+    </ol>
+    <p>4.1.&nbsp;myWorld bemüht sich stets sicherzustellen, dass der myWorld Marktplatz
+        ohne Unterbrechungen verfügbar ist und Übermittlungen fehlerfrei sind. Durch die Beschaffenheit des Internets
+        kann dies jedoch nicht garantiert werden. Auch Ihr Zugriff auf den myWorld Marktplatz kann gelegentlich
+        unterbrochen oder beschränkt sein, um Instandsetzungen, Wartungen oder die Einführung von neuen Einrichtungen
+        oder Services zu ermöglichen oder wegen höherer Gewalt, welche nicht im Einflussbereich des Anbieters liegen und
+        daher nicht von ihm zu vertreten sind. myWorld versucht die Häufigkeit und Dauer jeder dieser vorübergehenden
+        Unterbrechung oder Beschränkung zu begrenzen.</p>
+    <p>&nbsp;</p>
+    <p>4.2.&nbsp;myWorld haftet unbeschränkt für Schäden im Zusammenhang mit der Nutzung
+        des myWorld Marktplatzes sowie dessen Services und Produkte, wenn die Schadensursache auf einer vorsätzlichen
+        oder grob fahrlässigen Pflichtverletzung von myWorld oder eines gesetzlichen Vertreters oder Erfüllungsgehilfen
+        von myWorld beruht.&nbsp;Eine vorsätzliche Pflichtverletzung liegt vor, wenn myWorld oder dessen
+        Erfüllungsgehilfen eine Pflicht absichtlich, d. h. wissentlich und willentlich, nicht erfüllt.&nbsp;Eine grob
+        fahrlässige Pflichtverletzung ist gegeben, wenn myWorld oder dessen Erfüllungsgehilfen eine Pflicht aus
+        auffallender Sorglosigkeit nicht erfüllt, d. h. das Verhalten von der gebotenen Sorgfalt extrem abweicht.</p>
+    <p>&nbsp;</p>
+    <p>4.3.&nbsp;Haftungsansprüche gegen myWorld, welche nicht auf einer vorsätzlichen
+        oder grob fahrlässigen Pflichtverletzung von myWorld oder eines gesetzlichen Vertreters oder Erfüllungsgehilfen
+        von myWorld beruhen, die sich auf Schäden materieller oder ideeller Art beziehen (wie z.B. entgangener Gewinn,
+        frustrierte Aufwendungen, Schäden aufgrund verlorener Daten, Bereicherungsansprüche, Rechtsanwaltskosten oder
+        Vertragserrichtungsgebühren), die durch die Nutzung der dargebotenen Informationen bzw. durch die Nutzung
+        fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen,</p>
+    <p>&nbsp;</p>
+    <p>4.4.&nbsp;Weiters ist myWorld nicht verantwortlich für Hyperlinks und deren
+        Inhalt. myWorld übernimmt keine Gewähr für Aktualität, Korrektheit, Vollständigkeit, Rechtmäßigkeit oder
+        Qualität der Hyperlinks. Jegliche Haftung dafür liegt beim Anbieter der verlinkten Website. Auf die aktuelle und
+        zukünftige Gestaltung, die Inhalte oder die Urheberschaft der Hyperlinks hat myWorld keinen Einfluss. Deshalb
+        distanziert sich myWorld ausdrücklich von den Inhalten aller Hyperlinks, die nach der Linksetzung verändert
+        wurden sowie von Fremdeinträgen in von myWorld eingerichteten Gästebüchern, Diskussionsforen und Mailinglisten.
+        Eine permanente inhaltliche Kontrolle der verlinkten Websites ist ohne konkrete Anhaltspunkte einer
+        Rechtsverletzung nicht zumutbar, werden jedoch bei Bekanntheit von Rechtsverletzungen umgehend entfernt.</p>
+    <p>&nbsp;</p>
+    <p>4.5.&nbsp;Für allenfalls rechtswidrige Tätigkeiten oder Informationen durch
+        elektronische Verweise, die von dieser Seite auf andere Angebote des World Wide Web führen, sowie für Inhalte,
+        die von Händlern auf den myWorld Marktplatz gestellt werden, haftet myWorld nur bei tatsächlicher Kenntnis und
+        sofern myWorld nicht in angemessener Frist tätig wird, um die Informationen zu entfernen oder den Zugang zu
+        diesen Informationen zu sperren. Diskriminierende, anstößige, moralisch verwerfliche oder rechtswidrige Inhalte
+        können von myWorld jederzeit entfernt werden.</p>
+    <p>&nbsp;</p>
+    <p>4.6.&nbsp;Dieser Haftungsausschluss ist als Teil des Internetangebotes zu
+        betrachten. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr
+        oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und ihrer
+        Gültigkeit davon unberührt.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>ANGEBOTE DURCH DRITTE</p></li>
+    </ol>
+    <p>5.1.&nbsp;myWorld bietet Unternehmern i. S. d. KSchG und juristischen Personen
+        des öffentlichen Rechts (""Verkäufer"") die Möglichkeit, den myWorld Marktplatz für Verkaufsangebote von Waren
+        oder zum Anbieten von Dienstleistungen zu nutzen. Unternehmer im Sinn des KSchG sind natürliche oder juristische
+        Personen, für die der Warenverkauf zum Betrieb ihres Unternehmens gehört, d. h. jede auf Dauer angelegte
+        Organisation selbständiger wirtschaftlicher Tätigkeit, mag sie auch nicht auf Gewinn gerichtet sein.</p>
+    <p>&nbsp;</p>
+    <p>5.2.&nbsp;So können auch andere Personen als myWorld Dienstleistungen erbringen
+        oder ihre Sortimente auf dieser Webseite verkaufen. Ferner stellt myWorld Links zu Seiten von verbundenen Firmen
+        und bestimmten anderen Unternehmen zur Verfügung. myWorld ist nicht für eine Untersuchung und Bewertung dieser
+        Angebote oder Seiten verantwortlich und leistet keine Gewähr für die inhaltliche Richtigkeit oder Mängelfreiheit
+        der Angebote dieser Unternehmen oder der Inhalte auf deren Webseiten oder der Rechtmäßigkeit oder
+        Funktionsfähigkeit. Die für die Kaufabwicklung notwendigen Nutzerdaten und die Daten der geschäftlichen
+        Transaktion werden von myWorld dem Händler, dessen Angebot der Endkunde bestellen will, übermittelt. Im Übrigen
+        übernimmt der Händler die komplette Kaufabwicklung. Sie werden in den Produktinformationen unter der Angabe
+        ""Verkauf durch…"" darüber informiert, wer das Produkt verkauft.</p>
+    <p>&nbsp;</p>
+    <p>5.3.&nbsp;myWorld stellt lediglich Informationen sowie technische
+        Rahmenbedingungen für Nutzer zur Verfügung, macht aber keine rechtsverbindlichen Angebote. Ansprüche aus
+        Verträgen zwischen Nutzern und Händlern können nicht gegenüber myWorld geltend gemacht werden. myWorld wird
+        selbst nicht Vertragspartner der ausschließlich zwischen Nutzern und Händlern geschlossenen Verträge. Die
+        Erfüllung dieser über die Plattform von myWorld geschlossenen Verträge erfolgt ausschließlich zwischen den
+        Kunden und Händlern.</p>
+    <p>&nbsp;</p>
+    <p>5.4.&nbsp;myWorld haftet nicht für Schäden, die durch Fehler, Verzögerungen oder
+        Unterbrechungen in der Übermittlung, bei Störungen der technischen Anlagen, Verlust und Löschung von Daten,
+        Viren oder in sonstiger Weise bei der Nutzung von myWorld Marktplatz entstehen können, es sei denn, diese sind
+        vom Betreiber vorsätzlich oder grob fahrlässig verursacht worden oder es handelt sich um die Verletzung von
+        Leben, Körper oder Gesundheit.</p>
+    <p>&nbsp;</p>
+    <p>5.5.&nbsp;Der Betreiber haftet in der Höhe nur für vertragstypisch vorhersehbare
+        Schäden. Es besteht keine Haftung für entgangene Gewinne, Einsparungen, Schäden aus Ansprüchen Dritter und für
+        sonstige mittelbare und unmittelbare Folgeschäden.</p>
+    <p>&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>ALLGEMEINES</p></li>
+    </ol>
+    <p>6.1.&nbsp;Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts (CISG) und
+        des Kollisionsrechts. Ausschließlicher Gerichtsstand für allfällige Streitigkeiten aus oder im Zusammenhang mit
+        diesen AGB ist das sachlich zuständige Gericht in Köln. Für Verträge mit Verbrauchern hat der Verbraucher die
+        Wahl zwischen dem Gericht, in dessen Sprengel der Wohnsitz, der gewöhnliche Aufenthalt oder der Ort der
+        Beschäftigung des Verbrauchers liegt und dem Gerichtsstand am Sitz der myWorld.&nbsp; Obwohl auf die vorliegende
+        Geschäftsbeziehung deutsches Recht anwendbar ist, können Sie sich auf die zwingenden
+        verbraucherschutzrechtlichen Vorschriften ihres Staates, in dem Sie ihren gewöhnlichen Aufenthalt haben,
+        berufen, sofern es sich dabei um einen Mitgliedstaat der Europäischen Union handelt. Diesfalls können Sie
+        Ansprüche im Zusammenhang mit diesen Nutzungsbedingungen, die sich aus verbraucherschützenden Normen ergeben,
+        wahlweise sowohl in Deutschland als auch in dem EU-Mitgliedsstaat, in dem Sie leben, einreichen.</p>
+    <p>&nbsp;</p>
+    <p>6.2.&nbsp;Die Europäische Kommission stellt unter&nbsp;
+        <a href=""https://ec.europa.eu/consumers/odr/"" title=""https://ec.europa.eu/consumers/odr/""
+           data-renderer-mark=""true"">ec.europa.eu/consumers/odr/</a>&nbsp;eine Plattform zur Online-Streitbeilegung
+        („OS-Plattform“) bereit. myWorld ist bemüht, eventuelle Meinungsverschiedenheiten aus diesem Vertrag
+        einvernehmlich beizulegen. Darüber hinaus ist myWorld zu einer Teilnahme an einem Schlichtungsverfahren nicht
+        verpflichtet und kann Ihnen die Teilnahme an einem solchen Verfahren auch nicht anbieten.<br>Gegebenenfalls
+        nimmt aber Ihr Verkäufer an einem Schlichtungsverfahren teil. Dies können Sie auf der jeweiligen Seite des
+        Verkäufers im Impressum oder den Allgemeinen Geschäftsbedingungen einsehen.</p>
+    <p>&nbsp;</p>
+    <p>Weitere Fragen zu diesen Nutzungsbedingungen und zu den Allgemeinen
+        Geschäftsbedingungen beantworten wir gerne unter</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;<strong data-renderer-mark=""true"">mWS myWorld Solutions AG
+        (myWorld)</strong><br>Grazbachgasse 87-93,&nbsp;<br>A-8010 Graz<br>Österreich,<br>E-Mail&nbsp;
+        <a
+            href=""mailto:customerservice.de@myworld.com""
+            title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+</div>","
+<div>
+    <h1 id=""Terms-of-Use"">Terms of Use</h1>
+    <p><br>A.&nbsp;&nbsp; &nbsp;The following Terms of Use regulate the use of the
+        website run by mWS myWorld Solutions AG Grazbachgasse 87-93, 8010 Graz, Österreich, Germany (hereinafter
+        referred to in short form as 'myWorld') and access to the myWorld marketplace. &nbsp;myWorld has
+        commissioned mWS myWorld Solutions AG (Grazbachgasse 87-93, 8010 Graz, Austria, company number: FN 389134g)
+        to perform the technical processing of the myWorld marketplace as well as to process the logistics and
+        operative aspects of orders placed. &nbsp;If you wish to make purchases in the myWorld marketplace, in
+        addition to this Terms of Use the General Terms and Conditions for purchases on the myWorld Marketplace,
+        apply, which you can access via the following link
+        <a href=""http://marketplace.myworld.com""
+           title=""http://marketplace.myworld.com""
+           data-renderer-mark=""true"">marketplace.myworld.com</a>.
+    </p>
+    <p>B.&nbsp;&nbsp; &nbsp;Users of this website agree to these Terms of Use. myWorld
+        can amend and supplement these Terms of Use from time to time by updating these Terms of Use. myWorld will
+        send you amended Terms of Use by email, giving you 2 months to approve or reject the changes.</p>
+    <p>C.&nbsp;&nbsp; &nbsp;myWorld expressly reserves the right to amend, supplement
+        and delete parts of the website or all that is on offer or to adjust the publication either temporarily or
+        indefinitely, in particular if the continued performance of services of partial services is no longer
+        possible for the provider from a financial standpoint. &nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>LICENCE AND ACCESS</p></li>
+    </ol>
+    <p>1.1.&nbsp;&nbsp; &nbsp;Given the pre-requisites set out in these Terms of Use,
+        myWorld grants you a license to access and use of the myWorld marketplace. &nbsp;You may only use this
+        access for private purposes, this means only for purposes which are not connected with the running of a
+        business. &nbsp;The license is non-transferable and refers exclusively to the use of the myWorld
+        marketplace.&nbsp;</p>
+    <p>1.2.&nbsp;&nbsp; &nbsp;The license does not entitle you to record or use
+        product information, descriptions or prices or to download or copy content and account information, to run
+        data mining, robots or similar data recording and extraction programs.&nbsp;</p>
+    <p>1.3.&nbsp;&nbsp; &nbsp;When making use of the access to myWorld marketplace,
+        you may not, in so far as myWorld has not previously expressly consented, damage, restrict or shorten
+        myWorld copyright.&nbsp;</p>
+    <p>1.4.&nbsp;&nbsp; &nbsp;myWorld does not permit individuals who are not yet at
+        least 18 years of age, (and not considered contractually capable), access to myWorld marketplace.</p>
+    <p>1.5.&nbsp;&nbsp; &nbsp;The agreement in respect of the license for the access
+        and use of the myWorld marketplace is issued by means of a confirmation of your registration via myWorld to
+        the email address which you provided when registering.&nbsp;</p>
+    <p>1.6.&nbsp;&nbsp; &nbsp;Registration with myWorld marketplace and the use
+        thereof is free of charge for the customer.&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>YOUR ACCOUNT</p></li>
+    </ol>
+    <p>2.1.&nbsp;&nbsp; &nbsp;You may only make purchases in the myWorld marketplace
+        via your existing myWorld account (see Item 1 of the Terms of Use). &nbsp;You can use your account until
+        such time as you delete your account, allow it to be deleted or we choose to delete it or we choose to
+        dismantle the marketplace. &nbsp;</p>
+    <p>2.2.&nbsp;&nbsp; &nbsp;myWorld may delete your marketplace account in
+        particular for any the following important reasons:&nbsp;<br>(i)&nbsp;&nbsp; &nbsp;If you use the account
+        for any purpose for which it is not intended, or to interrupt, damage or in any other way interfere with the
+        myWorld marketplace or access to it (for example, using malware); or<br>(ii)&nbsp;&nbsp; &nbsp;if you use
+        your account in a way which is in breach of these Terms of Use; or&nbsp;<br>(iii)&nbsp;&nbsp; &nbsp;If you
+        use your account fraudulently or in connection with any criminal offence or unlawful activities, including
+        money laundering or fraud; or<br>(iv)&nbsp;&nbsp; &nbsp;if you use your account to cause any nuisance,
+        inconvenience or provoke fear;<br>(v)&nbsp;&nbsp; &nbsp;if you use the marketplace to advertise or offer
+        goods and services from other websites. &nbsp;</p>
+    <p>2.3.&nbsp;&nbsp; &nbsp;By deleting the account, the Terms of Use, with which
+        myWorld provides you with the license to access and use the myWorld marketplace, in existence between
+        yourself and us cease to exist with immediate effect. We will inform you via email. &nbsp;Notwithstanding
+        this, those &nbsp;provisions of the Terms of Use that are intended to survive termination for any reason,
+        including Item 4. (Liability) remain. &nbsp;</p>
+    <p>2.4.&nbsp;&nbsp; &nbsp;Additionally, myWorld may revoke your license for usage
+        of the myWorld marketplace and your user account, at any time upon the expiration of a notice period of a
+        month. &nbsp;You shall receive such the notice regarding termination of your marketplace account via email.&nbsp;</p>
+    <p>2.5.&nbsp;&nbsp; &nbsp;If you make use of your myWorld account, you are
+        responsible for ensuring the confidentiality of your account and password and restricting access to your
+        computer and mobile devices and agree to be responsible for all activities which take place using your
+        account and password. &nbsp;You are obliged, in your own interests, to protect and ensure that your log in
+        details for your account as well as for your computer and other mobile devices remain confidential and that
+        third parties have no access to these.&nbsp;</p>
+    <p>2.6.&nbsp;&nbsp; &nbsp;You are obliged to inform myWorld of any evidence of
+        theft, loss, inappropriate or unauthorised usage of your myWorld account by sending an email to
+        <a href=""mailto:customerservice.de@myworld.com""
+            title=""mailto:customerservice.de@myworld.com""
+            data-renderer-mark=""true"">customerservice.de@myworld.com</a>.</p>
+    <p>2.7.&nbsp;&nbsp; &nbsp;You are obliged to make truthful statements with
+        regards to myWorld and, in the event of amendments, to change these in the 'My Account' area or by sending
+        an email to
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com"" data-renderer-mark=""true"">customerservice.de@myworld.com</a>.
+        Should you neglect any of the invoked duties, myWorld may, on good grounds, delete the account in accordance
+        with this clause.&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>INTELLECTUAL PROPERTY RIGHTS</p></li>
+    </ol>
+    <p>&nbsp;<br>3.1.&nbsp;&nbsp; &nbsp;The total content which the myWorld
+        marketplace contains or which it produces, such as: text, graphics, logos, button icons, images, audio
+        clips, digital downloads and data collection, are protected and are available exclusively to myWorld or to
+        its licensors, who supply and/or provide the content.&nbsp;</p>
+    <p>3.2.&nbsp;&nbsp; &nbsp;You may not systematically extract or reuse parts of
+        any myWorld service without the prior express written consent of myWorld. &nbsp;In particular, you may not
+        initiate any data mining, make use of robots, perform data crawling or use similar data collection or
+        extraction programs with a view to extracting any vital parts of myWorld's marketplace and reusing these
+        (irrespective of whether you wish to perform this action only once or multiple times) without myWorld's
+        prior express written consent. You may not create and/or publish your own data bank containing important
+        components of any service provided by myWorld (for example, myWorld prices and product information) without
+        myWorld's prior express written consent.&nbsp;</p>
+    <p>3.3.&nbsp;&nbsp; &nbsp;myWorld graphics, logos, headers, button icons, scripts
+        and service names which are included as part of a myWorld Service or have been prepared by them, are brands
+        and trademark rights belonging to myWorld. myWorld brands and trademark rights may not be used in connection
+        with any product or service which does not belong to myWorld in any way which might lead to confusion of the
+        customer or degrade or discredit myWorld. &nbsp;</p>
+    <p>3.4.&nbsp;&nbsp; &nbsp;All other brands and trademarks which are not owned by
+        myWorld and appear as part of a myWorld service are the property of the respective owner. myWorld respects
+        the immaterial property rights of third parties. &nbsp;If you are of the opinion that your immaterial
+        property rights have been used in any way which gives rise to suspicion of violation, please inform myWorld
+        customer services using the following email address:
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>.&nbsp;
+    </p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>MYWORLD LIABILITY</p></li>
+    </ol>
+    <p>4.1.&nbsp;&nbsp; &nbsp;myWorld strives to ensure that the myWorld marketplace
+        is available continuously and without interruption and that communications can take place without issue.
+        &nbsp;However, your access to the myWorld marketplace may be interrupted occasionally or otherwise
+        restricted so that repairs, maintenance or services can take place or in the event of force majeure
+        (including but without limitation, any outage of internet service provisions) which is out of the reasonable
+        control of the provider and thus he is not obliged to substitute these services. myWorld strives to limit
+        the frequency and duration of these temporary interruptions or limitations. If myWorld provides a defective
+        service, you have the right to assert warranty claims within the scope of the statutory warranty provisions
+        &nbsp; &nbsp;&nbsp;</p>
+    <p>4.2.&nbsp;&nbsp; &nbsp;myWorld accepts liability for damages incurred whilst
+        using the myWorld marketplace as well as services and products if the causes of the damage can be attributed
+        to an intentional or gross negligent breach of duty by myWorld or its legal representatives or vicarious
+        agents. &nbsp;An intentional breach of duty is in existence should myWorld or its vicarious agents not
+        perform a duty intentionally, deliberately and willingly. &nbsp;A grossly negligent breach of duty is given
+        if myWorld or its vicarious agents do not fulfill a duty of conspicuous carelessness, i.e. the behaviour
+        deviates extremely from the due diligence&nbsp;</p>
+    <p>4.3.&nbsp;&nbsp; &nbsp;myWorld is not liable for any tangible or intangible
+        damages which do not result from an intentional or gross negligent breach of duty on the part of myWorld,
+        their legal representatives or vicarious agents (including but without limitation a loss of profits, loss of
+        revenue, reliance losses, damages due to loss of data, claims based on unjust enrichment, legal fees, or
+        contract brokerage fees), which occur as a result of using the information provided or using incorrect or
+        incomplete information,</p>
+    <p>4.4.&nbsp;&nbsp; &nbsp;Furthermore, myWorld is not responsible for hyperlinks
+        or their content. myWorld assumes no liability of any kind for the current status, accuracy, integrity,
+        legality or quality of hyperlinks. Any liability lies with the provider of the linked website. &nbsp;myWorld
+        has no control over the current or future structure or contents of these hyperlinks. &nbsp;Therefore,
+        myWorld expressly distances itself from the contents of all hyperlinks which were changed after the linked
+        was added, as well as from entries made by third parties in myWorld's guest books, discussion forums and
+        mailing lists. Continuous monitoring of the linked websites is not reasonable without substantial proof of
+        legal infringements. As soon as myWorld becomes aware of such legal infringement, the hyperlink will be
+        removed promptly.&nbsp;</p>
+    <p>4.5.&nbsp;&nbsp; &nbsp;For potential illegal activities or information
+        provided by electronic links which link the marketplace site to other sites on the worldwide web as well as
+        for content which is placed on the myWorld marketplace by merchants, myWorld is only liable where it has
+        been made aware in writing and has failed to promptly remove the information or to block access to it within
+        a reasonable time period. &nbsp;Content of a discriminating, offensive, morally reprehensible or illegal
+        nature may be removed by myWorld at any time.&nbsp;</p>
+    <p>4.6.&nbsp;&nbsp; &nbsp;This disclaimer shall be considered a component of the
+        website. If parts or single phrases in this text do not, only partially or simply no longer correspond to
+        the current legal situation, the remaining part of this document, its contents and validity remain
+        unaffected.</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>OFFERS FROM THIRD PARTIES</p></li>
+    </ol>
+    <p>5.1.&nbsp;&nbsp; &nbsp;myWorld offers entrepreneurs within the meaning of the
+        Consumer Protection Act and legal entities under public law (""Sellers"") the opportunity to use the myWorld
+        marketplace for their offers of goods or for the purpose of offering services. &nbsp;Entrepreneurs within
+        the meaning of the Consumer Protection Act are, of course, natural or legal entities for whom the sale of
+        goods constitutes running their business, thus any organisation created in the long-term for the purpose of
+        independent business activities, may not be for profit. &nbsp;</p>
+    <p>5.2.&nbsp;&nbsp; &nbsp;This means that persons other than myWorld can provide
+        services or sell their assortments on this website. &nbsp;myWorld provides links to sites of associated
+        firms and specific other firms. myWorld is not responsible for any examination and evaluation of these
+        offers or pages and makes no guarantee for the content accuracy or the content on these websites or the
+        legality or functional capability. &nbsp;The necessary user details for the purpose of purchase processing
+        and the details for the purpose of business transactions are transferred by myWorld to the merchant, whose
+        products and services the end consumer wishes to order. &nbsp;Otherwise, the merchant is responsible for the
+        entire purchase process. &nbsp;You are informed as to who sells the product in the product information under
+        the entry 'Sold by...'. &nbsp;</p>
+    <p>5.3.&nbsp;&nbsp; &nbsp;myWorld provides purely information as well as
+        technical framework conditions for users and does not make legally-binding offers. &nbsp;Obligations from
+        contractual relationships existing between user and merchant cannot be assigned to myWorld. myWorld will not
+        act as a contractual partner for closed contractual relations drawn up between users and merchants. &nbsp;The
+        completion on these closed contracts via the myWorld platforms is solely performed by the customer and
+        merchant. &nbsp;</p>
+    <p>5.4.&nbsp;&nbsp; &nbsp;myWorld accepts no liability for damages which have
+        been caused by mistakes, delays or interruptions in communications, disturbances or technical assets, loss
+        and deletion of data, viruses or in any other way whilst using the myWorld marketplace; it can be, however,
+        that these have been caused by the operator either intentionally or negligently or that the matter concerns
+        a loss of life, limb or a threat to health.&nbsp;</p>
+    <p>5.5.&nbsp;&nbsp; &nbsp;The operator accepts liability only for typical
+        contractual and predictable damages. &nbsp;No liability is accepted for loss of profit, savings, damages
+        resulting from third party claims and for any other direct or indirect consequential damages.&nbsp;</p>
+    <ol class=""ak-ol"" data-indent-level=""1"">
+        <li><p>GENERAL</p></li>
+    </ol>
+    <p>6.1.&nbsp;&nbsp; &nbsp;German Law applies with exception of UN Purchase Law
+        (CISG) and the conflict of law. &nbsp;The competent court in Cologne shall have exclusive jurisdiction for
+        all potential disputes arising out of or in connection with these terms and conditions. For contracts
+        involving consumers, the consumer has the choice between the court in whose district the domicile, habitual
+        residence or place of employment of the consumer is located and the jurisdiction located at the myWorld
+        premises. &nbsp;Although German Law is applicable to the present business relationship, you can also call on
+        the mandatory consumer protection regulations implemented by the state in which you live, insofar as this
+        state is a member state of the European Union. &nbsp;In this case, you may file a claim in connection with
+        these conditions of use which are the result of consumer protection norms, both in Germany and the EU member
+        state where you live. &nbsp;</p>
+    <p>6.2.&nbsp;&nbsp; &nbsp;The European Commission makes a platform for the
+        purpose of online dispute resolution available via the following link
+        <a href=""https://ec.europa.eu/consumers/odr/""
+           title=""https://ec.europa.eu/consumers/odr/""
+           data-renderer-mark=""true"">https://ec.europa.eu/consumers/odr/</a>
+        ('OS Platform'). myWorld strives to resolve all potential differences of opinion which could conceivably
+        arise from this contractual relationship amicably. &nbsp;Furthermore, myWorld is not obliged to participate
+        in an arbitration procedure and cannot offer you the opportunity to partake in such a procedure. However,
+        your seller may participate in an arbitration procedure. &nbsp;This you can view on the relevant seller's
+        page either in the imprint or within the General Terms &amp; Conditions.&nbsp;<br>For any further questions
+        regarding these Terms of Use and the General Terms and Conditions, please contact us at:</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
+        87-93,&nbsp;<br>A-8010 Graz<br>Austria,<br>E-Mail&nbsp;
+        <a href=""mailto:customerservice.de@myworld.com""
+           title=""mailto:customerservice.de@myworld.com""
+           data-renderer-mark=""true"">customerservice.de@myworld.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>Landesgericht Graz 389134g,&nbsp;<br>USt.-ID-Nr.: ATU67661657</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>"
+Placeholders Title & Content + Slot,1,1,0,page_5,/de/uber-uns,/en/about-us,Über uns,About Us,Über uns,About Us,Über uns,About Us,Über uns,About Us,Über uns,About Us,"
+<div>
+    <h1 id=""Über-myWorld.com"">Über
+        <a href=""http://myWorld.com""
+           title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>
+    </h1>
+    <p>Millionen Kunden, Zehntausende Partnerunternehmen, ein Online-Marktplatz:
+        <a href=""http://marketplace.myWorld.com"" title=""http://marketplace.myWorld.com""
+           data-renderer-mark=""true"">marketplace.myWorld.com</a> begeistert Shopper und Unternehmen auf der ganzen
+        Welt.
+        Einkaufen auf
+        <a href=""http://myWorld.com"" title=""http://myWorld.com""
+           data-renderer-mark=""true"">myWorld.com</a> ist einfach, günstig und jederzeit und überall
+        möglich. Und es macht Spaß, denn jeder findet hier das passende Angebot. Kunden profitieren vom vielseitigen
+        Produktsortiment und von attraktiven Preisen.</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">Der Kunde steht bei uns im Mittelpunkt</strong>
+    </p>
+    <p>Wir möchten Online Shopping für unsere Kunden so einfach wie möglich gestalten und
+        legen den Fokus deshalb besonders auf deren Bedürfnisse. Das beginnt bereits beim Registrierungs- und
+        Anmeldeprozess. Beides funktioniert so schnell und mühelos, dass man seine Einkäufe gerne täglich auf
+        <a href=""http://myWorld.com"" title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>
+        macht. Kunden behalten in ihrem persönlichen Account immer den Überblick über ihre Bestellungen und können sie
+        selbst verwalten. Bei Fragen steht den Kunden in jedem Land ein persönlicher Kundenservice mit Rat und Tat zur
+        Seite. So einfach kann Online Shopping sein!</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">Wir bieten unseren Kunden einzigartige
+        Einkaufsvorteile</strong></p>
+    <p>Als Partner der Cashback World sind wir Teil einer internationalen Shopping
+        Community mit Millionen von Shoppern. Du genießt auf unserem Online-Marktplatz einzigartige Vorteile: Für
+        gekennzeichnete Produkte, die du auf
+        <a href=""http://myWorld.com""
+           title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>
+        erwirbst, erhältst du Cashback und Shopping Points in deinem persönlichen Account gutgeschrieben. Zusätzlich
+        können Shopper der Cashback World auch ihre myWorld eVoucher ganz einfach einlösen. Es gibt also viele Gründe,
+        warum es sich lohnt, auf
+        <a href=""http://myWorld.com"" title=""http://myWorld.com""
+           data-renderer-mark=""true"">myWorld.com</a> einzukaufen.</p>
+    <p>&nbsp;</p>
+    <p><strong data-renderer-mark=""true"">Wir bieten unseren Partnern grenzenlosen Zugang
+        zu internationalen Märkten</strong></p>
+    <p>
+        <a href=""http://myWorld.com"" title=""http://myWorld.com""
+           data-renderer-mark=""true"">myWorld.com</a> überzeugt Unternehmen mit seinen
+        fairen Bedingungen und seiner unkomplizierten Anbindung. In nur wenigen Schritten können die eigenen Produkte
+        sicher und grenzüberschreitend präsentiert werden. Unser internationaler Kundenservice in den einzelnen Ländern
+        unterstützt Händler dabei, die Bestellungen und Retouren professionell abzuwickeln. Darüber hinaus profitieren
+        Unternehmen von der enormen Reichweite des Online-Marktplatzes, die einen deutlichen Kundenzuwachs ermöglicht.
+        Die laufenden Marketingaktivitäten der myWorld Unternehmensgruppe tragen dazu bei, die weltweite Shopping
+        Community für die Produkte auf
+        <a href=""http://myWorld.com"" title=""http://myWorld.com""
+           data-renderer-mark=""true"">myWorld.com</a> zu begeistern und unseren Partnern
+        zu einer Umsatzsteigerung zu verhelfen. Mehr Informationen unter:&nbsp;
+        <a href=""https://partner.myworld.com/""
+           title=""https://partner.myworld.com/""
+           data-renderer-mark=""true"">partner.myworld.com</a>.
+    </p>
+    <p>&nbsp;</p>
+    <h1 id=""Aktuelle-Pressemitteilungen"">Aktuelle Pressemitteilungen</h1>
+    <p>
+        <a href=""https://public-supportcenter-marketplace.myworld.com/de-pressemitteilung_de-de""
+           title=""https://public-supportcenter-marketplace.myworld.com/de-pressemitteilung_de-de""
+           data-renderer-mark=""true"">Trotz des jetzigen Booms im Online-Handel steht beim
+            Marktplatz myWorld.com die Sicherheit der Mitarbeiter an erster Stelle</a></p>
+    <p>
+        <a href=""https://public-supportcenter-marketplace.myworld.com/de/de-pressemitteilung-kinderdorf""
+           title=""https://public-supportcenter-marketplace.myworld.com/de/de-pressemitteilung-kinderdorf""
+           data-renderer-mark=""true"">myWorld.com unterstützt steirisches Kinderdorf</a>
+    </p>
+    <p>&nbsp;</p>
+</div>","<div>
+    <h1 id=""About-Us"" data-renderer-start-pos=""22"">About Us</h1>
+    <p >Millions of customers, tens of thousands of Loyalty Merchants, one Online
+        Marketplace: <a href=""http://marketplace.myWorld.com""
+                        title=""http://marketplace.myWorld.com"" data-renderer-mark=""true"">marketplace.myWorld.com</a> is
+        a cause of great excitement to shoppers and Loyalty Merchants around the world. Shopping with <a
+            href=""http://myWorld.com"" title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>
+        is simple, cheap and you can do it anytime, anywhere. And what makes it even better; there's something for
+        everyone. Customers benefit from the huge product range and attractive prices.</p>
+    <p data-renderer-start-pos=""439""><br><strong data-renderer-mark=""true"">The customer is our focal
+        point&nbsp;</strong><br>We'd like to make the online shopping process as simple as possible for our customers
+        and so, naturally, we make their requirements our key focus. This begins with the registration and login
+        process. Both registration and logging in are quick and easy that customers are encouraged to shop at <a
+            href=""http://myWorld.com"" title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>
+        on a regular basis. Customers can always view and manage their orders in their own personal account. If a
+        customer has questions, there is a personal customer support representative available in every country, who can
+        provide help and advice. That's how to make online shopping simple!</p>
+    <p data-renderer-start-pos=""1065""><br><strong data-renderer-mark=""true"">We offer our customers unique shopping
+        benefits&nbsp;</strong><br>As a Cashback World Partner, we are a part of an international Shopping Community
+        with millions of shoppers. You can enjoy unique benefits in the online marketplace: You have Cashback and
+        Shopping Points credited to your personal account when purchasing designated products on <a
+            href=""http://myWorld.com"" title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>.
+        In addition, Cashback World Shoppers can also redeem their myWorld eVouchers, quickly and easily. There's a
+        million reasons why shopping at <a href=""http://myWorld.com"" title=""http://myWorld.com""
+                                           data-renderer-mark=""true"">myWorld.com</a> is well worth its while.&nbsp;</p>
+    <p data-renderer-start-pos=""1584""><br><strong data-renderer-mark=""true"">We offer our Partners unlimited access to
+        international markets</strong><br><a href=""http://myWorld.com""
+                                             title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a> is
+        causing a stir amongst the Loyalty Merchants, thanks to it's fair regulatory conditions and uncomplicated
+        connectivity. By completing a few simple steps, you can safely present your own products to a market of
+        indefinite proportions. Our international Customer Support, present in each and every country, supports Loyalty
+        Merchants in a professional manner - primarily with order and returns processing. In addition, Loyalty Merchants
+        benefit from the online Marketplace's extensive coverage, which means: even more customers. The ongoing
+        marketing activities undertaken by the myWorld group of companies are a cause of great excitement throughout the
+        global shopping community and are helping our Partners to increase their turnover. Find out more here:&nbsp;<a
+            href=""https://partner.myworld.com/"" title=""https://partner.myworld.com/""
+            data-renderer-mark=""true"">partner.myworld.com</a>.</p>
+    <p data-renderer-start-pos=""2441"">&nbsp;</p>
+</div>"
 Placeholders Title & Content + Slot,1,1,1,page_6,/de/demo-landing-page,/en/demo-landing-page,Demo Landing Page,Demo Landing Page,Demo Landing Page,Demo Landing Page,"demo,cms page, landing page","demo,cms page, landing page",This is a demo landing page with different content widgets.,This is a demo landing page with different content widgets.,,,"<p>{{ content_banner('br-the-freedom-of-cellular', 'slider-without-link') }}</p>
 <p><br></p>
 <div class=""product-slider-title product-slider-title--set"">
