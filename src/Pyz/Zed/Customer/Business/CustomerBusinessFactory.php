@@ -17,12 +17,10 @@ class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
      */
     public function createCustomer()
     {
-        $config = $this->getConfig();
-
         return new Customer(
             $this->getQueryContainer(),
             $this->createCustomerReferenceGenerator(),
-            $config,
+            $this->getConfig(),
             $this->createEmailValidator(),
             $this->getMailFacade(),
             $this->getLocaleQueryContainer(),
