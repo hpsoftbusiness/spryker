@@ -30,7 +30,9 @@ class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
     {
         $securityBuilder = parent::extend($securityBuilder, $container);
 
-        $this->addAuthenticator($container);
+        if ($this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
+            $this->addAuthenticator($container);
+        }
 
         return $securityBuilder;
     }
@@ -42,6 +44,10 @@ class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
      */
     protected function addFirewalls(SecurityBuilderInterface $securityBuilder): SecurityBuilderInterface
     {
+        if (!$this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
+            return parent::addFirewalls($securityBuilder);
+        }
+
         $securityBuilder->addFirewall(CustomerPageConfig::SECURITY_FIREWALL_NAME, [
             'anonymous' => true,
             'pattern' => '^/',

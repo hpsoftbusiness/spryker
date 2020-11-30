@@ -68,4 +68,10 @@ interface SsoConstants
      * - Requested Scopes, splitted with spaces " ". Mandatory.
      */
     public const SCOPE = 'SSO:SCOPE';
+
+    /**
+     * Specification:
+     * - Enable/Disable SSO login.
+     */
+    public const SSO_LOGIN_ENABLED = 'CUSTOMER:SSO_LOGIN_ENABLED';
 }

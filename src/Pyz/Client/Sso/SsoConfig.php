@@ -93,4 +93,12 @@ class SsoConfig extends AbstractBundleConfig
     {
         return $this->getSharedConfig()->getScope();
     }
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool
+    {
+        return $this->getSharedConfig()->isSsoLoginEnabled();
+    }
 }

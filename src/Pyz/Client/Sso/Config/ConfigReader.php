@@ -51,4 +51,12 @@ class ConfigReader implements ConfigReaderInterface
 
         return sprintf('%s?%s', $this->ssoConfig->getAuthorizeUrl(), $httpQuery);
     }
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool
+    {
+        return $this->ssoConfig->isSsoLoginEnabled();
+    }
 }

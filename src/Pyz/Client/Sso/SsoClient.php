@@ -53,4 +53,12 @@ class SsoClient extends AbstractClient implements SsoClientInterface
     {
         return $this->getFactory()->createConfigReader()->getAuthorizeUrl($locale);
     }
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool
+    {
+        return $this->getFactory()->createConfigReader()->isSsoLoginEnabled();
+    }
 }

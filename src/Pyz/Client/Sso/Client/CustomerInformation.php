@@ -67,9 +67,9 @@ class CustomerInformation implements CustomerInformationInterface
     /**
      * @param \Generated\Shared\Transfer\SsoAccessTokenTransfer $ssoAccessTokenTransfer
      *
-     * @return \Generated\Shared\Transfer\CustomerTransfer|null
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function getCustomerInformationBySsoAccessToken(SsoAccessTokenTransfer $ssoAccessTokenTransfer): ?CustomerTransfer
+    public function getCustomerInformationBySsoAccessToken(SsoAccessTokenTransfer $ssoAccessTokenTransfer): CustomerTransfer
     {
         $requestParams = $this->geRequestParams($ssoAccessTokenTransfer);
         try {

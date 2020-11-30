@@ -7,13 +7,27 @@
 
 namespace Pyz\Yves\CustomerPage\UserChecker;
 
+use Pyz\Client\Sso\SsoClientInterface;
 use SprykerShop\Yves\CustomerPage\Exception\NotConfirmedAccountException;
 use SprykerShop\Yves\CustomerPage\Security\CustomerUserInterface;
-use Symfony\Component\Security\Core\User\UserChecker;
+use SprykerShop\Yves\CustomerPage\UserChecker\CustomerConfirmationUserChecker as SprykerCustomerConfirmationUserChecker;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class CustomerConfirmationUserChecker extends UserChecker
+class CustomerConfirmationUserChecker extends SprykerCustomerConfirmationUserChecker
 {
+    /**
+     * @var \Pyz\Client\Sso\SsoClientInterface
+     */
+    protected $ssoClient;
+
+    /**
+     * @param \Pyz\Client\Sso\SsoClientInterface $ssoClient
+     */
+    public function __construct(SsoClientInterface $ssoClient)
+    {
+        $this->ssoClient = $ssoClient;
+    }
+
     /**
      * @param \Symfony\Component\Security\Core\User\UserInterface $user
      *
@@ -23,11 +37,15 @@ class CustomerConfirmationUserChecker extends UserChecker
      */
     public function checkPreAuth(UserInterface $user): void
     {
-        if (!$user instanceof CustomerUserInterface) {
+        if (!$this->ssoClient->isSsoLoginEnabled()) {
+            parent::checkPreAuth($user);
+
             return;
         }
 
-        parent::checkPreAuth($user);
+        if (!$user instanceof CustomerUserInterface) {
+            return;
+        }
 
         $customerTransfer = $user->getCustomerTransfer();
         if ($customerTransfer->getIsActive() === false

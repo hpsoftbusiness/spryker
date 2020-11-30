@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
@@ -81,7 +81,7 @@ class ShipmentStep extends SprykerShopShipmentStep
         foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
             $hiddenAttributes = $itemTransfer->getHiddenConcreteAttributes();
             $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
-            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtoupper($countryIso2Code))];
+            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtolower($countryIso2Code))];
 
             if (!$isSellable) {
                 $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
