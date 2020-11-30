@@ -57,6 +57,6 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
      */
     public function createCustomerConfirmationUserChecker(): UserCheckerInterface
     {
-        return new CustomerConfirmationUserChecker($this->getConfig());
+        return new CustomerConfirmationUserChecker($this->getSsoClient());
     }
 }

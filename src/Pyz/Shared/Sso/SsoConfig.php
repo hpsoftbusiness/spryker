@@ -90,4 +90,12 @@ class SsoConfig extends AbstractBundleConfig
     {
         return $this->get(SsoConstants::SCOPE);
     }
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool
+    {
+        return $this->get(SsoConstants::SSO_LOGIN_ENABLED, false);
+    }
 }

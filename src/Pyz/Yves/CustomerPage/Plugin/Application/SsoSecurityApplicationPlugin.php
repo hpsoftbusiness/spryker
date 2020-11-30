@@ -23,7 +23,7 @@ class SsoSecurityApplicationPlugin extends SecurityApplicationPlugin
      */
     public function provide(ContainerInterface $container): ContainerInterface
     {
-        if (!$this->getConfig()->isSsoLoginEnabled()) {
+        if (!$this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
             return $container;
         }
 
@@ -39,7 +39,7 @@ class SsoSecurityApplicationPlugin extends SecurityApplicationPlugin
      */
     public function boot(ContainerInterface $container): ContainerInterface
     {
-        if (!$this->getConfig()->isSsoLoginEnabled()) {
+        if (!$this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
             return $container;
         }
 

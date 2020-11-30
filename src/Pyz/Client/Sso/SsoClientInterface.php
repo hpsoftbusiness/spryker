@@ -37,4 +37,9 @@ interface SsoClientInterface
      * @return string
      */
     public function getAuthorizeUrl(string $locale): string;
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool;
 }
