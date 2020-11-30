@@ -81,7 +81,7 @@ class ShipmentStep extends SprykerShopShipmentStep
         foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
             $hiddenAttributes = $itemTransfer->getHiddenConcreteAttributes();
             $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
-            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtoupper($countryIso2Code))];
+            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtolower($countryIso2Code))];
 
             if (!$isSellable) {
                 $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
