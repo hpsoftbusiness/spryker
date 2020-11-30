@@ -14,6 +14,8 @@ use Spryker\Client\Customer\Zed\CustomerStub as SprykerCustomerStub;
 class CustomerStub extends SprykerCustomerStub implements CustomerStubInterface
 {
     /**
+     * @uses \Pyz\Zed\Customer\Communication\Controller\GatewayController::addAction()
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerResponseTransfer

@@ -5,6 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+use Pyz\Shared\CustomerPage\CustomerPageConstants;
 use Pyz\Shared\Sso\SsoConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 
@@ -13,6 +14,7 @@ use Spryker\Shared\Application\ApplicationConstants;
 // ----------------------------------------------------------------------------
 
 // >>> SSO
+$config[CustomerPageConstants::SSO_LOGIN_ENABLED] = false;
 
 $config[SsoConstants::TOKEN_URL] = 'https://id-test.cashbackworld.com/trunk/oauth/token';
 $config[SsoConstants::AUTHORIZE_URL] = 'https://id-test.cashbackworld.com/trunk/oauth/authorize';

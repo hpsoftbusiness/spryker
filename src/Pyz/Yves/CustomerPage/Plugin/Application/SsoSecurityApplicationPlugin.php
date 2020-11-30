@@ -11,6 +11,7 @@ use Spryker\Service\Container\ContainerInterface;
 use Spryker\Yves\Security\Plugin\Application\SecurityApplicationPlugin;
 
 /**
+ * @method \Pyz\Yves\CustomerPage\CustomerPageConfig getConfig()
  * @method \Pyz\Yves\CustomerPage\CustomerPageFactory getFactory()
  */
 class SsoSecurityApplicationPlugin extends SecurityApplicationPlugin
@@ -22,6 +23,10 @@ class SsoSecurityApplicationPlugin extends SecurityApplicationPlugin
      */
     public function provide(ContainerInterface $container): ContainerInterface
     {
+        if (!$this->getConfig()->isSsoLoginEnabled()) {
+            return $container;
+        }
+
         $this->addSecurityRoute('match', '/' . $this->getFactory()->getSsoClient()->getLoginCheckPath());
 
         return $container;
@@ -34,6 +39,10 @@ class SsoSecurityApplicationPlugin extends SecurityApplicationPlugin
      */
     public function boot(ContainerInterface $container): ContainerInterface
     {
+        if (!$this->getConfig()->isSsoLoginEnabled()) {
+            return $container;
+        }
+
         $this->addRouter($container);
 
         return $container;
