@@ -34,12 +34,19 @@ class AttributesExtractorStep implements DataImportStepInterface
             }
 
             $attributeValueKey = $this->getAttributeValuePrefix() . $match[1];
-            $attributeKey = trim($value);
+            $attributeKey = trim(strtolower(str_replace(' ', '_', $value)));
             $attributeValue = trim($dataSet[$attributeValueKey]);
 
+            if (in_array($attributeKey, $this->getFilteredAttributeList())) {
+                continue;
+            }
+
             if ($attributeKey !== '') {
-                if (in_array($attributeKey, $this->getAttributeList())) {
+                $isPdpAttributes = in_array($attributeKey, $this->getAttributeList());
+                if ($isPdpAttributes) {
                     $attributes[$attributeKey] = $attributeValue;
+                } else {
+                    $hiddenAttributes[$attributeKey] = $attributeValue;
                 }
 
                 if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
@@ -92,6 +99,25 @@ class AttributesExtractorStep implements DataImportStepInterface
             'width',
             'height',
             'weight',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getFilteredAttributeList(): array
+    {
+        return [
+            'customer_group_1',
+            'customer_group_2',
+            'customer_group_3',
+            'customer_group_4',
+            'customer_group_5',
+            'purchase_price',
+            'strike_price',
+            'regular_sales_price',
+            'benefit_store_sales_price',
+            'benefit_amount',
         ];
     }
 }
