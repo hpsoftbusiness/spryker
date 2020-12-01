@@ -38,7 +38,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
 //            'it' => 'it_IT',
         ],
         // first entry is default
-        'countries' => ['DE', 'AT', 'CZ', 'FI', 'HU', 'IT', 'NO', 'PL', 'PT', 'CH', 'SK', 'SL', 'SE', 'BE', 'BG', 'HR', 'CY', 'DK', 'EE', 'FR', 'GR', 'EE', 'IM', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'RO', 'ES', 'GB'],
+        'countries' => ['DE', 'AT', 'CZ', 'FI', 'HU', 'IT', 'NO', 'PL', 'PT', 'CH', 'SK', 'SI', 'SE', 'BE', 'BG', 'HR', 'CY', 'DK', 'EE', 'FR', 'GR', 'IM', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'RO', 'ES', 'GB', 'IE'],
         // internal and shop
         'currencyIsoCode' => 'EUR',
         'currencyIsoCodes' => ['EUR'],
@@ -92,7 +92,7 @@ $stores['DE'] = [
 //        'it' => 'it_IT',
     ],
     // first entry is default
-    'countries' => ['DE', 'AT', 'CZ', 'FI', 'HU', 'IT', 'NO', 'PL', 'PT', 'CH', 'SK', 'SI', 'SE', 'BE', 'BG', 'HR', 'CY', 'DK', 'EE', 'FR', 'GR', 'EE', 'IM', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'RO', 'ES', 'GB'],
+    'countries' => ['DE', 'AT', 'CZ', 'FI', 'HU', 'IT', 'NO', 'PL', 'PT', 'CH', 'SK', 'SI', 'SE', 'BE', 'BG', 'HR', 'CY', 'DK', 'EE', 'FR', 'GR', 'IM', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'RO', 'ES', 'GB', 'IE'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
     'currencyIsoCodes' => ['EUR'],

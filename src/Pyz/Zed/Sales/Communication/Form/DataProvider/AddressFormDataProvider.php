@@ -7,11 +7,40 @@
 
 namespace Pyz\Zed\Sales\Communication\Form\DataProvider;
 
+use Generated\Shared\Transfer\CountryCollectionTransfer;
+use Generated\Shared\Transfer\CountryTransfer;
 use Pyz\Zed\Sales\Communication\Form\AddressForm;
+use Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Sales\Communication\Form\DataProvider\AddressFormDataProvider as SprykerAddressFormDataProvider;
+use Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface;
 
 class AddressFormDataProvider extends SprykerAddressFormDataProvider
 {
+    /**
+     * @var \Spryker\Shared\Kernel\Store
+     */
+    protected $store;
+
+    /**
+     * @var \Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface
+     */
+    protected $countryFacade;
+
+    /**
+     * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface $salesQueryContainer
+     * @param \Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface $countryFacade
+     * @param \Spryker\Shared\Kernel\Store $store
+     */
+    public function __construct(
+        SalesQueryContainerInterface $salesQueryContainer,
+        SalesToCountryInterface $countryFacade,
+        Store $store
+    ) {
+        parent::__construct($salesQueryContainer, $countryFacade);
+        $this->store = $store;
+    }
+
     /**
      * @param int $idOrderAddress
      *
@@ -42,5 +71,24 @@ class AddressFormDataProvider extends SprykerAddressFormDataProvider
             AddressForm::FIELD_ADDRESS_4 => $address->getAddress4(),
             AddressForm::FIELD_STATE => $address->getState(),
         ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function createCountryOptionList()
+    {
+        $countryCollectionTransfer = new CountryCollectionTransfer();
+        foreach ($this->store->getCountries() as $iso2Code) {
+            $countryCollectionTransfer->addCountries((new CountryTransfer())->setIso2Code($iso2Code));
+        }
+        $countryCollectionTransfer = $this->countryFacade->findCountriesByIso2Codes($countryCollectionTransfer);
+
+        $countryList = [];
+        foreach ($countryCollectionTransfer->getCountries() as $countryTransfer) {
+            $countryList[$countryTransfer->getIdCountry()] = $countryTransfer->getName();
+        }
+
+        return $countryList;
     }
 }
