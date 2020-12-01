@@ -35,4 +35,20 @@ class AuthController extends SprykerAuthController
 
         return $this->redirectResponseInternal(CustomerPageRouteProviderPlugin::ROUTE_NAME_CUSTOMER_OVERVIEW);
     }
+
+    /**
+     * @return array
+     */
+    protected function executeLoginAction(): array
+    {
+        $loginForm = $this
+            ->getFactory()
+            ->createCustomerFormFactory()
+            ->getLoginForm();
+
+        return [
+            'loginForm' => $loginForm->createView(),
+            'registerForm' => null,
+        ];
+    }
 }
