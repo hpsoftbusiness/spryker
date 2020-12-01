@@ -10,9 +10,9 @@ namespace Pyz\Zed\Sales\Communication\Form\DataProvider;
 use Generated\Shared\Transfer\CountryCollectionTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
 use Pyz\Zed\Sales\Communication\Form\AddressForm;
-use Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Sales\Communication\Form\DataProvider\AddressFormDataProvider as SprykerAddressFormDataProvider;
+use Spryker\Zed\Sales\Dependency\Facade\SalesToCountryInterface;
 use Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface;
 
 class AddressFormDataProvider extends SprykerAddressFormDataProvider
@@ -23,13 +23,13 @@ class AddressFormDataProvider extends SprykerAddressFormDataProvider
     protected $store;
 
     /**
-     * @var \Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface
+     * @var \Pyz\Zed\Country\Business\CountryFacadeInterface
      */
     protected $countryFacade;
 
     /**
      * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface $salesQueryContainer
-     * @param \Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface $countryFacade
+     * @param \Spryker\Zed\Sales\Dependency\Facade\SalesToCountryInterface $countryFacade
      * @param \Spryker\Shared\Kernel\Store $store
      */
     public function __construct(
@@ -79,9 +79,11 @@ class AddressFormDataProvider extends SprykerAddressFormDataProvider
     protected function createCountryOptionList()
     {
         $countryCollectionTransfer = new CountryCollectionTransfer();
+
         foreach ($this->store->getCountries() as $iso2Code) {
             $countryCollectionTransfer->addCountries((new CountryTransfer())->setIso2Code($iso2Code));
         }
+
         $countryCollectionTransfer = $this->countryFacade->findCountriesByIso2Codes($countryCollectionTransfer);
 
         $countryList = [];
