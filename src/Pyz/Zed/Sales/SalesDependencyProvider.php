@@ -50,7 +50,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function addCountryFacade(Container $container)
     {
         $container->set(static::FACADE_COUNTRY, function (Container $container) {
-            return new SalesToCountryBridge($container->getLocator()->country()->facade());
+            return $container->getLocator()->country()->facade();
         });
 
         return $container;
