@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<statemachine
+        xmlns="spryker:oms-01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="Cancellation01">
+        <states>
+            <state name="ready for cancellation"/>
+            <state name="cancellation pending"/>
+            <state name="cancelled"/>
+            <state name="cancellation failed clarification"/>
+            <state name="cancellation failed"/>
+            <state name="cancellation pending next try"/>
+        </states>
+
+        <events>
+            <event name="cancel" onEnter="true" command="Adyen/Cancel"/>
+            <event name="cancel payment manually" manual="true"/>
+            <event name="pass" onEnter="true"/>
+            <event name="pass 15 minute" timeout="15 minute"/>
+        </events>
+
+        <transitions>
+            <transition condition="Adyen/IsCancellationReceived">
+                <source>ready for cancellation</source>
+                <target>cancellation pending</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>ready for cancellation</source>
+                <target>cancellation failed clarification</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>cancellation failed clarification</source>
+                <target>cancelled</target>
+                <event>cancel payment manually</event>
+            </transition>
+
+            <transition condition="Adyen/IsCanceled">
+                <source>cancellation pending</source>
+                <target>cancelled</target>
+                <event>pass</event>
+            </transition>
+
+            <transition condition="Adyen/IsCancellationFailed">
+                <source>cancellation pending</source>
+                <target>cancellation failed</target>
+                <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>cancellation failed</source>
+                <target>cancellation failed clarification</target>
+                <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>cancellation pending</source>
+                <target>cancellation pending next try</target>
+                <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>cancellation pending next try</source>
+                <target>cancellation pending</target>
+                <event>pass 15 minute</event>
+            </transition>
+        </transitions>
+    </process>
+</statemachine>
