@@ -68,5 +68,5 @@ sections:
 
     scheduler-start:
         scheduler-setup:
-            command: "vendor/bin/console scheduler:setup -vvv --no-ansi || true"
+            command: "vendor/bin/console"
             stores: true

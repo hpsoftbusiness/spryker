@@ -30,6 +30,9 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
     public const COLUMN_NEW_FROM = 'product_abstract.new_from';
     public const COLUMN_NEW_TO = 'product_abstract.new_to';
 
+    public const COLUMN_IS_AFFILIATE = 'product.is_affiliate';
+    public const COLUMN_AFFILIATE_DATA = 'product.affiliate_data';
+
     public const COLUMN_NAME = 'product.name';
     public const COLUMN_DESCRIPTION = 'product.description';
 
