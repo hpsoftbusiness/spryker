@@ -1,13 +1,11 @@
 {% extends template('page-blank', '@SprykerShop:ShopUi') %}
 
+{% define data = {
+    webPropertyId: app.request.attributes.get('_web_property_id'),
+} %}
+
 {% block template %}
     {% set isNewFrontendBuildSupported = true %}
-
-    <pre>
-
-{#{{ dump(app.request) }}#}
-{{ dump(app.request.attributes.get('_web_property_id')) }}
-</pre>
 
     {{ parent() }}
 {% endblock %}
@@ -29,11 +27,11 @@
             j.src =
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-53PNGR9');</script>
+        })(window, document, 'script', 'dataLayer', '{{ data.webPropertyId }}');</script>
     <!-- End Google Tag Manager -->
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53PNGR9"
+        <iframe src="https://www.googletagmanager.com/ns.html?id={{ data.webPropertyId }}"
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->

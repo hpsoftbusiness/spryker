@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\Application\Communication\Plugin\EventDispatcher;
@@ -19,9 +19,10 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class GoogleAnalyticEventDispatcherPlugin extends AbstractPlugin implements EventDispatcherPluginInterface
 {
+    protected const WEB_PROPERTY_ID = '_web_property_id';
     /**
      * {@inheritDoc}
-     * - Extends EventDispatch with a KernelEvents::RESPONSE event to add security headers from config.
+     * - Extends EventDispatch with a KernelEvents::REQUEST event to add web property ID attribute from config.
      *
      * @api
      *
@@ -36,8 +37,7 @@ class GoogleAnalyticEventDispatcherPlugin extends AbstractPlugin implements Even
             KernelEvents::REQUEST,
             function (RequestEvent $event) use ($container) {
                 $request = $event->getRequest();
-                $request->attributes->set('_web_property_id', 'GTM-53PNGR9');
-//                $request->attributes->set('_web_property_id', $this->getConfig()->);
+                $request->attributes->set(static::WEB_PROPERTY_ID, $this->getConfig()->getWebPropertyId());
             }
         );
 

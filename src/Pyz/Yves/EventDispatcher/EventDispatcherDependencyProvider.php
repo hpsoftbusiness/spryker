@@ -54,7 +54,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RouterSslRedirectEventDispatcherPlugin(),
             new SessionEventDispatcherPlugin(),
             new RedirectUrlValidationEventDispatcherPlugin(),
-            new GoogleAnalyticEventDispatcherPlugin()
+            new GoogleAnalyticEventDispatcherPlugin(),
         ];
     }
 }
