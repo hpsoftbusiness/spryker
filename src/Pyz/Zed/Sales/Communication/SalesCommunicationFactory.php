@@ -9,6 +9,7 @@ namespace Pyz\Zed\Sales\Communication;
 
 use Pyz\Zed\Sales\Communication\Form\AddressForm;
 use Pyz\Zed\Sales\Communication\Form\DataProvider\AddressFormDataProvider;
+use Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface;
 use Pyz\Zed\Sales\SalesDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Sales\Communication\SalesCommunicationFactory as SprykerSalesCommunicationFactory;
@@ -31,7 +32,7 @@ class SalesCommunicationFactory extends SprykerSalesCommunicationFactory
     /**
      * @return \Pyz\Zed\Sales\Dependency\Facade\SalesToCountryInterface
      */
-    public function getCountryFacade()
+    public function getCountryFacade(): SalesToCountryInterface
     {
         return $this->getProvidedDependency(SalesDependencyProvider::FACADE_COUNTRY);
     }
