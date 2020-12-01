@@ -524,4 +524,4 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 // ------------------------------ GOOGLE ANALYTIC ------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[GoogleAnalyticConstants::WEB_PROPERTY_ID] = 'GTM-53PNGR9';
+$config[GoogleAnalyticConstants::WEB_PROPERTY_ID] = getenv('WEB_PROPERTY_ID') ?: 'no-web-property-id';
