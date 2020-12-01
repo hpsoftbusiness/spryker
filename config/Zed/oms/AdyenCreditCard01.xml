@@ -5,109 +5,136 @@
         xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
 
     <process name="AdyenCreditCard01" main="true">
+        <subprocesses>
+            <process>Authorization</process>
+            <process>Cancellation</process>
+            <process>Capture</process>
+            <process>Refund</process>
+            <process>Turnover</process>
+        </subprocesses>
+
         <states>
-            <state name="new" reserved="true" />
-            <state name="authorized" reserved="true" />
-            <state name="authorization failed" reserved="false" />
-            <state name="cancellation pending" reserved="false" />
-            <state name="canceled" reserved="false" />
-            <state name="cancellation failed" reserved="false" />
-            <state name="capture pending" reserved="true" />
-            <state name="captured" reserved="true" />
-            <state name="capture failed" reserved="false" />
-            <state name="shipped" reserved="true" />
-            <state name="refund pending" reserved="false" />
-            <state name="refunded" reserved="false" />
-            <state name="refund failed" reserved="false" />
-            <state name="refused" reserved="false" />
-            <state name="closed" reserved="false" />
+            <state name="new"/>
+            <state name="reserved"/>
+            <state name="order confirmation email sent"/>
+            <state name="order in processing email sent"/>
+            <state name="package packed"/>
+            <state name="waiting for tracking number"/>
+            <state name="invoice generated"/>
+            <state name="invoice with tracking number sent"/>
+            <state name="closed"/>
         </states>
 
         <events>
-            <event name="cancel" manual="true" command="Adyen/Cancel" />
-            <event name="capture" manual="true" command="Adyen/Capture" />
-            <event name="ship" manual="true" />
-            <event name="refund" manual="true" command="Adyen/Refund" />
-            <event name="close" manual="true" />
+            <event name="send order confirmation email" onEnter="true" command="Oms/SendOrderConfirmation"/>
+            <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
+            <event name="cancel payment" manual="true"/>
+            <event name="capture payment" manual="true"/>
+            <event name="start turnover creation process" onEnter="true"/>
+            <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
+            <event name="send invoice" onEnter="true" command="Invoice/SendInvoice"/>
+            <event name="refund payment" manual="true"/>
+            <event name="start turnover cancellation process" onEnter="true"/>
+            <event name="close" timeout="28days"/>
+            <event name="pass" onEnter="true"/>
         </events>
 
         <transitions>
-
-            <transition condition="Adyen/IsAuthorized" happy="true">
+            <transition condition="Oms/TrueCondition" happy="true">
                 <source>new</source>
-                <target>authorized</target>
+                <target>reserved</target>
             </transition>
 
-            <transition condition="Adyen/IsRefused">
-                <source>new</source>
-                <target>refused</target>
+            <transition happy="true">
+                <source>reserved</source>
+                <target>authorization pending</target>
+                <event>pass</event>
             </transition>
 
-            <transition condition="Adyen/IsAuthorizationFailed">
-                <source>new</source>
-                <target>authorization failed</target>
-            </transition>
-
-            <transition condition="Adyen/IsCancellationReceived">
+            <transition happy="true">
                 <source>authorized</source>
-                <target>cancellation pending</target>
-                <event>cancel</event>
+                <target>order confirmation email sent</target>
+                <event>send order confirmation email</event>
             </transition>
 
-            <transition condition="Adyen/IsCanceled" happy="true">
-                <source>cancellation pending</source>
-                <target>canceled</target>
+            <transition happy="true">
+                <source>order confirmation email sent</source>
+                <target>order in processing email sent</target>
+                <event>send order in processing email</event>
             </transition>
 
-            <transition condition="Adyen/IsCancellationFailed">
-                <source>cancellation pending</source>
-                <target>cancellation failed</target>
+            <transition>
+                <source>order in processing email sent</source>
+                <target>ready for cancellation</target>
+                <event>cancel payment</event>
             </transition>
 
-            <transition condition="Adyen/IsCaptureReceived" happy="true">
-                <source>authorized</source>
-                <target>capture pending</target>
-                <event>capture</event>
-            </transition>
-
-            <transition condition="Adyen/IsCaptured" happy="true">
-                <source>capture pending</source>
-                <target>captured</target>
-            </transition>
-
-            <transition condition="Adyen/IsCaptureFailed">
-                <source>capture pending</source>
-                <target>capture failed</target>
-            </transition>
-
-            <transition condition="Adyen/IsRefundReceived">
-                <source>captured</source>
-                <target>refund pending</target>
-                <event>refund</event>
-            </transition>
-
-            <transition condition="Adyen/IsRefunded" happy="true">
-                <source>refund pending</source>
-                <target>refunded</target>
-            </transition>
-
-            <transition condition="Adyen/IsRefundFailed">
-                <source>refund pending</source>
-                <target>refund failed</target>
+            <transition happy="true">
+                <source>order in processing email sent</source>
+                <target>ready for capture</target>
+                <event>capture payment</event>
             </transition>
 
             <transition happy="true">
                 <source>captured</source>
-                <target>shipped</target>
-                <event>ship</event>
+                <target>package packed</target>
+                <event>pass</event>
             </transition>
 
             <transition happy="true">
-                <source>shipped</source>
+                <source>package packed</source>
+                <target>waiting for tracking number</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>waiting for tracking number</source>
+                <target>ready for turnover creation</target>
+                <event>start turnover creation process</event>
+            </transition>
+
+            <transition happy="true">
+                <source>turnover created</source>
+                <target>invoice generated</target>
+                <event>generate invoice</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice generated</source>
+                <target>invoice with tracking number sent</target>
+                <event>send invoice</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice with tracking number sent</source>
                 <target>closed</target>
                 <event>close</event>
             </transition>
 
+            <transition>
+                <source>invoice with tracking number sent</source>
+                <target>ready for refund</target>
+                <event>refund payment</event>
+            </transition>
+
+            <transition>
+                <source>refunded</source>
+                <target>ready for turnover cancellation</target>
+                <event>start turnover cancellation process</event>
+            </transition>
+
+            <transition>
+                <source>turnover cancelled</source>
+                <target>closed</target>
+                <event>pass</event>
+            </transition>
         </transitions>
     </process>
+
+    <process name="Authorization" file="Subprocess/Authorization01.xml"/>
+    <process name="Cancellation" file="Subprocess/Cancellation01.xml"/>
+    <process name="Capture" file="Subprocess/Capture01.xml"/>
+    <process name="Refund" file="Subprocess/Refund01.xml"/>
+    <process name="Turnover" file="Subprocess/Turnover01.xml"/>
+
 </statemachine>

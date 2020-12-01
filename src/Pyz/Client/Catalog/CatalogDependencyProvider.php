@@ -133,6 +133,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SuggestionByTypeQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
         ];
     }
 
@@ -159,6 +160,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new LocalizedQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
         ];
     }
 
@@ -180,6 +182,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new LocalizedQueryExpanderPlugin(),
             new PaginatedProductConcreteCatalogSearchQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
             new ProductListQueryExpanderPlugin(),
         ];
     }
