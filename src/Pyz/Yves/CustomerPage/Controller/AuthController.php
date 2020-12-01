@@ -37,10 +37,14 @@ class AuthController extends SprykerAuthController
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     protected function executeLoginAction(): array
     {
+        if ($this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
+            return [];
+        }
+
         $loginForm = $this
             ->getFactory()
             ->createCustomerFormFactory()
