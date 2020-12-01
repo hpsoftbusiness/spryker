@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\SalesInvoice\Communication\Plugin\Oms\Command;
 
-use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
