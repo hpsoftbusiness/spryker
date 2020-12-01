@@ -23,7 +23,6 @@ use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopC
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
-use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
@@ -63,7 +62,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             LoginForm::class,
-            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
             $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
         ];
     }
