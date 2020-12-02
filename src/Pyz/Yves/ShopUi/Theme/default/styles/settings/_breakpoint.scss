@@ -1,16 +1,26 @@
 $sm-min: 0;
-$sm-max: rem(549);
-$md-min: rem(550);
-$md-max: rem(769);
-$lg-min: rem(770);
-$lg-max: rem(969);
-$xl-min: rem(970);
-$xl-max: rem(1203);
-$xxl-min: rem(1204);
+$sm-max: rem(359);
+$md-min: rem(360);
+$md-max: rem(599);
+$lg-min: rem(600);
+$lg-max: rem(767);
+$xl-min: rem(768);
+$xl-max: rem(959);
+$xxl-min: rem(960);
+$xxl-max: rem(1199);
+$xl3-min: rem(1200);
+$xl3-max: rem(1439);
+$xl4-min: rem(1440);
+$xl4-max: rem(1659);
+$xl5-min: rem(1660);
 
 $setting-breakpoints: (
     sm: ($sm-min, $sm-max),
     md: ($md-min, $md-max),
     lg: ($lg-min, $lg-max),
-    xl: ($xl-min)
+    xl: ($xl-min, $xl-max),
+    xxl: ($xxl-min, $xxl-max),
+    xl3: ($xl3-min, $xl3-max),
+    xl4: ($xl4-min, $xl4-max),
+    xl5: ($xl5-min)
 ) !default;
