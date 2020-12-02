@@ -51,7 +51,7 @@
         }
 
         &--secondary {
-            font: fw(bold) rem(25)/rem(30) $setting-font-family-additional;
+            font: fw(bold) rem(25)/rem(30) $setting-font-family;
             border-bottom: rem(1) dotted $setting-color-gray-3;
             padding-bottom: rem(7);
             margin-bottom: rem(20);
@@ -65,7 +65,7 @@
         }
 
         &--secondary-box {
-            font: fw(bold) rem(25)/rem(30) $setting-font-family-additional;
+            font: fw(bold) rem(25)/rem(30) $setting-font-family;
             border-bottom: rem(1) dotted $setting-color-gray-3;
             padding-bottom: rem(8);
             margin-bottom: rem(16);
@@ -80,7 +80,7 @@
         }
 
         &--secondary-small {
-            font: fw(bold) rem(15)/rem(17) $setting-font-family-additional;
+            font: fw(bold) rem(15)/rem(17) $setting-font-family;
             margin-bottom: rem(13);
             letter-spacing: rem(-0.17);
         }
@@ -183,7 +183,7 @@
         }
 
         &--cart-block {
-            font: fw(bold) rem(36) $setting-font-family-additional;
+            font: fw(bold) rem(36) $setting-font-family;
             padding-bottom: rem(10);
             border-bottom: rem(1) dotted $setting-color-gray-3;
         }
@@ -194,7 +194,7 @@
         }
 
         &--heading {
-            font: fw(medium) rem(16)/rem(16) $setting-font-family-additional;
+            font: fw(medium) rem(16)/rem(16) $setting-font-family;
             letter-spacing: rem(0.5);
 
             @include helper-breakpoint-media-min($lg-min) {

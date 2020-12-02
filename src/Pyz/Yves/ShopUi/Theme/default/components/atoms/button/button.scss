@@ -11,7 +11,7 @@
         min-width: $button-min-width/1.3;
         color: $setting-color-white;
         text-align: center;
-        font: fw(medium) rem(14)/rem(18) $setting-font-family-additional;
+        font: fw(medium) rem(14)/rem(18) $setting-font-family;
         cursor: pointer;
 
         @include helper-breakpoint-media-min($md-min) {
@@ -76,7 +76,7 @@
         }
 
         &--quantity {
-            font: fw(light) rem(16)/rem(18) $setting-font-family-additional;
+            font: fw(light) rem(16)/rem(18) $setting-font-family;
             background-color: $setting-color-transparent;
             border-radius: unset;
             color: $setting-color-black;
@@ -170,7 +170,7 @@
             margin-top: rem(16);
             height: rem(28);
             padding: 0 rem(16);
-            font: fw(regular) rem(10)/rem(26) $setting-font-family-additional;
+            font: fw(regular) rem(10)/rem(26) $setting-font-family;
 
             @include helper-breakpoint-media-min($md-min) {
                 margin-top: 0;
