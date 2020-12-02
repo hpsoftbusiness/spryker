@@ -19,6 +19,8 @@ export default class SuggestSearchExtended extends SuggestSearch {
     }
 
     protected mapEvents(): void {
+        console.log({searchOverlay: this.searchOverlay})
+
         this.searchInput.addEventListener('keyup', debounce(() => {
             this.onInputKeyUp();
         }, this.debounceDelay));

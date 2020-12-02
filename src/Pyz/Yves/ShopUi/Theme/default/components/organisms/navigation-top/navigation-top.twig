@@ -17,7 +17,7 @@
                 <li class="{{ config.name }}__item">
                     <a href="{{ url('wishlist/overview') }}" class="{{ config.name }}__link">
                         {% include atom('icon') with {
-                            modifiers: ['big'],
+                            modifiers: ['36'],
                             data: {
                                 name: 'wishlist'
                             }
@@ -25,9 +25,17 @@
                     </a>
                 </li>
                 <li class="{{ config.name }}__item">
+                    {% include molecule('cart-counter') with {
+                        class: config.jsName ~ '__trigger',
+                        data: {
+                            quantity: data.cartQuantity,
+                        },
+                    } only %}
+                </li>
+                <li class="{{ config.name }}__item">
                     <a href="{{ url('customer/overview') }}" class="{{ config.name }}__link {{ config.jsName }}__trigger">
                         {% include atom('icon') with {
-                            modifiers: ['big'],
+                            modifiers: ['36'],
                             data: {
                                 name: 'user-account'
                             }
@@ -38,7 +46,7 @@
                 <li class="{{ config.name }}__item">
                     <a href="{{ url('login') }}" class="{{ config.name }}__link">
                         {% include atom('icon') with {
-                            modifiers: ['big'],
+                            modifiers: ['36'],
                             data: {
                                 name: 'wishlist'
                             }
@@ -46,27 +54,28 @@
                     </a>
                 </li>
                 <li class="{{ config.name }}__item">
-                    <a href="{{ url('login') }}" class="{{ config.name }}__link {{ config.jsName }}__trigger">
+                    {% include molecule('cart-counter') with {
+                        class: config.jsName ~ '__trigger',
+                        data: {
+                            quantity: data.cartQuantity,
+                        },
+                    } only %}
+                </li>
+                <li class="{{ config.name }}__item">
+                    <a href="{{ url('login') }}" class="{{ config.name }}__link">
                         {% include atom('icon') with {
-                            modifiers: ['big'],
+                            modifiers: ['36'],
                             data: {
                                 name: 'user-account'
                             }
                         } only %}
                     </a>
                 </li>
+                <li class="{{ config.name }}__item {{ config.name }}__item--register">
+                    <a href="{{ url('register') }}">Register now</a>
+                </li>
             {% endif %}
         {% endif %}
-
-        <li class="{{ config.name }}__item">
-            {% include molecule('cart-counter') with {
-                class: config.jsName ~ '__trigger',
-                data: {
-                    quantity: data.cartQuantity,
-                },
-            } only %}
-        </li>
-
         <li class="{{ config.name }}__item {{ config.name }}__item--overlay">
             {% include molecule('nav-overlay') with {
                 attributes: {

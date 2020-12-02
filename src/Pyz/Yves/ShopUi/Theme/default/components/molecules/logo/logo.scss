@@ -1,14 +1,14 @@
 @mixin shop-ui-logo ($name: '.logo') {
     #{$name} {
-        padding: rem(13);
+        padding: 0;
 
-        @include helper-breakpoint-media-max($sm-max) {
-            border-bottom: rem(1) solid $setting-color-gray-1;
-        }
-
-        &__link {
+        &__svg {
             @include helper-breakpoint-media-max($sm-max) {
-                width: rem(120);
+                transform: scale(0.7);
+            }
+
+            @include helper-breakpoint-media-between($md-min, $md-max) {
+                margin-left: rem(15);
             }
         }
 

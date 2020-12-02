@@ -3,12 +3,7 @@
         position: relative;
         background-color: $setting-color-white;
         z-index: $setting-zi-header;
-        padding-top: rem(4);
         border-bottom: rem(1) solid $setting-color-gray-1;
-
-        @include helper-breakpoint-media-min($md-min) {
-            padding-top: rem(18);
-        }
 
         @include helper-breakpoint-media-min($lg-min) {
             padding-top: 0;
@@ -29,6 +24,10 @@
             }
         }
 
+        &__navigation-top {
+            margin: 0;
+        }
+
         &__currency-lang {
             display: flex;
             order: 1;
@@ -43,12 +42,22 @@
         }
 
         &__row {
-            padding: 0 rem(16);
+            padding: rem(10);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                padding: rem(14) rem(30);
+            }
         }
 
         &__navigation-top {
             position: relative;
             z-index: $setting-zi-header + 3;
+        }
+
+        &__categories {
+            &__label {
+                font-weight: fw(medium);
+            }
         }
 
         &__search-form {

@@ -6,6 +6,17 @@
             padding: rem(12.8);
             z-index: $setting-zi-element + 2;
 
+            @include helper-breakpoint-media-min($lg-min) {
+                padding: 0;
+                margin: rem(2) rem(5);
+            }
+
+            &--register {
+                font-weight: fw(medium);
+                margin-left: rem(15);
+                margin-right: 0;
+            }
+
             &--overlay {
                 position: static;
                 padding: 0;

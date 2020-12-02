@@ -1,0 +1,65 @@
+@mixin shop-ui-search-form-desktop($name: '.search-form-desktop') {
+    #{$name} {
+        position: relative;
+        flex-grow: 1;
+
+        &__input {
+            display: flex;
+            flex-grow: 1;
+
+            &__field {
+                width: 100%;
+                height: 42px;
+                padding: 3px 8px 3px 18px;
+                border-radius: 21px;
+                background-color: $setting-color-marketplace-gray-2;
+                border: rem(1) solid $setting-color-marketplace-gray-2;
+
+                @include helper-breakpoint-media-max($lg-max) {
+                    width: 0;
+
+                    @include helper-visibility-invisible;
+                }
+
+                &:focus {
+                    background-color: $setting-color-white;
+                    border: rem(1) solid $setting-color-marketplace;
+                }
+            }
+
+            &__icon {
+                cursor: pointer;
+                position: absolute;
+                right: 8px;
+                bottom: 0;
+                top: 0;
+                margin: auto;
+            }
+        }
+
+        &__suggestions {
+            top: 50px;
+            width: 100%;
+            position: absolute;
+
+            .suggestion-links-list--top {
+                margin-top: 0;
+            }
+
+            .suggest-search__container {
+                background-color: $setting-color-white;
+                box-shadow: 0 0 2px 0 $setting-color-gray-3;
+                margin: 0;
+                padding: 10px 25px 20px;
+            }
+        }
+
+        .suggest-search__hint {
+            display: none;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-search-form-desktop();
