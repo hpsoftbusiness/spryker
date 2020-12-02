@@ -91,13 +91,11 @@
             font-weight: fw(light);
             line-height: rem(18);
             text-transform: uppercase;
-            letter-spacing: rem(0.27);
         }
 
         &__price {
             margin-bottom: rem(30);
             font: fw(light) rem(18) $setting-font-family;
-            letter-spacing: rem(0.3);
             color: $setting-color-black;
 
             @include helper-breakpoint-media-min($md-min) {

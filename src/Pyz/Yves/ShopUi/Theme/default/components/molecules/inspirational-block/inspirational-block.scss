@@ -39,13 +39,11 @@
         &__pre-title,
         &__title {
             font: fw(bold) rem(17)/1.52 $setting-font-family;
-            letter-spacing: rem(3);
             color: $setting-color-black;
             margin-bottom: rem(15);
             text-transform: uppercase;
 
             @include helper-breakpoint-media-min($md-min) {
-                letter-spacing: rem(3.8);
                 font-size: rem(21);
             }
         }
@@ -56,19 +54,16 @@
 
             @include helper-breakpoint-media-min($md-min) {
                 font-size: rem(10);
-                letter-spacing: rem(3.2);
             }
         }
 
         &__text {
             font: fw(regular) rem(13)/1.62 $setting-font-family;
-            letter-spacing: rem(0.8);
             color: $setting-color-gray-4;
             margin-bottom: rem(27);
 
             @include helper-breakpoint-media-min($md-min) {
                 line-height: 1.47;
-                letter-spacing: rem(1);
                 font-size: rem(17);
             }
         }

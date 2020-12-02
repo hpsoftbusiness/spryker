@@ -39,7 +39,6 @@
     &--custom-underline {
         @include helper-effect-transition(opacity);
         font: fw(bold) rem(11) $setting-font-family;
-        letter-spacing: rem(2.7);
         text-transform: uppercase;
         position: relative;
         color: $setting-color-text;
@@ -76,7 +75,6 @@
         @include helper-effect-transition(color);
         font: fw(medium) rem(16) $setting-font-family;
         color: $setting-color-alpha-5;
-        letter-spacing: normal;
 
         &:hover,
         &:focus {

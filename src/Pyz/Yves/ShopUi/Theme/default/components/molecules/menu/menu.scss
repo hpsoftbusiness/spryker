@@ -68,7 +68,6 @@
             &--side-drawer {
                 text-transform: uppercase;
                 font: fw(medium) rem(13) $setting-font-family;
-                letter-spacing: rem(2);
                 white-space: nowrap;
                 display: inline-block;
                 padding: rem(16) 0;
@@ -110,11 +109,6 @@
         }
 
         &--customer-account {
-            #{$name}__item,
-            #{$name}__link {
-                letter-spacing: rem(0.2);
-            }
-
             #{$name}__link {
                 background: none;
                 color: $setting-color-black;
@@ -128,7 +122,6 @@
             }
 
             #{$name}__button {
-                letter-spacing: rem(0.2);
                 font: fw(light) rem(14) $setting-font-family;
                 color: $setting-color-text;
                 background: $setting-color-transparent;

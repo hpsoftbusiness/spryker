@@ -95,7 +95,6 @@
 
         &__sub-headline {
             font: fw(light) rem(16) $setting-font-family;
-            letter-spacing: rem(0.2);
 
             @include helper-breakpoint-media-min($lg-min) {
                 font-size: rem(24);
@@ -108,7 +107,6 @@
             &--category {
                 font: fw(medium) rem(13) $setting-font-family;
                 text-transform: uppercase;
-                letter-spacing: rem(2.6);
                 color: $setting-color-black;
             }
         }
