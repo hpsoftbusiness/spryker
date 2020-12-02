@@ -46,19 +46,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container): Container
-    {
-        $container = parent::provideCommunicationLayerDependencies($container);
-        $container = $this->addCountryFacade($container);
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCountryFacade(Container $container)
     {
         $container->set(static::FACADE_COUNTRY, function (Container $container) {
