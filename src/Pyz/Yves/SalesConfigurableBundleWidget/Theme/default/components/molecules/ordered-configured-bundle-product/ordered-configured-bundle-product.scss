@@ -8,7 +8,7 @@
 
         &__title {
             display: block;
-            font: fw(medium) rem(15) $setting-font-family-additional;
+            font: fw(medium) rem(15) $setting-font-family;
         }
 
         &__sku {
@@ -17,7 +17,7 @@
         }
 
         &__text {
-            font: fw(regular) $setting-font-size-base $setting-font-family-additional;
+            font: fw(regular) $setting-font-size-base $setting-font-family;
 
             &--secondary {
                 color: $setting-color-gray-3;

@@ -3,7 +3,7 @@
         @include helper-effect-transition(box-shadow z-index);
         position: relative;
         margin-bottom: rem(10);
-        font-family: $setting-font-family-additional;
+        font-family: $setting-font-family;
         border-radius: rem(4);
         overflow: hidden;
         background: $setting-color-alpha-4;

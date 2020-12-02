@@ -67,7 +67,7 @@
         &__link {
             &--side-drawer {
                 text-transform: uppercase;
-                font: fw(medium) rem(13) $setting-font-family-additional;
+                font: fw(medium) rem(13) $setting-font-family;
                 letter-spacing: rem(2);
                 white-space: nowrap;
                 display: inline-block;
@@ -147,7 +147,7 @@
 
         &--order-summary {
             #{$name}__item {
-                font: fw(light) rem(16) $setting-font-family-additional;
+                font: fw(light) rem(16) $setting-font-family;
                 margin: rem(10) 0;
             }
         }
