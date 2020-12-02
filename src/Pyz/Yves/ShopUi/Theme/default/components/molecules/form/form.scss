@@ -175,7 +175,7 @@ $address-form-width: rem(600);
 
         &--pdp-review-form {
             .label {
-                color: $setting-color-gray-6;
+                color: $setting-color-black;
 
                 &::after {
                     display: none;
@@ -186,7 +186,7 @@ $address-form-width: rem(600);
             textarea {
                 @include helper-effect-transition(all 0.4s ease);
                 font: fw(regular) rem(17)/rem(22) $setting-font-family;
-                color: $setting-color-gray-6;
+                color: $setting-color-black;
                 padding: rem(10) rem(15);
 
                 &:focus {

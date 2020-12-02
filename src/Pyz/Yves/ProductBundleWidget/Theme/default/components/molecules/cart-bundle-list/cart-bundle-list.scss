@@ -30,7 +30,7 @@
         }
 
         &__quantity {
-            color: $setting-color-gray-6;
+            color: $setting-color-black;
             font-weight: normal;
             margin-left: rem(16);
             position: relative;
@@ -42,7 +42,7 @@
                 height: rem(3);
                 position: absolute;
                 left: rem(-10);
-                background: $setting-color-gray-6;
+                background: $setting-color-black;
                 top: rem(9);
                 border-radius: 50%;
             }

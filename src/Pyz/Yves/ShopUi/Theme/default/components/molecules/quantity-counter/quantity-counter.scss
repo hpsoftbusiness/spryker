@@ -1,7 +1,7 @@
 @mixin shop-ui-quantity-counter($name: '.quantity-counter') {
     #{$name} {
         &__container {
-            border: rem(1) solid $setting-color-marketplace-gray-4;
+            border: rem(1) solid $setting-color-gray-4;
             border-radius: rem(4);
             display: inline-flex;
             padding: 0 rem(10);

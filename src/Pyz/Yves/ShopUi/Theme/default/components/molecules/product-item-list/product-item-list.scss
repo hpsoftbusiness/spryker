@@ -6,7 +6,7 @@
         font-family: $setting-font-family-additional;
         border-radius: rem(4);
         overflow: hidden;
-        background: $setting-color-alpha-1;
+        background: $setting-color-alpha-4;
 
         &::before {
             @include helper-effect-transition(opacity);
@@ -16,7 +16,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-1);
+            background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-4);
             opacity: 0;
         }
 
@@ -80,13 +80,13 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: $setting-color-alpha-1;
+                background: $setting-color-alpha-4;
                 z-index: $setting-zi-element-floating;
             }
 
             &::after {
                 @include helper-effect-transition(opacity);
-                background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-1);
+                background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-4);
                 opacity: 0;
             }
         }

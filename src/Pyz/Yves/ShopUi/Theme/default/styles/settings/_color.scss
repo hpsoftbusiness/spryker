@@ -1,56 +1,39 @@
 $setting-color-cashback: #5cb885;
 $setting-color-travel: #40b5a8;
 $setting-color-lyconet: #f29533;
-$setting-color-marketplace: #f0be00;
-$setting-color-marketplace-dark: #e5b500;
-$setting-color-marketplace-darker: darken(#e5b500, 5%);
-$setting-color-marketplace-shadow: rgba($setting-color-marketplace-darker, 5%);
 
-$setting-color-marketplace-gray-1: #f5f5f5;
-$setting-color-marketplace-gray-2: #eeeeee;
-$setting-color-marketplace-gray-3: #dddddd;
-$setting-color-marketplace-gray-4: #b6b6b6;
-$setting-color-marketplace-gray-5: #909090;
-$setting-color-marketplace-gray-6: #909090;
-$setting-color-marketplace-black: #333;
-
-$setting-color-marketplace-warning: #f0be01;
-$setting-color-marketplace-success: #5cb886;
-$setting-color-marketplace-error: #d54c4c;
-
-$setting-color-yellow: #ffbf1c;
-$setting-color-blue: #5e3dff;
+$setting-color-yellow: #e5b500;
 
 $setting-color-gray-1: #f5f5f5;
-$setting-color-gray-2: #ededed;
-$setting-color-gray-3: #dedede;
-$setting-color-gray-4: #555;
-$setting-color-gray-5: #444;
-$setting-color-gray-6: #333;
-$setting-color-black: $setting-color-marketplace-black;
+$setting-color-gray-2: #eee;
+$setting-color-gray-3: #ddd;
+$setting-color-gray-4: #b6b6b6;
+$setting-color-gray-5: #909090;
+$setting-color-black: #333;
 
-$setting-color-info: #f0ede6;
-
-$setting-color-main: #00afb4;
-$setting-color-alt: #ff4859;
+$setting-color-main: #f0be00;
+$setting-color-alt: $setting-color-yellow;
 $setting-color-text: $setting-color-black;
-$setting-color-input-border: $setting-color-info;
-$setting-color-input-border-focus: $setting-color-gray-3;
+$setting-color-input-border: $setting-color-gray-4;
+$setting-color-input-border-focus: $setting-color-main;
+$setting-color-input-border-disabled: $setting-color-gray-3;
+$setting-color-input-background: $setting-color-white;
+$setting-color-input-background-error: #fbeded;
 
-$setting-color-alpha-1: rgba($setting-color-black, 0.05);
+$setting-color-alpha-1: rgba($setting-color-main, 0.3);
+// Old alpha colors, should be replaced or removed in the end of redesign
 $setting-color-alpha-2: rgba($setting-color-main, 0.1);
 $setting-color-alpha-3: rgba($setting-color-black, 0.5);
-$setting-color-alpha-5: rgba($setting-color-gray-6, 0.4);
+$setting-color-alpha-4: rgba($setting-color-black, 0.05);
+$setting-color-alpha-5: rgba($setting-color-black, 0.4);
 $setting-color-alpha-6: rgba($setting-color-gray-3, 0.5);
 $setting-color-alpha-7: rgba($setting-color-gray-3, 0.75);
 $setting-color-alpha-8: rgba($setting-color-black, 0.24);
-$setting-color-alpha-9: rgba($setting-color-main, 0.4);
 
 $setting-color-actions: (
-    info: $setting-color-info,
-    warning: $setting-color-marketplace-warning,
-    success: $setting-color-marketplace-success,
-    alert: $setting-color-marketplace-error,
+    warning: #f0be01,
+    success: #5cb886,
+    alert: #d54c4c,
 );
 
 $setting-color-statuses: (

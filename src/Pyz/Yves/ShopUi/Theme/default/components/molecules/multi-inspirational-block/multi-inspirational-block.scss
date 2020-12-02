@@ -180,7 +180,7 @@
         &__post-title {
             font: fw(regular) rem(9)/1.56 $setting-font-family-additional;
             letter-spacing: rem(2.9);
-            color: $setting-color-gray-6;
+            color: $setting-color-black;
 
             @include helper-breakpoint-media-min($md-min) {
                 font-size: rem(10);

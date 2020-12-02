@@ -82,13 +82,13 @@
 
                 &::after {
                     content: '|';
-                    color: $setting-color-gray-6;
+                    color: $setting-color-black;
                 }
             }
 
             &--horizontal-line {
                 display: block;
-                border-top: rem(1) solid $setting-color-gray-6;
+                border-top: rem(1) solid $setting-color-black;
             }
         }
 
