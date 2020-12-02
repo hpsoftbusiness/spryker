@@ -226,7 +226,7 @@ $address-form-width: rem(600);
 
         .label {
             display: inline-block;
-            font: normal rem(15) $setting-font-family-additional;
+            font: normal rem(15) $setting-font-family;
             margin-bottom: rem(6);
 
             &--required {

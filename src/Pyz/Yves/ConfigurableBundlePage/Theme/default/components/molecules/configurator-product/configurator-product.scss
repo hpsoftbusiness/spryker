@@ -80,7 +80,7 @@
 
         &__name {
             font-weight: fw(medium);
-            font-family: $setting-font-family-additional;
+            font-family: $setting-font-family;
             margin-bottom: rem(8);
             display: inline-block;
         }
@@ -96,7 +96,7 @@
 
         &__price {
             margin-bottom: rem(30);
-            font: fw(light) rem(18) $setting-font-family-additional;
+            font: fw(light) rem(18) $setting-font-family;
             letter-spacing: rem(0.3);
             color: $setting-color-gray-6;
 
