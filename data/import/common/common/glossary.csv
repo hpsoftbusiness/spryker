@@ -1371,6 +1371,8 @@ product-cart.validation.error.concrete-product-inactive,"Product %sku% is not ac
 product-cart.validation.error.concrete-product-inactive,"Produkt %sku% ist nicht aktiv.",de_DE
 product-cart.info.concrete-product-inactive.removed,"Inactive item %sku% was removed from your shopping cart.",en_US
 product-cart.info.concrete-product-inactive.removed,"Der inaktive Artikel %sku% wurde aus deinem Warenkorb entfernt.",de_DE
+reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US
+reorder.info.restricted-product.removed,Der Artikel %sku% konnte Ihrem Warenkorb nicht hinzugefügt werden da er deaktiviert wurde.,de_DE
 product.filter.label,Label,en_US
 product.filter.label,Label,de_DE
 product.filter.price-default-chf-gross_mode,Preis,de_DE
