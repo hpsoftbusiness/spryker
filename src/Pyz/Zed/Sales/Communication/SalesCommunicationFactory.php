@@ -9,9 +9,14 @@ namespace Pyz\Zed\Sales\Communication;
 
 use Pyz\Zed\Sales\Communication\Form\AddressForm;
 use Pyz\Zed\Sales\Communication\Form\DataProvider\AddressFormDataProvider;
+use Pyz\Zed\Sales\SalesDependencyProvider;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Sales\Communication\SalesCommunicationFactory as SprykerSalesCommunicationFactory;
 use Symfony\Component\Form\FormInterface;
 
+/**
+ * @method \Pyz\Zed\Country\Business\CountryFacadeInterface getCountryFacade()
+ */
 class SalesCommunicationFactory extends SprykerSalesCommunicationFactory
 {
     /**
@@ -21,8 +26,17 @@ class SalesCommunicationFactory extends SprykerSalesCommunicationFactory
     {
         return new AddressFormDataProvider(
             $this->getQueryContainer(),
-            $this->getCountryFacade()
+            $this->getCountryFacade(),
+            $this->getStore()
         );
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    public function getStore(): Store
+    {
+        return $this->getProvidedDependency(SalesDependencyProvider::STORE);
     }
 
     /**

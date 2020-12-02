@@ -93,6 +93,14 @@ groups:
   EU:
     region: EU
     applications:
+      Redirects:
+        application: static
+        endpoints:
+          de.myworld.cloud.spryker.toys:
+            store: DE
+            redirect:
+              type: 302
+              url: www.de.myworld.cloud.spryker.toys 
       Yves:
         application: yves
         endpoints:

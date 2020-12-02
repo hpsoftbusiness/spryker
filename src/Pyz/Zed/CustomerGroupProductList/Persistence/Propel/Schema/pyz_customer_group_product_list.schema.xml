@@ -15,11 +15,11 @@
             <unique-column name="fk_product_list"/>
         </unique>
 
-        <foreign-key name="pyz_customer_group_to_product_list-fk_customer_group" foreignTable="spy_customer_group" phpName="CustomerGroup">
+        <foreign-key name="pyz_customer_group_to_product_list-fk_customer_group" foreignTable="spy_customer_group" phpName="CustomerGroup" onDelete="CASCADE">
             <reference local="fk_customer_group" foreign="id_customer_group"/>
         </foreign-key>
 
-        <foreign-key name="pyz_customer_group_to_product_list-fk_product_list" foreignTable="spy_product_list" phpName="ProductList">
+        <foreign-key name="pyz_customer_group_to_product_list-fk_product_list" foreignTable="spy_product_list" phpName="ProductList" onDelete="CASCADE">
             <reference foreign="id_product_list" local="fk_product_list"/>
         </foreign-key>
         <index name="index-pyz_customer_group_to_product_list-fk_product_list">

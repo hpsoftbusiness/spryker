@@ -10,6 +10,8 @@ namespace Pyz\Zed\Customer\Communication\Form;
 use Spryker\Zed\Customer\Communication\Form\AddressForm as SprykerAddressForm;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @method \Spryker\Zed\Customer\Business\CustomerFacadeInterface getFacade()
@@ -47,6 +49,7 @@ class AddressForm extends SprykerAddressForm
     protected function addAddress4Field(FormBuilderInterface $builder)
     {
         $builder->add(self::FIELD_ADDRESS_4, TextType::class, [
+            'label' => 'Address line 4',
             'required' => false,
             'trim' => true,
         ]);
@@ -79,6 +82,25 @@ class AddressForm extends SprykerAddressForm
         $builder->add(self::FIELD_STATE, TextType::class, [
             'required' => false,
             'trim' => true,
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
+     */
+    protected function addPhoneField(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_PHONE, TextType::class, [
+            'label' => 'Phone',
+            'required' => true,
+            'constraints' => [
+                new NotBlank(),
+                new Length(['max' => 255]),
+            ],
         ]);
 
         return $this;
