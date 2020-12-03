@@ -32,9 +32,9 @@ $config[SsoConstants::SCOPE] = 'openid';
  */
 $baseUrlYves = $config[ApplicationConstants::BASE_URL_YVES];
 
-if (empty($baseUrlYves) || strpos('host', $baseUrlYves) !== false) {
-    $baseUrlYves = 'https://https://www.de.myworld.cloud.spryker.toys';
-}
+//if (empty($baseUrlYves) || strpos('host', $baseUrlYves) !== false) {
+    $baseUrlYves = 'https://www.de.myworld.cloud.spryker.toys';
+//}
 
 $config[SsoConstants::REDIRECT_URL] =
     sprintf('%s/%s', $baseUrlYves, $config[SsoConstants::LOGIN_CHECK_PATH]);
