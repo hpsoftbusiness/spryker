@@ -30,14 +30,10 @@ $config[SsoConstants::SCOPE] = 'openid';
 /**
  * @todo replace with normal ENV var
  */
-$baseUrlYves = $config[ApplicationConstants::BASE_URL_YVES];
+//$baseUrlYves = $config[ApplicationConstants::BASE_URL_YVES];
 
-//if (empty($baseUrlYves) || strpos('host', $baseUrlYves) !== false) {
-    $baseUrlYves = 'https://www.de.myworld.cloud.spryker.toys';
-//}
-
-$config[SsoConstants::REDIRECT_URL] =
-    sprintf('%s/%s', $baseUrlYves, $config[SsoConstants::LOGIN_CHECK_PATH]);
+// @todo debug staging
+$config[SsoConstants::REDIRECT_URL] = 'https://www.de.myworld.cloud.spryker.toys/login_check';
 
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($config[KernelConstants::DOMAIN_WHITELIST], [
     'id-test.cashbackworld.com', // SSO Oauth domain

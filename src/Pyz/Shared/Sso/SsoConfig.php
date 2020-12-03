@@ -80,7 +80,9 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getRedirectUrl(): string
     {
-        return $this->get(SsoConstants::REDIRECT_URL);
+        //return $this->get(SsoConstants::REDIRECT_URL);
+
+        return 'https://www.de.myworld.cloud.spryker.toys/login_check';
     }
 
     /**
