@@ -113,6 +113,7 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWrite
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
+use Spryker\Service\UtilText\UtilTextServiceInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
@@ -1412,6 +1413,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
+     * @return \Spryker\Service\UtilText\UtilTextServiceInterface
+     */
+    protected function getUtilTextService(): UtilTextServiceInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::SERVICE_UTIL_TEXT);
+    }
+
+    /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
     protected function createAddLocalesStep(): DataImportStepInterface
@@ -1748,7 +1757,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 CombinedProductAbstractHydratorStep::COLUMN_META_DESCRIPTION,
                 CombinedProductAbstractHydratorStep::COLUMN_META_KEYWORDS,
             ]))
-            ->addStep(new CombinedProductAbstractHydratorStep());
+            ->addStep(new CombinedProductAbstractHydratorStep(
+                $this->getUtilTextService()
+            ));
 
         $dataImporter->setDataSetCondition($this->createCombinedProductAbstractTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);

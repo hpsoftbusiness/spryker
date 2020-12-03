@@ -22,12 +22,13 @@ class CombinedProductConcreteTypeDataSetCondition implements DataSetConditionInt
      */
     public function hasData(DataSetInterface $dataSet): bool
     {
-        if ($dataSet[CombinedProductConcreteHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE
-            || $dataSet[CombinedProductConcreteHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_BOTH
-        ) {
-            return true;
-        }
-
-        return false;
+        return true;
+//        if ($dataSet[CombinedProductConcreteHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE
+//            || $dataSet[CombinedProductConcreteHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_BOTH
+//        ) {
+//            return true;
+//        }
+//
+//        return false;
     }
 }

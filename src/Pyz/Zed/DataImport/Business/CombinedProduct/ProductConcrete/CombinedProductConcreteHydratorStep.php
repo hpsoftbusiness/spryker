@@ -68,20 +68,33 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
     protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
     {
         if (empty($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE])) {
-            throw new DataKeyNotFoundInDataSetException(sprintf(
-                '"%s" must be defined in the data set. Given: "%s"',
-                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
-            ));
+
+            $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
+            $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+
+            if ($isAbstractSkuIsEmpty === null) {
+                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_BOTH;
+            }
+
+            if ($isConcreteSkuIsEmpty === null) {
+                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+            }
+
+
+//            throw new DataKeyNotFoundInDataSetException(sprintf(
+//                '"%s" must be defined in the data set. Given: "%s"',
+//                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
+//                implode(', ', array_keys($dataSet->getArrayCopy()))
+//            ));
         }
 
-        if (!in_array($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE], static::ASSIGNABLE_PRODUCT_TYPES, true)) {
-            throw new InvalidDataException(sprintf(
-                '"%s" must have one of the following values: %s. Given: "%s"',
-                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', static::ASSIGNABLE_PRODUCT_TYPES),
-                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
-            ));
-        }
+//        if (!in_array($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE], static::ASSIGNABLE_PRODUCT_TYPES, true)) {
+//            throw new InvalidDataException(sprintf(
+//                '"%s" must have one of the following values: %s. Given: "%s"',
+//                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
+//                implode(', ', static::ASSIGNABLE_PRODUCT_TYPES),
+//                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
+//            ));
+//        }
     }
 }

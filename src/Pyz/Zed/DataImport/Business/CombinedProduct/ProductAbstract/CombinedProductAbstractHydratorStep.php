@@ -7,9 +7,10 @@
 
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract;
 
-use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
+use Generated\Shared\Transfer\SpyUrlEntityTransfer;
+use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
-use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
+use Spryker\Service\UtilText\UtilTextServiceInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
@@ -37,11 +38,25 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
 
     protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
     protected const ASSIGNABLE_PRODUCT_TYPE_BOTH = 'both';
+    protected const ASSIGNABLE_PRODUCT_TYPE_CONCRETE = 'concrete';
 
-    protected const ASSIGNABLE_PRODUCT_TYPES = [
+    public const ASSIGNABLE_PRODUCT_TYPES = [
         self::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT,
         self::ASSIGNABLE_PRODUCT_TYPE_BOTH,
     ];
+
+    /**
+     * @var \Spryker\Service\UtilText\UtilTextServiceInterface
+     */
+    protected $utilTextService;
+
+    /**
+     * @param \Spryker\Service\UtilText\UtilTextServiceInterface $utilTextService
+     */
+    public function __construct(UtilTextServiceInterface $utilTextService)
+    {
+        $this->utilTextService = $utilTextService;
+    }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -66,20 +81,69 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
     protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
     {
         if (empty($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE])) {
-            throw new DataKeyNotFoundInDataSetException(sprintf(
-                '"%s" must be defined in the data set. Given: "%s"',
-                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
-            ));
+            $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
+            $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+
+//            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+
+            if ($isAbstractSkuIsEmpty === null) {
+                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_BOTH;
+            }
+
+            if ($isConcreteSkuIsEmpty === null) {
+                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT;
+            }
+
+//            throw new DataKeyNotFoundInDataSetException(sprintf(
+//                '"%s" must be defined in the data set. Given: "%s"',
+//                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
+//                implode(', ', array_keys($dataSet->getArrayCopy()))
+//            ));
         }
 
-        if (!in_array($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE], static::ASSIGNABLE_PRODUCT_TYPES, true)) {
-            throw new InvalidDataException(sprintf(
-                '"%s" must have one of the following values: %s. Given: "%s"',
-                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', static::ASSIGNABLE_PRODUCT_TYPES),
-                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
-            ));
+//        if (!in_array($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE], static::ASSIGNABLE_PRODUCT_TYPES, true)) {
+//            throw new InvalidDataException(sprintf(
+//                '"%s" must have one of the following values: %s. Given: "%s"',
+//                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
+//                implode(', ', static::ASSIGNABLE_PRODUCT_TYPES),
+//                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
+//            ));
+//        }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function importProductUrls(DataSetInterface $dataSet): void
+    {
+        $urlsTransfer = [];
+
+        foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
+            $abstractProductUrl = $localizedAttributes[static::COLUMN_URL];
+
+            if ($abstractProductUrl === "") {
+                $locales = array_flip($dataSet[static::KEY_LOCALES]);
+                $localeCode = strtok($locales[$idLocale], '_');
+                $abstractProductUrl = $this->utilTextService->generateSlug($localizedAttributes[static::COLUMN_NAME]);
+                $abstractProductUrl = '/' . $localeCode . '/' . $abstractProductUrl;
+            }
+
+            $urlEntityTransfer = new SpyUrlEntityTransfer();
+
+            dump($abstractProductUrl);
+
+            $urlEntityTransfer
+                ->setFkLocale($idLocale)
+                ->setUrl($abstractProductUrl);
+
+            $urlsTransfer[] = [
+                static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
+                static::KEY_PRODUCT_URL_TRASNFER => $urlEntityTransfer,
+            ];
         }
+
+        $dataSet[static::DATA_PRODUCT_URL_TRANSFER] = $urlsTransfer;
     }
 }
