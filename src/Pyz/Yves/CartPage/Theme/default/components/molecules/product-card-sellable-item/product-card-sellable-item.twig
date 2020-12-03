@@ -1,0 +1,16 @@
+{% extends molecule('product-card-item') %}
+
+{% define config = {
+    name: 'product-card-sellable-item',
+} %}
+
+{% block summary %}
+    {{ parent() }}
+    {% if data.productItem.hiddenConcreteAttributes is defined and data.productItem.hiddenConcreteAttributes is not empty %}
+        {% for key,sellableAttribute in data.productItem.hiddenConcreteAttributes %}
+            {% if sellableAttribute %}
+                <span>{{ key ~ ' : ' ~ sellableAttribute }}</span>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
