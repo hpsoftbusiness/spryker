@@ -137,14 +137,6 @@
                     } only %}
                 </div>
             {% endif %}
-
-            {% if data.productItem.hiddenConcreteAttributes is defined and data.productItem.hiddenConcreteAttributes is not empty %}
-                {% for key,sellableAttribute in data.productItem.hiddenConcreteAttributes %}
-                    {% if sellableAttribute %}
-                        <span>{{ key ~ ' : ' ~ sellableAttribute }}<span>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
         {% endblock %}
     </div>
 {% endblock %}
