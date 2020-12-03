@@ -6,7 +6,7 @@
 
 {% block summary %}
     {{ parent() }}
-    {% if data.productItem.hiddenConcreteAttributes is defined and data.productItem.hiddenConcreteAttributes is not empty %}
+    {% if data.productItem.hiddenConcreteAttributes ?? false %}
         {% for key,sellableAttribute in data.productItem.hiddenConcreteAttributes %}
             {% if sellableAttribute %}
                 <span>{{ key ~ ' : ' ~ sellableAttribute }}</span>
