@@ -32,11 +32,10 @@ $config[SsoConstants::SCOPE] = 'openid';
  */
 $baseUrlYves = $config[ApplicationConstants::BASE_URL_YVES];
 
-if (empty($baseUrlYves) || $baseUrlYves === 'not-configured-host') {
-    $baseUrlYves = getenv('SPRYKER_SCHEDULER_HOST') ?? '';
-    $baseUrlYves = str_replace('jenkins', 'www.de', $baseUrlYves);
-    $baseUrlYves = 'https://' . $baseUrlYves;
+if (empty($baseUrlYves) || strpos('host', $baseUrlYves) !== false) {
+    $baseUrlYves = 'https://https://www.de.myworld.cloud.spryker.toys';
 }
+
 $config[SsoConstants::REDIRECT_URL] =
     sprintf('%s/%s', $baseUrlYves, $config[SsoConstants::LOGIN_CHECK_PATH]);
 
