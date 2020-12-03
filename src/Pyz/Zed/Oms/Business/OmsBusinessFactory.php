@@ -12,9 +12,6 @@ use Pyz\Zed\Oms\Business\Calculator\TimeoutProcessorTimeoutCalculatorInterface;
 use Pyz\Zed\Oms\Business\Mail\MailHandler;
 use Spryker\Zed\Oms\Business\OmsBusinessFactory as SprykerOmsBusinessFactory;
 
-/**
- * // * @method \Pyz\Zed\Oms\Business\Mail\MailHandler createMailHandler()
- */
 class OmsBusinessFactory extends SprykerOmsBusinessFactory
 {
     /**
