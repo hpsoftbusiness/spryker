@@ -4,7 +4,11 @@
 
         &__svg {
             @include helper-breakpoint-media-max($sm-max) {
-                transform: scale(0.7);
+                max-width: 120px;
+            }
+
+            @include helper-breakpoint-media-between($sm-min, $md-max) {
+                margin-left: rem(5);
             }
 
             @include helper-breakpoint-media-between($md-min, $lg-max) {
