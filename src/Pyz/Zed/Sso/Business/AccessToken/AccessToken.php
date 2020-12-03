@@ -13,9 +13,12 @@ use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use GuzzleHttp\ClientInterface;
 use Pyz\Zed\Sso\SsoConfig;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
+use Spryker\Shared\Log\LoggerTrait;
 
 class AccessToken implements AccessTokenInterface
 {
+    use LoggerTrait;
+
     /**
      * @var \GuzzleHttp\ClientInterface
      */
@@ -48,13 +51,16 @@ class AccessToken implements AccessTokenInterface
     public function getAccessTokenByCode(string $code): SsoAccessTokenTransfer
     {
         $accessTokenRequestParams = $this->getAccessTokenRequestParams($code);
+        $this->getLogger()->error(__CLASS__ . ' SSO: PARAMS PREPARED');
         try {
             $result = $this->httpClient->request(
                 'POST',
                 $this->ssoConfig->getTokenUrl(),
                 $accessTokenRequestParams
             );
+            $this->getLogger()->error(__CLASS__ . ' SSO: TOKEN FETCHED');
         } catch (Exception $e) {
+            $this->getLogger()->error(__CLASS__ . ' SSO: FETCH ERROR!!!');
             $this->errorLogger->log($e);
 
             return new SsoAccessTokenTransfer();
