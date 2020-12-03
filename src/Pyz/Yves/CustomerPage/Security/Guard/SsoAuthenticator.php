@@ -110,7 +110,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
             if ($code === null) {
                 throw $exception;
             }
-            $this->getLogger()->error(__CLASS__ . ' SSO: getAccessTokenByCode');
+            $this->getLogger()->error(__CLASS__ . ' SSO: getAccessTokenByCode :' . $code);
             $ssoAccessTokenTransfer = $this->ssoClient->getAccessTokenByCode($code);
 
             if (!$ssoAccessTokenTransfer->getIdToken()) {
@@ -118,7 +118,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
                 throw $exception;
             }
 
-            $this->getLogger()->error(__CLASS__ . ' SSO: SUCCESS!!');
+            $this->getLogger()->error(__CLASS__ . ' SSO: SUCCESS CODE:' . $code);
 
             return $ssoAccessTokenTransfer;
         }
@@ -137,8 +137,9 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         /** @var \SprykerShop\Yves\CustomerPage\Security\CustomerUserInterface $securityUser */
+        $this->getLogger()->error(__CLASS__ . ' SSO: Try to load user by token');
         $securityUser = $userProvider->loadUserByUsername($credentials);
-
+        $this->getLogger()->error(__CLASS__ . ' SSO: USER LOADED');
         if ($securityUser->getCustomerTransfer()->getIsActive() !== true) {
             throw new AuthenticationException();
         }
