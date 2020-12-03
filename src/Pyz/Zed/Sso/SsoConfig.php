@@ -5,10 +5,13 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Shared\Sso;
+namespace Pyz\Zed\Sso;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Zed\Kernel\AbstractBundleConfig;
 
+/**
+ * @method \Pyz\Shared\Sso\SsoConfig getSharedConfig()
+ */
 class SsoConfig extends AbstractBundleConfig
 {
     /**
@@ -16,7 +19,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getAuthorizeUrl(): string
     {
-        return $this->get(SsoConstants::AUTHORIZE_URL);
+        return $this->getSharedConfig()->getAuthorizeUrl();
     }
 
     /**
@@ -24,7 +27,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getLoginCheckPath(): string
     {
-        return $this->get(SsoConstants::LOGIN_CHECK_PATH);
+        return $this->getSharedConfig()->getLoginCheckPath();
     }
 
     /**
@@ -32,7 +35,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getTokenUrl(): string
     {
-        return $this->get(SsoConstants::TOKEN_URL);
+        return $this->getSharedConfig()->getTokenUrl();
     }
 
     /**
@@ -40,7 +43,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getCustomerInformationUrl(): string
     {
-        return $this->get(SsoConstants::CUSTOMER_INFORMATION_URL);
+        return $this->getSharedConfig()->getCustomerInformationUrl();
     }
 
     /**
@@ -48,7 +51,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getResponseType(): string
     {
-        return $this->get(SsoConstants::RESPONSE_TYPE);
+        return $this->getSharedConfig()->getResponseType();
     }
 
     /**
@@ -56,7 +59,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getClientId(): string
     {
-        return $this->get(SsoConstants::CLIENT_ID);
+        return $this->getSharedConfig()->getClientId();
     }
 
     /**
@@ -64,7 +67,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getClientSecret(): string
     {
-        return $this->get(SsoConstants::CLIENT_SECRET);
+        return $this->getSharedConfig()->getClientSecret();
     }
 
     /**
@@ -72,7 +75,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getUserAgent(): string
     {
-        return $this->get(SsoConstants::USER_AGENT);
+        return $this->getSharedConfig()->getUserAgent();
     }
 
     /**
@@ -80,7 +83,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getRedirectUrl(): string
     {
-        return $this->get(SsoConstants::REDIRECT_URL);
+        return $this->getSharedConfig()->getRedirectUrl();
     }
 
     /**
@@ -88,7 +91,7 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function getScope(): string
     {
-        return $this->get(SsoConstants::SCOPE);
+        return $this->getSharedConfig()->getScope();
     }
 
     /**
@@ -96,6 +99,6 @@ class SsoConfig extends AbstractBundleConfig
      */
     public function isSsoLoginEnabled(): bool
     {
-        return $this->get(SsoConstants::SSO_LOGIN_ENABLED, false);
+        return $this->getSharedConfig()->isSsoLoginEnabled();
     }
 }

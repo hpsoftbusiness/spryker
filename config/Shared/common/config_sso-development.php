@@ -26,14 +26,7 @@ $config[SsoConstants::CLIENT_ID] = 'spryker_sso_dev';
 $config[SsoConstants::CLIENT_SECRET] = 'spryker_sso_dev';
 $config[SsoConstants::USER_AGENT] = 'Spryker/202009.0';
 $config[SsoConstants::SCOPE] = 'openid';
-
-/**
- * @todo replace with normal ENV var
- */
-//$baseUrlYves = $config[ApplicationConstants::BASE_URL_YVES];
-
-// @todo debug staging
-$config[SsoConstants::REDIRECT_URL] = 'https://www.de.myworld.cloud.spryker.toys/login_check';
+$config[SsoConstants::REDIRECT_URL] = sprintf('%s/%s', $config[ApplicationConstants::BASE_URL_YVES], $config[SsoConstants::LOGIN_CHECK_PATH]);
 
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($config[KernelConstants::DOMAIN_WHITELIST], [
     'id-test.cashbackworld.com', // SSO Oauth domain
