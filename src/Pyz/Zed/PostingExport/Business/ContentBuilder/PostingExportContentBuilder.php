@@ -10,11 +10,12 @@ namespace Pyz\Zed\PostingExport\Business\ContentBuilder;
 use DateTime;
 use DateTimeZone;
 use Generated\Shared\Transfer\ExportContentsTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
 use Pyz\Zed\PostingExport\PostingExportConfig;
+use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Zed\Money\Business\MoneyFacadeInterface;
-use Spryker\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 class PostingExportContentBuilder
@@ -23,10 +24,20 @@ class PostingExportContentBuilder
     protected const DATE_FORMAT_DMY = 'd.m.Y';
     protected const FILE_NAME_PREFIX = 'Posting Export';
 
+    protected const DEFAULT_DATA_INTERFACE_CODE = 'MP';
+    protected const DEFAULT_DATA_COMPANY_CODE = 'MWS';
+    protected const DEFAULT_DATA_AREA_TYPE = 'Verkauf';
+    protected const DEFAULT_DATA_DOCUMENT_TYPE = 'Invoice/Credit Memo';
+
     /**
      * @var \Pyz\Zed\Sales\Business\SalesFacadeInterface
      */
     protected $salesFacade;
+
+    /**
+     * @var \Spryker\Zed\Money\Business\MoneyFacadeInterface
+     */
+    protected $moneyFacade;
 
     /**
      * @var \Spryker\Zed\Translator\Business\TranslatorFacadeInterface
@@ -39,12 +50,7 @@ class PostingExportContentBuilder
     protected $storeClient;
 
     /**
-     * @var \Spryker\Zed\Money\Business\MoneyFacadeInterface
-     */
-    protected $moneyFacade;
-
-    /**
-     * @param \Spryker\Zed\Sales\Business\SalesFacadeInterface $salesFacade
+     * @param \Pyz\Zed\Sales\Business\SalesFacadeInterface $salesFacade
      * @param \Spryker\Zed\Money\Business\MoneyFacadeInterface $moneyFacade
      * @param \Spryker\Zed\Translator\Business\TranslatorFacadeInterface $translatorFacade
      * @param \Spryker\Client\Store\StoreClientInterface $storeClient
@@ -70,31 +76,76 @@ class PostingExportContentBuilder
     public function generateContent(?DateTime $dateFrom, ?DateTime $dateTo): ?ExportContentsTransfer
     {
         $salesOrderFilterTransfer = $this->getSalesOrderFilter($dateFrom, $dateTo);
-        $orderTransfers = $this->salesFacade->getOrdersBySalesOrderFilter($salesOrderFilterTransfer);
+        $orderIds = $this->salesFacade->getOrderIdsBySalesOrderFilter($salesOrderFilterTransfer);
 
-        if (empty($orderTransfers)) {
+        if (!$orderIds) {
             return null;
         }
 
         $postingExportContentsTransfer = new ExportContentsTransfer();
         $postingExportContentsTransfer->setFilename($this->getFileName($dateFrom, $dateTo));
-        $postingExportContentsTransfer->addContentItem($this->getExportOrderHeaders());
 
-        foreach ($orderTransfers as $orderTransfer) {
-                $postingExportContentsTransfer->addContentItem(
-                    [
-                        $orderTransfer->getIdSalesOrder(),
-                        $orderTransfer->getOrderReference(),
-                        $orderTransfer->getCustomerReference(),
-                        $this->getFormattedDate($orderTransfer->getCreatedAt()),
-                        $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getGrandTotal()),
-                        $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getTaxTotal()->getAmount()),
-                        $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getExpenseTotal()),
-                    ]
-                );
+        foreach ($orderIds as $idOrder) {
+            $orderTransfer = $this->salesFacade->getOrderByIdSalesOrder($idOrder);
+            $postingExportContentsTransfer->addContentItem(
+                $this->getPostingExportContentItemData($orderTransfer)
+            );
         }
 
         return $postingExportContentsTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return mixed[]
+     */
+    protected function getPostingExportContentItemData(OrderTransfer $orderTransfer): array
+    {
+        $customerTransfer = $orderTransfer->getCustomer();
+        $billingAddressTransfer = $orderTransfer->getBillingAddress();
+        $shippingAddressTransfer = $orderTransfer->getBillingAddress();
+        $amountExcludingVat = $orderTransfer->getTotals()->getGrandTotal() - $orderTransfer->getTotals()->getTaxTotal()->getAmount();
+
+        return [
+            'interfaceCode' => static::DEFAULT_DATA_INTERFACE_CODE,
+            'companyCode' => static::DEFAULT_DATA_COMPANY_CODE,
+            'refDocumentNumber' => null, // TODO
+            'docArchiveFileReference' => null, // TODO
+            'areaType' => static::DEFAULT_DATA_AREA_TYPE,
+            'documentType' => static::DEFAULT_DATA_DOCUMENT_TYPE,
+            'orderType' => null, // TODO
+            'orderDate' => $this->getFormattedDate($orderTransfer->getCreatedAt()),
+            'postingDate' => $this->getFormattedDate($orderTransfer->getCreatedAt()),
+            'documentDate' => $this->getFormattedDate($orderTransfer->getCreatedAt()),
+            'orderNumber' => null, // TODO
+            'billToCustomerNumber' => $customerTransfer->getMyWorldCustomerNumber(),
+            'customerType' => $customerTransfer->getCustomerType(),
+            'vatBusPostingGroup' => null, // TODO
+            'customerPostingGroup' => null, // TODO
+            'genBusinessPostingGroup' => null, // TODO
+            'billToName' => sprintf('%s %s', $billingAddressTransfer->getFirstName(), $billingAddressTransfer->getLastName()),
+            'billToCountry' => $billingAddressTransfer->getCountry(),
+            'billToAddress' => sprintf('%s, %s', $billingAddressTransfer->getAddress1(), $billingAddressTransfer->getAddress2()),
+            'billToCity' => $billingAddressTransfer->getCity(),
+            'billToPostCode' => $billingAddressTransfer->getZipCode(),
+            'shipToCountry' => $shippingAddressTransfer->getCountry(),
+            'shipToAddress' => sprintf('%s, %s', $shippingAddressTransfer->getAddress1(), $shippingAddressTransfer->getAddress2()),
+            'shipToCity' => $shippingAddressTransfer->getCity(),
+            'shipToPostCode' => $shippingAddressTransfer->getZipCode(),
+            'vatRegistrationNumber' => $billingAddressTransfer->getVatNumber(),
+            'retailDocument' => null, // TODO
+            'amount' => $this->formatIntValueToDecimalCurrency($amountExcludingVat),
+            'amountIncludingVat' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getGrandTotal()),
+            'vatAmount' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getTaxTotal()->getAmount()),
+            'currencyCode' => $orderTransfer->getCurrencyIsoCode(),
+            'currencyFactor' => null, // TODO
+            'paymentMethodCode' => null, // TODO
+            'discount' => null, // TODO
+            'paymentReferenceId' => null, // TODO
+            'cashBackNumber' => null, // TODO
+            'noOfLines' => null, // TODO
+        ];
     }
 
     /**
@@ -103,22 +154,6 @@ class PostingExportContentBuilder
     protected function getFileNamePrefix(): string
     {
         return static::FILE_NAME_PREFIX;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getExportOrderHeaders(): array
-    {
-        return [
-            $this->translatorFacade->trans('export.posting.order-id'),
-            $this->translatorFacade->trans('export.posting.order-reference'),
-            $this->translatorFacade->trans('export.posting.customer-reference'),
-            $this->translatorFacade->trans('export.posting.date'),
-            $this->translatorFacade->trans('export.posting.grand-total'),
-            $this->translatorFacade->trans('export.posting.tax-total'),
-            $this->translatorFacade->trans('export.posting.expense-total'),
-        ];
     }
 
     /**

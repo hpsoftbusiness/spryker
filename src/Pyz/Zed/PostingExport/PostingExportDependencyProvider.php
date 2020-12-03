@@ -43,6 +43,18 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
+    public function provideCommunicationLayerDependencies(Container $container): Container
+    {
+        $container = $this->addUtilEncodingService($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
     public function addSalesFacade(Container $container): Container
     {
         $container->set(static::FACADE_SALES, function (Container $container): SalesFacadeInterface {
@@ -75,6 +87,20 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::FACADE_TRANSLATOR, function (Container $container): TranslatorFacadeInterface {
             return $container->getLocator()->translator()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addUtilEncodingService(Container $container): Container
+    {
+        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
+            return $container->getLocator()->utilEncoding()->service();
         });
 
         return $container;

@@ -14,13 +14,13 @@ interface SalesFacadeInterface extends SprykerSalesFacadeInterface
 {
     /**
      * Specification:
-     * - Gets orders by SalesOrderFilterTransfer.
+     * - Gets order IDs by SalesOrderFilterTransfer.
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\SalesOrderFilterTransfer $salesOrderFilterTransfer
      *
-     * @return \Generated\Shared\Transfer\OrderTransfer[]
+     * @return int[]
      */
-    public function getOrdersBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array;
+    public function getOrderIdsBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array;
 }

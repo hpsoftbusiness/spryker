@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 interface ExportResponseBuilderInterface
 {
-    public const CSV_DELIMITER = ';';
-
     /**
      * @param \Generated\Shared\Transfer\ExportContentsTransfer $exportContentsTransfer
      *

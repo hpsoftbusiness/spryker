@@ -19,9 +19,9 @@ class SalesFacade extends SprykerSalesFacade implements SalesFacadeInterface
     /**
      * @inheritDoc
      */
-    public function getOrdersBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array
+    public function getOrderIdsBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array
     {
         return $this->getRepository()
-            ->getOrdersBySalesOrderFilter($salesOrderFilterTransfer);
+            ->getOrderIdsBySalesOrderFilter($salesOrderFilterTransfer);
     }
 }

@@ -9,10 +9,25 @@ namespace Pyz\Zed\PostingExport\Communication\ResponseBuilder;
 
 use Generated\Shared\Transfer\ExportContentsTransfer;
 use Pyz\Shared\ContentHeaders\ContentHeadersConfig;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-class ExportCsvResponseBuilder implements ExportResponseBuilderInterface
+class ExportJsonResponseBuilder implements ExportResponseBuilderInterface
 {
+    /**
+     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected $utilEncodingService;
+
+    /**
+     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     */
+    public function __construct(
+        UtilEncodingServiceInterface $utilEncodingService
+    ) {
+        $this->utilEncodingService = $utilEncodingService;
+    }
+
     /**
      * @param \Generated\Shared\Transfer\ExportContentsTransfer $exportContentsTransfer
      *
@@ -23,11 +38,11 @@ class ExportCsvResponseBuilder implements ExportResponseBuilderInterface
         $response = new Response();
         $this->setHeaders($exportContentsTransfer->getFilename());
 
-        $filePointer = fopen('php://output', 'wb');
-
-        foreach ($exportContentsTransfer->getContents() as $content) {
-            fputcsv($filePointer, $content, static::CSV_DELIMITER);
-        }
+        $response->setContent(
+            $this->utilEncodingService->encodeJson(
+                $exportContentsTransfer->getContents()
+            )
+        );
 
         return $response;
     }
@@ -39,8 +54,11 @@ class ExportCsvResponseBuilder implements ExportResponseBuilderInterface
      */
     protected function setHeaders(string $filename): void
     {
-        $this->addHeader(ContentHeadersConfig::CONTENT_TYPE_LABEL, ContentHeadersConfig::CONTENT_TYPE_CSV);
-        $this->addHeader(ContentHeadersConfig::CONTENT_DISPOSITION_LABEL, sprintf(ContentHeadersConfig::CONTENT_DISPOSITION_VALUE_FORMAT_CSV, $filename));
+        $this->addHeader(ContentHeadersConfig::CONTENT_TYPE_LABEL, ContentHeadersConfig::CONTENT_TYPE_JSON);
+        $this->addHeader(
+            ContentHeadersConfig::CONTENT_DISPOSITION_LABEL,
+            sprintf(ContentHeadersConfig::CONTENT_DISPOSITION_VALUE_FORMAT_JSON, $filename)
+        );
         $this->addHeader(ContentHeadersConfig::CACHE_CONTROL_LABEL, ContentHeadersConfig::CACHE_CONTROL_VALUE);
     }
 

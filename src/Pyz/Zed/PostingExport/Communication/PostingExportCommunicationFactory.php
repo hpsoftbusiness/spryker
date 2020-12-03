@@ -8,8 +8,10 @@
 namespace Pyz\Zed\PostingExport\Communication;
 
 use Pyz\Zed\PostingExport\Communication\Form\ExportForm;
-use Pyz\Zed\PostingExport\Communication\ResponseBuilder\ExportCsvResponseBuilder;
+use Pyz\Zed\PostingExport\Communication\ResponseBuilder\ExportJsonResponseBuilder;
 use Pyz\Zed\PostingExport\Communication\ResponseBuilder\ExportResponseBuilderInterface;
+use Pyz\Zed\PostingExport\PostingExportDependencyProvider;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Symfony\Component\Form\FormInterface;
 
@@ -30,8 +32,16 @@ class PostingExportCommunicationFactory extends AbstractCommunicationFactory
     /**
      * @return \Pyz\Zed\PostingExport\Communication\ResponseBuilder\ExportResponseBuilderInterface
      */
-    public function createExportCsvResponseBuilder(): ExportResponseBuilderInterface
+    public function createExportJsonResponseBuilder(): ExportResponseBuilderInterface
     {
-        return new ExportCsvResponseBuilder();
+        return new ExportJsonResponseBuilder($this->getUtilEncodingService());
+    }
+
+    /**
+     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    public function getUtilEncodingService(): UtilEncodingServiceInterface
+    {
+        return $this->getProvidedDependency(PostingExportDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 }
