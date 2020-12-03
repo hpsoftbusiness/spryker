@@ -108,6 +108,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
                 throw $exception;
             }
 
+            die($code);
             $ssoAccessTokenTransfer = $this->ssoClient->getAccessTokenByCode($code);
 
             if (!$ssoAccessTokenTransfer->getIdToken()) {
