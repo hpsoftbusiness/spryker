@@ -53,7 +53,7 @@
             padding: rem(15) rem(25) 0;
             text-align: center;
             position: relative;
-            font: fw(medium) rem(15) $setting-font-family-additional;
+            font: fw(medium) rem(15) $setting-font-family;
             display: none;
 
             @include helper-breakpoint-media-min($md-min) {

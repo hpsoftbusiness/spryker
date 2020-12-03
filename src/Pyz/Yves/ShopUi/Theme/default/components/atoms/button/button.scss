@@ -6,35 +6,29 @@
         @include helper-effect-transition(all);
         display: inline-block;
         padding: rem(15) rem(16);
-        background-color: $setting-color-marketplace;
+        background-color: $setting-color-main;
         border-radius: rem(8);
         min-width: $button-min-width/1.3;
         color: $setting-color-white;
         text-align: center;
-        font: fw(medium) rem(14)/rem(18) $setting-font-family-additional;
+        font: fw(bold) rem(16)/1.2 $setting-font-family;
         cursor: pointer;
+        box-shadow: 0 10px 30px 0 $setting-color-alpha-1;
 
         @include helper-breakpoint-media-min($md-min) {
             min-width: $button-min-width;
         }
 
         &:hover,
-        &:focus {
-            color: $setting-color-white;
-            background-color: $setting-color-marketplace-dark;
-            border-color: $setting-color-marketplace-dark;
-            text-decoration: none;
-        }
-
+        &:focus,
         &:active {
             color: $setting-color-white;
-            background-color: $setting-color-marketplace-darker;
-            border-color: $setting-color-marketplace-darker;
+            background-color: $setting-color-yellow;
             text-decoration: none;
         }
 
-        &--shadow {
-            box-shadow: 0 10px 30px 0 $setting-color-marketplace-shadow;
+        &--shadowless {
+            box-shadow: none;
         }
 
         &--alert {
@@ -44,7 +38,6 @@
         }
 
         &--skinless {
-            border: none;
             background-color: $setting-color-transparent;
             color: $setting-color-black;
             min-width: 0;
@@ -52,7 +45,6 @@
             &:hover,
             &:focus,
             &:active {
-                border: none;
                 background-color: $setting-color-transparent;
                 color: $setting-color-black;
             }
@@ -76,7 +68,7 @@
         }
 
         &--quantity {
-            font: fw(light) rem(16)/rem(18) $setting-font-family-additional;
+            font: fw(light) rem(16)/rem(18) $setting-font-family;
             background-color: $setting-color-transparent;
             border-radius: unset;
             color: $setting-color-black;
@@ -102,14 +94,14 @@
 
         &[disabled],
         &--disabled {
-            background-color: $setting-color-marketplace-gray-3;
+            background-color: $setting-color-gray-3;
             box-shadow: none;
             cursor: not-allowed;
 
             &:hover,
             &:focus,
             &:active {
-                background-color: $setting-color-marketplace-gray-3;
+                background-color: $setting-color-gray-3;
             }
         }
 
@@ -120,32 +112,24 @@
         }
 
         &--hollow {
-            background-color: $setting-color-transparent;
-            border: rem(2) solid $setting-color-marketplace;
+            background-color: $setting-color-white;
+            border: rem(2) solid $setting-color-main;
             color: $setting-color-black;
             padding: rem(14) rem(16);
+            box-shadow: none;
 
             &:hover,
             &:focus,
             &:active {
-                background-color: $setting-color-transparent;
-                border-color: $setting-color-marketplace;
-                color: $setting-color-marketplace;
+                background-color: $setting-color-white;
+                color: $setting-color-main;
                 text-decoration: none;
             }
 
             &[disabled],
             &--disabled {
-                background-color: $setting-color-transparent;
-                border-color: $setting-color-marketplace-gray-3;
-                box-shadow: none;
-                color: $setting-color-marketplace-gray-3;
-
-                &:hover,
-                &:focus,
-                &:active {
-                    background-color: $setting-color-white;
-                }
+                border-color: $setting-color-gray-3;
+                color: $setting-color-gray-3;
             }
 
             &#{$name}--small {
@@ -156,12 +140,7 @@
 
         &--inspirational {
             text-transform: uppercase;
-            letter-spacing: rem(2.1);
             min-width: 0;
-
-            @include helper-breakpoint-media-min($md-min) {
-                letter-spacing: rem(2.5);
-            }
         }
 
         &--promotion-item {
@@ -170,7 +149,7 @@
             margin-top: rem(16);
             height: rem(28);
             padding: 0 rem(16);
-            font: fw(regular) rem(10)/rem(26) $setting-font-family-additional;
+            font: fw(regular) rem(10)/rem(26) $setting-font-family;
 
             @include helper-breakpoint-media-min($md-min) {
                 margin-top: 0;
@@ -263,14 +242,14 @@
         &--transparent {
             background-color: $setting-color-transparent;
             border: none;
-            color: $setting-color-marketplace;
+            color: $setting-color-main;
             padding-top: rem(2);
             padding-bottom: rem(2);
 
             &:hover,
             &:active,
             &:focus {
-                color: $setting-color-marketplace-dark;
+                color: $setting-color-yellow;
                 background-color: $setting-color-transparent;
                 border: none;
             }

@@ -45,13 +45,13 @@
                 right: 0;
                 bottom: 0;
                 border-radius: rem(4);
-                background: $setting-color-alpha-1;
+                background: $setting-color-alpha-4;
                 z-index: $setting-zi-element-floating;
             }
 
             &::after {
                 @include helper-effect-transition(opacity);
-                background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-1);
+                background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-4);
                 opacity: 0;
             }
         }
@@ -97,8 +97,7 @@
         &__info {
             display: block;
             margin: 0 rem(11);
-            font: 500 rem(16) $setting-font-family-additional;
-            letter-spacing: rem(0.3);
+            font: 500 rem(16) $setting-font-family;
             color: $setting-color-black;
 
             &:hover {

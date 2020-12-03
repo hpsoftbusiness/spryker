@@ -777,8 +777,8 @@ countries.iso.PL,Poland,en_US
 countries.iso.PL,Polen,de_DE
 countries.iso.PT,Portugal,en_US
 countries.iso.PT,Portugal,de_DE
-countries.iso.CH,Czech Republic,en_US
-countries.iso.CH,Tschechische Republik,de_DE
+countries.iso.CH,Switzerland,en_US
+countries.iso.CH,Schweiz,de_DE
 countries.iso.SK,Slovakia,en_US
 countries.iso.SK,Slowakei,de_DE
 countries.iso.SI,Slovenia,en_US
@@ -821,6 +821,8 @@ countries.iso.ES,Spain,en_US
 countries.iso.ES,Spanien,de_DE
 countries.iso.GB,United Kingdom,en_US
 countries.iso.GB,Vereinigtes Königreich,de_DE
+countries.iso.IE,Ireland,en_US
+countries.iso.IE,Irland,de_DE
 customer.billingSameAsShipping,Billing address same as shipping address,en_US
 customer.billingSameAsShipping,Liefer- und Rechnungsadresse sind gleich,de_DE
 checkout.customer.proceed_as_user,Proceed as a registered user (sign up),en_US
@@ -1371,6 +1373,8 @@ product-cart.validation.error.concrete-product-inactive,"Product %sku% is not ac
 product-cart.validation.error.concrete-product-inactive,"Produkt %sku% ist nicht aktiv.",de_DE
 product-cart.info.concrete-product-inactive.removed,"Inactive item %sku% was removed from your shopping cart.",en_US
 product-cart.info.concrete-product-inactive.removed,"Der inaktive Artikel %sku% wurde aus deinem Warenkorb entfernt.",de_DE
+reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US
+reorder.info.restricted-product.removed,Der Artikel %sku% konnte Ihrem Warenkorb nicht hinzugefügt werden da er deaktiviert wurde.,de_DE
 product.filter.label,Label,en_US
 product.filter.label,Label,de_DE
 product.filter.price-default-chf-gross_mode,Preis,de_DE
