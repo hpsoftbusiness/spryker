@@ -64,7 +64,7 @@
                 height: rem(650);
             }
 
-            @include helper-breakpoint-media-min($xxl-min) {
+            @include helper-breakpoint-media-min($xl2-min) {
                 padding: rem(80) rem(50);
                 height: rem(610);
             }

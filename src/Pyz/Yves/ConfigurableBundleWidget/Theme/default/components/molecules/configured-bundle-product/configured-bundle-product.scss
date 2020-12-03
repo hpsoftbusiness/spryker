@@ -27,7 +27,7 @@
         &__prices {
             padding-left: rem(16);
 
-            @include helper-breakpoint-media-min($xxl-min) {
+            @include helper-breakpoint-media-min($xl2-min) {
                 padding-left: 0;
             }
         }

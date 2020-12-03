@@ -6,8 +6,8 @@ $lg-min: 600px;
 $lg-max: 767px;
 $xl-min: 768px;
 $xl-max: 959px;
-$xxl-min: 960px;
-$xxl-max: 1199px;
+$xl2-min: 960px;
+$xl2-max: 1199px;
 $xl3-min: 1200px;
 $xl3-max: 1439px;
 $xl4-min: 1440px;
@@ -19,7 +19,7 @@ $setting-breakpoints: (
     md: ($md-min, $md-max),
     lg: ($lg-min, $lg-max),
     xl: ($xl-min, $xl-max),
-    xxl: ($xxl-min, $xxl-max),
+    xl2: ($xl2-min, $xl2-max),
     xl3: ($xl3-min, $xl3-max),
     xl4: ($xl4-min, $xl4-max),
     xl5: ($xl5-min)

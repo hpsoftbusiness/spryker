@@ -9,7 +9,7 @@
             color: $setting-color-gray-4;
             cursor: pointer;
 
-            @include helper-breakpoint-media-min($xxl-min) {
+            @include helper-breakpoint-media-min($xl2-min) {
                 margin-bottom: 0;
             }
         }
