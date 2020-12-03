@@ -13,6 +13,7 @@ $xl3-max: 1439px;
 $xl4-min: 1440px;
 $xl4-max: 1659px;
 $xl5-min: 1660px;
+$xl5-max: 1920px;
 
 $setting-breakpoints: (
     sm: ($sm-min, $sm-max),
@@ -22,5 +23,5 @@ $setting-breakpoints: (
     xl2: ($xl2-min, $xl2-max),
     xl3: ($xl3-min, $xl3-max),
     xl4: ($xl4-min, $xl4-max),
-    xl5: ($xl5-min)
+    xl5: ($xl5-min, $xl5-max)
 );

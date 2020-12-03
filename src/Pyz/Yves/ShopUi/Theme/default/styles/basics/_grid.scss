@@ -1,6 +1,4 @@
 @mixin basic-grid() {
-    $grid-total-gap: 11 * 24;
-
     .container {
         display: block;
         width: 100%;
@@ -8,17 +6,7 @@
 
         @each $breakpoint, $edges in $setting-breakpoints {
             @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
-                @if $breakpoint == "xl3" {
-                    max-width: (12 * 65) + $grid-total-gap + px;
-                } @else if $breakpoint == "xl4" {
-                    max-width: (12 * 86) + $grid-total-gap + px;
-                } @else if $breakpoint == "xl5" {
-                    max-width: (12 * 110) + $grid-total-gap + px;
-                } @else {
-                    @if nth($edges, 1) > 0 {
-                        max-width: nth($edges, 1)
-                    }
-                }
+                max-width: map-get($settings-max-width, $breakpoint)
             }
         }
 
@@ -58,10 +46,10 @@
 
         @each $breakpoint, $edges in $setting-breakpoints {
             @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
-                @for $column from 1 through $setting-grid-columns {
+                @for $column from 1 through map-get($setting-grid-columns, $breakpoint) {
                     &--#{$breakpoint}-#{$column} {
-                        width: helper-grid-span($column);
-                        min-width: helper-grid-span($column);
+                        width: helper-grid-span($column, map-get($setting-grid-columns, $breakpoint));
+                        min-width: helper-grid-span($column, map-get($setting-grid-columns, $breakpoint));
                     }
                 }
             }
