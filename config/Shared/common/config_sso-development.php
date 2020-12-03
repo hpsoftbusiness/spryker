@@ -14,7 +14,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 // ----------------------------------------------------------------------------
 
 // >>> SSO
-$config[SsoConstants::SSO_LOGIN_ENABLED] = false;
+$config[SsoConstants::SSO_LOGIN_ENABLED] = true;
 
 $config[SsoConstants::TOKEN_URL] = 'https://id-test.cashbackworld.com/trunk/oauth/token';
 $config[SsoConstants::AUTHORIZE_URL] = 'https://id-test.cashbackworld.com/trunk/oauth/authorize';
