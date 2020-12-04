@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block summarySidebar %}
-    <div class="col col--sm-12">
+    <div class="col col--sm-4">
         {% block summarySidebarInner %}{{ parent() }}{% endblock %}
     </div>
 {% endblock %}
@@ -29,7 +29,7 @@
     <div class="grid grid--expand spacing-x spacing-x--big">
         {% block summaryProductsInner %}
             {% include molecule('selected-product-list', 'ConfigurableBundlePage') with {
-                class: 'col col--sm-12 col--xl-8',
+                class: 'col col--sm-4 col--xl-8',
                 data: {
                     form: data.form,
                     products: data.products,

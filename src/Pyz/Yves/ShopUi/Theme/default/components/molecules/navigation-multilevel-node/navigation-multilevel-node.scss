@@ -133,7 +133,7 @@
                 margin: 0 auto;
             }
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 max-width: rem(1210);
             }
         }

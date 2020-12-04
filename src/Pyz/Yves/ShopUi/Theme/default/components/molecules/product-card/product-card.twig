@@ -31,14 +31,14 @@
         {% block content %}
             <a href="{{ data.url }}" class="{{ config.name }}__info grid grid--justify grid--top grid--no-wrap">
                 {% block name %}
-                    <div class="col col--md-8 col--sm-12">
+                    <div class="col col--md-8 col--sm-4">
                         {{ data.name }}
                     </div>
                 {% endblock %}
 
                 {% block price %}
                     {% if can('SeePricePermissionPlugin') %}
-                        <div class="col col--md-4 col--sm-12">
+                        <div class="col col--md-8 col--sm-4">
                             {% include molecule('money-price') with {
                                 modifiers: ['align-right'],
                                 data: {

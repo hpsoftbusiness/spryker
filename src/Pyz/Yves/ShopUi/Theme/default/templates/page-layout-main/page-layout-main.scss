@@ -13,7 +13,7 @@
                 margin: 0 0 0 rem(-16);
             }
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 width: 55.6%;
                 margin: 0;
             }
@@ -31,7 +31,7 @@
                 width: 45%;
             }
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 width: 44.4%;
                 padding-left: rem(90);
             }

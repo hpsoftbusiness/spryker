@@ -25,7 +25,7 @@
             font: fw(regular) $setting-font-size-base $setting-font-family;
             text-align: left;
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 text-align: right;
             }
         }

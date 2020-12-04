@@ -8,7 +8,7 @@
             <div class="spacing-top">
                 {% for discount in discounts %}
                     <div class="grid grid--justify">
-                        <span class="col col--sm-8 col--lg-10 text-secondary">{{ discount.displayName }}</span>
+                        <span class="col col--sm-3 col--lg-10 text-secondary">{{ discount.displayName }}</span>
                         <span class="col col--expand text-right">- {{ discount.amount | money }}</span>
                     </div>
                 {% endfor %}
@@ -32,7 +32,7 @@
                 {% set shippingMethod = shipmentGroup.shipment.method %}
 
                 <div class="grid grid--justify">
-                    <span class="col col--sm-8 col--lg-10 text-secondary">{{ shippingMethod.carrierName | trans }} - {{ shippingMethod.name }}</span>
+                    <span class="col col--sm-3 col--lg-10 text-secondary">{{ shippingMethod.carrierName | trans }} - {{ shippingMethod.name }}</span>
                     <span class="col col--expand text-right">{{ shippingMethod.storeCurrencyPrice | money }}</span>
                 </div>
             {% endfor %}

@@ -11,7 +11,7 @@
 {% block customerContent %}
     <div class="grid grid-justify">
         {% for address in data.addresses %}
-            <div class="col--lg-6 col--sm-12">
+            <div class="col--lg-6 col--sm-4">
                 <div class="box">
                     {% embed molecule('title-box', 'CustomerPage') with {
                         data: {

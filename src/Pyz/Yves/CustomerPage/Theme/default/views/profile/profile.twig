@@ -11,16 +11,16 @@
 } %}
 {% block customerContent %}
     <div class="grid grid--justify">
-        <div class="col--lg-6 col--sm-12">
+        <div class="col--lg-6 col--sm-4">
             {% include molecule('customer-form', 'CustomerPage') with {
                 class: 'box',
                 data: {
                     title: 'customer.profile.update' | trans,
                     form: data.forms.profile,
                     layout: {
-                        salutation: 'col col--sm-12 col--lg-4 col--xl-4',
-                        first_name: 'col col--sm-12 col--lg-4 col--xl-4',
-                        last_name: 'col col--sm-12 col--lg-4 col--xl-4'
+                        salutation: 'col col--sm-4 col--lg-4 col--xl-4',
+                        first_name: 'col col--sm-4 col--lg-4 col--xl-4',
+                        last_name: 'col col--sm-4 col--lg-4 col--xl-4'
                     },
                     submit: {
                         enable: true
@@ -29,7 +29,7 @@
             } only %}
         </div>
 
-        <div class="col--lg-6 col--sm-12">
+        <div class="col--lg-6 col--sm-4">
             {% include molecule('customer-form', 'CustomerPage') with {
                 class: 'box',
                 data: {
@@ -42,7 +42,7 @@
             } only %}
         </div>
 
-        <div class="col--lg-6 col--sm-12">
+        <div class="col--lg-6 col--sm-4">
             <div class="box">
                 {% include molecule('title-box', 'CustomerPage') with {
                     data: {

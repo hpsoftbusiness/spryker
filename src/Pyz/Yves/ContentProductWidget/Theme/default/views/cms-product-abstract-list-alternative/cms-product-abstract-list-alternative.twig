@@ -8,7 +8,7 @@
     <div class="grid grid--stretch">
         {% for productAbstractView in data.productAbstractViewCollection %}
             {% embed molecule('product-item') with {
-                class: 'col col--sm-6 col--lg-3',
+                class: 'col col--sm-2 col--lg-3',
                 data: {
                     product: productAbstractView,
                 },
@@ -18,13 +18,13 @@
                         {% block content %}
                             <a href="{{ data.url }}" class="{{ config.name }}__info {{ config.jsName }}__link-detail-page grid grid--justify grid--top grid--no-wrap">
                                 {% block name %}
-                                    <div class="col col--md-8 col--sm-12">
+                                    <div class="col col--md-8 col--sm-4">
                                         {{ block('title') }}
                                     </div>
                                 {% endblock %}
 
                                 {% block price %}
-                                    <div class="col col--md-4 col--sm-12">
+                                    <div class="col col--md-8 col--sm-4">
                                         {% include molecule('money-price') with {
                                             modifiers: ['align-right'],
                                             data: {

@@ -13,7 +13,7 @@
             justify-content: flex-start;
             margin-left: rem(-16);
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 width: 50%;
                 justify-content: flex-end;
                 margin-left: 0;
@@ -24,7 +24,7 @@
             justify-content: flex-start;
             margin-left: rem(5);
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 justify-content: center;
                 margin-left: 0;
             }
@@ -33,7 +33,7 @@
         &__quantity {
             display: flex;
 
-            @include helper-breakpoint-media-min($xl2-min) {
+            @include helper-breakpoint-media-min($xxl-min) {
                 justify-content: center;
             }
         }

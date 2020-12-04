@@ -1,9 +1,9 @@
 {% extends molecule('ordered-bundle-item', '@SprykerShop:SalesProductBundleWidget') %}
 
 {% block body %}
-    {% set nameWrapperClass = config.name ~ '__name col col--sm-12 col--xl-4 spacing-bottom' %}
-    {% set stateWrapperClass = config.name ~ '__status col col--sm-6 col--xl-2' %}
-    {% set quantityWrapperClass = config.name ~ '__quantity col col--sm-6 col--xl-2' %}
+    {% set nameWrapperClass = config.name ~ '__name col col--sm-4 col--xl-4 spacing-bottom' %}
+    {% set stateWrapperClass = config.name ~ '__status col col--sm-2 col--xl-2' %}
+    {% set quantityWrapperClass = config.name ~ '__quantity col col--sm-2 col--xl-2' %}
 
     {% include molecule('product-image') with {
         modifiers: ['bundle-item'],
@@ -13,7 +13,7 @@
             image: data.image,
         },
     } only %}
-    
+
     <div class="{{ config.name }}__content grid col col--expand">
         {{ parent() }}
     </div>

@@ -12,7 +12,7 @@
         <div class="spacing-top">
             {% for expense in data.order.expenses %}
                 <div class="grid grid--justify">
-                    <span class="col col--sm-8 col--lg-10 text-secondary">{% if expense.type == 'SHIPMENT_EXPENSE_TYPE' %}{{ 'customer.order.shipment' | trans }} {% endif %}{{ expense.name | trans }}</span>
+                    <span class="col col--sm-3 col--lg-10 text-secondary">{% if expense.type == 'SHIPMENT_EXPENSE_TYPE' %}{{ 'customer.order.shipment' | trans }} {% endif %}{{ expense.name | trans }}</span>
                     <span class="col col--expand text-right">- {{ expense.unitPrice | money(true, data.order.currencyIsoCode) }}</span>
                 </div>
             {% endfor %}
@@ -25,7 +25,7 @@
         <div class="spacing-top">
             {% for discount in data.order.calculatedDiscounts %}
                 <div class="grid grid--justify">
-                    <span class="col col--sm-8 col--lg-10 text-secondary">{{ discount.displayName | trans }}</span>
+                    <span class="col col--sm-3 col--lg-10 text-secondary">{{ discount.displayName | trans }}</span>
                     <span class="col col--expand text-right">- {{ discount.sumAmount | money(true, data.order.currencyIsoCode) }}</span>
                 </div>
             {% endfor %}

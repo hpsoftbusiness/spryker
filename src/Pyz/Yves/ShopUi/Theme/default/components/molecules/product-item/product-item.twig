@@ -58,12 +58,12 @@
         {% block content %}
             <a href="{{ data.url }}" class="{{ config.name }}__info {{ config.jsName }}__link-detail-page grid grid--justify grid--top grid--no-wrap">
                 {% if data.name %}
-                    <div class="col col--sm-12 col--md-8">
+                    <div class="col col--sm-4 col--md-8">
                         {{ block('title') }}
                     </div>
                 {% endif %}
 
-                <div class="col col--sm-12 col--md-4 text-right">
+                <div class="col col--sm-4 col--md-4 text-right">
                     {{ block('price') }}
                 </div>
             </a>

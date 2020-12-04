@@ -1,29 +1,16 @@
 $sm-min: 0;
-$sm-max: 359px;
-$md-min: 360px;
-$md-max: 599px;
-$lg-min: 600px;
-$lg-max: 767px;
-$xl-min: 768px;
-$xl-max: 959px;
-$xl2-min: 960px;
-$xl2-max: 1199px;
-$xl3-min: 1200px;
-$xl3-max: 1439px;
-$xl4-min: 1440px;
-$xl4-max: 1659px;
-$xl5-min: 1660px;
-$xl5-max: 1919px;
-$xl6-min: 1920px;
+$sm-max: 599px;
+$md-min: 600px;
+$md-max: 959px;
+$lg-min: 960px;
+$lg-max: 1439px;
+$xl-min: 1440px;
+$xl-max: 1659px;
+$xxl-min: 1660px;
 
 $setting-breakpoints: (
     sm: ($sm-min, $sm-max),
     md: ($md-min, $md-max),
     lg: ($lg-min, $lg-max),
-    xl: ($xl-min, $xl-max),
-    xl2: ($xl2-min, $xl2-max),
-    xl3: ($xl3-min, $xl3-max),
-    xl4: ($xl4-min, $xl4-max),
-    xl5: ($xl5-min, $xl5-max),
-    xl6: ($xl6-min)
+    xl: ($xl-min)
 );

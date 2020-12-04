@@ -62,7 +62,7 @@
                 font: fw(light) map-get($setting-font-size, small) $setting-font-family;
                 color: $setting-color-text;
 
-                @include helper-breakpoint-media-min($xl2-min) {
+                @include helper-breakpoint-media-min($xxl-min) {
                     font-size: $setting-font-size-base;
                 }
             }

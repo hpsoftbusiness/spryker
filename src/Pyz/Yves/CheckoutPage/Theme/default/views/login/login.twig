@@ -69,15 +69,15 @@
             {% include molecule('form') with {
                 modifiers: ['login', 'checkout-actions', 'grid-indent'],
                 data: {
-                    class: 'col col--sm-6',
+                    class: 'col col--sm-2',
                     title: 'checkout.customer.auth_as_guest' | trans,
                     form: embed.forms.customerGuest,
                     enableStart: false,
                     enableEnd: false,
                     layout: {
-                        salutation: 'col col--sm-12 col--md-2',
-                        first_name: 'col col--sm-12 col--md-5',
-                        last_name: 'col col--sm-12 col--md-5'
+                        salutation: 'col col--sm-4 col--md-2',
+                        first_name: 'col col--sm-4 col--md-5',
+                        last_name: 'col col--sm-4 col--md-5'
                     },
                     submit: {
                         enable: false
@@ -97,8 +97,8 @@
             title: 'checkout.customer.auth_as_login' | trans,
             form: data.forms.login,
             layout: {
-                email: 'col col--sm-12 col--md-6',
-                password: 'col col--sm-12 col--md-6'
+                email: 'col col--sm-4 col--md-6',
+                password: 'col col--sm-4 col--md-6'
             },
             submit: {
                 enable: true,

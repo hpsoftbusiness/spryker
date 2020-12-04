@@ -78,7 +78,7 @@
         {% block additionalLink %}{% endblock %}
 
         <div class="{{ config.name }}__row {{ config.name }}__navigation-top grid grid--middle grid--justify">
-            <div class="col col--sm-12 col--lg-4 is-hidden-sm-md">
+            <div class="col col--sm-4 col--lg-4 is-hidden-sm-md">
                 {% if data.showSearchForm %}
                     <div class="{{ config.name }}__search-open js-suggest-search__show">
                         {% include atom('icon') with {
@@ -91,7 +91,7 @@
                 {% endif %}
             </div>
 
-            <div class="col col--sm-12 col--lg-4">
+            <div class="col col--sm-4 col--lg-4">
                 {% include molecule('logo') with {
                     modifiers: modifiers,
                     class: 'grid grid--center'

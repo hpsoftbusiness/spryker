@@ -12,7 +12,7 @@
                 {% set imageUrl = item.vars.data.images[0].externalUrlSmall ?? '' %}
 
                 {% embed molecule('product-card-item') with {
-                    class: 'col col--sm-12 col--lg-6',
+                    class: 'col col--sm-4 col--lg-6',
                     modifiers: ['expand', 'secondary', 'additional-info'],
                     data: {
                         productItem: item.vars.data,
@@ -69,7 +69,7 @@
                     {% block bundles %}{% endblock %}
                 {% endembed %}
 
-                <div class="col col--sm-12">
+                <div class="col col--sm-4">
                     {% include molecule('form') with {
                         class: config.jsName ~ '__item-shipping ' ~ (hasShippingAddresses ? ' is-hidden ') ~ config.jsName ~ '__item-shipping--' ~ loop.index,
                         modifiers: ['checkout-form'],
@@ -78,14 +78,14 @@
                             enableStart: false,
                             enableEnd: false,
                             layout: {
-                                salutation: 'col col--sm-12 col--lg-3',
-                                first_name: 'col col--sm-12 col--lg-4',
-                                last_name: 'col col--sm-12 col--lg-5',
-                                address1: 'col col--sm-12 col--md-8 col--lg-9',
-                                address2: 'col col--sm-12 col--md-4 col--lg-3',
-                                zip_code: 'col col--sm-12 col--lg-3',
-                                city: 'col col--sm-12 col--lg-5',
-                                iso2_code: 'col col--sm-12 col--lg-4',
+                                salutation: 'col col--sm-4 col--lg-3',
+                                first_name: 'col col--sm-4 col--lg-4',
+                                last_name: 'col col--sm-4 col--lg-5',
+                                address1: 'col col--sm-4 col--md-8 col--lg-9',
+                                address2: 'col col--sm-4 col--md-4 col--lg-3',
+                                zip_code: 'col col--sm-4 col--lg-3',
+                                city: 'col col--sm-4 col--lg-5',
+                                iso2_code: 'col col--sm-4 col--lg-4',
                             },
                         },
                     } only %}

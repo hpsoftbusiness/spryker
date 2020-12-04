@@ -28,17 +28,17 @@
         {% block fields %}
             {% set hasShippingAddresses = data.form.shippingAddress.id_customer_address is defined %}
 
-            <h2 class="title title--primary col col--sm-12 grid grid--baseline">
-                <span class="col col--sm-12 col--md-8">{{ 'page.checkout.address.shipping-address' | trans }}</span>
+            <h2 class="title title--primary col col--sm-4 grid grid--baseline">
+                <span class="col col--sm-4 col--md-8">{{ 'page.checkout.address.shipping-address' | trans }}</span>
                 {% if is_granted('ROLE_USER') %}
-                    <a class="link link--secondary link--align-right-from-tablet spacing-top col col--sm-12 col--md-4" href="{{ url('customer/address') }}">
+                    <a class="link link--secondary link--align-right-from-tablet spacing-top col col--sm-4 col--md-4" href="{{ url('customer/address') }}">
                         {{ 'page.checkout.address.manage_your_addresses' | trans }}
                     </a>
                 {% endif %}
             </h2>
 
             {% if hasShippingAddresses %}
-                <div class="col col--sm-12 spacing-bottom spacing-bottom--biggest">
+                <div class="col col--sm-4 spacing-bottom spacing-bottom--biggest">
                     {{ form_row(embed.forms.shipping.id_customer_address, {
                         label: 'page.checkout.address.delivery.address_select' | trans,
                     }) }}
@@ -46,29 +46,29 @@
             {% endif %}
 
             {% include molecule('form') with {
-                class: embed.jsAddressClass ~ '__shipping' ~ (hasShippingAddresses ? ' is-hidden ') ~ 'col col--sm-12',
+                class: embed.jsAddressClass ~ '__shipping' ~ (hasShippingAddresses ? ' is-hidden ') ~ 'col col--sm-4',
                 modifiers: ['checkout-form', 'checkout-form-elements'],
                 data: {
                     form: embed.forms.shipping,
                     enableStart: false,
                     enableEnd: false,
                     layout: {
-                        first_name: 'col col--sm-12 col--md-6',
-                        last_name: 'col col--sm-12 col--md-6',
-                        address1: 'col col--sm-12 col--md-8',
-                        address2: 'col col--sm-12 col--md-4',
-                        zip_code: 'col col--sm-12 col--md-6',
-                        city: 'col col--sm-12 col--md-6',
-                        iso2_code: 'col col--sm-12 col--md-6',
-                        state: 'col col--sm-12 col--md-6',
-                        phone: 'col col--sm-12 col--md-12',
+                        first_name: 'col col--sm-4 col--md-6',
+                        last_name: 'col col--sm-4 col--md-6',
+                        address1: 'col col--sm-4 col--md-8',
+                        address2: 'col col--sm-4 col--md-4',
+                        zip_code: 'col col--sm-4 col--md-6',
+                        city: 'col col--sm-4 col--md-6',
+                        iso2_code: 'col col--sm-4 col--md-6',
+                        state: 'col col--sm-4 col--md-6',
+                        phone: 'col col--sm-4 col--md-8',
                     },
                 },
             } only %}
 
             {% if embed.isMultipleShipmentEnabled %}
                 {% include molecule('address-item-form', 'CheckoutPage') with {
-                    class: 'col col--sm-12 is-hidden spacing-bottom ' ~ embed.jsAddressClass ~ '__items-target',
+                    class: 'col col--sm-4 is-hidden spacing-bottom ' ~ embed.jsAddressClass ~ '__items-target',
                     data: {
                         form: embed.forms.items,
                         formBundle: embed.forms.bundleItems,
@@ -78,10 +78,10 @@
                 } only %}
             {% endif %}
 
-            <div class="grid grid--expand col col--sm-12 spacing-bottom spacing-bottom--biggest">
-                <h2 class="title title--primary col col--sm-12">{{ 'page.checkout.address.billing-address' | trans }}</h2>
+            <div class="grid grid--expand col col--sm-4 spacing-bottom spacing-bottom--biggest">
+                <h2 class="title title--primary col col--sm-4">{{ 'page.checkout.address.billing-address' | trans }}</h2>
 
-                <div class="col col--sm-12 {{ embed.jsAddressClass }}__billing-same-as-shipping">
+                <div class="col col--sm-4 {{ embed.jsAddressClass }}__billing-same-as-shipping">
                     {{ form_row(data.form.billingSameAsShipping, {
                         label: 'page.checkout.address.billing-same-as-shipping' | trans,
                         component: molecule('toggler-checkbox'),
@@ -94,22 +94,22 @@
                 </div>
 
                 {% embed molecule('form') with {
-                    class: 'col col--sm-12 spacing-top spacing-top--big is-hidden ' ~ embed.jsAddressClass ~  '__billing-address',
+                    class: 'col col--sm-4 spacing-top spacing-top--big is-hidden ' ~ embed.jsAddressClass ~  '__billing-address',
                     modifiers: ['checkout-form-elements'],
                     data: {
                         form: embed.forms.billing,
                         enableStart: false,
                         enableEnd: false,
                         layout: {
-                            first_name: 'col col--sm-12 col--md-6',
-                            last_name: 'col col--sm-12 col--md-6',
-                            address1: 'col col--sm-12 col--md-8',
-                            address2: 'col col--sm-12 col--md-4',
-                            zip_code: 'col col--sm-12 col--md-6',
-                            city: 'col col--sm-12 col--md-6',
-                            iso2_code: 'col col--sm-12 col--md-6',
-                            state: 'col col--sm-12 col--md-6',
-                            phone: 'col col--sm-12 col--md-12',
+                            first_name: 'col col--sm-4 col--md-6',
+                            last_name: 'col col--sm-4 col--md-6',
+                            address1: 'col col--sm-4 col--md-8',
+                            address2: 'col col--sm-4 col--md-4',
+                            zip_code: 'col col--sm-4 col--md-6',
+                            city: 'col col--sm-4 col--md-6',
+                            iso2_code: 'col col--sm-4 col--md-6',
+                            state: 'col col--sm-4 col--md-6',
+                            phone: 'col col--sm-4 col--md-8',
                         },
                     },
                     embed: {
@@ -120,7 +120,7 @@
                         {% set hasBillingAddresses = data.form.id_customer_address is defined %}
 
                         {% if hasBillingAddresses %}
-                            <div class="col col--sm-12 spacing-bottom spacing-bottom--small">
+                            <div class="col col--sm-4 spacing-bottom spacing-bottom--small">
                                 {{ form_row(data.form.id_customer_address, {
                                     label: 'page.checkout.address.billing.address_select' | trans,
                                 }) }}

@@ -82,7 +82,7 @@
 
                 <form method="GET" class="grid js-catalog-filter-target js-form-input-default-value-disabler__catalog-form {{ catalogJsName }}__form">
                     {% block form %}
-                        <div class="col col--sm-12 col--xl-3 catalog-left-side">
+                        <div class="col col--sm-4 col--xl-3 catalog-left-side">
                             {% include molecule('view-mode-switch', 'CatalogPage') with {
                                 class: 'catalog-left-side__switcher',
                                 data: {
@@ -103,7 +103,7 @@
                             {% endblock %}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9 catalog-right-side">
+                        <div class="col col--sm-4 col--xl-9 catalog-right-side">
                             <button type="button" class="button button--hollow button--expand spacing-y spacing-y--big is-hidden-xl-only js-catalog-toggler-click__trigger">
                                 {%- include atom('icon') with {
                                     class: 'spacing-right',
@@ -115,7 +115,7 @@
                             </button>
                             {% block catalogContent %}
                                 <div class="grid">
-                                    <div class="col col--sm-12">
+                                    <div class="col col--sm-4">
                                         {% include molecule('sort', 'CatalogPage') with {
                                             data: {
                                                 pagination: data.pagination,
@@ -124,14 +124,14 @@
                                             },
                                         } only %}
                                     </div>
-                                    <div class="col col--sm-12">
+                                    <div class="col col--sm-4">
                                         {% include organism('active-filter-section', 'CatalogPage') with {
                                             data: {
                                                 facets: data.facets
                                             }
                                         } only %}
                                     </div>
-                                    <div class="col col--sm-12">
+                                    <div class="col col--sm-4">
                                         {% include molecule('view-mode-switch', 'CatalogPage') with {
                                             class: 'is-hidden-xl-only',
                                             data: {

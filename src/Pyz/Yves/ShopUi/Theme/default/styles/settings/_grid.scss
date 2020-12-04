@@ -1,49 +1,29 @@
 $setting-grid-columns: (
     sm: 4,
-    md: 4,
-    lg: 8,
-    xl: 8,
-    xl2: 12,
-    xl3: 12,
-    xl4: 12,
-    xl5: 12,
-    xl6: 12
+    md: 8,
+    lg: 12,
+    xl: 12
 );
 
 $setting-col-width: (
     sm: 100%,
-    md: 100%,
-    lg: 100%,
-    xl: 100%,
-    xl2: 100%,
-    xl3: 65px,
-    xl4: 86px,
-    xl5: 110px,
-    xl6: 110px
+    md: 65px,
+    lg: 86px,
+    xl: 110px,
 );
 
 $setting-grid-gutter: (
     sm: 16,
-    md: 16,
-    lg: 16,
-    xl: 16,
-    xl2: 24,
-    xl3: 24,
-    xl4: 24,
-    xl5: 24,
-    xl6: 24
+    md: 24,
+    lg: 24,
+    xl: 24
 );
 
-$setting-grid-gutter-total-width-desktop: map-get($setting-grid-gutter, xl2) * (map-get($setting-grid-columns, xl2) - 1);
+$setting-grid-gutter-total-width-desktop: map-get($setting-grid-gutter, xl) * (map-get($setting-grid-columns, xl) - 1);
 
 $settings-max-width: (
     sm: 100%,
     md: nth(map-get($setting-breakpoints, md), 2),
-    lg: nth(map-get($setting-breakpoints, lg), 2),
-    xl: nth(map-get($setting-breakpoints, xl), 2),
-    xl2: nth(map-get($setting-breakpoints, xl2), 2),
-    xl3: (map-get($setting-grid-columns, xl3) * map-get($setting-col-width, xl3)) + $setting-grid-gutter-total-width-desktop,
-    xl4: (map-get($setting-grid-columns, xl4) * map-get($setting-col-width, xl4)) + $setting-grid-gutter-total-width-desktop,
-    xl5: (map-get($setting-grid-columns, xl5) * map-get($setting-col-width, xl5)) + $setting-grid-gutter-total-width-desktop,
-    xl6: (map-get($setting-grid-columns, xl6) * map-get($setting-col-width, xl6)) + $setting-grid-gutter-total-width-desktop
+    lg: (map-get($setting-grid-columns, lg) * map-get($setting-col-width, lg)) + $setting-grid-gutter-total-width-desktop,
+    xl: (map-get($setting-grid-columns, xl) * map-get($setting-col-width, xl)) + $setting-grid-gutter-total-width-desktop
 );
