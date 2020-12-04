@@ -59,16 +59,16 @@
         </td>
         <td width="300">
             <strong>{{ 'order_invoice.invoice_template.company.name' | trans }}</strong>
-            <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.group' | trans }}</div>
+            {#            <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.group' | trans }}</div>#}
             <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.address' | trans | raw }}</div>
         </td>
     </tr>
     <tr>
         <td width="300">
-            <div class="spacing-bottom spacing-right">
-                <strong>{{ 'order_invoice.invoice_template.merchant.name' | trans }}</strong>
-                <div class="text-small">{{ 'order_invoice.invoice_template.merchant.address' | trans }}</div>
-            </div>
+            {#            <div class="spacing-bottom spacing-right">#}
+            {#                <strong>{{ 'order_invoice.invoice_template.merchant.name' | trans }}</strong>#}
+            {#                <div class="text-small">{{ 'order_invoice.invoice_template.merchant.address' | trans }}</div>#}
+            {#            </div>#}
             <div class="spacing-bottom">
                 {{ order.billingAddress.firstName }} {{ order.billingAddress.lastName }}<br>
                 {{ order.billingAddress.address1 }} {{ order.billingAddress.address2 }} {{ order.billingAddress.address3 }}<br>
@@ -76,8 +76,46 @@
                 {{ order.billingAddress.region }}
             </div>
         </td>
-        <td width="300" class="align-top">
-            <div class="spacing-bottom">{{ invoice.issueDate | date('d. M Y') }}</div>
+        <td width="500" class="align-top">
+            {#            <div class="spacing-bottom">{{ invoice.issueDate | date('d. M Y') }}</div>#}
+            <table class=" sprykerTextContentContainer                                                                                                                                                                                              " style="min-width: 100% !important;background-color: #F9F9F9;border-collapse: collapse;mso-table-lspace:                                                                                                                                                                                              0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%"                                                                                                                                                                                                                         cellspacing="0" border="0">
+                <tbody>
+                <tr>
+                    <td class=" sprykerTextContent                                                                                                                                                                                                  " style="padding-top: 18px;padding-right: 0px;padding-bottom: 18px;padding-left: 18px;color:                                                                                                                                                                                                  #000000;font-family:Helvetica, Arial, Verdana, sans-serif;font-size: 15px;font-weight: normal;text-align:                                                                                                                                                                                                  left;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break:                                                                                                                                                                                                  break-word;" valign="top">
+                        <p>{{ 'order_invoice.invoice_template.table.payment_reference' | trans }}:</p>
+                        <p>{{ 'order_invoice.invoice_template.table.grant_total' | trans }}:</p>
+                        {#                        <p>{{ 'order_invoice.invoice_template.table.customer_reference' | trans }}:</p>#}
+                        <p>{{ 'order_invoice.invoice_template.table.order_reference' | trans }}:</p>
+                        <p>{{ 'order_invoice.invoice_template.table.order_date' | trans }}:</p>
+                        <p>{{ 'order_invoice.invoice_template.table.invoice_date' | trans }}:</p>
+                        <p>{{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}:</p>
+                    </td>
+                    <td class=" sprykerTextContent                                                                                                                                                                                                  " style="padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 0px;min-width:100px;color:                                                                                                                                                                                                  #000000;font-family:Helvetica, Arial, Verdana, sans-serif;font-size: 15px;font-weight: normal;text-align:                                                                                                                                                                                                  right;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break:                                                                                                                                                                                                  break-word;" valign="top">
+                        <p style=" text-align: right;">
+                            <strong>payment_reference</strong>
+                        </p>
+                        <p style=" text-align: right;">
+                            <strong>{{ order.totals.grandTotal | money }}</strong>
+                        </p>
+                        {#                        <p style=" text-align: right;">#}
+                        {#                            <strong>{{ order.customerReference }}</strong>#}
+                        {#                        </p>#}
+                        <p style=" text-align: right;">
+                            <strong>{{ order.orderReference }}</strong>
+                        </p>
+                        <p style=" text-align: right;">
+                            <strong>{{ order.createdAt | date('d. M Y') }}</strong>
+                        </p>
+                        <p style=" text-align: right;">
+                            <strong>{{ invoice.issueDate | date('d. M Y') }}</strong>
+                        </p>
+                        <p style=" text-align: right;">
+                            <strong>cashback_customer_number</strong>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </td>
     </tr>
 </table>
@@ -90,11 +128,11 @@
             </div>
         </td>
     </tr>
-    <tr>
-        <td width="600">
-            <div class="spacing-bottom">{{ 'order_invoice.invoice_template.introduction' | trans }}</div>
-        </td>
-    </tr>
+    {#    <tr>#}
+    {#        <td width="600">#}
+    {#            <div class="spacing-bottom">{{ 'order_invoice.invoice_template.introduction' | trans }}</div>#}
+    {#        </td>#}
+    {#    </tr>#}
 </table>
 
 <table class="products-table">
@@ -105,6 +143,8 @@
         <th width="275" class="text-left"><strong>{{ 'order_invoice.invoice_template.table.name' | trans }}</strong></th>
         <th width="100"><strong>{{ 'order_invoice.invoice_template.table.tax' | trans }}</strong></th>
         <th width="75"><strong>{{ 'order_invoice.invoice_template.table.price' | trans | raw }}</strong></th>
+        {#        <th width="75"><strong>{{ 'order_invoice.invoice_template.table.net_price' | trans | raw }}</strong></th>#}
+        {#        <th width="75"><strong>{{ 'order_invoice.invoice_template.table.gross_price' | trans | raw }}</strong></th>#}
     </tr>
     </thead>
     <tbody>
@@ -114,13 +154,13 @@
     {% set itemSumByTaxes = {} %}
 
     {% for item in order.items %}
-        {# @var item \Generated\Shared\Transfer\ItemTransfer #}
+    {# @var item \Generated\Shared\Transfer\ItemTransfer #}
 
-        {% set taxRate = item.taxRate %}
-        {% set rateSum = taxes[item.taxRate] | default(0) + item.sumTaxAmountFullAggregation %}
-        {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
-        {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPriceToPayAggregation %}
-        {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
+    {% set taxRate = item.taxRate %}
+    {% set rateSum = taxes[item.taxRate] | default(0) + item.sumTaxAmountFullAggregation %}
+    {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
+    {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPriceToPayAggregation %}
+    {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
 
         {% if item.productBundle is not defined or item.productBundle is null %}
             {% set linenumber = linenumber + 1 %}
@@ -128,46 +168,50 @@
             <tr>
                 <td class="text-center">{{ linenumber }}</td>
                 <td class="text-center">{{ item.quantity }}</td>
-                <td>{{ item.name }}</td>
+                <td>{{ item.name }} <br> {{ item.concreteAttributes['gtin'] }}</td>
                 <td class="text-center">{{ item.taxRate | number_format }}%</td>
                 <td class="text-center">{{ item.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                {#                <td class="text-center">{{ item.sumNetPrice | money(true, order.currencyIsoCode) }}</td>#}
+                {#                <td class="text-center">{{ item.sumGrossPrice | money(true, order.currencyIsoCode) }}</td>#}
             </tr>
         {% endif %}
 
         {% if item.productBundle is defined and item.productBundle is not null %}
-            {% if item.relatedBundleItemIdentifier not in renderedBundles %}
-                {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
+        {% if item.relatedBundleItemIdentifier not in renderedBundles %}
+        {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
 
-                {% set linenumber = linenumber + 1 %}
+        {% set linenumber = linenumber + 1 %}
 
-                {% set productBundle = item.productBundle %}
+        {% set productBundle = item.productBundle %}
 
-                <tr>
-                    <td class="text-center">{{ linenumber }}</td>
-                    <td class="text-center">{{ productBundle.quantity }}</td>
-                    <td>{{ productBundle.name }}</td>
-                    <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
-                    <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
-                </tr>
+        <tr>
+        <td class="text-center">{{ linenumber }}</td>
+        <td class="text-center">{{ productBundle.quantity }}</td>
+        <td>{{ productBundle.name }} <br> {{ item.concreteAttributes['gtin'] }}</td>
+        <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
+        <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+        {#                    <td class="text-center">{{ productBundle.sumNetPrice | money(true, order.currencyIsoCode) }}</td>#}
+        {#                    <td class="text-center">{{ productBundle.sumGrossPrice | money(true, order.currencyIsoCode) }}</td>                </tr>#}
 
-                {% for bundleditem in order.items %}
-                    {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
-                        <tr>
-                            <td></td>
-                            <td class="text-center">{{ bundleditem.quantity }}</td>
-                            <td>{{ bundleditem.name }}</td>
-                            <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
-                            <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-
-                {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
-            {% endif %}
+        {% for bundleditem in order.items %}
+        {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
+    <tr>
+        <td></td>
+        <td class="text-center">{{ bundleditem.quantity }}</td>
+        <td>{{ bundleditem.name }} <br> {{ item.concreteAttributes['gtin'] }}</td>
+        <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
+        <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+        {#                            <td class="text-center">{{ bundleditem.sumNetPrice | money(true, order.currencyIsoCode) }}</td>#}
+        {#                            <td class="text-center">{{ bundleditem.sumGrossPrice | money(true, order.currencyIsoCode) }}</td>                        </tr>#}
         {% endif %}
-    {% endfor %}
+        {% endfor %}
 
-    {% for expense in order.expenses %}
+        {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        {% for expense in order.expenses %}
         {% set linenumber = linenumber + 1 %}
         {% set taxRate = expense.taxRate %}
         {% set rateSum = taxes[expense.taxRate] | default(0) + expense.sumTaxAmount %}

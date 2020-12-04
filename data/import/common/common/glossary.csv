@@ -1159,6 +1159,8 @@ mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop New
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
 mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
 mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
+mail.shipping.confirmation.subject,Ihre Bestellung wurde versandt.,de_DE
+mail.shipping.confirmation.subject,Your order have been shipped.,en_US
 mail.order.confirmation.salutation,Hallo,de_DE
 mail.order.confirmation.salutation,Hello,en_US
 mail.order.confirmation.text_line_1,danke für deine Bestellung beim Spryker Shop!,de_DE
@@ -2578,14 +2580,18 @@ return.return_policy.returnable_till.message,Returnable till: %date%,en_US
 return.return_policy.returnable_till.message,Retournierbar bis: %date%,de_DE
 order_invoice.invoice_template.table.number,Pos.,en_US
 order_invoice.invoice_template.table.number,Pos.,de_DE
-order_invoice.invoice_template.table.quantity,Quantity,en_US
+order_invoice.invoice_template.table.quantity,Item Qty,en_US
 order_invoice.invoice_template.table.quantity,Menge,de_DE
-order_invoice.invoice_template.table.name,Item,en_US
-order_invoice.invoice_template.table.name,Artikelbezeihnung,de_DE
+order_invoice.invoice_template.table.name,Article name,en_US
+order_invoice.invoice_template.table.name,Artikel,de_DE
 order_invoice.invoice_template.table.tax,Tax rate,en_US
 order_invoice.invoice_template.table.tax,Steuersatz,de_DE
 order_invoice.invoice_template.table.price,Price,en_US
 order_invoice.invoice_template.table.price,Preis,de_DE
+order_invoice.invoice_template.table.net_price,Net price,en_US
+order_invoice.invoice_template.table.net_price,Netto,de_DE
+order_invoice.invoice_template.table.gross_price,Gross price,en_US
+order_invoice.invoice_template.table.gross_price,Brutto,de_DE
 order_invoice.invoice_template.table.subtotal,Subtotal,en_US
 order_invoice.invoice_template.table.subtotal,Zwischensumme,de_DE
 order_invoice.invoice_template.table.discount,Discount,en_US
@@ -2596,20 +2602,32 @@ order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US
 order_invoice.invoice_template.table.grandtotal,Summe,de_DE
-order_invoice.invoice_template.reference,Invoice number:,en_US
-order_invoice.invoice_template.reference,Rechnungsnummer:,de_DE
+order_invoice.invoice_template.reference,Invoice Nr.,en_US
+order_invoice.invoice_template.reference,Rechnungs Nr.,de_DE
 order_invoice.invoice_template.introduction,We hereby charge you for the following goods:,en_US
 order_invoice.invoice_template.introduction,Hiermit berechnen wir Ihnen folgende Ware:,de_DE
-order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,en_US
-order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,de_DE
-order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,en_US
-order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,de_DE
+order_invoice.invoice_template.company.name,mWS myWorld Solutions AG,en_US
+order_invoice.invoice_template.company.name,mWS myWorld Solutions AG,de_DE
+order_invoice.invoice_template.company.address,"Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g",en_US
+order_invoice.invoice_template.company.address,"Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g",de_DE
 order_invoice.invoice_template.company.group,Unternehmensgruppe Spryker Systems GmbH	,en_US
 order_invoice.invoice_template.company.group,Spryker Systems GmbH Group,de_DE
 order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,en_US
 order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,de_DE
 order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,en_US
 order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,de_DE
+order_invoice.invoice_template.table.payment_reference,Payment reference,en_US
+order_invoice.invoice_template.table.payment_reference,Zahlungsreferenz,de_DE
+order_invoice.invoice_template.table.grant_total,The grand total to pay by the customer,en_US
+order_invoice.invoice_template.table.grant_total,Zahlbetrag,de_DE
+order_invoice.invoice_template.table.order_reference,The order number,en_US
+order_invoice.invoice_template.table.order_reference,Bestellnummer,de_DE
+order_invoice.invoice_template.table.order_date,Order Date (when the order was placed),en_US
+order_invoice.invoice_template.table.order_date,Bestelldatum,de_DE
+order_invoice.invoice_template.table.invoice_date,Date of the invoice generation,en_US
+order_invoice.invoice_template.table.invoice_date,Rechnungsdatum/Lieferdatum,de_DE
+order_invoice.invoice_template.table.cashback_customer_number,Cashback customer number,en_US
+order_invoice.invoice_template.table.cashback_customer_number,Cashback Kundennummer,de_DE
 return_page.list.title,Returns,en_US
 return_page.list.title,Retouren,de_DE
 return_page.account.no_return,No returns at the moment,en_US
