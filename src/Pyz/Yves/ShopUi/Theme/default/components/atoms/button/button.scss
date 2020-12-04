@@ -41,6 +41,7 @@
             background-color: $setting-color-transparent;
             color: $setting-color-black;
             min-width: 0;
+            box-shadow: none;
 
             &:hover,
             &:focus,
@@ -76,6 +77,7 @@
             padding: rem(10);
             user-select: none;
             min-width: 0;
+            box-shadow: none;
 
             &:hover,
             &:focus,
@@ -171,6 +173,7 @@
             min-width: rem(113);
             font-weight: fw(regular);
             font-size: rem(13);
+            box-shadow: none;
         }
 
         &--combined-small {
