@@ -247,6 +247,26 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
      *
      * @return $this
      */
+    protected function addCompanyField(FormBuilderInterface $builder, array $options = [])
+    {
+        $builder->add(self::FIELD_COMPANY, TextType::class, [
+            'label' => 'customer.address.company',
+            'required' => false,
+            'trim' => true,
+            'constraints' => [
+                $this->createMaxLengthConstraint($options),
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $options
+     *
+     * @return $this
+     */
     protected function addAddress4Field(FormBuilderInterface $builder, array $options)
     {
         $builder->add(self::FIELD_ADDRESS_4, TextType::class, [

@@ -1,7 +1,6 @@
 template_name,is_searchable,is_active,publish,page_key,url.de_DE,url.en_US,name.de_DE,name.en_US,meta_title.de_DE,meta_title.en_US,meta_keywords.de_DE,meta_keywords.en_US,meta_description.de_DE,meta_description.en_US,placeholder.title.de_DE,placeholder.title.en_US,placeholder.content.de_DE,placeholder.content.en_US
-Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,<h2>Impressum</h2>,<h2>About</h2>,"
+Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,Impressum,Imprint,"<h1 id=""Impressum"">Impressum</h1>","<h1 id=""Imprint"">Imprint</h1>","
 <div>
-    <p><strong data-renderer-mark=""true"">Impressum</strong></p>
     <p>Medieninhaber, Herausgeber und Hersteller:</p>
     <p>&nbsp;</p>
     <p>&nbsp;<strong data-renderer-mark=""true"">mWS myWorld Solutions AG
@@ -50,7 +49,7 @@ Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impre
     <p>&nbsp;</p>
     <p>Schlichtungsstelle gemäß Verordnung (EU) Nr. 524/2013 über die Online
         Streitbeilegung in Verbraucherangelegenheiten:&nbsp;
-        <a href=""http://ec.europa.eu/consumers/odr/""
+        <a href=""http://ec.europa.eu/consumers/odr/"" target=""_blank""
            title=""http://ec.europa.eu/consumers/odr/""
            data-renderer-mark=""true"">ec.europa.eu/consumers/odr/</a>&nbsp;Ihnen
         stehen grundsätzlich die Rechte auf Berichtigung, Löschung, Einschränkung und Widerspruch zu. Dafür wenden Sie
@@ -84,7 +83,6 @@ Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impre
     <p>&nbsp;</p>
 </div>","
 <div>
-    <h1 id=""Imprint"">Imprint</h1>
     <p>Media Proprietor, Publisher, and Producer</p>
     <p>&nbsp;</p>
     <p><strong data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld)</strong><br>Grazbachgasse
@@ -129,7 +127,7 @@ Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impre
         addressed equally.</p>
     <p>Arbitration body pursuant to (EU) Regulation No. 524/2013 concerning online
         dispute resolution in consumer affairs:<br>
-        <a href=""http://ec.europa.eu/consumers/odr/""
+        <a href=""http://ec.europa.eu/consumers/odr/"" target=""_blank""
            title=""http://ec.europa.eu/consumers/odr/""
            data-renderer-mark=""true"">ec.europa.eu/consumers/odr/</a></p>
     <p>You are entitled to have your data rectified, deleted, limited and withdrawn. If
@@ -152,10 +150,8 @@ Placeholders Title & Content + Slot,1,1,1,page_1,/de/impressum,/en/imprint,Impre
     <p>&nbsp;</p>
     <p>&nbsp;</p>
 </div>"
-Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC,AGB,GTC,AGB,GTC,<h2>Allgemeine Geschäftsbedingungen (AGB)</h2>,<h2>General Terms and Conditions (GTC)</h2>,"
+Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC,AGB,GTC,AGB,GTC,"<h1 id=""Allgemeine-Geschäftsbedingungen---myWorld-Marktplatz"">Allgemeine Geschäftsbedingungen - myWorld Marktplatz</h1>","<h1 id=""Terms-and-Conditions---myWorld-Marketplace"" data-renderer-start-pos=""54"">Terms and Conditions - myWorld Marketplace</h1>","
 <div
-    <h1 id=""Allgemeine-Geschäftsbedingungen---myWorld-Marktplatz"">Allgemeine
-        Geschäftsbedingungen - myWorld Marktplatz</h1>
     <p>Zuletzt geändert: 27.11.2020&nbsp;</p>
     <p><br>Die vorliegenden Allgemeinen Geschäftsbedingungen regeln die
         Geschäftsverbindung zwischen der <em data-renderer-mark=""true"">mWS myWorld Solutions AG</em></p>
@@ -252,7 +248,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
         binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an folgende
         Adresse zurückzusenden:</p>
     <p><br><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
-         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+         href=""http://Co.KG"" target=""_blank"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
         data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Deutschland&nbsp;</p>
     <p>&nbsp;</p>
     <p>Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen
@@ -346,7 +342,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
     </p>
     <p>Retouren sind zu senden an:</p>
     <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
-         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+         href=""http://Co.KG"" target=""_blank"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
         data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Deutschland&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -375,7 +371,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
         erfolgt, sind Sie verpflichtet, die mangelhafte Ware innerhalb von 30 Tagen an folgende Adresse auf Kosten von
         myWorld zurückzusenden:</p>
     <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
-         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+         href=""http://Co.KG"" target=""_blank"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
         data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Deutschland&nbsp;</p>
     <p><strong data-renderer-mark=""true"">11.&nbsp;&nbsp; &nbsp;HAFTUNG VON
         MYWORLD</strong></p>
@@ -418,7 +414,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
         Ansprüche im Zusammenhang mit diesen Nutzungsbedingungen, die sich aus verbraucherschützenden Normen ergeben,
         wahlweise sowohl in Deutschland als auch in dem EU-Mitgliedsstaat, in dem Sie leben, einreichen.</p>
     <p><br>Beschwerden/Online Streitbeilegung/Schlichtungsverfahren<br>Die Europäische
-        Kommission stellt unter&nbsp;<a href=""https://ec.europa.eu/consumers/odr/""
+        Kommission stellt unter&nbsp;<a href=""https://ec.europa.eu/consumers/odr/"" target=""_blank""
                                         title=""https://ec.europa.eu/consumers/odr/"" data-renderer-mark=""true"">https://ec.europa.eu/consumers/odr/</a>&nbsp;eine
         Plattform zur Online-Streitbeilegung („OS-Plattform“) bereit. myWorld ist bemüht, eventuelle
         Meinungsverschiedenheiten aus diesem Vertrag einvernehmlich beizulegen. Darüber hinaus ist myWorld zu einer
@@ -434,8 +430,6 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
     <p>&nbsp;</p>
 </div>","
 <div>
-    <h1 id=""Terms-and-Conditions---myWorld-Marketplace"" data-renderer-start-pos=""54"">Terms and Conditions - myWorld
-        Marketplace</h1>
     <p>Last amended: 27.11.2020&nbsp;</p>
     <p><br>The present Terms &amp; Conditions regulate the business relationship between
         mWG myWorld Germany GmbH (""myWorld"") and the users of the myWorld Marketplace (""You"" or “you”) when purchasing
@@ -538,7 +532,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
         return the goods to the following address without delay and in any case, no later than fourteen days following
         the day on which you notified us of your withdrawal from this contract:</p>
     <p><br><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
-         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+         href=""http://Co.KG"" target=""_blank"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
         data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Germany&nbsp;</p>
     <p>&nbsp;</p>
     <p>The deadline is met if you send back the goods before the period of fourteen days
@@ -638,7 +632,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
     <p>&nbsp;</p>
     <p>Returns must be sent to</p>
     <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
-         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+         href=""http://Co.KG"" target=""_blank"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
         data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Germany&nbsp;</p>
     <ol class=""ak-ol"" data-indent-level=""1"">
         <li><p>CUSTOMS</p></li>
@@ -665,7 +659,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
         expense of myWorld, within 30 days to the following address:</p>
     <p><strong data-renderer-mark=""true"">&nbsp;</strong></p>
     <p><strong data-renderer-mark=""true"">IMO Logistics GmbH &amp; </strong><a
-         href=""http://Co.KG"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
+         href=""http://Co.KG"" target=""_blank"" title=""http://Co.KG"" data-renderer-mark=""true""><strong
         data-renderer-mark=""true"">Co.KG</strong></a><br>Möckernstr.31<br>30163 Hannover<br>Germany&nbsp;</p>
     <p>&nbsp;</p>
     <p><strong data-renderer-mark=""true"">11.&nbsp;&nbsp; &nbsp;MYWORLD
@@ -709,7 +703,7 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
         norms, both in Germany and the EU member state where you live. &nbsp;</p>
     <p><br>Complaints/online dispute resolution/arbitration procedure&nbsp;<br>The
         European Commission makes a platform for the purpose of online dispute resolution available &nbsp;via the
-        following&nbsp;<a href=""https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage""
+        following&nbsp;<a href=""https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage"" target=""_blank""
                           title=""https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage""
                           data-renderer-mark=""true"">link&nbsp;</a>&nbsp;('OS Platform'). myWorld strives to resolve all
         potential differences of opinion which could conceivably arise from this contractual relationship amicably.
@@ -722,9 +716,8 @@ Placeholders Title & Content + Slot,1,1,1,page_2,/de/agb,/en/gtc,AGB,GTC,AGB,GTC
             data-renderer-mark=""true"">marketplace.myworld.com</a>.</p>
     <p>&nbsp;</p>
 </div>"
-Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,<h2>Datenschutzerklärung</h2>,<h2>Data Privacy Policy</h2>,"
+Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,Datenschutzerklärung,Data Privacy,"<h1 id=""Datenschutzerklärung"">Datenschutzerklärung</h1>","<h1 id=""Privacy-policy"">Privacy policy</h1>","
 <div>
-    <h1 id=""Datenschutzerklärung"">Datenschutzerklärung</h1>
     <p>
         <strong data-renderer-mark=""true"">INFORMATION GEMÄSS ART 13 &amp; 14 DSGVO</strong>
     </p>
@@ -828,114 +821,114 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
         folgender Anbieter zurück:
     </p>
     <p>·&nbsp;
-        <a href=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
+        <a href=""https://policies.google.com/privacy?gl=AT&amp;hl=de"" target=""_blank""
            title=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
            data-renderer-mark=""true"">Google</a>&nbsp;(Analytics, Tag Manager,
         Search Ads, Display &amp; Video)</p>
     <p>·&nbsp;
-        <a href=""https://privacy.microsoft.com/de-de/privacystatement""
+        <a href=""https://privacy.microsoft.com/de-de/privacystatement"" target=""_blank""
            title=""https://privacy.microsoft.com/de-de/privacystatement""
            data-renderer-mark=""true"">Bing Ads</a>&nbsp;(Microsoft)</p>
     <p>·&nbsp;
-        <a href=""https://de-de.facebook.com/privacy/explanation""
+        <a href=""https://de-de.facebook.com/privacy/explanation"" target=""_blank""
            title=""https://de-de.facebook.com/privacy/explanation""
            data-renderer-mark=""true"">Facebook</a>/
-        <a href=""https://help.instagram.com/155833707900388""
+        <a href=""https://help.instagram.com/155833707900388"" target=""_blank""
            title=""https://help.instagram.com/155833707900388""
            data-renderer-mark=""true"">Instagram</a>
     </p>
     <p>·&nbsp;
-        <a href=""https://privacy.xing.com/de/datenschutzerklaerung""
+        <a href=""https://privacy.xing.com/de/datenschutzerklaerung"" target=""_blank""
            title=""https://privacy.xing.com/de/datenschutzerklaerung""
            data-renderer-mark=""true"">Xing</a></p>
     <p>·&nbsp;
-        <a href=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
+        <a href=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE"" target=""_blank""
            title=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
            data-renderer-mark=""true"">LinkedIn</a></p>
     <p>·&nbsp;
-        <a href=""https://www.snap.com/de-DE/privacy/privacy-policy/""
+        <a href=""https://www.snap.com/de-DE/privacy/privacy-policy/"" target=""_blank""
            title=""https://www.snap.com/de-DE/privacy/privacy-policy/""
            data-renderer-mark=""true"">Snapchat</a></p>
     <p>·&nbsp;
-        <a href=""https://twitter.com/de/privacy""
+        <a href=""https://twitter.com/de/privacy"" target=""_blank""
            title=""https://twitter.com/de/privacy""
            data-renderer-mark=""true"">Twitter</a></p>
     <p>·&nbsp;
-        <a href=""https://www.adcrowd.com/de/privacy""
+        <a href=""https://www.adcrowd.com/de/privacy"" target=""_blank""
            title=""https://www.adcrowd.com/de/privacy"" data-renderer-mark=""true"">adcrowd.com</a>
     </p>
     <p>·&nbsp;
-        <a href=""https://www.criteo.com/de/privacy/""
+        <a href=""https://www.criteo.com/de/privacy/"" target=""_blank""
            title=""https://www.criteo.com/de/privacy/"" data-renderer-mark=""true"">criteo.com</a>
     </p>
     <p>·&nbsp;
-        <a href=""https://www.luna-park.de/datenschutz/""
+        <a href=""https://www.luna-park.de/datenschutz/"" target=""_blank""
            title=""https://www.luna-park.de/datenschutz/"" data-renderer-mark=""true"">luna-park.de</a>
     </p>
     <p>·&nbsp;
-        <a href=""http://www.projecter.de/datenschutz.html""
+        <a href=""http://www.projecter.de/datenschutz.html"" target=""_blank""
            title=""http://www.projecter.de/datenschutz.html""
            data-renderer-mark=""true"">projecter.de</a></p>
     <p>·&nbsp;
-        <a href=""https://traffic3.net/traffic3/datenschutz""
+        <a href=""https://traffic3.net/traffic3/datenschutz"" target=""_blank""
            title=""https://traffic3.net/traffic3/datenschutz""
            data-renderer-mark=""true"">traffic3</a></p>
     <p>·&nbsp;
-        <a href=""https://www.eviom.com/datenschutz/""
+        <a href=""https://www.eviom.com/datenschutz/"" target=""_blank""
            title=""https://www.eviom.com/datenschutz/"" data-renderer-mark=""true"">eviom.de</a>
     </p>
     <p>·&nbsp;
-        <a href=""https://www.analyticaa.com/datenschutz/""
+        <a href=""https://www.analyticaa.com/datenschutz/"" target=""_blank""
            title=""https://www.analyticaa.com/datenschutz/""
            data-renderer-mark=""true"">analyticaa.com</a></p>
     <p>·&nbsp;
-        <a href=""https://www.unitedads.de/datenschutzerklaerung/""
+        <a href=""https://www.unitedads.de/datenschutzerklaerung/"" target=""_blank""
            title=""https://www.unitedads.de/datenschutzerklaerung/""
            data-renderer-mark=""true"">unitedads.de</a></p>
     <p>·&nbsp;
-        <a href=""https://www.awin.com/gb/legal/privacy-policy-gb""
+        <a href=""https://www.awin.com/gb/legal/privacy-policy-gb"" target=""_blank""
            title=""https://www.awin.com/gb/legal/privacy-policy-gb""
            data-renderer-mark=""true"">Awin</a></p>
     <p>·&nbsp;
-        <a href=""https://www.conversantmedia.com/legal/privacy""
+        <a href=""https://www.conversantmedia.com/legal/privacy"" target=""_blank""
            title=""https://www.conversantmedia.com/legal/privacy""
            data-renderer-mark=""true"">CJ Affiliate</a></p>
     <p>·&nbsp;
-        <a href=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
+        <a href=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2"" target=""_blank""
            title=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
            data-renderer-mark=""true"">Ceneo</a></p>
     <p>·&nbsp;
-        <a href=""https://www.preis.de/impressum/#datenschutz""
+        <a href=""https://www.preis.de/impressum/#datenschutz"" target=""_blank""
            title=""https://www.preis.de/impressum/#datenschutz""
            data-renderer-mark=""true"">Preis</a></p>
     <p>·&nbsp;
         <a
-            href=""https://company.billiger.de/service/datenschutzunterrichtung/""
+            href=""https://company.billiger.de/service/datenschutzunterrichtung/"" target=""_blank""
             title=""https://company.billiger.de/service/datenschutzunterrichtung/""
             data-renderer-mark=""true"">Billiger</a></p>
     <p>·&nbsp;
         <a
-            href=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie""
+            href=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie"" target=""_blank""
             title=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie""
             data-renderer-mark=""true"">Kelkoo</a></p>
     <p>·&nbsp;
-        <a href=""https://www.ceneje.si/pravila-o-zasebnosti""
+        <a href=""https://www.ceneje.si/pravila-o-zasebnosti"" target=""_blank""
            title=""https://www.ceneje.si/pravila-o-zasebnosti""
            data-renderer-mark=""true"">Ceneje</a></p>
     <p>·&nbsp;
-        <a href=""https://connexity.com/privacy-policy/""
+        <a href=""https://connexity.com/privacy-policy/"" target=""_blank""
            title=""https://connexity.com/privacy-policy/"" data-renderer-mark=""true"">Connexity</a>
     </p>
     <p>·&nbsp;
-        <a href=""https://en.comparis.ch/comparis/info/privacy""
+        <a href=""https://en.comparis.ch/comparis/info/privacy"" target=""_blank""
            title=""https://en.comparis.ch/comparis/info/privacy""
            data-renderer-mark=""true"">Comparis</a></p>
     <p>·&nbsp;
-        <a href=""http://ompgroup.de/datenschutz/""
+        <a href=""http://ompgroup.de/datenschutz/"" target=""_blank""
            title=""http://ompgroup.de/datenschutz/"" data-renderer-mark=""true"">Online
             Media Partner</a></p>
     <p>·&nbsp;
-        <a href=""https://www.shopping24.de/datenschutz""
+        <a href=""https://www.shopping24.de/datenschutz"" target=""_blank""
            title=""https://www.shopping24.de/datenschutz"" data-renderer-mark=""true"">Shopping24.de</a>
     </p>
     <p>Bitte beachten Sie, dass die gängigen Internetbrowser gemäß den
@@ -985,18 +978,18 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
             data-renderer-mark=""true"">mWS myWorld Solutions AG (myWorld) </strong>bedient sich zur Abwicklung der Deaten
         als Auftragsverarbeiterin. Die Weitergabe / Überlassung Ihrer personen- und unternehmensbezogenen Daten kann,
         wie nachfolgend angeführt, an weitere&nbsp;
-        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-category-service-provider.pdf""
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-category-service-provider.pdf"" target=""_blank""
            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-category-service-provider.pdf""
            data-renderer-mark=""true"">Dienstleister</a>&nbsp;sowie an andere
         Gesellschaften innerhalb der&nbsp;
-        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf"" target=""_blank""
            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
            data-renderer-mark=""true"">myWorld Gruppe</a>,&nbsp;
         <a
-           href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
+           href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf"" target=""_blank""
            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
            data-renderer-mark=""true"">Lyoness Gruppe</a>&nbsp;und&nbsp;
-        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf"" target=""_blank""
            title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
            data-renderer-mark=""true"">Lyconet Gruppe</a>&nbsp;erfolgen.
         Wir bedienen uns zur Abwicklung unserer Dienstleistungen, für die Kommunikation mit Ihnen und für die Verwaltung
@@ -1045,7 +1038,7 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
         heißt, Sie haben das Recht, die Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu
         erhalten). Sollten Sie der Ansicht sein, dass die Verarbeitung Ihrer personenbezogenen Daten gegen die
         EU-Datenschutz-Grundverordnung verstößt, haben Sie das Recht, bei der österreichischen Datenschutzbehörde (
-        <a href=""http://www.dsb.gv.at"" title=""http://www.dsb.gv.at"" data-renderer-mark=""true"">www.dsb.gv.at</a>)
+        <a href=""http://www.dsb.gv.at"" target=""_blank"" title=""http://www.dsb.gv.at"" data-renderer-mark=""true"">www.dsb.gv.at</a>)
         oder einer Aufsichtsbehörde eines anderen EU-Mitgliedstaates, Beschwerde zu erheben. Sofern die Verwendung Ihrer
         personenbezogenen Daten auf dieser Webseite auf Ihrer Einwilligung beruht, können Sie diese Einwilligung zur
         Verarbeitung Ihrer verwendeten personen- und unternehmensbezogenen Daten für die Zukunft jederzeit ohne Angabe
@@ -1065,7 +1058,6 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
     <p>&nbsp;</p>
 </div>","
 <div>
-    <h1 id=""Privacy-policy"">Privacy policy</h1>
     <p><strong data-renderer-mark=""true"">INFORMATION REGARDING ART 13, 14 GDPR</strong></p>
     <p>We take the protection of your personal and company-related data very seriously and
         work hard to make sure our services are safe for you to use. We are committed to complying with statutory data
@@ -1158,204 +1150,100 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
         server in the US and stored there.<br>As part of our advertising banners, we rely on external services from the
         following providers:
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
+    <p>.&nbsp; <a href=""https://policies.google.com/privacy?gl=AT&amp;hl=de"" target=""_blank""
            title=""https://policies.google.com/privacy?gl=AT&amp;hl=de""
            data-renderer-mark=""true"">Google</a>&nbsp;(Analytics, Tag Manager, Search Ads,
         Display &amp; Video)
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://privacy.microsoft.com/de-de/privacystatement""
+    <p>.&nbsp; <a href=""https://privacy.microsoft.com/de-de/privacystatement"" target=""_blank""
            title=""https://privacy.microsoft.com/de-de/privacystatement""
            data-renderer-mark=""true"">Bing Ads</a>&nbsp;(Microsoft)
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://de-de.facebook.com/privacy/explanation""
+    <p>.&nbsp; <a href=""https://de-de.facebook.com/privacy/explanation"" target=""_blank""
            title=""https://de-de.facebook.com/privacy/explanation""
            data-renderer-mark=""true"">Facebook</a>/
-        <a href=""https://help.instagram.com/155833707900388""
+        <a href=""https://help.instagram.com/155833707900388"" target=""_blank""
            title=""https://help.instagram.com/155833707900388""
            data-renderer-mark=""true"">Instagram</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://privacy.xing.com/de/datenschutzerklaerung""
+    <p>.&nbsp; <a href=""https://privacy.xing.com/de/datenschutzerklaerung"" target=""_blank""
            title=""https://privacy.xing.com/de/datenschutzerklaerung""
            data-renderer-mark=""true"">Xing</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
+    <p>.&nbsp; <a href=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE"" target=""_blank""
             title=""https://www.linkedin.com/legal/privacy-policy?_l=de_DE""
             data-renderer-mark=""true"">LinkedIn</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.snap.com/de-DE/privacy/privacy-policy/""
+    <p>.&nbsp; <a href=""https://www.snap.com/de-DE/privacy/privacy-policy/"" target=""_blank""
            title=""https://www.snap.com/de-DE/privacy/privacy-policy/""
            data-renderer-mark=""true"">Snapchat</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://twitter.com/de/privacy""
+    <p>.&nbsp; <a href=""https://twitter.com/de/privacy"" target=""_blank""
            title=""https://twitter.com/de/privacy"" data-renderer-mark=""true"">Twitter</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.adcrowd.com/de/privacy""
+    <p>.&nbsp; <a href=""https://www.adcrowd.com/de/privacy"" target=""_blank""
            title=""https://www.adcrowd.com/de/privacy"" data-renderer-mark=""true"">adcrowd.com</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.criteo.com/de/privacy/""
+    <p>.&nbsp; <a href=""https://www.criteo.com/de/privacy/"" target=""_blank""
            title=""https://www.criteo.com/de/privacy/""
            data-renderer-mark=""true"">criteo.com</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.luna-park.de/datenschutz/""
+    <p>.&nbsp; <a href=""https://www.luna-park.de/datenschutz/"" target=""_blank""
            title=""https://www.luna-park.de/datenschutz/"" data-renderer-mark=""true"">luna-park.de</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""http://www.projecter.de/datenschutz.html""
+    <p>.&nbsp; <a href=""http://www.projecter.de/datenschutz.html"" target=""_blank""
            title=""http://www.projecter.de/datenschutz.html"" data-renderer-mark=""true"">projecter.de</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://traffic3.net/traffic3/datenschutz""
+    <p>.&nbsp; <a href=""https://traffic3.net/traffic3/datenschutz"" target=""_blank""
            title=""https://traffic3.net/traffic3/datenschutz"" data-renderer-mark=""true"">traffic3</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.eviom.com/datenschutz/""
+    <p>.&nbsp; <a href=""https://www.eviom.com/datenschutz/"" target=""_blank""
            title=""https://www.eviom.com/datenschutz/""
            data-renderer-mark=""true"">eviom.de</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.analyticaa.com/datenschutz/""
+    <p>.&nbsp; <a href=""https://www.analyticaa.com/datenschutz/"" target=""_blank""
            title=""https://www.analyticaa.com/datenschutz/"" data-renderer-mark=""true"">analyticaa.com</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.unitedads.de/datenschutzerklaerung/""
+    <p>.&nbsp; <a href=""https://www.unitedads.de/datenschutzerklaerung/"" target=""_blank""
            title=""https://www.unitedads.de/datenschutzerklaerung/""
            data-renderer-mark=""true"">unitedads.de</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.awin.com/gb/privacy""
+    <p>.&nbsp; <a href=""https://www.awin.com/gb/privacy"" target=""_blank""
            title=""https://www.awin.com/gb/privacy"" data-renderer-mark=""true"">Awin</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.conversantmedia.com/legal/privacy""
+    <p>.&nbsp; <a href=""https://www.conversantmedia.com/legal/privacy"" target=""_blank""
            title=""https://www.conversantmedia.com/legal/privacy""
            data-renderer-mark=""true"">CJ Affiliate</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
+    <p>.&nbsp; <a href=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2"" target=""_blank""
             title=""http://info.ceneo.pl/regulamin#regulamin-7-prywatnosc2""
             data-renderer-mark=""true"">Ceneo</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.preis.de/impressum/#datenschutz""
+    <p>.&nbsp; <a href=""https://www.preis.de/impressum/#datenschutz"" target=""_blank""
            title=""https://www.preis.de/impressum/#datenschutz"" data-renderer-mark=""true"">Preis</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://company.billiger.de/service/datenschutzunterrichtung/""
+    <p>.&nbsp; <a href=""https://company.billiger.de/service/datenschutzunterrichtung/"" target=""_blank""
            title=""https://company.billiger.de/service/datenschutzunterrichtung/""
            data-renderer-mark=""true"">Billiger</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie/""
+    <p>.&nbsp; <a href=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie/"" target=""_blank""
            title=""https://www.kelkoo.at/unternehmen/Datenschutzrichtlinie/""
            data-renderer-mark=""true"">Kelkoo</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.ceneje.si/pravila-o-zasebnosti""
+    <p>.&nbsp; <a href=""https://www.ceneje.si/pravila-o-zasebnosti"" target=""_blank""
            title=""https://www.ceneje.si/pravila-o-zasebnosti"" data-renderer-mark=""true"">Ceneje</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://connexity.com/privacy-policy/""
+    <p>.&nbsp; <a href=""https://connexity.com/privacy-policy/"" target=""_blank""
            title=""https://connexity.com/privacy-policy/"" data-renderer-mark=""true"">Connexity</a>
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://en.comparis.ch/comparis/info/privacy""
+    <p>.&nbsp; <a href=""https://en.comparis.ch/comparis/info/privacy"" target=""_blank""
            title=""https://en.comparis.ch/comparis/info/privacy"" data-renderer-mark=""true"">Comparis</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""http://www.ompgroup.de/datenschutz/""
+    <p>.&nbsp; <a href=""http://www.ompgroup.de/datenschutz/"" target=""_blank""
            title=""http://www.ompgroup.de/datenschutz/"" data-renderer-mark=""true"">Online
             Media Partner</a>&nbsp;
     </p>
-    <ul class=""ak-ul"" data-indent-level=""1"">
-        <li><p>&nbsp;</p></li>
-    </ul>
-    <p>
-        <a href=""https://www.shopping24.de/datenschutz""
+    <p>.&nbsp; <a href=""https://www.shopping24.de/datenschutz"" target=""_blank""
            title=""https://www.shopping24.de/datenschutz"" data-renderer-mark=""true"">Shopping24.de</a>&nbsp;<br>Please
         note that most internet browsers are set to accept cookies by default. You can change the settings in your
         browser so that certain cookies are rejected or so that you are asked if you would like to accept new cookies.
@@ -1398,14 +1286,14 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
         myWorld Germany GmbH uses mWS myWorld Solutions AG as a service provider for the processing. Your personal data
         and company-related data can, however, be transferred / delivered to other service providers, as well as to
         other companies within the&nbsp;
-        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf"" target=""_blank""
             title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-myworld-list-privacy-policy.pdf""
             data-renderer-mark=""true"">myWorld Group</a>,&nbsp;
-        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf"" target=""_blank""
             title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyoness-list-privacy-policy.pdf""
             data-renderer-mark=""true"">Lyoness
             Group</a>&nbsp;and&nbsp;
-        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
+        <a href=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf"" target=""_blank""
             title=""https://l.lyocdn.com/large/download/public/agreements/linksprivacypolicy/en-lyconet-list-privacy-policy.pdf""
             data-renderer-mark=""true"">Lyconet Group</a>.&nbsp;<br>To carry out our services,
         communicate with you and manage our online presence we use the services of certain service providers. We assure
@@ -1446,7 +1334,7 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
         data in a structured, common and machine-readable format).<br>If you believe that the processing of your
         personal or company-related data violates the EU General Data Protection Regulation, you have the right to lodge
         a complaint with the Republic of Ireland Data Protection Authority (
-        <a href=""http://www.dataprotection.ie""
+        <a href=""http://www.dataprotection.ie"" target=""_blank""
             title=""http://www.dataprotection.ie""
             data-renderer-mark=""true"">www.dataprotection.ie</a>)
         or a supervisory authority of another EU Member State.<br>If the use of your personal or company-related data on
@@ -1466,12 +1354,8 @@ Placeholders Title & Content + Slot,1,1,1,page_3,/de/datenschutz,/en/privacy,Dat
     </p>
     <p>&nbsp;</p>
 </div>"
-Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/terms-of-use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,"
+Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/terms-of-use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,Nutzungsbedingungen,Terms of use,"<h1 id=""Nutzungsbedingungen-für-den-myWorld-Marktplatz-–-Terms-of-Use"">Nutzungsbedingungen für den myWorld Marktplatz – Terms of Use</h1>","<h1 id=""Terms-of-Use"">Terms of Use</h1>","
 <div>
-    <p>&nbsp;</p>
-    <h1 id=""Nutzungsbedingungen-für-den-myWorld-Marktplatz-–-Terms-of-Use"">
-        Nutzungsbedingungen für den myWorld Marktplatz – Terms of Use</h1>
-    <p>&nbsp;</p>
     <p>A.&nbsp;&nbsp;&nbsp;&nbsp; Die nachfolgenden Nutzungsbedingungen regeln die
         Benutzung dieser Website der&nbsp;mWS myWorld Solutions AG Grazbachgasse 87-93, 8010 Graz, Österreich,&nbsp;(im
         Folgenden kurz „myWorld“) und den Zugang zum myWorld Marktplatz. Mit dem technischen Betrieb des myWorld
@@ -1704,7 +1588,7 @@ Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/ter
         wahlweise sowohl in Deutschland als auch in dem EU-Mitgliedsstaat, in dem Sie leben, einreichen.</p>
     <p>&nbsp;</p>
     <p>6.2.&nbsp;Die Europäische Kommission stellt unter&nbsp;
-        <a href=""https://ec.europa.eu/consumers/odr/"" title=""https://ec.europa.eu/consumers/odr/""
+        <a href=""https://ec.europa.eu/consumers/odr/"" target=""_blank"" title=""https://ec.europa.eu/consumers/odr/""
            data-renderer-mark=""true"">ec.europa.eu/consumers/odr/</a>&nbsp;eine Plattform zur Online-Streitbeilegung
         („OS-Plattform“) bereit. myWorld ist bemüht, eventuelle Meinungsverschiedenheiten aus diesem Vertrag
         einvernehmlich beizulegen. Darüber hinaus ist myWorld zu einer Teilnahme an einem Schlichtungsverfahren nicht
@@ -1726,7 +1610,6 @@ Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/ter
     <p>&nbsp;</p>
 </div>","
 <div>
-    <h1 id=""Terms-of-Use"">Terms of Use</h1>
     <p><br>A.&nbsp;&nbsp; &nbsp;The following Terms of Use regulate the use of the
         website run by mWS myWorld Solutions AG Grazbachgasse 87-93, 8010 Graz, Österreich, Germany (hereinafter
         referred to in short form as 'myWorld') and access to the myWorld marketplace. &nbsp;myWorld has
@@ -1929,7 +1812,7 @@ Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/ter
         state where you live. &nbsp;</p>
     <p>6.2.&nbsp;&nbsp; &nbsp;The European Commission makes a platform for the
         purpose of online dispute resolution available via the following link
-        <a href=""https://ec.europa.eu/consumers/odr/""
+        <a href=""https://ec.europa.eu/consumers/odr/"" target=""_blank""
            title=""https://ec.europa.eu/consumers/odr/""
            data-renderer-mark=""true"">https://ec.europa.eu/consumers/odr/</a>
         ('OS Platform'). myWorld strives to resolve all potential differences of opinion which could conceivably
@@ -1951,12 +1834,8 @@ Placeholders Title & Content + Slot,1,1,1,page_4,/de/nutzungsbedingungen,/en/ter
     <p>&nbsp;</p>
     <p>&nbsp;</p>
 </div>"
-Placeholders Title & Content + Slot,1,1,0,page_5,/de/uber-uns,/en/about-us,Über uns,About Us,Über uns,About Us,Über uns,About Us,Über uns,About Us,Über uns,About Us,"
+Placeholders Title & Content + Slot,1,1,0,page_5,/de/uber-uns,/en/about-us,Über uns,About Us,Über uns,About Us,Über uns,About Us,Über uns,About Us,"<h1 id=""Über-myWorld.com"">Über <a href=""http://myWorld.com"" title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a></h1>","<h1 id=""About-Us"" data-renderer-start-pos=""22"">About Us</h1>","
 <div>
-    <h1 id=""Über-myWorld.com"">Über
-        <a href=""http://myWorld.com""
-           title=""http://myWorld.com"" data-renderer-mark=""true"">myWorld.com</a>
-    </h1>
     <p>Millionen Kunden, Zehntausende Partnerunternehmen, ein Online-Marktplatz:
         <a href=""http://marketplace.myWorld.com"" title=""http://marketplace.myWorld.com""
            data-renderer-mark=""true"">marketplace.myWorld.com</a> begeistert Shopper und Unternehmen auf der ganzen
@@ -2022,7 +1901,6 @@ Placeholders Title & Content + Slot,1,1,0,page_5,/de/uber-uns,/en/about-us,Über
     </p>
     <p>&nbsp;</p>
 </div>","<div>
-    <h1 id=""About-Us"" data-renderer-start-pos=""22"">About Us</h1>
     <p >Millions of customers, tens of thousands of Loyalty Merchants, one Online
         Marketplace: <a href=""http://marketplace.myWorld.com""
                         title=""http://marketplace.myWorld.com"" data-renderer-mark=""true"">marketplace.myWorld.com</a> is
