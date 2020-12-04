@@ -23,7 +23,7 @@ class SsoClient extends AbstractClient implements SsoClientInterface
      */
     public function getAccessTokenByCode(string $code): SsoAccessTokenTransfer
     {
-        return $this->getFactory()->createSsoStub()->getAccessTokenByCode($code);
+        return $this->getFactory()->createUserTokenClient()->getAccessTokenByCode($code);
     }
 
     /**

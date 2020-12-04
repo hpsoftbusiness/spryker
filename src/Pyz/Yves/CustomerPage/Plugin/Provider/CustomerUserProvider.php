@@ -10,7 +10,6 @@ namespace Pyz\Yves\CustomerPage\Plugin\Provider;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use Pyz\Client\Sso\SsoClientInterface;
-use Spryker\Shared\Log\LoggerTrait;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerUserProvider as SprykerCustomerUserProvider;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
@@ -19,8 +18,6 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
  */
 class CustomerUserProvider extends SprykerCustomerUserProvider
 {
-    use LoggerTrait;
-
     /**
      * @var \Pyz\Client\Sso\SsoClientInterface
      */
@@ -41,7 +38,6 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
      */
     public function loadUserByUsername($username)
     {
-
         if ($username instanceof SsoAccessTokenTransfer) {
             return $this->loadUserBySsoAccessToken($username);
         }
@@ -67,17 +63,15 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
         $loadedCustomerTransfer = $this->loadCustomerByMyWorldCustomerId($customerTransfer->getMyWorldCustomerId());
 
         if ($loadedCustomerTransfer->getIdCustomer() === null) {
-            $this->getLogger()->error(__CLASS__ . ' SSO: USER NOT FOUND, CREATING...');
             $customerResponseTransfer = $this->getFactory()->getCustomerClient()->createCustomer($customerTransfer);
-            $this->getLogger()->error(__CLASS__ . ' SSO: USER CREATED');
             $loadedCustomerTransfer = $customerResponseTransfer->getCustomerTransfer();
         }
 
         $loadedCustomerTransfer->setSsoAccessToken($ssoAccessTokenTransfer);
-        $this->getLogger()->error(__CLASS__ . ' SSO: CREATING SECURITY USER');
+
         return $this->getFactory()->createSecurityUser($loadedCustomerTransfer);
     }
-//
+
     /**
      * @param string $myWorldCustomerId
      *
