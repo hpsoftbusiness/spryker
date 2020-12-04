@@ -75,7 +75,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     protected function importProductAbstract(DataSetInterface $dataSet): void
     {
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
-        $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
+        $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]);
 
         $productAbstractEntityTransfer
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])

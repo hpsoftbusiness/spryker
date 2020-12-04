@@ -41,6 +41,8 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
     ];
 
+    protected const DEFAULT_PRICE_TYPE = 'DEFAULT';
+
     /**
      * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
      * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
@@ -84,6 +86,10 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
 
         if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] === "") {
             $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
+        if ($dataSet[static::COLUMN_PRICE_TYPE] === "") {
+            $dataSet[static::COLUMN_PRICE_TYPE] = static::DEFAULT_PRICE_TYPE;
         }
 
         $this->assertAssignableProductTypeColumn($dataSet);

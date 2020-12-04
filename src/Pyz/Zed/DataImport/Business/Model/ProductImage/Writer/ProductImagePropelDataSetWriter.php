@@ -48,10 +48,9 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
         $defaultLocales = Store::getInstance()->getLocalesPerStore(APPLICATION_STORE);
 
         foreach ($defaultLocales as $key => $localeName) {
-            dump($localeName);
-//            $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet, $localeName);
-//            $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
-//            $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
+            $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet, $localeName);
+            $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
+            $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
         }
     }
 

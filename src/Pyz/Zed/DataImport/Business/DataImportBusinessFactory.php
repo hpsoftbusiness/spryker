@@ -14,6 +14,7 @@ use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedProductLocalized
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractTypeDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\Writer\CombinedProductAbstractPropelDataSetWriter;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreHydratorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreMandatoryColumnCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\Writer\CombinedProductAbstractStorePropelDataSetWriter;
@@ -33,6 +34,7 @@ use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPric
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\Writer\CombinedProductPricePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockTypeDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\Writer\CombinedProductStockPropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\CategoryTemplate\CategoryTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\CmsBlockWriterStep;
@@ -1652,10 +1654,19 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep(new CombinedProductStockHydratorStep());
 
         $dataImporter->setDataSetCondition($this->createCombinedProductStockMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductStockTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createCombinedProductStockDataSetWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductStockTypeDataSetCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductStockTypeDataSetCondition();
     }
 
     /**
@@ -1699,10 +1710,19 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker->addStep(new CombinedProductAbstractStoreHydratorStep());
 
         $dataImporter->setDataSetCondition($this->createCombinedProductAbstractStoreMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductAbstractStoreDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createCombinedProductAbstractStoreDataSetWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductAbstractStoreDataSetCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductAbstractStoreDataSetCondition();
     }
 
     /**
@@ -1807,7 +1827,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductConcreteHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep($this->createProductConcreteCheckExistenceStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createCombinedAttributesExtractorStep())
             ->addStep($this->createProductConcreteAttributesUniqueCheckStep())

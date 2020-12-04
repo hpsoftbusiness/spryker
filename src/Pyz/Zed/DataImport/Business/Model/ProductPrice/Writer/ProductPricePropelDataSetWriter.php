@@ -38,6 +38,8 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     protected const COLUMN_PRICE_DATA = ProductPriceHydratorStep::COLUMN_PRICE_DATA;
     protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
 
+    protected const DEFAULT_PRICE = 1000000;
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
      */
@@ -162,9 +164,11 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-        $priceProductStoreEntity->setGrossPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100);
-        $priceProductStoreEntity->setNetPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100);
-        $priceProductStoreEntity->setNetPrice((float)$dataSet[static::COLUMN_PRICE_NET] * 100);
+        $grossPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100 ?: static::DEFAULT_PRICE;
+        $netPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100 ?: static::DEFAULT_PRICE;
+
+        $priceProductStoreEntity->setGrossPrice($grossPrice);
+        $priceProductStoreEntity->setNetPrice($netPrice);
 
         $priceProductStoreEntity->setPriceData($dataSet[static::COLUMN_PRICE_DATA]);
         $priceProductStoreEntity->setPriceDataChecksum($dataSet[static::COLUMN_PRICE_DATA_CHECKSUM]);
