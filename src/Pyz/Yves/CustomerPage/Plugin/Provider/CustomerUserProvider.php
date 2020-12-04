@@ -77,7 +77,7 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
         $this->getLogger()->error(__CLASS__ . ' SSO: CREATING SECURITY USER');
         return $this->getFactory()->createSecurityUser($loadedCustomerTransfer);
     }
-
+//
     /**
      * @param string $myWorldCustomerId
      *
