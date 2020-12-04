@@ -1,79 +1,29 @@
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
         position: relative;
-        padding: 0 rem(5) rem(32);
+        padding: 0 rem(6) rem(24);
 
         @include helper-breakpoint-media-min($md-min) {
-            padding: 0 rem(15) rem(50);
+            padding: 0 rem(12) rem(48);
         }
 
         &__image-wrap {
-            @include helper-effect-transition(box-shadow);
-            border-radius: rem(4);
-            margin-bottom: rem(9);
+            margin: rem(14) rem(9);
             position: relative;
             overflow: hidden;
 
             @include helper-breakpoint-media-min($md-min) {
-                margin-bottom: rem(24);
+                margin: rem(28) rem(17);
             }
-        }
-
-        &__overlay {
-            display: block;
-            padding: rem(45) rem(10) rem(70);
-
-            @include helper-breakpoint-media-min($md-min) {
-                padding: rem(90) rem(20) rem(120);
-            }
-
-            &::before,
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                border-radius: rem(4);
-                background: $setting-color-alpha-4;
-                z-index: $setting-zi-element-floating;
-            }
-
-            &::after {
-                @include helper-effect-transition(opacity);
-                background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-4);
-                opacity: 0;
-            }
-        }
-
-        &__overlay-container {
-            @include helper-effect-transition(transform);
-            background: $setting-color-white;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            z-index: $setting-zi-header;
-            width: 100%;
-            border-radius: 0 0 rem(4) rem(4);
-            transform: translateY(100%);
-            display: flex;
-        }
-
-        &__overlay-container-col {
-            flex-grow: 1;
-        }
-
-        &__colors {
-            padding: rem(18) 0;
-            text-align: center;
-            flex-grow: 1;
         }
 
         &__container {
             position: relative;
             display: block;
             color: $setting-color-black;
+            border: rem(1) solid $setting-color-gray-2;
+            border-radius: rem(10);
+            box-shadow: 0 7px 40px 0 $setting-color-alpha-2;
 
             &--title-top {
                 display: flex;
@@ -85,18 +35,6 @@
             .no-touch &:hover {
                 text-decoration: none;
                 color: $setting-color-black;
-
-                #{$name}__image-wrap {
-                    box-shadow: rem(10) rem(10) rem(40) 0 $setting-color-shadow;
-                }
-
-                #{$name}__overlay::after {
-                    opacity: 0.09;
-                }
-
-                #{$name}__overlay-container {
-                    transform: translateY(0);
-                }
             }
         }
 
@@ -109,16 +47,21 @@
         }
 
         &__info {
+            margin: 0 rem(9);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin: 0 rem(17);
+            }
+        }
+
+        &__name {
             display: block;
-            margin: 0 rem(10) rem(3);
-            font: fw(medium) rem(13) $setting-font-family;
+            font: fw(medium) rem(12)/1.5 $setting-font-family;
             color: $setting-color-black;
-            flex-wrap: wrap;
+            margin-bottom: rem(3);
 
             @include helper-breakpoint-media-min($md-min) {
-                font-size: rem(16);
-                margin: 0 rem(11);
-                flex-wrap: nowrap;
+                font-size: rem(14);
             }
 
             &:hover {
@@ -127,9 +70,16 @@
             }
         }
 
-        &__review {
-            display: flex;
-            margin-top: rem(7);
+        &__price {
+            color: $setting-color-main;
+            font-weight: fw(medium);
+            font-size: rem(13);
+            margin-bottom: rem(5);
+
+            @include helper-breakpoint-media-min($md-min) {
+                font-size: rem(15);
+                margin-bottom: rem(10);
+            }
         }
 
         &--stretch {

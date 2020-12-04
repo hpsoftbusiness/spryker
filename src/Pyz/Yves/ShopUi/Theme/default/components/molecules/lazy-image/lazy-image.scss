@@ -3,6 +3,11 @@
         flex-shrink: 0;
     }
 
+    &--thumbnail {
+        position: relative;
+        height: rem(150);
+    }
+
     &--full-height {
         height: 100%;
     }
