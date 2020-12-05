@@ -19,10 +19,7 @@ use Pyz\Client\Sso\Client\Validator\CustomerInformationValidator;
 use Pyz\Client\Sso\Client\Validator\CustomerInformationValidatorInterface;
 use Pyz\Client\Sso\Config\ConfigReader;
 use Pyz\Client\Sso\Config\ConfigReaderInterface;
-use Pyz\Client\Sso\Zed\SsoStub;
-use Pyz\Client\Sso\Zed\SsoStubInterface;
 use Spryker\Client\Kernel\AbstractFactory;
-use Spryker\Client\ZedRequest\ZedRequestClientInterface;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 
 /**
@@ -94,15 +91,5 @@ class SsoFactory extends AbstractFactory
     public function createCustomerInformationMapper(): CustomerInformationMapperInterface
     {
         return new CustomerInformationMapper();
-    }
-
-    public function createSsoStub(): SsoStubInterface
-    {
-        return new SsoStub($this->getZedRequestClient());
-    }
-
-    public function getZedRequestClient(): ZedRequestClientInterface
-    {
-        return $this->getProvidedDependency(SsoDependencyProvider::CLIENT_ZED_REQUEST);
     }
 }

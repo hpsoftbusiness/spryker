@@ -1,0 +1,43 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-affiliate',
+    tag: 'section'
+} %}
+
+{% define data = {
+    product: required,
+} %}
+
+{% set productName = data.product.name | default %}
+
+{% block body %}
+
+    <h1 class="title title--product title--h2">{{ productName }}</h1>
+
+    <div class="col text-right">
+        {% include molecule('money-price') with {
+            modifiers: ['pdp'],
+            data: {
+                amount: data.product.price,
+                originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
+            }
+        } only %}
+    </div>
+
+    <div class="col text">
+        <span>
+            <b>AffiliateLinks:</b>
+        </span>
+        <ul>
+            {% for affiliateLink in data.product.affiliateData %}
+                <li>
+                    <a href="{{ affiliateLink }}">{{ affiliateLink }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% block colors %}{% endblock %}
+
+{% endblock %}

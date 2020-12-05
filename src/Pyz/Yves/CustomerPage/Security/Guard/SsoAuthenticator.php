@@ -8,7 +8,6 @@
 namespace Pyz\Yves\CustomerPage\Security\Guard;
 
 use Pyz\Client\Sso\SsoClientInterface;
-use Spryker\Shared\Log\LoggerTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -21,7 +20,6 @@ use Symfony\Component\Security\Http\HttpUtils;
 
 class SsoAuthenticator extends AbstractGuardAuthenticator
 {
-    use LoggerTrait;
     /**
      * @var \Symfony\Component\Security\Http\HttpUtils
      */
@@ -76,7 +74,6 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, ?AuthenticationException $authException = null)
     {
-        $this->getLogger()->error(__CLASS__ . ' SSO: START AUTH');
         return $this->httpUtils->createRedirectResponse($request, $this->ssoClient->getAuthorizeUrl($this->locale));
     }
 
@@ -110,15 +107,11 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
             if ($code === null) {
                 throw $exception;
             }
-            $this->getLogger()->error(__CLASS__ . ' SSO: getAccessTokenByCode');
             $ssoAccessTokenTransfer = $this->ssoClient->getAccessTokenByCode($code);
 
             if (!$ssoAccessTokenTransfer->getIdToken()) {
-                $this->getLogger()->error(__CLASS__ . ' SSO: TOKEN NOT FOUND');
                 throw $exception;
             }
-
-            $this->getLogger()->error(__CLASS__ . ' SSO: SUCCESS!!');
 
             return $ssoAccessTokenTransfer;
         }
@@ -138,7 +131,6 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     {
         /** @var \SprykerShop\Yves\CustomerPage\Security\CustomerUserInterface $securityUser */
         $securityUser = $userProvider->loadUserByUsername($credentials);
-
         if ($securityUser->getCustomerTransfer()->getIsActive() !== true) {
             throw new AuthenticationException();
         }
