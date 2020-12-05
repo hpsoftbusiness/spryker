@@ -1,0 +1,7 @@
+@import '../../../../../../ShopUi/Theme/default/components/molecules/product-card-item/product-card-item';
+
+@mixin cart-page-product-card-sellable-item($name: '.product-card-sellable-item') {
+    @include shop-ui-product-card-item($name);
+}
+
+@include cart-page-product-card-sellable-item();

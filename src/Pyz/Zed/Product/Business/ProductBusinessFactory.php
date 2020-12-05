@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Product\Business;
 
+use Pyz\Zed\Product\Business\Product\ProductConcreteManager;
 use Pyz\Zed\Product\Business\Transfer\ProductTransferMapper;
 use Spryker\Zed\Product\Business\ProductBusinessFactory as SprykerProductBusinessFactory;
 
@@ -23,5 +24,31 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
     public function createProductTransferMapper()
     {
         return new ProductTransferMapper($this->createAttributeEncoder());
+    }
+
+    /**
+     * @return \Spryker\Zed\Product\Business\Product\ProductConcreteManagerInterface
+     */
+    public function createProductConcreteManager()
+    {
+        $productConcreteManager = new ProductConcreteManager(
+            $this->getQueryContainer(),
+            $this->getTouchFacade(),
+            $this->getLocaleFacade(),
+            $this->createProductAbstractAssertion(),
+            $this->createProductConcreteAssertion(),
+            $this->createAttributeEncoder(),
+            $this->createProductTransferMapper(),
+            $this->getRepository()
+        );
+
+        $productConcreteManager->setEventFacade($this->getEventFacade());
+        $productConcreteManager->attachBeforeCreateObserver($this->createProductConcreteBeforeCreateObserverPluginManager());
+        $productConcreteManager->attachAfterCreateObserver($this->createProductConcreteAfterCreateObserverPluginManager());
+        $productConcreteManager->attachBeforeUpdateObserver($this->createProductConcreteBeforeUpdateObserverPluginManager());
+        $productConcreteManager->attachAfterUpdateObserver($this->createProductConcreteAfterUpdateObserverPluginManager());
+        $productConcreteManager->attachReadObserver($this->createProductConcreteReadObserverPluginManager());
+
+        return $productConcreteManager;
     }
 }

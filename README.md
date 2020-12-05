@@ -33,7 +33,7 @@ Run the commands:
 ```bash
 mkdir myworld && cd myworld
 git clone git@github.com:spryker-projects/myworld-project.git ./
-git clone git@github.com:spryker/docker-sdk.git docker
+git submodule update --init --force docker
 ```
 
 ### Production-like environment

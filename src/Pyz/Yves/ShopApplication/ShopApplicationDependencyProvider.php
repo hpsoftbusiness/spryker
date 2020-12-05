@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CustomerPage\Plugin\Application\SsoSecurityApplicationPlugin;
+use Pyz\Yves\GoogleAnalyticWidget\Widget\GoogleAnalyticWidget;
 use Pyz\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
@@ -160,6 +161,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartChangeQuantityFormWidget::class,
             RemoveFromCartFormWidget::class,
             ProductAbstractAddToCartButtonWidget::class,
+            GoogleAnalyticWidget::class,
         ];
     }
 

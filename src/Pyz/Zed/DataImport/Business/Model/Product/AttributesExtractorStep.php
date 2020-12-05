@@ -99,6 +99,8 @@ class AttributesExtractorStep implements DataImportStepInterface
             'width',
             'height',
             'weight',
+            'gtin',
+            'taric_code',
         ];
     }
 
