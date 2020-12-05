@@ -1,6 +1,6 @@
 @mixin shop-ui-navigation-top-mobile-item ($name: '.navigation-top-mobile-item') {
     #{$name} {
-        padding: 2px;
+        padding: rem(2);
     }
 }
 

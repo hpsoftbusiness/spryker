@@ -21,7 +21,7 @@
         {
             iconName: 'wishlist',
             url: url('wishlist/overview'),
-            jsClass: 'js-page-layout-main__account-side-drawer-trigger is-hidden-sm-only'
+            class: 'is-hidden-sm-only'
         },
         {
             iconName: 'cart',
@@ -43,7 +43,7 @@
     <div class="grid grid--middle grid--justify">
         <div class="grid grid--middle grid--justify col">
             {% include molecule('navigation-top-mobile-item') with {
-                class: 'col ' ~ (item.class is defined ? item.class : ''),
+                class: 'col ' ~ (hamburgerItem.class is defined ? hamburgerItem.class : ''),
                 data: {
                     iconName: hamburgerItem.iconName,
                     isButton: hamburgerItem.isButton,
@@ -59,7 +59,7 @@
             {% for item in items %}
                 {% if item.isEmbed is defined %}
                     {% embed molecule('navigation-top-mobile-item') with {
-                        class: 'col',
+                        class: 'col'~ (item.class is defined ? item.class : ''),
                         data: {
                             iconName: item.iconName
                         },
