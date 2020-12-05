@@ -8,11 +8,11 @@
     {% set isGiftCardExists = null %}
 
     <div class="grid">
-        <h2 class="title title--primary col col--sm-4">{{ 'checkout.step.summary.title' | trans }}</h2>
+        <h2 class="title title--primary col col--sm-12">{{ 'checkout.step.summary.title' | trans }}</h2>
 
         {% for shipmentGroup in data.shipmentGroups %}
-            <article class="checkout-block grid col col--sm-4">
-                <div class="col col--sm-4 col--lg-7">
+            <article class="checkout-block grid col col--sm-12">
+                <div class="col col--sm-12 col--lg-7">
                     <h3 class="title title--secondary-box">
                         {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                             '%current%': loop.index,
@@ -58,7 +58,7 @@
                             {% endblock %}
 
                             {% block title %}
-                                <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-4 col--lg-8">
+                                <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-12 col--lg-8">
                                     {{ data.productItem.name }}
                                 </div>
                             {% endblock %}
@@ -84,7 +84,7 @@
                     {% endfor %}
                 </div>
 
-                <div class="col col--sm-4 col--lg-5">
+                <div class="col col--sm-12 col--lg-5">
                     {% include molecule('summary-sidebar', 'CheckoutPage') with {
                         data: {
                             shipment: shipmentGroup.shipment,
@@ -100,7 +100,7 @@
     <div class="checkout-block">
         <h3 class="title title--secondary-box">{{ 'checkout.step.summary.payment' | trans }}</h3>
         <div class="grid grid--justify grid--baseline">
-            <div class="col col--sm-4 col--md-5">
+            <div class="col col--sm-12 col--md-5">
                 {% include molecule('payment-card-information', 'CheckoutPage') with {
                     data: {
                         payment: data.payment,
@@ -108,7 +108,7 @@
                     },
                 } only %}
             </div>
-            <div class="col col--sm-4 col--md-5">
+            <div class="col col--sm-12 col--md-5">
                 <h4 class="title title--secondary-small">{{ 'checkout.step.summary.billing_address' | trans }}</h4>
                 {% include molecule('display-address') with {
                     class: 'spacing-bottom',
@@ -122,10 +122,10 @@
     </div>
 
     <div class="grid">
-        <h3 class="col col--sm-4 title title--secondary-box spacing-bottom spacing-bottom--reset spacing-top spacing-top-bigger">
+        <h3 class="col col--sm-12 title title--secondary-box spacing-bottom spacing-bottom--reset spacing-top spacing-top-bigger">
             {{ 'checkout.step.summary.total' | trans }}
         </h3>
-        <div class="col col--sm-4">
+        <div class="col col--sm-12">
             {% widget 'CartCodeFormWidget' args [data.transfer] only %}{% endwidget %}
 
             {% embed molecule('form') with {

@@ -26,7 +26,7 @@
 
         {% for name, choices in shipmentSelection.vars.choices %}
             <h4 class="title title--secondary-small spacing-bottom grid grid--justify grid--middle">
-                <span class="col col--sm-2">{{ name | trans }}</span>
+                <span class="col col--sm-7">{{ name | trans }}</span>
                 <span class="{{ config.name }}__logo col">
                     <img class="{{ config.name }}__logo-image" src="{{ publicPath('images/shipment-' ~ name | replace({' ': ''}) ~ '.png') }}" alt="{{ name }}">
                 </span>

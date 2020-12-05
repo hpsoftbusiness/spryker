@@ -16,7 +16,7 @@
 
 {% block body %}
     {% set modifiers = data.isBundle ? modifiers : modifiers | merge(['mobile', 'filter', 'desktop-border-bottom']) %}
-    {% set colClass = data.isBundle ? 'col col--sm-4' : config.name ~ '__col' %}
+    {% set colClass = data.isBundle ? 'col col--sm-12' : config.name ~ '__col' %}
     {% embed molecule('toggler-item') with {
         class: colClass,
         modifiers: modifiers,

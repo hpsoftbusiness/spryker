@@ -5,7 +5,7 @@
 
     {% for shipmentGroup in data.shipmentGroups %}
         <article class="order-detail-block grid">
-            <div class="col col--sm-4 col--xl-8">
+            <div class="col col--sm-12 col--xl-8">
                 <h3 class="title title--secondary-box">
                     {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                         '%current%': loop.index,
@@ -57,7 +57,7 @@
                         {% endblock %}
 
                         {% block title %}
-                            <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-4 col--lg-8">
+                            <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-12 col--lg-8">
                                 {{ data.productItem.name }}
                             </div>
                         {% endblock %}
@@ -102,7 +102,7 @@
                 {% endwidget %}
             </div>
 
-            <div class="col col--sm-4 col--xl-4">
+            <div class="col col--sm-12 col--xl-4">
                 {% include molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
                     data: {
                         shipment: shipmentGroup.shipment,

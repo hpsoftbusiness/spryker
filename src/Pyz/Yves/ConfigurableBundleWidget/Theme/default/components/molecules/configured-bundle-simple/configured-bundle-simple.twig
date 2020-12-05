@@ -9,12 +9,12 @@
 } %}
 
 {%- block bundleInner -%}
-    <div class="col col--sm-4 col--lg-7">
+    <div class="col col--sm-12 col--lg-7">
         {%- block bundleName -%}
             {{ parent() }}
         {%- endblock -%}
     </div>
-    <div class="col col--sm-4 col--lg-5 grid grid--middle {{ classBundleTotal }}">
+    <div class="col col--sm-12 col--lg-5 grid grid--middle {{ classBundleTotal }}">
         {%- block bundleQuantity -%}
             {{ parent() }}
         {%- endblock -%}
@@ -44,7 +44,7 @@
         },
     } only %}
         {%- block productTextInformation -%}
-            {% set productTextInformationClasses = 'col col--sm-2 col--md-7 spacing-top grid grid--no-wrap' %}
+            {% set productTextInformationClasses = 'col col--sm-6 col--md-9 spacing-top grid grid--no-wrap' %}
             {% set titleProductClasses = 'spacing-x spacing-x--big spacing-x--inner col col--expand' %}
             {% set priceInformationClasses = 'col text-right' %}
 

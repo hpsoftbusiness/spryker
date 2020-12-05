@@ -25,15 +25,15 @@
             {% set shipmentGroupCollectionForm = data.form.shipmentGroups | default %}
 
             <div class="grid">
-                <h2 class="title title--primary col col--sm-4">{{ 'checkout.step.shipment.title' | trans }}</h2>
+                <h2 class="title title--primary col col--sm-12">{{ 'checkout.step.shipment.title' | trans }}</h2>
 
                 {% for shipmentGroupForm in shipmentGroupCollectionForm %}
                     {% if shipmentGroupForm.hash is defined %}
                         {% do shipmentGroupForm.hash.setRendered %}
                     {% endif %}
 
-                    <article class="checkout-block {{ loop.last ? 'checkout-block--border-bottom-less' }} grid col col--sm-4">
-                        <div class="col col--sm-4 col--lg-7">
+                    <article class="checkout-block {{ loop.last ? 'checkout-block--border-bottom-less' }} grid col col--sm-12">
+                        <div class="col col--sm-12 col--lg-7">
                             <h3 class="title title--secondary-box">
                                 {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                                     '%current%': loop.index,
@@ -80,7 +80,7 @@
                                     {% endblock %}
 
                                     {% block title %}
-                                        <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-4 col--lg-8">
+                                        <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-12 col--lg-8">
                                             {{ data.productItem.name }}
                                         </div>
                                     {% endblock %}
@@ -106,7 +106,7 @@
                             {% endfor %}
                         </div>
 
-                        <div class="col col--sm-4 col--lg-5">
+                        <div class="col col--sm-12 col--lg-5">
                             {% include molecule('shipment-sidebar', 'CheckoutPage') with {
                                 data: {
                                     shipment: shipmentGroupForm.shipment,

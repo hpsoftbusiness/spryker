@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block configuratorSidebar %}
-    <div class="col col--sm-4">
+    <div class="col col--sm-12">
         {% block configuratorSidebarInner %}{{ parent() }}{% endblock %}
     </div>
 {% endblock %}
@@ -33,7 +33,7 @@
 
 {% block configuratorSelectedItem %}
     {% include molecule('configurator-product', 'ConfigurableBundlePage') with {
-        class: 'col col--sm-4 col--xl-9',
+        class: 'col col--sm-12 col--xl-9',
         modifiers: ['selected'],
         data: {
             product: data.selectedProduct,
@@ -49,7 +49,7 @@
         {% block body %}
             {% for product in data.products %}
                 {% include molecule('configurator-product', 'ConfigurableBundlePage') with {
-                    class: 'col col--sm-4 col--xl-9',
+                    class: 'col col--sm-12 col--xl-9',
                     data: {
                         product: product,
                         form: data.form.createView,

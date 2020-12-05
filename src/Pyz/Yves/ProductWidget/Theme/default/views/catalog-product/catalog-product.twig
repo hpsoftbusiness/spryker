@@ -2,11 +2,11 @@
 
 {% block body %}
     {% set productTemplate = molecule('product-item') %}
-    {% set class = 'col col--sm-2 col--lg-4' %}
+    {% set class = 'col col--sm-6 col--lg-4' %}
 
     {% if data.viewMode == 'list' %}
         {% set productTemplate = molecule('product-item-list') %}
-        {% set class = 'col col--sm-4' %}
+        {% set class = 'col col--sm-12' %}
     {% endif %}
 
     {% set image = data.product.images | last %}

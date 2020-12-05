@@ -1,6 +1,6 @@
 $setting-grid-columns: (
-    sm: 4,
-    md: 8,
+    sm: 12, // 4
+    md: 12, // 8
     lg: 12,
     xl: 12
 );
@@ -13,10 +13,10 @@ $setting-col-width: (
 );
 
 $setting-grid-gutter: (
-    sm: 16,
-    md: 24,
-    lg: 24,
-    xl: 24
+    sm: 16px,
+    md: 24px,
+    lg: 24px,
+    xl: 24px
 );
 
 $setting-grid-gutter-total-width-desktop: map-get($setting-grid-gutter, xl) * (map-get($setting-grid-columns, xl) - 1);

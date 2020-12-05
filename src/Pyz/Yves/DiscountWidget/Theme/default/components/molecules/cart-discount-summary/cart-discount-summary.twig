@@ -26,7 +26,7 @@
         <ul>
             {% for voucherDiscount in data.voucherDiscounts %}
                 <li class="grid grid--justify spacing-y">
-                    <span class="col col--sm-3">
+                    <span class="col col--sm-8">
                         {{ voucherDiscount.displayName }}
                         {% if data.isQuoteEditable %}
                             <br/>
@@ -54,7 +54,7 @@
         <ul>
             {% for ruleDiscount in data.ruleDiscounts %}
                 <li class="grid grid--justify spacing-y">
-                    <span class="col col--sm-3">{{ ruleDiscount.displayName }}</span>
+                    <span class="col col--sm-8">{{ ruleDiscount.displayName }}</span>
                     <span class="col col--expand text-right">- {{ ruleDiscount.amount | money }}</span>
                 </li>
             {% endfor %}

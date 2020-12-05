@@ -38,8 +38,8 @@
         },
     } only %}
         {%- block productTextInformation -%}
-            {% set titleProductClasses = 'col col--sm-4 col--md-4 spacing-x spacing-x--big spacing-x--inner' %}
-            {% set priceInformationClasses = config.name ~ '__prices col col--sm-4 col--md-8' %}
+            {% set titleProductClasses = 'col col--sm-12 col--md-4 spacing-x spacing-x--big spacing-x--inner' %}
+            {% set priceInformationClasses = config.name ~ '__prices col col--sm-12 col--md-8' %}
 
             {{ parent() }}
         {%- endblock -%}
@@ -78,7 +78,7 @@
     } only %}
         {% block configuredBundleNote %}
             {% include molecule('cart-configured-bundle-item-note', 'ConfigurableBundleNoteWidget') with {
-                class: 'col col--sm-4 col--md-6',
+                class: 'col col--sm-12 col--md-6',
                 data: {
                     form: data.form,
                     canWrite: canWrite,

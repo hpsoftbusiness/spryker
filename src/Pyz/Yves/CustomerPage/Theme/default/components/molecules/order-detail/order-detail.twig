@@ -102,7 +102,7 @@
     <div class="order-detail-block">
         <h3 class="title title--secondary-box">{{ 'customer.order.payment' | trans }}</h3>
         <div class="grid grid--justify grid--baseline">
-            <div class="col col--sm-4 col--md-5 col--lg-4">
+            <div class="col col--sm-12 col--md-5 col--lg-4">
                 <h4 class="title title--secondary-small">{{ data.order.payments[0].paymentMethod | trans | capitalize }}</h4>
                 {% include molecule('order-payment', 'CustomerPage') with {
                     data: {
@@ -111,7 +111,7 @@
                     },
                 } only %}
             </div>
-            <div class="col col--sm-4 col--md-5 col--lg-7">
+            <div class="col col--sm-12 col--md-5 col--lg-7">
                 <h4 class="title title--secondary-small">{{ 'customer.order.billing_address' | trans }}</h4>
                 {% include molecule('display-address') with {
                     class: 'spacing-bottom',

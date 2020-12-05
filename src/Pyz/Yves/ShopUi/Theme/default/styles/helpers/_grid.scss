@@ -1,0 +1,7 @@
+@mixin container-max-width {
+    @each $breakpoint, $edges in $setting-breakpoints {
+        @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
+            max-width: map-get($settings-max-width, $breakpoint)
+        }
+    }
+}

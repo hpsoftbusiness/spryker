@@ -31,7 +31,7 @@
 
     {% if data.volumeProductPrices.volumePrices is defined and data.volumeProductPrices.volumePrices is not empty %}
         {% include molecule('volume-price-table', 'PriceProductVolumeWidget') with {
-            class: 'col col--sm-4',
+            class: 'col col--sm-12',
             data: {
                 volumePrices: data.volumeProductPrices.volumePrices
             }

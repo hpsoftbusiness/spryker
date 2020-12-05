@@ -10,7 +10,7 @@
 
 {% block body %}
     {% block imageContainer %}
-        <div class="{{ config.name }}__col {{ config.name }}__col-image col col--sm-4 col--md-3">
+        <div class="{{ config.name }}__col {{ config.name }}__col-image col col--sm-12 col--md-3">
             {% block productThumbnail %}
                 <a class="{{ config.name }}__overlay {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
                     {% embed molecule('lazy-image') with {
@@ -43,7 +43,7 @@
         </div>
     {% endblock %}
 
-    <a class="{{ config.name }}__col {{ config.name }}__col-name {{ config.jsName }}__link-detail-page col col--sm-3 col--md-7" href="{{ data.url }}">
+    <a class="{{ config.name }}__col {{ config.name }}__col-name {{ config.jsName }}__link-detail-page col col--sm-8 col--md-7" href="{{ data.url }}">
         {% block name %}
             <span class="{{ config.jsName }}__name title title--medium">{{ data.name }}</span>
         {% endblock %}

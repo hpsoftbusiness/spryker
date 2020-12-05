@@ -29,7 +29,7 @@
     </div>
 
     <div class="grid grid--justify">
-        <div class="col--lg-6 col--sm-4">
+        <div class="col--lg-6 col--sm-12">
             <div class="box">
                 {% embed molecule('title-box', 'CustomerPage') with {
                     data: {
@@ -50,13 +50,13 @@
             </div>
         </div>
 
-        <div class="col--lg-6 col--sm-4">
+        <div class="col--lg-6 col--sm-12">
             <div class="box">
                 {% widget 'NewsletterSubscriptionSummaryWidget' args [data.customer] only %}{% endwidget %}
             </div>
         </div>
 
-        <div class="col--lg-6 col--sm-4">
+        <div class="col--lg-6 col--sm-12">
             {% if data.billingAddress is not empty %}
                 <div class="box">
                     {% embed molecule('title-box', 'CustomerPage') with {
@@ -86,7 +86,7 @@
             {% endif %}
         </div>
 
-        <div class="col--lg-6 col--sm-4">
+        <div class="col--lg-6 col--sm-12">
             {% if data.shippingAddress is not empty %}
                 <div class="box">
                     {% embed molecule('title-box', 'CustomerPage') with {

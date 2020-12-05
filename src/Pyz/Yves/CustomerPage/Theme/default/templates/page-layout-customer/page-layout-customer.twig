@@ -12,7 +12,7 @@
 
 {% block content %}
     <div class="grid page-layout-customer">
-        <div class="col col--sm-4 col--md-8 col--lg-3 is-hidden-sm-md">
+        <div class="col col--sm-12 col--md-12 col--lg-3 is-hidden-sm-md">
             {% block customerNavigation %}
                 <div class="box" data-qa="customer-account-sidebar">
                     {% widget 'CustomerNavigationWidget' args [data.activePage] only %}
@@ -27,7 +27,7 @@
             {% endblock %}
         </div>
 
-        <div class="col col--sm-4 col--md-8 col--lg-9">
+        <div class="col col--sm-12 col--md-12 col--lg-9">
             {% block customerContent %}{% endblock %}
         </div>
     </div>

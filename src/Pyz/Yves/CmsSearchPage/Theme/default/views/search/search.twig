@@ -40,11 +40,11 @@
 {% endblock %}
 
 {% block form %}
-    <div class="col col--sm-4 spacing spacing--inner">
+    <div class="col col--sm-12 spacing spacing--inner">
         {% widget 'FullTextSearchTabsWidget' args [data.searchString, 'FullTextSearchCmsPage'] only %}{% endwidget %}
     </div>
 
-    <div class="col col--sm-4">
+    <div class="col col--sm-12">
         {% include molecule('search-cms-sort', 'CmsSearchPage') only %}
 
         {% include molecule('search-cms-results', 'CmsSearchPage') with {
