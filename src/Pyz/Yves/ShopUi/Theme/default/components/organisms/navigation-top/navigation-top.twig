@@ -71,16 +71,16 @@
                         } only %}
                     </a>
                 </li>
-                <li class="{{ config.name }}__item {{ config.name }}__item--register">
-                    <a href="{{ url('login') }}">{{ "global.header.register" | trans }}</a>
-                </li>
+{#                <li class="{{ config.name }}__item {{ config.name }}__item--register">#}
+{#                    <a href="{{ url('login') }}">{{ "global.header.register" | trans }}</a>#}
+{#                </li>#}
             {% endif %}
         {% endif %}
         <li class="{{ config.name }}__item {{ config.name }}__item--overlay">
             {% include molecule('nav-overlay') with {
                 attributes: {
                     'trigger-open-class-name': config.jsName ~ '__trigger',
-                    'active-link': config.name ~ '__link--active',
+                    'active-link': config.name ~ '__link--acti`ve',
                 },
             } only %}
         </li>

@@ -3,16 +3,19 @@
         padding: 0;
 
         &__svg {
-            @include helper-breakpoint-media-max($sm-max) {
-                max-width: 120px;
+            margin-left: rem(5);
+            max-width: rem(120);
+
+            @include helper-breakpoint-media-min($sm-min) {
+                max-width: unset;
             }
 
-            @include helper-breakpoint-media-between($sm-min, $md-max) {
-                margin-left: rem(5);
-            }
-
-            @include helper-breakpoint-media-between($md-min, $lg-max) {
+            @include helper-breakpoint-media-between($md-min, $xl-max) {
                 margin-left: rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xl-min) {
+                margin-left: 0;
             }
         }
 
