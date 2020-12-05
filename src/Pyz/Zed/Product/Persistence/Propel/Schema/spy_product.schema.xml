@@ -4,8 +4,8 @@
           package="src.Orm.Zed.Product.Persistence">
 
     <table name="spy_product_abstract">
-        <column name="is_affiliate" type="boolean" required="false"/>
-        <column name="affiliate_data" type="LONGVARCHAR" required="false"/>
+        <column name="is_affiliate" type="boolean"/>
+        <column name="affiliate_data" type="LONGVARCHAR"/>
         <behavior name="event">
             <parameter name="spy_product_abstract_all" column="*"/>
         </behavior>

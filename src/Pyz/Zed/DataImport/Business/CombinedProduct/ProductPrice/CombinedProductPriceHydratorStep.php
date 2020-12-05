@@ -24,9 +24,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const COLUMN_CURRENCY = 'product_price.currency';
     public const COLUMN_STORE = 'product_price.store';
     public const COLUMN_PRICE_NET = 'product.value_56';
-//    public const COLUMN_PRICE_NET = 'product_price.value_net';
     public const COLUMN_PRICE_GROSS = 'product.value_57';
-//    public const COLUMN_PRICE_GROSS = 'product_price.value_gross';
     public const COLUMN_PRICE_DATA = 'product_price.price_data';
     public const COLUMN_PRICE_DATA_CHECKSUM = 'product_price.price_data_checksum';
     public const COLUMN_PRICE_TYPE = 'product_price.price_type';
@@ -42,6 +40,9 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     ];
 
     protected const DEFAULT_PRICE_TYPE = 'DEFAULT';
+
+    public const COLUMN_IS_AFFILIATE_PRODUCT = 'product.value_73';
+    public const COLUMN_AFFILIATE_PRODUCT_PRICE = 'product.value_75';
 
     /**
      * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade

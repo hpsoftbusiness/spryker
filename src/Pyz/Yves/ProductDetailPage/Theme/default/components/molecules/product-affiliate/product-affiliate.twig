@@ -26,16 +26,7 @@
     </div>
 
     <div class="col text">
-        <span>
-            <b>AffiliateLinks:</b>
-        </span>
-        <ul>
-            {% for affiliateLink in data.product.affiliateData %}
-                <li>
-                    <a href="{{ affiliateLink }}">{{ affiliateLink }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <a target="_blank" href="{{ data.product.affiliateData.affiliate_deeplink }}">{{ data.product.affiliateData.affiliate_deeplink }}</a>
     </div>
 
     {% block colors %}{% endblock %}

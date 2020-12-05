@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer;
 use Generated\Shared\Transfer\SpyProductCategoryEntityTransfer;
 use Generated\Shared\Transfer\SpyUrlEntityTransfer;
+use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
@@ -35,9 +36,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const COLUMN_NEW_FROM = 'new_from';
     public const COLUMN_NEW_TO = 'new_to';
 
-    public const COLUMN_IS_AFFILIATE = 'is_affiliate';
-    public const COLUMN_AFFILIATE_DATA = 'affiliate_data';
-
     public const DATA_PRODUCT_ABSTRACT_TRANSFER = 'DATA_PRODUCT_ABSTRACT_TRANSFER';
     public const DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER';
     public const DATA_PRODUCT_CATEGORY_TRANSFER = 'DATA_PRODUCT_CATEGORY_TRANSFER';
@@ -56,6 +54,8 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const KEY_FK_LOCALE = 'fk_locale';
     public const KEY_ID_URL = 'id_url';
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
+
+    protected const KEY_IS_PRODUCT_AFFILIATE = 'affiliate_product';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -85,9 +85,15 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
             ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
-            ->setNewTo($dataSet[static::COLUMN_NEW_TO])
-            ->setIsAffiliate($dataSet[static::COLUMN_IS_AFFILIATE])
-            ->setAffiliateData(json_encode($dataSet[static::COLUMN_AFFILIATE_DATA] === "" ? [] : [$dataSet[static::COLUMN_AFFILIATE_DATA]]));
+            ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
+
+        $affiliateAttributes = $dataSet[CombinedAttributesExtractorStep::KEY_AFFILIATE_ATTRIBUTES];
+
+        if ($affiliateAttributes !== []) {
+            $productAbstractEntityTransfer
+                ->setIsAffiliate($affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE])
+                ->setAffiliateData(json_encode($affiliateAttributes));
+        }
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
