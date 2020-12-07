@@ -16,10 +16,6 @@
             @include helper-breakpoint-media-min($xl-min) {
                 padding-right: 10%;
             }
-
-            @include helper-breakpoint-media-min($xl-max) {
-                padding-right: 15%;
-            }
         }
 
         &--content-item {
