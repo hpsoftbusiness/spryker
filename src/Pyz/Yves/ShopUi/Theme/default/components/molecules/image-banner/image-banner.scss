@@ -72,8 +72,7 @@
             margin-bottom: rem(10);
 
             & * {
-                font: fw(bold) rem(38)/normal $setting-font-family-additional;
-                letter-spacing: rem(-0.9);
+                font: fw(bold) rem(38)/normal $setting-font-family;
                 color: $setting-color-white;
                 text-align: center;
 
@@ -85,8 +84,7 @@
 
         &__link {
             color: $setting-color-white;
-            font: fw(regular) rem(14) $setting-font-family-additional;
-            letter-spacing: rem(-0.4);
+            font: fw(regular) rem(14) $setting-font-family;
             position: relative;
             text-decoration: none;
             display: inline-block;

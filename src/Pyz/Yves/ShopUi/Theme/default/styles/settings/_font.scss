@@ -1,26 +1,26 @@
-$setting-font-family: 'Calibre', sans-serif;
-$setting-font-family-additional: 'Circular', sans-serif;
-$setting-font-family-code: 'Menlo', monospace;
+$setting-font-family: 'Cera Pro', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$setting-font-family-code: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $setting-font-size-base: 16px;
 
 $setting-font-size: (
-    1: rem(50, number),
-    2: rem(34, number),
-    3: rem(28, number),
-    4: rem(22, number),
-    5: rem(15, number),
-    6: rem(14, number),
+    1: rem(42, number),
+    2: rem(30, number),
+    3: rem(24, number),
+    4: rem(20, number),
+    5: rem(18, number),
+    6: rem(16, number),
     big: rem(20),
     default: rem(16),
     small: rem(14)
 );
 
 $setting-font-weight: (
+    thin: 200,
     light: 300,
     regular: 400,
     medium: 500,
     bold: 700,
-    black: 900
+    black: 800
 );
 
 $setting-font-line-height: (
@@ -32,13 +32,4 @@ $setting-font-line-height: (
     6: 1.4,
     default: 1.5,
     tight: 1.1
-);
-
-$setting-font-letter-spacing: (
-    1: rem(-0.8, number),
-    2: rem(-0.8, number),
-    3: rem(1.39, number),
-    4: rem(0.15, number),
-    5: rem(2.7, number),
-    6: rem(2.5, number)
 );
