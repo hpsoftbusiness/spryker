@@ -5,8 +5,15 @@
         position: relative;
         max-width: 100%;
         background-color: $setting-color-white;
-        border: rem(1) solid $setting-color-input-border;
-        border-radius: rem(8);
+
+        .select2-container {
+            border: rem(1) solid $setting-color-input-border;
+            border-radius: $setting-border-radius;
+
+            &.select2-container--open {
+                border-color: $setting-color-main;
+            }
+        }
 
         &__select {
             display: block;
@@ -47,7 +54,10 @@
 
         &--hollow {
             background-color: $setting-color-transparent;
-            border: none;
+
+            .select2-container {
+                border: none;
+            }
         }
 
         @content;
