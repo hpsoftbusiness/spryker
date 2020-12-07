@@ -44,10 +44,10 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
     protected function mapCustomerBalance(array $data): CustomerBalanceTransfer
     {
         return (new CustomerBalanceTransfer())
-            ->setAvailableCashbackAmount($data['AvailableCashbackAmount'] ?? null)
-            ->setAvailableCashbackCurrency($data['AvailableCashbackCurrency'] ?? null)
-            ->setAvailableShoppingPointAmount($data['AvailableShoppingPointAmount'] ?? null)
-            ->setAvailableBenefitVoucherAmount($data['AvailableBenefitVoucherAmount'] ?? null)
-            ->setAvailableBenefitVoucherCurrency($data['AvailableBenefitVoucherCurrency'] ?? null);
+            ->setAvailableCashbackAmount($data['Data']['AvailableCashbackAmount'] ?? null)
+            ->setAvailableCashbackCurrency($data['Data']['AvailableCashbackCurrency'] ?? null)
+            ->setAvailableShoppingPointAmount($data['Data']['AvailableShoppingPointAmount'] ?? null)
+            ->setAvailableBenefitVoucherAmount($data['Data']['AvailableBenefitVoucherAmount'] ?? null)
+            ->setAvailableBenefitVoucherCurrency($data['Data']['AvailableBenefitVoucherCurrency'] ?? null);
     }
 }

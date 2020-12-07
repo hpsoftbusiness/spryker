@@ -36,19 +36,19 @@
                 customerBalance: data.customer.customerBalance,
             },
         } only %}
-            {% if embed.customerBalance is defined and embed.customerBalance is not null and embed.customerBalance is not empty %}
                 {% block additionalContent %}
-                    {%  if embed.customerBalance.getAvailableCashbackAmount is not null %}
-                        <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ embed.customerBalance.getAvailableCashbackAmount | money(true, embed.customerBalance.getAvailableCashbackCurrency) }}</li>
-                    {% endif %}
-                    {%  if embed.customerBalance.getAvailableShoppingPointAmount is not null %}
-                        <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ embed.customerBalance.getAvailableShoppingPointAmount | money(true, embed.customerBalance.getAvailableShoppingPointCurrency) }}</li>
-                    {% endif %}
-                    {%  if embed.customerBalance.getAvailableBenefitVoucherAmount is not null %}
-                        <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ embed.customerBalance.getAvailableBenefitVoucherAmount | money(true, embed.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
+                    {% if embed.customerBalance is defined and embed.customerBalance is not null and embed.customerBalance is not empty %}
+                        {%  if embed.customerBalance.getAvailableCashbackAmount is not null %}
+                            <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ embed.customerBalance.getAvailableCashbackAmount.toFloat() | money(true, embed.customerBalance.getAvailableCashbackCurrency) }}</li>
+                        {% endif %}
+                        {%  if embed.customerBalance.getAvailableShoppingPointAmount is not null %}
+                            <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ embed.customerBalance.getAvailableShoppingPointAmount.toFloat()}}</li>
+                        {% endif %}
+                        {%  if embed.customerBalance.getAvailableBenefitVoucherAmount is not null %}
+                            <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ embed.customerBalance.getAvailableBenefitVoucherAmount.toFloat() | money(true, embed.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
+                        {% endif %}
                     {% endif %}
                 {% endblock %}
-            {% endif %}
         {% endembed %}
     </div>
 
