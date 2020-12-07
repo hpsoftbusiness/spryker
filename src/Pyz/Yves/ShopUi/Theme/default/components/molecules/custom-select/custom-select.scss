@@ -90,7 +90,7 @@
         .select2-results {
             border-radius: rem(4);
             background-color: $setting-color-white;
-            box-shadow: rem(10) rem(10) rem(26) 0 $setting-color-alpha-4, 0 0 rem(30) 0 $setting-color-alpha-4;
+            box-shadow: rem(10) rem(10) rem(26) 0 $setting-color-alpha-2, 0 0 rem(30) 0 $setting-color-alpha-2;
             position: relative;
             border: rem(1) solid $setting-color-alpha-7;
         }
@@ -139,7 +139,7 @@
             }
 
             .select2-dropdown--below {
-                box-shadow: rem(10) rem(10) rem(26) 0 $setting-color-alpha-4, 0 0 rem(30) 0 $setting-color-alpha-4, 0 rem(-10) rem(30) 0 $setting-color-alpha-4;
+                box-shadow: rem(10) rem(10) rem(26) 0 $setting-color-alpha-2, 0 0 rem(30) 0 $setting-color-alpha-2, 0 rem(-10) rem(30) 0 $setting-color-alpha-2;
             }
         }
 
