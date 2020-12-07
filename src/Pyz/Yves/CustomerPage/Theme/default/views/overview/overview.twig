@@ -39,13 +39,13 @@
             {% if embed.customerBalance is defined %}
                 {% if embed.customerBalance is not empty %}
                     {% block additionalContent %}
-                        {%  if embed.customerBalance.getAvailableCashbackAmount is not emty %}
+                        {%  if embed.customerBalance.getAvailableCashbackAmount is not empty %}
                             <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ embed.customerBalance.getAvailableCashbackAmount | money(true, embed.customerBalance.getAvailableCashbackCurrency) }}</li>
                         {% endif %}
-                        {%  if embed.customerBalance.getAvailableShoppingPointAmount is not emty %}
+                        {%  if embed.customerBalance.getAvailableShoppingPointAmount is not empty %}
                             <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ embed.customerBalance.getAvailableShoppingPointAmount | money(true, embed.customerBalance.getAvailableShoppingPointCurrency) }}</li>
                         {% endif %}
-                        {%  if embed.customerBalance.getAvailableBenefitVoucherAmount is not emty %}
+                        {%  if embed.customerBalance.getAvailableBenefitVoucherAmount is not empty %}
                             <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ embed.customerBalance.getAvailableBenefitVoucherAmount | money(true, embed.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
                         {% endif %}
                     {% endblock %}
