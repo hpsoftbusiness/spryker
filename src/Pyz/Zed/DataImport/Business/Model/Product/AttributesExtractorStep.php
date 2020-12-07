@@ -108,6 +108,8 @@ class AttributesExtractorStep implements DataImportStepInterface
             'weight',
             'gtin',
             'taric_code',
+            'benefit_store',
+            'shopping_point_store',
         ];
     }
 
