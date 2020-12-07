@@ -10,8 +10,7 @@
         }
 
         &__name {
-            font: fw(bold) rem(15) $setting-font-family-additional;
-            letter-spacing: rem(-0.17);
+            font: fw(bold) rem(15) $setting-font-family;
             padding-right: rem(10);
             max-width: rem(100);
             width: 100%;
@@ -20,7 +19,6 @@
 
         &__text {
             font-weight: fw(light);
-            letter-spacing: rem(-0.18);
         }
 
         @content;

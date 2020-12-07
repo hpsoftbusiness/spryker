@@ -12,7 +12,7 @@
 
         &__title {
             display: block;
-            font: fw(regular) map-get($setting-font-size, default) $setting-font-family-additional;
+            font: fw(regular) map-get($setting-font-size, default) $setting-font-family;
 
             &--bold {
                 font-weight: fw(bold);
@@ -33,7 +33,7 @@
         }
 
         &__text {
-            font: fw(regular) $setting-font-size-base $setting-font-family-additional;
+            font: fw(regular) $setting-font-size-base $setting-font-family;
 
             &--secondary {
                 color: $setting-color-gray-3;

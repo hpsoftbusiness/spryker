@@ -59,7 +59,7 @@
         }
 
         &__title {
-            font: fw(bold) rem(20) $setting-font-family-additional;
+            font: fw(bold) rem(20) $setting-font-family;
             color: $setting-color-black;
 
             @include helper-breakpoint-media-min($lg-min) {
