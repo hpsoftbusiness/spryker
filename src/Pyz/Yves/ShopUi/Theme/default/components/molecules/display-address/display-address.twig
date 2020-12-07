@@ -19,10 +19,20 @@
 
     <li class="{{ config.name }}__item">{{ data.address.address1 }} {{ data.address.address2 }}</li>
     <li class="{{ config.name }}__item">{{ data.address.address3 }}</li>
-    <li class="{{ config.name }}__item">{{ data.address.zipCode }} {{ data.address.city }}, {{ ('countries.iso.' ~ data.address.iso2code) | trans }}</li>
+    <li class="{{ config.name }}__item">
+        {{ data.address.zipCode }} {{ data.address.city }}, {% if data.address.state is not empty %}{{ data.address.state }}, {% endif %}{{ ('countries.iso.' ~ data.address.iso2code) | trans }}
+    </li>
 
     {% if data.address.phone is not empty %}
         <li class="{{ config.name }}__item">{{ data.address.phone }}</li>
+    {% endif %}
+
+    {% if data.address.address4 is not empty %}
+        <li class="{{ config.name }}__item">{{ data.address.address4 }}</li>
+    {% endif %}
+
+    {% if data.address.vatNumber is not empty %}
+        <li class="{{ config.name }}__item">{{ data.address.vatNumber }}</li>
     {% endif %}
 
     {% if data.showAddressLabel %}

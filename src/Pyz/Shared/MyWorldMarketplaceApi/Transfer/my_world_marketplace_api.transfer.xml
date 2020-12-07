@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="AccessToken">
+        <property name="accessToken" type="string"/>
+        <property name="tokenType" type="string"/>
+        <property name="expiresIn" type="int"/>
+        <property name="refreshToken" type="string"/>
+    </transfer>
+
+    <transfer name="CustomerInformationByCustomerNumberRequest">
+        <property name="myWorldCustomerId" type="string"/>
+        <property name="myWorldCustomerNumber" type="string"/>
+        <property name="accessToken" type="AccessTokenTransfer"/>
+    </transfer>
+
+    <transfer name="MyWorldMarketplaceApiResponse">
+        <property name="isSuccess" type="bool"/>
+        <property name="resultCode" type="int"/>
+        <property name="resultDescription" type="string"/>
+        <property name="data" type="array"/>
+    </transfer>
+
+    <transfer name="CustomerInformationByCustomerNumberResponse">
+        <property name="myWorldCustomer" type="MyWorldCustomer"/>
+        <property name="MyWorldMarketplaceApiResponse" type="MyWorldMarketplaceApiResponse"/>
+    </transfer>
+
+    <transfer name="MyWorldCustomer">
+        <property name="myWorldCustomerId" type="string"/>
+        <property name="myWorldCustomerNumber" type="string"/>
+        <property name="cardNumber" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="dateOfBirth" type="string"/>
+        <property name="countryId" type="string"/>
+        <property name="email" type="string"/>
+        <property name="phone" type="string"/>
+        <property name="customerType" type="int"/>
+        <property name="isActive" type="bool"/>
+        <property name="availableCashbackAmount" type="decimal"/>
+        <property name="availableCashbackCurrency" type="string"/>
+        <property name="availableShoppingPointAmount" type="decimal"/>
+        <property name="hasPlusPackage" type="bool"/>
+        <property name="plusPackages" type="string[]"/>
+        <property name="availableMvoucherAmount" type="decimal"/>
+        <property name="availableMvoucherCurrency" type="string"/>
+    </transfer>
+
+</transfers>

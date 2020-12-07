@@ -11,8 +11,8 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Console\MyWorldMarketplaceApiConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
-use Pyz\Zed\Sso\Communication\Console\SsoConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -169,7 +169,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function getConsoleCommands(Container $container)
     {
         $commands = [
-            new SsoConsole(),
+            new MyWorldMarketplaceApiConsole(),
             new CacheWarmerConsole(),
             new BuildNavigationConsole(),
             new RemoveNavigationCacheConsole(),

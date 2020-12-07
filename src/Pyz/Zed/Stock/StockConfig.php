@@ -19,6 +19,7 @@ class StockConfig extends SprykerStockConfig
         return [
             'DE' => [
                 'MW_Solution',
+                'Affiliate',
             ],
         ];
     }

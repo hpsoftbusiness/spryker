@@ -62,9 +62,6 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 
             foreach ($this->defaultAttributes as $defaultAttribute) {
                 $defaultAttributeValue = $dataSet[$defaultAttribute . '.' . $localeName];
-                if (!$defaultAttributeValue) {
-                    $defaultAttributeValue = $dataSet[CombinedProductPriceHydratorStep::COLUMN_CONCRETE_SKU] ?? $dataSet[CombinedProductPriceHydratorStep::COLUMN_ABSTRACT_SKU];
-                }
                 $localizedAttributes[$idLocale][$defaultAttribute] = $defaultAttributeValue;
 
                 $keysToUnset[] = $defaultAttribute . '.' . $localeName;

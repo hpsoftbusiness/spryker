@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Shared\Oms\OmsConstants;
 use Spryker\Zed\Oms\OmsConfig as SprykerOmsConfig;
 
 class OmsConfig extends SprykerOmsConfig
@@ -17,5 +18,21 @@ class OmsConfig extends SprykerOmsConfig
     public function getFallbackDisplayNamePrefix(): string
     {
         return 'oms.state.';
+    }
+
+    /**
+     * @return string
+     */
+    public function getMailOrderInProcessingRecipientEmail(): string
+    {
+        return $this->get(OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMailOrderInProcessingRecipientName(): string
+    {
+        return $this->get(OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME);
     }
 }
