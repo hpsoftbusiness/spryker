@@ -28,14 +28,7 @@
                 </button>
             {% else %}
                 <a href="{{ data.url }}">
-                    {% block iconUrl %}
-                        {% include atom('icon') with {
-                            modifiers: ['bigger'],
-                            data: {
-                                name: data.iconName,
-                            }
-                        } only %}
-                    {% endblock %}
+                    {{ block('icon') }}
                 </a>
             {% endif %}
         {% endblock %}

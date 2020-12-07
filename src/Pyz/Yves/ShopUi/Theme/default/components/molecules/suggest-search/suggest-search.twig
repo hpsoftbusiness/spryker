@@ -1,0 +1,21 @@
+{% extends molecule('suggest-search', '@SprykerShop:ShopUi') %}
+
+{% block body %}
+    <div class="is-hidden {{ config.name }}__container {{ config.jsName }}__container"></div>
+
+    {% include molecule('ajax-provider') with {
+        class: config.jsName ~ '__ajax-provider',
+        attributes: {
+            method: 'post',
+            url: attributes['suggestion-url'],
+        },
+    } only %}
+
+    {% include molecule('ajax-loader') with {
+        modifiers: ['big'],
+        class: config.name ~ '__loader',
+        attributes: {
+            'provider-class-name': config.jsName ~ '__ajax-provider',
+        },
+    } only %}
+{% endblock %}

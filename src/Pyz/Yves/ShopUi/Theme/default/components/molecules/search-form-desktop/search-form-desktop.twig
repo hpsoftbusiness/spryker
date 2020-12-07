@@ -5,23 +5,42 @@
 } %}
 
 {% define data = {
-    searchValue: app.request.get('q')
+    searchUrl: path('search'),
+    searchValue: app.request.get('q'),
 } %}
 
 {% define attributes = {
-    'data-search-id': required
+    'data-search-id': required,
 } %}
 
 {% block body %}
-    <div class="{{ config.name }}__input js-suggest-search__show">
-        <input name="q" value="{{data.searchValue}}" type="text" class="{{ config.name }}__field" placeholder="{{ 'global.search' | trans }}" autocomplete="off">
+    <form action="{{ data.searchUrl }}">
+        <div class="{{ config.name }}__input">
+            <input name="q" type="text"
+                   class="{{ config.name }}__field {{ config.jsName }}__input--{{ attributes['data-search-id'] }}"
+                   placeholder="{{ 'global.search' | trans }}"
+                   value="{{ data.searchValue }}"
+                   autofocus="autofocus"
+                   autocomplete="off">
 
-        {% include atom('icon') with {
-            class: config.name ~ "__icon",
-            modifiers: ['bigger'],
-            data: {
-                name: 'search',
+            <button>
+                {% include atom('icon') with {
+                    class: config.name ~ '__icon',
+                    modifiers: ['bigger'],
+                    data: {
+                        name: 'search',
+                    },
+                } only %}
+            </button>
+        </div>
+
+        {% include molecule('suggest-search') with {
+            modifiers: ['header-desktop'],
+            attributes: {
+                'suggestion-url': path('search/suggestion'),
+                'base-suggest-url': path('search/suggestion'),
+                'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
             },
         } only %}
-    </div>
+    </form>
 {% endblock %}

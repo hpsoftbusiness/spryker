@@ -71,11 +71,14 @@
                     } only %}
                 </div>
             </div>
-            {% include molecule('search-form-desktop') with {
-                attributes: {
-                    'data-search-id': 'header'
-                }
-            } only %}
+
+            {% if data.showSearchForm %}
+                {% include molecule('search-form-desktop') with {
+                    attributes: {
+                        'data-search-id': 'header-desktop',
+                    },
+                } only %}
+            {% endif %}
         </div>
 
         <div class="col {{ config.name }}__navigation-top">

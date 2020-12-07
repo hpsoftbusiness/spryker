@@ -50,6 +50,19 @@
             }
         }
 
+        &--header-desktop {
+            position: absolute;
+            top: 0;
+            width: 100%;
+
+            #{$name}__container {
+                border: rem(1) solid $setting-color-gray-2;
+                padding: rem(15);
+                border-bottom-left-radius: rem(10);
+                border-bottom-right-radius: rem(10);
+            }
+        }
+
         @content;
     }
 }
