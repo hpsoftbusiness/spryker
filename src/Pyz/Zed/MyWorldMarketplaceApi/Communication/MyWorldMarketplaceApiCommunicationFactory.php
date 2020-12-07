@@ -2,7 +2,9 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Communication;
 
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
+use Pyz\Zed\Sales\Business\SalesFacadeInterface;
+use Spryker\Zed\Calculation\Business\CalculationFacadeInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 
 /**
@@ -11,4 +13,19 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
  */
 class MyWorldMarketplaceApiCommunicationFactory extends AbstractCommunicationFactory
 {
+    /**
+     * @return \Pyz\Zed\Sales\Business\SalesFacadeInterface
+     */
+    public function getSalesFacade(): SalesFacadeInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::FACADE_SALES);
+    }
+
+    /**
+     * @return \Spryker\Zed\Calculation\Business\CalculationFacadeInterface
+     */
+    public function getCalculationFacade(): CalculationFacadeInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::FACADE_CALCULATION);
+    }
 }

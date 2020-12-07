@@ -16,7 +16,7 @@ interface RequestInterface
      * @param array $requestParams
      * @param string $requestMethod
      *
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return \Generated\Shared\Transfer\MyWorldMarketplaceApiResponseTransfer
      */
     public function request(string $url, array $requestParams = [], string $requestMethod = 'POST'): MyWorldMarketplaceApiResponseTransfer;
 }

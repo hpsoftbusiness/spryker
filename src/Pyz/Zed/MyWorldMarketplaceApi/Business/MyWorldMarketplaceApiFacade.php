@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business;
 
+use Generated\Shared\Transfer\OrderTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -15,4 +16,23 @@ class MyWorldMarketplaceApiFacade extends AbstractFacade implements MyWorldMarke
         return $this->getFactory()->getMyWorldMarketplaceApiClient()->getAccessToken();
     }
 
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    public function createTurnover(OrderTransfer $orderTransfer): void
+    {
+        $this->getFactory()->createCreateTurnoverRequest()->request($orderTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    public function cancelTurnover(OrderTransfer $orderTransfer): void
+    {
+        $this->getFactory()->createCancelTurnoverRequest()->request($orderTransfer);
+    }
 }

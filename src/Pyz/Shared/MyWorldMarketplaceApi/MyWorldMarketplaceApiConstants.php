@@ -14,4 +14,5 @@ interface MyWorldMarketplaceApiConstants
     public const CLIENT_SECRET = 'MY_WORLD_MARKETPLACE_API:CLIENT_SECRET';
     public const TOKEN_URL = 'MY_WORLD_MARKETPLACE_API:TOKEN_URL';
     public const USER_AGENT = 'SSO:USER_AGENT';
+    public const DEALER_ID = 'MY_WORLD_MARKETPLACE_API:DEALER_ID';
 }

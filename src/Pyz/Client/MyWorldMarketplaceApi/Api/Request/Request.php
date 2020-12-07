@@ -14,9 +14,7 @@ use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapperInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidatorInterface;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
-use Spryker\Shared\ErrorHandler\ErrorHandler;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 class Request implements RequestInterface
 {
@@ -101,8 +99,8 @@ class Request implements RequestInterface
             $myWorldMarketplaceApiResponseTransfer->setIsSuccess($isValid);
 
             return $myWorldMarketplaceApiResponseTransfer;
-        } catch (Exception $e) {
-            $this->errorLogger->log($e);
+        } catch (Exception $exception) {
+            $this->errorLogger->log($exception);
         }
 
         return (new MyWorldMarketplaceApiResponseTransfer())->setIsSuccess(false);

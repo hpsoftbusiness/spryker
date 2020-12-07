@@ -18,6 +18,6 @@ class ResponseMapper implements ResponseMapperInterface
      */
     public function map(array $response): MyWorldMarketplaceApiResponseTransfer
     {
-
+        return (new MyWorldMarketplaceApiResponseTransfer())->fromArray($response, true);
     }
 }

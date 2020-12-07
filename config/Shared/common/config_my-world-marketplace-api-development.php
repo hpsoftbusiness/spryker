@@ -18,4 +18,5 @@ $config[MyWorldMarketplaceApiConstants::TOKEN_URL] = 'https://id-test.cashbackwo
 $config[MyWorldMarketplaceApiConstants::CLIENT_ID] = 'spryker_api_at_dev';
 $config[MyWorldMarketplaceApiConstants::CLIENT_SECRET] = 'spryker_api_at_dev';
 $config[MyWorldMarketplaceApiConstants::USER_AGENT] = 'Spryker/202009.0';
+$config[MyWorldMarketplaceApiConstants::DEALER_ID] = 'F04EA3CF-03DA-DE11-8B91-00215ACB8E7E';  //TODO Replace with real DealerID
 
