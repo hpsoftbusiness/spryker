@@ -6,7 +6,7 @@
     border-radius: rem(7);
     background-color: $setting-color-input-background;
 
-    &::placeholder {
+    @include helper-input-placeholder {
         color: $setting-color-gray-5;
     }
 

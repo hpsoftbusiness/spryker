@@ -6,15 +6,6 @@
         max-width: 100%;
         background-color: $setting-color-white;
 
-        .select2-container {
-            border: rem(1) solid $setting-color-input-border;
-            border-radius: $setting-border-radius;
-
-            &.select2-container--open {
-                border-color: $setting-color-main;
-            }
-        }
-
         &__select {
             display: block;
             width: 100%;

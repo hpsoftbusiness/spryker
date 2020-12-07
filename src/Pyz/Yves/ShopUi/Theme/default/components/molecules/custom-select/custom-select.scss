@@ -24,7 +24,13 @@
         }
 
         .select2-container {
+            border: rem(1) solid $setting-color-input-border;
+            border-radius: $setting-border-radius;
             width: auto;
+
+            &.select2-container--open {
+                border-color: $setting-color-main;
+            }
         }
 
         .select2-selection--single {
