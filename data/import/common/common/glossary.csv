@@ -469,6 +469,10 @@ customer.login.title,Access your account,en_US
 customer.login.title,Ich bin bereits Kunde,de_DE
 customer.registration.title,Create account,en_US
 customer.registration.title,Ich bin Neukunde,de_DE
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,en_US
+customer.account.available.cashback.amount,Available cashback amount,en_US
+customer.account.available.shopping.point.amount,Available shopping point amount,en_US
+customer.account.available.benefit.voucher.amount,Available benefit voucher amount,en_US
 customer.account.no_order,No orders at the moment,en_US
 customer.account.no_order,Keine Bestellungen,de_DE
 customer.account,Customer Account,en_US
