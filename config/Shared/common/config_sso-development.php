@@ -14,7 +14,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 // ----------------------------------------------------------------------------
 
 // >>> SSO
-$config[SsoConstants::SSO_LOGIN_ENABLED] = false;
+$config[SsoConstants::SSO_LOGIN_ENABLED] = true;
 
 $config[SsoConstants::TOKEN_URL] = 'https://id-test.cashbackworld.com/trunk/oauth/token';
 $config[SsoConstants::AUTHORIZE_URL] = 'https://id-test.cashbackworld.com/trunk/oauth/authorize';
@@ -26,18 +26,7 @@ $config[SsoConstants::CLIENT_ID] = 'spryker_sso_dev';
 $config[SsoConstants::CLIENT_SECRET] = 'spryker_sso_dev';
 $config[SsoConstants::USER_AGENT] = 'Spryker/202009.0';
 $config[SsoConstants::SCOPE] = 'openid';
-
-/**
- * @todo replace with normal ENV var
- */
-$baseUrlYves = $config[ApplicationConstants::BASE_URL_YVES];
-
-if (empty($baseUrlYves) || strpos('host', $baseUrlYves) !== false) {
-    $baseUrlYves = 'https://https://www.de.myworld.cloud.spryker.toys';
-}
-
-$config[SsoConstants::REDIRECT_URL] =
-    sprintf('%s/%s', $baseUrlYves, $config[SsoConstants::LOGIN_CHECK_PATH]);
+$config[SsoConstants::REDIRECT_URL] = sprintf('%s/%s', $config[ApplicationConstants::BASE_URL_YVES], $config[SsoConstants::LOGIN_CHECK_PATH]);
 
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($config[KernelConstants::DOMAIN_WHITELIST], [
     'id-test.cashbackworld.com', // SSO Oauth domain
