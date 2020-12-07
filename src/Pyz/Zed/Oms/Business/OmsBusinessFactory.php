@@ -25,14 +25,12 @@ class OmsBusinessFactory extends SprykerOmsBusinessFactory
     /**
      * @return \Pyz\Zed\Oms\Business\Mail\MailHandler
      */
-    public function createMailHandler()
+    public function createMailHandler(): MailHandler
     {
-        $mailHandler = new MailHandler(
+        return new MailHandler(
             $this->getSalesFacade(),
             $this->getMailFacade(),
             $this->getOmsOrderMailExpanderPlugins()
         );
-
-        return $mailHandler;
     }
 }

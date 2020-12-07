@@ -30,6 +30,18 @@ interface OmsFacadeInterface extends SprykerOmsFacadeInterface
 
     /**
      * Specification:
+     * - Sends the order in processing mail.
+     *
+     * @api
+     *
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
+     *
+     * @return void
+     */
+    public function sendOrderInProcessingMail(SpySalesOrder $salesOrderEntity): void;
+
+    /**
+     * Specification:
      * - Sends the shipping confirmation mail
      *
      * @api

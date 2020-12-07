@@ -1158,6 +1158,8 @@ mail.newsletter.unsubscribed.subject,Sorry to see you go…,en_US
 mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop Newsletter abgemeldet. Du kannst dich jeder Zeit wieder über dein Kundenkonto anmelden.,de_DE
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
 mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
+mail.order.in-processing.subject,New order just placed,en_US
+mail.order.in-processing.subject,Neue Bestellung gerade aufgegeben,de_DE
 mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
 mail.shipping.confirmation.subject,Ihre Bestellung wurde versandt.,de_DE
 mail.shipping.confirmation.subject,Your order have been shipped.,en_US
@@ -2914,6 +2916,8 @@ mail.trans.order_confirmation.subtitle,"as soon as your package is on its way, y
 mail.trans.order_confirmation.subtitle,"sobald dein Paket auf dem Weg ist, erhältst du von uns eine gesonderte Versandbestätigung per E-Mail. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Um deine Bestellung anzusehen, besuche bitte den Bereich 'Meine Bestellungen' auf myWorld.com.",de_DE
 mail.trans.shipping_confirmation.subtitle,"we would like to inform you that your order or parts of your order have been shipped. In case of partial deliveries you will receive a separate notification for each delivery. As soon as the seller has made the invoice available, you will find it in your customer account under 'My orders'.",en_US
 mail.trans.shipping_confirmation.subtitle,"wir möchten dich darüber informieren, dass deine Bestellung oder Teile deiner Bestellung versandt worden sind. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Sobald der Verkäufer die Rechnung zur Verfügung gestellt hat, findest du sie in deinem Kundenkonto unter 'Meine Bestellungen'.",de_DE
+mail.trans.order_in_processing.title,New order just placed,en_US
+mail.trans.order_in_processing.title,Neue Bestellung gerade aufgegeben,de_DE
 mail.trans.order_confirmation.title,Thanks for your order!,en_US
 mail.trans.order_confirmation.title,Vielen Dank für deine Bestellung!,de_DE
 mail.trans.restore_password.change_password,Change password,en_US
@@ -2934,5 +2938,7 @@ customer.authorization.validate_email_address,"Almost there! We send you an emai
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
 customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
+cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
+cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
 checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, ein Produkt ist leider nicht in deiner Lieferadresse verfügbar.",de_DE

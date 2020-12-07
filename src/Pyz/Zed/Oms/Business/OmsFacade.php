@@ -40,6 +40,20 @@ class OmsFacade extends SprykerOmsFacade implements OmsFacadeInterface
      *
      * @return void
      */
+    public function sendOrderInProcessingMail(SpySalesOrder $salesOrderEntity): void
+    {
+        $this->getFactory()->createMailHandler()->sendOrderInProcessingMail($salesOrderEntity);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
+     *
+     * @return void
+     */
     public function sendShippingConfirmationMail(SpySalesOrder $salesOrderEntity)
     {
         $this->getFactory()->createMailHandler()->sendShippingConfirmationMail($salesOrderEntity);

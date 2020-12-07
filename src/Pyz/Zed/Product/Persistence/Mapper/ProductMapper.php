@@ -36,6 +36,7 @@ class ProductMapper extends SprykerProductMapper
 
         $productAbstractEntityTransfer = $productEntity->getSpyProductAbstract();
         if ($productAbstractEntityTransfer !== null) {
+            $productConcreteTransfer->setIsAffiliate($productAbstractEntityTransfer->getIsAffiliate());
             $productConcreteTransfer->setAbstractSku($productAbstractEntityTransfer->getSku());
         }
 

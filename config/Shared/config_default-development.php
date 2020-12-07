@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Pyz\Shared\Oms\OmsConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
@@ -226,3 +227,10 @@ require 'common/config_adyen-development.php';
 // >>> SSO
 
 require 'common/config_sso-development.php';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MAIL ----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mterm@myworld-test.com';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
