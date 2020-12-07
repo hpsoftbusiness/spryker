@@ -106,6 +106,14 @@ class PostingExportContentBuilder
         $billingAddressTransfer = $orderTransfer->getBillingAddress();
         $shippingAddressTransfer = $orderTransfer->getBillingAddress();
         $amountExcludingVat = $orderTransfer->getTotals()->getGrandTotal() - $orderTransfer->getTotals()->getTaxTotal()->getAmount();
+        $postingDate = $orderTransfer->getInvoiceCreatedAt()
+            ? $this->getFormattedDate($orderTransfer->getInvoiceCreatedAt())
+            : null;
+
+        $orderItemsCount = 0;
+        foreach ($orderTransfer->getItems() as $itemTransfer) {
+            $orderItemsCount += $itemTransfer->getQuantity();
+        }
 
         return [
             'interfaceCode' => static::DEFAULT_DATA_INTERFACE_CODE,
@@ -116,8 +124,8 @@ class PostingExportContentBuilder
             'documentType' => static::DEFAULT_DATA_DOCUMENT_TYPE,
             'orderType' => null, // TODO
             'orderDate' => $this->getFormattedDate($orderTransfer->getCreatedAt()),
-            'postingDate' => $this->getFormattedDate($orderTransfer->getCreatedAt()),
-            'documentDate' => $this->getFormattedDate($orderTransfer->getCreatedAt()),
+            'postingDate' => $postingDate,
+            'documentDate' => $postingDate,
             'orderNumber' => null, // TODO
             'billToCustomerNumber' => $customerTransfer->getMyWorldCustomerNumber(),
             'customerType' => $customerTransfer->getCustomerType(),
@@ -134,17 +142,17 @@ class PostingExportContentBuilder
             'shipToCity' => $shippingAddressTransfer->getCity(),
             'shipToPostCode' => $shippingAddressTransfer->getZipCode(),
             'vatRegistrationNumber' => $billingAddressTransfer->getVatNumber(),
-            'retailDocument' => null, // TODO
+            'retailDocument' => 'yes',
             'amount' => $this->formatIntValueToDecimalCurrency($amountExcludingVat),
             'amountIncludingVat' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getGrandTotal()),
             'vatAmount' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getTaxTotal()->getAmount()),
             'currencyCode' => $orderTransfer->getCurrencyIsoCode(),
-            'currencyFactor' => null, // TODO
+            'currencyFactor' => null, // skipped
             'paymentMethodCode' => null, // TODO
             'discount' => null, // TODO
             'paymentReferenceId' => null, // TODO
-            'cashBackNumber' => null, // TODO
-            'noOfLines' => null, // TODO
+            'cashBackNumber' => $customerTransfer->getMyWorldCustomerNumber(), // TODO
+            'noOfLines' => $orderItemsCount,
         ];
     }
 
