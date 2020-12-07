@@ -5,17 +5,16 @@
 
         &__top {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin: 0 rem(16);
-            padding: rem(30) 0 0;
-
-            @include helper-breakpoint-media-min($md-min) {
-                border-bottom: rem(1) dotted $setting-color-gray-3;
-            }
+            flex-direction: column;
+            padding: rem(30) rem(20);
 
             @include helper-breakpoint-media-min($xl-min) {
-                padding: rem(92) 0 rem(70);
+                padding: rem(30) rem(40);
+            }
+
+            @include helper-breakpoint-media-min($md-min) {
+                border-bottom: rem(1) solid $setting-color-gray-3;
+                border-top: rem(1) solid $setting-color-gray-3;
             }
         }
 
@@ -71,20 +70,29 @@
         }
 
         &__bottom {
-            margin: rem(16) rem(16) 0;
-            justify-content: space-between;
-            padding: 0 0 rem(50);
+            display: flex;
+            flex-direction: column;
+            padding: rem(30) rem(20);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
 
             @include helper-breakpoint-media-min($xl-min) {
-                padding: 0 0 rem(86);
+                padding: rem(30) rem(40);
             }
+        }
 
-            &::after {
-                display: none;
-            }
+        &__social, &__payment, &__partner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
 
-            &:first-child {
-                margin-top: rem(30);
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-bottom: 0;
             }
         }
 

@@ -7,6 +7,7 @@
         }
 
         &__col {
+            padding-bottom: rem(24);
             width: 100%;
 
             @include helper-breakpoint-media-min($md-min) {
@@ -15,6 +16,13 @@
 
             @include helper-breakpoint-media-min($xl-min) {
                 padding-right: 10%;
+            }
+
+            .toggler-item__title, .toggler-item__content {
+                font-size: rem(16);
+                letter-spacing: rem(0.4);
+                line-height: rem(26);
+                padding-bottom: 0;
             }
         }
 

@@ -2,17 +2,8 @@
     #{$name} {
         &__link {
             &--footer {
-                color: rgba($setting-color-text, 0.5);
-
-                @include helper-breakpoint-media-min($md-min) {
-                    color: $setting-color-text;
-                }
+                color: $setting-color-gray-5;
             }
-        }
-
-        &--footer {
-            padding-bottom: rem(10);
-            font-size: rem(15);
         }
 
         &--product-set {
