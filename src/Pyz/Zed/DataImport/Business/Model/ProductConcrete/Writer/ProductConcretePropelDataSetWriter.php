@@ -24,6 +24,7 @@ use Spryker\Zed\Product\Dependency\ProductEvents;
 class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 {
     protected const COLUMN_ABSTRACT_SKU = ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU;
+    protected const COLUMN_CONCRETE_SKU = ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU;
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
@@ -49,7 +50,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 
         $this->productRepository->addProductConcrete(
             $productConcreteEntity,
-            $dataSet[static::COLUMN_ABSTRACT_SKU]
+            $dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]
         );
 
         $this->createOrUpdateProductConcreteLocalizedAttributesEntities($dataSet, $productConcreteEntity->getIdProduct());
@@ -73,7 +74,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
     {
         $idAbstract = $this
             ->productRepository
-            ->getIdProductAbstractByAbstractSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
+            ->getIdProductAbstractByAbstractSku($dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]);
 
         $productConcreteEntityTransfer = $this->getProductConcreteTransfer($dataSet);
         $productConcreteEntityTransfer->setFkProductAbstract($idAbstract);

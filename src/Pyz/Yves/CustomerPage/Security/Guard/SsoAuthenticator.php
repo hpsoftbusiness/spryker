@@ -107,7 +107,6 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
             if ($code === null) {
                 throw $exception;
             }
-
             $ssoAccessTokenTransfer = $this->ssoClient->getAccessTokenByCode($code);
 
             if (!$ssoAccessTokenTransfer->getIdToken()) {
@@ -132,7 +131,6 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     {
         /** @var \SprykerShop\Yves\CustomerPage\Security\CustomerUserInterface $securityUser */
         $securityUser = $userProvider->loadUserByUsername($credentials);
-
         if ($securityUser->getCustomerTransfer()->getIsActive() !== true) {
             throw new AuthenticationException();
         }

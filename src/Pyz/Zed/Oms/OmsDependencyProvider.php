@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Oms;
 
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendShippingConfirmationPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Is1HourNotPassedConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
@@ -110,6 +111,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         $container->extend(static::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
             $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
             $commandCollection->add(new SendOrderInProcessingPlugin(), 'Oms/SendOrderInProcessing');
+            $commandCollection->add(new SendShippingConfirmationPlugin(), 'Oms/SendShippingConfirmation');
             $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
             $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
             $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
