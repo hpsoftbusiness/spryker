@@ -154,7 +154,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOrderItemExpanderPlugin(),
             new ProductBundleOptionItemExpanderPlugin(),
             new ItemStateOrderItemExpanderPlugin(),
-//            new ProductAttributesOrderItemExpanderPlugin(),
+            new ProductAttributesOrderItemExpanderPlugin(),
         ];
     }
 
