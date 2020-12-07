@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer;
 use Generated\Shared\Transfer\SpyProductCategoryEntityTransfer;
 use Generated\Shared\Transfer\SpyUrlEntityTransfer;
+use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
@@ -54,6 +55,8 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const KEY_ID_URL = 'id_url';
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
+    protected const KEY_IS_PRODUCT_AFFILIATE = 'affiliate_product';
+
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -75,7 +78,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     protected function importProductAbstract(DataSetInterface $dataSet): void
     {
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
-        $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
+        $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]);
 
         $productAbstractEntityTransfer
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
@@ -83,6 +86,14 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
             ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
             ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
+
+        $affiliateAttributes = $dataSet[CombinedAttributesExtractorStep::KEY_AFFILIATE_ATTRIBUTES];
+
+        if ($affiliateAttributes !== []) {
+            $productAbstractEntityTransfer
+                ->setIsAffiliate($affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE])
+                ->setAffiliateData(json_encode($affiliateAttributes));
+        }
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }

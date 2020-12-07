@@ -2916,5 +2916,7 @@ customer.authorization.validate_email_address,"Almost there! We send you an emai
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
 customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
+cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
+cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
 checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, ein Produkt ist leider nicht in deiner Lieferadresse verfügbar.",de_DE
