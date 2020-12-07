@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi;
 
+use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -14,6 +15,8 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
     public const FACADE_CALCULATION = 'FACADE_CALCULATION';
 
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
+
+    public const PROPEL_QUERY_SALES_ORDER = 'PROPEL_QUERY_SALES_ORDER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -40,6 +43,19 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addSalesFacade($container);
         $container = $this->addCalculationFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function providePersistenceLayerDependencies(Container $container): Container
+    {
+        $container = parent::providePersistenceLayerDependencies($container);
+        $container = $this->addSalesOrderPropelQuery($container);
 
         return $container;
     }
@@ -110,6 +126,20 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
             return $container->getLocator()->utilEncoding()->service();
         });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addSalesOrderPropelQuery(Container $container): Container
+    {
+        $container->set(static::PROPEL_QUERY_SALES_ORDER, $container->factory(function () {
+            return SpySalesOrderQuery::create();
+        }));
 
         return $container;
     }

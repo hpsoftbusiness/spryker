@@ -11,6 +11,7 @@ use Exception;
 use Generated\Shared\Transfer\OrderTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
+use Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
 
@@ -35,6 +36,11 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
     protected $utilEncodingService;
 
     /**
+     * @var \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface
+     */
+    protected $myWorldMarketplaceApiEntityManager;
+
+    /**
      * @var \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig
      */
     protected $myWorldMarketplaceApiConfig;
@@ -43,17 +49,20 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $myWorldMarketplaceApiClient
      * @param \Spryker\Zed\Customer\Business\CustomerFacadeInterface $customerFacade
      * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     * @param \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface $myWorldMarketplaceApiEntityManager
      * @param \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
      */
     public function __construct(
         MyWorldMarketplaceApiClientInterface $myWorldMarketplaceApiClient,
         CustomerFacadeInterface $customerFacade,
         UtilEncodingServiceInterface $utilEncodingService,
+        MyWorldMarketplaceApiEntityManagerInterface $myWorldMarketplaceApiEntityManager,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
     ) {
         $this->myWorldMarketplaceApiClient = $myWorldMarketplaceApiClient;
         $this->customerFacade = $customerFacade;
         $this->utilEncodingService = $utilEncodingService;
+        $this->myWorldMarketplaceApiEntityManager = $myWorldMarketplaceApiEntityManager;
         $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
     }
 
@@ -69,13 +78,11 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             $this->getRequestParams($orderTransfer)
         );
 
-        //log something here
-
         if (!$myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
             return;
         }
 
-        // update data
+        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCreated($orderTransfer->getOrderReference());
     }
 
     /**
@@ -113,7 +120,7 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             'Reference' => $orderTransfer->getOrderReference(),
             'Date' => date(static::DATE_FORMAT, strtotime($orderTransfer->getCreatedAt())),
             'Amount' => $orderTransfer->getTotals()->getPriceToPay() / 100,
-            'Currency' => $orderTransfer->getCurrency()->getCode(),
+            'Currency' => $orderTransfer->getCurrencyIsoCode(),
             'SegmentNumber' => static::SEGMENT_NUMBER,
             'ProfileIdentifier' => $this->myWorldMarketplaceApiConfig->getDealerId(),
         ]);

@@ -13,7 +13,7 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
  * @method \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig getConfig()
- * @method \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiQueryContainer getQueryContainer()
+ * @method \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface getEntityManager()
  */
 class MyWorldMarketplaceApiBusinessFactory extends AbstractBusinessFactory
 {
@@ -26,6 +26,7 @@ class MyWorldMarketplaceApiBusinessFactory extends AbstractBusinessFactory
             $this->getMyWorldMarketplaceApiClient(),
             $this->getCustomerFacade(),
             $this->getUtilEncodingService(),
+            $this->getEntityManager(),
             $this->getConfig()
         );
     }
@@ -38,6 +39,7 @@ class MyWorldMarketplaceApiBusinessFactory extends AbstractBusinessFactory
         return new CancelTurnoverRequest(
             $this->getMyWorldMarketplaceApiClient(),
             $this->getUtilEncodingService(),
+            $this->getEntityManager(),
             $this->getConfig()
         );
     }

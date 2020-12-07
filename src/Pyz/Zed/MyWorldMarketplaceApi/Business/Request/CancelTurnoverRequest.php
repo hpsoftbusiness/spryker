@@ -10,6 +10,7 @@ namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 use Generated\Shared\Transfer\OrderTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
+use Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 
 class CancelTurnoverRequest implements TurnoverRequestInterface
@@ -28,6 +29,11 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
     protected $utilEncodingService;
 
     /**
+     * @var \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface
+     */
+    protected $myWorldMarketplaceApiEntityManager;
+
+    /**
      * @var \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig
      */
     protected $myWorldMarketplaceApiConfig;
@@ -35,15 +41,18 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
     /**
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $myWorldMarketplaceApiClient
      * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     * @param \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface $myWorldMarketplaceApiEntityManager
      * @param \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
      */
     public function __construct(
         MyWorldMarketplaceApiClientInterface $myWorldMarketplaceApiClient,
         UtilEncodingServiceInterface $utilEncodingService,
+        MyWorldMarketplaceApiEntityManagerInterface $myWorldMarketplaceApiEntityManager,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
     ) {
         $this->myWorldMarketplaceApiClient = $myWorldMarketplaceApiClient;
         $this->utilEncodingService = $utilEncodingService;
+        $this->myWorldMarketplaceApiEntityManager = $myWorldMarketplaceApiEntityManager;
         $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
     }
 
@@ -59,13 +68,11 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
             $this->getRequestParams($orderTransfer)
         );
 
-        //log something here
-
         if (!$myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
             return;
         }
 
-        // update data
+        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCancelled($orderTransfer->getOrderReference());
     }
 
     /**
