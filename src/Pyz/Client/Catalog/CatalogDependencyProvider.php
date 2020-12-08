@@ -54,7 +54,6 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
             new PriceFacetConfigTransferBuilderPlugin(),
-            new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
         ];
     }
@@ -65,7 +64,6 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     protected function getSortConfigTransferBuilderPlugins()
     {
         return [
-            new RatingSortConfigTransferBuilderPlugin(),
             new AscendingNameSortConfigTransferBuilderPlugin(),
             new DescendingNameSortConfigTransferBuilderPlugin(),
             new AscendingPriceSortConfigTransferBuilderPlugin(),

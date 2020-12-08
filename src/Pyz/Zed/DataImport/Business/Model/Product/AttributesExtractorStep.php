@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\Product;
 
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
@@ -25,7 +26,6 @@ class AttributesExtractorStep implements DataImportStepInterface
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $keysToUnset = [];
         $attributes = [];
         $hiddenAttributes = [];
         $affiliateAttributes = [];
@@ -59,13 +59,11 @@ class AttributesExtractorStep implements DataImportStepInterface
                     $hiddenAttributes[$attributeKey] = (bool)$attributeValue;
                 }
             }
-
-            $keysToUnset[] = $match[0];
-            $keysToUnset[] = $attributeValueKey;
         }
 
-        foreach ($keysToUnset as $key) {
-            unset($dataSet[$key]);
+        $extraAttributesListKey = $this->getExtraAttributesListKeys();
+        foreach ($extraAttributesListKey as $key) {
+            $attributes[$key] = $dataSet[$key];
         }
 
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
@@ -99,17 +97,10 @@ class AttributesExtractorStep implements DataImportStepInterface
             'ean',
             'color',
             'size',
-            'material',
-            'manufacturer',
-            'brand',
-            'length',
-            'width',
-            'height',
-            'weight',
             'gtin',
-            'taric_code',
             'benefit_store',
             'shopping_point_store',
+            'brand',
         ];
     }
 
@@ -144,6 +135,16 @@ class AttributesExtractorStep implements DataImportStepInterface
             'affiliate_merchant_name',
             'affiliate_merchant_id',
             'merchant_product_id',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getExtraAttributesListKeys(): array
+    {
+        return [
+            CombinedProductStockHydratorStep::COLUMN_NAME,
         ];
     }
 }

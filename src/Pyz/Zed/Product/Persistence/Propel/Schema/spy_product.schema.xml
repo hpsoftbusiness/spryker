@@ -6,6 +6,7 @@
     <table name="spy_product_abstract">
         <column name="is_affiliate" type="boolean"/>
         <column name="affiliate_data" type="LONGVARCHAR"/>
+        <column name="brand" type="VARCHAR" size="255"/>
         <behavior name="event">
             <parameter name="spy_product_abstract_all" column="*"/>
         </behavior>
