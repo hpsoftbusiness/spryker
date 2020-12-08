@@ -26,6 +26,9 @@
                 'suggestion-url': path('search/suggestion'),
                 'base-suggest-url': path('search/suggestion'),
                 'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
+                'overlay-class-name': 'js-suggest-search__overlay-' ~ attributes['data-search-id'],
+                'overlay-show-class-name': 'js-suggest-search__show-' ~ attributes['data-search-id'],
+                'overlay-hide-class-name': 'js-suggest-search__hide-' ~ attributes['data-search-id'],
             },
         } only %}
 
