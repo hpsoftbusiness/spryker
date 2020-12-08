@@ -1,5 +1,7 @@
 <?php
 
+use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
+
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
 // ############################################################################
@@ -7,6 +9,7 @@
 // ----------------------------------------------------------------------------
 // ------------------------------ AUTHENTICATION ------------------------------
 // ----------------------------------------------------------------------------
+
 
 require 'common/config_oauth-development.php';
 
@@ -31,3 +34,10 @@ require 'common/config_adyen-development.php';
 // >>> SSO
 
 require 'common/config_sso-demo.php';
+
+// ----------------------------------------------------------------------------
+// ----------------------- MyWorld Marketplace API ----------------------------
+// ----------------------------------------------------------------------------
+
+require 'common/config_my-world-marketplace-api-development.php';
+$config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z5d186';

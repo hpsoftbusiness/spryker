@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
+use DateTime;
 use Exception;
 use Generated\Shared\Transfer\OrderTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
@@ -18,7 +19,6 @@ use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
 class CreateTurnoverRequest implements TurnoverRequestInterface
 {
     protected const SEGMENT_NUMBER = 1;
-    protected const DATE_FORMAT = 'yyyy-MM-ddTHH:mm:ssZ';
 
     /**
      * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
@@ -117,9 +117,9 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
         $accessTokenTransfer->requireAccessToken();
 
         $requestBody = $this->utilEncodingService->encodeJson([
-            'Reference' => $orderTransfer->getOrderReference(),
-            'Date' => date(static::DATE_FORMAT, strtotime($orderTransfer->getCreatedAt())),
-            'Amount' => $orderTransfer->getTotals()->getPriceToPay() / 100,
+            'Reference' => sprintf('%s-%s', $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(), $orderTransfer->getOrderReference()),
+            'Date' => date(DateTime::ISO8601, strtotime($orderTransfer->getCreatedAt())),
+            'Amount' => (string)bcdiv($orderTransfer->getTotals()->getPriceToPay(), 100, 2),
             'Currency' => $orderTransfer->getCurrencyIsoCode(),
             'SegmentNumber' => static::SEGMENT_NUMBER,
             'ProfileIdentifier' => $this->myWorldMarketplaceApiConfig->getDealerId(),
@@ -129,6 +129,7 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             'headers' => [
                 'Authorization' => sprintf('Bearer %s', $accessTokenTransfer->getAccessToken()),
                 'Accept' => 'application/vnd.myworld.services-v1+json',
+                'Content-Type' => 'application/json',
             ],
             'body' => $requestBody,
         ];

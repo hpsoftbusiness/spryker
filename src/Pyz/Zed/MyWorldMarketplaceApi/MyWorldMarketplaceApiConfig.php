@@ -22,4 +22,12 @@ class MyWorldMarketplaceApiConfig extends AbstractBundleConfig
     {
         return $this->get(MyWorldMarketplaceApiConstants::DEALER_ID);
     }
+
+    /**
+     * @return string
+     */
+    public function getOrderReferencePrefix(): string
+    {
+        return $this->get(MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX);
+    }
 }
