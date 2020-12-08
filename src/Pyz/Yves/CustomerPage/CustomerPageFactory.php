@@ -8,10 +8,13 @@
 namespace Pyz\Yves\CustomerPage;
 
 use Pyz\Client\Sso\SsoClientInterface;
+use Pyz\Yves\CustomerPage\CustomerAddress\AddressChoicesResolver;
 use Pyz\Yves\CustomerPage\Form\FormFactory;
 use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler;
 use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerUserProvider;
 use Pyz\Yves\CustomerPage\UserChecker\CustomerConfirmationUserChecker;
+use Spryker\Client\Country\CountryClientInterface;
+use SprykerShop\Yves\CustomerPage\CustomerAddress\AddressChoicesResolverInterface;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 
@@ -58,5 +61,21 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     public function createCustomerConfirmationUserChecker(): UserCheckerInterface
     {
         return new CustomerConfirmationUserChecker($this->getSsoClient());
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CustomerPage\CustomerAddress\AddressChoicesResolverInterface
+     */
+    public function createAddressChoicesResolver(): AddressChoicesResolverInterface
+    {
+        return new AddressChoicesResolver($this->getCountryClient());
+    }
+
+    /**
+     * @return \Spryker\Client\Country\CountryClientInterface
+     */
+    public function getCountryClient(): CountryClientInterface
+    {
+        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_COUNTRY);
     }
 }
