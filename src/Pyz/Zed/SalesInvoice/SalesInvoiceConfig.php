@@ -11,7 +11,7 @@ use Spryker\Zed\SalesInvoice\SalesInvoiceConfig as SprykerSalesInvoiceConfig;
 
 class SalesInvoiceConfig extends SprykerSalesInvoiceConfig
 {
-    public const ORDER_INVOICE_REFERENCE_PREFIX_NUMBER = 1279;
+    protected const ORDER_INVOICE_REFERENCE_PREFIX_NUMBER = 1279;
 
     /**
      * {@inheritDoc}

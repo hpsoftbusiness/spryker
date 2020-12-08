@@ -27,6 +27,6 @@ class SalesProductConnectorFacade extends SprykerSalesProductConnectorFacade imp
     {
         return $this->getFactory()
             ->createProductAttributesExpander()
-            ->expandOrderItemsWithProduct($itemTransfers);
+            ->expandOrderItemsWithProductAttributes($itemTransfers);
     }
 }

@@ -39,7 +39,7 @@ class ProductAttributesExpander implements ProductAttributesExpanderInterface
      *
      * @return \Generated\Shared\Transfer\ItemTransfer[]
      */
-    public function expandOrderItemsWithProduct(array $itemTransfers): array
+    public function expandOrderItemsWithProductAttributes(array $itemTransfers): array
     {
         $productConcreteSkus = $this->extractProductConcreteSkus($itemTransfers);
         $productConcreteTransfers = $this->salesProductConnectorRepository->getRawProductConcreteTransfersByConcreteSkus($productConcreteSkus);

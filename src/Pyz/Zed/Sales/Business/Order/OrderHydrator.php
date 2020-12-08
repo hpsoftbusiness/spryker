@@ -55,7 +55,7 @@ class OrderHydrator extends SprykerOrderHydrator
      *
      * @return void
      */
-    protected function hydrateOrderComments(SpySalesOrder $orderEntity, OrderTransfer $orderTransfer)
+    protected function hydrateOrderComments(SpySalesOrder $orderEntity, OrderTransfer $orderTransfer): void
     {
         $salesOrderCommentEntities = $orderEntity->getOrderComments();
 

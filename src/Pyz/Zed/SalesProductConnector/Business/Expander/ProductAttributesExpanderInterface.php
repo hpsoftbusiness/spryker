@@ -14,5 +14,5 @@ interface ProductAttributesExpanderInterface
      *
      * @return \Generated\Shared\Transfer\ItemTransfer[]
      */
-    public function expandOrderItemsWithProduct(array $itemTransfers): array;
+    public function expandOrderItemsWithProductAttributes(array $itemTransfers): array;
 }
