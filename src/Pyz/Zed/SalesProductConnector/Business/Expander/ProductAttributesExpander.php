@@ -43,7 +43,7 @@ class ProductAttributesExpander implements ProductAttributesExpanderInterface
     {
         $productConcreteSkus = $this->extractProductConcreteSkus($itemTransfers);
         $productConcreteTransfers = $this->salesProductConnectorRepository->getRawProductConcreteTransfersByConcreteSkus($productConcreteSkus);
-        $mappedProductConcreteTransfers = $this->mapProductConcreteTransfersBySku($productConcreteTransfers);
+        $mappedProductConcreteTransfers = $this->indexProductConcreteTransfersBySku($productConcreteTransfers);
 
         foreach ($itemTransfers as $itemTransfer) {
             $productConcreteTransfer = $mappedProductConcreteTransfers[$itemTransfer->getSku()] ?? null;
@@ -79,7 +79,7 @@ class ProductAttributesExpander implements ProductAttributesExpanderInterface
      *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer[]
      */
-    protected function mapProductConcreteTransfersBySku(array $productConcreteTransfers): array
+    protected function indexProductConcreteTransfersBySku(array $productConcreteTransfers): array
     {
         $mappedProductConcreteTransfers = [];
 
