@@ -1,0 +1,48 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'search-form-desktop'
+} %}
+
+{% define data = {
+    searchUrl: path('search'),
+    searchValue: app.request.get('q'),
+} %}
+
+{% define attributes = {
+    'data-search-id': required,
+} %}
+
+{% block body %}
+    <form action="{{ data.searchUrl }}">
+        <div class="{{ config.name }}__input">
+            <input name="q" type="text"
+                   class="{{ config.name }}__field {{ config.jsName }}__input--{{ attributes['data-search-id'] }}"
+                   placeholder="{{ 'global.search' | trans }}"
+                   value="{{ data.searchValue }}"
+                   autofocus="autofocus"
+                   autocomplete="off">
+
+            <button>
+                {% include atom('icon') with {
+                    class: config.name ~ '__icon',
+                    modifiers: ['bigger'],
+                    data: {
+                        name: 'search',
+                    },
+                } only %}
+            </button>
+        </div>
+
+        {% include molecule('suggest-search') with {
+            attributes: {
+                'suggestion-url': path('search/suggestion'),
+                'base-suggest-url': path('search/suggestion'),
+                'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
+                'overlay-class-name': 'js-suggest-search__overlay-' ~ attributes['data-search-id'],
+                'overlay-hide-class-name': 'js-suggest-search__hide-' ~ attributes['data-search-id'],
+                'show-overlay-on-init-suggestions': true,
+            },
+        } only %}
+    </form>
+{% endblock %}

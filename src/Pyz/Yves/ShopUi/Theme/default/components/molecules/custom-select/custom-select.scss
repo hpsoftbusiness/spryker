@@ -73,7 +73,7 @@
                 color: $setting-color-gray-3;
             }
 
-            .custom-select__caret {
+            #{$name}__caret {
                 color: $setting-color-gray-3;
             }
         }
@@ -83,12 +83,12 @@
                 color: $setting-color-black;
             }
 
-            .custom-select__caret {
+            #{$name}__caret {
                 color: $setting-color-black;
             }
         }
 
-        .custom-select__caret {
+        #{$name}__caret {
             right: rem(18.6);
         }
     }
