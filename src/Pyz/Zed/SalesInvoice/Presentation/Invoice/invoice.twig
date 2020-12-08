@@ -178,9 +178,9 @@
                 {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
             {% endif %}
         {% endif %}
-        {% endfor %}
+    {% endfor %}
 
-        {% for expense in order.expenses %}
+    {% for expense in order.expenses %}
         {% set linenumber = linenumber + 1 %}
         {% set taxRate = expense.taxRate %}
         {% set rateSum = taxes[expense.taxRate] | default(0) + expense.sumTaxAmount %}
