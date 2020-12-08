@@ -17,6 +17,7 @@ class LocaleNameToIdLocaleStep implements DataImportStepInterface
 {
     public const KEY_SOURCE = 'localeName';
     public const KEY_TARGET = 'idLocale';
+    protected const DEFAULT_LOCALE = 'de_DE';
 
     /**
      * @var string
@@ -77,7 +78,7 @@ class LocaleNameToIdLocaleStep implements DataImportStepInterface
     protected function resolveIdLocale($localeName)
     {
         $query = SpyLocaleQuery::create();
-        $localeEntity = $query->filterByLocaleName($localeName)->findOne();
+        $localeEntity = $query->filterByLocaleName($localeName ?: static::DEFAULT_LOCALE)->findOne();
 
         if (!$localeEntity) {
             throw new EntityNotFoundException(sprintf('Locale by name "%s" not found.', $localeName));

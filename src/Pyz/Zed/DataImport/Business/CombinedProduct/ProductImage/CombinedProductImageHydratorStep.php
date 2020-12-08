@@ -56,6 +56,21 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
      */
     protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
     {
+        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
+        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+
+        if ($isAbstractSkuIsEmpty === null) {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
+        if ($isConcreteSkuIsEmpty === null) {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT;
+        }
+
+        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] === "") {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
         $this->assertAssignableProductTypeColumn($dataSet);
 
         if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT) {

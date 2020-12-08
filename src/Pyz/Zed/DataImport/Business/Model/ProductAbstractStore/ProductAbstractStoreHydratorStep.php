@@ -16,6 +16,7 @@ class ProductAbstractStoreHydratorStep implements DataImportStepInterface
     public const BULK_SIZE = 1000;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+    public const COLUMN_CONCRETE_SKU = 'concrete_sku';
     public const COLUMN_STORE_NAME = 'store_name';
 
     public const DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER = 'DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER';
@@ -40,7 +41,7 @@ class ProductAbstractStoreHydratorStep implements DataImportStepInterface
         $productAbstractStoreTransfer = new ProductAbstractStoreTransfer();
         $productAbstractStoreTransfer
             ->setStoreName($dataSet[static::COLUMN_STORE_NAME])
-            ->setProductAbstractSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
+            ->setProductAbstractSku($dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]);
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = $productAbstractStoreTransfer;
     }

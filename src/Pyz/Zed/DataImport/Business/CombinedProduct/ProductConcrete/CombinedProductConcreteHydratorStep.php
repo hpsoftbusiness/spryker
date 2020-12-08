@@ -52,6 +52,22 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
      */
     public function execute(DataSetInterface $dataSet): void
     {
+        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
+        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+
+        if ($isAbstractSkuIsEmpty === null) {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_BOTH;
+        }
+
+        if ($isConcreteSkuIsEmpty === null) {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
+        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] === "") {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
+
         $this->assertAssignableProductTypeColumn($dataSet);
 
         parent::execute($dataSet);
@@ -68,6 +84,7 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
     protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
     {
         if (empty($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE])) {
+
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 '"%s" must be defined in the data set. Given: "%s"',
                 static::COLUMN_ASSIGNED_PRODUCT_TYPE,

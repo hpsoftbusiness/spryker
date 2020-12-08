@@ -475,6 +475,10 @@ customer.login.title,Access your account,en_US
 customer.login.title,Ich bin bereits Kunde,de_DE
 customer.registration.title,Create account,en_US
 customer.registration.title,Ich bin Neukunde,de_DE
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,en_US
+customer.account.available.cashback.amount,Available cashback amount,en_US
+customer.account.available.shopping.point.amount,Available shopping point amount,en_US
+customer.account.available.benefit.voucher.amount,Available benefit voucher amount,en_US
 customer.account.no_order,No orders at the moment,en_US
 customer.account.no_order,Keine Bestellungen,de_DE
 customer.account,Customer Account,en_US
@@ -1157,13 +1161,15 @@ mail.newsletter.subscribed.subject,Willkommen beim Spryker Newsletter,de_DE
 mail.newsletter.subscribed.subject,Welcome to Spryker newsletter,en_US
 mail.newsletter.subscribed.text,"Wir freuen uns, dass du dich für unseren Newsletter registriert hast. Wir werden unser bestes geben, um dich mich relevanten und spannenden News und Updates zu versorgen.",de_DE
 mail.newsletter.subscribed.text,We are thrilled you have signed up for our newletter. We will do our best to deliver you the most relevant and exciting news and updates.,en_US
-mail.newsletter.subscribed.footer.text,Viel Spaß beim Shoppen.,de_DE
-mail.newsletter.subscribed.footer.text,Enjoy your shopping experience.,en_US
+mail.newsletter.subscribed.footer.text,Wir freuen uns auf deinen nächsten Besuch!,de_DE
+mail.newsletter.subscribed.footer.text,We look forward to your next visit!,en_US
 mail.newsletter.unsubscribed.subject,"Schade, dass du uns verlässt",de_DE
 mail.newsletter.unsubscribed.subject,Sorry to see you go…,en_US
 mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop Newsletter abgemeldet. Du kannst dich jeder Zeit wieder über dein Kundenkonto anmelden.,de_DE
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
 mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
+mail.order.in-processing.subject,New order just placed,en_US
+mail.order.in-processing.subject,Neue Bestellung gerade aufgegeben,de_DE
 mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
 mail.order.confirmation.salutation,Hallo,de_DE
 mail.order.confirmation.salutation,Hello,en_US
@@ -2828,6 +2834,8 @@ mail.trans.customer_restore_password.title,New password for your Spryker Shop ac
 mail.trans.customer_restore_password.title,Neues Passwort für dein Spryker Shop-Konto,de_DE
 mail.trans.footer.contact_email_address,info@spryker.com,en_US
 mail.trans.footer.contact_email_address,info@spryker.com,de_DE
+mail.trans.footer.for_more_information,"For more information on the right of withdrawal and the terms and conditions, click on the name of the seller at the top. Do you have any further questions? Then you are sure to find the right answers in our service area.",en_US
+mail.trans.footer.for_more_information,"Nähere Informationen zum Widerrufsrecht und den AGB erhältst du, indem du oben auf den Namen des Verkäufers klickst. Hast du noch Fragen? Dann findest du in unserem Service-Bereich bestimmt die passenden Antworten.",de_DE
 mail.trans.footer.if_you_have_further_questions,"If you have any further questions, please contact our customer service at",en_US
 mail.trans.footer.if_you_have_further_questions,"Wenn du weitere Fragen hast, wende dich bitte an unseren Kundenservice unter",de_DE
 mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,en_US
@@ -2842,8 +2850,8 @@ mail.trans.footer.shopping_experience,Enjoy your shopping experience.,en_US
 mail.trans.footer.shopping_experience,Genieße das Shopping mit uns.,de_DE
 mail.trans.footer.shop_zip_code,10115,en_US
 mail.trans.footer.shop_zip_code,10115,de_DE
-mail.trans.footer.your_team,Your Spryker team!,en_US
-mail.trans.footer.your_team,Dein Spryker Team!,de_DE
+mail.trans.footer.your_team,Your myWorld.com Team,en_US
+mail.trans.footer.your_team,Dein myWorld.com Team,de_DE
 mail.trans.gift_card_delivery.subtitle,Your gift card code is,en_US
 mail.trans.gift_card_delivery.subtitle,Dein Geschenkgutschein-Code lautet,de_DE
 mail.trans.gift_card_delivery.title,"Dear customer, thank you for purchasing a gift card in our shop.",en_US
@@ -2866,36 +2874,44 @@ mail.trans.order.billing_address,Billing address,en_US
 mail.trans.order.billing_address,Rechnungsadresse,de_DE
 mail.trans.order.delivery_address,Delivery address,en_US
 mail.trans.order.delivery_address,Lieferadresse,de_DE
-mail.trans.order.delivery_method,Shipment method,en_US
+mail.trans.order.delivery_method,Delivery method,en_US
 mail.trans.order.delivery_method,Versandart,de_DE
-mail.trans.order.discounts_total,Discounts,en_US
-mail.trans.order.discounts_total,Rabatt,de_DE
-mail.trans.order.grand_total,Grand Total,en_US
-mail.trans.order.grand_total,Gesamtsumme,de_DE
+mail.trans.order.discounts_total,Discount,en_US
+mail.trans.order.discounts_total,Gutschein/Rabatt,de_DE
+mail.trans.order.grand_total,Total order incl. VAT,en_US
+mail.trans.order.grand_total,Summe Bestellung inkl. USt.,de_DE
 mail.trans.order.order_date,Order date,en_US
 mail.trans.order.order_date,Bestelldatum,de_DE
+mail.trans.order.payment_method,Payment Method,en_US
+mail.trans.order.payment_method,Zahlungsart,de_DE
+mail.trans.order.stock_name,Sold by,en_US
+mail.trans.order.stock_name,Verkauft von,de_DE
 mail.trans.order.order_details,Order details,en_US
 mail.trans.order.order_details,Bestellung,de_DE
-mail.trans.order.order_reference,Order reference,en_US
+mail.trans.order.order_reference,Order Number,en_US
 mail.trans.order.order_reference,Bestellnummer,de_DE
-mail.trans.order.quantity,Qty,en_US
+mail.trans.order.quantity,Amount,en_US
 mail.trans.order.quantity,Anzahl,de_DE
 mail.trans.order.requested_delivery_date,Requested delivery date,en_US
 mail.trans.order.requested_delivery_date,Gewünschtes Lieferdatum,de_DE
-mail.trans.order.shipment_costs_total,Shipment costs (total),en_US
-mail.trans.order.shipment_costs_total,Lieferkosten (gesamt),de_DE
+mail.trans.order.shipment_costs_total,Shipping incl. VAT,en_US
+mail.trans.order.shipment_costs_total,Versand inkl. USt.,de_DE
 mail.trans.order.shipment_for_number.part1,Shipment,en_US
 mail.trans.order.shipment_for_number.part1,Lieferung,de_DE
 mail.trans.order.shipment_for_number.part2,of,en_US
 mail.trans.order.shipment_for_number.part2,von,de_DE
-mail.trans.order.subtotal,Subtotal,en_US
-mail.trans.order.subtotal,Zwischensumme,de_DE
+mail.trans.order.subtotal,Subtotal incl. VAT,en_US
+mail.trans.order.subtotal,Zwischensumme inkl. USt.,de_DE
 mail.trans.order.taxes,Taxes,en_US
 mail.trans.order.taxes,Steuern,de_DE
-mail.trans.order_confirmation.subtitle,"We are writing to let you know that we recieved your order. You can expect a shipping confirmation by e-mail as soon as the order has been sent. We hope you like your order, but if you change your mind, please return it within 14 days.",en_US
-mail.trans.order_confirmation.subtitle,"Wir haben deine Bestellung erhalten. Du erhälst von uns eine Versandbestätigung per E-Mail, sobald die Bestellung verschickt wurde. Wir hoffen, dass dir deine Bestellung gefällt. Falls du deine Meinung änderst, kannst du deine Artikel innerhalb von 14 Tagen zurückschicken.",de_DE
-mail.trans.order_confirmation.title,Thank you for shopping at Spryker Shop!,en_US
-mail.trans.order_confirmation.title,Vielen Dank für deinen Einkauf im Spryker Shop!,de_DE
+mail.trans.order_confirmation.subtitle,"as soon as your package is on its way, you will receive a separate shipping confirmation from us by e-mail. In case of partial deliveries you will receive a separate notification for each delivery. To view your order, please visit the 'My Orders' section of myWorld.com.",en_US
+mail.trans.order_confirmation.subtitle,"sobald dein Paket auf dem Weg ist, erhältst du von uns eine gesonderte Versandbestätigung per E-Mail. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Um deine Bestellung anzusehen, besuche bitte den Bereich 'Meine Bestellungen' auf myWorld.com.",de_DE
+mail.trans.shipping_confirmation.subtitle,"we would like to inform you that your order or parts of your order have been shipped. In case of partial deliveries you will receive a separate notification for each delivery. As soon as the seller has made the invoice available, you will find it in your customer account under 'My orders'.",en_US
+mail.trans.shipping_confirmation.subtitle,"wir möchten dich darüber informieren, dass deine Bestellung oder Teile deiner Bestellung versandt worden sind. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Sobald der Verkäufer die Rechnung zur Verfügung gestellt hat, findest du sie in deinem Kundenkonto unter 'Meine Bestellungen'.",de_DE
+mail.trans.order_in_processing.title,New order just placed,en_US
+mail.trans.order_in_processing.title,Neue Bestellung gerade aufgegeben,de_DE
+mail.trans.order_confirmation.title,Thanks for your order!,en_US
+mail.trans.order_confirmation.title,Vielen Dank für deine Bestellung!,de_DE
 mail.trans.restore_password.change_password,Change password,en_US
 mail.trans.restore_password.change_password,Passwort ändern,de_DE
 mail.trans.restore_password.subtitle,"Somebody has requested a new password for your Spryker Back Office account. If it was not you, please ignore this email. If it was you, please follow the instructions in  the button bellow",en_US
@@ -2914,5 +2930,7 @@ customer.authorization.validate_email_address,"Almost there! We send you an emai
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
 customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
-checkout.step.address.is_sellable,"Dear customer, the product you are looking for is unfortunately not sold in your country. It will be automatically removed from the shopping cart.",en_US
-checkout.step.address.is_sellable,"Lieber Kunde, das gewünschte Produkt wird in Ihrem Land leider nicht verkauft. Es wird automatisch aus dem Warenkorb entfernt.",de_DE
+cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
+cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
+checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
+checkout.step.address.is_sellable,"Lieber Kunde, ein Produkt ist leider nicht in deiner Lieferadresse verfügbar.",de_DE

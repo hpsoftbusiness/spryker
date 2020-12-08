@@ -30,6 +30,10 @@ abstract class CombinedProductMandatoryColumnCondition implements DataSetConditi
      */
     final public function hasData(DataSetInterface $dataSet): bool
     {
+        if ($this->getMandatoryColumns() === []) {
+            return true;
+        }
+
         foreach ($this->getMandatoryColumns() as $mandatoryColumn) {
             if (!empty($dataSet[$mandatoryColumn])) {
                 return true;
