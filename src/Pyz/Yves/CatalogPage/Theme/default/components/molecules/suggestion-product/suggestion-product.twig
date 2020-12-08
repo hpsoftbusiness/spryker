@@ -15,8 +15,8 @@
             {% endif %}
        </span>
 
-        <span class="col col--lg-9 title title--medium">
-            {{- data.title -}}
+        <span class="col col--sm-9 title title--medium">
+            <div class="spacing-bottom">{{- data.title -}}</div>
             {% if can('SeePricePermissionPlugin') %}
                 {% include molecule('money-price') with {
                     modifiers: ['suggestion-product'],

@@ -64,6 +64,14 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected cleanUpInput(): void {
         this.searchInput.value = '';
         this.suggestionsContainer.innerHTML = '';
+        this.setHintValue('');
+    }
+
+    protected onInputClick(): void {
+        this.activeItemIndex = 0;
+        if (this.isNavigationExist()) {
+            this.updateNavigation();
+        }
     }
 
     protected openSearchLayout(): void {
