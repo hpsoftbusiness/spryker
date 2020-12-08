@@ -61,15 +61,15 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
     protected function checkSkuProductAlreadyExists(DataSetInterface $dataSet): void
     {
         $sku = $dataSet[static::KEY_ABSTRACT_SKU];
-
+//
         if (isset($this->skuProductConcreteList[$sku])) {
             throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" already exists.', $sku));
         }
 
-        if (isset($this->resolved[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" has been already imported.', $sku));
-        }
+//        if (isset($this->resolved[$sku])) {
+//            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" has been already imported.', $sku));
+//        }
 
-        $this->resolved[$sku] = true;
+//        $this->resolved[$sku] = true;
     }
 }

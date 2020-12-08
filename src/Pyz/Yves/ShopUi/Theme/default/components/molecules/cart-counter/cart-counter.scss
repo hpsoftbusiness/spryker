@@ -3,6 +3,10 @@
         position: relative;
     }
 
+    &__link {
+        @include helper-effect-transition(color);
+    }
+
     &__quantity {
         position: absolute;
         top: rem(-11);

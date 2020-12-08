@@ -7,7 +7,12 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CancelTurnoverCommandByOrderPlugin;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CreateTurnoverCommandByOrderPlugin;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCancelledConditionPlugin;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCreatedConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendShippingConfirmationPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Is1HourNotPassedConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
@@ -110,6 +115,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         $container->extend(static::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
             $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
             $commandCollection->add(new SendOrderInProcessingPlugin(), 'Oms/SendOrderInProcessing');
+            $commandCollection->add(new SendShippingConfirmationPlugin(), 'Oms/SendShippingConfirmation');
             $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
             $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
             $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
@@ -123,6 +129,10 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
             $commandCollection->add(new RefundPlugin(), 'Adyen/Refund');
             $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
+
+            // ----- Turnover
+            $commandCollection->add(new CreateTurnoverCommandByOrderPlugin(), 'MyWorld/CreateTurnover');
+            $commandCollection->add(new CancelTurnoverCommandByOrderPlugin(), 'MyWorld/CancelTurnover');
 
             return $commandCollection;
         });
@@ -156,6 +166,10 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new IsRefusedPlugin(), 'Adyen/IsRefused');
             $conditionCollection->add(new TrueConditionPlugin(), 'Oms/TrueCondition');
             $conditionCollection->add(new Is1HourNotPassedConditionPlugin(), 'Oms/Is1HourNotPassed');
+
+            // ----- Turnover
+            $conditionCollection->add(new IsTurnoverCreatedConditionPlugin(), 'MyWorld/IsTurnoverCreated');
+            $conditionCollection->add(new IsTurnoverCancelledConditionPlugin(), 'MyWorld/IsTurnoverCancelled');
 
             return $conditionCollection;
         });

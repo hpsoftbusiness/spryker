@@ -16,6 +16,7 @@ use Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStoreQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceTypeQuery;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
@@ -162,9 +163,15 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-        $priceProductStoreEntity->setGrossPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100);
-        $priceProductStoreEntity->setNetPrice((float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100);
-        $priceProductStoreEntity->setNetPrice((float)$dataSet[static::COLUMN_PRICE_NET] * 100);
+        $grossPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100;
+        $netPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100;
+
+        if ($dataSet[CombinedProductPriceHydratorStep::COLUMN_IS_AFFILIATE_PRODUCT]) {
+            $grossPrice = $netPrice = (float)str_replace(',', '.', $dataSet[CombinedProductPriceHydratorStep::COLUMN_AFFILIATE_PRODUCT_PRICE]) * 100;
+        }
+
+        $priceProductStoreEntity->setGrossPrice($grossPrice);
+        $priceProductStoreEntity->setNetPrice($netPrice);
 
         $priceProductStoreEntity->setPriceData($dataSet[static::COLUMN_PRICE_DATA]);
         $priceProductStoreEntity->setPriceDataChecksum($dataSet[static::COLUMN_PRICE_DATA_CHECKSUM]);

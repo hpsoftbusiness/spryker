@@ -49,6 +49,8 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     public const DATA_PRODUCT_IMAGE_TRANSFER = 'DATA_PRODUCT_IMAGE_TRANSFER';
     public const DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
 
+    public const DEFAULT_IMAGE_SET_NAME = 'default';
+
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -82,7 +84,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         }
 
         if (!empty($dataSet[static::COLUMN_PRODUCT_IMAGE_SET_KEY])) {
-            $imageSetEntityTransfer->setProductImageSetKey($dataSet[static::COLUMN_PRODUCT_IMAGE_SET_KEY]);
+            $imageSetEntityTransfer->setProductImageSetKey($dataSet[static::COLUMN_PRODUCT_IMAGE_SET_KEY] ?: static::DEFAULT_IMAGE_SET_NAME);
         }
 
         if (isset($dataSet[static::KEY_IMAGE_SET_FK_LOCALE])) {
@@ -110,7 +112,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageEntityTransfer = new SpyProductImageEntityTransfer();
         $imageEntityTransfer->setExternalUrlLarge($dataSet[static::COLUMN_EXTERNAL_URL_LARGE]);
         $imageEntityTransfer->setExternalUrlSmall($dataSet[static::COLUMN_EXTERNAL_URL_SMALL]);
-        $imageEntityTransfer->setProductImageKey($dataSet[static::COLUMN_PRODUCT_IMAGE_KEY]);
+        $imageEntityTransfer->setProductImageKey($dataSet[static::COLUMN_PRODUCT_IMAGE_KEY] ?: uniqid());
 
         $dataSet[static::DATA_PRODUCT_IMAGE_TRANSFER] = $imageEntityTransfer;
     }

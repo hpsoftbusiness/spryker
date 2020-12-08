@@ -1,5 +1,7 @@
 <?php
 
+use Pyz\Shared\Oms\OmsConstants;
+
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
 // ############################################################################
@@ -30,4 +32,12 @@ require 'common/config_adyen-development.php';
 
 // >>> SSO
 
-require 'common/config_sso-development.php';
+require 'common/config_sso-demo.php';
+
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MAIL ----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';

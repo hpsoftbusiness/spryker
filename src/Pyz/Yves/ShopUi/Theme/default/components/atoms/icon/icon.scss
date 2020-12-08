@@ -20,6 +20,11 @@
         height: rem(26);
     }
 
+    &--bigger {
+        width: rem(36);
+        height: rem(36);
+    }
+
     &--close-filter {
         position: absolute;
         right: rem(10);
