@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace Pyz\Yves\ProductDetailPage;
+
+use Pyz\Client\Customer\CustomerClientInterface;
+use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
+use SprykerShop\Yves\ProductDetailPage\ProductDetailPageFactory as SprykerShopProductDetailPageFactory;
+
+class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
+{
+    /**
+     * @return \Pyz\Client\Customer\CustomerClientInterface
+     */
+    public function getCustomerClient(): CustomerClientInterface
+    {
+        return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_CUSTOMER);
+    }
+
+    /**
+     * @return \Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface
+     */
+    public function getProductAffiliateService(): ProductAffiliateServiceInterface
+    {
+        return $this->getProvidedDependency(ProductDetailPageDependencyProvider::SERVICE_PRODUCT_AFFILIATE);
+    }
+}

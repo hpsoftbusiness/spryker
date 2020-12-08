@@ -213,6 +213,8 @@ page.checkout.finalize.buy-now,Jetzt kaufen,de_DE
 page.checkout.finalize.buy-now,Buy now,en_US
 page.detail.add-to-cart,In den Warenkorb,de_DE
 page.detail.add-to-cart,Add to Cart,en_US
+page.detail.affiliate-product-action,Zum Shop,de_DE
+page.detail.affiliate-product-action,Go to Shop,en_US
 page.detail.dimensions,Abmessungen,de_DE
 page.detail.dimensions,Measurements,en_US
 page.product.by,von,de_DE
