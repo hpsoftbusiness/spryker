@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\Customer\Business\Customer;
 
+use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
 use Spryker\Zed\Customer\Business\Customer\Customer as SprykerCustomer;
 use Spryker\Zed\Customer\Business\Exception\CustomerNotFoundException;
 
@@ -49,5 +51,21 @@ class Customer extends SprykerCustomer
             $customerTransfer->getEmail(),
             $customerTransfer->getRestorePasswordKey()
         ));
+    }
+
+    /**
+     * @param \Orm\Zed\Customer\Persistence\SpyCustomerAddress $addressEntity
+     *
+     * @return \Generated\Shared\Transfer\AddressTransfer
+     */
+    protected function entityToTransfer(SpyCustomerAddress $addressEntity)
+    {
+        $addressTransfer = parent::entityToTransfer($addressEntity);
+
+        $countryTransfer = (new CountryTransfer())
+            ->setName($addressEntity->getCountry()->getName());
+        $addressTransfer->setCountry($countryTransfer);
+
+        return $addressTransfer;
     }
 }
