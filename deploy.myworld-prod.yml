@@ -97,27 +97,27 @@ groups:
       Redirects:
         application: static
         endpoints:
-          de.myworld-prod.cloud.spryker.toys:
+          de.marketplace.myworld.com:
             store: DE
             redirect:
               type: 302
-              url: www.de.myworld-prod.cloud.spryker.toys
+              url: www.de.marketplace.myworld.com
       Yves:
         application: yves
         endpoints:
-          www.de.myworld-prod.cloud.spryker.toys:
+          www.de.marketplace.myworld.com:
             store: DE
             <<: *frontend-auth
       Zed:
         application: zed
         endpoints:
-          zed.de.myworld-prod.cloud.spryker.toys:
+          zed.de.marketplace.myworld.com:
             store: DE
             <<: *frontend-auth
       Glue:
         application: glue
         endpoints:
-          glue.de.myworld-prod.cloud.spryker.toys:
+          glue.de.marketplace.myworld.com:
             store: DE
 
 services:
@@ -136,7 +136,7 @@ services:
       username: "spryker"
       password: "secret"
     endpoints:
-      rabbitmq.myworld-prod.cloud.spryker.toys:
+      rabbitmq.marketplace.myworld.coms:
       localhost:5672:
         protocol: tcp
   session:
@@ -155,11 +155,11 @@ services:
   scheduler:
     engine: jenkins
     endpoints:
-      jenkins.myworld-prod.cloud.spryker.toys:
+      jenkins.marketplace.myworld.coms:
   mail_catcher:
     engine: mailhog
     endpoints:
-      mail.myworld-prod.cloud.spryker.toys:
+      mail.marketplace.myworld.coms:
 
 docker:
 
