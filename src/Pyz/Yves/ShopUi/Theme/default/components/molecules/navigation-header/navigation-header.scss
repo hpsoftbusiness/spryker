@@ -1,12 +1,10 @@
 @mixin shop-ui-navigation-header($name: '.navigation-header') {
     #{$name} {
         padding: rem(16) 0;
-        position: relative;
+        position: absolute;
+        background-color: $setting-color-white;
 
-        &__flyout-fullscreen,
-        &__brand-dropdown {
-            position: static;
-        }
+        @content;
     }
 }
 

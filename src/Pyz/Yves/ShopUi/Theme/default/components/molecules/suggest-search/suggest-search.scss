@@ -4,7 +4,7 @@
         top: rem(53);
         width: 100%;
 
-        @include helper-breakpoint-media-min($xl-min) {
+        @include helper-breakpoint-media-min($lg-min) {
             top: rem(45);
         }
 
@@ -16,11 +16,13 @@
             border-bottom-left-radius: rem(10);
             border-bottom-right-radius: rem(10);
 
-            @include helper-breakpoint-media-min($xl-min) {
+            @include helper-breakpoint-media-min($lg-min) {
                 border-top-left-radius: rem(10);
                 border-top-right-radius: rem(10);
                 margin: 0;
                 border: rem(1) solid $setting-color-gray-2;
+                max-height: rem(450);
+                overflow-y: auto;
             }
         }
 
@@ -71,7 +73,7 @@
                 left: 40%;
             }
 
-            @include helper-breakpoint-media-min($xl-min) {
+            @include helper-breakpoint-media-min($lg-min) {
                 top: rem(-43);
                 left: calc(50% - #{rem(20)});
             }

@@ -3,7 +3,7 @@
         position: relative;
         background-color: $setting-color-white;
         z-index: $setting-zi-header;
-        border-bottom: rem(1) solid $setting-color-gray-1;
+        box-shadow: 0 rem(2) rem(6) 0 $setting-color-alpha-3;
 
         @include helper-breakpoint-media-min($xl-min) {
             padding-top: 0;
@@ -55,9 +55,34 @@
         }
 
         &__categories {
-            &__label {
-                font-weight: fw(medium);
+            position: relative;
+            cursor: pointer;
+        }
+
+        &__categories-label {
+            @include helper-effect-transition(color);
+            font-weight: fw(medium);
+
+            &:hover,
+            &--active {
+                color: $setting-color-main;
             }
+
+            &--active {
+                #{$name}__categories-icon {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+
+        &__categories-icon {
+            @include helper-effect-transition(transform);
+            margin-left: rem(8);
+            transform-origin: center center;
+        }
+
+        &__categories-list {
+            //display: none;
         }
 
         &__search-form {
