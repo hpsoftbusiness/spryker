@@ -33,7 +33,7 @@
     } only %}
         {% block contentText %}
             {% if embed.description is not empty %}
-                {{ embed.description }}
+                {{ embed.description | raw }}
             {% endif %}
             <div class="spacing-top spacing-top--bigger">{{ 'product.attribute.sku' | trans }}: {{ embed.sku }}</div>
         {% endblock %}
