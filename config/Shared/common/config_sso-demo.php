@@ -6,8 +6,6 @@
  */
 
 use Pyz\Shared\Sso\SsoConstants;
-use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Kernel\KernelConstants;
 
 // ----------------------------------------------------------------------------
 // --------------------------- Single Sigh On ---------------------------------

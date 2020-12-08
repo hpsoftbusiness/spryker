@@ -101,7 +101,6 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
         }
 
         if (empty($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE])) {
-
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 '"%s" must be defined in the data set. Given: "%s"',
                 static::COLUMN_ASSIGNED_PRODUCT_TYPE,
