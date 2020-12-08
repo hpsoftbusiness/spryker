@@ -14,7 +14,7 @@
         <div class="col col--lg-8 col--xl-6 is-hidden-sm-md">
             <div class="grid grid--middle">
                 {% block selects %}
-                    <div class="col col--sm-9 col--md-7 {{ config.jsName }}__filter" data-block-to="js-filter-section__sorting" data-breakpoint="769">
+                    <div class="col col--sm-12 {{ config.jsName }}__filter" data-block-to="js-filter-section__sorting" data-breakpoint="769">
                         {% embed molecule('custom-select') with {
                             class: 'float-right',
                             modifiers: ['hollow'],
