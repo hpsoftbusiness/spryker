@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Client\MyWorldMarketplaceApi;
 
 use GuzzleHttp\ClientInterface;
@@ -13,7 +18,6 @@ use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidator;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidatorInterface;
 use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
-use Spryker\Shared\ErrorHandler\ErrorHandler;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 
 /**
