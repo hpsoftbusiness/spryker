@@ -30,12 +30,12 @@
             <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
             <event name="cancel payment" manual="true"/>
             <event name="capture payment" manual="true"/>
-            <event name="start turnover creation process" onEnter="true"/>
+            <event name="start turnover creation process" manual="true"/>
             <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
             <event name="send invoice" onEnter="true" command="Invoice/SendInvoice"/>
             <event name="refund payment" manual="true"/>
             <event name="start turnover cancellation process" onEnter="true"/>
-            <event name="close" timeout="28days"/>
+            <event name="close" timeout="20days"/>
             <event name="pass" onEnter="true"/>
         </events>
 
