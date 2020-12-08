@@ -15,4 +15,5 @@ interface MyWorldMarketplaceApiConstants
     public const TOKEN_URL = 'MY_WORLD_MARKETPLACE_API:TOKEN_URL';
     public const USER_AGENT = 'SSO:USER_AGENT';
     public const DEALER_ID = 'MY_WORLD_MARKETPLACE_API:DEALER_ID';
+    public const ORDER_REFERENCE_PREFIX = 'MY_WORLD_MARKETPLACE_API:ORDER_REFERENCE_PREFIX';
 }

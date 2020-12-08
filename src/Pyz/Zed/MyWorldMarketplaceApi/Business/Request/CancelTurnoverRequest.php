@@ -86,7 +86,7 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
             '%s/dealers/%s/turnovers/%s/cancel',
             $this->myWorldMarketplaceApiConfig->getApiUrl(),
             $this->myWorldMarketplaceApiConfig->getDealerId(),
-            $orderTransfer->getOrderReference()
+            sprintf('%s-%s', $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(), $orderTransfer->getOrderReference())
         );
     }
 
@@ -101,14 +101,15 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
         $accessTokenTransfer->requireAccessToken();
 
         $requestBody = $this->utilEncodingService->encodeJson([
-            'Amount' => $orderTransfer->getTotals()->getPriceToPay() / 100,
-            'Currency' => $orderTransfer->getCurrency()->getCode(),
+            'Amount' => (string)bcdiv($orderTransfer->getTotals()->getPriceToPay(), 100, 2),
+            'Currency' => $orderTransfer->getCurrencyIsoCode(),
         ]);
 
         return [
             'headers' => [
                 'Authorization' => sprintf('Bearer %s', $accessTokenTransfer->getAccessToken()),
                 'Accept' => 'application/vnd.myworld.services-v1+json',
+                'Content-Type' => 'application/json',
             ],
             'body' => $requestBody,
         ];
