@@ -561,6 +561,8 @@ customer.address.is_default_billing,Is default billing address,en_US
 customer.address.is_default_billing,Standard Rechnungsadresse,de_DE
 customer.address.is_default_shipping,Is default shipping address,en_US
 customer.address.is_default_shipping,Standard Lieferadresse,de_DE
+customer.address.placeholder.optional,Optional,en_US
+customer.address.placeholder.optional,Optional,de_DE
 customer.anonymization.success,Your account has been deleted successfully,en_US
 customer.anonymization.success,Dein Account wurde gelöscht,de_DE
 customer.anonymization.failed,Your account could not be deleted,en_US
