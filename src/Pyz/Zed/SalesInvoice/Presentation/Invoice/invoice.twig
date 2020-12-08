@@ -144,32 +144,39 @@
         {% endif %}
 
         {% if item.productBundle is defined and item.productBundle is not null %}
-        {% if item.relatedBundleItemIdentifier not in renderedBundles %}
-        {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
+            {% if item.relatedBundleItemIdentifier not in renderedBundles %}
+                {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
 
-        {% set linenumber = linenumber + 1 %}
-        {% set productBundle = item.productBundle %}
+                {% set linenumber = linenumber + 1 %}
+                {% set productBundle = item.productBundle %}
 
-        <tr>
-        <td class="text-center">{{ linenumber }}</td>
-        <td class="text-center">{{ productBundle.quantity }}</td>
-        <td>{{ productBundle.name }} <br>{{ productBundle.concreteAttributes['gtin'] }} ({{ productBundle.taxRate | number_format }}% {{ 'order_invoice.invoice_template.table.tax.name' | trans }})</td>
-        <td></td>
-        <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                <tr>
+                    <td class="text-center">{{ linenumber }}</td>
+                    <td class="text-center">{{ productBundle.quantity }}</td>
+                    <td>{{ productBundle.name }} <br>{{ productBundle.concreteAttributes['gtin'] }}
+                        ({{ productBundle.taxRate | number_format }}
+                        % {{ 'order_invoice.invoice_template.table.tax.name' | trans }})
+                    </td>
+                    <td></td>
+                    <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                </tr>
+                {% for bundleditem in order.items %}
+                    {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
+                        <tr>
+                            <td></td>
+                            <td class="text-center">{{ bundleditem.quantity }}</td>
+                            <td>{{ bundleditem.name }} <br>{{ bundleditem.concreteAttributes['gtin'] }}
+                                ({{ bundleditem.taxRate | number_format }}
+                                % {{ 'order_invoice.invoice_template.table.tax.name' | trans }})
+                            </td>
+                            <td></td>
+                            <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
 
-        {% for bundleditem in order.items %}
-        {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
-    <tr>
-        <td></td>
-        <td class="text-center">{{ bundleditem.quantity }}</td>
-        <td>{{ bundleditem.name }} <br>{{ bundleditem.concreteAttributes['gtin'] }} ({{ bundleditem.taxRate | number_format }}% {{ 'order_invoice.invoice_template.table.tax.name' | trans }})</td>
-        <td></td>
-        <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
-        {% endif %}
-        {% endfor %}
-
-        {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
-        {% endif %}
+                {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
+            {% endif %}
         {% endif %}
         {% endfor %}
 
