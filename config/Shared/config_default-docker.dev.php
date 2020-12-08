@@ -166,3 +166,5 @@ require 'common/config_adyen-development.php';
 // >>> SSO
 
 require 'common/config_sso-development.php';
+
+require 'common/config_my-world-marketplace-api-development.php';
