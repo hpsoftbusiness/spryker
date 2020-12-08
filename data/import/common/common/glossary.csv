@@ -2624,16 +2624,16 @@ order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 1011
 order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,de_DE
 order_invoice.invoice_template.table.payment_reference,Payment reference,en_US
 order_invoice.invoice_template.table.payment_reference,Zahlungsreferenz,de_DE
-order_invoice.invoice_template.table.grant_total,The grand total,en_US
-order_invoice.invoice_template.table.grant_total,Zahlbetrag,de_DE
-order_invoice.invoice_template.table.order_reference,The order number,en_US
-order_invoice.invoice_template.table.order_reference,Bestellnummer,de_DE
-order_invoice.invoice_template.table.order_date,Order Date,en_US
-order_invoice.invoice_template.table.order_date,Bestelldatum,de_DE
-order_invoice.invoice_template.table.invoice_date,Invoice generation date,en_US
-order_invoice.invoice_template.table.invoice_date,Rechnungsdatum/Lieferdatum,de_DE
-order_invoice.invoice_template.table.cashback_customer_number,Cashback customer number,en_US
-order_invoice.invoice_template.table.cashback_customer_number,Cashback Kundennummer,de_DE
+order_invoice.invoice_template.table.grant_total,The grand total:,en_US
+order_invoice.invoice_template.table.grant_total,Zahlbetrag:,de_DE
+order_invoice.invoice_template.table.order_reference,The order number:,en_US
+order_invoice.invoice_template.table.order_reference,Bestellnummer:,de_DE
+order_invoice.invoice_template.table.order_date,Order Date:,en_US
+order_invoice.invoice_template.table.order_date,Bestelldatum:,de_DE
+order_invoice.invoice_template.table.invoice_date,Invoice generation date:,en_US
+order_invoice.invoice_template.table.invoice_date,Rechnungsdatum/Lieferdatum:,de_DE
+order_invoice.invoice_template.table.cashback_customer_number,Cashback customer number:,en_US
+order_invoice.invoice_template.table.cashback_customer_number,Cashback Kundennummer:,de_DE
 return_page.list.title,Returns,en_US
 return_page.list.title,Retouren,de_DE
 return_page.account.no_return,No returns at the moment,en_US

@@ -73,23 +73,23 @@
         </td>
         <td width="500" class="align-top">
             <p>
-                {{ 'order_invoice.invoice_template.table.grant_total' | trans }}:
+                {{ 'order_invoice.invoice_template.table.grant_total' | trans }}
                 <strong>{{ order.totals.grandTotal | money }}</strong>
             </p>
             <p>
-                {{ 'order_invoice.invoice_template.table.order_reference' | trans }}:
+                {{ 'order_invoice.invoice_template.table.order_reference' | trans }}
                 <strong>{{ order.orderReference }}</strong>
             </p>
             <p>
-                {{ 'order_invoice.invoice_template.table.order_date' | trans }}:
+                {{ 'order_invoice.invoice_template.table.order_date' | trans }}
                 <strong>{{ order.createdAt | date('d. M Y') }}</strong>
             </p>
             <p>
-                {{ 'order_invoice.invoice_template.table.invoice_date' | trans }}:
+                {{ 'order_invoice.invoice_template.table.invoice_date' | trans }}
                 <strong>{{ invoice.issueDate | date('d. M Y') }}</strong>
             </p>
             <p>
-                {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}:
+                {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}
                 <strong>{{ order.customer.myWorldCustomerNumber }}</strong>
             </p>
         </td>
