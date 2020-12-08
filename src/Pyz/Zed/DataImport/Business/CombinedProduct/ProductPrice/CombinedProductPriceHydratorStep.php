@@ -24,9 +24,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const COLUMN_CURRENCY = 'product_price.currency';
     public const COLUMN_STORE = 'product_price.store';
     public const COLUMN_PRICE_NET = 'product.value_56';
-//    public const COLUMN_PRICE_NET = 'product_price.value_net';
     public const COLUMN_PRICE_GROSS = 'product.value_57';
-//    public const COLUMN_PRICE_GROSS = 'product_price.value_gross';
     public const COLUMN_PRICE_DATA = 'product_price.price_data';
     public const COLUMN_PRICE_DATA_CHECKSUM = 'product_price.price_data_checksum';
     public const COLUMN_PRICE_TYPE = 'product_price.price_type';
@@ -40,6 +38,11 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT,
         self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
     ];
+
+    protected const DEFAULT_PRICE_TYPE = 'DEFAULT';
+
+    public const COLUMN_IS_AFFILIATE_PRODUCT = 'product.value_73';
+    public const COLUMN_AFFILIATE_PRODUCT_PRICE = 'product.value_75';
 
     /**
      * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
@@ -71,6 +74,25 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
      */
     protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
     {
+        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
+        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+
+        if ($isAbstractSkuIsEmpty === null) {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
+        if ($isConcreteSkuIsEmpty === null) {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT;
+        }
+
+        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] === "") {
+            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+        }
+
+        if ($dataSet[static::COLUMN_PRICE_TYPE] === "") {
+            $dataSet[static::COLUMN_PRICE_TYPE] = static::DEFAULT_PRICE_TYPE;
+        }
+
         $this->assertAssignableProductTypeColumn($dataSet);
 
         if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT) {

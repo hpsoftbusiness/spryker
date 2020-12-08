@@ -33,7 +33,7 @@ class SendOrderInProcessingPlugin extends AbstractPlugin implements CommandByOrd
      */
     public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data)
     {
-        //TODO: Call Facade to send order in processing e-mail.
+        $this->getFacade()->sendOrderInProcessingMail($orderEntity);
 
         return [];
     }

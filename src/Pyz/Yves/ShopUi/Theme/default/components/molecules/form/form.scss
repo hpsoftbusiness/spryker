@@ -228,6 +228,7 @@ $address-form-width: rem(600);
             display: inline-block;
             font: normal rem(15) $setting-font-family;
             margin-bottom: rem(6);
+            cursor: pointer;
 
             &--required {
                 &::after {
