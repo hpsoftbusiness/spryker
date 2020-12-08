@@ -805,8 +805,8 @@ countries.iso.EE,Estonia,en_US
 countries.iso.EE,Estland,de_DE
 countries.iso.FR,France,en_US
 countries.iso.FR,Frankreich,de_DE
-countries.iso.GR,Greece	Griechenland,en_US
-countries.iso.GR,Greece	Griechenland,de_DE
+countries.iso.GR,Greece,en_US
+countries.iso.GR,Griechenland,de_DE
 countries.iso.IM,Isle of Man,en_US
 countries.iso.IM,Insel Man,de_DE
 countries.iso.LV,Latvia,en_US

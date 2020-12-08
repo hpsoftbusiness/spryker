@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Client\MyWorldMarketplaceApi;
 
 use GuzzleHttp\Client;
 use Spryker\Client\Kernel\AbstractDependencyProvider;
 use Spryker\Client\Kernel\Container;
-use Spryker\Shared\ErrorHandler\ErrorHandlerFactory;
 use Spryker\Shared\ErrorHandler\ErrorLogger;
 
 class MyWorldMarketplaceApiDependencyProvider extends AbstractDependencyProvider
