@@ -11,14 +11,14 @@ use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\Money\Business\MoneyFacadeInterface;
-use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
 {
     public const FACADE_SALES = 'FACADE_SALES';
     public const FACADE_MONEY = 'FACADE_MONEY';
-    public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
+    public const FACADE_LOCALE = 'FACADE_LOCALE';
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
     public const FACADE_PRODUCT = 'FACADE_PRODUCT';
     public const CLIENT_STORE = 'CLIENT_STORE';
@@ -32,7 +32,7 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container = $this->addSalesFacade($container);
         $container = $this->addMoneyFacade($container);
-        $container = $this->addTranslatorFacade($container);
+        $container = $this->addLocaleFacade($container);
         $container = $this->addStoreClient($container);
 
         return $container;
@@ -83,10 +83,10 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addTranslatorFacade(Container $container): Container
+    protected function addLocaleFacade(Container $container): Container
     {
-        $container->set(static::FACADE_TRANSLATOR, function (Container $container): TranslatorFacadeInterface {
-            return $container->getLocator()->translator()->facade();
+        $container->set(static::FACADE_LOCALE, function (Container $container): LocaleFacadeInterface {
+            return $container->getLocator()->locale()->facade();
         });
 
         return $container;

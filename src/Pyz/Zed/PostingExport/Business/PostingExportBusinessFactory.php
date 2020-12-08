@@ -13,8 +13,8 @@ use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\Money\Business\MoneyFacadeInterface;
-use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 /**
  * @method \Pyz\Zed\PostingExport\PostingExportConfig getConfig()
@@ -29,7 +29,7 @@ class PostingExportBusinessFactory extends AbstractBusinessFactory
         return new PostingExportContentBuilder(
             $this->getSalesFacade(),
             $this->getMoneyFacade(),
-            $this->getTranslatorFacade(),
+            $this->getLocaleFacade(),
             $this->getStoreClient()
         );
     }
@@ -59,11 +59,11 @@ class PostingExportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\Translator\Business\TranslatorFacadeInterface
+     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
-    public function getTranslatorFacade(): TranslatorFacadeInterface
+    public function getLocaleFacade(): LocaleFacadeInterface
     {
-        return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_TRANSLATOR);
+        return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_LOCALE);
     }
 
     /**

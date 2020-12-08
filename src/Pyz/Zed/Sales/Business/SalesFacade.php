@@ -7,11 +7,12 @@
 
 namespace Pyz\Zed\Sales\Business;
 
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
 use Spryker\Zed\Sales\Business\SalesFacade as SprykerSalesFacade;
 
 /**
- * @method \Spryker\Zed\Sales\Business\SalesBusinessFactory getFactory()
+ * @method \Pyz\Zed\Sales\Business\SalesBusinessFactory getFactory()
  * @method \Pyz\Zed\Sales\Persistence\SalesRepositoryInterface getRepository()
  */
 class SalesFacade extends SprykerSalesFacade implements SalesFacadeInterface
@@ -23,5 +24,23 @@ class SalesFacade extends SprykerSalesFacade implements SalesFacadeInterface
     {
         return $this->getRepository()
             ->getOrderIdsBySalesOrderFilter($salesOrderFilterTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param int $idSalesOrder
+     *
+     * @throws \Spryker\Zed\Sales\Business\Exception\InvalidSalesOrderException
+     *
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    public function getOrderForExportByIdSalesOrder(int $idSalesOrder): OrderTransfer
+    {
+        return $this->getFactory()
+            ->createOrderForExportHydrator()
+            ->hydrateOrderTransferFromPersistenceByIdSalesOrder($idSalesOrder);
     }
 }
