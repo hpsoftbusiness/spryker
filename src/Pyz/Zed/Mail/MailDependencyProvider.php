@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Mail;
 
+use Pyz\Zed\Oms\Communication\Plugin\Mail\OrderInProcessingMailTypePlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Mail\ShippingConfirmationMailTypePlugin;
 use Spryker\Zed\AuthMailConnector\Communication\Plugin\Mail\RestorePasswordMailTypePlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationMailTypePlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationSubscriptionMailTypePlugin;
@@ -49,6 +51,8 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new NewsletterSubscribedMailTypePlugin())
                 ->add(new NewsletterUnsubscribedMailTypePlugin())
                 ->add(new OrderConfirmationMailTypePlugin())
+                ->add(new OrderInProcessingMailTypePlugin())
+                ->add(new ShippingConfirmationMailTypePlugin())
                 ->add(new OrderShippedMailTypePlugin())
                 ->add(new AvailabilityNotificationUnsubscribedMailTypePlugin())
                 ->add(new AvailabilityNotificationSubscriptionMailTypePlugin())

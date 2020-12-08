@@ -8,8 +8,9 @@
 {% block body %}
     {% set extraClasses = '' %}
     {% set addToCartSku = data.productAbstract['add_to_cart_sku'] ?? '' %}
+    {% set isAffiliate = data.productAbstract['is_affiliate'] ?? false %}
 
-    {% if addToCartSku %}
+    {% if addToCartSku and not isAffiliate %}
         {% block ajaxButton %}
             {% embed molecule('ajax-add-to-cart') with {
                 class: extraClasses,

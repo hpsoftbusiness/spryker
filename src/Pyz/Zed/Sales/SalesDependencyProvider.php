@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Sales;
 
+use Pyz\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductAttributesOrderItemExpanderPlugin;
+use Pyz\Zed\Stock\Communication\Plugin\StockProductOrderHydratePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\Kernel\Container;
@@ -71,6 +73,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOptionOrderExpanderPlugin(),
             new RemunerationTotalOrderExpanderPlugin(),
             new IsCancellableOrderExpanderPlugin(),
+            new StockProductOrderHydratePlugin(),
         ];
     }
 
@@ -151,6 +154,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOrderItemExpanderPlugin(),
             new ProductBundleOptionItemExpanderPlugin(),
             new ItemStateOrderItemExpanderPlugin(),
+            new ProductAttributesOrderItemExpanderPlugin(),
         ];
     }
 

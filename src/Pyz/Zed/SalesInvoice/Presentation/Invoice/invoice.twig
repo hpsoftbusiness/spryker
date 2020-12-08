@@ -59,16 +59,11 @@
         </td>
         <td width="300">
             <strong>{{ 'order_invoice.invoice_template.company.name' | trans }}</strong>
-            <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.group' | trans }}</div>
             <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.address' | trans | raw }}</div>
         </td>
     </tr>
     <tr>
-        <td width="300">
-            <div class="spacing-bottom spacing-right">
-                <strong>{{ 'order_invoice.invoice_template.merchant.name' | trans }}</strong>
-                <div class="text-small">{{ 'order_invoice.invoice_template.merchant.address' | trans }}</div>
-            </div>
+        <td width=100">
             <div class="spacing-bottom">
                 {{ order.billingAddress.firstName }} {{ order.billingAddress.lastName }}<br>
                 {{ order.billingAddress.address1 }} {{ order.billingAddress.address2 }} {{ order.billingAddress.address3 }}<br>
@@ -76,8 +71,27 @@
                 {{ order.billingAddress.region }}
             </div>
         </td>
-        <td width="300" class="align-top">
-            <div class="spacing-bottom">{{ invoice.issueDate | date('d. M Y') }}</div>
+        <td width="500" class="align-top">
+            <p>
+                {{ 'order_invoice.invoice_template.table.grant_total' | trans }}
+                <strong>{{ order.totals.grandTotal | money }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.order_reference' | trans }}
+                <strong>{{ order.orderReference }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.order_date' | trans }}
+                <strong>{{ order.createdAt | date('d. M Y') }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.invoice_date' | trans }}
+                <strong>{{ invoice.issueDate | date('d. M Y') }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}
+                <strong>{{ order.customer.myWorldCustomerNumber }}</strong>
+            </p>
         </td>
     </tr>
 </table>
@@ -90,11 +104,6 @@
             </div>
         </td>
     </tr>
-    <tr>
-        <td width="600">
-            <div class="spacing-bottom">{{ 'order_invoice.invoice_template.introduction' | trans }}</div>
-        </td>
-    </tr>
 </table>
 
 <table class="products-table">
@@ -103,7 +112,7 @@
         <th width="75"><strong>{{ 'order_invoice.invoice_template.table.number' | trans }}</strong></th>
         <th width="75"><strong>{{ 'order_invoice.invoice_template.table.quantity' | trans }}</strong></th>
         <th width="275" class="text-left"><strong>{{ 'order_invoice.invoice_template.table.name' | trans }}</strong></th>
-        <th width="100"><strong>{{ 'order_invoice.invoice_template.table.tax' | trans }}</strong></th>
+        <th></th>
         <th width="75"><strong>{{ 'order_invoice.invoice_template.table.price' | trans | raw }}</strong></th>
     </tr>
     </thead>
@@ -128,8 +137,8 @@
             <tr>
                 <td class="text-center">{{ linenumber }}</td>
                 <td class="text-center">{{ item.quantity }}</td>
-                <td>{{ item.name }}</td>
-                <td class="text-center">{{ item.taxRate | number_format }}%</td>
+                <td>{{ item.name }} <br>{{ item.concreteAttributes['gtin'] }} ({{ item.taxRate | number_format }}% {{ 'order_invoice.invoice_template.table.tax.name' | trans }})</td>
+                <td></td>
                 <td class="text-center">{{ item.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
             </tr>
         {% endif %}
@@ -139,24 +148,28 @@
                 {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
 
                 {% set linenumber = linenumber + 1 %}
-
                 {% set productBundle = item.productBundle %}
 
                 <tr>
                     <td class="text-center">{{ linenumber }}</td>
                     <td class="text-center">{{ productBundle.quantity }}</td>
-                    <td>{{ productBundle.name }}</td>
-                    <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
+                    <td>{{ productBundle.name }} <br>{{ productBundle.concreteAttributes['gtin'] }}
+                        ({{ productBundle.taxRate | number_format }}
+                        % {{ 'order_invoice.invoice_template.table.tax.name' | trans }})
+                    </td>
+                    <td></td>
                     <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
                 </tr>
-
                 {% for bundleditem in order.items %}
                     {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
                         <tr>
                             <td></td>
                             <td class="text-center">{{ bundleditem.quantity }}</td>
-                            <td>{{ bundleditem.name }}</td>
-                            <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
+                            <td>{{ bundleditem.name }} <br>{{ bundleditem.concreteAttributes['gtin'] }}
+                                ({{ bundleditem.taxRate | number_format }}
+                                % {{ 'order_invoice.invoice_template.table.tax.name' | trans }})
+                            </td>
+                            <td></td>
                             <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
                         </tr>
                     {% endif %}
@@ -178,8 +191,8 @@
         <tr>
             <td class="text-center">{{ linenumber }}</td>
             <td></td>
-            <td>{{ expense.name }}</td>
-            <td class="text-center">{{ expense.taxRate | number_format }}%</td>
+            <td>{{ expense.name }} ({{ expense.taxRate | number_format }}% {{ 'order_invoice.invoice_template.table.tax.name' | trans }})</td>
+            <td></td>
             <td class="text-center">{{ expense.sumPrice | money(true, order.currencyIsoCode) }}</td>
         </tr>
     {% endfor %}

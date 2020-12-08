@@ -41,6 +41,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $productAbstractStorageTransfer->setProductSetIds($productSetIds);
         }
 
+        $productAbstractStorageTransfer
+            ->setAffiliateData(
+                $this->productFacade->decodeProductAttributes($productAbstractLocalizedEntity['SpyProductAbstract']['affiliate_data'])
+            );
+
         return $productAbstractStorageTransfer;
     }
 }

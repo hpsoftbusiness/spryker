@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\Product;
 
-use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
@@ -62,9 +61,6 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 
             foreach ($this->defaultAttributes as $defaultAttribute) {
                 $defaultAttributeValue = $dataSet[$defaultAttribute . '.' . $localeName];
-                if (!$defaultAttributeValue) {
-                    $defaultAttributeValue = $dataSet[CombinedProductPriceHydratorStep::COLUMN_CONCRETE_SKU] ?? $dataSet[CombinedProductPriceHydratorStep::COLUMN_ABSTRACT_SKU];
-                }
                 $localizedAttributes[$idLocale][$defaultAttribute] = $defaultAttributeValue;
 
                 $keysToUnset[] = $defaultAttribute . '.' . $localeName;

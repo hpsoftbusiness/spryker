@@ -6,9 +6,11 @@
     <transfer name="Customer">
         <property name="myWorldCustomerId" type="string"/>
         <property name="myWorldCustomerNumber" type="string"/>
+        <property name="cardNumber" type="string"/>
         <property name="customerType" type="int"/>
         <property name="isActive" type="bool"/>
         <property name="ssoAccessToken" type="SsoAccessToken"/>
+        <property name="customerBalance" type="CustomerBalance"/>
     </transfer>
 
 </transfers>
