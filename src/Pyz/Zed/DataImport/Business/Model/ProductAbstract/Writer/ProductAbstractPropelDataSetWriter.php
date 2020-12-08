@@ -15,7 +15,6 @@ use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
 use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractHydratorStep;
-use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;

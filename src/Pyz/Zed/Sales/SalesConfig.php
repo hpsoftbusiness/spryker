@@ -13,6 +13,24 @@ use Spryker\Zed\Sales\SalesConfig as SprykerSalesConfig;
 
 class SalesConfig extends SprykerSalesConfig
 {
+    public const ORDER_REFERENCE_PREFIX_NUMBER = 1279;
+
+    /**
+     * Defines the prefix for the sequence number which is the public id of an order.
+     *
+     * @api
+     *
+     * @return \Generated\Shared\Transfer\SequenceNumberSettingsTransfer
+     */
+    public function getOrderReferenceDefaults()
+    {
+        $sequenceNumberSettingsTransfer = parent::getOrderReferenceDefaults();
+        $prefix = $sequenceNumberSettingsTransfer->getPrefix() . static::ORDER_REFERENCE_PREFIX_NUMBER;
+        $sequenceNumberSettingsTransfer->setPrefix($prefix);
+
+        return $sequenceNumberSettingsTransfer;
+    }
+
     /**
      * This method determines state machine process from the given quote transfer and order item.
      *

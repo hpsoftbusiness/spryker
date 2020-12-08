@@ -168,24 +168,20 @@
         }
 
         &__title {
-            font: fw(bold) rem(17)/1.52 $setting-font-family-additional;
-            letter-spacing: rem(3);
+            font: fw(bold) rem(17)/1.52 $setting-font-family;
 
             @include helper-breakpoint-media-min($md-min) {
                 font-size: rem(21);
-                letter-spacing: rem(3.8);
             }
         }
 
         &__post-title {
-            font: fw(regular) rem(9)/1.56 $setting-font-family-additional;
-            letter-spacing: rem(2.9);
-            color: $setting-color-gray-6;
+            font: fw(regular) rem(9)/1.56 $setting-font-family;
+            color: $setting-color-black;
 
             @include helper-breakpoint-media-min($md-min) {
                 font-size: rem(10);
                 line-height: 1.6;
-                letter-spacing: rem(3.2);
             }
         }
     }

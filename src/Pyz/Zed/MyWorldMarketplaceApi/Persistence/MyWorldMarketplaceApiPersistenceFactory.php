@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\MyWorldMarketplaceApi\Persistence;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
@@ -8,6 +13,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
  * @method \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig getConfig()
+ * @method \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface getEntityManager()
  */
 class MyWorldMarketplaceApiPersistenceFactory extends AbstractPersistenceFactory
 {

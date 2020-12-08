@@ -19,6 +19,7 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
      * @var \Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface
      */
     protected $request;
+
     /**
      * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig
      */
@@ -31,8 +32,7 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     public function __construct(
         RequestInterface $request,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
-    )
-    {
+    ) {
         $this->request = $request;
         $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
     }
@@ -52,7 +52,6 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
 
         if ($myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
             //magic
-            
         }
     }
 
@@ -74,6 +73,7 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     protected function getRequestParams(CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer): array
     {
         $customerInformationByCustomerNumberRequestTransfer->requireAccessToken();
+
         return [
             'headers' => [
                 'Authorization' => sprintf('Bearer %s', $customerInformationByCustomerNumberRequestTransfer->getAccessToken()),

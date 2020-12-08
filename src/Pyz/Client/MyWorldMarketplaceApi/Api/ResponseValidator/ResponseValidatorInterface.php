@@ -7,7 +7,6 @@
 
 namespace Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator;
 
-
 interface ResponseValidatorInterface
 {
     /**
