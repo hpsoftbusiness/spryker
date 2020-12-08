@@ -71,32 +71,27 @@
                 {{ order.billingAddress.region }}
             </div>
         </td>
-        <td width="600" class="align-top">
-            <div
-                class=" sprykerTextContentContainer                                                                                                                                                                                              "
-                style="min-width: 100% !important;background-color: #F9F9F9;border-collapse: collapse;mso-table-lspace:                                                                                                                                                                                              0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
-                width="100%" cellspacing="0" border="0">
-                <p>
-                    {{ 'order_invoice.invoice_template.table.grant_total' | trans }}:
-                    <strong>{{ order.totals.grandTotal | money }}</strong>
-                </p>
-                <p>
-                    {{ 'order_invoice.invoice_template.table.order_reference' | trans }}:
-                    <strong>{{ order.orderReference }}</strong>
-                </p>
-                <p>
-                    {{ 'order_invoice.invoice_template.table.order_date' | trans }}:
-                    <strong>{{ order.createdAt | date('d. M Y') }}</strong>
-                </p>
-                <p>
-                    {{ 'order_invoice.invoice_template.table.invoice_date' | trans }}:
-                    <strong>{{ invoice.issueDate | date('d. M Y') }}</strong>
-                </p>
-                <p>
-                    {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}:
-                    <strong>{{ order.customer.myWorldCustomerNumber }}</strong>
-                </p>
-            </div>
+        <td width="500" class="align-top">
+            <p>
+                {{ 'order_invoice.invoice_template.table.grant_total' | trans }}:
+                <strong>{{ order.totals.grandTotal | money }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.order_reference' | trans }}:
+                <strong>{{ order.orderReference }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.order_date' | trans }}:
+                <strong>{{ order.createdAt | date('d. M Y') }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.invoice_date' | trans }}:
+                <strong>{{ invoice.issueDate | date('d. M Y') }}</strong>
+            </p>
+            <p>
+                {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}:
+                <strong>{{ order.customer.myWorldCustomerNumber }}</strong>
+            </p>
         </td>
     </tr>
 </table>
@@ -153,7 +148,6 @@
         {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
 
         {% set linenumber = linenumber + 1 %}
-
         {% set productBundle = item.productBundle %}
 
         <tr>
