@@ -9,7 +9,7 @@
 {% block body %}
     {% block sidebar %}
         {% embed organism('side-drawer') with {
-            class: 'is-hidden-lg-xl',
+            class: 'is-hidden-xl-only',
             attributes: {
                 'container-selector': 'js-page-layout-main__side-drawer-container',
                 'trigger-selector': 'js-page-layout-main__side-drawer-trigger'
@@ -27,7 +27,7 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {% embed organism('side-drawer') with {
                 modifiers: ['right'],
-                class: 'is-hidden-lg-xl',
+                class: 'is-hidden-xl-only',
                 attributes: {
                     'container-selector': 'js-page-layout-main__side-drawer-container',
                     'trigger-selector': 'js-page-layout-main__account-side-drawer-trigger'

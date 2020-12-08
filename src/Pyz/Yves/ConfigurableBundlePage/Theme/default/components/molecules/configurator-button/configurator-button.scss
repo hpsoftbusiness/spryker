@@ -6,7 +6,7 @@
         border: none;
         border-radius: rem(2);
         text-align: center;
-        font: fw(bold) rem(15)/rem(18) $setting-font-family-additional;
+        font: fw(bold) rem(15)/rem(18) $setting-font-family;
 
         &:hover,
         &:focus,
@@ -19,7 +19,6 @@
             padding: rem(16);
             font-weight: fw(medium);
             font-size: rem(13);
-            letter-spacing: rem(2.2);
             text-transform: uppercase;
             margin: 0;
 
