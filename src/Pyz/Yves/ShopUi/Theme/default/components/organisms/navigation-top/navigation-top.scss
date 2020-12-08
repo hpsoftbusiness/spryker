@@ -25,6 +25,8 @@
         }
 
         &__link {
+            @include helper-effect-transition(color);
+
             &--active {
                 color: $setting-color-alt;
             }

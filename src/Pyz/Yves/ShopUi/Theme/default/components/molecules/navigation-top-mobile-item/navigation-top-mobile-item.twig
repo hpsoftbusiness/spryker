@@ -16,7 +16,7 @@
     <div class="grid grid--middle">
         {% block button %}
             {% if data.isButton == true %}
-                <button type="button" class="button button--skinless spacing spacing--inner spacing--reset {{ data.jsClass }}">
+                <button type="button" class="{{ config.name }}__action button button--skinless spacing spacing--inner spacing--reset {{ data.jsClass }}">
                     {% block icon %}
                         {% include atom('icon') with {
                             modifiers: ['bigger'],
@@ -27,7 +27,7 @@
                     {% endblock %}
                 </button>
             {% else %}
-                <a href="{{ data.url }}">
+                <a class="{{ config.name }}__action" href="{{ data.url }}">
                     {{ block('icon') }}
                 </a>
             {% endif %}

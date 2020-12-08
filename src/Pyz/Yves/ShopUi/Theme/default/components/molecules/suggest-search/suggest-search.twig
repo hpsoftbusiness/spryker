@@ -1,5 +1,12 @@
 {% extends molecule('suggest-search', '@SprykerShop:ShopUi') %}
 
+{% define attributes = {
+    'overlay-class-name': 'js-suggest-search__overlay',
+    'overlay-show-class-name': 'js-suggest-search__show',
+    'overlay-hide-class-name': 'js-suggest-search__hide',
+    'show-overlay-on-init-suggestions': false,
+} %}
+
 {% block body %}
     <div class="is-hidden {{ config.name }}__container {{ config.jsName }}__container"></div>
 

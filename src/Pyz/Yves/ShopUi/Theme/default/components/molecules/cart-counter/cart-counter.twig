@@ -7,5 +7,7 @@
 
 {% block content %}
     {% set iconModifiers = ['bigger'] %}
+    {% set linkClass = config.name ~ '__link' %}
+
     {{ parent() }}
 {% endblock %}
