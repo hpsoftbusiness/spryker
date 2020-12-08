@@ -68,6 +68,7 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
         }
 
         $loadedCustomerTransfer->setSsoAccessToken($ssoAccessTokenTransfer);
+        $loadedCustomerTransfer->setCustomerBalance($customerTransfer->getCustomerBalance());
 
         return $this->getFactory()->createSecurityUser($loadedCustomerTransfer);
     }

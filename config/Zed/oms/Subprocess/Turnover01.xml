@@ -8,26 +8,55 @@
         <states>
             <state name="ready for turnover creation"/>
             <state name="turnover created"/>
+            <state name="turnover creation failed"/>
             <state name="ready for turnover cancellation"/>
             <state name="turnover cancelled"/>
+            <state name="turnover cancellation failed"/>
         </states>
 
         <events>
-            <event name="create turnover" onEnter="true"/>
-            <event name="cancel turnover" onEnter="true"/>
+            <event name="create turnover" onEnter="true" command="MyWorld/CreateTurnover"/>
+            <event name="create turnover manually" manual="true"/>
+            <event name="cancel turnover" onEnter="true" command="MyWorld/CancelTurnover"/>
+            <event name="cancel turnover manually" manual="true"/>
+            <event name="test turnover" manual="true"/>
         </events>
 
         <transitions>
-            <transition happy="true">
+            <transition happy="true" condition="MyWorld/IsTurnoverCreated">
                 <source>ready for turnover creation</source>
                 <target>turnover created</target>
                 <event>create turnover</event>
             </transition>
 
             <transition>
+                <source>ready for turnover creation</source>
+                <target>turnover creation failed</target>
+                <event>create turnover</event>
+            </transition>
+
+            <transition>
+                <source>turnover creation failed</source>
+                <target>turnover created</target>
+                <event>create turnover manually</event>
+            </transition>
+
+            <transition condition="MyWorld/IsTurnoverCancelled">
                 <source>ready for turnover cancellation</source>
                 <target>turnover cancelled</target>
                 <event>cancel turnover</event>
+            </transition>
+
+            <transition>
+                <source>ready for turnover cancellation</source>
+                <target>turnover cancellation failed</target>
+                <event>cancel turnover</event>
+            </transition>
+
+            <transition>
+                <source>turnover cancellation failed</source>
+                <target>turnover cancelled</target>
+                <event>cancel turnover manually</event>
             </transition>
         </transitions>
     </process>

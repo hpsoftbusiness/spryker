@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <my-world-marketplace-api>
+        <label>My World Marketplace Api</label>
+        <title>My World Marketplace Api</title>
+        <bundle>my-world-marketplace-api</bundle>
+        <controller>index</controller>
+        <action>index</action>
+    </my-world-marketplace-api>
+</config>
