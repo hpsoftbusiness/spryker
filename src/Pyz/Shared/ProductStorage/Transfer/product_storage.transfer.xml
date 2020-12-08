@@ -7,12 +7,14 @@
         <property name="productSetIds" type="array"/>
         <property name="isAffiliate" type="bool"/>
         <property name="affiliateData" type="array" singular="affiliateData"/>
+        <property name="pdpAttributes" type="array" singular="pdpAttribute"/>
     </transfer>
     <transfer name="ProductConcreteStorage">
         <property name="bundledProductIds" type="array"/>
         <property name="isAffiliate" type="bool"/>
         <property name="affiliateData" type="array" singular="affiliateData"/>
         <property name="hiddenAttributes" type="array" singular="hiddenAttribute"/>
+        <property name="pdpAttributes" type="array" singular="pdpAttribute"/>
     </transfer>
     <transfer name="ProductView">
         <property name="productSetIds" type="array"/>

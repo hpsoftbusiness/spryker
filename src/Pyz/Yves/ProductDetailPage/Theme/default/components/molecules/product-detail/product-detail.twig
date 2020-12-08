@@ -7,7 +7,7 @@
 
 {% define data = {
     description: '',
-    attributes: [],
+    pdpAttributes: [],
     sku: '',
     index: '',
     isBundle: false,
@@ -49,14 +49,14 @@
             hiddenClass: data.hiddenClass,
         },
         embed: {
-            attributes: data.attributes,
+            pdpAttributes: data.pdpAttributes,
             sku: data.sku
         }
     } only %}
         {% block contentText %}
             {% include molecule('product-detail-option', 'ProductDetailPage') with {
                 data: {
-                    attributes: embed.attributes
+                    pdpAttributes: embed.pdpAttributes
                 }
             } only %}
         {% endblock %}
