@@ -15,28 +15,16 @@
 {% set menuChildrenClass = data.menuDropdown ? 'menu__item--has-children-dropdown' : 'menu__item--has-children-list' %}
 
 {% block body %}
-    <ul class="menu {{ menuClass }} grid grid--center">
+    <ul class="{{ config.name }}__menu menu {{ menuClass }}">
         {% for node in data.nodes %}
             {% set hasChildren = node.children | length > 0 %}
-            {% set flyoutClass = node.cssClass == 'flyout-fullscreen' %}
-            {% set flyoutClassBrand = node.cssClass == 'flyout-fullscreen brand-dropdown' %}
 
-            {% if flyoutClass or flyoutClassBrand %}
-                {% include molecule('navigation-multilevel-node') with {
-                    modifiers: ['flyout', (flyoutClassBrand ? 'brand' : '')],
-                    class: 'menu__item ' ~ (hasChildren ? menuChildrenClass : 'childless') ~ ' ' ~ (flyoutClass ? config.name ~ '__flyout-fullscreen ' : ' ') ~ (flyoutClassBrand ? config.name ~ '__brand-dropdown ' ~ config.name ~ '__flyout-fullscreen' : ''),
-                    data: {
-                        node: node
-                    }
-                } only %}
-            {% else %}
-                {% include molecule('navigation-multilevel-node') with {
-                    class: 'menu__item ' ~ (hasChildren ? menuChildrenClass : 'childless') ~ ' ' ~ config.name ~ '__' ~ node.cssClass,
-                    data: {
-                        node: node
-                    }
-                } only %}
-            {% endif %}
+            {% include molecule('navigation-multilevel-node') with {
+                class: 'menu__item ' ~ (hasChildren ? menuChildrenClass : 'childless') ~ ' ' ~ config.name ~ '__' ~ node.cssClass,
+                data: {
+                    node: node
+                }
+            } only %}
         {% endfor %}
     </ul>
 {% endblock %}
