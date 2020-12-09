@@ -1,0 +1,17 @@
+{% extends molecule('breadcrumb', '@SprykerShop:ShopUi') %}
+{% block body %}
+
+    {% if data.startWithHome %}
+        <li class="breadcrumb-step" data-qa="component breadcrumb-step">
+            <a href="{{ path('home') }}" class="breadcrumb-step__link">
+                <img src="{{ publicPath('images/icon-home.png') }}" alt="Home page">
+            </a>
+            <span class="breadcrumb-step__separator"></span>
+        </li>
+    {% endif %}
+
+    {% block breadcrumbs %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

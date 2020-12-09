@@ -1,9 +1,11 @@
 @mixin shop-ui-breadcrumb-step($name: '.breadcrumb-step') {
     #{$name} {
         display: flex;
-        font-size: rem(13);
+        align-items: center;
+        font-size: map-get($setting-font-size, micro);
 
         &__link {
+            display: inline-flex;
             color: $setting-color-black;
 
             &:hover {
@@ -13,8 +15,8 @@
         }
 
         &__separator {
-            width: rem(37);
-            color: $setting-color-gray-3;
+            width: rem(18);
+            color: $setting-color-gray-4;
             position: relative;
         }
 
@@ -29,7 +31,7 @@
                 height: rem(7);
                 transform: translate(-50%, -50%) rotate(-38deg);
                 border-radius: rem(0.5);
-                background-color: $setting-color-gray-3;
+                background-color: $setting-color-gray-4;
                 margin-top: rem(-2);
             }
 
