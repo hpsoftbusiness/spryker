@@ -97,27 +97,27 @@ groups:
       Redirects:
         application: static
         endpoints:
-          de.marketplace.myworld.com:
+          marketplace.myworld.com:
             store: DE
             redirect:
               type: 302
-              url: www.de.marketplace.myworld.com
+              url: www.marketplace.myworld.com
       Yves:
         application: yves
         endpoints:
-          www.de.marketplace.myworld.com:
+          www.marketplace.myworld.com:
             store: DE
             <<: *frontend-auth
       Zed:
         application: zed
         endpoints:
-          zed.de.marketplace.myworld.com:
+          zed.marketplace.myworld.com:
             store: DE
             <<: *frontend-auth
       Glue:
         application: glue
         endpoints:
-          glue.de.marketplace.myworld.com:
+          glue.marketplace.myworld.com:
             store: DE
 
 services:
