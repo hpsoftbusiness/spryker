@@ -39,7 +39,7 @@ class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInte
         parse_str($deeplinkQueryString, $deeplinkArguments);
 
         $trackingUrlArguments = [
-            'customerNumber' => $customerTransfer->getMyWorldCustomerNumber(),
+            'customerNumber' => str_replace('.', '', $customerTransfer->getMyWorldCustomerNumber()),
             'network' => $this->productAffiliateConfig->getTrackingUrlNetworkArgument(),
             'AdvertiserId' => $deeplinkArguments['m'],
             'url' => sprintf('%s&clickRef=trackingHash', $productAffiliateDeeplink),

@@ -41,7 +41,6 @@
     <h1 class="title title--product title--h2">{{productName}}</h1>
 
     <div class="grid grid--justify spacing-bottom spacing-bottom--bigger">
-        {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] use view('pdp-review-rating', 'ProductReviewWidget') only %}{% endwidget %}
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}
             <div class="col text-right">
@@ -126,7 +125,7 @@
 
             {% if can('SeeAddToCartPermissionPlugin') %}
                 <div class="{{ data.config.name }}__button-wrap">
-                    <button class="button button--shadow button--large button--expand" {{ data.isDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }} data-init-single-click>
+                    <button class="button button--large button--expand" {{ data.isDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }} data-init-single-click>
                         {{ 'page.detail.add-to-cart' | trans }}
                     </button>
                 </div>

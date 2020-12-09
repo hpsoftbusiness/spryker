@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\MyWorldMarketplaceApi\Communication\Console;
 
 use Spryker\Zed\Kernel\Communication\Console\Console;
@@ -8,12 +13,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @method \Pyz\Zed\MyWorldMarketplaceApi\Business\MyWorldMarketplaceApiFacade getFacade()
+ * @method \Pyz\Zed\MyWorldMarketplaceApi\Communication\MyWorldMarketplaceApiCommunicationFactory getFactory()
  */
 class MyWorldMarketplaceApiConsole extends Console
 {
-
-    const COMMAND_NAME = 'some:command';
-    const DESCRIPTION = 'Describe me!';
+    public const COMMAND_NAME = 'some:command';
+    public const DESCRIPTION = 'Describe me!';
 
     /**
      * @return void
@@ -43,5 +48,4 @@ class MyWorldMarketplaceApiConsole extends Console
 
         return static::CODE_SUCCESS;
     }
-
 }

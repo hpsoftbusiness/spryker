@@ -9,8 +9,7 @@
         }
 
         &__name {
-            font: fw(bold) rem(15) $setting-font-family-additional;
-            letter-spacing: rem(-0.18);
+            font: fw(bold) rem(15) $setting-font-family;
             padding-right: rem(10);
             width: rem(100);
             display: inline-block;
@@ -19,7 +18,6 @@
 
         &__text {
             font-weight: fw(light);
-            letter-spacing: rem(-0.18);
         }
 
         @content;

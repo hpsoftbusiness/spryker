@@ -373,6 +373,10 @@ global.order.descendent,Z_A,de_DE
 global.order.descendent,Z-A,en_US
 global.close,Schließen,de_DE
 global.close,Close,en_US
+global.categories,Alle Kategorien,de_DE
+global.categories,All Categories,en_US
+global.register,Zur Registrierung,de_DE
+global.register,Register now,en_US
 global.search,Suche,de_DE
 global.search,Search,en_US
 global.search.results,Suchergebnisse,de_DE
@@ -441,6 +445,8 @@ global.quantity_symbol,x,en_US
 global.quantity_symbol,x,de_DE
 global.partners,Partners,en_US
 global.partners,Partner,de_DE
+global.header.categories,All Categories,en_US
+global.header.categories,Alle Kategorien,de_DE
 error.404,Error 404,de_DE
 error.404,Error 404,en_US
 error_page.title,Seite nicht gefunden.,de_DE
@@ -555,6 +561,8 @@ customer.address.is_default_billing,Is default billing address,en_US
 customer.address.is_default_billing,Standard Rechnungsadresse,de_DE
 customer.address.is_default_shipping,Is default shipping address,en_US
 customer.address.is_default_shipping,Standard Lieferadresse,de_DE
+customer.address.placeholder.optional,Optional,en_US
+customer.address.placeholder.optional,Optional,de_DE
 customer.anonymization.success,Your account has been deleted successfully,en_US
 customer.anonymization.success,Dein Account wurde gelöscht,de_DE
 customer.anonymization.failed,Your account could not be deleted,en_US
@@ -805,8 +813,8 @@ countries.iso.EE,Estonia,en_US
 countries.iso.EE,Estland,de_DE
 countries.iso.FR,France,en_US
 countries.iso.FR,Frankreich,de_DE
-countries.iso.GR,Greece	Griechenland,en_US
-countries.iso.GR,Greece	Griechenland,de_DE
+countries.iso.GR,Greece,en_US
+countries.iso.GR,Griechenland,de_DE
 countries.iso.IM,Isle of Man,en_US
 countries.iso.IM,Insel Man,de_DE
 countries.iso.LV,Latvia,en_US
@@ -2950,3 +2958,5 @@ cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
 checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, ein Produkt ist leider nicht in deiner Lieferadresse verfügbar.",de_DE
+product.attribute.product_stock.name,Warehouse,en_US
+product.attribute.product_stock.name,Warenhaus,de_DE

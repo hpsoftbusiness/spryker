@@ -1,8 +1,8 @@
 @mixin shop-ui-quantity-counter($name: '.quantity-counter') {
     #{$name} {
         &__container {
-            border: rem(1) solid $setting-color-marketplace-gray-4;
-            border-radius: rem(4);
+            border: rem(1) solid $setting-color-input-border;
+            border-radius: $setting-border-radius;
             display: inline-flex;
             padding: 0 rem(10);
             overflow: hidden;
@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             display: block;
-            font: fw(bold) rem(16)/rem(31) $setting-font-family-additional;
+            font: fw(bold) rem(16)/rem(31) $setting-font-family;
             width: rem(40);
             height: rem(40);
             text-align: center;
