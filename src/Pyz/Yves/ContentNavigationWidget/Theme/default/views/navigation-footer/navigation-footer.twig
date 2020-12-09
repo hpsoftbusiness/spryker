@@ -8,24 +8,21 @@
     {% set hasIcons = false %}
     {% set title = '' %}
 
+    <pre>{{ dump(data.navigation | length) }}</pre>
     {% for node in data.navigation.nodes %}
         {% set nodeType = node.nodeType %}
 
-        {% if nodeType == 'category' %}
-            {% set title = 'navigation.menu.categories' | trans %}
-        {% endif %}
-
         {% if nodeType == 'cms_page' %}
-            {% set title = 'global.company' | trans %}
+            {% set title = 'footer.navigation_title.legal_information' | trans %}
         {% endif %}
 
         {% if nodeType == 'external_url' %}
-            {% set title = 'global.social' | trans %}
+            {% set title = 'footer.navigation_title.information' | trans %}
         {% endif %}
 
         {% if nodeType == 'label' %}
             {% set hasIcons = true %}
-            {% set title = 'global.partners' | trans %}
+            {% set title = 'footer.navigation_title.customer_service' | trans %}
         {% endif %}
     {% endfor %}
 

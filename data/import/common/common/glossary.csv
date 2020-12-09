@@ -2352,6 +2352,12 @@ footer.logo.link.imprint,https://spryker.com/imprint/,en_US
 footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
+footer.navigation_title.legal_information,Legal information,en_US
+footer.navigation_title.legal_information,Rechtliche Hinweise,de_DE
+footer.navigation_title.information,Information,en_US
+footer.navigation_title.information,Informationen,de_DE
+footer.navigation_title.customer_service,Customer service,en_US
+footer.navigation_title.customer_service,Kundenservice,de_DE
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_image,Produktbild,de_DE
 page.product.details.slider_thumbnail,Product Image,en_US
