@@ -128,10 +128,7 @@
     {% block footer %}
         {% embed organism('footer') only %}
             {% block footerNavigation %}
-                {% embed molecule('navigation-footer') with {
-                    class: config.name ~ '__navigation',
-                    modifiers: ['content-item'],
-                } only %}
+                {% embed molecule('navigation-footer') only %}
                     {% block body %}
                         {% cms_slot 'slt-footer' %}
                     {% endblock %}
