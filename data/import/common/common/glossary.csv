@@ -2957,6 +2957,10 @@ customer.authorization.invalid_account,"Sie m체ssen zuerst Ihre E-Mail-Adresse �
 cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
 checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
-checkout.step.address.is_sellable,"Lieber Kunde, ein Produkt ist leider nicht in deiner Lieferadresse verf체gbar.",de_DE
+checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verf체gbar.",de_DE
 product.attribute.product_stock.name,Warehouse,en_US
 product.attribute.product_stock.name,Warenhaus,de_DE
+product.attribute.benefit_store,Benefit Store,en_US
+product.attribute.benefit_store,Vorteil Gesch채ft,de_DE
+product.attribute.shopping_point_store,Shopping Point Store,en_US
+product.attribute.shopping_point_store,Einkaufspunkt Gesch채ft,de_DE

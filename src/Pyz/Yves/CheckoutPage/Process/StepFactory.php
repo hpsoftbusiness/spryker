@@ -7,13 +7,16 @@
 
 namespace Pyz\Yves\CheckoutPage\Process;
 
+use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableChecker;
+use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
-use SprykerShop\Yves\CmsBlockWidget\CmsBlockWidgetDependencyProvider;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -53,8 +56,24 @@ class StepFactory extends SprykerShopStepFactory
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SHIPMENT,
             $this->getConfig()->getEscapeRoute(),
             $this->getCheckoutShipmentStepEnterPreCheckPlugins(),
+            $this->createProductSellableChecker(),
+        );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep
+     */
+    public function createPaymentStep()
+    {
+        return new PaymentStep(
+            $this->getPaymentClient(),
+            $this->getPaymentMethodHandler(),
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
+            $this->getConfig()->getEscapeRoute(),
             $this->getFlashMessenger(),
-            $this->getTranslatorService()
+            $this->getCalculationClient(),
+            $this->getCheckoutPaymentStepEnterPreCheckPlugins(),
+            $this->createProductSellableChecker()
         );
     }
 
@@ -70,6 +89,7 @@ class StepFactory extends SprykerShopStepFactory
             $this->getGlossaryStorageClient(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PLACE_ORDER,
             $this->getConfig()->getEscapeRoute(),
+            $this->createProductSellableChecker(),
             [
                 static::ERROR_CODE_GENERAL_FAILURE => self::ROUTE_CART,
                 'payment failed' => CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
@@ -95,6 +115,17 @@ class StepFactory extends SprykerShopStepFactory
      */
     public function getTranslatorService(): TranslatorInterface
     {
-        return $this->getProvidedDependency(CmsBlockWidgetDependencyProvider::SERVICE_TRANSLATOR);
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_TRANSLATOR);
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface
+     */
+    public function createProductSellableChecker(): ProductSellableCheckerInterface
+    {
+        return new ProductSellableChecker(
+            $this->getFlashMessenger(),
+            $this->getTranslatorService()
+        );
     }
 }

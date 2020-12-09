@@ -6,11 +6,4 @@
 
 {% block summary %}
     {{ parent() }}
-    {% if data.productItem.hiddenConcreteAttributes ?? false %}
-        {% for key,sellableAttribute in data.productItem.hiddenConcreteAttributes %}
-            {% if sellableAttribute %}
-                <span>{{ key ~ ' : ' ~ sellableAttribute }}</span>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
 {% endblock %}
