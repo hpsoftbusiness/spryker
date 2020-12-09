@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Spryker\Client\Product\ProductClientInterface getClient()
+ * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageFactory getFactory()
  */
 class ProductController extends SprykerShopProductController
 {
@@ -33,6 +34,32 @@ class ProductController extends SprykerShopProductController
         );
         $viewData['cart'] = $quoteTransfer;
 
+        if ($viewData['product']->getIsAffiliate()) {
+            $affiliateData = $viewData['product']->getAffiliateData();
+            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl($affiliateData);
+            $viewData['product']->setAffiliateData($affiliateData);
+        }
+
         return $viewData;
+    }
+
+    /**
+     * @param mixed[] $affiliateData
+     *
+     * @return string
+     */
+    protected function getProductAffiliateTrackingUrl(array $affiliateData): string
+    {
+        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+
+        if (!$customerTransfer) {
+            return $affiliateData['affiliate_deeplink'];
+        }
+
+        return $this->getFactory()->getProductAffiliateService()
+            ->generateProductAffiliateTrackingUrl(
+                $affiliateData['affiliate_deeplink'],
+                $customerTransfer
+            );
     }
 }

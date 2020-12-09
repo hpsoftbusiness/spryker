@@ -12,9 +12,7 @@ use Generated\Shared\Transfer\AccessTokenTransfer;
 use GuzzleHttp\ClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Exception\MyWorldMarketplaceApiAccessTokenException;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
-use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
-use Spryker\Shared\ErrorHandler\ErrorHandler;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 
 class AccessToken implements AccessTokenInterface
@@ -50,14 +48,12 @@ class AccessToken implements AccessTokenInterface
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig,
         UtilEncodingServiceInterface $utilEncodingService,
         ErrorLoggerInterface $errorLogger
-    )
-    {
+    ) {
         $this->httpClient = $httpClient;
         $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
         $this->utilEncodingService = $utilEncodingService;
         $this->errorLogger = $errorLogger;
     }
-
 
     /**
      * @throws \Pyz\Client\MyWorldMarketplaceApi\Exception\MyWorldMarketplaceApiAccessTokenException
@@ -83,7 +79,6 @@ class AccessToken implements AccessTokenInterface
                 ->setTokenType($response['token_type'] ?? null)
                 ->setExpiresIn($response['expires_in'] ?? null)
                 ->setRefreshToken($response['refresh_token'] ?? null);
-
         } catch (Exception $e) {
             $this->errorLogger->log($e);
         }
@@ -115,6 +110,8 @@ class AccessToken implements AccessTokenInterface
      * @param array $response
      *
      * @throws \Pyz\Client\MyWorldMarketplaceApi\Exception\MyWorldMarketplaceApiAccessTokenException
+     *
+     * @return void
      */
     protected function validateResponse(array $response): void
     {

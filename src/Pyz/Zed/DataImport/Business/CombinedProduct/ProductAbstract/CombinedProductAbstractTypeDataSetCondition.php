@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract;
 
 use Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductAbstractTypeDataSetCondition implements DataSetConditionInterface

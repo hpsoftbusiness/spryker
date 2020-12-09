@@ -34,7 +34,6 @@ $font-cera-pro-black-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Black-Itali
         @include helper-font-size(default);
         @include helper-font-weight(regular);
         @include helper-font-line-height(default);
-
         position: relative;
         background-color: $setting-color-white;
         color: $setting-color-text;

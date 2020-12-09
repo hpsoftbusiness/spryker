@@ -14,7 +14,10 @@
                 <b>{{ 'Delivery Address' | trans }}:</b>
                 {{ shipmentOrderItems.shipment.shippingAddress.salutation }}
                 {{ shipmentOrderItems.shipment.shippingAddress.firstName }},
-                {{ shipmentOrderItems.shipment.shippingAddress.lastName }},
+                {{ shipmentOrderItems.shipment.shippingAddress.lastName }}
+                {% if shipmentOrderItems.shipment.shippingAddress.phone is not empty %}
+                    ({{ 'order.view.shipping.phone' | trans }}: {{ shipmentOrderItems.shipment.shippingAddress.phone }})
+                {% endif %},
                 {{ shipmentOrderItems.shipment.shippingAddress.address1 }},
                 {{ shipmentOrderItems.shipment.shippingAddress.address2 }},
                 {{ shipmentOrderItems.shipment.shippingAddress.address3 }},
@@ -29,7 +32,7 @@
                 {% endif %}
                 {{ shipmentOrderItems.shipment.shippingAddress.country.name}}
                 {% if shipmentOrderItems.shipment.shippingAddress.vatNumber is not empty %}
-                    (VAT: {{ shipmentOrderItems.shipment.shippingAddress.vatNumber }})
+                    ({{ 'order.view.shipping.vat' | trans }}: {{ shipmentOrderItems.shipment.shippingAddress.vatNumber }})
                 {% endif %}
             </p>
             <p>

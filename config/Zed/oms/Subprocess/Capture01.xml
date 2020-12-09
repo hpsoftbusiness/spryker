@@ -19,7 +19,8 @@
             <event name="cancel payment" manual="true"/>
             <event name="retry capture" manual="true"/>
             <event name="pass" onEnter="true"/>
-            <event name="pass 15 minute" timeout="15 minute"/>
+            <event name="pass 5 minute" timeout="5 minute"/>
+            <event name="pass 10 minute" timeout="10 minute"/>
         </events>
 
         <transitions>
@@ -44,13 +45,13 @@
             <transition condition="Adyen/IsCaptured" happy="true">
                 <source>capture pending</source>
                 <target>captured</target>
-                <event>pass</event>
+                <event>pass 5 minute</event>
             </transition>
 
             <transition condition="Adyen/IsCaptureFailed">
                 <source>capture pending</source>
                 <target>capture failed</target>
-                <event>pass</event>
+                <event>pass 5 minute</event>
             </transition>
 
             <transition>
@@ -62,7 +63,7 @@
             <transition>
                 <source>capture pending</source>
                 <target>capture pending next try</target>
-                <event>pass</event>
+                <event>pass 5 minute</event>
             </transition>
 
             <transition>
@@ -74,7 +75,7 @@
             <transition happy="true">
                 <source>capture pending next try</source>
                 <target>capture pending</target>
-                <event>pass 15 minute</event>
+                <event>pass 10 minute</event>
             </transition>
         </transitions>
     </process>

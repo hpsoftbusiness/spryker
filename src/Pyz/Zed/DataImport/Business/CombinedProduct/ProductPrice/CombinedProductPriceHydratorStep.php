@@ -24,7 +24,8 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const COLUMN_CURRENCY = 'product_price.currency';
     public const COLUMN_STORE = 'product_price.store';
     public const COLUMN_PRICE_NET = 'product.value_56';
-    public const COLUMN_PRICE_GROSS = 'product.value_57';
+    public const COLUMN_PRICE_GROSS_ORIGINAL = 'product.value_57'; // Original Price
+    public const COLUMN_PRICE_GROSS = 'product.value_58'; // Default Price
     public const COLUMN_PRICE_DATA = 'product_price.price_data';
     public const COLUMN_PRICE_DATA_CHECKSUM = 'product_price.price_data_checksum';
     public const COLUMN_PRICE_TYPE = 'product_price.price_type';

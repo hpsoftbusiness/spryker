@@ -2495,7 +2495,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-eco/adyen.git",
-                "reference": "5f633f07225d6b2443db7710ed1b9d93bbc3fe10"
+                "reference": "fb96706b5e5171a047f84fe475eca75da33b0464"
             },
             "require": {
                 "php": ">=7.3",
@@ -2569,7 +2569,7 @@
                 "MIT"
             ],
             "description": "Adyen module",
-            "time": "2020-12-02T08:50:32+00:00"
+            "time": "2020-12-09T03:34:23+00:00"
         },
         {
             "name": "spryker-eco/adyen-api",
