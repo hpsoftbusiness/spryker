@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract;
 
 use Generated\Shared\Transfer\SpyUrlEntityTransfer;
+use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
@@ -35,6 +36,8 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
 
     public const COLUMN_IS_AFFILIATE = 'product.is_affiliate';
     public const COLUMN_AFFILIATE_DATA = 'product.affiliate_data';
+
+    public const COLUMN_BRAND_NAME = 'product.value_49';
 
     public const COLUMN_NAME = 'product.name';
     public const COLUMN_DESCRIPTION = 'product.description';
@@ -101,7 +104,6 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
         }
 
         if (empty($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE])) {
-
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 '"%s" must be defined in the data set. Given: "%s"',
                 static::COLUMN_ASSIGNED_PRODUCT_TYPE,
@@ -117,6 +119,21 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
                 $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
             ));
         }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function importProductAbstract(DataSetInterface $dataSet): void
+    {
+        parent::importProductAbstract($dataSet);
+
+        $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER]
+            ->setPdpAttributes(json_encode($dataSet[CombinedAttributesExtractorStep::KEY_PDP_ATTRIBUTES]))
+            ->setBrand($dataSet[static::COLUMN_BRAND_NAME]);
+
     }
 
     /**

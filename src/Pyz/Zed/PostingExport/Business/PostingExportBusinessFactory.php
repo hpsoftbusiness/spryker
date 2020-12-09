@@ -10,11 +10,12 @@ namespace Pyz\Zed\PostingExport\Business;
 use Pyz\Zed\PostingExport\Business\ContentBuilder\PostingExportContentBuilder;
 use Pyz\Zed\PostingExport\PostingExportDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
+use Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\Money\Business\MoneyFacadeInterface;
-use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 /**
  * @method \Pyz\Zed\PostingExport\PostingExportConfig getConfig()
@@ -29,8 +30,10 @@ class PostingExportBusinessFactory extends AbstractBusinessFactory
         return new PostingExportContentBuilder(
             $this->getSalesFacade(),
             $this->getMoneyFacade(),
-            $this->getTranslatorFacade(),
-            $this->getStoreClient()
+            $this->getLocaleFacade(),
+            $this->getSalesOrderUidFacade(),
+            $this->getStoreClient(),
+            $this->getConfig()
         );
     }
 
@@ -59,11 +62,19 @@ class PostingExportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\Translator\Business\TranslatorFacadeInterface
+     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
-    public function getTranslatorFacade(): TranslatorFacadeInterface
+    public function getLocaleFacade(): LocaleFacadeInterface
     {
-        return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_TRANSLATOR);
+        return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_LOCALE);
+    }
+
+    /**
+     * @return \Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface
+     */
+    public function getSalesOrderUidFacade(): SalesOrderUidFacadeInterface
+    {
+        return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_SALES_ORDER_UID);
     }
 
     /**

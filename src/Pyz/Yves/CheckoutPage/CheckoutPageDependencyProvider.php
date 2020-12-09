@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Yves\Country\Plugin\CheckoutPage\CountryAddressExpanderPlugin;
 use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Shared\Nopayment\NopaymentConfig;
@@ -150,6 +151,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new CustomerAddressExpanderPlugin(),
+            new CountryAddressExpanderPlugin(),
         ];
     }
 

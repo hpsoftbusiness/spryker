@@ -16,7 +16,7 @@
 {% block body %}
     <form action="{{data.searchUrl}}">
         <div class="grid">
-            <div class="col col--sm-10">
+            <div class="col col--sm-12 col--md-10">
                 <input name="q" type="text" class="input input--expand suggest-search__input {{ config.jsName }}__input--{{ attributes['data-search-id'] }}" placeholder="{{ 'global.search' | trans }}" value="{{data.searchValue}}" autofocus="autofocus" autocomplete="off">
             </div>
         </div>

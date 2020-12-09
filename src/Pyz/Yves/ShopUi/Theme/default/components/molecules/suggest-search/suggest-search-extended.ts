@@ -6,6 +6,7 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected searchOverlay: HTMLElement;
     protected overlayOpenButtons: HTMLElement[];
     protected overlayCloseTriggers: HTMLElement[];
+    protected searchDesktop: HTMLElement;
     protected focusTimeout: number = 0;
     protected timeout: number = 400;
 
@@ -14,7 +15,12 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected init(): void {
         this.searchOverlay = <HTMLElement>document.getElementsByClassName(this.overlayClassName)[0];
         this.overlayOpenButtons = <HTMLElement[]>Array.from(document.getElementsByClassName(this.overlayShowClassName));
-        this.overlayCloseTriggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.overlayHideClassName));
+        this.overlayCloseTriggers = <HTMLElement[]>Array.from(
+            document.getElementsByClassName(this.overlayHideClassName)
+        );
+        if (this.searchDesktopClassName) {
+            this.searchDesktop = <HTMLElement>document.getElementsByClassName(this.searchDesktopClassName)[0];
+        }
         super.readyCallback();
     }
 
@@ -64,6 +70,14 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected cleanUpInput(): void {
         this.searchInput.value = '';
         this.suggestionsContainer.innerHTML = '';
+        this.setHintValue('');
+    }
+
+    protected onInputClick(): void {
+        this.activeItemIndex = 0;
+        if (this.isNavigationExist()) {
+            this.updateNavigation();
+        }
     }
 
     protected openSearchLayout(): void {
@@ -80,6 +94,7 @@ export default class SuggestSearchExtended extends SuggestSearch {
 
         if (this.showOverlayOnInitSuggestions) {
             this.searchOverlay.classList.add('active');
+            this.searchDesktop.classList.add('active');
         }
     }
 
@@ -88,6 +103,7 @@ export default class SuggestSearchExtended extends SuggestSearch {
 
         if (this.showOverlayOnInitSuggestions) {
             this.searchOverlay.classList.remove('active');
+            this.searchDesktop.classList.remove('active');
         }
     }
 
@@ -101,6 +117,10 @@ export default class SuggestSearchExtended extends SuggestSearch {
 
     protected get overlayHideClassName(): string {
         return this.getAttribute('overlay-hide-class-name');
+    }
+
+    protected get searchDesktopClassName(): string {
+        return this.getAttribute('search-desktop-class-name');
     }
 
     protected get showOverlayOnInitSuggestions(): boolean {

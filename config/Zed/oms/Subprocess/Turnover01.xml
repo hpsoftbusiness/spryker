@@ -19,7 +19,6 @@
             <event name="create turnover manually" manual="true"/>
             <event name="cancel turnover" onEnter="true" command="MyWorld/CancelTurnover"/>
             <event name="cancel turnover manually" manual="true"/>
-            <event name="test turnover" manual="true"/>
         </events>
 
         <transitions>

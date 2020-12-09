@@ -15,7 +15,7 @@ interface SalesRepositoryInterface extends SprykerSalesRepositoryInterface
     /**
      * @param \Generated\Shared\Transfer\SalesOrderFilterTransfer $salesOrderFilterTransfer
      *
-     * @return array
+     * @return int[]
      */
-    public function getOrdersBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array;
+    public function getOrderIdsBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array;
 }

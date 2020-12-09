@@ -63,8 +63,7 @@ class Request implements RequestInterface
         ResponseMapperInterface $responseMapper,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig,
         ErrorLoggerInterface $errorLogger
-    )
-    {
+    ) {
         $this->httpClient = $httpClient;
         $this->utilEncodingService = $utilEncodingService;
         $this->responseValidator = $responseValidator;
@@ -78,7 +77,6 @@ class Request implements RequestInterface
      * @param array $requestParams
      * @param string $requestMethod
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
      * @return \Generated\Shared\Transfer\MyWorldMarketplaceApiResponseTransfer
      */
     public function request(string $url, array $requestParams = [], string $requestMethod = 'POST'): MyWorldMarketplaceApiResponseTransfer
