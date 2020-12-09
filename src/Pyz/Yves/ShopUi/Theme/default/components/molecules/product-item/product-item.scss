@@ -1,20 +1,13 @@
+$product-item-border-radius: rem(10);
+
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
         position: relative;
-        padding: 0 rem(6) rem(24);
-
-        @include helper-breakpoint-media-min($md-min) {
-            padding: 0 rem(12) rem(48);
-        }
 
         &__image-wrap {
-            margin: rem(14) rem(9);
+            margin: rem(28) rem(17);
             position: relative;
             overflow: hidden;
-
-            @include helper-breakpoint-media-min($md-min) {
-                margin: rem(28) rem(17);
-            }
         }
 
         &__container {
@@ -22,7 +15,7 @@
             display: block;
             color: $setting-color-black;
             border: rem(1) solid $setting-color-gray-2;
-            border-radius: rem(10);
+            border-radius: $product-item-border-radius;
             box-shadow: 0 7px 40px 0 $setting-color-alpha-2;
 
             &--title-top {
@@ -47,25 +40,24 @@
         }
 
         &__info {
-            margin: 0 rem(9);
-
-            @include helper-breakpoint-media-min($lg-min) {
-                margin: 0 rem(17);
-            }
+            margin: 0 rem(16);
         }
 
         &__name {
-            display: block;
-            font: fw(medium) rem(12)/1.5 $setting-font-family;
+            font: fw(medium) rem(14)/1.5 $setting-font-family;
             color: $setting-color-black;
             margin-bottom: rem(3);
-
-            @include helper-breakpoint-media-min($md-min) {
-                font-size: rem(14);
-            }
+            height: rem(42);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* stylelint-disable */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            /* stylelint-enable */
 
             &:hover {
-                color: $setting-color-black;
+                color: $setting-color-main;
                 text-decoration: none;
             }
         }
@@ -73,12 +65,33 @@
         &__price {
             color: $setting-color-main;
             font-weight: fw(medium);
-            font-size: rem(13);
-            margin-bottom: rem(5);
+            font-size: rem(15);
+            margin-bottom: rem(10);
+        }
+
+        &__footer {
+            background: $setting-color-gray-1;
+            color: $setting-color-gray-5;
+            padding: rem(12) rem(16);
+            font-size: rem(14);
+            line-height: 1.2;
+            border-bottom-left-radius: $product-item-border-radius;
+            border-bottom-right-radius: $product-item-border-radius;
+        }
+
+        &--with-spaces {
+            padding: 0 map-get($setting-grid-gutter, sm) / 2 map-get($setting-grid-gutter, sm) * 2;
 
             @include helper-breakpoint-media-min($md-min) {
-                font-size: rem(15);
-                margin-bottom: rem(10);
+                padding: 0 map-get($setting-grid-gutter, md) / 2 map-get($setting-grid-gutter, md) * 2;
+            }
+        }
+
+        &--with-bottom-spaces {
+            padding-bottom: map-get($setting-grid-gutter, sm) * 2;
+
+            @include helper-breakpoint-media-min($md-min) {
+                padding-bottom: map-get($setting-grid-gutter, md) * 2;
             }
         }
 
@@ -108,10 +121,6 @@
         }
 
         &--widget {
-            @include helper-breakpoint-media-min($md-min) {
-                padding: 0;
-            }
-
             &:not(:first-child) {
                 display: none;
             }
@@ -128,7 +137,6 @@
         }
 
         &--promotional {
-            padding: 0;
             display: flex;
 
             #{$name}__container {

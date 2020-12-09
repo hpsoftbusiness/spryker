@@ -2,11 +2,11 @@
 
 {% block body %}
     {% set productTemplate = molecule('product-item') %}
-    {% set class = 'col col--sm-6 col--lg-4' %}
+    {% set class = 'col col--sm-6 col--lg-3 col--with-gutter' %}
 
     {% if data.viewMode == 'list' %}
         {% set productTemplate = molecule('product-item-list') %}
-        {% set class = 'col col--sm-12' %}
+        {% set class = 'col col--sm-12 col--with-gutter' %}
     {% endif %}
 
     {% set image = data.product.images | last %}
@@ -14,6 +14,7 @@
     {% embed productTemplate with {
         productTemplate: productTemplate,
         class: class,
+        modifiers: ['with-bottom-spaces'],
         data: {
             product: data.product,
             image: image.external_url_small,

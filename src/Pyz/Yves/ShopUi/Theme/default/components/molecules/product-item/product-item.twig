@@ -1,5 +1,10 @@
 {% extends molecule('product-item', '@SprykerShop:ShopUi') %}
 
+{% define data = {
+    cashback: 2,
+    shoppingPoints: 1,
+} %}
+
 {% block extraClass %}
     {{ config.jsName }}
 {% endblock %}
@@ -26,6 +31,23 @@
                     </div>
                 {% endblock %}
             </div>
+
+            {% block footer %}
+                {% set cashback = data.cashback %}
+
+                {% if cashback %}
+                    <div class="{{ config.name }}__footer">
+                        {% include molecule('cashback') with {
+                            modifiers: ['small'],
+                            data: {
+                                cashback: cashback,
+                                shoppingPoints: data.shoppingPoints,
+                                iconModifiers: [''],
+                            },
+                        } only %}
+                    </div>
+                {% endif %}
+            {% endblock %}
         {% endblock %}
     </div>
 {% endblock %}
