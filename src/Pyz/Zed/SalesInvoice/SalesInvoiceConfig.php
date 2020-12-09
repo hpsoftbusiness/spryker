@@ -11,6 +11,8 @@ use Spryker\Zed\SalesInvoice\SalesInvoiceConfig as SprykerSalesInvoiceConfig;
 
 class SalesInvoiceConfig extends SprykerSalesInvoiceConfig
 {
+    protected const ORDER_INVOICE_REFERENCE_PREFIX_NUMBER = 1279;
+
     /**
      * {@inheritDoc}
      *
@@ -21,5 +23,13 @@ class SalesInvoiceConfig extends SprykerSalesInvoiceConfig
     public function getOrderInvoiceTemplatePath(): string
     {
         return 'SalesInvoice/invoice/invoice.twig';
+    }
+
+    /**
+     * @return string
+     */
+    protected function getOrderInvoiceReferencePrefix(): string
+    {
+        return parent::getOrderInvoiceReferencePrefix() . static::ORDER_INVOICE_REFERENCE_PREFIX_NUMBER;
     }
 }

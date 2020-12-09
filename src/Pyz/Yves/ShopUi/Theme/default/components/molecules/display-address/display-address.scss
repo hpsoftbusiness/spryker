@@ -3,7 +3,6 @@
         &__item {
             font-weight: fw(light);
             line-height: rem(28);
-            letter-spacing: rem(-0.18);
         }
 
         @content;

@@ -22,7 +22,7 @@
         }
 
         &__total {
-            font: fw(regular) $setting-font-size-base $setting-font-family-additional;
+            font: fw(regular) $setting-font-size-base $setting-font-family;
             text-align: left;
 
             @include helper-breakpoint-media-min($xxl-min) {

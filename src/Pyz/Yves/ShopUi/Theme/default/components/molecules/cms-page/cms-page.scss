@@ -7,14 +7,12 @@
 
             h2 {
                 @include helper-reduced-font-size(1);
-                @include helper-font-reduced-letter-spacing(1);
                 @include helper-font-line-height(1);
                 font-weight: fw(medium);
                 text-align: center;
 
                 @include helper-breakpoint-media-min($lg-min) {
                     @include helper-font-size(1);
-                    @include helper-font-letter-spacing(1);
                 }
             }
         }

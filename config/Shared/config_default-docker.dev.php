@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
@@ -166,3 +167,6 @@ require 'common/config_adyen-development.php';
 // >>> SSO
 
 require 'common/config_sso-development.php';
+
+require 'common/config_my-world-marketplace-api-development.php';
+$config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = '7pyou7b7v0';

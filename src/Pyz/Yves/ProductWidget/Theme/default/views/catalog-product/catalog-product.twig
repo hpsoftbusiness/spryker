@@ -29,13 +29,6 @@
             } only %}{% endwidget %}
         {% endblock %}
 
-        {% block rating %}
-            {% widget 'ProductReviewDisplayWidget' args [data.product.rating | default(0)] with {
-                data: {
-                    parentJsName: config.jsName,
-                    reviewCount: data.product.review_count | default(0),
-                },
-            } only %}{% endwidget %}
-        {% endblock %}
+        {% block rating %}{% endblock %}
     {% endembed %}
 {% endblock %}
