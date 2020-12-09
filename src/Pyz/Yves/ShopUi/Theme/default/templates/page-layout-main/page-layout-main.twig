@@ -126,8 +126,6 @@
     {% endblock %}
 
     {% block footer %}
-        {% cms_slot 'slt-1' %}
-
         {% embed organism('footer') only %}
             {% block footerNavigation %}
                 {% embed molecule('navigation-footer') with {
