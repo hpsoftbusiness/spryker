@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This file is part of the Spryker Commerce OS.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
+use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
-use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep as SprykerShopShipmentStep;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep as SprykerShopPaymentStep;
 
-class ShipmentStep extends SprykerShopShipmentStep
+class PaymentStep extends SprykerShopPaymentStep
 {
     /**
      * @var \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface
@@ -24,33 +24,33 @@ class ShipmentStep extends SprykerShopShipmentStep
     protected $productSellableChecker;
 
     /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
-     * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface $postConditionChecker
-     * @param \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface $giftCardItemsChecker
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface $paymentClient
+     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $paymentPlugins
      * @param string $stepRoute
      * @param string|null $escapeRoute
-     * @param \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[] $checkoutShipmentStepEnterPreCheckPlugins
+     * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
+     * @param \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface[] $checkoutPaymentStepEnterPreCheckPlugins
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
      */
     public function __construct(
-        CheckoutPageToCalculationClientInterface $calculationClient,
-        StepHandlerPluginCollection $shipmentPlugins,
-        PostConditionCheckerInterface $postConditionChecker,
-        GiftCardItemsCheckerInterface $giftCardItemsChecker,
+        CheckoutPageToPaymentClientInterface $paymentClient,
+        StepHandlerPluginCollection $paymentPlugins,
         $stepRoute,
         $escapeRoute,
-        array $checkoutShipmentStepEnterPreCheckPlugins,
+        FlashMessengerInterface $flashMessenger,
+        CheckoutPageToCalculationClientInterface $calculationClient,
+        array $checkoutPaymentStepEnterPreCheckPlugins,
         ProductSellableCheckerInterface $productSellableChecker
     ) {
         parent::__construct(
-            $calculationClient,
-            $shipmentPlugins,
-            $postConditionChecker,
-            $giftCardItemsChecker,
+            $paymentClient,
+            $paymentPlugins,
             $stepRoute,
             $escapeRoute,
-            $checkoutShipmentStepEnterPreCheckPlugins
+            $flashMessenger,
+            $calculationClient,
+            $checkoutPaymentStepEnterPreCheckPlugins
         );
 
         $this->productSellableChecker = $productSellableChecker;
