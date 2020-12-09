@@ -54,7 +54,7 @@
         &--with-gutter {
             @each $breakpoint, $edges in $setting-breakpoints {
                 @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
-                    padding: 0 map-get($setting-grid-gutter, $breakpoint)
+                    padding: 0 map-get($setting-grid-gutter, $breakpoint);
                 }
             }
         }
@@ -205,7 +205,7 @@
         &--with-gutter {
             @each $breakpoint, $edges in $setting-breakpoints {
                 @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
-                    margin: 0 (-1 * map-get($setting-grid-gutter, $breakpoint))
+                    margin: 0 (-1 * map-get($setting-grid-gutter, $breakpoint));
                 }
             }
         }

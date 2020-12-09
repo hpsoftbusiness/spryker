@@ -24,10 +24,6 @@
             }
         }
 
-        &__navigation-top {
-            margin: 0;
-        }
-
         &__currency-lang {
             display: flex;
             order: 1;
@@ -50,6 +46,7 @@
         }
 
         &__navigation-top {
+            margin: 0;
             position: relative;
             z-index: $setting-zi-header + 3;
         }
@@ -62,10 +59,12 @@
         &__categories-label {
             @include helper-effect-transition(color);
             font-weight: fw(medium);
+            padding: 0;
+            margin: rem(12) 0;
 
             &:hover,
             &--active {
-                color: $setting-color-main;
+                color: $setting-color-main !important;
             }
 
             &--active {
@@ -191,20 +190,15 @@
         }
 
         &__back-link {
-            position: absolute;
-            top: 50%;
-            left: rem(16);
-            color: $setting-color-gray-5;
-            font-size: 0;
+            @include helper-effect-transition(color);
+            color: $setting-color-text;
+            font: fw(medium) rem(14) $setting-font-family;
             line-height: rem(19);
             font-weight: fw(medium);
-            transform: translateY(-50%);
-            padding: rem(5) rem(5) rem(5) 0;
             z-index: $setting-zi-side-drawer;
 
             @include helper-breakpoint-media-min($md-min) {
                 font-size: rem(19);
-                padding: 0;
             }
 
             &:hover {

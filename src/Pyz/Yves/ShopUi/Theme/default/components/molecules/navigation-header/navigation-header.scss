@@ -1,8 +1,16 @@
 @mixin shop-ui-navigation-header($name: '.navigation-header') {
     #{$name} {
-        padding: rem(16) 0;
         position: absolute;
         background-color: $setting-color-white;
+        padding: rem(30);
+        top: rem(45);
+        left: rem(-30);
+        border-radius: rem(10);
+        border: rem(1) solid $setting-color-gray-2;
+        min-width: rem(280);
+        box-shadow: 0 rem(7) rem(40) 0 $setting-color-alpha-4;
+        max-height: rem(450);
+        overflow-y: auto;
 
         @content;
     }

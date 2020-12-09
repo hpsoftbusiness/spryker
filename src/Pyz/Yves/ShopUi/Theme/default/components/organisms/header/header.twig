@@ -13,30 +13,28 @@
 {% block body %}
     {% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
-    <div>
-        <div class="{{ config.name }}__search-overlay js-suggest-search__overlay-mobile">
-            <div class="{{ config.name }}__search-overlay-container">
-                <div class="{{ config.name }}__search-close js-suggest-search__hide-mobile">
-                    {% include atom('icon') with {
-                        class: config.name ~ '__search-close-icon',
-                        data: {
-                            name: 'close'
-                        }
-                    } only %}
-                </div>
+    <div class="is-hidden-lg-xl">
+        {% if data.showSearchForm %}
+            <div class="{{ config.name }}__search-overlay js-suggest-search__overlay-mobile">
+                <div class="{{ config.name }}__search-overlay-container">
+                    <div class="{{ config.name }}__search-close js-suggest-search__hide-mobile">
+                        {% include atom('icon') with {
+                            class: config.name ~ '__search-close-icon',
+                            data: {
+                                name: 'close'
+                            }
+                        } only %}
+                    </div>
 
-                {% if data.showSearchForm %}
                     {% include molecule('search-form') with {
                         attributes: {
                             'data-search-id': 'mobile'
                         }
                     } only %}
-                {% endif %}
+                </div>
+                <div class="{{ config.name }}__overlay-shadow js-suggest-search__hide-mobile"></div>
             </div>
-            <div class="{{ config.name }}__overlay-shadow js-suggest-search__hide-mobile"></div>
-        </div>
-
-        {% block additionalLink %}{% endblock %}
+        {% endif %}
 
         <div class="{{ config.name }}__row {{ config.name }}__navigation-top is-hidden-lg-xl">
             {% if data.showNavigation %}
@@ -53,36 +51,36 @@
         </div>
 
         <div class="col col--expand grid grid--center spacing-x spacing-x--inner spacing-x--biggest">
-            <div class="{{ config.name }}__categories spacing-right spacing-right--biggest">
-                <p class="{{ config.name }}__categories-label {{ config.jsName }}__categories-label"
-                   data-toggle-target-class-name="{{ config.jsName }}__categories-list">
-                    {{ 'global.header.categories' | trans }}
+            {% if data.showNavigation %}
+                <div class="{{ config.name }}__categories spacing-right spacing-right--biggest">
+                    <button class="{{ config.name }}__categories-label {{ config.jsName }}__categories-label button button--skinless"
+                       data-toggle-target-class-name="{{ config.jsName }}__categories-list">
+                        {{ 'global.header.categories' | trans }}
 
-                    {% include atom('icon') with {
-                        class: config.name ~ '__categories-icon',
-                        modifiers: ['small'],
-                        data: {
-                            name: 'arrow-down'
-                        }
-                    } only %}
-                </p>
+                        {% include atom('icon') with {
+                            class: config.name ~ '__categories-icon',
+                            modifiers: ['small'],
+                            data: {
+                                name: 'arrow-down'
+                            }
+                        } only %}
+                    </button>
 
-                {% if data.showNavigation %}
                     <div class="{{ config.name }}__categories-list {{ config.jsName }}__categories-list is-hidden">
                         {% block mainNavigation %}
                             {% widget 'NavigationWidget' args ['MAIN_NAVIGATION_DESKTOP', 'navigation-header'] %}{% endwidget %}
                         {% endblock %}
                     </div>
-                {% endif %}
 
-                {% include molecule('toggler-accordion') with {
-                    attributes: {
-                        'trigger-class-name':  config.jsName ~ '__categories-label',
-                        'active-class': config.name ~ '__categories-label--active',
-                        'is-closed-outside': true,
-                    },
-                } only %}
-            </div>
+                    {% include molecule('toggler-accordion') with {
+                        attributes: {
+                            'trigger-class-name':  config.jsName ~ '__categories-label',
+                            'active-class': config.name ~ '__categories-label--active',
+                            'is-closed-outside': true,
+                        },
+                    } only %}
+                </div>
+            {% endif %}
 
             {% if data.showSearchForm %}
                 {% include molecule('search-form-desktop') with {
