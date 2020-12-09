@@ -6,7 +6,13 @@
             <a href="{{ path('home') }}" class="breadcrumb-step__link">
                 <img src="{{ publicPath('images/icon-home.png') }}" alt="Home page">
             </a>
-            <span class="breadcrumb-step__separator"></span>
+            <span class="breadcrumb-step__separator">
+                {% include atom('icon') with {
+                    data: {
+                        name: 'separator',
+                    },
+                } only %}
+            </span>
         </li>
     {% endif %}
 

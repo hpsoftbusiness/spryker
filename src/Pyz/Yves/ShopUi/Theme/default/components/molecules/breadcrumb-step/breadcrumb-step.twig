@@ -29,6 +29,12 @@
     {% endif %}
 
     {% if data.withChevron %}
-        <span class="{{ config.name }}__separator"></span>
+        <span class="{{ config.name }}__separator">
+            {% include atom('icon') with {
+                data: {
+                    name: 'separator',
+                },
+            } only %}
+        </span>
     {% endif %}
 {% endblock %}
