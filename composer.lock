@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "112e92b68864633152bc6c4c83053720",
+    "content-hash": "95a9cde249adfd517ac0f9ee932cb23c",
     "packages": [
         {
             "name": "brick/math",
@@ -2491,11 +2491,17 @@
         },
         {
             "name": "spryker-eco/adyen",
-            "version": "dev-feature/adyen-maria-db-compatibility",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-eco/adyen.git",
-                "reference": "fb96706b5e5171a047f84fe475eca75da33b0464"
+                "url": "https://github.com/spryker-eco/adyen.git",
+                "reference": "5b6e326a7c3a873d746624c882dffee23db06d09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/adyen/zipball/5b6e326a7c3a873d746624c882dffee23db06d09",
+                "reference": "5b6e326a7c3a873d746624c882dffee23db06d09",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
@@ -2543,33 +2549,12 @@
                     "SprykerEco\\": "src/SprykerEco/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerEcoTest\\": "tests/SprykerEcoTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/"
-                ],
-                "phpstan": [
-                    "phpstan analyse -l 6 -c phpstan.neon src/"
-                ],
-                "test": [
-                    "codecept run"
-                ],
-                "test-coverage": [
-                    "codecept run --coverage-xml"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Adyen module",
-            "time": "2020-12-09T03:34:23+00:00"
+            "time": "2020-12-09T16:43:06+00:00"
         },
         {
             "name": "spryker-eco/adyen-api",
@@ -43319,9 +43304,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "spryker-eco/adyen": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
