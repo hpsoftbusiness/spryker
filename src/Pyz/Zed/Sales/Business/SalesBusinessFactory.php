@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Sales\Business;
 
 use Pyz\Zed\Sales\Business\Order\OrderHydrator as OrderHydratorWithMultiShippingAddress;
+use Pyz\Zed\Sales\SalesDependencyProvider;
 use Spryker\Zed\Sales\Business\Order\OrderHydratorInterface;
 use Spryker\Zed\Sales\Business\SalesBusinessFactory as SprykerSalesBusinessFactory;
 
@@ -33,5 +34,37 @@ class SalesBusinessFactory extends SprykerSalesBusinessFactory
             $this->getOrderItemExpanderPlugins(),
             $this->getCustomerOrderAccessCheckPlugins()
         );
+    }
+
+    /**
+     * @return \Spryker\Zed\Sales\Business\Model\Order\OrderHydratorInterface
+     */
+    public function createOrderForExportHydrator(): OrderHydratorInterface
+    {
+        return new OrderHydratorWithMultiShippingAddress(
+            $this->getQueryContainer(),
+            $this->getOmsFacade(),
+            $this->getConfig(),
+            $this->getCustomerFacade(),
+            $this->getOrderForExportExpanderPlugins(),
+            $this->getOrderItemForExportExpanderPlugins(),
+            []
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface[]
+     */
+    public function getOrderForExportExpanderPlugins()
+    {
+        return $this->getProvidedDependency(SalesDependencyProvider::PLUGINS_ORDER_FOR_EXPORT_EXPANDER);
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPluginInterface[]
+     */
+    public function getOrderItemForExportExpanderPlugins()
+    {
+        return $this->getProvidedDependency(SalesDependencyProvider::PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER);
     }
 }

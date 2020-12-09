@@ -24,4 +24,19 @@ class SalesOrderUidFacade extends AbstractFacade implements SalesOrderUidFacadeI
     {
         return $this->getFactory()->createOrderExpander()->expandSalesOrder($quoteTransfer);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param string $salesOrderUid
+     *
+     * @return string|null
+     */
+    public function findCountryIso2CodeByUid(string $salesOrderUid): ?string
+    {
+        return $this->getFactory()->createCountryReader()
+            ->findCountryIso2CodeByUid($salesOrderUid);
+    }
 }

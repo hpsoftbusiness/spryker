@@ -9,6 +9,8 @@ namespace Pyz\Zed\SalesOrderUid\Business;
 
 use Pyz\Zed\SalesOrderUid\Business\OrderExpander\OrderExpander;
 use Pyz\Zed\SalesOrderUid\Business\OrderExpander\OrderExpanderInterface;
+use Pyz\Zed\SalesOrderUid\Business\Reader\CountryReader;
+use Pyz\Zed\SalesOrderUid\Business\Reader\CountryReaderInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -22,5 +24,13 @@ class SalesOrderUidBusinessFactory extends AbstractBusinessFactory
     public function createOrderExpander(): OrderExpanderInterface
     {
         return new OrderExpander($this->getConfig());
+    }
+
+    /**
+     * @return \Pyz\Zed\SalesOrderUid\Business\Reader\CountryReaderInterface
+     */
+    public function createCountryReader(): CountryReaderInterface
+    {
+        return new CountryReader($this->getConfig());
     }
 }
