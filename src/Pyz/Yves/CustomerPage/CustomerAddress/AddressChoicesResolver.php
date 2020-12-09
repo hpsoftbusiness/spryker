@@ -73,10 +73,10 @@ class AddressChoicesResolver extends SprykerShopAddressChoicesResolver
         $countryCollectionTransfer = $this->countryClient
             ->findCountriesByIso2Codes($countryCollectionTransfer);
 
-        if ($countryCollectionTransfer->getCountries()->count()) {
+        if (!$countryCollectionTransfer->getCountries()->count()) {
             return null;
         }
 
-        return $countryCollectionTransfer->getCountries()->offsetGet(0)->getName();
+        return $countryCollectionTransfer->getCountries()[0]->getName();
     }
 }
