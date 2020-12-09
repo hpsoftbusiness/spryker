@@ -28,6 +28,6 @@ class AdyenPaymentOrderExpanderPlugin extends AbstractPlugin implements OrderExp
      */
     public function hydrate(OrderTransfer $orderTransfer)
     {
-        return $this->getFacade()->expandOrderWithPaymentAdyen($orderTransfer);
+        return $this->getFacade()->expandOrderWithAdyenPayment($orderTransfer);
     }
 }

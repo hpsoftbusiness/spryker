@@ -19,8 +19,11 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
     public const FACADE_SALES = 'FACADE_SALES';
     public const FACADE_MONEY = 'FACADE_MONEY';
     public const FACADE_LOCALE = 'FACADE_LOCALE';
-    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
     public const FACADE_PRODUCT = 'FACADE_PRODUCT';
+    public const FACADE_SALES_ORDER_UID = 'FACADE_SALES_ORDER_UID';
+
+    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
+
     public const CLIENT_STORE = 'CLIENT_STORE';
 
     /**
@@ -33,6 +36,7 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addSalesFacade($container);
         $container = $this->addMoneyFacade($container);
         $container = $this->addLocaleFacade($container);
+        $container = $this->addSalesOrderUidFacade($container);
         $container = $this->addStoreClient($container);
 
         return $container;
@@ -87,6 +91,20 @@ class PostingExportDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::FACADE_LOCALE, function (Container $container): LocaleFacadeInterface {
             return $container->getLocator()->locale()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addSalesOrderUidFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_SALES_ORDER_UID, function (Container $container) {
+            return $container->getLocator()->salesOrderUid()->facade();
         });
 
         return $container;

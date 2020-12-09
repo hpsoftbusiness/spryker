@@ -10,6 +10,7 @@ namespace Pyz\Zed\PostingExport\Business;
 use Pyz\Zed\PostingExport\Business\ContentBuilder\PostingExportContentBuilder;
 use Pyz\Zed\PostingExport\PostingExportDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
+use Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -30,7 +31,9 @@ class PostingExportBusinessFactory extends AbstractBusinessFactory
             $this->getSalesFacade(),
             $this->getMoneyFacade(),
             $this->getLocaleFacade(),
-            $this->getStoreClient()
+            $this->getSalesOrderUidFacade(),
+            $this->getStoreClient(),
+            $this->getConfig()
         );
     }
 
@@ -64,6 +67,14 @@ class PostingExportBusinessFactory extends AbstractBusinessFactory
     public function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_LOCALE);
+    }
+
+    /**
+     * @return \Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface
+     */
+    public function getSalesOrderUidFacade(): SalesOrderUidFacadeInterface
+    {
+        return $this->getProvidedDependency(PostingExportDependencyProvider::FACADE_SALES_ORDER_UID);
     }
 
     /**

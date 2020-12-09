@@ -17,6 +17,7 @@ use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
 use Pyz\Zed\PostingExport\PostingExportConfig;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
+use Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\Money\Business\MoneyFacadeInterface;
@@ -58,26 +59,42 @@ class PostingExportContentBuilder
     protected $localeFacade;
 
     /**
+     * @var \Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface
+     */
+    protected $salesOrderUidFacade;
+
+    /**
      * @var \Spryker\Client\Store\StoreClientInterface
      */
     protected $storeClient;
 
     /**
+     * @var \Pyz\Zed\PostingExport\PostingExportConfig
+     */
+    protected $postingExportConfig;
+
+    /**
      * @param \Pyz\Zed\Sales\Business\SalesFacadeInterface $salesFacade
      * @param \Spryker\Zed\Money\Business\MoneyFacadeInterface $moneyFacade
      * @param \Spryker\Zed\Locale\Business\LocaleFacadeInterface $localeFacade
+     * @param \Pyz\Zed\SalesOrderUid\Business\SalesOrderUidFacadeInterface $salesOrderUidFacade
      * @param \Spryker\Client\Store\StoreClientInterface $storeClient
+     * @param \Pyz\Zed\PostingExport\PostingExportConfig $postingExportConfig
      */
     public function __construct(
         SalesFacadeInterface $salesFacade,
         MoneyFacadeInterface $moneyFacade,
         LocaleFacadeInterface $localeFacade,
-        StoreClientInterface $storeClient
+        SalesOrderUidFacadeInterface $salesOrderUidFacade,
+        StoreClientInterface $storeClient,
+        PostingExportConfig $postingExportConfig
     ) {
         $this->salesFacade = $salesFacade;
         $this->moneyFacade = $moneyFacade;
         $this->localeFacade = $localeFacade;
+        $this->salesOrderUidFacade = $salesOrderUidFacade;
         $this->storeClient = $storeClient;
+        $this->postingExportConfig = $postingExportConfig;
     }
 
     /**
@@ -132,6 +149,7 @@ class PostingExportContentBuilder
 
         $adyenPaymentReference = $this->findAdyenPaymentReference($orderTransfer);
         $orderInvoiceReference = $this->findOrderInvoiceReference($orderTransfer);
+        $businessPostingGroup = $this->findBusinessPosingGroup($orderTransfer);
 
         $orderItemsCount = 0;
         $orderItemsData = [];
@@ -159,9 +177,9 @@ class PostingExportContentBuilder
             'orderNumber' => $orderTransfer->getOrderReference(),
             'billToCustomerNumber' => $customerTransfer->getMyWorldCustomerNumber(),
             'customerType' => $customerTransfer->getCustomerType(),
-            'vatBusPostingGroup' => null, // TODO
+            'vatBusPostingGroup' => $businessPostingGroup,
             'customerPostingGroup' => static::DEFAULT_DATA_CUSTOMER_POSTING_GROUP,
-            'genBusinessPostingGroup' => null, // TODO
+            'genBusinessPostingGroup' => $businessPostingGroup,
             'billToName' => sprintf(
                 '%s %s',
                 $billingAddressTransfer->getFirstName(),
@@ -302,6 +320,33 @@ class PostingExportContentBuilder
         }
 
         return $orderTransfer->getOrderInvoices()[0]->getReference();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string|null
+     */
+    protected function findBusinessPosingGroup(OrderTransfer $orderTransfer): ?string
+    {
+        if (!$orderTransfer->getUid()) {
+            return null;
+        }
+
+        $countryIso2Code = $this->salesOrderUidFacade->findCountryIso2CodeByUid($orderTransfer->getUid());
+
+        if (!$countryIso2Code) {
+            return null;
+        }
+
+        $countryIso2CodeToBusinessPostingGroupMap = $this->postingExportConfig
+            ->getCountryIso2CodeToBusinessPostingGroupMap();
+
+        if (!isset($countryIso2CodeToBusinessPostingGroupMap[$countryIso2Code])) {
+            return null;
+        }
+
+        return $countryIso2CodeToBusinessPostingGroupMap[$countryIso2Code];
     }
 
     /**
