@@ -3,7 +3,7 @@
         position: relative;
         background-color: $setting-color-white;
         z-index: $setting-zi-header;
-        border-bottom: rem(1) solid $setting-color-gray-1;
+        box-shadow: 0 rem(2) rem(6) 0 $setting-color-alpha-4;
 
         @include helper-breakpoint-media-min($xl-min) {
             padding-top: 0;
@@ -22,10 +22,6 @@
             @include helper-breakpoint-media-min($xl-min) {
                 display: block;
             }
-        }
-
-        &__navigation-top {
-            margin: 0;
         }
 
         &__currency-lang {
@@ -50,14 +46,39 @@
         }
 
         &__navigation-top {
+            margin: 0;
             position: relative;
             z-index: $setting-zi-header + 3;
         }
 
         &__categories {
-            &__label {
-                font-weight: fw(medium);
+            position: relative;
+        }
+
+        &__categories-label {
+            @include helper-effect-transition(color);
+            font: fw(medium) rem(16) $setting-font-family;
+            background-color: $setting-color-transparent;
+            padding: 0;
+            margin: rem(12) 0;
+            cursor: pointer;
+
+            &:hover,
+            &--active {
+                color: $setting-color-main;
             }
+
+            &--active {
+                #{$name}__categories-icon {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+
+        &__categories-icon {
+            @include helper-effect-transition(transform);
+            margin-left: rem(8);
+            transform-origin: center center;
         }
 
         &__search-form {
@@ -86,6 +107,8 @@
         &__search-overlay {
             position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: $setting-zi-search-suggestions;
             visibility: hidden;
 
@@ -109,16 +132,13 @@
 
         &__search-overlay-container {
             @include helper-effect-transition(all);
-            padding: rem(34) rem(30);
+            position: relative;
+            padding: rem(11) rem(15);
             background: $setting-color-white;
-            min-width: 100vw;
+            width: 100%;
             transform-origin: top center;
             transform: scaleY(0);
             opacity: 0;
-
-            @include helper-breakpoint-media-min($md-min) {
-                min-width: rem(480);
-            }
         }
 
         &__search-open {
@@ -140,29 +160,23 @@
         }
 
         &__search-close {
+            position: absolute;
+            top: rem(23);
+            right: rem(30);
             z-index: $setting-zi-search-suggestions + 2;
             cursor: pointer;
-            margin-bottom: rem(25);
-            width: rem(20);
+            width: rem(16);
+            height: rem(16);
             padding: 0;
 
             @include helper-breakpoint-media-min($md-min) {
-                padding: rem(34) rem(30);
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: auto;
+                right: rem(15);
             }
         }
 
         &__search-close-icon {
-            width: rem(20);
-            height: rem(20);
-
-            @include helper-breakpoint-media-min($md-min) {
-                width: rem(16);
-                height: rem(16);
-            }
+            color: $setting-color-gray-5;
+            vertical-align: top;
         }
 
         &--checkout {
@@ -173,20 +187,15 @@
         }
 
         &__back-link {
-            position: absolute;
-            top: 50%;
-            left: rem(16);
-            color: $setting-color-gray-5;
-            font-size: 0;
+            @include helper-effect-transition(color);
+            color: $setting-color-text;
+            font: fw(medium) rem(14) $setting-font-family;
             line-height: rem(19);
             font-weight: fw(medium);
-            transform: translateY(-50%);
-            padding: rem(5) rem(5) rem(5) 0;
             z-index: $setting-zi-side-drawer;
 
             @include helper-breakpoint-media-min($md-min) {
                 font-size: rem(19);
-                padding: 0;
             }
 
             &:hover {

@@ -83,6 +83,10 @@
                 color: $setting-color-black;
             }
 
+            .select2-container {
+                width: 100% !important;
+            }
+
             #{$name}__caret {
                 color: $setting-color-black;
             }
@@ -129,7 +133,6 @@
                 border-top-left-radius: $setting-border-radius;
                 border-top-right-radius: $setting-border-radius;
             }
-
         }
 
         .select2-results__option--highlighted[aria-selected='true'] {

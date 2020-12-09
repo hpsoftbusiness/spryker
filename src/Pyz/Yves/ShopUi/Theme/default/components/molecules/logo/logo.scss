@@ -15,8 +15,8 @@
         }
 
         &--checkout {
-            @include helper-breakpoint-media-max($sm-max) {
-                padding: rem(22) rem(13);
+            #{$name}__svg {
+                margin-left: 0;
             }
         }
     }

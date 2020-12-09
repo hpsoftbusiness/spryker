@@ -6,19 +6,28 @@
         data: {
             showSearchForm: false,
             showNavigation: false,
-            showLangCurrencySwitches: false,
         },
     } only %}
-        {% block additionalLink %}
-            <a class="{{ config.name }}__back-link" href="{{ url('cart') }}">
-                {% include atom('icon') with {
-                    modifiers: ['medium-up', 'to-cart'],
-                    data: {
-                        name: 'arrow-left',
-                    },
-                } only %}
-                {{ 'cart.cart' | trans }}
-            </a>
+        {% block body %}
+            <div class="{{ config.name }}__row {{ config.name }}__navigation-main grid grid--justify grid--middle">
+                <div class="col">
+                    {% include molecule('logo') with {
+                        modifiers: modifiers,
+                    } only %}
+                </div>
+
+                <div class="col">
+                    <a class="{{ config.name }}__back-link" href="{{ url('cart') }}">
+                        {% include atom('icon') with {
+                            modifiers: ['medium-up', 'to-cart'],
+                            data: {
+                                name: 'arrow-left',
+                            },
+                        } only %}
+                        {{ 'cart.cart' | trans }}
+                    </a>
+                </div>
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
