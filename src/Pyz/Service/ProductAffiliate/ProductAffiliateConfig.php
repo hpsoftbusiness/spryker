@@ -7,11 +7,11 @@
 
 namespace Pyz\Service\ProductAffiliate;
 
+use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 use Spryker\Service\Kernel\AbstractBundleConfig;
 
 class ProductAffiliateConfig extends AbstractBundleConfig
 {
-    protected const TRACKING_URL_PATH = 'https://click.myworld.com/spryker';
     protected const TRACKING_URL_NETWORK_ARGUMENT = 'AW_Dach';
 
     /**
@@ -21,7 +21,7 @@ class ProductAffiliateConfig extends AbstractBundleConfig
      */
     public function getTrackingUrlPath(): string
     {
-        return static::TRACKING_URL_PATH;
+        return $this->get(ProductAffiliateConstants::TRACKING_URL_PATH);
     }
 
     /**
