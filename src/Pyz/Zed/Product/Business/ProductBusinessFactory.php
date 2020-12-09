@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Product\Business;
 
+use Pyz\Zed\Product\Business\Expander\OrderItemExpander;
+use Pyz\Zed\Product\Business\Expander\OrderItemExpanderInterface;
 use Pyz\Zed\Product\Business\Product\ProductConcreteManager;
 use Pyz\Zed\Product\Business\Transfer\ProductTransferMapper;
 use Spryker\Zed\Product\Business\ProductBusinessFactory as SprykerProductBusinessFactory;
@@ -50,5 +52,15 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
         $productConcreteManager->attachReadObserver($this->createProductConcreteReadObserverPluginManager());
 
         return $productConcreteManager;
+    }
+
+    /**
+     * @return \Pyz\Zed\Product\Business\Expander\OrderItemExpanderInterface
+     */
+    public function createOrderItemExpander(): OrderItemExpanderInterface
+    {
+        return new OrderItemExpander(
+            $this->getRepository()
+        );
     }
 }

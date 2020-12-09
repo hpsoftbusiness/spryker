@@ -17,4 +17,16 @@ interface SalesOrderUidFacadeInterface
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function expandSalesOrder(QuoteTransfer $quoteTransfer): QuoteTransfer;
+
+    /**
+     * Specification:
+     * - Finds a country iso2code assigned to the given sales order UID.
+     *
+     * @api
+     *
+     * @param string $salesOrderUid
+     *
+     * @return string|null
+     */
+    public function findCountryIso2CodeByUid(string $salesOrderUid): ?string;
 }

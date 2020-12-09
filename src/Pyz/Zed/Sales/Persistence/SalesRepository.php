@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\Sales\Persistence;
 
-use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
+use Orm\Zed\Sales\Persistence\Map\SpySalesOrderTableMap;
 use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Sales\Persistence\SalesRepository as SprykerSalesRepository;
@@ -18,33 +18,21 @@ use Spryker\Zed\Sales\Persistence\SalesRepository as SprykerSalesRepository;
  */
 class SalesRepository extends SprykerSalesRepository implements SalesRepositoryInterface
 {
-    public const COLUMN_TRANSACTION = 'transaction';
-    public const COLUMN_PAYMENT_METHOD = 'payment_method';
-
     /**
      * @param \Generated\Shared\Transfer\SalesOrderFilterTransfer $salesOrderFilterTransfer
      *
-     * @return array
+     * @return int[]
      */
-    public function getOrdersBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array
+    public function getOrderIdsBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array
     {
         $salesOrderQuery = $this->applyOrdersFilterToSalesQuery(
             $this->getFactory()->createSalesOrderQuery(),
             $salesOrderFilterTransfer
         );
 
-        $salesOrderEntityCollection = $salesOrderQuery->find();
-
-        $salesOrderMapper = $this->getFactory()
-            ->createSalesOrderMapper();
-
-        $orderListTransfer = [];
-        foreach ($salesOrderEntityCollection as $salesOrderEntity) {
-            $orderTransfer = $salesOrderMapper->mapSalesOrderEntityToOrderTransfer($salesOrderEntity, new OrderTransfer());
-            $orderListTransfer[] = $orderTransfer;
-        }
-
-        return $orderListTransfer;
+        return $salesOrderQuery->select(SpySalesOrderTableMap::COL_ID_SALES_ORDER)
+            ->find()
+            ->toArray();
     }
 
     /**

@@ -21,7 +21,7 @@ class UidSalesOrderExpanderPlugin extends AbstractPlugin implements CheckoutPreS
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
-     * 
+     *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function preSave(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)

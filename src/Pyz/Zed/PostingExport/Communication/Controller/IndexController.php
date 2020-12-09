@@ -37,9 +37,9 @@ class IndexController extends AbstractController
         if ($exportForm->isSubmitted() && $exportForm->isValid()) {
             $data = $exportForm->getData();
 
-            $postingExportContentsTransfer = $this->getCsvExportContentsTransfer($request, $data);
+            $postingExportContentsTransfer = $this->getPostingExportContentsTransfer($request, $data);
             if ($postingExportContentsTransfer) {
-                return $this->getFactory()->createExportCsvResponseBuilder()
+                return $this->getFactory()->createExportJsonResponseBuilder()
                     ->buildResponse($postingExportContentsTransfer);
             }
 
@@ -59,7 +59,7 @@ class IndexController extends AbstractController
      *
      * @return \Generated\Shared\Transfer\ExportContentsTransfer|null
      */
-    protected function getCsvExportContentsTransfer(Request $request, array $data): ?ExportContentsTransfer
+    protected function getPostingExportContentsTransfer(Request $request, array $data): ?ExportContentsTransfer
     {
         if ($request->request->has(static::ACTION_POSTINGS)) {
             return $this->getFacade()->generatePostingExportContent(
