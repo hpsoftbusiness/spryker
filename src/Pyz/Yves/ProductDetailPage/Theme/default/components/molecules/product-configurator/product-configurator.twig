@@ -38,13 +38,12 @@
 
 {% block body %}
 
-    <h1 class="title title--product title--h2">{{productName}}</h1>
+    <h1 class="title title--product title--h3">{{productName}}</h1>
 
-    <div class="grid grid--justify spacing-bottom spacing-bottom--bigger">
-        {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] use view('pdp-review-rating', 'ProductReviewWidget') only %}{% endwidget %}
+    <div class="grid grid--justify spacing-bottom spacing-bottom--smaller">
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}
-            <div class="col text-right">
+            <div class="col">
                 {% include molecule('money-price') with {
                     modifiers: ['pdp'],
                     data: {
@@ -55,6 +54,22 @@
             </div>
         {% endwidget %}
     </div>
+
+    {# TODO: Cashback points details  #}
+    <div class="chashback-sp-info">
+        <span class="chashback-sp-info__text">
+            2% Cashback + 1
+        </span>
+        <span class="chashback-sp-info__icon">
+            {% include atom('icon') with {
+                data: {
+                    name: 'shopping-points',
+                },
+            } only %}
+        </span>
+
+    </div>
+
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
             modifiers: ['with-top-border', 'option'],
