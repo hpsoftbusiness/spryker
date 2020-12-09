@@ -24,10 +24,10 @@ class AdyenFacade extends SprykerEcoAdyenFacade implements AdyenFacadeInterface
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function expandOrderWithPaymentAdyen(OrderTransfer $orderTransfer): OrderTransfer
+    public function expandOrderWithAdyenPayment(OrderTransfer $orderTransfer): OrderTransfer
     {
         return $this->getFactory()
             ->createOrderExpander()
-            ->expandOrderWithPaymentAdyen($orderTransfer);
+            ->expandOrderWithAdyenPayment($orderTransfer);
     }
 }

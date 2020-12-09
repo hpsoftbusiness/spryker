@@ -39,6 +39,8 @@ class PostingExportContentBuilder
 
     protected const DEFAULT_LINE_DATA_TYPE = 'Artikel';
     protected const DEFAULT_LINE_DATA_UNITS_OF_MEASURE = 'PCS';
+    protected const DEFAULT_LINE_DATA_GEN_PROD_POSTING_GROUP = 'I_MP_NO';
+    protected const DEFAULT_LINE_DATA_VAT_PROD_POSTING_GROUP = 'T_NO';
 
     /**
      * @var \Pyz\Zed\Sales\Business\SalesFacadeInterface
@@ -235,8 +237,8 @@ class PostingExportContentBuilder
             'itemCategory' => null, // check
             'unitOfMeasure' => static::DEFAULT_LINE_DATA_UNITS_OF_MEASURE,
             'quantity' => $itemTransfer->getQuantity(),
-            'genProdPostingGroup' => 'I_MP_NO', // check
-            'vatProdPostingGroup' => 'T_NO', // check
+            'genProdPostingGroup' => static::DEFAULT_LINE_DATA_GEN_PROD_POSTING_GROUP,
+            'vatProdPostingGroup' => static::DEFAULT_LINE_DATA_VAT_PROD_POSTING_GROUP,
             'glAccount' => null, // skipped
             'vatPercentage' => (int)$itemTransfer->getTaxRate(),
             'unitPrice' => $this->formatIntValueToDecimalCurrency($itemTransfer->getUnitPrice()),

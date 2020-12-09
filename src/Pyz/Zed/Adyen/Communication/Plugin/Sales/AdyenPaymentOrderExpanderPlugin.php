@@ -14,7 +14,7 @@ use Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface;
 /**
  * @method \Pyz\Zed\Adyen\Business\AdyenFacadeInterface getFacade()
  */
-class AdyenOrderExpanderPlugin extends AbstractPlugin implements OrderExpanderPluginInterface
+class AdyenPaymentOrderExpanderPlugin extends AbstractPlugin implements OrderExpanderPluginInterface
 {
     /**
      * {@inheritDoc}

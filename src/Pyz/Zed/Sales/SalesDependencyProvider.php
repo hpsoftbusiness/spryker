@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\Sales;
 
-use Pyz\Zed\Adyen\Communication\Plugin\Sales\AdyenOrderExpanderPlugin;
+use Pyz\Zed\Adyen\Communication\Plugin\Sales\AdyenPaymentOrderExpanderPlugin;
 use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
 use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;
 use Pyz\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductAttributesOrderItemExpanderPlugin;
@@ -103,7 +103,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
                 new ShipmentOrderHydratePlugin(),
                 new CustomerOrderHydratePlugin(),
                 new SalesInvoiceOrderExpanderPlugin(),
-                new AdyenOrderExpanderPlugin(),
+                new AdyenPaymentOrderExpanderPlugin(),
             ];
         });
 

@@ -14,7 +14,7 @@ interface AdyenFacadeInterface extends SprykerEcoAdyenFacadeInterface
 {
     /**
      * Specification:
-     * - Expands order with payment adyen transfers.
+     * - Expands order with adyen payment transfer.
      *
      * @api
      *
@@ -22,5 +22,5 @@ interface AdyenFacadeInterface extends SprykerEcoAdyenFacadeInterface
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function expandOrderWithPaymentAdyen(OrderTransfer $orderTransfer): OrderTransfer;
+    public function expandOrderWithAdyenPayment(OrderTransfer $orderTransfer): OrderTransfer;
 }

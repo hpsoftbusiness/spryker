@@ -31,7 +31,7 @@ class OrderExpander implements OrderExpanderInterface
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function expandOrderWithPaymentAdyen(OrderTransfer $orderTransfer): OrderTransfer
+    public function expandOrderWithAdyenPayment(OrderTransfer $orderTransfer): OrderTransfer
     {
         $paymentAdyenTransfer = $this->adyenRepository
             ->getPaymentAdyenByIdSalesOrder($orderTransfer->getIdSalesOrder());
