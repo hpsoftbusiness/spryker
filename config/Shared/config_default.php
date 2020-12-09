@@ -521,7 +521,7 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [];
 // ----------------------------------------------------------------------------
 
 // >>> Taxes
-$config[TaxConstants::DEFAULT_TAX_RATE] = 19;
+$config[TaxConstants::DEFAULT_TAX_RATE] = 20;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ GOOGLE ANALYTIC ------------------------------------
