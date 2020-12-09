@@ -18,57 +18,6 @@
             }
         }
 
-        &__subscription {
-            width: 100%;
-
-            @include helper-breakpoint-media-min($xl-min) {
-                max-width: #{$footer-subscription-width};
-            }
-        }
-
-        &__logo-section {
-            order: 1;
-            width: 100%;
-
-            @include helper-breakpoint-media-min($lg-min) {
-                width: auto;
-            }
-        }
-
-        &__logo-copy {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            @include helper-breakpoint-media-min($lg-min) {
-                justify-content: flex-start;
-            }
-        }
-
-        &__logo-copy-text {
-            font: fw(regular) rem(10)/rem(16) $setting-font-family;
-            text-transform: uppercase;
-            margin-right: rem(10);
-        }
-
-        &__logo-copy-links {
-            display: flex;
-            justify-content: center;
-
-            @include helper-breakpoint-media-min($lg-min) {
-                justify-content: flex-start;
-            }
-        }
-
-        &__logo-copy-link {
-            font-size: rem(13);
-            color: $setting-color-gray-4;
-
-            &:not(:first-child) {
-                margin-left: rem(25);
-            }
-        }
-
         &__bottom {
             display: flex;
             flex-direction: column;
@@ -96,37 +45,8 @@
             }
         }
 
-        &__icon-lists {
-            display: flex;
-            justify-content: center;
-            padding: rem(5) 0 rem(20);
-            margin: 0 0 rem(15);
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-            width: 100%;
-            order: 0;
-
-            @include helper-breakpoint-media-min($lg-min) {
-                width: auto;
-                border-bottom: 0;
-                order: 1;
-                padding: 0;
-                margin-bottom: 0;
-            }
-        }
-
-        &__icon-list {
-            margin: 0 rem(15);
-
-            @include helper-breakpoint-media-min($md-min) {
-                margin: 0 rem(10);
-            }
-        }
-
-        &__subscription-text {
-            color: $setting-color-text;
-            font: fw(regular) rem(15)/rem(22) $setting-font-family;
-            display: block;
-            max-width: rem(210);
+        &__social-link {
+            @include helper-effect-transition(color);
         }
 
         &__navigation {

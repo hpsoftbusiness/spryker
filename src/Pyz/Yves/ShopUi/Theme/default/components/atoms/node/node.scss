@@ -2,7 +2,13 @@
     #{$name} {
         &__link {
             &--footer {
+                @include helper-effect-transition(color);
                 color: $setting-color-gray-5;
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                }
             }
         }
 

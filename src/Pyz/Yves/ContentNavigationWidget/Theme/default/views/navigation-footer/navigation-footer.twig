@@ -5,26 +5,23 @@
 } %}
 
 {% block body %}
-    {% set hasIcons = false %}
     {% set title = '' %}
 
-    <pre>{{ dump(data.navigation | length) }}</pre>
-    {% for node in data.navigation.nodes %}
-        {% set nodeType = node.nodeType %}
+    {% if data.navigation.key == 'FOOTER_NAVIGATION_LEGAL' %}
+        {% set title = 'footer.navigation_title.legal_information' | trans %}
+    {% endif %}
 
-        {% if nodeType == 'cms_page' %}
-            {% set title = 'footer.navigation_title.legal_information' | trans %}
-        {% endif %}
+    {% if data.navigation.key == 'FOOTER_NAVIGATION_INFO' %}
+        {% set title = 'footer.navigation_title.information' | trans %}
+    {% endif %}
 
-        {% if nodeType == 'external_url' %}
-            {% set title = 'footer.navigation_title.information' | trans %}
-        {% endif %}
+    {% if data.navigation.key == 'FOOTER_NAVIGATION_SERVICE' %}
+        {% set title = 'footer.navigation_title.customer_service' | trans %}
+    {% endif %}
 
-        {% if nodeType == 'label' %}
-            {% set hasIcons = true %}
-            {% set title = 'footer.navigation_title.customer_service' | trans %}
-        {% endif %}
-    {% endfor %}
+    {% if data.navigation.key == 'FOOTER_NAVIGATION_PROPOSITIONS' %}
+        {% set title = 'footer.navigation_title.propositions' | trans %}
+    {% endif %}
 
     {% set triggerClass = 'js-navigation-footer__trigger--' ~ title | lower | replace(' ', '-') %}
     {% set targetClass = 'js-navigation-footer__target--' ~ title | lower | replace(' ', '-') %}
@@ -42,32 +39,16 @@
         },
         embed: {
             nodes: data.navigation.nodes,
-            hasIcons: hasIcons,
         },
     } only %}
         {% block contentText %}
-            {% if not embed.hasIcons %}
-                {% include molecule('navigation-list') with {
-                    modifiers: ['footer'],
-                    data: {
-                        nodes: embed.nodes,
-                    },
-                } only %}
-            {% endif %}
-
-            {% if embed.hasIcons %}
-                {% embed molecule('navigation-icon-list') with {
-                    data: {
-                        nodes: embed.nodes,
-                    },
-                } only %}
-                    {% block body %}
-                        {% set menuClass = 'menu' %}
-
-                        {{ parent() }}
-                    {% endblock %}
-                {% endembed %}
-            {% endif %}
+            {% include molecule('navigation-list') with {
+                modifiers: ['footer'],
+                class: 'spacing-y',
+                data: {
+                    nodes: embed.nodes,
+                },
+            } only %}
         {% endblock %}
     {% endembed %}
 {% endblock %}
