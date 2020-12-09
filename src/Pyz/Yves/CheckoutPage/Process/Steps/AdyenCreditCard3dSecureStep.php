@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
+use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerEco\Shared\Adyen\AdyenConfig;
@@ -40,11 +41,7 @@ class AdyenCreditCard3dSecureStep extends AbstractBaseStep
      */
     public function requireInput(AbstractTransfer $quoteTransfer): bool
     {
-        if (
-            $quoteTransfer->getPayment()
-            && $quoteTransfer->getPayment()->getPaymentSelection() === AdyenConfig::ADYEN_CREDIT_CARD
-            && $this->checkoutPageConfig->isAdyenCreditCard3dSecureEnabled()
-        ) {
+        if ($this->is3dSecureRequired($quoteTransfer)) {
             return true;
         }
 
@@ -72,5 +69,18 @@ class AdyenCreditCard3dSecureStep extends AbstractBaseStep
             'action' => $quoteTransfer->getPayment()->getAdyenRedirect()->getAction(),
             'fields' => $quoteTransfer->getPayment()->getAdyenRedirect()->getFields(),
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function is3dSecureRequired(QuoteTransfer $quoteTransfer): bool
+    {
+        return $quoteTransfer->getPayment()
+            && $quoteTransfer->getPayment()->getPaymentSelection() === AdyenConfig::ADYEN_CREDIT_CARD
+            && $this->checkoutPageConfig->isAdyenCreditCard3dSecureEnabled()
+            && $quoteTransfer->getPayment()->getAdyenRedirect();
     }
 }
