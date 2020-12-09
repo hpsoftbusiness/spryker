@@ -1,0 +1,26 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    formAction: _view.action,
+    formFields: _view.fields,
+} %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+    <div class="form box">
+        <b>Please wait, you will be redirected soon...</b>
+        <form name="adyen3dSecureForm" method="post" action="{{ data.formAction }}">
+            {% for key, value in _view.fields %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+            {% endfor %}
+            <input type="hidden" name="_token" value="{{ csrf_token('adyen3dSecureForm')}}">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.forms['adyen3dSecureForm'].submit();
+        });
+    </script>
+{% endblock %}

@@ -7,7 +7,6 @@
 
 namespace Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken;
 
-
 use Generated\Shared\Transfer\AccessTokenTransfer;
 
 interface AccessTokenInterface

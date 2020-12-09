@@ -7,31 +7,21 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
+use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep as SprykerShopShipmentStep;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ShipmentStep extends SprykerShopShipmentStep
 {
-    protected const KEY_SELLABLE_ATTRIBUTE_PATTERN = 'sellable_%s';
-
-    protected const KEY_MESSAGE_IS_NOT_SELLABLE = 'checkout.step.address.is_sellable';
-
     /**
-     * @var \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface
+     * @var \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface
      */
-    protected $flashMessenger;
-
-    /**
-     * @var \Symfony\Contracts\Translation\TranslatorInterface
-     */
-    protected $translator;
+    protected $productSellableChecker;
 
     /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
@@ -41,8 +31,7 @@ class ShipmentStep extends SprykerShopShipmentStep
      * @param string $stepRoute
      * @param string|null $escapeRoute
      * @param \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[] $checkoutShipmentStepEnterPreCheckPlugins
-     * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
      */
     public function __construct(
         CheckoutPageToCalculationClientInterface $calculationClient,
@@ -52,8 +41,7 @@ class ShipmentStep extends SprykerShopShipmentStep
         $stepRoute,
         $escapeRoute,
         array $checkoutShipmentStepEnterPreCheckPlugins,
-        FlashMessengerInterface $flashMessenger,
-        TranslatorInterface $translator
+        ProductSellableCheckerInterface $productSellableChecker
     ) {
         parent::__construct(
             $calculationClient,
@@ -65,8 +53,7 @@ class ShipmentStep extends SprykerShopShipmentStep
             $checkoutShipmentStepEnterPreCheckPlugins
         );
 
-        $this->flashMessenger = $flashMessenger;
-        $this->translator = $translator;
+        $this->productSellableChecker = $productSellableChecker;
     }
 
     /**
@@ -77,19 +64,10 @@ class ShipmentStep extends SprykerShopShipmentStep
     public function preCondition(AbstractTransfer $quoteTransfer)
     {
         $isQuoteValid = parent::preCondition($quoteTransfer);
+        $isQuoteValid = $this->productSellableChecker->check($quoteTransfer, $isQuoteValid);
 
-        foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
-            $hiddenAttributes = $itemTransfer->getHiddenConcreteAttributes();
-            $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
-            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtolower($countryIso2Code))];
-
-            if (!$isSellable) {
-                $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
-                $this->flashMessenger->addErrorMessage(
-                    $this->translator->trans(static::KEY_MESSAGE_IS_NOT_SELLABLE)
-                );
-                $isQuoteValid = false;
-            }
+        if (!$isQuoteValid) {
+            $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
         }
 
         return $isQuoteValid;

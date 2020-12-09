@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\MyWorldMarketplaceApi;
 
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
@@ -21,5 +26,13 @@ class MyWorldMarketplaceApiConfig extends AbstractBundleConfig
     public function getDealerId(): string
     {
         return $this->get(MyWorldMarketplaceApiConstants::DEALER_ID);
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderReferencePrefix(): string
+    {
+        return $this->get(MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX);
     }
 }

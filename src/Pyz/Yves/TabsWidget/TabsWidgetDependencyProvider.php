@@ -20,7 +20,6 @@ class TabsWidgetDependencyProvider extends SprykerTabsWidgetDependencyProvider
     {
         return [
             new FullTextSearchProductsTabPlugin(),
-            new FullTextSearchCmsPageTabPlugin(),
         ];
     }
 }
