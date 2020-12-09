@@ -5,6 +5,7 @@
     &__container {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     &__box {
@@ -28,6 +29,8 @@
         display: block;
 
         #{$name}__container {
+            display: inline-flex;
+            align-items: center;
             padding: rem(18) rem(21);
             position: relative;
             cursor: pointer;

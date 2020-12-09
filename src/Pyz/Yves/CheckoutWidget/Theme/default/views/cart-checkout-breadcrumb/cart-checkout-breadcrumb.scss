@@ -6,12 +6,10 @@
 
             @include helper-breakpoint-media-min($md-min) {
                 padding-top: rem(20);
-                border-bottom: rem(1) dotted $setting-color-gray-3;
             }
         }
 
         &__progress-wrap {
-            display: inline-block;
             position: relative;
             min-width: 50%;
 
@@ -23,14 +21,85 @@
                 content: '';
                 position: absolute;
                 left: 0;
-                top: 0;
+                bottom: 0;
                 right: 0;
-                height: rem(1);
-                background-color: $setting-color-black;
-                opacity: 0.4;
+                height: rem(5);
+                background-color: $setting-color-gray-2;
+                border-radius: $setting-border-radius;
 
                 @include helper-breakpoint-media-min($md-min) {
                     display: none;
+                }
+            }
+
+            .cart-checkout-breadcrumb__progress-mob {
+                background-color: $setting-color-main;
+                bottom: 0;
+                border-bottom-left-radius: $setting-border-radius;
+                border-top-left-radius: $setting-border-radius;
+                top: unset;
+                height: rem(5);
+            }
+
+            .breadcrumb--progress {
+                display: flex;
+                padding-bottom: 0;
+                margin-bottom: rem(60);
+
+                .breadcrumb-step {
+                    &--progress {
+                        padding: 0 rem(25) rem(25);
+                        justify-content: center;
+                        flex-grow: 1;
+
+                        &:first-child {
+                            &::after, &::before {
+                                border-bottom-left-radius: $setting-border-radius;
+                                border-top-left-radius: $setting-border-radius;
+                            }
+                        }
+
+                        &:last-child {
+                            &::after, &::before {
+                                border-bottom-right-radius: $setting-border-radius;
+                                border-top-right-radius: $setting-border-radius;
+                            }
+                        }
+
+                        &::before,
+                        &::after {
+                            @include helper-breakpoint-media-min($md-min) {
+                                content: '';
+                                background-color: $setting-color-main;
+                                position: absolute;
+                                bottom: 0;
+                                top: unset;
+                                height: rem(10);
+                            }
+                        }
+
+                        &-active {
+                            color: $setting-color-main;
+                            font-weight: fw(bold);
+
+                            &::before, &::after {
+                                background-color: $setting-color-main;
+                            }
+
+                            &::after {
+                                width: 50%;
+                            }
+                        }
+                    }
+
+                    &--disabled:not(.breadcrumb-step--active) {
+                        opacity: unset;
+                        color: $setting-color-gray-4;
+
+                        &::after, &::before {
+                            background-color: $setting-color-gray-2;
+                        }
+                    }
                 }
             }
         }

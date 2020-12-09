@@ -42,7 +42,7 @@
         </div>
 
         {% if data.canEdit %}
-            <a class="link link--secondary spacing-top spacing-top--big" href="{{ url('checkout-address') }}">{{ 'general.edit.button' | trans }}</a>
+            <a class="link link--primary spacing-top spacing-top--big" href="{{ url('checkout-address') }}">{{ 'general.edit.button' | trans }}</a>
         {% endif %}
     </div>
 
@@ -55,7 +55,7 @@
             <div class="{{ config.name }}__text">{{ data.shipment.method.name }}: {{ data.shipment.method.storeCurrencyPrice | money(true, data.shipment.method.currencyIsoCode) }}</div>
 
             {% if data.canEdit %}
-                <a class="link link--secondary spacing-top spacing-top--big" href="{{ url('checkout-shipment') }}">{{ 'general.edit.button' | trans }}</a>
+                <a class="link link--primary spacing-top spacing-top--big" href="{{ url('checkout-shipment') }}">{{ 'general.edit.button' | trans }}</a>
             {% endif %}
         </div>
 
@@ -65,7 +65,7 @@
                 <div class="{{ config.name }}__text">{{ data.shipment.requestedDeliveryDate | formatDate }}</div>
             {% endif %}
             {% if data.canEdit %}
-                <a class="link link--secondary spacing-top spacing-top--big" href="{{ url('checkout-shipment') }}">{{ 'general.edit.button' | trans }}</a>
+                <a class="link--primary spacing-top spacing-top--big" href="{{ url('checkout-shipment') }}">{{ 'general.edit.button' | trans }}</a>
             {% endif %}
         </div>
     {% endif %}

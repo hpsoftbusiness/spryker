@@ -25,7 +25,7 @@
                     name: 'checkoutProceedAs',
                     'target-class-name': 'js-login__guest',
                 },
-                class: 'toggler-radio--with-bg'
+                class: 'toggler-radio--with-bg toggler-radio--only-border'
             } only %}
         </li>
 
@@ -40,7 +40,7 @@
                     name: 'checkoutProceedAs',
                     'target-class-name': 'js-login__login',
                 },
-                class: 'toggler-radio--with-bg'
+                class: 'toggler-radio--with-bg toggler-radio--only-border'
             } only %}
         </li>
 
@@ -97,8 +97,8 @@
             title: 'checkout.customer.auth_as_login' | trans,
             form: data.forms.login,
             layout: {
-                email: 'col col--sm-12 col--md-6',
-                password: 'col col--sm-12 col--md-6'
+                email: 'col col--sm-12',
+                password: 'col col--sm-12'
             },
             submit: {
                 enable: true,

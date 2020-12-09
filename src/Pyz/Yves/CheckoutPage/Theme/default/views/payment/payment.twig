@@ -30,7 +30,7 @@
                     data: {
                         form: data.form.paymentSelection,
                         choices: choices,
-                        rowAttrClass: 'toggler-radio--with-bg',
+                        rowAttrClass: 'toggler-radio--with-bg toggler-radio--only-border',
                         targetClassName: 'js-payment-method-',
                         providerIndex: paymentProviderIndex,
                         customForms: data.customForms,
@@ -78,8 +78,12 @@
                                     'target-class-name': 'js-payment-method-' ~ embed.index,
                                 }
                             }) }}
+                            <div class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %}">
+                                <h2 class="title title--primary">{{ embed.toggler.vars.label | trans }}</h2>
+                                {{ parent() }}
+                            </div>
                             <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
-                                <div class="col col--sm-12 col--md-6">
+                                <div class="col col--sm-12">
                                     {% if data.customForms[data.form.vars.template_path] is not defined %}
                                         {{ parent() }}
                                     {% else %}
@@ -90,10 +94,6 @@
                                         } only %}
                                     {% endif %}
                                 </div>
-                            </div>
-                            <div class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %}">
-                                <h2 class="title title--primary">{{ embed.toggler.vars.label | trans }}</h2>
-                                {{ parent() }}
                             </div>
                         {% endblock %}
                     {% endembed %}

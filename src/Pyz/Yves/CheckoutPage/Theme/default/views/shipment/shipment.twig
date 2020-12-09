@@ -40,7 +40,6 @@
                                     '%total%': loop.length
                                 }) }}
                             </h3>
-
                             {% set cartItems = shipmentGroupForm.vars.data.cartItems %}
                             {% set itemsExceptConfiguredBundles = cartItems | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
 
@@ -54,7 +53,6 @@
 
                             {% for item in itemsExceptConfiguredBundles %}
                                 {% set cartItem = item.bundleProduct ?? item %}
-
                                 {% embed molecule('product-card-item') with {
                                     modifiers: ['expand', 'secondary', 'alternative', 'right-indent-from-tablet'],
                                     data: {
@@ -87,9 +85,12 @@
 
                                     {% block options %}
                                         {% if data.productItem.concreteAttributes is not empty %}
+                                            {% set filteredAttributes = data.productItem.concreteAttributes  %}
                                             <ul>
                                                 {% for key, item in data.productItem.concreteAttributes %}
-                                                    <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
+                                                    {% if key in ['size', 'color'] %}
+                                                        <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </ul>
                                         {% endif %}
