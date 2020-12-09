@@ -140,7 +140,11 @@ $trustedHosts
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
+    'checkoutshopper-test.adyen.com', //trusted Adyen domain
 ]);
+
+$config[SessionConstants::YVES_SESSION_COOKIE_SAMESITE] = 'none'; //Allows redirect customer via POST
+
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
