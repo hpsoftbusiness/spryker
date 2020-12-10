@@ -8,6 +8,7 @@
 namespace Pyz\Zed\SalesOrderUid\Business;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\SpySalesOrderEntityTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -16,13 +17,21 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class SalesOrderUidFacade extends AbstractFacade implements SalesOrderUidFacadeInterface
 {
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SpySalesOrderEntityTransfer $salesOrderEntityTransfer
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
+     * @return \Generated\Shared\Transfer\SpySalesOrderEntityTransfer
      */
-    public function expandSalesOrder(QuoteTransfer $quoteTransfer): QuoteTransfer
-    {
-        return $this->getFactory()->createOrderExpander()->expandSalesOrder($quoteTransfer);
+    public function expandSalesOrderEntityTransferWithSalesOrderUid(
+        SpySalesOrderEntityTransfer $salesOrderEntityTransfer,
+        QuoteTransfer $quoteTransfer
+    ): SpySalesOrderEntityTransfer {
+        return $this->getFactory()->createOrderExpander()
+            ->expandSalesOrderEntityTransferWithSalesOrderUid($salesOrderEntityTransfer, $quoteTransfer);
     }
 
     /**
