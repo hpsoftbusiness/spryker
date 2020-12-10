@@ -38,13 +38,23 @@
             } only %}
 
             <div class="col page-layout-main__sidebar-pdp">
-                {% include molecule('product-configurator', 'ProductDetailPage') with {
-                    data: {
-                        product: data.product,
-                        isBundle: data.bundleItems,
-                        bundleItems: data.bundleItems
-                    }
-                } only %}
+                {% if data.product.isAffiliate %}
+                    {% include molecule('product-affiliate', 'ProductDetailPage') with {
+                        data: {
+                            product: data.product,
+                            isBundle: data.bundleItems,
+                            bundleItems: data.bundleItems
+                        }
+                    } only %}
+                {% else %}
+                    {% include molecule('product-configurator', 'ProductDetailPage') with {
+                        data: {
+                            product: data.product,
+                            isBundle: data.bundleItems,
+                            bundleItems: data.bundleItems
+                        }
+                    } only %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -55,7 +65,7 @@
         {% include molecule('product-detail', 'ProductDetailPage') with {
             data: {
                 description: data.product.description,
-                attributes: data.product.attributes,
+                attributes: data.product.pdpAttributes,
                 sku: data.product.sku,
             },
         } only %}

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Sales\Business;
 
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
 use Spryker\Zed\Sales\Business\SalesFacadeInterface as SprykerSalesFacadeInterface;
 
@@ -14,13 +15,28 @@ interface SalesFacadeInterface extends SprykerSalesFacadeInterface
 {
     /**
      * Specification:
-     * - Gets orders by SalesOrderFilterTransfer.
+     * - Gets order IDs by SalesOrderFilterTransfer.
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\SalesOrderFilterTransfer $salesOrderFilterTransfer
      *
-     * @return \Generated\Shared\Transfer\OrderTransfer[]
+     * @return int[]
      */
-    public function getOrdersBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array;
+    public function getOrderIdsBySalesOrderFilter(SalesOrderFilterTransfer $salesOrderFilterTransfer): array;
+
+    /**
+     * Specification:
+     * - Finds order using the given ID sales order.
+     * - Gets order transfer hydrated by data that needed exactly for exporting.
+     *
+     * @api
+     *
+     * @param int $idSalesOrder
+     *
+     * @throws \Spryker\Zed\Sales\Business\Exception\InvalidSalesOrderException
+     *
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    public function getOrderForExportByIdSalesOrder(int $idSalesOrder): OrderTransfer;
 }

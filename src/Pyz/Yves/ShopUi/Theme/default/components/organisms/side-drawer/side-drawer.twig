@@ -16,31 +16,19 @@
     <aside class="{{ component.renderClass(config.name ~ '__drawer', modifiers) }}">
         <div class="{{ config.name }}__top-bar grid grid--justify">
             {% block topBar %}
-                <div class="col grid">
-                    <div class="col">
-                        {% widget 'LanguageSwitcherWidget' args [
-                            app.request.pathInfo,
-                            app.request.queryString,
-                            app.request.requestUri
-                        ] only %}
-                            {% block body %}
-                                {% define data = {
-                                    additionalModifiers: ['hollow', 'header', 'side-drawer']
-                                } %}
-                                {{ parent() }}
-                            {% endblock %}
-                        {% endwidget %}
-                    </div>
-                    <div class="col">
-                        {%- widget 'CurrencyWidget' only -%}
-                            {% block body %}
-                                {% define data = {
-                                    additionalModifiers: ['hollow', 'header', 'side-drawer']
-                                } %}
-                                {{ parent() }}
-                            {% endblock %}
-                        {%- endwidget -%}
-                    </div>
+                <div class="col">
+                    {% widget 'LanguageSwitcherWidget' args [
+                        app.request.pathInfo,
+                        app.request.queryString,
+                        app.request.requestUri
+                    ] only %}
+                        {% block body %}
+                            {% define data = {
+                                additionalModifiers: ['hollow', 'header', 'side-drawer']
+                            } %}
+                            {{ parent() }}
+                        {% endblock %}
+                    {% endwidget %}
                 </div>
             {% endblock %}
 

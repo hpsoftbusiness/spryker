@@ -20,7 +20,6 @@
 {% block body %}
     {% if topVisible %}
         {% include molecule('suggestion-links-list', 'CatalogPage') with {
-            modifiers: ['top'],
             data: {
                 name: 'global.search.suggestions' | trans,
                 items: data.completion,
@@ -39,18 +38,19 @@
                         {{ 'global.search.suggestion.in_products' | trans }}
                         <div class="float-right is-hidden-lg-xl">
                             <button type="submit" class="button button--skinless button--search">{{'global.search.suggestion.see_all_products' | trans}}
-                            {% include atom('icon') with {
-                                data: {
-                                    name: 'chevron-right'
-                                }
-                            } only %}</button>
+                                {% include atom('icon') with {
+                                    data: {
+                                        name: 'chevron-right',
+                                    },
+                                } only %}
+                            </button>
                         </div>
 
                     </h4>
                     <ul>
                         {% for product in data.product_abstract | slice(0, data.productsLength)  %}
                             {% if product is not empty %}
-                                <li class="list__item spacing-y spacing-y--bigger">
+                                <li class="list__item spacing-y spacing-y--big">
                                     {% include molecule('suggestion-product', 'CatalogPage') with {
                                         data: {
                                             product: product,

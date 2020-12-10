@@ -4,6 +4,10 @@
           package="src.Orm.Zed.Product.Persistence">
 
     <table name="spy_product_abstract">
+        <column name="is_affiliate" type="boolean"/>
+        <column name="affiliate_data" type="LONGVARCHAR"/>
+        <column name="pdp_attributes" required="false" type="LONGVARCHAR"/>
+        <column name="brand" type="VARCHAR" size="255"/>
         <behavior name="event">
             <parameter name="spy_product_abstract_all" column="*"/>
         </behavior>
@@ -17,6 +21,7 @@
 
     <table name="spy_product">
         <column name="hidden_attributes" required="false" type="LONGVARCHAR"/>
+        <column name="pdp_attributes" required="false" type="LONGVARCHAR"/>
         <behavior name="event">
             <parameter name="spy_product_all" column="*"/>
         </behavior>

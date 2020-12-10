@@ -7,7 +7,7 @@
         display: inline-block;
         padding: rem(15) rem(16);
         background-color: $setting-color-main;
-        border-radius: rem(8);
+        border-radius: $setting-border-radius;
         min-width: $button-min-width/1.3;
         color: $setting-color-white;
         text-align: center;
@@ -195,9 +195,9 @@
         }
 
         &--large {
-            padding: rem(14) rem(18);
+            padding: rem(16) rem(18) rem(14);
             font-weight: fw(medium);
-            font-size: rem(16);
+            font-size: map-get($setting-font-size, default);
             line-height: rem(20);
         }
 

@@ -6,6 +6,8 @@
 } %}
 
 {% block content %}
-    {% set iconModifiers = ['big'] %}
+    {% set iconModifiers = ['bigger'] %}
+    {% set linkClass = config.name ~ '__link' %}
+
     {{ parent() }}
 {% endblock %}

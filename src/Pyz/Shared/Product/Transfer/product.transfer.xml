@@ -8,5 +8,11 @@
         <property name="storeName" type="string"/>
     </transfer>
 
+    <transfer name="ProductView">
+        <property name="isAffiliate" type="bool"/>
+        <property name="affiliateData" type="array"/>
+        <property name="pdpAttributes" type="array"/>
+    </transfer>
+
 </transfers>
 

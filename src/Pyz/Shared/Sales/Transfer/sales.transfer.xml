@@ -8,4 +8,9 @@
         <property name="createdTo" type="string"/>
     </transfer>
 
+    <transfer name="Order">
+        <property name="uid" type="string"/>
+        <property name="orderDetailsComments" type="OrderDetailsComments"/>
+    </transfer>
+
 </transfers>

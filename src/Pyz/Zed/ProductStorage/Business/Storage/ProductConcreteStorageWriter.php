@@ -24,12 +24,16 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     {
         $attributes = $this->getConcreteAttributes($productConcreteLocalizedEntity);
         $hiddenAttributes = $this->productFacade->decodeProductAttributes($productConcreteLocalizedEntity['SpyProduct']['hidden_attributes']);
+        $pdpAttributes = $this->productFacade->decodeProductAttributes($productConcreteLocalizedEntity['SpyProduct']['pdp_attributes']);
 
         $spyProductConcreteEntityArray = $productConcreteLocalizedEntity['SpyProduct'];
         unset($productConcreteLocalizedEntity['attributes']);
         unset($spyProductConcreteEntityArray['attributes']);
 
         $bundledProductIds = $this->getBundledProductIdsByProductConcreteId($spyProductConcreteEntityArray['id_product']);
+
+        $isAffiliate = $productConcreteLocalizedEntity['SpyProduct']['SpyProductAbstract']['is_affiliate'];
+        $affiliateData = $this->productFacade->decodeProductAttributes($productConcreteLocalizedEntity['SpyProduct']['SpyProductAbstract']['affiliate_data']);
 
         $productStorageTransfer = (new ProductConcreteStorageTransfer())
             ->fromArray($productConcreteLocalizedEntity, true)
@@ -40,7 +44,10 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->setDescription($this->getDescription($productConcreteLocalizedEntity))
             ->setAttributes($attributes)
             ->setHiddenAttributes($hiddenAttributes)
-            ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes));
+            ->setPdpAttributes($pdpAttributes)
+            ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes))
+            ->setIsAffiliate($isAffiliate)
+            ->setAffiliateData($affiliateData);
 
         return $productStorageTransfer;
     }

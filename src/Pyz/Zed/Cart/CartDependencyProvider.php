@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Cart;
 
+use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
 use Pyz\Zed\ProductUrlCartConnector\Communication\Plugin\ProductUrlCartExpanderPlugin;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
@@ -106,6 +107,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CheckAvailabilityPlugin(),
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
             new ProductListRestrictedItemsPreCheckPlugin(),
+            new ProductAffiliateCartPreCheckPlugin(),
         ];
 
         return $cartPreCheckPlugins;

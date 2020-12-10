@@ -24,11 +24,17 @@
         }
 
         .select2-container {
+            border: rem(1) solid $setting-color-input-border;
+            border-radius: $setting-border-radius;
             width: auto;
+
+            &.select2-container--open {
+                border-color: $setting-color-main;
+            }
         }
 
         .select2-selection--single {
-            padding: rem(14) rem(10);
+            padding: rem(16) rem(18) rem(14) rem(18);
             border: none;
             background: none;
             border-radius: 0;
@@ -39,6 +45,8 @@
                 line-height: rem(16);
                 min-height: rem(16);
                 padding-left: 0;
+                padding-right: rem(30);
+                font-size: rem(15);
             }
 
             .select2-selection__arrow {
@@ -48,11 +56,15 @@
 
         &--hollow {
             .select2-selection {
-                text-align: right;
+                text-align: left;
             }
 
             .select2-selection--single {
                 padding: rem(0) rem(10);
+            }
+
+            .select2-container {
+                border: none;
             }
         }
 
@@ -61,7 +73,7 @@
                 color: $setting-color-gray-3;
             }
 
-            .custom-select__caret {
+            #{$name}__caret {
                 color: $setting-color-gray-3;
             }
         }
@@ -71,28 +83,36 @@
                 color: $setting-color-black;
             }
 
-            .custom-select__caret {
+            .select2-container {
+                width: 100% !important;
+            }
+
+            #{$name}__caret {
                 color: $setting-color-black;
             }
+        }
+
+        #{$name}__caret {
+            right: rem(18.6);
         }
     }
 
     .select2-results__option {
         color: $setting-color-black;
-        font-size: rem(16);
+        font-size: map-get($setting-font-size, small);
         font-weight: fw(regular);
         line-height: rem(26);
         min-height: rem(38);
-        padding: rem(6) rem(20) rem(6) rem(10);
+        padding: rem(6) rem(18);
     }
 
     .select2-container {
         .select2-results {
-            border-radius: rem(4);
+            border-radius: $setting-border-radius;
             background-color: $setting-color-white;
             box-shadow: rem(10) rem(10) rem(26) 0 $setting-color-alpha-4, 0 0 rem(30) 0 $setting-color-alpha-4;
             position: relative;
-            border: rem(1) solid $setting-color-alpha-7;
+            border: rem(1) solid $setting-color-gray-4;
         }
 
         .select2-results__options {
@@ -101,8 +121,18 @@
         }
 
         .select2-results__option--highlighted[aria-selected] {
-            background: $setting-color-gray-1;
+            background: $setting-color-main;
             color: $setting-color-black;
+
+            &:last-child {
+                border-bottom-left-radius: $setting-border-radius;
+                border-bottom-right-radius: $setting-border-radius;
+            }
+
+            &:first-child {
+                border-top-left-radius: $setting-border-radius;
+                border-top-right-radius: $setting-border-radius;
+            }
         }
 
         .select2-results__option--highlighted[aria-selected='true'] {
@@ -113,25 +143,12 @@
             background: none;
             color: $setting-color-main;
             position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                right: rem(10);
-                width: rem(12);
-                height: rem(12);
-                margin-top: rem(-6);
-                background: url('../images/icon-chosen.svg') no-repeat 0 0;
-            }
         }
 
         &--secondary {
             .select2-results {
-                padding: rem(12) 0;
                 width: calc(100% + #{rem(48)});
                 transform: translateX(rem(-32));
-                border: none;
 
                 &__option[aria-selected='true']::before {
                     right: rem(23);
@@ -164,23 +181,13 @@
                 text-align: left;
                 z-index: $setting-zi-select;
 
-                &::before {
-                    content: '';
-                    position: absolute;
-                    bottom: 100%;
-                    right: rem(8);
-                    border: rem(6) solid $setting-color-transparent;
-                    border-bottom-color: $setting-color-white;
-                    z-index: $setting-zi-element + 1;
-                }
-
                 &--header {
                     z-index: $setting-zi-header + 2;
                 }
             }
 
             .select2-dropdown--below {
-                margin-top: rem(6);
+                margin-top: rem(1);
             }
 
             .select2-dropdown--above {

@@ -76,9 +76,9 @@ $config[AdyenApiConstants::MAKE_PAYMENT_ACTION_URL] = sprintf(
     $adyenCredentials['CHECKOUT_API_VERSION']
 );
 $config[AdyenApiConstants::PAYMENTS_DETAILS_ACTION_URL] = sprintf(
-    'https://%s/pal/servlet/Payment/%s/payments/details',
-    $adyenCredentials['PAYMENT_API_DOMAIN'],
-    $adyenCredentials['PAYMENT_API_VERSION']
+    'https://%s/%s/payments/details',
+    $adyenCredentials['CHECKOUT_API_DOMAIN'],
+    $adyenCredentials['CHECKOUT_API_VERSION']
 );
 $config[AdyenApiConstants::AUTHORIZE_ACTION_URL] = sprintf(
     'https://%s/pal/servlet/Payment/%s/authorise',

@@ -14,6 +14,7 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
 use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -45,6 +46,10 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
+        if (!in_array($dataSet[CombinedProductAbstractHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE], CombinedProductAbstractHydratorStep::ASSIGNABLE_PRODUCT_TYPES, true)) {
+            return;
+        }
+
         $productAbstractEntity = $this->createOrUpdateProductAbstract($dataSet);
 
         $this->productRepository->addProductAbstract($productAbstractEntity);

@@ -49,7 +49,7 @@
                         {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
 
                         {% for cartItem in transformedCartItems if not cartItem.configuredBundleItem %}
-                            {% include molecule('product-card-item') with {
+                            {% include molecule('product-card-sellable-item', 'CartPage') with {
                                 data: {
                                     product: data.cart,
                                     productItem: cartItem,
