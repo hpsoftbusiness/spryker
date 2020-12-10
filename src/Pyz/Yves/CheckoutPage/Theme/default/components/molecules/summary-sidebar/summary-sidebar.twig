@@ -8,6 +8,7 @@
     shipment: required,
     isGiftCardExists: false,
     canEdit: false,
+    trackingCodes: [],
 } %}
 
 {% block body %}
@@ -68,5 +69,20 @@
                 <a class="link link--secondary spacing-top spacing-top--big" href="{{ url('checkout-shipment') }}">{{ 'general.edit.button' | trans }}</a>
             {% endif %}
         </div>
+
+        {% if data.trackingCodes %}
+            <div class="{{ config.name }}__item">
+                <h4 class="title title--secondary-small">{{ 'checkout.step.summary.tracking_code' | trans }}</h4>
+                {% for trackingCode in data.trackingCodes %}
+                    {% if trackingCode.message matches '{^https?:\/\/}' %}
+                        <a class="{{ config.name }}__link link--secondary spacing-top spacing-top--small" target="_blank" href="{{ trackingCode.message }}">
+                            {{ trackingCode.message }}
+                        </a>
+                    {% else %}
+                        <div class="{{ config.name }}__text spacing-top spacing-top--small">{{ trackingCode.message }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
     {% endif %}
 {% endblock %}
