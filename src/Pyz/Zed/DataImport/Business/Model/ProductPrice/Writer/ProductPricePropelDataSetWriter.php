@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
+use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceProduct;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceType;
 use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceTypeTableMap;
@@ -34,10 +35,13 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     protected const COLUMN_CONCRETE_SKU = ProductPriceHydratorStep::COLUMN_CONCRETE_SKU;
     protected const COLUMN_STORE = ProductPriceHydratorStep::COLUMN_STORE;
     protected const COLUMN_CURRENCY = ProductPriceHydratorStep::COLUMN_CURRENCY;
-    protected const COLUMN_PRICE_GROSS = ProductPriceHydratorStep::COLUMN_PRICE_GROSS;
+    protected const COLUMN_PRICE_GROSS = CombinedProductPriceHydratorStep::COLUMN_PRICE_GROSS;
+    protected const COLUMN_PRICE_GROSS_ORIGINAL = CombinedProductPriceHydratorStep::COLUMN_PRICE_GROSS_ORIGINAL;
     protected const COLUMN_PRICE_NET = ProductPriceHydratorStep::COLUMN_PRICE_NET;
     protected const COLUMN_PRICE_DATA = ProductPriceHydratorStep::COLUMN_PRICE_DATA;
     protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
+    protected const COLUMN_PRICE_TYPE_DEFAULT = CombinedProductPriceHydratorStep::DEFAULT_PRICE_TYPE;
+    protected const COLUMN_PRICE_TYPE_ORIGINAL = CombinedProductPriceHydratorStep::ORIGINAL_PRICE_TYPE;
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
@@ -63,7 +67,8 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         ProductRepository $productRepository,
         StoreFacadeInterface $storeFacade,
         CurrencyFacadeInterface $currencyFacade
-    ) {
+    )
+    {
         $this->productRepository = $productRepository;
         $this->storeFacade = $storeFacade;
         $this->currencyFacade = $currencyFacade;
@@ -76,20 +81,40 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $priceTypeEntity = $this->findOrCreatePriceType($dataSet);
-        $productPriceEntity = $this->findOrCreateProductPrice($dataSet, $priceTypeEntity);
-        $priceProductStoreEntity = $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
-        $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
+        $priceTypeTransfers = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
+
+        foreach ($priceTypeTransfers as $priceTypeTransfer) {
+            if ($this->isPriceTypeRequired($dataSet, $priceTypeTransfer->getName())) {
+                $priceTypeEntity = $this->findOrCreatePriceType($dataSet, $priceTypeTransfer);
+                $productPriceEntity = $this->findOrCreateProductPrice($dataSet, $priceTypeEntity);
+                $priceProductStoreEntity = $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
+                $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
+            }
+        }
     }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param string $priceTypeName
+     *
+     * @return bool
+     */
+    protected function isPriceTypeRequired(DataSetInterface $dataSet, string $priceTypeName): bool
+    {
+        return $priceTypeName === static::COLUMN_PRICE_TYPE_DEFAULT ||
+            ($priceTypeName === static::COLUMN_PRICE_TYPE_ORIGINAL &&
+            $dataSet[static::COLUMN_PRICE_GROSS_ORIGINAL] > $dataSet[static::COLUMN_PRICE_GROSS]);
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param \Generated\Shared\Transfer\SpyPriceTypeEntityTransfer|null $priceTypeTransfer
      *
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceType
      */
-    protected function findOrCreatePriceType(DataSetInterface $dataSet): SpyPriceType
+    protected function findOrCreatePriceType(DataSetInterface $dataSet, SpyPriceTypeEntityTransfer $priceTypeTransfer = null): SpyPriceType
     {
-        $priceTypeTransfer = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
+        $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] = $priceTypeTransfer->getName();
 
         $priceTypeEntity = SpyPriceTypeQuery::create()
             ->filterByName($priceTypeTransfer->getName())
@@ -107,14 +132,15 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceType $priceTypeEntity
      *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
      *
-     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct
      */
     protected function findOrCreateProductPrice(
         DataSetInterface $dataSet,
         SpyPriceType $priceTypeEntity
-    ): SpyPriceProduct {
+    ): SpyPriceProduct
+    {
         $query = SpyPriceProductQuery::create();
         $query->filterByFkPriceType($priceTypeEntity->getIdPriceType());
 
@@ -147,13 +173,13 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct $spyPriceProduct
-
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore
      */
     protected function findOrCreatePriceProductStore(
         DataSetInterface $dataSet,
         SpyPriceProduct $spyPriceProduct
-    ): SpyPriceProductStore {
+    ): SpyPriceProductStore
+    {
         $storeTransfer = $this->storeFacade->getStoreByName($dataSet[static::COLUMN_STORE]);
         $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[static::COLUMN_CURRENCY]);
 
@@ -163,8 +189,13 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-        $grossPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_GROSS]) * 100;
+        $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS;
+        if ($dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] === CombinedProductPriceHydratorStep::ORIGINAL_PRICE_TYPE) {
+            $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS_ORIGINAL;
+        }
+
         $netPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100;
+        $grossPrice = (float)str_replace(',', '.', $dataSet[$defaultGrossPriceKey]) * 100;
 
         if ($dataSet[CombinedProductPriceHydratorStep::COLUMN_IS_AFFILIATE_PRODUCT]) {
             $grossPrice = $netPrice = (float)str_replace(',', '.', $dataSet[CombinedProductPriceHydratorStep::COLUMN_AFFILIATE_PRODUCT_PRICE]) * 100;
