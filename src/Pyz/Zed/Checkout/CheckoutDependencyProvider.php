@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Checkout;
 
-use Pyz\Zed\SalesOrderUid\Communication\Plugin\Checkout\UidSalesOrderExpanderPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
@@ -107,7 +106,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     {
         return [
             new SalesOrderExpanderPlugin(),
-            new UidSalesOrderExpanderPlugin(),
         ];
     }
 }
