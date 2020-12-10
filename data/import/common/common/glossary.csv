@@ -899,8 +899,8 @@ checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
-checkout.step.summary.tracking_code,Sendungsverfolgungscode,de_DE
-checkout.step.summary.tracking_code,Delivery Tracking Code,en_US
+checkout.step.summary.uid,UID,de_DE
+checkout.step.summary.uid,UID,en_US
 checkout.step.summary.delivery_address,Lieferadresse,de_DE
 checkout.step.summary.delivery_address,Delivery Address,en_US
 checkout.step.summary.products,"Products",en_US
@@ -2616,6 +2616,8 @@ order_invoice.invoice_template.table.discount,Discount,en_US
 order_invoice.invoice_template.table.discount,Rabatt,de_DE
 order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
 order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
+order_invoice.invoice_template.table.uid,UID,en_US
+order_invoice.invoice_template.table.uid,UID,de_DE
 order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US
