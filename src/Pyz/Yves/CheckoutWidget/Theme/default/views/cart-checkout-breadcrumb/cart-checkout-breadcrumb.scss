@@ -32,15 +32,6 @@
                 }
             }
 
-            .cart-checkout-breadcrumb__progress-mob {
-                background-color: $setting-color-main;
-                bottom: 0;
-                border-bottom-left-radius: $setting-border-radius;
-                border-top-left-radius: $setting-border-radius;
-                top: unset;
-                height: rem(5);
-            }
-
             .breadcrumb--progress {
                 display: flex;
                 padding-bottom: 0;
@@ -105,12 +96,15 @@
         }
 
         &__progress-mob {
+            background-color: $setting-color-main;
+            border-bottom-left-radius: $setting-border-radius;
+            border-top-left-radius: $setting-border-radius;
+            height: rem(5);
             position: absolute;
             left: 0;
-            top: 0;
+            bottom: 0;
             height: rem(1);
             width: 0;
-            background-color: $setting-color-black;
 
             @include helper-breakpoint-media-min($md-min) {
                 display: none;

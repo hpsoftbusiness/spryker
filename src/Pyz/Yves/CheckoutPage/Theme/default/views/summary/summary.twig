@@ -65,7 +65,6 @@
 
                             {% block options %}
                                 {% if data.productItem.concreteAttributes is not empty %}
-                                    {% set filteredAttributes = data.productItem.concreteAttributes  %}
                                     <ul>
                                         {% for key, item in data.productItem.concreteAttributes %}
                                             {% if key in ['size', 'color'] %}

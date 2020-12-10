@@ -16,10 +16,33 @@
             }
         }
 
-        &--only-border.toggler-radio--only-border {
-            .toggler-radio__box {
-                border: none;
-                width: 0;
+        &--only-border {
+            .toggler-radio{
+                &__container {
+                    .toggler-radio {
+                        &__input:checked {
+                            & ~ .toggler-radio__label {
+                                color: $setting-color-main;
+                            }
+
+                            & + .toggler-radio__box.toggler-radio__box {
+                                border: none;
+                                box-shadow: none;
+                                width: 0;
+
+                                &::before {
+                                    background-color: $setting-color-transparent;
+                                    border: rem(1) solid $setting-color-main;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &__box {
+                    border: none;
+                    width: 0;
+                }
             }
 
             &:hover, &:focus {
@@ -28,27 +51,6 @@
                         background-color: $setting-color-transparent;
                     }
                 }
-            }
-
-            .toggler-radio {
-                &__input:checked {
-                    & ~ .toggler-radio__label {
-                        color: $setting-color-main;
-                    }
-
-
-                    & + .toggler-radio__box.toggler-radio__box {
-                        border: none;
-                        box-shadow: none;
-                        width: 0;
-
-                        &::before {
-                            background-color: $setting-color-transparent;
-                            border: rem(1) solid $setting-color-main;
-                        }
-                    }
-                }
-
             }
         }
 
