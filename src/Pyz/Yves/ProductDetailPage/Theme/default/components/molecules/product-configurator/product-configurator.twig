@@ -40,6 +40,22 @@
 
     <h1 class="title title--product title--h3">{{productName}}</h1>
 
+    {# TODO: Make this product meta dynamic #}
+    <div class="product-meta">
+        <div class="product-meta__source">
+            <span class="product-meta__brand">
+                von <a href="/">Gmundner Keramik</a>
+            </span> -
+            <span class="product-meta__seller">
+                Verkauft von <a href="/">Gmundner Keramik Manufaktur Gm</a>
+            </span>
+        </div>
+
+        <div class="product-meta__condition">
+            Zustand: <strong>Neu</strong>
+        </div>
+    </div>
+
     <div class="grid grid--justify spacing-bottom spacing-bottom--smaller">
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}

@@ -19,6 +19,20 @@
             }
         }
 
+        .product-meta {
+            a {
+                text-decoration: underline;
+            }
+
+            &__source {
+                margin-bottom: rem(18);
+            }
+
+            &__condition {
+                margin-bottom: rem(30);
+            }
+        }
+
         @content;
     }
 }
