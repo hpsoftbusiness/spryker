@@ -2,6 +2,7 @@
 
 {% block body %}
     {% set isGiftCardExists = null %}
+    {% set orderDetailComments = data.order.orderDetailsComments.comments | default([]) %}
 
     {% for shipmentGroup in data.shipmentGroups %}
         <article class="order-detail-block grid">
@@ -107,6 +108,7 @@
                     data: {
                         shipment: shipmentGroup.shipment,
                         isGiftCardExists: isGiftCardExists,
+                        trackingCodes: orderDetailComments,
                     },
                 } only %}
             </div>
