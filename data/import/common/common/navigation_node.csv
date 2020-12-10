@@ -1,9 +1,4 @@
 navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,title.de_DE,url.de_DE,css_class.de_DE,valid_from,valid_to
-FOOTER_NAVIGATION,node_key_33,,cms_page,Imprint,/en/imprint,,Impressum,/de/impressum,,,
-FOOTER_NAVIGATION,node_key_34,,cms_page,GTC,/en/gtc,,AGB,/de/agb,,,
-FOOTER_NAVIGATION,node_key_35,,cms_page,Data privacy,/en/privacy,,Datenschutz,/de/datenschutz,,,
-FOOTER_NAVIGATION,node_key_94,,cms_page,Terms of use,/en/terms-of-use,,Nutzungsbedingungen,/de/nutzungsbedingungen,,,
-FOOTER_NAVIGATION,node_key_95,,cms_page,About Us,/en/about-us,,Über uns,/de/uber-uns,,,
 PAYMENT_PROVIDERS,node_key_36,,label,Paypal,,paypal,Paypal,,paypal,,
 PAYMENT_PROVIDERS,node_key_37,,label,Klarna,,klarna,Klarna,,klarna,,
 SHIPMENT_PROVIDERS,node_key_38,,label,DHL,,dhl,DHL,,dhl,,
