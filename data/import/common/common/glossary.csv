@@ -2960,7 +2960,7 @@ customer.authorization.invalid_account,"You must first validate your email addre
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
 cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
-checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
+checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
 product.attribute.product_stock.name,Warehouse,en_US
 product.attribute.product_stock.name,Warenhaus,de_DE
