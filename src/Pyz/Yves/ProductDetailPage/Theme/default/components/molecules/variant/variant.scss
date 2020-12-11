@@ -1,0 +1,7 @@
+@mixin variant($name: '.variant') {
+    #{$name} {
+        margin: rem(15) 0;
+    }
+}
+
+@include variant();
