@@ -2491,16 +2491,16 @@
         },
         {
             "name": "spryker-eco/adyen",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/adyen.git",
-                "reference": "5b6e326a7c3a873d746624c882dffee23db06d09"
+                "reference": "4d381cdb4708070a1e821fd1b729641d82557b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/adyen/zipball/5b6e326a7c3a873d746624c882dffee23db06d09",
-                "reference": "5b6e326a7c3a873d746624c882dffee23db06d09",
+                "url": "https://api.github.com/repos/spryker-eco/adyen/zipball/4d381cdb4708070a1e821fd1b729641d82557b0a",
+                "reference": "4d381cdb4708070a1e821fd1b729641d82557b0a",
                 "shasum": ""
             },
             "require": {
@@ -2554,7 +2554,7 @@
                 "MIT"
             ],
             "description": "Adyen module",
-            "time": "2020-12-09T16:43:06+00:00"
+            "time": "2020-12-11T10:51:21+00:00"
         },
         {
             "name": "spryker-eco/adyen-api",
