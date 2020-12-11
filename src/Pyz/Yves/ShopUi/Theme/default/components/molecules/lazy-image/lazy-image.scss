@@ -45,8 +45,8 @@
     }
 
     &--product-list-item {
-        @include helper-breakpoint-media-min($md-min) {
-            height: 5rem;
+        @include helper-breakpoint-media-min($lg-min) {
+            height: rem(100);
         }
     }
 
