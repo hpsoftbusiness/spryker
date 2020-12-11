@@ -6,7 +6,7 @@
 
     {% if data.viewMode == 'list' %}
         {% set productTemplate = molecule('product-item-list') %}
-        {% set class = 'col col--sm-12 col--with-gutter' %}
+        {% set class = '' %}
     {% endif %}
 
     {% set image = data.product.images | last %}

@@ -22,4 +22,12 @@
     &--medium-size {
         font-size: rem(17);
     }
+
+    &--original-inline & {
+        &__amount {
+            &--original {
+                min-height: 0;
+            }
+        }
+    }
 }

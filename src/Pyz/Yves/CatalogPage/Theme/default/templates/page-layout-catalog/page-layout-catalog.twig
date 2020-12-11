@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
 
-                                <div class="grid {% if data.viewMode != 'list' %}grid--stretch grid--with-gutter{% endif %}">
+                                <div class="{% if data.viewMode != 'list' %}grid grid--stretch grid--with-gutter{% endif %}">
                                     {% if data.products %}
                                         {% for product in data.products %}
                                             {% widget 'CatalogPageProductWidget' args [product, data.viewMode] only %}{% endwidget %}
