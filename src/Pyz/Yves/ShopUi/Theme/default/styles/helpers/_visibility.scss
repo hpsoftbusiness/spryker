@@ -1,0 +1,16 @@
+@mixin helper-visibility-visible {
+    pointer-events: all;
+    visibility: visible;
+    opacity: 1;
+
+    @content;
+}
+
+@mixin helper-visibility-invisible {
+    @include helper-effect-transition(opacity);
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+
+    @content;
+}

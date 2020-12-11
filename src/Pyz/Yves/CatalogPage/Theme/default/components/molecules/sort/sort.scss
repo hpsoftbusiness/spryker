@@ -1,14 +1,11 @@
 @mixin catalog-page-sort($name: '.sort') {
     #{$name} {
-        @include helper-breakpoint-media-min($xl-min) {
-            padding: rem(20) 0 rem(27);
+        @include helper-breakpoint-media-min($lg-min) {
+            margin-bottom: rem(25);
         }
 
         &__results {
-            font-size: rem(16);
-            font-weight: fw(regular);
-            line-height: rem(24);
-            color: $setting-color-gray-4;
+            font: fw(regular) rem(16)/rem(24) $setting-font-family;
         }
 
         &__label {

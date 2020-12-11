@@ -2,24 +2,52 @@
 
 @include shop-ui-radio {
     $name: '.radio';
+
+    &--expand {
+        display: block;
+    }
+
     &__container {
         display: flex;
         align-items: center;
     }
 
     &__box {
+        position: relative;
         width: rem(16);
         height: rem(16);
         margin-right: rem(7);
+        flex-shrink: 0;
+
+        &::after {
+            @include helper-visibility-invisible;
+            content: '';
+            position: absolute;
+            top: rem(2);
+            left: rem(2);
+            display: block;
+            width: rem(10);
+            height: rem(10);
+            border-radius: rem(5);
+            background-color: $setting-color-white;
+        }
     }
 
     &__label {
-        font: fw(regular) rem(15) $setting-font-family;
+        font: fw(regular) rem(15)/rem(18) $setting-font-family;
+
+        &--expand {
+            width: 100%;
+        }
     }
 
     &__input:checked + #{$name}__box {
         border: rem(1) solid $setting-color-main;
         background-color: $setting-color-main;
+
+        &::after {
+            @include helper-visibility-visible;
+        }
     }
 
     &--with-bg,

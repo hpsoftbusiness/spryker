@@ -1,0 +1,38 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'more-less',
+    tag: 'more-less',
+} %}
+
+{% define data = {
+    buttonClass: '',
+} %}
+
+{% define attributes = {
+    'data-text-more': 'global.button.more' | trans,
+    'data-text-less': 'global.button.less' | trans,
+    'data-target-class-name': '',
+    'class-to-toggle': 'is-hidden',
+    'class-active': config.name ~ '__button--active',
+} %}
+
+{% block body %}
+    <button type="button" class="{{ config.name }}__button {{ config.jsName }}__button {{ data.buttonClass }}">
+        {% block text %}
+            <span class="{{ config.jsName }}__button-text">
+                {{ attributes['data-text-more'] }}
+            </span>
+        {% endblock %}
+
+        {% block icon %}
+            {% include atom('icon') with {
+                class: config.name ~ '__button-icon',
+                modifiers: ['small'],
+                data: {
+                    name: 'arrow-down',
+                },
+            } only %}
+        {% endblock %}
+    </button>
+{% endblock %}

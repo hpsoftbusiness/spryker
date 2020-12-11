@@ -64,14 +64,7 @@
 
                 <form method="GET" class="grid js-catalog-filter-target js-form-input-default-value-disabler__catalog-form {{ catalogJsName }}__form">
                     {% block form %}
-                        <div class="col col--sm-12 col--xl-3 catalog-left-side">
-                            {% include molecule('view-mode-switch', 'CatalogPage') with {
-                                class: 'catalog-left-side__switcher',
-                                data: {
-                                    viewMode: data.viewMode,
-                                }
-                            } only %}
-
+                        <div class="col col--sm-12 col--lg-3 catalog-left-side">
                             {% block filterSection %}
                                 {% include organism('filter-section', 'CatalogPage') with {
                                     data: {
@@ -86,8 +79,8 @@
                             {% endblock %}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9 catalog-right-side">
-                            <button type="button" class="button button--hollow button--expand spacing-y spacing-y--big is-hidden-xl-only js-catalog-toggler-click__trigger">
+                        <div class="col col--sm-12 col--lg-9 catalog-right-side">
+                            <button type="button" class="button button--hollow button--expand spacing-y spacing-y--big is-hidden-lg-xl js-catalog-toggler-click__trigger">
                                 {%- include atom('icon') with {
                                     class: 'spacing-right',
                                     data: {
@@ -101,9 +94,11 @@
                                     <div class="col col--sm-12">
                                         {% include molecule('sort', 'CatalogPage') with {
                                             data: {
+                                                viewMode: data.viewMode,
                                                 pagination: data.pagination,
                                                 sort: data.sort,
                                                 parentJsName: catalogJsName,
+                                                title: data.title,
                                             },
                                         } only %}
                                     </div>
@@ -111,14 +106,6 @@
                                         {% include organism('active-filter-section', 'CatalogPage') with {
                                             data: {
                                                 facets: data.facets
-                                            }
-                                        } only %}
-                                    </div>
-                                    <div class="col col--sm-12">
-                                        {% include molecule('view-mode-switch', 'CatalogPage') with {
-                                            class: 'is-hidden-xl-only',
-                                            data: {
-                                                viewMode: data.viewMode
                                             }
                                         } only %}
                                     </div>

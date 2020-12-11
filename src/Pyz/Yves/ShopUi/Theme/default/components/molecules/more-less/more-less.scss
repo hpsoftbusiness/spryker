@@ -1,0 +1,28 @@
+@mixin shop-ui-more-less($name: '.more-less') {
+    #{$name} {
+        margin-top: rem(5);
+
+        &__button {
+            background-color: $setting-color-transparent;
+            color: $setting-color-main;
+            font: fw(medium) rem(16) $setting-font-family;
+            cursor: pointer;
+
+            &--active {
+                #{$name}__button-icon {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+
+        &__button-icon {
+            @include helper-effect-transition(transform);
+            transform-origin: center center;
+            margin-left: rem(5);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-more-less();

@@ -25,7 +25,7 @@
             {% if filterHasValues %}
                 {% block filter %}
                     {% embed molecule('toggler-item') with {
-                        modifiers: ['filter', 'with-bottom-border', (loop.first ? 'mobile' : '')],
+                        modifiers: ['filter', (loop.first ? 'mobile' : '')],
                         data: {
                             title: ('product.filter.' ~ filter.name | lower) | trans,
                             triggerClass: loop.first ? config.jsName ~ '__trigger-category' : config.jsName ~ '__trigger',
@@ -39,8 +39,15 @@
                             filter: filter,
                             isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
                             parentJsName: data.parentJsName,
+                            index: loop.index,
                         },
                     } only %}
+                        {% block title %}
+                            {% set titleClasses = 'title title--h6 text-break' %}
+
+                            {{ parent() }}
+                        {% endblock %}
+
                         {% block contentText %}
                             {% include [
                                 molecule('filter-' ~ embed.filter.config.name, 'CatalogPage'),
@@ -57,6 +64,7 @@
                                     activeMax: embed.filter.activeMax | default(0),
                                     isEmptyCategoryFilterValueVisible: embed.isEmptyCategoryFilterValueVisible,
                                     parentJsName: embed.parentJsName,
+                                    index: embed.index,
                                 },
                             } only %}
                         {% endblock %}
