@@ -11,15 +11,31 @@
 
         &__step {
             @include helper-effect-transition(color background-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(28);
+            height: rem(28);
+            border-radius: rem(14);
             margin: 0 rem(2);
-            font: fw(regular) rem(16) $setting-font-family;
+            font: fw(medium) rem(16) $setting-font-family;
             color: $setting-color-black;
+
+            &--previous {
+                margin-right: rem(10);
+            }
+
+            &--next {
+                margin-left: rem(10);
+            }
 
             &--previous,
             &--next,
             &--ellipsis {
+                width: auto;
+
                 &:hover {
-                    background-color: $setting-color-transparent;
+                    background-color: $setting-color-transparent !important;
                 }
             }
 

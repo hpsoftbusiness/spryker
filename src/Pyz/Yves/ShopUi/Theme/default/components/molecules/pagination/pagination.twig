@@ -38,8 +38,6 @@
                         class="{{ config.name }}__step {{ config.name }}__step--previous"
                         href="{{ path(data.paginationPath, data.parameters | merge({ page: data.currentPage-1 })) }}{{ data.anchor }}"
                     >
-                        <span class="is-hidden-sm-only">{{ 'pagination.previous' | trans }}</span>
-
                         {% include atom('icon') with {
                             modifiers: ['arrow'],
                             class: 'spacing-right',
@@ -47,6 +45,8 @@
                                 name: 'arrow-left'
                             }
                         } only %}
+
+                        <span class="is-hidden-sm-only">{{ 'pagination.previous' | trans }}</span>
                     </a>
                 </li>
 
@@ -89,10 +89,13 @@
                     <span class="{{ config.name }}__step {{ config.name }}__step--previous {{config.name }}__step--disabled">
                         {% include atom('icon') with {
                             modifiers: ['arrow'],
+                            class: 'spacing-right',
                             data: {
                                 name: 'arrow-left'
                             }
                         } only %}
+
+                        <span class="is-hidden-sm-only">{{ 'pagination.previous' | trans }}</span>
                     </span>
                 </li>
             {% endif %}
@@ -146,8 +149,11 @@
                         class="{{ config.name }}__step {{ config.name }}__step--next"
                         href="{{ path(data.paginationPath, data.parameters | merge({ page: data.currentPage + 1 })) }}{{ data.anchor }}"
                     >
+                        <span class="is-hidden-sm-only">{{ 'pagination.next' | trans }}</span>
+
                         {% include atom('icon') with {
                             modifiers: ['arrow'],
+                            class: 'spacing-left',
                             data: {
                                 name: 'arrow-right'
                             }
