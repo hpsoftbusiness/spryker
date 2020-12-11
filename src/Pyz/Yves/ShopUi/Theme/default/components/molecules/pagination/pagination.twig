@@ -38,8 +38,11 @@
                         class="{{ config.name }}__step {{ config.name }}__step--previous"
                         href="{{ path(data.paginationPath, data.parameters | merge({ page: data.currentPage-1 })) }}{{ data.anchor }}"
                     >
+                        <span class="is-hidden-sm-only">{{ 'pagination.previous' | trans }}</span>
+
                         {% include atom('icon') with {
                             modifiers: ['arrow'],
+                            class: 'spacing-right',
                             data: {
                                 name: 'arrow-left'
                             }
@@ -155,8 +158,11 @@
             {% elseif data.showAlwaysFirstAndLast %}
                 <li class="{{ config.name }}__item">
                     <span class="{{ config.name }}__step {{ config.name }}__step--next {{config.name }}__step--disabled">
+                        <span class="is-hidden-sm-only">{{ 'pagination.next' | trans }}</span>
+
                         {% include atom('icon') with {
                             modifiers: ['arrow'],
+                            class: 'spacing-left',
                             data: {
                                 name: 'arrow-right'
                             }

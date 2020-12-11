@@ -4,6 +4,8 @@
         flex-flow: row wrap;
         padding: rem(17) 0;
         border-bottom: rem(1) dotted $setting-color-gray-3;
+        position: relative;
+        z-index: $setting-zi-element;
 
         &--bottom {
             border-bottom: none;

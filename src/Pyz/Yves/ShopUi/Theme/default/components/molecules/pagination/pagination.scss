@@ -1,77 +1,48 @@
 @mixin shop-ui-pagination($name: '.pagination') {
     #{$name} {
         &__list {
-            border-top: rem(1) dotted $setting-color-gray-3;
-            border-bottom: rem(1) dotted $setting-color-gray-3;
             margin-bottom: rem(50);
         }
 
         &__item {
             display: inline-block;
-
-            &:first-child,
-            &:last-child {
-                flex-grow: 1;
-            }
+            vertical-align: top;
         }
 
         &__step {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: rem(44);
-            height: rem(54);
-            font: fw(regular) rem(15)/rem(54) $setting-font-family;
-            text-align: center;
+            @include helper-effect-transition(color background-color);
+            margin: 0 rem(2);
+            font: fw(regular) rem(16) $setting-font-family;
             color: $setting-color-black;
 
-            @include helper-breakpoint-media-min($xl-min) {
-                width: rem(68);
-                height: rem(68);
-                font-size: rem(18);
-                line-height: rem(68);
-            }
-
-            &--previous {
-                float: left;
-            }
-
-            &--next {
-                float: right;
+            &--previous,
+            &--next,
+            &--ellipsis {
+                &:hover {
+                    background-color: $setting-color-transparent;
+                }
             }
 
             &:hover {
                 text-decoration: none;
-                background: $setting-color-gray-1;
+                background-color: $setting-color-alpha-1;
                 color: $setting-color-black;
             }
 
             &--current {
                 &,
                 &:hover {
-                    color: $setting-color-alt;
+                    background-color: $setting-color-main;
+                    color: $setting-color-white;
                 }
             }
 
             &--disabled {
-                opacity: 0.15;
-
-                &:hover {
-                    background: none;
-                }
+                display: none;
             }
         }
 
-        &--search-cms-results {
-            max-width: rem(870);
-            margin: 0 auto;
-
-            #{$name}__list {
-                @include helper-breakpoint-media-min($xl-min) {
-                    margin-bottom: rem(100);
-                }
-            }
-        }
+        @content;
     }
 }
 
