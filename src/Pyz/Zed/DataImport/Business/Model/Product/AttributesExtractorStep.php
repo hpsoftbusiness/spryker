@@ -51,7 +51,7 @@ class AttributesExtractorStep implements DataImportStepInterface
                 $isAffiliateAttribute = in_array($attributeKey, $this->getAffiliateAttributeList());
 
                 if ($isMainAttribute) {
-                    $attributes[$attributeKey] = is_bool($attributeValue) ? (bool) $attributeValue : $attributeValue;
+                    $attributes[$attributeKey] = is_bool($attributeValue) ? (bool)$attributeValue : $attributeValue;
                 }
 
                 if ($isPdpAttribute) {

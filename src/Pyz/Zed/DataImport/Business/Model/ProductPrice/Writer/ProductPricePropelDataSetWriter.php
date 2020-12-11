@@ -67,8 +67,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         ProductRepository $productRepository,
         StoreFacadeInterface $storeFacade,
         CurrencyFacadeInterface $currencyFacade
-    )
-    {
+    ) {
         $this->productRepository = $productRepository;
         $this->storeFacade = $storeFacade;
         $this->currencyFacade = $currencyFacade;
@@ -112,7 +111,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceType
      */
-    protected function findOrCreatePriceType(DataSetInterface $dataSet, SpyPriceTypeEntityTransfer $priceTypeTransfer = null): SpyPriceType
+    protected function findOrCreatePriceType(DataSetInterface $dataSet, ?SpyPriceTypeEntityTransfer $priceTypeTransfer = null): SpyPriceType
     {
         $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] = $priceTypeTransfer->getName();
 
@@ -132,15 +131,14 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceType $priceTypeEntity
      *
-     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
      *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct
      */
     protected function findOrCreateProductPrice(
         DataSetInterface $dataSet,
         SpyPriceType $priceTypeEntity
-    ): SpyPriceProduct
-    {
+    ): SpyPriceProduct {
         $query = SpyPriceProductQuery::create();
         $query->filterByFkPriceType($priceTypeEntity->getIdPriceType());
 
@@ -173,13 +171,13 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct $spyPriceProduct
+     *
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore
      */
     protected function findOrCreatePriceProductStore(
         DataSetInterface $dataSet,
         SpyPriceProduct $spyPriceProduct
-    ): SpyPriceProductStore
-    {
+    ): SpyPriceProductStore {
         $storeTransfer = $this->storeFacade->getStoreByName($dataSet[static::COLUMN_STORE]);
         $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[static::COLUMN_CURRENCY]);
 

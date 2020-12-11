@@ -74,6 +74,7 @@ $product-item-border-radius: rem(10);
             line-height: 1.2;
             border-bottom-left-radius: $product-item-border-radius;
             border-bottom-right-radius: $product-item-border-radius;
+            margin-top: auto;
         }
 
         &--with-spaces {

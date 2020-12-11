@@ -26,7 +26,7 @@ require 'common/config_oms-development.php';
 
 // >>> ADYEN
 
-require 'common/config_adyen-development.php';
+require 'common/config_adyen-demo.php';
 
 // ----------------------------------------------------------------------------
 // --------------------------- Single Sigh On ---------------------------------

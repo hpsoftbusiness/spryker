@@ -18,4 +18,4 @@ require 'config_sso-development.php';
 /**
  * @todo replace with normal ENV var
  */
-$config[SsoConstants::REDIRECT_URL] = 'https://www.marketplace.myworld.com/login_check';
+$config[SsoConstants::REDIRECT_URL] = getenv('SSO_REDIRECT_URL') ?: 'https://www.marketplace.myworld.com/login_check';

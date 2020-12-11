@@ -2354,6 +2354,18 @@ agent.account.profile_data,Agent Profile,en_US
 agent.account.profile_data,Agent-Profil,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
+footer.follow,Follow us,en_US
+footer.follow,Follow us,de_DE
+footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
+footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
+footer.twitter.url,https://twitter.com/myWorld_uk,en_US
+footer.twitter.url,https://twitter.com/myworld_de,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
+footer.instagram.url,https://www.instagram.com/myworld.com__deutschland/,de_DE
+footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
+footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
+footer.official_partner,Official partner,en_US
+footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
 footer.logo.url,https://spryker.com,en_US
@@ -2364,6 +2376,14 @@ footer.logo.link.imprint,https://spryker.com/imprint/,en_US
 footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
+footer.navigation_title.legal_information,Legal information,en_US
+footer.navigation_title.legal_information,Rechtliche Hinweise,de_DE
+footer.navigation_title.information,Information,en_US
+footer.navigation_title.information,Informationen,de_DE
+footer.navigation_title.customer_service,Customer service,en_US
+footer.navigation_title.customer_service,Kundenservice,de_DE
+footer.navigation_title.propositions,Earn money with myWorld,en_US
+footer.navigation_title.propositions,Geld verdienen mit myWorld,de_DE
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_image,Produktbild,de_DE
 page.product.details.slider_thumbnail,Product Image,en_US
