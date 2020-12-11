@@ -11,7 +11,7 @@ interface ProductAffiliateConstants
 {
     /**
      * Specification:
-     * -  ProductAffiliate Service URL. Mandatory.
+     * - ProductAffiliate Service URL. Mandatory.
      */
     public const TRACKING_URL_PATH = 'ProductAffiliate:TRACKING_URL_PATH';
 }
