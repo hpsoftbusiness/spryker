@@ -50,75 +50,77 @@
     ] %}
 
     <div class="container">
-        <div class="{{ config.name }}__top">
-            <div>
-                {% widget 'LanguageSwitcherWidget' args [
-                    data.pathInfo,
-                    data.queryString,
-                    data.requestUri
-                ] with {
-                    data: {
-                        additionalModifiers: ['hollow', 'footer'],
-                        additionalClassName: 'spacing-left',
-                    },
-                } only %}
-                {% endwidget %}
-            </div>
+        {% block footerTop %}
+            <div class="{{ config.name }}__top">
+                <div>
+                    {% widget 'LanguageSwitcherWidget' args [
+                        data.pathInfo,
+                        data.queryString,
+                        data.requestUri
+                    ] with {
+                        data: {
+                            additionalModifiers: ['hollow', 'footer'],
+                            additionalClassName: 'spacing-left',
+                        },
+                    } only %}
+                    {% endwidget %}
+                </div>
 
-            {% block footerNavigation %}
-                {% include molecule('navigation-footer') with {
-                    class: config.name ~ '__navigation',
-                    data: {
-                        items: [
-                            {
-                                title: 'global.categories',
-                                isShow: data.showNavigation,
-                                templates: [
-                                    {
-                                        template: 'navigation-footer',
-                                        menu: 'FOOTER_NAVIGATION_CATEGORIES'
-                                    }
-                                ]
-                            },
-                            {
-                                title: 'global.company',
-                                templates: [
-                                    {
-                                        template: 'navigation-footer',
-                                        menu: 'FOOTER_NAVIGATION'
-                                    }
-                                ]
-                            },
-                            {
-                                title: 'global.social',
-                                templates: [
-                                    {
-                                        template: 'navigation-footer',
-                                        menu: 'SOCIAL_LINKS'
-                                    }
-                                ]
-                            },
-                            {
-                                class: 'is-hidden-md-xl',
-                                modifiers: ['flex'],
-                                title: 'footer.providers__title',
-                                templates: [
-                                    {
-                                        template: 'navigation-providers-shipment',
-                                        menu: 'SHIPMENT_PROVIDERS',
-                                        wrapClass: 'spacing-right spacing-right--big',
-                                    },
-                                    {
-                                        template: 'navigation-providers-payment',
-                                        menu: 'PAYMENT_PROVIDERS'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                } only %}
-            {% endblock %}
-        </div>
+                {% block footerNavigation %}
+                    {% include molecule('navigation-footer') with {
+                        class: config.name ~ '__navigation',
+                        data: {
+                            items: [
+                                {
+                                    title: 'global.categories',
+                                    isShow: data.showNavigation,
+                                    templates: [
+                                        {
+                                            template: 'navigation-footer',
+                                            menu: 'FOOTER_NAVIGATION_CATEGORIES'
+                                        }
+                                    ]
+                                },
+                                {
+                                    title: 'global.company',
+                                    templates: [
+                                        {
+                                            template: 'navigation-footer',
+                                            menu: 'FOOTER_NAVIGATION'
+                                        }
+                                    ]
+                                },
+                                {
+                                    title: 'global.social',
+                                    templates: [
+                                        {
+                                            template: 'navigation-footer',
+                                            menu: 'SOCIAL_LINKS'
+                                        }
+                                    ]
+                                },
+                                {
+                                    class: 'is-hidden-md-xl',
+                                    modifiers: ['flex'],
+                                    title: 'footer.providers__title',
+                                    templates: [
+                                        {
+                                            template: 'navigation-providers-shipment',
+                                            menu: 'SHIPMENT_PROVIDERS',
+                                            wrapClass: 'spacing-right spacing-right--big',
+                                        },
+                                        {
+                                            template: 'navigation-providers-payment',
+                                            menu: 'PAYMENT_PROVIDERS'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    } only %}
+                {% endblock %}
+            </div>
+        {% endblock %}
 
         <div class="{{ config.name }}__bottom">
             <div class="{{ config.name }}__bottom-col">
