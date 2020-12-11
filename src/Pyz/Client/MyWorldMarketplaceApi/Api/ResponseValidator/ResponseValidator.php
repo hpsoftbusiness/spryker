@@ -38,7 +38,7 @@ class ResponseValidator implements ResponseValidatorInterface
     {
         return isset($response[static::FIELD_RESULT_CODE])
             && isset($response[static::FIELD_RESULT_DESCRIPTION])
-            && key_exists(static::FIELD_DATA, $response);
+            && array_key_exists(static::FIELD_DATA, $response);
     }
 
     /**
