@@ -37,6 +37,7 @@
                             filterPath: data.filterPath,
                             categories: data.categories,
                             filter: filter,
+                            isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
                             parentJsName: data.parentJsName,
                         },
                     } only %}
@@ -54,6 +55,7 @@
                                     max: embed.filter.max | default(0),
                                     activeMin: embed.filter.activeMin | default(0),
                                     activeMax: embed.filter.activeMax | default(0),
+                                    isEmptyCategoryFilterValueVisible: embed.isEmptyCategoryFilterValueVisible,
                                     parentJsName: embed.parentJsName,
                                 },
                             } only %}
