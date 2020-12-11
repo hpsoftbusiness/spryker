@@ -29,6 +29,9 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
      */
     protected const CUSTOMER_TYPE_MARKETER = 'Marketer';
 
+    protected const SSO_CUSTOMER_TYPE_CUSTOMER = 1;
+    protected const SSO_CUSTOMER_TYPE_EMPLOYEE = 2;
+    protected const SSO_CUSTOMER_TYPE_MARKETER = 3;
 
     /**
      * @param array $data
@@ -77,11 +80,11 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
     protected function mapCustomerType(int $customerType): string
     {
         switch ($customerType) {
-            case 1:
+            case static::SSO_CUSTOMER_TYPE_CUSTOMER:
                 return static::CUSTOMER_TYPE_CUSTOMER;
-            case 2:
+            case static::SSO_CUSTOMER_TYPE_EMPLOYEE:
                 return static::CUSTOMER_TYPE_EMPLOYEE;
-            case 3:
+            case static::SSO_CUSTOMER_TYPE_MARKETER:
                 return static::CUSTOMER_TYPE_MARKETER;
             default:
                 throw new Exception(sprintf('Customer Type: "%s" not found.', $customerType));
