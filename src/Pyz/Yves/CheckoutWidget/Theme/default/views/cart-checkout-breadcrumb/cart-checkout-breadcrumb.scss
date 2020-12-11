@@ -57,6 +57,10 @@
                             }
                         }
 
+                        &:not(.breadcrumb-step--disabled)::after {
+                            width: 100%;
+                        }
+
                         &::before,
                         &::after {
                             @include helper-breakpoint-media-min($md-min) {
