@@ -26,7 +26,7 @@
         .select2-container {
             border: rem(1) solid $setting-color-input-border;
             border-radius: $setting-border-radius;
-            width: auto;
+            width: 100% !important;
 
             &.select2-container--open {
                 border-color: $setting-color-main;
@@ -83,13 +83,15 @@
                 color: $setting-color-black;
             }
 
-            .select2-container {
-                width: 100% !important;
-            }
-
             #{$name}__caret {
                 color: $setting-color-black;
             }
+        }
+
+        &--footer {
+            border-bottom: rem(1) solid $setting-color-gray-3;
+            margin-bottom: rem(20);
+            padding: rem(8) 0;
         }
 
         #{$name}__caret {
@@ -107,6 +109,8 @@
     }
 
     .select2-container {
+        z-index: $setting-zi-popup;
+
         .select2-results {
             border-radius: $setting-border-radius;
             background-color: $setting-color-white;
@@ -184,10 +188,14 @@
                 &--header {
                     z-index: $setting-zi-header + 2;
                 }
+
+                &--spacing-left {
+                    margin-left: rem(22);
+                }
             }
 
             .select2-dropdown--below {
-                margin-top: rem(1);
+                margin-top: rem(3);
             }
 
             .select2-dropdown--above {

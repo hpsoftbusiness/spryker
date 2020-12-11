@@ -12,13 +12,13 @@ use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 // ------------------------------ AUTHENTICATION ------------------------------
 // ----------------------------------------------------------------------------
 
-require 'common/config_oauth-development.php';
+require 'common/config_oauth-prod.php';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
 // ----------------------------------------------------------------------------
 
-require 'common/config_oms-development.php';
+require 'common/config_oms-prod.php';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ PAYMENTS ------------------------------------
@@ -26,7 +26,7 @@ require 'common/config_oms-development.php';
 
 // >>> ADYEN
 
-require 'common/config_adyen-demo.php';
+require 'common/config_adyen-prod.php';
 
 // ----------------------------------------------------------------------------
 // --------------------------- Single Sigh On ---------------------------------
@@ -34,7 +34,7 @@ require 'common/config_adyen-demo.php';
 
 // >>> SSO
 
-require 'common/config_sso-demo.php';
+require 'common/config_sso-prod.php';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ MAIL ----------------------------------------
@@ -47,7 +47,7 @@ $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Mana
 // ----------------------- MyWorld Marketplace API ----------------------------
 // ----------------------------------------------------------------------------
 
-require 'common/config_my-world-marketplace-api-development.php';
+require 'common/config_my-world-marketplace-api-prod.php';
 $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z5d186';
 
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.myworld.com/spryker';

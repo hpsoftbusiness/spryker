@@ -15,7 +15,7 @@ $adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', t
     'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
     'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),
     'CSS_INTEGRITY_HASH' => utf8_encode('sha384-6qrXvoxlnBlrflZQ9g5Yf5oZapUSSXctPxacP9oRcEukbEO7lXisuSyMKG8pDX8V'),
-    'ORIGIN_KEY' => utf8_encode('pub.v2.8216068210552874.aHR0cHM6Ly95dmVzLmRlLm15d29ybGQubG9jYWw.HI8SeXyRatdpQ27g5MDuFn0alk2x2mU4RQThBisHO8g'),
+    'ORIGIN_KEY' => utf8_encode('pub.v2.8216068210552874.aHR0cHM6Ly93d3cuZGUubXl3b3JsZC5jbG91ZC5zcHJ5a2VyLnRveXM.NMEIipLWXM3ToyHMeKgOwVCp5QK-9pwOueBzymbxWBQ'),
     'API_KEY' => utf8_encode('AQEphmfxL4rMbBNHw0m/n3Q5qf3VZZJ6AoFGXJ3Q+WcpWR/tGa4apIs+LM4QwV1bDb7kfNy1WIxIIkxgBw==-KC/QMH9oO7negekCXG4P4oa04Pkl+lAnlj8aTyf3DU4=-@3*Ek{pf^6fK>Z$m'),
     'CHECKOUT_API_DOMAIN' => 'checkout-test.adyen.com',
     'CHECKOUT_API_VERSION' => 'v32',

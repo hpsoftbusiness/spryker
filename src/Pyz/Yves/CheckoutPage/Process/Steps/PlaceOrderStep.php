@@ -30,7 +30,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface $glossaryStorageClient
      * @param string $stepRoute
      * @param string|null $escapeRoute
-     * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface|array $productSellableChecker
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
      * @param array $errorCodeToRouteMatching
      */
     public function __construct(
