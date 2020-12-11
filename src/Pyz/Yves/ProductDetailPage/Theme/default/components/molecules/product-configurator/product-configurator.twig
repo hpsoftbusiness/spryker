@@ -121,13 +121,16 @@
         }
     } only %}
 
+    <hr />
+
     {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
         {% block embeddedData %}
             {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}{% endwidget %}
 
             {% if not data.isDisabled and can('SeeAddToCartPermissionPlugin') %}
+
                 {% embed molecule('toggler-item') with {
-                    modifiers: ['with-top-border', 'option'],
+                    modifiers: ['option'],
                     data: {
                         title: 'cart.item_quantity' | trans,
                         isToggler: false,
@@ -142,6 +145,7 @@
                         } only %}
                     {% endblock %}
                 {% endembed %}
+
             {% else %}
                 <input type="hidden" class="js-volume-price__quantity">
             {% endif %}

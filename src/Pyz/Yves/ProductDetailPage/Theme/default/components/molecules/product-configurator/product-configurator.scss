@@ -1,7 +1,12 @@
 @mixin product-detail-page-product-configurator($name: '.product-configurator') {
     #{$name} {
+        hr {
+            border-bottom: rem(1) solid $setting-color-gray-3;
+            margin: rem(35) 0;
+        }
+
         &__button-wrap {
-            border-top: rem(1) dotted $setting-color-gray-3;
+            border-top: 0;
             padding: rem(40) 0 rem(10);
 
             @include helper-breakpoint-media-min($xl-min) {
@@ -30,6 +35,21 @@
 
             &__condition {
                 margin-bottom: rem(30);
+            }
+        }
+
+        form {
+            max-width: rem(360);
+
+            .toggler-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &__title,
+                &__content--option {
+                    padding: 0;
+                }
             }
         }
 
