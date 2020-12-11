@@ -109,6 +109,8 @@
     }
 
     .select2-container {
+        z-index: $setting-zi-popup;
+
         .select2-results {
             border-radius: $setting-border-radius;
             background-color: $setting-color-white;
@@ -186,10 +188,14 @@
                 &--header {
                     z-index: $setting-zi-header + 2;
                 }
+
+                &--spacing-left {
+                    margin-left: rem(22);
+                }
             }
 
             .select2-dropdown--below {
-                margin-top: rem(1);
+                margin-top: rem(3);
             }
 
             .select2-dropdown--above {
