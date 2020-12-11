@@ -44,7 +44,12 @@
             {% endif %}
 
             <div class="spacing-top">
-                <button type="submit" class="button button--hollow button--expand" {{ disableAddToWishlist ? 'disabled' : '' }}>
+                <button type="submit" class="button button--skinless button--expand" {{ disableAddToWishlist ? 'disabled' : '' }}>
+                    {% include atom('icon') with {
+                        data: {
+                            name: 'whishlist',
+                        },
+                    } only %}
                     {{ 'page.detail.add-to-wishlist' | trans }}
                 </button>
             </div>

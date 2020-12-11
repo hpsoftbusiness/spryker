@@ -121,6 +121,15 @@
         }
     } only %}
 
+    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
+        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
+            data: {
+                sku: data.product.sku,
+                idProductConcrete: data.product.idProductConcrete | default
+            }
+        } only %}
+    {% endif %}
+
     <hr />
 
     {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
@@ -171,14 +180,5 @@
 
     {% if not isAvailable and isProductConcrete %}
         {% widget 'AvailabilityNotificationSubscriptionWidget' args [data.product] only %}{% endwidget %}
-    {% endif %}
-
-    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
-        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
-            data: {
-                sku: data.product.sku,
-                idProductConcrete: data.product.idProductConcrete | default
-            }
-        } only %}
     {% endif %}
 {% endblock %}
