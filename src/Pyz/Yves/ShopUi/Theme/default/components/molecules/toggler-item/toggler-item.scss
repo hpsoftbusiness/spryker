@@ -145,6 +145,19 @@
             }
         }
 
+        &--footer {
+            #{$name}__title,
+            #{$name}__content {
+                font-size: rem(16);
+                letter-spacing: rem(0.4);
+                line-height: rem(26);
+
+                @include helper-breakpoint-media-min($md-min) {
+                    padding-bottom: 0;
+                }
+            }
+        }
+
         @content;
     }
 }

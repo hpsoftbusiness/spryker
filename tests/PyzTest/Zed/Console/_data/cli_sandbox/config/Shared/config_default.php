@@ -210,7 +210,7 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
                 'action' => '*',
             ],
         ],
-        'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2', // Please replace this token for your project
+        'token' => 'tSTN3I4CZvF7OaIRLHupuC4KKD7gwp13fbty6gQjlsVDtphXn13xAs3Kh2TVpDBrtLtB3CGjkcnc66UJ', // Please replace this token for your project
     ],
 ];
 

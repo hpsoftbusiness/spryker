@@ -8,15 +8,25 @@
 namespace Pyz\Zed\SalesOrderUid\Business;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\SpySalesOrderEntityTransfer;
 
 interface SalesOrderUidFacadeInterface
 {
     /**
+     * Specification:
+     * - Expands sales order entity transfer with sales order UID.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SpySalesOrderEntityTransfer $salesOrderEntityTransfer
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
+     * @return \Generated\Shared\Transfer\SpySalesOrderEntityTransfer
      */
-    public function expandSalesOrder(QuoteTransfer $quoteTransfer): QuoteTransfer;
+    public function expandSalesOrderEntityTransferWithSalesOrderUid(
+        SpySalesOrderEntityTransfer $salesOrderEntityTransfer,
+        QuoteTransfer $quoteTransfer
+    ): SpySalesOrderEntityTransfer;
 
     /**
      * Specification:

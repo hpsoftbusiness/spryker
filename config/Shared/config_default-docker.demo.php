@@ -2,6 +2,7 @@
 
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
+use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
@@ -25,7 +26,7 @@ require 'common/config_oms-development.php';
 
 // >>> ADYEN
 
-require 'common/config_adyen-development.php';
+require 'common/config_adyen-demo.php';
 
 // ----------------------------------------------------------------------------
 // --------------------------- Single Sigh On ---------------------------------
@@ -48,3 +49,5 @@ $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Mana
 
 require 'common/config_my-world-marketplace-api-development.php';
 $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z5d186';
+
+$config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.myworld.com/spryker';

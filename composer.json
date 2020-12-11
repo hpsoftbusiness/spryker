@@ -15,7 +15,7 @@
     "ext-readline": "*",
     "ext-redis": "*",
     "propel/propel": "2.0.0-alpha11",
-    "spryker-eco/adyen": "dev-feature/adyen-maria-db-compatibility",
+    "spryker-eco/adyen": "^1.6.0",
     "spryker-eco/loggly": "^0.1.0",
     "spryker-feature/agent-assist": "^202009.0",
     "spryker-feature/alternative-products": "^202009.0",
@@ -248,12 +248,6 @@
     ],
     "process-timeout": 900
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:spryker-eco/adyen.git"
-    }
-  ],
   "scripts": {
     "compile": [
       "mkdir -p ./data/DE/logs/ZED",

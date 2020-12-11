@@ -480,9 +480,13 @@ customer.login.title,Ich bin bereits Kunde,de_DE
 customer.registration.title,Create account,en_US
 customer.registration.title,Ich bin Neukunde,de_DE
 customer.account.shopping_points_and_cashback,Shopping Points & Cashback,en_US
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,de_DE
 customer.account.available.cashback.amount,Available cashback amount,en_US
+customer.account.available.cashback.amount,Gesammelter Cashback,de_DE
 customer.account.available.shopping.point.amount,Available shopping point amount,en_US
+customer.account.available.shopping.point.amount,Gesammelte Shopping Points,de_DE
 customer.account.available.benefit.voucher.amount,Available benefit voucher amount,en_US
+customer.account.available.benefit.voucher.amount,Gesammelte Benefit Vouchers,de_DE
 customer.account.no_order,No orders at the moment,en_US
 customer.account.no_order,Keine Bestellungen,de_DE
 customer.account,Customer Account,en_US
@@ -901,6 +905,8 @@ checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
+checkout.step.summary.uid,UID,de_DE
+checkout.step.summary.uid,UID,en_US
 checkout.step.summary.delivery_address,Lieferadresse,de_DE
 checkout.step.summary.delivery_address,Delivery Address,en_US
 checkout.step.summary.products,"Products",en_US
@@ -2338,6 +2344,18 @@ agent.account.profile_data,Agent Profile,en_US
 agent.account.profile_data,Agent-Profil,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
+footer.follow,Follow us,en_US
+footer.follow,Follow us,de_DE
+footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
+footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
+footer.twitter.url,https://twitter.com/myWorld_uk,en_US
+footer.twitter.url,https://twitter.com/myworld_de,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
+footer.instagram.url,https://www.instagram.com/myworld.com__deutschland/,de_DE
+footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
+footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
+footer.official_partner,Official partner,en_US
+footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
 footer.logo.url,https://spryker.com,en_US
@@ -2348,6 +2366,14 @@ footer.logo.link.imprint,https://spryker.com/imprint/,en_US
 footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
+footer.navigation_title.legal_information,Legal information,en_US
+footer.navigation_title.legal_information,Rechtliche Hinweise,de_DE
+footer.navigation_title.information,Information,en_US
+footer.navigation_title.information,Informationen,de_DE
+footer.navigation_title.customer_service,Customer service,en_US
+footer.navigation_title.customer_service,Kundenservice,de_DE
+footer.navigation_title.propositions,Earn money with myWorld,en_US
+footer.navigation_title.propositions,Geld verdienen mit myWorld,de_DE
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_image,Produktbild,de_DE
 page.product.details.slider_thumbnail,Product Image,en_US
@@ -2616,6 +2642,8 @@ order_invoice.invoice_template.table.discount,Discount,en_US
 order_invoice.invoice_template.table.discount,Rabatt,de_DE
 order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
 order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
+order_invoice.invoice_template.table.uid,UID,en_US
+order_invoice.invoice_template.table.uid,UID,de_DE
 order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US
@@ -2870,8 +2898,8 @@ mail.trans.footer.shop_name,Spryker Systems GmbH,en_US
 mail.trans.footer.shop_name,Spryker Systems GmbH,de_DE
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,en_US
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 351,de_DE
-mail.trans.footer.shopping_experience,Enjoy your shopping experience.,en_US
-mail.trans.footer.shopping_experience,Genieße das Shopping mit uns.,de_DE
+mail.trans.footer.shopping_experience,We look forward to your next visit!,en_US
+mail.trans.footer.shopping_experience,Wir freuen uns auf deinen nächsten Besuch!,de_DE
 mail.trans.footer.shop_zip_code,10115,en_US
 mail.trans.footer.shop_zip_code,10115,de_DE
 mail.trans.footer.your_team,Your myWorld.com Team,en_US
@@ -2894,8 +2922,10 @@ mail.trans.newsletter_unsubscribed.subtitle,Your email address has been unsubscr
 mail.trans.newsletter_unsubscribed.subtitle,"Deine E-Mail-Adresse wurde vom Spryker Shop Newsletter abgemeldet, aber du kannst dein Abo jederzeit in deinem Konto verwalten.",de_DE
 mail.trans.newsletter_unsubscribed.title,Sorry to see you go...,en_US
 mail.trans.newsletter_unsubscribed.title,"Es ist schade, dass du gehst...",de_DE
-mail.trans.order.billing_address,Billing address,en_US
+mail.trans.order.billing_address,Billing Address,en_US
 mail.trans.order.billing_address,Rechnungsadresse,de_DE
+mail.trans.order.delivery_address.company_data,Company data:,en_US
+mail.trans.order.delivery_address.company_data,Firmen Daten:,de_DE
 mail.trans.order.delivery_address,Delivery address,en_US
 mail.trans.order.delivery_address,Lieferadresse,de_DE
 mail.trans.order.delivery_method,Delivery method,en_US
@@ -2910,8 +2940,8 @@ mail.trans.order.tracking_code,Track delivery,en_US
 mail.trans.order.tracking_code,Lieferung verfolgen,de_DE
 mail.trans.order.payment_method,Payment Method,en_US
 mail.trans.order.payment_method,Zahlungsart,de_DE
-mail.trans.order.stock_name,Sold by,en_US
-mail.trans.order.stock_name,Verkauft von,de_DE
+mail.trans.order.stock_name,Sold by: myworld.com,en_US
+mail.trans.order.stock_name,Verkauft von: myworld.com,de_DE
 mail.trans.order.order_details,Order details,en_US
 mail.trans.order.order_details,Bestellung,de_DE
 mail.trans.order.order_reference,Order Number,en_US
@@ -2958,7 +2988,7 @@ customer.authorization.invalid_account,"You must first validate your email addre
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
 cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
-checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
+checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
 product.attribute.product_stock.name,Warehouse,en_US
 product.attribute.product_stock.name,Warenhaus,de_DE
