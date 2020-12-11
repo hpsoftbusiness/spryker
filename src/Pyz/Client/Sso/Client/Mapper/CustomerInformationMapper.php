@@ -7,11 +7,29 @@
 
 namespace Pyz\Client\Sso\Client\Mapper;
 
+use Exception;
 use Generated\Shared\Transfer\CustomerBalanceTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
 
 class CustomerInformationMapper implements CustomerInformationMapperInterface
 {
+    /**
+     * @see \Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap::COL_CUSTOMER_TYPE_CUSTOMER
+     */
+    protected const CUSTOMER_TYPE_CUSTOMER = 'Customer';
+
+    /**
+     * @see \Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap::COL_CUSTOMER_EMPLOYEE
+     */
+    protected const CUSTOMER_TYPE_EMPLOYEE = 'Employee';
+
+    /**
+     * @see \Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap::COL_CUSTOMER_MARKETER
+     */
+    protected const CUSTOMER_TYPE_MARKETER = 'Marketer';
+
+
     /**
      * @param array $data
      *
@@ -30,7 +48,7 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
             ->setDateOfBirth($data['Data']['BirthdayDate'])
             ->setPhone($data['Data']['MobilePhoneNumber'])
             ->setIsActive($data['Data']['Status'] === 'Active')
-            ->setCustomerType($data['Data']['CustomerType'] - 1)
+            ->setCustomerType($this->mapCustomerType($data['Data']['CustomerType']))
             ->setCustomerBalance($this->mapCustomerBalance($data));
 
         return $customerTransfer;
@@ -49,5 +67,24 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
             ->setAvailableShoppingPointAmount($data['Data']['AvailableShoppingPointAmount'] ?? null)
             ->setAvailableBenefitVoucherAmount($data['Data']['AvailableBenefitVoucherAmount'] ?? null)
             ->setAvailableBenefitVoucherCurrency($data['Data']['AvailableBenefitVoucherCurrency'] ?? null);
+    }
+
+    /**
+     * @param int $customerType
+     * @return string
+     * @throws \Exception
+     */
+    protected function mapCustomerType(int $customerType): string
+    {
+        switch ($customerType) {
+            case 1:
+                return static::CUSTOMER_TYPE_CUSTOMER;
+            case 2:
+                return static::CUSTOMER_TYPE_EMPLOYEE;
+            case 3:
+                return static::CUSTOMER_TYPE_MARKETER;
+            default:
+                throw new Exception(sprintf('Customer Type: "%s" not found.', $customerType));
+        }
     }
 }
