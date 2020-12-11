@@ -1,21 +1,20 @@
 @mixin shop-ui-navigation-footer($name: '.navigation-footer') {
     #{$name} {
         border-bottom: rem(1) dotted $setting-color-gray-3;
-        display: grid;
-        gap: rem(1) rem(1);
-        grid-template: 'legal information service' 'legal information propositions';
 
         @include helper-breakpoint-media-min($md-min) {
             border-bottom: none;
             margin: 0 rem(-15);
+            display: grid;
+            gap: rem(1) rem(1);
+            grid-template: 'legal information service' 'legal information propositions';
         }
 
         &__col {
-            padding-bottom: rem(24);
             width: 100%;
 
             @include helper-breakpoint-media-min($md-min) {
-                padding:  0 rem(15);
+                padding: 0 rem(15);
             }
         }
 

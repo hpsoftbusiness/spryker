@@ -5,11 +5,11 @@
         &__top {
             display: flex;
             flex-direction: column;
-            padding: rem(30) rem(20);
+            padding: rem(20) rem(15);
+            border-top: rem(1) solid $setting-color-gray-3;
 
             @include helper-breakpoint-media-min($md-min) {
                 border-bottom: rem(1) solid $setting-color-gray-3;
-                border-top: rem(1) solid $setting-color-gray-3;
             }
 
             @include helper-breakpoint-media-min($xl-min) {
@@ -21,7 +21,7 @@
         &__bottom {
             display: flex;
             flex-direction: column;
-            padding: rem(30) rem(20);
+            padding: rem(20) rem(15);
 
             @include helper-breakpoint-media-min($lg-min) {
                 flex-direction: row;
@@ -47,6 +47,18 @@
 
         &__social-link {
             @include helper-effect-transition(color);
+            margin: 0 rem(8);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-right: rem(16);
+                margin-left: 0;
+            }
+
+            &:first-of-type {
+                @include helper-breakpoint-media-min($lg-min) {
+                    margin-left: rem(4);
+                }
+            }
         }
 
         &__navigation {
