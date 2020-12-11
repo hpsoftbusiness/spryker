@@ -36,6 +36,18 @@
         {% block name %}
             <span class="{{ config.jsName }}__name">{{ data.name }}</span>
         {% endblock %}
+
+        {% set cashback = data.cashback %}
+
+        {% if cashback %}
+            {% include molecule('cashback') with {
+                class: 'spacing-top',
+                data: {
+                    cashback: cashback,
+                    shoppingPoints: data.shoppingPoints,
+                },
+            } only %}
+        {% endif %}
     </a>
 
     {% block priceContainer %}
