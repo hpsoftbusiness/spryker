@@ -1,28 +1,14 @@
+$product-item-list-border-radius: rem(10);
+
 @mixin shop-ui-product-item-list($name: '.product-item-list') {
     #{$name} {
-        @include helper-effect-transition(box-shadow z-index);
+        @include helper-effect-transition(border-color);
         position: relative;
-        margin-bottom: rem(10);
-        font-family: $setting-font-family;
-        border-radius: rem(4);
         overflow: hidden;
-        background: $setting-color-alpha-4;
-
-        &::before {
-            @include helper-effect-transition(opacity);
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-4);
-            opacity: 0;
-        }
-
-        &:last-child {
-            margin-bottom: rem(53);
-        }
+        color: $setting-color-black;
+        border: rem(1) solid $setting-color-gray-2;
+        border-radius: $product-item-list-border-radius;
+        box-shadow: 0 4px 20px 0 $setting-color-alpha-2;
 
         &__col {
             padding: rem(10) rem(16) rem(25);
@@ -33,27 +19,29 @@
             }
         }
 
-        &__col-name,
-        &__col-price {
+        &__col-name {
+            @include helper-effect-transition(color);
+
             &:hover {
                 text-decoration: none;
                 cursor: pointer;
-                color: $setting-color-black;
             }
         }
 
         &__col-image {
-            padding: rem(38) 0 0;
-            background-color: $setting-color-bg;
+            padding: rem(28) rem(17);
             position: relative;
-            z-index: $setting-zi-element;
-
-            @include helper-breakpoint-media-min($md-min) {
-                padding: rem(40) rem(20) rem(25) rem(38);
-            }
+            overflow: hidden;
         }
 
         &__col-price {
+            color: $setting-color-main;
+
+            &:hover {
+                text-decoration: none;
+                cursor: pointer;
+            }
+
             @include helper-breakpoint-media-min($md-min) {
                 padding-right: rem(38);
             }
@@ -71,52 +59,19 @@
             }
         }
 
-        &__overlay {
-            &::before,
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: $setting-color-alpha-4;
-                z-index: $setting-zi-element-floating;
+        &--with-bottom-spaces {
+            margin-bottom: map-get($setting-grid-gutter, sm) / 2;
+
+            @include helper-breakpoint-media-min($md-min) {
+                margin-bottom: map-get($setting-grid-gutter, md) / 2;
             }
-
-            &::after {
-                @include helper-effect-transition(opacity);
-                background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-4);
-                opacity: 0;
-            }
-        }
-
-        &__review {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            margin-top: rem(7);
-            margin-left: rem(-11);
-        }
-
-        &__review-count {
-            font-size: rem(15);
-            color: $setting-color-gray-3;
-        }
-
-        &__button {
-            position: absolute;
-            right: 0;
-            bottom: 0;
         }
 
         .no-touch &:hover {
-            box-shadow: rem(2) rem(10) rem(30) 0 $setting-color-shadow;
-            z-index: $setting-zi-element + 1;
+            border-color: $setting-color-gray-4;
 
-            &::before,
-            #{$name}__overlay::after {
-                opacity: 0.05;
+            #{$name}__col-name {
+                color: $setting-color-main;
             }
         }
 

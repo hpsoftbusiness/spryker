@@ -1,0 +1,34 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cashback',
+} %}
+
+{% define data = {
+    cashback: required,
+    shoppingPoints: null,
+    iconModifiers: ['medium-up'],
+} %}
+
+{% block component %}
+    {% set cashback = data.cashback %}
+    {% if cashback %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set shoppingPoints = data.shoppingPoints %}
+
+    {{ cashback }}% {{ 'global.cashback' | trans }}
+    {% if shoppingPoints %}
+        + {{ shoppingPoints }}
+        {% include atom('icon') with {
+            class: config.name ~ '__icon',
+            modifiers: data.iconModifiers,
+            data: {
+                name: 'shopping-point',
+            },
+        } only %}
+    {% endif %}
+{% endblock %}
