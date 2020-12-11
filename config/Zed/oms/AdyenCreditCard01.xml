@@ -32,7 +32,7 @@
             <event name="capture payment" manual="true"/>
             <event name="start turnover creation process" manual="true"/>
             <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
-            <event name="send invoice" onEnter="true" command="Invoice/SendInvoice"/>
+            <event name="confirm shipping" onEnter="true" command="Oms/SendShippingConfirmation"/>
             <event name="refund payment" manual="true"/>
             <event name="start turnover cancellation process" onEnter="true"/>
             <event name="close" timeout="20days"/>
@@ -102,7 +102,7 @@
             <transition happy="true">
                 <source>invoice generated</source>
                 <target>invoice with tracking number sent</target>
-                <event>send invoice</event>
+                <event>confirm shipping</event>
             </transition>
 
             <transition happy="true">

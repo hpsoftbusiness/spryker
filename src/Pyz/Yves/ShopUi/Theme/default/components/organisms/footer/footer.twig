@@ -6,34 +6,64 @@
 } %}
 
 {% define data = {
-    showNavigation: true
+    pathInfo: app.request.pathInfo,
+    queryString: app.request.queryString,
+    requestUri: app.request.requestUri,
 } %}
 
 {% block body %}
+    {% set socialMediaItems = [
+        {
+            iconName: 'facebook',
+            href: 'footer.facebook.url' | trans
+        },
+        {
+            iconName: 'twitter',
+            href: 'footer.twitter.url' | trans
+        },
+        {
+            iconName: 'instagram',
+            href: 'footer.instagram.url' | trans
+        },
+        {
+            iconName: 'pinterest',
+            href: 'footer.pinterest.url' | trans
+        }
+    ] %}
+
+    {% set paymentItems = [
+        {
+            iconName: 'logo-mastercard',
+        },
+        {
+            iconName: 'logo-visa',
+        },
+        {
+            iconName: 'logo-visa-dinersclub',
+        },
+        {
+            iconName: 'logo-amex',
+        },
+        {
+            iconName: 'logo-sofort',
+        }
+    ] %}
+
     <div class="container">
         <div class="{{ config.name }}__top">
-            {% embed molecule('toggler-item') with {
-                modifiers: ['mobile'],
-                class: config.name ~ '__subscription',
-                data: {
-                    title: 'global.newsletter' | trans,
-                    triggerClass: config.jsName ~ '__trigger-subscription',
-                    targetClass: config.jsName ~ '__target-subscription',
-                    hiddenClass: 'is-hidden-sm-only',
-                },
-                embed: {
-                   footerName : config.name,
-                },
-            } only %}
-                {% block contentText %}
-                    <span class="{{ embed.footerName }}__subscription-text">
-                        {{- 'footer_subscribe.subscription_text' | trans -}}
-                    </span>
-                    <div class="spacing-bottom spacing-bottom--big">
-                        {{- render(path('newsletter/subscribe')) -}}
-                    </div>
-                {% endblock %}
-            {% endembed %}
+            <div>
+                {% widget 'LanguageSwitcherWidget' args [
+                    data.pathInfo,
+                    data.queryString,
+                    data.requestUri
+                ] with {
+                    data: {
+                        additionalModifiers: ['hollow', 'footer'],
+                        additionalClassName: 'spacing-left',
+                    },
+                } only %}
+                {% endwidget %}
+            </div>
 
             {% block footerNavigation %}
                 {% include molecule('navigation-footer') with {
@@ -90,37 +120,31 @@
             {% endblock %}
         </div>
 
-        <div class="grid grid--middle {{ config.name }}__bottom">
-
-            <div class="col {{ config.name }}__logo-section">
-
-                <div class="{{ config.name }}__logo-copy">
-                    <span class="{{ config.name }}__logo-copy-text">
-                        {{- 'footer.logo.text' | trans -}}
-                    </span>
-
-                    {% include molecule('footer-logo') only %}
-
-                    {% block copyright %}{% endblock %}
-                </div>
-
-                <div class="{{ config.name }}__logo-copy-links">
-                    <a
-                        href="{{ 'footer.logo.link.privacy' | trans }}"
-                        target="_blank"
-                        class="{{ config.name }}__logo-copy-link"
-                    >
-                        {{- 'page.privacy.title' | trans -}}
+        <div class="{{ config.name }}__bottom">
+            <div class="{{ config.name }}__bottom-col">
+                <h6 class="title spacing-right is-hidden-sm-lg">{{ 'footer.follow' | trans }}</h6>
+                {% for item in socialMediaItems %}
+                    <a class="{{ config.name }}__social-link" href="{{ item.href }}" target="_blank">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: item.iconName,
+                            }
+                        } only %}
                     </a>
+                {% endfor %}
+            </div>
 
-                    <a
-                        href="{{ 'footer.logo.link.imprint' | trans }}"
-                        target="_blank"
-                        class="{{ config.name }}__logo-copy-link"
-                    >
-                        {{- 'page.imprint.title' | trans -}}
-                    </a>
-                </div>
+            <div class="{{ config.name }}__bottom-col">
+                <h6 class="title spacing-right is-hidden-sm-lg">{{ 'global.partners' | trans }}</h6>
+                {% for item in paymentItems %}
+                    <img class="spacing-x spacing-x--small" src="{{ publicPath('images/' ~ item.iconName ~ '.svg') }}" alt="{{ item.iconName }}">
+                {% endfor %}
+            </div>
+
+            <div class="{{ config.name }}__bottom-col">
+                <img class="spacing-x col" src="{{ publicPath('images/logo-motogp.svg') }}" alt="logo-motogp">
+                <h6 class="title spacing-left">{{ 'footer.official_partner' | trans }}</h6>
             </div>
         </div>
 

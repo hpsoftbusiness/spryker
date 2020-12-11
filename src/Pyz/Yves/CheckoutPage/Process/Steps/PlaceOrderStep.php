@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
@@ -31,7 +31,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
      * @param string $stepRoute
      * @param string|null $escapeRoute
      * @param array $errorCodeToRouteMatching
-     * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface|array $productSellableChecker
      */
     public function __construct(
         CheckoutPageToCheckoutClientInterface $checkoutClient,
@@ -72,6 +72,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
 
         return $isQuoteValid;
     }
+
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
