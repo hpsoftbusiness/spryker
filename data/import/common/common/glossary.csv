@@ -405,8 +405,8 @@ global.search.suggestion.no_result,Nichts gefunden…,de_DE
 global.search.suggestion.no_result,Nothing found…,en_US
 global.search.suggestion.see_all_products,Alle Produkte anzeigen,de_DE
 global.search.suggestion.see_all_products,See all products,en_US
-global.spryker.shop,Spryker Shop,de_DE
-global.spryker.shop,Spryker Shop,en_US
+global.spryker.shop,myWorld.com,de_DE
+global.spryker.shop,myWorld.com,en_US
 global.spryker.motto,Qualitäts-Technologie,de_DE
 global.spryker.motto,technology with quality,en_US
 global.payment_providers,Zahlungsanbieter,de_DE
@@ -463,8 +463,12 @@ global.button.more,More,en_US
 global.button.more,Mehr,de_DE
 global.button.less,Less,en_US
 global.button.less,Weniger,de_DE
-error.404,Error 404,de_DE
-error.404,Error 404,en_US
+global.back_homepage,Zurück zur Startseite,de_DE
+global.back_homepage,Back to homepage,en_US
+error.404,"Entschuldigung, etwas ist schief gelaufen",de_DE
+error.404,"Sorry, something went wrong",en_US
+error.404_description,Die Seite kann nicht gefunden werden. Bitte gehe zurück,de_DE
+error.404_description,This page can not be found. Please go back,en_US
 error_page.title,Seite nicht gefunden.,de_DE
 error_page.title,Page not found.,en_US
 error_page.home_link,Zur Startseite,de_DE
