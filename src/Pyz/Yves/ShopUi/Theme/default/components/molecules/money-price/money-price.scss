@@ -30,7 +30,7 @@
     }
 
     &--pdp {
-        .#{$name}__amount {
+        .money-price__amount {
             font: fw(bold) map-get($setting-font-size, 2) $setting-font-family;
         }
     }
