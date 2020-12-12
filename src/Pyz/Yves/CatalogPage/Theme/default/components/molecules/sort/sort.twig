@@ -8,48 +8,53 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--justify grid--middle">
-        <div class="col">
+    <div class="{{ config.name }}__content grid grid--justify">
+        <div class="col col--sm-9 col--lg-6">
             <h3>{{ data.title }}</h3>
             <span class="{{ config.name }}__results">
                 {{- data.pagination.numFound }} {{ 'catalog.itemsFound' | trans -}}
             </span>
         </div>
 
-        <div class="col col--lg-8 col--xl-6 grid grid--middle grid--right is-hidden-sm-md">
+        <div class="col col--sm-3 col--lg-6 grid grid--middle grid--right">
             {% block selects %}
-                <p class="spacing-right">{{ 'catalog.sort.by' | trans }}</p>
-                <div class="{{ config.jsName }}__filter" data-block-to="js-filter-section__sorting" data-breakpoint="769">
-                    {% embed molecule('custom-select') with {
-                        attributes: {
-                            name: 'sort',
-                            'config-theme': 'secondary',
-                            'config-width': '100%',
-                        },
-                        embed: {
-                            sort: data.sort,
-                            parentJsName: data.parentJsName,
-                        },
-                    } only %}
-                        {% block selectClass %}{{ parent() }} {{ embed.parentJsName ? embed.parentJsName ~ '__sort-trigger' }}{% endblock %}
+                <div>
+                    <div class="{{ config.name }}__filter {{ config.jsName }}__filter"
+                         data-block-to="js-filter-section__sorting"
+                         data-breakpoint="960">
+                        <p class="spacing-right">{{ 'catalog.sort.by' | trans }}</p>
 
-                        {% block options %}
-                            <option value="">{{ 'catalog.sort.relevance' | trans }}</option>
+                        {% embed molecule('custom-select') with {
+                            attributes: {
+                                name: 'sort',
+                                'config-theme': 'secondary',
+                                'config-width': '100%',
+                                'additional-class-name': 'over-popup',
+                            },
+                            embed: {
+                                sort: data.sort,
+                                parentJsName: data.parentJsName,
+                            },
+                        } only %}
+                            {% block selectClass %}{{ parent() }} {{ embed.parentJsName ? embed.parentJsName ~ '__sort-trigger' }}{% endblock %}
 
-                            {% for sortParamName in embed.sort.sortParamNames %}
-                                {% set selectedAttribute = (sortParamName == embed.sort.currentSortParam) ? 'selected' %}
+                            {% block options %}
+                                <option value="">{{ 'catalog.sort.relevance' | trans }}</option>
 
-                                <option value="{{ sortParamName }}" {{ selectedAttribute }}>
-                                    {{ ('catalog.sort.' ~ sortParamName) | trans }}
-                                </option>
-                            {% endfor %}
-                        {% endblock %}
-                    {% endembed %}
+                                {% for sortParamName in embed.sort.sortParamNames %}
+                                    {% set selectedAttribute = (sortParamName == embed.sort.currentSortParam) ? 'selected' %}
+
+                                    <option value="{{ sortParamName }}" {{ selectedAttribute }}>
+                                        {{ ('catalog.sort.' ~ sortParamName) | trans }}
+                                    </option>
+                                {% endfor %}
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
                 </div>
             {% endblock %}
 
             {% include molecule('view-mode-switch', 'CatalogPage') with {
-                class: 'spacing-left spacing-left--big',
                 data: {
                     viewMode: data.viewMode,
                 },

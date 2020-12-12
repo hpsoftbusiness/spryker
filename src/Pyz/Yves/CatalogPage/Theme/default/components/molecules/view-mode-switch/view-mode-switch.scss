@@ -1,8 +1,14 @@
 @mixin catalog-page-view-mode-switch($name: '.view-mode-switch') {
     #{$name} {
+        margin-left: rem(5);
+
+        @include helper-breakpoint-media-min($md-min) {
+            margin-left: rem(15);
+        }
+
         &__link {
             @include helper-effect-transition(color);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
             margin-left: rem(10);
 
             &:hover,

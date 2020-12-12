@@ -297,8 +297,8 @@ catalog.no-results,No results.,en_US
 catalog.no-results,Keine Ergebnisse.,de_DE
 catalog.filter_section.show_all,Show more,en_US
 catalog.filter_section.show_all,Mehr anzeigen,de_DE
-catalog.filter_section.show_less,Weniger anzeigen,en_US
-catalog.filter_section.show_less,Show less,de_DE
+catalog.filter_section.show_less,Show less,en_US
+catalog.filter_section.show_less,Weniger anzeigen,de_DE
 product.filter.category,Kategorien,de_DE
 product.filter.category,Categories,en_US
 product.filter.price,Preis,de_DE

@@ -111,13 +111,21 @@
                                     </div>
                                 </div>
 
-                                <div class="{% if data.viewMode != 'list' %}grid grid--stretch grid--with-gutter{% endif %}">
+                                {% set productsSectionClass = data.viewMode != 'list' ?
+                                    'grid grid--stretch grid--with-gutter' :
+                                    'spacing-bottom spacing-bottom--biggest' %}
+
+                                <div class="{{ productsSectionClass }}">
                                     {% if data.products %}
                                         {% for product in data.products %}
                                             {% widget 'CatalogPageProductWidget' args [product, data.viewMode] only %}{% endwidget %}
                                         {% endfor %}
                                     {% else %}
-                                        {% block noResults %}{{ parent() }}{% endblock %}
+                                        {% block noResults %}
+                                            <div class="col col--sm-12 text-center spacing-bottom spacing-bottom--inner spacing-bottom--biggest">
+                                                {{ 'catalog.no-results' | trans }}
+                                            </div>
+                                        {% endblock %}
                                     {% endif %}
                                 </div>
 

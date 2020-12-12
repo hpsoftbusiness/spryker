@@ -1,7 +1,11 @@
 @mixin catalog-page-sort($name: '.sort') {
     #{$name} {
-        @include helper-breakpoint-media-min($lg-min) {
-            margin-bottom: rem(25);
+        margin-bottom: rem(25);
+
+        &__content {
+            @include helper-breakpoint-media-min($lg-min) {
+                align-items: center;
+            }
         }
 
         &__results {
@@ -10,6 +14,16 @@
 
         &__label {
             vertical-align: middle;
+        }
+
+        &__filter {
+            display: flex;
+            align-items: center;
+            margin-top: rem(5);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-top: 0;
+            }
         }
 
         @content;

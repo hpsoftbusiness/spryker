@@ -5,7 +5,7 @@
         max-width: rem(840);
 
         &.active {
-            z-index: $setting-zi-popup;
+            z-index: $setting-zi-popup + 1;
         }
 
         &__input {
