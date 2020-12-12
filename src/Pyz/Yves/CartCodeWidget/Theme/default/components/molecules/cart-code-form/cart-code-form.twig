@@ -12,7 +12,6 @@
 {% block body %}
     {% if data.isQuoteEditable %}
         {% embed molecule('toggler-item') with {
-            modifiers: ['filter'],
             data: {
                 title: 'cart.code.enter-code' | trans,
                 triggerClass: config.jsName ~ '__trigger',

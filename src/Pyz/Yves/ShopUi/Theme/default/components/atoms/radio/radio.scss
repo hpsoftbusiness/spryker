@@ -42,6 +42,10 @@
         }
     }
 
+    &__check {
+        left: rem(2);
+    }
+
     &__input:checked + #{$name}__box {
         border: rem(1) solid $setting-color-main;
         background-color: $setting-color-main;
