@@ -71,20 +71,13 @@
         {% endwidget %}
     </div>
 
-    {# TODO: Cashback points details  #}
-    <div class="chashback-sp-info">
-        <span class="chashback-sp-info__text">
-            2% Cashback + 1
-        </span>
-        <span class="chashback-sp-info__icon">
-            {% include atom('icon') with {
-                data: {
-                    name: 'shopping-points',
-                },
-            } only %}
-        </span>
+    {% include molecule('cashback') with {
+        data: {
+            cashback: 2,
+            shoppingPoints: 1,
+        },
+    } only %}
 
-    </div>
 
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
