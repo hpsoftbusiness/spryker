@@ -1,16 +1,14 @@
 {% extends view('error403', '@SprykerShop:ErrorPage') %}
 
-{% define data = {
-    error: _view.error,
-} %}
+{% block breadcrumbs %}{% endblock %}
 
 {% block content %}
     <div class="grid grid--center">
-        <div class="inline text-center spacing-y spacing-y--biggest">
-            <img src="{{ publicPath('svg/not-found.svg') }}" alt="server error"/>
+        <div class="col col--center text-center spacing-y spacing-y--biggest">
+            <img src="{{ publicPath('svg/not-found.svg') }}" alt="server 403 error">
             <h2 class="spacing-top spacing-top--biggest">{{ 'error.404' | trans }}</h2>
             <p class="spacing-top spacing-bottom spacing-bottom--bigger">{{ 'error.404_description' | trans }}</p>
-            <a href="/" class="spacing-bottom spacing-bottom--biggest button button--large">{{ 'global.back_homepage' | trans }}</a>
+            <a href="{{ path('home') }}" class="spacing-bottom spacing-bottom--biggest button button--large">{{ 'global.back_homepage' | trans }}</a>
         </div>
     </div>
 {% endblock %}
