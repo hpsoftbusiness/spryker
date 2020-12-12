@@ -18,14 +18,8 @@ class StockConfig extends SprykerStockConfig
     {
         return [
             'DE' => [
-                'Warehouse1',
-                'Warehouse2',
-            ],
-            'AT' => [
-                'Warehouse2',
-            ],
-            'US' => [
-                'Warehouse2',
+                'MW_Solution',
+                'Affiliate',
             ],
         ];
     }

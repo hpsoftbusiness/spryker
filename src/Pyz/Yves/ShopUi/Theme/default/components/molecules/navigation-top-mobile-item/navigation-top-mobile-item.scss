@@ -1,7 +1,17 @@
 @mixin shop-ui-navigation-top-mobile-item ($name: '.navigation-top-mobile-item') {
     #{$name} {
-        width: 20%;
-        padding: 0.8rem;
+        padding: rem(2);
+
+        &__action {
+            @include helper-effect-transition(all);
+
+            &:hover,
+            &:focus {
+                color: $setting-color-main;
+            }
+        }
+
+        @content;
     }
 }
 

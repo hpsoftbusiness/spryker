@@ -34,12 +34,14 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
             // first entry is default
             'en' => 'en_US',
             'de' => 'de_DE',
+//            'pl' => 'pl_PL',
+//            'it' => 'it_IT',
         ],
         // first entry is default
-        'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB'],
+        'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'CH', 'GB'],
         // internal and shop
         'currencyIsoCode' => 'EUR',
-        'currencyIsoCodes' => ['EUR', 'CHF'],
+        'currencyIsoCodes' => ['EUR'],
         'queuePools' => [
             'synchronizationPool' => [],
         ],
@@ -86,32 +88,20 @@ $stores['DE'] = [
         // first entry is default
         'en' => 'en_US',
         'de' => 'de_DE',
+//        'pl' => 'pl_PL',
+//        'it' => 'it_IT',
     ],
     // first entry is default
-    'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB'],
+    'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'CH', 'GB'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => ['EUR', 'CHF'],
+    'currencyIsoCodes' => ['EUR'],
     'queuePools' => [
         'synchronizationPool' => [
-            'AT-connection',
             'DE-connection',
         ],
     ],
-    'storesWithSharedPersistence' => ['AT'],
+    'storesWithSharedPersistence' => [],
 ];
-
-$stores['AT'] = [
-        'storesWithSharedPersistence' => ['DE'],
-    ] + $stores['DE'];
-
-$stores['US'] = [
-        'queuePools' => [
-            'synchronizationPool' => [
-                'US-connection',
-            ],
-        ],
-        'storesWithSharedPersistence' => [],
-    ] + $stores['DE'];
 
 return $stores;

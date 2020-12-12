@@ -213,6 +213,8 @@ page.checkout.finalize.buy-now,Jetzt kaufen,de_DE
 page.checkout.finalize.buy-now,Buy now,en_US
 page.detail.add-to-cart,In den Warenkorb,de_DE
 page.detail.add-to-cart,Add to Cart,en_US
+page.detail.affiliate-product-action,Zum Shop,de_DE
+page.detail.affiliate-product-action,Go to Shop,en_US
 page.detail.dimensions,Abmessungen,de_DE
 page.detail.dimensions,Measurements,en_US
 page.product.by,von,de_DE
@@ -371,6 +373,10 @@ global.order.descendent,Z_A,de_DE
 global.order.descendent,Z-A,en_US
 global.close,Schließen,de_DE
 global.close,Close,en_US
+global.categories,Alle Kategorien,de_DE
+global.categories,All Categories,en_US
+global.register,Zur Registrierung,de_DE
+global.register,Register now,en_US
 global.search,Suche,de_DE
 global.search,Search,en_US
 global.search.results,Suchergebnisse,de_DE
@@ -439,6 +445,10 @@ global.quantity_symbol,x,en_US
 global.quantity_symbol,x,de_DE
 global.partners,Partners,en_US
 global.partners,Partner,de_DE
+global.header.categories,All Categories,en_US
+global.header.categories,Alle Kategorien,de_DE
+global.cashback,Cashback,en_US
+global.cashback,Cashback,de_DE
 error.404,Error 404,de_DE
 error.404,Error 404,en_US
 error_page.title,Seite nicht gefunden.,de_DE
@@ -469,6 +479,14 @@ customer.login.title,Access your account,en_US
 customer.login.title,Ich bin bereits Kunde,de_DE
 customer.registration.title,Create account,en_US
 customer.registration.title,Ich bin Neukunde,de_DE
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,en_US
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,de_DE
+customer.account.available.cashback.amount,Available cashback amount,en_US
+customer.account.available.cashback.amount,Gesammelter Cashback,de_DE
+customer.account.available.shopping.point.amount,Available shopping point amount,en_US
+customer.account.available.shopping.point.amount,Gesammelte Shopping Points,de_DE
+customer.account.available.benefit.voucher.amount,Available benefit voucher amount,en_US
+customer.account.available.benefit.voucher.amount,Gesammelte Benefit Vouchers,de_DE
 customer.account.no_order,No orders at the moment,en_US
 customer.account.no_order,Keine Bestellungen,de_DE
 customer.account,Customer Account,en_US
@@ -515,32 +533,42 @@ customer.address.updated,Address was successfully updated,en_US
 customer.address.updated,Adresse wurde erfolgreich aktualisiert,de_DE
 customer.address.delete.success,Address deleted successfully,en_US
 customer.address.delete.success,Adresse erfolgreich gelöscht,de_DE
+customer.address.delete.failed,Address could not be deleted,en_US
+customer.address.delete.failed,Adresse konnte nicht gelöscht werden,de_DE
 customer.address.added,Address was successfully added,en_US
 customer.address.added,Adresse wurde erfolgreich hinzugefügt,de_DE
 customer.address.first_name,First Name,en_US
 customer.address.first_name,Vorname,de_DE
 customer.address.last_name,Last Name,en_US
 customer.address.last_name,Nachname,de_DE
-customer.address.company,Company,en_US
-customer.address.company,Firma,de_DE
+customer.address.company,Company name,en_US
+customer.address.company,Firmenname,de_DE
 customer.address.address1,Street,en_US
 customer.address.address1,Straße,de_DE
 customer.address.address2,House Number,en_US
 customer.address.address2,Hausnummer,de_DE
-customer.address.address3,Additional address field,en_US
-customer.address.address3,Adresszusatz,de_DE
-customer.address.zip_code,Postcode,en_US
-customer.address.zip_code,PLZ,de_DE
+customer.address.address3,Additional information,en_US
+customer.address.address3,Zusatzinformationen für die Zustellung,de_DE
+customer.address.address4,More additional shipping information,en_US
+customer.address.address4,Weitere Zusatzinformation für die Zustellung,de_DE
+customer.address.zip_code,Post code,en_US
+customer.address.zip_code,Postleitzahl,de_DE
 customer.address.city,City,en_US
 customer.address.city,Stadt,de_DE
+customer.address.state,State,en_US
+customer.address.state,Bundesland,de_DE
+customer.address.vat_number,VAT Number,en_US
+customer.address.vat_number,Ust. Nummer,de_DE
 customer.address.country,Country,en_US
 customer.address.country,Land,de_DE
-customer.address.phone,Phone,en_US
-customer.address.phone,Telefon,de_DE
+customer.address.phone,Telephone number (for possible questions regarding delivery),en_US
+customer.address.phone,Telefonnummer (für mögliche Rückfragen bei der Zustellung),de_DE
 customer.address.is_default_billing,Is default billing address,en_US
 customer.address.is_default_billing,Standard Rechnungsadresse,de_DE
 customer.address.is_default_shipping,Is default shipping address,en_US
 customer.address.is_default_shipping,Standard Lieferadresse,de_DE
+customer.address.placeholder.optional,Optional,en_US
+customer.address.placeholder.optional,Optional,de_DE
 customer.anonymization.success,Your account has been deleted successfully,en_US
 customer.anonymization.success,Dein Account wurde gelöscht,de_DE
 customer.anonymization.failed,Your account could not be deleted,en_US
@@ -748,23 +776,73 @@ customer.email.format.invalid,Ungültiges E-Mail-Adressformat,de_DE
 customer.password.recovery.mail.sent,"If there is an account associated with this email address, you will receive an email with further instructions",en_US
 customer.password.recovery.mail.sent,"Falls ein Konto für diese Email-Addresse existiert, wirst du eine Email mit weiteren Anweisungen bekommen",de_DE
 customer.address.number,House Number,en_US
-customer.address.number,Nummer,de_DE
+customer.address.number,Hausnummer,de_DE
 customer.address.save_new_address,Save new address to address book,en_US
 customer.address.save_new_address,Neue Adresse in Adressbuch speichern,de_DE
-countries.iso.AT,Austria,en_US
-countries.iso.AT,Österreich,de_DE
 countries.iso.DE,Germany,en_US
 countries.iso.DE,Deutschland,de_DE
-countries.iso.AT,Österreich,de_DE
 countries.iso.AT,Austria,en_US
+countries.iso.AT,Österreich,de_DE
+countries.iso.CZ,Czech Republic,en_US
+countries.iso.CZ,Tschechische Republik,de_DE
+countries.iso.FI,Finland,en_US
+countries.iso.FI,Finnland,de_DE
+countries.iso.HU,Hungry,en_US
+countries.iso.HU,Hungrig,de_DE
+countries.iso.IT,Italy,en_US
+countries.iso.IT,Italien,de_DE
 countries.iso.NO,Norway,en_US
 countries.iso.NO,Norwegen,de_DE
+countries.iso.PL,Poland,en_US
+countries.iso.PL,Polen,de_DE
+countries.iso.PT,Portugal,en_US
+countries.iso.PT,Portugal,de_DE
 countries.iso.CH,Switzerland,en_US
 countries.iso.CH,Schweiz,de_DE
+countries.iso.SK,Slovakia,en_US
+countries.iso.SK,Slowakei,de_DE
+countries.iso.SI,Slovenia,en_US
+countries.iso.SI,Slowenien,de_DE
+countries.iso.SE,Sweden,en_US
+countries.iso.SE,Schweden,de_DE
+countries.iso.BE,Belgium,en_US
+countries.iso.BE,Belgien,de_DE
+countries.iso.BG,Bulgaria,en_US
+countries.iso.BG,Bulgarien,de_DE
+countries.iso.HR,Croatia,en_US
+countries.iso.HR,Kroatien,de_DE
+countries.iso.CY,Cyprus,en_US
+countries.iso.CY,Zypern,de_DE
+countries.iso.DK,Denmark,en_US
+countries.iso.DK,Dänemark,de_DE
+countries.iso.EE,Estonia,en_US
+countries.iso.EE,Estland,de_DE
+countries.iso.FR,France,en_US
+countries.iso.FR,Frankreich,de_DE
+countries.iso.GR,Greece,en_US
+countries.iso.GR,Griechenland,de_DE
+countries.iso.IM,Isle of Man,en_US
+countries.iso.IM,Insel Man,de_DE
+countries.iso.LV,Latvia,en_US
+countries.iso.LV,Lettland,de_DE
+countries.iso.LT,Lithuania,en_US
+countries.iso.LT,Litauen,de_DE
+countries.iso.LU,Luxembourg,en_US
+countries.iso.LU,Luxemburg,de_DE
+countries.iso.MT,Malta,en_US
+countries.iso.MT,Malta,de_DE
+countries.iso.MC,Monaco,en_US
+countries.iso.MC,Monaco,de_DE
+countries.iso.NL,Netherlands,en_US
+countries.iso.NL,Niederlande,de_DE
+countries.iso.RO,Romania,en_US
+countries.iso.RO,Rumänien,de_DE
 countries.iso.ES,Spain,en_US
 countries.iso.ES,Spanien,de_DE
 countries.iso.GB,United Kingdom,en_US
-countries.iso.GB,Großbritannien,de_DE
+countries.iso.GB,Vereinigtes Königreich,de_DE
+countries.iso.IE,Ireland,en_US
+countries.iso.IE,Irland,de_DE
 customer.billingSameAsShipping,Billing address same as shipping address,en_US
 customer.billingSameAsShipping,Liefer- und Rechnungsadresse sind gleich,de_DE
 checkout.customer.proceed_as_user,Proceed as a registered user (sign up),en_US
@@ -827,6 +905,8 @@ checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
+checkout.step.summary.uid,UID,de_DE
+checkout.step.summary.uid,UID,en_US
 checkout.step.summary.delivery_address,Lieferadresse,de_DE
 checkout.step.summary.delivery_address,Delivery Address,en_US
 checkout.step.summary.products,"Products",en_US
@@ -861,6 +941,8 @@ discount.quote_change.discount.amount_changed,"The discounts you selected for th
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",de_DE
 product.unavailable,Product is out of stock,en_US
 product.unavailable,Keine Produkte mehr auf Lager,de_DE
+product.access.denied,"Sorry, this product is not available.",en_US
+product.access.denied,"Entschuldigung, dieses Produkt ist nicht verfügbar.",de_DE
 product.attribute.slug,slug,en_US
 product.attribute.slug,slug,de_DE
 product.attribute.variant_id,ID,en_US
@@ -1091,14 +1173,18 @@ mail.newsletter.subscribed.subject,Willkommen beim Spryker Newsletter,de_DE
 mail.newsletter.subscribed.subject,Welcome to Spryker newsletter,en_US
 mail.newsletter.subscribed.text,"Wir freuen uns, dass du dich für unseren Newsletter registriert hast. Wir werden unser bestes geben, um dich mich relevanten und spannenden News und Updates zu versorgen.",de_DE
 mail.newsletter.subscribed.text,We are thrilled you have signed up for our newletter. We will do our best to deliver you the most relevant and exciting news and updates.,en_US
-mail.newsletter.subscribed.footer.text,Viel Spaß beim Shoppen.,de_DE
-mail.newsletter.subscribed.footer.text,Enjoy your shopping experience.,en_US
+mail.newsletter.subscribed.footer.text,Wir freuen uns auf deinen nächsten Besuch!,de_DE
+mail.newsletter.subscribed.footer.text,We look forward to your next visit!,en_US
 mail.newsletter.unsubscribed.subject,"Schade, dass du uns verlässt",de_DE
 mail.newsletter.unsubscribed.subject,Sorry to see you go…,en_US
 mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop Newsletter abgemeldet. Du kannst dich jeder Zeit wieder über dein Kundenkonto anmelden.,de_DE
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
 mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
+mail.order.in-processing.subject,New order just placed,en_US
+mail.order.in-processing.subject,Neue Bestellung gerade aufgegeben,de_DE
 mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
+mail.shipping.confirmation.subject,Ihre Bestellung wurde versandt.,de_DE
+mail.shipping.confirmation.subject,Your order has been shipped.,en_US
 mail.order.confirmation.salutation,Hallo,de_DE
 mail.order.confirmation.salutation,Hello,en_US
 mail.order.confirmation.text_line_1,danke für deine Bestellung beim Spryker Shop!,de_DE
@@ -1313,6 +1399,8 @@ product-cart.validation.error.concrete-product-inactive,"Product %sku% is not ac
 product-cart.validation.error.concrete-product-inactive,"Produkt %sku% ist nicht aktiv.",de_DE
 product-cart.info.concrete-product-inactive.removed,"Inactive item %sku% was removed from your shopping cart.",en_US
 product-cart.info.concrete-product-inactive.removed,"Der inaktive Artikel %sku% wurde aus deinem Warenkorb entfernt.",de_DE
+reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US
+reorder.info.restricted-product.removed,Der Artikel %sku% konnte Ihrem Warenkorb nicht hinzugefügt werden da er deaktiviert wurde.,de_DE
 product.filter.label,Label,en_US
 product.filter.label,Label,de_DE
 product.filter.price-default-chf-gross_mode,Preis,de_DE
@@ -2256,6 +2344,18 @@ agent.account.profile_data,Agent Profile,en_US
 agent.account.profile_data,Agent-Profil,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
+footer.follow,Follow us,en_US
+footer.follow,Follow us,de_DE
+footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
+footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
+footer.twitter.url,https://twitter.com/myWorld_uk,en_US
+footer.twitter.url,https://twitter.com/myworld_de,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
+footer.instagram.url,https://www.instagram.com/myworld.com__deutschland/,de_DE
+footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
+footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
+footer.official_partner,Official partner,en_US
+footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
 footer.logo.url,https://spryker.com,en_US
@@ -2266,6 +2366,14 @@ footer.logo.link.imprint,https://spryker.com/imprint/,en_US
 footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
+footer.navigation_title.legal_information,Legal information,en_US
+footer.navigation_title.legal_information,Rechtliche Hinweise,de_DE
+footer.navigation_title.information,Information,en_US
+footer.navigation_title.information,Informationen,de_DE
+footer.navigation_title.customer_service,Customer service,en_US
+footer.navigation_title.customer_service,Kundenservice,de_DE
+footer.navigation_title.propositions,Earn money with myWorld,en_US
+footer.navigation_title.propositions,Geld verdienen mit myWorld,de_DE
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_image,Produktbild,de_DE
 page.product.details.slider_thumbnail,Product Image,en_US
@@ -2516,38 +2624,56 @@ return.return_policy.returnable_till.message,Returnable till: %date%,en_US
 return.return_policy.returnable_till.message,Retournierbar bis: %date%,de_DE
 order_invoice.invoice_template.table.number,Pos.,en_US
 order_invoice.invoice_template.table.number,Pos.,de_DE
-order_invoice.invoice_template.table.quantity,Quantity,en_US
+order_invoice.invoice_template.table.quantity,Item Qty,en_US
 order_invoice.invoice_template.table.quantity,Menge,de_DE
-order_invoice.invoice_template.table.name,Item,en_US
-order_invoice.invoice_template.table.name,Artikelbezeihnung,de_DE
+order_invoice.invoice_template.table.name,Article name,en_US
+order_invoice.invoice_template.table.name,Artikel,de_DE
 order_invoice.invoice_template.table.tax,Tax rate,en_US
 order_invoice.invoice_template.table.tax,Steuersatz,de_DE
 order_invoice.invoice_template.table.price,Price,en_US
 order_invoice.invoice_template.table.price,Preis,de_DE
+order_invoice.invoice_template.table.net_price,Net price,en_US
+order_invoice.invoice_template.table.net_price,Netto,de_DE
+order_invoice.invoice_template.table.gross_price,Gross price,en_US
+order_invoice.invoice_template.table.gross_price,Brutto,de_DE
 order_invoice.invoice_template.table.subtotal,Subtotal,en_US
 order_invoice.invoice_template.table.subtotal,Zwischensumme,de_DE
 order_invoice.invoice_template.table.discount,Discount,en_US
 order_invoice.invoice_template.table.discount,Rabatt,de_DE
 order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
 order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
+order_invoice.invoice_template.table.uid,UID:,en_US
+order_invoice.invoice_template.table.uid,UID:,de_DE
 order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US
 order_invoice.invoice_template.table.grandtotal,Summe,de_DE
-order_invoice.invoice_template.reference,Invoice number:,en_US
-order_invoice.invoice_template.reference,Rechnungsnummer:,de_DE
+order_invoice.invoice_template.reference,Invoice Nr.,en_US
+order_invoice.invoice_template.reference,Rechnungs Nr.,de_DE
 order_invoice.invoice_template.introduction,We hereby charge you for the following goods:,en_US
 order_invoice.invoice_template.introduction,Hiermit berechnen wir Ihnen folgende Ware:,de_DE
-order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,en_US
-order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,de_DE
-order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,en_US
-order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,de_DE
+order_invoice.invoice_template.company.name,mWS myWorld Solutions AG,en_US
+order_invoice.invoice_template.company.name,mWS myWorld Solutions AG,de_DE
+order_invoice.invoice_template.company.address,"Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g",en_US
+order_invoice.invoice_template.company.address,"Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g",de_DE
 order_invoice.invoice_template.company.group,Unternehmensgruppe Spryker Systems GmbH	,en_US
 order_invoice.invoice_template.company.group,Spryker Systems GmbH Group,de_DE
 order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,en_US
 order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,de_DE
 order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,en_US
 order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,de_DE
+order_invoice.invoice_template.table.payment_reference,Payment reference,en_US
+order_invoice.invoice_template.table.payment_reference,Zahlungsreferenz,de_DE
+order_invoice.invoice_template.table.grant_total,The grand total:,en_US
+order_invoice.invoice_template.table.grant_total,Zahlbetrag:,de_DE
+order_invoice.invoice_template.table.order_reference,The order number:,en_US
+order_invoice.invoice_template.table.order_reference,Bestellnummer:,de_DE
+order_invoice.invoice_template.table.order_date,Order Date:,en_US
+order_invoice.invoice_template.table.order_date,Bestelldatum:,de_DE
+order_invoice.invoice_template.table.invoice_date,Invoice generation date:,en_US
+order_invoice.invoice_template.table.invoice_date,Rechnungsdatum/Lieferdatum:,de_DE
+order_invoice.invoice_template.table.cashback_customer_number,Cashback customer number:,en_US
+order_invoice.invoice_template.table.cashback_customer_number,Cashback Kundennummer:,de_DE
 return_page.list.title,Returns,en_US
 return_page.list.title,Retouren,de_DE
 return_page.account.no_return,No returns at the moment,en_US
@@ -2760,6 +2886,8 @@ mail.trans.customer_restore_password.title,New password for your Spryker Shop ac
 mail.trans.customer_restore_password.title,Neues Passwort für dein Spryker Shop-Konto,de_DE
 mail.trans.footer.contact_email_address,info@spryker.com,en_US
 mail.trans.footer.contact_email_address,info@spryker.com,de_DE
+mail.trans.footer.for_more_information,"For more information on the right of withdrawal and the terms and conditions, click on the name of the seller at the top. Do you have any further questions? Then you are sure to find the right answers in our service area.",en_US
+mail.trans.footer.for_more_information,"Nähere Informationen zum Widerrufsrecht und den AGB erhältst du, indem du oben auf den Namen des Verkäufers klickst. Hast du noch Fragen? Dann findest du in unserem Service-Bereich bestimmt die passenden Antworten.",de_DE
 mail.trans.footer.if_you_have_further_questions,"If you have any further questions, please contact our customer service at",en_US
 mail.trans.footer.if_you_have_further_questions,"Wenn du weitere Fragen hast, wende dich bitte an unseren Kundenservice unter",de_DE
 mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,en_US
@@ -2770,12 +2898,12 @@ mail.trans.footer.shop_name,Spryker Systems GmbH,en_US
 mail.trans.footer.shop_name,Spryker Systems GmbH,de_DE
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,en_US
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 351,de_DE
-mail.trans.footer.shopping_experience,Enjoy your shopping experience.,en_US
-mail.trans.footer.shopping_experience,Genieße das Shopping mit uns.,de_DE
+mail.trans.footer.shopping_experience,We look forward to your next visit!,en_US
+mail.trans.footer.shopping_experience,Wir freuen uns auf deinen nächsten Besuch!,de_DE
 mail.trans.footer.shop_zip_code,10115,en_US
 mail.trans.footer.shop_zip_code,10115,de_DE
-mail.trans.footer.your_team,Your Spryker team!,en_US
-mail.trans.footer.your_team,Dein Spryker Team!,de_DE
+mail.trans.footer.your_team,Your myWorld.com Team,en_US
+mail.trans.footer.your_team,Dein myWorld.com Team,de_DE
 mail.trans.gift_card_delivery.subtitle,Your gift card code is,en_US
 mail.trans.gift_card_delivery.subtitle,Dein Geschenkgutschein-Code lautet,de_DE
 mail.trans.gift_card_delivery.title,"Dear customer, thank you for purchasing a gift card in our shop.",en_US
@@ -2794,40 +2922,52 @@ mail.trans.newsletter_unsubscribed.subtitle,Your email address has been unsubscr
 mail.trans.newsletter_unsubscribed.subtitle,"Deine E-Mail-Adresse wurde vom Spryker Shop Newsletter abgemeldet, aber du kannst dein Abo jederzeit in deinem Konto verwalten.",de_DE
 mail.trans.newsletter_unsubscribed.title,Sorry to see you go...,en_US
 mail.trans.newsletter_unsubscribed.title,"Es ist schade, dass du gehst...",de_DE
-mail.trans.order.billing_address,Billing address,en_US
+mail.trans.order.billing_address,Billing Address,en_US
 mail.trans.order.billing_address,Rechnungsadresse,de_DE
+mail.trans.order.delivery_address.company_data,Company data:,en_US
+mail.trans.order.delivery_address.company_data,Firmen Daten:,de_DE
 mail.trans.order.delivery_address,Delivery address,en_US
 mail.trans.order.delivery_address,Lieferadresse,de_DE
-mail.trans.order.delivery_method,Shipment method,en_US
+mail.trans.order.delivery_method,Delivery method,en_US
 mail.trans.order.delivery_method,Versandart,de_DE
-mail.trans.order.discounts_total,Discounts,en_US
-mail.trans.order.discounts_total,Rabatt,de_DE
-mail.trans.order.grand_total,Grand Total,en_US
-mail.trans.order.grand_total,Gesamtsumme,de_DE
+mail.trans.order.discounts_total,Discount,en_US
+mail.trans.order.discounts_total,Gutschein/Rabatt,de_DE
+mail.trans.order.grand_total,Total order incl. VAT,en_US
+mail.trans.order.grand_total,Summe Bestellung inkl. USt.,de_DE
 mail.trans.order.order_date,Order date,en_US
 mail.trans.order.order_date,Bestelldatum,de_DE
+mail.trans.order.tracking_code,Track delivery,en_US
+mail.trans.order.tracking_code,Lieferung verfolgen,de_DE
+mail.trans.order.payment_method,Payment Method,en_US
+mail.trans.order.payment_method,Zahlungsart,de_DE
+mail.trans.order.stock_name,Sold by: myworld.com,en_US
+mail.trans.order.stock_name,Verkauft von: myworld.com,de_DE
 mail.trans.order.order_details,Order details,en_US
 mail.trans.order.order_details,Bestellung,de_DE
-mail.trans.order.order_reference,Order reference,en_US
+mail.trans.order.order_reference,Order Number,en_US
 mail.trans.order.order_reference,Bestellnummer,de_DE
-mail.trans.order.quantity,Qty,en_US
+mail.trans.order.quantity,Amount,en_US
 mail.trans.order.quantity,Anzahl,de_DE
 mail.trans.order.requested_delivery_date,Requested delivery date,en_US
 mail.trans.order.requested_delivery_date,Gewünschtes Lieferdatum,de_DE
-mail.trans.order.shipment_costs_total,Shipment costs (total),en_US
-mail.trans.order.shipment_costs_total,Lieferkosten (gesamt),de_DE
+mail.trans.order.shipment_costs_total,Shipping incl. VAT,en_US
+mail.trans.order.shipment_costs_total,Versand inkl. USt.,de_DE
 mail.trans.order.shipment_for_number.part1,Shipment,en_US
 mail.trans.order.shipment_for_number.part1,Lieferung,de_DE
 mail.trans.order.shipment_for_number.part2,of,en_US
 mail.trans.order.shipment_for_number.part2,von,de_DE
-mail.trans.order.subtotal,Subtotal,en_US
-mail.trans.order.subtotal,Zwischensumme,de_DE
+mail.trans.order.subtotal,Subtotal incl. VAT,en_US
+mail.trans.order.subtotal,Zwischensumme inkl. USt.,de_DE
 mail.trans.order.taxes,Taxes,en_US
 mail.trans.order.taxes,Steuern,de_DE
-mail.trans.order_confirmation.subtitle,"We are writing to let you know that we recieved your order. You can expect a shipping confirmation by e-mail as soon as the order has been sent. We hope you like your order, but if you change your mind, please return it within 14 days.",en_US
-mail.trans.order_confirmation.subtitle,"Wir haben deine Bestellung erhalten. Du erhälst von uns eine Versandbestätigung per E-Mail, sobald die Bestellung verschickt wurde. Wir hoffen, dass dir deine Bestellung gefällt. Falls du deine Meinung änderst, kannst du deine Artikel innerhalb von 14 Tagen zurückschicken.",de_DE
-mail.trans.order_confirmation.title,Thank you for shopping at Spryker Shop!,en_US
-mail.trans.order_confirmation.title,Vielen Dank für deinen Einkauf im Spryker Shop!,de_DE
+mail.trans.order_confirmation.subtitle,"as soon as your package is on its way, you will receive a separate shipping confirmation from us by e-mail. In case of partial deliveries you will receive a separate notification for each delivery. To view your order, please visit the 'My Orders' section of myWorld.com.",en_US
+mail.trans.order_confirmation.subtitle,"sobald dein Paket auf dem Weg ist, erhältst du von uns eine gesonderte Versandbestätigung per E-Mail. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Um deine Bestellung anzusehen, besuche bitte den Bereich 'Meine Bestellungen' auf myWorld.com.",de_DE
+mail.trans.shipping_confirmation.subtitle,"we would like to inform you that your order or parts of your order has been shipped. In case of partial deliveries you will receive a separate notification for each delivery. As soon as the seller has made the invoice available, you will find it in your customer account under 'My orders'.",en_US
+mail.trans.shipping_confirmation.subtitle,"wir möchten dich darüber informieren, dass deine Bestellung oder Teile deiner Bestellung versandt worden sind. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Sobald der Verkäufer die Rechnung zur Verfügung gestellt hat, findest du sie in deinem Kundenkonto unter 'Meine Bestellungen'.",de_DE
+mail.trans.order_in_processing.title,New order just placed,en_US
+mail.trans.order_in_processing.title,Neue Bestellung gerade aufgegeben,de_DE
+mail.trans.order_confirmation.title,Thanks for your order!,en_US
+mail.trans.order_confirmation.title,Vielen Dank für deine Bestellung!,de_DE
 mail.trans.restore_password.change_password,Change password,en_US
 mail.trans.restore_password.change_password,Passwort ändern,de_DE
 mail.trans.restore_password.subtitle,"Somebody has requested a new password for your Spryker Back Office account. If it was not you, please ignore this email. If it was you, please follow the instructions in  the button bellow",en_US
@@ -2846,3 +2986,13 @@ customer.authorization.validate_email_address,"Almost there! We send you an emai
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
 customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
+cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
+cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
+checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
+checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
+product.attribute.product_stock.name,Warehouse,en_US
+product.attribute.product_stock.name,Warenhaus,de_DE
+product.attribute.benefit_store,Benefit Store,en_US
+product.attribute.benefit_store,Vorteil Geschäft,de_DE
+product.attribute.shopping_point_store,Shopping Point Store,en_US
+product.attribute.shopping_point_store,Einkaufspunkt Geschäft,de_DE

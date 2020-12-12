@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<statemachine
+        xmlns="spryker:oms-01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="Capture01">
+        <states>
+            <state name="ready for capture"/>
+            <state name="capture pending"/>
+            <state name="captured"/>
+            <state name="capture failed clarification"/>
+            <state name="capture failed"/>
+            <state name="capture pending next try"/>
+        </states>
+
+        <events>
+            <event name="capture" onEnter="true" command="Adyen/Capture"/>
+            <event name="cancel payment" manual="true"/>
+            <event name="retry capture" manual="true"/>
+            <event name="pass" onEnter="true"/>
+            <event name="pass 5 minute" timeout="5 minute"/>
+            <event name="pass 10 minute" timeout="10 minute"/>
+        </events>
+
+        <transitions>
+            <transition condition="Adyen/IsCaptureReceived" happy="true">
+                <source>ready for capture</source>
+                <target>capture pending</target>
+                <event>capture</event>
+            </transition>
+
+            <transition>
+                <source>ready for capture</source>
+                <target>capture failed clarification</target>
+                <event>capture</event>
+            </transition>
+
+            <transition>
+                <source>capture failed clarification</source>
+                <target>ready for cancellation</target>
+                <event>cancel payment</event>
+            </transition>
+
+            <transition condition="Adyen/IsCaptured" happy="true">
+                <source>capture pending</source>
+                <target>captured</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition condition="Adyen/IsCaptureFailed">
+                <source>capture pending</source>
+                <target>capture failed</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition>
+                <source>capture failed</source>
+                <target>capture failed clarification</target>
+                <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>capture pending</source>
+                <target>capture pending next try</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition>
+                <source>capture failed clarification</source>
+                <target>ready for capture</target>
+                <event>retry capture</event>
+            </transition>
+
+            <transition happy="true">
+                <source>capture pending next try</source>
+                <target>capture pending</target>
+                <event>pass 10 minute</event>
+            </transition>
+        </transitions>
+    </process>
+</statemachine>

@@ -31,7 +31,7 @@
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-1);
+                    background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-2);
                     opacity: 0;
                 }
 
@@ -47,8 +47,7 @@
         }
 
         &__name {
-            letter-spacing: rem(0.3);
-            font-family: $setting-font-family-additional;
+            font-family: $setting-font-family;
             font-weight: fw(medium);
             width: 100%;
             display: flex;

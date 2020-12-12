@@ -32,6 +32,8 @@ use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThre
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Checkout\OrderShipmentSavePlugin;
 use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Checkout\AdyenDoSaveOrderPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Checkout\AdyenPostSaveHookPlugin;
 
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
@@ -75,6 +77,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
             new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
+            new AdyenDoSaveOrderPlugin(),
         ];
 
         return $plugins;
@@ -90,6 +93,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
         return [
             new PaymentPostCheckPlugin(),
             new SendEmailToGiftCardUser(), #GiftCardFeature
+            new AdyenPostSaveHookPlugin(),
         ];
     }
 

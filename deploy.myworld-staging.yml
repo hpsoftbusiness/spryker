@@ -45,11 +45,12 @@ image:
   tag: spryker/php:7.3-alpine3.12
   environment:
     SPRYKER_DEFAULT_STORE: "DE"
-    SPRYKER_ACTIVE_STORES: "DE,AT"
+    SPRYKER_ACTIVE_STORES: "DE"
     SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
     SPRYKER_HOOK_AFTER_DEPLOY: "true"
     SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
     SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+    WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
     enabled-extensions:
       - blackfire
@@ -88,29 +89,24 @@ regions:
             namespace: de_search
           session:
             namespace: 2
-      AT:
-        services:
-          broker:
-            namespace: at_queue
-          key_value_store:
-            namespace: 1
-          search:
-            namespace: at_search
-          session:
-            namespace: 2
 
 groups:
   EU:
     region: EU
     applications:
+      Redirects:
+        application: static
+        endpoints:
+          de.myworld.cloud.spryker.toys:
+            store: DE
+            redirect:
+              type: 302
+              url: www.de.myworld.cloud.spryker.toys 
       Yves:
         application: yves
         endpoints:
           www.de.myworld.cloud.spryker.toys:
             store: DE
-            <<: *frontend-auth
-          www.at.myworld.cloud.spryker.toys:
-            store: AT
             <<: *frontend-auth
       Zed:
         application: zed
@@ -118,16 +114,11 @@ groups:
           zed.de.myworld.cloud.spryker.toys:
             store: DE
             <<: *frontend-auth
-          zed.at.myworld.cloud.spryker.toys:
-            store: AT
-            <<: *frontend-auth
       Glue:
         application: glue
         endpoints:
           glue.de.myworld.cloud.spryker.toys:
             store: DE
-          glue.at.myworld.cloud.spryker.toys:
-            store: AT
 
 services:
   database:

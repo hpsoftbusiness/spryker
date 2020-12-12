@@ -5,6 +5,8 @@ actions:
     # Cannot have a source because we use store.php
   - data_entity: currency
     source: data/import/common/common/currency.csv
+  - data_entity: customer-group
+    source: data/import/common/common/customer_group.csv
   - data_entity: customer
     source: data/import/common/common/customer.csv
   - data_entity: glossary

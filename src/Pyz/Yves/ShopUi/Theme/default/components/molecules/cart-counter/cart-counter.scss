@@ -3,18 +3,17 @@
         position: relative;
     }
 
+    &__link {
+        @include helper-effect-transition(color);
+    }
+
     &__quantity {
         position: absolute;
-        top: rem(-11);
-        right: rem(-11);
+        top: 0;
+        right: 0;
         min-width: rem(18);
         height: rem(18);
         font-size: rem(12);
         line-height: rem(18);
-
-        @include helper-breakpoint-media-min($lg-min) {
-            top: 0;
-            right: 0;
-        }
     }
 }

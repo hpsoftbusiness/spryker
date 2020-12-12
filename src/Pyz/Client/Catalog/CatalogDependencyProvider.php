@@ -7,6 +7,8 @@
 
 namespace Pyz\Client\Catalog;
 
+use Pyz\Client\Customer\Plugin\SearchExtension\ProductListQueryExpanderPlugin as CustomerProductListQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CmsPageFilterQueryExpanderPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingNameSortConfigTransferBuilderPlugin;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\CategoryFacetConfigTransferBuilderPlugin;
@@ -23,8 +25,6 @@ use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionBy
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugin;
-use Spryker\Client\ProductReview\Plugin\RatingFacetConfigTransferBuilderPlugin;
-use Spryker\Client\ProductReview\Plugin\RatingSortConfigTransferBuilderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\CompletionQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\IsActiveInDateRangeQueryExpanderPlugin;
@@ -53,7 +53,6 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
             new PriceFacetConfigTransferBuilderPlugin(),
-            new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
         ];
     }
@@ -64,7 +63,6 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     protected function getSortConfigTransferBuilderPlugins()
     {
         return [
-            new RatingSortConfigTransferBuilderPlugin(),
             new AscendingNameSortConfigTransferBuilderPlugin(),
             new DescendingNameSortConfigTransferBuilderPlugin(),
             new AscendingPriceSortConfigTransferBuilderPlugin(),
@@ -95,6 +93,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SpellingSuggestionQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
 
             /**
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
@@ -131,6 +130,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SuggestionByTypeQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
+            // Temporary added to filter cms pages from the suggestion list.
+            new CmsPageFilterQueryExpanderPlugin(),
         ];
     }
 
@@ -157,6 +159,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new LocalizedQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
         ];
     }
 
@@ -178,6 +181,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new LocalizedQueryExpanderPlugin(),
             new PaginatedProductConcreteCatalogSearchQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
             new ProductListQueryExpanderPlugin(),
         ];
     }

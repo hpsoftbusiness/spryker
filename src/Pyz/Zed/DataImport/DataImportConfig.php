@@ -15,6 +15,7 @@ use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 class DataImportConfig extends SprykerDataImportConfig
 {
     public const IMPORT_TYPE_CATEGORY_TEMPLATE = 'category-template';
+    public const IMPORT_TYPE_CUSTOMER_GROUP = 'customer-group';
     public const IMPORT_TYPE_CUSTOMER = 'customer';
     public const IMPORT_TYPE_GLOSSARY = 'glossary';
     public const IMPORT_TYPE_NAVIGATION = 'navigation';
@@ -33,9 +34,11 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_PRODUCT_IMAGE = 'product-image';
     public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP = 'product-search-attribute-map';
     public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE = 'product-search-attribute';
+    public const IMPORT_TYPE_PRODUCT_LIST_CUSTOMER_GROUP = 'product-list-customer-group';
     public const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
     public const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
     public const IMPORT_TYPE_CMS_BLOCK_STORE = 'cms-block-store';
+    public const IMPORT_TYPE_CMS_PAGE = 'cms-page';
     public const IMPORT_TYPE_DISCOUNT = 'discount';
     public const IMPORT_TYPE_DISCOUNT_STORE = 'discount-store';
     public const IMPORT_TYPE_DISCOUNT_AMOUNT = 'discount-amount';
@@ -52,6 +55,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_COMBINED_PRODUCT_PRICE = 'combined-product-price';
     public const IMPORT_TYPE_COMBINED_PRODUCT_STOCK = 'combined-product-stock';
     public const IMPORT_TYPE_COMBINED_PRODUCT_GROUP = 'combined-product-group';
+    public const IMPORT_TYPE_COMBINED_PRODUCT_LIST_PRODUCT_CONCRETE = 'combined-product-list-product-concrete';
 
     /**
      * @return string|null

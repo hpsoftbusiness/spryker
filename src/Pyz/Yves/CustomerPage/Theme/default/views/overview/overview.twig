@@ -12,7 +12,7 @@
         } only %}
             {% if embed.orders is not empty %}
                 {% block additionalContent %}
-                    <a href="{{url('customer/order')}}" class="col">
+                    <a href="{{ url('customer/order') }}" class="col">
                         {{ 'customer.order.view_all' | trans }}
                     </a>
                 {% endblock %}
@@ -25,7 +25,31 @@
                 ordersAggregatedItemStateDisplayNames: data.ordersAggregatedItemStateDisplayNames,
             },
         } only %}
+    </div>
 
+    <div class="box">
+        {% embed molecule('title-box', 'CustomerPage') with {
+            data: {
+                title: 'customer.account.shopping_points_and_cashback' | trans,
+            },
+            embed: {
+                customerBalance: data.customer.customerBalance,
+            },
+        } only %}
+                {% block additionalContent %}
+                    {% if embed.customerBalance is defined and embed.customerBalance is not null and embed.customerBalance is not empty %}
+                        {%  if embed.customerBalance.getAvailableCashbackAmount is not null %}
+                            <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ embed.customerBalance.getAvailableCashbackAmount.toFloat() | money(true, embed.customerBalance.getAvailableCashbackCurrency) }}</li>
+                        {% endif %}
+                        {%  if embed.customerBalance.getAvailableShoppingPointAmount is not null %}
+                            <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ embed.customerBalance.getAvailableShoppingPointAmount.toFloat()}}</li>
+                        {% endif %}
+                        {%  if embed.customerBalance.getAvailableBenefitVoucherAmount is not null %}
+                            <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ embed.customerBalance.getAvailableBenefitVoucherAmount.toFloat() | money(true, embed.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
+                        {% endif %}
+                    {% endif %}
+                {% endblock %}
+        {% endembed %}
     </div>
 
     <div class="grid grid--justify">
@@ -36,16 +60,12 @@
                         title: 'customer.account.profile_data' | trans
                     }
                 } only %}
-                    {% block additionalContent %}
-                        <a href="{{url('customer/profile')}}" class="col">
-                            {{ 'general.edit.button' | trans }}
-                        </a>
-                    {% endblock %}
                 {% endembed %}
 
                 <ul class="menu menu--customer-account">
                     <li class="menu__item">{{ data.customer.firstName }} {{ data.customer.lastName }}</li>
-                    <li class="menu__item"><a class="menu__link" href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
+                    <li class="menu__item"><a class="menu__link"
+                                              href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
                 </ul>
             </div>
         </div>

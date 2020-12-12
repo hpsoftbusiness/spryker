@@ -6,15 +6,21 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected searchOverlay: HTMLElement;
     protected overlayOpenButtons: HTMLElement[];
     protected overlayCloseTriggers: HTMLElement[];
+    protected searchDesktop: HTMLElement;
     protected focusTimeout: number = 0;
     protected timeout: number = 400;
 
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.searchOverlay = <HTMLElement>document.getElementsByClassName(`${this.jsName}__overlay`)[0];
-        this.overlayOpenButtons = <HTMLElement[]>Array.from(document.getElementsByClassName(`${this.jsName}__show`));
-        this.overlayCloseTriggers = <HTMLElement[]>Array.from(document.getElementsByClassName(`${this.jsName}__hide`));
+        this.searchOverlay = <HTMLElement>document.getElementsByClassName(this.overlayClassName)[0];
+        this.overlayOpenButtons = <HTMLElement[]>Array.from(document.getElementsByClassName(this.overlayShowClassName));
+        this.overlayCloseTriggers = <HTMLElement[]>Array.from(
+            document.getElementsByClassName(this.overlayHideClassName)
+        );
+        if (this.searchDesktopClassName) {
+            this.searchDesktop = <HTMLElement>document.getElementsByClassName(this.searchDesktopClassName)[0];
+        }
         super.readyCallback();
     }
 
@@ -54,7 +60,9 @@ export default class SuggestSearchExtended extends SuggestSearch {
 
     protected onInputFocusOut(): void {
         super.onInputFocusOut();
-        this.searchOverlay.classList.toggle('active');
+        if (!this.showOverlayOnInitSuggestions) {
+            this.searchOverlay.classList.toggle('active');
+        }
         this.cleanUpInput();
         clearTimeout(this.focusTimeout);
     }
@@ -62,13 +70,60 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected cleanUpInput(): void {
         this.searchInput.value = '';
         this.suggestionsContainer.innerHTML = '';
+        this.setHintValue('');
+    }
+
+    protected onInputClick(): void {
+        this.activeItemIndex = 0;
+        if (this.isNavigationExist()) {
+            this.updateNavigation();
+        }
     }
 
     protected openSearchLayout(): void {
         this.saveCurrentSearchValue('');
         this.setHintValue('');
-        this.searchOverlay.classList.toggle('active');
+        if (!this.showOverlayOnInitSuggestions) {
+            this.searchOverlay.classList.toggle('active');
+        }
         this.focusTimeout = window.setTimeout(() => this.searchInput.focus(), this.timeout);
+    }
 
+    showSugestions(): void {
+        super.showSugestions();
+
+        if (this.showOverlayOnInitSuggestions) {
+            this.searchOverlay.classList.add('active');
+            this.searchDesktop.classList.add('active');
+        }
+    }
+
+    hideSugestions(): void {
+        super.hideSugestions();
+
+        if (this.showOverlayOnInitSuggestions) {
+            this.searchOverlay.classList.remove('active');
+            this.searchDesktop.classList.remove('active');
+        }
+    }
+
+    protected get overlayClassName(): string {
+        return this.getAttribute('overlay-class-name');
+    }
+
+    protected get overlayShowClassName(): string {
+        return this.getAttribute('overlay-show-class-name');
+    }
+
+    protected get overlayHideClassName(): string {
+        return this.getAttribute('overlay-hide-class-name');
+    }
+
+    protected get searchDesktopClassName(): string {
+        return this.getAttribute('search-desktop-class-name');
+    }
+
+    protected get showOverlayOnInitSuggestions(): boolean {
+        return this.hasAttribute('show-overlay-on-init-suggestions');
     }
 }

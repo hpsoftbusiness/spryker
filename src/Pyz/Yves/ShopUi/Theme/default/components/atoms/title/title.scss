@@ -1,5 +1,8 @@
 @mixin shop-ui-title($name: '.title') {
     #{$name} {
+        line-height: 1.2;
+        letter-spacing: normal;
+
         @each $i in (1, 2, 3, 4, 5, 6) {
             &--h#{$i} {
                 @include helper-heading($i);
@@ -8,7 +11,6 @@
 
         &--h4 {
             font-family: $setting-font-family;
-            font-weight: fw(light);
         }
 
         &--main {
@@ -51,38 +53,33 @@
         }
 
         &--secondary {
-            font: fw(bold) rem(25)/rem(30) $setting-font-family-additional;
+            font: fw(bold) rem(25)/rem(30) $setting-font-family;
             border-bottom: rem(1) dotted $setting-color-gray-3;
             padding-bottom: rem(7);
             margin-bottom: rem(20);
-            letter-spacing: 0;
 
             @include helper-breakpoint-media-min($lg-min) {
                 padding-bottom: rem(15);
-                letter-spacing: rem(-0.3);
                 font: fw(medium) rem(28)/rem(34);
             }
         }
 
         &--secondary-box {
-            font: fw(bold) rem(25)/rem(30) $setting-font-family-additional;
+            font: fw(bold) rem(25)/rem(30) $setting-font-family;
             border-bottom: rem(1) dotted $setting-color-gray-3;
             padding-bottom: rem(8);
             margin-bottom: rem(16);
-            letter-spacing: 0;
 
             @include helper-breakpoint-media-min($lg-min) {
                 font: fw(medium) rem(21)/rem(25);
                 border: none;
                 padding: 0;
-                letter-spacing: rem(-0.24);
             }
         }
 
         &--secondary-small {
-            font: fw(bold) rem(15)/rem(17) $setting-font-family-additional;
+            font: fw(bold) rem(15)/rem(17) $setting-font-family;
             margin-bottom: rem(13);
-            letter-spacing: rem(-0.17);
         }
 
         &--account-main {
@@ -104,7 +101,7 @@
                 left: 0;
                 right: 0;
                 height: rem(1);
-                background-color: $setting-color-gray-6;
+                background-color: $setting-color-black;
             }
         }
 
@@ -119,7 +116,6 @@
             border-bottom: rem(1) dotted $setting-color-gray-3;
             padding-bottom: rem(6);
             margin-bottom: rem(29);
-            letter-spacing: rem(-0.3);
 
             @include helper-breakpoint-media-min($md-min) {
                 padding-bottom: rem(10);
@@ -151,7 +147,6 @@
         &--promotion {
             padding: rem(18) 0;
             margin-bottom: rem(36);
-            letter-spacing: rem(-0.3);
         }
 
         &--mini-cart {
@@ -170,12 +165,10 @@
 
         &--catalog-cms {
             margin: 0 0 rem(11);
-            letter-spacing: normal;
         }
 
         &--pdp-review {
             margin-right: rem(14);
-            letter-spacing: normal;
 
             @include helper-breakpoint-media-min($md-min) {
                 margin-right: rem(19);
@@ -183,7 +176,7 @@
         }
 
         &--cart-block {
-            font: fw(bold) rem(36) $setting-font-family-additional;
+            font: fw(bold) rem(36) $setting-font-family;
             padding-bottom: rem(10);
             border-bottom: rem(1) dotted $setting-color-gray-3;
         }
@@ -194,13 +187,11 @@
         }
 
         &--heading {
-            font: fw(medium) rem(16)/rem(16) $setting-font-family-additional;
-            letter-spacing: rem(0.5);
+            font: fw(medium) rem(16)/rem(16) $setting-font-family;
 
             @include helper-breakpoint-media-min($lg-min) {
                 font-size: rem(21);
                 line-height: rem(32);
-                letter-spacing: rem(1);
             }
         }
 
@@ -210,6 +201,10 @@
             line-height: rem(16);
             font-weight: fw(regular);
             text-transform: uppercase;
+        }
+
+        &--bold {
+            font-weight: fw(bold);
         }
 
         &--medium {

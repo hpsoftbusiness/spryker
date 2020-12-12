@@ -1,0 +1,11 @@
+export.posting.order-id,Auftragsnummer
+export.posting.order-reference,Bestellnummer
+export.posting.customer-reference,Kundenreferenz
+export.posting.date,"Hergestellt in"
+export.posting.grand-total,Gesamtsumme
+export.posting.tax-total,Steuerbetrag
+export.posting.expense-total,Kosten
+export.posting.error.no-orders-in-time-period-found,"Keine Bestellungen für den gewählten Zeitraum verfügbar"
+export.posting.form.button,Exportieren
+export.posting.page.title,Buchungen exportieren
+

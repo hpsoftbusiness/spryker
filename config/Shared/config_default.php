@@ -2,6 +2,8 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
+use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
@@ -29,7 +31,6 @@ use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
@@ -139,7 +140,11 @@ $trustedHosts
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
+    'checkoutshopper-test.adyen.com', //trusted Adyen domain
 ]);
+
+$config[SessionConstants::YVES_SESSION_COOKIE_SAMESITE] = 'none'; //Allows redirect customer via POST
+
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
@@ -424,6 +429,9 @@ $config[MailConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD') ?: null;
 $config[MailConstants::SENDER_EMAIL] = getenv('SPRYKER_MAIL_SENDER_EMAIL') ?: null;
 $config[MailConstants::SENDER_NAME] = getenv('SPRYKER_MAIL_SENDER_NAME') ?: null;
 
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mterm@myworld.com';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = '';
+
 // >>> FILESYSTEM
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     'files' => [
@@ -517,4 +525,10 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [];
 // ----------------------------------------------------------------------------
 
 // >>> Taxes
-$config[TaxConstants::DEFAULT_TAX_RATE] = 19;
+$config[TaxConstants::DEFAULT_TAX_RATE] = 20;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ GOOGLE ANALYTIC ------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[GoogleAnalyticConstants::WEB_PROPERTY_ID] = getenv('WEB_PROPERTY_ID') ?: 'no-web-property-id';

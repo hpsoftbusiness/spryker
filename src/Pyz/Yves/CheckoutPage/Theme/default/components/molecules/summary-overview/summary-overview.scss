@@ -9,14 +9,13 @@
         }
 
         &__list-item {
-            font: fw(regular) rem(14)/rem(18) $setting-font-family-additional;
+            font: fw(regular) rem(14)/rem(18) $setting-font-family;
             margin: rem(24) 0;
 
             &--total {
                 font-size: rem(15);
                 text-transform: uppercase;
                 font-weight: fw(bold);
-                letter-spacing: rem(0.8);
             }
         }
 

@@ -35,7 +35,6 @@ use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelDataImpo
 use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelStoreDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListCategoryDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListDataImportPlugin;
-use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListProductConcreteDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationDataImportPlugin;
 use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationStoreDataImportPlugin;
@@ -59,6 +58,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_STOCK = 'FACADE_STOCK';
     public const FACADE_STORE = 'FACADE_STORE';
 
+    public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -77,6 +78,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addPriceProductFacade($container);
         $container = $this->addStockFacade($container);
         $container = $this->addStoreFacade($container);
+        $container = $this->addUtilTextService($container);
 
         return $container;
     }
@@ -237,7 +239,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new PaymentMethodDataImportPlugin(),
             new PaymentMethodStoreDataImportPlugin(),
             new ProductListDataImportPlugin(),
-            new ProductListProductConcreteDataImportPlugin(),
             new ProductListCategoryDataImportPlugin(),
             new ConfigurableBundleTemplateDataImportPlugin(),
             new ConfigurableBundleTemplateSlotDataImportPlugin(),
@@ -270,5 +271,19 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new DataImportEventBehaviorPlugin(),
             new DataImportPublisherPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addUtilTextService(Container $container): Container
+    {
+        $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {
+            return $container->getLocator()->utilText()->service();
+        });
+
+        return $container;
     }
 }

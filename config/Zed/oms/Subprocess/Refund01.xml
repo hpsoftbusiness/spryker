@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<statemachine
+        xmlns="spryker:oms-01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="Refund01">
+        <states>
+            <state name="ready for refund"/>
+            <state name="refund pending"/>
+            <state name="refunded"/>
+            <state name="refund failed clarification"/>
+            <state name="refund failed"/>
+            <state name="refund pending next try"/>
+        </states>
+
+        <events>
+            <event name="refund" onEnter="true" command="Adyen/Refund"/>
+            <event name="refund manually" manual="true"/>
+            <event name="retry refund" manual="true"/>
+            <event name="pass" onEnter="true"/>
+            <event name="pass 5 minute" timeout="5 minute"/>
+            <event name="pass 10 minute" timeout="10 minute"/>
+        </events>
+
+        <transitions>
+            <transition condition="Adyen/IsRefundReceived">
+                <source>ready for refund</source>
+                <target>refund pending</target>
+                <event>refund</event>
+            </transition>
+
+            <transition>
+                <source>ready for refund</source>
+                <target>refund failed clarification</target>
+                <event>refund</event>
+            </transition>
+
+            <transition>
+                <source>refund failed clarification</source>
+                <target>refunded</target>
+                <event>refund manually</event>
+            </transition>
+
+            <transition condition="Adyen/IsRefunded">
+                <source>refund pending</source>
+                <target>refunded</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition condition="Adyen/IsRefundFailed">
+                <source>refund pending</source>
+                <target>refund failed</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition>
+                <source>refund failed</source>
+                <target>refund failed clarification</target>
+                <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>refund pending</source>
+                <target>refund pending next try</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition>
+                <source>refund failed clarification</source>
+                <target>ready for refund</target>
+                <event>retry refund</event>
+            </transition>
+
+            <transition>
+                <source>refund pending next try</source>
+                <target>refund pending</target>
+                <event>pass 10 minute</event>
+            </transition>
+        </transitions>
+    </process>
+</statemachine>

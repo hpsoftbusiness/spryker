@@ -1,4 +1,4 @@
-# Spryker B2C Demo Shop
+# MyWorld Project
 [![Build Status](https://travis-ci.org/spryker-shop/b2c-demo-shop.svg?branch=master)](https://travis-ci.org/spryker-shop/b2c-demo-shop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-shop/b2c-demo-shop/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-shop/b2c-demo-shop/?branch=master)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
@@ -6,7 +6,7 @@
 ## Vagrant Installation
 To install the B2C Demo Shop in Vagrant on your machine, follow [Developer Getting Started Guide](https://documentation.spryker.com/docs/dev-getting-started).
 
-__NOTE: instead of `vagrant up` run `VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/b2c-demo-shop.git" vagrant up`__.
+__NOTE: instead of `vagrant up` run `VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-projects/myworld-project.git" vagrant up`__.
 
 For common installation issues, check [Troubleshooting](https://documentation.spryker.com/docs/troubleshooting).
 
@@ -31,9 +31,9 @@ Recommended system requirements for MacOS:
 
 Run the commands:
 ```bash
-mkdir spryker-b2c && cd spryker-b2c
-git clone https://github.com/spryker-shop/b2c-demo-shop.git ./
-git clone git@github.com:spryker/docker-sdk.git docker
+mkdir myworld && cd myworld
+git clone git@github.com:spryker-projects/myworld-project.git ./
+git submodule update --init --force docker
 ```
 
 ### Production-like environment

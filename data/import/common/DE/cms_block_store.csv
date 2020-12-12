@@ -29,7 +29,6 @@ blck-27,DE
 blck-28,DE
 blck-29,DE
 blck-30,DE
-blck-31,DE
 blck-nav-desktop,DE
 blck-nav-mobile,DE
 blck-nav-footer,DE
@@ -58,6 +57,10 @@ cms-block-email--newsletter-subscribed--text,DE
 cms-block-email--newsletter-unsubscribed--html,DE
 cms-block-email--newsletter-unsubscribed--text,DE
 cms-block-email--order-confirmation--html,DE
+cms-block-email--order-in-processing--text,DE
+cms-block-email--order-in-processing--html,DE
 cms-block-email--order-confirmation--text,DE
 cms-block-email--order-shipped--html,DE
 cms-block-email--order-shipped--text,DE
+cms-block-email--shipping-confirmation--html,DE
+cms-block-email--shipping-confirmation--text,DE

@@ -61,7 +61,6 @@
                 padding: 0 rem(20) 0 0;
                 font: fw(light) map-get($setting-font-size, small) $setting-font-family;
                 color: $setting-color-text;
-                letter-spacing: 0;
 
                 @include helper-breakpoint-media-min($xxl-min) {
                     font-size: $setting-font-size-base;
@@ -143,6 +142,19 @@
 
             @include helper-breakpoint-media-min($md-min) {
                 border-top: none;
+            }
+        }
+
+        &--footer {
+            #{$name}__title,
+            #{$name}__content {
+                font-size: rem(16);
+                letter-spacing: rem(0.4);
+                line-height: rem(26);
+
+                @include helper-breakpoint-media-min($md-min) {
+                    padding-bottom: 0;
+                }
             }
         }
 

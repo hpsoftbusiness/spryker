@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfig;
 
 class CheckoutPageConfig extends SprykerCheckoutPageConfig
@@ -20,5 +21,13 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
             'en_US' => '/en/gtc',
             'de_DE' => '/de/agb',
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdyenCreditCard3dSecureEnabled(): bool
+    {
+        return $this->get(AdyenConstants::CREDIT_CARD_3D_SECURE_ENABLED);
     }
 }

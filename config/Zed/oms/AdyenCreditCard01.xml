@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<statemachine
+        xmlns="spryker:oms-01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="AdyenCreditCard01" main="true">
+        <subprocesses>
+            <process>Authorization</process>
+            <process>Cancellation</process>
+            <process>Capture</process>
+            <process>Refund</process>
+            <process>Turnover</process>
+        </subprocesses>
+
+        <states>
+            <state name="new"/>
+            <state name="reserved"/>
+            <state name="order confirmation email sent"/>
+            <state name="order in processing email sent"/>
+            <state name="package packed"/>
+            <state name="waiting for tracking number"/>
+            <state name="invoice generated"/>
+            <state name="invoice with tracking number sent"/>
+            <state name="closed"/>
+        </states>
+
+        <events>
+            <event name="send order confirmation email" onEnter="true" command="Oms/SendOrderConfirmation"/>
+            <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
+            <event name="cancel payment" manual="true"/>
+            <event name="capture payment" manual="true"/>
+            <event name="start turnover creation process" manual="true"/>
+            <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
+            <event name="confirm shipping" onEnter="true" command="Oms/SendShippingConfirmation"/>
+            <event name="refund payment" manual="true"/>
+            <event name="start turnover cancellation process" onEnter="true"/>
+            <event name="close" timeout="20days"/>
+            <event name="pass" onEnter="true"/>
+        </events>
+
+        <transitions>
+            <transition condition="Oms/TrueCondition" happy="true">
+                <source>new</source>
+                <target>reserved</target>
+            </transition>
+
+            <transition happy="true">
+                <source>reserved</source>
+                <target>authorization pending</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>authorized</source>
+                <target>order confirmation email sent</target>
+                <event>send order confirmation email</event>
+            </transition>
+
+            <transition happy="true">
+                <source>order confirmation email sent</source>
+                <target>order in processing email sent</target>
+                <event>send order in processing email</event>
+            </transition>
+
+            <transition>
+                <source>order in processing email sent</source>
+                <target>ready for cancellation</target>
+                <event>cancel payment</event>
+            </transition>
+
+            <transition happy="true">
+                <source>order in processing email sent</source>
+                <target>ready for capture</target>
+                <event>capture payment</event>
+            </transition>
+
+            <transition happy="true">
+                <source>captured</source>
+                <target>package packed</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>package packed</source>
+                <target>waiting for tracking number</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>waiting for tracking number</source>
+                <target>ready for turnover creation</target>
+                <event>start turnover creation process</event>
+            </transition>
+
+            <transition happy="true">
+                <source>turnover created</source>
+                <target>invoice generated</target>
+                <event>generate invoice</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice generated</source>
+                <target>invoice with tracking number sent</target>
+                <event>confirm shipping</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice with tracking number sent</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition>
+                <source>invoice with tracking number sent</source>
+                <target>ready for refund</target>
+                <event>refund payment</event>
+            </transition>
+
+            <transition>
+                <source>refunded</source>
+                <target>ready for turnover cancellation</target>
+                <event>start turnover cancellation process</event>
+            </transition>
+
+            <transition>
+                <source>turnover cancelled</source>
+                <target>closed</target>
+                <event>pass</event>
+            </transition>
+        </transitions>
+    </process>
+
+    <process name="Authorization" file="Subprocess/Authorization01.xml"/>
+    <process name="Cancellation" file="Subprocess/Cancellation01.xml"/>
+    <process name="Capture" file="Subprocess/Capture01.xml"/>
+    <process name="Refund" file="Subprocess/Refund01.xml"/>
+    <process name="Turnover" file="Subprocess/Turnover01.xml"/>
+
+</statemachine>

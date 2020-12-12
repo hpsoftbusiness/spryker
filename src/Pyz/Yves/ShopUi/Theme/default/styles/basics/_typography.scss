@@ -1,62 +1,30 @@
-$font-calibre-url: '../fonts/';
-$font-circular-url: '../fonts/';
-$font-calibre-light: '#{$font-calibre-url}CalibreWeb-Light';
-$font-calibre-regular: '#{$font-calibre-url}CalibreWeb-Regular';
-$font-calibre-medium: '#{$font-calibre-url}CalibreWeb-Medium';
-$font-calibre-bold: '#{$font-calibre-url}CalibreWeb-Bold';
-$font-circular-normal: '#{$font-circular-url}lineto-circular-pro-book';
-$font-circular-medium: '#{$font-circular-url}lineto-circular-pro-medium';
-$font-circular-bold: '#{$font-circular-url}lineto-circular-pro-bold';
+$font-cera-pro-url: '../fonts/';
+$font-cera-pro-thin: '#{$font-cera-pro-url}TypeMates_CeraPRO-Thin';
+$font-cera-pro-thin-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Light-Italic';
+$font-cera-pro-light: '#{$font-cera-pro-url}TypeMates_CeraPRO-Light';
+$font-cera-pro-light-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Italic';
+$font-cera-pro-regular: '#{$font-cera-pro-url}TypeMates_CeraPRO-Regular';
+$font-cera-pro-regular-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Italic';
+$font-cera-pro-medium: '#{$font-cera-pro-url}TypeMates_CeraPRO-Medium';
+$font-cera-pro-medium-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Medium-Italic';
+$font-cera-pro-bold: '#{$font-cera-pro-url}TypeMates_CeraPRO-Bold';
+$font-cera-pro-bold-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Bold-Italic';
+$font-cera-pro-black: '#{$font-cera-pro-url}TypeMates_CeraPRO-Black';
+$font-cera-pro-black-italic: '#{$font-cera-pro-url}TypeMates_CeraPRO-Black-Italic';
 
 @mixin basic-typography() {
-    @font-face {
-        font-family: Calibre;
-        src: url('#{$font-calibre-light}.woff2') format('woff2'), url('#{$font-calibre-light}.woff') format('woff');
-        font-weight: 300;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: Calibre;
-        src: url('#{$font-calibre-regular}.woff2') format('woff2'), url('#{$font-calibre-regular}.woff') format('woff');
-        font-weight: 400;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: Calibre;
-        src: url('#{$font-calibre-medium}.woff2') format('woff2'), url('#{$font-calibre-medium}.woff') format('woff');
-        font-weight: 500;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: Calibre;
-        src: url('#{$font-calibre-bold}.woff2') format('woff2'), url('#{$font-calibre-bold}.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: Circular;
-        src: url('#{$font-circular-normal}.woff2') format('woff2'), url('#{$font-circular-normal}.woff') format('woff');
-        font-weight: 400;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: Circular;
-        src: url('#{$font-circular-medium}.woff2') format('woff2'), url('#{$font-circular-medium}.woff') format('woff');
-        font-weight: 500;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: Circular;
-        src: url('#{$font-circular-bold}.woff2') format('woff2'), url('#{$font-circular-bold}.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-    }
+    @include font-face(Cera PRO, $font-cera-pro-thin, 200, normal);
+    @include font-face(Cera PRO, $font-cera-pro-thin-italic, 200, italic);
+    @include font-face(Cera PRO, $font-cera-pro-light, 300, normal);
+    @include font-face(Cera PRO, $font-cera-pro-light-italic, 300, italic);
+    @include font-face(Cera PRO, $font-cera-pro-regular, 400, normal);
+    @include font-face(Cera PRO, $font-cera-pro-regular-italic, 400, italic);
+    @include font-face(Cera PRO, $font-cera-pro-medium, 500, normal);
+    @include font-face(Cera PRO, $font-cera-pro-medium-italic, 500, italic);
+    @include font-face(Cera PRO, $font-cera-pro-bold, 700, normal);
+    @include font-face(Cera PRO, $font-cera-pro-bold-italic, 700, italic);
+    @include font-face(Cera PRO, $font-cera-pro-black, 800, normal);
+    @include font-face(Cera PRO, $font-cera-pro-black-italic, 800, italic);
 
     html {
         font-size: 100%;
@@ -76,11 +44,6 @@ $font-circular-bold: '#{$font-circular-url}lineto-circular-pro-bold';
         h#{$i} {
             @include helper-heading($i);
         }
-    }
-
-    h4 {
-        font-family: $setting-font-family;
-        font-weight: fw(light);
     }
 
     a {

@@ -6,7 +6,7 @@
 
     #{$name} {
         &__title {
-            font: fw(medium) rem(17)/rem(23) $setting-font-family-additional;
+            font: fw(medium) rem(17)/rem(23) $setting-font-family;
 
             &:hover {
                 text-decoration: none;
@@ -72,7 +72,7 @@
         }
 
         &__price {
-            font: fw(medium) rem(17)/rem(23) $setting-font-family-additional;
+            font: fw(medium) rem(17)/rem(23) $setting-font-family;
             text-align: left;
 
             @include helper-breakpoint-media-min($lg-min) {
@@ -105,12 +105,12 @@
 
         &__option {
             &--mini-cart {
-                font: fw(regular) rem(13)/rem(17) $setting-font-family-additional;
+                font: fw(regular) rem(13)/rem(17) $setting-font-family;
             }
         }
 
         &__box {
-            border-bottom: rem(1) dotted $setting-color-gray-3;
+            border-bottom: rem(1) solid $setting-color-gray-2;
             padding-bottom: rem(18);
             margin-bottom: rem(18);
 
@@ -128,7 +128,7 @@
         }
 
         &__options {
-            font: fw(medium) rem(13)/rem(15) $setting-font-family-additional;
+            font: fw(medium) rem(13)/rem(15) $setting-font-family;
             margin-bottom: rem(5);
 
             @include helper-breakpoint-media-min($lg-min) {

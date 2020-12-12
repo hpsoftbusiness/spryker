@@ -1,18 +1,26 @@
-category_key,parent_category_key,name.de_DE,name.en_US,meta_title.de_DE,meta_title.en_US,meta_description.de_DE,meta_description.en_US,meta_keywords.de_DE,meta_keywords.en_US,is_active,is_in_menu,is_clickable,is_searchable,is_root,is_main,node_order,template_name,category_image_name.en_US,category_image_name.de_DE
-demoshop,,Demoshop,Demoshop,Demoshop,Demoshop,Deutsche Version des Demoshop,English version of Demoshop,Deutsche Version des Demoshop,English version of Demoshop,1,1,1,0,1,1,,Catalog (default),,
-cameras-and-camcorder,demoshop,Kameras & Camcorder,Cameras & Camcorders,Kameras & Camcorder,Cameras & Camcorders,Kameras & Camcorder,Cameras & Camcorders,Kameras & Camcorder,Cameras & Camcorders,1,1,1,1,0,1,90,Catalog (default),/assets/static/images/category-2.jpg,/assets/static/images/category-2.jpg
-digital-cameras,cameras-and-camcorder,Digitale Kameras,Digital Cameras,Digitale Kameras,Digital Cameras,Digitale Kameras,Digital Cameras,Digitale Kameras,Digital Cameras,1,1,1,1,0,1,100,Catalog + CMS Slot,/assets/static/images/category-2.jpg,/assets/static/images/category-2.jpg
-camcorders,cameras-and-camcorder,Camcorder,Camcorders,Camcorder,Camcorders,Camcorder,Camcorders,Camcorder,Camcorders,1,1,1,1,0,1,90,Catalog + CMS Slot,/assets/static/images/category-2.jpg,/assets/static/images/category-2.jpg
-computer,demoshop,Computer,Computers,Computer,Computers,Computer,Computers,Computer,Computers,1,1,1,1,0,1,100,Catalog + CMS Slot,/assets/static/images/category-5.jpg,/assets/static/images/category-5.jpg
-notebooks,computer,Notebooks,Notebooks,Notebooks,Notebooks,Notebooks,Notebooks,Notebooks,Notebooks,1,1,1,1,0,1,100,Catalog + CMS Slot,/assets/static/images/category-6.jpg,/assets/static/images/category-6.jpg
-pcs-and-workstations,computer,PCs & Workstations,PCs & Workstations,PCs & Workstations,PCs & Workstations,PCs & Workstations,PCs & Workstations,PCs & Workstations,PCs & Workstations,1,1,1,1,0,1,90,Catalog + CMS Slot,/assets/static/images/category-7.jpg,/assets/static/images/category-7.jpg
-tablets,computer,Tablets,Tablets,Tablets,Tablets,Tablets,Tablets,Tablets,Tablets,1,1,1,1,0,1,80,Catalog + CMS Slot,/assets/static/images/category-8.jpg,/assets/static/images/category-8.jpg
-smart-wearables,demoshop,Smart Wearables,Smart Wearables,Smart Wearables,Smart Wearables,Smart Wearables,Smart Wearables,Smart Wearables,Smart Wearables,1,1,1,1,0,1,70,Catalog (default),/assets/static/images/category-9.jpg,/assets/static/images/category-9.jpg
-smartwatches,smart-wearables,Smartwatches,Smartwatches,Smartwatches,Smartwatches,Smartwatches,Smartwatches,Smartwatches,Smartwatches,1,1,1,1,0,1,70,Catalog + CMS Slot,/assets/static/images/category-9.jpg,/assets/static/images/category-9.jpg
-telecom-and-navigation,demoshop,Telekommunikation & Navigation,Telecom & Navigation,Telekommunikation & Navigation,Telecom & Navigation,Telekommunikation & Navigation,Telecom & Navigation,Telekommunikation & Navigation,Telecom & Navigation,1,1,1,1,0,1,80,Catalog (default),/assets/static/images/category-11.jpg,/assets/static/images/category-11.jpg
-smartphones,telecom-and-navigation,Smartphones,Smartphones,Smartphones,Smartphones,Smartphones,Smartphones,Smartphones,Smartphones,1,1,1,1,0,1,80,Catalog + CMS Slot,/assets/static/images/category-11.jpg,/assets/static/images/category-11.jpg
-product-bundles,demoshop,Product Bundles,Product Bundles,Product Bundles,Product Bundles,Hier findest du verschiedene Produkte zu einem Bündel kombiniert.,These are multiple products bundled to a new product.,Product Bundles,Product Bundles,1,0,1,1,0,1,60,Catalog (default),,
-variant-showcase,demoshop,Variant Showcase,Variant Showcase,Variant Showcase,Variant Showcase,Diese Produkte haßben mehr als eine Variante.,These are products that have more than 1 variant.,Variant Showcase,Variant Showcase,1,0,1,1,0,1,50,Catalog (default),,
-cables,demoshop,Kabel,Cables,Kabel,Cables,Kabel,Cables,Kabel,Cables,1,1,1,1,0,1,80,Catalog + CMS Slot,,
-food,demoshop,Essen,Food,Essen,Food,Essen,Food,Essen,Food,1,1,1,1,0,1,80,Catalog + CMS Slot,,
-gift-cards,demoshop,Geschenkgutscheine,Gift Cards,Geschenkgutscheine,Gift Cards,Geschenkgutscheine,Gift Cards,Geschenkgutscheine,Gift Cards,1,0,0,1,0,1,150,Catalog (default),,
+category_key,parent_category_key,name.en_US,"name.de_DE
+",meta_title.de_DE,meta_title.en_US,meta_description.de_DE,meta_description.en_US,meta_keywords.de_DE,meta_keywords.en_US,is_active,is_in_menu,is_clickable,is_searchable,is_root,is_main,node_order,template_name,category_image_name.en_US,category_image_name.de_DE
+demoshop,,Demoshop,Demoshop,Demoshop,Demoshop,Deutsche Version des Demoshop,English version of Demoshop,Deutsche Version des Demoshop,English version of Demoshop,1,0,1,0,1,1,900,Catalog (default),,
+537,demoshop,Baby & Toddler,Baby & Kleinkind,Baby & Toddler,Baby & Kleinkind,Baby & Toddler,Baby & Kleinkind,Baby & Toddler,Baby & Kleinkind,1,1,1,1,0,1,901,Catalog (default),,
+166,demoshop,Clothing & Accessories,Bekleidung & Accessoires,Clothing & Accessories,Bekleidung & Accessoires,Clothing & Accessories,Bekleidung & Accessoires,Clothing & Accessories,Bekleidung & Accessoires,1,1,1,1,0,1,902,Catalog (default),,
+922,demoshop,Office Supplies,Bürobedarf,Office Supplies,Bürobedarf,Office Supplies,Bürobedarf,Office Supplies,Bürobedarf,1,1,1,1,0,1,903,Catalog (default),,
+222,demoshop,Electronics,Elektronik,Electronics,Elektronik,Electronics,Elektronik,Electronics,Elektronik,1,1,1,1,0,1,904,Catalog (default),,
+888,demoshop,Vehicles & Parts,Fahrzeuge & Teile,Vehicles & Parts,Fahrzeuge & Teile,Vehicles & Parts,Fahrzeuge & Teile,Vehicles & Parts,Fahrzeuge & Teile,1,1,1,1,0,1,905,Catalog (default),,
+772,demoshop,Mature,Für Erwachsene,Mature,Für Erwachsene,Mature,Für Erwachsene,Mature,Für Erwachsene,1,1,1,1,0,1,906,Catalog (default),,
+469,demoshop,Health & Beauty,Gesundheit & Schönheit,Health & Beauty,Gesundheit & Schönheit,Health & Beauty,Gesundheit & Schönheit,Health & Beauty,Gesundheit & Schönheit,1,1,1,1,0,1,907,Catalog (default),,
+536,demoshop,Home & Garden,Heim & Garten,Home & Garden,Heim & Garten,Home & Garden,Heim & Garten,Home & Garden,Heim & Garten,1,1,1,1,0,1,908,Catalog (default),,
+632,demoshop,DIY supplies,Heimwerkerbedarf,DIY supplies,Heimwerkerbedarf,DIY supplies,Heimwerkerbedarf,DIY supplies,Heimwerkerbedarf,1,1,1,1,0,1,909,Catalog (default),,
+141,demoshop,Cameras & Optics,Kameras & Optik,Cameras & Optics,Kameras & Optik,Cameras & Optics,Kameras & Optik,Cameras & Optics,Kameras & Optik,1,1,1,1,0,1,910,Catalog (default),,
+8,demoshop,Arts & Entertainment,Kunst & Unterhaltung,Arts & Entertainment,Kunst & Unterhaltung,Arts & Entertainment,Kunst & Unterhaltung,Arts & Entertainment,Kunst & Unterhaltung,1,1,1,1,0,1,911,Catalog (default),,
+783,demoshop,Media,Medien,Media,Medien,Media,Medien,Media,Medien,1,1,1,1,0,1,912,Catalog (default),,
+436,demoshop,Furniture,Möbel,Furniture,Möbel,Furniture,Möbel,Furniture,Möbel,1,1,1,1,0,1,913,Catalog (default),,
+412,demoshop,"Food, Beverages & Tobacco","Nahrungsmittel, Getränke & Tabak","Food, Beverages & Tobacco","Nahrungsmittel, Getränke & Tabak","Food, Beverages & Tobacco","Nahrungsmittel, Getränke & Tabak","Food, Beverages & Tobacco","Nahrungsmittel, Getränke & Tabak",1,1,1,1,0,1,914,Catalog (default),,
+600001,demoshop,Rims & Tyres,Reifen & Felgen,Rims & Tyres,Reifen & Felgen,Rims & Tyres,Reifen & Felgen,Rims & Tyres,Reifen & Felgen,1,1,1,1,0,1,915,Catalog (default),,
+5605,demoshop,Religious & Ceremonial,Religion & Feierlichkeiten,Religious & Ceremonial,Religion & Feierlichkeiten,Religious & Ceremonial,Religion & Feierlichkeiten,Religious & Ceremonial,Religion & Feierlichkeiten,1,1,1,1,0,1,916,Catalog (default),,
+2092,demoshop,Software,Software,Software,Software,Software,Software,Software,Software,1,1,1,1,0,1,917,Catalog (default),,
+1239,demoshop,Toys & Games,Spielzeuge & Spiele,Toys & Games,Spielzeuge & Spiele,Toys & Games,Spielzeuge & Spiele,Toys & Games,Spielzeuge & Spiele,1,1,1,1,0,1,918,Catalog (default),,
+988,demoshop,Sporting Goods,Sportartikel,Sporting Goods,Sportartikel,Sporting Goods,Sportartikel,Sporting Goods,Sportartikel,1,1,1,1,0,1,919,Catalog (default),,
+5181,demoshop,Luggage & Bags,Taschen & Gepäck,Luggage & Bags,Taschen & Gepäck,Luggage & Bags,Taschen & Gepäck,Luggage & Bags,Taschen & Gepäck,1,1,1,1,0,1,920,Catalog (default),,
+1,demoshop,Animals & Pet Supplies,Tiere & Tierbedarf,Animals & Pet Supplies,Tiere & Tierbedarf,Animals & Pet Supplies,Tiere & Tierbedarf,Animals & Pet Supplies,Tiere & Tierbedarf,1,1,1,1,0,1,921,Catalog (default),,
+111,demoshop,Business & Industrial,Wirtschaft & Industrie,Business & Industrial,Wirtschaft & Industrie,Business & Industrial,Wirtschaft & Industrie,Business & Industrial,Wirtschaft & Industrie,1,1,1,1,0,1,922,Catalog (default),,
+AF000001,demoshop,Affiliate,Affiliate,Affiliate,Affiliate,Affiliate,Affiliate,Affiliate,Affiliate,1,1,1,1,0,1,923,Catalog (default),,

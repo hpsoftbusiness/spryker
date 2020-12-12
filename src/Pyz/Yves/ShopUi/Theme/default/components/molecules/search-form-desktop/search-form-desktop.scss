@@ -1,0 +1,44 @@
+@mixin shop-ui-search-form-desktop($name: '.search-form-desktop') {
+    #{$name} {
+        position: relative;
+        flex-grow: 1;
+        max-width: rem(840);
+
+        &.active {
+            z-index: $setting-zi-popup;
+        }
+
+        &__input {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        &__field {
+            @include helper-effect-transition(background-color border-color);
+            width: 100%;
+            padding: rem(13) rem(45) rem(13) rem(18);
+            border-radius: rem(21);
+            background-color: $setting-color-gray-2;
+            border: rem(1) solid $setting-color-gray-2;
+            font: fw(regular) rem(14) $setting-font-family;
+
+            &:focus {
+                background-color: $setting-color-transparent;
+                border-color: $setting-color-main;
+            }
+        }
+
+        &__icon {
+            cursor: pointer;
+            position: absolute;
+            right: rem(8);
+            bottom: 0;
+            top: 0;
+            margin: auto;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-search-form-desktop();

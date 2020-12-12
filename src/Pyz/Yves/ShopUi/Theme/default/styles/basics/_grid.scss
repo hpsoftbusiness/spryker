@@ -2,8 +2,9 @@
     .container {
         display: block;
         width: 100%;
-        max-width: $setting-grid-max-width;
         margin: auto;
+
+        @include container-max-width;
 
         &--home-page {
             max-width: none;
@@ -41,11 +42,20 @@
 
         @each $breakpoint, $edges in $setting-breakpoints {
             @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
-                @for $column from 1 through $setting-grid-columns {
+                @for $column from 1 through map-get($setting-grid-columns, $breakpoint) {
                     &--#{$breakpoint}-#{$column} {
-                        width: helper-grid-span($column);
-                        min-width: helper-grid-span($column);
+                        width: helper-grid-span($column, map-get($setting-grid-columns, $breakpoint));
+                        min-width: helper-grid-span($column, map-get($setting-grid-columns, $breakpoint));
                     }
+                }
+            }
+        }
+
+        &--with-gutter {
+            @each $breakpoint, $edges in $setting-breakpoints {
+                @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
+                    padding-left: map-get($setting-grid-gutter, $breakpoint)/2;
+                    padding-right: map-get($setting-grid-gutter, $breakpoint)/2;
                 }
             }
         }
@@ -161,7 +171,7 @@
         }
 
         &.container {
-            max-width: $setting-grid-max-width;
+            @include container-max-width;
         }
 
         &--no-wrap {
@@ -191,6 +201,15 @@
 
         &--baseline {
             align-items: baseline;
+        }
+
+        &--with-gutter {
+            @each $breakpoint, $edges in $setting-breakpoints {
+                @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
+                    margin-left: -#{map-get($setting-grid-gutter, $breakpoint)/2};
+                    margin-right: -#{map-get($setting-grid-gutter, $breakpoint)/2};
+                }
+            }
         }
     }
 }

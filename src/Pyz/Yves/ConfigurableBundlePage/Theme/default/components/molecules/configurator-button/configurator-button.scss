@@ -6,7 +6,7 @@
         border: none;
         border-radius: rem(2);
         text-align: center;
-        font: fw(bold) rem(15)/rem(18) $setting-font-family-additional;
+        font: fw(bold) rem(15)/rem(18) $setting-font-family;
 
         &:hover,
         &:focus,
@@ -19,7 +19,6 @@
             padding: rem(16);
             font-weight: fw(medium);
             font-size: rem(13);
-            letter-spacing: rem(2.2);
             text-transform: uppercase;
             margin: 0;
 
@@ -50,7 +49,7 @@
         }
 
         &--selected {
-            @include configurable-bundle-page-configurator-button-state($setting-color-alpha-2, $setting-color-main, $setting-color-transparent);
+            @include configurable-bundle-page-configurator-button-state($setting-color-alpha-4, $setting-color-main, $setting-color-transparent);
         }
 
         &--summary {

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed"
+          xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\Customer\Persistence" package="src.Orm.Zed.Customer.Persistence">
+
+    <table name="spy_customer" idMethod="native">
+        <column name="my_world_customer_id" required="false" type="VARCHAR" size="36"/>
+        <column name="my_world_customer_number" required="false" type="VARCHAR" size="16"/>
+        <column name="card_number" required="false" type="VARCHAR"/>
+        <column name="customer_type" required="false" type="ENUM" valueSet="Customer,Employee,Marketer"/>
+        <column name="is_active" required="true" defaultValue="false" type="BOOLEAN"/>
+
+        <unique name="spy_customer-my_world_customer_id">
+            <unique-column name="my_world_customer_id"/>
+        </unique>
+
+        <index name="spy_customer-my_world_customer_number">
+            <index-column name="my_world_customer_number"/>
+        </index>
+    </table>
+
+    <table name="spy_customer_address" idMethod="native">
+        <column name="address4" size="255" type="VARCHAR"/>
+        <column name="vat_number" size="255" type="VARCHAR"/>
+        <column name="state" size="255" type="VARCHAR"/>
+    </table>
+
+</database>

@@ -7,23 +7,30 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Yves\Country\Plugin\CheckoutPage\CountryAddressExpanderPlugin;
+use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
+use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
+use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
+use SprykerEco\Shared\Adyen\AdyenConfig;
+use SprykerEco\Yves\Adyen\Plugin\AdyenPaymentHandlerPlugin;
+use SprykerEco\Yves\Adyen\Plugin\StepEngine\AdyenCreditCardSubFormPlugin;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
-use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
-use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
+    public const SERVICE_TRANSLATOR = 'translator';
+
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
@@ -33,6 +40,8 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container = parent::provideDependencies($container);
         $container = $this->extendPaymentMethodHandler($container);
+        $container = $this->extendSubFormPluginCollection($container);
+        $container = $this->addTranslatorService($container);
 
         return $container;
     }
@@ -54,7 +63,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             LoginForm::class,
-            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
             $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
         ];
     }
@@ -110,10 +118,27 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected function extendPaymentMethodHandler(Container $container): Container
     {
-        $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
-            $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
+        $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandlerCollection) {
+            $paymentMethodHandlerCollection->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
+            $paymentMethodHandlerCollection->add(new AdyenPaymentHandlerPlugin(), AdyenConfig::ADYEN_CREDIT_CARD);
 
-            return $paymentMethodHandler;
+            return $paymentMethodHandlerCollection;
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function extendSubFormPluginCollection(Container $container): Container
+    {
+        $container->extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $subFormPluginCollection) {
+            $subFormPluginCollection->add(new AdyenCreditCardSubFormPlugin());
+
+            return $subFormPluginCollection;
         });
 
         return $container;
@@ -126,6 +151,21 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new CustomerAddressExpanderPlugin(),
+            new CountryAddressExpanderPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function addTranslatorService(Container $container): Container
+    {
+        $container->set(static::SERVICE_TRANSLATOR, function (ContainerInterface $container) {
+            return $container->getApplicationService(static::SERVICE_TRANSLATOR);
+        });
+
+        return $container;
     }
 }

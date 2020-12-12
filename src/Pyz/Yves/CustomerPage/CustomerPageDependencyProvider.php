@@ -7,12 +7,30 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
+    public const CLIENT_SSO = 'CLIENT_SSO';
+    public const CLIENT_COUNTRY = 'CLIENT_COUNTRY';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container): Container
+    {
+        $container = parent::provideDependencies($container);
+        $container = $this->addSsoClient($container);
+        $container = $this->addCountryClient($container);
+
+        return $container;
+    }
+
     /**
      * @return string[]
      */
@@ -51,5 +69,47 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         return [
             new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addCustomerClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_CUSTOMER, function (Container $container) {
+            return $container->getLocator()->customer()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addSsoClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_SSO, function (Container $container) {
+            return $container->getLocator()->sso()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addCountryClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_COUNTRY, function (Container $container) {
+            return $container->getLocator()->country()->client();
+        });
+
+        return $container;
     }
 }

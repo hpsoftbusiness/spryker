@@ -7,6 +7,14 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CancelTurnoverCommandByOrderPlugin;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CreateTurnoverCommandByOrderPlugin;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCancelledConditionPlugin;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCreatedConditionPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendShippingConfirmationPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Is1HourNotPassedConditionPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
@@ -23,6 +31,23 @@ use Spryker\Zed\SalesInvoice\Communication\Plugin\Oms\GenerateOrderInvoiceComman
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\AuthorizePlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CancelOrRefundPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CancelPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CapturePlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\RefundPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsAuthorizationFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsAuthorizedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCanceledPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCancellationFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCancellationReceivedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCapturedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCaptureFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCaptureReceivedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundFailedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefundReceivedPlugin;
+use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefusedPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -38,27 +63,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->extendCommandPlugins($container);
         $container = $this->extendConditionPlugins($container);
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function extendCommandPlugins(Container $container): Container
-    {
-        $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
-            $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
-            $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
-            $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
-            $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
-            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
-            $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
-
-            return $commandCollection;
-        });
 
         return $container;
     }
@@ -105,11 +109,65 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
+    protected function extendCommandPlugins(Container $container): Container
+    {
+        $container->extend(static::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
+            $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
+            $commandCollection->add(new SendOrderInProcessingPlugin(), 'Oms/SendOrderInProcessing');
+            $commandCollection->add(new SendShippingConfirmationPlugin(), 'Oms/SendShippingConfirmation');
+            $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
+            $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
+            $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
+            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
+            $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
+
+            // ----- Adyen
+            $commandCollection->add(new AuthorizePlugin(), 'Adyen/Authorize');
+            $commandCollection->add(new CancelPlugin(), 'Adyen/Cancel');
+            $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
+            $commandCollection->add(new RefundPlugin(), 'Adyen/Refund');
+            $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
+
+            // ----- Turnover
+            $commandCollection->add(new CreateTurnoverCommandByOrderPlugin(), 'MyWorld/CreateTurnover');
+            $commandCollection->add(new CancelTurnoverCommandByOrderPlugin(), 'MyWorld/CancelTurnover');
+
+            return $commandCollection;
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
     protected function extendConditionPlugins(Container $container): Container
     {
         $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
             $conditionCollection
                 ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
+
+            // ----- Adyen
+            $conditionCollection->add(new IsAuthorizedPlugin(), 'Adyen/IsAuthorized');
+            $conditionCollection->add(new IsCanceledPlugin(), 'Adyen/IsCanceled');
+            $conditionCollection->add(new IsCancellationReceivedPlugin(), 'Adyen/IsCancellationReceived');
+            $conditionCollection->add(new IsCancellationFailedPlugin(), 'Adyen/IsCancellationFailed');
+            $conditionCollection->add(new IsCapturedPlugin(), 'Adyen/IsCaptured');
+            $conditionCollection->add(new IsCaptureReceivedPlugin(), 'Adyen/IsCaptureReceived');
+            $conditionCollection->add(new IsCaptureFailedPlugin(), 'Adyen/IsCaptureFailed');
+            $conditionCollection->add(new IsRefundedPlugin(), 'Adyen/IsRefunded');
+            $conditionCollection->add(new IsRefundReceivedPlugin(), 'Adyen/IsRefundReceived');
+            $conditionCollection->add(new IsRefundFailedPlugin(), 'Adyen/IsRefundFailed');
+            $conditionCollection->add(new IsAuthorizationFailedPlugin(), 'Adyen/IsAuthorizationFailed');
+            $conditionCollection->add(new IsRefusedPlugin(), 'Adyen/IsRefused');
+            $conditionCollection->add(new TrueConditionPlugin(), 'Oms/TrueCondition');
+            $conditionCollection->add(new Is1HourNotPassedConditionPlugin(), 'Oms/Is1HourNotPassed');
+
+            // ----- Turnover
+            $conditionCollection->add(new IsTurnoverCreatedConditionPlugin(), 'MyWorld/IsTurnoverCreated');
+            $conditionCollection->add(new IsTurnoverCancelledConditionPlugin(), 'MyWorld/IsTurnoverCancelled');
 
             return $conditionCollection;
         });

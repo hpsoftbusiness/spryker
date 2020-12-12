@@ -1,32 +1,28 @@
 @mixin shop-ui-suggest-search($name: '.suggest-search') {
     #{$name} {
-        &__container {
-            margin: 0;
-            padding: 0;
+        position: absolute;
+        top: rem(53);
+        width: 100%;
+
+        @include helper-breakpoint-media-min($lg-min) {
+            top: rem(45);
         }
 
-        &__input {
-            position: relative;
-            z-index: $setting-zi-search-suggestions + 2;
-            border: none;
-            padding: 0;
-            font: fw(medium) rem(24) $setting-font-family-additional;
+        &__container {
+            background-color: $setting-color-white;
+            border-top: rem(1) solid $setting-color-gray-2;
+            padding: rem(15);
+            margin: 0 rem(-15);
+            border-bottom-left-radius: rem(10);
+            border-bottom-right-radius: rem(10);
 
-            @include helper-breakpoint-media-min($md-min) {
-                font-size: rem(20);
-            }
-
-            @include helper-input-placeholder() {
-                color: $setting-color-text;
-                opacity: 0.25;
-            }
-
-            &::-ms-clear {
-                display: none;
-            }
-
-            &--transparent {
-                background-color: $setting-color-transparent;
+            @include helper-breakpoint-media-min($lg-min) {
+                border-top-left-radius: rem(10);
+                border-top-right-radius: rem(10);
+                margin: 0;
+                border: rem(1) solid $setting-color-gray-2;
+                max-height: rem(450);
+                overflow-y: auto;
             }
         }
 
@@ -36,17 +32,50 @@
             }
         }
 
+        &__input {
+            @include helper-effect-transition(background-color);
+            width: 100%;
+            padding: rem(13) rem(45) rem(13) rem(18);
+            border-radius: rem(21);
+            background-color: $setting-color-gray-2;
+            border: rem(1) solid $setting-color-gray-2;
+            font: fw(regular) rem(14) $setting-font-family;
+
+            &:focus {
+                background-color: $setting-color-transparent;
+            }
+
+            &::-ms-clear {
+                display: none;
+            }
+        }
+
         &__hint {
             position: absolute;
             top: 0;
-            padding: 0;
-            border: none;
-            font: 500 20px $setting-font-family-additional;
-            z-index: $setting-zi-search-suggestions + 1;
-            color: $setting-color-gray-3;
+            width: 100%;
+            padding: rem(13) rem(45) rem(13) rem(18);
+            border-radius: rem(21);
+            font: fw(regular) rem(14) $setting-font-family;
+            background-color: $setting-color-white;
+            border: rem(1) solid $setting-color-transparent;
+            color: $setting-color-alpha-3;
+            z-index: $setting-zi-underside;
+        }
 
-            @include helper-breakpoint-media-max($sm-max) {
-                font-size: rem(24);
+        &__loader {
+            top: rem(-51);
+            left: calc(50% - #{rem(20)});
+            right: auto;
+            bottom: auto;
+
+            @include helper-breakpoint-media-min($md-min) {
+                left: 40%;
+            }
+
+            @include helper-breakpoint-media-min($lg-min) {
+                top: rem(-43);
+                left: calc(50% - #{rem(20)});
             }
         }
 

@@ -7,8 +7,15 @@
 
 namespace Pyz\Zed\Sales;
 
+use Pyz\Zed\Adyen\Communication\Plugin\Sales\AdyenPaymentOrderExpanderPlugin;
+use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
+use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;
+use Pyz\Zed\SalesOrderUid\Communication\Plugin\Sales\UidOrderExpanderPreSavePlugin;
+use Pyz\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductAttributesOrderItemExpanderPlugin;
+use Pyz\Zed\Stock\Communication\Plugin\StockProductOrderHydratePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
+use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\ItemStateOrderItemExpanderPlugin;
@@ -40,6 +47,96 @@ use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
 {
+    public const PLUGINS_ORDER_FOR_EXPORT_EXPANDER = 'PLUGINS_ORDER_FOR_EXPORT_EXPANDER';
+    public const PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER = 'PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addOrderForExportExpanderPlugins($container);
+        $container = $this->addOrderItemForExportExpanderPlugins($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideCommunicationLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+        $container = $this->addStore($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCountryFacade(Container $container)
+    {
+        $container->set(static::FACADE_COUNTRY, function (Container $container) {
+            return $container->getLocator()->country()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addOrderForExportExpanderPlugins(Container $container): Container
+    {
+        $container->set(static::PLUGINS_ORDER_FOR_EXPORT_EXPANDER, function () {
+            return [
+                new DiscountOrderHydratePlugin(),
+                new ShipmentOrderHydratePlugin(),
+                new CustomerOrderHydratePlugin(),
+                new SalesInvoiceOrderExpanderPlugin(),
+                new AdyenPaymentOrderExpanderPlugin(),
+            ];
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addOrderItemForExportExpanderPlugins(Container $container): Container
+    {
+        $container->set(static::PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER, function () {
+            return [
+                new ProductConcreteOrderItemExpanderPlugin(),
+            ];
+        });
+
+        return $container;
+    }
+
+    /**
+     * @return \Spryker\Zed\Sales\Dependency\Plugin\OrderExpanderPreSavePluginInterface[]
+     */
+    protected function getOrderExpanderPreSavePlugins()
+    {
+        return [
+            new UidOrderExpanderPreSavePlugin(),
+        ];
+    }
+
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface[]
      */
@@ -56,6 +153,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOptionOrderExpanderPlugin(),
             new RemunerationTotalOrderExpanderPlugin(),
             new IsCancellableOrderExpanderPlugin(),
+            new StockProductOrderHydratePlugin(),
         ];
     }
 
@@ -136,6 +234,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOrderItemExpanderPlugin(),
             new ProductBundleOptionItemExpanderPlugin(),
             new ItemStateOrderItemExpanderPlugin(),
+            new ProductAttributesOrderItemExpanderPlugin(),
         ];
     }
 

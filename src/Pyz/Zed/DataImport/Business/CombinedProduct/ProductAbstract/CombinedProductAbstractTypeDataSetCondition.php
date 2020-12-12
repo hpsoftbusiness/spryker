@@ -12,9 +12,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductAbstractTypeDataSetCondition implements DataSetConditionInterface
 {
-    protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
-    protected const ASSIGNABLE_PRODUCT_TYPE_BOTH = 'both';
-
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -22,9 +19,7 @@ class CombinedProductAbstractTypeDataSetCondition implements DataSetConditionInt
      */
     public function hasData(DataSetInterface $dataSet): bool
     {
-        if ($dataSet[CombinedProductAbstractHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT
-            || $dataSet[CombinedProductAbstractHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_BOTH
-        ) {
+        if (empty($dataSet[CombinedProductAbstractHydratorStep::COLUMN_CONCRETE_SKU])) {
             return true;
         }
 

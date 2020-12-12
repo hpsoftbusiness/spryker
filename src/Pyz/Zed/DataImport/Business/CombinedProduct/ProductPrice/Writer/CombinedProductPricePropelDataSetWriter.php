@@ -20,6 +20,7 @@ class CombinedProductPricePropelDataSetWriter extends ProductPricePropelDataSetW
     protected const COLUMN_STORE = CombinedProductPriceHydratorStep::COLUMN_STORE;
     protected const COLUMN_CURRENCY = CombinedProductPriceHydratorStep::COLUMN_CURRENCY;
     protected const COLUMN_PRICE_GROSS = CombinedProductPriceHydratorStep::COLUMN_PRICE_GROSS;
+    protected const COLUMN_PRICE_GROSS_ORIGINAL = CombinedProductPriceHydratorStep::COLUMN_PRICE_GROSS_ORIGINAL;
     protected const COLUMN_PRICE_NET = CombinedProductPriceHydratorStep::COLUMN_PRICE_NET;
     protected const COLUMN_PRICE_DATA = CombinedProductPriceHydratorStep::COLUMN_PRICE_DATA;
     protected const COLUMN_PRICE_DATA_CHECKSUM = CombinedProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
