@@ -2796,56 +2796,40 @@ sales_product_bundle_widget.item.options,Product options:,en_US
 sales_product_bundle_widget.item.options,Produktoptionen:,de_DE
 oms.state.new,New,en_US
 oms.state.new,Neu,de_DE
-oms.state.waiting,Waiting,en_US
-oms.state.waiting,Warten,de_DE
-oms.state.in-progress,In progress,en_US
-oms.state.in-progress,In Bearbeitung,de_DE
-oms.state.ready,Ready,en_US
-oms.state.ready,Bereit,de_DE
-oms.state.canceled,Canceled,en_US
-oms.state.canceled,Abgebrochen,de_DE
+oms.state.invalid,Canceled,en_US
+oms.state.invalid,Abgebrochen,de_DE
+oms.state.cancellation-pending,Cancellation,en_US
+oms.state.cancellation-pending,Abgebrechung,de_DE
+oms.state.cancellation-pending-next-try,Cancellation,en_US
+oms.state.cancellation-pending-next-try,Abgebrechung,de_DE
+oms.state.cancelled,Canceled,en_US
+oms.state.cancelled,Abgebrochen,de_DE
+oms.state.authorization-pending-next-try,In progress,en_US
+oms.state.authorization-pending-next-try,In Arbeit,de_DE
+oms.state.capture pending,In progress,en_US
+oms.state.capture-pending,In Arbeit,de_DE
+oms.state.capture-pending-next-try,In progress,en_US
+oms.state.capture-pending-next-try,In Arbeit,de_DE
+oms.state.capture-failed-clarification,In progress,en_US
+oms.state.capture-failed-clarification,In Arbeit,de_DE
+oms.state.waiting-for-tracking-number,In progress,en_US
+oms.state.waiting-for-tracking-number,In Arbeit,de_DE
+oms.state.turnover-creation-failed,In progress,en_US
+oms.state.turnover-creation-failed,In Arbeit,de_DE
+oms.state.order-in-processing-email-sent,In progress,en_US
+oms.state.order-in-processing-email-sent,In Arbeit,de_DE
+oms.state.refund-pending,Refund,en_US
+oms.state.refund-pending,Rückerstattung,de_DE
+oms.state.refund-pending-next-try,Refund,en_US
+oms.state.refund-pending-next-try,Rückerstattung,de_DE
+oms.state.refund-failed-clarification,Refund,en_US
+oms.state.refund-failed-clarification,Rückerstattung,de_DE
+oms.state.turnover-cancellation-failed,Refund,en_US
+oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
+oms.state.invoice-with-tracking-number-sent,Shipped,en_US
+oms.state.invoice-with-tracking-number-sent,Versandt,de_DE
 oms.state.closed,Closed,en_US
 oms.state.closed,Geschlossen,de_DE
-oms.state.draft,Draft,en_US
-oms.state.draft,Entwurf,de_DE
-oms.state.payment-pending,Payment pending,en_US
-oms.state.payment-pending,Ausstehende Zahlung,de_DE
-oms.state.paid,Paid,en_US
-oms.state.paid,Bezahlt,de_DE
-oms.state.confirmed,Confirmed,en_US
-oms.state.confirmed,Bestätigt,de_DE
-oms.state.exported,Exported,en_US
-oms.state.exported,Exportiert,de_DE
-oms.state.shipped,Shipped,en_US
-oms.state.shipped,Versandt,de_DE
-oms.state.delivered,Delivered,en_US
-oms.state.delivered,Geliefert,de_DE
-oms.state.ready-for-return,Ready for return,en_US
-oms.state.ready-for-return,Bereit zum Retournieren,de_DE
-oms.state.refunded,Refunded,en_US
-oms.state.refunded,Zurückerstattet,de_DE
-oms.state.returned,Returned,en_US
-oms.state.returned,Retourniert,de_DE
-oms.state.waiting-for-return,Waiting for return,en_US
-oms.state.waiting-for-return,Wartet auf Retoure,de_DE
-oms.state.shipped-to-customer,Shipped to customer,en_US
-oms.state.shipped-to-customer,An den Kunden versandt,de_DE
-oms.state.sent-to-merchant,Sent to merchant,en_US
-oms.state.sent-to-merchant,An den Händler versandt,de_DE
-oms.state.shipped-by-merchant,Shipped by merchant,en_US
-oms.state.shipped-by-merchant,Von dem Händler versandt,de_DE
-oms.state.return-canceled,Return canceled,en_US
-oms.state.return-canceled,Retoure wurde abgebrochen,de_DE
-oms.state.merchant-split-pending,Merchant split pending,en_US
-oms.state.merchant-split-pending,Händleraufteilung steht noch aus,de_DE
-oms.state.gift-card-purchased,Gift card purchased,en_US
-oms.state.gift-card-purchased,Geschenkkarte gekauft,de_DE
-oms.state.gift-card-created,Gift card created,en_US
-oms.state.gift-card-created,Geschenkkarte erstellt,de_DE
-oms.state.gift-card-shipped,Gift card shipped,en_US
-oms.state.gift-card-shipped,Geschenkkarte verschickt,de_DE
-oms.state.invoice-generated,Invoice generated,en_US
-oms.state.invoice-generated,Rechnung generiert,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
