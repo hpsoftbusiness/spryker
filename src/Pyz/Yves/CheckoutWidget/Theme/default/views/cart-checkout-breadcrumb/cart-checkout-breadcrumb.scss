@@ -31,72 +31,6 @@
                     display: none;
                 }
             }
-
-            .breadcrumb--progress {
-                display: flex;
-                padding-bottom: 0;
-                margin-bottom: rem(60);
-
-                .breadcrumb-step {
-                    &--progress {
-                        padding: 0 rem(25) rem(25);
-                        justify-content: center;
-                        flex-grow: 1;
-
-                        &:first-child {
-                            &::after, &::before {
-                                border-bottom-left-radius: $setting-border-radius;
-                                border-top-left-radius: $setting-border-radius;
-                            }
-                        }
-
-                        &:last-child {
-                            &::after, &::before {
-                                border-bottom-right-radius: $setting-border-radius;
-                                border-top-right-radius: $setting-border-radius;
-                            }
-                        }
-
-                        &:not(.breadcrumb-step--disabled)::after {
-                            width: 100%;
-                        }
-
-                        &::before,
-                        &::after {
-                            @include helper-breakpoint-media-min($md-min) {
-                                content: '';
-                                background-color: $setting-color-main;
-                                position: absolute;
-                                bottom: 0;
-                                top: unset;
-                                height: rem(10);
-                            }
-                        }
-
-                        &-active {
-                            color: $setting-color-main;
-                            font-weight: fw(bold);
-
-                            &::before, &::after {
-                                background-color: $setting-color-main;
-                            }
-
-                            &::after {
-                                width: 50%;
-                            }
-                        }
-                    }
-
-                    &--disabled:not(.breadcrumb-step--active) {
-                        opacity: unset;
-                        color: $setting-color-gray-4;
-
-                        &::after, &::before {
-                            background-color: $setting-color-gray-2;
-                        }
-                    }
-                }
-            }
         }
 
         &__progress-mob {
@@ -107,7 +41,6 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            height: rem(1);
             width: 0;
 
             @include helper-breakpoint-media-min($md-min) {

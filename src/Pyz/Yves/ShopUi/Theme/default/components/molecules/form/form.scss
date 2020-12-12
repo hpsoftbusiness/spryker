@@ -109,7 +109,6 @@ $address-form-width: rem(600);
 
         &__checkout-sub-form-content {
             padding-top: rem(20);
-
         }
 
         &--checkout-actions {
@@ -198,6 +197,42 @@ $address-form-width: rem(600);
                 @include helper-breakpoint-media-min($md-min) {
                     margin-top: rem(40);
                 }
+            }
+        }
+
+        &--gift-card {
+            #{$name}__container {
+                display: flex;
+                flex-direction: column;
+
+                @include helper-breakpoint-media-min($md-min) {
+                    flex-direction: row;
+                }
+            }
+
+            #{$name}__fields,
+            #{$name}__actions {
+                width: 100%;
+                margin-bottom: rem(15);
+
+                @include helper-breakpoint-media-min($md-min) {
+                    width: auto;
+                }
+            }
+
+            #{$name}__fields {
+                @include helper-breakpoint-media-min($md-min) {
+                    max-width: 50%;
+                    margin-right: rem(15);
+                }
+            }
+
+            #{$name}__field {
+                padding: 0;
+            }
+
+            #{$name}__action {
+                margin: 0;
             }
         }
 

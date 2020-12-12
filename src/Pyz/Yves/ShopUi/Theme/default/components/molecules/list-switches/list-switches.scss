@@ -22,7 +22,7 @@
                 display: flex;
             }
 
-            .list-switches__item {
+            #{$name}__item {
                 display: block;
                 text-align: center;
 
@@ -31,7 +31,6 @@
                     text-align: left;
                     width: 50%;
                 }
-
             }
         }
 

@@ -4,58 +4,10 @@
             margin: rem(18) 0;
             border-top: rem(1) dotted $setting-color-gray-3;
             border-bottom: rem(1) dotted $setting-color-gray-3;
-
-            .grid {
-                margin: 0;
-            }
-
-            .form__container {
-                display: flex;
-                flex-direction: column;
-
-                @include helper-breakpoint-media-min($md-min) {
-                    display: inline-flex;
-                    flex-direction: row;
-                }
-
-                .form__fields, .form__actions {
-                    width: 100%;
-                    margin-bottom: rem(15);
-
-                    @include helper-breakpoint-media-min($md-min) {
-                        width: auto;
-                    }
-                }
-
-                .form__fields {
-                    @include helper-breakpoint-media-min($md-min) {
-                        max-width: 50%;
-                        margin-right: rem(15);
-                    }
-                }
-
-                .form__actions {
-                    @include helper-breakpoint-media-min($md-min) {
-                        width: auto;
-                    }
-                }
-            }
         }
 
         .label {
             display: none;
-        }
-
-        .form__container {
-            display: flex;
-        }
-
-        .form__field {
-            padding: 0;
-        }
-
-        .form__action {
-            margin: 0;
         }
     }
 }

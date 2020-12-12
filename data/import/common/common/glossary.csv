@@ -95,6 +95,10 @@ customer.password,Passwort,de_DE
 customer.password,Password,en_US
 password.confirm,Passwort bestätigen,de_DE
 password.confirm,Confirm passwort,en_US
+personal.address.heading,persönliche Daten,de_DE
+personal.address.heading,Personal data,en_US
+company.address.heading,Firmen Daten,de_DE
+company.address.heading,Company data,en_US
 page.checkout.address.heading,1. Adressangaben,de_DE
 page.checkout.address.heading,1. Address Data,en_US
 page.checkout.address.name,Name,de_DE
