@@ -204,6 +204,8 @@
         }
 
         &--with-gutter {
+            max-width: unset;
+
             @each $breakpoint, $edges in $setting-breakpoints {
                 @include helper-breakpoint-media-min(helper-breakpoint-edge-min($edges)) {
                     margin-left: -#{map-get($setting-grid-gutter, $breakpoint)/2};

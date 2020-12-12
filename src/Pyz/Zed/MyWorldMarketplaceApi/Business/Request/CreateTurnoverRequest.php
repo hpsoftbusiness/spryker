@@ -119,7 +119,7 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
         $accessTokenTransfer->requireAccessToken();
 
         $requestBody = $this->utilEncodingService->encodeJson([
-            'Reference' => sprintf('%s-%s', $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(), $orderTransfer->getOrderReference()),
+            'Reference' => $this->getTurnoverReference($orderTransfer),
             'Date' => date(DateTime::ISO8601, strtotime($orderTransfer->getCreatedAt())),
             'Amount' => (string)bcdiv($orderTransfer->getTotals()->getPriceToPay(), 100, 2),
             'Currency' => $orderTransfer->getCurrencyIsoCode(),
@@ -135,5 +135,20 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             ],
             'body' => $requestBody,
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    protected function getTurnoverReference(OrderTransfer $orderTransfer): string
+    {
+        return sprintf(
+            '%s-%s-%s',
+            $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(),
+            $orderTransfer->getOrderReference(),
+            strtotime($orderTransfer->getCreatedAt())
+        );
     }
 }

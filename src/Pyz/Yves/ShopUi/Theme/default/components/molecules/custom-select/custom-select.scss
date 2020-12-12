@@ -109,8 +109,6 @@
     }
 
     .select2-container {
-        z-index: $setting-zi-popup;
-
         .select2-results {
             border-radius: $setting-border-radius;
             background-color: $setting-color-white;
@@ -186,7 +184,12 @@
                 z-index: $setting-zi-select;
 
                 &--header {
-                    z-index: $setting-zi-header + 2;
+                    z-index: $setting-zi-popup;
+                    margin-left: rem(22);
+                }
+
+                &--over-popup {
+                    z-index: $setting-zi-popup + 1;
                 }
 
                 &--spacing-left {

@@ -1,48 +1,47 @@
 @mixin catalog-page-filter-section($name: '.filter-section') {
-    $mobile-sort-and-button-max-height: rem(192);
+    $mobile-sort-and-button-max-height: rem(205);
 
     #{$name} {
         margin-top: rem(118);
-        padding: rem(10) rem(24) 0;
+        padding: rem(10) rem(15) 0;
         overflow-y: auto;
         max-height: calc(100vh - #{$mobile-sort-and-button-max-height});
 
-        @include helper-breakpoint-media-min($xl-min) {
+        @include helper-breakpoint-media-min($lg-min) {
             margin: 0;
-            padding: rem(15) 0 0;
+            padding: 0;
             overflow-y: visible;
             max-height: none;
-            border-top: rem(1) dotted $setting-color-gray-3;
         }
 
         &__top-panel {
-            @include helper-breakpoint-media-max($lg-max) {
+            @include helper-breakpoint-media-max($md-max) {
                 position: absolute;
                 left: 0;
                 top: 0;
                 right: 0;
                 background-color: $setting-color-gray-1;
-                padding: rem(20) rem(24) rem(8);
+                padding: rem(15) rem(15) rem(8);
                 min-height: rem(112);
             }
         }
 
         &__top-panel-button {
-            @include helper-breakpoint-media-max($lg-max) {
+            @include helper-breakpoint-media-max($md-max) {
                 position: absolute;
-                top: rem(24);
-                right: rem(24);
+                top: rem(15);
+                right: rem(15);
             }
         }
 
         &__actions {
-            padding-top: rem(15);
+            padding-top: rem(25);
 
-            @include helper-breakpoint-media-max($lg-max) {
+            @include helper-breakpoint-media-max($md-max) {
                 position: absolute;
-                left: 0;
-                bottom: 0;
-                right: 0;
+                left: rem(15);
+                bottom: rem(15);
+                right: rem(15);
             }
         }
 

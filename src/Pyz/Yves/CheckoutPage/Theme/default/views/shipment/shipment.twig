@@ -24,98 +24,96 @@
         {% block fieldset %}
             {% set shipmentGroupCollectionForm = data.form.shipmentGroups | default %}
 
-            <div class="grid">
-                <h2 class="title title--primary col col--sm-12">{{ 'checkout.step.shipment.title' | trans }}</h2>
+            <h2 class="title title--primary">{{ 'checkout.step.shipment.title' | trans }}</h2>
 
-                {% for shipmentGroupForm in shipmentGroupCollectionForm %}
-                    {% if shipmentGroupForm.hash is defined %}
-                        {% do shipmentGroupForm.hash.setRendered %}
-                    {% endif %}
+            {% for shipmentGroupForm in shipmentGroupCollectionForm %}
+                {% if shipmentGroupForm.hash is defined %}
+                    {% do shipmentGroupForm.hash.setRendered %}
+                {% endif %}
 
-                    <article class="checkout-block {{ loop.last ? 'checkout-block--border-bottom-less' }} grid col col--sm-12">
-                        <div class="col col--sm-12 col--lg-7">
-                            <h3 class="title title--secondary-box">
-                                {{ 'page.checkout.shipment.shipment_group_heading' | trans({
-                                    '%current%': loop.index,
-                                    '%total%': loop.length
-                                }) }}
-                            </h3>
+                <article class="checkout-block {{ loop.last ? 'checkout-block--border-bottom-less' }} grid">
+                    <div class="col col--sm-12 col--lg-8">
+                        <h3 class="title title--secondary-box">
+                            {{ 'page.checkout.shipment.shipment_group_heading' | trans({
+                                '%current%': loop.index,
+                                '%total%': loop.length
+                            }) }}
+                        </h3>
+                        {% set cartItems = shipmentGroupForm.vars.data.cartItems %}
+                        {% set itemsExceptConfiguredBundles = cartItems | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
 
-                            {% set cartItems = shipmentGroupForm.vars.data.cartItems %}
-                            {% set itemsExceptConfiguredBundles = cartItems | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
+                        {% widget 'QuoteConfiguredBundleWidget' args [embed.cart] with {
+                            data: {
+                                isEditable: false,
+                                isQuantityVisible: true,
+                            },
+                        } only %}
+                        {% endwidget %}
 
-                            {% widget 'QuoteConfiguredBundleWidget' args [embed.cart] with {
+                        {% for item in itemsExceptConfiguredBundles %}
+                            {% set cartItem = item.bundleProduct ?? item %}
+                            {% embed molecule('product-card-item') with {
+                                modifiers: ['expand', 'secondary', 'alternative', 'right-indent-from-tablet'],
                                 data: {
-                                    isEditable: false,
-                                    isQuantityVisible: true,
+                                    productItem: cartItem,
+                                    canEditCart: false,
+                                    additionalContainerClass: '',
+                                    productOptionsModifiers: ['alternative'],
+                                },
+                                embed: {
+                                    bundleItems: item.bundleItems | default([]),
                                 },
                             } only %}
-                            {% endwidget %}
-
-                            {% for item in itemsExceptConfiguredBundles %}
-                                {% set cartItem = item.bundleProduct ?? item %}
-
-                                {% embed molecule('product-card-item') with {
-                                    modifiers: ['expand', 'secondary', 'alternative', 'right-indent-from-tablet'],
-                                    data: {
-                                        productItem: cartItem,
-                                        canEditCart: false,
-                                        additionalContainerClass: '',
-                                        productOptionsModifiers: ['alternative'],
-                                    },
-                                    embed: {
-                                        bundleItems: item.bundleItems | default([]),
-                                    },
-                                } only %}
-                                    {% block image %}
-                                        <div class="{{ component.renderClass(config.name ~ '__image', modifiers) }} col">
-                                            {% include molecule('product-image') with {
-                                                modifiers: ['no-side-indent'],
-                                                data: {
-                                                    name: data.productItem.name,
-                                                    image: data.productItem.images[0].externalUrlLarge ?? null,
-                                                },
-                                            } only %}
-                                        </div>
-                                    {% endblock %}
-
-                                    {% block title %}
-                                        <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-12 col--lg-8">
-                                            {{ data.productItem.name }}
-                                        </div>
-                                    {% endblock %}
-
-                                    {% block options %}
-                                        {% if data.productItem.concreteAttributes is not empty %}
-                                            <ul>
-                                                {% for key, item in data.productItem.concreteAttributes %}
-                                                    <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
-                                                {% endfor %}
-                                            </ul>
-                                        {% endif %}
-                                    {% endblock %}
-
-                                    {% block bundles %}
-                                        {% include molecule('cart-bundle-list', 'ProductBundleWidget') ignore missing with {
+                                {% block image %}
+                                    <div class="{{ component.renderClass(config.name ~ '__image', modifiers) }} col">
+                                        {% include molecule('product-image') with {
+                                            modifiers: ['no-side-indent'],
                                             data: {
-                                                items: embed.bundleItems,
+                                                name: data.productItem.name,
+                                                image: data.productItem.images[0].externalUrlLarge ?? null,
                                             },
                                         } only %}
-                                    {% endblock %}
-                                {% endembed %}
-                            {% endfor %}
-                        </div>
+                                    </div>
+                                {% endblock %}
 
-                        <div class="col col--sm-12 col--lg-5">
-                            {% include molecule('shipment-sidebar', 'CheckoutPage') with {
-                                data: {
-                                    shipment: shipmentGroupForm.shipment,
-                                },
-                            } only %}
-                        </div>
-                    </article>
-                {% endfor %}
-            </div>
+                                {% block title %}
+                                    <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-12 col--lg-8">
+                                        {{ data.productItem.name }}
+                                    </div>
+                                {% endblock %}
+
+                                {% block options %}
+                                    {% if data.productItem.concreteAttributes is not empty %}
+                                        <ul>
+                                            {% for key, item in data.productItem.concreteAttributes %}
+                                                {% if key in ['size', 'color', 'brand'] %}
+                                                    <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                {% endblock %}
+
+                                {% block bundles %}
+                                    {% include molecule('cart-bundle-list', 'ProductBundleWidget') ignore missing with {
+                                        data: {
+                                            items: embed.bundleItems,
+                                        },
+                                    } only %}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="col col--sm-12 col--lg-4">
+                        {% include molecule('shipment-sidebar', 'CheckoutPage') with {
+                            data: {
+                                shipment: shipmentGroupForm.shipment,
+                            },
+                        } only %}
+                    </div>
+                </article>
+            {% endfor %}
         {% endblock %}
     {% endembed %}
 {% endblock %}

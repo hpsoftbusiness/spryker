@@ -95,6 +95,10 @@ customer.password,Passwort,de_DE
 customer.password,Password,en_US
 password.confirm,Passwort bestätigen,de_DE
 password.confirm,Confirm passwort,en_US
+personal.address.heading,persönliche Daten,de_DE
+personal.address.heading,Personal data,en_US
+company.address.heading,Firmen Daten,de_DE
+company.address.heading,Company data,en_US
 page.checkout.address.heading,1. Adressangaben,de_DE
 page.checkout.address.heading,1. Address Data,en_US
 page.checkout.address.name,Name,de_DE
@@ -275,24 +279,30 @@ catalog.prev,zurück,de_DE
 catalog.prev,back,en_US
 catalog.sort,Sortierung,de_DE
 catalog.sort,Sorting,en_US
-catalog.sort.relevance,Nach Relevanz sortieren,de_DE
-catalog.sort.relevance,Sort by relevance,en_US
-catalog.sort.name_asc,Nach Name aufsteigend sortieren,de_DE
-catalog.sort.name_asc,Sort by name ascending,en_US
-catalog.sort.name_desc,Nach Name absteigend sortieren,de_DE
-catalog.sort.name_desc,Sort by name descending,en_US
-catalog.sort.price_asc,Nach Preis aufsteigend sortieren,de_DE
-catalog.sort.price_asc,Sort by price ascending,en_US
-catalog.sort.price_desc,Nach Preis absteigend sortieren,de_DE
-catalog.sort.price_desc,Sort by price descending,en_US
-catalog.sort.rating,Sort by product ratings,en_US
-catalog.sort.rating,Nach Produktbewertungen sortieren,de_DE
+catalog.sort.by,Sortieren nach,de_DE
+catalog.sort.by,Sort by,en_US
+catalog.sort.relevance,Relevanz,de_DE
+catalog.sort.relevance,Relevance,en_US
+catalog.sort.name_asc,Name aufsteigend,de_DE
+catalog.sort.name_asc,Name ascending,en_US
+catalog.sort.name_desc,Name absteigend,de_DE
+catalog.sort.name_desc,Name descending,en_US
+catalog.sort.price_asc,Preis aufsteigend,de_DE
+catalog.sort.price_asc,Price ascending,en_US
+catalog.sort.price_desc,Preis absteigend,de_DE
+catalog.sort.price_desc,Price descending,en_US
+catalog.sort.rating,Product ratings,en_US
+catalog.sort.rating,Produktbewertungen,de_DE
 catalog.filter.activeFilters,Aktive Filter,de_DE
 catalog.filter.activeFilters,Active filters,en_US
 catalog.filter.resetAllFilters,Alle Filter zurücksetzen,de_DE
 catalog.filter.resetAllFilters,Reset all filters,en_US
 catalog.no-results,No results.,en_US
 catalog.no-results,Keine Ergebnisse.,de_DE
+catalog.filter_section.show_all,Show more,en_US
+catalog.filter_section.show_all,Mehr anzeigen,de_DE
+catalog.filter_section.show_less,Show less,en_US
+catalog.filter_section.show_less,Weniger anzeigen,de_DE
 product.filter.category,Kategorien,de_DE
 product.filter.category,Categories,en_US
 product.filter.price,Preis,de_DE
@@ -449,6 +459,10 @@ global.header.categories,All Categories,en_US
 global.header.categories,Alle Kategorien,de_DE
 global.cashback,Cashback,en_US
 global.cashback,Cashback,de_DE
+global.button.more,More,en_US
+global.button.more,Mehr,de_DE
+global.button.less,Less,en_US
+global.button.less,Weniger,de_DE
 global.back_homepage,Zurück zur Startseite,de_DE
 global.back_homepage,Back to homepage,en_US
 error.404,"Entschuldigung, etwas ist schief gelaufen",de_DE
@@ -2646,8 +2660,8 @@ order_invoice.invoice_template.table.discount,Discount,en_US
 order_invoice.invoice_template.table.discount,Rabatt,de_DE
 order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
 order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
-order_invoice.invoice_template.table.uid,UID,en_US
-order_invoice.invoice_template.table.uid,UID,de_DE
+order_invoice.invoice_template.table.uid,UID:,en_US
+order_invoice.invoice_template.table.uid,UID:,de_DE
 order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US

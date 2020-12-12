@@ -55,7 +55,11 @@
         }
 
         &__label {
-            line-height: rem(18);
+            font: fw(regular) rem(15)/rem(18) $setting-font-family;
+
+            &--expand {
+                width: 100%;
+            }
         }
 
         &--expand {
