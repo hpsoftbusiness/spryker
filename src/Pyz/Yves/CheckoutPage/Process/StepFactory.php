@@ -15,6 +15,7 @@ use Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use Pyz\Yves\StepEngine\Process\StepCollection;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -126,6 +127,21 @@ class StepFactory extends SprykerShopStepFactory
         return new ProductSellableChecker(
             $this->getFlashMessenger(),
             $this->getTranslatorService()
+        );
+    }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Process\StepCollectionInterface
+     */
+    public function createStepCollection()
+    {
+        return new StepCollection(
+            $this->getRouter(),
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
+            [
+                CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PLACE_ORDER,
+                CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUCCESS,
+            ]
         );
     }
 }
