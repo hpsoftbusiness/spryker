@@ -2,11 +2,12 @@
 
 {% block class %}
     {{ parent() }}
+    spacing-left--reset
     {{ config.name }}__item
 {% endblock %}
 
 {% block body %}
-    {{ data.value }}
+    {{ ('product.filter.' ~ data.filter.config.name | lower) | trans }}: {{ data.value }}
     {% include atom('icon') with {
         modifiers: ['medium', 'close-filter'],
         data: {

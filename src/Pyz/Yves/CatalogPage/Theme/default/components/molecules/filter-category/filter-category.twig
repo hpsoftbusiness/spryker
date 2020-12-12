@@ -37,7 +37,7 @@
                 <li class="{{ classes | join(' ') }}">
                     <button class="{{ config.name }}__link {{ linkActiveClass }} {{ triggerButtonJsName }}" {{ disableAttribute }} type="button" data-url={{ categoryUrl }}>
                         {{ categoryNode.name }}
-                        <span class="text-secondary">({{ quantity }})</span>
+                        <span class="float-right spacing-left">({{ quantity }})</span>
                     </button>
 
                     {% if hasChildren %}

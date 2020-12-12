@@ -45,7 +45,7 @@
                 </div>
             {% endif %}
 
-            {% include molecule('form') with {
+            {% embed molecule('form') with {
                 class: embed.jsAddressClass ~ '__shipping' ~ (hasShippingAddresses ? ' is-hidden ') ~ 'col col--sm-12',
                 modifiers: ['checkout-form', 'checkout-form-elements'],
                 data: {
@@ -61,10 +61,21 @@
                         city: 'col col--sm-12 col--md-6',
                         iso2_code: 'col col--sm-12 col--md-6',
                         state: 'col col--sm-12 col--md-6',
-                        phone: 'col col--sm-12 col--md-12',
                     },
                 },
             } only %}
+                {% block field %}
+                    {% if fieldName == 'first_name' %}
+                        <h3 class="{{ config.name }}__field col col--sm-12">{{ 'personal.address.heading' | trans }}</h3>
+                    {% endif %}
+
+                    {% if fieldName == 'company' %}
+                        <h3 class="{{ config.name }}__field col col--sm-12">{{ 'company.address.heading' | trans }}</h3>
+                    {% endif %}
+
+                    {{ parent() }}
+                {% endblock %}
+            {% endembed %}
 
             {% if embed.isMultipleShipmentEnabled %}
                 {% include molecule('address-item-form', 'CheckoutPage') with {
@@ -132,6 +143,18 @@
                                 {{ parent() }}
                             </div>
                         </div>
+                    {% endblock %}
+
+                    {% block field %}
+                        {% if fieldName == 'first_name' %}
+                            <h3 class="{{ config.name }}__field col col--sm-12">{{ 'personal.address.heading' | trans }}</h3>
+                        {% endif %}
+
+                        {% if fieldName == 'company' %}
+                            <h3 class="{{ config.name }}__field col col--sm-12">{{ 'company.address.heading' | trans }}</h3>
+                        {% endif %}
+
+                        {{ parent() }}
                     {% endblock %}
                 {% endembed %}
             </div>
