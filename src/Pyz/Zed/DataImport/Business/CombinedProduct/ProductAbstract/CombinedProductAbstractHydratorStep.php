@@ -133,7 +133,6 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER]
             ->setPdpAttributes(json_encode($dataSet[CombinedAttributesExtractorStep::KEY_PDP_ATTRIBUTES]))
             ->setBrand($dataSet[static::COLUMN_BRAND_NAME]);
-
     }
 
     /**

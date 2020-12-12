@@ -8,6 +8,8 @@
     shipment: required,
     isGiftCardExists: false,
     canEdit: false,
+    trackingCodes: [],
+    uid: ''
 } %}
 
 {% block body %}
@@ -46,6 +48,13 @@
         {% endif %}
     </div>
 
+    {% if data.uid is not empty %}
+        <div class="{{ config.name }}__item">
+            <h4 class="title spacing-top title--secondary-small">{{ 'checkout.step.summary.uid' | trans }}</h4>
+            <div class="{{ config.name }}__text">{{ data.uid }}</div>
+        </div>
+    {% endif%}
+
     {% if not data.isGiftCardExists %}
         <div class="{{ config.name }}__item">
             <h4 class="title title--secondary-small">{{ 'checkout.step.summary.delivery_method' | trans }}</h4>
@@ -68,5 +77,20 @@
                 <a class="link--primary spacing-top spacing-top--big" href="{{ url('checkout-shipment') }}">{{ 'general.edit.button' | trans }}</a>
             {% endif %}
         </div>
+
+        {% if data.trackingCodes %}
+            <div class="{{ config.name }}__item">
+                <h4 class="title title--secondary-small">{{ 'checkout.step.summary.tracking_code' | trans }}</h4>
+                {% for trackingCode in data.trackingCodes %}
+                    {% if trackingCode.message matches '{^https?:\/\/}' %}
+                        <a class="{{ config.name }}__link link--secondary spacing-top spacing-top--small" target="_blank" href="{{ trackingCode.message }}">
+                            {{ trackingCode.message }}
+                        </a>
+                    {% else %}
+                        <div class="{{ config.name }}__text spacing-top spacing-top--small">{{ trackingCode.message }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
     {% endif %}
 {% endblock %}
