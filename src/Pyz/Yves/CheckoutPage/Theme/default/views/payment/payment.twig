@@ -78,8 +78,9 @@
                                     'target-class-name': 'js-payment-method-' ~ embed.index,
                                 }
                             }) }}
+                            <h2 class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %} title title--primary">{{ embed.toggler.vars.label | trans }}</h2>
                             <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
-                                <div class="col col--sm-12 col--md-6">
+                                <div class="col col--sm-12">
                                     {% if data.customForms[data.form.vars.template_path] is not defined %}
                                         {{ parent() }}
                                     {% else %}
@@ -92,7 +93,6 @@
                                 </div>
                             </div>
                             <div class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %}">
-                                <h2 class="title title--primary">{{ embed.toggler.vars.label | trans }}</h2>
                                 {{ parent() }}
                             </div>
                         {% endblock %}

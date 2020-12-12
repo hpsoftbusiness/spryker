@@ -24,24 +24,24 @@
         }
 
         #{$name}__link {
-            font: 400 rem(15) $setting-font-family;
+            @include helper-effect-transition(color);
+            font: fw(regular) rem(15)/rem(18) $setting-font-family;
             margin-bottom: rem(14);
             color: $setting-color-black;
             background: $setting-color-transparent;
             cursor: pointer;
+            width: 100%;
+            text-align: left;
 
-            &:hover {
-                color: $setting-color-alt;
+            &:hover,
+            &--active {
+                color: $setting-color-main;
             }
 
             &[disabled],
             &--disabled {
                 color: $setting-color-dark;
                 cursor: default;
-            }
-
-            &--active {
-                color: $setting-color-alt;
             }
         }
     }

@@ -1,0 +1,75 @@
+{% extends molecule('filter-enumeration', '@SprykerShop:CatalogPage') %}
+
+{% define data = {
+    index: null,
+} %}
+
+{% macro inputComponent(filterValue, isMultiSelect, data, activeValues) %}
+    {% if isMultiSelect %}
+        {% embed atom('checkbox') with {
+            modifiers: ['expand'],
+            attributes: {
+                name: data.filter.config.parameterName ~ '[]',
+                value: filterValue.value,
+                checked: (filterValue.value in activeValues),
+            },
+            embed: {
+                filterValue: filterValue,
+            },
+        } only %}
+            {% block labelClass %}{{ config.name }}__label--expand{% endblock %}
+
+            {%- block label -%}
+                {{ embed.filterValue.value }}
+                <span class="float-right spacing-left"> ({{ embed.filterValue.docCount }})</span>
+            {%- endblock -%}
+        {% endembed %}
+    {% else %}
+        {% embed atom('radio') with {
+            modifiers: ['expand'],
+            attributes: {
+                name: data.filter.config.parameterName,
+                value: filterValue.value,
+                checked: (filterValue.value in activeValues),
+            },
+            embed: {
+                filterValue: filterValue,
+            },
+        } only %}
+            {% block labelClass %}{{ config.name }}__label--expand{% endblock %}
+
+            {%- block label -%}
+                {{ embed.filterValue.value }}
+                <span class="float-right spacing-left">({{ embed.filterValue.docCount }})</span>
+            {%- endblock -%}
+        {% endembed %}
+    {% endif %}
+{% endmacro %}
+
+{% block body %}
+    <ul class="menu">
+        {% for filterValue in data.filter.values | slice(0, 5) %}
+            <li class="menu__item">
+                {{ _self.inputComponent(filterValue, isMultiSelect, data, activeValues) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if data.filter.values | length > 5 %}
+        <ul class="menu {{ config.jsName }}__list-{{ data.index }} is-hidden">
+            {% for filterValue in data.filter.values | slice(5, data.filter.values | length - 5) %}
+                <li class="menu__item">
+                    {{ _self.inputComponent(filterValue, isMultiSelect, data, activeValues) }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% include molecule('more-less') with {
+            attributes: {
+                'data-text-more': 'catalog.filter_section.show_all' | trans,
+                'data-text-less': 'catalog.filter_section.show_less' | trans,
+                'data-target-class-name': config.jsName ~ '__list-' ~ data.index,
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

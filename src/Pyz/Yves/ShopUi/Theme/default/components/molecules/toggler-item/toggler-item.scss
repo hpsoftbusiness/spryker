@@ -94,6 +94,10 @@
                     margin-bottom: rem(16);
                 }
             }
+
+            &--filter {
+                font: fw(medium) rem(16) $setting-font-family;
+            }
         }
 
         &__content {
@@ -120,8 +124,7 @@
             }
 
             &--filter {
-                padding-top: 0;
-                padding-bottom: rem(14);
+                padding: rem(14) 0;
             }
 
             &--flex {
@@ -143,6 +146,10 @@
             @include helper-breakpoint-media-min($md-min) {
                 border-top: none;
             }
+        }
+
+        &--filter {
+            border-bottom: rem(1) solid $setting-color-gray-3;
         }
 
         &--footer {
