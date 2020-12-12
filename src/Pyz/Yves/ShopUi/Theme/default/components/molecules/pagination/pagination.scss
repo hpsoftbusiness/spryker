@@ -21,6 +21,12 @@
             font: fw(medium) rem(16) $setting-font-family;
             color: $setting-color-black;
 
+            &:hover {
+                text-decoration: none;
+                background-color: $setting-color-alpha-1;
+                color: $setting-color-black;
+            }
+
             &--previous {
                 margin-right: rem(10);
             }
@@ -35,14 +41,8 @@
                 width: auto;
 
                 &:hover {
-                    background-color: $setting-color-transparent !important;
+                    background-color: $setting-color-transparent;
                 }
-            }
-
-            &:hover {
-                text-decoration: none;
-                background-color: $setting-color-alpha-1;
-                color: $setting-color-black;
             }
 
             &--current {

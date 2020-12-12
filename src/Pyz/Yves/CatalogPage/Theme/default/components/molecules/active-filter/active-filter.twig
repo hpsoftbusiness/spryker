@@ -1,7 +1,9 @@
 {% extends molecule('active-filter', '@SprykerShop:CatalogPage') %}
 
 {% block class %}
-    link {{ config.name }}__item
+    {{ parent() }}
+    spacing-left--reset
+    {{ config.name }}__item
 {% endblock %}
 
 {% block body %}
