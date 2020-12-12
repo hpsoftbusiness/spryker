@@ -13,14 +13,19 @@ use SprykerShop\Yves\CheckoutPage\Process\Steps\CustomerStep as SprykerCustomerS
 class CustomerStep extends SprykerCustomerStep
 {
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @see \SprykerShop\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin::ROUTE_NAME_LOGIN
+     */
+    protected const ROUTE_NAME_LOGIN = 'login';
+
+    /**
+     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $quoteTransfer
      *
      * @return bool
      */
     public function preCondition(AbstractTransfer $quoteTransfer)
     {
         if (!$this->isCustomerLoggedIn()) {
-            $this->escapeRoute = 'login';
+            $this->escapeRoute = static::ROUTE_NAME_LOGIN;
 
             return false;
         }
