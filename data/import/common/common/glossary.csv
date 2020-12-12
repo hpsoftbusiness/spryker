@@ -2642,8 +2642,8 @@ order_invoice.invoice_template.table.discount,Discount,en_US
 order_invoice.invoice_template.table.discount,Rabatt,de_DE
 order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
 order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
-order_invoice.invoice_template.table.uid,UID,en_US
-order_invoice.invoice_template.table.uid,UID,de_DE
+order_invoice.invoice_template.table.uid,UID:,en_US
+order_invoice.invoice_template.table.uid,UID:,de_DE
 order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US
