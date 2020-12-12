@@ -447,6 +447,8 @@ global.partners,Partners,en_US
 global.partners,Partner,de_DE
 global.header.categories,All Categories,en_US
 global.header.categories,Alle Kategorien,de_DE
+global.cashback,Cashback,en_US
+global.cashback,Cashback,de_DE
 error.404,Error 404,de_DE
 error.404,Error 404,en_US
 error_page.title,Seite nicht gefunden.,de_DE

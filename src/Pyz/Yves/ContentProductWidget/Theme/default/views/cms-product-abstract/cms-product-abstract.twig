@@ -5,7 +5,7 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--stretch product-list">
+    <div class="grid grid--stretch grid--with-gutter">
         {% for productAbstractView in data.productAbstractViewCollection if productAbstractView.available %}
             {% embed molecule('product-item') with {
                 class: 'col col--sm-6 col--lg-3',

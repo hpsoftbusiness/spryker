@@ -1,12 +1,11 @@
 @include shop-ui-money-price($name: '.money-price') {
-    display: flex;
-    flex-direction: column-reverse;
-
     &__amount {
         font-size: inherit;
 
         &--original {
-            font-size: rem(14);
+            font-size: rem(12);
+            color: $setting-color-gray-4;
+            min-height: rem(18);
         }
     }
 
@@ -22,5 +21,13 @@
 
     &--medium-size {
         font-size: rem(17);
+    }
+
+    &--original-inline & {
+        &__amount {
+            &--original {
+                min-height: 0;
+            }
+        }
     }
 }

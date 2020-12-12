@@ -47,26 +47,7 @@
         </div>
     {% endblock %}
 
-    {% block title %}
-        {% if data.category.image is defined %}
-            {% include molecule('jumbotron') with {
-                modifiers: ['category'],
-                data: {
-                    imageUrl: data.category.image,
-                    headline: data.title,
-                    subHeadline: null
-                }
-            } only %}
-        {% else %}
-            {% include molecule('jumbotron') with {
-                modifiers: ['category', 'category-no-img'],
-                data: {
-                    headline: data.title,
-                    subHeadline: null
-                }
-            } only %}
-        {% endif %}
-    {% endblock %}
+    {% block title %}{% endblock %}
 
     <div class="container">
         <main class="container__inner">
@@ -143,7 +124,7 @@
                                     </div>
                                 </div>
 
-                                <div class="grid {% if data.viewMode != 'list' %}grid--stretch product-list{% endif %}">
+                                <div class="{% if data.viewMode != 'list' %}grid grid--stretch grid--with-gutter{% endif %}">
                                     {% if data.products %}
                                         {% for product in data.products %}
                                             {% widget 'CatalogPageProductWidget' args [product, data.viewMode] only %}{% endwidget %}

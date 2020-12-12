@@ -1,17 +1,4 @@
 @mixin catalog-page-product-list($name: '.product-list') {
-    #{$name} {
-        margin-right: rem(-15);
-        margin-left: rem(-15);
-        max-width: none;
-
-        @include helper-breakpoint-media-max($sm-max) {
-            margin-right: rem(-5);
-            margin-left: rem(-5);
-        }
-
-        @content;
-    }
-
     .catalog-left-side {
         display: none;
 

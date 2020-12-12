@@ -10,70 +10,73 @@
 
 {% block body %}
     {% block imageContainer %}
-        <div class="{{ config.name }}__col {{ config.name }}__col-image col col--sm-12 col--md-3">
+        <a class="{{ config.name }}__col {{ config.name }}__col-image {{ config.jsName }}__link-detail-page col col--sm-12 col--md-3" href="{{ data.url }}">
             {% block productThumbnail %}
-                <a class="{{ config.name }}__overlay {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
-                    {% embed molecule('lazy-image') with {
-                        modifiers: ['thumbnail', 'product-list-item'],
-                        data: {
-                            imageSrc: data.image,
-                            imageTitle: data.name,
-                        },
-                        embed: {
-                            jsName: config.jsName,
-                        },
-                    } only %}
-                        {% block content %}
-                            {% set imageExtraClasses = embed.jsName ~ '__image' %}
-
-                            {{ parent() }}
-                        {% endblock %}
-                    {% endembed %}
-                </a>
-            {% endblock %}
-
-            {% block colors %}
-                {% widget 'ProductGroupColorWidget' args [data.idProductAbstract, data.product.selectedAttributes ?? []] use view('product-item-color-selector', 'ProductGroupWidget') with {
+                {% embed molecule('lazy-image') with {
+                    modifiers: ['thumbnail', 'spaceless', 'product-list-item'],
                     data: {
-                        parentJsName: config.jsName,
-                        parentName: 'spacing-top spacing-top--small text-center ' ~ config.name,
+                        imageSrc: data.image,
+                        imageTitle: data.name,
                     },
-                } only %}{% endwidget %}
+                    embed: {
+                        jsName: config.jsName,
+                    },
+                } only %}
+                    {% block content %}
+                        {% set imageExtraClasses = embed.jsName ~ '__image' %}
+
+                        {{ parent() }}
+                    {% endblock %}
+                {% endembed %}
             {% endblock %}
-        </div>
+        </a>
     {% endblock %}
 
     <a class="{{ config.name }}__col {{ config.name }}__col-name {{ config.jsName }}__link-detail-page col col--sm-8 col--md-7" href="{{ data.url }}">
         {% block name %}
-            <span class="{{ config.jsName }}__name title title--medium">{{ data.name }}</span>
+            <span class="{{ config.jsName }}__name">{{ data.name }}</span>
         {% endblock %}
 
-        <div class="{{ config.name }}__review">
-            {{ block('rating') }}
-        </div>
+        {% set cashback = data.cashback %}
+
+        {% if cashback %}
+            {% include molecule('cashback') with {
+                class: 'spacing-top',
+                data: {
+                    cashback: cashback,
+                    shoppingPoints: data.shoppingPoints,
+                },
+            } only %}
+        {% endif %}
     </a>
 
-    {% block actionsContainer %}
+    {% block priceContainer %}
         <a class="{{ config.name }}__col {{ config.name }}__col-price {{ config.jsName }}__link-detail-page col col--sm-4 col--md-2 text-right" href="{{ data.url }}">
-            {{ block('price') }}
+            {% block price %}
+                {% if can('SeePricePermissionPlugin') %}
+                    {% embed molecule('money-price') with {
+                        modifiers: ['original-inline'],
+                        data: {
+                            amount: data.product.prices.DEFAULT | default(null),
+                            originalAmount: data.product.prices.ORIGINAL | default(null),
+                            currencyIsoCode: data.currencyIsoCode,
+                            parentJsName: config.jsName,
+                        },
+                    } only %}
+                        {% block originalPrice %}
+                            {% block originalPriceInner %}
+                                {{ parent() }}
+                            {% endblock %}
+                        {% endblock %}
+                    {% endembed %}
+                {% else %}
+                    {{- 'customer.access.cannot_see_price' | trans -}}
+                {% endif %}
+            {% endblock %}
         </a>
     {% endblock %}
 
     <div class="{{ config.name }}__labels-wrap">
         {{ block('labels') }}
     </div>
-
-    {% block ajaxAddToCart %}
-        {{ parent() }}
-    {% endblock %}
-{% endblock %}
-
-{% block ajaxAddToCartInner %}
-    {% set ajaxButtonClasses = 'button button--expand button--list-item button--reset-border-radius' %}
-    {% set ajaxButtonExtraAttributes = {
-        'data-node-animator-wrapper-class-name': config.jsName,
-    } %}
-    {% set ajaxAddToCartExtraClasses = config.name ~ '__button' %}
-
-    {{ parent() }}
 {% endblock %}
