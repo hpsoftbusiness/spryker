@@ -84,26 +84,11 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $priceTypeTransfers = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
 
         foreach ($priceTypeTransfers as $priceTypeTransfer) {
-            if ($this->isPriceTypeRequired($dataSet, $priceTypeTransfer->getName())) {
-                $priceTypeEntity = $this->findOrCreatePriceType($dataSet, $priceTypeTransfer);
-                $productPriceEntity = $this->findOrCreateProductPrice($dataSet, $priceTypeEntity);
-                $priceProductStoreEntity = $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
-                $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
-            }
+            $priceTypeEntity = $this->findOrCreatePriceType($dataSet, $priceTypeTransfer);
+            $productPriceEntity = $this->findOrCreateProductPrice($dataSet, $priceTypeEntity);
+            $priceProductStoreEntity = $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
+            $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
         }
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param string $priceTypeName
-     *
-     * @return bool
-     */
-    protected function isPriceTypeRequired(DataSetInterface $dataSet, string $priceTypeName): bool
-    {
-        return $priceTypeName === static::COLUMN_PRICE_TYPE_DEFAULT ||
-            ($priceTypeName === static::COLUMN_PRICE_TYPE_ORIGINAL &&
-            $dataSet[static::COLUMN_PRICE_GROSS_ORIGINAL] > $dataSet[static::COLUMN_PRICE_GROSS]);
     }
 
     /**
@@ -171,7 +156,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct $spyPriceProduct
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore
      */
@@ -189,20 +174,16 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-        $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS;
-        if ($dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] === CombinedProductPriceHydratorStep::ORIGINAL_PRICE_TYPE) {
-            $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS_ORIGINAL;
-        }
-
         $netPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100;
-        $grossPrice = (float)str_replace(',', '.', $dataSet[$defaultGrossPriceKey]) * 100;
+        $grossPrice = $this->getGrossPrice($dataSet);
 
         if ($dataSet[CombinedProductPriceHydratorStep::COLUMN_IS_AFFILIATE_PRODUCT]) {
-            $grossPrice = $netPrice = (float)str_replace(',', '.', $dataSet[CombinedProductPriceHydratorStep::COLUMN_AFFILIATE_PRODUCT_PRICE]) * 100;
+            $price = (float)str_replace(',', '.', $dataSet[CombinedProductPriceHydratorStep::COLUMN_AFFILIATE_PRODUCT_PRICE]) * 100;
+            $grossPrice = $netPrice = $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] !== CombinedProductPriceHydratorStep::ORIGINAL_PRICE_TYPE ? $price : null;
         }
 
-        $priceProductStoreEntity->setGrossPrice($grossPrice);
         $priceProductStoreEntity->setNetPrice($netPrice);
+        $priceProductStoreEntity->setGrossPrice($grossPrice);
 
         $priceProductStoreEntity->setPriceData($dataSet[static::COLUMN_PRICE_DATA]);
         $priceProductStoreEntity->setPriceDataChecksum($dataSet[static::COLUMN_PRICE_DATA_CHECKSUM]);
@@ -210,6 +191,25 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $priceProductStoreEntity->save();
 
         return $priceProductStoreEntity;
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return float|null
+     */
+    protected function getGrossPrice(DataSetInterface $dataSet): ?float
+    {
+        $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS;
+
+        if ($dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] === CombinedProductPriceHydratorStep::ORIGINAL_PRICE_TYPE) {
+            if ($dataSet[$defaultGrossPriceKey] === $dataSet[static::COLUMN_PRICE_GROSS_ORIGINAL]) {
+                return null;
+            }
+            $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS_ORIGINAL;
+        }
+
+        return (float)str_replace(',', '.', $dataSet[$defaultGrossPriceKey]) * 100;
     }
 
     /**
