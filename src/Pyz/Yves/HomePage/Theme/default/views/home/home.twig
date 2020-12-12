@@ -26,6 +26,7 @@
                 {% block slides %}
                     {% for slide in embed.slides %}
                         {% include molecule('banner-jumbotron', 'ContentBannerWidget') with {
+                            modifiers: ['full-height'],
                             data: {
                                 banner: slide,
                                 isBannerClickable: false,
