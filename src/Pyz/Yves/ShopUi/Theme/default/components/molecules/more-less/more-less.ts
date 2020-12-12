@@ -62,10 +62,6 @@ export default class MoreLess extends Component {
         return this.getAttribute('class-to-toggle');
     }
 
-    protected get classToToggleHeight(): string {
-        return this.getAttribute('class-to-toggle-height');
-    }
-
     protected get classActive(): string {
         return this.getAttribute('class-active');
     }
