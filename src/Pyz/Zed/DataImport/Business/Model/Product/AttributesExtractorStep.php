@@ -16,7 +16,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_HIDDEN_ATTRIBUTES = 'hidden_attributes';
     public const KEY_AFFILIATE_ATTRIBUTES = 'affiliate_attributes';
-    public const KEY_PDP_ATTRIBUTES = 'pdp_attributes';
 
     protected const KEY_IS_SELLABLE_PATTERN = 'sellable_';
 
@@ -30,7 +29,6 @@ class AttributesExtractorStep implements DataImportStepInterface
         $attributes = [];
         $hiddenAttributes = [];
         $affiliateAttributes = [];
-        $pdpAttributes = [];
 
         foreach ($dataSet as $key => $value) {
             if (!preg_match('/^' . $this->getAttributeKeyPrefix() . '(\d+)$/', $key, $match)) {
@@ -47,40 +45,32 @@ class AttributesExtractorStep implements DataImportStepInterface
 
             if ($attributeKey !== '') {
                 $isMainAttribute = in_array($attributeKey, $this->getAttributeList());
-                $isPdpAttribute = in_array($attributeKey, $this->getPdpAttributeList());
                 $isAffiliateAttribute = in_array($attributeKey, $this->getAffiliateAttributeList());
 
                 if ($isMainAttribute) {
                     $attributes[$attributeKey] = is_bool($attributeValue) ? (bool) $attributeValue : $attributeValue;
                 }
 
-                if ($isPdpAttribute) {
-                    $pdpAttributes[$attributeKey] = $attributeValue;
-                }
-
                 if ($isAffiliateAttribute) {
                     $affiliateAttributes[$attributeKey] = $attributeValue;
-                }
-
-                if (!$isMainAttribute && !$isPdpAttribute && !$isAffiliateAttribute) {
-                    $hiddenAttributes[$attributeKey] = $attributeValue;
                 }
 
                 if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
                     $hiddenAttributes[$attributeKey] = (bool)$attributeValue;
                 }
+
             }
         }
 
         $extraAttributesListKey = $this->getExtraAttributesListKeys();
         foreach ($extraAttributesListKey as $key) {
-            $pdpAttributes[$key] = $dataSet[$key];
+            $attributes[$key] = $dataSet[$key];
         }
 
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
         $dataSet[static::KEY_HIDDEN_ATTRIBUTES] = $hiddenAttributes;
         $dataSet[static::KEY_AFFILIATE_ATTRIBUTES] = $affiliateAttributes;
-        $dataSet[static::KEY_PDP_ATTRIBUTES] = $pdpAttributes;
+
     }
 
     /**
@@ -118,20 +108,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     /**
      * @return string[]
      */
-    public function getPdpAttributeList(): array
-    {
-        return [
-            'ean',
-            'color',
-            'size',
-            'gtin',
-            'brand',
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
     public function getFilteredAttributeList(): array
     {
         return [
@@ -145,6 +121,9 @@ class AttributesExtractorStep implements DataImportStepInterface
             'regular_sales_price',
             'benefit_store_sales_price',
             'benefit_amount',
+            'mpn',
+            'taric_code',
+            'gender',
         ];
     }
 
