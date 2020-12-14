@@ -8,30 +8,28 @@
 
         &__container {
             position: relative;
-
-            @include helper-breakpoint-media-max($sm-max) {
-                padding: 0 rem(11);
-            }
+            visibility: hidden;
 
             .slick-arrow {
+                @include helper-effect-transition(box-shadow);
                 position: absolute;
-                top: rem(165);
+                top: calc(50% - #{rem(15)});
                 font-size: 0;
                 width: rem(30);
                 height: rem(30);
-                background: url('../images/right-chevron.svg') no-repeat center / rem(15);
+                background: url('../images/right-chevron.svg') no-repeat center / rem(15) $setting-color-white;
                 border-radius: 50%;
                 z-index: $setting-zi-element + 1;
-                opacity: 0.7;
+                cursor: pointer;
 
-                @include helper-breakpoint-media-max($sm-max) {
-                    top: rem(125);
+                @include helper-breakpoint-media-min($lg-min) {
+                    top: calc(50% - #{rem(22)});
+                    width: rem(44);
+                    height: rem(44);
                 }
 
                 &:hover {
-                    background-color: $setting-color-white;
-                    opacity: 1;
-                    cursor: pointer;
+                    box-shadow: 0 rem(7) rem(40) 0 $setting-color-alpha-2;
                 }
             }
 
@@ -49,6 +47,49 @@
 
                 @include helper-breakpoint-media-max($sm-max) {
                     right: rem(15);
+                }
+            }
+
+            .slick-dots {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+
+                li {
+                    @include helper-effect-transition(border-color);
+                    position: relative;
+                    display: block;
+                    margin: rem(4);
+                    width: rem(14);
+                    height: rem(14);
+                    background-color: $setting-color-white;
+                    border-radius: 50%;
+                    border: rem(1) solid $setting-color-gray-4;
+                    cursor: pointer;
+
+                    &:hover {
+                        border-color: $setting-color-main;
+                    }
+
+                    &.slick-active {
+                        &::after {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            top: rem(2);
+                            left: rem(2);
+                            width: rem(8);
+                            height: rem(8);
+                            border-radius: 50%;
+                            background-color: $setting-color-main;
+                        }
+                    }
+                }
+
+                button {
+                    font-size: 0;
                 }
             }
         }

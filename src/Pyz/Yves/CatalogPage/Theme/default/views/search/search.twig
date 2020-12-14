@@ -21,21 +21,17 @@
 {% endblock %}
 
 {% block form %}
-    <div class="col col--sm-12 spacing spacing--inner">
+    <div class="col col--sm-12 spacing-top spacing-top--big">
         {% widget 'FullTextSearchTabsWidget' args [data.searchString, 'FullTextSearchProductsTab'] only %}{% endwidget %}
     </div>
 
-    {% embed molecule('spelling-suggestion', 'CatalogPage') with {
+    {% include molecule('spelling-suggestion', 'CatalogPage') with {
         data: {
             suggestion: data.suggestion
         }
     } only %}
-        {% block body %}
-            {{parent()}}
-        {% endblock %}
-    {% endembed %}
 
-    {{parent()}}
+    {{ parent() }}
 
     {% if data.searchString is not empty %}
         <input type="hidden" name="q" value="{{ data.searchString }}" />

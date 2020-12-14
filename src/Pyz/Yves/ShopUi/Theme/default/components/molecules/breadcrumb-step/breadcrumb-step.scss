@@ -32,12 +32,16 @@
         }
 
         &--disabled:not(&--active) {
-            opacity: 0.4;
-            color: $setting-color-black;
+            color: $setting-color-gray-4;
+
+            &::after,
+            &::before {
+                background-color: $setting-color-gray-2;
+            }
         }
 
         &--progress {
-            padding: rem(15) rem(25) 0;
+            padding: 0 rem(25) rem(25);
             text-align: center;
             position: relative;
             font: fw(medium) rem(15) $setting-font-family;
@@ -45,6 +49,8 @@
 
             @include helper-breakpoint-media-min($md-min) {
                 display: flex;
+                justify-content: center;
+                flex-grow: 1;
             }
 
             &::before,
@@ -53,10 +59,26 @@
                     content: '';
                     position: absolute;
                     left: 0;
-                    top: 0;
+                    bottom: 0;
                     right: 0;
-                    height: rem(1);
-                    background-color: $setting-color-black;
+                    height: rem(10);
+                    background-color: $setting-color-main;
+                }
+            }
+
+            &:first-child {
+                &::after,
+                &::before {
+                    border-bottom-left-radius: $setting-border-radius;
+                    border-top-left-radius: $setting-border-radius;
+                }
+            }
+
+            &:last-child {
+                &::after,
+                &::before {
+                    border-bottom-right-radius: $setting-border-radius;
+                    border-top-right-radius: $setting-border-radius;
                 }
             }
 
@@ -88,8 +110,14 @@
         }
 
         &--progress-active {
-            color: $setting-color-black;
+            color: $setting-color-main;
             display: flex;
+            font-weight: fw(bold);
+
+            &::before,
+            &::after {
+                background-color: $setting-color-main;
+            }
 
             &::before {
                 opacity: 0.4;

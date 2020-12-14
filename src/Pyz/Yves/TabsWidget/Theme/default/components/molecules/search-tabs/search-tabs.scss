@@ -1,37 +1,58 @@
-$search-tab-border: rem(1) solid $setting-color-lighter;
+$search-tab-border: rem(1) solid $setting-color-gray-3;
 
 @mixin tabs-widget-search-tabs($name: '.search-tabs') {
     #{$name} {
         text-align: center;
-        border-left: $search-tab-border;
-        border-bottom: $search-tab-border;
+        border-top: $search-tab-border;
+
+        @include helper-breakpoint-media-min($md-min) {
+            padding: 0 rem(15);
+            border-bottom: $search-tab-border;
+            border-top: none;
+        }
 
         &__item {
+            @include helper-effect-transition(color);
+            font: fw(medium) rem(15) $setting-font-family;
             display: block;
-            border-top: $search-tab-border;
-            border-right: $search-tab-border;
+            padding: rem(10) rem(15);
+            border-bottom: $search-tab-border;
 
             @include helper-breakpoint-media-min($md-min) {
                 display: inline-block;
-                padding: rem(12) rem(32);
+                padding-top: rem(13);
+                padding-bottom: rem(13);
+                min-width: rem(160);
+                margin: 0 rem(2);
                 width: auto;
-                min-width: auto;
+                border: $search-tab-border;
+                border-bottom: none;
+                border-top-left-radius: rem(7);
+                border-top-right-radius: rem(7);
             }
 
             &--active {
                 position: relative;
                 background-color: $setting-color-white;
+                color: $setting-color-main;
 
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: rem(-1);
-                    left: 0;
-                    display: block;
-                    width: 100%;
-                    height: rem(1);
-                    background-color: $setting-color-white;
+                @include helper-breakpoint-media-min($md-min) {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: rem(-1);
+                        left: 0;
+                        display: block;
+                        width: 100%;
+                        height: rem(1);
+                        background-color: $setting-color-white;
+                    }
                 }
+            }
+
+            &:hover {
+                text-decoration: none;
+                color: $setting-color-main;
             }
         }
 

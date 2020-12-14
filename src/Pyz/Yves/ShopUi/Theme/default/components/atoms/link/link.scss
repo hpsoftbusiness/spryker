@@ -71,6 +71,18 @@
         }
     }
 
+    &--primary {
+        @include helper-effect-transition(color);
+        font-weight: fw(medium);
+        color: $setting-color-black;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $setting-color-main;
+        }
+    }
+
     &--secondary {
         @include helper-effect-transition(color);
         font: fw(medium) rem(16) $setting-font-family;
