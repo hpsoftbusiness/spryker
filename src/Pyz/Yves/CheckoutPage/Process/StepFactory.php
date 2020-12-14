@@ -10,11 +10,14 @@ namespace Pyz\Yves\CheckoutPage\Process;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use Pyz\Yves\StepEngine\Process\StepCollection;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -31,7 +34,7 @@ class StepFactory extends SprykerShopStepFactory
     {
         return [
             $this->createEntryStep(),
-            $this->createCustomerStep(),
+            $this->createPyzCustomerStep(),
             $this->createAddressStep(),
             $this->createPyzShipmentStep(),
             $this->createPaymentStep(),
@@ -41,6 +44,20 @@ class StepFactory extends SprykerShopStepFactory
             $this->createSuccessStep(),
             $this->createErrorStep(),
         ];
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep
+     */
+    public function createPyzCustomerStep()
+    {
+        return new CustomerStep(
+            $this->getCustomerClient(),
+            $this->getCustomerStepHandler(),
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_CUSTOMER,
+            $this->getConfig()->getEscapeRoute(),
+            $this->getRouter()->generate(static::ROUTE_LOGOUT)
+        );
     }
 
     /**
@@ -111,6 +128,17 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
+     * @return \Spryker\Yves\StepEngine\Dependency\Step\StepInterface
+     */
+    public function createErrorStep(): StepInterface
+    {
+        return new ErrorStep(
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
+            $this->getConfig()->getEscapeRoute()
+        );
+    }
+
+    /**
      * @return \Symfony\Contracts\Translation\TranslatorInterface
      */
     public function getTranslatorService(): TranslatorInterface
@@ -126,6 +154,21 @@ class StepFactory extends SprykerShopStepFactory
         return new ProductSellableChecker(
             $this->getFlashMessenger(),
             $this->getTranslatorService()
+        );
+    }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Process\StepCollectionInterface
+     */
+    public function createStepCollection()
+    {
+        return new StepCollection(
+            $this->getRouter(),
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
+            [
+                CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PLACE_ORDER,
+                CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUCCESS,
+            ]
         );
     }
 }

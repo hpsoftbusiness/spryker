@@ -60,11 +60,6 @@
                         title: 'customer.account.profile_data' | trans
                     }
                 } only %}
-                    {% block additionalContent %}
-                        <a href="{{ url('customer/profile') }}" class="col">
-                            {{ 'general.edit.button' | trans }}
-                        </a>
-                    {% endblock %}
                 {% endembed %}
 
                 <ul class="menu menu--customer-account">
@@ -72,12 +67,6 @@
                     <li class="menu__item"><a class="menu__link"
                                               href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
                 </ul>
-            </div>
-        </div>
-
-        <div class="col--lg-6 col--sm-12">
-            <div class="box">
-                {% widget 'NewsletterSubscriptionSummaryWidget' args [data.customer] only %}{% endwidget %}
             </div>
         </div>
 

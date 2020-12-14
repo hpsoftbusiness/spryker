@@ -3,6 +3,11 @@
         flex-shrink: 0;
     }
 
+    &--thumbnail {
+        position: relative;
+        height: rem(150);
+    }
+
     &--full-height {
         height: 100%;
     }
@@ -40,8 +45,8 @@
     }
 
     &--product-list-item {
-        @include helper-breakpoint-media-min($md-min) {
-            height: 5rem;
+        @include helper-breakpoint-media-min($lg-min) {
+            height: rem(100);
         }
     }
 

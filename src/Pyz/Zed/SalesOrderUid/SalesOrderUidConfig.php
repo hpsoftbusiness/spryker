@@ -11,14 +11,29 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class SalesOrderUidConfig extends AbstractBundleConfig
 {
+    protected const UID_AUSTRIA = 'ATU67661657';
+    protected const UID_ITALY = '0026289999';
+
     /**
+     * @api
+     *
      * @return string[]
      */
     public function getCountryToUidMap(): array
     {
         return [
-            'AT' => 'ATU67661657',
-            'IT' => '0026289999',
+            'AT' => static::UID_AUSTRIA,
+            'IT' => static::UID_ITALY,
         ];
+    }
+
+    /**
+     * @api
+     *
+     * @return string
+     */
+    public function getDefaultUid(): string
+    {
+        return static::UID_AUSTRIA;
     }
 }

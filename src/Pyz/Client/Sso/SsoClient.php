@@ -46,12 +46,13 @@ class SsoClient extends AbstractClient implements SsoClientInterface
 
     /**
      * @param string $locale
+     * @param string|null $state
      *
      * @return string
      */
-    public function getAuthorizeUrl(string $locale): string
+    public function getAuthorizeUrl(string $locale, ?string $state = null): string
     {
-        return $this->getFactory()->createConfigReader()->getAuthorizeUrl($locale);
+        return $this->getFactory()->createConfigReader()->getAuthorizeUrl($locale, $state);
     }
 
     /**

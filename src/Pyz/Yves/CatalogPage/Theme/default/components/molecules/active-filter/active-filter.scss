@@ -1,20 +1,25 @@
 @mixin catalog-page-active-filter($name: '.active-filter') {
     #{$name} {
         &__item {
+            @include helper-effect-transition(color background-color);
             display: inline-block;
-            font: 500 rem(11) $setting-font-family;
-            text-transform: uppercase;
+            vertical-align: top;
+            font: fw(medium) rem(12) $setting-font-family;
             padding: rem(9) rem(33) rem(10) rem(11);
-            margin: 0 0 0 rem(8);
+            margin-right: rem(8);
             border: rem(1) solid $setting-color-input-border;
             border-radius: rem(2);
             color: $setting-color-gray-4;
             position: relative;
 
+            @include helper-breakpoint-media-min($lg-min) {
+                margin: 0 rem(8) rem(8) 0;
+            }
+
             &:hover {
-                color: $setting-color-gray-5;
+                color: $setting-color-black;
                 text-decoration: none;
-                background-color: $setting-color-alpha-4;
+                background-color: $setting-color-alpha-2;
             }
         }
 

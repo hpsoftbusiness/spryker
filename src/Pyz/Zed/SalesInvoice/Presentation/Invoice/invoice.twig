@@ -92,6 +92,13 @@
                 {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}
                 <strong>{{ order.customer.myWorldCustomerNumber }}</strong>
             </p>
+            {% if order.uid is not empty %}
+                <p>
+                    {{ 'order_invoice.invoice_template.table.uid' | trans }}
+                    <strong>{{ order.uid }}</strong>
+                </p>
+            {% endif %}
+
         </td>
     </tr>
 </table>

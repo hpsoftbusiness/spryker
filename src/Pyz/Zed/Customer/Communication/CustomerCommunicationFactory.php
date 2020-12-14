@@ -8,6 +8,8 @@
 namespace Pyz\Zed\Customer\Communication;
 
 use Pyz\Zed\Customer\Communication\Form\AddressForm;
+use Pyz\Zed\Customer\Communication\Form\CustomerForm;
+use Pyz\Zed\Customer\Communication\Form\CustomerUpdateForm;
 use Pyz\Zed\Customer\Communication\Form\DataProvider\AddressFormDataProvider;
 use Spryker\Zed\Customer\Communication\CustomerCommunicationFactory as SprykerCustomerCommunicationFactory;
 use Spryker\Zed\Customer\CustomerDependencyProvider;
@@ -42,5 +44,27 @@ class CustomerCommunicationFactory extends SprykerCustomerCommunicationFactory
             $this->getQueryContainer(),
             $this->getStore()
         );
+    }
+
+    /**
+     * @param array $data
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function createCustomerForm(array $data = [], array $options = [])
+    {
+        return $this->getFormFactory()->create(CustomerForm::class, $data, $options);
+    }
+
+    /**
+     * @param array $data
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function createCustomerUpdateForm(array $data = [], array $options = [])
+    {
+        return $this->getFormFactory()->create(CustomerUpdateForm::class, $data, $options);
     }
 }

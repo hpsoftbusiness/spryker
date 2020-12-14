@@ -4,31 +4,34 @@
 
         @include helper-breakpoint-media-min($md-min) {
             border-bottom: none;
+            margin: 0 rem(-15);
+            display: grid;
+            gap: rem(1) rem(1);
+            grid-template: 'legal information service' 'legal information propositions';
         }
 
         &__col {
             width: 100%;
 
             @include helper-breakpoint-media-min($md-min) {
-                width: 33%;
-            }
-
-            @include helper-breakpoint-media-min($xl-min) {
-                padding-right: 10%;
+                padding: 0 rem(15);
             }
         }
 
-        &--content-item {
-            #{$name}__col {
-                @include helper-breakpoint-media-min($md-min) {
-                    width: 50%;
-                }
+        &__legal {
+            grid-area: legal;
+        }
 
-                @include helper-breakpoint-media-min($lg-min) {
-                    width: 25%;
-                    padding-right: 5%;
-                }
-            }
+        &__information {
+            grid-area: information;
+        }
+
+        &__service {
+            grid-area: service;
+        }
+
+        &__propositions {
+            grid-area: propositions;
         }
 
         @content;

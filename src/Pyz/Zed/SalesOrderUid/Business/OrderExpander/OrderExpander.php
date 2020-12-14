@@ -8,6 +8,7 @@
 namespace Pyz\Zed\SalesOrderUid\Business\OrderExpander;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\SpySalesOrderEntityTransfer;
 use Pyz\Zed\SalesOrderUid\SalesOrderUidConfig;
 
 class OrderExpander implements OrderExpanderInterface
@@ -26,19 +27,33 @@ class OrderExpander implements OrderExpanderInterface
     }
 
     /**
+     * @param \Generated\Shared\Transfer\SpySalesOrderEntityTransfer $salesOrderEntityTransfer
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
+     * @return \Generated\Shared\Transfer\SpySalesOrderEntityTransfer
      */
-    public function expandSalesOrder(QuoteTransfer $quoteTransfer): QuoteTransfer
-    {
-        $countryToIdMap = $this->salesOrderUidConfig->getCountryToUidMap();
+    public function expandSalesOrderEntityTransferWithSalesOrderUid(
+        SpySalesOrderEntityTransfer $salesOrderEntityTransfer,
+        QuoteTransfer $quoteTransfer
+    ): SpySalesOrderEntityTransfer {
         $countryCode = $quoteTransfer->getShippingAddress()->getCountry()->getIso2Code();
 
-        if (!empty($countryToIdMap[$countryCode])) {
-            $quoteTransfer->setUid($countryToIdMap[$countryCode]);
+        return $salesOrderEntityTransfer->setUid($this->getCurrentUid($countryCode));
+    }
+
+    /**
+     * @param string $countryCode
+     *
+     * @return string
+     */
+    protected function getCurrentUid(string $countryCode): string
+    {
+        $countryToIdMap = $this->salesOrderUidConfig->getCountryToUidMap();
+
+        if (empty($countryToIdMap[$countryCode])) {
+            return $this->salesOrderUidConfig->getDefaultUid();
         }
 
-        return $quoteTransfer;
+        return $countryToIdMap[$countryCode];
     }
 }

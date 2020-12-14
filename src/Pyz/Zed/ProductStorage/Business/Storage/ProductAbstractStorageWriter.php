@@ -44,9 +44,6 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $productAbstractStorageTransfer
             ->setAffiliateData(
                 $this->productFacade->decodeProductAttributes($productAbstractLocalizedEntity['SpyProductAbstract']['affiliate_data'])
-            )
-            ->setPdpAttributes(
-                $this->productFacade->decodeProductAttributes($productAbstractLocalizedEntity['SpyProductAbstract']['pdp_attributes'])
             );
 
         return $productAbstractStorageTransfer;

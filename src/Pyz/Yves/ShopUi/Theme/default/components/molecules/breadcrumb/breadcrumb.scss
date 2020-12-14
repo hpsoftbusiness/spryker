@@ -4,6 +4,8 @@
         flex-flow: row wrap;
         padding: rem(17) 0;
         border-bottom: rem(1) dotted $setting-color-gray-3;
+        position: relative;
+        z-index: $setting-zi-element;
 
         &--bottom {
             border-bottom: none;
@@ -15,10 +17,11 @@
         }
 
         &--progress {
-            display: inline-flex;
+            display: flex;
             flex-wrap: nowrap;
             justify-content: center;
-            padding: 0 0 rem(56);
+            padding: 0;
+            margin-bottom: rem(60);
             border-bottom: none;
 
             @include helper-breakpoint-media-min($md-min) {

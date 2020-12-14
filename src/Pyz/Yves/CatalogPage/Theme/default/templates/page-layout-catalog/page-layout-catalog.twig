@@ -12,6 +12,7 @@
     metaDescription: _view.pageDescription | default,
     metaKeywords: _view.pageKeywords | default,
     sort: _view.sort,
+    isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible,
 
     pagination: {
         parameters: app.request.query.all(),
@@ -46,26 +47,7 @@
         </div>
     {% endblock %}
 
-    {% block title %}
-        {% if data.category.image is defined %}
-            {% include molecule('jumbotron') with {
-                modifiers: ['category'],
-                data: {
-                    imageUrl: data.category.image,
-                    headline: data.title,
-                    subHeadline: null
-                }
-            } only %}
-        {% else %}
-            {% include molecule('jumbotron') with {
-                modifiers: ['category', 'category-no-img'],
-                data: {
-                    headline: data.title,
-                    subHeadline: null
-                }
-            } only %}
-        {% endif %}
-    {% endblock %}
+    {% block title %}{% endblock %}
 
     <div class="container">
         <main class="container__inner">
@@ -80,16 +62,9 @@
                     },
                 } only %}
 
-                <form method="GET" class="grid js-catalog-filter-target js-form-input-default-value-disabler__catalog-form {{ catalogJsName }}__form">
+                <form method="GET" class="grid spacing-bottom spacing-bottom--biggest js-catalog-filter-target js-form-input-default-value-disabler__catalog-form {{ catalogJsName }}__form">
                     {% block form %}
-                        <div class="col col--sm-12 col--xl-3 catalog-left-side">
-                            {% include molecule('view-mode-switch', 'CatalogPage') with {
-                                class: 'catalog-left-side__switcher',
-                                data: {
-                                    viewMode: data.viewMode,
-                                }
-                            } only %}
-
+                        <div class="col col--sm-12 col--lg-3 catalog-left-side">
                             {% block filterSection %}
                                 {% include organism('filter-section', 'CatalogPage') with {
                                     data: {
@@ -97,14 +72,15 @@
                                         filterPath: data.filterPath,
                                         categories: data.categories,
                                         togglerClass: 'js-catalog-toggler-click__trigger',
+                                        isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
                                         parentJsName: catalogJsName,
                                     },
                                 } only %}
                             {% endblock %}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9 catalog-right-side">
-                            <button type="button" class="button button--hollow button--expand spacing-y spacing-y--big is-hidden-xl-only js-catalog-toggler-click__trigger">
+                        <div class="col col--sm-12 col--lg-9 catalog-right-side">
+                            <button type="button" class="button button--hollow button--expand spacing-y spacing-y--big is-hidden-lg-xl js-catalog-toggler-click__trigger">
                                 {%- include atom('icon') with {
                                     class: 'spacing-right',
                                     data: {
@@ -118,9 +94,11 @@
                                     <div class="col col--sm-12">
                                         {% include molecule('sort', 'CatalogPage') with {
                                             data: {
+                                                viewMode: data.viewMode,
                                                 pagination: data.pagination,
                                                 sort: data.sort,
                                                 parentJsName: catalogJsName,
+                                                title: data.title,
                                             },
                                         } only %}
                                     </div>
@@ -131,23 +109,23 @@
                                             }
                                         } only %}
                                     </div>
-                                    <div class="col col--sm-12">
-                                        {% include molecule('view-mode-switch', 'CatalogPage') with {
-                                            class: 'is-hidden-xl-only',
-                                            data: {
-                                                viewMode: data.viewMode
-                                            }
-                                        } only %}
-                                    </div>
                                 </div>
 
-                                <div class="grid {% if data.viewMode != 'list' %}grid--stretch product-list{% endif %}">
+                                {% set productsSectionClass = data.viewMode != 'list' ?
+                                    'grid grid--stretch grid--with-gutter' :
+                                    'spacing-bottom spacing-bottom--biggest' %}
+
+                                <div class="{{ productsSectionClass }}">
                                     {% if data.products %}
                                         {% for product in data.products %}
                                             {% widget 'CatalogPageProductWidget' args [product, data.viewMode] only %}{% endwidget %}
                                         {% endfor %}
                                     {% else %}
-                                        {% block noResults %}{{ parent() }}{% endblock %}
+                                        {% block noResults %}
+                                            <div class="col col--sm-12 text-center spacing-bottom spacing-bottom--inner spacing-bottom--biggest">
+                                                {{ 'catalog.no-results' | trans }}
+                                            </div>
+                                        {% endblock %}
                                     {% endif %}
                                 </div>
 

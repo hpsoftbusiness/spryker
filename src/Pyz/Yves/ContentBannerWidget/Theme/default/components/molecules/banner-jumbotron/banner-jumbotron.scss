@@ -1,20 +1,19 @@
 @mixin content-banner-widget-banner-jumbotron($name: '.banner-jumbotron') {
     #{$name} {
-        border-radius: rem(4);
         overflow: hidden;
 
         &__container {
-            height: rem(160);
+            height: rem(250);
             background: linear-gradient(to left top, $setting-color-gray-3, $setting-color-gray-4) no-repeat center / cover;
             text-align: center;
             position: relative;
 
-            @include helper-breakpoint(md) {
-                height: rem(240);
+            @include helper-breakpoint-media-min($md-min) {
+                height: rem(400);
             }
 
-            @include helper-breakpoint(xl) {
-                height: rem(400);
+            @include helper-breakpoint-media-min($lg-min) {
+                height: rem(540);
             }
         }
 

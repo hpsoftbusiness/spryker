@@ -21,13 +21,12 @@
                         app.request.pathInfo,
                         app.request.queryString,
                         app.request.requestUri
-                    ] only %}
-                        {% block body %}
-                            {% define data = {
-                                additionalModifiers: ['hollow', 'header', 'side-drawer']
-                            } %}
-                            {{ parent() }}
-                        {% endblock %}
+                    ] with {
+                        data: {
+                            additionalModifiers: ['hollow', 'header', 'side-drawer'],
+                            additionalClassName: 'header',
+                        },
+                    } only %}
                     {% endwidget %}
                 </div>
             {% endblock %}

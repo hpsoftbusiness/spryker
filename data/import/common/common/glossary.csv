@@ -95,6 +95,10 @@ customer.password,Passwort,de_DE
 customer.password,Password,en_US
 password.confirm,Passwort bestätigen,de_DE
 password.confirm,Confirm passwort,en_US
+personal.address.heading,persönliche Daten,de_DE
+personal.address.heading,Personal data,en_US
+company.address.heading,Firmen Daten,de_DE
+company.address.heading,Company data,en_US
 page.checkout.address.heading,1. Adressangaben,de_DE
 page.checkout.address.heading,1. Address Data,en_US
 page.checkout.address.name,Name,de_DE
@@ -179,6 +183,14 @@ page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
 page.checkout.payment.edit,edit Payment Method,en_US
 page.checkout.payment.next-step,Weiter - Prüfen und Kauf abschließen,de_DE
 page.checkout.payment.next-step,Continue to finalise order,en_US
+adyen.payment.error.cc_number,Please check the Credit Card number,en_US
+adyen.payment.error.cc_number,Bitte prüfen Sie die Kartennummer,de_DE
+adyen.payment.error.cc_year,Please check the Credit Card year,en_US
+adyen.payment.error.cc_year,Bitte prüfen Sie das Jahr,de_DE
+adyen.payment.error.cc_month,Please check the Credit Card month,en_US
+adyen.payment.error.cc_month,Bitte prüfen Sie den Monat,de_DE
+adyen.payment.error.cc_cvv,Please check the CVC code,en_US
+adyen.payment.error.cc_cvv,Bitte prüfen Sie das CVC/CVV,de_DE
 page.checkout.summary.products,Products,en_US
 page.checkout.summary.products,Artikel,de_DE
 page.checkout.summary.billing,Rechnungsadresse,de_DE
@@ -275,24 +287,30 @@ catalog.prev,zurück,de_DE
 catalog.prev,back,en_US
 catalog.sort,Sortierung,de_DE
 catalog.sort,Sorting,en_US
-catalog.sort.relevance,Nach Relevanz sortieren,de_DE
-catalog.sort.relevance,Sort by relevance,en_US
-catalog.sort.name_asc,Nach Name aufsteigend sortieren,de_DE
-catalog.sort.name_asc,Sort by name ascending,en_US
-catalog.sort.name_desc,Nach Name absteigend sortieren,de_DE
-catalog.sort.name_desc,Sort by name descending,en_US
-catalog.sort.price_asc,Nach Preis aufsteigend sortieren,de_DE
-catalog.sort.price_asc,Sort by price ascending,en_US
-catalog.sort.price_desc,Nach Preis absteigend sortieren,de_DE
-catalog.sort.price_desc,Sort by price descending,en_US
-catalog.sort.rating,Sort by product ratings,en_US
-catalog.sort.rating,Nach Produktbewertungen sortieren,de_DE
+catalog.sort.by,Sortieren nach,de_DE
+catalog.sort.by,Sort by,en_US
+catalog.sort.relevance,Relevanz,de_DE
+catalog.sort.relevance,Relevance,en_US
+catalog.sort.name_asc,Name aufsteigend,de_DE
+catalog.sort.name_asc,Name ascending,en_US
+catalog.sort.name_desc,Name absteigend,de_DE
+catalog.sort.name_desc,Name descending,en_US
+catalog.sort.price_asc,Preis aufsteigend,de_DE
+catalog.sort.price_asc,Price ascending,en_US
+catalog.sort.price_desc,Preis absteigend,de_DE
+catalog.sort.price_desc,Price descending,en_US
+catalog.sort.rating,Product ratings,en_US
+catalog.sort.rating,Produktbewertungen,de_DE
 catalog.filter.activeFilters,Aktive Filter,de_DE
 catalog.filter.activeFilters,Active filters,en_US
 catalog.filter.resetAllFilters,Alle Filter zurücksetzen,de_DE
 catalog.filter.resetAllFilters,Reset all filters,en_US
 catalog.no-results,No results.,en_US
 catalog.no-results,Keine Ergebnisse.,de_DE
+catalog.filter_section.show_all,Show more,en_US
+catalog.filter_section.show_all,Mehr anzeigen,de_DE
+catalog.filter_section.show_less,Show less,en_US
+catalog.filter_section.show_less,Weniger anzeigen,de_DE
 product.filter.category,Kategorien,de_DE
 product.filter.category,Categories,en_US
 product.filter.price,Preis,de_DE
@@ -395,8 +413,8 @@ global.search.suggestion.no_result,Nichts gefunden…,de_DE
 global.search.suggestion.no_result,Nothing found…,en_US
 global.search.suggestion.see_all_products,Alle Produkte anzeigen,de_DE
 global.search.suggestion.see_all_products,See all products,en_US
-global.spryker.shop,Spryker Shop,de_DE
-global.spryker.shop,Spryker Shop,en_US
+global.spryker.shop,myWorld.com,de_DE
+global.spryker.shop,myWorld.com,en_US
 global.spryker.motto,Qualitäts-Technologie,de_DE
 global.spryker.motto,technology with quality,en_US
 global.payment_providers,Zahlungsanbieter,de_DE
@@ -447,8 +465,18 @@ global.partners,Partners,en_US
 global.partners,Partner,de_DE
 global.header.categories,All Categories,en_US
 global.header.categories,Alle Kategorien,de_DE
-error.404,Error 404,de_DE
-error.404,Error 404,en_US
+global.cashback,Cashback,en_US
+global.cashback,Cashback,de_DE
+global.button.more,More,en_US
+global.button.more,Mehr,de_DE
+global.button.less,Less,en_US
+global.button.less,Weniger,de_DE
+global.back_homepage,Zurück zur Startseite,de_DE
+global.back_homepage,Back to homepage,en_US
+error.404,"Entschuldigung, etwas ist schief gelaufen",de_DE
+error.404,"Sorry, something went wrong",en_US
+error.404_description,Die Seite kann nicht gefunden werden. Bitte gehe zurück,de_DE
+error.404_description,This page can not be found. Please go back,en_US
 error_page.title,Seite nicht gefunden.,de_DE
 error_page.title,Page not found.,en_US
 error_page.home_link,Zur Startseite,de_DE
@@ -478,9 +506,13 @@ customer.login.title,Ich bin bereits Kunde,de_DE
 customer.registration.title,Create account,en_US
 customer.registration.title,Ich bin Neukunde,de_DE
 customer.account.shopping_points_and_cashback,Shopping Points & Cashback,en_US
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,de_DE
 customer.account.available.cashback.amount,Available cashback amount,en_US
+customer.account.available.cashback.amount,Gesammelter Cashback,de_DE
 customer.account.available.shopping.point.amount,Available shopping point amount,en_US
+customer.account.available.shopping.point.amount,Gesammelte Shopping Points,de_DE
 customer.account.available.benefit.voucher.amount,Available benefit voucher amount,en_US
+customer.account.available.benefit.voucher.amount,Gesammelte Benefit Vouchers,de_DE
 customer.account.no_order,No orders at the moment,en_US
 customer.account.no_order,Keine Bestellungen,de_DE
 customer.account,Customer Account,en_US
@@ -899,6 +931,10 @@ checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
+checkout.step.summary.tracking_code,Sendungsverfolgungscode,de_DE
+checkout.step.summary.tracking_code,Delivery Tracking Code,en_US
+checkout.step.summary.uid,UID,de_DE
+checkout.step.summary.uid,UID,en_US
 checkout.step.summary.delivery_address,Lieferadresse,de_DE
 checkout.step.summary.delivery_address,Delivery Address,en_US
 checkout.step.summary.products,"Products",en_US
@@ -2336,6 +2372,18 @@ agent.account.profile_data,Agent Profile,en_US
 agent.account.profile_data,Agent-Profil,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
+footer.follow,Follow us,en_US
+footer.follow,Follow us,de_DE
+footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
+footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
+footer.twitter.url,https://twitter.com/myWorld_uk,en_US
+footer.twitter.url,https://twitter.com/myworld_de,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
+footer.instagram.url,https://www.instagram.com/myworld.com__deutschland/,de_DE
+footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
+footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
+footer.official_partner,Official partner,en_US
+footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
 footer.logo.url,https://spryker.com,en_US
@@ -2346,6 +2394,14 @@ footer.logo.link.imprint,https://spryker.com/imprint/,en_US
 footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
+footer.navigation_title.legal_information,Legal information,en_US
+footer.navigation_title.legal_information,Rechtliche Hinweise,de_DE
+footer.navigation_title.information,Information,en_US
+footer.navigation_title.information,Informationen,de_DE
+footer.navigation_title.customer_service,Customer service,en_US
+footer.navigation_title.customer_service,Kundenservice,de_DE
+footer.navigation_title.propositions,Earn money with myWorld,en_US
+footer.navigation_title.propositions,Geld verdienen mit myWorld,de_DE
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_image,Produktbild,de_DE
 page.product.details.slider_thumbnail,Product Image,en_US
@@ -2614,6 +2670,8 @@ order_invoice.invoice_template.table.discount,Discount,en_US
 order_invoice.invoice_template.table.discount,Rabatt,de_DE
 order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
 order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
+order_invoice.invoice_template.table.uid,UID:,en_US
+order_invoice.invoice_template.table.uid,UID:,de_DE
 order_invoice.invoice_template.table.tax.name,VAT,en_US
 order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
 order_invoice.invoice_template.table.grandtotal,Grand total,en_US
@@ -2748,56 +2806,40 @@ sales_product_bundle_widget.item.options,Product options:,en_US
 sales_product_bundle_widget.item.options,Produktoptionen:,de_DE
 oms.state.new,New,en_US
 oms.state.new,Neu,de_DE
-oms.state.waiting,Waiting,en_US
-oms.state.waiting,Warten,de_DE
-oms.state.in-progress,In progress,en_US
-oms.state.in-progress,In Bearbeitung,de_DE
-oms.state.ready,Ready,en_US
-oms.state.ready,Bereit,de_DE
-oms.state.canceled,Canceled,en_US
-oms.state.canceled,Abgebrochen,de_DE
+oms.state.invalid,Canceled,en_US
+oms.state.invalid,Abgebrochen,de_DE
+oms.state.cancellation-pending,Cancellation,en_US
+oms.state.cancellation-pending,Abgebrechung,de_DE
+oms.state.cancellation-pending-next-try,Cancellation,en_US
+oms.state.cancellation-pending-next-try,Abgebrechung,de_DE
+oms.state.cancelled,Canceled,en_US
+oms.state.cancelled,Abgebrochen,de_DE
+oms.state.authorization-pending-next-try,In progress,en_US
+oms.state.authorization-pending-next-try,In Arbeit,de_DE
+oms.state.capture pending,In progress,en_US
+oms.state.capture-pending,In Arbeit,de_DE
+oms.state.capture-pending-next-try,In progress,en_US
+oms.state.capture-pending-next-try,In Arbeit,de_DE
+oms.state.capture-failed-clarification,In progress,en_US
+oms.state.capture-failed-clarification,In Arbeit,de_DE
+oms.state.waiting-for-tracking-number,In progress,en_US
+oms.state.waiting-for-tracking-number,In Arbeit,de_DE
+oms.state.turnover-creation-failed,In progress,en_US
+oms.state.turnover-creation-failed,In Arbeit,de_DE
+oms.state.order-in-processing-email-sent,In progress,en_US
+oms.state.order-in-processing-email-sent,In Arbeit,de_DE
+oms.state.refund-pending,Refund,en_US
+oms.state.refund-pending,Rückerstattung,de_DE
+oms.state.refund-pending-next-try,Refund,en_US
+oms.state.refund-pending-next-try,Rückerstattung,de_DE
+oms.state.refund-failed-clarification,Refund,en_US
+oms.state.refund-failed-clarification,Rückerstattung,de_DE
+oms.state.turnover-cancellation-failed,Refund,en_US
+oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
+oms.state.invoice-with-tracking-number-sent,Shipped,en_US
+oms.state.invoice-with-tracking-number-sent,Versandt,de_DE
 oms.state.closed,Closed,en_US
 oms.state.closed,Geschlossen,de_DE
-oms.state.draft,Draft,en_US
-oms.state.draft,Entwurf,de_DE
-oms.state.payment-pending,Payment pending,en_US
-oms.state.payment-pending,Ausstehende Zahlung,de_DE
-oms.state.paid,Paid,en_US
-oms.state.paid,Bezahlt,de_DE
-oms.state.confirmed,Confirmed,en_US
-oms.state.confirmed,Bestätigt,de_DE
-oms.state.exported,Exported,en_US
-oms.state.exported,Exportiert,de_DE
-oms.state.shipped,Shipped,en_US
-oms.state.shipped,Versandt,de_DE
-oms.state.delivered,Delivered,en_US
-oms.state.delivered,Geliefert,de_DE
-oms.state.ready-for-return,Ready for return,en_US
-oms.state.ready-for-return,Bereit zum Retournieren,de_DE
-oms.state.refunded,Refunded,en_US
-oms.state.refunded,Zurückerstattet,de_DE
-oms.state.returned,Returned,en_US
-oms.state.returned,Retourniert,de_DE
-oms.state.waiting-for-return,Waiting for return,en_US
-oms.state.waiting-for-return,Wartet auf Retoure,de_DE
-oms.state.shipped-to-customer,Shipped to customer,en_US
-oms.state.shipped-to-customer,An den Kunden versandt,de_DE
-oms.state.sent-to-merchant,Sent to merchant,en_US
-oms.state.sent-to-merchant,An den Händler versandt,de_DE
-oms.state.shipped-by-merchant,Shipped by merchant,en_US
-oms.state.shipped-by-merchant,Von dem Händler versandt,de_DE
-oms.state.return-canceled,Return canceled,en_US
-oms.state.return-canceled,Retoure wurde abgebrochen,de_DE
-oms.state.merchant-split-pending,Merchant split pending,en_US
-oms.state.merchant-split-pending,Händleraufteilung steht noch aus,de_DE
-oms.state.gift-card-purchased,Gift card purchased,en_US
-oms.state.gift-card-purchased,Geschenkkarte gekauft,de_DE
-oms.state.gift-card-created,Gift card created,en_US
-oms.state.gift-card-created,Geschenkkarte erstellt,de_DE
-oms.state.gift-card-shipped,Gift card shipped,en_US
-oms.state.gift-card-shipped,Geschenkkarte verschickt,de_DE
-oms.state.invoice-generated,Invoice generated,en_US
-oms.state.invoice-generated,Rechnung generiert,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
@@ -2868,8 +2910,8 @@ mail.trans.footer.shop_name,Spryker Systems GmbH,en_US
 mail.trans.footer.shop_name,Spryker Systems GmbH,de_DE
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,en_US
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 351,de_DE
-mail.trans.footer.shopping_experience,Enjoy your shopping experience.,en_US
-mail.trans.footer.shopping_experience,Genieße das Shopping mit uns.,de_DE
+mail.trans.footer.shopping_experience,We look forward to your next visit!,en_US
+mail.trans.footer.shopping_experience,Wir freuen uns auf deinen nächsten Besuch!,de_DE
 mail.trans.footer.shop_zip_code,10115,en_US
 mail.trans.footer.shop_zip_code,10115,de_DE
 mail.trans.footer.your_team,Your myWorld.com Team,en_US
@@ -2892,8 +2934,10 @@ mail.trans.newsletter_unsubscribed.subtitle,Your email address has been unsubscr
 mail.trans.newsletter_unsubscribed.subtitle,"Deine E-Mail-Adresse wurde vom Spryker Shop Newsletter abgemeldet, aber du kannst dein Abo jederzeit in deinem Konto verwalten.",de_DE
 mail.trans.newsletter_unsubscribed.title,Sorry to see you go...,en_US
 mail.trans.newsletter_unsubscribed.title,"Es ist schade, dass du gehst...",de_DE
-mail.trans.order.billing_address,Billing address,en_US
+mail.trans.order.billing_address,Billing Address,en_US
 mail.trans.order.billing_address,Rechnungsadresse,de_DE
+mail.trans.order.delivery_address.company_data,Company data:,en_US
+mail.trans.order.delivery_address.company_data,Firmen Daten:,de_DE
 mail.trans.order.delivery_address,Delivery address,en_US
 mail.trans.order.delivery_address,Lieferadresse,de_DE
 mail.trans.order.delivery_method,Delivery method,en_US
@@ -2908,8 +2952,8 @@ mail.trans.order.tracking_code,Track delivery,en_US
 mail.trans.order.tracking_code,Lieferung verfolgen,de_DE
 mail.trans.order.payment_method,Payment Method,en_US
 mail.trans.order.payment_method,Zahlungsart,de_DE
-mail.trans.order.stock_name,Sold by,en_US
-mail.trans.order.stock_name,Verkauft von,de_DE
+mail.trans.order.stock_name,Sold by: myworld.com,en_US
+mail.trans.order.stock_name,Verkauft von: myworld.com,de_DE
 mail.trans.order.order_details,Order details,en_US
 mail.trans.order.order_details,Bestellung,de_DE
 mail.trans.order.order_reference,Order Number,en_US
@@ -2956,7 +3000,7 @@ customer.authorization.invalid_account,"You must first validate your email addre
 customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
 cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
-checkout.step.address.is_sellable,"Dear customer, a product is unfortunately not available in your delivery address.",en_US
+checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
 product.attribute.product_stock.name,Warehouse,en_US
 product.attribute.product_stock.name,Warenhaus,de_DE

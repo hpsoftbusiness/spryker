@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract;
 
 use Generated\Shared\Transfer\SpyUrlEntityTransfer;
-use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
@@ -131,9 +130,7 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
         parent::importProductAbstract($dataSet);
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER]
-            ->setPdpAttributes(json_encode($dataSet[CombinedAttributesExtractorStep::KEY_PDP_ATTRIBUTES]))
             ->setBrand($dataSet[static::COLUMN_BRAND_NAME]);
-
     }
 
     /**

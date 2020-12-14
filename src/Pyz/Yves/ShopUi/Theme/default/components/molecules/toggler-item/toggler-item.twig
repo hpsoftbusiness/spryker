@@ -16,7 +16,7 @@
 } %}
 
 {% block body %}
-    {% set titleClasses = 'title title--h6 title--uppercase text-break' %}
+    {% set titleClasses = 'title title--h6 text-break' %}
     {% set activeClass = config.name ~ '__title--active' %}
     {% set togglerClass = data.isToggler ? (data.isActive ? activeClass : data.hiddenClass) %}
     {% set titleActiveClass = data.isActive ? activeClass %}

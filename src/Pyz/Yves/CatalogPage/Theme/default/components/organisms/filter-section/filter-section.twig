@@ -5,7 +5,7 @@
 } %}
 
 {% block body %}
-    <div class="{{ config.name }}__top-panel is-hidden-xl-only">
+    <div class="{{ config.name }}__top-panel is-hidden-lg-xl">
         <h3 class="text-center title title--medium spacing-bottom">{{ 'catalog.filter.filter' | trans }}</h3>
         <span class="{{ config.name }}__top-panel-button {{ data.togglerClass }}">
             {% include atom('icon') with {
@@ -25,7 +25,7 @@
             {% if filterHasValues %}
                 {% block filter %}
                     {% embed molecule('toggler-item') with {
-                        modifiers: ['filter', 'with-bottom-border', (loop.first ? 'mobile' : '')],
+                        modifiers: ['filter', (loop.first ? 'mobile' : '')],
                         data: {
                             title: ('product.filter.' ~ filter.name | lower) | trans,
                             triggerClass: loop.first ? config.jsName ~ '__trigger-category' : config.jsName ~ '__trigger',
@@ -37,9 +37,17 @@
                             filterPath: data.filterPath,
                             categories: data.categories,
                             filter: filter,
+                            isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
                             parentJsName: data.parentJsName,
+                            index: loop.index,
                         },
                     } only %}
+                        {% block title %}
+                            {% set titleClasses = 'title title--h6 text-break' %}
+
+                            {{ parent() }}
+                        {% endblock %}
+
                         {% block contentText %}
                             {% include [
                                 molecule('filter-' ~ embed.filter.config.name, 'CatalogPage'),
@@ -54,7 +62,9 @@
                                     max: embed.filter.max | default(0),
                                     activeMin: embed.filter.activeMin | default(0),
                                     activeMax: embed.filter.activeMax | default(0),
+                                    isEmptyCategoryFilterValueVisible: embed.isEmptyCategoryFilterValueVisible,
                                     parentJsName: embed.parentJsName,
+                                    index: embed.index,
                                 },
                             } only %}
                         {% endblock %}

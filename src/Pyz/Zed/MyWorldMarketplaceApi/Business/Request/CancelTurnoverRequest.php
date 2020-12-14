@@ -86,7 +86,7 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
             '%s/dealers/%s/turnovers/%s/cancel',
             $this->myWorldMarketplaceApiConfig->getApiUrl(),
             $this->myWorldMarketplaceApiConfig->getDealerId(),
-            sprintf('%s-%s', $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(), $orderTransfer->getOrderReference())
+            $this->getTurnoverReference($orderTransfer)
         );
     }
 
@@ -101,7 +101,7 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
         $accessTokenTransfer->requireAccessToken();
 
         $requestBody = $this->utilEncodingService->encodeJson([
-            'Amount' => (string)bcdiv($orderTransfer->getTotals()->getPriceToPay(), 100, 2),
+            'Amount' => (string)bcdiv($orderTransfer->getTotals()->getCanceledTotal(), 100, 2),
             'Currency' => $orderTransfer->getCurrencyIsoCode(),
         ]);
 
@@ -113,5 +113,20 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
             ],
             'body' => $requestBody,
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    protected function getTurnoverReference(OrderTransfer $orderTransfer): string
+    {
+        return sprintf(
+            '%s-%s-%s',
+            $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(),
+            $orderTransfer->getOrderReference(),
+            strtotime($orderTransfer->getCreatedAt())
+        );
     }
 }
