@@ -24,7 +24,6 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     {
         $attributes = $this->getConcreteAttributes($productConcreteLocalizedEntity);
         $hiddenAttributes = $this->productFacade->decodeProductAttributes($productConcreteLocalizedEntity['SpyProduct']['hidden_attributes']);
-        $pdpAttributes = $this->productFacade->decodeProductAttributes($productConcreteLocalizedEntity['SpyProduct']['pdp_attributes']);
 
         $spyProductConcreteEntityArray = $productConcreteLocalizedEntity['SpyProduct'];
         unset($productConcreteLocalizedEntity['attributes']);
@@ -44,7 +43,6 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->setDescription($this->getDescription($productConcreteLocalizedEntity))
             ->setAttributes($attributes)
             ->setHiddenAttributes($hiddenAttributes)
-            ->setPdpAttributes($pdpAttributes)
             ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes))
             ->setIsAffiliate($isAffiliate)
             ->setAffiliateData($affiliateData);
