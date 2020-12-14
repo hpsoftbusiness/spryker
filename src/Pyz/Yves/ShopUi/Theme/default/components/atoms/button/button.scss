@@ -27,6 +27,17 @@
             text-decoration: none;
         }
 
+        &--wishlist {
+            display: flex;
+            font-weight: 400;
+            padding: 0;
+
+            .icon {
+                margin-right: rem(6);
+                color: $setting-color-yellow;
+            }
+        }
+
         &--shadowless {
             box-shadow: none;
         }

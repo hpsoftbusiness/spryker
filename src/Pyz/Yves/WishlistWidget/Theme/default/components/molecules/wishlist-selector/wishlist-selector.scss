@@ -2,17 +2,6 @@
     #{$name} {
         position: relative;
 
-        .button {
-            display: flex;
-            font-weight: 400;
-            padding: 0;
-
-            svg {
-                margin-right: rem(6);
-                color: $setting-color-yellow;
-            }
-        }
-
         @content;
     }
 }
