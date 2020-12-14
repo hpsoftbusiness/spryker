@@ -9,6 +9,7 @@ namespace Pyz\Zed\Customer\Business;
 
 use Pyz\Zed\Customer\Business\Anonymizer\CustomerAnonymizer;
 use Pyz\Zed\Customer\Business\Customer\Customer;
+use Pyz\Zed\Customer\CustomerDependencyProvider;
 use Spryker\Zed\Customer\Business\CustomerBusinessFactory as SprykerCustomerBusinessFactory;
 
 class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
@@ -27,7 +28,8 @@ class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
             $this->getLocaleQueryContainer(),
             $this->getStore(),
             $this->createCustomerExpander(),
-            $this->getPostCustomerRegistrationPlugins()
+            $this->getPostCustomerRegistrationPlugins(),
+            $this->getPostCustomerCreatePlugins(),
         );
     }
 
@@ -42,5 +44,13 @@ class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
             $this->createAddress(),
             $this->getCustomerAnonymizerPlugins()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\Customer\Dependency\Plugin\CustomerPostCreatePluginInterface[]
+     */
+    public function getPostCustomerCreatePlugins(): array
+    {
+        return $this->getProvidedDependency(CustomerDependencyProvider::PLUGINS_POST_CUSTOMER_CREATE);
     }
 }

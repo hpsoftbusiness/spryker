@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Customer;
 
+use Pyz\Zed\CustomerGroup\Communication\Plugin\Customer\CustomerGroupCustomerPostCreatePlugin;
 use Pyz\Zed\CustomerGroupProductList\Communication\Plugin\Customer\CustomerGroupProductListCustomerTransferExpanderPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Customer\AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin;
@@ -21,6 +22,35 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
     public const SALES_FACADE = 'sales facade';
     public const NEWSLETTER_FACADE = 'newsletter facade';
+
+    public const PLUGINS_POST_CUSTOMER_CREATE = 'PLUGINS_POST_CUSTOMER_CREATE';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addPostCustomerCreatePlugins($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPostCustomerCreatePlugins(Container $container): Container
+    {
+        $container->set(static::PLUGINS_POST_CUSTOMER_CREATE, function () {
+            return $this->getPostCustomerCreatePlugins();
+        });
+
+        return $container;
+    }
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -65,6 +95,16 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new CustomerTransferUsernameExpanderPlugin(),
             new AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin(),
             new CustomerGroupProductListCustomerTransferExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Pyz\Zed\Customer\Dependency\Plugin\CustomerPostCreatePluginInterface[]
+     */
+    protected function getPostCustomerCreatePlugins(): array
+    {
+        return [
+            new CustomerGroupCustomerPostCreatePlugin(),
         ];
     }
 }
