@@ -17,6 +17,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @method \Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface getQueryContainer()
  * @method \Pyz\Zed\CustomerGroup\Communication\CustomerGroupCommunicationFactory getFactory()
+ * @method \Pyz\Zed\CustomerGroup\CustomerGroupConfig getConfig()
+ * @method \Pyz\Zed\CustomerGroup\Persistence\CustomerGroupRepositoryInterface getRepository()
+ * @method \Pyz\Zed\CustomerGroup\Business\CustomerGroupFacadeInterface getFacade()
  */
 class ProductListAssignmentForm extends AbstractType
 {
