@@ -1,15 +1,13 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CheckoutPage\Plugin\Twig;
 
-use Generated\Shared\Transfer\MoneyTransfer;
 use Spryker\Service\Container\ContainerInterface;
-use Spryker\Shared\Money\Formatter\MoneyFormatterCollection;
 use Spryker\Shared\TwigExtension\Dependency\Plugin\TwigPluginInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
 use Twig\Environment;
@@ -19,6 +17,9 @@ class ProductAtttributeFilterTwigPlugin extends AbstractPlugin implements TwigPl
 {
     public const FILTER_NAME_PRODUCT_ATTRIBUTE_FILTER = 'filterAttributes';
 
+    /**
+     * @var string[]
+     */
     protected static $main_attributes = [
         'brand',
         'color',

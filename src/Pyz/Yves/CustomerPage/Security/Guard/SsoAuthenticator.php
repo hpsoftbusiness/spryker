@@ -184,6 +184,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
+     *
      * @return void
      */
     protected function setReferer(Request $request): void

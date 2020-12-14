@@ -47,11 +47,17 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const DEFAULT_PRICE_TYPE = 'DEFAULT';
     public const ORIGINAL_PRICE_TYPE = 'ORIGINAL';
 
+    /**
+     * @var array
+     */
     public static $priceTypes = [
         self::DEFAULT_PRICE_TYPE => self::COLUMN_PRICE_GROSS,
         self::ORIGINAL_PRICE_TYPE => self::COLUMN_PRICE_GROSS_ORIGINAL,
     ];
 
+    /**
+     * @var array
+     */
     public static $priceTypeEntityTransfers = [];
 
     /**
