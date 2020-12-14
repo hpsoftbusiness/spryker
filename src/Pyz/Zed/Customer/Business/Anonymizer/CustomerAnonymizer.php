@@ -23,6 +23,7 @@ class CustomerAnonymizer extends SprykerCustomerAnonymizer
         $customerTransfer->setMyWorldCustomerId($this->generateRandomMyWorldCustomerId())
             ->setCustomerType(null)
             ->setIsActive(false)
+            ->setCountryId(null)
             ->setCardNumber($this->generateRandomCardNumber())
             ->setMyWorldCustomerNumber(null);
 
