@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract;
 
 use Generated\Shared\Transfer\SpyUrlEntityTransfer;
-use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
