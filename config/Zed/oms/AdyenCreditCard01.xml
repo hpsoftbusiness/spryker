@@ -118,7 +118,7 @@
             </transition>
 
             <transition>
-                <source>refunded</source>
+                <source>refund calculated</source>
                 <target>ready for turnover cancellation</target>
                 <event>start turnover cancellation process</event>
             </transition>

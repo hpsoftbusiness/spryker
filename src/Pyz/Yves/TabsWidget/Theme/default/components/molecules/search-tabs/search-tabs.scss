@@ -1,15 +1,18 @@
-$search-tab-border: rem(1) solid $setting-color-lighter;
+$search-tab-border: rem(1) solid $setting-color-gray-3;
 
 @mixin tabs-widget-search-tabs($name: '.search-tabs') {
     #{$name} {
         text-align: center;
         border-left: $search-tab-border;
         border-bottom: $search-tab-border;
+        margin-top: rem(10);
 
         &__item {
+            @include helper-effect-transition(color);
             display: block;
             border-top: $search-tab-border;
             border-right: $search-tab-border;
+            padding: rem(5);
 
             @include helper-breakpoint-media-min($md-min) {
                 display: inline-block;
@@ -32,6 +35,10 @@ $search-tab-border: rem(1) solid $setting-color-lighter;
                     height: rem(1);
                     background-color: $setting-color-white;
                 }
+            }
+
+            &:hover {
+                text-decoration: none;
             }
         }
 

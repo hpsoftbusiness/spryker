@@ -6,12 +6,10 @@
 
             @include helper-breakpoint-media-min($md-min) {
                 padding-top: rem(20);
-                border-bottom: rem(1) dotted $setting-color-gray-3;
             }
         }
 
         &__progress-wrap {
-            display: inline-block;
             position: relative;
             min-width: 50%;
 
@@ -23,11 +21,11 @@
                 content: '';
                 position: absolute;
                 left: 0;
-                top: 0;
+                bottom: 0;
                 right: 0;
-                height: rem(1);
-                background-color: $setting-color-black;
-                opacity: 0.4;
+                height: rem(5);
+                background-color: $setting-color-gray-2;
+                border-radius: $setting-border-radius;
 
                 @include helper-breakpoint-media-min($md-min) {
                     display: none;
@@ -36,12 +34,14 @@
         }
 
         &__progress-mob {
+            background-color: $setting-color-main;
+            border-bottom-left-radius: $setting-border-radius;
+            border-top-left-radius: $setting-border-radius;
+            height: rem(5);
             position: absolute;
             left: 0;
-            top: 0;
-            height: rem(1);
+            bottom: 0;
             width: 0;
-            background-color: $setting-color-black;
 
             @include helper-breakpoint-media-min($md-min) {
                 display: none;

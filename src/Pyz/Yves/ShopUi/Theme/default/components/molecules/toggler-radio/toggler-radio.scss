@@ -30,6 +30,8 @@
 
             #{$name}__box {
                 margin-top: rem(6);
+                border: none;
+                width: 0;
 
                 &::before {
                     content: '';
@@ -48,19 +50,19 @@
             &:focus {
                 #{$name}__box::before {
                     border-color: $setting-color-input-border-focus;
-                    background-color: $setting-color-gray-2;
+                    background-color: $setting-color-transparent;
                 }
             }
 
             #{$name}__input:checked {
                 & + #{$name}__box {
-                    border: rem(3) solid $setting-color-white;
+                    border: none;
                     background-color: $setting-color-black;
-                    box-shadow: 0 0 0 rem(1) $setting-color-input-border;
+                    width: 0;
 
                     &::before {
-                        border: none;
-                        background-color: $setting-color-alpha-1;
+                        background-color: $setting-color-transparent;
+                        border-color: $setting-color-main;
                     }
                 }
 
@@ -68,6 +70,10 @@
                     pointer-events: none;
                     visibility: hidden;
                     opacity: 0;
+                }
+
+                & ~ #{$name}__label {
+                    color: $setting-color-main;
                 }
             }
 

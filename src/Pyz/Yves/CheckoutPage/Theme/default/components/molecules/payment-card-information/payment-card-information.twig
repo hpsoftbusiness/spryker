@@ -44,5 +44,5 @@
             <li class="{{ config.name }}__item">{{ 'dummyPaymentCreditCard.card_expires' | trans }}: {{ data.payment.dummyPayment.cardExpiresMonth }}, {{ data.payment.dummyPayment.cardExpiresYear }}</li>
         {% endif %}
     </ul>
-    <a class="link link--secondary" href="{{ url('checkout-payment') }}">{{ 'general.edit.button' | trans }}</a>
+    <a class="link link--primary" href="{{ url('checkout-payment') }}">{{ 'general.edit.button' | trans }}</a>
 {% endblock %}

@@ -10,7 +10,6 @@ namespace Pyz\Client\Sso\Client\Mapper;
 use Exception;
 use Generated\Shared\Transfer\CustomerBalanceTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
 
 class CustomerInformationMapper implements CustomerInformationMapperInterface
 {
@@ -74,8 +73,10 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
 
     /**
      * @param int $customerType
-     * @return string
+     *
      * @throws \Exception
+     *
+     * @return string
      */
     protected function mapCustomerType(int $customerType): string
     {

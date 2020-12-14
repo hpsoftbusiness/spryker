@@ -23,6 +23,8 @@ export default class SlickCarousel extends Component {
 
     protected initialize(): void {
         this.$container.on('init', () => {
+            this.container.style.visibility = 'visible';
+
             if (this.customSelects) {
                 this.customSelects.forEach((select: CustomSelect) => {
                     select.initSelect();
