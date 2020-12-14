@@ -1,0 +1,19 @@
+@mixin shop-ui-gdpr-tag($name: '.gdpr-tag') {
+    #{$name} {
+        z-index: 10000;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: rem(16);
+        color: white;
+        background-color: transparentize($setting-color-black, .05);
+        align-items: center;
+        margin-right: rem(16);
+
+        &__button {
+            width: auto;
+        }
+    }
+}
+
+@include shop-ui-gdpr-tag()

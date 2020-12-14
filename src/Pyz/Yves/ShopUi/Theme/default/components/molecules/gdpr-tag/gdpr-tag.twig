@@ -1,0 +1,32 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'gdpr-tag',
+    tag: 'gdpr-tag',
+} %}
+
+{% block body %}
+    <div
+        id="cookie-notification"
+        role="alert"
+        data-display="flex"
+        style="display:none"
+        class="{{ config.name }}"
+    >
+        <p class="{{ config.name }}__message">
+            We use cookies to collect and analyse information on our site's
+            performance and to enable the site to function. You can choose to
+            allow all cookies by clicking 'Allow all' or manage them
+            individually by clicking 'Manage cookie preferences', where you will
+            also find more information.
+        </p>
+
+        <button
+            type="button"
+            id="cookie-notification__accept"
+            class="{{ config.name }}__button button button--small button--expand"
+        >
+            Allow all
+        </button>
+    </div>
+{% endblock %}
