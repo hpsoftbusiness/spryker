@@ -21,15 +21,12 @@
                 border-radius: 50%;
                 z-index: $setting-zi-element + 1;
                 cursor: pointer;
+                box-shadow: 0 rem(7) rem(40) 0 $setting-color-alpha-2;
 
                 @include helper-breakpoint-media-min($lg-min) {
                     top: calc(50% - #{rem(22)});
                     width: rem(44);
                     height: rem(44);
-                }
-
-                &:hover {
-                    box-shadow: 0 rem(7) rem(40) 0 $setting-color-alpha-2;
                 }
             }
 
@@ -176,6 +173,34 @@
                 }
             }
         }
+
+        &--products {
+            margin: 0 rem(-12) rem(30);
+
+            .slick-list {
+                height: auto !important;
+                padding: rem(10) 0 rem(20);
+                margin-top: rem(-10);
+            }
+
+            .slick-slide {
+                padding: 0 rem(12);
+            }
+
+            .slick-prev {
+                @include helper-breakpoint-media-min($xxl-min) {
+                    left: rem(-8);
+                }
+            }
+
+            .slick-next {
+                @include helper-breakpoint-media-min($xxl-min) {
+                    right: rem(-8);
+                }
+            }
+        }
+
+        @content;
     }
 }
 
