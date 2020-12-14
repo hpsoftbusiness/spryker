@@ -4,467 +4,378 @@
 <!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
-    <title></title>
-    <style type="text/css">
-        body,
-        .bodyTable,
-        .bodyCell {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #fafafa;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myWorld</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            display: block;
-            margin: 0;
-            padding: 0;
-            color: #202020;
-            text-align: left;
-            font: bold 18px/125% Helvetica;
-        }
-
-        h1 {
-            font-size: 26px;
-        }
-
-        h2 {
-            font-size: 22px;
-        }
-
-        h3 {
-            font-size: 20px;
-        }
-
-        p {
-            padding: 0;
-            margin: 10px;
-            line-height: 125%;
-        }
-
-        table {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-
-        img,
-        a img {
-            border: 0;
-            height: auto;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
-        }
-
-        p,
-        a,
-        li,
-        td,
-        blockquote {
-            mso-line-height-rule: exactly;
-        }
-
-        p,
-        a,
-        li,
-        td,
-        body,
-        table,
-        blockquote {
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        a[href^=tel],
-        a[href^=sms] {
-            color: inherit;
-            cursor: default;
-            text-decoration: none;
-        }
-
-        a[x-apple-data-detectors] {
-            color: inherit !important;
-            text-decoration: none !important;
-            font-size: inherit !important;
-            font-family: inherit !important;
-            font-weight: inherit !important;
-            line-height: inherit !important;
-        }
-
-        a.sprykerButton {
-            display: block;
-        }
-
-        .sprykerTemplateContainer {
-            max-width: 600px !important;
-        }
-
-        .sprykerImage,
-        .sprykerRetinaImage {
-            vertical-align: bottom;
-        }
-
-        .sprykerTextContent {
-            word-break: break-word;
-        }
-
-        .sprykerTextContent img {
-            height: auto !important;
-        }
-
-        .sprykerDividerBlock {
-            table-layout: fixed !important;
-        }
-
-        .sprykerPreviewText {
-            display: none !important;
-        }
-
-        .sprykerTemplateContainer {
-            border: 0;
-        }
-
-        .sprykerTemplatePreheader {
-            background: #fafafa;
-            border-top: 0;
-            border-bottom: 0;
-            padding-top: 9px;
-            padding-bottom: 9px;
-        }
-
-        .sprykerTemplateHeader {
-            background: #fafafa;
-            border-top: 0;
-            border-bottom: 0;
-            padding-top: 9px;
-            padding-bottom: 0;
-        }
-
-        .sprykerTemplateBody {
-            background: #fff;
-            border-top: 0;
-            border-bottom: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .sprykerTemplateBody .sprykerTextContent,
-        .sprykerTemplateBody .sprykerTextContent p {
-            color: #202020;
-            font: normal 16px/150% Helvetica;
-            text-align: left;
-        }
-
-        .sprykerTemplateBody .sprykerTextContent a,
-        .sprykerTemplateBody .sprykerTextContent p a {
-            color: #1ebea0;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .templateFooter {
-            background: #4c4c4c;
-            border-top: 0;
-            border-bottom: 0;
-            padding-top: 18px;
-            padding-bottom: 18px;
-        }
-
-        .templateFooter .sprykerTextContent {
-            color: #fff;
-            font: normal 12px/150% Helvetica;
-            text-align: center;
-        }
-
-        .templateFooter .sprykerTextContent a {
-            color: #1ebea0;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .sprykerButtonContentContainer {
-            min-width: 30%;
-            border-collapse: separate !important;
-            border-radius: 2px;
-            background: #1ebea0;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        @media only screen and (min-width:768px) {
-            .sprykerTemplateContainer {
-                width: 600px !important;
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            body,
-            table,
-            td,
-            p,
-            a,
-            li,
-            blockquote {
-                -webkit-text-size-adjust: none !important;
-            }
-
-            body {
-                width: 100% !important;
-                min-width: 100% !important;
-            }
-
-            .sprykerRetinaImage {
-                max-width: 100% !important;
-            }
-
-            .sprykerImage {
-                width: 100% !important;
-            }
-
-            .sprykerCartContainer,
-            .sprykerCaptionTopContent,
-            .sprykerRecContentContainer,
-            .sprykerCaptionBottomContent,
-            .sprykerTextContentContainer,
-            .sprykerBoxedTextContentContainer,
-            .sprykerImageGroupContentContainer,
-            .sprykerCaptionLeftTextContentContainer,
-            .sprykerCaptionRightTextContentContainer,
-            .sprykerCaptionLeftImageContentContainer,
-            .sprykerCaptionRightImageContentContainer,
-            .sprykerImageCardLeftTextContentContainer,
-            .sprykerImageCardRightTextContentContainer,
-            .sprykerImageCardLeftImageContentContainer,
-            .sprykerImageCardRightImageContentContainer {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            .sprykerBoxedTextContentContainer {
-                min-width: 100% !important;
-            }
-
-            .sprykerImageGroupContent {
-                padding: 9px !important;
-            }
-
-            .sprykerCaptionLeftContentOuter .sprykerTextContent,
-            .sprykerCaptionRightContentOuter .sprykerTextContent {
-                padding-top: 9px !important;
-            }
-
-            .sprykerImageCardTopImageContent,
-            .sprykerCaptionBottomContent:last-child .sprykerCaptionBottomImageContent,
-            .sprykerCaptionBlockInner .sprykerCaptionTopContent:last-child .sprykerTextContent {
-                padding-top: 18px !important;
-            }
-
-            .sprykerImageCardBottomImageContent {
-                padding-bottom: 9px !important;
-            }
-
-            .sprykerImageGroupBlockInner {
-                padding-top: 0 !important;
-                padding-bottom: 0 !important;
-            }
-
-            .sprykerImageGroupBlockOuter {
-                padding-top: 9px !important;
-                padding-bottom: 9px !important;
-            }
-
-            .sprykerBoxedTextContentColumn {
-                padding-right: 18px !important;
-                padding-left: 18px !important;
-            }
-
-            .sprykerImageCardLeftImageContent,
-            .sprykerImageCardRightImageContent {
-                padding-right: 18px !important;
-                padding-bottom: 0 !important;
-                padding-left: 18px !important;
-            }
-
-            .spryker-preview-image-uploader {
-                display: none !important;
-                width: 100% !important;
-            }
-
-            h1 {
-                font-size: 22px !important;
-                line-height: 125% !important;
-            }
-
-            h2 {
-                font-size: 20px !important;
-                line-height: 125% !important;
-            }
-
-            h3 {
-                font-size: 18px !important;
-                line-height: 125% !important;
-            }
-
-            h4 {
-                font-size: 16px !important;
-                line-height: 150% !important;
-            }
-
-            .sprykerBoxedTextContentContainer .sprykerTextContent,
-            .sprykerBoxedTextContentContainer .sprykerTextContent p {
-                font-size: 14px !important;
-                line-height: 150% !important;
-            }
-
-            .sprykerTemplatePreheader {
-                display: block !important;
-            }
-
-            .sprykerTemplatePreheader .sprykerTextContent,
-            .sprykerTemplatePreheader .sprykerTextContent p {
-                font-size: 14px !important;
-                line-height: 150% !important;
-            }
-
-            .sprykerTemplateBody .sprykerTextContent,
-            .sprykerTemplateBody .sprykerTextContent p {
-                font-size: 16px !important;
-                line-height: 150% !important;
-            }
-
-            .templateFooter .sprykerTextContent {
-                font-size: 14px !important;
-                line-height: 150% !important;
-            }
-        }
-    </style>
+<style type="text/css">
+div, p, a, li, td {
+  -webkit-text-size-adjust: none;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff;
+}
+img {
+  display: block;
+}
+table {
+  mso-table-lspace: 0pt !important;
+  mso-table-rspace: 0pt !important;
+}
+a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  color: inherit;
+  display: inline-block;
+}
+p {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Montserrat", sans-serif;
+}
+</style>
+<style type="text/css">
+@media only screen and (max-width: 920px) {
+.width_100 {
+  width: 100%;
+  max-width: 100%;
+}
+.tpl-content {
+  padding: 0px !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.width_50percent {
+  max-width: 50%;
+  margin: 0 auto !important;
+  width: 50% !important;
+}
+}
+</style>
+<style type="text/css">
+@media only screen and (max-width: 720px) {
+.width_100 {
+  width: 100%;
+  max-width: 100%;
+}
+.width_90percent {
+  width: 90% !important;
+  max-width: 90%;
+  margin: 0 auto !important;
+  height: auto!important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.tablet-resp-block {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+.tablet-resp-erase {
+  display: none !important;
+  height: 0px !important;
+}
+.width_50percent {
+  max-width: 100%;
+  display: block !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+}
+</style>
+<style type="text/css">
+@media only screen and (max-width: 620px) {
+.padding-top-bottom {
+  padding: 20px 0px;
+}
+.height-and-padding-bottom {
+  height: auto;
+  padding-bottom: 20px !important;
+}
+.width_90percent {
+  width: 90% !important;
+  max-width: 90%;
+  margin: 0 auto !important;
+  height: auto!important;
+}
+.display-block {
+  display: block !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+.width_90percent .width_100percent {
+  width: 100% !important;
+  height: auto;
+  display: block;
+  margin: 0 auto !important;
+}
+.width_100percent {
+  width: 100% !important;
+  height: auto;
+  margin: 0 auto !important;
+}
+.tbody-and-tr {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+.padding-top {
+  padding-top: 10px !important;
+}
+.padding {
+  padding: 10px 0px;
+}
+.logo-outer {
+  text-align: center;
+}
+.padding-top-60 {
+  padding-top: 60px !important;
+  height: auto;
+  display: block;
+}
+.padding-top-220 {
+  padding-top: 220px !important;
+  height: auto;
+  display: block;
+}
+.padding-bottom-60 {
+  padding-bottom: 60px !important;
+  height: auto;
+  display: block;
+}
+.padding-top-30 {
+  padding-top: 30px !important;
+  height: auto;
+  display: block;
+}
+.padding-bottom-30 {
+  padding-bottom: 30px !important;
+  height: auto;
+  display: block;
+}
+.img-center img {
+  margin: 0 auto !important;
+}
+.erase {
+  display: none;
+  height: 0px;
+}
+.text-center {
+  float: none !important;
+  text-align: center;
+  text-align: -webkit-center;
+}
+.text-left {
+  float: none !important;
+  text-align: left;
+  text-align: -webkit-left;
+}
+.text-right {
+  float: none !important;
+  text-align: right;
+  text-align: -webkit-right;
+}
+.hero-section-font-1 {
+  font-size: 24px !important;
+  line-height: normal !important;
+  letter-spacing: normal !important
+}
+.hero-section-font-2 {
+  font-size: 36px !important;
+  line-height: normal !important;
+  letter-spacing: normal !important
+}
+.res-font-white {
+  color: #FFFFFF !important;
+}
+.full-width-img img {
+  width: 100%;
+  height: auto;
+}
+.resp-remove-bg {
+  background: #333333 !important;
+}
+.background-img {
+  background-image: none !important;
+}
+.background-cover {
+  background-size: cover !important;
+}
+.block-with-height {
+  display: inline-block;
+  width: 100%;
+}
+.inline-block {
+  display: inline-block;
+}
+.left-right-pad {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.padding-zero {
+  padding: 0px 0px 0px 0px !important;
+}
+a {
+  display: block;
+}
+}
+</style>
+<style type="text/css">
+@media only screen and (max-width: 420px) {
+.menu {
+    font-size: 12px !important;
+}
+.display-block-mob {
+    display: block !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+br {
+    display: none;
+}
+.resp-menu {
+    font-size: 10px !important;
+    font-weight: normal !important;
+}
+.side-border {
+    border: 1px solid #5a5a5a !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+}
+}
+</style>
 </head>
+<body style="margin:0px; padding:0px;">
 
-<body style="height: 100%; margin: 0; padding: 0; width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #fafafa;">
-<center>
-    <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="bodyTable" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; height: 100%; margin: 0; padding: 0; width: 100%; background: #fafafa;">
-        <tr>
-            <td align="center" valign="top" class="bodyCell" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; height: 100%; margin: 0; width: 100%;">
-                <!--[if (gte mso 9)|(IE)]>
-                <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
-                    <tr>
-                        <td align="center" valign="top" width="600" style="width:600px;">
-                <![endif]-->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="sprykerTemplateContainer" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0; max-width: 600px !important;">
-                    <!-- LOGO -->
-                    <tr>
-                        <td valign="top" class="sprykerTemplatePreheader" style="background: #fafafa; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top: 0; border-bottom: 0; padding-top: 9px; padding-bottom: 9px;">
-                            <table class="sprykerImageBlock" style="min-width: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
-                                <tr>
-                                    <td style="padding: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" class="sprykerImageBlockInner" valign="top">
-                                        <table class="sprykerImageContentContainer" style="min-width: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
-                                            <tr>
-                                                <td class="sprykerImageContent" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align: center; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-                                                    <img alt="" src="{{ yves_url('/assets/static/images/email/logo-main.png') }}" style="max-width: 130px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; height: auto; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" class="sprykerImage" width="130" align="middle">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+{% block content %}
+    {{ placeholders.content | raw }}
+{% endblock %}
 
-                    <!-- CONTENT -->
+<table class="width_100" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" width="900" style="border-collapse:collapse;">
+  <tbody>
+    <tr>
+      <td width="100%" align="center" valign="top"><table class="width_90percent" align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tbody>
+            <tr>
+              <td width="100%" height="70" style="line-height:1px;" class="padding-top-30"></td>
+            </tr>
+            <tr>
+              <td width="100%" align="center" valign="middle" style="line-height: 1px;"><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="110">
+                  <tbody>
                     <tr>
-                        <td valign="top" class="sprykerTemplateBody" style="background: #fff; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top: 0; border-bottom: 0; padding-top: 0; padding-bottom: 0;">
-                            {% block content %}
-                                {{ placeholders.content | raw }}
-                            {% endblock %}
-                        </td>
+                      <td width="100%" style="line-height:1px;border-bottom: 1px solid #f0be00;"></td>
                     </tr>
+                  </tbody>
+                </table></td>
+            </tr>
+            <tr>
+              <td width="100%" height="50" style="line-height:1px;"></td>
+            </tr>
+            <tr>
+              <td width="100%" valign="top" align="center"><table cellpadding="0" cellspacing="0" border="0" width="100%" align="center" class="width_90percent">
+                  <tbody>
+                    <tr>
+                      <td class="display-block" width="190" valign="middle" align="center"><table align="center" width="190" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                          <tbody>
+                            <tr>
+                              <td width="100%" height="220" align="center" valign="top" bgcolor="#333333" background="{{ yves_url('/assets/static/images/email/img-33.jpg') }" style="background-image: url({{ yves_url('/assets/static/images/email/img-33.jpg') });background-size: cover;background-position: center center;background-repeat:no-repeat; line-height: 1px;"></td>
+                            </tr>
+                          </tbody>
+                        </table></td>
+                      <td class="display-block padding" width="36" style="line-height:1px;"></td>
+                      <td class="display-block" width="374" valign="middle" align="center"><table class="width_90percent" width="374" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                          <tbody>
+                            <tr>
+                              <td width="100%" align="left" valign="top" style="margin:0px;padding:0px;font-size: 16px;color: #1a1a1a;font-family: 'Montserrat', sans-serif;font-weight: bold;line-height: 18px;text-transform: uppercase;" class="text-center">{{ 'mail.trans.footer.shopping_experience' | trans }}</td>
+                            </tr>
+                            <tr>
+                              <td width="100%" height="20" style="line-height:1px;" class="display-block padding-top"></td>
+                            </tr>
+                            <tr>
+                              <td class="text-center" width="100%" valign="top" align="left" style="margin: 0px;padding: 0px;font-size: 14px;line-height: 24px;color: #555555;font-family: 'Montserrat', sans-serif;font-weight: normal;">
+                                {{ 'mail.trans.footer.for_more_information' | trans }}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+            </tr>
 
-                    <!-- TOP FOOTER -->
-                    <tr>
-                        <td>
-                            <table class="sprykerTextBlock" style="min-width: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
-                                <tr>
-                                    <td class="sprykerTextBlockInner" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-                                        <!--[if mso]>
-                                        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                                            <tr>
-                                                <td valign="top" width="600" style="width:600px;">
-                                        <![endif]-->
-                                        <table style="max-width: 100%; min-width: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" class="sprykerTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
-                                            <tbody>
-                                            <tr>
-                                                <td class="sprykerTemplateHeader sprykerTextContent" style="background: #fafafa; padding-top: 18px; padding-right: 18px; padding-bottom: 18px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 16px; line-height: 150%; text-align: left;" valign="top">
-                                                    <div style="text-align: center;">
-                                                        <p style="margin: 0 auto; text-align: center; max-width: 50ch;">
-                                                            <span style="font-family: Helvetica, sans-serif;">
-                                                                <strong>{{ 'mail.trans.footer.for_more_information' | trans }} </strong>
-                                                            </span>
-                                                        </p>
-                                                        <br>
-                                                        <strong>{{ 'mail.trans.footer.shopping_experience' | trans }}</strong><br>
-                                                        <br>
-                                                        <span style="color: #4a4a4a;">{{ 'mail.trans.footer.your_team' | trans }}</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--[if mso]>
-                                        </td>
-                                        </tr>
-                                        </table>
-                                        <![endif]-->
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+            <tr>
+              <td width="100%" height="70" style="line-height:1px;" class="padding-bottom-30"></td>
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+  </tbody>
+</table>
 
-                    <!-- BOTTOM FOOTER -->
+<table class="width_100" align="center" border="0" cellpadding="0" cellspacing="0" width="900" style="border-collapse:collapse;" bgcolor="#fff">
+  <tbody>
+    <tr>
+      <td width="100%" height="30" style="line-height:1px;"></td>
+    </tr>
+    <tr>
+      <td width="100%" align="center" valign="middle"><table class="width_90percent" align="center" border="0" cellpadding="0" width="600" cellspacing="0" style="border-collapse:collapse;">
+          <tbody>
+            <tr>
+              <td height="20" style="line-height:1px; border-collapse:collapse; border-top: 1px solid #ddd;"></td>
+            </tr>
+            <tr>
+              <td width="100%" align="center" valign="top"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                  <tbody>
                     <tr>
-                        <td valign="top" class="templateFooter" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top: 0; border-bottom: 0; padding-top: 0; padding-bottom: 0;">
-                            <table class="sprykerCaptionBlock" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                                <tr>
-                                    <td class="sprykerCaptionBlockInner" style="padding: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-                                        <table class="sprykerCaptionRightContentOuter" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                                            <tr>
-                                                <td class="sprykerCaptionCenterContentInner" style="padding: 0 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-                                                    <table class="sprykerCaptionRightImageContentContainer" width="176" cellspacing="0" cellpadding="0" border="0" align="center" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin-bottom: 18px;">
-                                                        <tr>
-                                                            <td class="sprykerCaptionRightImageContent" valign="top" align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                                                                <img alt="" src="https://mcusercontent.com/30fe9351d1b2906f35382f223/images/3fd0a6a9-ff23-4de9-a3ad-9c5ef51c85e5.png" style="max-width: 130px; border: 0; height: auto; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; vertical-align: bottom;" class="sprykerImage" width="130">
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
+                      <td class="display-block" width="380" align="center" valign="middle"><table class="width_90percent text-center" width="380" align="right" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                          <tbody>
+                            <tr>
+                              <td class="display-block padding-top" width="110" align="center" valign="middle">
+                                <img src="{{ yves_url('/assets/static/images/email/logo-footer.png') }}" alt="myWorld" title="myWorld" width="104" height="42" border="0" style="display: inline-block;">
+                              </td>
+                              <td class="display-block" width="270" align="center" valign="middle" style="margin:0px;padding:0px;font-size:14px;color: #666;font-family: 'Montserrat',sans-serif;font-weight:normal;line-height:24px;">{{ 'mail.trans.footer.your_team' | trans }}</td>
+                            </tr>
+                          </tbody>
+                        </table></td>
+                        <td class="display-block padding" width="60" style="line-height:1px;"></td>
+                      <td class="display-block" width="160" align="center" valign="middle"><table align="center" cellpadding="0" cellspacing="0" border="0">
+                          <tbody>
+                            <tr>
+                              <td width="30" height="30" align="center" valign="middle"><a href="https://www.facebook.com/atmyworldcom/" target="_blank"><img src="{{ yves_url('/assets/static/images/email/fb-icon.png') }}" alt="Facebook" title="Facebook" width="8" height="15" border="0" style="display: block;"></a></td>
+                              <td width="10" style="line-height:1px;"></td>
+                              <td width="30" height="30" align="center" valign="middle"><a href="https://twitter.com/myworld_at" target="_blank"><img src="{{ yves_url('/assets/static/images/email/tt-icon.png') }}" alt="Twitter" title="Twitter" width="13" height="12" border="0" style="display: block;"></a></td>
+                              <td width="10" style="line-height:1px;"></td>
+                              <td width="30" height="30" align="center" valign="middle"><a href="https://www.instagram.com/myworld.com_oesterreich/" target="_blank"><img src="{{ yves_url('/assets/static/images/email/ig-icon.png') }}" alt="Instagram" title="Instagram" width="12" height="14" border="0" style="display: block;"></a></td>
+                              <td width="10" style="line-height:1px;"></td>
+                              <td width="30" height="30" align="center" valign="middle"><a href="https://pl.pinterest.com/myworld_at/_created/" target="_blank"><img src="{{ yves_url('/assets/static/images/email/pt-icon.png') }}" alt="Pinterest" title="Pinterest" width="14" height="14" border="0" style="display: block;"></a></td>
+                            </tr>
+                          </tbody>
+                        </table></td>
+                      
+                      
                     </tr>
-                </table>
-                <!--[if (gte mso 9)|(IE)]>
-                </td>
-                </tr>
-                </table>
-                <![endif]-->
-            </td>
-        </tr>
-    </table>
-</center>
+                  </tbody>
+                </table></td>
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+    <tr>
+      <td width="100%" height="30" style="line-height:1px;"></td>
+    </tr>
+  </tbody>
+</table>
 </body>
 </html>
+
