@@ -1,7 +1,7 @@
-@mixin shop-ui-variant($name: '.variant') {
+@mixin product-detail-page-variant($name: '.variant') {
     #{$name} {
         margin: rem(15) 0;
     }
 }
 
-@include shop-ui-variant();
+@include product-detail-page-variant();
