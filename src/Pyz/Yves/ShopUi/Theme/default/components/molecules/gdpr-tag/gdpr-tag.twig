@@ -5,19 +5,20 @@
     tag: 'gdpr-tag',
 } %}
 
+{% define attributes = {
+    id: 'cookie-notification',
+    role='alert',
+    'data-display': 'flex',
+} %}
+
+{% block extraClass %} is-hidden{% endblock %}
+
 {% block body %}
-    <div
-        id="cookie-notification"
-        role="alert"
-        data-display="flex"
-        style="display:none"
-        class="{{ config.name }}"
-    >
-        {# TODO: Add dynamic text here from translations #}
+    {# TODO: Add dynamic text here from translations #}
         <p class="{{ config.name }}__message">
             We use cookies on our website to make our services more efficient
             and more user-friendly. Therefore please select "Accept cookies"!
-            Please read our <a class="{{ config.name }}__link" href="/privacy-policy">Privacy Policy</a>
+            Please read our <a class="{{ config.name }}__link" href="{{ 'footer.logo.link.privacy' | trans }}">Privacy Policy</a>
             for further information.
         </p>
 
@@ -28,5 +29,4 @@
         >
             Accept cookies
         </button>
-    </div>
 {% endblock %}
