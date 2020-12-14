@@ -225,6 +225,8 @@ page.product.by,von,de_DE
 page.product.by,by,en_US
 page.product.seller,Verkauft von,de_DE
 page.product.seller,Seller,en_US
+page.product.condition,Zustand,de_DE
+page.product.condition,Condition,en_US
 page.product.details,Details,de_DE
 page.product.details,Details,en_US
 page.product.similar-products,Könnte dir auch gefallen,de_DE
