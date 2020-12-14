@@ -1,6 +1,6 @@
 @mixin product-detail-page-product-configurator($name: '.product-configurator') {
     #{$name} {
-        hr {
+        &__separator {
             border-bottom: rem(1) solid $setting-color-gray-3;
             margin: rem(35) 0;
         }
@@ -14,33 +14,24 @@
             }
         }
 
-        .product-meta {
-            a {
+        &__product-meta {
+            margin-bottom: rem(30);
+
+            &-link {
                 text-decoration: underline;
             }
 
-            &__source {
+            &-source {
                 margin-bottom: rem(18);
             }
 
-            &__condition {
+            &-condition {
                 margin-bottom: rem(30);
             }
         }
 
         form {
             max-width: rem(360);
-
-            .toggler-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                &__title,
-                &__content--option {
-                    padding: 0;
-                }
-            }
         }
 
         @content;

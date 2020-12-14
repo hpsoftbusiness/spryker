@@ -96,6 +96,17 @@
             }
         }
 
+        &--pdp {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            #{$name}__title,
+            #{$name}__content--option {
+                padding: 0;
+            }
+        }
+
         &__content {
             padding-top: rem(25);
             padding-bottom: rem(15);
