@@ -4,7 +4,7 @@
         margin-bottom: rem(50);
 
         @include helper-breakpoint-media-min($lg-min) {
-            position: absolute !important;
+            position: absolute;
             bottom: rem(10);
             left: 50%;
             transform: translateX(-50%);
@@ -47,7 +47,7 @@
                 height: rem(46);
                 margin: 0 rem(8);
                 cursor: pointer;
-                border-radius: 0;
+                overflow: hidden;
             }
 
             &--active {
@@ -56,17 +56,6 @@
                 #{$name}__img {
                     opacity: 1;
                 }
-            }
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: $setting-color-alpha-2;
-                z-index: $setting-zi-element-floating;
             }
         }
 

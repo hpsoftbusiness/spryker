@@ -7,12 +7,7 @@
         &__separator {
             display: block;
             margin: 0 rem(7);
-
-            svg {
-                width: rem(4);
-                height: rem(6);
-                color: $setting-color-gray-4;
-            }
+            color: $setting-color-gray-4;
         }
 
         &:last-child {

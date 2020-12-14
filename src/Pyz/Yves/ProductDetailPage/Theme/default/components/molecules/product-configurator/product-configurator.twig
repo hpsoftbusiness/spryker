@@ -19,6 +19,7 @@
 {% set isProductConcrete = data.product.idProductConcrete is not empty %}
 {% set isDisabled = data.product.idProductConcrete is empty or data.product.price is empty %}
 {% set isProductAvailable = true %}
+{% set productBrand = data.product.attributes['brand'] | default %}
 
 {% for index in 1..data.maxQuantity %}
     {% set options = options | merge([{
@@ -71,13 +72,13 @@
         {% endwidget %}
     </div>
 
+    {# TODO: Make cashback dynamic #}
     {% include molecule('cashback') with {
         data: {
             cashback: 2,
             shoppingPoints: 1,
         },
     } only %}
-
 
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
