@@ -58,7 +58,11 @@ class ShippingConfirmationMailTypePlugin extends AbstractPlugin implements MailT
      */
     protected function setSubject(MailBuilderInterface $mailBuilder)
     {
-        $mailBuilder->setSubject('mail.shipping.confirmation.subject');
+        $orderTransfer = $mailBuilder->getMailTransfer()->getOrder();
+
+        $mailBuilder->setSubject('mail.shipping.confirmation.subject', [
+            '%idOrder%' => $orderTransfer->getOrderReference(),
+        ]);
 
         return $this;
     }

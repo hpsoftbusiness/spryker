@@ -44,6 +44,24 @@ class AddressForm extends SprykerAddressForm
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      *
+     * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
+     */
+    protected function addAddress2Field(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_ADDRESS_2, TextType::class, [
+            'label' => 'Address line 2',
+            'constraints' => [
+                new NotBlank(),
+                new Length(['max' => 255]),
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
      * @return $this
      */
     protected function addAddress4Field(FormBuilderInterface $builder)

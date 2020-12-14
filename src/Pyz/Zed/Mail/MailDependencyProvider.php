@@ -7,8 +7,10 @@
 
 namespace Pyz\Zed\Mail;
 
+use Pyz\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypePlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Mail\OrderInProcessingMailTypePlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Mail\ShippingConfirmationMailTypePlugin;
+use Pyz\Zed\SalesInvoice\Communication\Plugin\Mail\OrderInvoiceMailTypePlugin;
 use Spryker\Zed\AuthMailConnector\Communication\Plugin\Mail\RestorePasswordMailTypePlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationMailTypePlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationSubscriptionMailTypePlugin;
@@ -27,9 +29,7 @@ use Spryker\Zed\Mail\MailConfig;
 use Spryker\Zed\Mail\MailDependencyProvider as SprykerMailDependencyProvider;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterSubscribedMailTypePlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailTypePlugin;
-use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderShippedMailTypePlugin;
-use Spryker\Zed\SalesInvoice\Communication\Plugin\Mail\OrderInvoiceMailTypePlugin;
 
 class MailDependencyProvider extends SprykerMailDependencyProvider
 {

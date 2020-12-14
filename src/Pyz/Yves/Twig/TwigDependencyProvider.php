@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\Twig;
 
+use Pyz\Yves\CheckoutPage\Plugin\Twig\ProductAtttributeFilterTwigPlugin;
 use Spryker\Service\UtilDateTime\Plugin\Twig\DateTimeFormatterTwigPlugin;
 use Spryker\Shared\Twig\Plugin\DebugTwigPlugin;
 use Spryker\Shared\Twig\Plugin\FormTwigPlugin;
@@ -84,6 +85,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new FunctionTwigPlugin(),
             new ShopCmsSlotTwigPlugin(),
             new ContentNavigationTwigPlugin(),
+            new ProductAtttributeFilterTwigPlugin(),
         ];
     }
 

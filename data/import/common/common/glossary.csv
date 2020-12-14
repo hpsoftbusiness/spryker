@@ -1207,12 +1207,12 @@ mail.newsletter.unsubscribed.subject,"Schade, dass du uns verlässt",de_DE
 mail.newsletter.unsubscribed.subject,Sorry to see you go…,en_US
 mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop Newsletter abgemeldet. Du kannst dich jeder Zeit wieder über dein Kundenkonto anmelden.,de_DE
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
-mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
+mail.order.confirmation.subject,Deine myWorld.com Bestellung %idOrder%,de_DE
+mail.order.confirmation.subject,Your myWorld.com order %idOrder%,en_US
 mail.order.in-processing.subject,New order just placed,en_US
 mail.order.in-processing.subject,Neue Bestellung gerade aufgegeben,de_DE
-mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
-mail.shipping.confirmation.subject,Ihre Bestellung wurde versandt.,de_DE
-mail.shipping.confirmation.subject,Your order has been shipped.,en_US
+mail.shipping.confirmation.subject,Deine myWorld.com Bestellung %idOrder% wurde versandt,de_DE
+mail.shipping.confirmation.subject,Your myWorld.com order %idOrder% has been sent,en_US
 mail.order.confirmation.salutation,Hallo,de_DE
 mail.order.confirmation.salutation,Hello,en_US
 mail.order.confirmation.text_line_1,danke für deine Bestellung beim Spryker Shop!,de_DE
@@ -1273,8 +1273,8 @@ mail.order.shipped.footer.text_line_1,Viele Grüße,de_DE
 mail.order.shipped.footer.text_line_1,Have a great day!,en_US
 mail.order.shipped.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.shipped.footer.text_line_2,Your Spryker Shop,en_US
-mail.order_invoice.subject,"Invoice: %invoiceReference%",en_US
-mail.order_invoice.subject,"Rechnung: %invoiceReference%",de_DE
+mail.order_invoice.subject,"Invoice for your myWorld.com order %idOrder%",en_US
+mail.order_invoice.subject,"Rechnung für deine myWorld.com Bestellung %idOrder%",de_DE
 mail.trans.customerRegistration.confirmationLink,"Validate your email address",en_US
 mail.trans.customerRegistration.confirmationLink,"Bestätigen Sie Ihre E-Mail-Adresse",de_DE
 cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
@@ -2379,7 +2379,7 @@ footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874
 footer.twitter.url,https://twitter.com/myWorld_uk,en_US
 footer.twitter.url,https://twitter.com/myworld_de,de_DE
 footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
-footer.instagram.url,https://www.instagram.com/myworld.com__deutschland/,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.com_deutschland/,de_DE
 footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
 footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
 footer.official_partner,Official partner,en_US
@@ -2807,13 +2807,13 @@ sales_product_bundle_widget.item.options,Produktoptionen:,de_DE
 oms.state.new,New,en_US
 oms.state.new,Neu,de_DE
 oms.state.invalid,Canceled,en_US
-oms.state.invalid,Abgebrochen,de_DE
+oms.state.invalid,Storniert,de_DE
 oms.state.cancellation-pending,Cancellation,en_US
-oms.state.cancellation-pending,Abgebrechung,de_DE
+oms.state.cancellation-pending,Stornierung,de_DE
 oms.state.cancellation-pending-next-try,Cancellation,en_US
-oms.state.cancellation-pending-next-try,Abgebrechung,de_DE
+oms.state.cancellation-pending-next-try,Stornierung,de_DE
 oms.state.cancelled,Canceled,en_US
-oms.state.cancelled,Abgebrochen,de_DE
+oms.state.cancelled,Storniert,de_DE
 oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US
@@ -3008,3 +3008,7 @@ product.attribute.benefit_store,Benefit Store,en_US
 product.attribute.benefit_store,Vorteil Geschäft,de_DE
 product.attribute.shopping_point_store,Shopping Point Store,en_US
 product.attribute.shopping_point_store,Einkaufspunkt Geschäft,de_DE
+product.attribute.cashback_amount,Cashback,en_US
+product.attribute.cashback_amount,Cashback,de_DE
+product.attribute.shopping_points,Shopping points,en_US
+product.attribute.shopping_points,Shopping points,de_DE
