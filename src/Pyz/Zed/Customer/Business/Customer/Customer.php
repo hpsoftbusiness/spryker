@@ -10,11 +10,81 @@ namespace Pyz\Zed\Customer\Business\Customer;
 use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Customer\Business\Customer\Customer as SprykerCustomer;
+use Spryker\Zed\Customer\Business\Customer\EmailValidatorInterface;
+use Spryker\Zed\Customer\Business\CustomerExpander\CustomerExpanderInterface;
 use Spryker\Zed\Customer\Business\Exception\CustomerNotFoundException;
+use Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface;
+use Spryker\Zed\Customer\CustomerConfig;
+use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailInterface;
+use Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface;
+use Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface;
 
 class Customer extends SprykerCustomer
 {
+    /**
+     * @var \Pyz\Zed\Customer\Dependency\Plugin\CustomerPostCreatePluginInterface[]
+     */
+    protected $postCustomerCreatePlugins;
+
+    /**
+     * @param \Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface $queryContainer
+     * @param \Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface $customerReferenceGenerator
+     * @param \Spryker\Zed\Customer\CustomerConfig $customerConfig
+     * @param \Spryker\Zed\Customer\Business\Customer\EmailValidatorInterface $emailValidator
+     * @param \Spryker\Zed\Customer\Dependency\Facade\CustomerToMailInterface $mailFacade
+     * @param \Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface $localeQueryContainer
+     * @param \Spryker\Shared\Kernel\Store $store
+     * @param \Spryker\Zed\Customer\Business\CustomerExpander\CustomerExpanderInterface $customerExpander
+     * @param \Spryker\Zed\CustomerExtension\Dependency\Plugin\PostCustomerRegistrationPluginInterface[] $postCustomerRegistrationPlugins
+     * @param \Pyz\Zed\Customer\Dependency\Plugin\CustomerPostCreatePluginInterface[] $postCustomerCreatePlugins
+     */
+    public function __construct(
+        CustomerQueryContainerInterface $queryContainer,
+        CustomerReferenceGeneratorInterface $customerReferenceGenerator,
+        CustomerConfig $customerConfig,
+        EmailValidatorInterface $emailValidator,
+        CustomerToMailInterface $mailFacade,
+        LocaleQueryContainerInterface $localeQueryContainer,
+        Store $store,
+        CustomerExpanderInterface $customerExpander,
+        array $postCustomerRegistrationPlugins = [],
+        array $postCustomerCreatePlugins = []
+    ) {
+        parent::__construct($queryContainer, $customerReferenceGenerator, $customerConfig, $emailValidator, $mailFacade, $localeQueryContainer, $store, $customerExpander, $postCustomerRegistrationPlugins);
+        $this->postCustomerCreatePlugins = $postCustomerCreatePlugins;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerResponseTransfer
+     */
+    public function add($customerTransfer)
+    {
+        $customerResponseTransfer = parent::add($customerTransfer);
+
+        $customerTransfer = $this->executePostCustomerCreatePlugins($customerResponseTransfer->getCustomerTransfer());
+        $customerResponseTransfer->setCustomerTransfer($customerTransfer);
+
+        return $customerResponseTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function executePostCustomerCreatePlugins(CustomerTransfer $customerTransfer): CustomerTransfer
+    {
+        foreach ($this->postCustomerCreatePlugins as $postCustomerCreatePlugin) {
+            $customerTransfer = $postCustomerCreatePlugin->execute($customerTransfer);
+        }
+
+        return $customerTransfer;
+    }
+
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *

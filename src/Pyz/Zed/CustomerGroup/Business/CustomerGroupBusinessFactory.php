@@ -7,11 +7,17 @@
 
 namespace Pyz\Zed\CustomerGroup\Business;
 
+use Pyz\Zed\CustomerGroup\Business\CustomerGroupAssigner\CustomerGroupAssigner;
+use Pyz\Zed\CustomerGroup\Business\CustomerGroupAssigner\CustomerGroupAssignerInterface;
 use Pyz\Zed\CustomerGroup\Business\Model\CustomerGroup;
 use Pyz\Zed\CustomerGroup\CustomerGroupDependencyProvider;
 use Pyz\Zed\CustomerGroupProductList\Business\CustomerGroupProductListFacadeInterface;
 use Spryker\Zed\CustomerGroup\Business\CustomerGroupBusinessFactory as SprykerCustomerGroupBusinessFactory;
 
+/**
+ * @method \Pyz\Zed\CustomerGroup\CustomerGroupConfig getConfig()
+ * @method \Pyz\Zed\CustomerGroup\Persistence\CustomerGroupRepositoryInterface getRepository()
+ */
 class CustomerGroupBusinessFactory extends SprykerCustomerGroupBusinessFactory
 {
     /**
@@ -31,5 +37,17 @@ class CustomerGroupBusinessFactory extends SprykerCustomerGroupBusinessFactory
     public function getCustomerGroupProductListFacade(): CustomerGroupProductListFacadeInterface
     {
         return $this->getProvidedDependency(CustomerGroupDependencyProvider::FACADE_CUSTOMER_GROUP_PRODUCT_LIST);
+    }
+
+    /**
+     * @return \Pyz\Zed\CustomerGroup\Business\CustomerGroupAssigner\CustomerGroupAssignerInterface
+     */
+    public function createCustomerGroupAssigner(): CustomerGroupAssignerInterface
+    {
+        return new CustomerGroupAssigner(
+            $this->createCustomerGroup(),
+            $this->getRepository(),
+            $this->getConfig()
+        );
     }
 }
