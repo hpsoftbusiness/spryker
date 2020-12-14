@@ -2,7 +2,7 @@
     #{$name} {
         display: flex;
         align-items: center;
-        font-size: map-get($setting-font-size, micro);
+        font-size: map-get($setting-font-size, smaller);
 
         &__separator {
             display: block;
