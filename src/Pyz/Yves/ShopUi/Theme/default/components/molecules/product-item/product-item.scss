@@ -159,6 +159,12 @@ $product-item-border-radius: rem(10);
             }
         }
 
+        &--medium-shadow {
+            #{$name}__container {
+                box-shadow: 0 7px 10px 0 $setting-color-alpha-2;
+            }
+        }
+
         @content;
     }
 }

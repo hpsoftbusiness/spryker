@@ -7,10 +7,6 @@
             letter-spacing: rem(0.75);
         }
 
-        &__sub-title {
-            margin-top: rem(10);
-        }
-
         @content;
     }
 }

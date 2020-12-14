@@ -6,8 +6,7 @@
         <div class="container__inner">
             {% include molecule('product-slider-title') with {
                 data: {
-                    title: spyCmsBlockPlaceholder('title') | raw,
-                    link: true,
+                    title: spyCmsBlockPlaceholder('title'),
                 },
             } only %}
 

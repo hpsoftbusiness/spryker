@@ -3,19 +3,19 @@
     <!-- CMS_BLOCK_PLACEHOLDER : "content" -->
     <!-- CMS_BLOCK_PLACEHOLDER : "link" -->
 
-    {% set link = spyCmsBlockPlaceholder('link') %}
-
     <div class="container">
-        {% include molecule('product-slider-title') with {
-            data: {
-                title: spyCmsBlockPlaceholder('title') | raw,
-                subText: link,
-            },
-        } only %}
+        <div class="container__inner">
+            {% include molecule('product-slider-title') with {
+                data: {
+                    title: spyCmsBlockPlaceholder('title'),
+                    subText: spyCmsBlockPlaceholder('link'),
+                },
+            } only %}
 
-        <div class="grid">
-            <div class="col col--sm-12">
-                {{ spyCmsBlockPlaceholder('content') | raw }}
+            <div class="grid">
+                <div class="col col--sm-12">
+                    {{ spyCmsBlockPlaceholder('content') | raw }}
+                </div>
             </div>
         </div>
     </div>

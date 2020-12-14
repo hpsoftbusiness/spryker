@@ -7,34 +7,14 @@
 {% define data = {
     title: required,
     subText: '',
-    hasLink: false,
-    linkUrl: '',
-    linkText: '',
 } %}
 
 {% block body %}
-    <h2 class="{{ config.name }}__title">{{ data.title }}</h2>
+    <h2 class="{{ config.name }}__title">{{ data.title | raw }}</h2>
 
     {% block subContent %}
         {% if data.subText is not empty %}
-            <div class="{{ config.name }}__sub-title">{{ data.subText }}</div>
-        {% endif %}
-    {% endblock %}
-
-    {% block link %}
-        {% if data.hasLink %}
-            <a href="{{ data.linkUrl }}">
-                {{ data.linkText }}
-
-                {% if has %}
-                    
-                {% endif %}
-                {% include atom('icon') with {
-                    data: {
-                        name: 'chevron-right'
-                    }
-                } only %}
-            </a>
+            {{ data.subText | raw }}
         {% endif %}
     {% endblock %}
 {% endblock %}
