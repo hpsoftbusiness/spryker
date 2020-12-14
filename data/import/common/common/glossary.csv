@@ -923,6 +923,8 @@ checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
+checkout.step.summary.tracking_code,Sendungsverfolgungscode,de_DE
+checkout.step.summary.tracking_code,Delivery Tracking Code,en_US
 checkout.step.summary.uid,UID,de_DE
 checkout.step.summary.uid,UID,en_US
 checkout.step.summary.delivery_address,Lieferadresse,de_DE
