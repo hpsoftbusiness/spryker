@@ -16,18 +16,18 @@
 
         &__product-meta {
             margin-bottom: rem(30);
+        }
 
-            &-link {
-                text-decoration: underline;
-            }
+        &__link {
+            text-decoration: underline;
+        }
 
-            &-source {
-                margin-bottom: rem(18);
-            }
+        &__info {
+            margin-bottom: rem(18);
+        }
 
-            &-condition {
-                margin-bottom: rem(30);
-            }
+        &__condition {
+            margin-bottom: rem(30);
         }
 
         form {
