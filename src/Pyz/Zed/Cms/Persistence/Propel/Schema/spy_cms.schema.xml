@@ -8,6 +8,7 @@
     </table>
 
     <table name="spy_cms_version">
+        <column name="data" type="CLOB"/>
         <behavior name="event">
             <parameter name="spy_cms_version_all" column="*"/>
         </behavior>
