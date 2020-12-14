@@ -78,6 +78,8 @@ class ProductController extends SprykerShopProductController
         $attributesToFilter = [
             'benefit_store',
             'shopping_point_store',
+            'cashback_amount',
+            'shopping_points',
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {

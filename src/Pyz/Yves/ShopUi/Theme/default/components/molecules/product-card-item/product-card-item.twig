@@ -71,7 +71,7 @@
                                 {% include molecule('product-item-variant-selector') with {
                                     data: {
                                         productItem: data.productItem,
-                                        productItemAttributes: data.attributes
+                                        productItemAttributes: data.attributes | filterAttributes
                                     }
                                 } only %}
                             {% endif %}

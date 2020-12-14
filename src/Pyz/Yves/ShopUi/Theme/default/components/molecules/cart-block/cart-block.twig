@@ -49,7 +49,7 @@
                         </div>
                     {% endif %}
 
-                    {% for attributeName, attribute in data.productItem.concreteAttributes %}
+                    {% for attributeName, attribute in data.productItem.concreteAttributes | filterAttributes %}
                         <div class="{{ component.renderClass(config.name ~ '__option', modifiers) }}">
                             {{ ('product.attribute.' ~ attributeName) | trans }}: {{ attribute }}
                         </div>
