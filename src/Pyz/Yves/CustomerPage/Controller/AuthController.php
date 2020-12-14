@@ -25,7 +25,13 @@ class AuthController extends SprykerAuthController
         }
 
         if (!$this->isLoggedInCustomer()) {
-            return $this->redirectResponseExternal($this->getFactory()->getSsoClient()->getAuthorizeUrl($this->getLocale()));
+            $referer = null;
+            $hasReferer = $this->getRequestStack()->getCurrentRequest()->headers->has('referer');
+            if ($hasReferer) {
+                $referer = $this->getRequestStack()->getCurrentRequest()->headers->get('referer');
+            }
+
+            return $this->redirectResponseExternal($this->getFactory()->getSsoClient()->getAuthorizeUrl($this->getLocale(), $referer));
         }
 
         $redirectUrl = $this->getRedirectUrlFromPlugins();

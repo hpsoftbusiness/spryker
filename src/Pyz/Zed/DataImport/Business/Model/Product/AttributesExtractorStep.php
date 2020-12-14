@@ -58,7 +58,6 @@ class AttributesExtractorStep implements DataImportStepInterface
                 if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
                     $hiddenAttributes[$attributeKey] = (bool)$attributeValue;
                 }
-
             }
         }
 
@@ -70,7 +69,6 @@ class AttributesExtractorStep implements DataImportStepInterface
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
         $dataSet[static::KEY_HIDDEN_ATTRIBUTES] = $hiddenAttributes;
         $dataSet[static::KEY_AFFILIATE_ATTRIBUTES] = $affiliateAttributes;
-
     }
 
     /**
