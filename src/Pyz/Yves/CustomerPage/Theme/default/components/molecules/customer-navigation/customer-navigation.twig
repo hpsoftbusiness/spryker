@@ -48,10 +48,6 @@
             {% endblock %}
         {% endembed %}
 
-        <li class="{{ component.renderClass('menu__item', modifiers) }} {{macros.isActive('newsletter', data.activePage)}}">
-            <a class="{{ component.renderClass('menu__link', modifiers) }}" href="{{ path('customer/newsletter') }}"
-               data-id="sidebar-newsletter">{{ 'customer.account.newsletter' | trans }}</a>
-        </li>
         {% block wishlistNavigation %}
             {% widget 'WishlistMenuItemWidget' args [data.activePage, data.activeEntityId] with {
                 modifiers: modifiers

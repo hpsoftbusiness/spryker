@@ -40,7 +40,7 @@ require 'common/config_sso-prod.php';
 // ------------------------------ MAIL ----------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mp.vendormgmt@myworld.com';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'sven.stumpf@myworld.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
 // ----------------------------------------------------------------------------
