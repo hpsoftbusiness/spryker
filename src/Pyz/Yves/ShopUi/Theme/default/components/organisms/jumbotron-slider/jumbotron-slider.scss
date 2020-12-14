@@ -1,6 +1,6 @@
 @mixin shop-ui-jumbotron-slider($name: '.jumbotron-slider') {
     #{$name} {
-        margin-bottom: rem(30);
+        margin-bottom: rem(50);
 
         .slick-dots {
             bottom: rem(-25);
