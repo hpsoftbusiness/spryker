@@ -56,9 +56,8 @@ class AttributesExtractorStep implements DataImportStepInterface
                 }
 
                 if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
-                    $hiddenAttributes[$attributeKey] = (bool)$attributeValue;
+                    $hiddenAttributes[$attributeKey] = $attributeValue === 'TRUE';
                 }
-
             }
         }
 
@@ -70,7 +69,6 @@ class AttributesExtractorStep implements DataImportStepInterface
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
         $dataSet[static::KEY_HIDDEN_ATTRIBUTES] = $hiddenAttributes;
         $dataSet[static::KEY_AFFILIATE_ATTRIBUTES] = $affiliateAttributes;
-
     }
 
     /**
@@ -102,6 +100,8 @@ class AttributesExtractorStep implements DataImportStepInterface
             'benefit_store',
             'shopping_point_store',
             'brand',
+            'cashback_amount',
+            'shopping_points',
         ];
     }
 

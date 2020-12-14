@@ -6,12 +6,12 @@
 
     <process name="Authorization01">
         <states>
-            <state name="authorization pending"/>
-            <state name="authorized"/>
-            <state name="refused"/>
-            <state name="authorization failed"/>
-            <state name="authorization pending next try"/>
-            <state name="invalid"/>
+            <state name="authorization pending" reserved="true"/>
+            <state name="authorized" reserved="true"/>
+            <state name="refused" reserved="false"/>
+            <state name="authorization failed" reserved="true"/>
+            <state name="authorization pending next try" reserved="true"/>
+            <state name="invalid" reserved="false"/>
         </states>
 
         <events>

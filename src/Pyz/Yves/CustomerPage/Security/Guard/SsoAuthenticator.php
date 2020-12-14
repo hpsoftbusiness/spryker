@@ -74,7 +74,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, ?AuthenticationException $authException = null)
     {
-        return $this->httpUtils->createRedirectResponse($request, $this->ssoClient->getAuthorizeUrl($this->locale));
+        return $this->httpUtils->createRedirectResponse($request, $this->ssoClient->getAuthorizeUrl($this->locale, $this->locale));
     }
 
     /**
@@ -112,6 +112,8 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
             if (!$ssoAccessTokenTransfer->getIdToken()) {
                 throw $exception;
             }
+
+            $this->setReferer($request);
 
             return $ssoAccessTokenTransfer;
         }
@@ -178,5 +180,19 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     public function supportsRememberMe()
     {
         return false;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return void
+     */
+    protected function setReferer(Request $request): void
+    {
+        $referer = $request->query->get('state');
+
+        if ($referer) {
+            $referer = trim(base64_decode(strtr($referer, '._-', '+/=')));
+            $request->headers->set('Referer', $referer);
+        }
     }
 }

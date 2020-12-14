@@ -71,12 +71,6 @@
         </div>
 
         <div class="col--lg-6 col--sm-12">
-            <div class="box">
-                {% widget 'NewsletterSubscriptionSummaryWidget' args [data.customer] only %}{% endwidget %}
-            </div>
-        </div>
-
-        <div class="col--lg-6 col--sm-12">
             {% if data.billingAddress is not empty %}
                 <div class="box">
                     {% embed molecule('title-box', 'CustomerPage') with {

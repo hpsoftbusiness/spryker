@@ -5,10 +5,10 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--stretch">
+    <div class="grid grid--stretch grid--with-gutter">
         {% for productAbstractView in data.productAbstractViewCollection %}
             {% embed molecule('product-item') with {
-                class: 'col col--sm-6 col--lg-3',
+                class: 'col col--sm-6 col--lg-3 col--with-gutter',
                 data: {
                     product: productAbstractView,
                 },

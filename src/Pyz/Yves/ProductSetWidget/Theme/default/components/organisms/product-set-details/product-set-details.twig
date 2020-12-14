@@ -83,7 +83,6 @@
                         {% endfor %}
 
                         {% embed molecule('product-slider-title') with {
-                            modifiers: ['set'],
                             data: {
                                 title: 'product.set.detail.set-contents' | trans,
                                 productsCount: data.products | length,

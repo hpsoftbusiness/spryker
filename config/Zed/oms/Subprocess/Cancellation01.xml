@@ -6,12 +6,12 @@
 
     <process name="Cancellation01">
         <states>
-            <state name="ready for cancellation"/>
-            <state name="cancellation pending"/>
-            <state name="cancelled"/>
-            <state name="cancellation failed clarification"/>
-            <state name="cancellation failed"/>
-            <state name="cancellation pending next try"/>
+            <state name="ready for cancellation" reserved="true"/>
+            <state name="cancellation pending" reserved="true"/>
+            <state name="cancelled" reserved="false"/>
+            <state name="cancellation failed clarification" reserved="true"/>
+            <state name="cancellation failed" reserved="true"/>
+            <state name="cancellation pending next try" reserved="true"/>
         </states>
 
         <events>

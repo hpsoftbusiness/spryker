@@ -95,6 +95,17 @@
         }
     }
 
+    &--alternative {
+        color: $setting-color-main;
+        font-weight: fw(bold);
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $setting-color-main;
+        }
+    }
+
     &--align-right-from-tablet {
         @include helper-breakpoint-media-min($md-min) {
             text-align: right;

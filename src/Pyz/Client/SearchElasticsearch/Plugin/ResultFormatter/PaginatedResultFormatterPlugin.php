@@ -27,10 +27,7 @@ class PaginatedResultFormatterPlugin extends SprykerPaginatedResultFormatterPlug
 
         $paginationConfig = $this->getFactory()->getSearchConfig()->getPaginationConfig();
         $itemsPerPage = $paginationConfig->getCurrentItemsPerPage($requestParameters);
-        $maxPage = min(
-            (int)ceil($searchResult->getTotalHits() / $itemsPerPage),
-            (int)ceil(static::NUMBER_RESULTS_MAX / $itemsPerPage)
-        );
+        $maxPage = (int)ceil($searchResult->getTotalHits() / $itemsPerPage);
 
         return $paginationSearchResultTransfer
             ->setMaxPage($maxPage);
