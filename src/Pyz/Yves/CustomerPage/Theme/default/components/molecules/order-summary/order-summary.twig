@@ -13,7 +13,7 @@
             {% for expense in data.order.expenses %}
                 <div class="grid grid--justify">
                     <span class="col col--sm-8 col--lg-10 text-secondary">{% if expense.type == 'SHIPMENT_EXPENSE_TYPE' %}{{ 'customer.order.shipment' | trans }} {% endif %}{{ expense.name | trans }}</span>
-                    <span class="col col--expand text-right">- {{ expense.unitPrice | money(true, data.order.currencyIsoCode) }}</span>
+                    <span class="col col--expand text-right">{{ expense.unitPrice | money(true, data.order.currencyIsoCode) }}</span>
                 </div>
             {% endfor %}
         </div>
@@ -54,13 +54,5 @@
     <li class="{{ config.name }}__item {{ config.name }}__item--total">
         <strong class="float-right">{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</strong>
         <strong>{{ 'customer.order.grandTotal' | trans }}</strong>
-    </li>
-
-    <li class="{{ config.name }}__item">
-        {% include molecule('gift-card-order-summary', 'GiftCardWidget') ignore missing with {
-            data: {
-                order: data.order,
-            },
-        } only %}
     </li>
 {% endblock %}
