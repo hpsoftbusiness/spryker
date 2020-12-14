@@ -223,6 +223,8 @@ page.detail.dimensions,Abmessungen,de_DE
 page.detail.dimensions,Measurements,en_US
 page.product.by,von,de_DE
 page.product.by,by,en_US
+page.product.seller,Verkauft von,de_DE
+page.product.seller,Seller,en_US
 page.product.details,Details,de_DE
 page.product.details,Details,en_US
 page.product.similar-products,Könnte dir auch gefallen,de_DE
@@ -3014,3 +3016,4 @@ product.attribute.benefit_store,Benefit Store,en_US
 product.attribute.benefit_store,Vorteil Geschäft,de_DE
 product.attribute.shopping_point_store,Shopping Point Store,en_US
 product.attribute.shopping_point_store,Einkaufspunkt Geschäft,de_DE
+product.attribute.product_stock.name,Warehouse,en_US
