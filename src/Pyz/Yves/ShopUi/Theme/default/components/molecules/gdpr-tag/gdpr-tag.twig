@@ -14,11 +14,10 @@
         class="{{ config.name }}"
     >
         <p class="{{ config.name }}__message">
-            We use cookies to collect and analyse information on our site's
-            performance and to enable the site to function. You can choose to
-            allow all cookies by clicking 'Allow all' or manage them
-            individually by clicking 'Manage cookie preferences', where you will
-            also find more information.
+            We use cookies on our website to make our services more efficient
+            and more user-friendly. Therefore please select "Accept cookies"!
+            Please read our <a href={{ path('privacy-policy') }}>Privacy Policy</a>
+            for further information.
         </p>
 
         <button
@@ -26,7 +25,7 @@
             id="cookie-notification__accept"
             class="{{ config.name }}__button button button--small button--expand"
         >
-            Allow all
+            Accept cookies
         </button>
     </div>
 {% endblock %}
