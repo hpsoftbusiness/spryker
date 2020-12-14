@@ -1199,12 +1199,12 @@ mail.newsletter.unsubscribed.subject,"Schade, dass du uns verlässt",de_DE
 mail.newsletter.unsubscribed.subject,Sorry to see you go…,en_US
 mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop Newsletter abgemeldet. Du kannst dich jeder Zeit wieder über dein Kundenkonto anmelden.,de_DE
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
-mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
+mail.order.confirmation.subject,Deine myWorld.com Bestellung %idOrder%,de_DE
+mail.order.confirmation.subject,Your myWorld.com order %idOrder%,en_US
 mail.order.in-processing.subject,New order just placed,en_US
 mail.order.in-processing.subject,Neue Bestellung gerade aufgegeben,de_DE
-mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
-mail.shipping.confirmation.subject,Ihre Bestellung wurde versandt.,de_DE
-mail.shipping.confirmation.subject,Your order has been shipped.,en_US
+mail.shipping.confirmation.subject,Deine myWorld.com Bestellung %idOrder% wurde versandt,de_DE
+mail.shipping.confirmation.subject,Your myWorld.com order %idOrder% has been sent,en_US
 mail.order.confirmation.salutation,Hallo,de_DE
 mail.order.confirmation.salutation,Hello,en_US
 mail.order.confirmation.text_line_1,danke für deine Bestellung beim Spryker Shop!,de_DE
@@ -1265,8 +1265,8 @@ mail.order.shipped.footer.text_line_1,Viele Grüße,de_DE
 mail.order.shipped.footer.text_line_1,Have a great day!,en_US
 mail.order.shipped.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.shipped.footer.text_line_2,Your Spryker Shop,en_US
-mail.order_invoice.subject,"Invoice: %invoiceReference%",en_US
-mail.order_invoice.subject,"Rechnung: %invoiceReference%",de_DE
+mail.order_invoice.subject,"Invoice for your myWorld.com order %idOrder%",en_US
+mail.order_invoice.subject,"Rechnung für deine myWorld.com Bestellung %idOrder%",de_DE
 mail.trans.customerRegistration.confirmationLink,"Validate your email address",en_US
 mail.trans.customerRegistration.confirmationLink,"Bestätigen Sie Ihre E-Mail-Adresse",de_DE
 cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
