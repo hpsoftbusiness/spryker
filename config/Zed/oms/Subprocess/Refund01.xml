@@ -16,7 +16,7 @@
         </states>
 
         <events>
-            <event name="refund" onEnter="true" command="Adyen/Refund"/>
+            <event name="refund" manual="true" command="Adyen/Refund"/>
             <event name="refund manually" manual="true"/>
             <event name="retry refund" manual="true"/>
             <event name="calculate refund" onEnter="true" command="Adyen/RefundCalculation"/>

@@ -183,6 +183,8 @@ page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
 page.checkout.payment.edit,edit Payment Method,en_US
 page.checkout.payment.next-step,Weiter - Prüfen und Kauf abschließen,de_DE
 page.checkout.payment.next-step,Continue to finalise order,en_US
+AdyenCreditCard,Credit Card,en_US
+AdyenCreditCard,Kreditkarte,de_DE
 adyen.payment.error.cc_number,Please check the Credit Card number,en_US
 adyen.payment.error.cc_number,Bitte prüfen Sie die Kartennummer,de_DE
 adyen.payment.error.cc_year,Please check the Credit Card year,en_US
@@ -2814,6 +2816,8 @@ oms.state.cancellation-pending-next-try,Cancellation,en_US
 oms.state.cancellation-pending-next-try,Stornierung,de_DE
 oms.state.cancelled,Canceled,en_US
 oms.state.cancelled,Storniert,de_DE
+oms.state.order-confirmation-email-sent,In progress,en_US
+oms.state.order-confirmation-email-sent,In Arbeit,de_DE
 oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US

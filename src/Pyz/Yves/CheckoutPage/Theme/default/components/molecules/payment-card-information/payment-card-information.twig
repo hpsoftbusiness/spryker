@@ -14,7 +14,7 @@
     {% set dummyPayment = 'dummyPaymentCreditCard' %}
 
     <h4 class="title title--secondary-small grid grid--middle">
-        <span class="spacing-right spacing-right--big">{{ data.payment.paymentMethod | capitalize }}</span>
+        <span class="spacing-right spacing-right--big">{{ data.payment.paymentMethod | trans }}</span>
 
         {% if data.payment.dummyPayment and data.payment.dummyPayment.cardType %}
             <span class="{{ config.name }}__logo">
