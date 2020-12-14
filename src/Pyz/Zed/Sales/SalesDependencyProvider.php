@@ -9,6 +9,7 @@ namespace Pyz\Zed\Sales;
 
 use Pyz\Zed\Adyen\Communication\Plugin\Sales\AdyenPaymentOrderExpanderPlugin;
 use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
+use Pyz\Zed\ProductCategory\Communication\Plugin\Sales\CategoryOrderItemExpanderPlugin;
 use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;
 use Pyz\Zed\SalesOrderUid\Communication\Plugin\Sales\UidOrderExpanderPreSavePlugin;
 use Pyz\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductAttributesOrderItemExpanderPlugin;
@@ -121,6 +122,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         $container->set(static::PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER, function () {
             return [
                 new ProductConcreteOrderItemExpanderPlugin(),
+                new CategoryOrderItemExpanderPlugin(),
             ];
         });
 
