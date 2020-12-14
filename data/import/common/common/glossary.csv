@@ -2807,13 +2807,13 @@ sales_product_bundle_widget.item.options,Produktoptionen:,de_DE
 oms.state.new,New,en_US
 oms.state.new,Neu,de_DE
 oms.state.invalid,Canceled,en_US
-oms.state.invalid,Abgebrochen,de_DE
+oms.state.invalid,Storniert,de_DE
 oms.state.cancellation-pending,Cancellation,en_US
-oms.state.cancellation-pending,Abgebrechung,de_DE
+oms.state.cancellation-pending,Stornierung,de_DE
 oms.state.cancellation-pending-next-try,Cancellation,en_US
-oms.state.cancellation-pending-next-try,Abgebrechung,de_DE
+oms.state.cancellation-pending-next-try,Stornierung,de_DE
 oms.state.cancelled,Canceled,en_US
-oms.state.cancelled,Abgebrochen,de_DE
+oms.state.cancelled,Storniert,de_DE
 oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US
