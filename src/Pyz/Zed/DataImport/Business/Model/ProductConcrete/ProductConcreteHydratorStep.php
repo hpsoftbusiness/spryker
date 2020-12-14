@@ -31,7 +31,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_HIDDEN_ATTRIBUTES = 'hidden_attributes';
-    public const KEY_PDP_ATTRIBUTES = 'pdp_attributes';
     public const KEY_DISCOUNT = 'discount';
     public const KEY_QUANTITY = 'quantity';
     public const KEY_WAREHOUSES = 'warehouses';
@@ -96,8 +95,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $productEntityTransfer
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
-            ->setHiddenAttributes(json_encode($dataSet[static::KEY_HIDDEN_ATTRIBUTES]))
-            ->setPdpAttributes(json_encode($dataSet[static::KEY_PDP_ATTRIBUTES]));
+            ->setHiddenAttributes(json_encode($dataSet[static::KEY_HIDDEN_ATTRIBUTES]));
 
         if ($this->isProductColumn(static::COLUMN_IS_QUANTITY_SPLITTABLE)) {
             $isQuantitySplittable = (
