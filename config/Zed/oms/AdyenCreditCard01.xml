@@ -30,7 +30,7 @@
             <event name="send order confirmation email" onEnter="true" command="Oms/SendOrderConfirmation"/>
             <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
             <event name="cancel payment" manual="true"/>
-            <event name="capture payment" timeout="1h" manual="true"/>
+            <event name="capture payment" timeout="1hour" manual="true"/>
             <event name="ship the order" manual="true" command="Stock/DeductStock"/>
             <event name="start turnover creation process" onEnter="true"/>
             <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>

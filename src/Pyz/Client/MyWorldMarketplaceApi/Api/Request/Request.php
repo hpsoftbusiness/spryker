@@ -104,6 +104,11 @@ class Request implements RequestInterface
         return (new MyWorldMarketplaceApiResponseTransfer())->setIsSuccess(false);
     }
 
+    /**
+     * @param array $requestParams
+     *
+     * @return array
+     */
     protected function prepareRequestParams(array $requestParams): array
     {
         $requestParams['headers']['User-Agent'] = $this->myWorldMarketplaceApiConfig->getUserAgent();

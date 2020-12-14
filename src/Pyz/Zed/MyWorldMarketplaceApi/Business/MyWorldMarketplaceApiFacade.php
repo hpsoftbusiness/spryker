@@ -16,11 +16,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class MyWorldMarketplaceApiFacade extends AbstractFacade implements MyWorldMarketplaceApiFacadeInterface
 {
-    public function test()
-    {
-        return $this->getFactory()->getMyWorldMarketplaceApiClient()->getAccessToken();
-    }
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *

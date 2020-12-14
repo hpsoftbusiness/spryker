@@ -53,8 +53,17 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
         if ($myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
             //magic
         }
+
+        return new CustomerInformationByCustomerNumberResponseTransfer();
     }
 
+    /**
+     * @param \Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer
+     *
+     * @throws \Exception
+     *
+     * @return string
+     */
     protected function buildRequestUrl(CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer): string
     {
         $customerId = $customerInformationByCustomerNumberRequestTransfer->getMyWorldCustomerId() ?? $customerInformationByCustomerNumberRequestTransfer->getMyWorldCustomerNumber();
