@@ -10,7 +10,7 @@
         width: 100%;
         justify-content: space-between;
 
-        a {
+        &__link {
             color: $setting-color-white;
             text-decoration: underline;
         }
