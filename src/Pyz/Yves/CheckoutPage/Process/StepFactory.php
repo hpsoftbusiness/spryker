@@ -11,6 +11,7 @@ use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableChecker;
@@ -123,6 +124,17 @@ class StepFactory extends SprykerShopStepFactory
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ADYEN_3D_SECURE,
             $this->getConfig()->getEscapeRoute(),
             $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Dependency\Step\StepInterface
+     */
+    public function createErrorStep(): StepInterface
+    {
+        return new ErrorStep(
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
+            $this->getConfig()->getEscapeRoute()
         );
     }
 
