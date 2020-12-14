@@ -46,6 +46,7 @@
             <div class="spacing-top">
                 <button type="submit" class="button button--wishlist button--skinless button--expand" {{ disableAddToWishlist ? 'disabled' : '' }}>
                     {% include atom('icon') with {
+                        modifiers: ['wishlist'],
                         data: {
                             name: 'whishlist',
                         },

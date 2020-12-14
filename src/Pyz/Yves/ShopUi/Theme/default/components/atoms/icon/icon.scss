@@ -144,4 +144,9 @@
         width: rem(4);
         height: rem(6);
     }
+
+    &--wishlist {
+        margin-right: rem(6);
+        color: $setting-color-yellow;
+    }
 }
