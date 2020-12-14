@@ -36,13 +36,24 @@ class OrderExpander implements OrderExpanderInterface
         SpySalesOrderEntityTransfer $salesOrderEntityTransfer,
         QuoteTransfer $quoteTransfer
     ): SpySalesOrderEntityTransfer {
-        $countryToIdMap = $this->salesOrderUidConfig->getCountryToUidMap();
         $countryCode = $quoteTransfer->getShippingAddress()->getCountry()->getIso2Code();
 
+        return $salesOrderEntityTransfer->setUid($this->getCurrentUid($countryCode));
+    }
+
+    /**
+     * @param string $countryCode
+     *
+     * @return string
+     */
+    protected function getCurrentUid(string $countryCode): string
+    {
+        $countryToIdMap = $this->salesOrderUidConfig->getCountryToUidMap();
+
         if (empty($countryToIdMap[$countryCode])) {
-            return $salesOrderEntityTransfer;
+            return $this->salesOrderUidConfig->getDefaultUid();
         }
 
-        return $salesOrderEntityTransfer->setUid($countryToIdMap[$countryCode]);
+        return $countryToIdMap[$countryCode];
     }
 }
