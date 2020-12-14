@@ -66,7 +66,7 @@
                         {% block options %}
                             {% if data.productItem.concreteAttributes is not empty %}
                                 <ul>
-                                    {% for key, item in data.productItem.concreteAttributes %}
+                                    {% for key, item in data.productItem.concreteAttributes | filterAttributes %}
                                         <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
                                     {% endfor %}
                                 </ul>

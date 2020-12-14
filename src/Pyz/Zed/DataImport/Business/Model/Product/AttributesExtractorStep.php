@@ -100,6 +100,8 @@ class AttributesExtractorStep implements DataImportStepInterface
             'benefit_store',
             'shopping_point_store',
             'brand',
+            'cashback_amount',
+            'shopping_points',
         ];
     }
 
