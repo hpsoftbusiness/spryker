@@ -50,6 +50,7 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
             ->setDateOfBirth($data['Data']['BirthdayDate'])
             ->setPhone($data['Data']['MobilePhoneNumber'])
             ->setIsActive($data['Data']['Status'] === 'Active')
+            ->setCountryId($data['Data']['CountryID'] ?? null)
             ->setCustomerType($this->mapCustomerType($data['Data']['CustomerType']))
             ->setCustomerBalance($this->mapCustomerBalance($data));
 
