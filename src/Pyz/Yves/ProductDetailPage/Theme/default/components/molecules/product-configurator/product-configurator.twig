@@ -9,7 +9,9 @@
     product: required,
     maxQuantity: 10,
     isBundle: null,
-    bundleItems: []
+    bundleItems: [],
+    cashback: 2,
+    shoppingPoints: 1,
 } %}
 
 {% set options = [] %}
@@ -72,12 +74,16 @@
         {% endwidget %}
     </div>
 
-    {% include molecule('cashback') with {
-        data: {
-            cashback: 2,
-            shoppingPoints: 1,
-        },
-    } only %}
+    {% set cashback = data.cashback %}
+
+    {% if cashback %}
+        {% include molecule('cashback') with {
+            data: {
+                cashback: cashback,
+                shoppingPoints: data.shoppingPoints,
+            },
+        } only %}
+    {% endif %}
 
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
