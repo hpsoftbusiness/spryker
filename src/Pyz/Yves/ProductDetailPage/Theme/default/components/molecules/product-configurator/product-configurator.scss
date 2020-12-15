@@ -6,7 +6,7 @@
         }
 
         &__button-wrap {
-            border-top: 0;
+            border-top: none;
             padding: rem(40) 0 rem(10);
 
             @include helper-breakpoint-media-min($xl-min) {
@@ -28,7 +28,6 @@
 
         &__condition {
             margin-bottom: rem(30);
-
         }
 
         form {
