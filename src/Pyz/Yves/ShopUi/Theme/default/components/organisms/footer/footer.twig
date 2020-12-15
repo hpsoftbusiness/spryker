@@ -129,7 +129,6 @@
             </div>
 
             <div class="{{ config.name }}__bottom-col">
-                <h6 class="title spacing-right is-hidden-sm-lg">{{ 'global.partners' | trans }}</h6>
                 {% for item in paymentItems %}
                     <img class="spacing-x spacing-x--small" src="{{ publicPath('images/' ~ item.iconName ~ '.svg') }}" alt="{{ item.iconName }}">
                 {% endfor %}
