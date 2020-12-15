@@ -163,6 +163,10 @@
             border-bottom: rem(1) solid $setting-color-gray-3;
         }
 
+        &--without-bottom-border {
+            border-bottom: 0
+        }
+
         &--footer {
             #{$name}__title,
             #{$name}__content {
