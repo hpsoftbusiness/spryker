@@ -1,5 +1,7 @@
 @include shop-ui-money-price($name: '.money-price') {
     &__amount {
+        font-size: inherit;
+
         &--original {
             font-size: rem(12);
             color: $setting-color-gray-4;
