@@ -1,41 +1,28 @@
 @mixin shop-ui-breadcrumb-step($name: '.breadcrumb-step') {
     #{$name} {
         display: flex;
-        font-size: rem(13);
+        align-items: center;
+        font-size: map-get($setting-font-size, smaller);
+
+        &__separator {
+            display: block;
+            margin: 0 rem(7);
+            color: $setting-color-gray-4;
+        }
+
+        &:last-child {
+            #{$name}__separator {
+                display: none;
+            }
+        }
 
         &__link {
+            display: inline-flex;
             color: $setting-color-black;
 
             &:hover {
                 text-decoration: none;
                 color: $setting-color-alt;
-            }
-        }
-
-        &__separator {
-            width: rem(37);
-            color: $setting-color-gray-3;
-            position: relative;
-        }
-
-        &:not(:last-child) &__separator {
-            &::before,
-            &::after {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                content: '';
-                width: rem(1);
-                height: rem(7);
-                transform: translate(-50%, -50%) rotate(-38deg);
-                border-radius: rem(0.5);
-                background-color: $setting-color-gray-3;
-                margin-top: rem(-2);
-            }
-
-            &::after {
-                transform: translate(-50%, -50%) rotate(38deg);
-                margin-top: rem(3);
             }
         }
 

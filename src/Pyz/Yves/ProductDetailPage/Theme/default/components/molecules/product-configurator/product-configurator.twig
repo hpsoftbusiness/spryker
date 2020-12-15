@@ -19,6 +19,7 @@
 {% set isProductConcrete = data.product.idProductConcrete is not empty %}
 {% set isDisabled = data.product.idProductConcrete is empty or data.product.price is empty %}
 {% set isProductAvailable = true %}
+{% set productBrand = data.product.attributes['brand'] | default %}
 
 {% for index in 1..data.maxQuantity %}
     {% set options = options | merge([{
@@ -40,10 +41,26 @@
 
     <h1 class="title title--product title--h2">{{ productName }}</h1>
 
-    <div class="grid grid--justify spacing-bottom spacing-bottom--bigger">
+    <div class="{{ config.name }}__product-meta">
+        <div class="{{ config.name }}__info">
+            <span class="{{ config.name }}__brand">
+                {{ 'page.product.by' | trans }} {{ productBrand }}
+            </span> -
+            <span class="{{ config.name }}__seller">
+                {{ 'page.product.seller' | trans }} <a class="{{ config.name }}__link" href="https://corporate.myworld.com/">myWorld.com</a>
+            </span>
+        </div>
+
+        {# TODO: Make this product meta dynamic #}
+        <div class="{{ config.name }}__status">
+            {{ 'page.product.condition' | trans }}: <strong>Neu</strong>
+        </div>
+    </div>
+
+    <div class="grid grid--justify spacing-bottom spacing-bottom--smaller">
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}
-            <div class="col text-right">
+            <div class="col">
                 {% include molecule('money-price') with {
                     modifiers: ['pdp'],
                     data: {
@@ -54,9 +71,17 @@
             </div>
         {% endwidget %}
     </div>
+
+    {% include molecule('cashback') with {
+        data: {
+            cashback: 2,
+            shoppingPoints: 1,
+        },
+    } only %}
+
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
-            modifiers: ['with-top-border', 'option'],
+            modifiers: ['option'],
             data: {
                 title: 'bundle.title' | trans,
                 triggerClass: config.jsName ~ '__trigger-bundle',
@@ -89,13 +114,25 @@
         }
     } only %}
 
+    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
+        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
+            data: {
+                sku: data.product.sku,
+                idProductConcrete: data.product.idProductConcrete | default
+            }
+        } only %}
+    {% endif %}
+
+    <hr class="{{ config.name }}__separator" />
+
     {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
         {% block embeddedData %}
             {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}{% endwidget %}
 
             {% if not data.isDisabled and can('SeeAddToCartPermissionPlugin') %}
+
                 {% embed molecule('toggler-item') with {
-                    modifiers: ['with-top-border', 'option'],
+                    modifiers: ['option', 'pdp'],
                     data: {
                         title: 'cart.item_quantity' | trans,
                         isToggler: false,
@@ -110,6 +147,7 @@
                         } only %}
                     {% endblock %}
                 {% endembed %}
+
             {% else %}
                 <input type="hidden" class="js-volume-price__quantity">
             {% endif %}
@@ -135,14 +173,5 @@
 
     {% if not isAvailable and isProductConcrete %}
         {% widget 'AvailabilityNotificationSubscriptionWidget' args [data.product] only %}{% endwidget %}
-    {% endif %}
-
-    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
-        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
-            data: {
-                sku: data.product.sku,
-                idProductConcrete: data.product.idProductConcrete | default
-            }
-        } only %}
     {% endif %}
 {% endblock %}
