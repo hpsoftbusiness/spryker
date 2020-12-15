@@ -27,6 +27,12 @@
             text-decoration: none;
         }
 
+        &--wishlist {
+            display: flex;
+            font-weight: fw(regular);
+            padding: 0;
+        }
+
         &--shadowless {
             box-shadow: none;
         }
@@ -195,7 +201,7 @@
         }
 
         &--large {
-            padding: rem(16) rem(18) rem(14);
+            padding: rem(16) rem(48);
             font-weight: fw(medium);
             font-size: map-get($setting-font-size, default);
             line-height: rem(20);

@@ -15,6 +15,11 @@
         height: rem(18);
     }
 
+    &--light {
+        width: rem(13);
+        height: rem(13);
+    }
+
     &--big {
         width: rem(26);
         height: rem(26);
@@ -138,5 +143,15 @@
     &--cart-plus {
         height: rem(23);
         width: rem(26);
+    }
+
+    &--separator {
+        width: rem(4);
+        height: rem(6);
+    }
+
+    &--wishlist {
+        margin-right: rem(6);
+        color: $setting-color-yellow;
     }
 }
