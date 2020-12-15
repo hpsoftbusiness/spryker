@@ -49,7 +49,7 @@ image:
     SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
     SPRYKER_HOOK_AFTER_DEPLOY: "true"
     SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-    SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive-stag --no-ansi -vvv"
+    SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
     WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
     enabled-extensions:
@@ -101,7 +101,7 @@ groups:
             store: DE
             redirect:
               type: 302
-              url: www.de.myworld.cloud.spryker.toys
+              url: www.de.myworld.cloud.spryker.toys 
       Yves:
         application: yves
         endpoints:
