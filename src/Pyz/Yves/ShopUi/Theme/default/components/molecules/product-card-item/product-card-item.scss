@@ -147,6 +147,20 @@
             }
         }
 
+        &--cart {
+            #{$name} {
+                &__image {
+                    align-self: flex-start;
+                }
+
+                &__price {
+                    font-weight: fw(bold);
+                    margin-bottom: rem(15);
+                    margin-top: rem(15);
+                }
+            }
+        }
+
         &--expand {
             width: 100%;
         }
@@ -155,6 +169,10 @@
             @include helper-breakpoint-media-min($lg-min) {
                 padding-right: rem(20);
             }
+        }
+
+        &__remove {
+
         }
 
         @content;

@@ -4,6 +4,7 @@
         padding: rem(18) 0;
 
         &__quantity {
+            margin-top: rem(5);
             font: rem(16) $setting-font-family;
             color: $setting-color-alpha-3;
         }
