@@ -95,6 +95,18 @@
         }
     }
 
+    &--remove {
+        color: $setting-color-alpha-5;
+        font-size: rem(15);
+        font-weight: fw(light);
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: map-get($setting-color-actions, 'alert');
+        }
+    }
+
     &--alternative {
         color: $setting-color-main;
         font-weight: fw(bold);

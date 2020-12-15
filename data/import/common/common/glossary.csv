@@ -3,7 +3,7 @@ cart.remove.items.success,Produkte wurden erfolgreich aus dem Warenkorb entfernt
 cart.remove.items.success,Products were removed successfully,en_US
 cart.add.items.error.text,Something went wrong. Sorry.,en_US
 cart.add.items.error.text,Leider ging etwas schief. Tut uns leid.,de_DE
-cart.add.items.success,Produkte erfolgreich im Warenkorb,de_DE
+cart.add.items.success,Produkte erfolgreich in den Warenkorb hinzugefügt,de_DE
 cart.add.items.success,Items added successfully,en_US
 cart.your-order,Deine Bestellung,de_DE
 cart.your-order,Your Order,en_US
@@ -19,8 +19,12 @@ cart.total,Gesamt,de_DE
 cart.total,Total,en_US
 cart.checkout,Zur Kasse,de_DE
 cart.checkout,Checkout,en_US
-cart.empty,Der Warenkorb ist zur Zeit leer!,de_DE
-cart.empty,Your shopping cart is empty!,en_US
+cart.empty.title,Dein Einkaufswagen ist leer,de_DE
+cart.empty.title,Your shopping cart is empty!,en_US
+cart.empty.description,"Die einzige Leidenschaft des Einkaufswagens ist, die besten Angebote, Geschenke und viele weitere tolle Produkte für dich zu sammeln. Also mach deinen Einkaufswagen glücklich und gebe seinem Dasein einen Sinn!",de_DE
+cart.empty.description,"The Shopping cart's only desire is to collect the best offers, gifts and many other great products for you. So fulfil your Shopping cart's wish and make sense of it!",en_US
+cart.empty.button,Angebote entdecken,de_DE
+cart.empty.button,Check out the offers,en_US
 cart.cart,Warenkorb,de_DE
 cart.cart,Cart,en_US
 cart.total.discount,Rabatt,de_DE
@@ -47,8 +51,8 @@ cart.voucher.redeem,Code einlösen,de_DE
 cart.voucher.redeem,Redeem code,en_US
 cart.price.subtotal,Zwischensumme,de_DE
 cart.price.subtotal,Subtotal,en_US
-cart.price.grand.total,Summe,de_DE
-cart.price.grand.total,Grand Total,en_US
+cart.price.grand.total,Zu zahlender Betrag,de_DE
+cart.price.grand.total,Total amount,en_US
 cart.total.tax_total,Mehrwertsteuer,de_DE
 cart.total.tax_total,Tax,en_US
 sales-order-threshold.hard-minimum-threshold.de.eur.message,"You should add items for {{threshold}} to pass a recommended threshold. You can't proceed with checkout",en_US
@@ -183,6 +187,8 @@ page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
 page.checkout.payment.edit,edit Payment Method,en_US
 page.checkout.payment.next-step,Weiter - Prüfen und Kauf abschließen,de_DE
 page.checkout.payment.next-step,Continue to finalise order,en_US
+page.checkout.payment.cc_text,"Credit card data is not stored or processed by myWorld. myWorld uses Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, the Netherlands, to process credit card payments. myWorld has commissioned myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, with the operational processing of the payment process.",en_US
+page.checkout.payment.cc_text,"Kreditkarten Daten werden von myWorld nicht gespeichert oder verarbeitet. myWorld bedient sich bei der Abwicklung der Kreditkartenzahlungen der Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Niederlande. Mit der operativen Abwicklung des Zahlungsprozesses hat myWorld die myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, beauftragt.",de_DE
 AdyenCreditCard,Credit Card,en_US
 AdyenCreditCard,Kreditkarte,de_DE
 adyen.payment.error.cc_number,Please check the Credit Card number,en_US
@@ -233,6 +239,10 @@ page.detail.dimensions,Abmessungen,de_DE
 page.detail.dimensions,Measurements,en_US
 page.product.by,von,de_DE
 page.product.by,by,en_US
+page.product.seller,Verkauft von,de_DE
+page.product.seller,Seller,en_US
+page.product.condition,Zustand,de_DE
+page.product.condition,Condition,en_US
 page.product.details,Details,de_DE
 page.product.details,Details,en_US
 page.product.similar-products,Könnte dir auch gefallen,de_DE
@@ -546,7 +556,7 @@ customer.account.edit_address_information,Ändern,de_DE
 customer.account.additional_addresses,Additional Addresses,en_US
 customer.account.additional_addresses,Zusätzliche Adressen,de_DE
 customer.account.button.add_new_address,Add new address,en_US
-customer.account.button.add_new_address,Neue adresse hinzufügen,de_DE
+customer.account.button.add_new_address,Neue Adresse hinzufügen,de_DE
 customer.account.add_new_address,Define new address,en_US
 customer.account.add_new_address,Definieren Sie eine neue Adresse,de_DE
 customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,en_US
@@ -638,7 +648,7 @@ customer.order.reorder,Nachbestellen,de_DE
 customer.order.reorder_all,Reorder all,en_US
 customer.order.reorder_all,Alle Artikel Nachbestellen,de_DE
 customer.order.reorder_selected,Reorder selected items,en_US
-customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
+customer.order.reorder_selected,Ausgewählte Artikel nachbestellen,de_DE
 customer.order.reorder.error.unable_to_reorder_items,"You can not reorder those products directly, please add them to your cart separately",en_US
 customer.order.reorder.error.unable_to_reorder_items,"Du kannst diese Produkte nicht direkt nachbestellen, bitte füge sie separat in deinen Warenkorb",de_DE
 customer.order.date,Order Date,en_US
@@ -2314,10 +2324,10 @@ cameras.category.link,/en/cameras-&-camcorders/digital-cameras,en_US
 cameras.category.link,/de/kameras-&-camcorder/digitale-kameras,de_DE
 samsung.search.link,/en/search?q=samsung,en_US
 samsung.search.link,/de/search?q=samsung,de_DE
-cart.title_content,In Your Cart,en_US
-cart.title_content,In deinem Warenkorb,de_DE
-cart.title_sidebar,Continue to Checkout,en_US
-cart.title_sidebar,Weiter zum Checkout,de_DE
+cart.title_content,Shopping Cart,en_US
+cart.title_content,Einkaufswagen,de_DE
+cart.title_sidebar,Order overview,en_US
+cart.title_sidebar,Bestellübersicht,de_DE
 cart.note-title,Cart Note,en_US
 cart.note-title,Notiz für Warenkorb,de_DE
 cart.voucher-title,Voucher Code,en_US
@@ -2374,8 +2384,8 @@ agent.account.profile_data,Agent Profile,en_US
 agent.account.profile_data,Agent-Profil,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
-footer.follow,Folgen Sie uns auf,en_US
-footer.follow,Follow us,de_DE
+footer.follow,Follow us,en_US
+footer.follow,Folgen Sie uns auf,de_DE
 footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
 footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
 footer.twitter.url,https://twitter.com/myWorld_uk,en_US
@@ -3016,3 +3026,9 @@ product.attribute.cashback_amount,Cashback,en_US
 product.attribute.cashback_amount,Cashback,de_DE
 product.attribute.shopping_points,Shopping points,en_US
 product.attribute.shopping_points,Shopping points,de_DE
+gdpr.message,"We use cookies on our website to make our services more efficient and more user-friendly. Therefore please select "Accept cookies"! Please read our %link% for further information.",en_US
+gdpr.message,"Wir nutzen Cookies auf unserer Website, um deinen Besuch effizienter zu gestalten und dir mehr Benutzerfreundlichkeit bieten zu können. Klicke daher bitte auf "Cookies akzeptieren"! Nähere Informationen findest du in unserer %link%",de_DE
+gdpr.privacy_policy,"Privacy Policy",en_US
+gdpr.privacy_policy,"Datenschutzerklärung",de_DE
+gdpr.accept_cookies,"Accept cookies",en_US
+gdpr.accept_cookies,"Cookies akzeptieren",de_DE

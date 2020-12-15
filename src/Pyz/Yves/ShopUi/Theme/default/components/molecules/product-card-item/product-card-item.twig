@@ -15,6 +15,8 @@
     canEditCart: true,
     additionalContainerClass: 'grid--middle grid--justify grid--no-wrap',
     productOptionsModifiers: [],
+    cashback: 2,
+    shoppingPoints: 1,
 } %}
 
 {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) and data.canEditCart %}
@@ -61,6 +63,19 @@
                         {% else %}
                             {{ 'customer.access.cannot_see_price' | trans }}
                         {% endif %}
+
+                        {% set cashback = data.cashback %}
+
+                        {% if cashback %}
+                            {% include molecule('cashback') with {
+                                class: config.name ~ '__cashback col',
+                                modifiers: ['small'],
+                                data: {
+                                    cashback: cashback,
+                                    shoppingPoints: data.shoppingPoints,
+                                },
+                            } only %}
+                        {% endif %}
                     {% endblock %}
                 </div>
 
@@ -103,13 +118,24 @@
                         </div>
 
                         {% if canEditCart %}
-                            {% widget 'RemoveFromCartFormWidget' args [data.productItem, random()] only %}
-                                {% block embeddedData %}
-                                    <button class="link link--darkest link--edit" data-init-single-click {{ qa('add-to-cart-button') }}>
-                                        {{- 'remove' | trans -}}
-                                    </button>
-                                {% endblock %}
-                            {% endwidget %}
+                            <div class="spacing-top spacing-top--big col">
+                                {% widget 'RemoveFromCartFormWidget' args [data.productItem, random()] only %}
+                                    {% block embeddedData %}
+                                        <button class="link link--remove" data-init-single-click {{ qa('add-to-cart-button') }}>
+                                            <span class="grid grid--middle grid--center">
+                                                {% include atom('icon') with {
+                                                    class: 'spacing-right spacing-right--small',
+                                                    modifiers: ['light'],
+                                                    data: {
+                                                        name: 'remove',
+                                                    },
+                                                } only %}
+                                                {{- 'remove' | trans -}}
+                                            </span>
+                                        </button>
+                                    {% endblock %}
+                                {% endwidget %}
+                            </div>
                         {% endif %}
                     </div>
                 {% endif %}

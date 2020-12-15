@@ -3,10 +3,6 @@
         padding-bottom: rem(50);
         display: block;
 
-        @include helper-breakpoint-media-min($lg-min) {
-            padding-bottom: rem(180);
-        }
-
         &__empty {
             margin-top: rem(48);
             margin-bottom: rem(50);

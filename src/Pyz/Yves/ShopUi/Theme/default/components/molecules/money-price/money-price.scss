@@ -30,4 +30,10 @@
             }
         }
     }
+
+    &--pdp & {
+        &__amount {
+            font: fw(bold) map-get($setting-font-size, 2) $setting-font-family;
+        }
+    }
 }
