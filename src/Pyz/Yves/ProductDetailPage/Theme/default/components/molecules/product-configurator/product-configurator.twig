@@ -39,23 +39,7 @@
 
 {% block body %}
 
-    <h1 class="title title--product title--h3">{{productName}}</h1>
-
-    {# TODO: Make this product meta dynamic #}
-    <div class="{{ config.name }}__product-meta">
-        <div class="{{ config.name }}__info">
-            <span class="{{ config.name }}__brand">
-                {{ 'product.page.by' | trans }} {{ productBrand }}
-            </span> -
-            <span class="{{ config.name }}__seller">
-                {{ 'product.page.seller' | trans }} <a class="{{ config.name }}__link" href="https://corporate.myworld.com/">myWorld.com</a>
-            </span>
-        </div>
-
-        <div class="{{ config.name }}__status">
-            {{ 'product.page.condition' | trans }}: <strong>Neu</strong>
-        </div>
-    </div>
+    <h1 class="title title--product title--h2">{{ productName }}</h1>
 
     <div class="grid grid--justify spacing-bottom spacing-bottom--smaller">
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}

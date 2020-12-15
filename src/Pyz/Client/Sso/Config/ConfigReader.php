@@ -34,20 +34,25 @@ class ConfigReader implements ConfigReaderInterface
 
     /**
      * @param string $locale
+     * @param string|null $state
      *
      * @return string
      */
-    public function getAuthorizeUrl(string $locale): string
+    public function getAuthorizeUrl(string $locale, ?string $state = null): string
     {
-        $httpQuery = http_build_query(
-            [
-                'response_type' => $this->ssoConfig->getResponseType(),
-                'client_id' => $this->ssoConfig->getClientId(),
-                'redirect_uri' => $this->ssoConfig->getRedirectUrl(),
-                'scope' => $this->ssoConfig->getScope(),
-                'lang' => str_replace('_', '-', $locale),
-            ]
-        );
+        $queryParams = [
+            'response_type' => $this->ssoConfig->getResponseType(),
+            'client_id' => $this->ssoConfig->getClientId(),
+            'redirect_uri' => $this->ssoConfig->getRedirectUrl(),
+            'scope' => $this->ssoConfig->getScope(),
+            'lang' => str_replace('_', '-', $locale),
+        ];
+
+        if (!empty($state)) {
+            $queryParams['state'] = strtr(base64_encode($state), '+/=', '._-');
+        }
+
+        $httpQuery = http_build_query($queryParams);
 
         return sprintf('%s?%s', $this->ssoConfig->getAuthorizeUrl(), $httpQuery);
     }

@@ -183,6 +183,14 @@ page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
 page.checkout.payment.edit,edit Payment Method,en_US
 page.checkout.payment.next-step,Weiter - Prüfen und Kauf abschließen,de_DE
 page.checkout.payment.next-step,Continue to finalise order,en_US
+adyen.payment.error.cc_number,Please check the Credit Card number,en_US
+adyen.payment.error.cc_number,Bitte prüfen Sie die Kartennummer,de_DE
+adyen.payment.error.cc_year,Please check the Credit Card year,en_US
+adyen.payment.error.cc_year,Bitte prüfen Sie das Jahr,de_DE
+adyen.payment.error.cc_month,Please check the Credit Card month,en_US
+adyen.payment.error.cc_month,Bitte prüfen Sie den Monat,de_DE
+adyen.payment.error.cc_cvv,Please check the CVC code,en_US
+adyen.payment.error.cc_cvv,Bitte prüfen Sie das CVC/CVV,de_DE
 page.checkout.summary.products,Products,en_US
 page.checkout.summary.products,Artikel,de_DE
 page.checkout.summary.billing,Rechnungsadresse,de_DE
@@ -927,6 +935,8 @@ checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
+checkout.step.summary.tracking_code,Sendungsverfolgungscode,de_DE
+checkout.step.summary.tracking_code,Delivery Tracking Code,en_US
 checkout.step.summary.uid,UID,de_DE
 checkout.step.summary.uid,UID,en_US
 checkout.step.summary.delivery_address,Lieferadresse,de_DE
@@ -1201,12 +1211,12 @@ mail.newsletter.unsubscribed.subject,"Schade, dass du uns verlässt",de_DE
 mail.newsletter.unsubscribed.subject,Sorry to see you go…,en_US
 mail.newsletter.unsubscribed.text,Deine E-Mailadresse wurde vom Spryker Shop Newsletter abgemeldet. Du kannst dich jeder Zeit wieder über dein Kundenkonto anmelden.,de_DE
 mail.newsletter.unsubscribed.text,"Your email address has been unsubscribed from Spryker Shop newsletter, but you can always manage your subscription in your customer profile.",en_US
-mail.order.confirmation.subject,Vielen Dank für deine Bestellung beim Spryker Shop,de_DE
+mail.order.confirmation.subject,Deine myWorld.com Bestellung %idOrder%,de_DE
+mail.order.confirmation.subject,Your myWorld.com order %idOrder%,en_US
 mail.order.in-processing.subject,New order just placed,en_US
 mail.order.in-processing.subject,Neue Bestellung gerade aufgegeben,de_DE
-mail.order.confirmation.subject,Thank you for your order at Spryker Shop,en_US
-mail.shipping.confirmation.subject,Ihre Bestellung wurde versandt.,de_DE
-mail.shipping.confirmation.subject,Your order has been shipped.,en_US
+mail.shipping.confirmation.subject,Deine myWorld.com Bestellung %idOrder% wurde versandt,de_DE
+mail.shipping.confirmation.subject,Your myWorld.com order %idOrder% has been sent,en_US
 mail.order.confirmation.salutation,Hallo,de_DE
 mail.order.confirmation.salutation,Hello,en_US
 mail.order.confirmation.text_line_1,danke für deine Bestellung beim Spryker Shop!,de_DE
@@ -1267,8 +1277,8 @@ mail.order.shipped.footer.text_line_1,Viele Grüße,de_DE
 mail.order.shipped.footer.text_line_1,Have a great day!,en_US
 mail.order.shipped.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.shipped.footer.text_line_2,Your Spryker Shop,en_US
-mail.order_invoice.subject,"Invoice: %invoiceReference%",en_US
-mail.order_invoice.subject,"Rechnung: %invoiceReference%",de_DE
+mail.order_invoice.subject,"Invoice for your myWorld.com order %idOrder%",en_US
+mail.order_invoice.subject,"Rechnung für deine myWorld.com Bestellung %idOrder%",de_DE
 mail.trans.customerRegistration.confirmationLink,"Validate your email address",en_US
 mail.trans.customerRegistration.confirmationLink,"Bestätigen Sie Ihre E-Mail-Adresse",de_DE
 cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
@@ -2373,7 +2383,7 @@ footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874
 footer.twitter.url,https://twitter.com/myWorld_uk,en_US
 footer.twitter.url,https://twitter.com/myworld_de,de_DE
 footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
-footer.instagram.url,https://www.instagram.com/myworld.com__deutschland/,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.com_deutschland/,de_DE
 footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
 footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
 footer.official_partner,Official partner,en_US
@@ -2800,56 +2810,40 @@ sales_product_bundle_widget.item.options,Product options:,en_US
 sales_product_bundle_widget.item.options,Produktoptionen:,de_DE
 oms.state.new,New,en_US
 oms.state.new,Neu,de_DE
-oms.state.waiting,Waiting,en_US
-oms.state.waiting,Warten,de_DE
-oms.state.in-progress,In progress,en_US
-oms.state.in-progress,In Bearbeitung,de_DE
-oms.state.ready,Ready,en_US
-oms.state.ready,Bereit,de_DE
-oms.state.canceled,Canceled,en_US
-oms.state.canceled,Abgebrochen,de_DE
+oms.state.invalid,Canceled,en_US
+oms.state.invalid,Storniert,de_DE
+oms.state.cancellation-pending,Cancellation,en_US
+oms.state.cancellation-pending,Stornierung,de_DE
+oms.state.cancellation-pending-next-try,Cancellation,en_US
+oms.state.cancellation-pending-next-try,Stornierung,de_DE
+oms.state.cancelled,Canceled,en_US
+oms.state.cancelled,Storniert,de_DE
+oms.state.authorization-pending-next-try,In progress,en_US
+oms.state.authorization-pending-next-try,In Arbeit,de_DE
+oms.state.capture pending,In progress,en_US
+oms.state.capture-pending,In Arbeit,de_DE
+oms.state.capture-pending-next-try,In progress,en_US
+oms.state.capture-pending-next-try,In Arbeit,de_DE
+oms.state.capture-failed-clarification,In progress,en_US
+oms.state.capture-failed-clarification,In Arbeit,de_DE
+oms.state.waiting-for-tracking-number,In progress,en_US
+oms.state.waiting-for-tracking-number,In Arbeit,de_DE
+oms.state.turnover-creation-failed,In progress,en_US
+oms.state.turnover-creation-failed,In Arbeit,de_DE
+oms.state.order-in-processing-email-sent,In progress,en_US
+oms.state.order-in-processing-email-sent,In Arbeit,de_DE
+oms.state.refund-pending,Refund,en_US
+oms.state.refund-pending,Rückerstattung,de_DE
+oms.state.refund-pending-next-try,Refund,en_US
+oms.state.refund-pending-next-try,Rückerstattung,de_DE
+oms.state.refund-failed-clarification,Refund,en_US
+oms.state.refund-failed-clarification,Rückerstattung,de_DE
+oms.state.turnover-cancellation-failed,Refund,en_US
+oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
+oms.state.invoice-with-tracking-number-sent,Shipped,en_US
+oms.state.invoice-with-tracking-number-sent,Versandt,de_DE
 oms.state.closed,Closed,en_US
 oms.state.closed,Geschlossen,de_DE
-oms.state.draft,Draft,en_US
-oms.state.draft,Entwurf,de_DE
-oms.state.payment-pending,Payment pending,en_US
-oms.state.payment-pending,Ausstehende Zahlung,de_DE
-oms.state.paid,Paid,en_US
-oms.state.paid,Bezahlt,de_DE
-oms.state.confirmed,Confirmed,en_US
-oms.state.confirmed,Bestätigt,de_DE
-oms.state.exported,Exported,en_US
-oms.state.exported,Exportiert,de_DE
-oms.state.shipped,Shipped,en_US
-oms.state.shipped,Versandt,de_DE
-oms.state.delivered,Delivered,en_US
-oms.state.delivered,Geliefert,de_DE
-oms.state.ready-for-return,Ready for return,en_US
-oms.state.ready-for-return,Bereit zum Retournieren,de_DE
-oms.state.refunded,Refunded,en_US
-oms.state.refunded,Zurückerstattet,de_DE
-oms.state.returned,Returned,en_US
-oms.state.returned,Retourniert,de_DE
-oms.state.waiting-for-return,Waiting for return,en_US
-oms.state.waiting-for-return,Wartet auf Retoure,de_DE
-oms.state.shipped-to-customer,Shipped to customer,en_US
-oms.state.shipped-to-customer,An den Kunden versandt,de_DE
-oms.state.sent-to-merchant,Sent to merchant,en_US
-oms.state.sent-to-merchant,An den Händler versandt,de_DE
-oms.state.shipped-by-merchant,Shipped by merchant,en_US
-oms.state.shipped-by-merchant,Von dem Händler versandt,de_DE
-oms.state.return-canceled,Return canceled,en_US
-oms.state.return-canceled,Retoure wurde abgebrochen,de_DE
-oms.state.merchant-split-pending,Merchant split pending,en_US
-oms.state.merchant-split-pending,Händleraufteilung steht noch aus,de_DE
-oms.state.gift-card-purchased,Gift card purchased,en_US
-oms.state.gift-card-purchased,Geschenkkarte gekauft,de_DE
-oms.state.gift-card-created,Gift card created,en_US
-oms.state.gift-card-created,Geschenkkarte erstellt,de_DE
-oms.state.gift-card-shipped,Gift card shipped,en_US
-oms.state.gift-card-shipped,Geschenkkarte verschickt,de_DE
-oms.state.invoice-generated,Invoice generated,en_US
-oms.state.invoice-generated,Rechnung generiert,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
@@ -3018,4 +3012,7 @@ product.attribute.benefit_store,Benefit Store,en_US
 product.attribute.benefit_store,Vorteil Geschäft,de_DE
 product.attribute.shopping_point_store,Shopping Point Store,en_US
 product.attribute.shopping_point_store,Einkaufspunkt Geschäft,de_DE
-product.attribute.product_stock.name,Warehouse,en_US
+product.attribute.cashback_amount,Cashback,en_US
+product.attribute.cashback_amount,Cashback,de_DE
+product.attribute.shopping_points,Shopping points,en_US
+product.attribute.shopping_points,Shopping points,de_DE

@@ -65,7 +65,7 @@
         {% include molecule('product-detail', 'ProductDetailPage') with {
             data: {
                 description: data.product.description,
-                attributes: data.product.pdpAttributes,
+                attributes: data.product.attributes,
                 sku: data.product.sku,
             },
         } only %}
