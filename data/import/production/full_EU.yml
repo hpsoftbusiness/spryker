@@ -64,6 +64,8 @@ actions:
       source: data/import/common/DE/combined_product.csv
     - data_entity: combined-product-stock
       source: data/import/common/DE/combined_product.csv
+    - data_entity: product-stock
+      source: data/import/common/common/product_stock.csv
     - data_entity: combined-product-group
       source: data/import/common/DE/combined_product.csv
 
