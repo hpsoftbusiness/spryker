@@ -3016,3 +3016,9 @@ product.attribute.cashback_amount,Cashback,en_US
 product.attribute.cashback_amount,Cashback,de_DE
 product.attribute.shopping_points,Shopping points,en_US
 product.attribute.shopping_points,Shopping points,de_DE
+gdpr.message,"We use cookies on our website to make our services more efficient and more user-friendly. Therefore please select "Accept cookies"! Please read our %link% for further information.",en_US
+gdpr.message,"Wir nutzen Cookies auf unserer Website, um deinen Besuch effizienter zu gestalten und dir mehr Benutzerfreundlichkeit bieten zu können. Klicke daher bitte auf "Cookies akzeptieren"! Nähere Informationen findest du in unserer %link%",de_DE
+gdpr.privacy_policy,"Privacy Policy",en_US
+gdpr.privacy_policy,"Datenschutzerklärung",de_DE
+gdpr.accept_cookies,"Accept cookies",en_US
+gdpr.accept_cookies,"Cookies akzeptieren",de_DE
