@@ -20,17 +20,21 @@
 {% endblock %}
 
 {% block pageInfo %}
-    <div class="col--lg-10 container">
-        <div class="container__inner">
-            {% block breadcrumbs %}
-                {% widget 'ProductBreadcrumbsWithCategoriesWidget' args [data.product] only %}{% endwidget %}
-            {% endblock %}
+    <div class="grid grid--center">
+        <div class="col col--sm-12 col--lg-10">
+            <div class="container__inner">
+                {% block breadcrumbs %}
+                    {% widget 'ProductBreadcrumbsWithCategoriesWidget' args [data.product] only %}{% endwidget %}
+                {% endblock %}
+            </div>
         </div>
     </div>
 {% endblock %}
-{% block contentClass %} page-layout-main {% endblock %}
+
+{% block contentClass %}page-layout-main grid grid--center spacing-bottom spacing-bottom--biggest{% endblock %}
+
 {% block content %}
-    <div class="col--lg-10 container">
+    <div class="col col--sm-12 col--lg-10">
         <div class="container__inner">
             <div class="grid">
                 {% include molecule('product-carousel', 'ProductDetailPage') with {

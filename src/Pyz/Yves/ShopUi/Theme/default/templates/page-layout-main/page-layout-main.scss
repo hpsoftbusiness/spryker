@@ -2,9 +2,11 @@
     #{$name} {
         &__content-pdp {
             width: 100%;
+            padding-bottom: rem(24);
 
             @include helper-breakpoint-media-min($lg-min) {
                 padding-right: rem(24);
+                padding-bottom: 0;
                 width: 50%;
             }
 
