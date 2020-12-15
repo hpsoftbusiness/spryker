@@ -183,6 +183,8 @@ page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
 page.checkout.payment.edit,edit Payment Method,en_US
 page.checkout.payment.next-step,Weiter - Prüfen und Kauf abschließen,de_DE
 page.checkout.payment.next-step,Continue to finalise order,en_US
+page.checkout.payment.cc_text,"Credit card data is not stored or processed by myWorld. myWorld uses Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, the Netherlands, to process credit card payments. myWorld has commissioned myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, with the operational processing of the payment process.",en_US
+page.checkout.payment.cc_text,"Kreditkarten Daten werden von myWorld nicht gespeichert oder verarbeitet. myWorld bedient sich bei der Abwicklung der Kreditkartenzahlungen der Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Niederlande. Mit der operativen Abwicklung des Zahlungsprozesses hat myWorld die myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, beauftragt.",de_DE
 AdyenCreditCard,Credit Card,en_US
 AdyenCreditCard,Kreditkarte,de_DE
 adyen.payment.error.cc_number,Please check the Credit Card number,en_US
