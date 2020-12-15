@@ -5,6 +5,10 @@
     tag: 'gdpr-tag',
 } %}
 
+{% set link %}
+    <a class="{{ config.name }}__link" href="{{ 'footer.logo.link.privacy' | trans }}">{{ 'gdpr.privacy_policy' | trans }}</a>
+{% endset %}
+
 {% block body %}
     {# TODO: Add dynamic text here from translations #}
     <div
@@ -15,10 +19,7 @@
         style="display:none"
         >
         <p class="{{ config.name }}__message">
-            We use cookies on our website to make our services more efficient
-            and more user-friendly. Therefore please select "Accept cookies"!
-            Please read our <a class="{{ config.name }}__link" href="{{ 'footer.logo.link.privacy' | trans }}">Privacy Policy</a>
-            for further information.
+            {{ 'gdpr.message' | trans({'%link%': link}) | raw }}
         </p>
 
         <button
@@ -26,7 +27,7 @@
             id="cookie-notification__accept"
             class="{{ config.name }}__button button button--small button--expand"
         >
-            Accept cookies
+            {{ 'gdpr.accept_cookies' | trans }}
         </button>
     </div>
 {% endblock %}
