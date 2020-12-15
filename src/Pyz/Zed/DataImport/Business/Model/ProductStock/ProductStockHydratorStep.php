@@ -20,6 +20,7 @@ class ProductStockHydratorStep implements DataImportStepInterface
     public const COLUMN_NAME = 'name';
     public const COLUMN_QUANTITY = 'quantity';
     public const COLUMN_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
+    public const COLUMN_IS_BUNDLE = 'is_bundle';
 
     public const KEY_FK_PRODUCT = 'fk_product';
     public const KEY_FK_STOCK = 'fk_stock';

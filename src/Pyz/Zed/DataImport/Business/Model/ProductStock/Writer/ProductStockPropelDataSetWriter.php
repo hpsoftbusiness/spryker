@@ -35,6 +35,7 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
     protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+    protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
     protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 
     protected const KEY_AVAILABILITY_SKU = 'KEY_AVAILABILITY_SKU';
@@ -101,8 +102,12 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $this->collectProductAbstractSku($dataSet);
         $this->updateAvailability($dataSet);
 
-        $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);
-        $this->productBundleFacade->updateAffectedBundlesStock($dataSet[static::COLUMN_CONCRETE_SKU]);
+        if ($dataSet[static::COLUMN_IS_BUNDLE]) {
+            $this->productBundleFacade->updateBundleAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);
+        } else {
+            $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesStock($dataSet[static::COLUMN_CONCRETE_SKU]);
+        }
     }
 
     /**
