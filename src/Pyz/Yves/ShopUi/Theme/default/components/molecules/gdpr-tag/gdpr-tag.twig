@@ -1,0 +1,32 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'gdpr-tag',
+    tag: 'gdpr-tag',
+} %}
+
+{% set link %}
+    <a class="{{ config.name }}__link" href="{{ 'footer.logo.link.privacy' | trans }}">{{ 'gdpr.privacy_policy' | trans }}</a>
+{% endset %}
+
+{% block body %}
+    <div
+        id="cookie-notification"
+        class="{{ config.name }}__content"
+        role="alert"
+        data-display="flex"
+        style="display:none"
+        >
+        <p class="{{ config.name }}__message">
+            {{ 'gdpr.message' | trans({'%link%': link}) | raw }}
+        </p>
+
+        <button
+            type="button"
+            id="cookie-notification__accept"
+            class="{{ config.name }}__button button button--small button--expand"
+        >
+            {{ 'gdpr.accept_cookies' | trans }}
+        </button>
+    </div>
+{% endblock %}
