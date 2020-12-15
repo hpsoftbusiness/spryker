@@ -12,6 +12,7 @@ use DateTimeZone;
 use Generated\Shared\Transfer\ExportContentsTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
+use Generated\Shared\Transfer\OrderInvoiceTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
@@ -119,10 +120,12 @@ class PostingExportContentBuilder
 
         foreach ($orderIds as $idOrder) {
             $orderTransfer = $this->salesFacade->getOrderForExportByIdSalesOrder($idOrder);
+            dump($this->getPostingExportOrderData($orderTransfer, $localeTransfer));
             $postingExportContentsTransfer->addContentItem(
                 $this->getPostingExportOrderData($orderTransfer, $localeTransfer)
             );
         }
+        dd(1);
 
         return $postingExportContentsTransfer;
     }
@@ -140,16 +143,18 @@ class PostingExportContentBuilder
         $customerTransfer = $orderTransfer->getCustomer();
         $billingAddressTransfer = $orderTransfer->getBillingAddress();
         $shippingAddressTransfer = $orderTransfer->getBillingAddress();
+        $adyenPaymentReference = $this->findAdyenPaymentReference($orderTransfer);
+        $orderInvoiceTransfer = $this->findOrderInvoice($orderTransfer);
+        $businessPostingGroup = $this->findBusinessPosingGroup($orderTransfer);
+
         $grandTotal = $orderTransfer->getTotals()->getGrandTotal();
         $taxTotal = $orderTransfer->getTotals()->getTaxTotal()->getAmount();
         $excludingVatTotal = $grandTotal - $taxTotal;
-        $postingDate = $orderTransfer->getInvoiceCreatedAt()
-            ? $this->getFormattedDate($orderTransfer->getInvoiceCreatedAt())
-            : null;
 
-        $adyenPaymentReference = $this->findAdyenPaymentReference($orderTransfer);
-        $orderInvoiceReference = $this->findOrderInvoiceReference($orderTransfer);
-        $businessPostingGroup = $this->findBusinessPosingGroup($orderTransfer);
+        $orderInvoiceReference = $orderInvoiceTransfer ? $orderInvoiceTransfer->getReference() : null;
+        $postingDate = $orderInvoiceTransfer
+            ? $this->getFormattedDate($orderInvoiceTransfer->getIssueDate())
+            : null;
 
         $orderItemsCount = 0;
         $orderItemsData = [];
@@ -241,6 +246,10 @@ class PostingExportContentBuilder
             $itemTransfer->getProductConcrete(),
             $localeTransfer
         );
+        $categoryName = $this->findCategoryName(
+            $itemTransfer,
+            $localeTransfer
+        );
 
         return [
             'interfaceCode' => static::DEFAULT_DATA_INTERFACE_CODE,
@@ -252,7 +261,7 @@ class PostingExportContentBuilder
             'type' => static::DEFAULT_LINE_DATA_TYPE,
             'no' => $itemTransfer->getProductConcrete()->getSku(),
             'description' => $productDescription,
-            'itemCategory' => null, // check
+            'itemCategory' => $categoryName,
             'unitOfMeasure' => static::DEFAULT_LINE_DATA_UNITS_OF_MEASURE,
             'quantity' => $itemTransfer->getQuantity(),
             'genProdPostingGroup' => static::DEFAULT_LINE_DATA_GEN_PROD_POSTING_GROUP,
@@ -309,17 +318,46 @@ class PostingExportContentBuilder
     }
 
     /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return string|null
      */
-    protected function findOrderInvoiceReference(OrderTransfer $orderTransfer): ?string
+    protected function findCategoryName(
+        ItemTransfer $itemTransfer,
+        LocaleTransfer $localeTransfer
+    ): ?string {
+        if (!$itemTransfer->getCategories()->count()) {
+            return null;
+        }
+
+        $categoryTransfer = $itemTransfer->getCategories()[0];
+
+        if (!$categoryTransfer->getLocalizedAttributes()->count()) {
+            return null;
+        }
+
+        foreach ($categoryTransfer->getLocalizedAttributes() as $localizedAttributesTransfer) {
+            if ($localizedAttributesTransfer->getLocale()->getLocaleName() === $localeTransfer->getLocaleName()) {
+                return $localizedAttributesTransfer->getName();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return \Generated\Shared\Transfer\OrderInvoiceTransfer|null
+     */
+    protected function findOrderInvoice(OrderTransfer $orderTransfer): ?OrderInvoiceTransfer
     {
         if (!$orderTransfer->getOrderInvoices()->count()) {
             return null;
         }
 
-        return $orderTransfer->getOrderInvoices()[0]->getReference();
+        return $orderTransfer->getOrderInvoices()[0];
     }
 
     /**

@@ -6,12 +6,12 @@
 
     <process name="Capture01">
         <states>
-            <state name="ready for capture"/>
-            <state name="capture pending"/>
-            <state name="captured"/>
-            <state name="capture failed clarification"/>
-            <state name="capture failed"/>
-            <state name="capture pending next try"/>
+            <state name="ready for capture" reserved="true"/>
+            <state name="capture pending" reserved="true"/>
+            <state name="captured" reserved="true"/>
+            <state name="capture failed clarification" reserved="true"/>
+            <state name="capture failed" reserved="true"/>
+            <state name="capture pending next try" reserved="true"/>
         </states>
 
         <events>

@@ -11,15 +11,18 @@ use Spryker\Zed\Stock\StockConfig as SprykerStockConfig;
 
 class StockConfig extends SprykerStockConfig
 {
-    /**
+    public const INTERNAL_WAREHOUSE = 'MW_Solution';
+    public const EXTERNAL_AFFILIATE_WAREHOUSE = 'Affiliate';
+
+     /**
      * @return array
      */
     public function getStoreToWarehouseMapping()
     {
         return [
             'DE' => [
-                'MW_Solution',
-                'Affiliate',
+                static::INTERNAL_WAREHOUSE,
+                static::EXTERNAL_AFFILIATE_WAREHOUSE,
             ],
         ];
     }

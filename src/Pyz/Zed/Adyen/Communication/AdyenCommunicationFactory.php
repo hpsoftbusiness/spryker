@@ -10,7 +10,6 @@ namespace Pyz\Zed\Adyen\Communication;
 use Pyz\Zed\Adyen\AdyenDependencyProvider;
 use Spryker\Zed\Refund\Business\RefundFacadeInterface;
 use SprykerEco\Zed\Adyen\Communication\AdyenCommunicationFactory as SprykerEcoAdyenCommunicationFactory;
-use SprykerEco\Zed\Adyen\Dependency\Facade\AdyenToCalculationFacadeInterface;
 
 /**
  * @method \SprykerEco\Zed\Adyen\AdyenConfig getConfig()

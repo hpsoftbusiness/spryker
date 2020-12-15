@@ -34,6 +34,11 @@ class ProductController extends SprykerShopProductController
         );
         $viewData['cart'] = $quoteTransfer;
 
+        $viewData['product']
+            ->setAttributes(
+                $this->getFilterProductAttributes($viewData['product']->getAttributes())
+            );
+
         if ($viewData['product']->getIsAffiliate()) {
             $affiliateData = $viewData['product']->getAffiliateData();
             $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl($affiliateData);
@@ -61,5 +66,26 @@ class ProductController extends SprykerShopProductController
                 $affiliateData['affiliate_deeplink'],
                 $customerTransfer
             );
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    protected function getFilterProductAttributes(array $attributes): array
+    {
+        $attributesToFilter = [
+            'benefit_store',
+            'shopping_point_store',
+        ];
+
+        foreach (array_keys($attributes) as $attributeKey) {
+            if (in_array($attributeKey, $attributesToFilter)) {
+                unset($attributes[$attributeKey]);
+            }
+        }
+
+        return $attributes;
     }
 }
