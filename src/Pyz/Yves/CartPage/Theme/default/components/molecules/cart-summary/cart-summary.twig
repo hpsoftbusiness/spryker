@@ -24,11 +24,11 @@
                     <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money }}</span>
                 </li>
             {% endif %}
-            <li class="{{ config.name }}__item spacing-y spacing-y--bigger">
+            <li class="{{ config.name }}__item {{ config.name }}__subtotal">
                 {{ 'cart.price.subtotal' | trans }}
                 <span class="float-right">{{ data.cart.totals.subtotal | money }}</span>
             </li>
-            <li class="{{ config.name }}__item spacing-y spacing-y--bigger">
+            <li class="{{ config.name }}__item {{ config.name }}__tax">
                 {{ 'cart.total.tax_total' | trans }}
                 <span class="float-right">{{ data.cart.totals.taxTotal.amount | money }}</span>
             </li>

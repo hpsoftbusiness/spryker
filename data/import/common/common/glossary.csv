@@ -19,8 +19,12 @@ cart.total,Gesamt,de_DE
 cart.total,Total,en_US
 cart.checkout,Zur Kasse,de_DE
 cart.checkout,Checkout,en_US
-cart.empty,Der Warenkorb ist zur Zeit leer!,de_DE
-cart.empty,Your shopping cart is empty!,en_US
+cart.empty.title,Dein Einkaufswagen ist leer,de_DE
+cart.empty.title,Your shopping cart is empty!,en_US
+cart.empty.description,"Die einzige Leidenschaft des Einkaufswagens ist, die besten Angebote, Geschenke und viele weitere tolle Produkte für dich zu sammeln. Also mach deinen Einkaufswagen glücklich und gebe seinem Dasein einen Sinn!",de_DE
+cart.empty.description,"The Shopping cart's only desire is to collect the best offers, gifts and many other great products for you. So fulfil your Shopping cart's wish and make sense of it!",en_US
+cart.empty.button,Angebote entdecken,de_DE
+cart.empty.button,Check out the offers,en_US
 cart.cart,Warenkorb,de_DE
 cart.cart,Cart,en_US
 cart.total.discount,Rabatt,de_DE
@@ -47,8 +51,8 @@ cart.voucher.redeem,Code einlösen,de_DE
 cart.voucher.redeem,Redeem code,en_US
 cart.price.subtotal,Zwischensumme,de_DE
 cart.price.subtotal,Subtotal,en_US
-cart.price.grand.total,Summe,de_DE
-cart.price.grand.total,Grand Total,en_US
+cart.price.grand.total,Zu zahlender Betrag,de_DE
+cart.price.grand.total,Total amount,en_US
 cart.total.tax_total,Mehrwertsteuer,de_DE
 cart.total.tax_total,Tax,en_US
 sales-order-threshold.hard-minimum-threshold.de.eur.message,"You should add items for {{threshold}} to pass a recommended threshold. You can't proceed with checkout",en_US
@@ -2312,10 +2316,10 @@ cameras.category.link,/en/cameras-&-camcorders/digital-cameras,en_US
 cameras.category.link,/de/kameras-&-camcorder/digitale-kameras,de_DE
 samsung.search.link,/en/search?q=samsung,en_US
 samsung.search.link,/de/search?q=samsung,de_DE
-cart.title_content,In Your Cart,en_US
-cart.title_content,In deinem Warenkorb,de_DE
-cart.title_sidebar,Continue to Checkout,en_US
-cart.title_sidebar,Weiter zum Checkout,de_DE
+cart.title_content,Shopping Cart,en_US
+cart.title_content,Einkaufswagen,de_DE
+cart.title_sidebar,Order overview,en_US
+cart.title_sidebar,Bestellübersicht,de_DE
 cart.note-title,Cart Note,en_US
 cart.note-title,Notiz für Warenkorb,de_DE
 cart.voucher-title,Voucher Code,en_US
