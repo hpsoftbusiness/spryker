@@ -9,6 +9,7 @@
         <column name="card_number" required="false" type="VARCHAR"/>
         <column name="customer_type" required="false" type="ENUM" valueSet="Customer,Employee,Marketer"/>
         <column name="is_active" required="true" defaultValue="false" type="BOOLEAN"/>
+        <column name="country_id" required="false" type="VARCHAR" size="2"/>
 
         <unique name="spy_customer-my_world_customer_id">
             <unique-column name="my_world_customer_id"/>

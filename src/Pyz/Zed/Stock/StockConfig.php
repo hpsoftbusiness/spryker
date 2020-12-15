@@ -15,8 +15,8 @@ class StockConfig extends SprykerStockConfig
     public const EXTERNAL_AFFILIATE_WAREHOUSE = 'Affiliate';
 
      /**
-     * @return array
-     */
+      * @return array
+      */
     public function getStoreToWarehouseMapping()
     {
         return [

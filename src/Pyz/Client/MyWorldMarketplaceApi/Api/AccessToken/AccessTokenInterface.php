@@ -11,5 +11,8 @@ use Generated\Shared\Transfer\AccessTokenTransfer;
 
 interface AccessTokenInterface
 {
+    /**
+     * @return \Generated\Shared\Transfer\AccessTokenTransfer
+     */
     public function getAccessToken(): AccessTokenTransfer;
 }

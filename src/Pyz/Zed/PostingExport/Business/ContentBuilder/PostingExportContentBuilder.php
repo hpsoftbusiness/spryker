@@ -120,12 +120,10 @@ class PostingExportContentBuilder
 
         foreach ($orderIds as $idOrder) {
             $orderTransfer = $this->salesFacade->getOrderForExportByIdSalesOrder($idOrder);
-            dump($this->getPostingExportOrderData($orderTransfer, $localeTransfer));
             $postingExportContentsTransfer->addContentItem(
                 $this->getPostingExportOrderData($orderTransfer, $localeTransfer)
             );
         }
-        dd(1);
 
         return $postingExportContentsTransfer;
     }

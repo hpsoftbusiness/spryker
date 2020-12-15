@@ -11,6 +11,7 @@
     </table>
 
     <table name="spy_glossary_translation">
+        <column name="value" type="CLOB" required="true"/>
         <behavior name="event">
             <parameter name="spy_glossary_translation-value" column="value"/>
         </behavior>

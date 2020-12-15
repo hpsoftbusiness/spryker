@@ -3,7 +3,7 @@ cart.remove.items.success,Produkte wurden erfolgreich aus dem Warenkorb entfernt
 cart.remove.items.success,Products were removed successfully,en_US
 cart.add.items.error.text,Something went wrong. Sorry.,en_US
 cart.add.items.error.text,Leider ging etwas schief. Tut uns leid.,de_DE
-cart.add.items.success,Produkte erfolgreich im Warenkorb,de_DE
+cart.add.items.success,Produkte erfolgreich in den Warenkorb hinzugefügt,de_DE
 cart.add.items.success,Items added successfully,en_US
 cart.your-order,Deine Bestellung,de_DE
 cart.your-order,Your Order,en_US
@@ -187,6 +187,10 @@ page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
 page.checkout.payment.edit,edit Payment Method,en_US
 page.checkout.payment.next-step,Weiter - Prüfen und Kauf abschließen,de_DE
 page.checkout.payment.next-step,Continue to finalise order,en_US
+page.checkout.payment.cc_text,"Credit card data is not stored or processed by myWorld. myWorld uses Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, the Netherlands, to process credit card payments. myWorld has commissioned myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, with the operational processing of the payment process.",en_US
+page.checkout.payment.cc_text,"Kreditkarten Daten werden von myWorld nicht gespeichert oder verarbeitet. myWorld bedient sich bei der Abwicklung der Kreditkartenzahlungen der Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Niederlande. Mit der operativen Abwicklung des Zahlungsprozesses hat myWorld die myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, beauftragt.",de_DE
+AdyenCreditCard,Credit Card,en_US
+AdyenCreditCard,Kreditkarte,de_DE
 adyen.payment.error.cc_number,Please check the Credit Card number,en_US
 adyen.payment.error.cc_number,Bitte prüfen Sie die Kartennummer,de_DE
 adyen.payment.error.cc_year,Please check the Credit Card year,en_US
@@ -552,7 +556,7 @@ customer.account.edit_address_information,Ändern,de_DE
 customer.account.additional_addresses,Additional Addresses,en_US
 customer.account.additional_addresses,Zusätzliche Adressen,de_DE
 customer.account.button.add_new_address,Add new address,en_US
-customer.account.button.add_new_address,Neue adresse hinzufügen,de_DE
+customer.account.button.add_new_address,Neue Adresse hinzufügen,de_DE
 customer.account.add_new_address,Define new address,en_US
 customer.account.add_new_address,Definieren Sie eine neue Adresse,de_DE
 customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,en_US
@@ -644,7 +648,7 @@ customer.order.reorder,Nachbestellen,de_DE
 customer.order.reorder_all,Reorder all,en_US
 customer.order.reorder_all,Alle Artikel Nachbestellen,de_DE
 customer.order.reorder_selected,Reorder selected items,en_US
-customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
+customer.order.reorder_selected,Ausgewählte Artikel nachbestellen,de_DE
 customer.order.reorder.error.unable_to_reorder_items,"You can not reorder those products directly, please add them to your cart separately",en_US
 customer.order.reorder.error.unable_to_reorder_items,"Du kannst diese Produkte nicht direkt nachbestellen, bitte füge sie separat in deinen Warenkorb",de_DE
 customer.order.date,Order Date,en_US
@@ -2381,7 +2385,7 @@ agent.account.profile_data,Agent-Profil,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
 footer.follow,Follow us,en_US
-footer.follow,Follow us,de_DE
+footer.follow,Folgen Sie uns auf,de_DE
 footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
 footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
 footer.twitter.url,https://twitter.com/myWorld_uk,en_US
@@ -2822,6 +2826,8 @@ oms.state.cancellation-pending-next-try,Cancellation,en_US
 oms.state.cancellation-pending-next-try,Stornierung,de_DE
 oms.state.cancelled,Canceled,en_US
 oms.state.cancelled,Storniert,de_DE
+oms.state.order-confirmation-email-sent,In progress,en_US
+oms.state.order-confirmation-email-sent,In Arbeit,de_DE
 oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US
