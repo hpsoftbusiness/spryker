@@ -7,7 +7,6 @@
             overflow: hidden;
             margin-bottom: rem(10);
 
-
             @include helper-breakpoint-media-min($lg-min) {
                 margin-bottom: rem(36);
             }

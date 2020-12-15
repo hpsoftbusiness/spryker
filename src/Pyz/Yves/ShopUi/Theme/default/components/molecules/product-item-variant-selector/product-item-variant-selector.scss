@@ -2,7 +2,11 @@
     #{$name} {
         &__label {
             display: block;
-            margin-bottom: rem(15);
+            margin-bottom: rem(5);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-bottom: rem(15);
+            }
         }
 
         &__title {
