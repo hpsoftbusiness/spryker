@@ -10,6 +10,7 @@ namespace Pyz\Zed\Customer\Communication\Form;
 use Spryker\Zed\Customer\Communication\Form\AddressForm as SprykerAddressForm;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -42,6 +43,21 @@ class AddressForm extends SprykerAddressForm
     }
 
     /**
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        parent::configureOptions($resolver);
+
+        $resolver->setDefaults([
+            'required' => true,
+            static::OPTION_PREFERRED_COUNTRY_CHOICES => [],
+        ]);
+    }
+
+    /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      *
      * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
@@ -50,6 +66,7 @@ class AddressForm extends SprykerAddressForm
     {
         $builder->add(static::FIELD_ADDRESS_2, TextType::class, [
             'label' => 'Address line 2',
+            'required' => true,
             'constraints' => [
                 new NotBlank(),
                 new Length(['max' => 255]),
