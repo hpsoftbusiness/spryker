@@ -14,6 +14,8 @@
     </table>
 
     <table name="spy_product_image">
+        <column name="external_url_small" type="VARCHAR" size="4096"/>
+        <column name="external_url_large" type="VARCHAR" size="4096"/>
         <behavior name="event">
             <parameter name="spy_product_image_all" column="*"/>
         </behavior>
