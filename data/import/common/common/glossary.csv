@@ -2834,6 +2834,8 @@ oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US
 oms.state.capture-pending,In Arbeit,de_DE
+oms.state.turnover-created,In progress,en_US
+oms.state.turnover-created,In Arbeit,de_DE
 oms.state.capture-pending-next-try,In progress,en_US
 oms.state.capture-pending-next-try,In Arbeit,de_DE
 oms.state.capture-failed-clarification,In progress,en_US
