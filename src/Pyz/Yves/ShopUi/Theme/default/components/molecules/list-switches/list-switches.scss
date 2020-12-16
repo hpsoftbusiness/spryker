@@ -24,11 +24,9 @@
 
             #{$name}__item {
                 display: block;
-                text-align: center;
 
                 @include helper-breakpoint-media-min($md-min) {
                     display: inline-block;
-                    text-align: left;
                     width: 50%;
                 }
             }
