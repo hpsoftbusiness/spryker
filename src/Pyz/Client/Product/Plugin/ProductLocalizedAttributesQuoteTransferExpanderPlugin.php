@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Client\Product\Plugin;
 
+use ArrayObject;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\Quote\Dependency\Plugin\QuoteTransferExpanderPluginInterface;
 
@@ -38,7 +38,7 @@ class ProductLocalizedAttributesQuoteTransferExpanderPlugin extends AbstractPlug
         }
 
         $quoteTransfer
-            ->setItems(new \ArrayObject($itemTransfers));
+            ->setItems(new ArrayObject($itemTransfers));
 
         return $quoteTransfer;
     }

@@ -35,4 +35,20 @@ class OmsConfig extends SprykerOmsConfig
     {
         return $this->get(OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME);
     }
+
+    /**
+     * @return string
+     */
+    public function getMailShippingConfirmationBccRecipientEmail(): string
+    {
+        return $this->get(OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL, '');
+    }
+
+    /**
+     * @return string
+     */
+    public function getMailShippingConfirmationBccRecipientName(): string
+    {
+        return $this->get(OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME, '');
+    }
 }

@@ -23,12 +23,12 @@
                     {{ 'general.back.button' | trans }}
                 </a>
 
-                {% include molecule('return-create-link', 'SalesReturnPage') ignore missing with {
+                {#{% include molecule('return-create-link', 'SalesReturnPage') ignore missing with {
                     class: config.jsName ~ '__target-state-toggler ' ~ buttonClasses,
                     data: {
                         orderReference: embed.order.orderReference,
                     },
-                } only %}
+                } only %}#}
 
                 {% widget 'OrderCancelButtonWidget' args [embed.order, embed.requestUri] with {
                     embed: {
@@ -130,7 +130,7 @@
         },
     } only %}
 
-    {% block buttonsStateHandler %}
+    {#{% block buttonsStateHandler %}
         {% include molecule('order-buttons-disable-toggler', 'SalesReturnPage') ignore missing with {
             attributes: {
                 'trigger-class-name': 'js-customer-reorder-form__selection',
@@ -139,5 +139,5 @@
                 'disabled-class-name': 'button--disabled',
             },
         } only %}
-    {% endblock %}
+    {% endblock %}#}
 {% endblock %}
