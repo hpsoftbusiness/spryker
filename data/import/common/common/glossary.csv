@@ -659,8 +659,8 @@ customer.order.item_sku,SKU,de_DE
 customer.order.item_sku,SKU,en_US
 customer.order.product_name,Produkt Name,de_DE
 customer.order.product_name,Product name,en_US
-customer.order.item_price,Preis,de_DE
-customer.order.item_price,Price,en_US
+customer.order.item_price,Preis inkl. USt.,de_DE
+customer.order.item_price,Price incl. VAT,en_US
 customer.order.item_quantity,Anzahl,de_DE
 customer.order.item_quantity,Quantity,en_US
 customer.order.item_sum,Item total,de_DE
@@ -2996,6 +2996,8 @@ mail.trans.order_confirmation.subtitle,"as soon as your package is on its way, y
 mail.trans.order_confirmation.subtitle,"sobald dein Paket auf dem Weg ist, erhältst du von uns eine gesonderte Versandbestätigung per E-Mail. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Um deine Bestellung anzusehen, besuche bitte den Bereich 'Meine Bestellungen' auf myWorld.com.",de_DE
 mail.trans.shipping_confirmation.subtitle,"we would like to inform you that your order or parts of your order has been shipped. In case of partial deliveries you will receive a separate notification for each delivery. As soon as the seller has made the invoice available, you will find it in your customer account under 'My orders'.",en_US
 mail.trans.shipping_confirmation.subtitle,"wir möchten dich darüber informieren, dass deine Bestellung oder Teile deiner Bestellung versandt worden sind. Im Falle von Teillieferungen erhältst du für jede Lieferung eine separate Verständigung. Sobald der Verkäufer die Rechnung zur Verfügung gestellt hat, findest du sie in deinem Kundenkonto unter 'Meine Bestellungen'.",de_DE
+mail.trans.shipping_confirmation.title,Your order is on its way to you,en_US
+mail.trans.shipping_confirmation.title,Deine Bestellung ist auf dem Weg zu dir,de_DE
 mail.trans.order_in_processing.title,New order just placed,en_US
 mail.trans.order_in_processing.title,Neue Bestellung gerade aufgegeben,de_DE
 mail.trans.order_confirmation.title,Thanks for your order!,en_US
