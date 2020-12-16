@@ -32,7 +32,7 @@
                data-id="sidebar-order">{{ 'customer.account.order_history' | trans }}</a>
         </li>
 
-        {% embed molecule('return-list-link', 'SalesReturnPage') ignore missing with {
+        {#{% embed molecule('return-list-link', 'SalesReturnPage') ignore missing with {
             class: component.renderClass('menu__link', modifiers),
             data: {
                 activePage: data.activePage,
@@ -47,7 +47,7 @@
                     {{ parent() }}
                 </li>
             {% endblock %}
-        {% endembed %}
+        {% endembed %}#}
 
         {% block wishlistNavigation %}
             {% widget 'WishlistMenuItemWidget' args [data.activePage, data.activeEntityId] with {

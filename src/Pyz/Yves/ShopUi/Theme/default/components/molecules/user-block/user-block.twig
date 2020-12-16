@@ -5,30 +5,30 @@
 } %}
 
 {% block body %}
-    <h2 class="title title--mini-cart title--with-border">{{ 'customer.profile.title' | trans }}</h2>
-    <div class="spacing-y spacing-y--inner spacing-y--big">
-        {% set links = [
-            {
-                name: 'checkout.step.summary.overview' | trans,
-                url: url('customer/overview'),
-            },
-            {
-                name: 'customer.account.order_history' | trans,
-                url: url('customer/order'),
-            }
-        ] %}
-        {% for link in links %}
-            {% include molecule('user-block-item') with {
-                data: {
-                    name: link.name,
-                },
-                attributes: {
-                    href: link.url,
-                },
-            } only %}
-        {% endfor %}
-    </div>
     {% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_USER') %}
+        <h2 class="title title--mini-cart title--with-border">{{ 'customer.profile.title' | trans }}</h2>
+        <div class="spacing-y spacing-y--inner spacing-y--big">
+            {% set links = [
+                {
+                    name: 'checkout.step.summary.overview' | trans,
+                    url: url('customer/overview'),
+                },
+                {
+                    name: 'customer.account.order_history' | trans,
+                    url: url('customer/order'),
+                }
+            ] %}
+            {% for link in links %}
+                {% include molecule('user-block-item') with {
+                    data: {
+                        name: link.name,
+                    },
+                    attributes: {
+                        href: link.url,
+                    },
+                } only %}
+            {% endfor %}
+        </div>
         {% include molecule('user-block-item') with {
             modifiers: ['small'],
             data: {
@@ -39,8 +39,16 @@
             },
         } only %}
     {% else %}
+        <h2 class="title title--mini-cart title--with-border">{{ 'global.login' | trans }}</h2>
         <div class="grid grid--middle grid--justify {{ config.name }}__buttons-container">
-            <a href="{{ url('login') }}" class="{{ config.name }}__button button col">{{ 'global.login' | trans }}</a>
+            <a href="{{ url('login') }}" class="button button--cashback col" title="{{ 'global.login' | trans }}">
+                {% include atom('icon') with {
+                    modifiers: ['cashback-world'],
+                    data: {
+                        name: 'cashback-world',
+                    },
+                } only %}
+            </a>
         </div>
     {% endif %}
 {% endblock %}
