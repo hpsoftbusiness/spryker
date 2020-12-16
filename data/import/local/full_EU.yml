@@ -51,19 +51,19 @@ actions:
 
 #4. Combined product
   - data_entity: combined-product-abstract
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-abstract-store
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-concrete
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-image
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-price
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-stock
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-group
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
 
 
 #5. Merchandising Setup import
@@ -116,7 +116,7 @@ actions:
   - data_entity: product-list-customer-group
     source: data/import/common/common/product_list_to_customer_group.csv
   - data_entity: combined-product-list-product-concrete
-    source: data/import/common/DE/combined_product.csv
+    source: data/import/common/DE/combined_product_local.csv
   - data_entity: configurable-bundle-template
     source: data/import/common/common/configurable_bundle_template.csv
   - data_entity: configurable-bundle-template-slot
