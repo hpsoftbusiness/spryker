@@ -100,6 +100,20 @@
             padding: rem(12);
         }
 
+        &--cashback {
+            background: $setting-color-green-1;
+            border-radius: rem(50);
+            padding: rem(7) rem(25);
+            box-shadow: none;
+            min-width: rem(210);
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: $setting-color-green-2;
+            }
+        }
+
         &[disabled],
         &--disabled {
             background-color: $setting-color-gray-3;
