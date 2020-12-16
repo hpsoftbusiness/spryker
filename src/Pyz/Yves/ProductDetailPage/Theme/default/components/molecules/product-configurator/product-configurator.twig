@@ -85,6 +85,10 @@
         } only %}
     {% endif %}
 
+    <div class="spacing-top">
+        {{ 'shipment.lead.time' | trans }}
+    </div>
+
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
             modifiers: ['option'],

@@ -58,6 +58,9 @@
     {% if not data.isGiftCardExists %}
         <div class="{{ config.name }}__item">
             <h4 class="title title--secondary-small">{{ 'checkout.step.summary.delivery_method' | trans }}</h4>
+            <div class="spacing-bottom">
+                {{ 'shipment.lead.time' | trans }}
+            </div>
             <h4 class="title title--secondary-small spacing-bottom grid grid--justify grid--middle">
                 <span class="col col--sm-7">{{ data.shipment.method.carrierName | trans }}</span>
             </h4>
