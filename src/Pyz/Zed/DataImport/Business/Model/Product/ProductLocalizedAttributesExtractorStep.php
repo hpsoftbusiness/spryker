@@ -55,6 +55,12 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
                 $keysToUnset[] = $attributeValueKey;
             }
 
+            foreach ($this->getMandatoryAttributes() as $attrKey => $dataSetDefaultValueKey) {
+                if (!isset($attributes[$attrKey])) {
+                    $attributes[$attrKey] = $dataSet[$dataSetDefaultValueKey];
+                }
+            }
+
             $localizedAttributes[$idLocale] = [
                 'attributes' => $attributes,
             ];
@@ -72,6 +78,17 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
         }
 
         $dataSet[static::KEY_LOCALIZED_ATTRIBUTES] = $localizedAttributes;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getMandatoryAttributes(): array
+    {
+        return [
+            'color' => 'product.value_05',
+            'size' => 'product.value_06',
+        ];
     }
 
     /**

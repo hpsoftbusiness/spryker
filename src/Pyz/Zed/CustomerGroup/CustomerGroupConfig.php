@@ -29,7 +29,7 @@ class CustomerGroupConfig extends SprykerCustomerGroupConfig
     public function getCustomerTypeToCustomerGroupNameMap(): array
     {
         return [
-            static::CUSTOMER_TYPE_CUSTOMER => 'Customer_mW',
+            static::CUSTOMER_TYPE_CUSTOMER => 'Customers_CB',
             static::CUSTOMER_TYPE_EMPLOYEE => 'Employee',
             static::CUSTOMER_TYPE_MARKETER => 'Marketers',
         ];

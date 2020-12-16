@@ -5,33 +5,20 @@
         @include helper-breakpoint-media-min($md-min) {
             border-bottom: none;
             margin: 0 rem(-15);
-            display: grid;
-            gap: rem(1) rem(1);
-            grid-template: 'legal information service' 'legal information propositions';
+            display: flex;
         }
 
         &__col {
             width: 100%;
 
             @include helper-breakpoint-media-min($md-min) {
+                width: 50%;
                 padding: 0 rem(15);
             }
-        }
 
-        &__legal {
-            grid-area: legal;
-        }
-
-        &__information {
-            grid-area: information;
-        }
-
-        &__service {
-            grid-area: service;
-        }
-
-        &__propositions {
-            grid-area: propositions;
+            @include helper-breakpoint-media-min($lg-min) {
+                width: 33.33%;
+            }
         }
 
         @content;

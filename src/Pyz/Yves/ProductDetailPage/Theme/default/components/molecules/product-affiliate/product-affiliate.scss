@@ -1,7 +1,13 @@
-@mixin product-detail-page-product-configurator($name: '.product-configurator') {
+@mixin product-detail-page-product-affiliate($name: '.product-affiliate') {
     #{$name} {
+        &__separator {
+            border-bottom: rem(1) solid $setting-color-gray-3;
+            margin: rem(35) 0;
+        }
+
         &__button-wrap {
-            border-top: rem(1) dotted $setting-color-gray-3;
+            max-width: rem(360);
+            border-top: 0;
             padding: rem(40) 0 rem(10);
 
             @include helper-breakpoint-media-min($xl-min) {
@@ -9,8 +15,12 @@
             }
         }
 
+        form {
+            max-width: rem(360);
+        }
+
         @content;
     }
 }
 
-@include product-detail-page-product-configurator();
+@include product-detail-page-product-affiliate();

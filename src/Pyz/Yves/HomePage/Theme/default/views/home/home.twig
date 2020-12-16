@@ -3,50 +3,24 @@
 {% block pageInfo %}{% endblock %}
 
 {% block container %}
-    {% set slides = [
-        {imageUrl: publicPath('images/myworld-banner-marketplace-1920x540-1-de.jpg')},
-        {imageUrl: publicPath('images/myworld-banner-organic-plus-1920x500-en.jpg')},
-        {imageUrl: publicPath('images/myworld-banner-eliteclub-1920x500-en.jpg')},
-    ] %}
-
-    {% embed organism('jumbotron-slider') with {
-        embed: {
-            slides: slides,
-        },
-    } only %}
+    {% embed organism('jumbotron-slider') only %}
         {% block body %}
             {% embed molecule('slick-carousel') with {
                 attributes: {
                     'data-json': attributes['data-json'],
                 },
-                embed: {
-                    slides: embed.slides,
-                },
             } only %}
                 {% block slides %}
-                    {% for slide in embed.slides %}
-                        {% include molecule('banner-jumbotron', 'ContentBannerWidget') with {
-                            modifiers: ['full-height'],
-                            data: {
-                                banner: slide,
-                                isBannerClickable: false,
-                            },
-                        } only %}
-                    {% endfor %}
-
-{#                    {% cms_slot 'slt-2' %}#} {# TODO: Add new slides instead of hardcoding #}
+                    {% cms_slot 'slt-2' %}
                 {% endblock %}
             {% endembed %}
         {% endblock %}
     {% endembed %}
 
-
     <div class="container container--home-page">
         <main>
             {% block content %}
-
                 {% cms_slot 'slt-3' %}
-
             {% endblock %}
         </main>
     </div>

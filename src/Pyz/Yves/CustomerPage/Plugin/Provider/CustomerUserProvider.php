@@ -74,6 +74,8 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
             $this->getFactory()->getCustomerClient()->confirmCustomerRegistration($loadedCustomerTransfer);
         }
 
+        $loadedCustomerTransfer->setIsDirty(true);
+
         return $this->getFactory()->createSecurityUser($loadedCustomerTransfer);
     }
 

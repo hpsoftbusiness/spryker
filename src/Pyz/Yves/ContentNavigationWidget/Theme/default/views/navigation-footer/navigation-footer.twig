@@ -18,16 +18,6 @@
         {% set itemUniqueClassElement = 'information' %}
     {% endif %}
 
-    {% if data.navigation.key == 'FOOTER_NAVIGATION_SERVICE' %}
-        {% set title = 'footer.navigation_title.customer_service' | trans %}
-        {% set itemUniqueClassElement = 'service' %}
-    {% endif %}
-
-    {% if data.navigation.key == 'FOOTER_NAVIGATION_PROPOSITIONS' %}
-        {% set title = 'footer.navigation_title.propositions' | trans %}
-        {% set itemUniqueClassElement = 'propositions' %}
-    {% endif %}
-
     {% set triggerClass = 'js-navigation-footer__trigger--' ~ title | lower | replace(' ', '-') %}
     {% set targetClass = 'js-navigation-footer__target--' ~ title | lower | replace(' ', '-') %}
     {% set itemClass = 'navigation-footer__col ' ~ (itemUniqueClassElement ? 'navigation-footer__' ~ itemUniqueClassElement) %}
