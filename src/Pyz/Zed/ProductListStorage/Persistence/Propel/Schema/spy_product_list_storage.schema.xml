@@ -10,6 +10,16 @@
         <behavior name="synchronization">
             <parameter name="queue_pool" value="synchronizationPool"/>
         </behavior>
+
+        <foreign-key name="spy_product_abstract_product_list_storage-fk_product_abstract" foreignTable="spy_product_abstract">
+            <reference foreign="id_product_abstract" local="fk_product_abstract"/>
+        </foreign-key>
+    </table>
+
+    <table name="spy_product_abstract_product_list_storage">
+        <behavior name="synchronization">
+            <parameter name="queue_pool" value="synchronizationPool"/>
+        </behavior>
     </table>
 
     <table name="spy_product_concrete_product_list_storage">
