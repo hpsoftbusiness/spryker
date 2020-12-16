@@ -14,12 +14,11 @@
         id="cookie-notification"
         class="{{ config.name }}__content"
         role="alert"
-        data-display="flex"
         style="display:none"
         >
-        <p class="{{ config.name }}__message">
+        <div class="{{ config.name }}__message">
             {{ 'gdpr.message' | trans({'%link%': link}) | raw }}
-        </p>
+        </div>
 
         <button
             type="button"

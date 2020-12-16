@@ -7,9 +7,14 @@
             left: 0;
             color: $setting-color-white;
             background-color: rgba($setting-color-black, 0.9);
-            align-items: center;
             width: 100%;
-            justify-content: space-between;
+            padding: rem(16);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
 
         &__link {
@@ -18,12 +23,20 @@
         }
 
         &__message {
-            padding: rem(16);
+            margin-bottom: rem(10);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-right: rem(15);
+                margin-bottom: 0;
+            }
         }
 
         &__button {
             width: auto;
-            margin-right: rem(16);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                flex-shrink: 0;
+            }
         }
     }
 }
