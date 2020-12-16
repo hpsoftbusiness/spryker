@@ -2401,7 +2401,7 @@ footer.logo.text,Erstellt mit,de_DE
 footer.logo.url,/,en_US
 footer.logo.url,/,de_DE
 footer.logo.link.privacy,/en/privacy,en_US
-footer.logo.link.privacy,/de/datenschutz,de_DE
+footer.logo.link.privacy,/de/datenschutz,de_DEwarehouse
 footer.logo.link.imprint,/en/imprint,en_US
 footer.logo.link.imprint,/de/impressum,de_DE
 footer.providers__title,Shipment and Payment,en_US
@@ -3016,8 +3016,8 @@ cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
 checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
-product.attribute.product_stock.name,Warehouse,en_US
-product.attribute.product_stock.name,Warenhaus,de_DE
+product.attribute.product_stock.name,Seller,en_US
+product.attribute.product_stock.name,Verkäufer,de_DE
 product.attribute.benefit_store,Benefit Store,en_US
 product.attribute.benefit_store,Vorteil Geschäft,de_DE
 product.attribute.shopping_point_store,Shopping Point Store,en_US
