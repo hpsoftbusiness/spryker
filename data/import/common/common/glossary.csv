@@ -3042,3 +3042,5 @@ discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabl
 discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
 shipment.lead.time,"Lieferzeit: ca. 3-7 Werktage",de_DE
 shipment.lead.time,"Delivery time: approx. 3-7 working days",en_US
+afiliate.legal.text,"Dieses Produkt wird von einem Drittanbieter verkauft. Für Preisgestaltung, Produktbeschreibung, Lagerstand und Versand ist ausschließlich der Drittanbieter verantwortlich. Zur Haftung von myWorld für Hyperlinks sowie deren Inhalt wird auf die für den myWorld Marktplatz geltenden Nutzungsbedingungen verwiesen.",de_DE
+afiliate.legal.text,"This product is sold by a third party seller. The seller is solely responsible for pricing, product description, stock levels and shipping. Regarding myWorld’s liability for hyperlinks and their content, we refer to the terms of use applicable for the myWorld marketplace.",en_us
