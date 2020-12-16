@@ -84,8 +84,11 @@
 
         &--account-main {
             text-transform: capitalize;
-            padding: 0 0 rem(25);
-            margin: 0 0 rem(25);
+            margin: 0 rem(16) rem(15);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-bottom: rem(50);
+            }
         }
 
         &--product-set-main {
