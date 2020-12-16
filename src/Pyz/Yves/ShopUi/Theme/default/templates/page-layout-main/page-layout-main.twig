@@ -70,6 +70,8 @@
 
     {% block outside %}{% endblock %}
 
+    {% include molecule('myworld-navbar') only %}
+
     {% block header %}
         {% embed organism('header') only %}
             {% block mainNavigation %}

@@ -1,0 +1,68 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'myworld-navbar'
+} %}
+
+{% define data = [
+    {
+        name: "nav-logo-cbw-bw",
+        targetUrl: "https://www.cashbackworld.com"
+    },
+    {
+        name: "nav-logo-myworld-bw",
+        targetUrl:"https://de.myworld.com/en-gb/"
+    },
+    {
+        name: "nav-logo-marketplace-bw",
+        targetUrl:"https://www.myworld.com"
+    },
+    {
+        name: "nav-logo-travelworld-bw",
+        targetUrl:"https://www.travelworld.com"
+    },
+    {
+        name: "nav-logo-benefit-lounge-bw",
+        targetUrl: "https://www.cashbackworld.com/benefitlounge"
+    },
+    {
+        name: "nav-logo-lyconet-bw",
+        targetUrl:"https://lyconet.com"
+    },
+    {
+        name: "nav-logo-benefit-store-bw",
+        targetUrl:"https://lyconet.com/benefitstore"
+    },
+    {
+        name: "CashbackworldPartner",
+        targetUrl:"https://partner.cashbackworld.com"
+    },
+    {
+        name: "CFF",
+        targetUrl:"https://childandfamily.foundation"
+    },
+    {
+        name: "GFF",
+        targetUrl:"https://greenfinity.foundation"
+    },
+    {
+        name: "Organic+",
+        targetUrl: "https://organic.plus"
+    }
+] %}
+
+{% block body %}
+	<nav id="{{config.name}}" class="{{ config.name }}">
+		{% for navItem in data %}
+			<div class="{{ config.name }}__nav-item">
+                <a
+                    class="{{ config.name }}__link {{ navItem.name == 'nav-logo-marketplace-bw' ? config.name ~ '__current' }}"
+                    href="{{ navItem.targetUrl }}"
+                    target="_blank"
+                    rel="noreferrer noopener">
+					<img src="{{ publicPath("images/#{navItem.name}.svg") }}" alt="{{ navItem.name }}"/>
+				</a>
+			</div>
+		{% endfor %}
+	</nav>
+{% endblock %}
