@@ -1,10 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    isSubscribed: _widget.isSubscribed,
-    subscribeForm: _widget.subscribeForm,
-    unsubscribeForm: _widget.unsubscribeForm
-} %}
+{% extends view('availability-subscription', '@SprykerShop:AvailabilityNotificationWidget') %}
 
 {% block body %}
     {% if data.isSubscribed %}
