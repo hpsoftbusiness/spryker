@@ -2850,6 +2850,8 @@ oms.state.turnover-creation-failed,In progress,en_US
 oms.state.turnover-creation-failed,In Arbeit,de_DE
 oms.state.order-in-processing-email-sent,In progress,en_US
 oms.state.order-in-processing-email-sent,In Arbeit,de_DE
+oms.state.ready-for-refund,Refund,en_US
+oms.state.ready-for-refund,Rückerstattung,de_DE
 oms.state.refund-pending,Refund,en_US
 oms.state.refund-pending,Rückerstattung,de_DE
 oms.state.refund-pending-next-try,Refund,en_US
