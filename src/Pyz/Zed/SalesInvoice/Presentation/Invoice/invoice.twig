@@ -101,10 +101,12 @@
                     <strong class="float-right">{{ order.uid }}</strong>
                 </p>
             {% endif %}
-            <p>
-                {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}
-                <strong class="float-right">{{ order.customer.myWorldCustomerNumber }}</strong>
-            </p>
+            {% if order.customer.myWorldCustomerNumber is not empty %}
+                <p>
+                    {{ 'order_invoice.invoice_template.table.cashback_customer_number' | trans }}
+                    <strong class="float-right">{{ order.customer.myWorldCustomerNumber }}</strong>
+                </p>
+            {% endif %}
         </td>
     </tr>
 </table>
