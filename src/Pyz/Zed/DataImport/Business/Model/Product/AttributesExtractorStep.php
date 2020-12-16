@@ -48,6 +48,9 @@ class AttributesExtractorStep implements DataImportStepInterface
                 $isAffiliateAttribute = in_array($attributeKey, $this->getAffiliateAttributeList());
 
                 if ($isMainAttribute) {
+                    if ($attributeKey === 'cashback_amount') {
+                        $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
+                    }
                     $attributes[$attributeKey] = is_bool($attributeValue) ? (bool)$attributeValue : $attributeValue;
                 }
 

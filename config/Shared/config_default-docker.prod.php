@@ -43,6 +43,9 @@ require 'common/config_sso-prod.php';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'sven.stumpf@myworld.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
+$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL] = 'sven.stumpf@myworld.com';
+$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME] = 'Warehouse Manager';
+
 // ----------------------------------------------------------------------------
 // ----------------------- MyWorld Marketplace API ----------------------------
 // ----------------------------------------------------------------------------

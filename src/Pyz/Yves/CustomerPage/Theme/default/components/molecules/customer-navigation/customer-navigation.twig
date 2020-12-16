@@ -17,6 +17,7 @@
 {%- import _self as macros -%}
 
 {% block body %}
+    <h4>{{ 'customer.profile.title' | trans }}</h4>
     <ul class="{{ component.renderClass('menu', modifiers) }}">
         <li class="{{ component.renderClass('menu__item', modifiers) }} {{macros.isActive('overview', data.activePage)}}">
             <a class="{{ component.renderClass('menu__link', modifiers) }}" href="{{ path('customer/overview') }}"
@@ -31,7 +32,7 @@
                data-id="sidebar-order">{{ 'customer.account.order_history' | trans }}</a>
         </li>
 
-        {% embed molecule('return-list-link', 'SalesReturnPage') ignore missing with {
+        {#{% embed molecule('return-list-link', 'SalesReturnPage') ignore missing with {
             class: component.renderClass('menu__link', modifiers),
             data: {
                 activePage: data.activePage,
@@ -46,7 +47,7 @@
                     {{ parent() }}
                 </li>
             {% endblock %}
-        {% endembed %}
+        {% endembed %}#}
 
         {% block wishlistNavigation %}
             {% widget 'WishlistMenuItemWidget' args [data.activePage, data.activeEntityId] with {

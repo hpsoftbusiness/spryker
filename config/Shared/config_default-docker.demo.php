@@ -43,6 +43,9 @@ require 'common/config_sso-demo.php';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
+$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
+$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME] = 'Warehouse Manager';
+
 // ----------------------------------------------------------------------------
 // ----------------------- MyWorld Marketplace API ----------------------------
 // ----------------------------------------------------------------------------

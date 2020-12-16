@@ -1,6 +1,12 @@
 @mixin customer-page-layout-customer($name: '.page-layout-customer') {
     #{$name} {
-        margin-bottom: rem(75);
+        padding-top: rem(25);
+        margin-bottom: rem(25);
+
+        @include helper-breakpoint-media-min($lg-min) {
+            padding-top: rem(75);
+            margin-bottom: rem(75);
+        }
 
         &__form-wrap {
             padding-left: rem(16);
@@ -9,7 +15,7 @@
             margin-left: auto;
             margin-right: auto;
 
-            @include helper-breakpoint-media-min($md-min) {
+            @include helper-breakpoint-media-min($lg-min) {
                 padding-left: 0;
                 padding-right: 0;
             }

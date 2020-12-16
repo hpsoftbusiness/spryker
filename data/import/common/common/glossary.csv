@@ -243,6 +243,8 @@ page.product.seller,Verkauft von,de_DE
 page.product.seller,Seller,en_US
 page.product.condition,Zustand,de_DE
 page.product.condition,Condition,en_US
+page.product.status,Neu,de_DE
+page.product.status,New,en_US
 page.product.details,Details,de_DE
 page.product.details,Details,en_US
 page.product.similar-products,Könnte dir auch gefallen,de_DE
@@ -2714,6 +2716,8 @@ order_invoice.invoice_template.table.invoice_date,Invoice generation date:,en_US
 order_invoice.invoice_template.table.invoice_date,Rechnungsdatum/Lieferdatum:,de_DE
 order_invoice.invoice_template.table.cashback_customer_number,Cashback customer number:,en_US
 order_invoice.invoice_template.table.cashback_customer_number,Cashback Kundennummer:,de_DE
+order_invoice.invoice_template.table.bottom_text,We deliver and perform exclusively under our General Terms and Conditions of Business with which you are familiar.,en_US
+order_invoice.invoice_template.table.bottom_text,Wir liefern und leisten ausschließlich zu unseren Ihnen bekannten Allgemeinen Geschäftsbedingungen.,de_DE
 return_page.list.title,Returns,en_US
 return_page.list.title,Retouren,de_DE
 return_page.account.no_return,No returns at the moment,en_US
@@ -2832,6 +2836,8 @@ oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US
 oms.state.capture-pending,In Arbeit,de_DE
+oms.state.turnover-created,In progress,en_US
+oms.state.turnover-created,In Arbeit,de_DE
 oms.state.capture-pending-next-try,In progress,en_US
 oms.state.capture-pending-next-try,In Arbeit,de_DE
 oms.state.capture-failed-clarification,In progress,en_US
@@ -3032,5 +3038,7 @@ gdpr.privacy_policy,"Privacy Policy",en_US
 gdpr.privacy_policy,"Datenschutzerklärung",de_DE
 gdpr.accept_cookies,"Accept cookies",en_US
 gdpr.accept_cookies,"Cookies akzeptieren",de_DE
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
+discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
 shipment.lead.time,"Lieferzeit: ca. 3-7 Werktage",de_DE
 shipment.lead.time,"Delivery time: approx. 3-7 working days",en_US
