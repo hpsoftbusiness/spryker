@@ -10,8 +10,8 @@
     maxQuantity: 10,
     isBundle: null,
     bundleItems: [],
-    cashback: 2,
-    shoppingPoints: 1,
+    cashback: data.product.cashbackAmount | default(null),
+    shoppingPoints: data.product.shoppingPoints | default(null),
 } %}
 
 {% set options = [] %}
