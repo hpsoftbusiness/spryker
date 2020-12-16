@@ -2398,12 +2398,12 @@ footer.official_partner,Official partner,en_US
 footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
-footer.logo.url,https://spryker.com,en_US
-footer.logo.url,https://spryker.com/?lang=de,de_DE
-footer.logo.link.privacy,https://spryker.com/privacy-policy/,en_US
-footer.logo.link.privacy,https://spryker.com/privacy-policy/?lang=de,de_DE
-footer.logo.link.imprint,https://spryker.com/imprint/,en_US
-footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
+footer.logo.url,/,en_US
+footer.logo.url,/,de_DE
+footer.logo.link.privacy,/en/privacy,en_US
+footer.logo.link.privacy,/de/datenschutz,de_DE
+footer.logo.link.imprint,/en/imprint,en_US
+footer.logo.link.imprint,/de/impressum,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
 footer.navigation_title.legal_information,Legal information,en_US

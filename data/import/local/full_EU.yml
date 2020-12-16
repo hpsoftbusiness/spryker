@@ -35,13 +35,7 @@ actions:
   - data_entity: payment-method-store
     source: data/import/common/DE/payment_method_store.csv
 
-#2. Navigation
-  - data_entity: navigation
-    source: data/import/common/common/navigation.csv
-  - data_entity: navigation-node
-    source: data/import/common/common/navigation_node.csv
-
-#3. Catalog Setup import
+#2. Catalog Setup import
   - data_entity: category-template
     source: data/import/common/common/category_template.csv
   - data_entity: category
@@ -51,7 +45,7 @@ actions:
   - data_entity: product-management-attribute
     source: data/import/common/common/product_management_attribute.csv
 
-#4. Combined product
+#3. Combined product
   - data_entity: combined-product-abstract
     source: data/import/common/DE/combined_product.csv
   - data_entity: combined-product-abstract-store
@@ -68,7 +62,7 @@ actions:
     source: data/import/common/DE/combined_product.csv
 
 
-#5. Merchandising Setup import
+#4. Merchandising Setup import
   - data_entity: discount
     source: data/import/common/common/discount.csv
   - data_entity: discount-voucher
@@ -102,7 +96,7 @@ actions:
     source: data/import/common/DE/product_label_store.csv
 
 
-#6. Special Product Types Setup import
+#5. Special Product Types Setup import
   - data_entity: product-option
     source: data/import/common/common/product_option.csv
   - data_entity: product-option-price
@@ -126,8 +120,7 @@ actions:
   - data_entity: configurable-bundle-template-image
     source: data/import/common/common/configurable_bundle_template_image.csv
 
-
-#7. Content Management Setup import
+#6. Content Management Setup import
   - data_entity: content-banner
     source: data/import/common/common/content_banner.csv
   - data_entity: content-product-abstract-list
@@ -152,6 +145,12 @@ actions:
     source: data/import/common/DE/cms_block_store.csv
   - data_entity: content-navigation
     source: data/import/common/common/content_navigation.csv
+
+#7. Navigation
+  - data_entity: navigation
+    source: data/import/common/common/navigation.csv
+  - data_entity: navigation-node
+    source: data/import/common/common/navigation_node.csv
 
 
 #8. Miscellaneous Setup import
