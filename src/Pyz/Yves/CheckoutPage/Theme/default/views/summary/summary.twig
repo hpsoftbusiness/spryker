@@ -127,8 +127,6 @@
             {{ 'checkout.step.summary.total' | trans }}
         </h3>
         <div class="col col--sm-12">
-            {% widget 'CartCodeFormWidget' args [data.transfer] only %}{% endwidget %}
-
             {% embed molecule('form') with {
                 modifiers: ['checkout-actions'],
                 data: {
