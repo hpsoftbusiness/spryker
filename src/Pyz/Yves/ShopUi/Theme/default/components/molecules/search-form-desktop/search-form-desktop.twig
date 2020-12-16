@@ -1,7 +1,8 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'search-form-desktop'
+    name: 'search-form-desktop',
+    maxLength: 100,
 } %}
 
 {% define data = {
@@ -20,7 +21,7 @@
 {% block body %}
     <form action="{{ data.searchUrl }}">
         <div class="{{ config.name }}__input">
-            <input name="q" type="text"
+            <input name="q" type="text" maxlength="{{ config.maxLength }}"
                    class="{{ config.name }}__field {{ config.jsName }}__input--{{ attributes['data-search-id'] }}"
                    placeholder="{{ 'global.search' | trans }}"
                    value="{{ data.searchValue }}"
