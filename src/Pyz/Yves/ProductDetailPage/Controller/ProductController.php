@@ -36,8 +36,8 @@ class ProductController extends SprykerShopProductController
 
         $productAttributesData = $viewData['product']->getAttributes();
         $viewData['product']
-            ->setCashbackAmount($productAttributesData['cashback_amount'])
-            ->setShoppingPoints($productAttributesData['shopping_points']);
+            ->setCashbackAmount($productAttributesData['cashback_amount'] ?? null)
+            ->setShoppingPoints($productAttributesData['shopping_points'] ?? null);
 
         $viewData['product']
             ->setAttributes(
