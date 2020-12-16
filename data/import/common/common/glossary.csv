@@ -19,8 +19,12 @@ cart.total,Gesamt,de_DE
 cart.total,Total,en_US
 cart.checkout,Zur Kasse,de_DE
 cart.checkout,Checkout,en_US
-cart.empty,Der Warenkorb ist zur Zeit leer!,de_DE
-cart.empty,Your shopping cart is empty!,en_US
+cart.empty.title,Dein Einkaufswagen ist leer,de_DE
+cart.empty.title,Your shopping cart is empty!,en_US
+cart.empty.description,"Die einzige Leidenschaft des Einkaufswagens ist, die besten Angebote, Geschenke und viele weitere tolle Produkte für dich zu sammeln. Also mach deinen Einkaufswagen glücklich und gebe seinem Dasein einen Sinn!",de_DE
+cart.empty.description,"The Shopping cart's only desire is to collect the best offers, gifts and many other great products for you. So fulfil your Shopping cart's wish and make sense of it!",en_US
+cart.empty.button,Angebote entdecken,de_DE
+cart.empty.button,Check out the offers,en_US
 cart.cart,Warenkorb,de_DE
 cart.cart,Cart,en_US
 cart.total.discount,Rabatt,de_DE
@@ -47,8 +51,8 @@ cart.voucher.redeem,Code einlösen,de_DE
 cart.voucher.redeem,Redeem code,en_US
 cart.price.subtotal,Zwischensumme,de_DE
 cart.price.subtotal,Subtotal,en_US
-cart.price.grand.total,Summe,de_DE
-cart.price.grand.total,Grand Total,en_US
+cart.price.grand.total,Zu zahlender Betrag,de_DE
+cart.price.grand.total,Total amount,en_US
 cart.total.tax_total,Mehrwertsteuer,de_DE
 cart.total.tax_total,Tax,en_US
 sales-order-threshold.hard-minimum-threshold.de.eur.message,"You should add items for {{threshold}} to pass a recommended threshold. You can't proceed with checkout",en_US
@@ -235,6 +239,10 @@ page.detail.dimensions,Abmessungen,de_DE
 page.detail.dimensions,Measurements,en_US
 page.product.by,von,de_DE
 page.product.by,by,en_US
+page.product.seller,Verkauft von,de_DE
+page.product.seller,Seller,en_US
+page.product.condition,Zustand,de_DE
+page.product.condition,Condition,en_US
 page.product.details,Details,de_DE
 page.product.details,Details,en_US
 page.product.similar-products,Könnte dir auch gefallen,de_DE
@@ -2316,10 +2324,10 @@ cameras.category.link,/en/cameras-&-camcorders/digital-cameras,en_US
 cameras.category.link,/de/kameras-&-camcorder/digitale-kameras,de_DE
 samsung.search.link,/en/search?q=samsung,en_US
 samsung.search.link,/de/search?q=samsung,de_DE
-cart.title_content,In Your Cart,en_US
-cart.title_content,In deinem Warenkorb,de_DE
-cart.title_sidebar,Continue to Checkout,en_US
-cart.title_sidebar,Weiter zum Checkout,de_DE
+cart.title_content,Shopping Cart,en_US
+cart.title_content,Einkaufswagen,de_DE
+cart.title_sidebar,Order overview,en_US
+cart.title_sidebar,Bestellübersicht,de_DE
 cart.note-title,Cart Note,en_US
 cart.note-title,Notiz für Warenkorb,de_DE
 cart.voucher-title,Voucher Code,en_US
@@ -2390,12 +2398,12 @@ footer.official_partner,Official partner,en_US
 footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
-footer.logo.url,https://spryker.com,en_US
-footer.logo.url,https://spryker.com/?lang=de,de_DE
-footer.logo.link.privacy,https://spryker.com/privacy-policy/,en_US
-footer.logo.link.privacy,https://spryker.com/privacy-policy/?lang=de,de_DE
-footer.logo.link.imprint,https://spryker.com/imprint/,en_US
-footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
+footer.logo.url,/,en_US
+footer.logo.url,/,de_DE
+footer.logo.link.privacy,/en/privacy,en_US
+footer.logo.link.privacy,/de/datenschutz,de_DE
+footer.logo.link.imprint,/en/imprint,en_US
+footer.logo.link.imprint,/de/impressum,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
 footer.navigation_title.legal_information,Legal information,en_US
@@ -3018,5 +3026,11 @@ product.attribute.cashback_amount,Cashback,en_US
 product.attribute.cashback_amount,Cashback,de_DE
 product.attribute.shopping_points,Shopping points,en_US
 product.attribute.shopping_points,Shopping points,de_DE
+gdpr.message,"We use cookies on our website to make our services more efficient and more user-friendly. Therefore please select "Accept cookies"! Please read our %link% for further information.",en_US
+gdpr.message,"Wir nutzen Cookies auf unserer Website, um deinen Besuch effizienter zu gestalten und dir mehr Benutzerfreundlichkeit bieten zu können. Klicke daher bitte auf "Cookies akzeptieren"! Nähere Informationen findest du in unserer %link%",de_DE
+gdpr.privacy_policy,"Privacy Policy",en_US
+gdpr.privacy_policy,"Datenschutzerklärung",de_DE
+gdpr.accept_cookies,"Accept cookies",en_US
+gdpr.accept_cookies,"Cookies akzeptieren",de_DE
 discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
 discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE

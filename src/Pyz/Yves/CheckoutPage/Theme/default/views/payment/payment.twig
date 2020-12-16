@@ -95,9 +95,9 @@
                             <div class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %}">
                                 {{ parent() }}
                             </div>
-                            <div>
+                            <p class="spacing-top spacing-top--big spacing-x">
                                 {{ 'page.checkout.payment.cc_text' | trans }}
-                            </div>
+                            </p>
                         {% endblock %}
                     {% endembed %}
                 {% endfor %}

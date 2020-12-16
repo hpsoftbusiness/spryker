@@ -1,0 +1,19 @@
+{% extends molecule('breadcrumb', '@SprykerShop:ShopUi') %}
+
+{% block body %}
+    {% if data.startWithHome %}
+        {% embed molecule('breadcrumb-step') with {
+            data: {
+                url: path('home'),
+            },
+        } only %}
+            {% block label %}
+                <img src="{{ publicPath('images/icon-home.png') }}" alt="{{ 'global.home' | trans }}">
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+
+    {% block breadcrumbs %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
