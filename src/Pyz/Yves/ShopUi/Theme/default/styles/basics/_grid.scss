@@ -10,13 +10,13 @@
             max-width: none;
             padding-bottom: rem(80);
         }
-        
+
         &--login {
-          margin: 8rem auto;
-          max-width: 560px;
-          border-radius: 12px;
-          border: 1px solid $setting-color-gray-3;
-          padding: map-get($setting-spacing, 'biggest');
+            margin: rem(80) auto;
+            max-width: rem(560);
+            border-radius: rem(12);
+            border: 1px solid $setting-color-gray-3;
+            padding: map-get($setting-spacing, 'biggest');
         }
 
         &__inner {

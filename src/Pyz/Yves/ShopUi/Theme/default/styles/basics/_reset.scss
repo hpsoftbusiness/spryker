@@ -1,11 +1,12 @@
 @include basic-reset {
-  
-  html, body {
-    min-height: 100vh;
-  }
 
-  body {
-    display: flex;
-    flex-direction: column;
-  }
+    html,
+    body {
+        min-height: 100vh;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
 }
