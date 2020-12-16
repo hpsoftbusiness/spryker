@@ -2398,12 +2398,12 @@ footer.official_partner,Official partner,en_US
 footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
 footer.logo.text,Erstellt mit,de_DE
-footer.logo.url,https://spryker.com,en_US
-footer.logo.url,https://spryker.com/?lang=de,de_DE
-footer.logo.link.privacy,https://spryker.com/privacy-policy/,en_US
-footer.logo.link.privacy,https://spryker.com/privacy-policy/?lang=de,de_DE
-footer.logo.link.imprint,https://spryker.com/imprint/,en_US
-footer.logo.link.imprint,https://spryker.com/imprint/?lang=de,de_DE
+footer.logo.url,/,en_US
+footer.logo.url,/,de_DE
+footer.logo.link.privacy,/en/privacy,en_US
+footer.logo.link.privacy,/de/datenschutz,de_DE
+footer.logo.link.imprint,/en/imprint,en_US
+footer.logo.link.imprint,/de/impressum,de_DE
 footer.providers__title,Shipment and Payment,en_US
 footer.providers__title,Zahlung und Versand,de_DE
 footer.navigation_title.legal_information,Legal information,en_US
@@ -3018,8 +3018,8 @@ cart.pre.check.affiliate.failed,Item %sku% cannot be added to the cart.,en_US
 cart.pre.check.affiliate.failed,Artikel %sku% kann nicht in den Warenkorb gelegt werden.,de_DE
 checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
 checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
-product.attribute.product_stock.name,Warehouse,en_US
-product.attribute.product_stock.name,Warenhaus,de_DE
+product.attribute.product_stock.name,Seller,en_US
+product.attribute.product_stock.name,Verkäufer,de_DE
 product.attribute.benefit_store,Benefit Store,en_US
 product.attribute.benefit_store,Vorteil Geschäft,de_DE
 product.attribute.shopping_point_store,Shopping Point Store,en_US
@@ -3028,9 +3028,11 @@ product.attribute.cashback_amount,Cashback,en_US
 product.attribute.cashback_amount,Cashback,de_DE
 product.attribute.shopping_points,Shopping points,en_US
 product.attribute.shopping_points,Shopping points,de_DE
-gdpr.message,"We use cookies on our website to make our services more efficient and more user-friendly. Therefore please select "Accept cookies"! Please read our %link% for further information.",en_US
-gdpr.message,"Wir nutzen Cookies auf unserer Website, um deinen Besuch effizienter zu gestalten und dir mehr Benutzerfreundlichkeit bieten zu können. Klicke daher bitte auf "Cookies akzeptieren"! Nähere Informationen findest du in unserer %link%",de_DE
+gdpr.message,"We use cookies on our website to make our services more efficient and more user-friendly. Therefore please select 'Accept cookies'! Please read our %link% for further information.",en_US
+gdpr.message,"Wir nutzen Cookies auf unserer Website, um deinen Besuch effizienter zu gestalten und dir mehr Benutzerfreundlichkeit bieten zu können. Klicke daher bitte auf 'Cookies akzeptieren'! Nähere Informationen findest du in unserer %link%",de_DE
 gdpr.privacy_policy,"Privacy Policy",en_US
 gdpr.privacy_policy,"Datenschutzerklärung",de_DE
 gdpr.accept_cookies,"Accept cookies",en_US
 gdpr.accept_cookies,"Cookies akzeptieren",de_DE
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
+discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE

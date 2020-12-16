@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\Quote;
 
+use Pyz\Client\Product\Plugin\ProductLocalizedAttributesQuoteTransferExpanderPlugin;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\Price\Plugin\PriceModeQuoteTransferExpanderPlugin;
 use Spryker\Client\Quote\QuoteDependencyProvider as BaseQuoteDependencyProvider;
@@ -24,6 +25,7 @@ class QuoteDependencyProvider extends BaseQuoteDependencyProvider
         return [
             new StoreQuoteTransferExpanderPlugin(),
             new PriceModeQuoteTransferExpanderPlugin(),
+            new ProductLocalizedAttributesQuoteTransferExpanderPlugin(),
         ];
     }
 }

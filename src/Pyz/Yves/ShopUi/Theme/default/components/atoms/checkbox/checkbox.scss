@@ -5,6 +5,7 @@
         margin-bottom: rem(5);
 
         &__container {
+            cursor: pointer;
             display: flex;
             align-items: center;
         }
@@ -12,6 +13,7 @@
         &__box {
             @include helper-effect-transition;
             display: inline-block;
+            align-self: flex-start;
             width: rem(16);
             height: rem(16);
             border: rem(1) solid $setting-color-input-border;
@@ -33,7 +35,7 @@
             opacity: 0;
             pointer-events: none;
             position: absolute;
-            top: rem(4);
+            top: rem(3);
             left: rem(4);
             width: rem(9);
             height: rem(10);

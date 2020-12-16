@@ -27,29 +27,28 @@
         } only %}
     </div>
 
-    <div class="box">
-        {% embed molecule('title-box', 'CustomerPage') with {
-            data: {
-                title: 'customer.account.shopping_points_and_cashback' | trans,
-            },
-            embed: {
-                customerBalance: data.customer.customerBalance,
-            },
-        } only %}
-                {% block additionalContent %}
-                    {% if embed.customerBalance is defined and embed.customerBalance is not null and embed.customerBalance is not empty %}
-                        {%  if embed.customerBalance.getAvailableCashbackAmount is not null %}
-                            <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ embed.customerBalance.getAvailableCashbackAmount.toFloat() | money(true, embed.customerBalance.getAvailableCashbackCurrency) }}</li>
-                        {% endif %}
-                        {%  if embed.customerBalance.getAvailableShoppingPointAmount is not null %}
-                            <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ embed.customerBalance.getAvailableShoppingPointAmount.toFloat()}}</li>
-                        {% endif %}
-                        {%  if embed.customerBalance.getAvailableBenefitVoucherAmount is not null %}
-                            <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ embed.customerBalance.getAvailableBenefitVoucherAmount.toFloat() | money(true, embed.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
-                        {% endif %}
+    <div class="col--lg-6 col--sm-12">
+        <div class="box">
+            {% embed molecule('title-box', 'CustomerPage') with {
+                data: {
+                    title: 'customer.account.shopping_points_and_cashback' | trans,
+                }
+            } only %}
+            {% endembed %}
+            {% if data.customer.customerBalance is defined and data.customer.customerBalance is not null and data.customer.customerBalance is not empty %}
+                <ul class="menu menu--customer-account">
+                    {%  if data.customer.customerBalance.getAvailableCashbackAmount is not null %}
+                        <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ data.customer.customerBalance.getAvailableCashbackAmount.toFloat() | money(true, data.customer.customerBalance.getAvailableCashbackCurrency) }}</li>
                     {% endif %}
-                {% endblock %}
-        {% endembed %}
+                    {%  if data.customer.customerBalance.getAvailableShoppingPointAmount is not null %}
+                        <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ data.customer.customerBalance.getAvailableShoppingPointAmount.toFloat()}}</li>
+                    {% endif %}
+                    {%  if data.customer.customerBalance.getAvailableBenefitVoucherAmount is not null %}
+                        <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ data.customer.customerBalance.getAvailableBenefitVoucherAmount.toFloat() | money(true, data.customer.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
     <div class="grid grid--justify">
