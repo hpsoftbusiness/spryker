@@ -2716,6 +2716,8 @@ order_invoice.invoice_template.table.invoice_date,Invoice generation date:,en_US
 order_invoice.invoice_template.table.invoice_date,Rechnungsdatum/Lieferdatum:,de_DE
 order_invoice.invoice_template.table.cashback_customer_number,Cashback customer number:,en_US
 order_invoice.invoice_template.table.cashback_customer_number,Cashback Kundennummer:,de_DE
+order_invoice.invoice_template.table.bottom_text,We deliver and perform exclusively under our General Terms and Conditions of Business with which you are familiar.,en_US
+order_invoice.invoice_template.table.bottom_text,Wir liefern und leisten ausschließlich zu unseren Ihnen bekannten Allgemeinen Geschäftsbedingungen.,de_DE
 return_page.list.title,Returns,en_US
 return_page.list.title,Retouren,de_DE
 return_page.account.no_return,No returns at the moment,en_US
