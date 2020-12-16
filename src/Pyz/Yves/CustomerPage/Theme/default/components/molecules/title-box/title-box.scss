@@ -1,7 +1,8 @@
 @mixin customer-page-title-box($name: '.title-box') {
     #{$name} {
         border-bottom: rem(1) dotted $setting-color-gray-3;
-        padding: rem(15) 0;
+        border-left: rem(6) solid $setting-color-main;
+        padding: rem(15) 0 rem(15) rem(15);
         margin: rem(15) 0;
 
         @content;
