@@ -3040,3 +3040,5 @@ gdpr.accept_cookies,"Accept cookies",en_US
 gdpr.accept_cookies,"Cookies akzeptieren",de_DE
 discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
 discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
+shipment.lead.time,"Lieferzeit: ca. 3-7 Werktage",de_DE
+shipment.lead.time,"Delivery time: approx. 3-7 working days",en_US
