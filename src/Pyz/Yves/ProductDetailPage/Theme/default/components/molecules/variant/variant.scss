@@ -1,0 +1,7 @@
+@mixin product-detail-page-variant($name: '.variant') {
+    #{$name} {
+        margin: rem(15) 0;
+    }
+}
+
+@include product-detail-page-variant();

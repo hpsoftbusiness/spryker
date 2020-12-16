@@ -16,7 +16,7 @@
 {% block body %}
     <div class="grid grid--middle grid--left">
         {% block label %}
-            <label class="col col--left {{ config.name }}__label">
+            <label class="{{ config.name }}__label is-hidden-sm-only spacing-right">
                 {{ data.label }}:
             </label>
         {% endblock %}

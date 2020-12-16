@@ -41,7 +41,7 @@
         {% endfor %}
     </div>
 
-    <div class="{{ config.name }}__item">
+    <div class="{{ config.name }}__item is-hidden">
         {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
             data: {
                 field: requestedDeliveryDate,
