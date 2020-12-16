@@ -69,17 +69,7 @@
             <div class="col col--sm-12 col--lg-4">
                 <div class="page-layout-cart__col page-layout-cart__col--sidebar">
                     <h3>{{ 'cart.title_sidebar' | trans }}</h3>
-                    {% if not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote) %}
-                        {% widget 'CartCodeFormWidget' args [data.cart] only %}
-                            {% block body %}
-                                {{ parent() }}
-                            {% endblock %}
-                        {% elsewidget 'DiscountVoucherFormWidget' only %}
-                            {% block body %}
-                                {{ parent() }}
-                            {% endblock %}
-                        {% endwidget %}
-                    {% endif %}
+
                     {% include molecule('cart-summary', 'CartPage') with {
                         data: {
                             cart: data.cart,
