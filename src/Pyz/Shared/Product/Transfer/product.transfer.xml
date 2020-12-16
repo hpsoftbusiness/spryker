@@ -11,6 +11,8 @@
     <transfer name="ProductView">
         <property name="isAffiliate" type="bool"/>
         <property name="affiliateData" type="array"/>
+        <property name="cashbackAmount" type="string"/>
+        <property name="shoppingPoints" type="string"/>
     </transfer>
 
 </transfers>

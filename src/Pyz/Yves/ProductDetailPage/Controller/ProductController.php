@@ -34,6 +34,11 @@ class ProductController extends SprykerShopProductController
         );
         $viewData['cart'] = $quoteTransfer;
 
+        $productAttributesData = $viewData['product']->getAttributes();
+        $viewData['product']
+            ->setCashbackAmount($productAttributesData['cashback_amount'])
+            ->setShoppingPoints($productAttributesData['shopping_points']);
+
         $viewData['product']
             ->setAttributes(
                 $this->getFilterProductAttributes($viewData['product']->getAttributes())
@@ -78,6 +83,8 @@ class ProductController extends SprykerShopProductController
         $attributesToFilter = [
             'benefit_store',
             'shopping_point_store',
+            'cashback_amount',
+            'shopping_points',
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {

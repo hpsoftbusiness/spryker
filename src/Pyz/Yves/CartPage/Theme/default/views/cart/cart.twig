@@ -58,6 +58,8 @@
                                     product: data.cart,
                                     productItem: cartItem,
                                     attributes: data.attributes[cartItem.sku] | default([]),
+                                    cashback: cartItem.concreteAttributes.cashback_amount | default(null),
+                                    shoppingPoints: cartItem.concreteAttributes.shopping_points | default(null),
                                 },
                             } only %}
                         {% endfor %}
