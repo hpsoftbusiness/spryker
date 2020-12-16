@@ -3018,3 +3018,5 @@ product.attribute.cashback_amount,Cashback,en_US
 product.attribute.cashback_amount,Cashback,de_DE
 product.attribute.shopping_points,Shopping points,en_US
 product.attribute.shopping_points,Shopping points,de_DE
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
+discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
