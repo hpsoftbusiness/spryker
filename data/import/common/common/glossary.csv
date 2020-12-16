@@ -243,6 +243,8 @@ page.product.seller,Verkauft von,de_DE
 page.product.seller,Seller,en_US
 page.product.condition,Zustand,de_DE
 page.product.condition,Condition,en_US
+page.product.shipping-fee-from,"Versand ab",de_DE
+page.product.shipping-fee-from,"Shipping from",en_US
 page.product.status,Neu,de_DE
 page.product.status,New,en_US
 page.product.details,Details,de_DE

@@ -12,6 +12,7 @@
     bundleItems: [],
     cashback: data.product.cashbackAmount | default(null),
     shoppingPoints: data.product.shoppingPoints | default(null),
+    shippingPriceFrom: 4.95
 } %}
 
 {% set options = [] %}
@@ -84,6 +85,10 @@
             },
         } only %}
     {% endif %}
+
+    <div class="spacing-top">
+        {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
+    </div>
 
     <div class="spacing-top">
         {{ 'shipment.lead.time' | trans }}
