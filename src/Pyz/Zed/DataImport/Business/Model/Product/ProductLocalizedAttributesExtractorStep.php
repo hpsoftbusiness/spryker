@@ -14,6 +14,9 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 {
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
+    protected const AFFILIATE_PRODUCT_ATTRIBUTE_KEY = 'product.value_73';
+    protected const AFFILIATE_PRODUCT_ATTRIBUTE_VALUE = 'TRUE';
+
     /**
      * @var array
      */
@@ -87,7 +90,7 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
      */
     protected function isAfiliateProduct(DataSetInterface $dataSet): bool
     {
-        return $dataSet['product.value_73'] === 'TRUE';
+        return $dataSet[static::AFFILIATE_PRODUCT_ATTRIBUTE_KEY] === static::AFFILIATE_PRODUCT_ATTRIBUTE_VALUE;
     }
 
     /**
