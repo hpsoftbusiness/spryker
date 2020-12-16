@@ -26,4 +26,20 @@ interface OmsConstants extends SprykerOmsConstants
      * @api
      */
     public const MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME = 'OMS:MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME';
+
+    /**
+     * Specification:
+     * - Defines a recipient's name for the shipping-confirmation mail.
+     *
+     * @api
+     */
+    public const MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME = 'OMS:MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME';
+
+    /**
+     * Specification:
+     * - Defines a recipient's email for the shipping-confirmation mail.
+     *
+     * @api
+     */
+    public const MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL = 'OMS:MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL';
 }

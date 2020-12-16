@@ -30,7 +30,9 @@
             {% embed molecule('product-card-item') with {
                 modifiers: ['mini-cart', 'readonly'],
                 data: {
-                    productItem: item
+                    productItem: item,
+                    cashback: item.concreteAttributes.cashback_amount | default(null),
+                    shoppingPoints: item.concreteAttributes.shopping_points | default(null),
                 }
             } only %}
                 {% block options %}

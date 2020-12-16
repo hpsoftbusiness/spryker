@@ -10,8 +10,9 @@
     maxQuantity: 10,
     isBundle: null,
     bundleItems: [],
-    cashback: 2,
-    shoppingPoints: 1,
+    cashback: data.product.cashbackAmount | default(null),
+    shoppingPoints: data.product.shoppingPoints | default(null),
+    shippingPriceFrom: 4.95
 } %}
 
 {% set options = [] %}
@@ -55,7 +56,7 @@
 
         {# TODO: Make this product meta dynamic #}
         <div class="{{ config.name }}__status">
-            {{ 'page.product.condition' | trans }}: <strong>Neu</strong>
+            {{ 'page.product.condition' | trans }}: <strong>{{ 'page.product.status' | trans }}</strong>
         </div>
     </div>
 
@@ -84,6 +85,14 @@
             },
         } only %}
     {% endif %}
+
+    <div class="spacing-top">
+        {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
+    </div>
+
+    <div class="spacing-top">
+        {{ 'shipment.lead.time' | trans }}
+    </div>
 
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {

@@ -12,6 +12,7 @@
     index: '',
     isBundle: false,
     hiddenClass: 'is-hidden-sm-only',
+    isAffiliate: false,
 } %}
 
 {% block body %}
@@ -28,7 +29,8 @@
         },
         embed: {
             description: data.description,
-            sku: data.sku
+            sku: data.sku,
+            isAffiliate: data.isAffiliate
         }
     } only %}
         {% block contentText %}
@@ -36,6 +38,11 @@
                 {{ embed.description | raw }}
             {% endif %}
             <div class="spacing-top spacing-top--bigger">{{ 'product.attribute.sku' | trans }}: {{ embed.sku }}</div>
+            {% if embed.isAffiliate %}
+                <div class="spacing-top spacing-top--bigger">
+                    {{ 'afiliate.legal.text' | trans }}
+                </div>
+            {% endif %}
         {% endblock %}
     {% endembed %}
 

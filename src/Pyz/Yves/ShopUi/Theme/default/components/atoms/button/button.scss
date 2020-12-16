@@ -31,6 +31,20 @@
             display: flex;
             font-weight: fw(regular);
             padding: 0;
+
+            &#{$name}[disabled],
+            &#{$name}--disabled {
+                background-color: $setting-color-transparent;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                &#{$name}[disabled],
+                &#{$name}--disabled {
+                    background-color: $setting-color-transparent;
+                }
+            }
         }
 
         &--shadowless {
@@ -100,6 +114,20 @@
             padding: rem(12);
         }
 
+        &--cashback {
+            background: $setting-color-green-1;
+            border-radius: rem(50);
+            padding: rem(7) rem(25);
+            box-shadow: none;
+            min-width: rem(210);
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: $setting-color-green-2;
+            }
+        }
+
         &[disabled],
         &--disabled {
             background-color: $setting-color-gray-3;
@@ -123,7 +151,7 @@
             background-color: $setting-color-white;
             border: rem(2) solid $setting-color-main;
             color: $setting-color-black;
-            padding: rem(14) rem(16);
+            padding: rem(13) rem(16);
             box-shadow: none;
 
             &:hover,

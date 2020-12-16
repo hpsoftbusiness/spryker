@@ -4,6 +4,9 @@
     {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
     <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
-        {{- data.amount | money(true, data.currencyIsoCode) -}}
+        {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
+    </span>
+    <span class="{{ config.name }}__mode {{ defaultPriceJsName }}">
+        {{ 'pdp.include.vat' | trans }}
     </span>
 {% endblock %}
