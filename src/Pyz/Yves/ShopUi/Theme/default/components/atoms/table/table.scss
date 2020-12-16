@@ -29,6 +29,9 @@
 
     &--order,
     &--return {
+        border: 1px solid $setting-color-gray-3;
+        border-radius: $setting-border-radius;
+
         th,
         td {
             font-size: rem(14);
@@ -40,6 +43,9 @@
     }
 
     &--order-detail {
+        border: 1px solid $setting-color-gray-3;
+        border-radius: $setting-border-radius;
+
         th,
         td {
             font-size: rem(11);
@@ -61,6 +67,9 @@
     }
 
     &--wishlist {
+        border: 1px solid $setting-color-gray-3;
+        border-radius: $setting-border-radius;
+
         th,
         td {
             padding-left: 0;

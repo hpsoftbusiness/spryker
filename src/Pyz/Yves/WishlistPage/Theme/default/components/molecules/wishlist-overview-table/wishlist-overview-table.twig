@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="is-scrollable-x">
-        <table class="table table--expand">
+        <table class="table table--expand table--wishlist">
             <thead>
                 <tr>
                     <th width="35%">{{ 'customer.account.wishlist.overview.name' | trans }}</th>
@@ -23,7 +23,7 @@
                                     {{ form_widget(data.wishlistForm.name, {attr: {placeholder: 'customer.account.wishlist.overview.enter_name'|trans}}) }}
                                 </div>
                                 <div class="col">
-                                    <button type="submit" class="button button--combined">
+                                    <button type="submit" class="button button--combined-small">
                                         {{ 'wishlist.form.save' | trans }}
                                     </button>
                                 </div>

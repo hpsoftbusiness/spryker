@@ -17,6 +17,7 @@
 {%- import _self as macros -%}
 
 {% block body %}
+    <h4>{{ 'customer.profile.title' | trans }}</h4>
     <ul class="{{ component.renderClass('menu', modifiers) }}">
         <li class="{{ component.renderClass('menu__item', modifiers) }} {{macros.isActive('overview', data.activePage)}}">
             <a class="{{ component.renderClass('menu__link', modifiers) }}" href="{{ path('customer/overview') }}"

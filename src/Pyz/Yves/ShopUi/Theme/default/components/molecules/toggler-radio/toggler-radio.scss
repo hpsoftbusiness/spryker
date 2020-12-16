@@ -3,6 +3,7 @@
 
 @mixin shop-ui-toggler-radio($name: '.toggler-radio') {
     @include shop-ui-radio($name);
+
     #{$name} {
         &__box {
             width: rem(16);
