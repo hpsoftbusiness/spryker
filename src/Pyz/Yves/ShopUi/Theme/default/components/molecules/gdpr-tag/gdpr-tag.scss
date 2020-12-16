@@ -9,9 +9,11 @@
             background-color: rgba($setting-color-black, 0.9);
             width: 100%;
             padding: rem(16);
+            flex-direction: column;
+            align-items: flex-start;
 
             @include helper-breakpoint-media-min($lg-min) {
-                display: flex !important;
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
             }
@@ -32,8 +34,6 @@
         }
 
         &__button {
-            width: auto;
-
             @include helper-breakpoint-media-min($lg-min) {
                 flex-shrink: 0;
             }

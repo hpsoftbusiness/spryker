@@ -14,6 +14,7 @@
         id="cookie-notification"
         class="{{ config.name }}__content"
         role="alert"
+        data-display="flex"
         style="display:none"
         >
         <div class="{{ config.name }}__message">
@@ -23,7 +24,7 @@
         <button
             type="button"
             id="cookie-notification__accept"
-            class="{{ config.name }}__button button button--small button--expand"
+            class="{{ config.name }}__button button button--small"
         >
             {{ 'gdpr.accept_cookies' | trans }}
         </button>
