@@ -1,5 +1,6 @@
 @mixin customer-page-layout-customer($name: '.page-layout-customer') {
     #{$name} {
+        padding-top: rem(75);
         margin-bottom: rem(75);
 
         &__form-wrap {

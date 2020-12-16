@@ -1,1 +1,2 @@
 customer_reference,locale_name,phone,email,salutation,first_name,last_name,company,gender,date_of_birth,password,registered,customer_group
+DE--1,en_US,425-222-45-80,sonia@spryker.com,Ms,Sonia,Wagner,,Female,,$2y$10$BfK63PmaH/mYpHNfVjCIIuDwnMM.q2ZyjzUAjZTXPmAEiXPoqsXdy,2020-06-24,Customers_CB_B
