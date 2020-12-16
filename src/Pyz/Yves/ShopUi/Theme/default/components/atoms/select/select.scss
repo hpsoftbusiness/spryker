@@ -5,6 +5,8 @@
         position: relative;
         max-width: 100%;
         background-color: $setting-color-white;
+        border: rem(1) solid $setting-color-gray-4;
+        border-radius: $setting-border-radius;
 
         &__select {
             display: block;
@@ -12,10 +14,14 @@
             background-color: $setting-color-transparent;
             border: rem(4) solid $setting-color-transparent;
             border-right-width: rem(24);
-            padding: rem(10);
+            padding: rem(5) rem(10);
             font: fw(regular) rem(16)/rem(18) $setting-font-family;
             color: $setting-color-black;
             appearance: none;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                padding: rem(10);
+            }
 
             &::-ms-expand {
                 display: none;

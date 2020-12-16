@@ -29,7 +29,7 @@
                     }]) %}
                 {% endfor %}
 
-                <li class="list__item">
+                <li class="list__item spacing-bottom">
                     <label class="{{ config.name }}__label">
                         <strong class="{{ config.name }}__title">{{ ('product.attribute.' ~ attributeName) | trans }}:</strong>
                         {% include molecule('custom-select') with {
@@ -40,7 +40,6 @@
                             },
                             attributes: {
                                 name: 'preselectedAttributes[' ~ attributeName ~ ']',
-                                'config-theme': 'small',
                                 'data-form-submitter': '',
                             },
                         } only %}
