@@ -1,5 +1,6 @@
 import Component from 'ShopUi/models/component';
 import CustomSelect from '../custom-select/custom-select';
+import LazyImage from '../lazy-image/lazy-image';
 import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
@@ -7,6 +8,7 @@ export default class SlickCarousel extends Component {
     protected container: HTMLElement;
     protected $container: $;
     protected customSelects: CustomSelect[];
+    protected isFirstClick = true;
 
     protected readyCallback(): void {}
 
@@ -31,6 +33,22 @@ export default class SlickCarousel extends Component {
                     select.changeSelectEvent();
                 });
             }
+        });
+
+        this.$container.on('afterChange', () => {
+            if (!this.isFirstClick) {
+                return;
+            }
+            this.isFirstClick = false;
+            const clonedSlides = <HTMLElement[]>Array.from(this.container.getElementsByClassName('slick-cloned'));
+            clonedSlides.forEach((item: HTMLElement) => {
+                const lazyImage = <LazyImage>item.getElementsByClassName('lazy-image')[0];
+                if (!lazyImage) {
+                    return;
+                }
+                lazyImage.init();
+                lazyImage.updateImage();
+            });
         });
 
         this.$container.slick(
