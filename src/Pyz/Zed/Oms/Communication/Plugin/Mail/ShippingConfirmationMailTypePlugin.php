@@ -48,7 +48,6 @@ class ShippingConfirmationMailTypePlugin extends AbstractPlugin implements MailT
             ->setHtmlTemplate($mailBuilder)
             ->setTextTemplate($mailBuilder)
             ->setRecipient($mailBuilder)
-            ->setBccRecipient($mailBuilder)
             ->setSender($mailBuilder);
     }
 
@@ -117,23 +116,6 @@ class ShippingConfirmationMailTypePlugin extends AbstractPlugin implements MailT
     protected function setSender(MailBuilderInterface $mailBuilder)
     {
         $mailBuilder->useDefaultSender();
-
-        return $this;
-    }
-
-    /**
-     * @param \Spryker\Zed\Mail\Business\Model\Mail\Builder\MailBuilderInterface $mailBuilder
-     *
-     * @return $this
-     */
-    protected function setBccRecipient(MailBuilderInterface $mailBuilder)
-    {
-        $mailShippingConfirmationBccRecipientEmail = $this->getConfig()->getMailShippingConfirmationBccRecipientEmail();
-
-        if ($mailShippingConfirmationBccRecipientEmail) {
-            $mailShippingConfirmationBccRecipientName = $this->getConfig()->getMailShippingConfirmationBccRecipientName();
-            $mailBuilder->addRecipientBcc($mailShippingConfirmationBccRecipientEmail, $mailShippingConfirmationBccRecipientName);
-        }
 
         return $this;
     }
