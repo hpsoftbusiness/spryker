@@ -1,5 +1,10 @@
 {
   "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "max_result_window": 50000
+    },
     "analysis": {
       "analyzer": {
         "fulltext_index_analyzer": {
