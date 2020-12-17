@@ -27,26 +27,6 @@
             text-decoration: none;
         }
 
-        &--wishlist {
-            display: flex;
-            font-weight: fw(regular);
-            padding: 0;
-
-            &#{$name}[disabled],
-            &#{$name}--disabled {
-                background-color: $setting-color-transparent;
-            }
-
-            &:hover,
-            &:focus,
-            &:active {
-                &#{$name}[disabled],
-                &#{$name}--disabled {
-                    background-color: $setting-color-transparent;
-                }
-            }
-        }
-
         &--shadowless {
             box-shadow: none;
         }
@@ -68,6 +48,30 @@
             &:active {
                 background-color: $setting-color-transparent;
                 color: $setting-color-black;
+            }
+        }
+
+        &--wishlist {
+            display: flex;
+            align-items: center;
+            font-weight: fw(regular);
+            padding: 0;
+
+            &#{$name}[disabled],
+            &#{$name}--disabled {
+                &,
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $setting-color-gray-4;
+                    background-color: $setting-color-transparent;
+                }
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: $setting-color-main;
             }
         }
 

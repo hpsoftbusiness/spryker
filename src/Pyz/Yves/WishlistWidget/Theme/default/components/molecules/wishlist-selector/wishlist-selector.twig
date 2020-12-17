@@ -35,25 +35,24 @@
 
     <form method="POST" action="{{ path('wishlist/add-item', { sku: data.sku }) }}" class="{{config.name}}__form">
         <div class="spacing-top spacing-top--big">
+            <button class="button button--wishlist button--skinless button--expand" {{ disableAddToWishlist ? 'disabled' }}>
+                {% include atom('icon') with {
+                    modifiers: ['big', 'wishlist'],
+                    data: {
+                        name: 'whishlist',
+                    },
+                } only %}
+                {{ 'page.detail.add-to-wishlist' | trans }}
+            </button>
+
             {% if isUserLoggedIn %}
                 {% include molecule('ajax-renderer') with {
+                    class: 'spacing-top spacing-top--big',
                     attributes: {
                         'provider-class-name': config.jsName ~ '__provider',
                     },
                 } only %}
             {% endif %}
-
-            <div class="spacing-top">
-                <button type="submit" class="button button--wishlist button--skinless button--expand" {{ disableAddToWishlist ? 'disabled' : '' }}>
-                    {% include atom('icon') with {
-                        modifiers: ['wishlist'],
-                        data: {
-                            name: 'whishlist',
-                        },
-                    } only %}
-                    {{ 'page.detail.add-to-wishlist' | trans }}
-                </button>
-            </div>
         </div>
         <input id="wishlist_add_item_form__token" name="wishlist_add_item_form[_token]" type="hidden" value="{{ csrf_token('wishlist_add_item_form') }}">
     </form>
