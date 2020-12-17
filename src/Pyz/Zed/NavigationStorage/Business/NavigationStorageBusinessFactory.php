@@ -8,8 +8,6 @@
 namespace Pyz\Zed\NavigationStorage\Business;
 
 use Pyz\Zed\NavigationStorage\Business\Storage\NavigationStorageWriter;
-use Pyz\Zed\NavigationStorage\NavigationStorageDependencyProvider;
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\NavigationStorage\Business\NavigationStorageBusinessFactory as SprykerNavigationStorageBusinessFactory;
 use Spryker\Zed\NavigationStorage\Business\Storage\NavigationStorageWriterInterface;
 
@@ -25,16 +23,7 @@ class NavigationStorageBusinessFactory extends SprykerNavigationStorageBusinessF
             $this->getNavigationFacade(),
             $this->getQueryContainer(),
             $this->getStore(),
-            $this->getUtilEncodingService(),
             $this->getConfig()->isSendingToQueue()
         );
-    }
-
-    /**
-     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
-     */
-    public function getUtilEncodingService(): UtilEncodingServiceInterface
-    {
-        return $this->getProvidedDependency(NavigationStorageDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 }

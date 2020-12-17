@@ -17,7 +17,7 @@ class ProductListProductAbstractStorageWriter extends SprykerProductListProductA
     /**
      * @var \Pyz\Zed\ProductListStorage\Dependency\Plugin\ProductListProductAbstractAfterPublishPluginInterface[]
      */
-    protected $productListProductAbstractAfterPublishPlugins;
+    protected $productListProductAbstractAfterPublishPlugins = [];
 
     /**
      * @param \Spryker\Zed\ProductListStorage\Dependency\Facade\ProductListStorageToProductListFacadeInterface $productListFacade

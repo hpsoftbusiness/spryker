@@ -7,10 +7,12 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductPageSearch\CategoryNavigationProductPageSearchPublishTriggerPlugin;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Zed\Availability\Communication\Plugin\ProductPageSearch\AvailabilityProductAbstractAddToCartPlugin;
+use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataLoader\ProductLabelDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductLabelMapExpanderPlugin;
@@ -35,6 +37,34 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as Spryker
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
     public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
+    public const PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH = 'PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addProductAbstractPageAfterPublishPlugins($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addProductAbstractPageAfterPublishPlugins(Container $container): Container
+    {
+        $container->set(static::PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH, [
+            new CategoryNavigationProductPageSearchPublishTriggerPlugin(),
+        ]);
+
+        return $container;
+    }
 
     /**
      * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]

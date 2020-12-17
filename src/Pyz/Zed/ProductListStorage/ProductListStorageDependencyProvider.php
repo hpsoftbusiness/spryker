@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductListStorage;
 
-use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductListStorage\CategoryNavigationPublishTriggerPlugin;
+use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductListStorage\CategoryNavigationProductListStoragePublishTriggerPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\ProductListStorage\ProductListStorageDependencyProvider as SprykerProductListStorageDependencyProvider;
 
@@ -36,7 +36,7 @@ class ProductListStorageDependencyProvider extends SprykerProductListStorageDepe
     protected function addProductListProductAbstractAfterPublishPlugins(Container $container): Container
     {
         $container->set(static::PLUGIN_PRODUCT_LIST_PRODUCT_ABSTRACT_AFTER_PUBLISH, [
-            new CategoryNavigationPublishTriggerPlugin(),
+            new CategoryNavigationProductListStoragePublishTriggerPlugin(),
         ]);
 
         return $container;

@@ -8,10 +8,9 @@
 namespace Pyz\Zed\Navigation\Business\Tree;
 
 use Generated\Shared\Transfer\NavigationNodeTransfer;
+use Orm\Zed\Category\Persistence\Map\SpyCategoryNodeTableMap;
 use Orm\Zed\Navigation\Persistence\SpyNavigation;
 use Orm\Zed\Navigation\Persistence\SpyNavigationNodeQuery;
-use Orm\Zed\ProductListStorage\Persistence\Map\SpyProductAbstractProductListStorageTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Navigation\Business\Tree\NavigationTreeReader as SprykerNavigationTreeReader;
 
 class NavigationTreeReader extends SprykerNavigationTreeReader
@@ -23,7 +22,7 @@ class NavigationTreeReader extends SprykerNavigationTreeReader
      */
     protected function findRootNavigationNodes(SpyNavigation $navigationEntity)
     {
-        return $this->addCustomerIdsToSpyNavigationNodeQuery(
+        return $this->addIdCategoryToSpyNavigationNodeQuery(
             $this->navigationQueryContainer
                 ->queryRootNavigationNodesByIdNavigation($navigationEntity->getIdNavigation())
         )->find();
@@ -36,7 +35,7 @@ class NavigationTreeReader extends SprykerNavigationTreeReader
      */
     protected function findChildrenNavigationNodes(NavigationNodeTransfer $navigationNodeTransfer)
     {
-        return $this->addCustomerIdsToSpyNavigationNodeQuery(
+        return $this->addIdCategoryToSpyNavigationNodeQuery(
             $this->navigationQueryContainer
                 ->queryNavigationNodesByFkParentNavigationNode($navigationNodeTransfer->getIdNavigationNode())
         )->find();
@@ -47,24 +46,16 @@ class NavigationTreeReader extends SprykerNavigationTreeReader
      *
      * @return \Orm\Zed\Navigation\Persistence\SpyNavigationNodeQuery
      */
-    protected function addCustomerIdsToSpyNavigationNodeQuery(
+    protected function addIdCategoryToSpyNavigationNodeQuery(
         SpyNavigationNodeQuery $spyNavigationNodeQuery
     ): SpyNavigationNodeQuery {
         return $spyNavigationNodeQuery
             ->groupByNodeKey()
             ->useSpyNavigationNodeLocalizedAttributesQuery()
                 ->useSpyUrlQuery()
-                    ->useSpyCategoryNodeQuery()
-                        ->useCategoryQuery(null, Criteria::LEFT_JOIN)
-                            ->useSpyProductCategoryQuery(null, Criteria::LEFT_JOIN)
-                                ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN)
-                                    ->leftJoinSpyProductAbstractProductListStorage()
-                                ->endUse()
-                            ->endUse()
-                        ->endUse()
-                    ->endUse()
+                    ->leftJoinSpyCategoryNode()
                 ->endUse()
             ->endUse()
-            ->addAsColumn(NavigationNodeTransfer::PRODUCT_ASSIGNMENTS, 'GROUP_CONCAT(' . SpyProductAbstractProductListStorageTableMap::COL_DATA . ')');
+            ->addAsColumn(NavigationNodeTransfer::ID_CATEGORY, SpyCategoryNodeTableMap::COL_FK_CATEGORY);
     }
 }

@@ -7,7 +7,10 @@
 
 namespace Pyz\Yves\ContentNavigationWidget;
 
+use Pyz\Client\Catalog\CatalogClientInterface;
 use Pyz\Client\Customer\CustomerClientInterface;
+use Pyz\Yves\ContentNavigationWidget\Reader\CategoryReader;
+use Pyz\Yves\ContentNavigationWidget\Reader\CategoryReaderInterface;
 use Pyz\Yves\ContentNavigationWidget\Twig\ContentNavigationTwigFunction;
 use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
@@ -15,6 +18,9 @@ use SprykerShop\Yves\ContentNavigationWidget\ContentNavigationWidgetFactory as S
 use SprykerShop\Yves\ContentNavigationWidget\Twig\ContentNavigationTwigFunction as SprykerShopContentNavigationTwigFunction;
 use Twig\Environment;
 
+/**
+ * @method \Pyz\Yves\ContentNavigationWidget\ContentNavigationWidgetConfig getConfig()
+ */
 class ContentNavigationWidgetFactory extends SprykerShopContentNavigationWidgetFactory
 {
     /**
@@ -33,8 +39,17 @@ class ContentNavigationWidgetFactory extends SprykerShopContentNavigationWidgetF
             $this->getConfig(),
             $this->getCustomerClient(),
             $this->getSessionClient(),
-            $this->getUtilEncodingService()
+            $this->getUtilEncodingService(),
+            $this->createCategoryReader()
         );
+    }
+
+    /**
+     * @return \Pyz\Yves\ContentNavigationWidget\Reader\CategoryReaderInterface
+     */
+    public function createCategoryReader(): CategoryReaderInterface
+    {
+        return new CategoryReader($this->getCatalogClient());
     }
 
     /**
@@ -43,6 +58,14 @@ class ContentNavigationWidgetFactory extends SprykerShopContentNavigationWidgetF
     public function getCustomerClient(): CustomerClientInterface
     {
         return $this->getProvidedDependency(ContentNavigationWidgetDependencyProvider::CLIENT_CUSTOMER);
+    }
+
+    /**
+     * @return \Pyz\Client\Catalog\CatalogClientInterface
+     */
+    public function getCatalogClient(): CatalogClientInterface
+    {
+        return $this->getProvidedDependency(ContentNavigationWidgetDependencyProvider::CLIENT_CATALOG);
     }
 
     /**

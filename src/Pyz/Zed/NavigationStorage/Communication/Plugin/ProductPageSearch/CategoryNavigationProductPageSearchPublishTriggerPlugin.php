@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\NavigationStorage\Communication\Plugin\ProductListStorage;
+namespace Pyz\Zed\NavigationStorage\Communication\Plugin\ProductPageSearch;
 
 use Pyz\Zed\ProductListStorage\Dependency\Plugin\ProductListProductAbstractAfterPublishPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -15,7 +15,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Pyz\Zed\NavigationStorage\NavigationStorageConfig getConfig()
  * @method \Spryker\Zed\NavigationStorage\Business\NavigationStorageFacadeInterface getFacade()
  */
-class CategoryNavigationPublishTriggerPlugin extends AbstractPlugin implements ProductListProductAbstractAfterPublishPluginInterface
+class CategoryNavigationProductPageSearchPublishTriggerPlugin extends AbstractPlugin implements ProductListProductAbstractAfterPublishPluginInterface
 {
     /**
      * {@inheritDoc}

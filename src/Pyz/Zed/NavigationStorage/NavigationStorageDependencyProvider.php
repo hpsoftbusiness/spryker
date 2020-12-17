@@ -14,21 +14,6 @@ class NavigationStorageDependencyProvider extends SprykerNavigationStorageDepend
 {
     public const FACADE_NAVIGATION_FULL = 'FACADE_NAVIGATION_FULL';
 
-    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    public function provideBusinessLayerDependencies(Container $container)
-    {
-        $container = parent::provideBusinessLayerDependencies($container);
-        $container = $this->addUtilEncodingService($container);
-
-        return $container;
-    }
-
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -51,20 +36,6 @@ class NavigationStorageDependencyProvider extends SprykerNavigationStorageDepend
     {
         $container->set(static::FACADE_NAVIGATION_FULL, function (Container $container) {
             return $container->getLocator()->navigation()->facade();
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addUtilEncodingService(Container $container): Container
-    {
-        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
-            return $container->getLocator()->utilEncoding()->service();
         });
 
         return $container;

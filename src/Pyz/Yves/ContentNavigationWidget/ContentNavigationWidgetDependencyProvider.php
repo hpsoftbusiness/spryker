@@ -13,6 +13,7 @@ use SprykerShop\Yves\ContentNavigationWidget\ContentNavigationWidgetDependencyPr
 class ContentNavigationWidgetDependencyProvider extends SprykerShopContentNavigationWidgetDependencyProvider
 {
     public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
+    public const CLIENT_CATALOG = 'CLIENT_CATALOG';
     public const CLIENT_SESSION = 'CLIENT_SESSION';
 
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
@@ -26,6 +27,7 @@ class ContentNavigationWidgetDependencyProvider extends SprykerShopContentNaviga
     {
         $container = parent::provideDependencies($container);
         $container = $this->addCustomerClient($container);
+        $container = $this->addCatalogClient($container);
         $container = $this->addSessionClient($container);
         $container = $this->addUtilEncodingService($container);
 
@@ -41,6 +43,20 @@ class ContentNavigationWidgetDependencyProvider extends SprykerShopContentNaviga
     {
         $container->set(static::CLIENT_CUSTOMER, function (Container $container) {
             return $container->getLocator()->customer()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addCatalogClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_CATALOG, function (Container $container) {
+            return $container->getLocator()->catalog()->client();
         });
 
         return $container;

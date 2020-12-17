@@ -15,6 +15,7 @@ use Generated\Shared\Transfer\NavigationNodeStorageTransfer;
 use Generated\Shared\Transfer\NavigationStorageTransfer;
 use Pyz\Client\Customer\CustomerClientInterface;
 use Pyz\Yves\ContentNavigationWidget\ContentNavigationWidgetConfig;
+use Pyz\Yves\ContentNavigationWidget\Reader\CategoryReaderInterface;
 use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use SprykerShop\Yves\ContentNavigationWidget\Dependency\Client\ContentNavigationWidgetToContentNavigationClientInterface;
@@ -50,6 +51,11 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
     protected $utilEncodingService;
 
     /**
+     * @var \Pyz\Yves\ContentNavigationWidget\Reader\CategoryReaderInterface $categoryReader
+     */
+    protected $categoryReader;
+
+    /**
      * @param \Twig\Environment $twig
      * @param string $localeName
      * @param \SprykerShop\Yves\ContentNavigationWidget\Dependency\Client\ContentNavigationWidgetToContentNavigationClientInterface $contentNavigationClient
@@ -58,6 +64,7 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
      * @param \Pyz\Client\Customer\CustomerClientInterface $customerClient
      * @param \Spryker\Client\Session\SessionClientInterface $sessionClient
      * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     * @param \Pyz\Yves\ContentNavigationWidget\Reader\CategoryReaderInterface $categoryReader
      */
     public function __construct(
         Environment $twig,
@@ -67,13 +74,15 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
         ContentNavigationWidgetConfig $contentNavigationWidgetConfig,
         CustomerClientInterface $customerClient,
         SessionClientInterface $sessionClient,
-        UtilEncodingServiceInterface $utilEncodingService
+        UtilEncodingServiceInterface $utilEncodingService,
+        CategoryReaderInterface $categoryReader
     ) {
         parent::__construct($twig, $localeName, $contentNavigationClient, $navigationStorageClient, $contentNavigationWidgetConfig);
 
         $this->customerClient = $customerClient;
         $this->sessionClient = $sessionClient;
         $this->utilEncodingService = $utilEncodingService;
+        $this->categoryReader = $categoryReader;
     }
 
     /**
@@ -90,14 +99,14 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
         $isNavigationNodeCategoryDriven = $this->getIsNavigationNodeCategoryDriven($navigationStorageTransfer);
         $customerTransfer = $this->customerClient->getCustomer();
 
-        if ($isNavigationNodeCategoryDriven && $customerTransfer) {
-            // check if customer has another black/white lists combination
-            $this->validateCustomerSessionNavigationNodeData($customerTransfer);
+        if ($isNavigationNodeCategoryDriven) {
+            // check if customer received another black/white lists combination
+            $this->validateSessionNavigationNodeData($customerTransfer);
         }
 
         foreach ($navigationStorageTransfer->getNodes() as $navigationNodeStorageTransfer) {
             if ($isNavigationNodeCategoryDriven
-                && !$this->getIsCategoryVisible($navigationNodeStorageTransfer, $customerTransfer)
+                && !$this->getIsCategoryVisible($navigationNodeStorageTransfer)
             ) {
                 continue;
             }
@@ -137,41 +146,35 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
      *
      * @return void
      */
-    protected function validateCustomerSessionNavigationNodeData(CustomerTransfer $customerTransfer): void
+    protected function validateSessionNavigationNodeData(?CustomerTransfer $customerTransfer): void
     {
         $navigationNodeProductAssignmentData = $this->findNavigationNodeSessionData();
-        $customerProductListsUniqueKey = $this->getCustomerProductListsUniqueKey(
-            $customerTransfer->getCustomerProductListCollection()
-        );
+        $customerProductListCollectionTransfer = $customerTransfer
+            ? $customerTransfer->getCustomerProductListCollection()
+            : (new CustomerProductListCollectionTransfer());
+        $navigationNodeSessionUniqueKey = $this->getNavigationNodeSessionUniqueKey($customerProductListCollectionTransfer);
 
         if (!isset($navigationNodeProductAssignmentData[static::DATA_KEY_CUSTOMER_PRODUCT_LISTS_KEY])
-            || $navigationNodeProductAssignmentData[static::DATA_KEY_CUSTOMER_PRODUCT_LISTS_KEY] !== $customerProductListsUniqueKey
+            || $navigationNodeProductAssignmentData[static::DATA_KEY_CUSTOMER_PRODUCT_LISTS_KEY] !== $navigationNodeSessionUniqueKey
         ) {
             // clear all the cached data for customer if the product list were changed
             $this->setNavigationNodeSessionData([
-                static::DATA_KEY_CUSTOMER_PRODUCT_LISTS_KEY => $customerProductListsUniqueKey,
+                static::DATA_KEY_CUSTOMER_PRODUCT_LISTS_KEY => $navigationNodeSessionUniqueKey,
             ]);
         }
     }
 
     /**
      * @param \Generated\Shared\Transfer\NavigationNodeStorageTransfer $navigationNodeStorageTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
      *
      * @return bool
      */
-    protected function getIsCategoryVisible(
-        NavigationNodeStorageTransfer $navigationNodeStorageTransfer,
-        ?CustomerTransfer $customerTransfer = null
-    ): bool {
-        if (!$customerTransfer) {
-            return $this->checkProductAssignmentForGuest($navigationNodeStorageTransfer);
-        }
-
+    protected function getIsCategoryVisible(NavigationNodeStorageTransfer $navigationNodeStorageTransfer): bool
+    {
         $navigationNodeVisibilityData = $this->findNavigationNodeSessionData();
         $navigationNodeProductAssignmentData = $navigationNodeVisibilityData[static::DATA_KEY_PRODUCT_ASSIGNMENT] ?? [];
         $navigationNodeDataKey = $this->getNavigationNodeDataKey($navigationNodeStorageTransfer);
@@ -184,149 +187,18 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
             }
         }
 
-        $isNavigationNodeVisibleForCustomer = $this->checkProductAssignmentsForCustomer(
-            $navigationNodeStorageTransfer,
-            $customerTransfer
+        $isNavigationNodeVisible = $this->categoryReader->getIsCatalogVisible(
+            $navigationNodeStorageTransfer->getIdCategory()
         );
 
         $navigationNodeProductAssignmentData[$navigationNodeDataKey] = [
             static::DATA_KEY_MODIFIED_AT => $navigationNodeStorageTransfer->getStorageModifiedAt(),
-            static::DATA_KEY_NODE_VISIBILITY => $isNavigationNodeVisibleForCustomer,
+            static::DATA_KEY_NODE_VISIBILITY => $isNavigationNodeVisible,
         ];
         $navigationNodeVisibilityData[static::DATA_KEY_PRODUCT_ASSIGNMENT] = $navigationNodeProductAssignmentData;
         $this->setNavigationNodeSessionData($navigationNodeVisibilityData);
 
-        return $isNavigationNodeVisibleForCustomer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\NavigationNodeStorageTransfer $navigationNodeStorageTransfer
-     *
-     * @return bool
-     */
-    protected function checkProductAssignmentForGuest(
-        NavigationNodeStorageTransfer $navigationNodeStorageTransfer
-    ): bool {
-        if (count($navigationNodeStorageTransfer->getProductAssignments())) {
-            // category has at least one product assigned
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\NavigationNodeStorageTransfer $navigationNodeStorageTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
-    protected function checkProductAssignmentsForCustomer(
-        NavigationNodeStorageTransfer $navigationNodeStorageTransfer,
-        CustomerTransfer $customerTransfer
-    ): bool {
-        $productAssignments = $navigationNodeStorageTransfer->getProductAssignments();
-        $customerProductLists = $customerTransfer->getCustomerProductListCollection();
-
-        if (!count($customerProductLists->getBlacklistIds()) && !count($customerProductLists->getWhitelistIds())) {
-            // customer has no product lists assigned
-            if (count($productAssignments)) {
-                // category has at least one product assigned
-                return true;
-            }
-
-            return false;
-        }
-
-        if (!count($productAssignments)) {
-            // category has no products, remove it
-            return false;
-        }
-
-        foreach ($productAssignments as $productAssignment) {
-            $isProductVisibleForCustomer = $this->getIsProductVisibleForCustomer(
-                $customerProductLists,
-                $productAssignment
-            );
-
-            if ($isProductVisibleForCustomer) {
-                // at least one product is visible in category
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerProductListCollectionTransfer $customerProductLists
-     * @param mixed[] $productAssignment
-     *
-     * @return bool
-     */
-    protected function getIsProductVisibleForCustomer(
-        CustomerProductListCollectionTransfer $customerProductLists,
-        array $productAssignment
-    ): bool {
-        if ($customerProductLists->getBlacklistIds()) {
-            $isRestricted = $this->getIsProductRestricted(
-                $customerProductLists->getBlacklistIds(),
-                $productAssignment['id_blacklists']
-            );
-
-            if ($isRestricted) {
-                // product is restricted, skipping
-                return false;
-            }
-        }
-
-        if ($customerProductLists->getWhitelistIds()) {
-            $isAllowed = $this->getIsProductAllowed(
-                $customerProductLists->getWhitelistIds(),
-                $productAssignment['id_whitelists']
-            );
-
-            if ($isAllowed) {
-                // product is allowed, proceeding
-                return true;
-            }
-
-            // product is restricted since not present in any whitelist
-            return false;
-        }
-
-        // product is visible since customer has no whitelist groups
-        return true;
-    }
-
-    /**
-     * @param int[] $customerBlacklistIds
-     * @param int[] $productBlacklistIds
-     *
-     * @return bool
-     */
-    protected function getIsProductRestricted(array $customerBlacklistIds, array $productBlacklistIds): bool
-    {
-        if (array_intersect($customerBlacklistIds, $productBlacklistIds)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param int[] $customerWhitelistIds
-     * @param int[] $productWhitelistIds
-     *
-     * @return bool
-     */
-    protected function getIsProductAllowed(array $customerWhitelistIds, array $productWhitelistIds): bool
-    {
-        if (array_intersect($customerWhitelistIds, $productWhitelistIds)) {
-            return true;
-        }
-
-        return false;
+        return $isNavigationNodeVisible;
     }
 
     /**
@@ -348,7 +220,7 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
      *
      * @return string
      */
-    protected function getCustomerProductListsUniqueKey(
+    protected function getNavigationNodeSessionUniqueKey(
         CustomerProductListCollectionTransfer $customerProductListCollectionTransfer
     ): string {
         return md5($this->utilEncodingService->encodeJson($customerProductListCollectionTransfer->toArray()));
