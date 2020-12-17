@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ContentNavigationWidget;
 
+use Pyz\Shared\Navigation\NavigationConfig;
 use SprykerShop\Yves\ContentNavigationWidget\ContentNavigationWidgetConfig as SprykerContentNavigationWidget;
 
 class ContentNavigationWidgetConfig extends SprykerContentNavigationWidget
@@ -26,6 +27,8 @@ class ContentNavigationWidgetConfig extends SprykerContentNavigationWidget
      */
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
+    protected const NAVIGATION_NODE_VISIBILITY_SESSION_KEY = 'navigation_node';
+
     /**
      * @api
      *
@@ -41,5 +44,21 @@ class ContentNavigationWidgetConfig extends SprykerContentNavigationWidget
         ];
 
         return $availableTemplates;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCategoryNavigationKeys(): array
+    {
+        return NavigationConfig::NAVIGATION_KEYS_CATEGORY_DRIVEN;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNavigationNodeVisibilitySessionKey(): string
+    {
+        return static::NAVIGATION_NODE_VISIBILITY_SESSION_KEY;
     }
 }
