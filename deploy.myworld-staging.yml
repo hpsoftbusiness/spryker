@@ -101,17 +101,19 @@ groups:
             store: DE
             redirect:
               type: 302
-              url: www.de.myworld.cloud.spryker.toys
+              url: www.de.myworld.cloud.spryker.toys 
       Yves:
         application: yves
         endpoints:
           www.de.myworld.cloud.spryker.toys:
             store: DE
+            <<: *frontend-auth
       Zed:
         application: zed
         endpoints:
           zed.de.myworld.cloud.spryker.toys:
             store: DE
+            <<: *frontend-auth
       Glue:
         application: glue
         endpoints:
