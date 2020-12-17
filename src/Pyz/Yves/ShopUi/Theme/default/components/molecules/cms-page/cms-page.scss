@@ -27,6 +27,16 @@
                 padding: rem(15) 0;
                 margin: rem(10) 0;
             }
+
+            * {
+                font-family: $setting-font-family !important;
+            }
+
+            p,
+            span,
+            ul {
+                font-size: rem(16) !important;
+            }
         }
 
         &__notification {
