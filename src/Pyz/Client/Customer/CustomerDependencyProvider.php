@@ -7,10 +7,10 @@
 
 namespace Pyz\Client\Customer;
 
+use Pyz\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
-use Spryker\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\Customer\CustomerAccessSecuredPatternRulePlugin;
 use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
 

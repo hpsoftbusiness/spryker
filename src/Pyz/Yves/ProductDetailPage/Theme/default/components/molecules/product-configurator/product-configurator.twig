@@ -94,6 +94,16 @@
         {{ 'shipment.lead.time' | trans }}
     </div>
 
+    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
+        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
+            class: config.name ~ '__form spacing-y spacing-y--bigger',
+            data: {
+                sku: data.product.sku,
+                idProductConcrete: data.product.idProductConcrete | default
+            }
+        } only %}
+    {% endif %}
+
     {% if data.isBundle != null %}
         {% embed molecule('toggler-item') with {
             modifiers: ['option'],
@@ -128,15 +138,6 @@
             availableAttributes: data.product.availableAttributes
         }
     } only %}
-
-    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
-        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
-            data: {
-                sku: data.product.sku,
-                idProductConcrete: data.product.idProductConcrete | default
-            }
-        } only %}
-    {% endif %}
 
     <hr class="{{ config.name }}__separator" />
 

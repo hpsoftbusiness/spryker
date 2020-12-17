@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\NavigationStorage;
 
+use Pyz\Shared\Navigation\NavigationConfig;
 use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\NavigationStorage\NavigationStorageConfig as SprykerNavigationStorageConfig;
@@ -27,5 +28,13 @@ class NavigationStorageConfig extends SprykerNavigationStorageConfig
     public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCategoryNavigationKeys(): array
+    {
+        return NavigationConfig::NAVIGATION_KEYS_CATEGORY_DRIVEN;
     }
 }

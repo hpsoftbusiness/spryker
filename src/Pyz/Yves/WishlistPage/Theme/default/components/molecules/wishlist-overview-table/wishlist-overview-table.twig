@@ -18,11 +18,11 @@
                     <td>
                         {% if hasWishlistForm %}
                             {{ form_start(data.wishlistForm) }}
-                            <div class="grid grid--desktop-no-wrap">
+                            <div class="grid grid--no-wrap">
                                 <div class="col">
                                     {{ form_widget(data.wishlistForm.name, {attr: {placeholder: 'customer.account.wishlist.overview.enter_name'|trans}}) }}
                                 </div>
-                                <div class="col">
+                                <div class="col spacing-left">
                                     <button type="submit" class="button button--combined-small">
                                         {{ 'wishlist.form.save' | trans }}
                                     </button>

@@ -124,7 +124,7 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             'Amount' => (string)bcdiv($orderTransfer->getTotals()->getPriceToPay(), 100, 2),
             'Currency' => $orderTransfer->getCurrencyIsoCode(),
             'SegmentNumber' => static::SEGMENT_NUMBER,
-            'ProfileIdentifier' => $this->myWorldMarketplaceApiConfig->getDealerId(),
+            'ProfileIdentifier' => $this->getDealerId($orderTransfer),
         ]);
 
         return [
@@ -135,6 +135,23 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             ],
             'body' => $requestBody,
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    protected function getDealerId(OrderTransfer $orderTransfer): string
+    {
+        $dealerIdCountryMap = $this->myWorldMarketplaceApiConfig->getDealerIdCountryMap();
+        $iso2Code = $orderTransfer->getCustomerCountryId();
+
+        if (!isset($dealerIdCountryMap[$iso2Code])) {
+            $this->myWorldMarketplaceApiConfig->getDealerIdDefault();
+        }
+
+        return $dealerIdCountryMap[$iso2Code];
     }
 
     /**

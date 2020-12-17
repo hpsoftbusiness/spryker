@@ -7,10 +7,6 @@
 
 namespace Pyz\Zed\SalesProductConnector\Business\Expander;
 
-use Generated\Shared\Transfer\LocaleTransfer;
-use Generated\Shared\Transfer\LocalizedAttributesTransfer;
-use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributes;
 use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\SalesProductConnector\Dependency\Service\SalesProductConnectorToUtilEncodingInterface;
 use Spryker\Zed\SalesProductConnector\Persistence\SalesProductConnectorRepositoryInterface;

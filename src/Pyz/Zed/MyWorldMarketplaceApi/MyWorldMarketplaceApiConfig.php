@@ -23,9 +23,17 @@ class MyWorldMarketplaceApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getDealerId(): string
+    public function getDealerIdDefault(): string
     {
-        return $this->get(MyWorldMarketplaceApiConstants::DEALER_ID);
+        return $this->get(MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT);
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getDealerIdCountryMap(): array
+    {
+        return $this->get(MyWorldMarketplaceApiConstants::DEALER_ID_COUNTRY_MAP);
     }
 
     /**
