@@ -183,8 +183,18 @@
                 margin-top: rem(-10);
             }
 
+            .slick-track {
+                display: flex;
+                align-items: stretch;
+            }
+
             .slick-slide {
                 padding: 0 rem(12);
+                height: auto;
+
+                & > div {
+                    height: 100%;
+                }
             }
 
             .slick-prev {
