@@ -85,9 +85,26 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
         return sprintf(
             '%s/dealers/%s/turnovers/%s/cancel',
             $this->myWorldMarketplaceApiConfig->getApiUrl(),
-            $this->myWorldMarketplaceApiConfig->getDealerId(),
+            $this->getDealerId($orderTransfer),
             $this->getTurnoverReference($orderTransfer)
         );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    protected function getDealerId(OrderTransfer $orderTransfer): string
+    {
+        $dealerIdCountryMap = $this->myWorldMarketplaceApiConfig->getDealerIdCountryMap();
+        $iso2Code = $orderTransfer->getCustomerCountryId();
+
+        if (!isset($dealerIdCountryMap[$iso2Code])) {
+            $this->myWorldMarketplaceApiConfig->getDealerIdDefault();
+        }
+
+        return $dealerIdCountryMap[$iso2Code];
     }
 
     /**

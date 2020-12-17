@@ -14,4 +14,7 @@
         <property name="customerBalance" type="CustomerBalance"/>
     </transfer>
 
+    <transfer name="Order">
+        <property name="customerCountryId" type="string"/>
+    </transfer>
 </transfers>
