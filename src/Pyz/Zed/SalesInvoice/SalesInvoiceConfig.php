@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\SalesInvoice;
 
+use Generated\Shared\Transfer\MailRecipientTransfer;
+use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 use Spryker\Zed\SalesInvoice\SalesInvoiceConfig as SprykerSalesInvoiceConfig;
 
 class SalesInvoiceConfig extends SprykerSalesInvoiceConfig
@@ -31,5 +33,22 @@ class SalesInvoiceConfig extends SprykerSalesInvoiceConfig
     protected function getOrderInvoiceReferencePrefix(): string
     {
         return parent::getOrderInvoiceReferencePrefix() . static::ORDER_INVOICE_REFERENCE_PREFIX_NUMBER;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @return \Generated\Shared\Transfer\MailRecipientTransfer[]
+     */
+    public function getOrderInvoiceBcc(): array
+    {
+        $orderInvoiceRecipientsBcc = [];
+        foreach ($this->get(SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC) as $email => $name) {
+            $orderInvoiceRecipientsBcc[] = (new MailRecipientTransfer())->setEmail($email)->setName($name);
+        }
+
+        return $orderInvoiceRecipientsBcc;
     }
 }
