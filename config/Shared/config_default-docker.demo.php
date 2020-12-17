@@ -3,6 +3,7 @@
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
+use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
@@ -43,8 +44,10 @@ require 'common/config_sso-demo.php';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
-$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
-$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME] = 'Warehouse Manager';
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
+    'nataliia.popkova@spryker.com' => 'Warehouse Manager',
+    'olena.krivtsova@spryker.com' => 'Warehouse Manager',
+];
 
 // ----------------------------------------------------------------------------
 // ----------------------- MyWorld Marketplace API ----------------------------

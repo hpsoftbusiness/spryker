@@ -9,8 +9,15 @@ namespace Pyz\Zed\SalesProductConnector\Business;
 
 use Pyz\Zed\SalesProductConnector\Business\Expander\ProductAttributesExpander;
 use Pyz\Zed\SalesProductConnector\Business\Expander\ProductAttributesExpanderInterface;
+use Pyz\Zed\SalesProductConnector\SalesProductConnectorDependencyProvider;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\SalesProductConnector\Business\SalesProductConnectorBusinessFactory as SprykerSalesProductConnectorBusinessFactory;
 
+/**
+ * @method \Spryker\Zed\SalesProductConnector\Persistence\SalesProductConnectorQueryContainerInterface getQueryContainer()
+ * @method \Pyz\Zed\SalesProductConnector\Persistence\SalesProductConnectorRepositoryInterface getRepository()
+ * @method \Spryker\Zed\SalesProductConnector\SalesProductConnectorConfig getConfig()
+ */
 class SalesProductConnectorBusinessFactory extends SprykerSalesProductConnectorBusinessFactory
 {
     /**
@@ -20,7 +27,16 @@ class SalesProductConnectorBusinessFactory extends SprykerSalesProductConnectorB
     {
         return new ProductAttributesExpander(
             $this->getRepository(),
-            $this->getUtilEncodingService()
+            $this->getUtilEncodingService(),
+            $this->getLocaleFacade()
         );
+    }
+
+    /**
+     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
+     */
+    public function getLocaleFacade(): LocaleFacadeInterface
+    {
+        return $this->getProvidedDependency(SalesProductConnectorDependencyProvider::FACADE_LOCALE);
     }
 }

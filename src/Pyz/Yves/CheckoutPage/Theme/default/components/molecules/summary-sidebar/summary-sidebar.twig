@@ -28,18 +28,15 @@
             {% if shippingAddress.state is not empty %}
                 {{ shippingAddress.state }},
             {% endif %}
-            {{ shippingAddress.country.name}}, {{ shippingAddress.phone }}
+            {{ shippingAddress.country.name}}, {{ shippingAddress.phone }},
             {% if shippingAddress.address4 is not empty %}
                 {{ shippingAddress.address4 }},
             {% endif %}
             {% if shippingAddress.company is not empty %}
-                , {{ shippingAddress.company }}
-            {% endif %}
-            {% if shippingAddress.company is not empty %}
-               , {{ shippingAddress.company }}
+                {{ shippingAddress.company }},
             {% endif %}
             {% if shippingAddress.vatNumber is not empty %}
-                , {{ shippingAddress.vatNumber }}
+                {{ shippingAddress.vatNumber }}
             {% endif %}
         </div>
 

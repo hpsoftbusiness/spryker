@@ -2838,16 +2838,12 @@ oms.state.authorization-pending-next-try,In progress,en_US
 oms.state.authorization-pending-next-try,In Arbeit,de_DE
 oms.state.capture pending,In progress,en_US
 oms.state.capture-pending,In Arbeit,de_DE
-oms.state.turnover-created,In progress,en_US
-oms.state.turnover-created,In Arbeit,de_DE
 oms.state.capture-pending-next-try,In progress,en_US
 oms.state.capture-pending-next-try,In Arbeit,de_DE
 oms.state.capture-failed-clarification,In progress,en_US
 oms.state.capture-failed-clarification,In Arbeit,de_DE
 oms.state.waiting-for-tracking-number,In progress,en_US
 oms.state.waiting-for-tracking-number,In Arbeit,de_DE
-oms.state.turnover-creation-failed,In progress,en_US
-oms.state.turnover-creation-failed,In Arbeit,de_DE
 oms.state.order-in-processing-email-sent,In progress,en_US
 oms.state.order-in-processing-email-sent,In Arbeit,de_DE
 oms.state.ready-for-refund,Refund,en_US
@@ -2862,6 +2858,10 @@ oms.state.turnover-cancellation-failed,Refund,en_US
 oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
 oms.state.invoice-with-tracking-number-sent,Shipped,en_US
 oms.state.invoice-with-tracking-number-sent,Versandt,de_DE
+oms.state.turnover-created,Shipped,en_US
+oms.state.turnover-created,Versandt,de_DE
+oms.state.turnover-creation-failed,Shipped,en_US
+oms.state.turnover-creation-failed,Versandt,de_DE
 oms.state.closed,Closed,en_US
 oms.state.closed,Geschlossen,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US

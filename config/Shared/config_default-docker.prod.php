@@ -3,6 +3,7 @@
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
+use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
@@ -43,8 +44,9 @@ require 'common/config_sso-prod.php';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'sven.stumpf@myworld.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
-$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_EMAIL] = 'sven.stumpf@myworld.com';
-$config[OmsConstants::MAIL_SHIPPING_CONFIRMATION_BCC_RECIPIENT_NAME] = 'Warehouse Manager';
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
+    'sven.stumpf@myworld.com' => 'Warehouse Manager'
+];
 
 // ----------------------------------------------------------------------------
 // ----------------------- MyWorld Marketplace API ----------------------------

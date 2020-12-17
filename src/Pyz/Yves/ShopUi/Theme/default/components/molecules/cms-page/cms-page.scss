@@ -27,6 +27,18 @@
                 padding: rem(15) 0;
                 margin: rem(10) 0;
             }
+
+            * {
+                font-family: $setting-font-family !important;
+            }
+
+            p,
+            span,
+            ul,
+            ol {
+                font-size: rem(16) !important;
+                line-height: 1.2 !important;
+            }
         }
 
         &__notification {
