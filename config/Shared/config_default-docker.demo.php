@@ -41,13 +41,12 @@ require 'common/config_sso-demo.php';
 // ------------------------------ MAIL ----------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'roman.shopin@protonmail.com';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
 $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
     'nataliia.popkova@spryker.com' => 'Warehouse Manager',
     'olena.krivtsova@spryker.com' => 'Warehouse Manager',
-    'roman.shopin@protonmail.com' => 'Warehouse Manager',
 ];
 
 // ----------------------------------------------------------------------------
