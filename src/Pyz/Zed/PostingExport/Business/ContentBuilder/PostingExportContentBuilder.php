@@ -27,22 +27,23 @@ use Spryker\Zed\Money\Business\MoneyFacadeInterface;
 class PostingExportContentBuilder
 {
     protected const FILENAME_FORMAT = "%s (%s)";
-    protected const DATE_FORMAT_DMY = 'd.m.Y';
+    protected const DATE_FORMAT_DMY = 'Y-m-d';
     protected const FILE_NAME_PREFIX = 'Posting Export';
     protected const FORMAT_ADDRESS = '%s, %s';
 
     protected const DEFAULT_DATA_INTERFACE_CODE = 'MP';
     protected const DEFAULT_DATA_COMPANY_CODE = 'MWS';
-    protected const DEFAULT_DATA_AREA_TYPE = 'Verkauf';
-    protected const DEFAULT_DATA_DOCUMENT_TYPE = 'Invoice/Credit Memo';
-    protected const DEFAULT_DATA_ORDER_TYPE = 'MARKETP';
+    protected const DEFAULT_DATA_AREA_TYPE = 'Sale';
+    protected const DEFAULT_DATA_DOCUMENT_TYPE = 'Invoice';
+    protected const DEFAULT_DATA_ORDER_TYPE = 'B2C';
+    protected const DEFAULT_DATA_CUSTOMER_TYPE = '20001';
     protected const DEFAULT_DATA_CUSTOMER_POSTING_GROUP = 'MP';
-    protected const DEFAULT_DATA_RETAIL_DOCUMENT = 'yes';
+    protected const DEFAULT_DATA_RETAIL_DOCUMENT = 'true';
     protected const DEFAULT_DATA_PAYMENT_METHOD_CODE = 'MPCC_AD';
     protected const DEFAULT_DATA_VAT_BUS_POSTING_GROUP = 'DO';
     protected const DEFAULT_DATA_GEN_BUSINESS_POSTING_GROUP = 'DO';
 
-    protected const DEFAULT_LINE_DATA_TYPE = 'Artikel';
+    protected const DEFAULT_LINE_DATA_TYPE = 'ITEM';
     protected const DEFAULT_LINE_DATA_UNITS_OF_MEASURE = 'PCS';
     protected const DEFAULT_LINE_DATA_GEN_PROD_POSTING_GROUP = 'I_MP_NO';
     protected const DEFAULT_LINE_DATA_VAT_PROD_POSTING_GROUP = 'T_NO';
@@ -158,14 +159,12 @@ class PostingExportContentBuilder
             ? $this->getFormattedDate($orderInvoiceTransfer->getIssueDate())
             : null;
 
-        $orderItemsCount = 0;
         $orderItemsData = [];
-        foreach ($orderTransfer->getItems() as $itemTransfer) {
-            $orderItemsCount += $itemTransfer->getQuantity();
+        foreach ($orderTransfer->getItems() as $indexNumber => $itemTransfer) {
             $orderItemsData[] = $this->getPostingExportOrderItemData(
                 $itemTransfer,
                 $localeTransfer,
-                $orderItemsCount + 1,
+                $indexNumber + 1,
                 $orderInvoiceReference
             );
         }
@@ -183,7 +182,7 @@ class PostingExportContentBuilder
             'documentDate' => $postingDate,
             'orderNumber' => $orderTransfer->getOrderReference(),
             'billToCustomerNumber' => $customerTransfer->getMyWorldCustomerNumber(),
-            'customerType' => $customerTransfer->getCustomerType(),
+            'customerType' => static::DEFAULT_DATA_CUSTOMER_TYPE,
             'vatBusPostingGroup' => $vatBusPostingGroup,
             'customerPostingGroup' => static::DEFAULT_DATA_CUSTOMER_POSTING_GROUP,
             'genBusinessPostingGroup' => $genBusinessPostingGroup,
@@ -219,7 +218,7 @@ class PostingExportContentBuilder
             'discount' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getDiscountTotal()),
             'paymentReferenceId' => $adyenPaymentReference,
             'cashBackNumber' => $customerTransfer->getMyWorldCustomerNumber(),
-            'noOfLines' => $orderItemsCount,
+            'noOfLines' => count($orderTransfer->getItems()),
             'lines' => $orderItemsData,
         ];
     }
@@ -248,29 +247,25 @@ class PostingExportContentBuilder
             $itemTransfer->getProductConcrete(),
             $localeTransfer
         );
-        $categoryName = $this->findCategoryName(
-            $itemTransfer,
-            $localeTransfer
-        );
 
         return [
             'interfaceCode' => static::DEFAULT_DATA_INTERFACE_CODE,
             'companyCode' => static::DEFAULT_DATA_COMPANY_CODE,
             'refDocumentNo' => $orderInvoiceReference,
-            'refInvoiceDocumentNo' => $orderInvoiceReference,
+            'refInvoiceDocumentNo' => null,
             'docArchiveFileReference' => null, // skipped
             'lineNo' => $indexNumber,
             'type' => static::DEFAULT_LINE_DATA_TYPE,
             'no' => $itemTransfer->getProductConcrete()->getSku(),
-            'description' => $productDescription,
-            'itemCategory' => $categoryName,
+            'description' => mb_substr($productDescription, 0, 250),
+            'itemCategory' => null,
             'unitOfMeasure' => static::DEFAULT_LINE_DATA_UNITS_OF_MEASURE,
             'quantity' => $itemTransfer->getQuantity(),
             'genProdPostingGroup' => static::DEFAULT_LINE_DATA_GEN_PROD_POSTING_GROUP,
             'vatProdPostingGroup' => static::DEFAULT_LINE_DATA_VAT_PROD_POSTING_GROUP,
             'glAccount' => null, // skipped
             'vatPercentage' => (int)$itemTransfer->getTaxRate(),
-            'unitPrice' => $this->formatIntValueToDecimalCurrency($itemTransfer->getUnitPrice()),
+            'unitPrice' => $this->formatIntValueToDecimalCurrency($itemTransfer->getUnitNetPrice()),
             'amount' => $this->formatIntValueToDecimalCurrency($excludingVatTotal),
             'amountIncludingVat' => $this->formatIntValueToDecimalCurrency($grandTotal),
             'vatAmount' => $this->formatIntValueToDecimalCurrency($taxTotal),
@@ -313,35 +308,6 @@ class PostingExportContentBuilder
         foreach ($productConcreteTransfer->getLocalizedAttributes() as $localizedAttributesTransfer) {
             if ($localizedAttributesTransfer->getLocale()->getLocaleName() === $localeTransfer->getLocaleName()) {
                 return $localizedAttributesTransfer->getDescription();
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return string|null
-     */
-    protected function findCategoryName(
-        ItemTransfer $itemTransfer,
-        LocaleTransfer $localeTransfer
-    ): ?string {
-        if (!$itemTransfer->getCategories()->count()) {
-            return null;
-        }
-
-        $categoryTransfer = $itemTransfer->getCategories()[0];
-
-        if (!$categoryTransfer->getLocalizedAttributes()->count()) {
-            return null;
-        }
-
-        foreach ($categoryTransfer->getLocalizedAttributes() as $localizedAttributesTransfer) {
-            if ($localizedAttributesTransfer->getLocale()->getLocaleName() === $localeTransfer->getLocaleName()) {
-                return $localizedAttributesTransfer->getName();
             }
         }
 

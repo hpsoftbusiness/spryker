@@ -123,7 +123,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         $container->set(static::PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER, function () {
             return [
                 new ProductConcreteOrderItemExpanderPlugin(),
-                new CategoryOrderItemExpanderPlugin(),
             ];
         });
 
