@@ -35,6 +35,12 @@ actions:
     - data_entity: payment-method-store
       source: data/import/common/DE/payment_method_store.csv
 
+    #7. Navigation
+    - data_entity: navigation
+      source: data/import/common/common/navigation.csv
+    - data_entity: navigation-node
+      source: data/import/common/common/navigation_node.csv
+
     #3. Catalog Setup import
     - data_entity: category-template
       source: data/import/common/common/category_template.csv
@@ -147,12 +153,6 @@ actions:
       source: data/import/common/DE/cms_block_store.csv
     - data_entity: content-navigation
       source: data/import/common/common/content_navigation.csv
-
-    #7. Navigation
-    - data_entity: navigation
-      source: data/import/common/common/navigation.csv
-    - data_entity: navigation-node
-      source: data/import/common/common/navigation_node.csv
 
     #8. Miscellaneous Setup import
     - data_entity: mime-type
