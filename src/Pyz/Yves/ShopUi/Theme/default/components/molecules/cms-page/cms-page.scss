@@ -34,8 +34,10 @@
 
             p,
             span,
-            ul {
+            ul,
+            ol {
                 font-size: rem(16) !important;
+                line-height: 1.2 !important;
             }
         }
 
