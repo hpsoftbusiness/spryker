@@ -6,8 +6,6 @@
  */
 
 use Pyz\Shared\Sso\SsoConstants;
-use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Kernel\KernelConstants;
 
 // ----------------------------------------------------------------------------
 // --------------------------- Single Sigh On ---------------------------------
@@ -15,24 +13,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 
 // >>> SSO
 
-$config[SsoConstants::SSO_LOGIN_ENABLED] = true;
-
-$config[SsoConstants::TOKEN_URL] = 'https://id.cashbackworld.com/oauth/token';
-$config[SsoConstants::AUTHORIZE_URL] = 'https://id.cashbackworld.com/oauth/authoriz';
-$config[SsoConstants::CUSTOMER_INFORMATION_URL] = 'https://marketplace-gateway.myworldwebservices.com/customers';
-$config[SsoConstants::LOGIN_CHECK_PATH] = 'login_check';
-
-$config[SsoConstants::RESPONSE_TYPE] = 'code';
-$config[SsoConstants::CLIENT_ID] =  getenv('SSO_CLIENT_ID') ?: '';
-$config[SsoConstants::CLIENT_SECRET] = getenv('SSO_CLIENT_SECRET') ?: '';
-$config[SsoConstants::USER_AGENT] = 'Spryker/202009.0';
-$config[SsoConstants::SCOPE] = 'openid';
-$config[SsoConstants::REDIRECT_URL] = sprintf('%s/%s', $config[ApplicationConstants::BASE_URL_YVES], $config[SsoConstants::LOGIN_CHECK_PATH]);
-
-$config[KernelConstants::DOMAIN_WHITELIST] = array_merge($config[KernelConstants::DOMAIN_WHITELIST], [
-    'id-test.cashbackworld.com', // SSO Oauth domain
-    'preprod-marketplace-gateway.myworldwebservices.com', // MyWorld Services Domain
-]);
+require 'config_sso-development.php';
 
 /**
  * @todo replace with normal ENV var
