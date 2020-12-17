@@ -31,22 +31,6 @@
                 <action>index</action>
                 <visible>1</visible>
             </order-list>
-            <sales-reclamations>
-                <label>Reclamations</label>
-                <title>Reclamations</title>
-                <bundle>sales-reclamation-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-                <visible>1</visible>
-            </sales-reclamations>
-            <returns>
-                <label>Returns</label>
-                <title>Returns</title>
-                <bundle>sales-return-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-                <visible>1</visible>
-            </returns>
             <table>
                 <label>Refunds</label>
                 <title>Refunds</title>
@@ -54,13 +38,6 @@
                 <controller>table</controller>
                 <action>index</action>
             </table>
-            <gift-card>
-                <label>Gift Card Balance</label>
-                <title>Gift Card Balance</title>
-                <bundle>gift-card-balance</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </gift-card>
         </pages>
     </sales>
     <customer>
@@ -84,13 +61,6 @@
                 <action>index</action>
                 <visible>1</visible>
             </group>
-            <customer-access>
-                <label>Customer Access</label>
-                <title>Customer Access</title>
-                <bundle>customer-access-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </customer-access>
         </pages>
     </customer>
     <export>
@@ -190,21 +160,6 @@
                 <controller>index</controller>
                 <action>index</action>
             </AvailabilityGui>
-            <reviews>
-                <label>Product Reviews</label>
-                <title>Product Reviews</title>
-                <bundle>product-review-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </reviews>
-            <product_options>
-                <label>Product Options</label>
-                <title>Product Options</title>
-                <bundle>product-option</bundle>
-                <controller>list</controller>
-                <action>index</action>
-                <visible>2</visible>
-            </product_options>
             <product-list>
                 <label>Product Lists</label>
                 <title>Product Lists</title>
@@ -213,21 +168,6 @@
                 <action>index</action>
                 <visible>1</visible>
             </product-list>
-            <product-barcode>
-                <label>Product Barcodes</label>
-                <title>Product Barcodes</title>
-                <bundle>product-barcode-gui</bundle>
-                <controller>product-barcode</controller>
-                <action>index</action>
-                <visible>1</visible>
-            </product-barcode>
-            <price-product-schedule>
-                <label>Scheduled Prices</label>
-                <title>Scheduled Prices</title>
-                <bundle>price-product-schedule-gui</bundle>
-                <controller>import</controller>
-                <action>index</action>
-            </price-product-schedule>
         </pages>
     </catalog>
     <content>
@@ -302,20 +242,6 @@
         <icon>fa-tags</icon>
         <uri>#</uri>
         <pages>
-            <discount>
-                <label>Discount</label>
-                <title>Discount</title>
-                <bundle>discount</bundle>
-                <controller>index</controller>
-                <action>list</action>
-            </discount>
-            <product-label-gui>
-                <label>Product Labels</label>
-                <title>Product Labels</title>
-                <bundle>product-label-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </product-label-gui>
             <product-relation-gui>
                 <label>Product Relations</label>
                 <title>Product Relations</title>
@@ -324,21 +250,6 @@
                 <action>index</action>
                 <visible>2</visible>
             </product-relation-gui>
-            <sets>
-                <label>Product Sets</label>
-                <title>Product Sets</title>
-                <bundle>product-set-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </sets>
-            <configurable-bundle-templates>
-                <label>Configurable Bundle Templates</label>
-                <title>Configurable Bundle Templates</title>
-                <bundle>configurable-bundle-gui</bundle>
-                <controller>template</controller>
-                <action>index</action>
-                <visible>1</visible>
-            </configurable-bundle-templates>
             <search-preferences>
                 <label>Search Preferences</label>
                 <title>Search Preferences</title>
