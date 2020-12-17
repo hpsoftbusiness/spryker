@@ -20,6 +20,8 @@
             image: image.external_url_small,
             name: data.product.abstract_name,
             idProductAbstract: data.product.id_product_abstract,
+            cashback: data.product.cashback_amount[0] | default(null),
+            shoppingPoints: data.product.shopping_points[0] | default(null),
         },
     } only %}
         {% block labels %}

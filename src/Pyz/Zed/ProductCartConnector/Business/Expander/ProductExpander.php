@@ -26,13 +26,30 @@ class ProductExpander extends SprykerProductExpander
             $this->localeFacade->getCurrentLocale()
         );
 
-        $itemTransfer->setId($productConcreteTransfer->getIdProductConcrete())
+        $itemTransfer
+            ->setId($productConcreteTransfer->getIdProductConcrete())
             ->setSku($productConcreteTransfer->getSku())
             ->setIdProductAbstract($productConcreteTransfer->getFkProductAbstract())
             ->setAbstractSku($productConcreteTransfer->getAbstractSku())
             ->setConcreteAttributes($productConcreteTransfer->getAttributes())
+            ->setConcreteLocalizedAttributes($this->getLocalizedAttributes($productConcreteTransfer))
             ->setHiddenConcreteAttributes($productConcreteTransfer->getHiddenAttributes())
             ->setIsAffiliate($productConcreteTransfer->getIsAffiliate())
             ->setName($localizedProductName);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     *
+     * @return array
+     */
+    protected function getLocalizedAttributes(ProductConcreteTransfer $productConcreteTransfer): array
+    {
+        $localizedAttributes = [];
+        foreach ($productConcreteTransfer->getLocalizedAttributes() as $productConcretelocalizedAttributes) {
+            $localizedAttributes[$productConcretelocalizedAttributes->getLocale()->getLocaleName()] = json_decode($productConcretelocalizedAttributes->getAttributes(), true);
+        }
+
+        return $localizedAttributes;
     }
 }

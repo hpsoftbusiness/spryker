@@ -11,6 +11,14 @@
             padding-bottom: rem(80);
         }
 
+        &--login {
+            margin: rem(80) auto;
+            max-width: rem(560);
+            border-radius: rem(12);
+            border: 1px solid $setting-color-gray-3;
+            padding: map-get($setting-spacing, 'biggest');
+        }
+
         &__inner {
             margin: 0 rem(16);
         }

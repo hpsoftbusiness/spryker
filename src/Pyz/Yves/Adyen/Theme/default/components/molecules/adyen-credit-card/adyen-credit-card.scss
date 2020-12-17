@@ -1,59 +1,42 @@
-@mixin adyen-credit-card($name: '.adyen-credit-card') {
-    #{$name} {
-        &__input {
-            min-height: rem(48);
+@import '~SprykerEcoAdyen/components/molecules/adyen-credit-card/adyen-credit-card.scss';
 
-            iframe {
-                margin: 0;
-            }
-        }
+@include adyen-credit-card($name: '.adyen-credit-card') {
+    &__input {
+        height: rem(48);
+    }
 
-        $adyen-name: '.adyen-checkout';
+    $adyen-name: '.adyen-checkout';
 
-        // Styling of external input of Adyen iframes
-        #{$adyen-name}__input {
-            @include helper-effect-transition(border-color);
-            padding: rem(16) rem(18) rem(14);
-            border: rem(1) solid $setting-color-input-border;
-            border-radius: rem(7);
-            min-height: rem(48);
+    #{$adyen-name}__input {
+        padding: rem(16) rem(18) rem(14);
+        border: rem(1) solid $setting-color-input-border;
+        border-radius: rem(7);
+        height: rem(48);
 
-            iframe {
-                margin: 0;
-            }
-
-            &:focus,
-            &:hover,
-            &--focus {
-                border-color: $setting-color-main;
-                box-shadow: none;
-            }
-
-            &--error {
-                border-color: map-get($setting-color-actions, 'alert');
-            }
-        }
-
-        // Styling of external form field wrapper into Adyen iframes
-        #{$adyen-name}__field {
-            padding: rem(8);
+        iframe {
             margin: 0;
         }
 
-        // Styling of external label of Adyen iframes
+        &:focus,
+        &:hover,
+        &--focus {
+            border-color: $setting-color-main;
+            box-shadow: none;
+        }
+
+        &--error {
+            border-color: map-get($setting-color-actions, 'alert');
+        }
+    }
+
+    #{$adyen-name}__label__text {
+        font: fw(regular) rem(15) $setting-font-family;
+        color: $setting-color-black;
+    }
+
+    #{$adyen-name}__label--focused {
         #{$adyen-name}__label__text {
-            font: fw(regular) rem(15) $setting-font-family;
             color: $setting-color-black;
         }
-
-        #{$adyen-name}__label--focused {
-            #{$adyen-name}__label__text {
-                color: $setting-color-black;
-            }
-        }
-
-        @content;
     }
 }
-
-@include adyen-credit-card();

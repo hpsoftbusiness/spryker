@@ -38,7 +38,9 @@
                             canEditCart: false,
                             additionalContainerClass: '',
                             productOptionsModifiers: ['alternative'],
-                        },
+                            cashback: cartItem.concreteAttributes.cashback_amount | default(null),
+                            shoppingPoints: cartItem.concreteAttributes.shopping_points | default(null),
+                    },
                         embed: {
                             bundleItems: item.bundleItems | default([]),
                         },
@@ -88,7 +90,6 @@
                 {% include molecule('summary-sidebar', 'CheckoutPage') with {
                     data: {
                         shipment: shipmentGroup.shipment,
-                        isGiftCardExists: isGiftCardExists,
                         canEdit: true,
                     },
                 } only %}
@@ -125,8 +126,6 @@
             {{ 'checkout.step.summary.total' | trans }}
         </h3>
         <div class="col col--sm-12">
-            {% widget 'CartCodeFormWidget' args [data.transfer] only %}{% endwidget %}
-
             {% embed molecule('form') with {
                 modifiers: ['checkout-actions'],
                 data: {

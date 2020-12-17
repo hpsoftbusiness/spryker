@@ -102,7 +102,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $this->collectProductAbstractSku($dataSet);
         $this->updateAvailability($dataSet);
 
-        if ($dataSet[static::COLUMN_IS_BUNDLE]) {
+        if (isset($dataSet[static::COLUMN_IS_BUNDLE]) && !empty($dataSet[static::COLUMN_IS_BUNDLE])) {
             $this->productBundleFacade->updateBundleAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);
         } else {
             $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);

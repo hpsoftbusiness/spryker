@@ -1,6 +1,8 @@
 @mixin shop-ui-footer($name: '.footer') {
     #{$name} {
         $footer-subscription-width: rem(202);
+        margin-bottom: 0;
+        margin-top: auto;
 
         &__top {
             display: flex;

@@ -160,4 +160,9 @@
         height: 100%;
         display: flex;
     }
+
+    &--cashback-world {
+        width: rem(127);
+        height: rem(35);
+    }
 }

@@ -6,13 +6,11 @@
 
 {% block breadcrumbs %}{% endblock %}
 
-{% block title %}
-    <h1 class="title title--account-main title--medium">{{data.title}}</h1>
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
     <div class="grid page-layout-customer">
-        <div class="col col--sm-12 col--md-12 col--lg-3 is-hidden-sm-md">
+        <div class="col col--sm-12 col--lg-3 is-hidden-sm-md">
             {% block customerNavigation %}
                 <div class="box" data-qa="customer-account-sidebar">
                     {% widget 'CustomerNavigationWidget' args [data.activePage] only %}
@@ -27,7 +25,8 @@
             {% endblock %}
         </div>
 
-        <div class="col col--sm-12 col--md-12 col--lg-9">
+        <div class="col col--sm-12 col--lg-9">
+            <h1 class="title title--account-main title--medium">{{data.title}}</h1>
             {% block customerContent %}{% endblock %}
         </div>
     </div>

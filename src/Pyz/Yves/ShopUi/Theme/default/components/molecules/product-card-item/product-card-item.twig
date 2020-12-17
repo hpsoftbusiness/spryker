@@ -15,8 +15,8 @@
     canEditCart: true,
     additionalContainerClass: 'grid--middle grid--justify grid--no-wrap',
     productOptionsModifiers: [],
-    cashback: 2,
-    shoppingPoints: 1,
+    cashback: null,
+    shoppingPoints: null,
 } %}
 
 {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) and data.canEditCart %}
