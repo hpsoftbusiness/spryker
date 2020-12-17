@@ -4,65 +4,100 @@
     name: 'myworld-navbar'
 } %}
 
-{% define data = [
-    {
-        name: "nav-logo-cbw-bw",
-        targetUrl: "https://www.cashbackworld.com"
-    },
-    {
-        name: "nav-logo-myworld-bw",
-        targetUrl:"https://de.myworld.com/en-gb/"
-    },
-    {
-        name: "nav-logo-marketplace-bw",
-        targetUrl:"https://www.myworld.com"
-    },
-    {
-        name: "nav-logo-travelworld-bw",
-        targetUrl:"https://www.travelworld.com"
-    },
-    {
-        name: "nav-logo-benefit-lounge-bw",
-        targetUrl: "https://www.cashbackworld.com/benefitlounge"
-    },
-    {
-        name: "nav-logo-lyconet-bw",
-        targetUrl:"https://lyconet.com"
-    },
-    {
-        name: "nav-logo-benefit-store-bw",
-        targetUrl:"https://lyconet.com/benefitstore"
-    },
-    {
-        name: "CashbackworldPartner",
-        targetUrl:"https://partner.cashbackworld.com"
-    },
-    {
-        name: "CFF",
-        targetUrl:"https://childandfamily.foundation"
-    },
-    {
-        name: "GFF",
-        targetUrl:"https://greenfinity.foundation"
-    },
-    {
-        name: "Organic+",
-        targetUrl: "https://organic.plus"
-    }
-] %}
+{# TODO: This should come from API #}
+{% define data = {
+    inlineMenu: [
+        {
+            name: "nav-logo-cbw-bw",
+            targetUrl: "https://www.cashbackworld.com"
+        },
+        {
+            name: "nav-logo-myworld-bw",
+            targetUrl:"https://de.myworld.com/en-gb/"
+        },
+        {
+            name: "nav-logo-marketplace-bw",
+            targetUrl:"https://www.myworld.com"
+        },
+        {
+            name: "nav-logo-travelworld-bw",
+            targetUrl:"https://www.travelworld.com"
+        },
+        {
+            name: "nav-logo-benefit-lounge-bw",
+            targetUrl: "https://www.cashbackworld.com/benefitlounge"
+        },
+        {
+            name: "nav-logo-lyconet-bw",
+            targetUrl:"https://lyconet.com"
+        },
+        {
+            name: "nav-logo-benefit-store-bw",
+            targetUrl:"https://lyconet.com/benefitstore"
+        }
+    ],
+    dropdownMenu: [
+        {
+            name: "nav-logo-cbw-partner-color",
+            targetUrl:"https://partner.cashbackworld.com"
+        },
+        {
+            name: "nav-logo-cff-color",
+            targetUrl:"https://childandfamily.foundation"
+        },
+        {
+            name: "nav-logo-gff-color",
+            targetUrl:"https://greenfinity.foundation"
+        },
+        {
+            name: "nav-logo-organic-color",
+            targetUrl: "https://organic.plus"
+        }
+    ]
+} %}
 
 {% block body %}
-	<nav id="{{config.name}}" class="{{ config.name }}">
-		{% for navItem in data %}
+	<nav class="{{ config.name }}__content">
+		{% for navItem in data.inlineMenu %}
 			<div class="{{ config.name }}__nav-item">
                 <a
                     class="{{ config.name }}__link {{ navItem.name == 'nav-logo-marketplace-bw' ? config.name ~ '__current' }}"
                     href="{{ navItem.targetUrl }}"
                     target="_blank"
-                    rel="noreferrer noopener">
-					<img src="{{ publicPath("images/#{navItem.name}.svg") }}" alt="{{ navItem.name }}"/>
+                    rel="noreferrer noopener"
+                >
+					<img
+                        src="{{ publicPath("images/#{navItem.name}.svg") }}"
+                        alt="{{ navItem.name }}"
+                        class="{{ config.name }}__image"
+                    />
 				</a>
 			</div>
 		{% endfor %}
+
+        <div class="{{ config.name }}__nav-item {{ config.name }}__dropdown">
+            <img
+                src="{{ publicPath("images/nav-dots-more-bw.svg") }}"
+                class="{{ config.name }}__image"
+            />
+            <nav class="{{ config.name }}__dropdown-content is-hidden">
+                {% for navItem in data.dropdownMenu %}
+                    <div class="{{ config.name }}__dropdown-item">
+                        <a
+                            class="{{ config.name }}__dropdown-link"
+                            href="{{ navItem.targetUrl }}"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <img
+                                src="{{ publicPath("images/#{navItem.name}.svg") }}"
+                                alt="{{ navItem.name }}"
+                                class="{{ config.name }}__image"
+                            />
+                        </a>
+                    </div>
+                {% endfor %}
+            </nav>
+        </div>
 	</nav>
 {% endblock %}

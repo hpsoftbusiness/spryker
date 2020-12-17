@@ -1,29 +1,74 @@
 @mixin shop-ui-myworld-navbar($name: '.myworld-navbar') {
-    $navbar-height: rem(34);
-
     #{$name} {
-        width: 100%;
         background-color: $setting-color-black;
-        display: flex;
-        align-items: center;
-        padding: 0 rem(16);
 
-        &,
-        &__nav-item,
-        &__link {
-            height: $navbar-height;
+        &__content {
+            display: flex;
+            padding: 0 rem(16);
         }
 
         &__link {
-            padding: 0 rem(25);
+            padding: rem(10) rem(25);
             display: flex;
             align-items: center;
+            height: 100%;
         }
 
         &__current {
             background-color: rgba($setting-color-white, 0.15);
         }
 
+        &__image {
+            display: block;
+            max-width: unset;
+            max-height: unset;
+        }
+
+        &__dropdown {
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            padding: 0 rem(25);
+
+            &:hover {
+                background-color: rgba($setting-color-white, 0.15);
+
+                #{$name}__dropdown-content {
+                    display: block;
+                    background-color: $setting-color-white;
+                }
+            }
+        }
+
+        &__dropdown-content {
+            position: absolute;
+            background-color: $setting-color-white;
+            z-index: $setting-zi-myworld-navbar;
+            top: 100%;
+            left: 0;
+        }
+
+        &__dropdown-link {
+            padding: rem(15) rem(25);
+            height: 100%;
+            display: block;
+            border-bottom: 1px solid $setting-color-gray-3;
+        }
+
+        &__dropdown-item {
+            padding: 0 rem(25);
+            transition: .3s ease-in-out;
+
+            &:hover {
+                background-color: $setting-color-gray-2;
+            }
+
+            &:last-child #{$name}__dropdown-link {
+                border-bottom: 0;
+            }
+        }
     }
 }
 
