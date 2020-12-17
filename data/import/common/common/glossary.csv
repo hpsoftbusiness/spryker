@@ -2972,8 +2972,8 @@ mail.trans.order.tracking_code,Track delivery,en_US
 mail.trans.order.tracking_code,Lieferung verfolgen,de_DE
 mail.trans.order.payment_method,Payment Method,en_US
 mail.trans.order.payment_method,Zahlungsart,de_DE
-mail.trans.order.stock_name,Sold by: myworld.com,en_US
-mail.trans.order.stock_name,Verkauft von: myworld.com,de_DE
+mail.trans.order.stock_name,Sold by:,en_US
+mail.trans.order.stock_name,Verkauft von:,de_DE
 mail.trans.order.order_details,Order details,en_US
 mail.trans.order.order_details,Bestellung,de_DE
 mail.trans.order.order_reference,Order Number,en_US
