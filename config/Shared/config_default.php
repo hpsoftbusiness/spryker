@@ -5,6 +5,7 @@ use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
+use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
@@ -431,6 +432,8 @@ $config[MailConstants::SENDER_NAME] = getenv('SPRYKER_MAIL_SENDER_NAME') ?: null
 
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mterm@myworld.com';
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = '';
+
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [];
 
 // >>> FILESYSTEM
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
