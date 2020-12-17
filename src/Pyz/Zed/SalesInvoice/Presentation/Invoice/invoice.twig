@@ -75,7 +75,7 @@
                 {{ order.billingAddress.firstName }} {{ order.billingAddress.lastName }}<br>
                 {{ order.billingAddress.address1 }} {{ order.billingAddress.address2 }} {{ order.billingAddress.address3 }}<br>
                 {{ order.billingAddress.zipcode }} {{ order.billingAddress.city }}<br>
-                {{ order.billingAddress.region }}
+                {% if order.billingAddress.state %}{{ order.billingAddress.state }}, {% endif %}{{ order.billingAddress.country.name }}
             </div>
         </td>
         <td width="300" class="align-top">
