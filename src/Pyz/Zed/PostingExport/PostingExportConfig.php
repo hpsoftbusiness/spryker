@@ -17,12 +17,36 @@ class PostingExportConfig extends AbstractBundleConfig
     /**
      * @return string[]
      */
-    public function getCountryIso2CodeToBusinessPostingGroupMap(): array
+    public function getCountryIso2CodeToVatBusPostingGroupMap(): array
+    {
+        return [
+            'AT' => 'DO',
+            'IT' => 'IT',
+            'DE' => 'DE',
+            'EE' => 'EE',
+            'FI' => 'FI',
+            'PL' => 'PL',
+            'SK' => 'SK',
+            'SI' => 'SI',
+            'HU' => 'HU',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCountryIso2CodeToGenBusinessPostingGroupMap(): array
     {
         return [
             'AT' => 'DO',
             'IT' => 'IT_UST',
             'DE' => 'DE_UST',
+            'EE' => 'EU_UST',
+            'FI' => 'FI_UST',
+            'PL' => 'PL_UST',
+            'SK' => 'SK_UST',
+            'SI' => 'SI_UST',
+            'HU' => 'HU_UST',
         ];
     }
 }

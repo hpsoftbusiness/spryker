@@ -9,6 +9,7 @@ namespace Pyz\Zed\PostingExport\Business\ContentBuilder;
 
 use DateTime;
 use DateTimeZone;
+use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\ExportContentsTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
@@ -38,6 +39,8 @@ class PostingExportContentBuilder
     protected const DEFAULT_DATA_CUSTOMER_POSTING_GROUP = 'MP';
     protected const DEFAULT_DATA_RETAIL_DOCUMENT = 'yes';
     protected const DEFAULT_DATA_PAYMENT_METHOD_CODE = 'MPCC_AD';
+    protected const DEFAULT_DATA_VAT_BUS_POSTING_GROUP = 'DO';
+    protected const DEFAULT_DATA_GEN_BUSINESS_POSTING_GROUP = 'DO';
 
     protected const DEFAULT_LINE_DATA_TYPE = 'Artikel';
     protected const DEFAULT_LINE_DATA_UNITS_OF_MEASURE = 'PCS';
@@ -140,10 +143,11 @@ class PostingExportContentBuilder
     ): array {
         $customerTransfer = $orderTransfer->getCustomer();
         $billingAddressTransfer = $orderTransfer->getBillingAddress();
-        $shippingAddressTransfer = $orderTransfer->getBillingAddress();
+        $shippingAddressTransfer = $orderTransfer->getShippingAddress();
         $adyenPaymentReference = $this->findAdyenPaymentReference($orderTransfer);
         $orderInvoiceTransfer = $this->findOrderInvoice($orderTransfer);
-        $businessPostingGroup = $this->findBusinessPosingGroup($orderTransfer);
+        $vatBusPostingGroup = $this->findVatBusPostingGroup($shippingAddressTransfer);
+        $genBusinessPostingGroup = $this->findGenBusinessPostingGroup($shippingAddressTransfer);
 
         $grandTotal = $orderTransfer->getTotals()->getGrandTotal();
         $taxTotal = $orderTransfer->getTotals()->getTaxTotal()->getAmount();
@@ -180,15 +184,15 @@ class PostingExportContentBuilder
             'orderNumber' => $orderTransfer->getOrderReference(),
             'billToCustomerNumber' => $customerTransfer->getMyWorldCustomerNumber(),
             'customerType' => $customerTransfer->getCustomerType(),
-            'vatBusPostingGroup' => $businessPostingGroup,
+            'vatBusPostingGroup' => $vatBusPostingGroup,
             'customerPostingGroup' => static::DEFAULT_DATA_CUSTOMER_POSTING_GROUP,
-            'genBusinessPostingGroup' => $businessPostingGroup,
+            'genBusinessPostingGroup' => $genBusinessPostingGroup,
             'billToName' => sprintf(
                 '%s %s',
                 $billingAddressTransfer->getFirstName(),
                 $billingAddressTransfer->getLastName()
             ),
-            'billToCountry' => $billingAddressTransfer->getCountry()->getName(),
+            'billToCountry' => $billingAddressTransfer->getCountry()->getIso2Code(),
             'billToAddress' => sprintf(
                 static::FORMAT_ADDRESS,
                 $billingAddressTransfer->getAddress1(),
@@ -196,7 +200,7 @@ class PostingExportContentBuilder
             ),
             'billToCity' => $billingAddressTransfer->getCity(),
             'billToPostCode' => $billingAddressTransfer->getZipCode(),
-            'shipToCountry' => $shippingAddressTransfer->getCountry()->getName(),
+            'shipToCountry' => $shippingAddressTransfer->getCountry()->getIso2Code(),
             'shipToAddress' => sprintf(
                 static::FORMAT_ADDRESS,
                 $shippingAddressTransfer->getAddress1(),
@@ -359,30 +363,57 @@ class PostingExportContentBuilder
     }
 
     /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\AddressTransfer|null $shippingAddressTransfer
      *
      * @return string|null
      */
-    protected function findBusinessPosingGroup(OrderTransfer $orderTransfer): ?string
+    protected function findVatBusPostingGroup(?AddressTransfer $shippingAddressTransfer): ?string
     {
-        if (!$orderTransfer->getUid()) {
+        if (!$shippingAddressTransfer) {
             return null;
         }
 
-        $countryIso2Code = $this->salesOrderUidFacade->findCountryIso2CodeByUid($orderTransfer->getUid());
+        $countryIso2Code = $shippingAddressTransfer->getCountry()->getIso2Code();
 
         if (!$countryIso2Code) {
             return null;
         }
 
-        $countryIso2CodeToBusinessPostingGroupMap = $this->postingExportConfig
-            ->getCountryIso2CodeToBusinessPostingGroupMap();
+        $countryIso2CodeToVatBusPostingGroupMap = $this->postingExportConfig
+            ->getCountryIso2CodeToVatBusPostingGroupMap();
 
-        if (!isset($countryIso2CodeToBusinessPostingGroupMap[$countryIso2Code])) {
+        if (!isset($countryIso2CodeToVatBusPostingGroupMap[$countryIso2Code])) {
+            return static::DEFAULT_DATA_VAT_BUS_POSTING_GROUP;
+        }
+
+        return $countryIso2CodeToVatBusPostingGroupMap[$countryIso2Code];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\AddressTransfer|null $shippingAddressTransfer
+     *
+     * @return string|null
+     */
+    protected function findGenBusinessPostingGroup(?AddressTransfer $shippingAddressTransfer): ?string
+    {
+        if (!$shippingAddressTransfer) {
             return null;
         }
 
-        return $countryIso2CodeToBusinessPostingGroupMap[$countryIso2Code];
+        $countryIso2Code = $shippingAddressTransfer->getCountry()->getIso2Code();
+
+        if (!$countryIso2Code) {
+            return null;
+        }
+
+        $countryIso2CodeToGenBusinessPostingGroupMap = $this->postingExportConfig
+            ->getCountryIso2CodeToGenBusinessPostingGroupMap();
+
+        if (!isset($countryIso2CodeToGenBusinessPostingGroupMap[$countryIso2Code])) {
+            return static::DEFAULT_DATA_GEN_BUSINESS_POSTING_GROUP;
+        }
+
+        return $countryIso2CodeToGenBusinessPostingGroupMap[$countryIso2Code];
     }
 
     /**
