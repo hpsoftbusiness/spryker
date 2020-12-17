@@ -57,6 +57,8 @@
                     modifiers: ['medium-shadow'],
                     data: {
                         product: productAbstractView,
+                        cashback: productAbstractView.attributes.cashback_amount | default(null),
+                        shoppingPoints: productAbstractView.attributes.shopping_points | default(null),
                     },
                 } only %}
             {% endfor %}
