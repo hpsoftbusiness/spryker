@@ -22,7 +22,7 @@
             margin-right: rem(8);
             border: rem(1) solid $setting-color-input-border;
             border-radius: rem(2);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
             position: relative;
 
             @include helper-breakpoint-media-min($lg-min) {
@@ -30,7 +30,7 @@
             }
 
             &:hover {
-                color: $setting-color-gray-3;
+                color: $setting-color-black;
                 text-decoration: none;
                 background-color: $setting-color-alpha-2;
             }
