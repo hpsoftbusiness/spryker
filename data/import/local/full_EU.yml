@@ -38,6 +38,8 @@ actions:
 #2. Navigation
   - data_entity: navigation
     source: data/import/common/common/navigation.csv
+  - data_entity: navigation-node
+    source: data/import/common/common/navigation_node.csv
 
 #3. Catalog Setup import
   - data_entity: category-template
@@ -62,6 +64,8 @@ actions:
     source: data/import/common/DE/combined_product_local.csv
   - data_entity: combined-product-stock
     source: data/import/common/DE/combined_product_local.csv
+  - data_entity: product-stock
+    source: data/import/common/common/product_stock.csv
   - data_entity: combined-product-group
     source: data/import/common/DE/combined_product_local.csv
 
@@ -124,7 +128,8 @@ actions:
   - data_entity: configurable-bundle-template-image
     source: data/import/common/common/configurable_bundle_template_image.csv
 
-#7. Content Management Setup  & Navigation Node import
+
+#7. Content Management Setup import
   - data_entity: content-banner
     source: data/import/common/common/content_banner.csv
   - data_entity: content-product-abstract-list
@@ -147,8 +152,6 @@ actions:
     source: data/import/common/DE/cms_page_store.csv
   - data_entity: cms-block-store
     source: data/import/common/DE/cms_block_store.csv
-  - data_entity: navigation-node
-    source: data/import/common/common/navigation_node.csv
   - data_entity: content-navigation
     source: data/import/common/common/content_navigation.csv
 

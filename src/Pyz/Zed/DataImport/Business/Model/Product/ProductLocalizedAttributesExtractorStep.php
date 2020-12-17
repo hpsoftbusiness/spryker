@@ -14,9 +14,6 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 {
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
-    protected const AFFILIATE_PRODUCT_ATTRIBUTE_KEY = 'product.value_73';
-    protected const AFFILIATE_PRODUCT_ATTRIBUTE_VALUE = 'TRUE';
-
     /**
      * @var array
      */
@@ -58,12 +55,6 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
                 $keysToUnset[] = $attributeValueKey;
             }
 
-            foreach ($this->getMandatoryAttributes() as $attrKey => $dataSetDefaultValueKey) {
-                if (!isset($attributes[$attrKey]) && $dataSet[$dataSetDefaultValueKey] !== "" && !$this->isAfiliateProduct($dataSet)) {
-                    $attributes[$attrKey] = $dataSet[$dataSetDefaultValueKey];
-                }
-            }
-
             $localizedAttributes[$idLocale] = [
                 'attributes' => $attributes,
             ];
@@ -81,27 +72,6 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
         }
 
         $dataSet[static::KEY_LOCALIZED_ATTRIBUTES] = $localizedAttributes;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return bool
-     */
-    protected function isAfiliateProduct(DataSetInterface $dataSet): bool
-    {
-        return $dataSet[static::AFFILIATE_PRODUCT_ATTRIBUTE_KEY] === static::AFFILIATE_PRODUCT_ATTRIBUTE_VALUE;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getMandatoryAttributes(): array
-    {
-        return [
-            'color' => 'product.value_05',
-            'size' => 'product.value_06',
-        ];
     }
 
     /**
