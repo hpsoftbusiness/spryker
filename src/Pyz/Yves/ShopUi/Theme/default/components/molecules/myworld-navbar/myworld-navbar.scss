@@ -1,6 +1,11 @@
 @mixin shop-ui-myworld-navbar($name: '.myworld-navbar') {
     #{$name} {
         background-color: $setting-color-black;
+        display: none;
+
+        @include helper-breakpoint-media-min($lg-min) {
+            display: block;
+        }
 
         &__content {
             display: flex;
