@@ -38,8 +38,6 @@ actions:
     #2. Navigation
     - data_entity: navigation
       source: data/import/common/common/navigation.csv
-    - data_entity: navigation-node
-      source: data/import/common/common/navigation_node.csv
 
     #3. Catalog Setup import
     - data_entity: category-template
@@ -152,6 +150,8 @@ actions:
       source: data/import/common/DE/cms_page_store.csv
     - data_entity: cms-block-store
       source: data/import/common/DE/cms_block_store.csv
+    - data_entity: navigation-node
+      source: data/import/common/common/navigation_node.csv
     - data_entity: content-navigation
       source: data/import/common/common/content_navigation.csv
 
