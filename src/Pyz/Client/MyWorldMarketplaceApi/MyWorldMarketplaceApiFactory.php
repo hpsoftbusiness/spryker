@@ -10,6 +10,8 @@ namespace Pyz\Client\MyWorldMarketplaceApi;
 use GuzzleHttp\ClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessToken;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumber;
+use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumberInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\Request;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapper;
@@ -35,6 +37,18 @@ class MyWorldMarketplaceApiFactory extends AbstractFactory
             $this->getConfig(),
             $this->getUtilEncodingService(),
             $this->getErrorLogger()
+        );
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumberInterface
+     */
+    public function createCustomerInformationByCustomerNumber(): CustomerInformationByCustomerNumberInterface
+    {
+        return new CustomerInformationByCustomerNumber(
+            $this->createRequest(),
+            $this->createAccessToken(),
+            $this->getConfig()
         );
     }
 

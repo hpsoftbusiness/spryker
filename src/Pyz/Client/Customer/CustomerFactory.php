@@ -8,6 +8,7 @@
 namespace Pyz\Client\Customer;
 
 use Pyz\Client\Customer\Zed\CustomerStub;
+use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Spryker\Client\Customer\CustomerFactory as SprykerCustomerFactory;
 
 class CustomerFactory extends SprykerCustomerFactory
@@ -18,5 +19,13 @@ class CustomerFactory extends SprykerCustomerFactory
     public function createZedCustomerStub()
     {
         return new CustomerStub($this->getProvidedDependency(CustomerDependencyProvider::SERVICE_ZED));
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
+     */
+    public function getMyWorldMarketplaceApiClient(): MyWorldMarketplaceApiClientInterface
+    {
+        return $this->getProvidedDependency(CustomerDependencyProvider::CLIENT_MY_WORLD_MARKETPLACE_API_CLIENT);
     }
 }

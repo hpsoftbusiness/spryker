@@ -10,6 +10,8 @@ namespace Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumb
 use Exception;
 use Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer;
 use Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
+use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
 
@@ -21,32 +23,40 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     protected $request;
 
     /**
+     * @var \Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface
+     */
+    protected $accessToken;
+
+    /**
      * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig
      */
     protected $myWorldMarketplaceApiConfig;
 
     /**
      * @param \Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface $request
+     * @param \Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface $accessToken
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
      */
     public function __construct(
         RequestInterface $request,
+        AccessTokenInterface $accessToken,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
     ) {
         $this->request = $request;
+        $this->accessToken = $accessToken;
         $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfer
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function getCustomerInformationByCustomerNumber(CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer): CustomerInformationByCustomerNumberResponseTransfer
+    public function getCustomerInformationByCustomerNumber(CustomerTransfer $customerTransfer): CustomerTransfer
     {
         $myWorldMarketplaceApiResponseTransfer = $this->request->request(
-            $this->buildRequestUrl($customerInformationByCustomerNumberRequestTransfer),
-            $this->getRequestParams($customerInformationByCustomerNumberRequestTransfer),
+            $this->buildRequestUrl($customerTransfer),
+            $this->getRequestParams($this->accessToken->getAccessToken()->getAccessToken()),
             'GET'
         );
 
@@ -54,19 +64,18 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
             //magic
         }
 
-        return new CustomerInformationByCustomerNumberResponseTransfer();
+        return $customerTransfer;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer
-     *
-     * @throws \Exception
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
+     * @throws \Exception
      */
-    protected function buildRequestUrl(CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer): string
+    protected function buildRequestUrl(CustomerTransfer $customerTransfer): string
     {
-        $customerId = $customerInformationByCustomerNumberRequestTransfer->getMyWorldCustomerId() ?? $customerInformationByCustomerNumberRequestTransfer->getMyWorldCustomerNumber();
+        $customerId = $customerTransfer->getMyWorldCustomerId() ?? $customerTransfer->getMyWorldCustomerNumber();
         if (!$customerId) {
             throw new Exception('Customer ID or number required.');
         }
@@ -75,17 +84,15 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer
+     * @param string $accessToken
      *
      * @return array[]
      */
-    protected function getRequestParams(CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer): array
+    protected function getRequestParams(string $accessToken): array
     {
-        $customerInformationByCustomerNumberRequestTransfer->requireAccessToken();
-
         return [
             'headers' => [
-                'Authorization' => sprintf('Bearer %s', $customerInformationByCustomerNumberRequestTransfer->getAccessToken()),
+                'Authorization' => sprintf('Bearer %s', $accessToken),
             ],
         ];
     }
