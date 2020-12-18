@@ -1,8 +1,6 @@
 {% extends molecule('availability-product', '@SprykerShop:AvailabilityWidget') %}
 
 {% block body %}
-    <div>
-      <h4 class="title title--h4 text-break">{{ 'cart.item_quantity' | trans }}</h4>
-      <span class="text-alt js-volume-price__quantity">{{ 'product.detail.out_of_stock' | trans }}</span>
-    </div>
+    <h4 class="title title--h4 title--with-bottom-margin text-break">{{ 'cart.item_quantity' | trans }}</h4>
+    <span class="text-alt js-volume-price__quantity">{{ 'product.detail.out_of_stock' | trans }}</span>
 {% endblock %}
