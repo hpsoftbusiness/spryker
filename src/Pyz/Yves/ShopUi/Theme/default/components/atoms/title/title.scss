@@ -227,10 +227,6 @@
         &--with-top-border {
             border-top: rem(1) solid $setting-color-gray-3;
         }
-        
-        &--with-bottom-margin {
-            margin-bottom: rem(10);
-        }
 
         &--mobile-size {
             @include helper-breakpoint-media-max($md-max) {
