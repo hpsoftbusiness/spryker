@@ -7,11 +7,10 @@
 
 namespace Pyz\Client\Customer;
 
-use Pyz\Client\Customer\Plugin\CustomerTransferCustomerBalanceRefreshPlugin;
+use Pyz\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
-use Spryker\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\Customer\CustomerAccessSecuredPatternRulePlugin;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
@@ -40,7 +39,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CustomerTransferSessionRefreshPlugin(),
-            new CustomerTransferCustomerBalanceRefreshPlugin(),
         ];
     }
 

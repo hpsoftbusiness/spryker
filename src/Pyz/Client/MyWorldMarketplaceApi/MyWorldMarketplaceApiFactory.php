@@ -18,6 +18,8 @@ use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapper;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapperInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidator;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidatorInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapper;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface;
 use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
@@ -48,6 +50,7 @@ class MyWorldMarketplaceApiFactory extends AbstractFactory
         return new CustomerInformationByCustomerNumber(
             $this->createRequest(),
             $this->createAccessToken(),
+            $this->createCustomerInformationMapper(),
             $this->getConfig()
         );
     }
@@ -90,6 +93,14 @@ class MyWorldMarketplaceApiFactory extends AbstractFactory
     public function getErrorLogger(): ErrorLoggerInterface
     {
         return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::ERROR_LOGGER);
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface
+     */
+    public function createCustomerInformationMapper(): CustomerInformationMapperInterface
+    {
+        return new CustomerInformationMapper();
     }
 
     /**

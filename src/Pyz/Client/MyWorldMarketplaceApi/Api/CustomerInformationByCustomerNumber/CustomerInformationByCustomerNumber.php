@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfe
 use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
 
 class CustomerInformationByCustomerNumber implements CustomerInformationByCustomerNumberInterface
@@ -28,6 +29,11 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     protected $accessToken;
 
     /**
+     * @var \Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface
+     */
+    protected $customerInformationMapper;
+
+    /**
      * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig
      */
     protected $myWorldMarketplaceApiConfig;
@@ -35,15 +41,19 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     /**
      * @param \Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface $request
      * @param \Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface $accessToken
+     * @param \Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface $customerInformationMapper
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
      */
     public function __construct(
         RequestInterface $request,
         AccessTokenInterface $accessToken,
+        CustomerInformationMapperInterface $customerInformationMapper,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
-    ) {
+    )
+    {
         $this->request = $request;
         $this->accessToken = $accessToken;
+        $this->customerInformationMapper = $customerInformationMapper;
         $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
     }
 
@@ -61,7 +71,9 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
         );
 
         if ($myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
-            //magic
+            $mappedCustomerTransfer = $this->customerInformationMapper->mapDataToCustomerTransfer($myWorldMarketplaceApiResponseTransfer->getData());
+
+            return $customerTransfer->fromArray($mappedCustomerTransfer->modifiedToArray(), true);
         }
 
         return $customerTransfer;

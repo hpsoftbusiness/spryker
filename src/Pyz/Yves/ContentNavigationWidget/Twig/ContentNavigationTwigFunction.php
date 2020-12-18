@@ -153,9 +153,12 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
     protected function validateSessionNavigationNodeData(?CustomerTransfer $customerTransfer): void
     {
         $navigationNodeProductAssignmentData = $this->findNavigationNodeSessionData();
-        $customerProductListCollectionTransfer = $customerTransfer
-            ? $customerTransfer->getCustomerProductListCollection()
-            : (new CustomerProductListCollectionTransfer());
+        $customerProductListCollectionTransfer = new CustomerProductListCollectionTransfer();
+
+        if ($customerTransfer && $customerTransfer->getCustomerProductListCollection()) {
+            $customerProductListCollectionTransfer = $customerTransfer->getCustomerProductListCollection();
+        }
+
         $navigationNodeSessionUniqueKey = $this->getNavigationNodeSessionUniqueKey($customerProductListCollectionTransfer);
 
         if (!isset($navigationNodeProductAssignmentData[static::DATA_KEY_CUSTOMER_PRODUCT_LISTS_KEY])
