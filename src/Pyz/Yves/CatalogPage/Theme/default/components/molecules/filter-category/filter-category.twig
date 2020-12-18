@@ -12,7 +12,7 @@
     %}
 
     <ul class="menu">
-        {% for categoryNode in data.categories %}
+        {% for categoryNode in data.categories | reverse %}
             {% set quantity = 0 %}
             {% set hasChildren = (categoryNode.children | default([]) is not empty) %}
 

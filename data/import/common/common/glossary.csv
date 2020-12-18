@@ -267,7 +267,7 @@ catalog.currency,€,de_DE
 catalog.currency,€,en_US
 catalog.filter.filter,Filter / Sortierung,de_DE
 catalog.filter.filter,Filters / Sorting,en_US
-catalog.filter.button,Apply,de_DE
+catalog.filter.button,Anwenden,de_DE
 catalog.filter.button,Apply,en_US
 catalog.filter.active,Aktive Filter,de_DE
 catalog.filter.active,Active Filter,en_US
