@@ -143,8 +143,8 @@ page.checkout.address.multi_shipment.title,Assign each product to its own delive
 page.checkout.address.multi_shipment.title,Jedes Produkt seiner eigenen Lieferadresse zuweisen,de_DE
 page.checkout.shipment.heading,2. Lieferart wählen,de_DE
 page.checkout.shipment.heading,2. Shipping Method,en_US
-shipment.standart.name,Standard,de_DE
-shipment.standart.name,Standard,en_US
+shipment.standart.name,Standardlieferung,de_DE
+shipment.standart.name,Standard Delivery,en_US
 shipment.express.name,Express,de_DE
 shipment.express.name,Express,en_US
 shipment.standart.description,2-4 Werktage,de_DE
@@ -481,6 +481,8 @@ global.partners,Partners,en_US
 global.partners,Partner,de_DE
 global.header.categories,All Categories,en_US
 global.header.categories,Alle Kategorien,de_DE
+global.header.services,myWorld Services,en_US
+global.header.services,myWorld Services,de_DE
 global.cashback,Cashback,en_US
 global.cashback,Cashback,de_DE
 global.button.more,More,en_US
@@ -2390,14 +2392,16 @@ autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
 footer.follow,Follow us,en_US
 footer.follow,Folgen Sie uns auf,de_DE
-footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
-footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
+footer.facebook.url,https://www.facebook.com/cashbackworld.int/,en_US
+footer.facebook.url,https://www.facebook.com/cashbackworld.int/,de_DE
 footer.twitter.url,https://twitter.com/myWorld_uk,en_US
 footer.twitter.url,https://twitter.com/myworld_de,de_DE
-footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
-footer.instagram.url,https://www.instagram.com/myworld.com_deutschland/,de_DE
-footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
-footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
+footer.youtube.url,https://www.youtube.com/channel/UCCdwFBArbzg98DeUD_-l_uQ?sub_confirmation=1,en_US
+footer.youtube.url,https://www.youtube.com/channel/UCCdwFBArbzg98DeUD_-l_uQ?sub_confirmation=1,de_DE
+footer.instagram.url,https://www.instagram.com/cashback.world/,en_US
+footer.instagram.url,https://www.instagram.com/cashback.world/,de_DE
+footer.pinterest.url,https://www.pinterest.com/cashbackworld/,en_US
+footer.pinterest.url,https://www.pinterest.com/cashbackworld/,de_DE
 footer.official_partner,Official partner,en_US
 footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US

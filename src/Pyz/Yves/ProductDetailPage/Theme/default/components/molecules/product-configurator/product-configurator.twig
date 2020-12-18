@@ -186,8 +186,4 @@
             {% endif %}
         {% endblock %}
     {% endwidget %}
-
-    {% if not isAvailable and isProductConcrete %}
-        {% widget 'AvailabilityNotificationSubscriptionWidget' args [data.product] only %}{% endwidget %}
-    {% endif %}
 {% endblock %}

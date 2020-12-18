@@ -149,9 +149,11 @@
 
         &__cashback {
             width: 100%;
+            margin-bottom: rem(10);
 
             @include helper-breakpoint-media-min($lg-min) {
                 width: auto;
+                margin-top: rem(-5);
             }
         }
 

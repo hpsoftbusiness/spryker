@@ -1,0 +1,119 @@
+@mixin shop-ui-myworld-navbar($name: '.myworld-navbar') {
+    #{$name} {
+        @include helper-breakpoint-media-min($lg-min) {
+            background-color: $setting-color-black;
+            display: flex;
+            align-items: stretch;
+            padding: 0 rem(16);
+        }
+
+        &__item {
+            border-bottom: rem(1) solid $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                border-bottom: none;
+            }
+        }
+
+        &__link {
+            padding: rem(15) 0;
+            display: block;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                @include helper-effect-transition(background-color);
+                display: flex;
+                align-items: center;
+                padding-left: rem(25);
+                padding-right: rem(25);
+                min-height: 100%;
+            }
+
+            &:hover,
+            &--active {
+                @include helper-breakpoint-media-min($lg-min) {
+                    background-color: rgba($setting-color-white, 0.15);
+                }
+            }
+        }
+
+        &__image {
+            display: block;
+            max-width: unset;
+            max-height: unset;
+        }
+
+        &__dropdown {
+            @include helper-breakpoint-media-min($lg-min) {
+                display: flex;
+                align-items: center;
+                position: relative;
+            }
+        }
+
+        &__dropdown-opener {
+            @include helper-breakpoint-media-min($lg-min) {
+                @include helper-effect-transition(background-color);
+                padding: rem(5) rem(25);
+                background-color: $setting-color-transparent;
+                cursor: pointer;
+                height: 100%;
+            }
+
+            &:hover,
+            &--active {
+                @include helper-breakpoint-media-min($lg-min) {
+                    background-color: rgba($setting-color-white, 0.15);
+                }
+            }
+        }
+
+        &__dropdown-content {
+            @include helper-breakpoint-media-min($lg-min) {
+                position: absolute;
+                background-color: $setting-color-white;
+                z-index: $setting-zi-myworld-navbar;
+                top: 100%;
+                right: 0;
+                border-bottom-left-radius: rem(10);
+                border-bottom-right-radius: rem(10);
+                overflow: hidden;
+            }
+
+            @include helper-breakpoint-media-min($xl-min) {
+                right: auto;
+                left: 0;
+            }
+        }
+
+        &__dropdown-link {
+            padding: rem(15) 0;
+            height: 100%;
+            display: block;
+            border-bottom: rem(1) solid $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                padding-left: rem(25);
+                padding-right: rem(25);
+            }
+        }
+
+        &__dropdown-item {
+            @include helper-breakpoint-media-min($lg-min) {
+                @include helper-effect-transition(background-color);
+                padding: 0 rem(25);
+            }
+
+            &:hover {
+                @include helper-breakpoint-media-min($lg-min) {
+                    background-color: $setting-color-gray-2;
+                }
+            }
+
+            &:last-child #{$name}__dropdown-link {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+@include shop-ui-myworld-navbar();

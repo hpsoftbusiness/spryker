@@ -159,4 +159,10 @@
         width: rem(127);
         height: rem(35);
     }
+
+    &--dots {
+        width: rem(25);
+        height: rem(5);
+        color: $setting-color-white;
+    }
 }

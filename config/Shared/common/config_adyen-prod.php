@@ -18,14 +18,15 @@ $adyenCredentials = [
     'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
     'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),
     'CSS_INTEGRITY_HASH' => utf8_encode('sha384-6qrXvoxlnBlrflZQ9g5Yf5oZapUSSXctPxacP9oRcEukbEO7lXisuSyMKG8pDX8V'),
-    'ORIGIN_KEY' => utf8_encode('pub.v2.8216077771133800.aHR0cHM6Ly93d3cubWFya2V0cGxhY2UubXl3b3JsZC5jb20.8z6eTHoPvxXIV5CgwSmx8Xs3Vou6UNDQwKNh9gzPv2o'),
-    'API_KEY' => utf8_encode('AQEphmfxJonJbR1Ew0m/n3Q5qf3VZZJ6AoFGXIkZ3GbdhshSfDBbFwxy9eAQwV1bDb7kfNy1WIxIIkxgBw==-v7XhXNSuBcVqAkX7VDrHgT+Kv1qOJbXBq+JY3fv/3as=-IQKyS~7yQ_v&;SqY'),
+    'ORIGIN_KEY' => utf8_encode('pub.v2.8216083088630330.aHR0cHM6Ly93d3cubWFya2V0cGxhY2UubXl3b3JsZC5jb20.tWAZKfLBvm9nTVd_tQNRGU8ra7hIRqFX-zbi4YWJFp4'),
+    'API_KEY' => utf8_encode('AQEphmfxJo7PYxFGw0m/n3Q5qf3VZZJ6AoFGXCNIwqQyci176r2VtV9VlQ4QwV1bDb7kfNy1WIxIIkxgBw==-96Rhip3CgIMz8hUzAae+lAgvsmVFMWe+jToJzZ4j2ec=-r9CWr}:Vg&q.=pL2'),
     'CHECKOUT_API_DOMAIN' => 'checkout-test.adyen.com',
     'CHECKOUT_API_VERSION' => 'v32',
     'PAYMENT_API_DOMAIN' => 'pal-test.adyen.com',
     'PAYMENT_API_VERSION' => 'v30',
-    'MERCHANT_ACCOUNT' => 'MyWorldInternationalLimited',
+    'MERCHANT_ACCOUNT' => 'MyWorldAustriaGmbH',
     'SDK_ENVIRONMENT' => 'test',
+    //ws_941844@Company.MyWorld
 ];
 
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNT'];
