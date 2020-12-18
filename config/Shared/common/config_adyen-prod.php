@@ -11,7 +11,7 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 // >>> ADYEN
 
 //TODO Set correct variables to env variables.
-//$adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', true);
+$adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', true);
 
 $adyenCredentials = [
     'CHECKOUT_SHOPPER_API_DOMAIN' => 'checkoutshopper-test.adyen.com',
