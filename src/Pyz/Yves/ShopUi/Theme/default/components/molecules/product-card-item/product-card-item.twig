@@ -63,21 +63,23 @@
                         {% else %}
                             {{ 'customer.access.cannot_see_price' | trans }}
                         {% endif %}
-
-                        {% set cashback = data.cashback %}
-
-                        {% if cashback %}
-                            {% include molecule('cashback') with {
-                                class: config.name ~ '__cashback col',
-                                modifiers: ['small'],
-                                data: {
-                                    cashback: cashback,
-                                    shoppingPoints: data.shoppingPoints,
-                                    iconModifiers: [''],
-                                },
-                            } only %}
-                        {% endif %}
                     {% endblock %}
+                </div>
+
+                <div class="grid grid--right">
+                    {% set cashback = data.cashback %}
+
+                    {% if cashback %}
+                        {% include molecule('cashback') with {
+                            class: config.name ~ '__cashback col',
+                            modifiers: ['small'],
+                            data: {
+                                cashback: cashback,
+                                shoppingPoints: data.shoppingPoints,
+                                iconModifiers: [''],
+                            },
+                        } only %}
+                    {% endif %}
                 </div>
 
                 {% if not data.isPromotionItem %}
