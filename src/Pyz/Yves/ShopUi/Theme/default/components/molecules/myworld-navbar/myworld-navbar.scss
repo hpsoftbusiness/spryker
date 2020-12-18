@@ -1,26 +1,39 @@
 @mixin shop-ui-myworld-navbar($name: '.myworld-navbar') {
     #{$name} {
-        background-color: $setting-color-black;
-        display: none;
-
         @include helper-breakpoint-media-min($lg-min) {
-            display: block;
-        }
-
-        &__content {
+            background-color: $setting-color-black;
             display: flex;
+            align-items: stretch;
             padding: 0 rem(16);
         }
 
-        &__link {
-            padding: rem(10) rem(25);
-            display: flex;
-            align-items: center;
-            height: 100%;
+        &__item {
+            border-bottom: rem(1) solid $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                border-bottom: none;
+            }
         }
 
-        &__current {
-            background-color: rgba($setting-color-white, 0.15);
+        &__link {
+            padding: rem(15) 0;
+            display: block;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                @include helper-effect-transition(background-color);
+                display: flex;
+                align-items: center;
+                padding-left: rem(25);
+                padding-right: rem(25);
+                min-height: 100%;
+            }
+
+            &:hover,
+            &--active {
+                @include helper-breakpoint-media-min($lg-min) {
+                    background-color: rgba($setting-color-white, 0.15);
+                }
+            }
         }
 
         &__image {
@@ -30,44 +43,69 @@
         }
 
         &__dropdown {
-            @include helper-effect-transition(background-color 0.3s ease-in-out);
-            display: flex;
-            align-items: center;
-            position: relative;
-            cursor: pointer;
-            padding: 0 rem(25);
+            @include helper-breakpoint-media-min($lg-min) {
+                display: flex;
+                align-items: center;
+                position: relative;
+            }
+        }
 
-            &:hover {
-                background-color: rgba($setting-color-white, 0.15);
+        &__dropdown-opener {
+            @include helper-breakpoint-media-min($lg-min) {
+                @include helper-effect-transition(background-color);
+                padding: rem(5) rem(25);
+                background-color: $setting-color-transparent;
+                cursor: pointer;
+                height: 100%;
+            }
 
-                #{$name}__dropdown-content {
-                    display: block;
-                    background-color: $setting-color-white;
+            &:hover,
+            &--active {
+                @include helper-breakpoint-media-min($lg-min) {
+                    background-color: rgba($setting-color-white, 0.15);
                 }
             }
         }
 
         &__dropdown-content {
-            position: absolute;
-            background-color: $setting-color-white;
-            z-index: $setting-zi-myworld-navbar;
-            top: 100%;
-            left: 0;
+            @include helper-breakpoint-media-min($lg-min) {
+                position: absolute;
+                background-color: $setting-color-white;
+                z-index: $setting-zi-myworld-navbar;
+                top: 100%;
+                right: 0;
+                border-bottom-left-radius: rem(10);
+                border-bottom-right-radius: rem(10);
+                overflow: hidden;
+            }
+
+            @include helper-breakpoint-media-min($xl-min) {
+                right: auto;
+                left: 0;
+            }
         }
 
         &__dropdown-link {
-            padding: rem(15) rem(25);
+            padding: rem(15) 0;
             height: 100%;
             display: block;
-            border-bottom: 1px solid $setting-color-gray-3;
+            border-bottom: rem(1) solid $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                padding: rem(15) rem(25);
+            }
         }
 
         &__dropdown-item {
-            @include helper-effect-transition(background-color 0.3s ease-in-out);
-            padding: 0 rem(25);
+            @include helper-breakpoint-media-min($lg-min) {
+                @include helper-effect-transition(background-color);
+                padding: 0 rem(25);
+            }
 
             &:hover {
-                background-color: $setting-color-gray-2;
+                @include helper-breakpoint-media-min($lg-min) {
+                    background-color: $setting-color-gray-2;
+                }
             }
 
             &:last-child #{$name}__dropdown-link {
