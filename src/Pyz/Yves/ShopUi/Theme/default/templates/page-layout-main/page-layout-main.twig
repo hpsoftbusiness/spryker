@@ -18,6 +18,21 @@
             {% block mobileNavigation %}
                 <div class="{{ config.name }}__navigation">
                     {% cms_slot 'slt-mobile-header' %}
+
+                    {% embed molecule('myworld-navbar') with {
+                        data: {
+                            isLogoColored: true,
+                            hasDropdown: false,
+                        }
+                    } only %}
+                        {% block body %}
+                            <h4 class="spacing-top spacing-top--biggest spacing-bottom spacing-bottom--big">
+                                {{ 'global.header.services' | trans }}
+                            </h4>
+
+                            {{ parent() }}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
             {% endblock %}
         {% endembed %}
@@ -69,6 +84,10 @@
     {% endblock %}
 
     {% block outside %}{% endblock %}
+
+    {% include molecule('myworld-navbar') with {
+        class: 'is-hidden-sm-md',
+    } only %}
 
     {% block header %}
         {% embed organism('header') only %}
