@@ -85,9 +85,11 @@
 
     {% block outside %}{% endblock %}
 
-    {% include molecule('myworld-navbar') with {
-        class: 'is-hidden-sm-md',
-    } only %}
+    {% block servicesNavbar %}
+        {% include molecule('myworld-navbar') with {
+            class: 'is-hidden-sm-md',
+        } only %}
+    {% endblock %}
 
     {% block header %}
         {% embed organism('header') only %}
