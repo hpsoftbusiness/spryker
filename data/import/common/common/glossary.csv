@@ -2392,14 +2392,16 @@ autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
 footer.follow,Follow us,en_US
 footer.follow,Folgen Sie uns auf,de_DE
-footer.facebook.url,https://www.facebook.com/myWorldcomUK/,en_US
-footer.facebook.url,https://www.facebook.com/myworldcom-deutschland-838309199874712/,de_DE
+footer.facebook.url,https://www.facebook.com/cashbackworld.int/,en_US
+footer.facebook.url,https://www.facebook.com/cashbackworld.int/,de_DE
 footer.twitter.url,https://twitter.com/myWorld_uk,en_US
 footer.twitter.url,https://twitter.com/myworld_de,de_DE
-footer.instagram.url,https://www.instagram.com/myworld.com_uk/,en_US
-footer.instagram.url,https://www.instagram.com/myworld.com_deutschland/,de_DE
-footer.pinterest.url,https://www.pinterest.de/myworld_uk/,en_US
-footer.pinterest.url,https://www.pinterest.com/myworld_de/,de_DE
+footer.youtube.url,https://www.youtube.com/channel/UCCdwFBArbzg98DeUD_-l_uQ?sub_confirmation=1,en_US
+footer.youtube.url,https://www.youtube.com/channel/UCCdwFBArbzg98DeUD_-l_uQ?sub_confirmation=1,de_DE
+footer.instagram.url,https://www.instagram.com/cashback.world/,en_US
+footer.instagram.url,https://www.instagram.com/cashback.world/,de_DE
+footer.pinterest.url,https://www.pinterest.com/cashbackworld/,en_US
+footer.pinterest.url,https://www.pinterest.com/cashbackworld/,de_DE
 footer.official_partner,Official partner,en_US
 footer.official_partner,Offizieller Partner,de_DE
 footer.logo.text,Built with,en_US
