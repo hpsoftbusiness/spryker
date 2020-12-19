@@ -94,7 +94,7 @@ class AccessToken implements AccessTokenInterface
         return [
             'form_params' => [
                 'grant_type' => 'client_credentials',
-                'scope' => 'apitest',
+                'scope' => $this->myWorldMarketplaceApiConfig->getScope(),
             ],
             'headers' => [
                 'User-Agent' => $this->myWorldMarketplaceApiConfig->getUserAgent(),

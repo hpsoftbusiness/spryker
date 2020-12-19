@@ -13,6 +13,7 @@ $config[MyWorldMarketplaceApiConstants::TOKEN_URL] = getenv('MY_WORLD_MARKETPLAC
 $config[MyWorldMarketplaceApiConstants::CLIENT_ID] = getenv('MY_WORLD_MARKETPLACE_API_CLIENT_ID') ?: 'spryker_api_at_dev';
 $config[MyWorldMarketplaceApiConstants::CLIENT_SECRET] = getenv('MY_WORLD_MARKETPLACE_API_CLIENT_SECRET') ?: 'spryker_api_at_dev';
 $config[MyWorldMarketplaceApiConstants::USER_AGENT] = 'Spryker/202009.0';
+$config[MyWorldMarketplaceApiConstants::SCOPE] = 'sprykerservice';
 $config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = 'BA3E82A7-BBC4-4874-A383-AA3100985CC9';
 $config[MyWorldMarketplaceApiConstants::DEALER_ID_COUNTRY_MAP] = [
     'AT' => 'BA3E82A7-BBC4-4874-A383-AA3100985CC9',

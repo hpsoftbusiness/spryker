@@ -51,4 +51,12 @@ class MyWorldMarketplaceApiConfig extends AbstractBundleConfig
     {
         return $this->get(MyWorldMarketplaceApiConstants::USER_AGENT);
     }
+
+    /**
+     * @return string
+     */
+    public function getScope(): string
+    {
+        return $this->get(MyWorldMarketplaceApiConstants::SCOPE);
+    }
 }
