@@ -2863,6 +2863,8 @@ oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
 oms.state.invoice-with-tracking-number-sent,Shipped,en_US
 oms.state.invoice-with-tracking-number-sent,Versandt,de_DE
 oms.state.turnover-created,Shipped,en_US
+oms.state.ready-for-turnover-creation,Versandt,de_DE
+oms.state.ready-for-turnover-creation,Shipped,en_US
 oms.state.turnover-created,Versandt,de_DE
 oms.state.turnover-creation-failed,Shipped,en_US
 oms.state.turnover-creation-failed,Versandt,de_DE

@@ -1,7 +1,7 @@
 <?php
 
+use Pyz\Shared\Adyen\AdyenConstants;
 use Spryker\Shared\Application\ApplicationConstants;
-use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 // ----------------------------------------------------------------------------
@@ -106,3 +106,6 @@ $config[AdyenApiConstants::ADJUST_AUTHORIZATION_ACTION_URL] = sprintf(
     $adyenCredentials['PAYMENT_API_DOMAIN'],
     $adyenCredentials['PAYMENT_API_VERSION']
 );
+
+$config[AdyenConstants::SPLIT_ACCOUNT] = '125549301';
+$config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.015;
