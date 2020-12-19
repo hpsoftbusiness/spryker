@@ -29,6 +29,9 @@ $adyenCredentials = [
     //ws_941844@Company.MyWorld
 ];
 
+$config[AdyenConstants::SPLIT_ACCOUNT] = getenv('ADYEN_MARKETPLACE_SPLIT_PAYMENT_ACCOUNT');
+$config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.015;
+
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNT'];
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_JS_URL] = sprintf(
     'https://%s/checkoutshopper/sdk/%s/adyen.js',
@@ -110,4 +113,3 @@ $config[AdyenApiConstants::ADJUST_AUTHORIZATION_ACTION_URL] = sprintf(
     $adyenCredentials['PAYMENT_API_VERSION']
 );
 
-$config[AdyenConstants::SPLIT_ACCOUNT] = '125549301';

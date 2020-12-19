@@ -108,3 +108,4 @@ $config[AdyenApiConstants::ADJUST_AUTHORIZATION_ACTION_URL] = sprintf(
 );
 
 $config[AdyenConstants::SPLIT_ACCOUNT] = '125549301';
+$config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.015;

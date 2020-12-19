@@ -17,7 +17,6 @@ use SprykerEco\Zed\Adyen\Business\Oms\Mapper\CaptureCommandMapper as SprykerEcoC
 
 class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
 {
-    protected const COMMISSION_INTEREST = 0.015;
     protected const SPLIT_TYPE_MARKETPLACE = 'MarketPlace';
     protected const SPLIT_TYPE_COMMISSION = 'Commission';
 
@@ -51,7 +50,7 @@ class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
      */
     protected function createAdyenApiSplits(AdyenApiAmountTransfer $adyenApiAmountTransfer): ArrayObject
     {
-        $commissionAmount = (int)round($adyenApiAmountTransfer->getValue() * static::COMMISSION_INTEREST);
+        $commissionAmount = (int)round($adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest());
         $marketplaceAmount = (int)$adyenApiAmountTransfer->getValue() - $commissionAmount;
 
         $marketplaceSplitTransfer = (new AdyenApiSplitTransfer())

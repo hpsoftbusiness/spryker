@@ -15,4 +15,5 @@ use SprykerEco\Shared\Adyen\AdyenConstants as SprykerEcoAdyenConstants;
 interface AdyenConstants extends SprykerEcoAdyenConstants
 {
     public const SPLIT_ACCOUNT = 'ADYEN:SPLIT_ACCOUNT';
+    public const SPLIT_ACCOUNT_COMMISSION_INTEREST = 'ADYEN:SPLIT_ACCOUNT_COMMISSION_INTEREST';
 }

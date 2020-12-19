@@ -19,4 +19,12 @@ class AdyenConfig extends SprykerEcoAdyenConfig
     {
         return $this->get(AdyenConstants::SPLIT_ACCOUNT);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSplitAccountCommissionInterest(): string
+    {
+        return $this->get(AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST, 0);
+    }
 }
