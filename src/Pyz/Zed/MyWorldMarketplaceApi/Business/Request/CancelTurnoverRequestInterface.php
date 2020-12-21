@@ -8,14 +8,16 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
 use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\RefundTransfer;
 
-interface TurnoverRequestInterface
+interface CancelTurnoverRequestInterface
 {
     /**
      * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
      *
      * @return mixed
      */
-    public function request(array $orderItemIds, OrderTransfer $orderTransfer): void;
+    public function request(array $orderItemIds, OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): void;
 }

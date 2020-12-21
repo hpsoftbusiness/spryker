@@ -25,6 +25,6 @@ class IsTurnoverCreatedConditionPlugin extends AbstractPlugin implements Conditi
      */
     public function check(SpySalesOrderItem $orderItem): bool
     {
-        return $orderItem->getOrder()->getIsTurnoverCreated();
+        return $orderItem->getIsTurnoverCreated();
     }
 }

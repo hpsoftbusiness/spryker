@@ -9,6 +9,7 @@ namespace Pyz\Zed\Oms\Communication;
 
 use Pyz\Zed\Oms\OmsDependencyProvider;
 use Spryker\Zed\Oms\Communication\OmsCommunicationFactory as SprykerOmsCommunicationFactory;
+use Spryker\Zed\Refund\Business\RefundFacadeInterface;
 use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 /**
@@ -22,5 +23,13 @@ class OmsCommunicationFactory extends SprykerOmsCommunicationFactory
     public function getTranslatorFacade(): TranslatorFacadeInterface
     {
         return $this->getProvidedDependency(OmsDependencyProvider::FACADE_TRANSLATOR);
+    }
+
+    /**
+     * @return \Spryker\Zed\Refund\Business\RefundFacadeInterface
+     */
+    public function getRefundFacade(): RefundFacadeInterface
+    {
+        return $this->getProvidedDependency(OmsDependencyProvider::FACADE_REFUND);
     }
 }

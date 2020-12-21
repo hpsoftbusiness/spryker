@@ -12,14 +12,12 @@
             <state name="refund failed clarification"/>
             <state name="refund failed"/>
             <state name="refund pending next try"/>
-            <state name="refund calculated"/>
         </states>
 
         <events>
             <event name="refund" manual="true" command="Adyen/Refund"/>
             <event name="refund manually" manual="true"/>
             <event name="retry refund" manual="true"/>
-            <event name="calculate refund" onEnter="true" command="Adyen/RefundCalculation"/>
             <event name="pass" onEnter="true"/>
             <event name="pass 5 minute" timeout="5 minute"/>
             <event name="pass 10 minute" timeout="10 minute"/>
@@ -78,12 +76,6 @@
                 <source>refund pending next try</source>
                 <target>refund pending</target>
                 <event>pass 10 minute</event>
-            </transition>
-
-            <transition>
-                <source>refunded</source>
-                <target>refund calculated</target>
-                <event>calculate refund</event>
             </transition>
         </transitions>
     </process>
