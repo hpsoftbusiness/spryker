@@ -4,4 +4,9 @@
     <li class="{{ config.name }}__item">{{ data.payments[0].paymentProvider | trans }}</li>
     <li class="{{ config.name }}__item">{{ 'customer.order.payment_method' | trans }}: {{ data.payments[0].paymentMethod | trans | capitalize }}</li>
     <li class="{{ config.name }}__item">{{ data.payments[0].amount | money(true, data.currencyIsoCode) }}</li>
+
+    {% if data.payments[0].paymentMethod == 'dummyPrepayment' %}
+        <li class="title title--secondary-small"></li>
+        <li class="{{ config.name }}__item title--secondary-small">{{ 'dummyPrepayment.prepaymentbank-info' | trans | raw }}</li>
+    {% endif %}
 {% endblock %}
