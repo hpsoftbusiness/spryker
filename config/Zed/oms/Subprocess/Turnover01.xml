@@ -17,8 +17,10 @@
         <events>
             <event name="create turnover" onEnter="true" command="MyWorld/CreateTurnover"/>
             <event name="create turnover manually" manual="true"/>
+            <event name="repeat turnover creation" manual="true"/>
             <event name="cancel turnover" onEnter="true" command="MyWorld/CancelTurnover"/>
             <event name="cancel turnover manually" manual="true"/>
+            <event name="repeat turnover cancellation" manual="true"/>
         </events>
 
         <transitions>
@@ -32,6 +34,12 @@
                 <source>ready for turnover creation</source>
                 <target>turnover creation failed</target>
                 <event>create turnover</event>
+            </transition>
+
+            <transition>
+                <source>turnover creation failed</source>
+                <target>ready for turnover creation</target>
+                <event>repeat turnover creation</event>
             </transition>
 
             <transition>
@@ -50,6 +58,12 @@
                 <source>ready for turnover cancellation</source>
                 <target>turnover cancellation failed</target>
                 <event>cancel turnover</event>
+            </transition>
+
+            <transition>
+                <source>turnover cancellation failed</source>
+                <target>ready for turnover cancellation</target>
+                <event>repeat turnover cancellation</event>
             </transition>
 
             <transition>

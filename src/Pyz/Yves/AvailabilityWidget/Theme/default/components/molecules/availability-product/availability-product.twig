@@ -1,15 +1,6 @@
 {% extends molecule('availability-product', '@SprykerShop:AvailabilityWidget') %}
 
 {% block body %}
-    {% embed molecule('toggler-item') with {
-        modifiers: ['with-top-border', 'option'],
-        data: {
-            title: 'cart.item_quantity' | trans,
-            isToggler: false,
-        },
-    } only %}
-        {% block contentText -%}
-            <span class="text-alt js-volume-price__quantity">{{ 'product.detail.out_of_stock' | trans }}</span>
-        {%- endblock %}
-    {% endembed %}
+    <h4 class="title title--h4 spacing-bottom text-break">{{ 'cart.item_quantity' | trans }}</h4>
+    <div class="text-alt js-volume-price__quantity">{{ 'product.detail.out_of_stock' | trans }}</div>
 {% endblock %}

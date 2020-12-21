@@ -53,6 +53,6 @@ $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
 // ----------------------------------------------------------------------------
 
 require 'common/config_my-world-marketplace-api-prod.php';
-$config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z5d186';
+$config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z5d777';
 
-$config[ProductAffiliateConstants::TRACKING_URL_PATH] = getenv('AFFILIATE_TRACKING_URL_PATH') ?: 'https://test-click.myworld.com/spryker';
+$config[ProductAffiliateConstants::TRACKING_URL_PATH] = getenv('AFFILIATE_TRACKING_URL_PATH');
