@@ -10,12 +10,16 @@ namespace Pyz\Client\MyWorldMarketplaceApi;
 use GuzzleHttp\ClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessToken;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumber;
+use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumberInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\Request;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapper;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapperInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidator;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidatorInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapper;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface;
 use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
@@ -35,6 +39,19 @@ class MyWorldMarketplaceApiFactory extends AbstractFactory
             $this->getConfig(),
             $this->getUtilEncodingService(),
             $this->getErrorLogger()
+        );
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumberInterface
+     */
+    public function createCustomerInformationByCustomerNumber(): CustomerInformationByCustomerNumberInterface
+    {
+        return new CustomerInformationByCustomerNumber(
+            $this->createRequest(),
+            $this->createAccessToken(),
+            $this->createCustomerInformationMapper(),
+            $this->getConfig()
         );
     }
 
@@ -76,6 +93,14 @@ class MyWorldMarketplaceApiFactory extends AbstractFactory
     public function getErrorLogger(): ErrorLoggerInterface
     {
         return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::ERROR_LOGGER);
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface
+     */
+    public function createCustomerInformationMapper(): CustomerInformationMapperInterface
+    {
+        return new CustomerInformationMapper();
     }
 
     /**
