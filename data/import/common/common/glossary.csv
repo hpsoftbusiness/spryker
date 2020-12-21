@@ -2862,6 +2862,8 @@ oms.state.refund-pending-next-try,Refund,en_US
 oms.state.refund-pending-next-try,Rückerstattung,de_DE
 oms.state.refund-failed-clarification,Refund,en_US
 oms.state.refund-failed-clarification,Rückerstattung,de_DE
+oms.state.ready-for-turnover-cancellation,Refund,en_US
+oms.state.ready-for-turnover-cancellation,Rückerstattung,de_DE
 oms.state.turnover-cancellation-failed,Refund,en_US
 oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
 oms.state.invoice-with-tracking-number-sent,Shipped,en_US
