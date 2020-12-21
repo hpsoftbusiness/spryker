@@ -37,6 +37,6 @@ class MyWorldMarketplaceApiFacade extends AbstractFacade implements MyWorldMarke
      */
     public function cancelTurnover(array $orderItemIds, OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): void
     {
-        $this->getFactory()->createCancelTurnoverRequest()->request($orderItemIds, $orderTransfer);
+        $this->getFactory()->createCancelTurnoverRequest()->request($orderItemIds, $orderTransfer, $refundTransfer);
     }
 }
