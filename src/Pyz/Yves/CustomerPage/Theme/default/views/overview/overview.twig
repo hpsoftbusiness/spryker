@@ -27,7 +27,23 @@
         } only %}
     </div>
 
-    <div class="grid">
+    <div class="grid grid--justify">
+        <div class="col--sm-12 col--lg-6">
+            <div class="box">
+                {% include molecule('title-box', 'CustomerPage') with {
+                    data: {
+                        title: 'customer.account.profile_data' | trans,
+                    },
+                } only %}
+
+                <ul class="menu menu--customer-account">
+                    <li class="menu__item">{{ data.customer.firstName }} {{ data.customer.lastName }}</li>
+                    <li class="menu__item"><a class="menu__link"
+                                              href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="col--sm-12 col--lg-6">
             <div class="box">
                 {% include molecule('title-box', 'CustomerPage') with {
@@ -49,24 +65,6 @@
                         {% endif %}
                     </ul>
                 {% endif %}
-            </div>
-        </div>
-    </div>
-
-    <div class="grid grid--justify">
-        <div class="col--sm-12 col--lg-6">
-            <div class="box">
-                {% include molecule('title-box', 'CustomerPage') with {
-                    data: {
-                        title: 'customer.account.profile_data' | trans,
-                    },
-                } only %}
-
-                <ul class="menu menu--customer-account">
-                    <li class="menu__item">{{ data.customer.firstName }} {{ data.customer.lastName }}</li>
-                    <li class="menu__item"><a class="menu__link"
-                                              href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
-                </ul>
             </div>
         </div>
 
