@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Persistence;
 
-use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
+use Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
@@ -18,10 +18,10 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 class MyWorldMarketplaceApiPersistenceFactory extends AbstractPersistenceFactory
 {
     /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderQuery
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery
      */
-    public function getSalesOrderPropelQuery(): SpySalesOrderQuery
+    public function getSalesOrderItemPropelQuery(): SpySalesOrderItemQuery
     {
-        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::PROPEL_QUERY_SALES_ORDER);
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::PROPEL_QUERY_SALES_ORDER_ITEM);
     }
 }

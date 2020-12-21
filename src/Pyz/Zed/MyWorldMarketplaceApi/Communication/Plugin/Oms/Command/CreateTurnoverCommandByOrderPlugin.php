@@ -44,8 +44,23 @@ class CreateTurnoverCommandByOrderPlugin extends AbstractPlugin implements Comma
             ->getCalculationFacade()
             ->recalculateOrder($orderTransfer);
 
-        $this->getFacade()->createTurnover($orderTransfer);
+        $this->getFacade()->createTurnover($this->getOrderItemIds($orderItems), $orderTransfer);
 
         return [];
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
+     *
+     * @return int[]
+     */
+    protected function getOrderItemIds(array $orderItems): array
+    {
+        $orderItemIds = [];
+        foreach ($orderItems as $orderItem) {
+            $orderItemIds[] = $orderItem->getIdSalesOrderItem();
+        }
+
+        return $orderItemIds;
     }
 }

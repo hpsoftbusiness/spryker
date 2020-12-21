@@ -217,12 +217,10 @@ function AttributeManager() {
         });
 
         var formDataJson = JSON.stringify(formData);
-        var formExtraDataJson = JSON.stringify(formExtraData);
         var actionUrl = form.attr('action');
 
         var actionData = {
             'json': formDataJson,
-            'extraJson': formExtraDataJson,
             'id-product-abstract': idProductAbstract,
             'id-product': idProduct,
             'csrf-token': csrfToken

@@ -9,6 +9,7 @@ namespace Pyz\Zed\MyWorldMarketplaceApi\Business;
 
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\Business\Request\CancelTurnoverRequest;
+use Pyz\Zed\MyWorldMarketplaceApi\Business\Request\CancelTurnoverRequestInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\Business\Request\CreateTurnoverRequest;
 use Pyz\Zed\MyWorldMarketplaceApi\Business\Request\TurnoverRequestInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
@@ -37,9 +38,9 @@ class MyWorldMarketplaceApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldMarketplaceApi\Business\Request\TurnoverRequestInterface
+     * @return \Pyz\Zed\MyWorldMarketplaceApi\Business\Request\CancelTurnoverRequestInterface
      */
-    public function createCancelTurnoverRequest(): TurnoverRequestInterface
+    public function createCancelTurnoverRequest(): CancelTurnoverRequestInterface
     {
         return new CancelTurnoverRequest(
             $this->getMyWorldMarketplaceApiClient(),

@@ -27,10 +27,8 @@ class ProductMapper extends SprykerProductMapper
         $productConcreteTransfer->fromArray($productEntity->toArray(), true);
 
         $attributes = $this->utilEncodingService->decodeJson($productEntity->getAttributes(), true);
-        $hiddenAttributes = $this->utilEncodingService->decodeJson($productEntity->getHiddenAttributes(), true);
         $productConcreteTransfer
-            ->setAttributes(is_array($attributes) ? $attributes : [])
-            ->setHiddenAttributes(is_array($hiddenAttributes) ? $hiddenAttributes : []);
+            ->setAttributes(is_array($attributes) ? $attributes : []);
 
         $productConcreteTransfer->setIdProductConcrete($productEntity->getIdProduct());
 

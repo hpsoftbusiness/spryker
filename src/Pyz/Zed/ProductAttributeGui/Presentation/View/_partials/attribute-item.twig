@@ -55,7 +55,6 @@
                 </td>
             {% else %}
                 <td>
-                    {% if not isHidden %}
                         <input
                             {% if isReadOnly %}
                                 readonly="readonly"
@@ -73,10 +72,8 @@
                             data-id_attribute="{{ idAttribute }}"
                             data-locale_code="{{ localeData['locale_name'] }}"
                             data-is_hidden="{{ isHidden }}"
-                            {% if isSellable and attributeValue %}checked{% endif %}
                         />
                         <span style="display: none"></span>
-                    {% endif %}
                 </td>
             {% endif %}
         {% endfor %}

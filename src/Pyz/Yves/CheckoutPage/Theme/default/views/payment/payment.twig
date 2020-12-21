@@ -18,6 +18,7 @@
             },
             customForms: {
                 'Adyen/credit-card': ['credit-card', 'adyen'],
+                'DummyPrepayment/prepayment': ['prepayment', 'dummyPrepayment'],
             },
         },
     } only %}
@@ -91,13 +92,15 @@
                                         } only %}
                                     {% endif %}
                                 </div>
+                                {% if data.form.vars.template_path == 'Adyen/credit-card' %}
+                                    <p class="spacing-top spacing-top--big spacing-x">
+                                        {{ 'page.checkout.payment.cc_text' | trans }}
+                                    </p>
+                                {% endif %}
                             </div>
                             <div class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %}">
                                 {{ parent() }}
                             </div>
-                            <p class="spacing-top spacing-top--big spacing-x">
-                                {{ 'page.checkout.payment.cc_text' | trans }}
-                            </p>
                         {% endblock %}
                     {% endembed %}
                 {% endfor %}
