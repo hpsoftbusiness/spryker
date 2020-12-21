@@ -17,7 +17,7 @@
         modifiers: ['with-bottom-spaces'],
         data: {
             product: data.product,
-            image: image.external_url_small,
+            image: image.external_url_small | default(null),
             name: data.product.abstract_name,
             idProductAbstract: data.product.id_product_abstract,
             cashback: data.product.cashback_amount[0] | default(null),
