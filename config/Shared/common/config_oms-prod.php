@@ -1,5 +1,6 @@
 <?php
 
+use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
@@ -45,5 +46,6 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = array_replace(
         NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
         GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
         AdyenConfig::ADYEN_CREDIT_CARD => 'AdyenCreditCard01',
+        DummyPrepaymentConfig::DUMMY_PREPAYMENT => 'DummyPrepayment01',
     ]
 );

@@ -8,6 +8,7 @@
 namespace Pyz\Yves\DummyPrepayment\Form;
 
 use Generated\Shared\Transfer\DummyPaymentTransfer;
+use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
@@ -21,7 +22,7 @@ class DummyPrepaymentSubForm extends AbstractSubFormType implements SubFormInter
      */
     public function getProviderName(): string
     {
-        return 'dummy';
+        return DummyPrepaymentConfig::PROVIDER_NAME;
     }
 
     /**
@@ -29,7 +30,7 @@ class DummyPrepaymentSubForm extends AbstractSubFormType implements SubFormInter
      */
     public function getName(): string
     {
-        return 'dummyPrepayment';
+        return DummyPrepaymentConfig::DUMMY_PREPAYMENT;
     }
 
     /**
@@ -37,7 +38,7 @@ class DummyPrepaymentSubForm extends AbstractSubFormType implements SubFormInter
      */
     public function getPropertyPath(): string
     {
-        return 'dummyPrepayment';
+        return DummyPrepaymentConfig::DUMMY_PREPAYMENT;
     }
 
     /**
@@ -45,7 +46,7 @@ class DummyPrepaymentSubForm extends AbstractSubFormType implements SubFormInter
      */
     public function getTemplatePath(): string
     {
-        return 'dummy' . DIRECTORY_SEPARATOR . 'prepayment';
+        return DummyPrepaymentConfig::PROVIDER_NAME. DIRECTORY_SEPARATOR . 'prepayment';
     }
 
     /**

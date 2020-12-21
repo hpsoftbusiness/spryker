@@ -13,6 +13,8 @@
             <state name="new" reserved="true"/>
             <state name="reserved" reserved="true"/>
             <state name="order confirmation email sent" reserved="true"/>
+            <state name="cancelled" reserved="false"/>
+            <state name="captured" reserved="true"/>
             <state name="order in processing email sent" reserved="true"/>
             <state name="package packed" reserved="true"/>
             <state name="waiting for tracking number" reserved="true"/>
@@ -25,6 +27,8 @@
 
         <events>
             <event name="send order confirmation email" onEnter="true" command="Oms/SendOrderConfirmation"/>
+            <event name="money received" manual="true"/>
+            <event name="cancel" manual="true"/>
             <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
             <event name="cancel payment" manual="true"/>
             <event name="capture payment" timeout="1hour" manual="true"/>
@@ -53,6 +57,18 @@
 
             <transition happy="true">
                 <source>order confirmation email sent</source>
+                <target>captured</target>
+                <event>money received</event>
+            </transition>
+
+            <transition>
+                <source>order confirmation email sent</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true">
+                <source>captured</source>
                 <target>order in processing email sent</target>
                 <event>send order in processing email</event>
             </transition>

@@ -8,6 +8,7 @@
 namespace Pyz\Yves\DummyPrepayment\Handler;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Symfony\Component\HttpFoundation\Request;
 
 class DummyPrepaymentStepHandler implements DummyPrepaymentStepHandlerInterface
@@ -21,7 +22,7 @@ class DummyPrepaymentStepHandler implements DummyPrepaymentStepHandlerInterface
     public function addPaymentToQuote(Request $request, QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $quoteTransfer->getPayment()
-            ->setPaymentProvider('dummy')
+            ->setPaymentProvider(DummyPrepaymentConfig::DUMMY_PREPAYMENT)
             ->setPaymentMethod($quoteTransfer->getPayment()->getPaymentSelection());
 
         return $quoteTransfer;
