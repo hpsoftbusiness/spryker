@@ -12,7 +12,6 @@
         <property name="bundledProductIds" type="array"/>
         <property name="isAffiliate" type="bool"/>
         <property name="affiliateData" type="array" singular="affiliateData"/>
-        <property name="hiddenAttributes" type="array" singular="hiddenAttribute"/>
     </transfer>
     <transfer name="ProductView">
         <property name="productSetIds" type="array"/>
