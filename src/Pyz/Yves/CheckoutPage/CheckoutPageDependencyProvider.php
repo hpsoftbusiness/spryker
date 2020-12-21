@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Pyz\Yves\Country\Plugin\CheckoutPage\CountryAddressExpanderPlugin;
 use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\DummyPaymentStepHandlerPlugin;
@@ -123,7 +124,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandlerCollection) {
             $paymentMethodHandlerCollection->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
             $paymentMethodHandlerCollection->add(new AdyenPaymentHandlerPlugin(), AdyenConfig::ADYEN_CREDIT_CARD);
-            $paymentMethodHandlerCollection->add(new DummyPaymentStepHandlerPlugin(), 'dummyPrepayment');
+            $paymentMethodHandlerCollection->add(new DummyPaymentStepHandlerPlugin(), DummyPrepaymentConfig::DUMMY_PREPAYMENT);
 
             return $paymentMethodHandlerCollection;
         });
