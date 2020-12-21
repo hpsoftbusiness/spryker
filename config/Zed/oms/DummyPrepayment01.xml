@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<statemachine
+        xmlns="spryker:oms-01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="AdyenCreditCard01" main="true">
+        <subprocesses>
+            <process>Turnover</process>
+        </subprocesses>
+
+        <states>
+            <state name="new" reserved="true"/>
+            <state name="reserved" reserved="true"/>
+            <state name="order confirmation email sent" reserved="true"/>
+            <state name="order in processing email sent" reserved="true"/>
+            <state name="package packed" reserved="true"/>
+            <state name="waiting for tracking number" reserved="true"/>
+            <state name="shipped"/>
+            <state name="invoice generated"/>
+            <state name="invoice with tracking number sent"/>
+            <state name="refund calculated"/>
+            <state name="closed"/>
+        </states>
+
+        <events>
+            <event name="send order confirmation email" onEnter="true" command="Oms/SendOrderConfirmation"/>
+            <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
+            <event name="cancel payment" manual="true"/>
+            <event name="capture payment" timeout="1hour" manual="true"/>
+            <event name="ship the order" manual="true" command="Stock/DeductStock"/>
+            <event name="start turnover creation process" onEnter="true"/>
+            <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
+            <event name="confirm shipping" onEnter="true" command="Oms/SendShippingConfirmation"/>
+            <event name="initiate refund process" manual="true"/>
+            <event name="start turnover cancellation process" manual="true"/>
+            <event name="close" timeout="20days"/>
+            <event name="pass" onEnter="true"/>
+            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
+        </events>
+
+        <transitions>
+            <transition condition="Oms/TrueCondition" happy="true">
+                <source>new</source>
+                <target>reserved</target>
+            </transition>
+
+            <transition happy="true">
+                <source>reserved</source>
+                <target>order confirmation email sent</target>
+                <event>send order confirmation email</event>
+            </transition>
+
+            <transition happy="true">
+                <source>order confirmation email sent</source>
+                <target>order in processing email sent</target>
+                <event>send order in processing email</event>
+            </transition>
+
+            <transition happy="true">
+                <source>order in processing email sent</source>
+                <target>package packed</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>package packed</source>
+                <target>waiting for tracking number</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>waiting for tracking number</source>
+                <target>shipped</target>
+                <event>ship the order</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped</source>
+                <target>invoice generated</target>
+                <event>generate invoice</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice generated</source>
+                <target>invoice with tracking number sent</target>
+                <event>confirm shipping</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice with tracking number sent</source>
+                <target>ready for turnover creation</target>
+                <event>start turnover creation process</event>
+            </transition>
+
+            <transition happy="true">
+                <source>turnover created</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition>
+                <source>turnover created</source>
+                <target>ready for turnover cancellation</target>
+                <event>start turnover cancellation process</event>
+            </transition>
+
+            <transition>
+                <source>turnover cancelled</source>
+                <target>refund calculated</target>
+                <event>calculate refund</event>
+            </transition>
+
+            <transition>
+                <source>refund calculated</source>
+                <target>closed</target>
+                <event>pass</event>
+            </transition>
+        </transitions>
+    </process>
+
+    <process name="Turnover" file="Subprocess/Turnover01.xml"/>
+
+</statemachine>

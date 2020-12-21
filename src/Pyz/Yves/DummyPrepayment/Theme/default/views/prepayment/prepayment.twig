@@ -1,0 +1,15 @@
+{% extends model('template') %}
+
+{% define data = {
+    form: form
+} %}
+
+{% block body %}
+    {{ form_widget(data.form.dummyPrepayment) }}
+    <div>
+        mWS myWorld Solutions AG:
+        Unicredit Bank Austria
+        IBAN: AT19 1200 0529 5900 6605
+        BIC: BKAUATWW
+    </div>
+{% endblock %}
