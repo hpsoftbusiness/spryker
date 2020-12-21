@@ -20,7 +20,7 @@
 
     {% block filters %}
         {% for filter in data.facets %}
-            {% set filterHasValues = (filter.values is not defined) or (filter.values | length > 0) %}
+            {% set filterHasValues = filter.values is defined and filter.values | length %}
 
             {% if filterHasValues %}
                 {% block filter %}
