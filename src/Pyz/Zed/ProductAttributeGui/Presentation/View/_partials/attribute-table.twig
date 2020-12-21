@@ -32,17 +32,6 @@
                         } %}
                     {% endfor %}
                 {% endif %}
-                {% if productHiddenAttributeKeys is defined %}
-                    {% for key in productHiddenAttributeKeys %}
-                        {% include '@ProductAttributeGui/View/_partials/attribute-item.twig' with {
-                            key: key,
-                            locales: locales,
-                            productAttributes: productHiddenAttributes,
-                            metaAttributes: metaHiddenAttributes,
-                            isHidden: 1
-                        } %}
-                    {% endfor %}
-                {% endif %}
             </tbody>
         </form>
     </table>

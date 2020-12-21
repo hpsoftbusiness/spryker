@@ -48,9 +48,10 @@ class ProductSellableChecker implements ProductSellableCheckerInterface
     public function check(QuoteTransfer $quoteTransfer, bool $isQuoteValid): bool
     {
         foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
-            $hiddenAttributes = $itemTransfer->getHiddenConcreteAttributes();
+            $attributes = $itemTransfer->getConcreteAttributes();
             $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
-            $isSellable = (bool)$hiddenAttributes[sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtolower($countryIso2Code))];
+            $sellableAttributeKey = sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtolower($countryIso2Code));
+            $isSellable = $attributes[$sellableAttributeKey] ?? false;
 
             if (!$isSellable) {
                 $isQuoteValid = false;

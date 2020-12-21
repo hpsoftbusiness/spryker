@@ -88,7 +88,7 @@ class ProductController extends SprykerShopProductController
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {
-            if (in_array($attributeKey, $attributesToFilter)) {
+            if (in_array($attributeKey, $attributesToFilter) || strpos($attributeKey, 'sellable_') !== false) {
                 unset($attributes[$attributeKey]);
             }
         }

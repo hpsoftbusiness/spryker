@@ -1,13 +1,12 @@
 <?php
 
 /**
- * This file is part of the Spryker Commerce OS.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace Pyz\Zed\ProductAttribute\Business;
 
-use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttribute;
 use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as SprykerProductAttributeBusinessFactory;
 
@@ -19,19 +18,7 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as Spr
 class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeInterface
-     */
-    public function createProductAttributeManager()
-    {
-        return new ProductAttribute(
-            $this->createProductAttributeReader(),
-            $this->createProductAttributeMapper(),
-            $this->createProductReader()
-        );
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriterInterface
+     * @return \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriterInterface
      */
     public function createProductAttributeWriter()
     {

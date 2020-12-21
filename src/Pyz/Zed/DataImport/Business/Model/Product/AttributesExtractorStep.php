@@ -14,7 +14,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class AttributesExtractorStep implements DataImportStepInterface
 {
     public const KEY_ATTRIBUTES = 'attributes';
-    public const KEY_HIDDEN_ATTRIBUTES = 'hidden_attributes';
     public const KEY_AFFILIATE_ATTRIBUTES = 'affiliate_attributes';
 
     protected const KEY_IS_SELLABLE_PATTERN = 'sellable_';
@@ -27,7 +26,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     public function execute(DataSetInterface $dataSet)
     {
         $attributes = [];
-        $hiddenAttributes = [];
         $affiliateAttributes = [];
 
         foreach ($dataSet as $key => $value) {
@@ -59,7 +57,7 @@ class AttributesExtractorStep implements DataImportStepInterface
                 }
 
                 if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
-                    $hiddenAttributes[$attributeKey] = $attributeValue === 'TRUE';
+                    $attributes[$attributeKey] = $attributeValue === 'TRUE';
                 }
             }
         }
@@ -70,7 +68,6 @@ class AttributesExtractorStep implements DataImportStepInterface
         }
 
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
-        $dataSet[static::KEY_HIDDEN_ATTRIBUTES] = $hiddenAttributes;
         $dataSet[static::KEY_AFFILIATE_ATTRIBUTES] = $affiliateAttributes;
     }
 

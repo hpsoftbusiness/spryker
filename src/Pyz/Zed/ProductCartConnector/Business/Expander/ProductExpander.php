@@ -33,7 +33,6 @@ class ProductExpander extends SprykerProductExpander
             ->setAbstractSku($productConcreteTransfer->getAbstractSku())
             ->setConcreteAttributes($productConcreteTransfer->getAttributes())
             ->setConcreteLocalizedAttributes($this->getLocalizedAttributes($productConcreteTransfer))
-            ->setHiddenConcreteAttributes($productConcreteTransfer->getHiddenAttributes())
             ->setIsAffiliate($productConcreteTransfer->getIsAffiliate())
             ->setName($localizedProductName);
     }
