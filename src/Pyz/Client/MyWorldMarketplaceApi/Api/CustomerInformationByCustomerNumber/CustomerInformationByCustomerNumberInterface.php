@@ -7,8 +7,6 @@
 
 namespace Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber;
 
-use Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer;
-use Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 
 interface CustomerInformationByCustomerNumberInterface

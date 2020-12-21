@@ -8,8 +8,6 @@
 namespace Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber;
 
 use Exception;
-use Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer;
-use Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface;
@@ -49,8 +47,7 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
         AccessTokenInterface $accessToken,
         CustomerInformationMapperInterface $customerInformationMapper,
         MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
-    )
-    {
+    ) {
         $this->request = $request;
         $this->accessToken = $accessToken;
         $this->customerInformationMapper = $customerInformationMapper;
@@ -82,8 +79,9 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return string
      * @throws \Exception
+     *
+     * @return string
      */
     protected function buildRequestUrl(CustomerTransfer $customerTransfer): string
     {

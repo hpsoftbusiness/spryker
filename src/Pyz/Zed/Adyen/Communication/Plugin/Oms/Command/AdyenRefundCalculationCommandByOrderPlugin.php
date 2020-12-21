@@ -15,6 +15,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 /**
  * @method \Pyz\Zed\Adyen\Business\AdyenFacadeInterface getFacade()
  * @method \Pyz\Zed\Adyen\Communication\AdyenCommunicationFactory getFactory()
+ * @method \Pyz\Zed\Adyen\AdyenConfig getConfig()
  */
 class AdyenRefundCalculationCommandByOrderPlugin extends AbstractPlugin implements CommandByOrderInterface
 {
