@@ -67,11 +67,12 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
     }
 
     /**
+     * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @return void
+     * @return mixed
      */
-    public function request(OrderTransfer $orderTransfer): void
+    public function request(array $orderItemIds, OrderTransfer $orderTransfer): void
     {
         $myWorldMarketplaceApiResponseTransfer = $this->myWorldMarketplaceApiClient->performApiRequest(
             $this->buildRequestUrl($orderTransfer),
@@ -82,7 +83,7 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             return;
         }
 
-        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCreated($orderTransfer->getOrderReference());
+        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCreated($orderItemIds);
     }
 
     /**

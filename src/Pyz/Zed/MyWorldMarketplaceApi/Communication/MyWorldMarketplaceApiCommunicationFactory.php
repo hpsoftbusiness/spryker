@@ -11,6 +11,7 @@ use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Zed\Calculation\Business\CalculationFacadeInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use Spryker\Zed\Refund\Business\RefundFacadeInterface;
 
 /**
  * @method \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiQueryContainer getQueryContainer()
@@ -34,5 +35,13 @@ class MyWorldMarketplaceApiCommunicationFactory extends AbstractCommunicationFac
     public function getCalculationFacade(): CalculationFacadeInterface
     {
         return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::FACADE_CALCULATION);
+    }
+
+    /**
+     * @return \Spryker\Zed\Refund\Business\RefundFacadeInterface
+     */
+    public function getRefundFacade(): RefundFacadeInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::FACADE_REFUND);
     }
 }
