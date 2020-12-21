@@ -13,6 +13,8 @@ use Spryker\Zed\ProductCartConnector\Business\Expander\ProductExpander as Spryke
 
 class ProductExpander extends SprykerProductExpander
 {
+    protected const KEY_SELLABLE_ATTRIBUTE = 'sellable_';
+
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
@@ -46,7 +48,25 @@ class ProductExpander extends SprykerProductExpander
     {
         $localizedAttributes = [];
         foreach ($productConcreteTransfer->getLocalizedAttributes() as $productConcretelocalizedAttributes) {
-            $localizedAttributes[$productConcretelocalizedAttributes->getLocale()->getLocaleName()] = json_decode($productConcretelocalizedAttributes->getAttributes(), true);
+            $localizedAttributesData = json_decode($productConcretelocalizedAttributes->getAttributes(), true);
+            $filteredLocalizedAttributesData = $this->filterSellableAttributes($localizedAttributesData);
+            $localizedAttributes[$productConcretelocalizedAttributes->getLocale()->getLocaleName()] = $filteredLocalizedAttributesData;
+        }
+
+        return $localizedAttributes;
+    }
+
+    /**
+     * @param array $localizedAttributes
+     *
+     * @return array
+     */
+    protected function filterSellableAttributes(array $localizedAttributes): array
+    {
+        foreach ($localizedAttributes as $localizedAttributeKey => $localizedAttributeValue) {
+            if (strpos($localizedAttributeKey, static::KEY_SELLABLE_ATTRIBUTE) !== false && !boolval($localizedAttributeValue)) {
+                unset($localizedAttributes[$localizedAttributeKey]);
+            }
         }
 
         return $localizedAttributes;
