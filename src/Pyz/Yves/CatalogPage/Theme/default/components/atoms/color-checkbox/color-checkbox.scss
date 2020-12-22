@@ -50,6 +50,7 @@
                 background-color: $filter-color-gray;
             }
 
+            &.Silberfarben,
             &.Silver,
             &.Silber {
                 background-color: $filter-color-silver;
@@ -112,6 +113,7 @@
                 background-color: $filter-color-brown;
             }
 
+            &.Multicolor,
             &.Multicolored,
             &.Mehrfarbig {
                 background: linear-gradient(to right bottom, $filter-color-red 25%, $filter-color-green 50%, $filter-color-blue 75%);
