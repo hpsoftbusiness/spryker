@@ -1,5 +1,5 @@
 payment_method_key,payment_method_name,payment_provider_key,payment_provider_name,is_active
 dummyPaymentInvoice,Invoice,dummyPayment,Dummy Payment,0
 dummyPaymentCreditCard,Credit Card,dummyPayment,Dummy Payment,0
-adyenCreditCard,Credit Card,adyen,Adyen,1
+adyenCreditCard,Credit Card,adyen,Adyen,0
 dummyPrepayment,Prepayment,dummy,Dummy,1
