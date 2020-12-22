@@ -817,6 +817,8 @@ newsletter.subscription.email_format_invalid,Invalid Email address format,en_US
 newsletter.subscription.email_format_invalid,Ungültiges E-Mail-Adressformat,de_DE
 customer.authentication.failed,Authentication failed,en_US
 customer.authentication.failed,Authentifizierung fehlgeschlagen,de_DE
+customer.authentication.succeeded,The login was successful,en_US
+customer.authentication.succeeded,Die Anmeldung war erfolgreich,de_DE
 customer.email.invalid,Email address is invalid,en_US
 customer.email.invalid,E-Mail Adresse ist ungültig,de_DE
 customer.email.format.invalid,Invalid Email address format,en_US
@@ -1445,8 +1447,8 @@ cart.item.option.pre.check.validation.error.exists,"You can not reorder the prod
 cart.item.option.pre.check.validation.error.exists,"Du kannst das Produkt %name% nicht direkt nachbestellen, füge es bitte separat in deinen Warenkorb.",de_DE
 product-cart.validation.error.product-option-value-price-exists,"Product option price not found for product '%sku%'.",en_US
 product-cart.validation.error.product-option-value-price-exists,"Produktoptionspreis nicht gefunden für Produkt '%sku%'.",de_DE
-product-cart.validation.error.concrete-product-inactive,"Product %sku% is not active.",en_US
-product-cart.validation.error.concrete-product-inactive,"Produkt %sku% ist nicht aktiv.",de_DE
+product-cart.validation.error.concrete-product-inactive,"Product ""sku"" is not active.",en_US
+product-cart.validation.error.concrete-product-inactive,"Produkt ""sku"" ist nicht aktiv.",de_DE
 product-cart.info.concrete-product-inactive.removed,"Inactive item %sku% was removed from your shopping cart.",en_US
 product-cart.info.concrete-product-inactive.removed,"Der inaktive Artikel %sku% wurde aus deinem Warenkorb entfernt.",de_DE
 reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US

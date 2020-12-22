@@ -4,14 +4,10 @@
            xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
 
     <transfer name="AdyenApiCaptureRequest">
-        <property name="additionalData" type="array"/>
-        <property name="merchantAccount" type="string"/>
-        <property name="modificationAmount" type="AdyenApiAmount"/>
-        <property name="originalMerchantReference" type="string"/>
-        <property name="originalReference" type="string"/>
-        <property name="reference" type="string"/>
-        <property name="tenderReference" type="string"/>
-        <property name="uniqueTerminalId" type="string"/>
+        <property name="splits" type="AdyenApiSplit[]" singular="split"/>
+    </transfer>
+
+    <transfer name="AdyenApiMakePaymentRequest">
         <property name="splits" type="AdyenApiSplit[]" singular="split"/>
     </transfer>
 

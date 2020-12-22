@@ -44,6 +44,7 @@ use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
+use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
@@ -535,3 +536,5 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 20;
 // ----------------------------------------------------------------------------
 
 $config[GoogleAnalyticConstants::WEB_PROPERTY_ID] = getenv('WEB_PROPERTY_ID') ?: 'no-web-property-id';
+$config[SalesConstants::ENVIRONMENT_PREFIX] = 'MW';
+$config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = 'MW';
