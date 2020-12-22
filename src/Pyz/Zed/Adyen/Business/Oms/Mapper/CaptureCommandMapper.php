@@ -13,13 +13,12 @@ use Generated\Shared\Transfer\AdyenApiCaptureRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiSplitTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\PaymentAdyenTransfer;
+use Pyz\Shared\Adyen\AdyenConfig;
 use SprykerEco\Zed\Adyen\Business\Oms\Mapper\CaptureCommandMapper as SprykerEcoCaptureCommandMapper;
 
 class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
 {
-    protected const SPLIT_TYPE_MARKETPLACE = 'MarketPlace';
-    protected const SPLIT_TYPE_COMMISSION = 'Commission';
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
@@ -37,19 +36,22 @@ class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
                 ->setOriginalReference($paymentAdyen->getPspReference())
                 ->setOriginalMerchantReference($paymentAdyen->getReference())
                 ->setModificationAmount($adyenApiAmountTransfer)
-                ->setSplits($this->createAdyenApiSplits($adyenApiAmountTransfer))
+                ->setSplits($this->createAdyenApiSplits($paymentAdyen, $adyenApiAmountTransfer))
         );
 
         return $request;
     }
 
     /**
+     * @param \Generated\Shared\Transfer\PaymentAdyenTransfer $paymentAdyenTransfer
      * @param \Generated\Shared\Transfer\AdyenApiAmountTransfer $adyenApiAmountTransfer
      *
      * @return \ArrayObject
      */
-    protected function createAdyenApiSplits(AdyenApiAmountTransfer $adyenApiAmountTransfer): ArrayObject
-    {
+    protected function createAdyenApiSplits(
+        PaymentAdyenTransfer $paymentAdyenTransfer,
+        AdyenApiAmountTransfer $adyenApiAmountTransfer
+    ): ArrayObject {
         $commissionAmount = (int)round($adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest());
         $marketplaceAmount = (int)$adyenApiAmountTransfer->getValue() - $commissionAmount;
 
@@ -57,36 +59,20 @@ class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
             ->setAmount(
                 (new AdyenApiAmountTransfer())->setValue($marketplaceAmount)
             )
-            ->setType(static::SPLIT_TYPE_MARKETPLACE)
+            ->setType(AdyenConfig::SPLIT_TYPE_MARKETPLACE)
             ->setAccount($this->config->getSplitAccount())
-            ->setReference($this->generateReference(static::SPLIT_TYPE_MARKETPLACE));
+            ->setReference($paymentAdyenTransfer->getSplitMarketplaceReference());
 
         $commissionSplitTransfer = (new AdyenApiSplitTransfer())
             ->setAmount(
                 (new AdyenApiAmountTransfer())->setValue($commissionAmount)
             )
-            ->setType(static::SPLIT_TYPE_COMMISSION)
-            ->setReference($this->generateReference(static::SPLIT_TYPE_COMMISSION));
+            ->setType(AdyenConfig::SPLIT_TYPE_COMMISSION)
+            ->setReference($paymentAdyenTransfer->getSplitCommissionReference());
 
         return new ArrayObject([
             $marketplaceSplitTransfer,
             $commissionSplitTransfer,
         ]);
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
-    protected function generateReference(string $type): string
-    {
-        $params = [
-            $type,
-            time(),
-            rand(100, 1000),
-        ];
-
-        return substr(hash('sha256', implode('-', $params)), 0, 32);
     }
 }
