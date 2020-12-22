@@ -74,7 +74,14 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, ?AuthenticationException $authException = null)
     {
-        return $this->httpUtils->createRedirectResponse($request, $this->ssoClient->getAuthorizeUrl($this->locale, $this->locale));
+        $referer = explode('_', $this->locale);
+        $referer = $referer[0];
+
+        if ($request->headers->has('referer')) {
+            $referer = $request->headers->get('referer');
+        }
+
+        return $this->httpUtils->createRedirectResponse($request, $this->ssoClient->getAuthorizeUrl($this->locale, $referer));
     }
 
     /**
@@ -193,12 +200,6 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
 
         if ($referer) {
             $referer = trim(base64_decode(strtr($referer, '._-', '+/=')));
-
-            // @todo fix this with locale service
-            if (in_array($referer, ['de_DE', 'en_US'])) {
-                $referer = explode('_', $referer);
-                $referer = $referer[0];
-            }
 
             $request->headers->set('Referer', $referer);
         }
