@@ -94,7 +94,9 @@
             {% endif %}
         </div>
 
-        {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
+        <div class="spacing-y spacing-y--biggest">
+            {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
+        </div>
 
         <div class="container__inner">
             {% embed molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {

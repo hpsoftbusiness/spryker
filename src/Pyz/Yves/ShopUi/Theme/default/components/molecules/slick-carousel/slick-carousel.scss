@@ -1,5 +1,10 @@
 @mixin shop-ui-slick-carousel($name: '.slick-carousel') {
     #{$name} {
+        .slick-list {
+            padding: 30px;
+            margin: -30px;
+        }
+
         &--align-left {
             .slick-track {
                 margin-left: 0;
@@ -181,6 +186,7 @@
                 height: auto !important;
                 padding: rem(10) 0 rem(20);
                 margin-top: rem(-10);
+                overflow: auto;
             }
 
             .slick-track {

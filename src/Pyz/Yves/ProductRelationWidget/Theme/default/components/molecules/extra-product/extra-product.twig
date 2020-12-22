@@ -17,12 +17,13 @@
     } only %}
 
     {% embed molecule('slick-carousel') with {
+        modifiers: ['align-left'],
         data: {
             slides: data.products
         },
         attributes: {
             'data-json': '{
-                "slidesToShow": 4,
+                "slidesToShow": 5,
                 "dots": false,
                 "responsive": [{
                     "breakpoint": 820,
