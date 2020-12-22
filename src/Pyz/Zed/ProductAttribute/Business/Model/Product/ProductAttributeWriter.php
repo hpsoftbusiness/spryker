@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\ProductAttribute\Business\Model\Product;
 
-use ArrayObject;
 use Generated\Shared\Transfer\ProductAttributeKeyTransfer;
 use Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter as SprykerProductAttributeWriter;
 

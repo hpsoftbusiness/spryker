@@ -45,7 +45,7 @@ $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mp.vendormgmt
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
 
 $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
-    'mp.vendormgmt@myworld.com' => 'Warehouse Manager'
+    'mp.vendormgmt@myworld.com' => 'Warehouse Manager',
 ];
 
 // ----------------------------------------------------------------------------
