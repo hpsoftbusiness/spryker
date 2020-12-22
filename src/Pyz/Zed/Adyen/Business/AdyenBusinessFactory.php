@@ -60,7 +60,7 @@ class AdyenBusinessFactory extends SprykerEcoAdyenBusinessFactory
      */
     public function createPyzRefundCommandMapper(): RefundCommandMapperInterface
     {
-        return  new RefundCommandMapper(
+        return new RefundCommandMapper(
             $this->createReader(),
             $this->getConfig()
         );

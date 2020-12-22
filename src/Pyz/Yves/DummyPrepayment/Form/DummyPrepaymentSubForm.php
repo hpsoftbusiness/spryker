@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\DummyPrepayment\Form;
@@ -16,7 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DummyPrepaymentSubForm extends AbstractSubFormType implements SubFormInterface, SubFormProviderNameInterface
 {
-
     /**
      * @return string
      */
@@ -46,7 +45,7 @@ class DummyPrepaymentSubForm extends AbstractSubFormType implements SubFormInter
      */
     public function getTemplatePath(): string
     {
-        return DummyPrepaymentConfig::PROVIDER_NAME. DIRECTORY_SEPARATOR . 'prepayment';
+        return DummyPrepaymentConfig::PROVIDER_NAME . DIRECTORY_SEPARATOR . 'prepayment';
     }
 
     /**
