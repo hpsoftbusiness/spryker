@@ -4,7 +4,6 @@
             background-color: $setting-color-black;
             display: flex;
             align-items: stretch;
-            padding: 0 rem(16);
         }
 
         &__item {
@@ -23,9 +22,13 @@
                 @include helper-effect-transition(background-color);
                 display: flex;
                 align-items: center;
-                padding-left: rem(25);
-                padding-right: rem(25);
+                padding: rem(8) rem(25);
                 min-height: 100%;
+                height: rem(34);
+
+                #{$name}__item:first-child & {
+                    padding-left: rem(30);
+                }
             }
 
             &:hover,
@@ -57,6 +60,8 @@
                 background-color: $setting-color-transparent;
                 cursor: pointer;
                 height: 100%;
+                display: flex;
+                align-items: center;
             }
 
             &:hover,
