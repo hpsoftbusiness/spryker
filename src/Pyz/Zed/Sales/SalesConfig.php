@@ -9,6 +9,7 @@ namespace Pyz\Zed\Sales;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Sales\SalesConfig as SprykerSalesConfig;
 
 class SalesConfig extends SprykerSalesConfig
@@ -25,10 +26,14 @@ class SalesConfig extends SprykerSalesConfig
     public function getOrderReferenceDefaults()
     {
         $sequenceNumberSettingsTransfer = parent::getOrderReferenceDefaults();
-        $prefix = $sequenceNumberSettingsTransfer->getPrefix() . static::ORDER_REFERENCE_PREFIX_NUMBER;
-        $sequenceNumberSettingsTransfer->setPrefix($prefix);
 
-        return $sequenceNumberSettingsTransfer;
+        $sequenceNumberPrefixParts = [];
+        $sequenceNumberPrefixParts[] = $this->get(SalesConstants::ENVIRONMENT_PREFIX, '');
+        $sequenceNumberPrefixParts[] = static::ORDER_REFERENCE_PREFIX_NUMBER;
+
+        $prefix = implode($this->getUniqueIdentifierSeparator(), $sequenceNumberPrefixParts);
+
+        return $sequenceNumberSettingsTransfer->setPrefix($prefix);
     }
 
     /**
