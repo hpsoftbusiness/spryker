@@ -193,6 +193,13 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
 
         if ($referer) {
             $referer = trim(base64_decode(strtr($referer, '._-', '+/=')));
+
+            // @todo fix this with locale service
+            if (in_array($referer, ['de_DE', 'en_US'])) {
+                $referer = explode('_', $referer);
+                $referer = $referer[0];
+            }
+
             $request->headers->set('Referer', $referer);
         }
     }
