@@ -52,7 +52,7 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
      */
     public function createCustomerAuthenticationSuccessHandler()
     {
-        return new CustomerAuthenticationSuccessHandler();
+        return new CustomerAuthenticationSuccessHandler($this->getFlashMessenger());
     }
 
     /**
