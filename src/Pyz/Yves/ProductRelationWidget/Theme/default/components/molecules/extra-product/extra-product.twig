@@ -7,6 +7,36 @@
 {% define data = {
     title: required,
     products: required,
+    sliderConfig: '{
+        "slidesToShow": 5,
+        "dots": false,
+        "responsive": [
+            {
+                "breakpoint": 1200,
+                "settings": {
+                    "slidesToShow": 4
+                }
+            },
+            {
+                "breakpoint": 960,
+                "settings": {
+                    "slidesToShow": 3
+                }
+            },
+            {
+                "breakpoint": 700,
+                "settings": {
+                    "slidesToShow": 2
+                }
+            },
+            {
+                "breakpoint": 450,
+                "settings": {
+                    "slidesToShow": 1
+                }
+            }
+        ]
+    }',
 } %}
 
 {% block body %}
@@ -17,27 +47,13 @@
     } only %}
 
     {% embed molecule('slick-carousel') with {
+        modifiers: ['align-left', 'products'],
         data: {
             slides: data.products
         },
         attributes: {
-            'data-json': '{
-                "slidesToShow": 4,
-                "dots": false,
-                "responsive": [{
-                    "breakpoint": 820,
-                    "settings": {
-                        "slidesToShow": 3
-                    }
-                },
-                {
-                    "breakpoint": 570,
-                    "settings": {
-                        "slidesToShow": 2
-                    }
-                }
-            ]}'
-        }
+            'data-json': data.sliderConfig,
+        },
     } only %}
         {% block slides %}
             {% for slide in data.slides %}

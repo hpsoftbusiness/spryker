@@ -9,6 +9,10 @@
         }
     }
 
+    &__mode {
+        font-weight: fw(regular);
+    }
+
     &--align-right {
         @include helper-breakpoint-media-min($md-min) {
             text-align: right;
