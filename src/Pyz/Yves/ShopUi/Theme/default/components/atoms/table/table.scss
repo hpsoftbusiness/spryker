@@ -71,6 +71,10 @@
         td:first-child {
             width: 5%;
         }
+
+        td:last-child {
+            min-width: rem(230);
+        }
     }
 
     &--responsive {
