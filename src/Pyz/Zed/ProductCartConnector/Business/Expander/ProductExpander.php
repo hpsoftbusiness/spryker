@@ -64,7 +64,7 @@ class ProductExpander extends SprykerProductExpander
     protected function filterSellableAttributes(array $localizedAttributes): array
     {
         foreach ($localizedAttributes as $localizedAttributeKey => $localizedAttributeValue) {
-            if (strpos($localizedAttributeKey, static::KEY_SELLABLE_ATTRIBUTE) !== false && !boolval($localizedAttributeValue)) {
+            if (strpos($localizedAttributeKey, static::KEY_SELLABLE_ATTRIBUTE) !== false && !(bool)$localizedAttributeValue) {
                 unset($localizedAttributes[$localizedAttributeKey]);
             }
         }

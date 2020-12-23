@@ -5,6 +5,7 @@
 
     <transfer name="Payment">
         <property name="paymentMethodName" type="string"/>
+        <property name="additionalInformation" type="string"/>
     </transfer>
 
 </transfers>

@@ -180,16 +180,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesTablePluginInterface[]
-     */
-    protected function getSalesTablePlugins()
-    {
-        return [
-            new ReclamationSalesTablePlugin(),
-        ];
-    }
-
-    /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\UniqueOrderItemsExpanderPluginInterface[]
      */
     protected function getUniqueOrderItemsExpanderPlugins(): array

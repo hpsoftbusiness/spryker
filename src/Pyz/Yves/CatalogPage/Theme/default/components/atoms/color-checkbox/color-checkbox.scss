@@ -34,7 +34,8 @@
             box-shadow: 0 rem(2) rem(10) 0 $setting-color-alpha-2;
 
             &.White,
-            &.Weiß {
+            &.Weiß,
+            &.Weiss {
                 background-color: $filter-color-white;
             }
 
@@ -49,6 +50,7 @@
                 background-color: $filter-color-gray;
             }
 
+            &.Silberfarben,
             &.Silver,
             &.Silber {
                 background-color: $filter-color-silver;
@@ -109,6 +111,12 @@
             &.Brown,
             &.Braun {
                 background-color: $filter-color-brown;
+            }
+
+            &.Multicolor,
+            &.Multicolored,
+            &.Mehrfarbig {
+                background: linear-gradient(to right bottom, $filter-color-red 25%, $filter-color-green 50%, $filter-color-blue 75%);
             }
         }
 

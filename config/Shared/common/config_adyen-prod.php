@@ -95,4 +95,3 @@ $config[AdyenApiConstants::ADJUST_AUTHORIZATION_ACTION_URL] = sprintf(
     $adyenCredentials['PAYMENT_API_DOMAIN'],
     $adyenCredentials['PAYMENT_API_VERSION']
 );
-
