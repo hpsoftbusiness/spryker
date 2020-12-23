@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi;
 
-use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
+use Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -18,10 +18,11 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
     public const FACADE_CUSTOMER = 'FACADE_CUSTOMER';
     public const FACADE_SALES = 'FACADE_SALES';
     public const FACADE_CALCULATION = 'FACADE_CALCULATION';
+    public const FACADE_REFUND = 'FACADE_REFUND';
 
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
-    public const PROPEL_QUERY_SALES_ORDER = 'PROPEL_QUERY_SALES_ORDER';
+    public const PROPEL_QUERY_SALES_ORDER_ITEM = 'PROPEL_QUERY_SALES_ORDER_ITEM';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -48,6 +49,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addSalesFacade($container);
         $container = $this->addCalculationFacade($container);
+        $container = $this->addRefundFacade($container);
 
         return $container;
     }
@@ -60,7 +62,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
-        $container = $this->addSalesOrderPropelQuery($container);
+        $container = $this->addSalesOrderItemPropelQuery($container);
 
         return $container;
     }
@@ -140,11 +142,25 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addSalesOrderPropelQuery(Container $container): Container
+    protected function addSalesOrderItemPropelQuery(Container $container): Container
     {
-        $container->set(static::PROPEL_QUERY_SALES_ORDER, $container->factory(function () {
-            return SpySalesOrderQuery::create();
+        $container->set(static::PROPEL_QUERY_SALES_ORDER_ITEM, $container->factory(function () {
+            return SpySalesOrderItemQuery::create();
         }));
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addRefundFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_REFUND, function (Container $container) {
+            return $container->getLocator()->refund()->facade();
+        });
 
         return $container;
     }

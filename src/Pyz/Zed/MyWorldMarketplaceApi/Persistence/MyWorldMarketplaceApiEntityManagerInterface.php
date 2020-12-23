@@ -10,18 +10,18 @@ namespace Pyz\Zed\MyWorldMarketplaceApi\Persistence;
 interface MyWorldMarketplaceApiEntityManagerInterface
 {
     /**
-     * @param string $orderReference
+     * @param int[] $orderItemIds
      * @param bool $isTurnoverCreated
      *
      * @return void
      */
-    public function setIsTurnoverCreated(string $orderReference, bool $isTurnoverCreated = true): void;
+    public function setIsTurnoverCreated(array $orderItemIds, bool $isTurnoverCreated = true): void;
 
     /**
-     * @param string $orderReference
+     * @param int[] $orderItemIds
      * @param bool $isTurnoverCancelled
      *
      * @return void
      */
-    public function setIsTurnoverCancelled(string $orderReference, bool $isTurnoverCancelled = true): void;
+    public function setIsTurnoverCancelled(array $orderItemIds, bool $isTurnoverCancelled = true): void;
 }

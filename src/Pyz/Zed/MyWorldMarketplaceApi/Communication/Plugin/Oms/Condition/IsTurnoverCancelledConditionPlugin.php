@@ -25,6 +25,6 @@ class IsTurnoverCancelledConditionPlugin extends AbstractPlugin implements Condi
      */
     public function check(SpySalesOrderItem $orderItem): bool
     {
-        return $orderItem->getOrder()->getIsTurnoverCancelled();
+        return $orderItem->getIsTurnoverCancelled();
     }
 }

@@ -23,7 +23,7 @@
         {{ form_errors(shipmentSelection) }}
 
         <h4 class="title title--secondary-small">{{ 'page.checkout.shipment.shipping_method_heading' | trans }}</h4>
-        <div class="spacing-bottom">
+        <div class="spacing-bottom spacing-bottom--big">
             {{ 'shipment.lead.time' | trans }}
         </div>
         {% for name, choices in shipmentSelection.vars.choices %}

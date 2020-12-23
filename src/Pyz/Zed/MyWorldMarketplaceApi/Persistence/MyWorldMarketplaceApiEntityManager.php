@@ -15,40 +15,36 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 class MyWorldMarketplaceApiEntityManager extends AbstractEntityManager implements MyWorldMarketplaceApiEntityManagerInterface
 {
     /**
-     * @param string $orderReference
+     * @param int[] $orderItemIds
      * @param bool $isTurnoverCreated
      *
      * @return void
      */
-    public function setIsTurnoverCreated(string $orderReference, bool $isTurnoverCreated = true): void
+    public function setIsTurnoverCreated(array $orderItemIds, bool $isTurnoverCreated = true): void
     {
-        $salesOrderQuery = $this->getFactory()->getSalesOrderPropelQuery();
-        $salesOrderEntity = $salesOrderQuery->filterByOrderReference($orderReference)->findOne();
+        $salesOrderItemQuery = $this->getFactory()->getSalesOrderItemPropelQuery();
+        $salesOrderItemEntities = $salesOrderItemQuery->filterByIdSalesOrderItem_In($orderItemIds)->find();
 
-        if (!$salesOrderEntity) {
-            return;
+        foreach ($salesOrderItemEntities as $salesOrderItemEntity) {
+            $salesOrderItemEntity->setIsTurnoverCreated($isTurnoverCreated);
+            $salesOrderItemEntity->save();
         }
-
-        $salesOrderEntity->setIsTurnoverCreated($isTurnoverCreated);
-        $salesOrderEntity->save();
     }
 
     /**
-     * @param string $orderReference
+     * @param int[] $orderItemIds
      * @param bool $isTurnoverCancelled
      *
      * @return void
      */
-    public function setIsTurnoverCancelled(string $orderReference, bool $isTurnoverCancelled = true): void
+    public function setIsTurnoverCancelled(array $orderItemIds, bool $isTurnoverCancelled = true): void
     {
-        $salesOrderQuery = $this->getFactory()->getSalesOrderPropelQuery();
-        $salesOrderEntity = $salesOrderQuery->filterByOrderReference($orderReference)->findOne();
+        $salesOrderItemQuery = $this->getFactory()->getSalesOrderItemPropelQuery();
+        $salesOrderItemEntities = $salesOrderItemQuery->filterByIdSalesOrderItem_In($orderItemIds)->find();
 
-        if (!$salesOrderEntity) {
-            return;
+        foreach ($salesOrderItemEntities as $salesOrderItemEntity) {
+            $salesOrderItemEntity->setIsTurnoverCancelled($isTurnoverCancelled);
+            $salesOrderItemEntity->save();
         }
-
-        $salesOrderEntity->setIsTurnoverCancelled($isTurnoverCancelled);
-        $salesOrderEntity->save();
     }
 }

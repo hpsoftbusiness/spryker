@@ -8,16 +8,14 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
 use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\RefundTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
 use Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 
-class CancelTurnoverRequest implements TurnoverRequestInterface
+class CancelTurnoverRequest implements CancelTurnoverRequestInterface
 {
-    protected const SEGMENT_NUMBER = 1;
-    protected const DATE_FORMAT = 'yyyy-MM-ddTHH:mm:ssZ';
-
     /**
      * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
      */
@@ -57,22 +55,24 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
     }
 
     /**
+     * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
      *
-     * @return void
+     * @return mixed
      */
-    public function request(OrderTransfer $orderTransfer): void
+    public function request(array $orderItemIds, OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): void
     {
         $myWorldMarketplaceApiResponseTransfer = $this->myWorldMarketplaceApiClient->performApiRequest(
             $this->buildRequestUrl($orderTransfer),
-            $this->getRequestParams($orderTransfer)
+            $this->getRequestParams($orderTransfer, $refundTransfer)
         );
 
         if (!$myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
             return;
         }
 
-        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCancelled($orderTransfer->getOrderReference());
+        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCancelled($orderItemIds);
     }
 
     /**
@@ -109,16 +109,17 @@ class CancelTurnoverRequest implements TurnoverRequestInterface
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
      *
      * @return array
      */
-    protected function getRequestParams(OrderTransfer $orderTransfer): array
+    protected function getRequestParams(OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): array
     {
         $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
         $accessTokenTransfer->requireAccessToken();
 
         $requestBody = $this->utilEncodingService->encodeJson([
-            'Amount' => (string)bcdiv($orderTransfer->getTotals()->getCanceledTotal(), 100, 2),
+            'Amount' => (string)bcdiv($refundTransfer->getAmount(), 100, 2),
             'Currency' => $orderTransfer->getCurrencyIsoCode(),
         ]);
 

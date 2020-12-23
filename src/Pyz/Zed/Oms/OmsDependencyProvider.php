@@ -7,11 +7,12 @@
 
 namespace Pyz\Zed\Oms;
 
-use Pyz\Zed\Adyen\Communication\Plugin\Oms\Command\AdyenRefundCalculationCommandByOrderPlugin;
+use Pyz\Zed\Adyen\Communication\Plugin\Oms\Command\AdyenRefundCommandByOrderPlugin;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CancelTurnoverCommandByOrderPlugin;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CreateTurnoverCommandByOrderPlugin;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCancelledConditionPlugin;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCreatedConditionPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\RefundCalculationCommandByOrderPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendShippingConfirmationPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Is1HourNotPassedConditionPlugin;
@@ -37,7 +38,6 @@ use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\AuthorizePlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CancelOrRefundPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CancelPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\CapturePlugin;
-use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Command\RefundPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsAuthorizationFailedPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsAuthorizedPlugin;
 use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsCanceledPlugin;
@@ -54,6 +54,7 @@ use SprykerEco\Zed\Adyen\Communication\Plugin\Oms\Condition\IsRefusedPlugin;
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
     public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
+    public const FACADE_REFUND = 'FACADE_REFUND';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -78,6 +79,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         $container = parent::provideCommunicationLayerDependencies($container);
         $container = $this->addTranslatorFacade($container);
+        $container = $this->addRefundFacade($container);
 
         return $container;
     }
@@ -128,9 +130,9 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new AuthorizePlugin(), 'Adyen/Authorize');
             $commandCollection->add(new CancelPlugin(), 'Adyen/Cancel');
             $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
-            $commandCollection->add(new RefundPlugin(), 'Adyen/Refund');
+            $commandCollection->add(new AdyenRefundCommandByOrderPlugin(), 'Adyen/Refund');
             $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
-            $commandCollection->add(new AdyenRefundCalculationCommandByOrderPlugin(), 'Adyen/RefundCalculation');
+            $commandCollection->add(new RefundCalculationCommandByOrderPlugin(), 'Oms/RefundCalculation');
 
             // ----- Turnover
             $commandCollection->add(new CreateTurnoverCommandByOrderPlugin(), 'MyWorld/CreateTurnover');
@@ -214,5 +216,19 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return [
             new ShipmentManualEventGrouperPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addRefundFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_REFUND, function (Container $container) {
+            return $container->getLocator()->refund()->facade();
+        });
+
+        return $container;
     }
 }

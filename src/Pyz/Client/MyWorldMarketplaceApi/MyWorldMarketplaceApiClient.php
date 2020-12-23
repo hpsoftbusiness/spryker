@@ -8,6 +8,7 @@
 namespace Pyz\Client\MyWorldMarketplaceApi;
 
 use Generated\Shared\Transfer\AccessTokenTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\MyWorldMarketplaceApiResponseTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 
@@ -34,5 +35,15 @@ class MyWorldMarketplaceApiClient extends AbstractClient implements MyWorldMarke
     public function performApiRequest(string $url, array $requestParams = [], string $requestMethod = 'POST'): MyWorldMarketplaceApiResponseTransfer
     {
         return $this->getFactory()->createRequest()->request($url, $requestParams, $requestMethod);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    public function getCustomerInformationByCustomerNumberOrId(CustomerTransfer $customerTransfer): CustomerTransfer
+    {
+        return $this->getFactory()->createCustomerInformationByCustomerNumber()->getCustomerInformationByCustomerNumber($customerTransfer);
     }
 }

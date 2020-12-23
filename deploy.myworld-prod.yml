@@ -107,7 +107,6 @@ groups:
         endpoints:
           www.marketplace.myworld.com:
             store: DE
-            <<: *frontend-auth
       Zed:
         application: zed
         endpoints:

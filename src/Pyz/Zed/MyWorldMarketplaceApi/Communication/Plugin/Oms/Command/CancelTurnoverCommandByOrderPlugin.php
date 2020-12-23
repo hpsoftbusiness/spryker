@@ -40,12 +40,26 @@ class CancelTurnoverCommandByOrderPlugin extends AbstractPlugin implements Comma
             return [];
         }
 
-        $orderTransfer = $this->getFactory()
-            ->getCalculationFacade()
-            ->recalculateOrder($orderTransfer);
+        $orderTransfer = $this->getFactory()->getCalculationFacade()->recalculateOrder($orderTransfer);
+        $refundTransfer = $this->getFactory()->getRefundFacade()->calculateRefund($orderItems, $orderEntity);
 
-        $this->getFacade()->cancelTurnover($orderTransfer);
+        $this->getFacade()->cancelTurnover($this->getOrderItemIds($orderItems), $orderTransfer, $refundTransfer);
 
         return [];
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
+     *
+     * @return int[]
+     */
+    protected function getOrderItemIds(array $orderItems): array
+    {
+        $orderItemIds = [];
+        foreach ($orderItems as $orderItem) {
+            $orderItemIds[] = $orderItem->getIdSalesOrderItem();
+        }
+
+        return $orderItemIds;
     }
 }

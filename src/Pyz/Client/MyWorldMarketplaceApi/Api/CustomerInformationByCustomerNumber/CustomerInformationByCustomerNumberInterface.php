@@ -7,15 +7,14 @@
 
 namespace Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber;
 
-use Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer;
-use Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
 
 interface CustomerInformationByCustomerNumberInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \Generated\Shared\Transfer\CustomerInformationByCustomerNumberResponseTransfer
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function getCustomerInformationByCustomerNumber(CustomerInformationByCustomerNumberRequestTransfer $customerInformationByCustomerNumberRequestTransfer): CustomerInformationByCustomerNumberResponseTransfer;
+    public function getCustomerInformationByCustomerNumber(CustomerTransfer $customerTransfer): CustomerTransfer;
 }

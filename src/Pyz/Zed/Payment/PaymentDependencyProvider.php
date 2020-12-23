@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Payment;
 
+use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
+use Pyz\Zed\Payment\Communication\Plugin\Payment\AdditionalDescriptionPaymentHydratorPlugin;
 use Spryker\Shared\Nopayment\NopaymentConfig as SprykerNopaymentConfig;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardOrderSaverPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardPaymentMethodFilterPlugin;
@@ -16,6 +18,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentPreCheckPlugin;
 use Spryker\Zed\Nopayment\Communication\Plugin\Payment\PriceToPayPaymentMethodFilterPlugin;
 use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPluginCollectionInterface;
+use Spryker\Zed\Payment\Dependency\Plugin\Sales\PaymentHydratorPluginCollection;
 use Spryker\Zed\Payment\PaymentDependencyProvider as SprykerPaymentDependencyProvider;
 
 class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
@@ -42,6 +45,15 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
             new PriceToPayPaymentMethodFilterPlugin(),
             new GiftCardPaymentMethodFilterPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\Payment\Dependency\Plugin\Sales\PaymentHydratorPluginCollectionInterface
+     */
+    public function getPaymentHydrationPlugins()
+    {
+        return (new PaymentHydratorPluginCollection())
+            ->add(new AdditionalDescriptionPaymentHydratorPlugin(), DummyPrepaymentConfig::DUMMY_PREPAYMENT);
     }
 
     /**

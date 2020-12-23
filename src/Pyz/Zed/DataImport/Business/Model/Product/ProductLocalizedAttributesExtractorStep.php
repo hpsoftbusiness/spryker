@@ -60,7 +60,10 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 
             foreach ($this->getMandatoryAttributes() as $attrKey => $dataSetDefaultValueKey) {
                 if (!isset($attributes[$attrKey]) && $dataSet[$dataSetDefaultValueKey] !== "" && !$this->isAfiliateProduct($dataSet)) {
-                    $attributes[$attrKey] = $dataSet[$dataSetDefaultValueKey];
+                    $attributes[$attrKey] = $this->getMandatoryAttributeValue(
+                        $attrKey,
+                        $dataSet[$dataSetDefaultValueKey]
+                    );
                 }
             }
 
@@ -102,6 +105,47 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
             'color' => 'product.value_05',
             'size' => 'product.value_06',
         ];
+    }
+
+    /**
+     * @param string $mandatoryAttributeKey
+     * @param string $initialMandatoryAttributeValue
+     *
+     * @return string
+     */
+    protected function getMandatoryAttributeValue(
+        string $mandatoryAttributeKey,
+        string $initialMandatoryAttributeValue
+    ): string {
+        $prepareAttributeValueFunction = $this->findPrepareMandatoryAttributeValueFunction($mandatoryAttributeKey);
+
+        if (!$prepareAttributeValueFunction) {
+            return $initialMandatoryAttributeValue;
+        }
+
+        return $prepareAttributeValueFunction($initialMandatoryAttributeValue);
+    }
+
+    /**
+     * @param string $attributeKey
+     *
+     * @return callable|null
+     */
+    protected function findPrepareMandatoryAttributeValueFunction(string $attributeKey): ?callable
+    {
+        $attributePreparationFunctions = [
+            'color' => function ($attributeValue): string {
+                $attributeValue = trim($attributeValue);
+                $firstLetterUppercased = mb_strtoupper(mb_substr($attributeValue, 0, 1));
+
+                return $firstLetterUppercased . mb_substr($attributeValue, 1);
+            },
+            'size' => function ($attributeValue): string {
+                return mb_strtoupper(trim($attributeValue));
+            },
+        ];
+
+        return $attributePreparationFunctions[$attributeKey] ?? null;
     }
 
     /**

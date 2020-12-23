@@ -12,9 +12,10 @@ use Generated\Shared\Transfer\OrderTransfer;
 interface TurnoverRequestInterface
 {
     /**
+     * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return mixed
      */
-    public function request(OrderTransfer $orderTransfer): void;
+    public function request(array $orderItemIds, OrderTransfer $orderTransfer): void;
 }
