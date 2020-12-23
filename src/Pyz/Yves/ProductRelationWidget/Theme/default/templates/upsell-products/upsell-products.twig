@@ -6,12 +6,14 @@
 
 {% block body %}
     {% if data.products is not empty %}
-        {% include molecule('extra-product', 'ProductRelationWidget') with {
-            data: {
-                title: 'page.product.upsell-products' | trans,
-                products: data.products
-            }
-        } only %}
+        <div class="spacing-y spacing-y--biggest">
+            {% include molecule('extra-product', 'ProductRelationWidget') with {
+                data: {
+                    title: 'page.product.upsell-products' | trans,
+                    products: data.products
+                }
+            } only %}
+        </div>
     {% endif %}
 {% endblock %}
 
