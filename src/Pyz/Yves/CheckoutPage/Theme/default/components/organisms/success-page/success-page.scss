@@ -6,7 +6,7 @@
         border: 1px solid $setting-color-alpha-2;
         display: flex;
 
-        &__image {
+        &__image-wrapper {
             margin-left: rem(-40);
             margin-right: rem(20);
             top: rem(60);
@@ -19,15 +19,19 @@
             @include helper-breakpoint-media-min($md-min) {
                 display: block;
             }
+        }
 
-            img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: rem(12);
-                box-shadow: 0 rem(18) rem(36) 0 $setting-color-alpha-2;
-            }
+        &__image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: rem(12);
+            box-shadow: 0 rem(18) rem(36) 0 $setting-color-alpha-2;
+        }
+
+        &__subtitle {
+            margin-bottom: rem(40);
         }
 
         &__content {

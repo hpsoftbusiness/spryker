@@ -11,24 +11,11 @@
   
 {% block container %}
     <div class="page-layout-order-submitted">
-        <main class="success-page">
-            <div class="success-page__image">
-                <img src="{{ publicPath('images/success-page-image.png') }}" alt="">
-            </div>
-            <div class="success-page__content">
-                <h1 class="title title--checkout-success title--medium">{{data.title}}</h1>
-                <p class="success-page__text">{{data.message}}</p>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                  <a class="link link--darkest link--without-underline" href="{{ url('customer/overview') }}">{{ 'checkout.step.success.link' | trans }}
-                      {% include atom('icon') with {
-                          modifiers: ['small', 'checkout-success'],
-                          data: {
-                              name: 'chevron-right'
-                          }
-                      } only %}
-                  </a>
-                {% endif %}
-            </div>
-        </main>
+        {% include organism('success-page', 'CheckoutPage') with {
+            data: {
+                title: data.title,
+                message: data.message,
+            },
+        } only %}
     </div>
 {% endblock %}

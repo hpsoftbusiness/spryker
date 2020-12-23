@@ -1,241 +1,237 @@
 @mixin shop-ui-title($name: '.title') {
-    #{$name} {
-        line-height: 1.2;
-        letter-spacing: normal;
+  #{$name} {
+    line-height: 1.2;
+    letter-spacing: normal;
 
-        @each $i in (1, 2, 3, 4, 5, 6) {
-            &--h#{$i} {
-                @include helper-heading($i);
-            }
-        }
-
-        &--h4 {
-            font-family: $setting-font-family;
-        }
-
-        &--main {
-            padding: rem(20) 0;
-            text-align: center;
-            margin-bottom: rem(40);
-        }
-
-        &--checkout {
-            width: 100%;
-            margin-bottom: rem(32);
-            padding-bottom: rem(10);
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-
-            @include helper-breakpoint-media-min($md-min) {
-                margin-bottom: rem(58);
-            }
-
-            &:not(:first-of-type) {
-                margin-top: rem(42);
-            }
-        }
-
-        &--shipment {
-            margin: 0 rem(10) 0 0;
-            border: none;
-            padding: 0;
-        }
-
-        &--primary {
-            width: 100%;
-            margin-bottom: rem(20);
-            padding-bottom: rem(10);
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-            font-size: rem(32);
-
-            @include helper-breakpoint-media-min($lg-min) {
-                font-size: rem(34);
-            }
-        }
-
-        &--secondary {
-            font: fw(bold) rem(25)/rem(30) $setting-font-family;
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-            padding-bottom: rem(7);
-            margin-bottom: rem(20);
-
-            @include helper-breakpoint-media-min($lg-min) {
-                padding-bottom: rem(15);
-                font: fw(medium) rem(28)/rem(34);
-            }
-        }
-
-        &--secondary-box {
-            font: fw(bold) rem(25)/rem(30) $setting-font-family;
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-            padding-bottom: rem(8);
-            margin-bottom: rem(16);
-
-            @include helper-breakpoint-media-min($lg-min) {
-                font: fw(medium) rem(21)/rem(25);
-                border: none;
-                padding: 0;
-            }
-        }
-
-        &--secondary-small {
-            font: fw(bold) rem(15)/rem(17) $setting-font-family;
-            margin-bottom: rem(13);
-        }
-
-        &--account-main {
-            text-transform: capitalize;
-            margin: 0 rem(16) rem(15);
-
-            @include helper-breakpoint-media-min($lg-min) {
-                margin-bottom: rem(50);
-            }
-        }
-
-        &--product-set-main {
-            position: relative;
-            margin-bottom: rem(24);
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 0;
-                right: 0;
-                height: rem(1);
-                background-color: $setting-color-black;
-            }
-        }
-
-        &--product-set-secondary {
-            position: relative;
-            display: inline-block;
-            background-color: $setting-color-white;
-            padding-right: rem(50);
-        }
-
-        &--review-summary {
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-            padding-bottom: rem(6);
-            margin-bottom: rem(29);
-
-            @include helper-breakpoint-media-min($md-min) {
-                padding-bottom: rem(10);
-                margin-bottom: rem(50);
-            }
-        }
-
-        &--footer {
-            padding: 0 0 rem(16);
-        }
-
-        &--product {
-            margin-bottom: rem(12);
-
-            @include helper-breakpoint-media-min($xl-min) {
-                margin-bottom: rem(7);
-            }
-        }
-
-        &--checkout-success {
-            padding: rem(25) 0;
-            margin-bottom: rem(40);
-
-            @include helper-breakpoint-media-min($md-min) {
-                margin-bottom: rem(48);
-            }
-        }
-
-        &--promotion {
-            padding: rem(18) 0;
-            margin-bottom: rem(36);
-        }
-
-        &--mini-cart {
-            padding-bottom: rem(10);
-        }
-
-        &--form {
-            width: 100%;
-            margin-bottom: rem(32);
-            padding-bottom: rem(10);
-
-            @include helper-breakpoint-media-min($md-min) {
-                margin-bottom: rem(58);
-            }
-        }
-
-        &--catalog-cms {
-            margin: 0 0 rem(11);
-        }
-
-        &--pdp-review {
-            margin-right: rem(14);
-
-            @include helper-breakpoint-media-min($md-min) {
-                margin-right: rem(19);
-            }
-        }
-
-        &--cart-block {
-            font: fw(bold) rem(36) $setting-font-family;
-            padding-bottom: rem(10);
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-        }
-
-        &--suggestion {
-            padding: rem(12) 0;
-            margin: 0;
-        }
-
-        &--heading {
-            font: fw(medium) rem(16)/rem(16) $setting-font-family;
-
-            @include helper-breakpoint-media-min($lg-min) {
-                font-size: rem(21);
-                line-height: rem(32);
-            }
-        }
-
-        &--search {
-            color: $setting-color-gray-4;
-            font-size: rem(12);
-            line-height: rem(16);
-            font-weight: fw(regular);
-            text-transform: uppercase;
-        }
-
-        &--bold {
-            font-weight: fw(bold);
-        }
-
-        &--medium {
-            font-weight: fw(medium);
-        }
-
-        &--regular {
-            font-weight: fw(regular);
-        }
-
-        &--uppercase {
-            text-transform: uppercase;
-        }
-
-        &--with-border {
-            border-bottom: rem(1) dotted $setting-color-gray-3;
-        }
-
-        &--with-top-border {
-            border-top: rem(1) solid $setting-color-gray-3;
-        }
-
-        &--mobile-size {
-            @include helper-breakpoint-media-max($md-max) {
-                font-size: rem(14);
-            }
-        }
-
-        @content;
+    @each $i in (1, 2, 3, 4, 5, 6) {
+      &--h#{$i} {
+        @include helper-heading($i);
+      }
     }
+
+    &--h4 {
+      font-family: $setting-font-family;
+    }
+
+    &--main {
+      padding: rem(20) 0;
+      text-align: center;
+      margin-bottom: rem(40);
+    }
+
+    &--checkout {
+      width: 100%;
+      margin-bottom: rem(32);
+      padding-bottom: rem(10);
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+
+      @include helper-breakpoint-media-min($md-min) {
+        margin-bottom: rem(58);
+      }
+
+      &:not(:first-of-type) {
+        margin-top: rem(42);
+      }
+    }
+
+    &--shipment {
+      margin: 0 rem(10) 0 0;
+      border: none;
+      padding: 0;
+    }
+
+    &--primary {
+      width: 100%;
+      margin-bottom: rem(20);
+      padding-bottom: rem(10);
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+      font-size: rem(32);
+
+      @include helper-breakpoint-media-min($lg-min) {
+        font-size: rem(34);
+      }
+    }
+
+    &--secondary {
+      font: fw(bold) rem(25) / rem(30) $setting-font-family;
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+      padding-bottom: rem(7);
+      margin-bottom: rem(20);
+
+      @include helper-breakpoint-media-min($lg-min) {
+        padding-bottom: rem(15);
+        font: fw(medium) rem(28) / rem(34);
+      }
+    }
+
+    &--secondary-box {
+      font: fw(bold) rem(25) / rem(30) $setting-font-family;
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+      padding-bottom: rem(8);
+      margin-bottom: rem(16);
+
+      @include helper-breakpoint-media-min($lg-min) {
+        font: fw(medium) rem(21) / rem(25);
+        border: none;
+        padding: 0;
+      }
+    }
+
+    &--secondary-small {
+      font: fw(bold) rem(15) / rem(17) $setting-font-family;
+      margin-bottom: rem(13);
+    }
+
+    &--account-main {
+      text-transform: capitalize;
+      margin: 0 rem(16) rem(15);
+
+      @include helper-breakpoint-media-min($lg-min) {
+        margin-bottom: rem(50);
+      }
+    }
+
+    &--product-set-main {
+      position: relative;
+      margin-bottom: rem(24);
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: rem(1);
+        background-color: $setting-color-black;
+      }
+    }
+
+    &--product-set-secondary {
+      position: relative;
+      display: inline-block;
+      background-color: $setting-color-white;
+      padding-right: rem(50);
+    }
+
+    &--review-summary {
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+      padding-bottom: rem(6);
+      margin-bottom: rem(29);
+
+      @include helper-breakpoint-media-min($md-min) {
+        padding-bottom: rem(10);
+        margin-bottom: rem(50);
+      }
+    }
+
+    &--footer {
+      padding: 0 0 rem(16);
+    }
+
+    &--product {
+      margin-bottom: rem(12);
+
+      @include helper-breakpoint-media-min($xl-min) {
+        margin-bottom: rem(7);
+      }
+    }
+
+    &--checkout-success {
+      margin-bottom: 0;
+      padding: rem(15) 0;
+    }
+
+    &--promotion {
+      padding: rem(18) 0;
+      margin-bottom: rem(36);
+    }
+
+    &--mini-cart {
+      padding-bottom: rem(10);
+    }
+
+    &--form {
+      width: 100%;
+      margin-bottom: rem(32);
+      padding-bottom: rem(10);
+
+      @include helper-breakpoint-media-min($md-min) {
+        margin-bottom: rem(58);
+      }
+    }
+
+    &--catalog-cms {
+      margin: 0 0 rem(11);
+    }
+
+    &--pdp-review {
+      margin-right: rem(14);
+
+      @include helper-breakpoint-media-min($md-min) {
+        margin-right: rem(19);
+      }
+    }
+
+    &--cart-block {
+      font: fw(bold) rem(36) $setting-font-family;
+      padding-bottom: rem(10);
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+    }
+
+    &--suggestion {
+      padding: rem(12) 0;
+      margin: 0;
+    }
+
+    &--heading {
+      font: fw(medium) rem(16) / rem(16) $setting-font-family;
+
+      @include helper-breakpoint-media-min($lg-min) {
+        font-size: rem(21);
+        line-height: rem(32);
+      }
+    }
+
+    &--search {
+      color: $setting-color-gray-4;
+      font-size: rem(12);
+      line-height: rem(16);
+      font-weight: fw(regular);
+      text-transform: uppercase;
+    }
+
+    &--bold {
+      font-weight: fw(bold);
+    }
+
+    &--medium {
+      font-weight: fw(medium);
+    }
+
+    &--regular {
+      font-weight: fw(regular);
+    }
+
+    &--uppercase {
+      text-transform: uppercase;
+    }
+
+    &--with-border {
+      border-bottom: rem(1) dotted $setting-color-gray-3;
+    }
+
+    &--with-top-border {
+      border-top: rem(1) solid $setting-color-gray-3;
+    }
+
+    &--mobile-size {
+      @include helper-breakpoint-media-max($md-max) {
+        font-size: rem(14);
+      }
+    }
+
+    @content;
+  }
 }
 
 @include shop-ui-title();
