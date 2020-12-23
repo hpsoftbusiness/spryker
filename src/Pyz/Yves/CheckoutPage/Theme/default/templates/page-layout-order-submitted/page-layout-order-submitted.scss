@@ -1,0 +1,20 @@
+$images-folder-path: '../images/';
+@mixin checkout-page-layout-order-submitted($name: '.page-layout-order-submitted') {
+    #{$name} {
+        min-height: 40vw;
+        flex: 1 0 auto;
+        display: flex;
+        background: transparent url('#{$images-folder-path}success-page-cover.png') 0 0 / 100% auto
+            no-repeat;
+        padding: rem(40);
+
+        @include helper-breakpoint-media-min($lg-min) {
+            padding-top: rem(60);
+            padding-bottom: rem(60);
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-layout-order-submitted();
