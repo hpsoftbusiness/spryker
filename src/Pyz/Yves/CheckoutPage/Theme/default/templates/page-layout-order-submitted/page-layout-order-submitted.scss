@@ -1,4 +1,5 @@
 $images-folder-path: '../images/';
+
 @mixin checkout-page-layout-order-submitted($name: '.page-layout-order-submitted') {
     #{$name} {
         min-height: 40vw;
