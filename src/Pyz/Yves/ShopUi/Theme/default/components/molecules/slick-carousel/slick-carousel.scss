@@ -6,13 +6,6 @@
             }
         }
 
-        &--similar-products {
-            .slick-list {
-                padding: 30px;
-                margin: -30px;
-            }
-        }
-
         &__container {
             position: relative;
             visibility: hidden;
@@ -188,7 +181,6 @@
                 height: auto !important;
                 padding: rem(10) 0 rem(20);
                 margin-top: rem(-10);
-                overflow: auto;
             }
 
             .slick-track {

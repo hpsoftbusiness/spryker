@@ -6,14 +6,13 @@
 
 {% block body %}
     {% if data.products is not empty %}
-        <div class="spacing-y spacing-y--biggest">
-            {% include molecule('extra-product', 'ProductRelationWidget') with {
-                data: {
-                    title: 'page.product.similar-products' | trans,
-                    products: data.products
-                }
-            } only %}
-        </div>
+        {% include molecule('extra-product', 'ProductRelationWidget') with {
+            class: 'spacing-y spacing-y--biggest',
+            data: {
+                title: 'page.product.similar-products' | trans,
+                products: data.products
+            }
+        } only %}
     {% endif %}
 {% endblock %}
 
