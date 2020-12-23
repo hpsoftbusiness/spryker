@@ -30,6 +30,8 @@ class PostingExportContentBuilder
     protected const DATE_FORMAT_DMY = 'Y-m-d';
     protected const FILE_NAME_PREFIX = 'Posting Export';
     protected const FORMAT_ADDRESS = '%s, %s';
+    protected const DATA_PAYMENT_METHOD_CODE_CC = 'MPCC_AD';
+    protected const DATA_PAYMENT_METHOD_CODE_PREPAYMENT = 'MP_VORAUS';
 
     protected const DEFAULT_DATA_INTERFACE_CODE = 'MP';
     protected const DEFAULT_DATA_COMPANY_CODE = 'MWS';
@@ -39,7 +41,6 @@ class PostingExportContentBuilder
     protected const DEFAULT_DATA_CUSTOMER_TYPE = '20001';
     protected const DEFAULT_DATA_CUSTOMER_POSTING_GROUP = 'MP';
     protected const DEFAULT_DATA_RETAIL_DOCUMENT = 'true';
-    protected const DEFAULT_DATA_PAYMENT_METHOD_CODE = 'MPCC_AD';
     protected const DEFAULT_DATA_VAT_BUS_POSTING_GROUP = 'DO';
     protected const DEFAULT_DATA_GEN_BUSINESS_POSTING_GROUP = 'DO';
 
@@ -214,7 +215,7 @@ class PostingExportContentBuilder
             'vatAmount' => $this->formatIntValueToDecimalCurrency($taxTotal),
             'currencyCode' => $orderTransfer->getCurrencyIsoCode(),
             'currencyFactor' => null, // skipped
-            'paymentMethodCode' => static::DEFAULT_DATA_PAYMENT_METHOD_CODE,
+            'paymentMethodCode' => (!$orderTransfer->getAdyenPayment()) ? static::DATA_PAYMENT_METHOD_CODE_PREPAYMENT : static::DATA_PAYMENT_METHOD_CODE_CC,
             'discount' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getDiscountTotal()),
             'paymentReferenceId' => $adyenPaymentReference,
             'cashBackNumber' => $customerTransfer->getMyWorldCustomerNumber(),

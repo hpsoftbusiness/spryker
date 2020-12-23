@@ -13,6 +13,7 @@ $config[MyWorldMarketplaceApiConstants::TOKEN_URL] = 'https://id-test.cashbackwo
 $config[MyWorldMarketplaceApiConstants::CLIENT_ID] = 'spryker_api_at_dev';
 $config[MyWorldMarketplaceApiConstants::CLIENT_SECRET] = 'spryker_api_at_dev';
 $config[MyWorldMarketplaceApiConstants::USER_AGENT] = 'Spryker/202009.0';
+$config[MyWorldMarketplaceApiConstants::SCOPE] = 'apitest';
 $config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = 'BA3E82A7-BBC4-4874-A383-AA3100985CC9';
 $config[MyWorldMarketplaceApiConstants::DEALER_ID_COUNTRY_MAP] = [
     'AT' => 'BA3E82A7-BBC4-4874-A383-AA3100985CC9',

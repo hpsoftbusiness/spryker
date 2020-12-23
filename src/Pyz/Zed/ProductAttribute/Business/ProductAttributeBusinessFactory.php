@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\ProductAttribute\Business;
 
-use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttribute;
 use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as SprykerProductAttributeBusinessFactory;
 
@@ -19,19 +18,7 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as Spr
 class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeInterface
-     */
-    public function createProductAttributeManager()
-    {
-        return new ProductAttribute(
-            $this->createProductAttributeReader(),
-            $this->createProductAttributeMapper(),
-            $this->createProductReader()
-        );
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriterInterface
+     * @return \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriterInterface
      */
     public function createProductAttributeWriter()
     {

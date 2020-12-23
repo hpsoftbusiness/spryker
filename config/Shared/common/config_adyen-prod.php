@@ -1,7 +1,7 @@
 <?php
 
+use Pyz\Shared\Adyen\AdyenConstants;
 use Spryker\Shared\Application\ApplicationConstants;
-use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 // ----------------------------------------------------------------------------
@@ -10,23 +10,10 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 // >>> ADYEN
 
-//TODO Set correct variables to env variables.
-//$adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', true);
+$adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', true);
 
-$adyenCredentials = [
-    'CHECKOUT_SHOPPER_API_DOMAIN' => 'checkoutshopper-test.adyen.com',
-    'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
-    'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),
-    'CSS_INTEGRITY_HASH' => utf8_encode('sha384-6qrXvoxlnBlrflZQ9g5Yf5oZapUSSXctPxacP9oRcEukbEO7lXisuSyMKG8pDX8V'),
-    'ORIGIN_KEY' => utf8_encode('pub.v2.8216077771133800.aHR0cHM6Ly93d3cubWFya2V0cGxhY2UubXl3b3JsZC5jb20.8z6eTHoPvxXIV5CgwSmx8Xs3Vou6UNDQwKNh9gzPv2o'),
-    'API_KEY' => utf8_encode('AQEphmfxJonJbR1Ew0m/n3Q5qf3VZZJ6AoFGXIkZ3GbdhshSfDBbFwxy9eAQwV1bDb7kfNy1WIxIIkxgBw==-v7XhXNSuBcVqAkX7VDrHgT+Kv1qOJbXBq+JY3fv/3as=-IQKyS~7yQ_v&;SqY'),
-    'CHECKOUT_API_DOMAIN' => 'checkout-test.adyen.com',
-    'CHECKOUT_API_VERSION' => 'v32',
-    'PAYMENT_API_DOMAIN' => 'pal-test.adyen.com',
-    'PAYMENT_API_VERSION' => 'v30',
-    'MERCHANT_ACCOUNT' => 'MyWorldInternationalLimited',
-    'SDK_ENVIRONMENT' => 'test',
-];
+$config[AdyenConstants::SPLIT_ACCOUNT] = getenv('ADYEN_MARKETPLACE_SPLIT_PAYMENT_ACCOUNT');
+$config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.015;
 
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNT'];
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_JS_URL] = sprintf(

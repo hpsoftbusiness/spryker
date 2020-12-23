@@ -30,7 +30,7 @@
         },
         {
             iconName: 'user-account',
-            url: url('customer/overview'),
+            url: is_granted('ROLE_USER') ? url('customer/overview') : url('login'),
             isButton: is_granted('IS_AUTHENTICATED_FULLY') ? true : false,
             jsClass: 'js-page-layout-main__account-side-drawer-trigger'
         }

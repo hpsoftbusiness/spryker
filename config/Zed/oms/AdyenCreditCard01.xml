@@ -23,6 +23,7 @@
             <state name="shipped"/>
             <state name="invoice generated"/>
             <state name="invoice with tracking number sent"/>
+            <state name="refund calculated"/>
             <state name="closed"/>
         </states>
 
@@ -39,6 +40,7 @@
             <event name="start turnover cancellation process" onEnter="true"/>
             <event name="close" timeout="20days"/>
             <event name="pass" onEnter="true"/>
+            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
         </events>
 
         <transitions>
@@ -126,13 +128,19 @@
             </transition>
 
             <transition>
-                <source>refund calculated</source>
+                <source>refunded</source>
                 <target>ready for turnover cancellation</target>
                 <event>start turnover cancellation process</event>
             </transition>
 
             <transition>
                 <source>turnover cancelled</source>
+                <target>refund calculated</target>
+                <event>calculate refund</event>
+            </transition>
+
+            <transition>
+                <source>refund calculated</source>
                 <target>closed</target>
                 <event>pass</event>
             </transition>
