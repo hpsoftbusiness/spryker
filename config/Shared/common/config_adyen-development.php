@@ -19,7 +19,7 @@ $adyenCredentials = [
     'ORIGIN_KEY' => utf8_encode('pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmRlLm15d29ybGQubG9jYWw.Oj2BH6hYCxdKyhN-clRm33LZxptO0fHBRcawFOJ0fOw'),
     'API_KEY' => utf8_encode('AQEphmfxJo7PYxFGw0m/n3Q5qf3VZZJ6AoFGXCNIwqQyci176r2VtV9VlQ4QwV1bDb7kfNy1WIxIIkxgBw==-96Rhip3CgIMz8hUzAae+lAgvsmVFMWe+jToJzZ4j2ec=-r9CWr}:Vg&q.=pL2'),
     'CHECKOUT_API_DOMAIN' => 'checkout-test.adyen.com',
-    'CHECKOUT_API_VERSION' => 'v32',
+    'CHECKOUT_API_VERSION' => 'v37',
     'PAYMENT_API_DOMAIN' => 'pal-test.adyen.com',
     'PAYMENT_API_VERSION' => 'v30',
     'MERCHANT_ACCOUNT' => 'MyWorldAustriaGmbH',
