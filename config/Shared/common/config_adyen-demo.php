@@ -26,6 +26,9 @@ $adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', t
     //ws_941844@Company.MyWorld
 ];
 
+// Override merchant account, which comes from env params
+$adyenCredentials['MERCHANT_ACCOUNT'] = 'MyWorldAustriaGmbH';
+
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNT'];
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_JS_URL] = sprintf(
     'https://%s/checkoutshopper/sdk/%s/adyen.js',
