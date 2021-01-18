@@ -10,7 +10,8 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 // >>> ADYEN
 
-$adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', true) ?: [
+// Using same as in development
+$adyenCredentials = [
     'CHECKOUT_SHOPPER_API_DOMAIN' => 'checkoutshopper-test.adyen.com',
     'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
     'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),
@@ -25,9 +26,6 @@ $adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', t
     'SDK_ENVIRONMENT' => 'test',
     //ws_941844@Company.MyWorld
 ];
-
-// Override merchant account, which comes from env params
-$adyenCredentials['MERCHANT_ACCOUNT'] = 'MyWorldAustriaGmbH';
 
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNT'];
 $config[AdyenConstants::SDK_CHECKOUT_SHOPPER_JS_URL] = sprintf(
