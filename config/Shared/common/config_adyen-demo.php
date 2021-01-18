@@ -16,7 +16,7 @@ $adyenCredentials = [
     'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
     'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),
     'CSS_INTEGRITY_HASH' => utf8_encode('sha384-6qrXvoxlnBlrflZQ9g5Yf5oZapUSSXctPxacP9oRcEukbEO7lXisuSyMKG8pDX8V'),
-    'ORIGIN_KEY' => utf8_encode('pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmRlLm15d29ybGQubG9jYWw.Oj2BH6hYCxdKyhN-clRm33LZxptO0fHBRcawFOJ0fOw'),
+    'ORIGIN_KEY' => utf8_encode('pub.v2.8216083088630330.aHR0cHM6Ly93d3cuZGUubXl3b3JsZC5jbG91ZC5zcHJ5a2VyLnRveXM.FfwYkJHB7KrSs5Fgl3dq8scXVPuXrtqbNLWbfqDoUE4'),
     'API_KEY' => utf8_encode('AQEphmfxJo7PYxFGw0m/n3Q5qf3VZZJ6AoFGXCNIwqQyci176r2VtV9VlQ4QwV1bDb7kfNy1WIxIIkxgBw==-96Rhip3CgIMz8hUzAae+lAgvsmVFMWe+jToJzZ4j2ec=-r9CWr}:Vg&q.=pL2'),
     'CHECKOUT_API_DOMAIN' => 'checkout-test.adyen.com',
     'CHECKOUT_API_VERSION' => 'v37',
