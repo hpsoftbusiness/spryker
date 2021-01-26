@@ -11,6 +11,10 @@
         <property name="splits" type="AdyenApiSplit[]" singular="split"/>
     </transfer>
 
+    <transfer name="AdyenApiRefundRequest">
+        <property name="splits" type="AdyenApiSplit[]" singular="split"/>
+    </transfer>
+
     <transfer name="AdyenApiSplit">
         <property name="amount" type="AdyenApiAmount"/>
         <property name="type" type="string"/>
