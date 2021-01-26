@@ -1,0 +1,25 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'Article Core Data' %}
+
+{% block head_title widget_title | trans %}
+
+{% block section_title widget_title | trans %}
+
+{% block action %}
+    {{ createActionButton('/product-data-import/add', 'Create Import' | trans) }}
+{% endblock %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' %}
+
+        {% block widget_content %}
+
+            {{ productImportTable | raw }}
+
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}
