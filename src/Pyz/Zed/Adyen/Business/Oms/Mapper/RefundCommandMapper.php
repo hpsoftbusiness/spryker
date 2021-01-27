@@ -15,6 +15,7 @@ use Generated\Shared\Transfer\AdyenApiSplitTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\PaymentAdyenTransfer;
 use Generated\Shared\Transfer\RefundTransfer;
+use Pyz\Shared\Adyen\AdyenConfig as SharedAdyenConfig;
 use Pyz\Zed\Adyen\AdyenConfig;
 use SprykerEco\Zed\Adyen\Business\Reader\AdyenReaderInterface;
 
@@ -62,8 +63,7 @@ class RefundCommandMapper implements RefundCommandMapperInterface
             ->setOriginalReference($paymentAdyen->getPspReference())
             ->setOriginalMerchantReference($paymentAdyen->getReference())
             ->setModificationAmount($adyenApiAmountTransfer)
-            ->setSplits($this->createAdyenApiSplits($paymentAdyen, $adyenApiAmountTransfer))
-        ;
+            ->setSplits($this->createAdyenApiSplits($paymentAdyen, $adyenApiAmountTransfer));
 
         return (new AdyenApiRequestTransfer())
             ->setRefundRequest($adyenApiRefundRequestTransfer);
@@ -78,8 +78,7 @@ class RefundCommandMapper implements RefundCommandMapperInterface
     protected function createAdyenApiSplits(
         PaymentAdyenTransfer $paymentAdyen,
         AdyenApiAmountTransfer $adyenApiAmountTransfer
-    ): ArrayObject
-    {
+    ): ArrayObject {
         $commissionAmount = (int)round($adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest());
         $marketplaceAmount = (int)$adyenApiAmountTransfer->getValue() - $commissionAmount;
 
@@ -87,7 +86,7 @@ class RefundCommandMapper implements RefundCommandMapperInterface
             ->setAmount(
                 (new AdyenApiAmountTransfer())->setValue($marketplaceAmount)
             )
-            ->setType(\Pyz\Shared\Adyen\AdyenConfig::SPLIT_TYPE_MARKETPLACE)
+            ->setType(SharedAdyenConfig::SPLIT_TYPE_MARKETPLACE)
             ->setAccount($this->config->getSplitAccount())
             ->setReference($paymentAdyen->getSplitMarketplaceReference());
 
@@ -95,7 +94,7 @@ class RefundCommandMapper implements RefundCommandMapperInterface
             ->setAmount(
                 (new AdyenApiAmountTransfer())->setValue($commissionAmount)
             )
-            ->setType(\Pyz\Shared\Adyen\AdyenConfig::SPLIT_TYPE_COMMISSION)
+            ->setType(SharedAdyenConfig::SPLIT_TYPE_COMMISSION)
             ->setReference($paymentAdyen->getSplitCommissionReference());
 
         return new ArrayObject([
