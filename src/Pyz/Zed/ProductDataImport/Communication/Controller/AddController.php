@@ -42,9 +42,11 @@ class AddController extends AbstractController
                     $productDataImportTransfer->setFilePath($fileName);
                     $productDataImportTransfer->setStatus(ProductDataImportInterface::STATUS_NEW);
 
-                    $this->getFactory()->getFileSystem()->put(
-                        $this->getFactory()->getFileSystemContentTransfer($productDataImportTransfer, $fileName)
+                    $dataImportFormDataProvider = $this->getFactory()->getFileSystemContentTransfer(
+                        $productDataImportTransfer,
+                        $fileName
                     );
+                    $this->getFactory()->getFileSystem()->put($dataImportFormDataProvider);
 
                     $this->getFacade()->add($productDataImportTransfer);
 

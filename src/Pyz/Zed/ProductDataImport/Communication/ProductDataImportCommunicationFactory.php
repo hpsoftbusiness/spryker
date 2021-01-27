@@ -59,20 +59,18 @@ class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
     /**
      * @param ProductDataImportTransfer $transfer
      * @param string $filePath
-     *
      * @return FileSystemContentTransfer
      */
     public function getFileSystemContentTransfer(
         ProductDataImportTransfer $transfer,
         string $filePath
     ): FileSystemContentTransfer {
-        $fileContent = file_get_contents($transfer->getFileUpload()->getRealPath());
+        $storageName = $this->getConfig()->getStorageName();
 
-        $fileSystemContentTransfer = new FileSystemContentTransfer();
-        $fileSystemContentTransfer->setContent($fileContent);
-        $fileSystemContentTransfer->setFileSystemName($this->getConfig()->getStorageName());
-        $fileSystemContentTransfer->setPath($filePath);
-
-        return $fileSystemContentTransfer;
+        return $this->createProductDataImportFormDataProvider()->createFileSystemContentTransfer(
+            $transfer,
+            $filePath,
+            $storageName
+        );
     }
 }
