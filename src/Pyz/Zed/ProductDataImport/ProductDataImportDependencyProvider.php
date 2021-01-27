@@ -10,12 +10,13 @@ class ProductDataImportDependencyProvider extends AbstractBundleDependencyProvid
     public const FILE_SYSTEM_SERVICE = 'FILE_SYSTEM_SERVICE';
 
     /**
-     * @param \Spryker\Zed\Kernel\Container $container
+     * @param Container $container
      *
-     * @return \Spryker\Zed\Kernel\Container
+     * @return Container
+     *
      * @throws \Spryker\Service\Container\Exception\FrozenServiceException
      */
-    public function provideCommunicationLayerDependencies(Container $container): Container
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addFileSystemService($container);
 

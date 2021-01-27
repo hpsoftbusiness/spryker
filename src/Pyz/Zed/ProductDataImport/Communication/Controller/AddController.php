@@ -2,7 +2,6 @@
 
 namespace Pyz\Zed\ProductDataImport\Communication\Controller;
 
-use Pyz\Zed\ProductDataImport\Business\Model\ProductDataImportInterface;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Exception;
@@ -34,21 +33,8 @@ class AddController extends AbstractController
                 try {
                     /** @var \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer */
                     $productDataImportTransfer = $form->getData();
-                    $fileName = sprintf(
-                        '%d-%s',
-                        time(),
-                        $productDataImportTransfer->getFileUpload()->getClientOriginalName()
-                    );
-                    $productDataImportTransfer->setFilePath($fileName);
-                    $productDataImportTransfer->setStatus(ProductDataImportInterface::STATUS_NEW);
 
-                    $dataImportFormDataProvider = $this->getFactory()->getFileSystemContentTransfer(
-                        $productDataImportTransfer,
-                        $fileName
-                    );
-                    $this->getFactory()->getFileSystem()->put($dataImportFormDataProvider);
-
-                    $this->getFacade()->add($productDataImportTransfer);
+                    $this->getFacade()->saveFile($productDataImportTransfer, $dataProvider);
 
                     $this->addSuccessMessage('The file was added successfully.');
 
@@ -56,8 +42,9 @@ class AddController extends AbstractController
                 } catch (Exception $exception) {
                     $this->addErrorMessage($exception->getMessage());
                 }
+            } else {
+                $this->addErrorMessage($form->getErrors()->current()->getMessage());
             }
-            $this->addErrorMessage($form->getErrors()->current()->getMessage());
         }
 
         return $this->viewResponse(

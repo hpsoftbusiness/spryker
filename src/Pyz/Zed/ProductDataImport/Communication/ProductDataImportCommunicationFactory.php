@@ -2,13 +2,10 @@
 
 namespace Pyz\Zed\ProductDataImport\Communication;
 
-use Generated\Shared\Transfer\FileSystemContentTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 use Pyz\Zed\ProductDataImport\Communication\Form\ProductDataImportForm;
 use Pyz\Zed\ProductDataImport\Communication\Table\ProductDataImportTable;
-use Pyz\Zed\ProductDataImport\ProductDataImportDependencyProvider;
-use Spryker\Service\FileSystem\FileSystemServiceInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 
 /**
@@ -44,33 +41,5 @@ class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
         array $options = []
     ): \Symfony\Component\Form\FormInterface {
         return $this->getFormFactory()->create(ProductDataImportForm::class, $data, $options);
-    }
-
-    /**
-     * @return FileSystemServiceInterface
-     *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
-     */
-    public function getFileSystem(): FileSystemServiceInterface
-    {
-        return $this->getProvidedDependency(ProductDataImportDependencyProvider::FILE_SYSTEM_SERVICE);
-    }
-
-    /**
-     * @param ProductDataImportTransfer $transfer
-     * @param string $filePath
-     * @return FileSystemContentTransfer
-     */
-    public function getFileSystemContentTransfer(
-        ProductDataImportTransfer $transfer,
-        string $filePath
-    ): FileSystemContentTransfer {
-        $storageName = $this->getConfig()->getStorageName();
-
-        return $this->createProductDataImportFormDataProvider()->createFileSystemContentTransfer(
-            $transfer,
-            $filePath,
-            $storageName
-        );
     }
 }
