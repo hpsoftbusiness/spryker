@@ -3,13 +3,19 @@
 namespace Pyz\Zed\ProductDataImport\Business;
 
 use Generated\Shared\Transfer\ProductDataImportTransfer;
+use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 
 interface ProductDataImportFacadeInterface
 {
     /**
      * @param ProductDataImportTransfer $transfer
+     * @param ProductDataImportFormDataProvider $dataProvider
      *
-     * @return ProductDataImportTransfer
+     * @throws \Spryker\Service\FileSystem\Dependency\Exception\FileSystemWriteException
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
-    public function add(ProductDataImportTransfer $transfer): ProductDataImportTransfer;
+    public function saveFile(
+        ProductDataImportTransfer $transfer,
+        ProductDataImportFormDataProvider $dataProvider
+    ): void;
 }
