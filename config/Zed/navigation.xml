@@ -63,19 +63,37 @@
             </group>
         </pages>
     </customer>
-    <export>
-        <label>Export</label>
-        <title>Export</title>
+    <data-managment>
+        <label>Data Management</label>
+        <title>Data Management</title>
+        <uri>#</uri>
         <pages>
-            <posting>
-                <label>Postings</label>
-                <title>Postings</title>
-                <bundle>posting-export</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </posting>
+            <import>
+                <label>Import</label>
+                <title>Import</title>
+                <pages>
+                    <artical-core-data>
+                        <label>Article Core Data</label>
+                        <title>Article Core Data</title>
+                        <uri>#</uri>
+                    </artical-core-data>
+                </pages>
+            </import>
+            <export>
+                <label>Export</label>
+                <title>Export</title>
+                <pages>
+                    <posting>
+                        <label>Backend to Navision</label>
+                        <title>Backend to Navision</title>
+                        <bundle>posting-export</bundle>
+                        <controller>index</controller>
+                        <action>index</action>
+                    </posting>
+                </pages>
+            </export>
         </pages>
-    </export>
+    </data-managment>
     <catalog>
         <label>Catalog</label>
         <title>Catalog</title>
