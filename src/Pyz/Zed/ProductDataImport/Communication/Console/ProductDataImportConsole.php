@@ -11,9 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProductDataImportConsole extends Console
 {
-
-    const COMMAND_NAME = 'some:command';
-    const DESCRIPTION = 'Describe me!';
+    private const  DATA_ENTITY = 'combined-product-abstract';
+    const COMMAND_NAME = 'data:product:import-file';
+    const DESCRIPTION = 'Import products from file that was uploaded from Zed, data in table: spy_product_data_import';
 
     /**
      * @return void
@@ -29,17 +29,27 @@ class ProductDataImportConsole extends Console
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
      * @return int|null
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
         $messenger = $this->getMessenger();
 
-        $messenger->info(sprintf(
-            'You just executed %s!',
-            static::COMMAND_NAME
-        ));
+        $result = null;
+        $productDataImport = $this->getFacade()->getProductDataImportForImport();
+
+        if ($productDataImport) {
+            $result = $this->getFacade()->import($productDataImport, static::DATA_ENTITY);
+        }
+        $messenger->info(
+            sprintf(
+                'You just executed %s! Result: %s',
+                static::COMMAND_NAME,
+                $result
+            )
+        );
 
         return static::CODE_SUCCESS;
     }
-
 }

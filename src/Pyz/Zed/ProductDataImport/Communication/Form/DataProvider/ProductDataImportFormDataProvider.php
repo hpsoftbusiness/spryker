@@ -3,6 +3,7 @@
 namespace Pyz\Zed\ProductDataImport\Communication\Form\DataProvider;
 
 use Generated\Shared\Transfer\FileSystemContentTransfer;
+use Generated\Shared\Transfer\FileUploadTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface;
 
@@ -52,17 +53,17 @@ class ProductDataImportFormDataProvider
     }
 
     /**
-     * @param ProductDataImportTransfer $transfer
+     * @param FileUploadTransfer $transfer
      * @param string $filePath
      * @param string $storageName
      * @return FileSystemContentTransfer
      */
     public function createFileSystemContentTransfer(
-        ProductDataImportTransfer $transfer,
+        FileUploadTransfer $transfer,
         string $filePath,
         string $storageName
     ): FileSystemContentTransfer {
-        $fileContent = file_get_contents($transfer->getFileUpload()->getRealPath());
+        $fileContent = file_get_contents($transfer->getRealPath());
 
         $fileSystemContentTransfer = new FileSystemContentTransfer();
         $fileSystemContentTransfer->setContent($fileContent);

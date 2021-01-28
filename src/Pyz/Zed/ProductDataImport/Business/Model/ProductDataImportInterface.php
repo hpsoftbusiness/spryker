@@ -3,6 +3,7 @@
 namespace Pyz\Zed\ProductDataImport\Business\Model;
 
 use Generated\Shared\Transfer\ProductDataImportTransfer;
+use Orm\Zed\ProductDataImport\Persistence\Base\SpyProductDataImport;
 
 interface ProductDataImportInterface
 {

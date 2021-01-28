@@ -7,6 +7,7 @@
         <property name="status" type="string"/>
         <property name="createdAt" type="string"/>
         <property name="filePath" type="string"/>
+        <property name="result" type="string"/>
 
         <property name="fileUpload" type="FileUpload"/>
     </transfer>

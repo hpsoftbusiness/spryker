@@ -8,4 +8,5 @@ interface ProductDataImportConstants
 
     public const STORAGE_NAME = 'PRODUCT_DATA_IMPORT_UPLOADER:STORAGE_NAME';
 
+    public const FILESYSTEM_SERVICE = 'FILESYSTEM:FILESYSTEM_SERVICE';
 }
