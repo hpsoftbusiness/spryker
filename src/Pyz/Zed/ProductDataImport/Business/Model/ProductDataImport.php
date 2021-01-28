@@ -4,8 +4,10 @@ namespace Pyz\Zed\ProductDataImport\Business\Model;
 
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport;
+use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface;
 use Pyz\Zed\ProductDataImport\ProductDataImportConfig;
+use Spryker\Service\FileSystem\FileSystemServiceInterface;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 
 class ProductDataImport implements ProductDataImportInterface
@@ -71,4 +73,31 @@ class ProductDataImport implements ProductDataImportInterface
     {
         return $this->config;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function saveFile(
+        ProductDataImportTransfer $transfer,
+        ProductDataImportFormDataProvider $dataProvider,
+        FileSystemServiceInterface $fileSystemService
+    ): void {
+        $fileName = sprintf(
+            '%d-%s',
+            time(),
+            $transfer->getFileUpload()->getClientOriginalName()
+        );
+        $transfer->setFilePath($fileName);
+        $transfer->setStatus(ProductDataImportInterface::STATUS_NEW);
+
+        $dataImportFormDataProvider = $dataProvider->createFileSystemContentTransfer(
+            $transfer,
+            $fileName,
+            $this->getConfig()->getStorageName()
+        );
+        $fileSystemService->put($dataImportFormDataProvider);
+
+        $this->add($transfer);
+    }
+
 }
