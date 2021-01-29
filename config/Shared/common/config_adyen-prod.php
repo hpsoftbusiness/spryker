@@ -9,10 +9,23 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 // ----------------------------------------------------------------------------
 
 // >>> ADYEN
+// TODO: move credentials to ENV variables
+$adyenCredentials =  [
+    'CHECKOUT_SHOPPER_API_DOMAIN' => 'checkoutshopper-live.adyen.com',
+    'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
+    'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),
+    'CSS_INTEGRITY_HASH' => utf8_encode('sha384-6qrXvoxlnBlrflZQ9g5Yf5oZapUSSXctPxacP9oRcEukbEO7lXisuSyMKG8pDX8V'),
+    'ORIGIN_KEY' => utf8_encode('pub.v2.4116119410741591.aHR0cHM6Ly93d3cubWFya2V0cGxhY2UubXl3b3JsZC5jb20.4WwTYl6NQnAxJJ_N3OmG10fBr6W-UMkOT9JvngAz6EY'),
+    'API_KEY' => utf8_encode('AQEphmfxJ4/MahNHw0m/n3Q5qf3VZZJ6AoFGXFyYtVLiei4j0mpavMEUWLsQwV1bDb7kfNy1WIxIIkxgBw==-wTOOSt8wx4hz9o1lHYqyW6HTuMlLQL+XgMvUYcXmPlo=-}]]7;Fz:8B(4xu^h'),
+    'CHECKOUT_API_DOMAIN' => '1c8a29fafebad310-MyWorld-checkout-live.adyenpayments.com',
+    'CHECKOUT_API_VERSION' => 'v37',
+    'PAYMENT_API_DOMAIN' => '1c8a29fafebad310-MyWorld-pal-live.adyenpayments.com',
+    'PAYMENT_API_VERSION' => 'v30',
+    'MERCHANT_ACCOUNT' => 'MyWorldAustriaGmbH',
+    'SDK_ENVIRONMENT' => 'live',
+];
 
-$adyenCredentials = json_decode(getenv('SPRYKER_ADYEN_CREDENTIALS') ?: 'null', true);
-
-$config[AdyenConstants::SPLIT_ACCOUNT] = getenv('ADYEN_MARKETPLACE_SPLIT_PAYMENT_ACCOUNT');
+$config[AdyenConstants::SPLIT_ACCOUNT] = '125549301';
 $config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.015;
 
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNT'];
