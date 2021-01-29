@@ -3,11 +3,10 @@
 namespace Pyz\Zed\ProductDataImport\Business;
 
 use Pyz\Zed\DataImport\Business\DataImportFacadeInterface;
+use Pyz\Zed\ProductDataImport\Business\DataProvider\ProductDataImportResult;
 use Pyz\Zed\ProductDataImport\Business\Model\ProductDataImport;
-use Pyz\Zed\ProductDataImport\Business\Model\ProductDataImportInterface;
 use Pyz\Zed\ProductDataImport\ProductDataImportDependencyProvider;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
-use Spryker\Service\Flysystem\FlysystemServiceInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -34,9 +33,9 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ProductDataImportDependencyProvider::FILE_SYSTEM_SERVICE);
     }
 
-
     /**
      * @return DataImportFacadeInterface
+     *
      * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     public function getDataImport(): DataImportFacadeInterface
@@ -45,12 +44,10 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport|null
+     * @return ProductDataImportResult
      */
-    public function getProductDataImportForImport(): ?\Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport
+    public function createProductDataImportResult(): ProductDataImportResult
     {
-        return $this->getQueryContainer()->queryProductImports()->findOneByStatus(
-            ProductDataImportInterface::STATUS_NEW
-        );
+        return new ProductDataImportResult();
     }
 }
