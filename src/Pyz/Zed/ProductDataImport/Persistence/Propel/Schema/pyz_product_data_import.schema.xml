@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\ProductDataImport\Persistence"
+          package="src.Orm.Zed.ProductDataImport.Persistence">
+
+    <table name="spy_product_data_import" idMethod="native" allowPkInsert="true" identifierQuoting="true">
+        <column name="id_product_data_import" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="status" required="true" type="VARCHAR" default="new"/>
+        <behavior name="timestampable"/>
+        <column name="file_path" required="false" type="VARCHAR" default="NULL"/>
+        <column name="result" required="false" type="VARCHAR" default="NULL"/>
+    </table>
+</database>

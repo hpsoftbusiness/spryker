@@ -52,6 +52,9 @@ image:
     SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
     WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
+    ini:
+      "post_max_size": 600m
+      "upload_max_filesize": 600m
     enabled-extensions:
       - blackfire
       - newrelic
@@ -109,6 +112,8 @@ groups:
             store: DE
       Zed:
         application: zed
+        http:
+            max-request-body-size: 600m
         endpoints:
           zed.marketplace.myworld.com:
             store: DE

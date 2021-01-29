@@ -75,7 +75,9 @@
                     <artical-core-data>
                         <label>Article Core Data</label>
                         <title>Article Core Data</title>
-                        <uri>#</uri>
+                        <bundle>product-data-import</bundle>
+                        <controller>index</controller>
+                        <action>index</action>
                     </artical-core-data>
                 </pages>
             </import>
