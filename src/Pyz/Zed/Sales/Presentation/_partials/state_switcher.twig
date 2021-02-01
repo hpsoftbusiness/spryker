@@ -1,0 +1,12 @@
+{% if states is defined %}
+    <span class="m-r-sm">
+        <label>{{ 'Order State' | trans }}
+            <select name="id-state" onchange="this.form.submit()" onblur="this.form.submit()">
+                <option value="" {{ idOmsOrderItemState == '' ? 'selected' : '' }}>-</option>
+                {% for state in states %}
+                    <option value="{{ state.idOmsOrderItemState }}" {{ (state.idOmsOrderItemState == idOmsOrderItemState) ? 'selected' : ''}}>{{ state.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </span>
+{% endif %}

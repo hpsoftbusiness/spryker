@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Sales\Persistence;
 
+use Orm\Zed\Oms\Persistence\SpyOmsOrderItemStateQuery;
 use Pyz\Zed\Sales\Persistence\Propel\Mapper\SalesOrderMapper;
 use Spryker\Zed\Sales\Persistence\Propel\Mapper\SalesOrderMapper as SprykerSalesOrderMapper;
 use Spryker\Zed\Sales\Persistence\SalesPersistenceFactory as SprykerSalesPersistenceFactory;
@@ -24,5 +25,13 @@ class SalesPersistenceFactory extends SprykerSalesPersistenceFactory
     public function createSalesOrderMapper(): SprykerSalesOrderMapper
     {
         return new SalesOrderMapper();
+    }
+
+    /**
+     * @return \Orm\Zed\Oms\Persistence\SpyOmsOrderItemStateQuery
+     */
+    public function createOmsOrderItemStateQuery(): SpyOmsOrderItemStateQuery
+    {
+        return SpyOmsOrderItemStateQuery::create();
     }
 }

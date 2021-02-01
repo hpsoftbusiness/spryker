@@ -9,9 +9,11 @@ namespace Pyz\Zed\Sales\Communication;
 
 use Pyz\Zed\Sales\Communication\Form\AddressForm;
 use Pyz\Zed\Sales\Communication\Form\DataProvider\AddressFormDataProvider;
+use Pyz\Zed\Sales\Communication\Table\OrdersTable;
 use Pyz\Zed\Sales\SalesDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Sales\Communication\SalesCommunicationFactory as SprykerSalesCommunicationFactory;
+use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Symfony\Component\Form\FormInterface;
 
 /**
@@ -28,6 +30,21 @@ class SalesCommunicationFactory extends SprykerSalesCommunicationFactory
             $this->getQueryContainer(),
             $this->getCountryFacade(),
             $this->getStore()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\Sales\Communication\Table\OrdersTable
+     */
+    public function createOrdersTable()
+    {
+        return new OrdersTable(
+            $this->createOrdersTableQueryBuilder(),
+            $this->getProvidedDependency(SprykerSalesDependencyProvider::FACADE_MONEY),
+            $this->getProvidedDependency(SalesDependencyProvider::SERVICE_UTIL_SANITIZE),
+            $this->getProvidedDependency(SalesDependencyProvider::SERVICE_DATE_FORMATTER),
+            $this->getProvidedDependency(SalesDependencyProvider::FACADE_CUSTOMER),
+            $this->getSalesTablePlugins()
         );
     }
 

@@ -36,6 +36,19 @@ class SalesRepository extends SprykerSalesRepository implements SalesRepositoryI
     }
 
     /**
+     * @param array $stateIds
+     *
+     * @return array
+     */
+    public function getSpyOmsOrderItemStatesByIds(array $stateIds): array
+    {
+        return $this->getFactory()->createOmsOrderItemStateQuery()
+            ->filterByIdOmsOrderItemState_In($stateIds)
+            ->find()
+            ->getData();
+    }
+
+    /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderQuery $spySalesOrderQuery
      * @param \Generated\Shared\Transfer\SalesOrderFilterTransfer $salesOrderFilterTransfer
      *
