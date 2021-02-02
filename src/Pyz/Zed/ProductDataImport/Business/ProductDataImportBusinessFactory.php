@@ -2,6 +2,8 @@
 
 namespace Pyz\Zed\ProductDataImport\Business;
 
+use Pyz\Zed\DataImport\Business\DataImportFacadeInterface;
+use Pyz\Zed\ProductDataImport\Business\DataProvider\ProductDataImportResult;
 use Pyz\Zed\ProductDataImport\Business\Model\ProductDataImport;
 use Pyz\Zed\ProductDataImport\ProductDataImportDependencyProvider;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
@@ -29,5 +31,23 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     public function getFileSystem(): FileSystemServiceInterface
     {
         return $this->getProvidedDependency(ProductDataImportDependencyProvider::FILE_SYSTEM_SERVICE);
+    }
+
+    /**
+     * @return DataImportFacadeInterface
+     *
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     */
+    public function getDataImport(): DataImportFacadeInterface
+    {
+        return $this->getProvidedDependency(ProductDataImportDependencyProvider::DATA_IMPORT_FACADE);
+    }
+
+    /**
+     * @return ProductDataImportResult
+     */
+    public function createProductDataImportResult(): ProductDataImportResult
+    {
+        return new ProductDataImportResult();
     }
 }

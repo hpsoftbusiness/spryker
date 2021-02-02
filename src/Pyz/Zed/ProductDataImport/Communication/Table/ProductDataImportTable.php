@@ -19,6 +19,8 @@ class ProductDataImportTable extends AbstractTable
     public const COL_FILE_PATH = 'file_path';
     public const COL_IMPORT_RESULT = 'result';
 
+    public const ACTIONS = 'Actions';
+
     public const TIME_FORMAT = 'Y-m-d H:i:s';
 
     /** @var ProductDataImportQueryContainerInterface */
@@ -45,12 +47,14 @@ class ProductDataImportTable extends AbstractTable
                 static::COL_CREATED_AT => 'Create At',
                 static::COL_UPDATED_AT => 'Updated At',
                 static::COL_FILE_PATH => 'File path',
-                static::COL_IMPORT_RESULT => 'Import Result',
                 static::COL_STATUS => 'Status',
+                static::ACTIONS => self::ACTIONS,
             ]
         );
 
         $config->addRawColumn(static::COL_STATUS);
+        $config->addRawColumn(static::COL_IMPORT_RESULT);
+        $config->addRawColumn(self::ACTIONS);
 
         $config->setSearchable(
             [
@@ -128,7 +132,28 @@ class ProductDataImportTable extends AbstractTable
         }
         $productDataImportRow[static::COL_CREATED_AT] = $createdAt;
         $productDataImportRow[static::COL_UPDATED_AT] = $updatedAt;
+        $productDataImportRow[static::ACTIONS] = $this->buildLinks($productDataImport);
+
 
         return $productDataImportRow;
+    }
+
+    /**
+     * @param SpyProductDataImport $productDataImport
+     *
+     * @return string
+     */
+    private function buildLinks(SpyProductDataImport $productDataImport): string
+    {
+        $buttons = [];
+        $buttons[] = $this->generateViewButton(
+            sprintf(
+                '/product-data-import/view?id-product-data-import=%d',
+                $productDataImport->getIdProductDataImport()
+            ),
+            'Detail'
+        );
+
+        return implode(' ', $buttons);
     }
 }

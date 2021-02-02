@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Twig;
 
+use Pyz\Service\ProductDataImport\Plugin\Twig\JsonDecodeTwigExtensionPlugin;
 use Spryker\Service\UtilDateTime\Plugin\Twig\DateTimeFormatterTwigPlugin;
 use Spryker\Shared\Twig\Plugin\DebugTwigPlugin;
 use Spryker\Shared\Twig\Plugin\FormTwigPlugin;
@@ -96,6 +97,8 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             // Form buttons
             new SubmitButtonTwigPlugin(),
             new GuiFilterTwigPlugin(),
+
+            new JsonDecodeTwigExtensionPlugin()
         ];
     }
 

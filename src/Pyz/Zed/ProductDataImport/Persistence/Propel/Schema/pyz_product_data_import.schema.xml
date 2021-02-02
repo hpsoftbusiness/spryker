@@ -10,6 +10,6 @@
         <column name="status" required="true" type="VARCHAR" default="new"/>
         <behavior name="timestampable"/>
         <column name="file_path" required="false" type="VARCHAR" default="NULL"/>
-        <column name="result" required="false" type="VARCHAR" default="NULL"/>
+        <column name="result" required="false" type="LONGVARCHAR" default="NULL"/>
     </table>
 </database>
