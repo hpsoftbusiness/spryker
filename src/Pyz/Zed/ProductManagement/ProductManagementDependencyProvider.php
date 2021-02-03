@@ -39,11 +39,6 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
-//        $container->set(
-//            static::FACADE_PRODUCT,
-//            $container->getLocator()->product()->facade()
-//        );
-
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
             return new ProductManagementToProductBridge($container->getLocator()->product()->facade());
         });
