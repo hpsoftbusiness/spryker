@@ -5,6 +5,7 @@
 
     <table name="spy_product_abstract">
         <column name="is_affiliate" type="boolean"/>
+        <column name="is_removed" required="true" defaultValue="false" type="BOOLEAN"/>
         <column name="affiliate_data" type="LONGVARCHAR"/>
         <column name="brand" type="VARCHAR" size="255"/>
         <behavior name="event">
@@ -20,6 +21,7 @@
 
     <table name="spy_product">
         <column name="hidden_attributes" required="false" type="LONGVARCHAR"/>
+        <column name="is_removed" required="true" defaultValue="false" type="BOOLEAN"/>
         <behavior name="event">
             <parameter name="spy_product_all" column="*"/>
         </behavior>

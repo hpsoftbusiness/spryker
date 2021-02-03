@@ -9,6 +9,7 @@ namespace Pyz\Zed\Product\Business;
 
 use Pyz\Zed\Product\Business\Expander\OrderItemExpander;
 use Pyz\Zed\Product\Business\Expander\OrderItemExpanderInterface;
+use Pyz\Zed\Product\Business\Product\ProductConcreteActivator;
 use Spryker\Zed\Product\Business\ProductBusinessFactory as SprykerProductBusinessFactory;
 
 /**
@@ -25,6 +26,22 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
     {
         return new OrderItemExpander(
             $this->getRepository()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\Product\Business\Product\ProductConcreteActivatorInterface
+     */
+    public function createProductConcreteActivator()
+    {
+        return new ProductConcreteActivator(
+            $this->createProductAbstractStatusChecker(),
+            $this->createProductAbstractManager(),
+            $this->createProductConcreteManager(),
+            $this->createProductUrlManager(),
+            $this->createProductConcreteTouch(),
+            $this->getQueryContainer(),
+            $this->createAttributeEncoder()
         );
     }
 }

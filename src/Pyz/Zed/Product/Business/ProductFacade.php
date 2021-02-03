@@ -17,8 +17,6 @@ class ProductFacade extends SprykerProductFacade implements ProductFacadeInterfa
     /**
      * {@inheritDoc}
      *
-     * @api
-     *
      * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
      * @return \Generated\Shared\Transfer\ItemTransfer[]
@@ -28,5 +26,13 @@ class ProductFacade extends SprykerProductFacade implements ProductFacadeInterfa
         return $this->getFactory()
             ->createOrderItemExpander()
             ->expandOrderItemsWithProductConcrete($itemTransfers);
+    }
+
+    /**
+     * @param int $idProductAbstract
+     */
+    public function markProductAsRemoved(int $idProductAbstract): void
+    {
+        $this->getFactory()->createProductConcreteActivator()->markAbstractProductAsRemoved($idProductAbstract);
     }
 }
