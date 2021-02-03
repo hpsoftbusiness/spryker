@@ -43,7 +43,7 @@ class AddController extends AbstractController
                     $this->addErrorMessage($exception->getMessage());
                 }
             } else {
-                $this->addErrorMessage($form->getErrors()->current()->getMessage());
+                $this->addErrorMessage((string)$form->getErrors(true, false));
             }
         }
 

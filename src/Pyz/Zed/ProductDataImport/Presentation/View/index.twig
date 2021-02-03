@@ -49,20 +49,21 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    {% for result in productDataImport.result|jsonDecode() %}
-                        <tr>
-                            <td>{{ result['type'] }}</td>
-                            <td>{{ result['status'] }}</td>
-                            <td>{{ result['importedCount'] }}</td>
-                            <td>{{ result['failed'] }}</td>
-                            <td>
-                                {% for message in result['messages'] %}
-                                    <p>{{ message }}</p>
-                                {% endfor %}
-                            </td>
-                        </tr
-                    {% endfor %}
+                    {% if productDataImport.result is defined and productDataImport.result is not null %}
+                        {% for result in productDataImport.result|jsonDecode() %}
+                            <tr>
+                                <td>{{ result['type'] }}</td>
+                                <td>{{ result['status'] }}</td>
+                                <td>{{ result['importedCount'] }}</td>
+                                <td>{{ result['failed'] }}</td>
+                                <td>
+                                    {% for message in result['messages'] %}
+                                        <p>{{ message }}</p>
+                                    {% endfor %}
+                                </td>
+                            </tr
+                        {% endfor %}
+                    {% endif %}
                     </tbody>
                 </table>
             </div>
