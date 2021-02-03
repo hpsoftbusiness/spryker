@@ -1,0 +1,29 @@
+{% extends '@Sales/Layout/layout.twig' %}
+
+{% block section_title %}
+    {{ 'Overview of Orders' | trans }}
+{% endblock %}
+
+{% block action %}
+    {% if idOmsOrderItemState == '' %}
+        {{ viewActionButton('/sales/index/export', 'Export') }}
+    {% else%}
+        {{ viewActionButton('/sales/index/export?id-state=' ~ idOmsOrderItemState, 'Export') }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    {% include '@Sales/_partials/filters.twig' %}
+
+    {% embed '@Gui/Partials/widget.twig' with { widget_title: 'List of orders' | trans } %}
+
+        {% block widget_content %}
+
+            {{ orders | raw }}
+
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}
