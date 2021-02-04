@@ -12,12 +12,39 @@ use Spryker\Zed\Product\Business\Product\Touch\ProductConcreteTouchInterface;
 use Spryker\Zed\Product\Business\Product\Url\ProductUrlManagerInterface;
 use Spryker\Zed\Product\Persistence\ProductQueryContainerInterface;
 
-class ProductConcreteActivator extends SprykerProductConcreteActivator
+class ProductConcreteActivator
 {
     /**
      * @var \Spryker\Zed\Product\Business\Attribute\AttributeEncoderInterface
      */
     protected $attributeEncoder;
+
+    /** @var SprykerProductConcreteActivator */
+    protected $sprykerProductConcreteActivator;
+    /**
+     * @var ProductAbstractStatusCheckerInterface
+     */
+    private $productAbstractStatusChecker;
+    /**
+     * @var ProductAbstractManagerInterface
+     */
+    private $productAbstractManager;
+    /**
+     * @var ProductConcreteManagerInterface
+     */
+    private $productConcreteManager;
+    /**
+     * @var ProductUrlManagerInterface
+     */
+    private $productUrlManager;
+    /**
+     * @var ProductConcreteTouchInterface
+     */
+    private $productConcreteTouch;
+    /**
+     * @var ProductQueryContainerInterface
+     */
+    private $productQueryContainer;
 
     public function __construct(
         ProductAbstractStatusCheckerInterface $productAbstractStatusChecker,
@@ -28,7 +55,8 @@ class ProductConcreteActivator extends SprykerProductConcreteActivator
         ProductQueryContainerInterface $productQueryContainer,
         AttributeEncoderInterface $attributeEncoder
     ) {
-        parent::__construct(
+
+        $this->sprykerProductConcreteActivator = new SprykerProductConcreteActivator(
             $productAbstractStatusChecker,
             $productAbstractManager,
             $productConcreteManager,
@@ -37,6 +65,12 @@ class ProductConcreteActivator extends SprykerProductConcreteActivator
             $productQueryContainer
         );
         $this->attributeEncoder = $attributeEncoder;
+        $this->productAbstractStatusChecker = $productAbstractStatusChecker;
+        $this->productAbstractManager = $productAbstractManager;
+        $this->productConcreteManager = $productConcreteManager;
+        $this->productUrlManager = $productUrlManager;
+        $this->productConcreteTouch = $productConcreteTouch;
+        $this->productQueryContainer = $productQueryContainer;
     }
 
     /**
@@ -44,7 +78,7 @@ class ProductConcreteActivator extends SprykerProductConcreteActivator
      */
     public function markAbstractProductAsRemoved(int $idProductAbstract)
     {
-        $this->getTransactionHandler()->handleTransaction(
+        $this->sprykerProductConcreteActivator->getTransactionHandler()->handleTransaction(
             function () use ($idProductAbstract) {
                 $this->executeMarkAbstractProductAsRemovedTransaction($idProductAbstract);
             }
@@ -54,7 +88,8 @@ class ProductConcreteActivator extends SprykerProductConcreteActivator
     /**
      * @param int $idProductAbstract
      *
-     * @throws \Spryker\Zed\Product\Business\Exception\ProductConcreteNotFoundException
+     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      * @throws \Exception
      */
     protected function executeMarkAbstractProductAsRemovedTransaction(int $idProductAbstract): void
@@ -71,7 +106,9 @@ class ProductConcreteActivator extends SprykerProductConcreteActivator
             $productConcreteTransfer->setSku($this->generateRemovedSkuValue($productConcreteTransfer->getSku()));
             $this->persistProductConcreteForSoftRemoved($productConcreteTransfer);
 
-            $this->executeDeactivateProductConcreteTransaction($productConcreteTransfer->getIdProductConcrete());
+            $this->sprykerProductConcreteActivator->deactivateProductConcrete(
+                $productConcreteTransfer->getIdProductConcrete()
+            );
         }
     }
 
@@ -80,14 +117,10 @@ class ProductConcreteActivator extends SprykerProductConcreteActivator
      *
      * @return \Generated\Shared\Transfer\ProductAbstractTransfer|null
      *
-     * @throws \Spryker\Zed\Product\Business\Exception\ProductConcreteNotFoundException
      */
     protected function getProductAbstractTransferById(int $idProductAbstract
     ): ?\Generated\Shared\Transfer\ProductAbstractTransfer {
-        $productAbstractTransfer = $this->productAbstractManager->findProductAbstractById($idProductAbstract);
-        $this->assertProductAbstract($idProductAbstract, $productAbstractTransfer);
-
-        return $productAbstractTransfer;
+        return $this->productAbstractManager->findProductAbstractById($idProductAbstract);
     }
 
     /**
