@@ -2,15 +2,11 @@
 
 {% set widget_title = 'Add an import file' %}
 
-{% block head_title %}
-    {{ widget_title | trans }}
-{% endblock %}
-{% block section_title %}
-    {{ widget_title | trans }}
-{% endblock %}
+{% block head_title widget_title | trans %}
+{% block section_title widget_title | trans %}
 
 {% block action %}
-     {{ backActionButton('/product-data-import', 'Back to list' | trans) }}
+    {{ backActionButton('/product-data-import', 'Back to list' | trans) }}
 {% endblock %}
 
 {% block content %}
@@ -25,4 +21,12 @@
             {% endblock %}
         {% endembed %}
     </div>
+{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+{% endblock %}
+
+{% block footer_js %}
+    {{ parent() }}
 {% endblock %}

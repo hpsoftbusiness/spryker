@@ -72,13 +72,32 @@
                 <label>Import</label>
                 <title>Import</title>
                 <pages>
-                    <artical-core-data>
+                    <product-data-import>
                         <label>Article Core Data</label>
                         <title>Article Core Data</title>
                         <bundle>product-data-import</bundle>
                         <controller>index</controller>
                         <action>index</action>
-                    </artical-core-data>
+                        <visible>1</visible>
+                        <pages>
+                            <product-data-import-add>
+                                <label>Add a Article Core Data</label>
+                                <title>Add a Article Core Data</title>
+                                <bundle>product-data-import</bundle>
+                                <controller>add</controller>
+                                <action>index</action>
+                                <visible>0</visible>
+                            </product-data-import-add>
+                            <product-data-import-view>
+                                <label>View Article Core Data</label>
+                                <title>View Article Core Data</title>
+                                <bundle>product-data-import</bundle>
+                                <controller>view</controller>
+                                <action>index</action>
+                                <visible>0</visible>
+                            </product-data-import-view>
+                        </pages>
+                    </product-data-import>
                 </pages>
             </import>
             <export>
@@ -91,6 +110,7 @@
                         <bundle>posting-export</bundle>
                         <controller>index</controller>
                         <action>index</action>
+                        <visible>1</visible>
                     </posting>
                 </pages>
             </export>
