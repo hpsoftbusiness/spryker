@@ -47,7 +47,7 @@ class ProductUrlWidget extends AbstractWidget
      *
      * @return string
      */
-    protected function getProductUrl(?bool $isAffiliate, array $affiliateData)
+    protected function getProductUrl(?bool $isAffiliate, array $affiliateData): string
     {
         //@TODO just return the url if there is only one affiliate
         if ($isAffiliate) {

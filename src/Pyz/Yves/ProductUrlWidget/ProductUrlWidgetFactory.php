@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ProductUrlWidget;
 
+use Pyz\Client\Customer\CustomerClientInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use Pyz\Yves\ProductDetailPage\ProductDetailPageDependencyProvider;
 use Spryker\Yves\Kernel\AbstractFactory;
@@ -14,9 +15,10 @@ use Spryker\Yves\Kernel\AbstractFactory;
 class ProductUrlWidgetFactory extends AbstractFactory
 {
     /**
-     * @return mixed
+     * @return \Pyz\Client\Customer\CustomerClientInterface
+     * @throws \Spryker\Yves\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
-    public function getCustomerClient()
+    public function getCustomerClient(): CustomerClientInterface
     {
         return $this->getProvidedDependency(ProductUrlWidgetDependencyProvider::CLIENT_CUSTOMER);
     }
