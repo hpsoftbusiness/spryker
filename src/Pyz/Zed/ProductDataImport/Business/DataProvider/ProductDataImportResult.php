@@ -26,7 +26,8 @@ class ProductDataImportResult
 
                 foreach ($reportTransfer->getMessages() as $message) {
 //                    in message we have string that contain exception trace that we dont need
-                    $messages[] = strstr($message->getMessage(), "For debugging execute", true);
+                    $strMessage = strstr($message->getMessage(), "For debugging execute", true);
+                    $messages[] = ($strMessage) ? $strMessage : $message->getMessage();
                 }
                 $transferResult['messages'] = $messages;
             }

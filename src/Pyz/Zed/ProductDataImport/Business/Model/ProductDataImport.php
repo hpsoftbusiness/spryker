@@ -108,12 +108,17 @@ class ProductDataImport implements ProductDataImportInterface
             }
             $spyProductDataImport->save();
         } catch (Exception $exception) {
+            $message = (new DataImporterReportMessageTransfer())->setMessage($exception->getMessage());
             $dataImporterReportTransfer->setImportType($dataEntity);
-            $dataImporterReportTransfer->addMessage(
-                (new DataImporterReportMessageTransfer())->setMessage($exception->getMessage())
-            );
             $dataImporterReportTransfer->setIsSuccess(false);
+            $dataImporterReportTransfer->addDataImporterReport(
+                (new DataImporterReportTransfer())->addMessage($message)->setIsSuccess(false)->setImportType(
+                    $dataEntity
+                )->setImportedDataSetCount(0)->setExpectedImportableDataSetCount(0)
+            );
+
             $spyProductDataImport->setStatus(ProductDataImportInterface::STATUS_FAILED);
+
             $spyProductDataImport->save();
         }
 
