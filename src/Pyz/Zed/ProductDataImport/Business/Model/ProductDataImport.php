@@ -14,6 +14,7 @@ use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterfa
 use Pyz\Zed\ProductDataImport\ProductDataImportConfig;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
+use Throwable;
 
 class ProductDataImport implements ProductDataImportInterface
 {
@@ -107,7 +108,7 @@ class ProductDataImport implements ProductDataImportInterface
                 $spyProductDataImport->setStatus(ProductDataImportInterface::STATUS_FAILED);
             }
             $spyProductDataImport->save();
-        } catch (Exception $exception) {
+        } catch (Throwable $exception) {
             $message = (new DataImporterReportMessageTransfer())->setMessage($exception->getMessage());
             $dataImporterReportTransfer->setImportType($dataEntity);
             $dataImporterReportTransfer->setIsSuccess(false);
