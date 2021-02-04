@@ -114,7 +114,7 @@ groups:
       Zed:
         application: zed
         http:
-            max-request-body-size: 600m
+            max-request-body-size: 1600m
         endpoints:
           zed.de.myworld.cloud.spryker.toys:
             store: DE

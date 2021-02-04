@@ -4,6 +4,7 @@ namespace Pyz\Zed\ProductDataImport\Business\Model;
 
 use Exception;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
+use Generated\Shared\Transfer\DataImporterReportMessageTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport;
@@ -90,7 +91,7 @@ class ProductDataImport implements ProductDataImportInterface
         DataImportFacadeInterface $importFacade,
         string $dataEntity
     ): ?DataImporterReportTransfer {
-        $dataImporterReportTransfer = null;
+        $dataImporterReportTransfer = new DataImporterReportTransfer();
         $spyProductDataImport = $this->markInProgressByDataEntity($productDataImportTransfer, $dataEntity);
         try {
             $dataImportConfigurationActionTransfer = $this->createDataImportConfigurationActionTransfer(
@@ -107,7 +108,11 @@ class ProductDataImport implements ProductDataImportInterface
             }
             $spyProductDataImport->save();
         } catch (Exception $exception) {
-            $spyProductDataImport->setResult($exception->getMessage());
+            $dataImporterReportTransfer->setImportType($dataEntity);
+            $dataImporterReportTransfer->addMessage(
+                (new DataImporterReportMessageTransfer())->setMessage($exception->getMessage())
+            );
+            $dataImporterReportTransfer->setIsSuccess(false);
             $spyProductDataImport->setStatus(ProductDataImportInterface::STATUS_FAILED);
             $spyProductDataImport->save();
         }
