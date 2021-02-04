@@ -2,7 +2,6 @@
 
 namespace Pyz\Zed\ProductDataImport\Business\Model;
 
-use Exception;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportMessageTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
