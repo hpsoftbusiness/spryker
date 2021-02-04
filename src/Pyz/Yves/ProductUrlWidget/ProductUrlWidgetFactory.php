@@ -16,7 +16,6 @@ class ProductUrlWidgetFactory extends AbstractFactory
 {
     /**
      * @return \Pyz\Client\Customer\CustomerClientInterface
-     * @throws \Spryker\Yves\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     public function getCustomerClient(): CustomerClientInterface
     {
