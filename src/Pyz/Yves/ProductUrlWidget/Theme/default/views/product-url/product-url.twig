@@ -1,0 +1,46 @@
+{% extends template('widget') %}
+
+{% define data = {
+    url: _widget.url,
+    suggestion: null,
+    thumbnail: null,
+    image: null,
+    parentJsName: null,
+    configName: null,
+    dataName: null,
+    title: null,
+    price: null,
+    originalPrice: null,
+    originUrl: null,
+    alt: null,
+} %}
+
+{% block body %}
+    {% if data.suggestion %}
+        {% include molecule('suggestion-url', 'ProductUrlWidget') with {
+            data: {
+                url: data.url is empty ? data.originUrl : data.url,
+                image: data.image,
+                title: data.title,
+                price: data.price,
+                originalPrice: data.originalPrice,
+                alt: data.alt,
+            },
+        } only %}
+    {% elseif data.thumbnail %}
+        {% include molecule('thumbnail-url', 'ProductUrlWidget') with {
+            data: {
+                url: data.url is empty ? data.originUrl : data.url,
+                configName: data.configName,
+                parentJsName: data.parentJsName,
+                thumbnail: data.thumbnail,
+            },
+        } only %}
+    {% else %}
+        {% if data.url %}
+            <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page" href="{{ data.url }}">{{ data.dataName }}</a>
+        {% else %}
+            <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page" href="{{ path(data.originUrl) }}">{{ data.dataName }}</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
