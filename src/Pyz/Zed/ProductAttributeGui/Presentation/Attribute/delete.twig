@@ -1,0 +1,57 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% if submit_title is not defined %}
+    {% set widget_title = 'Delete attribute' | trans %}
+    {% set widget_title = widget_title ~ ': ' ~ productManagementAttributeEntity.name %}
+{% endif %}
+
+{% if idProductManagementAttribute is not defined %}
+    {% set idProductManagementAttribute = 0 %}
+{% endif %}
+
+{% block head_title -%}
+    {{ widget_title | trans }} {% if idProductManagementAttribute > 0 %} [{{ idProductManagementAttribute }}] {% endif %}
+{%- endblock %}
+{% block section_title %}{{ widget_title }}{% endblock %}
+
+{% block action %}
+    {% include ['@CategoryGui/_partials/back-button.twig', '@Category/_partials/back-button.twig'] %}
+{% endblock %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' %}
+
+        {% block widget_content %}
+
+            {{ form_start(form) }}
+
+            {{ form_errors(form) }}
+
+            {{ form_rest(form) }}
+
+            <input
+                type="submit"
+                class="btn btn-primary safe-submit"
+                value="{{ 'Delete' | trans }}"
+                disabled="disabled"
+                id="submit_delete"
+            />
+            <label for="delete_confirm">
+                <input type="checkbox" id="delete_confirm"/>
+                {{ 'Yes, I am sure' | trans }}
+            </label>
+            <br/><br/>
+
+            {{ form_end(form) }}
+
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}
+
+{% block footer_js %}
+    {{ parent() }}
+    <script src="{{ assetsPath('js/spryker-zed-category-delete.js') }}"></script>
+{% endblock %}
