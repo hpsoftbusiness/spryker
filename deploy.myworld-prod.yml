@@ -113,7 +113,7 @@ groups:
       Zed:
         application: zed
         http:
-            max-request-body-size: 1600m
+          max-request-body-size: 1600m
         endpoints:
           zed.marketplace.myworld.com:
             store: DE
