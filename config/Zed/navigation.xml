@@ -63,19 +63,59 @@
             </group>
         </pages>
     </customer>
-    <export>
-        <label>Export</label>
-        <title>Export</title>
+    <data-managment>
+        <label>Data Management</label>
+        <title>Data Management</title>
+        <uri>#</uri>
         <pages>
-            <posting>
-                <label>Postings</label>
-                <title>Postings</title>
-                <bundle>posting-export</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </posting>
+            <import>
+                <label>Import</label>
+                <title>Import</title>
+                <pages>
+                    <product-data-import>
+                        <label>Article Core Data</label>
+                        <title>Article Core Data</title>
+                        <bundle>product-data-import</bundle>
+                        <controller>index</controller>
+                        <action>index</action>
+                        <visible>1</visible>
+                        <pages>
+                            <product-data-import-add>
+                                <label>Add a Article Core Data</label>
+                                <title>Add a Article Core Data</title>
+                                <bundle>product-data-import</bundle>
+                                <controller>add</controller>
+                                <action>index</action>
+                                <visible>0</visible>
+                            </product-data-import-add>
+                            <product-data-import-view>
+                                <label>View Article Core Data</label>
+                                <title>View Article Core Data</title>
+                                <bundle>product-data-import</bundle>
+                                <controller>view</controller>
+                                <action>index</action>
+                                <visible>0</visible>
+                            </product-data-import-view>
+                        </pages>
+                    </product-data-import>
+                </pages>
+            </import>
+            <export>
+                <label>Export</label>
+                <title>Export</title>
+                <pages>
+                    <posting>
+                        <label>Backend to Navision</label>
+                        <title>Backend to Navision</title>
+                        <bundle>posting-export</bundle>
+                        <controller>index</controller>
+                        <action>index</action>
+                        <visible>1</visible>
+                    </posting>
+                </pages>
+            </export>
         </pages>
-    </export>
+    </data-managment>
     <catalog>
         <label>Catalog</label>
         <title>Catalog</title>

@@ -1,0 +1,32 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'Add an import file' %}
+
+{% block head_title widget_title | trans %}
+{% block section_title widget_title | trans %}
+
+{% block action %}
+    {{ backActionButton('/product-data-import', 'Back to list' | trans) }}
+{% endblock %}
+
+{% block content %}
+    <div id="spy-file" class="glossary">
+        {% embed '@Gui/Partials/widget.twig' %}
+            {% block widget_content %}
+                {{ form_start(form) }}
+                {{ form_row(form.fileUpload) }}
+
+                <input type="submit" class="btn btn-primary" value="{{ 'Save' | trans }}"/>
+                {{ form_end(form) }}
+            {% endblock %}
+        {% endembed %}
+    </div>
+{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+{% endblock %}
+
+{% block footer_js %}
+    {{ parent() }}
+{% endblock %}

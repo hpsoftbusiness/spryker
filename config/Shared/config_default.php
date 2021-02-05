@@ -4,6 +4,7 @@ use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
 use Pyz\Shared\Oms\OmsConstants;
+use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
@@ -443,9 +444,18 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => APPLICATION_ROOT_DIR . '/data/DE/media/',
         'path' => 'files/',
     ],
+    'files-import' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => APPLICATION_ROOT_DIR . '/data/DE/import-files/',
+        'path' => 'files/',
+    ],
 ];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
+
+// >>> PRODUCT DATA IMPORT FROM FILE
+$config[ProductDataImportConstants::DEFAULT_FILE_MAX_SIZE] = '525M';
+$config[ProductDataImportConstants::STORAGE_NAME] = 'files-import';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ ZED -----------------------------------------
