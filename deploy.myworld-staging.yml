@@ -52,9 +52,6 @@ image:
     SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive-stag --no-ansi -vvv"
     WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
-    ini:
-      "post_max_size": 600m
-      "upload_max_filesize": 600m
     enabled-extensions:
       - blackfire
       - newrelic
@@ -113,8 +110,6 @@ groups:
             <<: *frontend-auth
       Zed:
         application: zed
-        http:
-          max-request-body-size: 1600m
         endpoints:
           zed.de.myworld.cloud.spryker.toys:
             store: DE
