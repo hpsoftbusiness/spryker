@@ -30,9 +30,9 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\Product\Business\Product\ProductConcreteActivatorInterface
+     * @return ProductConcreteActivator
      */
-    public function createProductConcreteActivator()
+    public function createProductConcreteActivatorForRemove()
     {
         return new ProductConcreteActivator(
             $this->createProductAbstractStatusChecker(),
