@@ -11,6 +11,7 @@ use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeDeleteD
 use Spryker\Zed\Category\Communication\Form\DeleteType;
 use Spryker\Zed\ProductAttributeGui\Communication\ProductAttributeGuiCommunicationFactory as SprykerProductAttributeGuiCommunicationFactory;
 use Pyz\Zed\ProductAttributeGui\Communication\Table\AttributeTable;
+use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeTranslationFormCollectionDataProvider;
 
 class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGuiCommunicationFactory
 {
@@ -47,5 +48,17 @@ class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGui
     protected function createAttributeDeleteFormDataProvider()
     {
         return new AttributeDeleteDataProvider();
+    }
+
+    /**
+     * @return \Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeTranslationFormCollectionDataProvider
+     */
+    public function createAttributeTranslationFormCollectionDataProvider(): AttributeTranslationFormCollectionDataProvider
+    {
+        return new AttributeTranslationFormCollectionDataProvider(
+            $this->getProductAttributeFacade(),
+            $this->getProductAttributeQueryContainer(),
+            $this->getLocaleFacade()
+        );
     }
 }

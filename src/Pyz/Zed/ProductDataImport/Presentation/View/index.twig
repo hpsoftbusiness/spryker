@@ -1,0 +1,75 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'View product data import' %}
+
+{% block head_title widget_title | trans %}
+
+{% block section_title widget_title | trans %}
+
+{% block action %}
+    {{ backActionButton('/product-data-import', 'To List' | trans) }}
+{% endblock %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' %}
+
+        {% block widget_content %}
+            <div>
+                <h1>Product Data Import <b>ID:{{ productDataImport.idProductDataImport }}</b></h1>
+                <br>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Status' | trans }}</th>
+                        <th>{{ 'Created At' | trans }}</th>
+                        <th>{{ 'Updated At' | trans }}</th>
+                        <th>{{ 'File Path' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ productDataImport.status }}</td>
+                        <td>{{ productDataImport.createdAt }}</td>
+                        <td>{{ productDataImport.updatedAt }}</td>
+                        <td>{{ productDataImport.filePath }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>Result</h2>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Type' | trans }}</th>
+                        <th>{{ 'Status' | trans }}</th>
+                        <th>{{ 'Imported' | trans }}</th>
+                        <th>{{ 'Failed' | trans }}</th>
+                        <th>{{ 'Messages' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if productDataImport.result is defined and productDataImport.result is not null %}
+                        {% for result in productDataImport.result|jsonDecode() %}
+                            <tr>
+                                <td>{{ result['type'] }}</td>
+                                <td>{{ result['status'] }}</td>
+                                <td>{{ result['importedCount'] }}</td>
+                                <td>{{ result['failed'] }}</td>
+                                <td>
+                                    {% for message in result['messages'] %}
+                                        <p>{{ message }}</p>
+                                    {% endfor %}
+                                </td>
+                            </tr
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}

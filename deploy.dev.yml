@@ -7,6 +7,9 @@ environment: docker.dev
 image:
     tag: spryker/php:7.3-alpine3.12
     php:
+        ini:
+            "post_max_size": 600m
+            "upload_max_filesize": 600m
         enabled-extensions:
             - blackfire
 composer:
@@ -51,6 +54,8 @@ groups:
                         store: DE
             zed_eu:
                 application: zed
+                http:
+                    max-request-body-size: 1600m
                 endpoints:
                     zed.de.myworld.local:
                         store: DE
