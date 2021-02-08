@@ -3,74 +3,63 @@
 namespace Pyz\Zed\Product\Business\Product;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Spryker\Zed\Product\Business\Attribute\AttributeEncoderInterface;
+use Pyz\Zed\Product\Business\Exception\RemovedProductHasOrderException;
+use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 use Spryker\Zed\Product\Business\Product\ProductAbstractManagerInterface;
-use Spryker\Zed\Product\Business\Product\ProductConcreteActivator as SprykerProductConcreteActivator;
+use Spryker\Zed\Product\Business\Product\ProductConcreteActivatorInterface;
 use Spryker\Zed\Product\Business\Product\ProductConcreteManagerInterface;
-use Spryker\Zed\Product\Business\Product\Status\ProductAbstractStatusCheckerInterface;
-use Spryker\Zed\Product\Business\Product\Touch\ProductConcreteTouchInterface;
-use Spryker\Zed\Product\Business\Product\Url\ProductUrlManagerInterface;
 use Spryker\Zed\Product\Persistence\ProductQueryContainerInterface;
 
-class ProductConcreteActivator
+class ProductConcreteRemover
 {
-    /**
-     * @var \Spryker\Zed\Product\Business\Attribute\AttributeEncoderInterface
-     */
-    protected $attributeEncoder;
+    use TransactionTrait;
 
-    /** @var SprykerProductConcreteActivator */
-    protected $sprykerProductConcreteActivator;
-    /**
-     * @var ProductAbstractStatusCheckerInterface
-     */
-    private $productAbstractStatusChecker;
     /**
      * @var ProductAbstractManagerInterface
      */
     private $productAbstractManager;
+
     /**
      * @var ProductConcreteManagerInterface
      */
     private $productConcreteManager;
-    /**
-     * @var ProductUrlManagerInterface
-     */
-    private $productUrlManager;
-    /**
-     * @var ProductConcreteTouchInterface
-     */
-    private $productConcreteTouch;
+
     /**
      * @var ProductQueryContainerInterface
      */
     private $productQueryContainer;
 
+    /**
+     * @var CheckerOrderItem
+     */
+    private $checkerOrderItem;
+
+    /**
+     * @var ProductConcreteActivatorInterface
+     */
+    private $productConcreteActivator;
+
+    /**
+     * ProductConcreteRemover constructor.
+     *
+     * @param ProductConcreteActivatorInterface $productConcreteActivator
+     * @param ProductAbstractManagerInterface $productAbstractManager
+     * @param ProductConcreteManagerInterface $productConcreteManager
+     * @param ProductQueryContainerInterface $productQueryContainer
+     * @param CheckerOrderItem $checkerOrderItem
+     */
     public function __construct(
-        ProductAbstractStatusCheckerInterface $productAbstractStatusChecker,
+        ProductConcreteActivatorInterface $productConcreteActivator,
         ProductAbstractManagerInterface $productAbstractManager,
         ProductConcreteManagerInterface $productConcreteManager,
-        ProductUrlManagerInterface $productUrlManager,
-        ProductConcreteTouchInterface $productConcreteTouch,
         ProductQueryContainerInterface $productQueryContainer,
-        AttributeEncoderInterface $attributeEncoder
+        CheckerOrderItem $checkerOrderItem
     ) {
-
-        $this->sprykerProductConcreteActivator = new SprykerProductConcreteActivator(
-            $productAbstractStatusChecker,
-            $productAbstractManager,
-            $productConcreteManager,
-            $productUrlManager,
-            $productConcreteTouch,
-            $productQueryContainer
-        );
-        $this->attributeEncoder = $attributeEncoder;
-        $this->productAbstractStatusChecker = $productAbstractStatusChecker;
+        $this->productConcreteActivator = $productConcreteActivator;
         $this->productAbstractManager = $productAbstractManager;
         $this->productConcreteManager = $productConcreteManager;
-        $this->productUrlManager = $productUrlManager;
-        $this->productConcreteTouch = $productConcreteTouch;
         $this->productQueryContainer = $productQueryContainer;
+        $this->checkerOrderItem = $checkerOrderItem;
     }
 
     /**
@@ -78,7 +67,7 @@ class ProductConcreteActivator
      */
     public function markAbstractProductAsRemoved(int $idProductAbstract)
     {
-        $this->sprykerProductConcreteActivator->getTransactionHandler()->handleTransaction(
+        $this->getTransactionHandler()->handleTransaction(
             function () use ($idProductAbstract) {
                 $this->executeMarkAbstractProductAsRemovedTransaction($idProductAbstract);
             }
@@ -88,13 +77,17 @@ class ProductConcreteActivator
     /**
      * @param int $idProductAbstract
      *
+     * @throws RemovedProductHasOrderException
      * @throws \Propel\Runtime\Exception\PropelException
      * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
-     * @throws \Exception
      */
     protected function executeMarkAbstractProductAsRemovedTransaction(int $idProductAbstract): void
     {
         $productAbstractTransfer = $this->getProductAbstractTransferById($idProductAbstract);
+
+        $this->validateIfCanRemove($productAbstractTransfer->getSku());
+        $this->validateIfCanRemove($productAbstractTransfer->getSku());
+
         $productAbstractTransfer->setIsRemoved(true);
         $productAbstractTransfer->setSku($this->generateRemovedSkuValue($productAbstractTransfer->getSku()));
         $this->productAbstractManager->saveProductAbstract($productAbstractTransfer);
@@ -102,11 +95,13 @@ class ProductConcreteActivator
         $productConcreteTransfers = $this->getProductConcreteTransfers($idProductAbstract);
 
         foreach ($productConcreteTransfers as $productConcreteTransfer) {
+            $this->validateIfCanRemove($productConcreteTransfer->getSku());
+
             $productConcreteTransfer->setIsRemoved(true);
             $productConcreteTransfer->setSku($this->generateRemovedSkuValue($productConcreteTransfer->getSku()));
             $this->persistProductConcreteForSoftRemoved($productConcreteTransfer);
 
-            $this->sprykerProductConcreteActivator->deactivateProductConcrete(
+            $this->productConcreteActivator->deactivateProductConcrete(
                 $productConcreteTransfer->getIdProductConcrete()
             );
         }
@@ -116,7 +111,6 @@ class ProductConcreteActivator
      * @param int $idProductAbstract
      *
      * @return \Generated\Shared\Transfer\ProductAbstractTransfer|null
-     *
      */
     protected function getProductAbstractTransferById(int $idProductAbstract
     ): ?\Generated\Shared\Transfer\ProductAbstractTransfer {
@@ -152,30 +146,28 @@ class ProductConcreteActivator
      */
     private function persistProductConcreteForSoftRemoved(ProductConcreteTransfer $productConcreteTransfer
     ): \Orm\Zed\Product\Persistence\SpyProduct {
-        $productConcreteTransfer
-            ->requireSku()
-            ->requireFkProductAbstract();
-
-        $encodedAttributes = $this->attributeEncoder->encodeAttributes(
-            $productConcreteTransfer->getAttributes()
-        );
-
         $productConcreteEntity = $this->productQueryContainer
             ->queryProduct()
             ->filterByIdProduct($productConcreteTransfer->getIdProductConcrete())
             ->findOneOrCreate();
 
-        $productConcreteData = $productConcreteTransfer->modifiedToArray();
-
-        if (isset($productConcreteData[ProductConcreteTransfer::ATTRIBUTES])) {
-            unset($productConcreteData[ProductConcreteTransfer::ATTRIBUTES]);
-        }
-
-        $productConcreteEntity->fromArray($productConcreteData);
-        $productConcreteEntity->setAttributes($encodedAttributes);
+        $productConcreteEntity->setSku($productConcreteTransfer->getSku());
+        $productConcreteEntity->setIsRemoved($productConcreteTransfer->getIsRemoved());
 
         $productConcreteEntity->save();
 
         return $productConcreteEntity;
+    }
+
+    /**
+     * @param string $sku
+     *
+     * @throws RemovedProductHasOrderException
+     */
+    private function validateIfCanRemove(string $sku): void
+    {
+        if ($this->checkerOrderItem->hasProductOrderItemBySku($sku)) {
+            throw new RemovedProductHasOrderException();
+        }
     }
 }

@@ -33,6 +33,6 @@ class ProductFacade extends SprykerProductFacade implements ProductFacadeInterfa
      */
     public function markProductAsRemoved(int $idProductAbstract): void
     {
-        $this->getFactory()->createProductConcreteActivatorForRemove()->markAbstractProductAsRemoved($idProductAbstract);
+        $this->getFactory()->createProductRemover()->markAbstractProductAsRemoved($idProductAbstract);
     }
 }

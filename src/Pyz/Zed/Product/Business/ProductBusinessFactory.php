@@ -7,9 +7,11 @@
 
 namespace Pyz\Zed\Product\Business;
 
+use Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery;
 use Pyz\Zed\Product\Business\Expander\OrderItemExpander;
 use Pyz\Zed\Product\Business\Expander\OrderItemExpanderInterface;
-use Pyz\Zed\Product\Business\Product\ProductConcreteActivator;
+use Pyz\Zed\Product\Business\Product\CheckerOrderItem;
+use Pyz\Zed\Product\Business\Product\ProductConcreteRemover;
 use Spryker\Zed\Product\Business\ProductBusinessFactory as SprykerProductBusinessFactory;
 
 /**
@@ -29,19 +31,22 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
         );
     }
 
-    /**
-     * @return ProductConcreteActivator
-     */
-    public function createProductConcreteActivatorForRemove()
+    public function createCheckedOrderItem(): CheckerOrderItem
     {
-        return new ProductConcreteActivator(
-            $this->createProductAbstractStatusChecker(),
+        return new CheckerOrderItem(new SpySalesOrderItemQuery());
+    }
+
+    /**
+     * @return ProductConcreteRemover
+     */
+    public function createProductRemover(): ProductConcreteRemover
+    {
+        return new ProductConcreteRemover(
+            $this->createProductConcreteActivator(),
             $this->createProductAbstractManager(),
             $this->createProductConcreteManager(),
-            $this->createProductUrlManager(),
-            $this->createProductConcreteTouch(),
             $this->getQueryContainer(),
-            $this->createAttributeEncoder()
+            $this->createCheckedOrderItem()
         );
     }
 }
