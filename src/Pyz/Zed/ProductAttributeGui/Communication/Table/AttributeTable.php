@@ -6,6 +6,7 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Spryker\Service\UtilText\Model\Url\Url;
 use Spryker\Zed\ProductAttributeGui\Communication\Table\AttributeTable as SprykerAttributeTable;
+
 class AttributeTable extends SprykerAttributeTable
 {
     protected function createActionColumn(array $item)

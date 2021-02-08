@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Pyz\Zed\ProductAttributeGui\Communication\ProductAttributeGuiCommunicationFactory getFactory()
+ * @method \Pyz\Zed\ProductAttributeGui\Business\ProductAttributeGuiFacade getFacade()
  */
 class AttributeController extends SprykerAttributeController
 {
@@ -24,7 +25,7 @@ class AttributeController extends SprykerAttributeController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            
+
             $this
                 ->getFacade()
                 ->delete($data['id_product_management_attribute']);
