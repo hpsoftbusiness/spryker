@@ -1,33 +1,15 @@
 {% extends molecule('suggestion-product', '@SprykerShop:CatalogPage') %}
 
 {% block body %}
-    <a class="container grid grid--middle link link--without-underline link--darkest js-suggest-search__item--navigable js-suggest-search__product-item--navigable" href="{{ data.url }}">
-        <span class="col">
-            {% if data.image %}
-                {% set imageClasses = '' %}
-
-                {% block image %}
-                    {% set imageClasses = '' %}
-                    {% set imageModifiers = ['thumbnail', 'with-overlay', 'catalog'] %}
-
-                    {{ parent() }}
-                {% endblock %}
-            {% endif %}
-       </span>
-
-        <span class="col col--sm-9 title title--medium">
-            <div class="spacing-bottom">{{- data.title -}}</div>
-            {% if can('SeePricePermissionPlugin') %}
-                {% include molecule('money-price') with {
-                    modifiers: ['suggestion-product'],
-                    data: {
-                        amount: data.price,
-                        originalAmount: data.originalPrice ?? null,
-                    },
-                } only %}
-            {% else %}
-                {{ 'customer.access.cannot_see_price' | trans }}
-            {% endif %}
-       </span>
-    </a>
+    {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate, data.product.affiliate_data ?? data.product.affiliateData] with {
+        data: {
+            originUrl: data.url,
+            suggestion: true,
+            title: data.title,
+            image: data.image,
+            price: data.price,
+            originalPrice: data.originalPrice ?? null,
+            alt: data.alt,
+        },
+    } only %}{% endwidget %}
 {% endblock %}

@@ -24,6 +24,7 @@ class ProductAbstractSearchDataMapper extends SprykerProductAbstractSearchDataMa
         $pageMapTransfer = parent::buildPageMap($data, $localeTransfer);
 
         $this->pageMapBuilder->addSearchResultData($pageMapTransfer, 'is_affiliate', $data['is_affiliate'] ?? false);
+        $this->pageMapBuilder->addSearchResultData($pageMapTransfer, 'affiliate_data', $data['affiliate_data'] ?? []);
         $this->pageMapBuilder->addSearchResultData($pageMapTransfer, 'brand', $data['attributes']['brand'] ?? '');
         $this->pageMapBuilder->addSearchResultData($pageMapTransfer, 'cashback_amount', $data['attributes']['cashback_amount'] ?? '');
         $this->pageMapBuilder->addSearchResultData($pageMapTransfer, 'shopping_points', $data['attributes']['shopping_points'] ?? '');

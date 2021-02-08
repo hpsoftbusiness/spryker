@@ -4,6 +4,7 @@
     {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
     <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
+        {# @todo add this {{ 'pdp.price.from' | trans }} &nbsp; if there is more than one affiliate#}
         {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
     </span>
     <span class="{{ config.name }}__mode {{ defaultPriceJsName }}">

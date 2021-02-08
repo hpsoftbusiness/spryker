@@ -11,6 +11,7 @@ use Pyz\Yves\CustomerPage\Plugin\Application\SsoSecurityApplicationPlugin;
 use Pyz\Yves\GoogleAnalyticWidget\Widget\GoogleAnalyticWidget;
 use Pyz\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
+use Pyz\Yves\ProductUrlWidget\Widget\ProductUrlWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
@@ -160,6 +161,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             RemoveFromCartFormWidget::class,
             ProductAbstractAddToCartButtonWidget::class,
             GoogleAnalyticWidget::class,
+            ProductUrlWidget::class,
         ];
     }
 
