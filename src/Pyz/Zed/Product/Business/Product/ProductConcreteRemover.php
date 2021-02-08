@@ -85,9 +85,6 @@ class ProductConcreteRemover
     {
         $productAbstractTransfer = $this->getProductAbstractTransferById($idProductAbstract);
 
-        $this->validateIfCanRemove($productAbstractTransfer->getSku());
-        $this->validateIfCanRemove($productAbstractTransfer->getSku());
-
         $productAbstractTransfer->setIsRemoved(true);
         $productAbstractTransfer->setSku($this->generateRemovedSkuValue($productAbstractTransfer->getSku()));
         $this->productAbstractManager->saveProductAbstract($productAbstractTransfer);
