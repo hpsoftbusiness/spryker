@@ -7,21 +7,46 @@
 
 namespace Pyz\Zed\ProductAttributeGui\Communication;
 
+use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReader;
+use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeDeleteDataProvider;
+use Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerBridge;
 use Spryker\Zed\Category\Communication\Form\DeleteType;
 use Spryker\Zed\ProductAttributeGui\Communication\ProductAttributeGuiCommunicationFactory as SprykerProductAttributeGuiCommunicationFactory;
 use Pyz\Zed\ProductAttributeGui\Communication\Table\AttributeTable;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeTranslationFormCollectionDataProvider;
+use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductInterface;
+use Spryker\Zed\ProductAttributeGui\ProductAttributeGuiDependencyProvider;
 
 class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGuiCommunicationFactory
 {
     /**
-     * @return \Spryker\Zed\Gui\Communication\Table\AbstractTable
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface
      */
-    public function createAttributeTable()
+    public function createProductReader()
+    {
+        return new ProductReader($this->getProductQueryContainer());
+    }
+
+    /**
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     *
+     */
+    public function getProductQueryContainer(): ProductAttributeGuiToProductInterface
+    {
+        return $this->getProvidedDependency(ProductAttributeGuiDependencyProvider::QUERY_CONTAINER_PRODUCT);
+    }
+
+    /**
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Pyz\Zed\ProductAttributeGui\Communication\Table\AttributeTable
+     */
+    public function createAttributeTable(): AttributeTable
     {
         return new AttributeTable(
-            $this->getProductAttributeQueryContainer()
+            $this->getProductAttributeQueryContainer(),
+            $this->createProductReader()
         );
     }
 

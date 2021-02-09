@@ -2,7 +2,7 @@
 
 namespace Pyz\Zed\ProductAttributeGui\Business\Modal\Writer;
 
-use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
+use Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 
 class ProductAttributeWriter implements ProductAttributeWriterInterface
 {
@@ -14,7 +14,7 @@ class ProductAttributeWriter implements ProductAttributeWriterInterface
     /**
      * ProductAttributeWriter constructor.
      *
-     * @param \Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface $attributeQueryContainer
+     * @param \Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface $attributeQueryContainer
      */
     public function __construct(ProductAttributeGuiToProductAttributeQueryContainerInterface $attributeQueryContainer)
     {
@@ -28,10 +28,11 @@ class ProductAttributeWriter implements ProductAttributeWriterInterface
     {
         $productAttribute = $this->attributeQueryContainer
             ->queryProductManagementAttribute()
+            ->joinWithSpyProductAttributeKey()
             ->findByIdProductManagementAttribute($idProductManagementAttribute);
 
         if($productAttribute) {
-            $this->deleteProductAttributeValues($idProductManagementAttribute);
+            $this->deleteProductAttributeValuesWithTranslations($idProductManagementAttribute);
 
             $productAttribute->delete();
         }
@@ -39,12 +40,30 @@ class ProductAttributeWriter implements ProductAttributeWriterInterface
 
     /**
      * @param int $idProductManagementAttribute
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
      */
-    public function deleteProductAttributeValues(int $idProductManagementAttribute): void
+    public function deleteProductAttributeValuesWithTranslations(int $idProductManagementAttribute): void
+    {
+        $productAttributeValues = $this->attributeQueryContainer
+            ->queryProductManagementAttributeValue()
+            ->findByFkProductManagementAttribute($idProductManagementAttribute);
+
+        foreach($productAttributeValues as $productAttributeValue) {
+            $this->deleteProductAttributeValuesTranslations($productAttributeValue->getIdProductManagementAttributeValue());
+
+            $productAttributeValue->delete();
+        }
+    }
+
+    /**
+     * @param int $idProductManagementAttributeValue
+     */
+    public function deleteProductAttributeValuesTranslations(int $idProductManagementAttributeValue): void
     {
         $this->attributeQueryContainer
-            ->queryProductManagementAttributeValue()
-            ->findByFkProductManagementAttribute($idProductManagementAttribute)
+            ->queryProductManagementAttributeValueTranslation()
+            ->findByFkProductManagementAttributeValue($idProductManagementAttributeValue)
             ->delete();
     }
 }

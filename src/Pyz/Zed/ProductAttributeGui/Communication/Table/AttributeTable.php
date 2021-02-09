@@ -4,11 +4,32 @@ namespace Pyz\Zed\ProductAttributeGui\Communication\Table;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
+use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface;
 use Spryker\Service\UtilText\Model\Url\Url;
 use Spryker\Zed\ProductAttributeGui\Communication\Table\AttributeTable as SprykerAttributeTable;
+use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 
 class AttributeTable extends SprykerAttributeTable
 {
+    /**
+     * @var \Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface
+     */
+    private $productReader;
+
+    /**
+     * AttributeTable constructor.
+     *
+     * @param \Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface $productAttributeQueryContainer
+     * @param \Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface $productReader
+     */
+    public function __construct(
+        ProductAttributeGuiToProductAttributeQueryContainerInterface $productAttributeQueryContainer,
+        ProductReaderInterface $productReader
+    ) {
+        parent::__construct($productAttributeQueryContainer);
+        $this->productReader = $productReader;
+    }
+
     protected function createActionColumn(array $item)
     {
         $urls = [];
@@ -27,8 +48,7 @@ class AttributeTable extends SprykerAttributeTable
             'Edit'
         );
 
-        if (!$this->getOneProductUsingThisAttribute($item['spy_product_attribute_key.key'])
-            && !$this->getOneAbstractProductUsingThisAttribute($item['spy_product_attribute_key.key'])) {
+        if ($this->isProductCanBeDeleted($item['spy_product_attribute_key.key'])) {
             $urls[] = $this->generateRemoveButton(
                 Url::generate('/product-attribute-gui/attribute/delete', [
                     'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
@@ -43,26 +63,31 @@ class AttributeTable extends SprykerAttributeTable
     /**
      * @param string $attributeKey
      *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract|null
+     * @return bool
      */
-    protected function getOneAbstractProductUsingThisAttribute(string $attributeKey)
+    protected function isProductCanBeDeleted(string $attributeKey): bool
     {
-        return SpyProductAbstractQuery::create()
-            ->select('id_product_abstract')
-            ->where('attributes like "%\"' . $attributeKey . '\"%"')
-            ->findOne();
+        return !$this->isThisAttributeUsingByProduct($attributeKey)
+        && !$this->isThisAttributeUsingByAbstractProduct($attributeKey);
     }
 
     /**
      * @param string $attributeKey
      *
-     * @return \Orm\Zed\Product\Persistence\SpyProduct|null
+     * @return bool
      */
-    protected function getOneProductUsingThisAttribute(string $attributeKey)
+    protected function isThisAttributeUsingByAbstractProduct(string $attributeKey): bool
     {
-        return SpyProductQuery::create()
-            ->select('id_product')
-            ->where('attributes like "%\"' . $attributeKey . '\"%"')
-            ->findOne();
+        return $this->productReader->getCountAbstractProductUsingAttribute($attributeKey) > 0;
+    }
+
+    /**
+     * @param string $attributeKey
+     *
+     * @return bool
+     */
+    protected function isThisAttributeUsingByProduct(string $attributeKey): bool
+    {
+        return $this->productReader->getCountProductUsingAttribute($attributeKey) > 0;
     }
 }
