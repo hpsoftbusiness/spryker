@@ -14,10 +14,11 @@ use Pyz\Zed\ProductDataImport\ProductDataImportConfig;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 use Throwable;
+use Spryker\Shared\Log\LoggerTrait;
 
 class ProductDataImport implements ProductDataImportInterface
 {
-    use TransactionTrait;
+    use TransactionTrait, LoggerTrait;
 
     /**
      * @var ProductDataImportQueryContainerInterface
@@ -74,6 +75,19 @@ class ProductDataImport implements ProductDataImportInterface
             $this->getConfig()->getStorageName()
         );
         $fileSystemService->put($dataImportFormDataProvider);
+
+        $this->getLogger()->info(
+            '[ProductDataImport][File-folder]',
+            ['folder' => $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName())]
+        );
+        $this->getLogger()->info(
+            '[ProductDataImport][File-list]',
+            [
+                'files' => scandir(
+                    $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName())
+                ),
+            ]
+        );
 
         $transfer->setFilePath(
             $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName()).$fileName
