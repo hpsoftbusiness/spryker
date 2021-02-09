@@ -11,8 +11,8 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class PostingExportConfig extends AbstractBundleConfig
 {
-    public const DATE_FORMAT = 'd.m.Y';
-    public const FILE_NAME_DELIMITER = '-';
+    public const DATE_FORMAT = 'dmY';
+    public const FILE_NAME_DELIMITER = '_';
 
     /**
      * @return string[]

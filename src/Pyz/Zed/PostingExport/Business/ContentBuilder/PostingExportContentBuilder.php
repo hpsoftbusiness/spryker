@@ -26,9 +26,9 @@ use Spryker\Zed\Money\Business\MoneyFacadeInterface;
 
 class PostingExportContentBuilder
 {
-    protected const FILENAME_FORMAT = "%s (%s)";
+    protected const FILENAME_FORMAT = "%s%s";
     protected const DATE_FORMAT_DMY = 'Y-m-d';
-    protected const FILE_NAME_PREFIX = 'Posting Export';
+    protected const FILE_NAME_PREFIX = 'PostingExport';
     protected const FORMAT_ADDRESS = '%s, %s';
     protected const DATA_PAYMENT_METHOD_CODE_CC = 'MPCC_AD';
     protected const DATA_PAYMENT_METHOD_CODE_PREPAYMENT = 'MP_VORAUS';
@@ -220,7 +220,7 @@ class PostingExportContentBuilder
             'paymentReferenceId' => $adyenPaymentReference,
             'cashBackNumber' => $customerTransfer->getMyWorldCustomerNumber(),
             'noOfLines' => count($orderTransfer->getItems()),
-            'lines' => $orderItemsData,
+            'orderpositions' => $orderItemsData,
         ];
     }
 
@@ -243,6 +243,7 @@ class PostingExportContentBuilder
         $grandTotal = $itemTransfer->getSumPrice() - $discountTotal;
         $taxTotal = $itemTransfer->getSumTaxAmount();
         $excludingVatTotal = $grandTotal - $taxTotal;
+        $unitNetPrice = $itemTransfer->getQuantity() > 0 ? ($itemTransfer->getSumNetPrice() / $itemTransfer->getQuantity()) : 0;
 
         $productDescription = $this->findProductDescription(
             $itemTransfer->getProductConcrete(),
@@ -266,7 +267,7 @@ class PostingExportContentBuilder
             'vatProdPostingGroup' => static::DEFAULT_LINE_DATA_VAT_PROD_POSTING_GROUP,
             'glAccount' => null, // skipped
             'vatPercentage' => (int)$itemTransfer->getTaxRate(),
-            'unitPrice' => $this->formatIntValueToDecimalCurrency($itemTransfer->getUnitNetPrice()),
+            'unitPrice' => $this->formatIntValueToDecimalCurrency($unitNetPrice),
             'amount' => $this->formatIntValueToDecimalCurrency($excludingVatTotal),
             'amountIncludingVat' => $this->formatIntValueToDecimalCurrency($grandTotal),
             'vatAmount' => $this->formatIntValueToDecimalCurrency($taxTotal),
