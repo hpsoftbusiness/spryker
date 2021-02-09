@@ -1,0 +1,21 @@
+{% extends '@Spryker:ProductManagement/Edit/index.twig' %}
+
+{% block action %}
+    {{ parent() }}
+    <a href="/#removeModal" class="btn btn-sm btn-outline btn-remove" data-toggle="modal"
+       data-url="/product-management/index/soft-remove?id-product-abstract={{ idProductAbstract }}">
+        {{ 'Remove' | trans }}
+    </a>
+{% endblock %}
+
+
+{% block content %}
+    {{ parent() }}
+    {% include '@ProductManagement/_partials/remove-modal.twig' %}
+{% endblock %}
+
+
+{% block footer_js %}
+    {{ parent() }}
+    <script src="{{ assetsPath('js/soft-remove-modal.js') }}"></script>
+{% endblock %}

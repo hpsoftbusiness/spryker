@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductManagement;
 
+use Pyz\Zed\ProductManagement\Dependency\Facade\ProductManagementToProductBridge;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractEditViewExpanderPlugin;
@@ -26,6 +27,25 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 
 class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
 {
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     *
+     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
+     */
+    public function provideCommunicationLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
+        $container->set(static::FACADE_PRODUCT, function (Container $container) {
+            return new ProductManagementToProductBridge($container->getLocator()->product()->facade());
+        });
+
+        return $container;
+    }
+
     /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */

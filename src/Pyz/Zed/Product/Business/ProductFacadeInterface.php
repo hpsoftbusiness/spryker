@@ -22,4 +22,9 @@ interface ProductFacadeInterface extends SprykerProductFacadeInterface
      * @return \Generated\Shared\Transfer\ItemTransfer[]
      */
     public function expandOrderItemsWithProductConcrete(array $itemTransfers): array;
+
+    /**
+     * @param int $idProductAbstract
+     */
+    public function markProductAsRemoved(int $idProductAbstract): void;
 }

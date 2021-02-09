@@ -15,5 +15,13 @@
         <property name="shoppingPoints" type="string"/>
     </transfer>
 
+    <transfer name="ProductAbstract">
+        <property name="isRemoved" type="bool"/>
+    </transfer>
+
+    <transfer name="ProductConcrete">
+        <property name="isRemoved" type="bool"/>
+    </transfer>
+
 </transfers>
 
