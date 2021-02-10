@@ -25,6 +25,8 @@ interface ProductFacadeInterface extends SprykerProductFacadeInterface
 
     /**
      * @param int $idProductAbstract
+     *
+     * @return void
      */
     public function markProductAsRemoved(int $idProductAbstract): void;
 }

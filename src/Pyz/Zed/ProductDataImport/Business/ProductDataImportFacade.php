@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Business;
 
 use Generated\Shared\Transfer\DataImporterReportTransfer;
@@ -13,7 +18,10 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class ProductDataImportFacade extends AbstractFacade implements ProductDataImportFacadeInterface
 {
     /**
-     * {@inheritDoc}
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
+     * @param \Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider $dataProvider
+     *
+     * @return void
      */
     public function saveFile(ProductDataImportTransfer $transfer, ProductDataImportFormDataProvider $dataProvider): void
     {
@@ -22,7 +30,7 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * {@inheritDoc}
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
     public function getProductDataImportForImport(): ?ProductDataImportTransfer
     {
@@ -30,7 +38,10 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * {@inheritDoc}
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
+     * @param string $dataEntity
+     *
+     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,
@@ -46,7 +57,10 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * {@inheritDoc}
+     * @param array $resultArray
+     * @param int $id
+     *
+     * @return void
      */
     public function saveImportResult(array $resultArray, int $id): void
     {
@@ -57,7 +71,9 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * {@inheritDoc}
+     * @param int $id
+     *
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
     public function getProductDataImportTransferById(int $id): ?ProductDataImportTransfer
     {

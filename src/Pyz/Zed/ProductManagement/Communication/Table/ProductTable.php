@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductManagement\Communication\Table;
 
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractLocalizedAttributesTableMap;
@@ -13,7 +18,8 @@ use Spryker\Zed\ProductManagement\Communication\Table\ProductTable as SprykerPro
 class ProductTable extends SprykerProductTable
 {
     /**
-     * @param SpyProductAbstract $item
+     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $item
+     *
      * @return array
      */
     protected function createActionColumn(SpyProductAbstract $item): array
@@ -40,7 +46,6 @@ class ProductTable extends SprykerProductTable
      * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
      *
      * @return array
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      */
     protected function prepareData(TableConfiguration $config): array
     {

@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication\Controller;
 
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @method \Pyz\Zed\ProductDataImport\Business\ProductDataImportFacade getFacade()
@@ -30,7 +36,7 @@ class IndexController extends AbstractController
     /**
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function tableAction(): \Symfony\Component\HttpFoundation\JsonResponse
+    public function tableAction(): JsonResponse
     {
         $table = $this->getFactory()->createProductImportTable();
 

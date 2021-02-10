@@ -30,6 +30,8 @@ class ProductFacade extends SprykerProductFacade implements ProductFacadeInterfa
 
     /**
      * @param int $idProductAbstract
+     *
+     * @return void
      */
     public function markProductAsRemoved(int $idProductAbstract): void
     {

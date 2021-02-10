@@ -1,20 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication\Form;
 
 use Generated\Shared\Transfer\FileUploadTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
+use Spryker\Zed\FileManagerGui\Communication\Form\Validator\Constraints\File;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Spryker\Zed\FileManagerGui\Communication\Form\Validator\Constraints\File;
 
 /**
  * @method \Pyz\Zed\ProductDataImport\ProductDataImportConfig getConfig()
  * @method \Pyz\Zed\ProductDataImport\Communication\ProductDataImportCommunicationFactory getFactory()
+ * @method \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface getQueryContainer()
+ * @method \Pyz\Zed\ProductDataImport\Business\ProductDataImportFacadeInterface getFacade()
  */
 class ProductDataImportForm extends AbstractType
 {
@@ -38,7 +45,7 @@ class ProductDataImportForm extends AbstractType
      *
      * @return $this
      */
-    protected function addUploadedFileField(FormBuilderInterface $builder): ProductDataImportForm
+    protected function addUploadedFileField(FormBuilderInterface $builder)
     {
         $builder->add(
             static::FILED_FILE_UPLOAD,

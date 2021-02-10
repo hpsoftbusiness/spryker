@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -28,7 +28,6 @@ class AdyenPaymentHandler extends SprykerEcoAdyenPaymentHandler
             ->getAdyenPayment()
             ->setSplitMarketplaceReference($this->generateReference(AdyenConfig::SPLIT_TYPE_MARKETPLACE))
             ->setSplitCommissionReference($this->generateReference(AdyenConfig::SPLIT_TYPE_COMMISSION));
-
 
         return $quoteTransfer;
     }

@@ -59,7 +59,7 @@ class CancelTurnoverRequest implements CancelTurnoverRequestInterface
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
      *
-     * @return mixed
+     * @return void
      */
     public function request(array $orderItemIds, OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): void
     {

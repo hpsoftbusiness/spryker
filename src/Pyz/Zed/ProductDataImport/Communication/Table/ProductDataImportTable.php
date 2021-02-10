@@ -1,9 +1,15 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication\Table;
 
 use Orm\Zed\ProductDataImport\Persistence\Map\SpyProductDataImportTableMap;
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport;
+use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery;
 use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Exception\PropelException;
 use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface;
@@ -23,12 +29,13 @@ class ProductDataImportTable extends AbstractTable
 
     public const TIME_FORMAT = 'Y-m-d H:i:s';
 
-    /** @var ProductDataImportQueryContainerInterface */
+    /**
+     * @var \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface
+     */
     protected $productImportQueryContainer;
 
     /**
-     * ProductDataImportTable constructor.
-     * @param ProductDataImportQueryContainerInterface $productImportQueryContainer
+     * @param \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface $productImportQueryContainer
      */
     public function __construct(ProductDataImportQueryContainerInterface $productImportQueryContainer)
     {
@@ -36,8 +43,9 @@ class ProductDataImportTable extends AbstractTable
     }
 
     /**
-     * @param TableConfiguration $config
-     * @return TableConfiguration
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
      */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
@@ -78,7 +86,8 @@ class ProductDataImportTable extends AbstractTable
     }
 
     /**
-     * @param TableConfiguration $config
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
      * @return array
      */
     protected function prepareData(TableConfiguration $config): array
@@ -97,13 +106,14 @@ class ProductDataImportTable extends AbstractTable
     /**
      * @return \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery
      */
-    protected function prepareQuery(): \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery
+    protected function prepareQuery(): SpyProductDataImportQuery
     {
         return $this->productImportQueryContainer->queryProductImports();
     }
 
     /**
-     * @param ObjectCollection $productImportsCollection
+     * @param \Propel\Runtime\Collection\ObjectCollection $productImportsCollection
+     *
      * @return array
      */
     protected function formatProductImportCollection(ObjectCollection $productImportsCollection): array
@@ -118,7 +128,8 @@ class ProductDataImportTable extends AbstractTable
     }
 
     /**
-     * @param SpyProductDataImport $productDataImport
+     * @param \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport $productDataImport
+     *
      * @return array
      */
     protected function hydrateProductDataImportListRow(SpyProductDataImport $productDataImport): array
@@ -134,12 +145,11 @@ class ProductDataImportTable extends AbstractTable
         $productDataImportRow[static::COL_UPDATED_AT] = $updatedAt;
         $productDataImportRow[static::ACTIONS] = $this->buildLinks($productDataImport);
 
-
         return $productDataImportRow;
     }
 
     /**
-     * @param SpyProductDataImport $productDataImport
+     * @param \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport $productDataImport
      *
      * @return string
      */

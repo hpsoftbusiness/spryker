@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\Product\Business\Product;
 
+use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Orm\Zed\Product\Persistence\SpyProduct;
 use Pyz\Zed\Product\Business\Exception\RemovedProductHasOrderException;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 use Spryker\Zed\Product\Business\Product\ProductAbstractManagerInterface;
@@ -15,38 +22,36 @@ class ProductConcreteRemover
     use TransactionTrait;
 
     /**
-     * @var ProductAbstractManagerInterface
+     * @var \Spryker\Zed\Product\Business\Product\ProductAbstractManagerInterface
      */
     private $productAbstractManager;
 
     /**
-     * @var ProductConcreteManagerInterface
+     * @var \Spryker\Zed\Product\Business\Product\ProductConcreteManagerInterface
      */
     private $productConcreteManager;
 
     /**
-     * @var ProductQueryContainerInterface
+     * @var \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface
      */
     private $productQueryContainer;
 
     /**
-     * @var CheckerOrderItem
+     * @var \Pyz\Zed\Product\Business\Product\CheckerOrderItem
      */
     private $checkerOrderItem;
 
     /**
-     * @var ProductConcreteActivatorInterface
+     * @var \Spryker\Zed\Product\Business\Product\ProductConcreteActivatorInterface
      */
     private $productConcreteActivator;
 
     /**
-     * ProductConcreteRemover constructor.
-     *
-     * @param ProductConcreteActivatorInterface $productConcreteActivator
-     * @param ProductAbstractManagerInterface $productAbstractManager
-     * @param ProductConcreteManagerInterface $productConcreteManager
-     * @param ProductQueryContainerInterface $productQueryContainer
-     * @param CheckerOrderItem $checkerOrderItem
+     * @param \Spryker\Zed\Product\Business\Product\ProductConcreteActivatorInterface $productConcreteActivator
+     * @param \Spryker\Zed\Product\Business\Product\ProductAbstractManagerInterface $productAbstractManager
+     * @param \Spryker\Zed\Product\Business\Product\ProductConcreteManagerInterface $productConcreteManager
+     * @param \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface $productQueryContainer
+     * @param \Pyz\Zed\Product\Business\Product\CheckerOrderItem $checkerOrderItem
      */
     public function __construct(
         ProductConcreteActivatorInterface $productConcreteActivator,
@@ -64,6 +69,8 @@ class ProductConcreteRemover
 
     /**
      * @param int $idProductAbstract
+     *
+     * @return void
      */
     public function markAbstractProductAsRemoved(int $idProductAbstract)
     {
@@ -77,9 +84,7 @@ class ProductConcreteRemover
     /**
      * @param int $idProductAbstract
      *
-     * @throws RemovedProductHasOrderException
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     * @return void
      */
     protected function executeMarkAbstractProductAsRemovedTransaction(int $idProductAbstract): void
     {
@@ -109,13 +114,14 @@ class ProductConcreteRemover
      *
      * @return \Generated\Shared\Transfer\ProductAbstractTransfer|null
      */
-    protected function getProductAbstractTransferById(int $idProductAbstract
-    ): ?\Generated\Shared\Transfer\ProductAbstractTransfer {
+    protected function getProductAbstractTransferById(int $idProductAbstract): ?ProductAbstractTransfer
+    {
         return $this->productAbstractManager->findProductAbstractById($idProductAbstract);
     }
 
     /**
      * @param int $idProductAbstract
+     *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer[]
      */
     protected function getProductConcreteTransfers(int $idProductAbstract): array
@@ -137,12 +143,9 @@ class ProductConcreteRemover
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      *
      * @return \Orm\Zed\Product\Persistence\SpyProduct
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      */
-    private function persistProductConcreteForSoftRemoved(ProductConcreteTransfer $productConcreteTransfer
-    ): \Orm\Zed\Product\Persistence\SpyProduct {
+    private function persistProductConcreteForSoftRemoved(ProductConcreteTransfer $productConcreteTransfer): SpyProduct
+    {
         $productConcreteEntity = $this->productQueryContainer
             ->queryProduct()
             ->filterByIdProduct($productConcreteTransfer->getIdProductConcrete())
@@ -159,7 +162,9 @@ class ProductConcreteRemover
     /**
      * @param string $sku
      *
-     * @throws RemovedProductHasOrderException
+     * @throws \Pyz\Zed\Product\Business\Exception\RemovedProductHasOrderException
+     *
+     * @return void
      */
     private function validateIfCanRemove(string $sku): void
     {

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport;
 
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
@@ -11,11 +16,9 @@ class ProductDataImportDependencyProvider extends AbstractBundleDependencyProvid
     public const DATA_IMPORT_FACADE = 'DATA_IMPORT_FACADE';
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
-     *
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
+     * @return \Spryker\Zed\Kernel\Container
      */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
@@ -26,9 +29,9 @@ class ProductDataImportDependencyProvider extends AbstractBundleDependencyProvid
     }
 
     /**
-     * @param Container $container
-     * @return Container
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addFileSystemService(Container $container): Container
     {
@@ -38,9 +41,9 @@ class ProductDataImportDependencyProvider extends AbstractBundleDependencyProvid
     }
 
     /**
-     * @param Container $container
-     * @return Container
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addDataImportFacade(Container $container): Container
     {

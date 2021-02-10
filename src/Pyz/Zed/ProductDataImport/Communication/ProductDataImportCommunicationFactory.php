@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication;
 
 use Generated\Shared\Transfer\ProductDataImportTransfer;
@@ -7,15 +12,17 @@ use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportF
 use Pyz\Zed\ProductDataImport\Communication\Form\ProductDataImportForm;
 use Pyz\Zed\ProductDataImport\Communication\Table\ProductDataImportTable;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * @method \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainer getQueryContainer()
  * @method \Pyz\Zed\ProductDataImport\ProductDataImportConfig getConfig()
+ * @method \Pyz\Zed\ProductDataImport\Business\ProductDataImportFacadeInterface getFacade()
  */
 class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
 {
     /**
-     * @return ProductDataImportTable
+     * @return \Pyz\Zed\ProductDataImport\Communication\Table\ProductDataImportTable
      */
     public function createProductImportTable(): ProductDataImportTable
     {
@@ -23,7 +30,7 @@ class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
     }
 
     /**
-     * @return ProductDataImportFormDataProvider
+     * @return \Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider
      */
     public function createProductDataImportFormDataProvider(): ProductDataImportFormDataProvider
     {
@@ -31,7 +38,7 @@ class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
     }
 
     /**
-     * @param ProductDataImportTransfer $data
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $data
      * @param array $options
      *
      * @return \Symfony\Component\Form\FormInterface
@@ -39,7 +46,7 @@ class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
     public function createProductDataImportForm(
         ProductDataImportTransfer $data,
         array $options = []
-    ): \Symfony\Component\Form\FormInterface {
+    ): FormInterface {
         return $this->getFormFactory()->create(ProductDataImportForm::class, $data, $options);
     }
 }

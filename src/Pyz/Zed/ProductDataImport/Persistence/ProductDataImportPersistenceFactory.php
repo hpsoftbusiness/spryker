@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Persistence;
 
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery;
@@ -12,7 +17,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 class ProductDataImportPersistenceFactory extends AbstractPersistenceFactory
 {
     /**
-     * @return SpyProductDataImportQuery
+     * @return \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery
      */
     public function createSpyProductImportDataQuery(): SpyProductDataImportQuery
     {

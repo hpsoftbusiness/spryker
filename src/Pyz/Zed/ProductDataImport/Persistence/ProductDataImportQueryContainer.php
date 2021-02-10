@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Persistence;
 
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery;
@@ -11,7 +16,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 class ProductDataImportQueryContainer extends AbstractQueryContainer implements ProductDataImportQueryContainerInterface
 {
     /**
-     * @return SpyProductDataImportQuery
+     * @return \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery
      */
     public function queryProductImports(): SpyProductDataImportQuery
     {
@@ -20,8 +25,8 @@ class ProductDataImportQueryContainer extends AbstractQueryContainer implements 
 
     /**
      * @param int $idProductDataImport
-     * @return SpyProductDataImportQuery
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     *
+     * @return \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImportQuery
      */
     public function queryProductDataImportById(int $idProductDataImport): SpyProductDataImportQuery
     {

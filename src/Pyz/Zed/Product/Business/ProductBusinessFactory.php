@@ -31,13 +31,16 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
         );
     }
 
+    /**
+     * @return \Pyz\Zed\Product\Business\Product\CheckerOrderItem
+     */
     public function createCheckedOrderItem(): CheckerOrderItem
     {
         return new CheckerOrderItem(new SpySalesOrderItemQuery());
     }
 
     /**
-     * @return ProductConcreteRemover
+     * @return \Pyz\Zed\Product\Business\Product\ProductConcreteRemover
      */
     public function createProductRemover(): ProductConcreteRemover
     {

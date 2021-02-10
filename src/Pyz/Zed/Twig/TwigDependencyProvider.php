@@ -98,7 +98,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new SubmitButtonTwigPlugin(),
             new GuiFilterTwigPlugin(),
 
-            new JsonDecodeTwigExtensionPlugin()
+            new JsonDecodeTwigExtensionPlugin(),
         ];
     }
 

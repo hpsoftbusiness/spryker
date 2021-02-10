@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication\Console;
 
 use Spryker\Zed\Kernel\Communication\Console\Console;
@@ -8,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @method \Pyz\Zed\ProductDataImport\Business\ProductDataImportFacade getFacade()
+ * @method \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface getQueryContainer()
+ * @method \Pyz\Zed\ProductDataImport\Communication\ProductDataImportCommunicationFactory getFactory()
  */
 class ProductDataImportConsole extends Console
 {
@@ -29,8 +36,8 @@ class ProductDataImportConsole extends Console
         self::DATA_ENTITY_GROUP,
     ];
 
-    const COMMAND_NAME = 'data:product:import-file';
-    const DESCRIPTION = 'Import products from file that was uploaded from Zed, data in table: spy_product_data_import';
+    public const COMMAND_NAME = 'data:product:import-file';
+    public const DESCRIPTION = 'Import products from file that was uploaded from Zed, data in table: spy_product_data_import';
 
     /**
      * @return void
@@ -46,9 +53,6 @@ class ProductDataImportConsole extends Console
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
      * @return int|null
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
@@ -62,7 +66,7 @@ class ProductDataImportConsole extends Console
             foreach (self::DATA_ENTITY_FOR_PRODUCT as $dataEntity) {
                 $result = $this->getFacade()->import($productDataImport, $dataEntity);
                 $resultArray[$dataEntity] = $result->setImportType($dataEntity);
-            };
+            }
 
             $this->getFacade()->saveImportResult($resultArray, $productDataImport->getIdProductDataImport());
         }

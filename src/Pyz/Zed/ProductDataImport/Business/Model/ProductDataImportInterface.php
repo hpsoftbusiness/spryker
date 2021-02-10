@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Business\Model;
 
 use Generated\Shared\Transfer\DataImporterReportTransfer;
@@ -23,20 +28,21 @@ interface ProductDataImportInterface
     public const STATUS_SUCCESS = 'successful';
     public const STATUS_FAILED = 'failed';
 
-
     /**
-     * @param ProductDataImportTransfer $transfer
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
      *
-     * @return ProductDataImportTransfer
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer
      */
     public function add(ProductDataImportTransfer $transfer): ProductDataImportTransfer;
 
     /**
-     * @param ProductDataImportTransfer $transfer
-     * @param ProductDataImportFormDataProvider $dataProvider
-     * @param FileSystemServiceInterface $fileSystemService
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
+     * @param \Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider $dataProvider
+     * @param \Spryker\Service\FileSystem\FileSystemServiceInterface $fileSystemService
      *
      * @throws \Spryker\Service\FileSystem\Dependency\Exception\FileSystemWriteException
+     *
+     * @return void
      */
     public function saveFile(
         ProductDataImportTransfer $transfer,
@@ -45,13 +51,13 @@ interface ProductDataImportInterface
     ): void;
 
     /**
-     * @param ProductDataImportTransfer $productDataImportTransfer
-     * @param DataImportFacadeInterface $importFacade
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
+     * @param \Pyz\Zed\DataImport\Business\DataImportFacadeInterface $importFacade
      * @param string $dataEntity
      *
-     * @return DataImporterReportTransfer|null
-     *
      * @throws \Propel\Runtime\Exception\PropelException
+     *
+     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,

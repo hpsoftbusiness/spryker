@@ -1,13 +1,17 @@
 <?php
 
-namespace Pyz\Zed\ProductDataImport\Business\DataProvider;
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
 
-use Generated\Shared\Transfer\DataImporterReportTransfer;
+namespace Pyz\Zed\ProductDataImport\Business\DataProvider;
 
 class ProductDataImportResult
 {
     /**
-     * @param DataImporterReportTransfer[] $transferReports
+     * @param \Generated\Shared\Transfer\DataImporterReportTransfer[] $transferReports
+     *
      * @return string
      */
     public function collectionDataImporterReportTransferToString(array $transferReports): string
@@ -20,7 +24,7 @@ class ProductDataImportResult
                 $transferResult['type'] = $reportTransfer->getImportType();
                 $transferResult['importedCount'] = $reportTransfer->getImportedDataSetCount();
                 $transferResult['failed'] = $reportTransfer->getExpectedImportableDataSetCount(
-                    ) - $reportTransfer->getImportedDataSetCount();
+                ) - $reportTransfer->getImportedDataSetCount();
 
                 $messages = [];
 

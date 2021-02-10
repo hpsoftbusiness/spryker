@@ -27,13 +27,10 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 
 class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
 {
-
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
-     *
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Business\Model;
 
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
@@ -12,27 +17,28 @@ use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportF
 use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface;
 use Pyz\Zed\ProductDataImport\ProductDataImportConfig;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
+use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 use Throwable;
-use Spryker\Shared\Log\LoggerTrait;
 
 class ProductDataImport implements ProductDataImportInterface
 {
-    use TransactionTrait, LoggerTrait;
+    use TransactionTrait;
+    use LoggerTrait;
 
     /**
-     * @var ProductDataImportQueryContainerInterface
+     * @var \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface
      */
     private $queryContainer;
+
     /**
-     * @var ProductDataImportConfig
+     * @var \Pyz\Zed\ProductDataImport\ProductDataImportConfig
      */
     private $config;
 
     /**
-     * ProductDataImport constructor.
-     * @param ProductDataImportQueryContainerInterface $queryContainer
-     * @param ProductDataImportConfig $config
+     * @param \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface $queryContainer
+     * @param \Pyz\Zed\ProductDataImport\ProductDataImportConfig $config
      */
     public function __construct(
         ProductDataImportQueryContainerInterface $queryContainer,
@@ -43,8 +49,9 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @param ProductDataImportTransfer $transfer
-     * @return ProductDataImportTransfer
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
+     *
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer
      */
     public function add(ProductDataImportTransfer $transfer): ProductDataImportTransfer
     {
@@ -56,7 +63,11 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
+     * @param \Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider $dataProvider
+     * @param \Spryker\Service\FileSystem\FileSystemServiceInterface $fileSystemService
+     *
+     * @return void
      */
     public function saveFile(
         ProductDataImportTransfer $transfer,
@@ -90,7 +101,7 @@ class ProductDataImport implements ProductDataImportInterface
         );
 
         $transfer->setFilePath(
-            $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName()).$fileName
+            $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName()) . $fileName
         );
         $transfer->setStatus(ProductDataImportInterface::STATUS_NEW);
 
@@ -98,7 +109,11 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
+     * @param \Pyz\Zed\DataImport\Business\DataImportFacadeInterface $importFacade
+     * @param string $dataEntity
+     *
+     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,
@@ -140,14 +155,12 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @param ProductDataImportTransfer $productDataImportTransfer
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
      *
-     * @return ProductDataImportTransfer
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer
      */
-    protected function executeAddTransaction(ProductDataImportTransfer $productDataImportTransfer
-    ): ProductDataImportTransfer {
+    protected function executeAddTransaction(ProductDataImportTransfer $productDataImportTransfer): ProductDataImportTransfer
+    {
         $productDataImportEntity = new SpyProductDataImport();
         $productDataImportEntity->fromArray($productDataImportTransfer->toArray());
         $productDataImportEntity->save();
@@ -156,7 +169,7 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @return ProductDataImportConfig
+     * @return \Pyz\Zed\ProductDataImport\ProductDataImportConfig
      */
     public function getConfig(): ProductDataImportConfig
     {
@@ -164,7 +177,7 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @return ProductDataImportTransfer|null
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
     public function getProductDataImportForImport(): ?ProductDataImportTransfer
     {
@@ -181,12 +194,10 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @param ProductDataImportTransfer $productDataImportTransfer
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
      * @param string $dataEntity
      *
-     * @return SpyProductDataImport
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @return \Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport
      */
     protected function markInProgressByDataEntity(
         ProductDataImportTransfer $productDataImportTransfer,
@@ -204,7 +215,8 @@ class ProductDataImport implements ProductDataImportInterface
     /**
      * @param string $dataEntity
      * @param string $dataSource
-     * @return DataImportConfigurationActionTransfer
+     *
+     * @return \Generated\Shared\Transfer\DataImportConfigurationActionTransfer
      */
     protected function createDataImportConfigurationActionTransfer(
         string $dataEntity,
@@ -221,7 +233,7 @@ class ProductDataImport implements ProductDataImportInterface
      * @param string $stringResult
      * @param int $id
      *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @return void
      */
     public function saveResult(string $stringResult, int $id): void
     {
@@ -234,7 +246,7 @@ class ProductDataImport implements ProductDataImportInterface
     /**
      * @param int $id
      *
-     * @return ProductDataImportTransfer|null
+     * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
     public function getProductDataImportTransferById(int $id): ?ProductDataImportTransfer
     {

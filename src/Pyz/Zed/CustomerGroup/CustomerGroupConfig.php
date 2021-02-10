@@ -26,6 +26,9 @@ class CustomerGroupConfig extends SprykerCustomerGroupConfig
      */
     protected const CUSTOMER_TYPE_MARKETER = 'Marketer';
 
+    /**
+     * @return string[]
+     */
     public function getCustomerTypeToCustomerGroupNameMap(): array
     {
         return [

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Business;
 
 use Pyz\Zed\DataImport\Business\DataImportFacadeInterface;
@@ -16,7 +21,7 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class ProductDataImportBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return ProductDataImport
+     * @return \Pyz\Zed\ProductDataImport\Business\Model\ProductDataImport
      */
     public function createProductDataImport(): ProductDataImport
     {
@@ -24,9 +29,7 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return FileSystemServiceInterface
-     *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Spryker\Service\FileSystem\FileSystemServiceInterface
      */
     public function getFileSystem(): FileSystemServiceInterface
     {
@@ -34,9 +37,7 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return DataImportFacadeInterface
-     *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Pyz\Zed\DataImport\Business\DataImportFacadeInterface
      */
     public function getDataImport(): DataImportFacadeInterface
     {
@@ -44,7 +45,7 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return ProductDataImportResult
+     * @return \Pyz\Zed\ProductDataImport\Business\DataProvider\ProductDataImportResult
      */
     public function createProductDataImportResult(): ProductDataImportResult
     {

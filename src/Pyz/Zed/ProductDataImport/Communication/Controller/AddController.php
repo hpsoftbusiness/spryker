@@ -1,10 +1,15 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication\Controller;
 
+use Exception;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Exception;
 
 /**
  * @method \Pyz\Zed\ProductDataImport\Business\ProductDataImportFacade getFacade()
@@ -16,7 +21,8 @@ class AddController extends AbstractController
     public const ROUTE_PATH = '/product-data-import/add';
 
     /**
-     * @param Request $request
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function indexAction(Request $request)

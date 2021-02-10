@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport;
 
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
@@ -24,8 +29,8 @@ class ProductDataImportConfig extends AbstractBundleConfig
     }
 
     /**
-     *
      * @param string $fileSystemName
+     *
      * @return string
      */
     public function getImportFileDirectory(string $fileSystemName): string
@@ -35,6 +40,6 @@ class ProductDataImportConfig extends AbstractBundleConfig
         $rootPath = $filesystemConfig[$fileSystemName]['root'];
         $folderPath = $filesystemConfig[$fileSystemName]['path'];
 
-        return $rootPath.$folderPath;
+        return $rootPath . $folderPath;
     }
 }
