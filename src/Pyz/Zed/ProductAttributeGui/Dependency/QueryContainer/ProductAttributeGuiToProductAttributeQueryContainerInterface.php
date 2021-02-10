@@ -2,13 +2,22 @@
 
 namespace Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer;
 
-use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface as SpyProductAttributeGuiToProductAttributeQueryContainerInterface;
-use \Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueTranslationQuery;
+use Spryker\Zed\ProductAttribute\Persistence\ProductAttributeQueryContainerInterface;
 
-interface ProductAttributeGuiToProductAttributeQueryContainerInterface extends SpyProductAttributeGuiToProductAttributeQueryContainerInterface
+interface ProductAttributeGuiToProductAttributeQueryContainerInterface extends ProductAttributeQueryContainerInterface
 {
     /**
-     * @return \Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueTranslationQuery
+     * @param int $idProductManagementAttribute
      */
-    public function queryProductManagementAttributeValueTranslation(): SpyProductManagementAttributeValueTranslationQuery;
+    public function deleteProductAttributeValuesWithTranslations(int $idProductManagementAttribute): void;
+
+    /**
+     * @param int $idProductManagementAttributeValue
+     */
+    public function deleteProductAttributeValuesTranslations(int $idProductManagementAttributeValue): void;
+
+    /**
+     * @param int $idProductManagementAttribute
+     */
+    public function deleteProductAttribute(int $idProductManagementAttribute): void;
 }

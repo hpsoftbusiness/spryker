@@ -12,6 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AttributeController extends SprykerAttributeController
 {
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction(Request $request)
     {
         $idProductManagementAttribute = $this->castId($request->get('id'));
@@ -19,11 +26,13 @@ class AttributeController extends SprykerAttributeController
         $productManagementAttributeEntityArray = $productManagementAttributeEntity->toArray();
         $productManagementAttributeEntityArray['name'] = $productManagementAttributeEntity->getSpyProductAttributeKey()->getKey();
 
+        $isItCanBeDeleted = $this->getFacade()
+            ->isProductAttributeCanBeDeleted($productManagementAttributeEntityArray['name']);
 
         $form = $this->getFactory()->createAttributeDeleteForm($idProductManagementAttribute);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $isItCanBeDeleted) {
             $data = $form->getData();
 
             $this
@@ -36,6 +45,7 @@ class AttributeController extends SprykerAttributeController
         return $this->viewResponse([
             'form' => $form->createView(),
             'productManagementAttributeEntity' => $productManagementAttributeEntityArray,
+            'isItCanBeDeleted' => $isItCanBeDeleted,
         ]);
     }
 

@@ -11,10 +11,28 @@ use Orm\Zed\ProductAttribute\Persistence\Map\SpyProductManagementAttributeValueT
 use Orm\Zed\ProductAttribute\Persistence\Map\SpyProductManagementAttributeValueTranslationTableMap;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 use Spryker\Zed\ProductAttribute\Persistence\ProductAttributeQueryContainer as SprykerProductAttributeQueryContainer;
+use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface as SpyProductAttributeGuiToProductAttributeQueryContainerInterface;
 
-class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContainer
+class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContainer implements SpyProductAttributeGuiToProductAttributeQueryContainerInterface, ProductAttributeGuiToProductAttributeQueryContainerInterface
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param string[] $keys
+     *
+     * @return \Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery
+     */
+    public function queryProductAttributeKeyByKeys($keys)
+    {
+        return $this->getFactory()
+            ->createProductAttributeKeyQuery()
+            ->filterByKey_In($keys);
+    }
+
     /**
      * {@inheritDoc}
      *
@@ -67,5 +85,65 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
         }
 
         return $query;
+    }
+
+    /**
+     * @param int $idProductManagementAttribute
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
+     */
+    public function deleteProductAttributeValuesWithTranslations(int $idProductManagementAttribute): void
+    {
+        $productAttributeValues = $this->getFactory()
+            ->createProductManagementAttributeValueQuery()
+            ->findByFkProductManagementAttribute($idProductManagementAttribute);
+
+        foreach($productAttributeValues as $productAttributeValue) {
+            $this->deleteProductAttributeValuesTranslations($productAttributeValue->getIdProductManagementAttributeValue());
+
+            $productAttributeValue->delete();
+        }
+    }
+
+    /**
+     * @param int $idProductManagementAttributeValue
+     */
+    public function deleteProductAttributeValuesTranslations(int $idProductManagementAttributeValue): void
+    {
+        $this->getFactory()
+            ->createProductManagementAttributeValueTranslationQuery()
+            ->findByFkProductManagementAttributeValue($idProductManagementAttributeValue)
+            ->delete();
+    }
+
+    /**
+     * @param string $attributeKey
+     */
+    public function deleteProductAttributeKeyByKey(string $attributeKey): void
+    {
+        $this->getFactory()
+            ->createProductAttributeKeyQuery()
+            ->findByKey($attributeKey)
+            ->delete();
+    }
+
+    /**
+     * @param int $idProductManagementAttribute
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
+     */
+    public function deleteProductAttribute(int $idProductManagementAttribute): void
+    {
+        $productAttribute = $this->getFactory()
+            ->createProductManagementAttributeQuery()
+            ->findOneByIdProductManagementAttribute($idProductManagementAttribute);
+
+        if($productAttribute) {
+            $key = $productAttribute->getSpyProductAttributeKey()->getKey();
+
+            $this->deleteProductAttributeValuesWithTranslations($idProductManagementAttribute);
+            $productAttribute->delete();
+            $this->deleteProductAttributeKeyByKey($key);
+        }
     }
 }

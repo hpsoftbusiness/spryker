@@ -7,10 +7,8 @@
 
 namespace Pyz\Zed\ProductAttributeGui\Communication;
 
-use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReader;
-use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeDeleteDataProvider;
-use Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerBridge;
+use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 use Spryker\Zed\Category\Communication\Form\DeleteType;
 use Spryker\Zed\ProductAttributeGui\Communication\ProductAttributeGuiCommunicationFactory as SprykerProductAttributeGuiCommunicationFactory;
 use Pyz\Zed\ProductAttributeGui\Communication\Table\AttributeTable;
@@ -20,15 +18,6 @@ use Spryker\Zed\ProductAttributeGui\ProductAttributeGuiDependencyProvider;
 
 class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGuiCommunicationFactory
 {
-    /**
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
-     * @return \Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface
-     */
-    public function createProductReader()
-    {
-        return new ProductReader($this->getProductQueryContainer());
-    }
-
     /**
      * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      *
@@ -44,10 +33,16 @@ class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGui
      */
     public function createAttributeTable(): AttributeTable
     {
-        return new AttributeTable(
-            $this->getProductAttributeQueryContainer(),
-            $this->createProductReader()
-        );
+        return new AttributeTable($this->getProductAttributeQueryContainer());
+    }
+
+    /**
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return mixed|\Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface
+     */
+    public function getProductAttributeQueryContainer(): ProductAttributeGuiToProductAttributeQueryContainerInterface
+    {
+        return $this->getProvidedDependency(ProductAttributeGuiDependencyProvider::QUERY_CONTAINER_PRODUCT_ATTRIBUTE);
     }
 
     /**
@@ -76,6 +71,7 @@ class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGui
     }
 
     /**
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      * @return \Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeTranslationFormCollectionDataProvider
      */
     public function createAttributeTranslationFormCollectionDataProvider(): AttributeTranslationFormCollectionDataProvider

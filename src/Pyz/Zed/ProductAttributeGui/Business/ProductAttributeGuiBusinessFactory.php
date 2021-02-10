@@ -2,14 +2,10 @@
 
 namespace Pyz\Zed\ProductAttributeGui\Business;
 
-use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReader;
-use Pyz\Zed\ProductAttributeGui\Business\Modal\Reader\ProductReaderInterface;
-use Pyz\Zed\ProductAttributeGui\Business\Modal\Writer\ProductAttributeWriter;
-use Pyz\Zed\ProductAttributeGui\Business\Modal\Writer\ProductAttributeWriterInterface;
+use Pyz\Zed\Product\Persistence\ProductQueryContainerInterface;
 use Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 use Pyz\Zed\ProductAttributeGui\ProductAttributeGuiDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductInterface;
 
 /**
  * Class AttributeBusinessFactory
@@ -29,10 +25,10 @@ class ProductAttributeGuiBusinessFactory extends AbstractBusinessFactory
 
     /**
      * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
-     * @return \Pyz\Zed\ProductAttributeGui\Business\Modal\Writer\ProductAttributeWriter
+     * @return \Pyz\Zed\Product\Persistence\ProductQueryContainerInterface
      */
-    public function createProductAttributeWriter(): ProductAttributeWriterInterface
+    public function getProductQueryContainer(): ProductQueryContainerInterface
     {
-        return new ProductAttributeWriter($this->getProductAttributeQueryContainer());
+        return $this->getProvidedDependency(ProductAttributeGuiDependencyProvider::QUERY_CONTAINER_PRODUCT);
     }
 }

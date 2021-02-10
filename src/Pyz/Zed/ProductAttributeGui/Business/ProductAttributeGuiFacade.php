@@ -16,9 +16,23 @@ class ProductAttributeGuiFacade extends SprykerAbstractFacade implements Product
      */
     public function delete(int $idProductManagementAttribute): void
     {
-        $this
-            ->getFactory()
-            ->createProductAttributeWriter()
-            ->delete($idProductManagementAttribute);
+        $this->getFactory()
+            ->getProductAttributeQueryContainer()
+            ->deleteProductAttribute($idProductManagementAttribute);
+    }
+
+    /**
+     * @param string $idProductAttributeKey
+     *
+     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return bool
+     */
+    public function isProductAttributeCanBeDeleted(string $idProductAttributeKey): bool
+    {
+        $queryContainer = $this->getFactory()
+            ->getProductQueryContainer();
+
+        return $queryContainer->countUsesOfProductAttributeByProduct($idProductAttributeKey) === 0 &&
+            $queryContainer->countUsesOfProductAttributeByAbstractProduct($idProductAttributeKey) === 0;
     }
 }

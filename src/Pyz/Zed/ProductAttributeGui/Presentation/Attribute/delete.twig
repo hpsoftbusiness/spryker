@@ -15,7 +15,7 @@
 {% block section_title %}{{ widget_title }}{% endblock %}
 
 {% block action %}
-    {% include ['@CategoryGui/_partials/back-button.twig', '@Category/_partials/back-button.twig'] %}
+    {% include ['@ProductAttributeGui/Attribute/_partials/back-button.twig'] %}
 {% endblock %}
 
 {% block content %}
@@ -24,26 +24,30 @@
 
         {% block widget_content %}
 
-            {{ form_start(form) }}
+            {% if isItCanBeDeleted %}
+                {{ form_start(form) }}
 
-            {{ form_errors(form) }}
+                {{ form_errors(form) }}
 
-            {{ form_rest(form) }}
+                {{ form_rest(form) }}
 
-            <input
-                type="submit"
-                class="btn btn-primary safe-submit"
-                value="{{ 'Delete' | trans }}"
-                disabled="disabled"
-                id="submit_delete"
-            />
-            <label for="delete_confirm">
-                <input type="checkbox" id="delete_confirm"/>
-                {{ 'Yes, I am sure' | trans }}
-            </label>
-            <br/><br/>
+                <input
+                    type="submit"
+                    class="btn btn-primary safe-submit"
+                    value="{{ 'Delete' | trans }}"
+                    disabled="disabled"
+                    id="submit_delete"
+                />
+                <label for="delete_confirm">
+                    <input type="checkbox" id="delete_confirm"/>
+                    {{ 'Yes, I am sure' | trans }}
+                </label>
+                <br/><br/>
 
-            {{ form_end(form) }}
+                {{ form_end(form) }}
+            {% else %}
+                {{ 'Sorry, this product attribute can\'t be deleted' | trans }}
+            {% endif %}
 
         {% endblock %}
 
