@@ -7,89 +7,113 @@
 
 namespace Pyz\Zed\ProductManagement\Business\Attribute;
 
+use Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery;
+
 class DefaultAttributeManager implements DefaultAttributeManagerInterface
 {
     /**
      * @var null[]
      */
     private $attributes = [
-        'sellable_ae' => null,
-        'sellable_at' => null,
-        'sellable_au' => null,
-        'sellable_ba' => null,
-        'sellable_be' => null,
-        'sellable_bg' => null,
-        'sellable_br' => null,
-        'sellable_by' => null,
-        'sellable_ca' => null,
-        'sellable_ch' => null,
-        'sellable_co' => null,
-        'sellable_cy' => null,
-        'sellable_cz' => null,
-        'sellable_de' => null,
-        'sellable_dk' => null,
-        'sellable_ee' => null,
-        'sellable_es' => null,
-        'sellable_fi' => null,
-        'sellable_fr' => null,
-        'sellable_gb' => null,
-        'sellable_gr' => null,
-        'sellable_hk' => null,
-        'sellable_hr' => null,
-        'sellable_hu' => null,
-        'sellable_ie' => null,
-        'sellable_im' => null,
-        'sellable_in' => null,
-        'sellable_it' => null,
-        'sellable_lt' => null,
-        'sellable_lu' => null,
-        'sellable_lv' => null,
-        'sellable_mc' => null,
-        'sellable_md' => null,
-        'sellable_me' => null,
-        'sellable_mk' => null,
-        'sellable_mo' => null,
-        'sellable_mt' => null,
-        'sellable_mx' => null,
-        'sellable_my' => null,
-        'sellable_nl' => null,
-        'sellable_no' => null,
-        'sellable_nz' => null,
-        'sellable_ph' => null,
-        'sellable_pl' => null,
-        'sellable_pt' => null,
-        'sellable_qa' => null,
-        'sellable_ro' => null,
-        'sellable_rs' => null,
-        'sellable_se' => null,
-        'sellable_si' => null,
-        'sellable_sk' => null,
-        'sellable_th' => null,
-        'sellable_tr' => null,
-        'sellable_us' => null,
-        'sellable_za' => null,
-        'shopping_points' => null,
-        'cashback_amount' => null,
-        'manufacturer' => null,
-        'brand' => null,
-        'length' => null,
-        'width' => null,
-        'height' => null,
-        'weight' => null,
-        'color_01' => null,
-        'size_01' => null,
-        'mpn' => null,
-        'ean' => null,
-        'gtin' => null,
-        'TARIC Code' => null,
-        'country_of_origin' => null,
+        'sellable_ae',
+        'sellable_at',
+        'sellable_au',
+        'sellable_ba',
+        'sellable_be',
+        'sellable_bg',
+        'sellable_br',
+        'sellable_by',
+        'sellable_ca',
+        'sellable_ch',
+        'sellable_co',
+        'sellable_cy',
+        'sellable_cz',
+        'sellable_de',
+        'sellable_dk',
+        'sellable_ee',
+        'sellable_es',
+        'sellable_fi',
+        'sellable_fr',
+        'sellable_gb',
+        'sellable_gr',
+        'sellable_hk',
+        'sellable_hr',
+        'sellable_hu',
+        'sellable_ie',
+        'sellable_im',
+        'sellable_in',
+        'sellable_it',
+        'sellable_lt',
+        'sellable_lu',
+        'sellable_lv',
+        'sellable_mc',
+        'sellable_md',
+        'sellable_me',
+        'sellable_mk',
+        'sellable_mo',
+        'sellable_mt',
+        'sellable_mx',
+        'sellable_my',
+        'sellable_nl',
+        'sellable_no',
+        'sellable_nz',
+        'sellable_ph',
+        'sellable_pl',
+        'sellable_pt',
+        'sellable_qa',
+        'sellable_ro',
+        'sellable_rs',
+        'sellable_se',
+        'sellable_si',
+        'sellable_sk',
+        'sellable_th',
+        'sellable_tr',
+        'sellable_us',
+        'sellable_za',
+        'shopping_points',
+        'cashback_amount',
+        'manufacturer',
+        'brand',
+        'length',
+        'width',
+        'height',
+        'weight',
+        'color_01',
+        'size_01',
+        'mpn',
+        'ean',
+        'gtin',
+        'taric_code',
+        'country_of_origin',
     ];
+
+    /**
+     * @var \Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery
+     */
+    private $spyProductAttributeKeyQuery;
+
+    /**
+     * @param \Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery $spyProductAttributeKeyQuery
+     */
+    public function __construct(
+        SpyProductAttributeKeyQuery $spyProductAttributeKeyQuery
+    ) {
+        $this->spyProductAttributeKeyQuery = $spyProductAttributeKeyQuery;
+    }
 
     /**
      * @return null[]
      */
     public function getDefaultAttributes(): array
     {
-        return $this->attributes;
+        $attributeKeyEntities = $this->spyProductAttributeKeyQuery->filterByKey_In($this->attributes)->find();
+
+        $attributesArray = [];
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAttributeKey $attributeKeyEntity */
+        foreach ($attributeKeyEntities->getData() as $attributeKeyEntity) {
+            $attributesArray[$attributeKeyEntity->getKey()] = null;
+        }
+
+        return $attributesArray;
     }
 }

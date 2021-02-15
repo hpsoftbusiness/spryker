@@ -11,6 +11,9 @@ use Pyz\Zed\ProductManagement\Business\Attribute\DefaultAttributeManager;
 use Pyz\Zed\ProductManagement\Business\Attribute\DefaultAttributeManagerInterface;
 use Spryker\Zed\ProductManagement\Business\ProductManagementBusinessFactory as SprykerProductManagementBusinessFactory;
 
+/**
+ * @method \Spryker\Zed\ProductManagement\Persistence\ProductManagementQueryContainerInterface getQueryContainer()
+ */
 class ProductManagementBusinessFactory extends SprykerProductManagementBusinessFactory
 {
     /**
@@ -18,6 +21,14 @@ class ProductManagementBusinessFactory extends SprykerProductManagementBusinessF
      */
     public function createDefaultAttributeManager(): DefaultAttributeManagerInterface
     {
-        return new DefaultAttributeManager();
+        return new DefaultAttributeManager($this->getSpyProductManagementAttributeQuery());
+    }
+
+    /**
+     * @return \Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery
+     */
+    public function getSpyProductManagementAttributeQuery()
+    {
+        return $this->getQueryContainer()->queryProductAttributeKey();
     }
 }
