@@ -7,13 +7,14 @@
 
 namespace Pyz\Zed\ProductAttributeGui\Communication;
 
+use Pyz\Zed\Product\Persistence\ProductQueryContainer;
+use Pyz\Zed\Product\Persistence\ProductQueryContainerInterface;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeDeleteDataProvider;
 use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 use Spryker\Zed\Category\Communication\Form\DeleteType;
 use Spryker\Zed\ProductAttributeGui\Communication\ProductAttributeGuiCommunicationFactory as SprykerProductAttributeGuiCommunicationFactory;
 use Pyz\Zed\ProductAttributeGui\Communication\Table\AttributeTable;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeTranslationFormCollectionDataProvider;
-use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductInterface;
 use Spryker\Zed\ProductAttributeGui\ProductAttributeGuiDependencyProvider;
 
 class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGuiCommunicationFactory
@@ -22,7 +23,7 @@ class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGui
      * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      *
      */
-    public function getProductQueryContainer(): ProductAttributeGuiToProductInterface
+    public function getProductQueryContainer(): ProductQueryContainerInterface
     {
         return $this->getProvidedDependency(ProductAttributeGuiDependencyProvider::QUERY_CONTAINER_PRODUCT);
     }
