@@ -14,4 +14,13 @@ use Spryker\Zed\ProductManagement\Business\ProductManagementFacade as SprykerPro
  */
 class ProductManagementFacade extends SprykerProductManagementFacade implements ProductManagementFacadeInterface
 {
+    /**
+     * @return array
+     */
+    public function getDefaultAttributes(): array
+    {
+        return $this->getFactory()
+            ->createDefaultAttributeManager()
+            ->getDefaultAttributes();
+    }
 }
