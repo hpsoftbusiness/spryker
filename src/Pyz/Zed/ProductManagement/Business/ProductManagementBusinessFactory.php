@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductManagement\Business;
 
+use Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery;
 use Pyz\Zed\ProductManagement\Business\Attribute\DefaultAttributeManager;
 use Pyz\Zed\ProductManagement\Business\Attribute\DefaultAttributeManagerInterface;
 use Spryker\Zed\ProductManagement\Business\ProductManagementBusinessFactory as SprykerProductManagementBusinessFactory;
@@ -27,7 +28,7 @@ class ProductManagementBusinessFactory extends SprykerProductManagementBusinessF
     /**
      * @return \Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery
      */
-    public function getSpyProductManagementAttributeQuery()
+    public function getSpyProductManagementAttributeQuery(): SpyProductAttributeKeyQuery
     {
         return $this->getQueryContainer()->queryProductAttributeKey();
     }
