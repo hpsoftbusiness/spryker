@@ -12,6 +12,8 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class ProductDataImportConfig extends AbstractBundleConfig
 {
+    public const IMPORT_FILE_SYSTEM_NAME = 'product-import';
+
     /**
      * @return string
      */
@@ -29,17 +31,25 @@ class ProductDataImportConfig extends AbstractBundleConfig
     }
 
     /**
-     * @param string $fileSystemName
-     *
      * @return string
      */
-    public function getImportFileDirectory(string $fileSystemName): string
+    public function getImportFileDirectory(): string
     {
         $filesystemConfig = $this->get(ProductDataImportConstants::FILESYSTEM_SERVICE, []);
 
-        $rootPath = $filesystemConfig[$fileSystemName]['root'];
-        $folderPath = $filesystemConfig[$fileSystemName]['path'];
+        $rootPath = $filesystemConfig[self::IMPORT_FILE_SYSTEM_NAME]['root'];
+        $folderPath = $filesystemConfig[self::IMPORT_FILE_SYSTEM_NAME]['path'];
 
-        return $rootPath . $folderPath;
+        return $rootPath.$folderPath;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFlyAdapterConfig(): array
+    {
+        return $this->get(ProductDataImportConstants::FILESYSTEM_SERVICE, [])[$this->get(
+            ProductDataImportConstants::STORAGE_NAME
+        )];
     }
 }

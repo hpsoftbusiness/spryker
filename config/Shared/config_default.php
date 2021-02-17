@@ -11,6 +11,7 @@ use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
+use Spryker\Service\FlysystemAws3v3FileSystem\Plugin\Flysystem\Aws3v3FilesystemBuilderPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
@@ -449,7 +450,23 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => APPLICATION_ROOT_DIR . '/data/DE/import-files/',
         'path' => 'files/',
     ],
+    'aws-files-import' => [
+        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
+        'root' => '/',
+        'path' => 'data-import/',
+        'key' => getenv('DATA_IMPORT_S3_KEY'),
+        'secret' => getenv('DATA_IMPORT_S3_SECRET'),
+        'bucket' => getenv('DATA_IMPORT_S3_BUCKET'),
+        'version' => '2006-03-01',
+        'region' => 'eu-central-1',
+    ],
+    'product-import' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => APPLICATION_ROOT_DIR.'/data/import/common/DE/',
+        'path' => 'upload-file/',
+    ],
 ];
+
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 

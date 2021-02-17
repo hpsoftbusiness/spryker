@@ -3,6 +3,7 @@
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
+use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 
 // ############################################################################
@@ -56,3 +57,5 @@ require 'common/config_my-world-marketplace-api-prod.php';
 $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z57777';
 
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = getenv('AFFILIATE_TRACKING_URL_PATH');
+
+$config[ProductDataImportConstants::STORAGE_NAME] = 'aws-files-import';
