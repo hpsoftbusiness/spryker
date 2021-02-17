@@ -32,12 +32,10 @@ class FileHandler
     }
 
     /**
-     * @param FlysystemFilesystemBuilderPluginInterface $flysystemFilesystemBuilderPlugin
      * @param ProductDataImportTransfer $productDataImportTransfer
      * @param FlysystemConfigTransfer $flysystemConfigTransfer
      */
     public function prepareImportFile(
-//        FlysystemFilesystemBuilderPluginInterface $flysystemFilesystemBuilderPlugin,
         ProductDataImportTransfer $productDataImportTransfer,
         FlysystemConfigTransfer $flysystemConfigTransfer
     ): void {
