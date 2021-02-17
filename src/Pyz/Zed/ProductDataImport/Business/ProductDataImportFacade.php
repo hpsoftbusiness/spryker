@@ -48,11 +48,13 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
         string $dataEntity
     ): ?DataImporterReportTransfer {
         $dataImport = $this->getFactory()->getDataImport();
+        $importFileDirectory = $this->getFactory()->getImportFileDirectory();
 
         return $this->getFactory()->createProductDataImport()->import(
             $productDataImportTransfer,
             $dataImport,
-            $dataEntity
+            $dataEntity,
+            $importFileDirectory
         );
     }
 
@@ -78,5 +80,19 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     public function getProductDataImportTransferById(int $id): ?ProductDataImportTransfer
     {
         return $this->getFactory()->createProductDataImport()->getProductDataImportTransferById($id);
+    }
+
+    /**
+     * @param ProductDataImportTransfer $productDataImportTransfer
+     */
+    public function prepareImportFile(ProductDataImportTransfer $productDataImportTransfer): void
+    {
+        $flysystemConfigTransfer = $this->getFactory()->createFlysystemConfigTransfer();
+        $this->getFactory()->createFileHandler()->prepareImportFile($productDataImportTransfer, $flysystemConfigTransfer);
+    }
+
+    public function clearImportFile(): void
+    {
+        $this->getFactory()->createFileHandler()->clearImportFile();
     }
 }

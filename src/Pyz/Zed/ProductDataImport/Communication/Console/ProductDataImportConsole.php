@@ -62,13 +62,17 @@ class ProductDataImportConsole extends Console
         $productDataImport = $this->getFacade()->getProductDataImportForImport();
 
         if ($productDataImport) {
+            $this->getFacade()->prepareImportFile($productDataImport);
             $resultArray = [];
+
             foreach (self::DATA_ENTITY_FOR_PRODUCT as $dataEntity) {
                 $result = $this->getFacade()->import($productDataImport, $dataEntity);
                 $resultArray[$dataEntity] = $result->setImportType($dataEntity);
             }
 
             $this->getFacade()->saveImportResult($resultArray, $productDataImport->getIdProductDataImport());
+
+            $this->getFacade()->clearImportFile();
         }
 
         $messenger->info(

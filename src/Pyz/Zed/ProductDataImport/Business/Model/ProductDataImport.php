@@ -17,14 +17,14 @@ use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportF
 use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface;
 use Pyz\Zed\ProductDataImport\ProductDataImportConfig;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
-use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 use Throwable;
 
 class ProductDataImport implements ProductDataImportInterface
 {
     use TransactionTrait;
-    use LoggerTrait;
+
+    public const PRODUCT_IMPORT_FILE_NAME = 'combined_product.csv';
 
     /**
      * @var \Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface
@@ -63,11 +63,7 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
-     * @param \Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider $dataProvider
-     * @param \Spryker\Service\FileSystem\FileSystemServiceInterface $fileSystemService
-     *
-     * @return void
+     * @inheritDoc
      */
     public function saveFile(
         ProductDataImportTransfer $transfer,
@@ -80,52 +76,37 @@ class ProductDataImport implements ProductDataImportInterface
             $transfer->getFileUpload()->getClientOriginalName()
         );
 
-        $dataImportFormDataProvider = $dataProvider->createFileSystemContentTransfer(
-            $transfer->getFileUpload(),
+        $dataImportFormDataProvider = $dataProvider->createFileSystemStreamTransfer(
             $fileName,
             $this->getConfig()->getStorageName()
         );
-        $fileSystemService->put($dataImportFormDataProvider);
 
-        $this->getLogger()->info(
-            '[ProductDataImport][File-folder]',
-            ['folder' => $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName())]
-        );
-        $this->getLogger()->info(
-            '[ProductDataImport][File-list]',
-            [
-                'files' => scandir(
-                    $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName())
-                ),
-            ]
-        );
+        $stream = fopen($transfer->getFileUpload()->getRealPath(), "rb");
+        $fileSystemService->putStream($dataImportFormDataProvider, $stream);
+        fclose($stream);
 
-        $transfer->setFilePath(
-            $this->config->getImportFileDirectory($dataImportFormDataProvider->getFileSystemName()) . $fileName
-        );
+        $transfer->setFilePath($fileName);
+
         $transfer->setStatus(ProductDataImportInterface::STATUS_NEW);
 
         $this->add($transfer);
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
-     * @param \Pyz\Zed\DataImport\Business\DataImportFacadeInterface $importFacade
-     * @param string $dataEntity
-     *
-     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
+     * @inheritDoc
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,
         DataImportFacadeInterface $importFacade,
-        string $dataEntity
+        string $dataEntity,
+        string $importFileDirectory
     ): ?DataImporterReportTransfer {
         $dataImporterReportTransfer = new DataImporterReportTransfer();
         $spyProductDataImport = $this->markInProgressByDataEntity($productDataImportTransfer, $dataEntity);
         try {
             $dataImportConfigurationActionTransfer = $this->createDataImportConfigurationActionTransfer(
                 $dataEntity,
-                $spyProductDataImport->getFilePath()
+                $importFileDirectory.self::PRODUCT_IMPORT_FILE_NAME
             );
 
             $dataImporterReportTransfer = $importFacade->importByAction($dataImportConfigurationActionTransfer);
@@ -159,8 +140,8 @@ class ProductDataImport implements ProductDataImportInterface
      *
      * @return \Generated\Shared\Transfer\ProductDataImportTransfer
      */
-    protected function executeAddTransaction(ProductDataImportTransfer $productDataImportTransfer): ProductDataImportTransfer
-    {
+    protected function executeAddTransaction(ProductDataImportTransfer $productDataImportTransfer
+    ): ProductDataImportTransfer {
         $productDataImportEntity = new SpyProductDataImport();
         $productDataImportEntity->fromArray($productDataImportTransfer->toArray());
         $productDataImportEntity->save();

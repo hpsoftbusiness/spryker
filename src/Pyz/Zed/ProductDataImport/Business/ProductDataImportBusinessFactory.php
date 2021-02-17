@@ -7,8 +7,10 @@
 
 namespace Pyz\Zed\ProductDataImport\Business;
 
+use Generated\Shared\Transfer\FlysystemConfigTransfer;
 use Pyz\Zed\DataImport\Business\DataImportFacadeInterface;
 use Pyz\Zed\ProductDataImport\Business\DataProvider\ProductDataImportResult;
+use Pyz\Zed\ProductDataImport\Business\FileHandler\FileHandler;
 use Pyz\Zed\ProductDataImport\Business\Model\ProductDataImport;
 use Pyz\Zed\ProductDataImport\ProductDataImportDependencyProvider;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
@@ -50,5 +52,33 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     public function createProductDataImportResult(): ProductDataImportResult
     {
         return new ProductDataImportResult();
+    }
+
+    /**
+     * @return FileHandler
+     */
+    public function createFileHandler(): FileHandler
+    {
+        return new FileHandler($this->getFileSystem());
+    }
+    
+    /**
+     * @return string
+     */
+    public function getImportFileDirectory(): string
+    {
+        return $this->getConfig()->getImportFileDirectory();
+    }
+
+    /**
+     * @return FlysystemConfigTransfer
+     */
+    public function createFlysystemConfigTransfer(): FlysystemConfigTransfer
+    {
+        $flysystemConfigTransfer = new FlysystemConfigTransfer();
+        $flysystemConfigTransfer->setAdapterConfig($this->getConfig()->getFlyAdapterConfig());
+        $flysystemConfigTransfer->setName($this->getConfig()->getStorageName());
+
+        return $flysystemConfigTransfer;
     }
 }

@@ -54,14 +54,16 @@ interface ProductDataImportInterface
      * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
      * @param \Pyz\Zed\DataImport\Business\DataImportFacadeInterface $importFacade
      * @param string $dataEntity
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @param string $importFileDirectory
      *
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,
         DataImportFacadeInterface $importFacade,
-        string $dataEntity
+        string $dataEntity,
+        string $importFileDirectory
     ): ?DataImporterReportTransfer;
 }
