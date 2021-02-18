@@ -9,4 +9,8 @@
         <column name="split_commission_reference" required="false" type="VARCHAR" size="64"/>
     </table>
 
+    <table name="spy_payment_adyen_notification">
+        <column name="psp_reference" required="true" type="VARCHAR" size="128"/>
+    </table>
+
 </database>
