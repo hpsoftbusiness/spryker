@@ -49,6 +49,8 @@ class PostingExportContentBuilder
     protected const DEFAULT_LINE_DATA_GEN_PROD_POSTING_GROUP = 'I_MP_NO';
     protected const DEFAULT_LINE_DATA_VAT_PROD_POSTING_GROUP = 'T_NO';
 
+    protected const WAREHOUSE_CODE_ATTRIBUTE = 'product_stock.name';
+
     /**
      * @var \Pyz\Zed\Sales\Business\SalesFacadeInterface
      */
@@ -125,9 +127,11 @@ class PostingExportContentBuilder
 
         foreach ($orderIds as $idOrder) {
             $orderTransfer = $this->salesFacade->getOrderForExportByIdSalesOrder($idOrder);
-            $postingExportContentsTransfer->addContentItem(
-                $this->getPostingExportOrderData($orderTransfer, $localeTransfer)
-            );
+            if ($orderTransfer->getOrderInvoices()->count() > 0) {
+                $postingExportContentsTransfer->addContentItem(
+                    $this->getPostingExportOrderData($orderTransfer, $localeTransfer)
+                );
+            }
         }
 
         return $postingExportContentsTransfer;
@@ -186,6 +190,7 @@ class PostingExportContentBuilder
             'customerType' => static::DEFAULT_DATA_CUSTOMER_TYPE,
             'vatBusPostingGroup' => $vatBusPostingGroup,
             'customerPostingGroup' => static::DEFAULT_DATA_CUSTOMER_POSTING_GROUP,
+            'warehousecode' => $orderTransfer->getItems()[0]->getProductConcrete()->getAttributes()[self::WAREHOUSE_CODE_ATTRIBUTE] ?? null,
             'genBusinessPostingGroup' => $genBusinessPostingGroup,
             'billToName' => sprintf(
                 '%s %s',
@@ -215,7 +220,7 @@ class PostingExportContentBuilder
             'vatAmount' => $this->formatIntValueToDecimalCurrency($taxTotal),
             'currencyCode' => $orderTransfer->getCurrencyIsoCode(),
             'currencyFactor' => null, // skipped
-            'paymentMethodCode' => (!$orderTransfer->getAdyenPayment()) ? static::DATA_PAYMENT_METHOD_CODE_PREPAYMENT : static::DATA_PAYMENT_METHOD_CODE_CC,
+            'paymentMethodCode' => (!$orderTransfer->getAdyenPayment()->getReference()) ? static::DATA_PAYMENT_METHOD_CODE_PREPAYMENT : static::DATA_PAYMENT_METHOD_CODE_CC,
             'discount' => $this->formatIntValueToDecimalCurrency($orderTransfer->getTotals()->getDiscountTotal()),
             'paymentReferenceId' => $adyenPaymentReference,
             'cashBackNumber' => $customerTransfer->getMyWorldCustomerNumber(),
@@ -276,6 +281,7 @@ class PostingExportContentBuilder
             'Intrastat' => null, // check
             'unitCost' => null, // check
             'costAmount' => null, // check
+            'warehousecode' => $itemTransfer->getProductConcrete()->getAttributes()[self::WAREHOUSE_CODE_ATTRIBUTE] ?? null,
         ];
     }
 
