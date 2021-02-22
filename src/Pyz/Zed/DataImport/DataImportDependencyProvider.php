@@ -25,6 +25,8 @@ use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
 use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodDataImportPlugin;
 use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodStoreDataImportPlugin;
 use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
@@ -249,6 +251,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductLabelStoreDataImportPlugin(),
             new ReturnReasonDataImportPlugin(),
             new ContentNavigationDataImportPlugin(),
+            new MerchantDataImportPlugin(),
+            new MerchantStoreDataImportPlugin(),
         ];
     }
 
