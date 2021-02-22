@@ -149,7 +149,7 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
         $iso2Code = $orderTransfer->getCustomerCountryId();
 
         if (!isset($dealerIdCountryMap[$iso2Code])) {
-            $this->myWorldMarketplaceApiConfig->getDealerIdDefault();
+            return $this->myWorldMarketplaceApiConfig->getDealerIdDefault();
         }
 
         return $dealerIdCountryMap[$iso2Code];
