@@ -77,46 +77,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     /**
      * @return string[]
      */
-    public function getAttributeList(): array
-    {
-        return [
-            'ean',
-            'color',
-            'size',
-            'gtin',
-            'benefit_store',
-            'shopping_point_store',
-            'brand',
-            'cashback_amount',
-            'shopping_points',
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getFilteredAttributeList(): array
-    {
-        return [
-            'customer_group_1',
-            'customer_group_2',
-            'customer_group_3',
-            'customer_group_4',
-            'customer_group_5',
-            'purchase_price',
-            'strike_price',
-            'regular_sales_price',
-            'benefit_store_sales_price',
-            'benefit_amount',
-            'mpn',
-            'taric_code',
-            'gender',
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
     public function getAffiliateAttributeList(): array
     {
         return [
