@@ -16,8 +16,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_AFFILIATE_ATTRIBUTES = 'affiliate_attributes';
 
-    protected const KEY_IS_SELLABLE_PATTERN = 'sellable_';
-
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -33,31 +31,20 @@ class AttributesExtractorStep implements DataImportStepInterface
                 continue;
             }
 
-            $attributeValueKey = $this->getAttributeValuePrefix() . $match[1];
+            $attributeValueKey = $this->getAttributeValuePrefix().$match[1];
             $attributeKey = trim(strtolower(str_replace(' ', '_', $value)));
             $attributeValue = trim($dataSet[$attributeValueKey]);
 
-            if (in_array($attributeKey, $this->getFilteredAttributeList())) {
-                continue;
-            }
-
             if ($attributeKey !== '') {
-                $isMainAttribute = in_array($attributeKey, $this->getAttributeList());
                 $isAffiliateAttribute = in_array($attributeKey, $this->getAffiliateAttributeList());
 
-                if ($isMainAttribute) {
+                if ($isAffiliateAttribute) {
+                    $affiliateAttributes[$attributeKey] = $attributeValue;
+                } else {
                     if ($attributeKey === 'cashback_amount') {
                         $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
                     }
                     $attributes[$attributeKey] = is_bool($attributeValue) ? (bool)$attributeValue : $attributeValue;
-                }
-
-                if ($isAffiliateAttribute) {
-                    $affiliateAttributes[$attributeKey] = $attributeValue;
-                }
-
-                if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
-                    $attributes[$attributeKey] = $attributeValue === 'TRUE';
                 }
             }
         }
