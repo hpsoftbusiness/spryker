@@ -15,6 +15,8 @@ class AttributesExtractorStep implements DataImportStepInterface
 {
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_AFFILIATE_ATTRIBUTES = 'affiliate_attributes';
+    
+    protected const KEY_IS_SELLABLE_PATTERN = 'sellable_';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -37,14 +39,22 @@ class AttributesExtractorStep implements DataImportStepInterface
 
             if ($attributeKey !== '') {
                 $isAffiliateAttribute = in_array($attributeKey, $this->getAffiliateAttributeList());
-
-                if ($isAffiliateAttribute) {
-                    $affiliateAttributes[$attributeKey] = $attributeValue;
-                } else {
-                    if ($attributeKey === 'cashback_amount') {
+                $isSellableAttribute = strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0;
+                
+                if (!$isAffiliateAttribute && !$isSellableAttribute) {
+                   if ($attributeKey === 'cashback_amount') {
                         $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
                     }
+                    
                     $attributes[$attributeKey] = is_bool($attributeValue) ? (bool)$attributeValue : $attributeValue;
+                }
+                
+                if ($isAffiliateAttribute) {
+                    $affiliateAttributes[$attributeKey] = $attributeValue;
+                }
+                
+                if ($isSellableAttribute) {
+                    $attributes[$attributeKey] = $attributeValue === 'TRUE';
                 }
             }
         }
