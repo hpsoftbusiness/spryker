@@ -41,10 +41,14 @@ class AttributesExtractorStep implements DataImportStepInterface
                 if ($isAffiliateAttribute) {
                     $affiliateAttributes[$attributeKey] = $attributeValue;
                 } else {
-                    if ($attributeKey === 'cashback_amount') {
-                        $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
+                    if ($attributeValue === 'TRUE' || $attributeValue === 'FALSE') {
+                        $attributes[$attributeKey] = ($attributeValue === 'TRUE');
+                    } else {
+                        if ($attributeKey === 'cashback_amount') {
+                            $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
+                        }
+                        $attributes[$attributeKey] = $attributeValue;
                     }
-                    $attributes[$attributeKey] = is_bool($attributeValue) ? (bool)$attributeValue : $attributeValue;
                 }
             }
         }
