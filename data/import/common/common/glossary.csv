@@ -433,8 +433,10 @@ global.search.suggestion.no_result,Nichts gefunden…,de_DE
 global.search.suggestion.no_result,Nothing found…,en_US
 global.search.suggestion.see_all_products,Alle Produkte anzeigen,de_DE
 global.search.suggestion.see_all_products,See all products,en_US
-global.spryker.shop,myWorld.com,de_DE
-global.spryker.shop,myWorld.com,en_US
+global.spryker.shop,myWorld Marktplatz,de_DE
+global.spryker.shop,myWorld Marketplace.com,en_US
+global.spryker.shop.meta_description,Cashback und Shopping Points auf tausende Produkte aus zahlreichen Kategorien. Größte Auswahl zu günstigsten Preisen.,de_DE
+global.spryker.shop.meta_description,Cashback and Shopping Points on thousands of products from numerous categories. Largest selection at the best prices.,en_US
 global.spryker.motto,Qualitäts-Technologie,de_DE
 global.spryker.motto,technology with quality,en_US
 global.payment_providers,Zahlungsanbieter,de_DE
