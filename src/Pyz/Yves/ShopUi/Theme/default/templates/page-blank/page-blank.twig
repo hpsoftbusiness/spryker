@@ -1,5 +1,10 @@
 {% extends template('page-blank', '@SprykerShop:ShopUi') %}
 
+{% block headScripts %}
+    {{ parent() }}
+    {% include atom('seo-tags') only %}
+{% endblock %}
+
 {% block template %}
     {% set isNewFrontendBuildSupported = true %}
 
