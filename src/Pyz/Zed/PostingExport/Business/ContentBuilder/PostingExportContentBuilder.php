@@ -298,7 +298,7 @@ class PostingExportContentBuilder
             return self::DEFAULT_PAYMENT_ID;
         }
 
-        return $orderTransfer->getAdyenPayment()->getReference();
+        return $orderTransfer->getAdyenPayment()->getReference() ?: self::DEFAULT_PAYMENT_ID;
     }
 
     /**
