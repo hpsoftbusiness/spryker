@@ -55,7 +55,7 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return FileHandler
+     * @return \Pyz\Zed\ProductDataImport\Business\FileHandler\FileHandler
      */
     public function createFileHandler(): FileHandler
     {
@@ -71,7 +71,7 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return FlysystemConfigTransfer
+     * @return \Generated\Shared\Transfer\FlysystemConfigTransfer
      */
     public function createFlysystemConfigTransfer(): FlysystemConfigTransfer
     {

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttributeGui\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractFacade as SprykerAbstractFacade;
@@ -12,7 +17,7 @@ class ProductAttributeGuiFacade extends SprykerAbstractFacade implements Product
     /**
      * @param int $idProductManagementAttribute
      *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return void
      */
     public function delete(int $idProductManagementAttribute): void
     {
@@ -24,7 +29,6 @@ class ProductAttributeGuiFacade extends SprykerAbstractFacade implements Product
     /**
      * @param string $idProductAttributeKey
      *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      * @return bool
      */
     public function isProductAttributeCanBeDeleted(string $idProductAttributeKey): bool

@@ -56,9 +56,9 @@ interface ProductDataImportInterface
      * @param string $dataEntity
      * @param string $importFileDirectory
      *
-     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
-     *
      * @throws \Propel\Runtime\Exception\PropelException
+     *
+     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,

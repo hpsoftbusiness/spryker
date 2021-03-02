@@ -5,7 +5,7 @@
 
     <transfer name="ProductPageSearch">
         <property name="isAffiliate" type="bool"/>
-        <property name="affiliateData" type="[]"/>
+        <property name="affiliateData" type="array"/>
         <property name="brand" type="string"/>
     </transfer>
 </transfers>

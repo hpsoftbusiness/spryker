@@ -106,7 +106,7 @@ class ProductDataImport implements ProductDataImportInterface
         try {
             $dataImportConfigurationActionTransfer = $this->createDataImportConfigurationActionTransfer(
                 $dataEntity,
-                $importFileDirectory.self::PRODUCT_IMPORT_FILE_NAME
+                $importFileDirectory . self::PRODUCT_IMPORT_FILE_NAME
             );
 
             $dataImporterReportTransfer = $importFacade->importByAction($dataImportConfigurationActionTransfer);
@@ -140,8 +140,8 @@ class ProductDataImport implements ProductDataImportInterface
      *
      * @return \Generated\Shared\Transfer\ProductDataImportTransfer
      */
-    protected function executeAddTransaction(ProductDataImportTransfer $productDataImportTransfer
-    ): ProductDataImportTransfer {
+    protected function executeAddTransaction(ProductDataImportTransfer $productDataImportTransfer): ProductDataImportTransfer
+    {
         $productDataImportEntity = new SpyProductDataImport();
         $productDataImportEntity->fromArray($productDataImportTransfer->toArray());
         $productDataImportEntity->save();

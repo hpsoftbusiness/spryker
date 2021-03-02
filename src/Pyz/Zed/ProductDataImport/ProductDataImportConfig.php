@@ -40,7 +40,7 @@ class ProductDataImportConfig extends AbstractBundleConfig
         $rootPath = $filesystemConfig[self::IMPORT_FILE_SYSTEM_NAME]['root'];
         $folderPath = $filesystemConfig[self::IMPORT_FILE_SYSTEM_NAME]['path'];
 
-        return $rootPath.$folderPath;
+        return $rootPath . $folderPath;
     }
 
     /**

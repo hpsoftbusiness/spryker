@@ -10,7 +10,7 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 // >>> ADYEN
 // TODO: move credentials to ENV variables
-$adyenCredentials =  [
+$adyenCredentials = [
     'CHECKOUT_SHOPPER_API_DOMAIN' => 'checkoutshopper-live.adyen.com',
     'CHECKOUT_SHOPPER_API_VERSION' => '3.9.4',
     'JS_INTEGRITY_HASH' => utf8_encode('sha384-8Q8tz/+hf+UkS01nLrKLJgQLdaR1hRklqJQksCHh903UIfW+xMt275Lms4GZgVUi'),

@@ -90,7 +90,7 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
     /**
      * @param int $idProductManagementAttribute
      *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @return void
      */
     public function deleteProductAttributeValuesWithTranslations(int $idProductManagementAttribute): void
     {
@@ -98,7 +98,7 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
             ->createProductManagementAttributeValueQuery()
             ->findByFkProductManagementAttribute($idProductManagementAttribute);
 
-        foreach($productAttributeValues as $productAttributeValue) {
+        foreach ($productAttributeValues as $productAttributeValue) {
             $this->deleteProductAttributeValuesTranslations($productAttributeValue->getIdProductManagementAttributeValue());
 
             $productAttributeValue->delete();
@@ -107,6 +107,8 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
 
     /**
      * @param int $idProductManagementAttributeValue
+     *
+     * @return void
      */
     public function deleteProductAttributeValuesTranslations(int $idProductManagementAttributeValue): void
     {
@@ -118,6 +120,8 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
 
     /**
      * @param string $attributeKey
+     *
+     * @return void
      */
     public function deleteProductAttributeKeyByKey(string $attributeKey): void
     {
@@ -130,7 +134,7 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
     /**
      * @param int $idProductManagementAttribute
      *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @return void
      */
     public function deleteProductAttribute(int $idProductManagementAttribute): void
     {
@@ -138,7 +142,7 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
             ->createProductManagementAttributeQuery()
             ->findOneByIdProductManagementAttribute($idProductManagementAttribute);
 
-        if($productAttribute) {
+        if ($productAttribute) {
             $key = $productAttribute->getSpyProductAttributeKey()->getKey();
 
             $this->deleteProductAttributeValuesWithTranslations($idProductManagementAttribute);

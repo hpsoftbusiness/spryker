@@ -462,7 +462,7 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     ],
     'product-import' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => APPLICATION_ROOT_DIR.'/data/import/common/DE/',
+        'root' => APPLICATION_ROOT_DIR . '/data/import/common/DE/',
         'path' => 'upload-file/',
     ],
 ];

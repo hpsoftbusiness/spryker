@@ -7,7 +7,6 @@ use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\GiftCard\GiftCardConfig;
-use SprykerEco\Shared\Adyen\AdyenConfig;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttributeGui;
 
 use Spryker\Zed\Kernel\Container;
@@ -10,7 +15,6 @@ class ProductAttributeGuiDependencyProvider extends SpyProductAttributeGuiDepend
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
      * @return \Spryker\Zed\Kernel\Container
      */
     public function provideBusinessLayerDependencies(Container $container): Container
@@ -24,7 +28,6 @@ class ProductAttributeGuiDependencyProvider extends SpyProductAttributeGuiDepend
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
      * @return \Spryker\Zed\Kernel\Container
      */
     protected function addProductAttributeQueryContainer(Container $container): Container
@@ -39,7 +42,6 @@ class ProductAttributeGuiDependencyProvider extends SpyProductAttributeGuiDepend
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @throws \Spryker\Service\Container\Exception\FrozenServiceException
      * @return \Spryker\Zed\Kernel\Container
      */
     protected function addProductQueryContainer(Container $container): Container

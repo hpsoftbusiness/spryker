@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttributeGui\Business;
 
 use Pyz\Zed\Product\Persistence\ProductQueryContainerInterface;
@@ -15,7 +20,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class ProductAttributeGuiBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      * @return \Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface
      */
     public function getProductAttributeQueryContainer(): ProductAttributeGuiToProductAttributeQueryContainerInterface
@@ -24,7 +28,6 @@ class ProductAttributeGuiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      * @return \Pyz\Zed\Product\Persistence\ProductQueryContainerInterface
      */
     public function getProductQueryContainer(): ProductQueryContainerInterface
