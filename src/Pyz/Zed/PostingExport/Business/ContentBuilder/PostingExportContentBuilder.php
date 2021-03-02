@@ -51,6 +51,8 @@ class PostingExportContentBuilder
 
     protected const WAREHOUSE_CODE_ATTRIBUTE = 'product_stock.name';
 
+    protected const DEFAULT_PAYMENT_ID = '{00000000-0000-0000-0000-000000000000}';
+
     /**
      * @var \Pyz\Zed\Sales\Business\SalesFacadeInterface
      */
@@ -293,7 +295,7 @@ class PostingExportContentBuilder
     protected function findAdyenPaymentReference(OrderTransfer $orderTransfer): ?string
     {
         if (!$orderTransfer->getAdyenPayment()) {
-            return null;
+            return self::DEFAULT_PAYMENT_ID;
         }
 
         return $orderTransfer->getAdyenPayment()->getReference();
