@@ -35,7 +35,7 @@ jobs:
             - name: Runs Elasticsearch
               uses: elastic/elastic-github-actions/elasticsearch@master
               with:
-                  stack-version: 7.6.0
+                  stack-version: 6.8.0
                   port: 10005
 
             - uses: actions/setup-node@v1
