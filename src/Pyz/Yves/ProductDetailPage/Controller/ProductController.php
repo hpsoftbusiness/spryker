@@ -85,6 +85,17 @@ class ProductController extends SprykerShopProductController
             'shopping_point_store',
             'cashback_amount',
             'shopping_points',
+            'taric_code',
+            'purchase_price',
+            'delivery_cost',
+            'dropshipment_possible',
+            'dropshipment_supplier',
+            'office_dealer_id',
+            'benefit_store_sales_price',
+            'benefit_amount',
+            'base_price_display_value',
+            'base_price_net_value',
+            'base_price_unit',
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {

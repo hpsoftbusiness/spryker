@@ -16,8 +16,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_AFFILIATE_ATTRIBUTES = 'affiliate_attributes';
 
-    protected const KEY_IS_SELLABLE_PATTERN = 'sellable_';
-
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -33,31 +31,26 @@ class AttributesExtractorStep implements DataImportStepInterface
                 continue;
             }
 
-            $attributeValueKey = $this->getAttributeValuePrefix() . $match[1];
+            $attributeValueKey = $this->getAttributeValuePrefix().$match[1];
             $attributeKey = trim(strtolower(str_replace(' ', '_', $value)));
             $attributeValue = trim($dataSet[$attributeValueKey]);
 
-            if (in_array($attributeKey, $this->getFilteredAttributeList())) {
-                continue;
-            }
-
             if ($attributeKey !== '') {
-                $isMainAttribute = in_array($attributeKey, $this->getAttributeList());
                 $isAffiliateAttribute = in_array($attributeKey, $this->getAffiliateAttributeList());
 
-                if ($isMainAttribute) {
-                    if ($attributeKey === 'cashback_amount') {
-                        $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
+                if (!$isAffiliateAttribute) {
+                    if (strtoupper($attributeValue) === 'TRUE' || strtoupper($attributeValue) === 'FALSE') {
+                        $attributes[$attributeKey] = strtoupper($attributeValue) === 'TRUE';
+                    } else {
+                        if ($attributeKey === 'cashback_amount') {
+                            $attributeValue = (float)str_replace(',', '.', $attributeValue) * 100;
+                        }
+                        $attributes[$attributeKey] = $attributeValue;
                     }
-                    $attributes[$attributeKey] = is_bool($attributeValue) ? (bool)$attributeValue : $attributeValue;
                 }
 
                 if ($isAffiliateAttribute) {
                     $affiliateAttributes[$attributeKey] = $attributeValue;
-                }
-
-                if (strpos($attributeKey, static::KEY_IS_SELLABLE_PATTERN) === 0) {
-                    $attributes[$attributeKey] = $attributeValue === 'TRUE';
                 }
             }
         }
@@ -85,46 +78,6 @@ class AttributesExtractorStep implements DataImportStepInterface
     protected function getAttributeValuePrefix(): string
     {
         return 'value_';
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getAttributeList(): array
-    {
-        return [
-            'ean',
-            'color',
-            'size',
-            'gtin',
-            'benefit_store',
-            'shopping_point_store',
-            'brand',
-            'cashback_amount',
-            'shopping_points',
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getFilteredAttributeList(): array
-    {
-        return [
-            'customer_group_1',
-            'customer_group_2',
-            'customer_group_3',
-            'customer_group_4',
-            'customer_group_5',
-            'purchase_price',
-            'strike_price',
-            'regular_sales_price',
-            'benefit_store_sales_price',
-            'benefit_amount',
-            'mpn',
-            'taric_code',
-            'gender',
-        ];
     }
 
     /**

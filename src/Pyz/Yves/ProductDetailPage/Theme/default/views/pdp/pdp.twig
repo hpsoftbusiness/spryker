@@ -9,10 +9,13 @@
     bundleItems: _view.product.bundledProducts,
 
     title: product.metaTitle | default(_view.product.name),
-    metaTitle: product.metaTitle | default(_view.product.name),
     metaDescription: _view.product.metaDescription | default,
     metaKeywords: _view.product.metaKeywords | default,
 } %}
+
+{% block metaTitle %}{{ data.title }} | {{data.metaTitle}}{% endblock %}
+
+{% block headTitle %}{{ data.title }} | {{data.metaTitle}}{% endblock %}
 
 {% block headStyles %}
     {{ parent() }}

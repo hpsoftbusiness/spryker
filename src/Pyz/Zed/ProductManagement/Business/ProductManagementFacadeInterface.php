@@ -11,4 +11,8 @@ use Spryker\Zed\ProductManagement\Business\ProductManagementFacadeInterface as S
 
 interface ProductManagementFacadeInterface extends SprykerProductManagementFacadeInterface
 {
+    /**
+     * @return array
+     */
+    public function getDefaultAttributes(): array;
 }
