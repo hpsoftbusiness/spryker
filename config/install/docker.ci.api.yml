@@ -69,4 +69,4 @@ sections:
 
     demodata:
         import-demodata:
-            command: "vendor/bin/console data:import --config=data/import/common/minimal.yml"
+            command: "vendor/bin/console data:import --config=data/import/common/minimal.yml -t"
