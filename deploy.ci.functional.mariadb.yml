@@ -16,8 +16,8 @@ regions:
     EU:
         services:
             database:
-                database: eu-docker
-                username: spryker
+                database: eu-docker-myworld
+                username: myworld
                 password: secret
 
         stores:

@@ -20,8 +20,8 @@ regions:
                     name: Spryker No-Reply
                     email: no-reply@spryker.local
             database:
-                database: eu-docker
-                username: spryker
+                database: eu-docker-myworld
+                username: myworld
                 password: secret
 
         stores:
