@@ -138,10 +138,10 @@ jobs:
 #               run: node ./frontend/libs/formatter
 
             - name: Validate propel files
-              run: |
+              run: vendor/bin/console propel:schema:validate-xml-names
 # Should be fixed as project level has less size value as a core
 #                  vendor/bin/console propel:schema:validate
-                  vendor/bin/console propel:schema:validate-xml-names
+#                  vendor/bin/console propel:schema:validate-xml-names
 
             - name: Validate transfer files
               run: vendor/bin/console transfer:validate
