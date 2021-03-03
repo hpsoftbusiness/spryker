@@ -28,7 +28,7 @@ interface ProductAttributeGuiToProductAttributeQueryContainerInterface extends P
     /**
      * @param int $idProductManagementAttribute
      *
-     * @retrun void
+     * @return void
      */
     public function deleteProductAttribute(int $idProductManagementAttribute): void;
 }
