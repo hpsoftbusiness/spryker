@@ -4,9 +4,9 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker.ci
-pipeline: docker.ci.functional
+pipeline: docker.ci.acceptance
 image:
-    tag: spryker/php:7.4-alpine3.12
+    tag: spryker/php:7.3-alpine3.12
 
 composer:
     mode: --no-dev
@@ -15,6 +15,10 @@ composer:
 regions:
     EU:
         services:
+            mail:
+                sender:
+                    name: Spryker No-Reply
+                    email: no-reply@spryker.local
             database:
                 database: eu-docker
                 username: spryker
@@ -81,7 +85,8 @@ groups:
 
 services:
     database:
-        engine: postgres
+        engine: mysql
+        version: mariadb-10.3
         root:
             username: "root"
             password: "secret"
@@ -96,11 +101,13 @@ services:
         engine: redis
     search:
         engine: elastic
-        version: 6.8
+        version: 7.6
     scheduler:
         engine: jenkins
     mail_catcher:
         engine: mailhog
+    webdriver:
+        engine: chromedriver
 
 docker:
 
