@@ -26,3 +26,5 @@ actions:
 #3. Navigation data import
     - data_entity: navigation
       source: data/import/common/common/navigation.csv
+    - data_entity: navigation-node
+      source: data/import/common/common/navigation_node.csv
