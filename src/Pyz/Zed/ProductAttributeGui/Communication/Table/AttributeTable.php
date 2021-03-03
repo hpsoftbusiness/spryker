@@ -12,6 +12,11 @@ use Spryker\Zed\ProductAttributeGui\Communication\Table\AttributeTable as Spryke
 
 class AttributeTable extends SprykerAttributeTable
 {
+    /**
+     * @param array $item
+     *
+     * @return array
+     */
     protected function createActionColumn(array $item)
     {
         $urls = [];

@@ -16,6 +16,8 @@ interface ProductAttributeGuiFacadeInterface
 {
     /**
      * @param int $idProductManagementAttribute
+     *
+     * @return void
      */
     public function delete(int $idProductManagementAttribute): void;
 }

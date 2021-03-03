@@ -13,16 +13,22 @@ interface ProductAttributeGuiToProductAttributeQueryContainerInterface extends P
 {
     /**
      * @param int $idProductManagementAttribute
+     *
+     * @return void
      */
     public function deleteProductAttributeValuesWithTranslations(int $idProductManagementAttribute): void;
 
     /**
      * @param int $idProductManagementAttributeValue
+     *
+     * @return void
      */
     public function deleteProductAttributeValuesTranslations(int $idProductManagementAttributeValue): void;
 
     /**
      * @param int $idProductManagementAttribute
+     *
+     * @retrun void
      */
     public function deleteProductAttribute(int $idProductManagementAttribute): void;
 }

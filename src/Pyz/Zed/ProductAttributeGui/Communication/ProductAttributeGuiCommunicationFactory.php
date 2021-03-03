@@ -18,6 +18,9 @@ use Spryker\Zed\ProductAttributeGui\ProductAttributeGuiDependencyProvider;
 
 class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGuiCommunicationFactory
 {
+    /**
+     * @return \Pyz\Zed\Product\Persistence\ProductQueryContainerInterface
+     */
     public function getProductQueryContainer(): ProductQueryContainerInterface
     {
         return $this->getProvidedDependency(ProductAttributeGuiDependencyProvider::QUERY_CONTAINER_PRODUCT);
