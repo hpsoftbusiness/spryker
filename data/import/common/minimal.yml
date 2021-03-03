@@ -20,11 +20,11 @@ actions:
 #2. Catalog Setup data import
     - data_entity: category-template
       source: data/import/common/common/category_template.csv
-    - data_entity: category
-      source: data/import/common/common/category.csv
 
 #3. Navigation data import
     - data_entity: navigation
       source: data/import/common/common/navigation.csv
     - data_entity: navigation-node
       source: data/import/common/common/navigation_node.csv
+    - data_entity: category
+      source: data/import/common/common/category.csv
