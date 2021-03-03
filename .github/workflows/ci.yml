@@ -212,7 +212,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-#                  cd docker && git checkout 3148b36c1f0dfcbd0a14285e1862cf39e6d3921c && cd ..
                   docker/sdk boot deploy.ci.functional.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept run -c codeception.functional.yml
