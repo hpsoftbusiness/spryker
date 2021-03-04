@@ -463,13 +463,11 @@ class PostingExportContentBuilder
     /**
      * @param int $value
      *
-     * @return string
+     * @return float
      */
-    protected function formatIntValueToDecimalCurrency(int $value): string
+    protected function formatIntValueToDecimalCurrency(int $value): float
     {
-        $moneyTransfer = $this->moneyFacade->fromInteger($value);
-
-        return $this->moneyFacade->formatWithoutSymbol($moneyTransfer);
+        return $this->moneyFacade->convertIntegerToDecimal($value);
     }
 
     /**
