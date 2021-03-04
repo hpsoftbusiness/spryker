@@ -31,7 +31,6 @@ use Orm\Zed\Tax\Persistence\SpyTaxRate;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use Orm\Zed\Tax\Persistence\SpyTaxSetTax;
 use Spryker\Shared\Calculation\CalculationPriceMode;
-use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Zed\Calculation\Business\CalculationFacade;
 use Spryker\Zed\Discount\DiscountDependencyProvider;
