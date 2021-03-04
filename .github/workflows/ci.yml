@@ -127,7 +127,7 @@ jobs:
             - name: Speccy lint Glue specification
               run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
 
-# Could be checked by FE
+# Should be checked by FE
 #             - name: Style lint
 #               run: node ./frontend/libs/stylelint
 
@@ -139,7 +139,7 @@ jobs:
 
             - name: Validate propel files
               run: vendor/bin/console propel:schema:validate-xml-names
-# Should be fixed as project level has less size value as a core
+# Should be fixed
 #                  vendor/bin/console propel:schema:validate
 #                  vendor/bin/console propel:schema:validate-xml-names
 
@@ -149,6 +149,7 @@ jobs:
             - name: Run CodeStyle checks
               run: vendor/bin/console code:sniff:style
 
+# Should be fixed
 #            - name: Run Architecture rules
 #              run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 #
