@@ -14,9 +14,22 @@ use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Pyz\Zed\Oms\Communication\Plugin\Mail\OrderInProcessingMailTypePlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Mail\ShippingConfirmationMailTypePlugin;
 use Spryker\Zed\Oms\Business\Mail\MailHandler as SprykerMailHandler;
+use Swift_TransportException;
 
 class MailHandler extends SprykerMailHandler
 {
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
+     *
+     * @return void
+     */
+    public function sendOrderConfirmationMail(SpySalesOrder $salesOrderEntity)
+    {
+        try {
+            parent::sendOrderConfirmationMail($salesOrderEntity);
+        } catch (Swift_TransportException $e) {}
+    }
+
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
      *
