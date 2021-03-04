@@ -1,0 +1,91 @@
+# Company:  myWorld
+# Author:   myWorld
+# URL:      https://www.marketplace.myworld.com
+
+User-agent: AboutUsBot
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: grub-client
+Disallow: /
+
+User-agent: UbiCrawler
+Disallow: /
+
+User-agent: DOC
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: WWW-Collector-E
+Disallow: /
+
+User-agent: Xenu's
+Disallow: /
+
+User-agent: NPBot
+Disallow: /
+
+User-agent: Zao
+Disallow: /
+
+User-agent: ZyBORG
+Disallow: /
+
+User-agent: larbin
+Disallow: /
+
+User-agent: libwww
+Disallow: /
+
+User-agent: Download Ninja
+Disallow: /
+
+User-agent: Microsoft URL Control
+Disallow: /
+
+User-agent: Microsoft URL Control - 5.01.4511
+Disallow: /
+
+User-agent: Microsoft URL Control - 6.00.8169
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: Fetch
+Disallow: /
+
+User-agent: httplib
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: lwp-trivial
+Disallow: /
+
+User-agent: lwp-trivial/1.34
+Disallow: /
+
+User-agent: Python-urllib
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: / 
+
+User-agent: BLEXBot
+Disallow: /
+
+# Block  MegaIndex.ru
+User-agent: MegaIndex.ru/2.0
+Disallow: /

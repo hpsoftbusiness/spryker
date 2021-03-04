@@ -1,5 +1,14 @@
 {% extends template('page-blank', '@SprykerShop:ShopUi') %}
 
+{% define data = {
+    metaDescription: 'global.spryker.shop.meta_description' | trans,
+} %}
+
+{% block headScripts %}
+    {{ parent() }}
+    {% include atom('seo-tags') only %}
+{% endblock %}
+
 {% block template %}
     {% set isNewFrontendBuildSupported = true %}
 

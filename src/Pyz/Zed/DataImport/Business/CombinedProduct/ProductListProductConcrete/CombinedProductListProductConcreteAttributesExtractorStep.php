@@ -40,14 +40,4 @@ class CombinedProductListProductConcreteAttributesExtractorStep extends Attribut
             'customer_group_5',
         ];
     }
-
-    /**
-     * @return string[]
-     */
-    public function getFilteredAttributeList(): array
-    {
-        $filteredAttributeList = parent::getFilteredAttributeList();
-
-        return array_diff($filteredAttributeList, $this->getAttributeList());
-    }
 }

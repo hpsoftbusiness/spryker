@@ -276,6 +276,20 @@
             </tree>
         </pages>
     </content>
+    <merchant-gui>
+        <label>Merchants</label>
+        <title>Merchants</title>
+        <icon>fa-file-text-o</icon>
+        <pages>
+            <merchant>
+                <label>Merchants</label>
+                <title>Merchants</title>
+                <bundle>merchant-gui</bundle>
+                <controller>list-merchant</controller>
+                <action>index</action>
+            </merchant>
+        </pages>
+    </merchant-gui>
     <merchandising>
         <label>Merchandising</label>
         <title>Merchandising</title>
