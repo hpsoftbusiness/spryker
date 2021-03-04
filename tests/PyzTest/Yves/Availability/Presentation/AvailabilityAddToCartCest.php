@@ -23,6 +23,8 @@ use PyzTest\Yves\Cart\PageObject\CartListPage;
 class AvailabilityAddToCartCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
      *
      * @return void

@@ -27,7 +27,7 @@ use PyzTest\Yves\Newsletter\PageObject\NewsletterSubscriptionHomePage;
 class NewsletterSubscriptionCest
 {
     /**
-     * @skip As FE has been adjusted
+     * @skip
      *
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
      *

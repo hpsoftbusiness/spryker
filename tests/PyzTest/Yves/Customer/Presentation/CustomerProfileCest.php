@@ -23,6 +23,8 @@ use PyzTest\Yves\Customer\PageObject\CustomerProfilePage;
 class CustomerProfileCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -43,6 +45,8 @@ class CustomerProfileCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -59,6 +63,8 @@ class CustomerProfileCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -76,6 +82,8 @@ class CustomerProfileCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -97,6 +105,8 @@ class CustomerProfileCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
