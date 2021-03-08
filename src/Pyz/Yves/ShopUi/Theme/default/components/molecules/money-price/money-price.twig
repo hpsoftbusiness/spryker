@@ -5,7 +5,7 @@
 
     {{ dump(data) }}
 
-    {% if data.isAffiliate %}
+    {% if data.isAffiliate is defined and data.isAffiliate %}
         <span>{{ 'pdp.price.from' | trans }}</span>
     {% endif %}
 
