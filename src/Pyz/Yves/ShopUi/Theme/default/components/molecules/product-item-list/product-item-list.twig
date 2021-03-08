@@ -57,6 +57,7 @@
                     {% embed molecule('money-price') with {
                         modifiers: ['original-inline'],
                         data: {
+                            isAffiliate: data.product.is_affiliate | default(false),
                             amount: data.product.prices.DEFAULT | default(null),
                             originalAmount: data.product.prices.ORIGINAL | default(null),
                             currencyIsoCode: data.currencyIsoCode,
