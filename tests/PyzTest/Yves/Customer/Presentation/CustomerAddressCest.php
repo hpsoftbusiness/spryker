@@ -24,6 +24,8 @@ use PyzTest\Yves\Customer\PageObject\CustomerAddressPage;
 class CustomerAddressCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void

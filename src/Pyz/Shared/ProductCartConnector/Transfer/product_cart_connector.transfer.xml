@@ -5,11 +5,11 @@
 
     <transfer name="Item">
         <property name="concreteLocalizedAttributes" type="array" singular="concreteLocalizedAttribute"/>
-        <property name="isAffiliate" type="boolean"/>
+        <property name="isAffiliate" type="bool"/>
     </transfer>
 
     <transfer name="ProductConcrete">
-        <property name="isAffiliate" type="boolean"/>
+        <property name="isAffiliate" type="bool"/>
     </transfer>
 
 </transfers>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9051b5a92e27e5a153729cdf249dd6a",
+    "content-hash": "be3e9c8610f249e5e217f76acf5309e1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1463,6 +1463,10 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
+            "support": {
+                "issues": "https://github.com/thephpleague/flysystem-aws-s3-v3/issues",
+                "source": "https://github.com/thephpleague/flysystem-aws-s3-v3/tree/1.0.29"
+            },
             "time": "2020-10-08T18:58:37+00:00"
         },
         {
@@ -1776,6 +1780,10 @@
                 "json",
                 "jsonpath"
             ],
+            "support": {
+                "issues": "https://github.com/jmespath/jmespath.php/issues",
+                "source": "https://github.com/jmespath/jmespath.php/tree/2.6.0"
+            },
             "time": "2020-07-31T21:01:56+00:00"
         },
         {
@@ -18745,6 +18753,9 @@
                 "proprietary"
             ],
             "description": "FlysystemAws3v3FileSystem module",
+            "support": {
+                "source": "https://github.com/spryker/flysystem-aws3v3-file-system/tree/1.0.5"
+            },
             "time": "2020-08-18T11:51:30+00:00"
         },
         {
@@ -38932,16 +38943,16 @@
         },
         {
             "name": "jakoch/phantomjs-installer",
-            "version": "2.1.1-p09",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "41c9fc2608adbc3905338c60829d6e4dd3b739bf"
+                "reference": "1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/41c9fc2608adbc3905338c60829d6e4dd3b739bf",
-                "reference": "41c9fc2608adbc3905338c60829d6e4dd3b739bf",
+                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67",
+                "reference": "1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67",
                 "shasum": ""
             },
             "require": {
@@ -38951,7 +38962,7 @@
             },
             "require-dev": {
                 "composer/composer": "^1.2",
-                "phpunit/phpunit": "^4.8"
+                "phpunit/phpunit": "^8"
             },
             "type": "custom-installer",
             "autoload": {
@@ -38978,7 +38989,7 @@
                 "headless",
                 "phantomjs"
             ],
-            "time": "2017-08-16T08:57:05+00:00"
+            "time": "2020-07-18T05:26:32+00:00"
         },
         {
             "name": "jetbrains/phpstorm-stubs",
@@ -41855,6 +41866,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
+            "abandoned": "https://github.com/fabpot/local-php-security-checker",
             "time": "2018-12-19T17:14:59+00:00"
         },
         {

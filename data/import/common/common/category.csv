@@ -1,5 +1,4 @@
-category_key,parent_category_key,name.en_US,"name.de_DE
-",meta_title.de_DE,meta_title.en_US,meta_description.de_DE,meta_description.en_US,meta_keywords.de_DE,meta_keywords.en_US,is_active,is_in_menu,is_clickable,is_searchable,is_root,is_main,node_order,template_name,category_image_name.en_US,category_image_name.de_DE
+category_key,parent_category_key,name.en_US,"name.de_DE",meta_title.de_DE,meta_title.en_US,meta_description.de_DE,meta_description.en_US,meta_keywords.de_DE,meta_keywords.en_US,is_active,is_in_menu,is_clickable,is_searchable,is_root,is_main,node_order,template_name,category_image_name.en_US,category_image_name.de_DE
 demoshop,,Demoshop,Demoshop,Demoshop,Demoshop,Deutsche Version des Demoshop,English version of Demoshop,Deutsche Version des Demoshop,English version of Demoshop,1,0,1,0,1,1,900,Catalog (default),,
 537,demoshop,Baby & Toddler,Baby & Kleinkind,Baby & Toddler,Baby & Kleinkind,Baby & Toddler,Baby & Kleinkind,Baby & Toddler,Baby & Kleinkind,1,1,1,1,0,1,901,Catalog (default),,
 166,demoshop,Clothing & Accessories,Bekleidung & Accessoires,Clothing & Accessories,Bekleidung & Accessoires,Clothing & Accessories,Bekleidung & Accessoires,Clothing & Accessories,Bekleidung & Accessoires,1,1,1,1,0,1,902,Catalog (default),,

@@ -25,6 +25,8 @@ use PyzTest\Yves\Customer\PageObject\CustomerOverviewPage;
 class CustomerLogoutCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void

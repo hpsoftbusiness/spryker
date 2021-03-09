@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Business\FileHandler;
 
 use Generated\Shared\Transfer\FileSystemContentTransfer;
@@ -18,13 +23,12 @@ class FileHandler
     use LoggerTrait;
 
     /**
-     * @var FileSystemServiceInterface
+     * @var \Spryker\Service\FileSystem\FileSystemServiceInterface
      */
     private $fileSystemService;
 
     /**
-     * FileHandler constructor.
-     * @param FileSystemServiceInterface $fileSystemService
+     * @param \Spryker\Service\FileSystem\FileSystemServiceInterface $fileSystemService
      */
     public function __construct(FileSystemServiceInterface $fileSystemService)
     {
@@ -32,8 +36,10 @@ class FileHandler
     }
 
     /**
-     * @param ProductDataImportTransfer $productDataImportTransfer
-     * @param FlysystemConfigTransfer $flysystemConfigTransfer
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
+     * @param \Generated\Shared\Transfer\FlysystemConfigTransfer $flysystemConfigTransfer
+     *
+     * @return void
      */
     public function prepareImportFile(
         ProductDataImportTransfer $productDataImportTransfer,
@@ -41,7 +47,7 @@ class FileHandler
     ): void {
         try {
             $sprykerAdapterClass = $flysystemConfigTransfer->getAdapterConfig()['sprykerAdapterClass'];
-            $flysystemFilesystemBuilderPlugin = new $sprykerAdapterClass;
+            $flysystemFilesystemBuilderPlugin = new $sprykerAdapterClass();
             $this->writeFileStream(
                 $flysystemFilesystemBuilderPlugin,
                 $flysystemConfigTransfer,
@@ -52,6 +58,9 @@ class FileHandler
         }
     }
 
+    /**
+     * @return void
+     */
     public function clearImportFile(): void
     {
         try {
@@ -65,9 +74,9 @@ class FileHandler
     /**
      * @param string|null $content
      *
-     * @return FileSystemContentTransfer
+     * @return \Generated\Shared\Transfer\FileSystemContentTransfer
      */
-    private function createFileSystemContentTransfer(string $content = null): FileSystemContentTransfer
+    private function createFileSystemContentTransfer(?string $content = null): FileSystemContentTransfer
     {
         $fileSystemContentTransfer = new FileSystemContentTransfer();
 
@@ -79,7 +88,7 @@ class FileHandler
     }
 
     /**
-     * @return FileSystemStreamTransfer
+     * @return \Generated\Shared\Transfer\FileSystemStreamTransfer
      */
     private function createFileSystemStreamTransfer(): FileSystemStreamTransfer
     {
@@ -91,12 +100,11 @@ class FileHandler
     }
 
     /**
-     * @param FlysystemFilesystemBuilderPluginInterface $flysystemFilesystemBuilderPlugin
-     * @param FlysystemConfigTransfer $flysystemConfigTransfer
+     * @param \Spryker\Service\Flysystem\Dependency\Plugin\FlysystemFilesystemBuilderPluginInterface $flysystemFilesystemBuilderPlugin
+     * @param \Generated\Shared\Transfer\FlysystemConfigTransfer $flysystemConfigTransfer
      * @param string $fileName
      *
-     * @throws \League\Flysystem\FileNotFoundException
-     * @throws \Spryker\Service\FileSystem\Dependency\Exception\FileSystemStreamException
+     * @return void
      */
     private function writeFileStream(
         FlysystemFilesystemBuilderPluginInterface $flysystemFilesystemBuilderPlugin,

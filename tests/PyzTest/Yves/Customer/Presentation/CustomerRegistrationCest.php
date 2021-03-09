@@ -24,6 +24,8 @@ use PyzTest\Yves\Customer\PageObject\CustomerRegistrationPage;
 class CustomerRegistrationCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -35,6 +37,8 @@ class CustomerRegistrationCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void

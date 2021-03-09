@@ -1,4 +1,9 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
 
 namespace Pyz\Zed\ProductAttributeGui\Communication\Table;
 
@@ -7,6 +12,11 @@ use Spryker\Zed\ProductAttributeGui\Communication\Table\AttributeTable as Spryke
 
 class AttributeTable extends SprykerAttributeTable
 {
+    /**
+     * @param array $item
+     *
+     * @return array
+     */
     protected function createActionColumn(array $item)
     {
         $urls = [];

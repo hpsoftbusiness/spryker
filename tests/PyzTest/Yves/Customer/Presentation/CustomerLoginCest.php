@@ -25,6 +25,8 @@ use PyzTest\Yves\Customer\PageObject\CustomerPasswordForgottenPage;
 class CustomerLoginCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -36,6 +38,8 @@ class CustomerLoginCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -48,6 +52,8 @@ class CustomerLoginCest
     }
 
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void

@@ -48,12 +48,22 @@ use Spryker\Zed\Discount\DiscountDependencyProvider;
  */
 class CalculationWithCalculableObjectFacadeTest extends Test
 {
+    protected const DEFAULT_TAX_SET = 19;
+
+    /**
+     * @var \PyzTest\Zed\Calculation\CalculationBusinessTester
+     */
+    public $tester;
+
     /**
      * @return void
      */
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->tester->setConfig(TaxConstants::DEFAULT_TAX_RATE, static::DEFAULT_TAX_SET);
+
         $this->resetCurrentDiscounts();
     }
 

@@ -31,7 +31,7 @@ class AttributesExtractorStep implements DataImportStepInterface
                 continue;
             }
 
-            $attributeValueKey = $this->getAttributeValuePrefix().$match[1];
+            $attributeValueKey = $this->getAttributeValuePrefix() . $match[1];
             $attributeKey = trim(strtolower(str_replace(' ', '_', $value)));
             $attributeValue = trim($dataSet[$attributeValueKey]);
 

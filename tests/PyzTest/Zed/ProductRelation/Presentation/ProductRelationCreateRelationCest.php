@@ -24,6 +24,8 @@ use Spryker\Shared\ProductRelation\ProductRelationTypes;
 class ProductRelationCreateRelationCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
      *
      * @return void

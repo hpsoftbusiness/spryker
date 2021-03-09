@@ -1,4 +1,9 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
 
 namespace Pyz\Zed\ProductAttributeGui\Communication\Controller;
 
@@ -15,8 +20,6 @@ class AttributeController extends SprykerAttributeController
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request)

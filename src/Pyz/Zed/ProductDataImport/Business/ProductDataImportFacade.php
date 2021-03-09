@@ -83,7 +83,9 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * @param ProductDataImportTransfer $productDataImportTransfer
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
+     *
+     * @return void
      */
     public function prepareImportFile(ProductDataImportTransfer $productDataImportTransfer): void
     {
@@ -91,6 +93,9 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
         $this->getFactory()->createFileHandler()->prepareImportFile($productDataImportTransfer, $flysystemConfigTransfer);
     }
 
+    /**
+     * @return void
+     */
     public function clearImportFile(): void
     {
         $this->getFactory()->createFileHandler()->clearImportFile();
