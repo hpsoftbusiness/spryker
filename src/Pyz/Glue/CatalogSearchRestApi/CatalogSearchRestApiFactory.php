@@ -7,8 +7,8 @@
 
 namespace Pyz\Glue\CatalogSearchRestApi;
 
-use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiFactory as SprykerCatalogSearchRestApiFactory;
 use Pyz\Glue\CatalogSearchRestApi\Processor\Mapper\CatalogSearchResourceMapper;
+use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiFactory as SprykerCatalogSearchRestApiFactory;
 use Spryker\Glue\CatalogSearchRestApi\Processor\Mapper\CatalogSearchResourceMapperInterface;
 
 class CatalogSearchRestApiFactory extends SprykerCatalogSearchRestApiFactory
