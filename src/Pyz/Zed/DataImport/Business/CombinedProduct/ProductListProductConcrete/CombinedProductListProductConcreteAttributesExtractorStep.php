@@ -8,9 +8,25 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductListProductConcrete;
 
 use Pyz\Zed\DataImport\Business\Model\Product\AttributesExtractorStep;
+use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductListProductConcreteAttributesExtractorStep extends AttributesExtractorStep
 {
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function execute(DataSetInterface $dataSet)
+    {
+        parent::execute($dataSet);
+
+        $dataSet[static::KEY_ATTRIBUTES] = array_intersect_key(
+            $dataSet[static::KEY_ATTRIBUTES],
+            array_flip($this->getAttributesList())
+        );
+    }
+
     /**
      * @return string
      */
@@ -30,7 +46,7 @@ class CombinedProductListProductConcreteAttributesExtractorStep extends Attribut
     /**
      * @return string[]
      */
-    public function getAttributeList(): array
+    protected function getAttributesList(): array
     {
         return [
             'customer_group_1',
