@@ -150,8 +150,12 @@ class TransferMapper implements TransferMapperInterface
     protected function getBenefitApi(ProductAbstractTransfer $productAbstractTransfer): ProductBenefitApiTransfer
     {
         $benefitApi = new ProductBenefitApiTransfer();
-        $benefitApi->setCashbackAmount($productAbstractTransfer->getAttributes()['cashback_amount'] ?? null)
-            ->setShoppingPointsAmount($productAbstractTransfer->getAttributes()['shopping_points'] ?? null);
+        $benefitApi->setCashbackAmount($this->formatAmount(
+            $productAbstractTransfer->getAttributes()['cashback_amount'] ?? null
+        ))
+            ->setShoppingPointsAmount($this->formatAmount(
+                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+            ));
         return $benefitApi;
     }
 
@@ -164,7 +168,7 @@ class TransferMapper implements TransferMapperInterface
     {
         $moneyValue = $productAbstractTransfer->getPrices()[0]->getMoneyValue() ?? null;
         $productPriceApi = new ProductPriceApiTransfer();
-        $productPriceApi->setAmount($moneyValue->getGrossAmount() ?? null)
+        $productPriceApi->setAmount($this->formatAmount($moneyValue->getGrossAmount() ?? null))
             ->setCurrency($moneyValue->getCurrency()->getCode() ?? null);
         return $productPriceApi;
     }
@@ -177,8 +181,12 @@ class TransferMapper implements TransferMapperInterface
     protected function getBvDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductBvDealApiTransfer
     {
         $productBcDealApi = new ProductBvDealApiTransfer();
-        $productBcDealApi->setBvItemPrice($productAbstractTransfer->getAttributes()['Benefit_Store_sales_price'] ?? null)
-            ->setBvAmount($productAbstractTransfer->getAttributes()['Benefit_amount'] ?? null);
+        $productBcDealApi->setBvItemPrice($this->formatAmount(
+            $productAbstractTransfer->getAttributes()['Benefit_Store_sales_price'] ?? null
+        ))
+            ->setBvAmount($this->formatAmount(
+                $productAbstractTransfer->getAttributes()['Benefit_amount'] ?? null
+            ));
         return $productBcDealApi;
     }
 
@@ -190,8 +198,25 @@ class TransferMapper implements TransferMapperInterface
     protected function getSpDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductSpDealApiTransfer
     {
         $productSpDealApi = new ProductSpDealApiTransfer();
-        $productSpDealApi->setSpItemPrice($productAbstractTransfer->getAttributes()['Benefit_Store_sales_price'] ?? null)
-            ->setSpAmount($productAbstractTransfer->getAttributes()['shopping_points'] ?? null);
+        $productSpDealApi->setSpItemPrice($this->formatAmount(
+            $productAbstractTransfer->getAttributes()['Benefit_Store_sales_price'] ?? null
+        ))
+            ->setSpAmount($this->formatAmount(
+                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+            ));
         return $productSpDealApi;
+    }
+
+    /**
+     * @param mixed $amount
+     *
+     * @return string|null
+     */
+    protected function formatAmount($amount): ?string
+    {
+        if ($amount === null) {
+            return $amount;
+        }
+        return number_format((float)$amount, 2, '.', '');
     }
 }
