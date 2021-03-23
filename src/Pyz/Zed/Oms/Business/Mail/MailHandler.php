@@ -27,7 +27,8 @@ class MailHandler extends SprykerMailHandler
     {
         try {
             parent::sendOrderConfirmationMail($salesOrderEntity);
-        } catch (Swift_TransportException $e) {}
+        } catch (Swift_TransportException $e) {
+        }
     }
 
     /**
