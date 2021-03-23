@@ -13,9 +13,9 @@ use Spryker\Shared\Application\ApplicationConstants;
 class CatalogSearchRestApiConfig extends SprykerCatalogSearchRestApiConfig
 {
     /**
-     * @return string|null
+     * @return string
      */
-    public function getYvesHost(): ?string
+    public function getYvesHost(): string
     {
         return $this->get(ApplicationConstants::BASE_URL_YVES);
     }

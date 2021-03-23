@@ -13,6 +13,7 @@ use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Console\MyWorldMarketplaceApiConsole;
 use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
+use Pyz\Zed\ProductPageSearch\Communication\Console\ProductAbstractPageSearchRefreshConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
@@ -259,6 +260,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new EventBehaviorTriggerTimeoutConsole(),
             new PublisherTriggerEventsConsole(),
             new ExportSynchronizedDataConsole(),
+            new ProductAbstractPageSearchRefreshConsole(),
 
             // Setup commands
             new RunnerConsole(),

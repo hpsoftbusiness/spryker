@@ -42,7 +42,7 @@ class ProductAbstractAttributesExpanderPlugin extends AbstractPlugin implements 
         array $abstractProductData,
         RestCatalogSearchAbstractProductsTransfer $restCatalogSearchAbstractProductsTransfer
     ): void {
-        $brandValue = $this->extractSingularAttributeValue($abstractProductData[self::ATTRIBUTE_BRAND]);
+        $brandValue = $this->extractSingularAttributeValue($abstractProductData[self::ATTRIBUTE_BRAND] ?? null);
         if ($brandValue) {
             $restCatalogSearchAbstractProductsTransfer->setBrand((string)$brandValue);
         }
@@ -58,7 +58,9 @@ class ProductAbstractAttributesExpanderPlugin extends AbstractPlugin implements 
         array $abstractProductData,
         RestCatalogSearchAbstractProductsTransfer $restCatalogSearchAbstractProductsTransfer
     ): void {
-        $cashbackAmountValue = $this->extractSingularAttributeValue($abstractProductData[self::ATTRIBUTE_CASHBACK_AMOUNT]);
+        $cashbackAmountValue = $this->extractSingularAttributeValue(
+            $abstractProductData[self::ATTRIBUTE_CASHBACK_AMOUNT] ?? null
+        );
         if (!empty($cashbackAmountValue)) {
             $restCatalogSearchAbstractProductsTransfer->setCashbackAmount((int)$cashbackAmountValue);
         }
@@ -74,7 +76,9 @@ class ProductAbstractAttributesExpanderPlugin extends AbstractPlugin implements 
         array $abstractProductData,
         RestCatalogSearchAbstractProductsTransfer $restCatalogSearchAbstractProductsTransfer
     ): void {
-        $shoppingPointsValue = $this->extractSingularAttributeValue($abstractProductData[self::ATTRIBUTE_SHOPPING_POINTS]);
+        $shoppingPointsValue = $this->extractSingularAttributeValue(
+            $abstractProductData[self::ATTRIBUTE_SHOPPING_POINTS] ?? null
+        );
         if (!empty($shoppingPointsValue)) {
             $restCatalogSearchAbstractProductsTransfer->setShoppingPoints((int)$shoppingPointsValue);
         }
