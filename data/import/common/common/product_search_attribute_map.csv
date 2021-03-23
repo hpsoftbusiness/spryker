@@ -5,3 +5,6 @@ color,completion-terms
 size,full-text
 size,suggestion-terms
 size,completion-terms
+brand,search-result-data
+cashback_amount,search-result-data
+shopping_points,search-result-data

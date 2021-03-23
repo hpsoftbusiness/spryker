@@ -19,7 +19,16 @@ class CatalogSearchRestApiFactory extends SprykerCatalogSearchRestApiFactory
     public function createCatalogSearchResourceMapper(): CatalogSearchResourceMapperInterface
     {
         return new CatalogSearchResourceMapper(
-            $this->getCurrencyClient()
+            $this->getCurrencyClient(),
+            $this->getProductAbstractExpanderPlugins()
         );
+    }
+
+    /**
+     * @return \Pyz\Glue\CatalogSearchRestApi\Dependency\Plugin\CatalogSearchAbstractProductExpanderPluginInterface[]
+     */
+    public function getProductAbstractExpanderPlugins(): array
+    {
+        return $this->getProvidedDependency(CatalogSearchRestApiDependencyProvider::PLUGINS_PRODUCT_ABSTRACT_EXPANDER);
     }
 }

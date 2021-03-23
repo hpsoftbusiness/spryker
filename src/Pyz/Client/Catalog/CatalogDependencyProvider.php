@@ -9,8 +9,11 @@ namespace Pyz\Client\Catalog;
 
 use Pyz\Client\Catalog\Plugin\Elasticsearch\Query\CatalogVisibilitySearchQueryPlugin;
 use Pyz\Client\Customer\Plugin\SearchExtension\ProductListQueryExpanderPlugin as CustomerProductListQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\BenefitStoreQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CategoryFacetQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CmsPageFilterQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\IsAffiliateQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\ShoppingPointStoreQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingNameSortConfigTransferBuilderPlugin;
@@ -122,6 +125,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
              */
             new FacetQueryExpanderPlugin(),
+            new IsAffiliateQueryExpanderPlugin(),
+            new BenefitStoreQueryExpanderPlugin(),
+            new ShoppingPointStoreQueryExpanderPlugin(),
         ];
     }
 
