@@ -102,7 +102,9 @@ class TransferMapper implements TransferMapperInterface
     ): ?string {
         foreach ($productAbstractTransfer->getImageSets() as $imageSet) {
             if ($imageSet->getLocale()->getIdLocale() === $localeTransfer->getIdLocale()) {
-                return $imageSet->getProductImages()[0]->getExternalUrlLarge() ?? null;
+                return isset($imageSet->getProductImages()[0])
+                    ? $imageSet->getProductImages()[0]->getExternalUrlLarge()
+                    : null;
             }
         }
     }
@@ -117,6 +119,10 @@ class TransferMapper implements TransferMapperInterface
         CategoryCollectionTransfer $productCategoryTransferCollection,
         LocaleTransfer $localeTransfer
     ): ?string {
+        if (!isset($productCategoryTransferCollection->getCategories()[0])) {
+            return null;
+        }
+
         foreach ($productCategoryTransferCollection->getCategories()[0]->getLocalizedAttributes() as $localizedAttributes) {
             if ($localizedAttributes->getLocale()->getIdLocale() === $localeTransfer->getIdLocale()) {
                 return $localizedAttributes->getName();
@@ -166,10 +172,14 @@ class TransferMapper implements TransferMapperInterface
      */
     protected function getPriceApi(ProductAbstractTransfer $productAbstractTransfer): ProductPriceApiTransfer
     {
-        $moneyValue = $productAbstractTransfer->getPrices()[0]->getMoneyValue() ?? null;
+        $moneyValue = isset($productAbstractTransfer->getPrices()[0])
+            ? $productAbstractTransfer->getPrices()[0]->getMoneyValue()
+            : null;
         $productPriceApi = new ProductPriceApiTransfer();
-        $productPriceApi->setAmount($this->formatAmount($moneyValue->getGrossAmount() ?? null))
-            ->setCurrency($moneyValue->getCurrency()->getCode() ?? null);
+        if ($moneyValue) {
+            $productPriceApi->setAmount($this->formatAmount($moneyValue->getGrossAmount()))
+                ->setCurrency($moneyValue->getCurrency()->getCode());
+        }
         return $productPriceApi;
     }
 
@@ -215,7 +225,7 @@ class TransferMapper implements TransferMapperInterface
     protected function formatAmount($amount): ?string
     {
         if ($amount === null) {
-            return $amount;
+            return null;
         }
         return number_format((float)$amount, 2, '.', '');
     }

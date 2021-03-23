@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\ApiResponseTransfer;
 use Pyz\Shared\Api\ApiConstants;
 use Spryker\Zed\Api\ApiConfig;
 use Spryker\Zed\Api\Business\Model\Dispatcher as SprykerDispatcher;
+use Throwable;
 
 class Dispatcher extends SprykerDispatcher
 {
@@ -61,10 +62,6 @@ class Dispatcher extends SprykerDispatcher
                     $apiResponseTransfer->getMeta()->setResourceId($apiPluginCallResponseTransfer->getId());
                 }
             }
-        } catch (Exception $e) {
-            $apiResponseTransfer->setCode($this->resolveStatusCode($e->getCode()));
-            $apiResponseTransfer->setMessage($e->getMessage());
-            $apiResponseTransfer->setStackTrace(get_class($e) . ' (' . $e->getFile() . ', line ' . $e->getLine() . '): ' . $e->getTraceAsString());
         } catch (Throwable $e) {
             $apiResponseTransfer->setCode($this->resolveStatusCode($e->getCode()));
             $apiResponseTransfer->setMessage($e->getMessage());
