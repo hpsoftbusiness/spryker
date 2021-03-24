@@ -1,0 +1,23 @@
+namespace: PyzTest\Glue\CatalogSearchRestApi
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist: { include: ['../../../../src/Pyz/Glue/CatalogSearchRestApi/*'] }
+
+suites:
+    Processor:
+        path: Processor
+        class_name: CatalogSearchRestApiProcessorTester
+        modules:
+            enabled:
+                - Asserts
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                    projectNamespaces: ['Pyz']
