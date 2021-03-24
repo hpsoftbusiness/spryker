@@ -21,6 +21,14 @@ class ProductAffiliateServiceFactory extends AbstractServiceFactory
      */
     public function createGenerator(): ProductAffiliateLinkGeneratorInterface
     {
-        return new ProductAffiliateLinkGenerator($this->getConfig());
+        return new ProductAffiliateLinkGenerator($this->getConfig(), $this->getTrackingLinkDataFormatterPlugins());
+    }
+
+    /**
+     * @return \Pyz\Service\ProductAffiliate\Generator\Formatter\TrackingLinkDataFormatterPluginInterface[]
+     */
+    public function getTrackingLinkDataFormatterPlugins(): array
+    {
+        return $this->getProvidedDependency(ProductAffiliateDependencyProvider::PLUGINS_TRACKING_LINK_DATA_FORMATTER);
     }
 }

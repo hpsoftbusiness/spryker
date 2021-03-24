@@ -92,6 +92,7 @@ class AttributesExtractorStep implements DataImportStepInterface
             'affiliate_merchant_name',
             'affiliate_merchant_id',
             'merchant_product_id',
+            'affiliate_partner_name',
         ];
     }
 

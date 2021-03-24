@@ -18,6 +18,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProductController extends SprykerShopProductController
 {
+    private const KEY_AFFILIATE_DEEPLINK = 'affiliate_deeplink';
+    private const KEY_AFFILIATE_PARTNER_NAME = 'affiliate_partner_name';
+
     /**
      * @param array $productData
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -46,7 +49,9 @@ class ProductController extends SprykerShopProductController
 
         if ($viewData['product']->getIsAffiliate()) {
             $affiliateData = $viewData['product']->getAffiliateData();
-            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl($affiliateData);
+            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl(
+                $affiliateData
+            );
             $viewData['product']->setAffiliateData($affiliateData);
         }
 
@@ -61,14 +66,16 @@ class ProductController extends SprykerShopProductController
     protected function getProductAffiliateTrackingUrl(array $affiliateData): string
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+        $affiliatePartnerName = $affiliateData[self::KEY_AFFILIATE_PARTNER_NAME] ?? null;
 
-        if (!$customerTransfer) {
-            return $affiliateData['affiliate_deeplink'];
+        if (!$customerTransfer || !$affiliatePartnerName) {
+            return $affiliateData[self::KEY_AFFILIATE_DEEPLINK];
         }
 
         return $this->getFactory()->getProductAffiliateService()
             ->generateProductAffiliateTrackingUrl(
-                $affiliateData['affiliate_deeplink'],
+                $affiliateData[self::KEY_AFFILIATE_DEEPLINK],
+                $affiliatePartnerName,
                 $customerTransfer
             );
     }
