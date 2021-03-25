@@ -8,8 +8,9 @@
 namespace Pyz\Zed\ProductPageSearch;
 
 use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductPageSearch\CategoryNavigationProductPageSearchPublishTriggerPlugin;
-use Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractMapExpander\ProductAbstractAffiliateMapExpanderPlugin;
-use Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreFlagMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAffiliateMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreFlagMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractSellableFacetPageMapExpanderPlugin;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
@@ -110,6 +111,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductListMapExpanderPlugin(),
             new ProductAbstractAffiliateMapExpanderPlugin(),
             new ProductAbstractBenefitStoreFlagMapExpanderPlugin(),
+            new ProductAbstractSellableFacetPageMapExpanderPlugin(),
         ];
     }
 

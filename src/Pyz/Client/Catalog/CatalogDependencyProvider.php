@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\Catalog;
 
+use Pyz\Client\Catalog\Plugin\ConfigTransferBuilder\ProductAbstractSellableFacetConfigTransferBuilderPlugin;
 use Pyz\Client\Catalog\Plugin\Elasticsearch\Query\CatalogVisibilitySearchQueryPlugin;
 use Pyz\Client\Customer\Plugin\SearchExtension\ProductListQueryExpanderPlugin as CustomerProductListQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\BenefitStoreQueryExpanderPlugin;
@@ -80,6 +81,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new CategoryFacetConfigTransferBuilderPlugin(),
             new PriceFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
+            new ProductAbstractSellableFacetConfigTransferBuilderPlugin(),
         ];
     }
 

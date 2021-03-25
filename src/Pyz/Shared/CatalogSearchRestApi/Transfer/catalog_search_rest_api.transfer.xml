@@ -9,6 +9,11 @@
         <property name="isAffiliate" type="bool"/>
         <property name="affiliateData" type="array"/>
         <property name="brand" type="string"/>
+        <property name="benefit" type="RestCatalogSearchProductBenefit"/>
+        <property name="sellable" type="array"/>
+    </transfer>
+
+    <transfer name="RestCatalogSearchProductBenefit">
         <property name="shoppingPoints" type="int"/>
         <property name="cashbackAmount" type="int"/>
     </transfer>

@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractMapExpander;
+namespace Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander;
 
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\PageMapTransfer;
@@ -13,6 +13,9 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductPageSearchExtension\Dependency\PageMapBuilderInterface;
 use Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractMapExpanderPluginInterface;
 
+/**
+ * @method \Pyz\Zed\ProductPageSearch\ProductPageSearchConfig getConfig()
+ */
 class ProductAbstractAffiliateMapExpanderPlugin extends AbstractPlugin implements ProductAbstractMapExpanderPluginInterface
 {
     private const KEY_IS_AFFILIATE = 'is_affiliate';
@@ -32,11 +35,33 @@ class ProductAbstractAffiliateMapExpanderPlugin extends AbstractPlugin implement
         array $productData,
         LocaleTransfer $localeTransfer
     ): PageMapTransfer {
-        $isAffiliateValue = $productData[self::KEY_IS_AFFILIATE] ?? false;
+        $isAffiliateValue = $this->getIsAffiliateFlagValue($productData);
         $pageMapTransfer->setIsAffiliate($isAffiliateValue);
         $pageMapBuilder->addSearchResultData($pageMapTransfer, self::KEY_IS_AFFILIATE, $isAffiliateValue);
         $pageMapBuilder->addSearchResultData($pageMapTransfer, self::KEY_AFFILIATE_DATA, $productData[self::KEY_AFFILIATE_DATA] ?? []);
 
         return $pageMapTransfer;
+    }
+
+    /**
+     * @param array $productData
+     *
+     * @return bool
+     */
+    private function getIsAffiliateFlagValue(array $productData): bool
+    {
+        $isAffiliateValue = (bool)$productData[self::KEY_IS_AFFILIATE] ?? false;
+
+        return $isAffiliateValue && $this->assertAffiliateDataHasValue($productData);
+    }
+
+    /**
+     * @param array $productData
+     *
+     * @return bool
+     */
+    private function assertAffiliateDataHasValue(array $productData): bool
+    {
+        return !empty($productData[self::KEY_AFFILIATE_DATA]);
     }
 }

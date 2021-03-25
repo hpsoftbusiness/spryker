@@ -12,11 +12,11 @@ use Pyz\Glue\CatalogSearchRestApi\Dependency\Plugin\CatalogSearchAbstractProduct
 use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\Traits\SingularAttributeValueHelperTrait;
 use Spryker\Glue\Kernel\AbstractPlugin;
 
-class ProductAbstractAttributesExpanderPlugin extends AbstractPlugin implements CatalogSearchAbstractProductExpanderPluginInterface
+class ProductAbstractSellableForCountryExpanderPlugin extends AbstractPlugin implements CatalogSearchAbstractProductExpanderPluginInterface
 {
     use SingularAttributeValueHelperTrait;
 
-    private const ATTRIBUTE_BRAND = 'brand';
+    private const ATTRIBUTE_SELLABLE_PREFIX = 'sellable_';
 
     /**
      * @param array $abstractProductData
@@ -28,22 +28,23 @@ class ProductAbstractAttributesExpanderPlugin extends AbstractPlugin implements 
         array $abstractProductData,
         RestCatalogSearchAbstractProductsTransfer $restCatalogSearchAbstractProductsTransfer
     ): void {
-        $this->setBrand($abstractProductData, $restCatalogSearchAbstractProductsTransfer);
+        $restCatalogSearchAbstractProductsTransfer->setSellable($this->collectSellableAttributes($abstractProductData));
     }
 
     /**
      * @param array $abstractProductData
-     * @param \Generated\Shared\Transfer\RestCatalogSearchAbstractProductsTransfer $restCatalogSearchAbstractProductsTransfer
      *
-     * @return void
+     * @return bool[]
      */
-    private function setBrand(
-        array $abstractProductData,
-        RestCatalogSearchAbstractProductsTransfer $restCatalogSearchAbstractProductsTransfer
-    ): void {
-        $brandValue = $this->extractSingularAttributeValue($abstractProductData[self::ATTRIBUTE_BRAND] ?? null);
-        if ($brandValue) {
-            $restCatalogSearchAbstractProductsTransfer->setBrand((string)$brandValue);
+    private function collectSellableAttributes(array $abstractProductData): array
+    {
+        $sellableAttributes = [];
+        foreach ($abstractProductData as $key => $value) {
+            if (strpos($key, self::ATTRIBUTE_SELLABLE_PREFIX) !== false) {
+                $sellableAttributes[$key] = (bool)$this->extractSingularAttributeValue($value);
+            }
         }
+
+        return $sellableAttributes;
     }
 }

@@ -9,7 +9,8 @@ namespace PyzTest\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\RestCatalogSearchAbstractProductsTransfer;
-use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractAttributesExpanderPlugin;
+use Generated\Shared\Transfer\RestCatalogSearchProductBenefitTransfer;
+use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractBenefitExpanderPlugin;
 
 /**
  * Auto-generated group annotations
@@ -19,14 +20,15 @@ use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstract
  * @group CatalogSearchRestApi
  * @group Plugin
  * @group ProductAbstractExpander
- * @group ProductAbstractAttributesExpanderPluginTest
+ * @group ProductAbstractBenefitExpanderPluginTest
  * Add your own group annotations below this line
  */
-class ProductAbstractAttributesExpanderPluginTest extends Unit
+class ProductAbstractBenefitExpanderPluginTest extends Unit
 {
-    private const ATTRIBUTE_BRAND = 'brand';
     private const ATTRIBUTE_SHOPPING_POINTS = 'shopping_points';
     private const ATTRIBUTE_CASHBACK_AMOUNT = 'cashback_amount';
+
+    private const VALUE_UNDEFINED = 'undefined';
 
     /**
      * @var \PyzTest\Glue\CatalogSearchRestApi\CatalogSearchRestApiPluginTester
@@ -34,7 +36,7 @@ class ProductAbstractAttributesExpanderPluginTest extends Unit
     protected $tester;
 
     /**
-     * @var \Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractAttributesExpanderPlugin
+     * @var \Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractBenefitExpanderPlugin
      */
     private $sut;
 
@@ -43,7 +45,7 @@ class ProductAbstractAttributesExpanderPluginTest extends Unit
      */
     protected function _before(): void
     {
-        $this->sut = new ProductAbstractAttributesExpanderPlugin();
+        $this->sut = new ProductAbstractBenefitExpanderPlugin();
     }
 
     /**
@@ -59,9 +61,16 @@ class ProductAbstractAttributesExpanderPluginTest extends Unit
         $restCatalogSearchAbstractProductsTransfer = new RestCatalogSearchAbstractProductsTransfer();
         $this->sut->expand($attributeData, $restCatalogSearchAbstractProductsTransfer);
 
-        $mappedAttributesData = $restCatalogSearchAbstractProductsTransfer->toArray();
+        $benefitAttributeValue = $restCatalogSearchAbstractProductsTransfer->toArrayRecursiveCamelCased()[RestCatalogSearchAbstractProductsTransfer::BENEFIT] ?? [];
+
         foreach ($expectedData as $key => $expectedValue) {
-            self::assertEquals($expectedValue, $mappedAttributesData[$key]);
+            if ($expectedValue === self::VALUE_UNDEFINED) {
+                self::assertArrayNotHasKey($key, $benefitAttributeValue);
+
+                continue;
+            }
+
+            self::assertEquals($expectedValue, $benefitAttributeValue[$key]);
         }
     }
 
@@ -73,50 +82,42 @@ class ProductAbstractAttributesExpanderPluginTest extends Unit
         return [
             'nestedValuesMappedAndTypeCasted' => [
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => [ '3' ],
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => [ 5 ],
-                    self::ATTRIBUTE_BRAND => [ 'Samsung' ],
+                    self::ATTRIBUTE_SHOPPING_POINTS => ['3'],
+                    self::ATTRIBUTE_CASHBACK_AMOUNT => [5],
                 ],
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => 3,
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => 5,
-                    self::ATTRIBUTE_BRAND => 'Samsung',
+                    RestCatalogSearchProductBenefitTransfer::SHOPPING_POINTS => 3,
+                    RestCatalogSearchProductBenefitTransfer::CASHBACK_AMOUNT => 5,
                 ],
             ],
             'nonNestedValuesMappedAndTypeCasted' => [
                 [
                     self::ATTRIBUTE_SHOPPING_POINTS => 3,
                     self::ATTRIBUTE_CASHBACK_AMOUNT => '5',
-                    self::ATTRIBUTE_BRAND => '',
                 ],
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => 3,
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => 5,
-                    self::ATTRIBUTE_BRAND => '',
+                    RestCatalogSearchProductBenefitTransfer::SHOPPING_POINTS => 3,
+                    RestCatalogSearchProductBenefitTransfer::CASHBACK_AMOUNT => 5,
                 ],
             ],
             'nestedEmptyValuesNotMapped' => [
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => [ null ],
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => [ '0' ],
-                    self::ATTRIBUTE_BRAND => [ null ],
+                    self::ATTRIBUTE_SHOPPING_POINTS => [null],
+                    self::ATTRIBUTE_CASHBACK_AMOUNT => ['0'],
                 ],
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => null,
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => null,
-                    self::ATTRIBUTE_BRAND => null,
+                    RestCatalogSearchProductBenefitTransfer::SHOPPING_POINTS => self::VALUE_UNDEFINED,
+                    RestCatalogSearchProductBenefitTransfer::CASHBACK_AMOUNT => self::VALUE_UNDEFINED,
                 ],
             ],
             'nonNestedEmptyValuesNotMapped' => [
                 [
                     self::ATTRIBUTE_SHOPPING_POINTS => '0',
                     self::ATTRIBUTE_CASHBACK_AMOUNT => null,
-                    self::ATTRIBUTE_BRAND => null,
                 ],
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => null,
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => null,
-                    self::ATTRIBUTE_BRAND => null,
+                    RestCatalogSearchProductBenefitTransfer::SHOPPING_POINTS => self::VALUE_UNDEFINED,
+                    RestCatalogSearchProductBenefitTransfer::CASHBACK_AMOUNT => self::VALUE_UNDEFINED,
                 ],
             ],
             'missingValuesNotMapped' => [
@@ -124,9 +125,8 @@ class ProductAbstractAttributesExpanderPluginTest extends Unit
                     self::ATTRIBUTE_SHOPPING_POINTS => '3',
                 ],
                 [
-                    self::ATTRIBUTE_SHOPPING_POINTS => 3,
-                    self::ATTRIBUTE_CASHBACK_AMOUNT => null,
-                    self::ATTRIBUTE_BRAND => null,
+                    RestCatalogSearchProductBenefitTransfer::SHOPPING_POINTS => 3,
+                    RestCatalogSearchProductBenefitTransfer::CASHBACK_AMOUNT => null,
                 ],
             ],
         ];
