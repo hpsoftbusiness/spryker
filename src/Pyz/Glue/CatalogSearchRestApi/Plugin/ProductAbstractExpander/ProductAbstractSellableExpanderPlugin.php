@@ -12,7 +12,7 @@ use Pyz\Glue\CatalogSearchRestApi\Dependency\Plugin\CatalogSearchAbstractProduct
 use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\Traits\SingularAttributeValueHelperTrait;
 use Spryker\Glue\Kernel\AbstractPlugin;
 
-class ProductAbstractSellableForCountryExpanderPlugin extends AbstractPlugin implements CatalogSearchAbstractProductExpanderPluginInterface
+class ProductAbstractSellableExpanderPlugin extends AbstractPlugin implements CatalogSearchAbstractProductExpanderPluginInterface
 {
     use SingularAttributeValueHelperTrait;
 

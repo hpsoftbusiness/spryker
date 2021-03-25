@@ -10,7 +10,7 @@ namespace Pyz\Glue\CatalogSearchRestApi;
 use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractAttributesExpanderPlugin;
 use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractBenefitExpanderPlugin;
 use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractFullUrlExpanderPlugin;
-use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractSellableForCountryExpanderPlugin;
+use Pyz\Glue\CatalogSearchRestApi\Plugin\ProductAbstractExpander\ProductAbstractSellableExpanderPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiDependencyProvider as SprykerCatalogSearchRestApiDependencyProvider;
 use Spryker\Glue\Kernel\Container;
 
@@ -46,7 +46,7 @@ class CatalogSearchRestApiDependencyProvider extends SprykerCatalogSearchRestApi
                     new ProductAbstractFullUrlExpanderPlugin(),
                     new ProductAbstractAttributesExpanderPlugin(),
                     new ProductAbstractBenefitExpanderPlugin(),
-                    new ProductAbstractSellableForCountryExpanderPlugin(),
+                    new ProductAbstractSellableExpanderPlugin(),
                 ];
             }
         );
