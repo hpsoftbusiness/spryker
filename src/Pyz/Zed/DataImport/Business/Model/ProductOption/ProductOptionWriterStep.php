@@ -29,7 +29,7 @@ use Spryker\Zed\ProductOption\Dependency\ProductOptionEvents;
  */
 class ProductOptionWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 100;
+    public const BULK_SIZE = 1000;
 
     public const KEY_ABSTRACT_PRODUCT_SKUS = 'abstract_product_skus';
     public const KEY_GROUP_NAME_TRANSLATION_KEY = 'group_name_translation_key';

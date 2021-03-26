@@ -17,7 +17,7 @@ use Spryker\Zed\ProductList\Dependency\ProductListEvents;
 
 class CombinedProductListProductConcreteWriter extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 50;
+    public const BULK_SIZE = 1000;
 
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
     public const KEY_ID_PRODUCT_CONCRETE = 'id_product_concrete';

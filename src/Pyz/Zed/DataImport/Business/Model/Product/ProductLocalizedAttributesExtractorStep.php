@@ -57,15 +57,15 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
                 $keysToUnset[] = $match[0];
                 $keysToUnset[] = $attributeValueKey;
             }
-
-            foreach ($this->getMandatoryAttributes() as $attrKey => $dataSetDefaultValueKey) {
-                if (!isset($attributes[$attrKey]) && $dataSet[$dataSetDefaultValueKey] !== "" && !$this->isAfiliateProduct($dataSet)) {
-                    $attributes[$attrKey] = $this->getMandatoryAttributeValue(
-                        $attrKey,
-                        $dataSet[$dataSetDefaultValueKey]
-                    );
-                }
-            }
+//            Color and Size - Super attrs
+//            foreach ($this->getMandatoryAttributes() as $attrKey => $dataSetDefaultValueKey) {
+//                if (!isset($attributes[$attrKey]) && $dataSet[$dataSetDefaultValueKey] !== "" && !$this->isAfiliateProduct($dataSet)) {
+//                    $attributes[$attrKey] = $this->getMandatoryAttributeValue(
+//                        $attrKey,
+//                        $dataSet[$dataSetDefaultValueKey]
+//                    );
+//                }
+//            }
 
             $localizedAttributes[$idLocale] = [
                 'attributes' => $attributes,
@@ -73,7 +73,7 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 
             foreach ($this->defaultAttributes as $defaultAttribute) {
                 $defaultAttributeValue = $dataSet[$defaultAttribute . '.' . $localeName];
-                $localizedAttributes[$idLocale][$defaultAttribute] = $defaultAttributeValue;
+                $localizedAttributes[$idLocale][$defaultAttribute] = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $defaultAttributeValue);
 
                 $keysToUnset[] = $defaultAttribute . '.' . $localeName;
             }

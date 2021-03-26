@@ -7,7 +7,10 @@
 
 namespace Pyz\Zed\ProductDataImport\Communication\Console;
 
+use Exception;
+use Propel\Runtime\Propel;
 use Spryker\Zed\Kernel\Communication\Console\Console;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -24,7 +27,6 @@ class ProductDataImportConsole extends Console
     private const  DATA_ENTITY_IMAGE = 'combined-product-image';
     private const  DATA_ENTITY_PRICE = 'combined-product-price';
     private const  DATA_ENTITY_STOCK = 'combined-product-stock';
-    private const  DATA_ENTITY_GROUP = 'combined-product-group';
 
     protected const DATA_ENTITY_FOR_PRODUCT = [
         self::DATA_ENTITY_ABSTRACT,
@@ -33,7 +35,6 @@ class ProductDataImportConsole extends Console
         self::DATA_ENTITY_IMAGE,
         self::DATA_ENTITY_PRICE,
         self::DATA_ENTITY_STOCK,
-        self::DATA_ENTITY_GROUP,
     ];
 
     public const COMMAND_NAME = 'data:product:import-file';
@@ -56,25 +57,48 @@ class ProductDataImportConsole extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
-        $messenger = $this->getMessenger();
+        $progressBar = new ProgressBar($output, count(self::DATA_ENTITY_FOR_PRODUCT) + 3);
+        $progressBar->setFormat('debug');
+        $progressBar->start();
 
+        $messenger = $this->getMessenger();
         $result = null;
         $productDataImport = $this->getFacade()->getProductDataImportForImport();
 
-        if ($productDataImport) {
-            $this->getFacade()->prepareImportFile($productDataImport);
-            $resultArray = [];
+        $storageClient = $this->getFactory()->getStorageClient();
 
-            foreach (self::DATA_ENTITY_FOR_PRODUCT as $dataEntity) {
-                $result = $this->getFacade()->import($productDataImport, $dataEntity);
-                $resultArray[$dataEntity] = $result->setImportType($dataEntity);
+        $storageClient->set('IS_DATA_IMPORT_IN_PROGRESS', true);
+
+        if ($productDataImport) {
+            Propel::disableInstancePooling();
+
+            $output->writeln(' <fg=yellow> Prepare import</>');
+            $this->getFacade()->prepareImportFile($productDataImport);
+
+            $progressBar->advance();
+
+            try {
+                foreach (self::DATA_ENTITY_FOR_PRODUCT as $dataEntity) {
+                    $output->writeln(sprintf(' <fg=yellow> Start import: %s</>', $dataEntity));
+                    $this->getFacade()->import($productDataImport, $dataEntity);
+                    $progressBar->advance();
+                }
+            } catch (Exception $e) {
+                $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
             }
 
-            $this->getFacade()->saveImportResult($resultArray, $productDataImport->getIdProductDataImport());
+            $output->writeln(' <fg=yellow> Clear file</>');
 
             $this->getFacade()->clearImportFile();
-        }
+            $progressBar->advance();
 
+            Propel::enableInstancePooling();
+        }
+        $progressBar->finish();
+
+        $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
+
+        $output->writeln(' <fg=green> Finish</>');
         $messenger->info(
             sprintf(
                 'You just executed %s!',

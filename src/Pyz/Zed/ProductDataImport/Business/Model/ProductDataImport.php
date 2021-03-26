@@ -211,17 +211,24 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @param string $stringResult
+     * @param array $resultArray
      * @param int $id
      *
      * @return void
      */
-    public function saveResult(string $stringResult, int $id): void
+    public function saveResult(array $resultArray, int $id): void
     {
         $productDataImportEntity = $this->queryContainer->queryProductImports()->findOneByIdProductDataImport($id);
-        $productDataImportEntity->setResult($stringResult);
+        $result = json_decode($productDataImportEntity->getResult(), true) ?? [];
+        array_push($result, $resultArray[0]);
 
-        $productDataImportEntity->save();
+        $productDataImportEntity->setResult(json_encode($result));
+
+        $this->getTransactionHandler()->handleTransaction(
+            function () use ($productDataImportEntity) {
+                $productDataImportEntity->save();
+            }
+        );
     }
 
     /**

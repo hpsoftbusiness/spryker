@@ -13,10 +13,10 @@ use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
 use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\ProductImage\Persistence\SpyProductImage;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\CombinedProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -45,13 +45,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $defaultLocales = Store::getInstance()->getLocalesPerStore(APPLICATION_STORE);
-
-        foreach ($defaultLocales as $key => $localeName) {
-            $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet, $localeName);
-            $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
-            $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
-        }
+        $this->createOrUpdateProductImageSet($dataSet);
     }
 
     /**
@@ -64,18 +58,35 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param string $localeName
      *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
+     * @return void
      */
-    protected function createOrUpdateProductImageSet(DataSetInterface $dataSet, string $localeName): SpyProductImageSet
+    protected function createOrUpdateProductImageSet(DataSetInterface $dataSet): void
     {
-        $productImageSetEntityTransfer = $this->getProductImageSetTransfer($dataSet, $localeName);
+        $productImageSetEntityTransfer = $this->getProductImageSetTransfer($dataSet);
+
+        if ($productImageSetEntityTransfer->getFkProductAbstract() !== null) {
+            $this->importProductImage($dataSet, $productImageSetEntityTransfer);
+        }
+
+        if ($productImageSetEntityTransfer->getFkProduct() !== null) {
+            $this->importProductImage($dataSet, $productImageSetEntityTransfer);
+        }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $productImageSetEntityTransfer
+     *
+     * @return void
+     */
+    protected function importProductImage(DataSetInterface $dataSet, SpyProductImageSetEntityTransfer $productImageSetEntityTransfer): void
+    {
         $productImageSetEntity = $this->productImageRepository->getProductImageSetEntity(
             $productImageSetEntityTransfer->getName(),
             $productImageSetEntityTransfer->getFkLocale(),
             (int)$productImageSetEntityTransfer->getFkProductAbstract(),
-            (int)$productImageSetEntityTransfer->getFkProduct(),
+            null,
             $productImageSetEntityTransfer->getProductImageSetKey()
         );
 
@@ -85,7 +96,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
             $this->addImagePublishEvents($productImageSetEntity);
         }
 
-        return $productImageSetEntity;
+        $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
+        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
     }
 
     /**
@@ -155,16 +167,20 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param string $localeName
      *
      * @return \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
      */
-    protected function getProductImageSetTransfer(DataSetInterface $dataSet, string $localeName): SpyProductImageSetEntityTransfer
+    protected function getProductImageSetTransfer(DataSetInterface $dataSet): SpyProductImageSetEntityTransfer
     {
+        $localId = null;
         $spyProductImageSetEntityTransfer = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
+        $localeName = $dataSet[CombinedProductImageHydratorStep::COLUMN_LOCALE] ?? null;
 
+        if ($localeName) {
+            $localId = $this->resolveIdLocale($localeName);
+        }
         $spyProductImageSetEntityTransfer
-            ->setFkLocale($this->resolveIdLocale($localeName));
+            ->setFkLocale($localId);
 
         return $spyProductImageSetEntityTransfer;
     }

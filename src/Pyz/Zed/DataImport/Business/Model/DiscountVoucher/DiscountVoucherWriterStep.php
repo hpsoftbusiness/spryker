@@ -18,7 +18,7 @@ use Spryker\Zed\Discount\DiscountConfig;
 
 class DiscountVoucherWriterStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 100;
+    public const BULK_SIZE = 1000;
 
     public const KEY_DISCOUNT_KEY = 'discount_key';
     public const KEY_RANDOM_GENERATED_CODE_LENGTH = 'random_generated_code_length';

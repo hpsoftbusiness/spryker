@@ -17,7 +17,7 @@ use Spryker\Zed\ProductGroup\Dependency\ProductGroupEvents;
 
 class ProductGroupWriter extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 100;
+    public const BULK_SIZE = 1000;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_PRODUCT_GROUP_KEY = 'group_key';

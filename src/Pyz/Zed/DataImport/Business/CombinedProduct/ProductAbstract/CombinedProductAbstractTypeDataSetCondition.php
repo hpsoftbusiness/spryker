@@ -19,10 +19,6 @@ class CombinedProductAbstractTypeDataSetCondition implements DataSetConditionInt
      */
     public function hasData(DataSetInterface $dataSet): bool
     {
-        if (empty($dataSet[CombinedProductAbstractHydratorStep::COLUMN_CONCRETE_SKU])) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 }

@@ -18,7 +18,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 100;
+    public const BULK_SIZE = 1000;
     public const KEY_BLOCK_KEY = 'block_key';
     public const KEY_STORE_NAME = 'store_name';
 

@@ -73,11 +73,12 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
 
         $this->assertAssignableProductTypeColumn($dataSet);
 
-        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT) {
-            $dataSet[static::COLUMN_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT] = null;
+        if (!empty($dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT])) {
+            $dataSet[static::COLUMN_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT];
         }
-        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE) {
-            $dataSet[static::COLUMN_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT] = null;
+
+        if (!empty($dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
+            $dataSet[static::COLUMN_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT];
         }
 
         return $dataSet;

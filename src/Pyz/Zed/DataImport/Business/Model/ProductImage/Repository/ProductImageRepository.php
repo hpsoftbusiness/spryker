@@ -33,7 +33,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
 
     /**
      * @param string $name
-     * @param int $localeId
+     * @param int|null $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
@@ -42,7 +42,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      */
     public function getProductImageSetEntity(
         string $name,
-        int $localeId,
+        ?int $localeId,
         ?int $productAbstractId = null,
         ?int $productConcreteId = null,
         ?string $productImageSetKey = null
@@ -138,7 +138,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
 
     /**
      * @param string $name
-     * @param int $localeId
+     * @param int|null $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
@@ -147,7 +147,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      */
     protected function buildProductImageSetKey(
         string $name,
-        int $localeId,
+        ?int $localeId,
         ?int $productAbstractId = null,
         ?int $productConcreteId = null,
         ?string $productImageSetKey = null
@@ -163,7 +163,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
 
     /**
      * @param string $name
-     * @param int $localeId
+     * @param int|null $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
@@ -172,7 +172,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      */
     protected function getProductImageSet(
         string $name,
-        int $localeId,
+        ?int $localeId,
         ?int $productAbstractId = null,
         ?int $productConcreteId = null,
         ?string $productImageSetKey = null

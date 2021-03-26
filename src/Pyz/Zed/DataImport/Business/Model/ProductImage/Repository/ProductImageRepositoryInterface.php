@@ -15,7 +15,7 @@ interface ProductImageRepositoryInterface
 {
     /**
      * @param string $name
-     * @param int $localeId
+     * @param int|null $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
@@ -24,7 +24,7 @@ interface ProductImageRepositoryInterface
      */
     public function getProductImageSetEntity(
         string $name,
-        int $localeId,
+        ?int $localeId,
         ?int $productAbstractId = null,
         ?int $productConcreteId = null,
         ?string $productImageSetKey = null

@@ -27,7 +27,7 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
  */
 class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 100;
+    public const BULK_SIZE = 1000;
 
     public const KEY_BLOCK_NAME = 'block_name';
     public const KEY_BLOCK_KEY = 'block_key';

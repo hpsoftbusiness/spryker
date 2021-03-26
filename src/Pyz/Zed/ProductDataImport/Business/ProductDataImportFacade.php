@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\ProductDataImport\Business;
 
-use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
@@ -38,23 +37,25 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
-     * @param string $dataEntity
-     *
-     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
+     * @inheritDoc
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,
         string $dataEntity
-    ): ?DataImporterReportTransfer {
+    ): void {
         $dataImport = $this->getFactory()->getDataImport();
         $importFileDirectory = $this->getFactory()->getImportFileDirectory();
 
-        return $this->getFactory()->createProductDataImport()->import(
+        $dataImporterReportTransfer = $this->getFactory()->createProductDataImport()->import(
             $productDataImportTransfer,
             $dataImport,
             $dataEntity,
             $importFileDirectory
+        );
+
+        $this->saveImportResult(
+            [$dataImporterReportTransfer->setImportType($dataEntity)],
+            $productDataImportTransfer->getIdProductDataImport()
         );
     }
 
@@ -66,10 +67,10 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
      */
     public function saveImportResult(array $resultArray, int $id): void
     {
-        $stringResult = $this->getFactory()->createProductDataImportResult(
+        $resultArray = $this->getFactory()->createProductDataImportResult(
         )->collectionDataImporterReportTransferToString($resultArray);
 
-        $this->getFactory()->createProductDataImport()->saveResult($stringResult, $id);
+        $this->getFactory()->createProductDataImport()->saveResult($resultArray, $id);
     }
 
     /**
@@ -90,7 +91,10 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     public function prepareImportFile(ProductDataImportTransfer $productDataImportTransfer): void
     {
         $flysystemConfigTransfer = $this->getFactory()->createFlysystemConfigTransfer();
-        $this->getFactory()->createFileHandler()->prepareImportFile($productDataImportTransfer, $flysystemConfigTransfer);
+        $this->getFactory()->createFileHandler()->prepareImportFile(
+            $productDataImportTransfer,
+            $flysystemConfigTransfer
+        );
     }
 
     /**

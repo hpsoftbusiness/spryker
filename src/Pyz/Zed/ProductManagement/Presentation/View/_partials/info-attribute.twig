@@ -1,0 +1,40 @@
+{% embed '@Gui/Partials/widget.twig' with { widget_title: 'Attributes' } %}
+    {% block widget_content %}
+
+        {% for localeName,attributes in productAttributes %}
+            {% embed '@Gui/Partials/localized-ibox.twig' with {'collapsed': (not loop.first)} %}
+                {% block title %}
+                    {% if localeName == 'default' %}
+                        {{ 'Default' | trans }}
+                    {% else %}
+                        {{ parent() }}
+                    {% endif %}
+                {% endblock %}
+
+                {% block content %}
+
+                    {% for name,value in attributes %}
+                        <div class="row">
+                            <div class="col-xs-4"><b>{{ name }}</b></div>
+                            <div class="col-xs-8">
+                                {% if value is same as(true) or value is same as(false) %}
+                                    {% if value is same as(true) %}
+                                        TRUE
+                                    {% else %}
+                                        FALSE
+                                    {% endif %}
+                                {% else %}
+                                    {{ value }}
+                                {% endif %}</div>
+                        </div>
+                        {% if not loop.last %}
+                            <div class="hr-line-dashed"></div>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endblock %}
+            {% endembed %}
+        {% endfor %}
+
+    {% endblock %}
+{% endembed %}

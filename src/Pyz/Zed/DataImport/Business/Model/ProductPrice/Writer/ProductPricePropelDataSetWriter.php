@@ -20,6 +20,7 @@ use Orm\Zed\PriceProduct\Persistence\SpyPriceTypeQuery;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -79,6 +80,30 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      * @return void
      */
     public function write(DataSetInterface $dataSet): void
+    {
+        $this->productRepository->flush();
+
+        if (!empty($dataSet[static::COLUMN_ABSTRACT_SKU])) {
+            $concreteSku = $dataSet[static::COLUMN_CONCRETE_SKU];
+            $dataSet[static::COLUMN_CONCRETE_SKU] = "";
+            $this->importProductPrice($dataSet);
+            $dataSet[static::COLUMN_CONCRETE_SKU] = $concreteSku;
+        }
+
+        if (!empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
+            $abstractSku = $dataSet[static::COLUMN_ABSTRACT_SKU];
+            $dataSet[static::COLUMN_ABSTRACT_SKU] = "";
+            $this->importProductPrice($dataSet);
+            $dataSet[static::COLUMN_ABSTRACT_SKU] = $abstractSku;
+        }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function importProductPrice(DataSetInterface $dataSet): void
     {
         $priceTypeTransfers = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
 
@@ -163,7 +188,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         DataSetInterface $dataSet,
         SpyPriceProduct $spyPriceProduct
     ): SpyPriceProductStore {
-        $storeTransfer = $this->storeFacade->getStoreByName($dataSet[static::COLUMN_STORE]);
+        $storeTransfer = $this->storeFacade->getStoreByName($dataSet[static::COLUMN_STORE] ?: Store::getInstance()->getStoreName());
         $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[static::COLUMN_CURRENCY]);
 
         $priceProductStoreEntity = SpyPriceProductStoreQuery::create()
@@ -172,7 +197,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-        $netPrice = (float)str_replace(',', '.', $dataSet[static::COLUMN_PRICE_NET]) * 100;
+        $netPrice = $this->getNetPrice($dataSet);
         $grossPrice = $this->getGrossPrice($dataSet);
 
         if ($dataSet[CombinedProductPriceHydratorStep::COLUMN_IS_AFFILIATE_PRODUCT]) {
@@ -194,9 +219,9 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return float|null
+     * @return int|null
      */
-    protected function getGrossPrice(DataSetInterface $dataSet): ?float
+    protected function getGrossPrice(DataSetInterface $dataSet): ?int
     {
         $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS;
 
@@ -207,7 +232,30 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             $defaultGrossPriceKey = static::COLUMN_PRICE_GROSS_ORIGINAL;
         }
 
-        return (float)str_replace(',', '.', $dataSet[$defaultGrossPriceKey]) * 100;
+        if (!empty($dataSet[$defaultGrossPriceKey]) && (int)$dataSet[$defaultGrossPriceKey] > 0) {
+            return (int)((string)((float)str_replace(',', '.', $dataSet[$defaultGrossPriceKey]) * 100));
+        }
+
+        return null;
+    }
+
+    /**
+     * requirement by MYW-819
+     *
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return int|null
+     */
+    protected function getNetPrice(DataSetInterface $dataSet): ?int
+    {
+        $defaultNetPriceKey = static::COLUMN_PRICE_NET;
+
+        if ($dataSet[ProductPriceHydratorStep::COLUMN_PRICE_TYPE] ===
+            CombinedProductPriceHydratorStep::DEFAULT_PRICE_TYPE && (int)$dataSet[$defaultNetPriceKey] > 0) {
+            return (int)((string)((float)str_replace(',', '.', $dataSet[$defaultNetPriceKey]) * 100));
+        }
+
+        return null;
     }
 
     /**

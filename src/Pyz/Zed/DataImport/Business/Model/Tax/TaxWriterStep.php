@@ -22,7 +22,7 @@ use Spryker\Zed\Tax\Dependency\TaxEvents;
 
 class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 100;
+    public const BULK_SIZE = 1000;
 
     public const KEY_COUNTRY_NAME = 'country_name';
     public const KEY_TAX_RATE_NAME = 'tax_rate_name';
