@@ -3,9 +3,7 @@
 {% block defaultPriceInner %}
     {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
-    {% if data.isAffiliate is defined and data.isAffiliate %}
-        <span>{{ 'pdp.price.from' | trans }}</span>
-    {% endif %}
+    <span>{{ 'pdp.price.from' | trans }}</span>
 
     <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
         {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
