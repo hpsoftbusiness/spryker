@@ -5,6 +5,7 @@ use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
+use Pyz\Shared\Api\ApiConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
@@ -59,3 +60,9 @@ $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z57777';
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = getenv('AFFILIATE_TRACKING_URL_PATH');
 
 $config[ProductDataImportConstants::STORAGE_NAME] = 'aws-files-import';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ ZED API ------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[ApiConstants::X_SPRYKER_API_KEY] = '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';

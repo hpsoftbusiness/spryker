@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be3e9c8610f249e5e217f76acf5309e1",
+    "content-hash": "48fb7df24af8a0fe623c0626fa61d382",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1463,10 +1463,6 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "support": {
-                "issues": "https://github.com/thephpleague/flysystem-aws-s3-v3/issues",
-                "source": "https://github.com/thephpleague/flysystem-aws-s3-v3/tree/1.0.29"
-            },
             "time": "2020-10-08T18:58:37+00:00"
         },
         {
@@ -1780,10 +1776,6 @@
                 "json",
                 "jsonpath"
             ],
-            "support": {
-                "issues": "https://github.com/jmespath/jmespath.php/issues",
-                "source": "https://github.com/jmespath/jmespath.php/tree/2.6.0"
-            },
             "time": "2020-07-31T21:01:56+00:00"
         },
         {
@@ -9907,6 +9899,62 @@
             ],
             "description": "AlternativeProductsRestApi module",
             "time": "2020-05-29T13:08:37+00:00"
+        },
+        {
+            "name": "spryker/api",
+            "version": "0.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/api.git",
+                "reference": "7ed4bbd01126897e5dcbe90775438ff284a0c134"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/api/zipball/7ed4bbd01126897e5dcbe90775438ff284a0c134",
+                "reference": "7ed4bbd01126897e5dcbe90775438ff284a0c134",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/application": "^3.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/router-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-encoding": "^2.0.1",
+                "spryker/util-text": "^1.1.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/log": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module when you want to use the Container.",
+                "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcher.",
+                "spryker/log": "For logging request and response.",
+                "spryker/silex": "Add this when you still want to use the abandoned Silex."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Api module",
+            "time": "2020-09-07T11:28:22+00:00"
         },
         {
             "name": "spryker/application",
@@ -18753,9 +18801,6 @@
                 "proprietary"
             ],
             "description": "FlysystemAws3v3FileSystem module",
-            "support": {
-                "source": "https://github.com/spryker/flysystem-aws3v3-file-system/tree/1.0.5"
-            },
             "time": "2020-08-18T11:51:30+00:00"
         },
         {
