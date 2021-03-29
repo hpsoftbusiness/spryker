@@ -1,0 +1,17 @@
+{
+  "mappings": {
+    "page": {
+      "properties": {
+        "is-affiliate": {
+          "type": "boolean"
+        },
+        "benefit-store": {
+          "type": "boolean"
+        },
+        "shopping-point-store": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

@@ -8,4 +8,10 @@
         <property name="affiliateData" type="array"/>
         <property name="brand" type="string"/>
     </transfer>
+
+    <transfer name="PageMap">
+        <property name="isAffiliate" type="bool"/>
+        <property name="benefitStore" type="bool"/>
+        <property name="shoppingPointStore" type="bool"/>
+    </transfer>
 </transfers>

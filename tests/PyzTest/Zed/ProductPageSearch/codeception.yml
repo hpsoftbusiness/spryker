@@ -1,0 +1,23 @@
+namespace: PyzTest\Zed\ProductPageSearch
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist: { include: ['../../../../src/Pyz/Zed/ProductPageSearch/*'] }
+
+suites:
+    Communication:
+        path: Communication
+        class_name: ProductPageSearchCommunicationTester
+        modules:
+            enabled:
+                - Asserts
+                - \PyzTest\Shared\Testify\Helper\Environment
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
