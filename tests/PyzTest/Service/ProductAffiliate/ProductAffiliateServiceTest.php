@@ -27,7 +27,7 @@ class ProductAffiliateServiceTest extends Unit
     private const MY_WORLD_CUSTOMER_NUMBER = '043.010.627.559';
 
     /**
-     * @var ProductAffiliateServiceTester
+     * @var \PyzTest\Service\ProductAffiliate\ProductAffiliateServiceTester
      */
     protected $tester;
 
