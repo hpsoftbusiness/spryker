@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ProductUrlWidget\Widget;
 
+use Pyz\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
@@ -67,7 +68,7 @@ class ProductUrlWidget extends AbstractWidget
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
 
         if (!$customerTransfer) {
-            return $affiliateData['affiliate_deeplink'];
+            return CustomerPageRouteProviderPlugin::ROUTE_NAME_LOGIN;
         }
 
         return $this->getFactory()->getProductAffiliateService()
