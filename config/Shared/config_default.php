@@ -543,7 +543,7 @@ if (class_exists(TestifyConstants::class)) {
     $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 }
 
-$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = 'test.myworld.com test2.myworld.com www.cbw-trunk.local www2.cbw-trunk.local';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
