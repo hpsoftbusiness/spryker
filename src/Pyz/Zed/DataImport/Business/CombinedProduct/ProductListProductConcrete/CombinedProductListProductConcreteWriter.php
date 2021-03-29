@@ -17,7 +17,7 @@ use Spryker\Zed\ProductList\Dependency\ProductListEvents;
 
 class CombinedProductListProductConcreteWriter extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 50;
+    public const BULK_SIZE = 1000;
 
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
     public const KEY_ID_PRODUCT_CONCRETE = 'id_product_concrete';
@@ -50,7 +50,7 @@ class CombinedProductListProductConcreteWriter extends PublishAwareStep implemen
     /**
      * @param int $idProductConcrete
      * @param string $productListKey
-     * @param string $attributeValue
+     * @param bool $attributeValue
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
      *
@@ -59,7 +59,7 @@ class CombinedProductListProductConcreteWriter extends PublishAwareStep implemen
     protected function persistProductListProductConcreteEntity(
         int $idProductConcrete,
         string $productListKey,
-        string $attributeValue
+        bool $attributeValue
     ): void {
         if (!$this->getIsProductListAssigned($attributeValue)) {
             return;
@@ -85,12 +85,12 @@ class CombinedProductListProductConcreteWriter extends PublishAwareStep implemen
     }
 
     /**
-     * @param string $attributeValue
+     * @param bool $attributeValue
      *
      * @return bool
      */
-    protected function getIsProductListAssigned(string $attributeValue): bool
+    protected function getIsProductListAssigned(bool $attributeValue): bool
     {
-        return $attributeValue === 'TRUE';
+        return $attributeValue === true;
     }
 }

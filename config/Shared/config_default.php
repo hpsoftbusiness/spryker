@@ -62,6 +62,7 @@ use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
+use Pyz\Shared\Api\ApiConstants;
 
 // ############################################################################
 // ############################## PRODUCTION CONFIGURATION ####################
@@ -542,7 +543,7 @@ if (class_exists(TestifyConstants::class)) {
     $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 }
 
-$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = 'test.myworld.com test2.myworld.com www.cbw-trunk.local www2.cbw-trunk.local';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
@@ -565,3 +566,9 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 20;
 $config[GoogleAnalyticConstants::WEB_PROPERTY_ID] = getenv('WEB_PROPERTY_ID') ?: 'no-web-property-id';
 $config[SalesConstants::ENVIRONMENT_PREFIX] = 'MW';
 $config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = 'MW';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ ZED API ------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[ApiConstants::X_SPRYKER_API_KEY] = 'GSEH@VH@yd+e"kbm^?,^224&U,9L_wXL';

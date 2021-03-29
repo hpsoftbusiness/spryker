@@ -99,16 +99,16 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
      */
     protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
     {
-        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
-        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+//        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
+//        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
 
-        if ($isAbstractSkuIsEmpty === null) {
-            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
-        }
-
-        if ($isConcreteSkuIsEmpty === null) {
-            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT;
-        }
+//        if ($dataSet[static::COLUMN_ABSTRACT_SKU] === "") {
+//            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
+//        }
+//
+//        if ($dataSet[static::COLUMN_CONCRETE_SKU] === "") {
+//            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT;
+//        }
 
         if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] === "") {
             $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
@@ -118,14 +118,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
             $dataSet[static::COLUMN_PRICE_TYPE] = static::DEFAULT_PRICE_TYPE;
         }
 
-        $this->assertAssignableProductTypeColumn($dataSet);
-
-        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT) {
-            $dataSet[static::COLUMN_CONCRETE_SKU] = null;
-        }
-        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE) {
-            $dataSet[static::COLUMN_ABSTRACT_SKU] = null;
-        }
+//        $this->assertAssignableProductTypeColumn($dataSet);
 
         return $dataSet;
     }

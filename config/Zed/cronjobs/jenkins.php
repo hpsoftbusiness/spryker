@@ -159,7 +159,7 @@ $jobs[] = [
 $jobs[] = [
     'name' => 'product-data-import',
     'command' => '$PHP_BIN vendor/bin/console data:product:import-file',
-    'schedule' => '*/15 * * * *',
+    'schedule' => '*/4 * * * *',
     'enable' => true,
     'stores' => $allStores,
 ];

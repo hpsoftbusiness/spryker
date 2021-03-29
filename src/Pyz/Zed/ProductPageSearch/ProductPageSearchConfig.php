@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Pyz\Shared\Catalog\CatalogConfig;
 use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig as SprykerProductPageSearchConfig;
 
@@ -42,5 +43,13 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     public function getProductConcretePageEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAbstractSellableFacetName(): string
+    {
+        return CatalogConfig::PRODUCT_ABSTRACT_SELLABLE_FACET_NAME;
     }
 }

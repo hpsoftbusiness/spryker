@@ -7,14 +7,16 @@
 
 namespace Pyz\Zed\ProductDataImport\Business\DataProvider;
 
+use ArrayObject;
+
 class ProductDataImportResult
 {
     /**
      * @param \Generated\Shared\Transfer\DataImporterReportTransfer[] $transferReports
      *
-     * @return string
+     * @return array
      */
-    public function collectionDataImporterReportTransferToString(array $transferReports): string
+    public function collectionDataImporterReportTransferToString(array $transferReports): array
     {
         $result = [];
         foreach ($transferReports as $transfer) {
@@ -23,21 +25,33 @@ class ProductDataImportResult
             foreach ($transfer->getDataImporterReports() as $reportTransfer) {
                 $transferResult['type'] = $reportTransfer->getImportType();
                 $transferResult['importedCount'] = $reportTransfer->getImportedDataSetCount();
-                $transferResult['failed'] = $reportTransfer->getExpectedImportableDataSetCount(
-                ) - $reportTransfer->getImportedDataSetCount();
+                $transferResult['failed'] = $reportTransfer->getExpectedImportableDataSetCount() -
+                    $reportTransfer->getImportedDataSetCount();
 
-                $messages = [];
-
-                foreach ($reportTransfer->getMessages() as $message) {
-//                    in message we have string that contain exception trace that we dont need
-                    $strMessage = strstr($message->getMessage(), "For debugging execute", true);
-                    $messages[] = ($strMessage) ? $strMessage : $message->getMessage();
-                }
-                $transferResult['messages'] = $messages;
+                $transferResult['messages'] = $this->getMessages($reportTransfer->getMessages());
             }
             $result[] = $transferResult;
         }
 
-        return json_encode($result);
+        return $result;
+    }
+
+    /**
+     * @param \ArrayObject|\Generated\Shared\Transfer\DataImporterReportMessageTransfer[] $transferMessages
+     *
+     * @return array
+     */
+    private function getMessages(ArrayObject $transferMessages): array
+    {
+        $messages = [];
+
+        foreach ($transferMessages as $message) {
+            // in message we have string that contain exception trace that we dont need
+            $strMessage = strstr($message->getMessage(), "For debugging execute", true);
+            $messages[] = ($strMessage) ? $strMessage : $message->getMessage();
+            unset($strMessage);
+        }
+
+        return $messages;
     }
 }

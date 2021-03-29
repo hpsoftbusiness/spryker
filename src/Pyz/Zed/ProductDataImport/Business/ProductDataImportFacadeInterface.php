@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\ProductDataImport\Business;
 
-use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 
@@ -36,15 +35,12 @@ interface ProductDataImportFacadeInterface
      * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
      * @param string $dataEntity
      *
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
-     *
-     * @return \Generated\Shared\Transfer\DataImporterReportTransfer|null
+     * @return void
      */
     public function import(
         ProductDataImportTransfer $productDataImportTransfer,
         string $dataEntity
-    ): ?DataImporterReportTransfer;
+    ): void;
 
     /**
      * @param array $resultArray

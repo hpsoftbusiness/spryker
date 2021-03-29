@@ -11,6 +11,8 @@ use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 use Pyz\Zed\ProductDataImport\Communication\Form\ProductDataImportForm;
 use Pyz\Zed\ProductDataImport\Communication\Table\ProductDataImportTable;
+use Pyz\Zed\ProductDataImport\ProductDataImportDependencyProvider;
+use Spryker\Client\Storage\StorageClientInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Symfony\Component\Form\FormInterface;
 
@@ -48,5 +50,13 @@ class ProductDataImportCommunicationFactory extends AbstractCommunicationFactory
         array $options = []
     ): FormInterface {
         return $this->getFormFactory()->create(ProductDataImportForm::class, $data, $options);
+    }
+
+    /**
+     * @return \Spryker\Client\Storage\StorageClientInterface
+     */
+    public function getStorageClient(): StorageClientInterface
+    {
+        return $this->getProvidedDependency(ProductDataImportDependencyProvider::CLIENT_STORAGE);
     }
 }

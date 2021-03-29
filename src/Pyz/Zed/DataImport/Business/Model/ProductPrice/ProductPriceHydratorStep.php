@@ -109,14 +109,16 @@ class ProductPriceHydratorStep implements DataImportStepInterface
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 'One of "%s" or "%s" must be in the data set. Given: "%s"',
                 $dataSet[static::COLUMN_ABSTRACT_SKU],
-                $dataSet[static::COLUMN_ABSTRACT_SKU],
+                $dataSet[static::COLUMN_CONCRETE_SKU],
                 implode(', ', array_keys($dataSet->getArrayCopy()))
             ));
         }
 
         if (!empty($dataSet[static::COLUMN_ABSTRACT_SKU])) {
             $productPriceTransfer->setSpyProductAbstract($this->importProductAbstract($dataSet));
-        } else {
+        }
+
+        if (!empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
             $productPriceTransfer->setProduct($this->importProductConcrete($dataSet));
         }
 

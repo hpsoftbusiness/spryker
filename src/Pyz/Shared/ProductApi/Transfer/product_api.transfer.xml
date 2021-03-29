@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="ProductsResponseApi">
+        <property name="title" type="string"/>
+        <property name="language" type="string"/>
+        <property name="products" type="ProductApi[]" singular="product"/>
+    </transfer>
+
+    <transfer name="ProductApi">
+        <property name="productId" type="int"/>
+        <property name="productName" type="string"/>
+        <property name="description" type="string"/>
+        <property name="category" type="string"/>
+        <property name="imageUrl" type="string"/>
+        <property name="productUrl" type="string"/>
+        <property name="benefit" type="ProductBenefitApi"/>
+        <property name="price" type="ProductPriceApi"/>
+        <property name="bvDeal" type="ProductBvDealApi"/>
+        <property name="spDeal" type="ProductSpDealApi"/>
+    </transfer>
+
+    <transfer name="ProductBenefitApi">
+        <property name="cashbackAmount" type="string"/>
+        <property name="shoppingPointsAmount" type="string"/>
+    </transfer>
+
+    <transfer name="ProductPriceApi">
+        <property name="amount" type="string"/>
+        <property name="currency" type="string"/>
+    </transfer>
+
+    <transfer name="ProductBvDealApi">
+        <property name="bvItemPrice" type="string"/>
+        <property name="bvAmount" type="string"/>
+    </transfer>
+
+    <transfer name="ProductSpDealApi">
+        <property name="spItemPrice" type="string"/>
+        <property name="spAmount" type="string"/>
+    </transfer>
+</transfers>

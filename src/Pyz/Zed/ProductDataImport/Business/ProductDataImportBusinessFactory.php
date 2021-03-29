@@ -61,7 +61,7 @@ class ProductDataImportBusinessFactory extends AbstractBusinessFactory
     {
         return new FileHandler($this->getFileSystem());
     }
-    
+
     /**
      * @return string
      */

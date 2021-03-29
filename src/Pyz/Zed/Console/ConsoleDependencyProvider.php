@@ -13,7 +13,9 @@ use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Console\MyWorldMarketplaceApiConsole;
 use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
+use Pyz\Zed\ProductPageSearch\Communication\Console\ProductAbstractPageSearchRefreshConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
+use Pyz\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -94,7 +96,6 @@ use Spryker\Zed\Propel\Communication\Console\RemoveEntityTransferConsole;
 use Spryker\Zed\Publisher\Communication\Console\PublisherTriggerEventsConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
-use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Quote\Communication\Console\DeleteExpiredGuestQuoteConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
@@ -259,6 +260,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new EventBehaviorTriggerTimeoutConsole(),
             new PublisherTriggerEventsConsole(),
             new ExportSynchronizedDataConsole(),
+            new ProductAbstractPageSearchRefreshConsole(),
 
             // Setup commands
             new RunnerConsole(),
