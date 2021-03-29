@@ -107,6 +107,7 @@ class TransferMapper implements TransferMapperInterface
                     : null;
             }
         }
+        return null;
     }
 
     /**
