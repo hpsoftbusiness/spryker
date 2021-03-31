@@ -183,7 +183,8 @@
     "spryker/urls-rest-api": "^1.0.2",
     "spryker/uuid": "^1.0.0",
     "spryker/wishlists-rest-api": "^1.4.3",
-    "swiftmailer/swiftmailer": "^5.4.12"
+    "swiftmailer/swiftmailer": "^5.4.12",
+    "ext-pdo": "*"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
