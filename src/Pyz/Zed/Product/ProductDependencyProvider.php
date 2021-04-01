@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Product;
 
+use Pyz\Zed\Product\Communication\Plugin\Product\DataHealer\SuperAttributeLocalizedValuesHealerPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductAbstract\PriceProductAbstractAfterCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductAbstract\PriceProductAbstractAfterUpdatePlugin;
@@ -44,6 +45,40 @@ use Spryker\Zed\TaxProductConnector\Communication\Plugin\TaxSetProductAbstractRe
 
 class ProductDependencyProvider extends SprykerProductDependencyProvider
 {
+    public const FACADE_PRODUCT_ATTRIBUTE = 'FACADE_PRODUCT_ATTRIBUTE';
+    public const PLUGINS_PRODUCT_DATA_HEALER = 'PLUGINS_PRODUCT_DATA_HEALER';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+
+        $this->addProductAttributeFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideCommunicationLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
+        $this->addProductAttributeFacade($container);
+        $this->addUtilEncodingService($container);
+        $this->addEventFacade($container);
+        $this->addProductDataHealerPlugins($container);
+
+        return $container;
+    }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -170,6 +205,63 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new SaveDiscontinuedNotesProductConcretePluginUpdate(),
             new DiscontinuedProductConcreteAfterUpdatePlugin(),
             new ProductBundleDeactivatorProductConcreteAfterUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addEventFacade(Container $container): Container
+    {
+        $container->set(
+            self::FACADE_EVENT,
+            static function (Container $container) {
+                return $container->getLocator()->event()->facade();
+            }
+        );
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addProductAttributeFacade(Container $container): void
+    {
+        $container->set(
+            self::FACADE_PRODUCT_ATTRIBUTE,
+            static function (Container $container) {
+                return $container->getLocator()->productAttribute()->facade();
+            }
+        );
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addProductDataHealerPlugins(Container $container): void
+    {
+        $container->set(
+            self::PLUGINS_PRODUCT_DATA_HEALER,
+            function () {
+                return $this->getProductDataHealerPlugins();
+            }
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\Product\Dependency\Plugin\ProductDataHealerPluginInterface[]
+     */
+    private function getProductDataHealerPlugins(): array
+    {
+        return [
+            new SuperAttributeLocalizedValuesHealerPlugin(),
         ];
     }
 }

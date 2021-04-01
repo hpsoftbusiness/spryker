@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\ProductAttribute\Business;
 
+use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader;
+use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface;
 use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as SprykerProductAttributeBusinessFactory;
 
@@ -28,6 +30,18 @@ class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFac
             $this->getProductFacade(),
             $this->createProductReader(),
             $this->getUtilSanitizeXssService()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface
+     */
+    public function createAttributeReader(): AttributeReaderInterface
+    {
+        return new AttributeReader(
+            $this->getQueryContainer(),
+            $this->getLocaleFacade(),
+            $this->createProductAttributeTransferGenerator()
         );
     }
 }

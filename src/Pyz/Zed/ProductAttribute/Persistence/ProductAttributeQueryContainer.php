@@ -9,13 +9,17 @@ namespace Pyz\Zed\ProductAttribute\Persistence;
 
 use Orm\Zed\ProductAttribute\Persistence\Map\SpyProductManagementAttributeValueTableMap;
 use Orm\Zed\ProductAttribute\Persistence\Map\SpyProductManagementAttributeValueTranslationTableMap;
+use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Pyz\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 use Spryker\Zed\ProductAttribute\Persistence\ProductAttributeQueryContainer as SprykerProductAttributeQueryContainer;
 use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface as SpyProductAttributeGuiToProductAttributeQueryContainerInterface;
 
-class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContainer implements SpyProductAttributeGuiToProductAttributeQueryContainerInterface, ProductAttributeGuiToProductAttributeQueryContainerInterface
+class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContainer implements
+    ProductAttributeQueryContainerInterface,
+    SpyProductAttributeGuiToProductAttributeQueryContainerInterface,
+    ProductAttributeGuiToProductAttributeQueryContainerInterface
 {
     /**
      * {@inheritDoc}
@@ -149,5 +153,19 @@ class ProductAttributeQueryContainer extends SprykerProductAttributeQueryContain
             $productAttribute->delete();
             $this->deleteProductAttributeKeyByKey($key);
         }
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return \Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeQuery
+     */
+    public function queryProductManagementAttributeByKey(string $key): SpyProductManagementAttributeQuery
+    {
+        return $this
+            ->queryProductManagementAttribute()
+            ->useSpyProductAttributeKeyQuery()
+            ->filterByKey($key)
+            ->endUse();
     }
 }

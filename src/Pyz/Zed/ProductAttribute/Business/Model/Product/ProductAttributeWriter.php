@@ -17,7 +17,7 @@ class ProductAttributeWriter extends SprykerProductAttributeWriter
      *
      * @return array
      */
-    protected function getAttributesDataToSave(array $attributes)
+    protected function getAttributesDataToSave(array $attributes): array
     {
         $attributeData = [];
 
