@@ -12,6 +12,10 @@ use Pyz\Zed\Product\Business\Expander\OrderItemExpander;
 use Pyz\Zed\Product\Business\Expander\OrderItemExpanderInterface;
 use Pyz\Zed\Product\Business\Product\CheckerOrderItem;
 use Pyz\Zed\Product\Business\Product\ProductConcreteRemover;
+use Pyz\Zed\Product\Business\Product\Variant\VariantGenerator;
+use Pyz\Zed\Product\ProductDependencyProvider;
+use Pyz\Zed\ProductAttribute\Business\ProductAttributeFacadeInterface;
+use Spryker\Zed\Product\Business\Product\Variant\VariantGeneratorInterface;
 use Spryker\Zed\Product\Business\ProductBusinessFactory as SprykerProductBusinessFactory;
 
 /**
@@ -51,5 +55,25 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
             $this->getQueryContainer(),
             $this->createCheckedOrderItem()
         );
+    }
+
+    /**
+     * @return \Spryker\Zed\Product\Business\Product\Variant\VariantGeneratorInterface
+     */
+    public function createProductVariantGenerator(): VariantGeneratorInterface
+    {
+        return new VariantGenerator(
+            $this->getUrlFacade(),
+            $this->createSkuGenerator(),
+            $this->getProductAttributeFacade()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\ProductAttribute\Business\ProductAttributeFacadeInterface
+     */
+    public function getProductAttributeFacade(): ProductAttributeFacadeInterface
+    {
+        return $this->getProvidedDependency(ProductDependencyProvider::FACADE_PRODUCT_ATTRIBUTE);
     }
 }

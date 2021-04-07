@@ -13,6 +13,7 @@ use Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPluginInterfac
 /**
  * @method \Pyz\Zed\Product\Business\ProductFacadeInterface getFacade()
  * @method \Pyz\Zed\Product\Persistence\ProductQueryContainerInterface getQueryContainer()
+ * @method \Pyz\Zed\Product\Communication\ProductCommunicationFactory getFactory()
  */
 class ProductConcreteOrderItemExpanderPlugin extends AbstractPlugin implements OrderItemExpanderPluginInterface
 {

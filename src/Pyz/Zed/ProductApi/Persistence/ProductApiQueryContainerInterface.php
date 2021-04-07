@@ -28,4 +28,24 @@ interface ProductApiQueryContainerInterface extends QueryContainerInterface
      * @return SpyProductAbstractQuery
      */
     public function querySpDeals(): SpyProductAbstractQuery;
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryEliteClub(): SpyProductAbstractQuery;
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryOneSense(): SpyProductAbstractQuery;
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryLyconet(): SpyProductAbstractQuery;
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryFeaturedProducts(): SpyProductAbstractQuery;
 }

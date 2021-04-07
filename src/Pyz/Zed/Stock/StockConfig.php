@@ -11,7 +11,8 @@ use Spryker\Zed\Stock\StockConfig as SprykerStockConfig;
 
 class StockConfig extends SprykerStockConfig
 {
-    public const INTERNAL_WAREHOUSE = 'MW_Solution';
+    public const INTERNAL_WAREHOUSE_AUSTRIA = 'Graz (Austria)';
+    public const INTERNAL_WAREHOUSE_GERMANY = 'Hannover (Germany)';
     public const EXTERNAL_AFFILIATE_WAREHOUSE = 'Affiliate';
 
      /**
@@ -21,7 +22,8 @@ class StockConfig extends SprykerStockConfig
     {
         return [
             'DE' => [
-                static::INTERNAL_WAREHOUSE,
+                static::INTERNAL_WAREHOUSE_AUSTRIA,
+                static::INTERNAL_WAREHOUSE_GERMANY,
                 static::EXTERNAL_AFFILIATE_WAREHOUSE,
             ],
         ];

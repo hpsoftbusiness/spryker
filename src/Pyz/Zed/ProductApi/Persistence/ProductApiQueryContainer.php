@@ -52,6 +52,42 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     /**
      * @return SpyProductAbstractQuery
      */
+    public function queryEliteClub(): SpyProductAbstractQuery
+    {
+        return $this->queryFind()
+            ->where("JSON_VALUE(attributes, '$.brand') = 'EliteClub'");
+    }
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryOneSense(): SpyProductAbstractQuery
+    {
+        return $this->queryFind()
+            ->where("JSON_VALUE(attributes, '$.brand') = 'OneSense'");
+    }
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryLyconet(): SpyProductAbstractQuery
+    {
+        return $this->queryFind()
+            ->where("JSON_VALUE(attributes, '$.brand') = 'Lyconet'");
+    }
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
+    public function queryFeaturedProducts(): SpyProductAbstractQuery
+    {
+        return $this->queryFind()
+            ->where("JSON_VALUE(attributes, '$.featured_products') IS TRUE");
+    }
+
+    /**
+     * @return SpyProductAbstractQuery
+     */
     protected function queryFind(): SpyProductAbstractQuery
     {
         return $this->getFactory()

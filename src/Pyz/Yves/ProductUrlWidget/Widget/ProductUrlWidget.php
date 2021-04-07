@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -26,6 +26,7 @@ class ProductUrlWidget extends AbstractWidget
     public function __construct(?bool $isAffiliate, array $affiliateData)
     {
         $this->addParameter('url', $this->getProductUrl($isAffiliate, $affiliateData));
+        $this->addParameter('targetBlank', $this->getTargetBlank($isAffiliate));
     }
 
     /**
@@ -80,5 +81,25 @@ class ProductUrlWidget extends AbstractWidget
                 $affiliatePartnerName,
                 $customerTransfer
             );
+    }
+
+    /**
+     * @param bool|null $isAffiliate
+     *
+     * @return bool
+     *
+     * TODO:: for merchants it should added checking for count of offers
+     */
+    private function getTargetBlank(?bool $isAffiliate): bool
+    {
+        if ($isAffiliate) {
+            $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+
+            if (!$customerTransfer) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -43,6 +43,27 @@
                 color: $setting-color-dark;
                 cursor: default;
             }
+
+            &__prefix {
+                display: inline-block;
+                padding: 3px;
+                margin-right: 8px;
+
+                &--arrow {
+                    border: solid;
+                    border-width: 0 3px 3px 0;
+
+                    &--right {
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                    }
+
+                    &--down {
+                        transform: rotate(45deg);
+                        -webkit-transform: rotate(45deg);
+                    }
+                }
+            }
         }
     }
 }

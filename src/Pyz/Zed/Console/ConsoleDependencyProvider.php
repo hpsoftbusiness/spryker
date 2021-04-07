@@ -12,6 +12,7 @@ use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Console\MyWorldMarketplaceApiConsole;
+use Pyz\Zed\Product\Communication\Console\ProductDataHealerConsole;
 use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
 use Pyz\Zed\ProductPageSearch\Communication\Console\ProductAbstractPageSearchRefreshConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
@@ -333,6 +334,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new OrderInvoiceSendConsole(),
 
             new ProductDataImportConsole(),
+            new ProductDataHealerConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

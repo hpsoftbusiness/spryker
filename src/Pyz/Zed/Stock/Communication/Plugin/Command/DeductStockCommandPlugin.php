@@ -33,9 +33,17 @@ class DeductStockCommandPlugin extends AbstractPlugin implements CommandByOrderI
      */
     public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data)
     {
+        // TODO: more flexible stock deduction is required
         foreach ($orderItems as $orderItem) {
-            $this->getFacade()
-                ->decrementStockProduct($orderItem->getSku(), StockConfig::INTERNAL_WAREHOUSE, new Decimal(1));
+            if ($this->getFacade()->hasStockProduct($orderItem->getSku(), StockConfig::INTERNAL_WAREHOUSE_AUSTRIA)) {
+                $this->getFacade()
+                    ->decrementStockProduct($orderItem->getSku(), StockConfig::INTERNAL_WAREHOUSE_AUSTRIA, new Decimal(1));
+            }
+
+            if ($this->getFacade()->hasStockProduct($orderItem->getSku(), StockConfig::INTERNAL_WAREHOUSE_GERMANY)) {
+                $this->getFacade()
+                    ->decrementStockProduct($orderItem->getSku(), StockConfig::INTERNAL_WAREHOUSE_GERMANY, new Decimal(1));
+            }
         }
 
         return [];
