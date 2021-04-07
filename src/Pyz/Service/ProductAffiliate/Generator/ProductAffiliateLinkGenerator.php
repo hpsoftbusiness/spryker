@@ -38,17 +38,17 @@ class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInte
 
     /**
      * @param string $productAffiliateDeeplink
-     * @param string $affiliatePartnerName
+     * @param string $affiliateNetwork
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
      */
     public function generateTrackingUrl(
         string $productAffiliateDeeplink,
-        string $affiliatePartnerName,
+        string $affiliateNetwork,
         CustomerTransfer $customerTransfer
     ): string {
-        $trackingLinkDataFormatterPlugin = $this->getTrackingLinkFormatterPlugin($affiliatePartnerName);
+        $trackingLinkDataFormatterPlugin = $this->getTrackingLinkFormatterPlugin($affiliateNetwork);
         $trackingUrlArguments = $trackingLinkDataFormatterPlugin->getFormattedTrackingLinkData(
             $productAffiliateDeeplink,
             $customerTransfer
@@ -62,16 +62,16 @@ class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInte
     }
 
     /**
-     * @param string $affiliatePartnerName
-     *
-     * @throws \Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException
+     * @param string $affiliateNetwork
      *
      * @return \Pyz\Service\ProductAffiliate\Generator\Formatter\TrackingLinkDataFormatterPluginInterface
+     *@throws \Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException
+     *
      */
-    private function getTrackingLinkFormatterPlugin(string $affiliatePartnerName): TrackingLinkDataFormatterPluginInterface
+    private function getTrackingLinkFormatterPlugin(string $affiliateNetwork): TrackingLinkDataFormatterPluginInterface
     {
         foreach ($this->formatterPlugins as $dataFormatterPlugin) {
-            if (strtoupper($dataFormatterPlugin->getApplicableAffiliatePartnerName()) === strtoupper($affiliatePartnerName)) {
+            if (strtoupper($dataFormatterPlugin->getApplicableAffiliatePartnerName()) === strtoupper($affiliateNetwork)) {
                 return $dataFormatterPlugin;
             }
         }

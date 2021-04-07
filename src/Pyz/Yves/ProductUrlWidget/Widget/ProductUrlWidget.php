@@ -17,7 +17,7 @@ class ProductUrlWidget extends AbstractWidget
 {
     public const NAME = 'ProductUrlWidget';
     private const KEY_AFFILIATE_DEEPLINK = 'affiliate_deeplink';
-    private const KEY_AFFILIATE_PARTNER_NAME = 'affiliate_partner_name';
+    private const KEY_AFFILIATE_NETWORK = 'affiliate_network';
 
     /**
      * @param bool|null $isAffiliate
@@ -69,16 +69,16 @@ class ProductUrlWidget extends AbstractWidget
     protected function getProductAffiliateTrackingUrl(array $affiliateData): string
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        $affiliatePartnerName = $affiliateData[self::KEY_AFFILIATE_PARTNER_NAME] ?? null;
+        $affiliateNetwork = $affiliateData[self::KEY_AFFILIATE_NETWORK] ?? null;
 
-        if (!$customerTransfer || !$affiliatePartnerName) {
+        if (!$customerTransfer || !$affiliateNetwork) {
             return CustomerPageRouteProviderPlugin::ROUTE_NAME_LOGIN;
         }
 
         return $this->getFactory()->getProductAffiliateService()
             ->generateProductAffiliateTrackingUrl(
                 $affiliateData[self::KEY_AFFILIATE_DEEPLINK],
-                $affiliatePartnerName,
+                $affiliateNetwork,
                 $customerTransfer
             );
     }

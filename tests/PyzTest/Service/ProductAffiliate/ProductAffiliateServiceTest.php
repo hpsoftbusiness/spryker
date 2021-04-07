@@ -58,19 +58,19 @@ class ProductAffiliateServiceTest extends Unit
      * @dataProvider provideProductAffiliateUrlData
      *
      * @param string $deeplink
-     * @param string $affiliatePartnerName
+     * @param string $affiliateNetwork
      * @param string $expectedTrackingLink
      *
      * @return void
      */
     public function testProductAffiliateTrackingUrlGeneration(
         string $deeplink,
-        string $affiliatePartnerName,
+        string $affiliateNetwork,
         string $expectedTrackingLink
     ): void {
         $link = $this->sut->generateProductAffiliateTrackingUrl(
             $deeplink,
-            $affiliatePartnerName,
+            $affiliateNetwork,
             $this->customerTransfer
         );
 

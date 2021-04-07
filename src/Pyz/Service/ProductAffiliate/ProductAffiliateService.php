@@ -18,22 +18,22 @@ class ProductAffiliateService extends AbstractService implements ProductAffiliat
     /**
      * {@inheritDoc}
      *
-     * @api
-     *
      * @param string $productAffiliateDeeplink
-     * @param string $affiliatePartnerName
+     * @param string $affiliateNetwork
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
+     *@api
+     *
      */
     public function generateProductAffiliateTrackingUrl(
         string $productAffiliateDeeplink,
-        string $affiliatePartnerName,
+        string $affiliateNetwork,
         CustomerTransfer $customerTransfer
     ): string {
         return $this->getFactory()->createGenerator()->generateTrackingUrl(
             $productAffiliateDeeplink,
-            $affiliatePartnerName,
+            $affiliateNetwork,
             $customerTransfer
         );
     }
