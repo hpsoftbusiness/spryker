@@ -96,6 +96,13 @@ class ProductController extends SprykerShopProductController
             'base_price_display_value',
             'base_price_net_value',
             'base_price_unit',
+            'regular_sales_price',
+            'strike_price',
+            'customer_group_1',
+            'customer_group_2',
+            'customer_group_3',
+            'customer_group_4',
+            'customer_group_5',
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {
