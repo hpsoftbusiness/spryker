@@ -2,6 +2,7 @@
 
 {% define data = {
     url: _widget.url,
+    targetBlank: _widget.targetBlank,
     suggestion: null,
     thumbnail: null,
     image: null,
@@ -25,6 +26,7 @@
                 price: data.price,
                 originalPrice: data.originalPrice,
                 alt: data.alt,
+                targetBlank: data.targetBlank,
             },
         } only %}
     {% elseif data.thumbnail %}
@@ -34,13 +36,17 @@
                 configName: data.configName,
                 parentJsName: data.parentJsName,
                 thumbnail: data.thumbnail,
+                targetBlank: data.targetBlank,
             },
         } only %}
     {% else %}
         {% if data.url %}
-            <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page" href="{{ data.url }}">{{ data.dataName }}</a>
+            <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
+               href="{{ data.url }}" target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% else %}
-            <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page" href="{{ path(data.originUrl) }}">{{ data.dataName }}</a>
+            <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
+               href="{{ path(data.originUrl) }}"
+               target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% endif %}
     {% endif %}
 {% endblock %}

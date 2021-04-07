@@ -5,7 +5,8 @@
 } %}
 
 {% block body %}
-    <a class="{{ data.configName }}__overlay {{ data.parentJsName }}__link-detail-page" href="{{ data.url }}">
+    <a class="{{ data.configName }}__overlay {{ data.parentJsName }}__link-detail-page" href="{{ data.url }} "
+               target="{% if data.targetBlank %}_blank  {% endif %}">
         {{ data.thumbnail }}
     </a>
 {% endblock %}
