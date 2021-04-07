@@ -104,6 +104,8 @@ class ProductController extends SprykerShopProductController
             }
         }
 
-        return $attributes;
+        return array_filter($attributes, function ($value) {
+            return $value !== null && $value !== '' && $value !== false;
+        });
     }
 }
