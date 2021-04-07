@@ -8,6 +8,8 @@
 namespace Pyz\Service\ProductAffiliate\Generator;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException;
+use Pyz\Service\ProductAffiliate\Generator\Formatter\TrackingLinkDataFormatterPluginInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateConfig;
 
 class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInterface
@@ -15,40 +17,65 @@ class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInte
     /**
      * @var \Pyz\Service\ProductAffiliate\ProductAffiliateConfig
      */
-    protected $productAffiliateConfig;
+    private $productAffiliateConfig;
+
+    /**
+     * @var \Pyz\Service\ProductAffiliate\Generator\Formatter\TrackingLinkDataFormatterPluginInterface[]
+     */
+    private $formatterPlugins;
 
     /**
      * @param \Pyz\Service\ProductAffiliate\ProductAffiliateConfig $productAffiliateConfig
+     * @param \Pyz\Service\ProductAffiliate\Generator\Formatter\TrackingLinkDataFormatterPluginInterface[] $formatterPlugins
      */
-    public function __construct(ProductAffiliateConfig $productAffiliateConfig)
-    {
+    public function __construct(
+        ProductAffiliateConfig $productAffiliateConfig,
+        array $formatterPlugins
+    ) {
         $this->productAffiliateConfig = $productAffiliateConfig;
+        $this->formatterPlugins = $formatterPlugins;
     }
 
     /**
      * @param string $productAffiliateDeeplink
+     * @param string $affiliateNetwork
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
      */
     public function generateTrackingUrl(
         string $productAffiliateDeeplink,
+        string $affiliateNetwork,
         CustomerTransfer $customerTransfer
     ): string {
-        $deeplinkQueryString = parse_url($productAffiliateDeeplink, PHP_URL_QUERY);
-        parse_str($deeplinkQueryString, $deeplinkArguments);
-
-        $trackingUrlArguments = [
-            'customerNumber' => str_replace('.', '', $customerTransfer->getMyWorldCustomerNumber()),
-            'network' => $this->productAffiliateConfig->getTrackingUrlNetworkArgument(),
-            'AdvertiserId' => $deeplinkArguments['m'],
-            'url' => sprintf('%s&clickRef=trackingHash', $productAffiliateDeeplink),
-        ];
+        $trackingLinkDataFormatterPlugin = $this->getTrackingLinkFormatterPlugin($affiliateNetwork);
+        $trackingUrlArguments = $trackingLinkDataFormatterPlugin->getFormattedTrackingLinkData(
+            $productAffiliateDeeplink,
+            $customerTransfer
+        );
 
         return sprintf(
             '%s?%s',
             $this->productAffiliateConfig->getTrackingUrlPath(),
             http_build_query($trackingUrlArguments, '', '&')
         );
+    }
+
+    /**
+     * @param string $affiliateNetwork
+     *
+     * @return \Pyz\Service\ProductAffiliate\Generator\Formatter\TrackingLinkDataFormatterPluginInterface
+     *@throws \Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException
+     *
+     */
+    private function getTrackingLinkFormatterPlugin(string $affiliateNetwork): TrackingLinkDataFormatterPluginInterface
+    {
+        foreach ($this->formatterPlugins as $dataFormatterPlugin) {
+            if (strtoupper($dataFormatterPlugin->getApplicableAffiliatePartnerName()) === strtoupper($affiliateNetwork)) {
+                return $dataFormatterPlugin;
+            }
+        }
+
+        throw new ProductAffiliateTrackingLinkGeneratorException('Tracking link data formatter plugin not found for this affiliate partner.');
     }
 }

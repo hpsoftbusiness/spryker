@@ -1,31 +1,29 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Service\ProductAffiliate;
+namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 
-interface ProductAffiliateServiceInterface
+interface TrackingLinkDataFormatterPluginInterface
 {
     /**
-     * Specification:
-     * - Generate a product affiliate tracking url using provided customer data and product affiliate deeplink.
-     *
      * @param string $productAffiliateDeeplink
-     * @param string $affiliateNetwork
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return string
-     *@api
-     *
+     * @return array
      */
-    public function generateProductAffiliateTrackingUrl(
+    public function getFormattedTrackingLinkData(
         string $productAffiliateDeeplink,
-        string $affiliateNetwork,
         CustomerTransfer $customerTransfer
-    ): string;
+    ): array;
+
+    /**
+     * @return string
+     */
+    public function getApplicableAffiliatePartnerName(): string;
 }

@@ -13,12 +13,14 @@ interface ProductAffiliateLinkGeneratorInterface
 {
     /**
      * @param string $productAffiliateDeeplink
+     * @param string $affiliateNetwork
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
      */
     public function generateTrackingUrl(
         string $productAffiliateDeeplink,
+        string $affiliateNetwork,
         CustomerTransfer $customerTransfer
     ): string;
 }
