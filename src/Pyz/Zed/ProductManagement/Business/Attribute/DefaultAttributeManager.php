@@ -85,6 +85,7 @@ class DefaultAttributeManager implements DefaultAttributeManagerInterface
         'gtin',
         'taric_code',
         'country_of_origin',
+        'featured_products',
     ];
 
     /**

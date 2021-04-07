@@ -141,6 +141,14 @@ class ProductApi implements ProductApiInterface
                 return $this->queryContainer->queryBvDeals();
             case ProductApiConfig::RESOURCE_SPDEALS:
                 return $this->queryContainer->querySpDeals();
+            case ProductApiConfig::RESOURCE_ELITE_CLUB:
+                return $this->queryContainer->queryEliteClub();
+            case ProductApiConfig::RESOURCE_ONE_SENSE:
+                return $this->queryContainer->queryOneSense();
+            case ProductApiConfig::RESOURCE_LYCONET:
+                return $this->queryContainer->queryLyconet();
+            case ProductApiConfig::RESOURCE_FEATURED_PRODUCTS:
+                return $this->queryContainer->queryFeaturedProducts();
         }
     }
 
