@@ -1,10 +1,4 @@
 <?php
-
-/**
- * This file is part of the Spryker Commerce OS.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
-
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage;
 
 use Generated\Shared\Transfer\SpyLocaleEntityTransfer;
@@ -107,10 +101,12 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      */
     protected function importImage(DataSetInterface $dataSet): void
     {
+        $imageKey = $dataSet[static::COLUMN_PRODUCT_IMAGE_KEY] ?: md5($dataSet[static::COLUMN_EXTERNAL_URL_LARGE]);
+
         $imageEntityTransfer = new SpyProductImageEntityTransfer();
         $imageEntityTransfer->setExternalUrlLarge($dataSet[static::COLUMN_EXTERNAL_URL_LARGE]);
         $imageEntityTransfer->setExternalUrlSmall($dataSet[static::COLUMN_EXTERNAL_URL_SMALL]);
-        $imageEntityTransfer->setProductImageKey($dataSet[static::COLUMN_PRODUCT_IMAGE_KEY] ?: uniqid());
+        $imageEntityTransfer->setProductImageKey($imageKey);
 
         $dataSet[static::DATA_PRODUCT_IMAGE_TRANSFER] = $imageEntityTransfer;
     }
