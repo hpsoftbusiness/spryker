@@ -215,7 +215,7 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductAbstractLocalizedTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER];
+        return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] ?? [];
     }
 
     /**

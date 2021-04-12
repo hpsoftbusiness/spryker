@@ -22,6 +22,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const BULK_SIZE = 5000;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+    public const COLUMN_CONCRETE_SKU = 'concrete_sku';
 
     public const COLUMN_CATEGORY_KEY = 'category_key';
     public const COLUMN_CATEGORY_PRODUCT_ORDER = 'category_product_order';
@@ -105,6 +106,10 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      */
     protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet): void
     {
+        if (!empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
+            return;
+        }
+
         $localizedAttributeTransfer = [];
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
