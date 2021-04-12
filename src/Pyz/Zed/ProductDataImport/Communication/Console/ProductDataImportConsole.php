@@ -1,10 +1,4 @@
 <?php
-
-/**
- * This file is part of the Spryker Commerce OS.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
-
 namespace Pyz\Zed\ProductDataImport\Communication\Console;
 
 use Exception;
@@ -27,11 +21,13 @@ class ProductDataImportConsole extends Console
     private const  DATA_ENTITY_IMAGE = 'combined-product-image';
     private const  DATA_ENTITY_PRICE = 'combined-product-price';
     private const  DATA_ENTITY_STOCK = 'combined-product-stock';
+    private const  DATA_ENTITY_LIST_CONCRETE = 'combined-product-list-product-concrete';
 
     protected const DATA_ENTITY_FOR_PRODUCT = [
         self::DATA_ENTITY_ABSTRACT,
         self::DATA_ENTITY_ABSTRACT_STORE,
         self::DATA_ENTITY_CONCRETE,
+        self::DATA_ENTITY_LIST_CONCRETE,
         self::DATA_ENTITY_IMAGE,
         self::DATA_ENTITY_PRICE,
         self::DATA_ENTITY_STOCK,

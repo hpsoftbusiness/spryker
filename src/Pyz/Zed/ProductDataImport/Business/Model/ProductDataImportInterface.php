@@ -24,6 +24,7 @@ interface ProductDataImportInterface
         'combined-product-price' => 'in progress (product-price)',
         'combined-product-stock' => 'in progress (product-stock)',
         'combined-product-group' => 'in progress (product-group)',
+        'combined-product-list-product-concrete' => 'in progress (product-list-product-concrete)',
     ];
     public const STATUS_SUCCESS = 'successful';
     public const STATUS_FAILED = 'failed';
