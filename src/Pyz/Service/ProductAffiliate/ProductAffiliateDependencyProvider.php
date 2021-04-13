@@ -9,6 +9,7 @@ namespace Pyz\Service\ProductAffiliate;
 
 use Pyz\Service\ProductAffiliate\Generator\Formatter\AwinTrackingLinkDataFormatterPlugin;
 use Pyz\Service\ProductAffiliate\Generator\Formatter\ChineseanTrackingLinkDataFormatterPlugin;
+use Pyz\Service\ProductAffiliate\Generator\Formatter\CJTrackingLinkDataFormatterPlugin;
 use Pyz\Service\ProductAffiliate\Generator\Formatter\TradeDoublerTrackingLinkDataFormatterPlugin;
 use Pyz\Service\ProductAffiliate\Generator\Formatter\TradeTrackerTrackingLinkDataFormatterPlugin;
 use Pyz\Service\ProductAffiliate\Generator\Formatter\WebgainsTrackingLinkDataFormatterPlugin;
@@ -49,6 +50,7 @@ class ProductAffiliateDependencyProvider extends AbstractBundleDependencyProvide
                     new WebgainsTrackingLinkDataFormatterPlugin(),
                     new TradeDoublerTrackingLinkDataFormatterPlugin(),
                     new TradeTrackerTrackingLinkDataFormatterPlugin(),
+                    new CJTrackingLinkDataFormatterPlugin(),
                 ];
             }
         );

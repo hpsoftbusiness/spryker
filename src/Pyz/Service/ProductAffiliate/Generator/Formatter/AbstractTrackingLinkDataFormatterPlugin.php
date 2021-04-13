@@ -9,6 +9,7 @@ namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException;
+use Pyz\Service\ProductAffiliate\Generator\ProductAffiliateLinkGenerator;
 use Spryker\Service\Kernel\AbstractPlugin;
 
 abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin implements TrackingLinkDataFormatterPluginInterface
@@ -31,18 +32,18 @@ abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin im
     protected const EXCEPTION_MISSING_ADVERTISER_ID = 'Product affiliate deeplink url missing \'%s\' parameter for AdvertiserId.';
 
     /**
-     * @param string $productAffiliateDeeplink
+     * @param array $affiliateData
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return array
      */
-    public function getFormattedTrackingLinkData(string $productAffiliateDeeplink, CustomerTransfer $customerTransfer): array
+    public function getFormattedTrackingLinkData(array $affiliateData, CustomerTransfer $customerTransfer): array
     {
         return [
             self::PARAMETER_CUSTOMER_NUMBER => $this->getMyWorldCustomerNumber($customerTransfer),
             self::PARAMETER_NETWORK => $this->getNetwork(),
-            self::PARAMETER_ADVERTISER_ID => $this->getAdvertiserId($productAffiliateDeeplink),
-            self::PARAMETER_URL => $this->getUrl($productAffiliateDeeplink),
+            self::PARAMETER_ADVERTISER_ID => $this->getAdvertiserId($affiliateData),
+            self::PARAMETER_URL => $this->getUrl($affiliateData[ProductAffiliateLinkGenerator::KEY_AFFILIATE_DEEPLINK]),
         ];
     }
 
@@ -65,14 +66,15 @@ abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin im
     }
 
     /**
-     * @param string $productAffiliateDeeplink
+     * @param array $affiliateData
      *
      * @throws \Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException
      *
      * @return string
      */
-    protected function getAdvertiserId(string $productAffiliateDeeplink): string
+    protected function getAdvertiserId(array $affiliateData): string
     {
+        $productAffiliateDeeplink = $affiliateData[ProductAffiliateLinkGenerator::KEY_AFFILIATE_DEEPLINK];
         $deeplinkQueryString = parse_url($productAffiliateDeeplink, PHP_URL_QUERY);
         parse_str($deeplinkQueryString, $deeplinkArguments);
 

@@ -12,15 +12,13 @@ use Generated\Shared\Transfer\CustomerTransfer;
 interface ProductAffiliateLinkGeneratorInterface
 {
     /**
-     * @param string $productAffiliateDeeplink
-     * @param string $affiliateNetwork
+     * @param array $affiliateData
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
      */
     public function generateTrackingUrl(
-        string $productAffiliateDeeplink,
-        string $affiliateNetwork,
+        array $affiliateData,
         CustomerTransfer $customerTransfer
     ): string;
 }

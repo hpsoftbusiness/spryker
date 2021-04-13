@@ -8,6 +8,7 @@
 namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 
 use Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException;
+use Pyz\Service\ProductAffiliate\Generator\ProductAffiliateLinkGenerator;
 
 class TradeDoublerTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
@@ -33,14 +34,15 @@ class TradeDoublerTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDa
     }
 
     /**
-     * @param string $productAffiliateDeeplink
+     * @param array $affiliateData
      *
      * @throws \Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException
      *
      * @return string
      */
-    protected function getAdvertiserId(string $productAffiliateDeeplink): string
+    protected function getAdvertiserId(array $affiliateData): string
     {
+        $productAffiliateDeeplink = $affiliateData[ProductAffiliateLinkGenerator::KEY_AFFILIATE_DEEPLINK];
         preg_match_all('/([^?()]*)\((?:[^()]*)\)/', $productAffiliateDeeplink, $matches, PREG_SET_ORDER);
         $deeplinkArguments = $this->parseParameterValues($matches);
         $advertiserId = $deeplinkArguments[static::DEEPLINK_ADVERTISER_ID_PARAMETER] ?? null;

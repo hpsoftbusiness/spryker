@@ -13,19 +13,17 @@ interface ProductAffiliateServiceInterface
 {
     /**
      * Specification:
-     * - Generate a product affiliate tracking url using provided customer data and product affiliate deeplink.
+     * - Generate a product affiliate tracking url using provided customer data and product affiliate data.
      *
-     * @param string $productAffiliateDeeplink
-     * @param string $affiliateNetwork
+     * @api
+     *
+     * @param array $affiliateData
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
-     *@api
-     *
      */
     public function generateProductAffiliateTrackingUrl(
-        string $productAffiliateDeeplink,
-        string $affiliateNetwork,
+        array $affiliateData,
         CustomerTransfer $customerTransfer
     ): string;
 }

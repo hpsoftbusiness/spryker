@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -16,8 +16,6 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
 class ProductUrlWidget extends AbstractWidget
 {
     public const NAME = 'ProductUrlWidget';
-    private const KEY_AFFILIATE_DEEPLINK = 'affiliate_deeplink';
-    private const KEY_AFFILIATE_NETWORK = 'affiliate_network';
 
     /**
      * @param bool|null $isAffiliate
@@ -62,26 +60,20 @@ class ProductUrlWidget extends AbstractWidget
     }
 
     /**
-     * @param mixed[] $affiliateData
+     * @param array $affiliateData
      *
      * @return string
      */
     protected function getProductAffiliateTrackingUrl(array $affiliateData): string
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        /**
-         * @TODO change fallback to null when product import files are updated with 'affiliate_network' attribute
-         */
-        $affiliateNetwork = $affiliateData[self::KEY_AFFILIATE_NETWORK] ?? 'AWIN';
-
-        if (!$customerTransfer || !$affiliateNetwork) {
+        if (!$customerTransfer) {
             return CustomerPageRouteProviderPlugin::ROUTE_NAME_LOGIN;
         }
 
         return $this->getFactory()->getProductAffiliateService()
             ->generateProductAffiliateTrackingUrl(
-                $affiliateData[self::KEY_AFFILIATE_DEEPLINK],
-                $affiliateNetwork,
+                $affiliateData,
                 $customerTransfer
             );
     }

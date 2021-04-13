@@ -12,13 +12,13 @@ use Generated\Shared\Transfer\CustomerTransfer;
 interface TrackingLinkDataFormatterPluginInterface
 {
     /**
-     * @param string $productAffiliateDeeplink
+     * @param array $affiliateData
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return array
      */
     public function getFormattedTrackingLinkData(
-        string $productAffiliateDeeplink,
+        array $affiliateData,
         CustomerTransfer $customerTransfer
     ): array;
 

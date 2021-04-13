@@ -19,7 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductController extends SprykerShopProductController
 {
     private const KEY_AFFILIATE_DEEPLINK = 'affiliate_deeplink';
-    private const KEY_AFFILIATE_NETWORK = 'affiliate_network';
 
     /**
      * @param array $productData
@@ -66,19 +65,14 @@ class ProductController extends SprykerShopProductController
     protected function getProductAffiliateTrackingUrl(array $affiliateData): string
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        /**
-         * @TODO change fallback to null when product import files are updated with 'affiliate_network' attribute
-         */
-        $affiliateNetwork = $affiliateData[self::KEY_AFFILIATE_NETWORK] ?? 'AWIN';
 
-        if (!$customerTransfer || !$affiliateNetwork) {
+        if (!$customerTransfer) {
             return $affiliateData[self::KEY_AFFILIATE_DEEPLINK];
         }
 
         return $this->getFactory()->getProductAffiliateService()
             ->generateProductAffiliateTrackingUrl(
-                $affiliateData[self::KEY_AFFILIATE_DEEPLINK],
-                $affiliateNetwork,
+                $affiliateData,
                 $customerTransfer
             );
     }
