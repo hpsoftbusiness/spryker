@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\ProductAttribute\Business;
 
-use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader;
-use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface;
 use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
+use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader;
+use Pyz\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttributeTransferMapper;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as SprykerProductAttributeBusinessFactory;
 
 /**
@@ -34,14 +34,26 @@ class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFac
     }
 
     /**
-     * @return \Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface
+     * @return \Spryker\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface
      */
-    public function createAttributeReader(): AttributeReaderInterface
+    public function createAttributeReader()
     {
         return new AttributeReader(
             $this->getQueryContainer(),
             $this->getLocaleFacade(),
             $this->createProductAttributeTransferGenerator()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttributeTransferMapperInterface
+     */
+    protected function createProductAttributeTransferGenerator()
+    {
+        return new ProductAttributeTransferMapper(
+            $this->getLocaleFacade(),
+            $this->getGlossaryFacade(),
+            $this->createAttributeGlossaryKeyBuilder()
         );
     }
 }

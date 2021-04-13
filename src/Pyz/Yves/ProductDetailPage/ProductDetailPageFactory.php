@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ProductDetailPage;
 
 use Pyz\Client\Customer\CustomerClientInterface;
+use Pyz\Client\ProductAttribute\ProductAttributeClientInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageFactory as SprykerShopProductDetailPageFactory;
 
@@ -27,5 +28,13 @@ class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
     public function getProductAffiliateService(): ProductAffiliateServiceInterface
     {
         return $this->getProvidedDependency(ProductDetailPageDependencyProvider::SERVICE_PRODUCT_AFFILIATE);
+    }
+
+    /**
+     * @return ProductAttributeClientInterface
+     */
+    public function getProductAttributeClient(): ProductAttributeClientInterface
+    {
+        return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_PRODUCT_ATTRIBUTE);
     }
 }

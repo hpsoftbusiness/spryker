@@ -1,0 +1,49 @@
+{% extends '@Spryker:ProductAttributeGui/Attribute/view.twig' %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' with { widget_title: 'View Attribute' | trans ~ ' #' ~ app.request.query.get('id') } %}
+        {% block widget_content %}
+
+            <h4>{{ 'General Information' | trans }}</h4>
+            <table class="table">
+                <tr>
+                    <td style="width: 250px;">{{ 'Attribute key' | trans }}:</td>
+                    <td>{{ attributeTransfer.key }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'Input type' | trans }}:</td>
+                    <td>{{ attributeTransfer.inputType }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'Super attribute' | trans }}:</td>
+                    <td>{{ (attributeTransfer.isSuper ? 'yes' : 'no') | trans }}</td>
+                </tr>
+            </table>
+
+            <hr />
+
+            <h4>{{ 'Predefined values' | trans }}</h4>
+            <table class="table">
+                <tr>
+                    <td style="width: 250px;">{{ 'Values' | trans }}:</td>
+                    <td>
+                        {% for valueTransfer in attributeTransfer.values %}
+                            {{ valueTransfer.value }}
+                            {%- if not loop.last %},{% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'Allow input any value other than predefined ones' | trans }}:</td>
+                    <td>{{ (attributeTransfer.allowInput ? 'yes' : 'no') | trans }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'Show attribute on Product Detail Page (PDP)' | trans }}:</td>
+                    <td>{{ (attributeTransfer.showOnPdp ? 'yes' : 'no') | trans }}</td>
+                </tr>
+            </table>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}

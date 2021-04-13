@@ -13,6 +13,7 @@ use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as Sp
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
     public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
+    public const CLIENT_PRODUCT_ATTRIBUTE = 'CLIENT_PRODUCT_ATTRIBUTE';
 
     public const SERVICE_PRODUCT_AFFILIATE = 'SERVICE_PRODUCT_AFFILIATE';
 
@@ -26,6 +27,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
         $container = parent::provideDependencies($container);
         $container = $this->addCustomerClient($container);
         $container = $this->addProductAffiliateService($container);
+        $container = $this->addProductAttributeClient($container);
 
         return $container;
     }
@@ -53,6 +55,20 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
     {
         $container->set(static::SERVICE_PRODUCT_AFFILIATE, function (Container $container) {
             return $container->getLocator()->productAffiliate()->service();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param Container $container
+     *
+     * @return Container
+     */
+    protected function addProductAttributeClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_PRODUCT_ATTRIBUTE, function (Container $container) {
+            return $container->getLocator()->productAttribute()->client();
         });
 
         return $container;

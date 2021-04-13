@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ProductDetailPage\Controller;
 
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,6 +85,14 @@ class ProductController extends SprykerShopProductController
      */
     protected function getFilterProductAttributes(array $attributes): array
     {
+        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
+        $productAttributeKeysCollectionTransfer->setKeys([]);
+        $keysToShowOnPdp = $this->getFactory()
+            ->getProductAttributeClient()
+            ->getKeysToShowOnPdp($productAttributeKeysCollectionTransfer)
+            ->getKeys();
+        $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
+
         $attributesToFilter = [
             'benefit_store',
             'shopping_point_store',

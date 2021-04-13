@@ -8,10 +8,12 @@
 namespace Pyz\Zed\ProductAttributeGui\Communication;
 
 use Pyz\Zed\Product\Persistence\ProductQueryContainerInterface;
+use Pyz\Zed\ProductAttributeGui\Communication\Form\AttributeForm;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeDeleteDataProvider;
 use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeTranslationFormCollectionDataProvider;
 use Pyz\Zed\ProductAttributeGui\Communication\Table\AttributeTable;
 use Spryker\Zed\Category\Communication\Form\DeleteType;
+use Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeFormDataProvider;
 use Spryker\Zed\ProductAttributeGui\Communication\ProductAttributeGuiCommunicationFactory as SprykerProductAttributeGuiCommunicationFactory;
 use Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface;
 use Spryker\Zed\ProductAttributeGui\ProductAttributeGuiDependencyProvider;
@@ -76,6 +78,28 @@ class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGui
             $this->getProductAttributeFacade(),
             $this->getProductAttributeQueryContainer(),
             $this->getLocaleFacade()
+        );
+    }
+
+    /**
+     * @param array $data
+     * @param array $options
+     *
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function getAttributeForm(array $data = [], array $options = [])
+    {
+        return $this->getFormFactory()->create(AttributeForm::class, $data, $options);
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeFormDataProvider
+     */
+    public function createAttributeFormDataProvider()
+    {
+        return new AttributeFormDataProvider(
+            $this->getProductAttributeQueryContainer(),
+            $this->getProductAttributeFacade()
         );
     }
 }

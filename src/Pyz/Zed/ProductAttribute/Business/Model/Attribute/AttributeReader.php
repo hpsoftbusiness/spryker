@@ -1,15 +1,11 @@
-<?php declare(strict_types = 1);
-
-/**
- * This file is part of the Spryker Commerce OS.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
+<?php
 
 namespace Pyz\Zed\ProductAttribute\Business\Model\Attribute;
 
+use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
+use Spryker\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader as SprykerAttributeReader;
 use Generated\Shared\Transfer\ProductManagementAttributeTransfer;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttribute;
-use Spryker\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader as SprykerAttributeReader;
 
 class AttributeReader extends SprykerAttributeReader implements AttributeReaderInterface
 {
@@ -17,6 +13,27 @@ class AttributeReader extends SprykerAttributeReader implements AttributeReaderI
      * @var \Pyz\Zed\ProductAttribute\Persistence\ProductAttributeQueryContainerInterface
      */
     protected $productAttributeQueryContainer;
+
+    /**
+     * @param ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+     *
+     * @return ProductAttributeKeysCollectionTransfer
+     */
+    public function getKeysToShowOnPdp(
+        ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+    ): ProductAttributeKeysCollectionTransfer
+    {
+        $arrayCollection = $this->productAttributeQueryContainer
+            ->queryProductAttributeCollection()
+            ->filterByShowOnPdp(true)
+            ->useSpyProductAttributeKeyQuery()
+            ->filterByKey_In($productAttributeKeysCollectionTransfer->getKeys())
+            ->endUse()
+            ->select('SpyProductAttributeKey.Key')
+            ->find();
+
+        return $this->productAttributeTransferMapper->convertProductAttributeKeysCollection($arrayCollection);
+    }
 
     /**
      * @param string $key
