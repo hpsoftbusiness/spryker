@@ -114,6 +114,7 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 
 // >>> TRANSLATOR
 
+require 'common/config_countries.php';
 $config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
     'de_DE' => ['en_US'],
 ];

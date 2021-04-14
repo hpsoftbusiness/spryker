@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\Product;
 
+use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
@@ -72,8 +73,14 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
             ];
 
             foreach ($this->defaultAttributes as $defaultAttribute) {
-                $localizedAttributes[$idLocale][$defaultAttribute] = $dataSet[$defaultAttribute . '.' . $localeName];
+                $defaultAttributeValue = $dataSet[$defaultAttribute . '.' . $localeName] ?? null;
+                if ($defaultAttributeValue === null) {
+                    $localizedAttributes[$idLocale] = null;
 
+                    break;
+                }
+
+                $localizedAttributes[$idLocale][$defaultAttribute] = $dataSet[$defaultAttribute . '.' . $localeName];
                 $keysToUnset[] = $defaultAttribute . '.' . $localeName;
             }
         }
@@ -82,7 +89,25 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
             unset($dataSet[$key]);
         }
 
+        $localizedAttributes = $this->overrideMissingLocalizedAttributes($localizedAttributes, $dataSet[AddLocalesStep::KEY_DEFAULT_LOCALE_ID]);
         $dataSet[static::KEY_LOCALIZED_ATTRIBUTES] = $localizedAttributes;
+    }
+
+    /**
+     * @param array $localizedAttributes
+     * @param int $defaultLocaleId
+     *
+     * @return array
+     */
+    protected function overrideMissingLocalizedAttributes(array $localizedAttributes, int $defaultLocaleId): array
+    {
+        foreach ($localizedAttributes as $idLocale => $attributes) {
+            if ($attributes === null) {
+                $localizedAttributes[$idLocale] = $localizedAttributes[$defaultLocaleId];
+            }
+        }
+
+        return $localizedAttributes;
     }
 
     /**

@@ -34,14 +34,24 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
             // first entry is default
             'en' => 'en_US',
             'de' => 'de_DE',
-//            'pl' => 'pl_PL',
-//            'it' => 'it_IT',
+            'fr' => 'fr_FR',
+            'es' => 'es_ES',
+            'cz' => 'cs_CZ',
+            'se' => 'sv_SE',
+            'hu' => 'hu_HU',
+            'nl' => 'nl_NL',
+            'pl' => 'pl_PL',
+            'si' => 'sl_SI',
+            'it' => 'it_IT',
+            'pt' => 'pt_PT',
+            'no' => 'nn_NO',
+            'sk' => 'sk_SK',
         ],
         // first entry is default
         'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
         // internal and shop
         'currencyIsoCode' => 'EUR',
-        'currencyIsoCodes' => ['EUR'],
+        'currencyIsoCodes' => ['EUR', 'PLN', 'CZK', 'SEK', 'HUF', '	CHF', 'NOK',],
         'queuePools' => [
             'synchronizationPool' => [],
         ],
@@ -88,14 +98,24 @@ $stores['DE'] = [
         // first entry is default
         'en' => 'en_US',
         'de' => 'de_DE',
-//        'pl' => 'pl_PL',
-//        'it' => 'it_IT',
+        'fr' => 'fr_FR',
+        'es' => 'es_ES',
+        'cz' => 'cs_CZ',
+        'se' => 'sv_SE',
+        'hu' => 'hu_HU',
+        'nl' => 'nl_NL',
+        'pl' => 'pl_PL',
+        'si' => 'sl_SI',
+        'it' => 'it_IT',
+        'pt' => 'pt_PT',
+        'no' => 'nn_NO',
+        'sk' => 'sk_SK',
     ],
     // first entry is default
     'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => ['EUR'],
+    'currencyIsoCodes' => ['EUR', 'PLN', 'CZK', 'SEK', 'HUF', '	CHF', 'NOK',],
     'queuePools' => [
         'synchronizationPool' => [
             'DE-connection',

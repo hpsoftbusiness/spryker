@@ -23,16 +23,13 @@ class ProductManagementLocalizedAttributesExtractorStep implements DataImportSte
     public function execute(DataSetInterface $dataSet)
     {
         $localizedAttributes = [];
+        $defaultLocaleName = $dataSet[AddLocalesStep::KEY_DEFAULT_LOCALE_NAME];
         foreach ($dataSet[AddLocalesStep::KEY_LOCALES] as $localeName => $idLocale) {
-            $valueTranslations = '';
             $values = $this->toArray($dataSet['values']);
-            if (!empty($dataSet['value_translations.' . $localeName])) {
-                $valueTranslations = $this->toArray($dataSet['value_translations.' . $localeName]);
-                $valueTranslations = array_combine($this->toArray($dataSet['values']), $valueTranslations);
-            }
+            $valueTranslations = $this->getValueTranslations($dataSet, $localeName, $defaultLocaleName);
 
             $attributes = [
-                'key_translation' => $dataSet['key_translation.' . $localeName],
+                'key_translation' => $this->getKeyTranslation($dataSet, $localeName, $defaultLocaleName),
                 'values' => $values,
                 'value_translations' => $valueTranslations,
             ];
@@ -41,6 +38,36 @@ class ProductManagementLocalizedAttributesExtractorStep implements DataImportSte
         }
 
         $dataSet[static::KEY_LOCALIZED_ATTRIBUTES] = $localizedAttributes;
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param string $localeName
+     * @param string $defaultLocaleName
+     *
+     * @return array|string
+     */
+    private function getValueTranslations(DataSetInterface $dataSet, string $localeName, string $defaultLocaleName)
+    {
+        $valueTranslations = $dataSet['value_translations.' . $localeName] ?? $dataSet['value_translations.' . $defaultLocaleName] ?? [];
+        if (!empty($valueTranslations)) {
+            $valueTranslations = $this->toArray($valueTranslations);
+            $valueTranslations = array_combine($this->toArray($dataSet['values']), $valueTranslations);
+        }
+
+        return $valueTranslations;
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param string $localeName
+     * @param string $defaultLocaleName
+     *
+     * @return string
+     */
+    private function getKeyTranslation(DataSetInterface $dataSet, string $localeName, string $defaultLocaleName): string
+    {
+        return $dataSet['key_translation.' . $localeName] ?? $dataSet['key_translation.' . $defaultLocaleName];
     }
 
     /**

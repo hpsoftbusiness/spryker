@@ -7,8 +7,10 @@
 
 namespace Pyz\Yves\Country;
 
+use Pyz\Client\Locale\LocaleClientInterface;
 use Pyz\Yves\Country\Expander\AddressExpander;
 use Pyz\Yves\Country\Expander\AddressExpanderInterface;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 /**
@@ -22,5 +24,21 @@ class CountryFactory extends AbstractFactory
     public function createAddressExpander(): AddressExpanderInterface
     {
         return new AddressExpander($this->getClient());
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    public function getStore(): Store
+    {
+        return $this->getProvidedDependency(CountryDependencyProvider::STORE);
+    }
+
+    /**
+     * @return \Pyz\Client\Locale\LocaleClientInterface
+     */
+    public function getLocaleClient(): LocaleClientInterface
+    {
+        return $this->getProvidedDependency(CountryDependencyProvider::CLIENT_LOCALE);
     }
 }

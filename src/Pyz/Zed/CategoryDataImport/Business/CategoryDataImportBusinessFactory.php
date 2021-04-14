@@ -8,7 +8,10 @@
 namespace Pyz\Zed\CategoryDataImport\Business;
 
 use Pyz\Zed\CategoryDataImport\Business\Model\CategoryWriterStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
+use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Spryker\Zed\CategoryDataImport\Business\CategoryDataImportBusinessFactory as SprykerCategoryDataImportBusinessFactory;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 
 /**
  * @method \Spryker\Zed\CategoryDataImport\CategoryDataImportConfig getConfig()
@@ -38,5 +41,23 @@ class CategoryDataImportBusinessFactory extends SprykerCategoryDataImportBusines
             ->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    protected function createAddLocalesStep(): DataImportStepInterface
+    {
+        return new AddLocalesStep($this->getStore());
+    }
+
+    /**
+     * @param array $defaultAttributes
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep
+     */
+    protected function createLocalizedAttributesExtractorStep(array $defaultAttributes = [])
+    {
+        return new LocalizedAttributesExtractorStep($defaultAttributes);
     }
 }

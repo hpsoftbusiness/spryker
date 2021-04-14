@@ -14,6 +14,7 @@ use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\BenefitStoreQueryExpande
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CategoryFacetQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CmsPageFilterQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\IsAffiliateQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\SellableQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\ShoppingPointStoreQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
@@ -122,7 +123,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
             new CustomerProductListQueryExpanderPlugin(),
-
+            new SellableQueryExpanderPlugin(),
             /**
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
              */
@@ -162,6 +163,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
             new CustomerProductListQueryExpanderPlugin(),
+            new SellableQueryExpanderPlugin(),
             // Temporary added to filter cms pages from the suggestion list.
             new CmsPageFilterQueryExpanderPlugin(),
         ];

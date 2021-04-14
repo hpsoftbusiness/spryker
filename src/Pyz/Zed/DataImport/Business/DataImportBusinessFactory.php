@@ -46,6 +46,7 @@ use Pyz\Zed\DataImport\Business\Model\Customer\CustomerWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CustomerGroup\CustomerGroupWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DataImporterConditional;
 use Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface;
 use Pyz\Zed\DataImport\Business\Model\Discount\DiscountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountAmount\DiscountAmountWriterStep;
@@ -1280,6 +1281,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createCombinedAttributesExtractorStep()
     {
         return new CombinedAttributesExtractorStep();
+    }
+
+    /**
+     * @param array $defaultAttributes
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep
+     */
+    protected function createLocalizedAttributesExtractorStep(array $defaultAttributes = [])
+    {
+        return new LocalizedAttributesExtractorStep($defaultAttributes);
     }
 
     /**

@@ -26,6 +26,7 @@ class ProductAbstractSellableFacetConfigTransferBuilderPlugin extends AbstractPl
             ->setParameterName(CatalogConfig::PRODUCT_ABSTRACT_SELLABLE_FACET_NAME)
             ->setFieldName(PageIndexMap::STRING_FACET)
             ->setIsMultiValued(true)
-            ->setType(SearchConfig::FACET_TYPE_ENUMERATION);
+            ->setType(SearchConfig::FACET_TYPE_ENUMERATION)
+            ->setIsInternal(true);
     }
 }

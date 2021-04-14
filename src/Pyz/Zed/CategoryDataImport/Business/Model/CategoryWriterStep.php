@@ -147,7 +147,8 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
             ->findOneOrCreate();
 
         $categoryKey = static::KEY_NAME . '.' . array_search($dataSet[static::KEY_LOCALE_ID], $dataSet['locales']);
-        $navigationNodeLocalizedAttributesEntity->setTitle($dataSet[$categoryKey]);
+        $navigationNodeLocalizedTitle = $dataSet['localizedAttributes'][$dataSet[static::KEY_LOCALE_ID]][static::KEY_NAME] ?? $dataSet[$categoryKey];
+        $navigationNodeLocalizedAttributesEntity->setTitle($navigationNodeLocalizedTitle);
         $navigationNodeLocalizedAttributesEntity->setFkUrl($dataSet[static::KEY_URL_ID]);
         $navigationNodeEntity->addSpyNavigationNodeLocalizedAttributes($navigationNodeLocalizedAttributesEntity);
         $navigationNodeEntity->save();

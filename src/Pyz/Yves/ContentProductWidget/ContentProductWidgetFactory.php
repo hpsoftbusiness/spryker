@@ -7,8 +7,11 @@
 
 namespace Pyz\Yves\ContentProductWidget;
 
+use Pyz\Yves\ContentProductWidget\Reader\ContentProductAbstractReader;
 use Pyz\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunction;
+use Spryker\Shared\Kernel\Store;
 use SprykerShop\Yves\ContentProductWidget\ContentProductWidgetFactory as SprykerContentProductWidgetFactory;
+use SprykerShop\Yves\ContentProductWidget\Reader\ContentProductAbstractReaderInterface;
 use SprykerShop\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunction as SprykerContentProductAbstractListTwigFunction;
 use Twig\Environment;
 
@@ -27,5 +30,25 @@ class ContentProductWidgetFactory extends SprykerContentProductWidgetFactory
             $localeName,
             $this->createContentProductAbstractReader()
         );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ContentProductWidget\Reader\ContentProductAbstractReaderInterface
+     */
+    public function createContentProductAbstractReader(): ContentProductAbstractReaderInterface
+    {
+        return new ContentProductAbstractReader(
+            $this->getContentProductClient(),
+            $this->getProductStorageClient(),
+            $this->getStore()
+        );
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    public function getStore(): Store
+    {
+        return $this->getProvidedDependency(ContentProductWidgetDependencyProvider::STORE);
     }
 }
