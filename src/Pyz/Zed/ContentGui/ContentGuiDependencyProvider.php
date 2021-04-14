@@ -8,7 +8,7 @@
 namespace Pyz\Zed\ContentGui;
 
 use Spryker\Zed\ContentBannerGui\Communication\Plugin\ContentGui\ContentBannerContentGuiEditorPlugin;
-use Spryker\Zed\ContentBannerGui\Communication\Plugin\ContentGui\ContentBannerFormPlugin;
+use Pyz\Zed\ContentBannerGui\Communication\Plugin\ContentGui\ContentBannerFormPlugin;
 use Spryker\Zed\ContentFileGui\Communication\Plugin\ContentGui\ContentFileListContentGuiEditorPlugin;
 use Spryker\Zed\ContentFileGui\Communication\Plugin\ContentGui\ContentFileListFormPlugin;
 use Spryker\Zed\ContentGui\ContentGuiDependencyProvider as SprykerContentGuiDependencyProvider;
