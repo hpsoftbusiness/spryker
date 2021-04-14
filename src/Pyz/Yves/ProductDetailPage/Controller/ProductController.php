@@ -94,7 +94,6 @@ class ProductController extends SprykerShopProductController
         $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
 
         $attributesToFilter = [
-            'benefit_store',
             'shopping_point_store',
             'cashback_amount',
             'shopping_points',
@@ -104,8 +103,6 @@ class ProductController extends SprykerShopProductController
             'dropshipment_possible',
             'dropshipment_supplier',
             'office_dealer_id',
-            'benefit_store_sales_price',
-            'benefit_amount',
             'base_price_display_value',
             'base_price_net_value',
             'base_price_unit',

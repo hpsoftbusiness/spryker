@@ -160,7 +160,7 @@ function AttributeManager() {
     };
 
     _attributeManager.resetRemovedKey = function(key) {
-        delete _attributeManager.removedKeys[key];
+        _attributeManager.removedKeys = _attributeManager.removedKeys.filter(removedKey => removedKey !== key);
     };
 
     _attributeManager.resetRemovedKeysCache = function () {
@@ -178,7 +178,7 @@ function AttributeManager() {
 
         $('[data-is_attribute_input]').each(function(index, value) {
             var input = $(value);
-            var attributeValue = input.attr('type') === 'text' ? input.val() : input.is(':checked');
+            var attributeValue = ['text', 'number'].includes(input.attr('type')) ? input.val() : input.is(':checked');
             var idAttribute = input.attr('data-id_attribute') || null;
             var locale_code = input.attr('data-locale_code') || null;
             var key = input.attr('data-attribute_key') || null;
