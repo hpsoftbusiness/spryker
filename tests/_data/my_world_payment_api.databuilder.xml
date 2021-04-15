@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="MyWorldApiRequest">
+        <property name="paymentSessionRequest" type="PaymentSessionRequest"/>
+        <property name="paymentCodeGenerateRequest" type="PaymentCodeGenerateRequest"/>
+        <property name="paymentCodeValidateRequest" type="PaymentCodeValidateRequest"/>
+        <property name="paymentConfirmationRequest" type="PaymentConfirmationRequest"/>
+        <property name="paymentRefundRequest" type="PaymentRefundRequest"/>
+        <property name="paymentDataRequest" type="PaymentDataRequest"/>
+    </transfer>
+
+    <transfer name="MyWorldApiResponse">
+        <property name="isSuccess" type="bool"/>
+        <property name="error" type="MyWorldApiErrorResponse"/>
+        <property name="paymentSessionResponse" type="PaymentSessionResponse"/>
+        <property name="paymentCodeValidateResponse" type="PaymentCodeValidateResponse"/>
+        <property name="paymentConfirmationResponseTransfer" type="PaymentConfirmationResponse"/>
+        <property name="paymentDataResponse" type="PaymentDataResponse"/>
+    </transfer>
+
+    <transfer name="PaymentCodeGenerateRequest">
+        <property name="sessionId" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentSessionRequest">
+        <property name="ssoAccessToken" type="SsoAccessToken"/>
+        <property name="amount" dataBuilderRule="randomDigit"/>
+        <property name="currencyId" dataBuilderRule="currencyCode"/>
+        <property name="reference" dataBuilderRule="realText(30, 2)"/>
+        <property name="paymentOptions" type="int[]"/>
+        <property name="flows" type="Flows" singular="Flows"/>
+    </transfer>
+
+    <transfer name="PaymentSessionResponse">
+        <property name="sessionId" type="string"/>
+        <property name="twoFactorAuth" type="string[]" associative="true"/>
+    </transfer>
+
+    <transfer name="PaymentCodeValidateRequest">
+        <property name="sessionId" type="string"/>
+        <property name="confirmationCode" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentCodeValidateResponse">
+        <property name="isValid" type="bool"/>
+        <property name="description" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentConfirmationRequest">
+        <property name="sessionId" type="string"/>
+        <property name="confirmationCode" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentConfirmationResponse">
+        <property name="paymentId" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentDataRequest">
+        <property name="paymentId" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentDataResponse">
+        <property name="paymentId" type="string"/>
+        <property name="amount" type="int"/>
+        <property name="currencyId" type="string"/>
+        <property name="reference" type="string"/>
+        <property name="status" type="string"/>
+        <property name="transactions" type="PaymentTransaction[]" singular="transaction"/>
+    </transfer>
+
+    <transfer name="PaymentTransaction">
+        <property name="paymentOptionId" type="int"/>
+        <property name="amount" type="int"/>
+        <property name="unit" type="string"/>
+        <property name="unitType" type="string"/>
+        <property name="dateTime" type="string"/>
+        <property name="batchNumber" type="int"/>
+        <property name="status" type="string"/>
+        <property name="statusCode" type="int"/>
+    </transfer>
+
+    <transfer name="PaymentRefundRequest">
+        <property name="paymentId" type="string"/>
+        <property name="amount" type="int"/>
+        <property name="currencyId" type="string"/>
+        <property name="partialRefunds" type="PartialRefund[]" singular="partialRefund"/>
+    </transfer>
+
+    <transfer name="PartialRefund">
+        <property name="paymentOptionId" type="int"/>
+        <property name="amount" type="int"/>
+        <property name="unit" type="string"/>
+        <property name="unitType" type="string"/>
+        <property name="maxAllowedAmount" type="int"/>
+    </transfer>
+
+    <transfer name="MyWorldApiErrorResponse">
+        <property name="statusCode" type="int"/>
+        <property name="errorCode" type="int"/>
+        <property name="errorMessage" type="string"/>
+    </transfer>
+
+    <transfer name="Flows">
+        <property name="type" dataBuilderRule="randomDigit"/>
+        <property name="mwsDirect" type="MwsDirectPaymentOption[]"/>
+    </transfer>
+
+    <transfer name="MwsDirectPaymentOption">
+        <property name="paymentOptionId" dataBuilderRule="randomDigit"/>
+        <property name="amount" dataBuilderRule="randomDigit"/>
+        <property name="unit" dataBuilderRule="currencyCode"/>
+        <property name="unitType" type="string"/>
+        <property name="code" type="string"/>
+        <property name="maxAllowedAmount" type="int"/>
+    </transfer>
+
+    <transfer name="AuthorizationHeaderRequest">
+        <property name="httpMethod" type="string"/>
+        <property name="body" type="string"/>
+        <property name="contentType" type="string"/>
+        <property name="headers" type="string[]"/>
+        <property name="uri" type="string"/>
+        <property name="apiKeyId" type="string"/>
+        <property name="secretApiKey" type="string"/>
+    </transfer>
+
+</transfers>

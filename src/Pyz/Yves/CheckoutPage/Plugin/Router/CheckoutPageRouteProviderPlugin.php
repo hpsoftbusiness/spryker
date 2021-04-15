@@ -14,6 +14,8 @@ class CheckoutPageRouteProviderPlugin extends SprykerShopCheckoutPageRouteProvid
 {
     public const ROUTE_NAME_CHECKOUT_ADYEN_3D_SECURE = 'checkout-adyen-3d-secure';
 
+    public const ROUTE_NAME_CHECKOUT_BENEFIT = 'checkout-my-world-payment-benefit';
+
     /**
      * Specification:
      * - Adds Routes to the RouteCollection.
@@ -28,6 +30,7 @@ class CheckoutPageRouteProviderPlugin extends SprykerShopCheckoutPageRouteProvid
     {
         $routeCollection = parent::addRoutes($routeCollection);
         $routeCollection = $this->addAdyen3dSecureRoute($routeCollection);
+        $routeCollection = $this->addBenefitVoucherRoute($routeCollection);
 
         return $routeCollection;
     }
@@ -42,6 +45,20 @@ class CheckoutPageRouteProviderPlugin extends SprykerShopCheckoutPageRouteProvid
         $route = $this->buildRoute('/checkout/adyen-3d-secure', 'CheckoutPage', 'Checkout', 'adyen3dSecureAction');
         $route = $route->setMethods(['GET', 'POST']);
         $routeCollection->add(static::ROUTE_NAME_CHECKOUT_ADYEN_3D_SECURE, $route);
+
+        return $routeCollection;
+    }
+
+    /**
+     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
+     *
+     * @return \Spryker\Yves\Router\Route\RouteCollection
+     */
+    protected function addBenefitVoucherRoute(RouteCollection $routeCollection): RouteCollection
+    {
+        $route = $this->buildRoute('/checkout/benefit', 'CheckoutPage', 'Checkout', 'benefitVoucherAction');
+        $route = $route->setMethods(['GET', 'POST']);
+        $routeCollection->add(static::ROUTE_NAME_CHECKOUT_BENEFIT, $route);
 
         return $routeCollection;
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
@@ -22,6 +23,8 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
     'Payment' => [
         GiftCardConfig::PROVIDER_NAME,
         NopaymentConfig::PAYMENT_PROVIDER_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
     ],
     'Oms' => [
         GiftCardConfig::PROVIDER_NAME,
@@ -33,6 +36,10 @@ $config[NopaymentConstants::NO_PAYMENT_METHODS] = [
 ];
 $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     GiftCardConfig::PROVIDER_NAME,
+    // For the test this param required for pass the Payment Step post condition. Due the bug when priceToPay become 0.00
+    'dummyPrepayment',
+    MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([

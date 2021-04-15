@@ -35,4 +35,29 @@ class CheckoutController extends SprykerShopCheckoutController
             '@CheckoutPage/views/adyen-3d-secure/adyen-3d-secure.twig'
         );
     }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return array|\Spryker\Yves\Kernel\View\View|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function benefitVoucherAction(Request $request)
+    {
+        $response = $this->createStepProcess()->process(
+            $request,
+            $this->getFactory()
+                ->createCheckoutFormFactory()
+                ->getBenefitFormCollection()
+        );
+
+        if (!is_array($response)) {
+            return $response;
+        }
+
+        return $this->view(
+            $response,
+            $this->getFactory()->getCustomerPageWidgetPlugins(),
+            '@CheckoutPage/views/benefit-voucher/benefit-voucher.twig'
+        );
+    }
 }

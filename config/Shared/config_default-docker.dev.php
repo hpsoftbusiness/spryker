@@ -173,3 +173,5 @@ require 'common/config_my-world-marketplace-api-development.php';
 $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = '7pyou7b7v0';
 
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.myworld.com/spryker';
+
+require 'common/config_my-world-payment.php';

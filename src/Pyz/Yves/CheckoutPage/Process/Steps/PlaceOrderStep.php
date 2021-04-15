@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
+use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
@@ -24,6 +25,11 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
     protected $productSellableChecker;
 
     /**
+     * @var \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     */
+    private $preConditionChecker;
+
+    /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface $checkoutClient
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
      * @param string $currentLocale
@@ -31,6 +37,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
      * @param string $stepRoute
      * @param string|null $escapeRoute
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface|array $preConditionChecker
      * @param array $errorCodeToRouteMatching
      */
     public function __construct(
@@ -41,6 +48,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
         $stepRoute,
         $escapeRoute,
         ProductSellableCheckerInterface $productSellableChecker,
+        PreConditionCheckerInterface $preConditionChecker,
         $errorCodeToRouteMatching = []
     ) {
         parent::__construct(
@@ -54,6 +62,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
         );
 
         $this->productSellableChecker = $productSellableChecker;
+        $this->preConditionChecker = $preConditionChecker;
     }
 
     /**
@@ -63,14 +72,29 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
      */
     public function preCondition(AbstractTransfer $quoteTransfer)
     {
-        $isQuoteValid = parent::preCondition($quoteTransfer);
-        $isQuoteValid = $this->productSellableChecker->check($quoteTransfer, $isQuoteValid);
-
-        if (!$isQuoteValid) {
-            $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
+        if ($this->isCartEmpty($quoteTransfer)) {
+            return false;
         }
 
-        return $isQuoteValid;
+        if (!$quoteTransfer->getCheckoutConfirmed()) {
+            $this->escapeRoute = CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUMMARY;
+
+            return false;
+        }
+
+        if (!$this->preConditionChecker->check($quoteTransfer)) {
+            $this->escapeRoute = CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUMMARY;
+
+            return false;
+        }
+
+        if (!$this->productSellableChecker->check($quoteTransfer, true)) {
+            $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
+
+            return false;
+        }
+
+        return true;
     }
 
     /**

@@ -7,19 +7,33 @@
 
 namespace Pyz\Yves\CheckoutPage\Process;
 
+use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\BenefitVoucherStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\ConfirmPaymentStep\PreConditionChecker as ConfirmPaymentStepPreConditionChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PostConditionChecker as SummaryStepPostConditionChecker;
+use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PreConditionChecker as SummaryStepPreConditionChecker;
 use Pyz\Yves\StepEngine\Process\StepCollection;
+use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
+use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
+use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin as SprykerShopCheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -28,7 +42,39 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class StepFactory extends SprykerShopStepFactory
 {
     /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Step\StepInterface[]
+     * @return \Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface
+     */
+    protected function getMyWorldPaymentClient(): MyWorldPaymentClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::MY_WORLD_PAYMENT_CLIENT);
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorage\ProductStorageClientInterface
+     */
+    protected function getProductStorageClient(): ProductStorageClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_PRODUCT_STORAGE);
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface
+     */
+    protected function getLocalClient(): CheckoutPageToLocaleClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getMyWorldMarketplaceApiClient(): MyWorldMarketplaceApiClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::MY_WORLD_MARKETPLACE_CLIENT);
+    }
+
+    /**
+     * @return array
      */
     public function getSteps(): array
     {
@@ -37,6 +83,7 @@ class StepFactory extends SprykerShopStepFactory
             $this->createPyzCustomerStep(),
             $this->createAddressStep(),
             $this->createPyzShipmentStep(),
+            $this->createBenefitStep(),
             $this->createPaymentStep(),
             $this->createSummaryStep(),
             $this->createPlaceOrderStep(),
@@ -44,6 +91,23 @@ class StepFactory extends SprykerShopStepFactory
             $this->createSuccessStep(),
             $this->createErrorStep(),
         ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep
+     */
+    public function createSummaryStep()
+    {
+        return new SummaryStep(
+            $this->getProductBundleClient(),
+            $this->getShipmentService(),
+            $this->getConfig(),
+            SprykerShopCheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUMMARY,
+            $this->getConfig()->getEscapeRoute(),
+            $this->getCheckoutClient(),
+            $this->createSummaryStepPreConditionChecker(),
+            $this->createSummaryStepPostConditionChecker(),
+        );
     }
 
     /**
@@ -78,11 +142,29 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\BenefitVoucherStep
+     */
+    public function createBenefitStep()
+    {
+        return new BenefitVoucherStep(
+            $this->getProductStorageClient(),
+            $this->getLocalClient(),
+            $this->getConfig(),
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_BENEFIT,
+            $this->getConfig()->getEscapeRoute()
+        );
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep
      */
     public function createPaymentStep()
     {
         return new PaymentStep(
+            $this->getConfig(),
+            $this->getTranslatorService(),
+            $this->getIntegerToDecimalConverter(),
+            $this->getMyWorldPaymentClient(),
             $this->getPaymentClient(),
             $this->getPaymentMethodHandler(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
@@ -95,7 +177,7 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
      */
     public function createPlaceOrderStep()
     {
@@ -107,11 +189,12 @@ class StepFactory extends SprykerShopStepFactory
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PLACE_ORDER,
             $this->getConfig()->getEscapeRoute(),
             $this->createProductSellableChecker(),
+            $this->createConfirmPaymentStepPreConditionChecker(),
             [
                 static::ERROR_CODE_GENERAL_FAILURE => self::ROUTE_CART,
                 'payment failed' => CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
                 'shipment failed' => CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SHIPMENT,
-            ]
+            ],
         );
     }
 
@@ -147,6 +230,14 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
+     * @return \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface
+     */
+    public function getIntegerToDecimalConverter(): IntegerToDecimalConverterInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CONVERTER_INTEGER_TO_DECIMAL);
+    }
+
+    /**
      * @return \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface
      */
     public function createProductSellableChecker(): ProductSellableCheckerInterface
@@ -160,7 +251,7 @@ class StepFactory extends SprykerShopStepFactory
     /**
      * @return \Spryker\Yves\StepEngine\Process\StepCollectionInterface
      */
-    public function createStepCollection()
+    public function createStepCollection(): StepCollectionInterface
     {
         return new StepCollection(
             $this->getRouter(),
@@ -169,6 +260,42 @@ class StepFactory extends SprykerShopStepFactory
                 CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PLACE_ORDER,
                 CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUCCESS,
             ]
+        );
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface
+     */
+    public function createSummaryStepPreConditionChecker(): PreConditionCheckerInterface
+    {
+        return new SummaryStepPreConditionChecker(
+            $this->getMyWorldPaymentClient(),
+            $this->getFlashMessenger(),
+            $this->getTranslatorService()
+        );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     */
+    public function createSummaryStepPostConditionChecker(): PostConditionCheckerInterface
+    {
+        return new SummaryStepPostConditionChecker(
+            $this->getMyWorldPaymentClient(),
+            $this->getFlashMessenger(),
+            $this->getTranslatorService()
+        );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     */
+    public function createConfirmPaymentStepPreConditionChecker(): PreConditionCheckerInterface
+    {
+        return new ConfirmPaymentStepPreConditionChecker(
+            $this->getMyWorldPaymentClient(),
+            $this->getFlashMessenger(),
+            $this->getTranslatorService()
         );
     }
 }

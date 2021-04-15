@@ -79,12 +79,14 @@
             {%- block renderOptions -%}
                 {% for group_label, choice in options %}
                     {%- if choice is iterable -%}
-                        <optgroup label="{{ embed.choice_translation_domain is same as(false) ? group_label : group_label|trans({}, embed.choice_translation_domain) }}">
+                        <optgroup
+                            label="{{ embed.choice_translation_domain is same as(false) ? group_label : group_label|trans({}, embed.choice_translation_domain) }}">
                             {% set options = choice %}
                             {{- block('renderOptions') -}}
                         </optgroup>
                     {%- else -%}
-                        <option value="{{ choice.value }}"{% if choice.attr %}{% with { attr: choice.attr } %}{{ block('attributes') }}{% endwith %}{% endif %}{% if choice is selectedchoice(embed.value) %} selected="selected"{% endif %}>
+                        <option
+                            value="{{ choice.value }}"{% if choice.attr %}{% with { attr: choice.attr } %}{{ block('attributes') }}{% endwith %}{% endif %}{% if choice is selectedchoice(embed.value) %} selected="selected"{% endif %}>
                             {{ embed.choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, embed.choice_translation_domain) }}
                         </option>
                     {%- endif -%}
@@ -125,7 +127,13 @@
 
 {%- block radio_widget -%}
     {% set type = 'radio' %}
-    {{block('checkbox_widget')}}
+    {%- set custom = attr.custom | default('true') -%}
+
+    {% if custom == 'true' %}
+        {{ block('checkbox_widget') }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
 {%- endblock -%}
 
 {# rows #}
@@ -133,7 +141,7 @@
 {%- block form_row -%}
     {%- set rowClass = rowAttr.class | default('') -%}
 
-    <div class="{{rowClass}}">
+    <div class="{{ rowClass }}">
         {{- form_label(form) -}}
         {{- form_widget(form) -}}
         {{- form_errors(form) -}}
@@ -151,7 +159,7 @@
 {%- block checkbox_row -%}
     {%- set rowClass = rowAttr.class | default('') -%}
 
-    <div class="{{rowClass}}">
+    <div class="{{ rowClass }}">
         {{- form_widget(form) -}}
         {{- form_errors(form) -}}
     </div>

@@ -12,7 +12,9 @@ use Pyz\Yves\Country\Plugin\CheckoutPage\CountryAddressExpanderPlugin;
 use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\DummyPaymentStepHandlerPlugin;
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\SubForm\DummyPrepaymentSubFormPlugin;
+use Pyz\Yves\MyWorldPayment\Plugin\StepEngine\MyWorldPaymentBonusSubFormPlugin;
 use Spryker\Shared\Kernel\ContainerInterface;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverter;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
@@ -33,6 +35,11 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThr
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     public const SERVICE_TRANSLATOR = 'translator';
+    public const FORM_EXPANDER = 'FORM_EXPANDER';
+    public const MY_WORLD_PAYMENT_CLIENT = 'MY_WORLD_PAYMENT_CLIENT';
+    public const MY_WORLD_MARKETPLACE_CLIENT = 'MY_WORLD_MARKETPLACE_CLIENT';
+    public const CONVERTER_INTEGER_TO_DECIMAL = 'CONVERTER_INTEGER_TO_DECIMAL';
+    public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -45,6 +52,11 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container = $this->extendPaymentMethodHandler($container);
         $container = $this->extendSubFormPluginCollection($container);
         $container = $this->addTranslatorService($container);
+        $container = $this->addFormExpander($container);
+        $container = $this->addMyWorldPaymentClient($container);
+        $container = $this->addMyWorldMarketplaceApiClient($container);
+        $container = $this->addMoneyConverter($container);
+        $container = $this->addProductStorageClient($container);
 
         return $container;
     }
@@ -150,6 +162,22 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addFormExpander(Container $container): Container
+    {
+        $container->set(static::FORM_EXPANDER, function () {
+            return [
+                new MyWorldPaymentBonusSubFormPlugin(),
+            ];
+        });
+
+        return $container;
+    }
+
+    /**
      * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface[]
      */
     protected function getAddressStepExecutorAddressExpanderPlugins(): array
@@ -169,6 +197,62 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container->set(static::SERVICE_TRANSLATOR, function (ContainerInterface $container) {
             return $container->getApplicationService(static::SERVICE_TRANSLATOR);
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function addMyWorldMarketplaceApiClient(Container $container): Container
+    {
+        $container->set(static::MY_WORLD_MARKETPLACE_CLIENT, function (Container $container) {
+            return $container->getLocator()->myWorldMarketplaceApi()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function addMyWorldPaymentClient(Container $container): Container
+    {
+        $container->set(static::MY_WORLD_PAYMENT_CLIENT, function (Container $container) {
+            return $container->getLocator()->myWorldPayment()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function addMoneyConverter(Container $container): Container
+    {
+        $container->set(static::CONVERTER_INTEGER_TO_DECIMAL, function () {
+            return new IntegerToDecimalConverter();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addProductStorageClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_PRODUCT_STORAGE, function (Container $container) {
+            return $container->getLocator()->productStorage()->client();
         });
 
         return $container;

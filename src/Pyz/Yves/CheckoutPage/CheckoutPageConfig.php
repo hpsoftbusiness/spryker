@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfig;
 
@@ -29,5 +30,37 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
     public function isAdyenCreditCard3dSecureEnabled(): bool
     {
         return $this->get(AdyenConstants::CREDIT_CARD_3D_SECURE_ENABLED);
+    }
+
+    /**
+     * @return string
+     */
+    public function getEVoucherPaymentName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitSalesPriceKey(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitAmountKey(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitStoreKey(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
     }
 }

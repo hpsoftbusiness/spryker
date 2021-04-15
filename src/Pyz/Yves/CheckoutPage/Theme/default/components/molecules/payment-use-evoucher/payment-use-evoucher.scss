@@ -1,0 +1,29 @@
+@mixin checkout-page-payment-use-evoucher($name: '.payment-use-evoucher') {
+    #{$name} {
+        font-size: map-get($setting-font-size, small);
+
+        &__cashback-balance {
+            font: fw(bold) map-get($setting-font-size, default) $setting-font-family;
+            margin-top: map-get($setting-spacing, big);
+            display: flex;
+            align-items: center;
+        }
+
+        &__cashback-balance-icon {
+            margin-right: map-get($setting-spacing, default);
+        }
+
+        &__cashback {
+            font-size: map-get($setting-font-size, big);
+            color: $setting-color-cashback;
+        }
+
+        &__balance-info {
+            margin: map-get($setting-spacing, big) 0;
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-payment-use-evoucher();

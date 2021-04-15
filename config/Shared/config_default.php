@@ -573,3 +573,8 @@ $config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = 'MW';
 // ----------------------------------------------------------------------------
 
 $config[ApiConstants::X_SPRYKER_API_KEY] = 'GSEH@VH@yd+e"kbm^?,^224&U,9L_wXL';
+
+// ----------------------------------------------------------------------------
+// ----------------------- MyWorld Payment API ----------------------------
+// ----------------------------------------------------------------------------
+require 'common/config_my-world-payment-api-development.php';

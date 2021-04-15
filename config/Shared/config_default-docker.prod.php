@@ -66,3 +66,10 @@ $config[ProductDataImportConstants::STORAGE_NAME] = 'aws-files-import';
 // ----------------------------------------------------------------------------
 
 $config[ApiConstants::X_SPRYKER_API_KEY] = '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
+
+require 'common/config_my-world-payment.php';
+
+// ----------------------------------------------------------------------------
+// ----------------------- MyWorld Payment API ----------------------------
+// ----------------------------------------------------------------------------
+require 'common/config_my-world-payment-api-prod.php';

@@ -1,0 +1,94 @@
+@mixin checkout-page-benefit-by-quantity($name: '.benefit-by-quantity') {
+    #{$name} {
+        border: rem(1) solid $setting-color-gray-2;
+        position: relative;
+        max-width: rem(250);
+
+        &:hover {
+            z-index: 10;
+        }
+
+        &__placeholder {
+            padding: rem(5) rem(15) rem(5) rem(5);
+            position: relative;
+            text-align: left;
+
+            &:before,
+            &:after {
+                content: '';
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 rem(2.5) rem(3) rem(2.5);
+                border-color: transparent transparent $setting-color-black transparent;
+                position: absolute;
+                right: rem(5);
+                bottom: 51%;
+            }
+
+            &:after {
+                border-width: rem(3) rem(2.5) 0 rem(2.5);
+                border-color: $setting-color-black transparent transparent transparent;
+                top: 51%;
+                bottom: auto;
+            }
+        }
+
+        &__options {
+            @include helper-visibility-invisible;
+            border: rem(1) solid $setting-color-gray-2;
+            position: absolute;
+            left: rem(-1);
+            right: rem(-1);
+            top: calc(100% - 1px);
+            background: $setting-color-white;
+            text-align: left;
+
+            #{$name}:hover & {
+                @include helper-visibility-visible;
+            }
+        }
+
+        &__option-wrapper {
+            @include helper-font-size(small);
+
+            &:not(:last-child) {
+                border-bottom: rem(1) solid $setting-color-gray-2;
+            }
+
+            &:hover {
+                background: $setting-color-gray-1;
+            }
+        }
+
+        &__option {
+            padding: rem(5);
+        }
+
+        &__option-toggler {
+            @include helper-visibility-invisible;
+            width: 20px;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+
+            &:checked + div {
+                background: $setting-color-gray-1;
+            }
+        }
+
+        &__sales-price {
+            @include helper-font-weight(bold);
+            color: $setting-color-main;
+        }
+
+        &__with,
+        &__benefit-price {
+            color: $setting-color-gray-5;
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-benefit-by-quantity;

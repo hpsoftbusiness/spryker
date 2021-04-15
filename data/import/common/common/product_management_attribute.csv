@@ -75,3 +75,6 @@ size_01,text,yes,no,"",size_01,size_01,,
 country_of_origin,text,yes,no,"",country_of_origin,country_of_origin,,
 gender,text,yes,no,"Male, Female",Gender,Geschlecht,"Male, Female","Männlich, Weiblich"
 featured_products,checkbox,no,no,"1",Featured products,Ausgewählte Produkte,,
+benefit_store_sales_price,text,yes,no,"",Benefit Store Sales Price,Benefit Store Sales Price,,
+benefit_amount,number,yes,no,,Benefit Amount,Benefit Store,,
+benefit_store,text,yes,no,,Benefit Store ,Benefit Store ,,

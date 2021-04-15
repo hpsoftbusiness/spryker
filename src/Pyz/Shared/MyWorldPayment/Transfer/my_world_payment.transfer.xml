@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="PaymentMyWorld">
+        <property name="idPaymentMyWorld" type="int"/>
+        <property name="fkSalesOrder" type="int"/>
+        <property name="amount" type="int"/>
+        <property name="currencyId" type="string"/>
+        <property name="orderReference" type="string"/>
+        <property name="paymentId" type="string"/>
+        <property name="reference" type="string"/>
+        <property name="status" type="string"/>
+        <property name="paymentTransactions" type="PaymentTransaction[]" singular="paymentTransaction"/>
+    </transfer>
+
+    <transfer name="PaymentTransactionMyWorld">
+        <property name="idPaymentTransactionMyWorld" type="int"/>
+        <property name="fkPaymentMyWorld" type="int"/>
+        <property name="paymentOptionId" type="int"/>
+        <property name="amount" type="int"/>
+        <property name="unit" type="string"/>
+        <property name="unitType" type="string"/>
+        <property name="dateTime" type="string"/>
+        <property name="batchNumber" type="int"/>
+        <property name="status" type="string"/>
+        <property name="statusCode" type="int"/>
+    </transfer>
+
+    <transfer name="PaymentMyWorldApiLog">
+        <property name="type" type="string"/>
+        <property name="request" type="string"/>
+        <property name="isSuccess" type="bool"/>
+        <property name="response" type="string"/>
+        <property name="statusCode" type="int"/>
+        <property name="errorCode" type="int"/>
+        <property name="errorMessage" type="string"/>
+    </transfer>
+
+    <transfer name="Quote">
+        <property name="myWorldPaymentIsSmsAuthenticationRequired" type="bool"/>
+        <property name="myWorldPaymentSessionId" type="string"/>
+        <property name="myWorldUseEVoucherBalance" type="bool"/>
+    </transfer>
+
+    <transfer name="CalculableObject">
+        <property name="myWorldUseEVoucherBalance" type="bool"/>
+        <property name="myWorldPaymentSessionId" type="string"/>
+    </transfer>
+
+    <transfer name="Order">
+        <property name="myWorldUseEVoucherBalance" type="bool"/>
+        <property name="myWorldPaymentSessionId" type="string"/>
+    </transfer>
+
+    <transfer name="Item">
+        <property name="useBenefitVoucher" type="bool"/>
+        <property name="amountItemsToUseBenefitVoucher" type="int"/>
+    </transfer>
+</transfers>

@@ -4647,6 +4647,10 @@ cart.item.bundle.description,Items in the bundle:,en_US
 cart.item.item_price,Item price,en_US
 cart.item.item_total,Item total,en_US
 cart.item.option.description,Product options:,en_US
+benefit_deal.item_quantity,Anzahl:,de_DE
+benefit_deal.item_quantity,Quantity:,en_US
+benefit_deal.product.attribute.manufacturer_name,Brand:,en_US
+benefit_deal.product.attribute.manufacturer_name,Marke:,de_DE
 cart.item.option.pre.check.validation.error.exists,"You can not reorder the product %name% directly, please add it to your cart separately.",en_US
 cart.item_quantity,Quantity,en_US
 cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
@@ -19863,3 +19867,45 @@ cart.add-to-shopping-list,Toevoegen aan boodschappenlijst,nl_NL
 cart.add-to-shopping-list.form,Bewaar winkelwagen in een boodschappenlijst,nl_NL
 cart.add-to-shopping-list.form.add_new,Voeg een nieuwe boodschappenlijst toe,nl_NL
 cart.add-to-shopping-list.form.error.empty_name,Voer de naam van de boodschappenlijst in,nl_NL
+gdpr.message,"We use cookies on our website to make our services more efficient and more user-friendly. Therefore please select 'Accept cookies'! Please read our %link% for further information.",en_US
+gdpr.message,"Wir nutzen Cookies auf unserer Website, um deinen Besuch effizienter zu gestalten und dir mehr Benutzerfreundlichkeit bieten zu können. Klicke daher bitte auf 'Cookies akzeptieren'! Nähere Informationen findest du in unserer %link%",de_DE
+gdpr.privacy_policy,"Privacy Policy",en_US
+gdpr.privacy_policy,"Datenschutzerklärung",de_DE
+gdpr.accept_cookies,"Accept cookies",en_US
+gdpr.accept_cookies,"Cookies akzeptieren",de_DE
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
+discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
+shipment.lead.time,"Lieferzeit: ca. 3-7 Werktage",de_DE
+shipment.lead.time,"Delivery time: approx. 3-7 working days",en_US
+afiliate.legal.text,"Dieses Produkt wird von einem Drittanbieter verkauft. Für Preisgestaltung, Produktbeschreibung, Lagerstand und Versand ist ausschließlich der Drittanbieter verantwortlich. Zur Haftung von myWorld für Hyperlinks sowie deren Inhalt wird auf die für den myWorld Marktplatz geltenden Nutzungsbedingungen verwiesen.",de_DE
+afiliate.legal.text,"This product is sold by a third party seller. The seller is solely responsible for pricing, product description, stock levels and shipping. Regarding myWorld’s liability for hyperlinks and their content, we refer to the terms of use applicable for the myWorld marketplace.",en_us
+pdp.include.vat,"inkl. MwSt.",de_DE
+pdp.include.vat,"incl. VAT",en_US
+pdp.price.from,"ab",de_DE
+pdp.price.from,"from",en_US
+page.checkout.summary.sms_code,SMS Code,de_DE
+page.checkout.summary.sms_code,SMS Code,en_US
+checkout.step.summary.sms_code_send_error,Es gab leider einen Fehler beim zusenden des SMS Codes,de_DE
+checkout.step.summary.sms_code_send_error,Send SMS Code ended in an error,en_US
+checkout.step.summary.sms_code_input_error,Leider war der eingegebene Sms Code nicht korrekt,de_DE
+checkout.step.summary.sms_code_input_error,The SMS Code was not correct,en_US
+checkout.step.confirm_payment.error,Leider ist etwas im Zahlungsprozess schief gelaufen,de_DE
+checkout.step.confirm_payment.error,There went something wrong on payment,en_US
+checkout.payment.cashback_balance,Cashback/myWorld eVoucher balance:,en_US
+checkout.payment.cashback_balance,Cashback/myWorld eVoucher balance:,de_DE
+checkout.payment.cashback_info,"If you have Cashback credit or myWorld eVoucher credit, this will be shown here and you can use it for payment.<br/>Note: These can only be used as payment for items sold by myWorld.",en_US
+checkout.payment.cashback_info,"If you have Cashback credit or myWorld eVoucher credit, this will be shown here and you can use it for payment.<br/>Note: These can only be used as payment for items sold by myWorld.",de_DE
+checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,en_US
+checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,de_DE
+payment.step.api_request.error,"Sorry, something went wrong with the payment. Please try again later!",en_US
+payment.step.api_request.error,"Ups, scheinbar hat etwas mit der Zahlung nicht geklappt. Versuch es bitte später nocheinmal",de_DE
+checkout.step.benefit_voucher.title,Benefit Deals,en_US
+checkout.step.benefit_voucher.title,Benefit Deals,de_DE
+checkout.step.benefit_voucher.use_voucher,Use the Benefit Vouchers (BV) for discount,en_US
+checkout.step.benefit_voucher.use_voucher,Verwenden Sie die Benefit Vouchers (BV) für Rabatte,de_DE
+checkout.step.benefit_voucher.items,Items,en_US
+checkout.step.benefit_voucher.items,Artikel,de_DE
+checkout.step.benefit_voucher.with_method,with,en_US
+checkout.step.benefit_voucher.with_method,mit,de_DE
+checkout.step.benefit_voucher.or,or,en_US
+checkout.step.benefit_voucher.or,oder,de_DE

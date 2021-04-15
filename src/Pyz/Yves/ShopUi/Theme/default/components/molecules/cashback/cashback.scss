@@ -14,6 +14,18 @@
             font-size: rem(14);
         }
 
+        &--alternative {
+            @include helper-font-size(small);
+            @include helper-font-weight(bold);
+            color: $setting-color-cashback;
+        }
+
+        &--align-right {
+            @include helper-breakpoint(lg) {
+                justify-content: flex-end;
+            }
+        }
+
         @content;
     }
 }

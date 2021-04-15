@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\MyWorldPayment\Persistence"
+          package="src.Orm.Zed.MyWorldPayment.Persistence">
+
+    <table name="pyz_payment_my_world">
+        <column name="id_payment_my_world" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_sales_order" required="true" type="INTEGER"/>
+
+        <column name="amount" required="true" type="INTEGER"/>
+        <column name="currency_id" required="true" type="VARCHAR" size="5"/>
+        <column name="order_reference" required="true" type="VARCHAR" size="64"/>
+        <column name="payment_id" required="true" type="VARCHAR" size="36"/>
+        <column name="reference" required="true" type="VARCHAR" size="36"/>
+        <column name="status" required="true" type="ENUM" valueSet="new,charged,refund_in_progress,partial_refund_successful" defaultValue="new"/>
+
+        <foreign-key name="pyz_payment_my_world-fk_sales_order" foreignTable="spy_sales_order" phpName="SpySalesOrder">
+            <reference foreign="id_sales_order" local="fk_sales_order"/>
+        </foreign-key>
+
+        <unique name="pyz_payment_my_world-unique-order_reference">
+            <unique-column name="order_reference"/>
+        </unique>
+
+        <behavior name="timestampable"/>
+        <id-method-parameter value="pyz_payment_my_world_pk_seq"/>
+    </table>
+
+    <table name="pyz_payment_transaction_my_world">
+        <column name="id_payment_transaction_my_world" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_payment_my_world" required="true" type="INTEGER"/>
+
+        <column name="payment_option_id" required="true" type="INTEGER"/>
+        <column name="amount" required="true" type="INTEGER"/>
+        <column name="unit" required="true" type="VARCHAR" size="14"/>
+        <column name="unit_type" required="true" type="VARCHAR" size="8"/>
+        <column name="date_time" required="true" type="TIMESTAMP"/>
+        <column name="batch_number" required="true" type="INTEGER"/>
+        <column name="status" required="true" type="ENUM" valueSet="accepted,in_progress,failed"/>
+        <column name="status_code" required="true" type="INTEGER"/>
+
+        <foreign-key name="pyz_payment_transaction_my_world-fk_payment_my_world" foreignTable="pyz_payment_my_world" phpName="PyzPaymentMyWorld">
+            <reference foreign="id_payment_my_world" local="fk_payment_my_world"/>
+        </foreign-key>
+
+        <behavior name="timestampable"/>
+
+        <id-method-parameter value="pyz_payment_my_world_pk_seq"/>
+    </table>
+
+    <table name="pyz_payment_my_world_api_log">
+        <column name="id_payment_my_world_api_log" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+
+        <column name="type" required="true" type="VARCHAR"/>
+        <column name="request" required="true" type="LONGVARCHAR"/>
+        <column name="is_success" required="true" type="BOOLEAN"/>
+
+        <column name="response" required="false" type="LONGVARCHAR"/>
+
+        <column name="status_code" required="false" type="INTEGER"/>
+        <column name="error_code" required="false" type="INTEGER"/>
+        <column name="error_message" required="false" type="VARCHAR" size="255"/>
+
+        <behavior name="timestampable"/>
+
+        <id-method-parameter value="pyz_payment_my_world_api_log_pk_seq"/>
+    </table>
+
+</database>

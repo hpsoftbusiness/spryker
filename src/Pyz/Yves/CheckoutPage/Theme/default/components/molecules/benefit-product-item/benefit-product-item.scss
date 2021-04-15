@@ -1,0 +1,75 @@
+@mixin checkout-page-benefit-product-item($name: '.benefit-product-item') {
+    #{$name} {
+        @include helper-font-size(small);
+        display: flex;
+        margin-bottom: map-get($setting-spacing, bigger);
+        padding-bottom: map-get($setting-spacing, bigger);
+        border-bottom: rem(1) solid $setting-color-gray-2;
+
+        &__image {
+            width: rem(120);
+            margin-right: rem(20);
+        }
+
+        &__meta {
+            @include helper-font-size(default);
+            flex-grow: 1;
+            align-self: center;
+        }
+
+        &__title {
+            @include helper-font-size(small);
+            margin-bottom: map-get($setting-spacing, default);
+        }
+
+        &__benefites {
+            @include helper-breakpoint(lg) {
+                padding-left: rem(20);
+                width: rem(250);
+                text-align: right;
+            }
+        }
+
+        &__or {
+            @include helper-font-size(default);
+            margin: map-get($setting-spacing, default) 0;
+        }
+
+        &__total-price {
+            @include helper-font-weight(bold);
+
+            @include helper-breakpoint(lg) {
+                text-align: right;
+            }
+        }
+
+        &__single-unit-price {
+            @include helper-font-size(smaller);
+
+        }
+
+        &__use-benefit {
+            @include helper-font-size(smaller);
+            padding-top: map-get($setting-spacing, default);
+            display: flex;
+        }
+
+        &__cashback {
+            @include helper-font-size(small);
+            color: $setting-color-cashback;
+        }
+
+        &__meta-wrapper {
+            flex-grow: 1;
+
+            @include helper-breakpoint(lg) {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-benefit-product-item;

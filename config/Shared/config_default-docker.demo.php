@@ -60,3 +60,10 @@ $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z5d186';
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.myworld.com/spryker';
 
 $config[ProductDataImportConstants::STORAGE_NAME] = 'aws-files-import';
+
+// ----------------------------------------------------------------------------
+// ----------------------- MyWorld Payment API ----------------------------
+// ----------------------------------------------------------------------------
+require 'common/config_my-world-payment-api-development.php';
+
+require 'common/config_my-world-payment.php';

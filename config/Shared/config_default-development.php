@@ -226,3 +226,8 @@ require 'common/config_adyen-development.php';
 // >>> SSO
 
 require 'common/config_sso-development.php';
+
+// ----------------------------------------------------------------------------
+// ----------------------- MyWorld Payment API ----------------------------
+// ----------------------------------------------------------------------------
+require 'common/config_my-world-payment-api-development.php';

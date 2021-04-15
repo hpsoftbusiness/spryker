@@ -1,0 +1,79 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'benefit-product-item',
+} %}
+
+{% define data = {
+    product: required,
+    benefitSalesInfo: {},
+    item: {},
+    benefitVouchersCurrencyCode: '',
+} %}
+
+{% set product = data.product %}
+{% set abstractProductId = product.idProductAbstract %}
+{% set productInfo = data.benefitSalesInfo[abstractProductId] %}
+{% set productBrand = product.concreteAttributes['brand'] %}
+{% set images = product.images %} {#It can be empty array#}
+{% set currencyCode = productInfo['currencyCode'] %}
+{% set unitPrice = productInfo['unitPrice'] %}
+{% set subTotalPrice = productInfo['subTotalForItems'] %}
+{% set prices = productInfo['prices'] %}
+
+{#                    Array with the prices for different variants of BV amount items#}
+{#                        Elements of the array: #}
+{#                    'salesPrice' => The price to pay for the items with Benefit Vouchers#}
+{#                    'benefitAmount' => Amount of the vouchers need to be charged to buy the amount of the items but the mentioned sales Price#}
+{#                    'quantity' => the quantity of items that define sales price and benefit vouchers amount that need to be charged#}
+
+{% block body %}
+    {% include molecule('product-image') with {
+        class: config.name ~ '__image',
+        data: {
+            image: images | length > 0 ? images[0].externalUrlLarge : '',
+        },
+    } only %}
+
+    <div class="{{ config.name }}__meta-wrapper">
+        <div class="{{ config.name }}__meta">
+            <h2 class="{{ config.name }}__title">{{ product.name }}</h2>
+            <strong>{{ 'benefit_deal.product.attribute.manufacturer_name' | trans }}</strong> <span>{{ 'page.product.by' | trans }} {{ productBrand }}</span> -<span>{{ 'page.product.seller' | trans }} <a href="https://corporate.myworld.com/">myWorld.com</a></span>
+            <div>
+                <strong>{{ 'benefit_deal.item_quantity' | trans }}</strong> {{ product.quantity }}
+            </div>
+        </div>
+
+        <div class="{{ config.name }}__benefites">
+            <div class="{{ config.name }}__prices">
+                <div class="{{ config.name }}__total-price">{{ currencyCode }} {{ subTotalPrice }}</div>
+                <div class="{{ config.name }}__single-unit-price">{{ currencyCode }} {{ unitPrice }}</div>
+                {% include molecule('cashback') with {
+                    modifiers: ['alternative', 'align-right'],
+                    data: {
+                        cashback: data.product.concreteAttributes['cashback_amount'],
+                        shoppingPoints: data.product.concreteAttributes['shopping_points'],
+                    },
+                } only %}
+                <div class="{{ config.name }}__or">{{ 'checkout.step.benefit_voucher.or' | trans }}</div>
+            </div>
+
+            {% include molecule('benefit-by-quantity', 'CheckoutPage') with {
+                data: {
+                    amountItemsToUseBenefitVoucher: data.item.amountItemsToUseBenefitVoucher,
+                    prices: prices,
+                    currencyCode: currencyCode,
+                    benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,
+                },
+            } only %}
+
+            <label class="{{ config.name }}__use-benefit">
+                {{ form_widget(data.item, {
+                    required: false,
+                    component: molecule('toggler-radio')
+                }) }}
+                <span>{{ 'checkout.step.benefit_voucher.use_voucher' | trans }}</span>
+            </label>
+        </div>
+    </div>
+{% endblock %}

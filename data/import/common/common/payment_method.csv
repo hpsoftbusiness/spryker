@@ -3,3 +3,5 @@ dummyPaymentInvoice,Invoice,dummyPayment,Dummy Payment,0
 dummyPaymentCreditCard,Credit Card,dummyPayment,Dummy Payment,0
 adyenCreditCard,Credit Card,adyen,Adyen,0
 dummyPrepayment,Prepayment,dummy,Dummy,1
+EVoucher,EVoucher,EVoucher,EVoucher,1
+BenefitVouchers,BenefitVouchers,BenefitVouchers,BenefitVouchers,1

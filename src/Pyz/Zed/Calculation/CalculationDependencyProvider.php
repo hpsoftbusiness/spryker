@@ -7,6 +7,9 @@
 
 namespace Pyz\Zed\Calculation;
 
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentBenefitVoucherQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentOrderRecalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentQuoteCalculationPlugin;
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorForGenericAmountPlugin;
@@ -228,8 +231,10 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new TaxTotalCalculatorPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
+            new MyWorldPaymentQuoteCalculationPlugin(),
 
             new PaymentCalculatorPlugin(),
+            new MyWorldPaymentBenefitVoucherQuoteCalculationPlugin(),
         ];
 
         return $pluginStack;
@@ -270,6 +275,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new CanceledTotalCalculationPlugin(),
             new OrderTaxTotalCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
+            new MyWorldPaymentOrderRecalculationPlugin(),
             new NetTotalCalculatorPlugin(),
         ];
     }

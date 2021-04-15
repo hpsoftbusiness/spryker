@@ -1,0 +1,47 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'benefit-by-quantity',
+    tag: 'benefit-by-quantity',
+} %}
+
+{% define data = {
+    amountItemsToUseBenefitVoucher: required,
+    prices: [],
+    benefitVouchersCurrencyCode: '',
+    currencyCode: '',
+} %}
+
+{% define attributes = {
+    'checkbox-classes': config.name ~ '__option-toggler',
+    'option-classes': config.name ~ '__option',
+    'placeholder-classes': config.name ~ '__placeholder',
+} %}
+
+{% block body %}
+    {% set childrens = data.amountItemsToUseBenefitVoucher|filter(child => not child.rendered) %}
+    <div class="{{ config.name }}__placeholder">
+        placeholder
+    </div>
+    <div class="{{ config.name }}__options">
+        {% for child in childrens %}
+            <div class="{{ config.name }}__option-wrapper">
+                <label>
+                    {{ form_widget(child, {'attr': {'class': config.name ~ '__option-toggler', 'custom': 'false'}}) }}
+                    <div class="{{ config.name }}__option">
+                        {% for price in data.prices %}
+                            {% if(price.quantity == child.vars.value) %}
+                                <span>{{ child.vars.value }} {{ 'checkout.step.benefit_voucher.items' | trans }}</span>
+                                <span class="{{ config.name }}__sales-price">
+                                    {{ data.currencyCode }} {{ price.salesPrice }}
+                                </span>
+                                <span class="{{ config.name }}__with">{{ 'checkout.step.benefit_voucher.with_method' | trans }}</span>
+                                <span class="{{ config.name }}__benefit-price">{{ data.benefitVouchersCurrencyCode }} {{ price.benefitAmount }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
