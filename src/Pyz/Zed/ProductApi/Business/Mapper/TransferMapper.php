@@ -9,6 +9,7 @@ use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductApiTransfer;
 use Generated\Shared\Transfer\ProductBenefitApiTransfer;
 use Generated\Shared\Transfer\ProductBvDealApiTransfer;
+use Generated\Shared\Transfer\ProductImageSetTransfer;
 use Generated\Shared\Transfer\ProductPriceApiTransfer;
 use Generated\Shared\Transfer\ProductSpDealApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
@@ -100,14 +101,30 @@ class TransferMapper implements TransferMapperInterface
         ProductAbstractTransfer $productAbstractTransfer,
         LocaleTransfer $localeTransfer
     ): ?string {
+        $defaultImageUrl = null;
         foreach ($productAbstractTransfer->getImageSets() as $imageSet) {
-            if ($imageSet->getLocale()->getIdLocale() === $localeTransfer->getIdLocale()) {
-                return isset($imageSet->getProductImages()[0])
-                    ? $imageSet->getProductImages()[0]->getExternalUrlLarge()
-                    : null;
+            if ($imageSet->getLocale()) {
+                if ($imageSet->getLocale()->getIdLocale() === $localeTransfer->getIdLocale()) {
+                    return $this->getImageUrlFromImageSet($imageSet);
+                }
+            } else {
+                $defaultImageUrl = $this->getImageUrlFromImageSet($imageSet);
             }
+
         }
-        return null;
+        return $defaultImageUrl;
+    }
+
+    /**
+     * @param ProductImageSetTransfer $imageSetTransfer
+     *
+     * @return string|null
+     */
+    protected function getImageUrlFromImageSet(ProductImageSetTransfer $imageSetTransfer): ?string
+    {
+        return isset($imageSetTransfer->getProductImages()[0])
+            ? $imageSetTransfer->getProductImages()[0]->getExternalUrlLarge()
+            : null;
     }
 
     /**

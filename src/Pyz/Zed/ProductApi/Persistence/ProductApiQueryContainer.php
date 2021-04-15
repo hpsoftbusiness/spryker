@@ -92,6 +92,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     {
         return $this->getFactory()
             ->createProductAbstractQuery()
+            ->filterByIsRemoved(false)
             ->limit(static::PRODUCTS_LIMIT);
     }
 }
