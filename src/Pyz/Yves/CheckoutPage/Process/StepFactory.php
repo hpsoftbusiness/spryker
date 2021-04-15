@@ -12,7 +12,7 @@ use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
-use Pyz\Yves\CheckoutPage\Process\Steps\BenefitVoucherStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\BenefitDealStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ConfirmPaymentStep\PreConditionChecker as ConfirmPaymentStepPreConditionChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
@@ -142,11 +142,11 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
-     * @return \Pyz\Yves\CheckoutPage\Process\Steps\BenefitVoucherStep
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\BenefitDealStep
      */
     public function createBenefitStep()
     {
-        return new BenefitVoucherStep(
+        return new BenefitDealStep(
             $this->getProductStorageClient(),
             $this->getLocalClient(),
             $this->getConfig(),

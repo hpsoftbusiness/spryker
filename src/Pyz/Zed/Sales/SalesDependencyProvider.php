@@ -8,6 +8,10 @@
 namespace Pyz\Zed\Sales;
 
 use Pyz\Zed\Adyen\Communication\Plugin\Sales\AdyenPaymentOrderExpanderPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderExpanderPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderItemExpanderPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderPostSavePlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\OrderItemBenefitDealsPreSavePlugin;
 use Pyz\Zed\Customer\Communication\Plugin\Sales\CustomerOrderExpanderPreSavePlugin;
 use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
 use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;
@@ -155,6 +159,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new RemunerationTotalOrderExpanderPlugin(),
             new IsCancellableOrderExpanderPlugin(),
             new StockProductOrderHydratePlugin(),
+            new BenefitDealOrderExpanderPlugin(),
         ];
     }
 
@@ -165,6 +170,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new IsQuantitySplittableOrderItemExpanderPreSavePlugin(),
+            new OrderItemBenefitDealsPreSavePlugin(),
         ];
     }
 
@@ -195,6 +201,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ConfiguredBundlesOrderPostSavePlugin(),
+            new BenefitDealOrderPostSavePlugin(),
         ];
     }
 
@@ -226,6 +233,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOptionItemExpanderPlugin(),
             new ItemStateOrderItemExpanderPlugin(),
             new ProductAttributesOrderItemExpanderPlugin(),
+            new BenefitDealOrderItemExpanderPlugin(),
         ];
     }
 

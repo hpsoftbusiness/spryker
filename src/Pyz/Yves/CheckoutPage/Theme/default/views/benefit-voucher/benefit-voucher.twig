@@ -2,16 +2,16 @@
 
 {% define data = {
     backUrl: _view.previousStepUrl,
-    title: 'checkout.step.benefit_voucher.title' | trans
+    title: 'checkout.step.benefit_deal.title' | trans
 } %}
 
 {% block content %}
-    <h2 class="title title--primary">{{ 'checkout.step.benefit_voucher.title' | trans }}</h2>
+    <h2 class="title title--primary">{{ 'checkout.step.benefit_deal.title' | trans }}</h2>
 
     {% embed molecule('form') with {
         modifiers: ['checkout-actions', 'checkout-form-elements'],
         data: {
-            form: _view.benefit_voucher_collection_form,
+            form: _view.benefit_deal_collection_form,
             benefitSalesInfo: _view.benefitSalesInfo,
             benefitVouchersCurrencyCode: _view.customerBalance.benefitVouchersCurrencyCode,
             submit: {
@@ -33,6 +33,7 @@
                     {% include molecule('benefit-product-item', 'CheckoutPage') with {
                         data: {
                             item: item,
+                            formType: item.children | keys | first,
                             product: item.vars.value,
                             benefitSalesInfo: data.benefitSalesInfo,
                             benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,

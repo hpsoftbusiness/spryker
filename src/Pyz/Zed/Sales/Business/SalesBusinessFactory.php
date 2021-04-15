@@ -11,6 +11,8 @@ use Pyz\Zed\Sales\Business\Order\OrderHydrator as OrderHydratorWithMultiShipping
 use Pyz\Zed\Sales\SalesDependencyProvider;
 use Spryker\Zed\Sales\Business\Order\OrderHydratorInterface;
 use Spryker\Zed\Sales\Business\SalesBusinessFactory as SprykerSalesBusinessFactory;
+use Pyz\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapper;
+use Spryker\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapperInterface;
 
 /**
  * @method \Spryker\Zed\Sales\SalesConfig getConfig()
@@ -66,5 +68,13 @@ class SalesBusinessFactory extends SprykerSalesBusinessFactory
     public function getOrderItemForExportExpanderPlugins()
     {
         return $this->getProvidedDependency(SalesDependencyProvider::PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER);
+    }
+
+    /**
+     * @return \Spryker\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapperInterface
+     */
+    public function createSalesOrderItemMapper(): SalesOrderItemMapperInterface
+    {
+        return new SalesOrderItemMapper();
     }
 }

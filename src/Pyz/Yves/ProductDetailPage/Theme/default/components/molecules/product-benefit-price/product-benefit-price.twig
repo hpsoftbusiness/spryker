@@ -1,0 +1,59 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-benefit-price',
+} %}
+
+{% define data = {
+    regularPriceAmount: required,
+    benefitPriceAmount: required,
+    benefitCurrencyAmount: required,
+    benefitCurrencyType: required,
+} %}
+
+{% block body %}
+        <div class="spacing-top spacing-bottom">
+            <span class="{{ config.name }}__title-text {{ config.name }}__title-text--{{ data.benefitCurrencyType }}">
+                {% include atom('icon') with {
+                    class: 'cashback__icon',
+                    modifiers: ['medium-up'],
+                    data: {
+                        name: data.benefitCurrencyType,
+                    },
+                } only %}
+
+                {{ 'pdp.price' | trans }}
+            </span>
+        </div>
+        <div class="col">
+            <div class="{{ config.name }}__benefit-price-amount--{{ data.benefitCurrencyType }}">
+                {% include molecule('money-price') with {
+                    modifiers: ['pdp'],
+                    data: {
+                        amount: data.benefitPriceAmount,
+                        priceVatText: null
+                    }
+                } only %}
+            </div>
+            <div class="row">
+                {% block regularPrice %}
+                    <span class="{{ config.name }}__regular-price-amount">
+                        {{ data.regularPriceAmount | money }}
+                    </span>
+                {% endblock %}
+
+                {% block benefitCurrency %}
+                    <span class="{{ config.name }}__benefit-currency {{ config.name }}__benefit-currency--{{ data.benefitCurrencyType }}">
+                            - {{ data.benefitCurrencyAmount }}
+                        {% include atom('icon') with {
+                            class: 'cashback__icon',
+                            modifiers: ['medium-up'],
+                            data: {
+                                name: data.benefitCurrencyType,
+                            },
+                        } only %}
+                    </span>
+                {% endblock %}
+            </div>
+        </div>
+{% endblock %}

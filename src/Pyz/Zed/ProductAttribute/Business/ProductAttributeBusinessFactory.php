@@ -10,6 +10,7 @@ namespace Pyz\Zed\ProductAttribute\Business;
 use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader;
 use Pyz\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttributeTransferMapper;
+use Pyz\Zed\ProductAttribute\ProductAttributeDependencyProvider;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as SprykerProductAttributeBusinessFactory;
 
 /**
@@ -29,8 +30,17 @@ class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFac
             $this->getLocaleFacade(),
             $this->getProductFacade(),
             $this->createProductReader(),
-            $this->getUtilSanitizeXssService()
+            $this->getUtilSanitizeXssService(),
+            $this->getProductAttributePreSaveCheckPlugins()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\ProductAttribute\Dependency\Plugin\ProductAttributePreSaveCheckPluginInterface[]
+     */
+    public function getProductAttributePreSaveCheckPlugins(): array
+    {
+        return $this->getProvidedDependency(ProductAttributeDependencyProvider::PLUGINS_PRODUCT_ATTRIBUTE_PRE_SAVE_CHECK);
     }
 
     /**

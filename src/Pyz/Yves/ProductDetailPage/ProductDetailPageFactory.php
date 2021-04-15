@@ -12,6 +12,9 @@ use Pyz\Client\ProductAttribute\ProductAttributeClientInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageFactory as SprykerShopProductDetailPageFactory;
 
+/**
+ * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageConfig getConfig()
+ */
 class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
 {
     /**
@@ -31,7 +34,7 @@ class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
     }
 
     /**
-     * @return ProductAttributeClientInterface
+     * @return \Pyz\Client\ProductAttribute\ProductAttributeClientInterface
      */
     public function getProductAttributeClient(): ProductAttributeClientInterface
     {

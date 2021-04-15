@@ -60,22 +60,59 @@
         </div>
     </div>
 
-    <div class="grid grid--justify spacing-bottom spacing-bottom--smaller">
-        {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
-        {% nowidget %}
-            <div class="col">
-                {% include molecule('money-price') with {
-                    modifiers: ['pdp'],
-                    data: {
-                        amount: data.product.price,
-                        originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
-                    }
-                } only %}
-            </div>
-        {% endwidget %}
+    <div class="spacing-bottom spacing-bottom--big">
+        <div class="row">
+            <span class="{{ config.name }}__regular-price-text">
+                {{ 'pdp.price.regular_price' | trans }}
+            </span>
+        </div>
+        <div class="row">
+            {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
+            {% nowidget %}
+                <div class="col">
+                    {% include molecule('money-price') with {
+                        modifiers: ['pdp'],
+                        data: {
+                            amount: data.product.price,
+                            originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
+                        }
+                    } only %}
+                </div>
+            {% endwidget %}
+        </div>
     </div>
 
     {% set cashback = data.cashback %}
+    {% set shoppingPointsBenefitPrice =  data.product.prices.SP_BENEFIT ?? null %}
+    {% set benefitVoucherPrice =  data.product.attributes.benefit_store_sales_price ?? null %}
+    {% set shoppoingPointsAmount = data.product.shoppingPointsAmount ?? null %}
+
+    <div class="grid spacing-bottom spacing-bottom--biggest spacing-top">
+        {% if benefitVoucherPrice %}
+            <div class="col col--sm-6 col--md-5">
+                {# @TODO implement benefit voucher price presentation #}
+                {% include molecule('product-benefit-price', 'ProductDetailPage') with {
+                    data: {
+                        regularPriceAmount: data.product.price,
+                        benefitPriceAmount: benefitVoucherPrice * 100,
+                        benefitCurrencyAmount: 'max € 16',
+                        benefitCurrencyType: 'benefit-voucher'
+                    }
+                } only %}
+            </div>
+        {% elseif shoppingPointsBenefitPrice and shoppoingPointsAmount %}
+            <div class="col col--sm-6 col--md-5">
+                {% include molecule('product-benefit-price', 'ProductDetailPage') with {
+                    data: {
+                        regularPriceAmount: data.product.price,
+                        benefitPriceAmount: shoppingPointsBenefitPrice,
+                        benefitCurrencyAmount: shoppoingPointsAmount,
+                        benefitCurrencyType: 'shopping-point'
+                    }
+                } only %}
+            </div>
+        {% endif %}
+    </div>
 
     {% if cashback %}
         {% include molecule('cashback') with {

@@ -9,6 +9,7 @@ namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use ArrayObject;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
@@ -16,9 +17,9 @@ use Spryker\Yves\StepEngine\Dependency\Step\StepWithBreadcrumbInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AbstractBaseStep;
 
-class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbInterface
+class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInterface
 {
-    protected const STEP_TITLE = 'checkout.step.benefit_voucher.title';
+    protected const STEP_TITLE = 'checkout.step.benefit_deal.title';
 
     /**
      * @var \Spryker\Client\ProductStorage\ProductStorageClientInterface
@@ -63,7 +64,7 @@ class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbI
      */
     public function requireInput(AbstractTransfer $dataTransfer): bool
     {
-        return $this->isCartHasProductsWithBenefitVouchers($dataTransfer);
+        return $this->assertCartHasApplicableBenefitDeals($dataTransfer);
     }
 
     /**
@@ -91,7 +92,10 @@ class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbI
      */
     public function isBreadcrumbItemEnabled(AbstractTransfer $dataTransfer): bool
     {
-        return $this->isOneOfItemSelectedUseBenefitVouchers($dataTransfer);
+        /**
+         * @var \Generated\Shared\Transfer\QuoteTransfer $dataTransfer
+         */
+        return $this->hasBenefitDealsApplied($dataTransfer);
     }
 
     /**
@@ -118,13 +122,22 @@ class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbI
             function (ArrayObject $carry, ItemTransfer $itemTransfer) {
                 $product = $this->getProductFromStorageForItemTransfer($itemTransfer);
                 $attributes = $product ? $product['attributes'] : $itemTransfer->getConcreteAttributes();
+                $currencyCode = $itemTransfer->getPriceProduct()->getMoneyValue()->getCurrency()->getCode();
 
-                if ($product && $this->isBenefitVouchersDataProvidedForProductAttributes($attributes)) {
+                /**
+                 * @TODO refactor properly after all payment branches are merged.
+                 */
+                if ($product && ($this->isBenefitVouchersDataProvidedForProductAttributes($attributes))) {
                     $carry[$itemTransfer->getIdProductAbstract()] = [
                         'prices' => $this->calculateSalesPriceForQuantity($itemTransfer, $attributes),
-                        'currencyCode' => $itemTransfer->getPriceProduct()->getMoneyValue()->getCurrency()->getCode(),
-                        'subTotalForItems' => number_format((float)($itemTransfer->getSumSubtotalAggregation() / 100), 2),
+                        'currencyCode' => $currencyCode,
                         'unitPrice' => number_format((float)$itemTransfer->getUnitPrice() / 100, 2),
+                    ];
+                } elseif ($product && $itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+                    $carry[$itemTransfer->getIdProductAbstract()] = [
+                        'prices' => [],
+                        'currencyCode' => $currencyCode,
+                        'unitPrice' => $itemTransfer->getOriginUnitGrossPrice(),
                     ];
                 }
 
@@ -155,7 +168,7 @@ class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbI
         return array_reduce(
             range(1, (int)$itemTransfer->getQuantity()),
             function (array $carry, $index) use ($itemTransfer, $productAttributes) {
-                $salesPrice = $productAttributes[$this->checkoutPageConfig->getBenefitSalesPriceKey()] * $index;
+                $salesPrice = ((float)$productAttributes[$this->checkoutPageConfig->getBenefitSalesPriceKey()]) * $index;
                 $benefitAmount = $productAttributes[$this->checkoutPageConfig->getBenefitAmountKey()] * $index;
 
                 $carry[] = [
@@ -175,10 +188,14 @@ class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbI
      *
      * @return bool
      */
-    protected function isCartHasProductsWithBenefitVouchers(AbstractTransfer $quoteTransfer): bool
+    protected function assertCartHasApplicableBenefitDeals(QuoteTransfer $quoteTransfer): bool
     {
-        foreach ($quoteTransfer->getItems() as $item) {
-            $product = $this->getProductFromStorageForItemTransfer($item);
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            if ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+                return true;
+            }
+
+            $product = $this->getProductFromStorageForItemTransfer($itemTransfer);
             $attributes = $product ? $product['attributes'] : null;
 
             if ($attributes && $this->isBenefitVouchersDataProvidedForProductAttributes($attributes)) {
@@ -206,14 +223,14 @@ class BenefitVoucherStep extends AbstractBaseStep implements StepWithBreadcrumbI
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $abstractTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return bool
      */
-    protected function isOneOfItemSelectedUseBenefitVouchers(AbstractTransfer $abstractTransfer)
+    protected function hasBenefitDealsApplied(QuoteTransfer $quoteTransfer): bool
     {
-        foreach ($abstractTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher() !== null) {
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            if ($itemTransfer->getUseBenefitVoucher() || $itemTransfer->getUseShoppingPoints()) {
                 return true;
             }
         }

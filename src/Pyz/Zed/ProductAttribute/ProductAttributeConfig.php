@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductAttribute;
 
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Spryker\Zed\ProductAttribute\ProductAttributeConfig as SprykerProductAttributeConfig;
 
 class ProductAttributeConfig extends SprykerProductAttributeConfig
@@ -29,5 +30,21 @@ class ProductAttributeConfig extends SprykerProductAttributeConfig
             'select' => 'select',
             'checkbox' => 'checkbox',
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getShoppingPointStoreAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_STORE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getShoppingPointsAmountAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS);
     }
 }

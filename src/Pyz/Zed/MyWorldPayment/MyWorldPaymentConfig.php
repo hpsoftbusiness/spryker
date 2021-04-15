@@ -10,6 +10,9 @@ namespace Pyz\Zed\MyWorldPayment;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
+/**
+ * @method \Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig getSharedConfig()
+ */
 class MyWorldPaymentConfig extends AbstractBundleConfig
 {
     public const PAYMENT_METHOD_NAME = 'EVoucher';
@@ -117,5 +120,29 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
     public function getDefaultFlowsType(): int
     {
         return $this->get(MyWorldPaymentConstants::FLOWS_DEFAULT_TYPE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getShoppingPointsPaymentName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_SHOPPING_POINTS);
+    }
+
+    /**
+     * @return int
+     */
+    public function getShoppingPointsPaymentOptionId(): int
+    {
+        return $this->get(MyWorldPaymentConstants::OPTION_SHOPPING_POINTS_ACCOUNT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMyWorldPaymentProviderKey(): string
+    {
+        return $this->getSharedConfig()::PAYMENT_PROVIDER_NAME_MY_WORLD;
     }
 }

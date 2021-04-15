@@ -3,5 +3,6 @@ dummyPaymentInvoice,DE
 dummyPaymentCreditCard,DE
 adyenCreditCard,DE
 dummyPrepayment,DE
-EVoucher,DE
 BenefitVouchers,DE
+EVoucher,DE
+ShoppingPoints,DE

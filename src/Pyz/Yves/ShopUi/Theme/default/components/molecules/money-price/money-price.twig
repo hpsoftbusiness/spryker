@@ -1,5 +1,9 @@
 {% extends molecule('money-price', '@SprykerShop:ShopUi') %}
 
+{% define data = {
+    priceVatText: 'pdp.include.vat',
+} %}
+
 {% block defaultPriceInner %}
     {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
@@ -8,7 +12,9 @@
     <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
         {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
     </span>
-    <span class="{{ config.name }}__mode {{ defaultPriceJsName }}">
-        {{ 'pdp.include.vat' | trans }}
-    </span>
+    {% if data.priceVatText %}
+        <span class="{{ config.name }}__mode {{ defaultPriceJsName }}">
+            {{ 'pdp.include.vat' | trans }}
+        </span>
+    {% endif %}
 {% endblock %}

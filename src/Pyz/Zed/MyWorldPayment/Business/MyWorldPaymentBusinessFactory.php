@@ -12,6 +12,7 @@ use Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGeneratorInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLog;
@@ -81,6 +82,14 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
             $this->getLocaleClient(),
             $this->getConfig()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     */
+    public function createShoppingPointsPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    {
+        return new ShoppingPointsPaymentCalculator($this->getConfig());
     }
 
     /**

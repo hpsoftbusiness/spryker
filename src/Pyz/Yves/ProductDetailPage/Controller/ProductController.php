@@ -40,7 +40,10 @@ class ProductController extends SprykerShopProductController
         $productAttributesData = $viewData['product']->getAttributes();
         $viewData['product']
             ->setCashbackAmount($productAttributesData['cashback_amount'] ?? null)
-            ->setShoppingPoints($productAttributesData['shopping_points'] ?? null);
+            ->setShoppingPoints($productAttributesData['shopping_points'] ?? null)
+            ->setShoppingPointsAmount(
+                $productAttributesData[$this->getFactory()->getConfig()->getShoppingPointsAmountAttributeName()] ?? null
+            );
 
         $viewData['product']
             ->setAttributes(
@@ -118,6 +121,7 @@ class ProductController extends SprykerShopProductController
             'customer_group_3',
             'customer_group_4',
             'customer_group_5',
+            'product_sp_amount',
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {
@@ -148,6 +152,7 @@ class ProductController extends SprykerShopProductController
             'gtin',
             'mpn',
         ];
+
         return array_intersect_key($attributes, array_flip($attributesToFilter));
     }
 }

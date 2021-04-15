@@ -6,6 +6,7 @@
 
 {% define data = {
     product: required,
+    formType: required,
     benefitSalesInfo: {},
     item: {},
     benefitVouchersCurrencyCode: '',
@@ -17,8 +18,8 @@
 {% set productBrand = product.concreteAttributes['brand'] %}
 {% set images = product.images %} {#It can be empty array#}
 {% set currencyCode = productInfo['currencyCode'] %}
-{% set unitPrice = productInfo['unitPrice'] %}
-{% set subTotalPrice = productInfo['subTotalForItems'] %}
+{% set unitPrice = product.originUnitGrossPrice %}
+{% set subTotalPrice = product.quantity * unitPrice %}
 {% set prices = productInfo['prices'] %}
 
 {#                    Array with the prices for different variants of BV amount items#}
@@ -46,8 +47,8 @@
 
         <div class="{{ config.name }}__benefites">
             <div class="{{ config.name }}__prices">
-                <div class="{{ config.name }}__total-price">{{ currencyCode }} {{ subTotalPrice }}</div>
-                <div class="{{ config.name }}__single-unit-price">{{ currencyCode }} {{ unitPrice }}</div>
+                <div class="{{ config.name }}__total-price">{{ subTotalPrice | money(true, currencyCode) }}</div>
+                <div class="{{ config.name }}__single-unit-price">{{ unitPrice | money(true, currencyCode) }}</div>
                 {% include molecule('cashback') with {
                     modifiers: ['alternative', 'align-right'],
                     data: {
@@ -55,25 +56,46 @@
                         shoppingPoints: data.product.concreteAttributes['shopping_points'],
                     },
                 } only %}
-                <div class="{{ config.name }}__or">{{ 'checkout.step.benefit_voucher.or' | trans }}</div>
+                <div class="{{ config.name }}__or">{{ 'checkout.step.benefit_deal.or' | trans }}</div>
             </div>
+            {# @TODO Refactor properly when design for this step is approved #}
+            {% if data.formType == 'useBenefitVoucher' %}
+                {% include molecule('benefit-by-quantity', 'CheckoutPage') with {
+                    data: {
+                        amountItemsToUseBenefitVoucher: data.item.amountItemsToUseBenefitVoucher,
+                        prices: prices,
+                        currencyCode: currencyCode,
+                        benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,
+                    },
+                } only %}
 
-            {% include molecule('benefit-by-quantity', 'CheckoutPage') with {
-                data: {
-                    amountItemsToUseBenefitVoucher: data.item.amountItemsToUseBenefitVoucher,
-                    prices: prices,
-                    currencyCode: currencyCode,
-                    benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,
-                },
-            } only %}
-
-            <label class="{{ config.name }}__use-benefit">
-                {{ form_widget(data.item, {
-                    required: false,
-                    component: molecule('toggler-radio')
-                }) }}
-                <span>{{ 'checkout.step.benefit_voucher.use_voucher' | trans }}</span>
-            </label>
+                <label class="{{ config.name }}__use-benefit">
+                    {{ form_widget(data.item, {
+                        required: false,
+                        component: molecule('toggler-radio')
+                    }) }}
+                    <span>{{ 'checkout.step.benefit_deal.use_voucher' | trans }}</span>
+                </label>
+            {% elseif data.formType == 'useShoppingPoints' %}
+                <div class="{{ config.name }}__total-price">{{ product.shoppingPointsDeal.price | money(true, currencyCode) }}
+                    {% set shoppingPoints = product.shoppingPointsDeal.shoppingPointsQuantity %}
+                    - {{ shoppingPoints }}
+                    {% include atom('icon') with {
+                        class: config.name ~ '__icon',
+                        modifiers: ['medium-up'],
+                        data: {
+                            name: 'shopping-point',
+                        },
+                    } only %}
+                </div>
+                <label class="{{ config.name }}__use-benefit">
+                    {{ form_widget(data.item, {
+                        required: false,
+                        component: molecule('toggler-radio')
+                    }) }}
+                    <span>{{ 'Use Shopping Points deal' }}</span>
+                </label>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

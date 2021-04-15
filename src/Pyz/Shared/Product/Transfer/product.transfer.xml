@@ -13,6 +13,7 @@
         <property name="affiliateData" type="array"/>
         <property name="cashbackAmount" type="string"/>
         <property name="shoppingPoints" type="string"/>
+        <property name="shoppingPointsAmount" type="float"/>
     </transfer>
 
     <transfer name="ProductAbstract">

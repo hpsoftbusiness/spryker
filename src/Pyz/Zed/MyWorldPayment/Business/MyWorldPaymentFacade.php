@@ -125,4 +125,14 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
             ->createBenefitVoucherPaymentCalculator()
             ->recalculateQuote($calculableObjectTransfer);
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this->getFactory()->createShoppingPointsPaymentCalculator()->recalculateQuote($calculableObjectTransfer);
+    }
 }

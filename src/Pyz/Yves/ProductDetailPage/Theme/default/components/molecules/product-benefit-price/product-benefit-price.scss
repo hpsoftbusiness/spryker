@@ -1,0 +1,51 @@
+@mixin product-detail-page-product-benefit-price($name: '.product-benefit-price') {
+    $shopping-points-main-color: #008000;
+    $benefit-voucher-main-color: #000;
+
+    #{$name} {
+        &__title-text {
+            font-weight: 850;
+            font-size: 0.7em;
+
+            &--shopping-point {
+                color: $shopping-points-main-color;
+            }
+
+            &--benefit-voucher{
+                color: $benefit-voucher-main-color;
+            }
+        }
+
+        &__benefit-price-amount--shopping-point {
+            color: #5cb85c;
+        }
+
+        &__benefit-price-amount--benefit-voucher {
+            color: #ff902e;
+        }
+
+        &__regular-price-amount {
+            font-size: 0.7em;
+            color: #6f7274;
+            text-decoration: line-through
+        }
+
+        &__benefit-currency {
+            font-weight: 850;
+            font-size: 0.7em;
+            padding-left: 0.5em;
+
+            &--shopping-point {
+                color: $shopping-points-main-color;
+            }
+
+            &--benefit-voucher {
+                color: $benefit-voucher-main-color;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-page-product-benefit-price();

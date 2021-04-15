@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
@@ -306,18 +307,8 @@ class PaymentStep extends SprykerShopPaymentStep
      */
     protected function isInternalPaymentMethodSelected(QuoteTransfer $quoteTransfer): bool
     {
-        return $this->isBenefitVoucherSelected($quoteTransfer) || $quoteTransfer->getMyWorldUseEVoucherBalance();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function isBenefitVoucherSelected(QuoteTransfer $quoteTransfer): bool
-    {
-        foreach ($quoteTransfer->getItems()->getArrayCopy() as $item) {
-            if ($item->getUseBenefitVoucher()) {
+        foreach ($quoteTransfer->getPayments() as $paymentTransfer) {
+            if ($paymentTransfer->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD) {
                 return true;
             }
         }

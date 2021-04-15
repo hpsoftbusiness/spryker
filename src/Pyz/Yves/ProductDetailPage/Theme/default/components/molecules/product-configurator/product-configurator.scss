@@ -1,5 +1,10 @@
 @mixin product-detail-page-product-configurator($name: '.product-configurator') {
     #{$name} {
+        &__regular-price-text {
+            font-weight: 700;
+            font-size: 1em
+        }
+
         &__separator {
             border-bottom: rem(1) solid $setting-color-gray-3;
             margin: rem(35) 0;

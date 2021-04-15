@@ -61,9 +61,9 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addProductAttributeClient(Container $container): Container
     {

@@ -10,7 +10,7 @@ namespace Pyz\Yves\CheckoutPage\Form\DataProvider;
 use ArrayObject;
 use Generated\Shared\Transfer\ItemTransfer;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
-use Pyz\Yves\CheckoutPage\Form\Steps\BenefitVoucher\BenefitVoucherCollectionForm;
+use Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal\BenefitDealCollectionForm;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
@@ -66,9 +66,15 @@ class BenefitFormDataProvider implements StepEngineFormDataProviderInterface
     public function getOptions(AbstractTransfer $quoteTransfer)
     {
         return [
-            BenefitVoucherCollectionForm::OPTION_KEY_ITEMS => array_reduce(
+            BenefitDealCollectionForm::OPTION_KEY_ITEMS => array_reduce(
                 $quoteTransfer->getItems()->getArrayCopy(),
                 function (ArrayObject $carry, ItemTransfer $itemTransfer) {
+                    if ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+                        $carry->append($itemTransfer);
+
+                        return $carry;
+                    }
+
                     $attributes = $this->getProductAttributes($itemTransfer);
 
                     if ($this->isAttributesProvidedForBenefitVoucher($attributes)) {

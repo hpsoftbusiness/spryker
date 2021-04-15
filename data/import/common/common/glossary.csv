@@ -19883,6 +19883,10 @@ pdp.include.vat,"inkl. MwSt.",de_DE
 pdp.include.vat,"incl. VAT",en_US
 pdp.price.from,"ab",de_DE
 pdp.price.from,"from",en_US
+pdp.price,Preis,de_DE
+pdp.price,Price,en_US
+pdp.price.regular_price,"Regular Preis",de_DE
+pdp.price.regular_price,"Regular price",en_US
 page.checkout.summary.sms_code,SMS Code,de_DE
 page.checkout.summary.sms_code,SMS Code,en_US
 checkout.step.summary.sms_code_send_error,Es gab leider einen Fehler beim zusenden des SMS Codes,de_DE
@@ -19899,13 +19903,13 @@ checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cas
 checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,de_DE
 payment.step.api_request.error,"Sorry, something went wrong with the payment. Please try again later!",en_US
 payment.step.api_request.error,"Ups, scheinbar hat etwas mit der Zahlung nicht geklappt. Versuch es bitte später nocheinmal",de_DE
-checkout.step.benefit_voucher.title,Benefit Deals,en_US
-checkout.step.benefit_voucher.title,Benefit Deals,de_DE
-checkout.step.benefit_voucher.use_voucher,Use the Benefit Vouchers (BV) for discount,en_US
-checkout.step.benefit_voucher.use_voucher,Verwenden Sie die Benefit Vouchers (BV) für Rabatte,de_DE
-checkout.step.benefit_voucher.items,Items,en_US
-checkout.step.benefit_voucher.items,Artikel,de_DE
-checkout.step.benefit_voucher.with_method,with,en_US
-checkout.step.benefit_voucher.with_method,mit,de_DE
-checkout.step.benefit_voucher.or,or,en_US
-checkout.step.benefit_voucher.or,oder,de_DE
+checkout.step.benefit_deal.title,Benefit Deals,en_US
+checkout.step.benefit_deal.title,Benefit Deals,de_DE
+checkout.step.benefit_deal.use_voucher,Use the Benefit Vouchers (BV) for discount,en_US
+checkout.step.benefit_deal.use_voucher,Verwenden Sie die Benefit Vouchers (BV) für Rabatte,de_DE
+checkout.step.benefit_deal.items,Items,en_US
+checkout.step.benefit_deal.items,Artikel,de_DE
+checkout.step.benefit_deal.with_method,with,en_US
+checkout.step.benefit_deal.with_method,mit,de_DE
+checkout.step.benefit_deal.or,or,en_US
+checkout.step.benefit_deal.or,oder,de_DE

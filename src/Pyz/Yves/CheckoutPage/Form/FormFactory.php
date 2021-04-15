@@ -10,7 +10,7 @@ namespace Pyz\Yves\CheckoutPage\Form;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Form\DataProvider\BenefitFormDataProvider;
 use Pyz\Yves\CheckoutPage\Form\DataProvider\SummaryFormDataProvider;
-use Pyz\Yves\CheckoutPage\Form\Steps\BenefitVoucher\BenefitVoucherCollectionForm;
+use Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal\BenefitDealCollectionForm;
 use Pyz\Yves\CheckoutPage\Form\Steps\PaymentForm;
 use Pyz\Yves\CheckoutPage\Form\Steps\SummaryForm;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
@@ -39,13 +39,13 @@ class FormFactory extends SpyFormFactory
      */
     public function getBenefitFormCollection(): FormCollectionHandlerInterface
     {
-        return $this->createFormCollection([BenefitVoucherCollectionForm::class], $this->createBenefitVoucherFormDataProvider());
+        return $this->createFormCollection([BenefitDealCollectionForm::class], $this->createBenefitDealFormDataProvider());
     }
 
     /**
      * @return \Pyz\Yves\CheckoutPage\Form\DataProvider\BenefitFormDataProvider
      */
-    public function createBenefitVoucherFormDataProvider(): BenefitFormDataProvider
+    public function createBenefitDealFormDataProvider(): BenefitFormDataProvider
     {
         return new BenefitFormDataProvider(
             $this->getProductStorageClient(),

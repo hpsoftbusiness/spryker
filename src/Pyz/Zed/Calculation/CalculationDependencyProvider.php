@@ -10,6 +10,7 @@ namespace Pyz\Zed\Calculation;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentBenefitVoucherQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentOrderRecalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\ShoppingPointsQuoteCalculationPlugin;
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorForGenericAmountPlugin;
@@ -235,6 +236,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new PaymentCalculatorPlugin(),
             new MyWorldPaymentBenefitVoucherQuoteCalculationPlugin(),
+            new ShoppingPointsQuoteCalculationPlugin(),
         ];
 
         return $pluginStack;

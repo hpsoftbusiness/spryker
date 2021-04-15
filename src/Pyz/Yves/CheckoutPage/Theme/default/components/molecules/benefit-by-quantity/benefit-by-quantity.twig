@@ -31,11 +31,11 @@
                     <div class="{{ config.name }}__option">
                         {% for price in data.prices %}
                             {% if(price.quantity == child.vars.value) %}
-                                <span>{{ child.vars.value }} {{ 'checkout.step.benefit_voucher.items' | trans }}</span>
+                                <span>{{ child.vars.value }} {{ 'checkout.step.benefit_deal.items' | trans }}</span>
                                 <span class="{{ config.name }}__sales-price">
                                     {{ data.currencyCode }} {{ price.salesPrice }}
                                 </span>
-                                <span class="{{ config.name }}__with">{{ 'checkout.step.benefit_voucher.with_method' | trans }}</span>
+                                <span class="{{ config.name }}__with">{{ 'checkout.step.benefit_deal.with_method' | trans }}</span>
                                 <span class="{{ config.name }}__benefit-price">{{ data.benefitVouchersCurrencyCode }} {{ price.benefitAmount }}</span>
                             {% endif %}
                         {% endfor %}

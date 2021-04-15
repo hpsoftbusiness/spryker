@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed"
+          xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\BenefitDeal\Persistence" package="src.Orm.Zed.BenefitDeal.Persistence">
+
+    <!-- Table for storing totals of benefit deals, should have one to one relation with SpySalesOrder entry. -->
+    <table name="pyz_sales_order_benefit_deal">
+        <column name="id_sales_order_benefit_deals" required="true" type="INTEGER" autoIncrement="true"
+                primaryKey="true"/>
+        <column name="fk_sales_order" required="true" type="INTEGER"/>
+        <column name="total_shopping_points_amount" type="FLOAT" defaultValue="0"/>
+
+        <unique name="pyz_sales_order_benefit_deal-fk-sales-order">
+            <unique-column name="fk_sales_order"/>
+        </unique>
+
+        <foreign-key foreignTable="spy_sales_order" name="pyz_sales_order_benefit_deals-fk_sales_order"
+                     phpName="SpySalesOrder">
+            <reference local="fk_sales_order" foreign="id_sales_order"/>
+        </foreign-key>
+
+        <index name="pyz_sales_order_benefit_deal-fk_sales_order">
+            <index-column name="fk_sales_order"/>
+        </index>
+
+        <id-method-parameter value="pyz_sales_order_benefit_deals_pk_seq"/>
+    </table>
+
+    <table name="pyz_sales_order_item_benefit_deal">
+        <column name="id_sales_order_item_benefit_deal" required="true" type="INTEGER" autoIncrement="true"
+                primaryKey="true"/>
+        <column name="fk_sales_order_item" required="true" type="INTEGER"/>
+        <!--To ENUM later on with benefit type values i.e. BenefitVoucher, ShoppingPoints, EVoucher, etc.-->
+        <column name="type" type="VARCHAR" required="true"/>
+        <column name="origin_unit_gross_price" type="INTEGER"/>
+        <column name="shopping_points_amount" type="FLOAT"/>
+
+        <foreign-key foreignTable="spy_sales_order_item" name="pyz_sales_order_item_benefit_deal-fk_sales_order_item"
+                     phpName="SpySalesOrderItem">
+            <reference local="fk_sales_order_item" foreign="id_sales_order_item"/>
+        </foreign-key>
+
+        <index name="pyz_sales_order_item_benefit_deal-fk_sales_order_item">
+            <index-column name="fk_sales_order_item"/>
+        </index>
+
+        <id-method-parameter value="pyz_sales_order_item_benefit_deal_pk_seq"/>
+    </table>
+</database>
