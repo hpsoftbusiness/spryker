@@ -110,6 +110,10 @@
                 padding-bottom: rem(40);
             }
 
+            &--filter {
+                padding: rem(14) 0;
+            }
+
             &--bundle {
                 padding-left: rem(11);
                 padding-right: rem(11);
@@ -117,10 +121,6 @@
 
             &--bundle-note {
                 padding: rem(15) 0 0;
-            }
-
-            &--filter {
-                padding: rem(14) 0;
             }
 
             &--flex {

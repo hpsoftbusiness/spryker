@@ -44,6 +44,10 @@ class BundleProductsExpanderPlugin extends AbstractPlugin implements ProductView
             $bundledProductView = $this->getClient()->mapProductStorageData($bundledProduct, $localeName);
             $bundledProductView->setQuantity($quantity);
             $productViewTransfer->addBundledProduct($bundledProductView);
+
+            if (isset($bundledProductView->getImages()[0])) {
+                $productViewTransfer->addImage($bundledProductView->getImages()[0]);
+            }
         }
 
         return $productViewTransfer;

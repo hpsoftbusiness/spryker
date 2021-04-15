@@ -15,9 +15,9 @@
 
 {% block body %}
     {% for item in data.bundleItems %}
-        <li class="col col--sm-6 {{ config.name }}__item">
+        <li class="col col--sm-12 {{ config.name }}__item">
+            <span class="{{ config.name }}__quantity">{{ item.quantity }}x</span>
             {{ item.name }}
-            <span class="{{ config.name }}__quantity"> ·&nbsp; {{ item.quantity }}x</span>
         </li>
     {% endfor %}
 {% endblock %}

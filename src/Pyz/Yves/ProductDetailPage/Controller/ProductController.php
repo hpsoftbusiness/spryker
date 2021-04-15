@@ -46,6 +46,11 @@ class ProductController extends SprykerShopProductController
             ->setAttributes(
                 $this->getFilterProductAttributes($viewData['product']->getAttributes())
             );
+        foreach ($viewData['product']['bundledProducts'] as $bundledProduct) {
+            $bundledProduct->setAttributes(
+                $this->getFilterBundleProductAttributes($bundledProduct->getAttributes())
+            );
+        }
 
         if ($viewData['product']->getIsAffiliate()) {
             $affiliateData = $viewData['product']->getAffiliateData();
@@ -124,5 +129,25 @@ class ProductController extends SprykerShopProductController
         return array_filter($attributes, function ($value) {
             return $value !== null && $value !== '' && $value !== false;
         });
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    protected function getFilterBundleProductAttributes(array $attributes): array
+    {
+        $attributesToFilter = [
+            'manufacturer',
+            'brand',
+            'color',
+            'size',
+            'gender',
+            'ean',
+            'gtin',
+            'mpn',
+        ];
+        return array_intersect_key($attributes, array_flip($attributesToFilter));
     }
 }

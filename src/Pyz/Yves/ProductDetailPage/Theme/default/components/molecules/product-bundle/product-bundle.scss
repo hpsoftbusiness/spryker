@@ -1,7 +1,17 @@
-@mixin product-detail-page-product-bundle($name: '.product-bundle') {
+@mixin product-detail-page-product-bundle(
+    $name: '.product-bundle',
+    $productItemName: '.product-item'
+) {
     #{$name} {
         margin-bottom: rem(-15);
         margin-top: rem(128);
+
+        #{$productItemName} {
+            word-break: break-word;
+            &__quantity {
+                font-weight: bold;
+            }
+        }
     }
 }
 

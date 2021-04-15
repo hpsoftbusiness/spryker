@@ -62,8 +62,8 @@
                     {% block colors %}{% endblock %}
                     {% block name %}
                         <div class="col col--sm-12">
+                            <span class="{{ config.name }}__quantity">{{ data.product.quantity }}x</span>
                             {{ data.name }}
-                            <span class="{{ config.name }}__quantity"> ·&nbsp; {{ data.product.quantity }}x</span>
                         </div>
                     {% endblock %}
                     {% block price %}{% endblock %}
