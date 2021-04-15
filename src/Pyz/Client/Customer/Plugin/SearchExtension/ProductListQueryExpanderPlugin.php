@@ -143,7 +143,7 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
             }
         }
 
-        return null;
+        return $this->getDefaultCustomerProductListCollectionTransfer();
     }
 
     /**
@@ -178,5 +178,15 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         }
 
         return $boolQuery;
+    }
+
+    /**
+     * @return CustomerProductListCollectionTransfer
+     */
+    protected function getDefaultCustomerProductListCollectionTransfer(): CustomerProductListCollectionTransfer
+    {
+        return $this->getFactory()
+            ->getProductListClient()
+            ->getDefaultCustomerProductListCollection();
     }
 }

@@ -19,6 +19,7 @@ use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
     public const CLIENT_MY_WORLD_MARKETPLACE_API_CLIENT = 'CLIENT_MY_WORLD_MARKETPLACE_API_CLIENT';
+    public const CLIENT_PRODUCT_LIST = 'CLIENT_PRODUCT_LIST';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -29,6 +30,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         $container = parent::provideServiceLayerDependencies($container);
         $container = $this->addMyWorldMarketplaceApiClient($container);
+        $container = $this->addProductListClient($container);
 
         return $container;
     }
@@ -84,6 +86,20 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         $container->set(static::CLIENT_MY_WORLD_MARKETPLACE_API_CLIENT, function (Container $container) {
             return $container->getLocator()->myWorldMarketplaceApi()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    protected function addProductListClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_PRODUCT_LIST, function (Container $container) {
+            return $container->getLocator()->productList()->client();
         });
 
         return $container;
