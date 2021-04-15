@@ -4,10 +4,13 @@
             background-color: $setting-color-black;
             display: flex;
             align-items: stretch;
+            height: 30px;
         }
 
         &__item {
             border-bottom: rem(1) solid $setting-color-gray-3;
+            height: 30px;
+            width: 120px;
 
             @include helper-breakpoint-media-min($lg-min) {
                 border-bottom: none;
@@ -24,11 +27,9 @@
                 align-items: center;
                 padding: rem(8) rem(25);
                 min-height: 100%;
-                height: rem(34);
-
-                #{$name}__item:first-child & {
-                    padding-left: rem(30);
-                }
+                //#{$name}__item:first-child & {
+                //    padding-left: rem(30);
+                //}
             }
 
             &:hover,
