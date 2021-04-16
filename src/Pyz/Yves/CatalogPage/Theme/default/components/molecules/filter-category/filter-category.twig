@@ -16,8 +16,10 @@
             {% set quantity = 0 %}
             {% set hasChildren = existsCategoryChild(categoryNode, data.filter, data.isEmptyCategoryFilterValueVisible) %}
 
-            {% for filterValue in data.filter.values if (filterValue.value == categoryNode.nodeId) %}
-                {% set quantity = filterValue.docCount %}
+            {% for filterValue in data.filter.values %}
+                {% if (filterValue.value == categoryNode.nodeId) %}
+                    {% set quantity = filterValue.docCount %}
+                {%  endif %}
             {% endfor %}
 
             {% if quantity or (not categoryNode.quantity and data.isEmptyCategoryFilterValueVisible) %}

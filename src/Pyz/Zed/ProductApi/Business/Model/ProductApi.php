@@ -1,13 +1,16 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Business\Model;
 
 use ArrayObject;
 use Generated\Shared\Transfer\ApiItemTransfer;
 use Generated\Shared\Transfer\ApiRequestTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
-use Generated\Shared\Transfer\ProductApiTransfer;
-use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Shared\ProductApi\ProductApiConstants;
 use Pyz\Zed\ProductApi\Business\Mapper\TransferMapperInterface;
@@ -21,42 +24,42 @@ use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 class ProductApi implements ProductApiInterface
 {
     /**
-     * @var ProductApiToApiInterface
+     * @var \Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiInterface
      */
     protected $apiQueryContainer;
 
     /**
-     * @var ProductApiQueryContainerInterface
+     * @var \Pyz\Zed\ProductApi\Persistence\ProductApiQueryContainerInterface
      */
     protected $queryContainer;
 
     /**
-     * @var TransferMapperInterface
+     * @var \Pyz\Zed\ProductApi\Business\Mapper\TransferMapperInterface
      */
     protected $transferMapper;
 
     /**
-     * @var ProductApiToProductInterface
+     * @var \Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductInterface
      */
     protected $productFacade;
 
     /**
-     * @var LocaleFacadeInterface
+     * @var \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
     protected $localeFacade;
 
     /**
-     * @var ProductCategoryFacadeInterface
+     * @var \Pyz\Zed\ProductCategory\Business\ProductCategoryFacadeInterface
      */
     protected $productCategoryFacade;
 
     /**
-     * @param ProductApiToApiInterface $apiQueryContainer
-     * @param ProductApiQueryContainerInterface $queryContainer
-     * @param TransferMapperInterface $transferMapper
-     * @param ProductApiToProductInterface $productFacade
-     * @param LocaleFacadeInterface $localeFacade
-     * @param ProductCategoryFacadeInterface $productCategoryFacade
+     * @param \Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiInterface $apiQueryContainer
+     * @param \Pyz\Zed\ProductApi\Persistence\ProductApiQueryContainerInterface $queryContainer
+     * @param \Pyz\Zed\ProductApi\Business\Mapper\TransferMapperInterface $transferMapper
+     * @param \Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductInterface $productFacade
+     * @param \Spryker\Zed\Locale\Business\LocaleFacadeInterface $localeFacade
+     * @param \Pyz\Zed\ProductCategory\Business\ProductCategoryFacadeInterface $productCategoryFacade
      */
     public function __construct(
         ProductApiToApiInterface $apiQueryContainer,
@@ -75,16 +78,16 @@ class ProductApi implements ProductApiInterface
     }
 
     /**
-     * @param ApiRequestTransfer $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
-     * @return ApiItemTransfer
+     * @return \Generated\Shared\Transfer\ApiItemTransfer
      */
     public function find(ApiRequestTransfer $apiRequestTransfer): ApiItemTransfer
     {
         $query = $this->buildQuery($apiRequestTransfer);
         $localeTransfer = $this->localeFacade->getLocale($this->getLanguage($apiRequestTransfer));
 
-        /** @var ProductsResponseApiTransfer $collection */
+        /** @var \Generated\Shared\Transfer\ProductsResponseApiTransfer $collection */
         $responseApiTransfer = $this->transferMapper->toTransferCollection(
             $query->find()->toArray(),
             $localeTransfer,
@@ -92,7 +95,7 @@ class ProductApi implements ProductApiInterface
         );
 
         $productsApiTransfers = new ArrayObject();
-        /** @var ProductApiTransfer $productApiTransfer */
+        /** @var \Generated\Shared\Transfer\ProductApiTransfer $productApiTransfer */
         foreach ($responseApiTransfer->getProducts() as $k => $productApiTransfer) {
             $productsApiTransfers[] = $this->get($productApiTransfer->getProductId(), $localeTransfer);
         }
@@ -103,15 +106,14 @@ class ProductApi implements ProductApiInterface
 
     /**
      * @param int $idProductAbstract
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
-     * @return ProductApiTransfer
+     * @return \Generated\Shared\Transfer\ProductApiTransfer
      */
     protected function get(
         int $idProductAbstract,
         LocaleTransfer $localeTransfer
-    )
-    {
+    ) {
         $productTransfer = $this->productFacade->findProductAbstractById($idProductAbstract);
         $productUrl = $this->productFacade->getProductUrl($productTransfer);
         $productCategoryTransferCollection = $this->productCategoryFacade->getCategoryTransferCollectionByIdProductAbstract(
@@ -128,9 +130,9 @@ class ProductApi implements ProductApiInterface
     }
 
     /**
-     * @param ApiRequestTransfer $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     protected function buildQuery(ApiRequestTransfer $apiRequestTransfer): SpyProductAbstractQuery
     {
@@ -153,12 +155,14 @@ class ProductApi implements ProductApiInterface
     }
 
     /**
-     * @param ApiRequestTransfer $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
+     *
      * @return string|null
      */
     protected function getLanguage(ApiRequestTransfer $apiRequestTransfer): ?string
     {
         $headerData = array_change_key_case($apiRequestTransfer->getHeaderData(), CASE_UPPER);
+
         return $headerData[ProductApiConstants::X_SPRYKER_LANGUAGE][0] ?? null;
     }
 }

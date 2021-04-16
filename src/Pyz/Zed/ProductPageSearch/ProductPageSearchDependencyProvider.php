@@ -11,11 +11,20 @@ use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductPageSearch\CategoryNav
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAffiliateMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreFlagMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractSellableFacetPageMapExpanderPlugin;
+use Spryker\Shared\MerchantProductOfferSearch\MerchantProductOfferSearchConfig;
+use Spryker\Shared\MerchantProductSearch\MerchantProductSearchConfig;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Zed\Availability\Communication\Plugin\ProductPageSearch\AvailabilityProductAbstractAddToCartPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageDataExpander\MerchantProductPageDataExpanderPlugin;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageDataLoader\MerchantProductPageDataLoaderPlugin;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageMapExpander\MerchantNamesProductAbstractMapExpanderPlugin;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageMapExpander\MerchantReferencesProductAbstractsMapExpanderPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductAbstractMapExpanderPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataExpanderPlugin as MerchantMerchantProductPageDataExpanderPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataLoaderPlugin as MerchantMerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataLoader\ProductLabelDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductLabelMapExpanderPlugin;
@@ -41,6 +50,11 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
 {
     public const PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH = 'PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH';
 
+    public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+    public const CLIENT_QUEUE = 'CLIENT_QUEUE';
+
+    public const FACADE_EVENT = 'FACADE_EVENT';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -50,6 +64,22 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     {
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addProductAbstractPageAfterPublishPlugins($container);
+        $container = $this->addQueueClient($container);
+        $container = $this->addSynchronizationService($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideCommunicationLayerDependencies(Container $container)
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
+        $container = $this->addEventFacade($container);
 
         return $container;
     }
@@ -80,6 +110,8 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_CATEGORY_PAGE_DATA] = new ProductCategoryPageDataLoaderExpanderPlugin();
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_PRICE_PAGE_DATA] = new PricePageDataLoaderExpanderPlugin();
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_IMAGE_PAGE_DATA] = new ProductImagePageDataLoaderExpanderPlugin();
+        $dataExpanderPlugins[MerchantProductSearchConfig::PLUGIN_MERCHANT_PRODUCT_DATA] = new MerchantMerchantProductPageDataExpanderPlugin();
+        $dataExpanderPlugins[MerchantProductOfferSearchConfig::PLUGIN_PRODUCT_MERCHANT_DATA] = new MerchantProductPageDataExpanderPlugin();
 
         return $dataExpanderPlugins;
     }
@@ -95,6 +127,8 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new PriceProductPageDataLoaderPlugin(),
             new ProductLabelDataLoaderPlugin(),
             new ProductListDataLoaderPlugin(),
+            new MerchantMerchantProductPageDataLoaderPlugin(),
+            new MerchantProductPageDataLoaderPlugin(),
         ];
     }
 
@@ -112,6 +146,9 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductAbstractAffiliateMapExpanderPlugin(),
             new ProductAbstractBenefitStoreFlagMapExpanderPlugin(),
             new ProductAbstractSellableFacetPageMapExpanderPlugin(),
+            new MerchantProductAbstractMapExpanderPlugin(),
+            new MerchantNamesProductAbstractMapExpanderPlugin(),
+            new MerchantReferencesProductAbstractsMapExpanderPlugin(),
         ];
     }
 
@@ -145,5 +182,47 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
         return [
             new AvailabilityProductAbstractAddToCartPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addSynchronizationService(Container $container): Container
+    {
+        $container->set(static::SERVICE_SYNCHRONIZATION, function (Container $container) {
+            return $container->getLocator()->synchronization()->service();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addQueueClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_QUEUE, function (Container $container) {
+            return $container->getLocator()->queue()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function addEventFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_EVENT, function (Container $container) {
+            return $container->getLocator()->event()->facade();
+        });
+
+        return $container;
     }
 }

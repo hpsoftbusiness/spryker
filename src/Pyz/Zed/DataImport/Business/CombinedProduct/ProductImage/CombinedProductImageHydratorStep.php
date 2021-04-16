@@ -7,14 +7,12 @@
 
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage;
 
-use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
-use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductImageHydratorStep extends ProductImageHydratorStep
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
@@ -31,6 +29,8 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
 
     protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
     protected const ASSIGNABLE_PRODUCT_TYPE_CONCRETE = 'concrete';
+
+    public const COLUMN_IS_AFFILIATE = 'product.value_73';
 
     protected const ASSIGNABLE_PRODUCT_TYPES = [
         self::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT,
@@ -56,23 +56,6 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
      */
     protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
     {
-        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
-        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
-
-        if ($isAbstractSkuIsEmpty === null) {
-            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
-        }
-
-        if ($isConcreteSkuIsEmpty === null) {
-            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT;
-        }
-
-        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] === "") {
-            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE;
-        }
-
-        $this->assertAssignableProductTypeColumn($dataSet);
-
         if (!empty($dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT])) {
             $dataSet[static::COLUMN_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT];
         }
@@ -82,33 +65,5 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
         }
 
         return $dataSet;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-     * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidDataException
-     *
-     * @return void
-     */
-    protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
-    {
-        if (empty($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE])) {
-            throw new DataKeyNotFoundInDataSetException(sprintf(
-                '"%s" must be defined in the data set. Given: "%s"',
-                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
-            ));
-        }
-
-        if (!in_array($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE], static::ASSIGNABLE_PRODUCT_TYPES, true)) {
-            throw new InvalidDataException(sprintf(
-                '"%s" must have one of the following values: %s. Given: "%s"',
-                static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', static::ASSIGNABLE_PRODUCT_TYPES),
-                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
-            ));
-        }
     }
 }

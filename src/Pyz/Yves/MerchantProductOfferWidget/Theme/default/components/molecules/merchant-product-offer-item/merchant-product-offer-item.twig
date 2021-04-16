@@ -1,0 +1,104 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'merchant-product-offer-item',
+} %}
+
+{% define data = {
+    isChecked: false,
+    radioGroupName: required,
+    productOfferReference: required,
+    merchantName: required,
+    merchantUrl: required,
+    price: required,
+    currencyIsoCode: required,
+    isRadioButtonVisible: false,
+    affiliateData: required,
+    offer: true,
+    isConcrete: required,
+} %}
+
+{% block extraClass %} spacing-y{% endblock %}
+
+{% block body %}
+    <div class="grid grid--nowrap">
+        {% block offerInner %}
+            {% block radioCol %}
+                {% set radioColVisibilityClass = not data.isRadioButtonVisible ? 'is-hidden' %}
+
+                <div class="col {{ radioColVisibilityClass }}">
+                    {% block radio %}
+                        {% set selectedAttributes = app.request.query.get('attribute') | default([]) %}
+                        {% set itemAttributes = {
+                            'selected_merchant_reference_type' : 'product_offer_reference',
+                            'selected_merchant_reference' : data.productOfferReference
+                        } %}
+                        {% set searchParams = {
+                            'attribute': selectedAttributes|merge(itemAttributes)
+                        }|url_encode %}
+
+                        {% include atom('radio') with {
+                            class: config.jsName ~ '__trigger-' ~ data.productOfferReference,
+                            attributes: {
+                                checked: data.isChecked,
+                                name: data.radioGroupName,
+                                value: data.productOfferReference,
+                            },
+                        } only %}
+
+                        {% include molecule('page-location-search-params-updater', 'MerchantProductOfferWidget') with {
+                            attributes: {
+                                'trigger-class': config.jsName ~ '__trigger-' ~ data.productOfferReference,
+                                'search-params': searchParams,
+                            },
+                        } only %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block contentCol %}
+                <div class="col col--expand">
+                    {% block content %}
+                        <div class="grid grid--justify grid--nowrap">
+                            {% block contentInner %}
+                                {% block merchantInfoCol %}
+                                    <div class="col col--expand">
+                                        {% block merchantName %}
+                                            <div>
+                                                <strong>{{ data.merchantName }}</strong>
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block merchantLink %}
+                                            <a class="link link--small" href="{{ data.merchantUrl }}">
+                                                {{ 'merchant_product_offer.view_seller' | trans }}
+                                            </a>
+                                        {% endblock %}
+                                        {% widget 'ProductUrlWidget' args [true, data.affiliateData, null, data.isConcrete] with {
+                                            data: {
+                                                parentJsName: config.jsName,
+                                                configName: config.name,
+                                                offer: data.offer,
+                                                originUrl: data.affiliateData['affiliate_deeplink'],
+                                            },
+                                        } only %}{% endwidget %}
+
+                                    </div>
+                                {% endblock %}
+                                {% block priceCol %}
+                                    <div class="col">
+                                        {% block price %}
+                                            <div>
+                                                <strong>{{ data.price | money(true, data.currencyIsoCode) }}</strong>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

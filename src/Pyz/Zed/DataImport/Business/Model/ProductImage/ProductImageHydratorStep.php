@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage;
 
 use Generated\Shared\Transfer\SpyLocaleEntityTransfer;
@@ -11,7 +17,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductImageHydratorStep extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
@@ -67,7 +73,9 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::COLUMN_IMAGE_SET_NAME]);
 
-        if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]) && empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
+//        revert for MYW-867
+//        if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]) && empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
+        if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
             $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
         }
 

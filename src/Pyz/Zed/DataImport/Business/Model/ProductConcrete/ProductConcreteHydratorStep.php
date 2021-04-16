@@ -18,10 +18,11 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductConcreteHydratorStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 1000;
+    public const BULK_SIZE = 50;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
+    public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     public const COLUMN_NAME = 'name';
     public const COLUMN_DESCRIPTION = 'description';
@@ -91,9 +92,14 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     {
         $productEntityTransfer = new SpyProductEntityTransfer();
         $productEntityTransfer->setSku($dataSet[static::COLUMN_CONCRETE_SKU]);
+
+        $isActive = true;
+        if (isset($dataSet[static::KEY_IS_ACTIVE])) {
+            $isActive = $dataSet[static::KEY_IS_ACTIVE] === 'TRUE' || $dataSet[static::KEY_IS_ACTIVE] ?? true;
+        }
         $productEntityTransfer
-            ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
-            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
+            ->setIsActive($isActive)
+            ->setAttributes(addslashes(json_encode($dataSet[static::KEY_ATTRIBUTES])));
 
         if ($this->isProductColumn(static::COLUMN_IS_QUANTITY_SPLITTABLE)) {
             $isQuantitySplittable = (
@@ -118,10 +124,10 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         foreach ($dataSet[static::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productLocalizedAttributesEntityTransfer = new SpyProductLocalizedAttributesEntityTransfer();
             $productLocalizedAttributesEntityTransfer
-                ->setName($localizedAttributes[static::COLUMN_NAME])
-                ->setDescription($localizedAttributes[static::COLUMN_DESCRIPTION])
+                ->setName(addslashes($localizedAttributes[static::COLUMN_NAME]))
+                ->setDescription(addslashes($localizedAttributes[static::COLUMN_DESCRIPTION]))
                 ->setIsComplete($localizedAttributes[static::KEY_IS_COMPLETE] ?? true)
-                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]))
+                ->setAttributes(addslashes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES])))
                 ->setFkLocale($idLocale);
 
             $productSearchEntityTransfer = new SpyProductSearchEntityTransfer();

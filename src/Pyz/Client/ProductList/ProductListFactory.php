@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Client\ProductList;
 
 use Pyz\Client\ProductList\Zed\ProductListZedStub;
@@ -10,7 +15,7 @@ use Spryker\Client\ZedRequest\ZedRequestClientInterface;
 class ProductListFactory extends AbstractFactory
 {
     /**
-     * @return ProductListZedStubInterface
+     * @return \Pyz\Client\ProductList\Zed\ProductListZedStubInterface
      */
     public function createProductListZedStub(): ProductListZedStubInterface
     {
@@ -18,7 +23,7 @@ class ProductListFactory extends AbstractFactory
     }
 
     /**
-     * @return ZedRequestClientInterface
+     * @return \Spryker\Client\ZedRequest\ZedRequestClientInterface
      */
     public function getZedRequestClient(): ZedRequestClientInterface
     {

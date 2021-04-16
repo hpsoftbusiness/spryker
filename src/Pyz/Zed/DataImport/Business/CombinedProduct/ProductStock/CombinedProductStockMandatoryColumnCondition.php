@@ -17,10 +17,10 @@ class CombinedProductStockMandatoryColumnCondition extends CombinedProductMandat
     protected function getMandatoryColumns(): array
     {
         return [
-            CombinedProductStockHydratorStep::COLUMN_NAME,
-            CombinedProductStockHydratorStep::COLUMN_QUANTITY,
-            CombinedProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK,
-            CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE,
+//            CombinedProductStockHydratorStep::COLUMN_NAME,
+//            CombinedProductStockHydratorStep::COLUMN_QUANTITY,
+//            CombinedProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK,
+//            CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE,
         ];
     }
 }

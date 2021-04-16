@@ -7,6 +7,12 @@
 
 namespace Pyz\Client\RabbitMq;
 
+use Pyz\Zed\AvailabilityStorage\AvailabilityStorageConfig;
+use Pyz\Zed\PriceProductStorage\PriceProductStorageConfig;
+use Pyz\Zed\ProductImageStorage\ProductImageStorageConfig;
+use Pyz\Zed\ProductPageSearch\ProductPageSearchConfig;
+use Pyz\Zed\ProductStorage\ProductStorageConfig;
+use Pyz\Zed\UrlStorage\UrlStorageConfig;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -22,6 +28,10 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MerchantProductOfferStorage\MerchantProductOfferStorageConfig;
+use Spryker\Shared\MerchantSearch\MerchantSearchConfig;
+use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
+use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
@@ -54,7 +64,11 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 $this->get(LogConstants::LOG_QUEUE_NAME),
             ],
             $this->getPublishQueueConfiguration(),
-            $this->getSynchronizationQueueConfiguration()
+            $this->getSynchronizationQueueConfiguration(),
+            [
+                MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
+                MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
+            ]
         );
     }
 
@@ -69,6 +83,15 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
             GlossaryStorageConfig::PUBLISH_TRANSLATION,
+            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
+            UrlStorageConfig::PUBLISH_URL,
+            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT,
+            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE,
+            ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE,
+            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE,
+            ProductImageStorageConfig::PUBLISH_PRODUCT_IMAGE,
+            PriceProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT_PRICE,
+            PriceProductStorageConfig::PUBLISH_PRODUCT_CONCRETE_PRICE,
         ];
     }
 
@@ -96,6 +119,9 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             TaxProductStorageConfig::PRODUCT_ABSTRACT_TAX_SET_SYNC_STORAGE_QUEUE,
             TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE,
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN,
+            MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
+            MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_ERROR_QUEUE,
+            PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
         ];
     }
 

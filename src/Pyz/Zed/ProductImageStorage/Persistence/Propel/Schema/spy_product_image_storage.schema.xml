@@ -6,12 +6,14 @@
           package="src.Orm.Zed.ProductImageStorage.Persistence">
 
     <table name="spy_product_abstract_image_storage">
+        <column name="data" type="CLOB" required="true"/>
         <behavior name="synchronization">
             <parameter name="queue_pool" value="synchronizationPool"/>
         </behavior>
     </table>
 
     <table name="spy_product_concrete_image_storage">
+        <column name="data" type="CLOB" required="true"/>
         <behavior name="synchronization">
             <parameter name="queue_pool" value="synchronizationPool"/>
         </behavior>

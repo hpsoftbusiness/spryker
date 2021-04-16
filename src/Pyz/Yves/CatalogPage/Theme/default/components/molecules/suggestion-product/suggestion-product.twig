@@ -1,8 +1,10 @@
 {% extends molecule('suggestion-product', '@SprykerShop:CatalogPage') %}
 
 {% block body %}
-    {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate, data.product.affiliate_data ?? data.product.affiliateData] with {
-        data: {
+    {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate,
+        data.product.affiliate_data ?? data.product.affiliateData, data.product.id_product_abstract ?? data.idProductAbstract] with
+        {
+            data: {
             originUrl: data.url,
             suggestion: true,
             title: data.title,

@@ -43,11 +43,11 @@ class LocaleLocalePlugin extends SprykerLocaleLocalePlugin
                 return $locales[$localeCode];
             }
         }
-
-        $customerCountryLocale = $this->getCustomerCountryLocale();
-        if ($customerCountryLocale) {
-            return $customerCountryLocale;
-        }
+//         TODO:: uncomment and fix
+//        $customerCountryLocale = $this->getCustomerCountryLocale();
+//        if ($customerCountryLocale) {
+//            return $customerCountryLocale;
+//        }
 
         return $locales[$headerLanguage] ?? $currentLocale;
     }
@@ -92,45 +92,45 @@ class LocaleLocalePlugin extends SprykerLocaleLocalePlugin
         return $this->request;
     }
 
-    /**
-     * @return string|null
-     */
-    private function getCustomerCountryLocale(): ?string
-    {
-        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        if (!$customerTransfer || !$customerTransfer->getCountryId()) {
-            return null;
-        }
-
-        $countryCode = $customerTransfer->getCountryId();
-        if (!$this->isCountrySupported($countryCode)) {
-            return null;
-        }
-
-        return $this->getLocaleByCountryCode($countryCode);
-    }
-
-    /**
-     * @param string $countryCode
-     *
-     * @return bool
-     */
-    private function isCountrySupported(string $countryCode): bool
-    {
-        $storeCountries = $this->getFactory()->getStore()->getCountries();
-
-        return in_array(strtoupper($countryCode), $storeCountries);
-    }
-
-    /**
-     * @param string $countryCode
-     *
-     * @return string|null
-     */
-    private function getLocaleByCountryCode(string $countryCode): ?string
-    {
-        $countryToLocaleRelations = $this->getConfig()->getCountryToLocaleRelations();
-
-        return $countryToLocaleRelations[strtoupper($countryCode)] ?? null;
-    }
+//    /**
+//     * @return string|null
+//     */
+//    private function getCustomerCountryLocale(): ?string
+//    {
+//        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+//        if (!$customerTransfer || !$customerTransfer->getCountryId()) {
+//            return null;
+//        }
+//
+//        $countryCode = $customerTransfer->getCountryId();
+//        if (!$this->isCountrySupported($countryCode)) {
+//            return null;
+//        }
+//
+//        return $this->getLocaleByCountryCode($countryCode);
+//    }
+//
+//    /**
+//     * @param string $countryCode
+//     *
+//     * @return bool
+//     */
+//    private function isCountrySupported(string $countryCode): bool
+//    {
+//        $storeCountries = $this->getFactory()->getStore()->getCountries();
+//
+//        return in_array(strtoupper($countryCode), $storeCountries);
+//    }
+//
+//    /**
+//     * @param string $countryCode
+//     *
+//     * @return string|null
+//     */
+//    private function getLocaleByCountryCode(string $countryCode): ?string
+//    {
+//        $countryToLocaleRelations = $this->getConfig()->getCountryToLocaleRelations();
+//
+//        return $countryToLocaleRelations[strtoupper($countryCode)] ?? null;
+//    }
 }

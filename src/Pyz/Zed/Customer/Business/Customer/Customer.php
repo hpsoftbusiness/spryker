@@ -14,6 +14,7 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Customer\Business\Customer\Customer as SprykerCustomer;
 use Spryker\Zed\Customer\Business\Customer\EmailValidatorInterface;
 use Spryker\Zed\Customer\Business\CustomerExpander\CustomerExpanderInterface;
+use Spryker\Zed\Customer\Business\CustomerPasswordPolicy\CustomerPasswordPolicyValidatorInterface;
 use Spryker\Zed\Customer\Business\Exception\CustomerNotFoundException;
 use Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface;
 use Spryker\Zed\Customer\CustomerConfig;
@@ -37,6 +38,7 @@ class Customer extends SprykerCustomer
      * @param \Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface $localeQueryContainer
      * @param \Spryker\Shared\Kernel\Store $store
      * @param \Spryker\Zed\Customer\Business\CustomerExpander\CustomerExpanderInterface $customerExpander
+     * @param \Spryker\Zed\Customer\Business\CustomerPasswordPolicy\CustomerPasswordPolicyValidatorInterface $customerPasswordPolicyValidator
      * @param \Spryker\Zed\CustomerExtension\Dependency\Plugin\PostCustomerRegistrationPluginInterface[] $postCustomerRegistrationPlugins
      * @param \Pyz\Zed\Customer\Dependency\Plugin\CustomerPostCreatePluginInterface[] $postCustomerCreatePlugins
      */
@@ -49,10 +51,22 @@ class Customer extends SprykerCustomer
         LocaleQueryContainerInterface $localeQueryContainer,
         Store $store,
         CustomerExpanderInterface $customerExpander,
+        CustomerPasswordPolicyValidatorInterface $customerPasswordPolicyValidator,
         array $postCustomerRegistrationPlugins = [],
         array $postCustomerCreatePlugins = []
     ) {
-        parent::__construct($queryContainer, $customerReferenceGenerator, $customerConfig, $emailValidator, $mailFacade, $localeQueryContainer, $store, $customerExpander, $postCustomerRegistrationPlugins);
+        parent::__construct(
+            $queryContainer,
+            $customerReferenceGenerator,
+            $customerConfig,
+            $emailValidator,
+            $mailFacade,
+            $localeQueryContainer,
+            $store,
+            $customerExpander,
+            $customerPasswordPolicyValidator,
+            $postCustomerRegistrationPlugins
+        );
         $this->postCustomerCreatePlugins = $postCustomerCreatePlugins;
     }
 

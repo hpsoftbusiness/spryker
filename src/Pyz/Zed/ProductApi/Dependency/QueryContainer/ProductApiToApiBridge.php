@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Dependency\QueryContainer;
 
 use Generated\Shared\Transfer\ApiItemTransfer;
@@ -8,12 +13,12 @@ use Spryker\Zed\Api\Persistence\ApiQueryContainerInterface;
 class ProductApiToApiBridge implements ProductApiToApiInterface
 {
     /**
-     * @var ApiQueryContainerInterface
+     * @var \Spryker\Zed\Api\Persistence\ApiQueryContainerInterface
      */
     protected $apiQueryContainer;
 
     /**
-     * @param ApiQueryContainerInterface $apiQueryContainer
+     * @param \Spryker\Zed\Api\Persistence\ApiQueryContainerInterface $apiQueryContainer
      */
     public function __construct(ApiQueryContainerInterface $apiQueryContainer)
     {
@@ -24,7 +29,7 @@ class ProductApiToApiBridge implements ProductApiToApiInterface
      * @param array|\Spryker\Shared\Kernel\Transfer\AbstractTransfer $data
      * @param int|null $id
      *
-     * @return ApiItemTransfer
+     * @return \Generated\Shared\Transfer\ApiItemTransfer
      */
     public function createApiItem($data, $id = null): ApiItemTransfer
     {

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Persistence;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
@@ -10,42 +15,42 @@ interface ProductApiQueryContainerInterface extends QueryContainerInterface
     /**
      * @param int $idProductAbstract
      *
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryGet(int $idProductAbstract): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryRegularProducts(): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryBvDeals(): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function querySpDeals(): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryEliteClub(): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryOneSense(): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryLyconet(): SpyProductAbstractQuery;
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryFeaturedProducts(): SpyProductAbstractQuery;
 }

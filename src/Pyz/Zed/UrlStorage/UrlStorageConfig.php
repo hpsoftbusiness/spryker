@@ -8,11 +8,14 @@
 namespace Pyz\Zed\UrlStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\UrlStorage\UrlStorageConfig as SprykerUrlStorageConfig;
 
 class UrlStorageConfig extends SprykerUrlStorageConfig
 {
+    public const PUBLISH_URL = 'publish.url';
+
+    protected const CHUNK_SIZE = 1000;
+
     /**
      * @return string|null
      */
@@ -36,7 +39,7 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
      */
     public function getUrlEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_URL;
     }
 
     /**
@@ -46,6 +49,14 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
      */
     public function getUrlRedirectEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_URL;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChunkSize(): int
+    {
+        return static::CHUNK_SIZE;
     }
 }

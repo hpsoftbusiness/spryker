@@ -41,8 +41,8 @@ class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInte
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer|array $customerTransfer
      * @param array $affiliateData
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return string
      */

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Client\ProductListStorage\ProductConcreteRestriction;
 
 use Pyz\Client\ProductList\ProductListClientInterface;
@@ -10,14 +15,14 @@ use Spryker\Client\ProductListStorage\ProductListProductConcreteStorage\ProductL
 class ProductConcreteRestrictionReader extends SprykerProductConcreteRestrictionReader
 {
     /**
-     * @var ProductListClientInterface
+     * @var \Pyz\Client\ProductList\ProductListClientInterface
      */
     protected $productListClient;
 
     /**
-     * @param ProductListStorageToCustomerClientInterface $customerClient
-     * @param ProductListProductConcreteStorageReaderInterface $productListProductConcreteStorageReader
-     * @param ProductListClientInterface $productListClient
+     * @param \Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface $customerClient
+     * @param \Spryker\Client\ProductListStorage\ProductListProductConcreteStorage\ProductListProductConcreteStorageReaderInterface $productListProductConcreteStorageReader
+     * @param \Pyz\Client\ProductList\ProductListClientInterface $productListClient
      */
     public function __construct(
         ProductListStorageToCustomerClientInterface $customerClient,

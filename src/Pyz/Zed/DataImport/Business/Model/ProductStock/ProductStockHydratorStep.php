@@ -14,7 +14,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductStockHydratorStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 1000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
     public const COLUMN_NAME = 'name';
@@ -60,7 +60,7 @@ class ProductStockHydratorStep implements DataImportStepInterface
         $stockProductEntityTransfer = new SpyStockProductEntityTransfer();
         $stockProductEntityTransfer
             ->setQuantity($dataSet[static::COLUMN_QUANTITY])
-            ->setIsNeverOutOfStock($dataSet[static::COLUMN_IS_NEVER_OUT_OF_STOCK]);
+            ->setIsNeverOutOfStock($dataSet[static::COLUMN_IS_NEVER_OUT_OF_STOCK] ?: 0);
 
         $dataSet[static::STOCK_PRODUCT_ENTITY_TRANSFER] = $stockProductEntityTransfer;
     }

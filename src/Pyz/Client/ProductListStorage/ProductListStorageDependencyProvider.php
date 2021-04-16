@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Client\ProductListStorage;
 
 use Spryker\Client\Kernel\Container;
@@ -23,9 +28,9 @@ class ProductListStorageDependencyProvider extends SprykerProductListStorageDepe
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Client\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Client\Kernel\Container
      */
     protected function addProductListClient(Container $container): Container
     {

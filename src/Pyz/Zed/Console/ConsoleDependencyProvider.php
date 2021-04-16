@@ -84,6 +84,7 @@ use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfi
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterConsole;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductLabelDataImport\ProductLabelDataImportConfig;
+use Spryker\Zed\ProductOfferValidity\Communication\Console\ProductOfferValidityConsole;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
 use Spryker\Zed\ProductRelationDataImport\ProductRelationDataImportConfig;
@@ -339,6 +340,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new OrderInvoiceSendConsole(),
 
             new ProductDataImportConsole(),
+            new ProductOfferValidityConsole(),
             new ProductDataHealerConsole(),
         ];
 

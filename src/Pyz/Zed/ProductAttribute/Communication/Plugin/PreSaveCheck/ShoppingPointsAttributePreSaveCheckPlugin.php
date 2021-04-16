@@ -14,6 +14,8 @@ use Spryker\Zed\ProductAttribute\ProductAttributeConfig;
 
 /**
  * @method \Pyz\Zed\ProductAttribute\ProductAttributeConfig getConfig()
+ * @method \Pyz\Zed\ProductAttribute\Business\ProductAttributeFacadeInterface getFacade()
+ * @method \Pyz\Zed\ProductAttribute\Persistence\ProductAttributeQueryContainerInterface getQueryContainer()
  */
 class ShoppingPointsAttributePreSaveCheckPlugin extends AbstractPlugin implements ProductAttributePreSaveCheckPluginInterface
 {

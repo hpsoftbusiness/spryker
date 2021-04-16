@@ -12,6 +12,7 @@ use Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPluginInterfac
 
 /**
  * @method \Pyz\Zed\Product\Business\ProductFacadeInterface getFacade()
+ * @method \Pyz\Zed\ProductCategory\Communication\ProductCategoryCommunicationFactory getFactory()
  */
 class CategoryOrderItemExpanderPlugin extends AbstractPlugin implements OrderItemExpanderPluginInterface
 {

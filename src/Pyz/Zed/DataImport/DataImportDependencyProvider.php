@@ -27,9 +27,16 @@ use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImport
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
+use Spryker\Zed\MerchantProductDataImport\Communication\Plugin\MerchantProductDataImportPlugin;
+use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferDataImportPlugin;
+use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferStoreDataImportPlugin;
+use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileAddressDataImportPlugin;
+use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileDataImportPlugin;
 use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodDataImportPlugin;
 use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodStoreDataImportPlugin;
 use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
+use Spryker\Zed\PriceProductOfferDataImport\Communication\Plugin\PriceProductOfferDataImportPlugin;
+use Spryker\Zed\PriceProductOfferDataImport\Dependency\Facade\PriceProductOfferDataImportToPriceProductFacadeBridge;
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
@@ -37,6 +44,7 @@ use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelDataImpo
 use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelStoreDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListCategoryDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListDataImportPlugin;
+use Spryker\Zed\ProductOfferValidityDataImport\Communication\ProductOfferValidityDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationDataImportPlugin;
 use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationStoreDataImportPlugin;
@@ -59,6 +67,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
     public const FACADE_STOCK = 'FACADE_STOCK';
     public const FACADE_STORE = 'FACADE_STORE';
+    public const PRICE_PRODUCT_OFFER_DATA_IMPORT_TO_PRICE_PRODUCT_FACADE = 'PRICE_PRODUCT_OFFER_DATA_IMPORT_TO_PRICE_PRODUCT_FACADE';
 
     public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
 
@@ -81,6 +90,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addStockFacade($container);
         $container = $this->addStoreFacade($container);
         $container = $this->addUtilTextService($container);
+        $container = $this->addPriceProductOfferDataImportToPriceProductFacade($container);
 
         return $container;
     }
@@ -253,6 +263,13 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentNavigationDataImportPlugin(),
             new MerchantDataImportPlugin(),
             new MerchantStoreDataImportPlugin(),
+            new MerchantProfileDataImportPlugin(),
+            new MerchantProfileAddressDataImportPlugin(),
+            new MerchantProductDataImportPlugin(),
+            new MerchantProductOfferDataImportPlugin(),
+            new MerchantProductOfferStoreDataImportPlugin(),
+            new ProductOfferValidityDataImportPlugin(),
+            new PriceProductOfferDataImportPlugin(),
         ];
     }
 
@@ -286,6 +303,20 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {
             return $container->getLocator()->utilText()->service();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPriceProductOfferDataImportToPriceProductFacade(Container $container): Container
+    {
+        $container->set(static::PRICE_PRODUCT_OFFER_DATA_IMPORT_TO_PRICE_PRODUCT_FACADE, function (Container $container) {
+            return new PriceProductOfferDataImportToPriceProductFacadeBridge($container->getLocator()->priceProduct()->facade());
         });
 
         return $container;

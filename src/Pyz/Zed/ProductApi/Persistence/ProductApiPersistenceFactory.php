@@ -1,10 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Persistence;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
-use Spryker\Zed\ProductApi\ProductApiDependencyProvider;
 
 /**
  * @method \Pyz\Zed\ProductApi\ProductApiConfig getConfig()

@@ -159,7 +159,16 @@ $jobs[] = [
 $jobs[] = [
     'name' => 'product-data-import',
     'command' => '$PHP_BIN vendor/bin/console data:product:import-file',
-    'schedule' => '*/4 * * * *',
+    'schedule' => '*/20 * * * *',
+    'enable' => true,
+    'stores' => $allStores,
+];
+
+/* queue worker start  */
+$jobs[] = [
+    'name' => 're-try-queue-worker-start',
+    'command' => '$PHP_BIN vendor/bin/console schedule:resume -j queue-worker-start',
+    'schedule' => '0 */1 * * * ',
     'enable' => true,
     'stores' => $allStores,
 ];

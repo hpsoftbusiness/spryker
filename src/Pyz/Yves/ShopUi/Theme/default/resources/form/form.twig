@@ -196,7 +196,7 @@
 {# errors #}
 
 {% block form_errors %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% if errors | length > 0 %}
             <ul class="list list--bullet list--alert">
                 {% for error in errors %}
@@ -204,5 +204,5 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}

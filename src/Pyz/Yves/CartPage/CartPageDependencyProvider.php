@@ -9,6 +9,7 @@ namespace Pyz\Yves\CartPage;
 
 use Pyz\Yves\CartPage\Plugin\ProductLocalizedAttributesCartItemTransformerPlugin;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
+use SprykerShop\Yves\MerchantProductWidget\Plugin\CartPage\MerchantProductPreAddToCartPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTransformerPlugin;
 
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
@@ -21,6 +22,16 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
         return [
             new ProductBundleCartItemTransformerPlugin(),
             new ProductLocalizedAttributesCartItemTransformerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CartPageExtension\Dependency\Plugin\PreAddToCartPluginInterface[]
+     */
+    protected function getPreAddToCartPlugins(): array
+    {
+        return [
+            new MerchantProductPreAddToCartPlugin(),
         ];
     }
 }

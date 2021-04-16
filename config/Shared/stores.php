@@ -1,10 +1,7 @@
 <?php
-
 $stores = [];
-
 if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     $activeStores = array_map('trim', explode(',', getenv('SPRYKER_ACTIVE_STORES')));
-
     $template = [
         // different contexts
         'contexts' => [
@@ -34,30 +31,19 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
             // first entry is default
             'en' => 'en_US',
             'de' => 'de_DE',
-            'fr' => 'fr_FR',
-            'es' => 'es_ES',
-            'cz' => 'cs_CZ',
-            'se' => 'sv_SE',
-            'hu' => 'hu_HU',
-            'nl' => 'nl_NL',
-            'pl' => 'pl_PL',
-            'si' => 'sl_SI',
-            'it' => 'it_IT',
-            'pt' => 'pt_PT',
-            'no' => 'nn_NO',
-            'sk' => 'sk_SK',
+//            'pl' => 'pl_PL',
+//            'it' => 'it_IT',
         ],
         // first entry is default
         'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
         // internal and shop
         'currencyIsoCode' => 'EUR',
-        'currencyIsoCodes' => ['EUR', 'PLN', 'CZK', 'SEK', 'HUF', '	CHF', 'NOK',],
+        'currencyIsoCodes' => ['EUR'],
         'queuePools' => [
             'synchronizationPool' => [],
         ],
         'storesWithSharedPersistence' => [],
     ];
-
     foreach ($activeStores as $store) {
         $stores[$store] = $template;
         $stores[$store]['storesWithSharedPersistence'] = array_diff($activeStores, [$store]);
@@ -68,7 +54,6 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
 
     return $stores;
 }
-
 $stores['DE'] = [
     // different contexts
     'contexts' => [
@@ -98,24 +83,14 @@ $stores['DE'] = [
         // first entry is default
         'en' => 'en_US',
         'de' => 'de_DE',
-        'fr' => 'fr_FR',
-        'es' => 'es_ES',
-        'cz' => 'cs_CZ',
-        'se' => 'sv_SE',
-        'hu' => 'hu_HU',
-        'nl' => 'nl_NL',
-        'pl' => 'pl_PL',
-        'si' => 'sl_SI',
-        'it' => 'it_IT',
-        'pt' => 'pt_PT',
-        'no' => 'nn_NO',
-        'sk' => 'sk_SK',
+//        'pl' => 'pl_PL',
+//        'it' => 'it_IT',
     ],
     // first entry is default
     'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => ['EUR', 'PLN', 'CZK', 'SEK', 'HUF', '	CHF', 'NOK',],
+    'currencyIsoCodes' => ['EUR'],
     'queuePools' => [
         'synchronizationPool' => [
             'DE-connection',

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Client\ProductAttribute;
 
 use Pyz\Client\ProductAttribute\Zed\ProductAttributeZedStub;
@@ -10,7 +15,7 @@ use Spryker\Client\ZedRequest\ZedRequestClientInterface;
 class ProductAttributeFactory extends AbstractFactory
 {
     /**
-     * @return ProductAttributeZedStubInterface
+     * @return \Pyz\Client\ProductAttribute\Zed\ProductAttributeZedStubInterface
      */
     public function createProductAttributeZedStub(): ProductAttributeZedStubInterface
     {
@@ -18,7 +23,7 @@ class ProductAttributeFactory extends AbstractFactory
     }
 
     /**
-     * @return ZedRequestClientInterface
+     * @return \Spryker\Client\ZedRequest\ZedRequestClientInterface
      */
     protected function getZedRequestClient(): ZedRequestClientInterface
     {

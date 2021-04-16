@@ -52,15 +52,17 @@
         },
     } only %}
         {% block slides %}
-            {% for productAbstractView in data.slides if productAbstractView.available %}
-                {% include molecule('product-item') with {
-                    modifiers: ['stretch', 'medium-shadow'],
-                    data: {
-                        product: productAbstractView,
-                        cashback: productAbstractView.attributes.cashback_amount | default(null),
-                        shoppingPoints: productAbstractView.attributes.shopping_points | default(null),
-                    },
-                } only %}
+            {% for productAbstractView in data.slides %}
+                {% if productAbstractView.available %}
+                    {% include molecule('product-item') with {
+                        modifiers: ['stretch', 'medium-shadow'],
+                        data: {
+                            product: productAbstractView,
+                            cashback: productAbstractView.attributes.cashback_amount | default(null),
+                            shoppingPoints: productAbstractView.attributes.shopping_points | default(null),
+                        },
+                    } only %}
+                {% endif %}
             {% endfor %}
         {% endblock %}
     {% endembed %}

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Business\Mapper;
 
 use Generated\Shared\Transfer\CategoryCollectionTransfer;
@@ -21,10 +26,10 @@ class TransferMapper implements TransferMapperInterface
 {
     /**
      * @param array $productEntityCollection
-     * @param LocaleTransfer $localeTransfer,
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param string $title
      *
-     * @return ProductsResponseApiTransfer
+     * @return \Generated\Shared\Transfer\ProductsResponseApiTransfer
      */
     public function toTransferCollection(
         array $productEntityCollection,
@@ -40,14 +45,15 @@ class TransferMapper implements TransferMapperInterface
 
             $responseTransfer->addProduct($productTransfer);
         }
+
         return $responseTransfer;
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
-     * @param ProductUrlTransfer $productUrlTransfer
-     * @param LocaleTransfer $localeTransfer
-     * @param CategoryCollectionTransfer $productCategoryTransferCollection
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductUrlTransfer $productUrlTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\CategoryCollectionTransfer $productCategoryTransferCollection
      *
      * @return \Generated\Shared\Transfer\ProductApiTransfer
      */
@@ -75,10 +81,10 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
-     * @return LocalizedAttributesTransfer
+     * @return \Generated\Shared\Transfer\LocalizedAttributesTransfer
      */
     protected function getLocalizedAttributes(
         ProductAbstractTransfer $productAbstractTransfer,
@@ -92,8 +98,8 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return string|null
      */
@@ -110,13 +116,13 @@ class TransferMapper implements TransferMapperInterface
             } else {
                 $defaultImageUrl = $this->getImageUrlFromImageSet($imageSet);
             }
-
         }
+
         return $defaultImageUrl;
     }
 
     /**
-     * @param ProductImageSetTransfer $imageSetTransfer
+     * @param \Generated\Shared\Transfer\ProductImageSetTransfer $imageSetTransfer
      *
      * @return string|null
      */
@@ -128,8 +134,8 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
-     * @param CategoryCollectionTransfer $productCategoryTransferCollection
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\CategoryCollectionTransfer $productCategoryTransferCollection
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return string|null
      */
@@ -149,8 +155,8 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
-     * @param ProductUrlTransfer $productUrlTransfer
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\ProductUrlTransfer $productUrlTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return string
      */
@@ -167,9 +173,9 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
-     * @return ProductBenefitApiTransfer
+     * @return \Generated\Shared\Transfer\ProductBenefitApiTransfer
      */
     protected function getBenefitApi(ProductAbstractTransfer $productAbstractTransfer): ProductBenefitApiTransfer
     {
@@ -180,13 +186,14 @@ class TransferMapper implements TransferMapperInterface
             ->setShoppingPointsAmount($this->formatAmount(
                 $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
             ));
+
         return $benefitApi;
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
-     * @return ProductPriceApiTransfer
+     * @return \Generated\Shared\Transfer\ProductPriceApiTransfer
      */
     protected function getPriceApi(ProductAbstractTransfer $productAbstractTransfer): ProductPriceApiTransfer
     {
@@ -198,13 +205,14 @@ class TransferMapper implements TransferMapperInterface
             $productPriceApi->setAmount($this->formatAmount($moneyValue->getGrossAmount()))
                 ->setCurrency($moneyValue->getCurrency()->getCode());
         }
+
         return $productPriceApi;
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
-     * @return ProductBvDealApiTransfer
+     * @return \Generated\Shared\Transfer\ProductBvDealApiTransfer
      */
     protected function getBvDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductBvDealApiTransfer
     {
@@ -215,13 +223,14 @@ class TransferMapper implements TransferMapperInterface
             ->setBvAmount($this->formatAmount(
                 $productAbstractTransfer->getAttributes()['Benefit_amount'] ?? null
             ));
+
         return $productBcDealApi;
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
-     * @return ProductSpDealApiTransfer
+     * @return \Generated\Shared\Transfer\ProductSpDealApiTransfer
      */
     protected function getSpDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductSpDealApiTransfer
     {
@@ -232,6 +241,7 @@ class TransferMapper implements TransferMapperInterface
             ->setSpAmount($this->formatAmount(
                 $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
             ));
+
         return $productSpDealApi;
     }
 
@@ -245,6 +255,7 @@ class TransferMapper implements TransferMapperInterface
         if ($amount === null) {
             return null;
         }
+
         return number_format((float)$amount, 2, '.', '');
     }
 }

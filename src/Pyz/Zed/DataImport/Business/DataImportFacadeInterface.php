@@ -146,4 +146,138 @@ interface DataImportFacadeInterface extends SprykerDataImportFacadeInterface
      * @return void
      */
     public function flushCombinedProductConcreteDataImporter(): void;
+
+// => CTE
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductAbstractBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductAbstractBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductAbstractStoreBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductAbstractStoreBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductConcreteBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductConcreteBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductImageBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductImageBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductPriceBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductPriceBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductStockBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductStockBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductGroupBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductGroupBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductListProductConcreteBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductListProductConcreteBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeMerchantProductOfferBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushMerchantProductOfferBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeMerchantProductOfferStoreBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushMerchantProductOfferStoreBulkMariaDbPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writePriceProductOfferBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushPriceProductOfferBulkMariaDbPdoDataImporter(): void;
 }

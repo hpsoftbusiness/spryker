@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductDataImport\Communication\Console;
 
 use Exception;
@@ -22,6 +28,9 @@ class ProductDataImportConsole extends Console
     private const  DATA_ENTITY_PRICE = 'combined-product-price';
     private const  DATA_ENTITY_STOCK = 'combined-product-stock';
     private const  DATA_ENTITY_LIST_CONCRETE = 'combined-product-list-product-concrete';
+    private const  DATA_ENTITY_MERCHANT_PRODUCT_OFFER = 'merchant-product-offer';
+    private const  DATA_ENTITY_MERCHANT_PRODUCT_OFFER_STORE = 'merchant-product-offer-store';
+    private const  DATA_ENTITY_PRICE_PRODUCT_OFFER = 'price-product-offer';
 
     protected const DATA_ENTITY_FOR_PRODUCT = [
         self::DATA_ENTITY_ABSTRACT,
@@ -31,6 +40,9 @@ class ProductDataImportConsole extends Console
         self::DATA_ENTITY_IMAGE,
         self::DATA_ENTITY_PRICE,
         self::DATA_ENTITY_STOCK,
+        self::DATA_ENTITY_MERCHANT_PRODUCT_OFFER,
+        self::DATA_ENTITY_MERCHANT_PRODUCT_OFFER_STORE,
+        self::DATA_ENTITY_PRICE_PRODUCT_OFFER,
     ];
 
     public const COMMAND_NAME = 'data:product:import-file';
@@ -53,7 +65,7 @@ class ProductDataImportConsole extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
-        $progressBar = new ProgressBar($output, count(self::DATA_ENTITY_FOR_PRODUCT) + 3);
+        $progressBar = new ProgressBar($output, count(self::DATA_ENTITY_FOR_PRODUCT) + 2);
         $progressBar->setFormat('debug');
         $progressBar->start();
 

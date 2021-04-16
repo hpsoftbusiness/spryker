@@ -1,10 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Persistence;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
+/**
+ * @method \Pyz\Zed\ProductApi\Persistence\ProductApiPersistenceFactory getFactory()
+ */
 class ProductApiQueryContainer extends AbstractQueryContainer implements ProductApiQueryContainerInterface
 {
     protected const PRODUCTS_LIMIT = 25;
@@ -12,7 +20,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     /**
      * @param int $idProductAbstract
      *
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryGet(int $idProductAbstract): SpyProductAbstractQuery
     {
@@ -22,7 +30,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryRegularProducts(): SpyProductAbstractQuery
     {
@@ -32,7 +40,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryBvDeals(): SpyProductAbstractQuery
     {
@@ -41,7 +49,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function querySpDeals(): SpyProductAbstractQuery
     {
@@ -50,7 +58,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryEliteClub(): SpyProductAbstractQuery
     {
@@ -59,7 +67,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryOneSense(): SpyProductAbstractQuery
     {
@@ -68,7 +76,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryLyconet(): SpyProductAbstractQuery
     {
@@ -77,7 +85,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryFeaturedProducts(): SpyProductAbstractQuery
     {
@@ -86,7 +94,7 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     }
 
     /**
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     protected function queryFind(): SpyProductAbstractQuery
     {

@@ -86,7 +86,9 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
             $productImageSetEntityTransfer->getName(),
             $productImageSetEntityTransfer->getFkLocale(),
             (int)$productImageSetEntityTransfer->getFkProductAbstract(),
-            (int)$productImageSetEntityTransfer->getFkProduct(),
+            //             revert for MYW-867
+            //            (int)$productImageSetEntityTransfer->getFkProduct(),
+            null,
             $productImageSetEntityTransfer->getProductImageSetKey()
         );
 

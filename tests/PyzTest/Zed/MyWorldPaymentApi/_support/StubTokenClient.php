@@ -46,7 +46,7 @@ class StubTokenClient
      * @var \Spryker\Service\UtilEncoding\UtilEncodingService
      */
     private $utilEncodingService;
-    
+
     public function __construct()
     {
         $this->client = new Client(['base_uri' => self::BASE_URL]);

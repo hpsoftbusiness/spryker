@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ContentBannerGui\Communication\Form;
 
 use Spryker\Zed\ContentBannerGui\Communication\Form\BannerContentTermForm as SprykerBannerContentTermForm;
@@ -28,10 +33,11 @@ class BannerContentTermForm extends SprykerBannerContentTermForm
     }
 
     /**
-     * @param $builder
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
      * @return $this
      */
-    protected function addOpenUrlInNewTab($builder): self
+    protected function addOpenUrlInNewTab(FormBuilderInterface $builder)
     {
         $builder->add(static::FIELD_OPEN_URL_IN_NEW_TAB, CheckboxType::class, [
             'label' => static::LABEL_OPEN_URL_IN_NEW_TAB,

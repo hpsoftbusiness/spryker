@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\Twig;
 
+use Pyz\Service\ProductDataImport\Plugin\Twig\JsonDecodeTwigExtensionPlugin;
 use Pyz\Yves\CheckoutPage\Plugin\Twig\ProductAtttributeFilterTwigPlugin;
 use Spryker\Service\UtilDateTime\Plugin\Twig\DateTimeFormatterTwigPlugin;
 use Spryker\Shared\Twig\Plugin\DebugTwigPlugin;
@@ -86,6 +87,8 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ShopCmsSlotTwigPlugin(),
             new ContentNavigationTwigPlugin(),
             new ProductAtttributeFilterTwigPlugin(),
+
+            new JsonDecodeTwigExtensionPlugin(),
         ];
     }
 

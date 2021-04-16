@@ -8,11 +8,15 @@
 namespace Pyz\Zed\ProductStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\ProductStorage\ProductStorageConfig as SprykerProductStorageConfig;
 
 class ProductStorageConfig extends SprykerProductStorageConfig
 {
+    public const PUBLISH_PRODUCT_ABSTRACT = 'publish.product_abstract';
+    public const PUBLISH_PRODUCT_CONCRETE = 'publish.product_concrete';
+
+    protected const CHUNK_SIZE = 1000;
+
     /**
      * @return string|null
      */
@@ -34,7 +38,7 @@ class ProductStorageConfig extends SprykerProductStorageConfig
      */
     public function getProductConcreteEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_CONCRETE;
     }
 
     /**
@@ -42,6 +46,14 @@ class ProductStorageConfig extends SprykerProductStorageConfig
      */
     public function getProductAbstractEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_ABSTRACT;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChunkSize(): int
+    {
+        return static::CHUNK_SIZE;
     }
 }

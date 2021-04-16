@@ -212,4 +212,204 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     {
         $this->getFactory()->createCombinedProductConcretePropelDataSetWriter()->flush();
     }
+
+// => CTE
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductAbstractBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductAbstractBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductAbstractBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductAbstractBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductAbstractStoreBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductAbstractStoreBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductAbstractStoreBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductAbstractStoreBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductConcreteBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductConcreteBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductConcreteBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductConcreteBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductImageBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductImageBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductImageBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductImageBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductPriceBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductPriceBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductPriceBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductPriceBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductStockBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductStockBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductStockBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductStockBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductGroupBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductGroupBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductGroupBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductGroupBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductListProductConcreteBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createCombinedProductListProductConcreteBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductListProductConcreteBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createCombinedProductListProductConcreteBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeMerchantProductOfferBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createMerchantProductOfferBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushMerchantProductOfferBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createMerchantProductOfferBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeMerchantProductOfferStoreBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createMerchantProductOfferStoreBulkMariaDbPdoDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushMerchantProductOfferStoreBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createMerchantProductOfferStoreBulkMariaDbPdoDataSetWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writePriceProductOfferBulkMariaDbPdoDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createPriceProductOfferBulkPdoMariaDbDataSetWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushPriceProductOfferBulkMariaDbPdoDataImporter(): void
+    {
+        $this->getFactory()->createPriceProductOfferBulkPdoMariaDbDataSetWriter()->flush();
+    }
 }

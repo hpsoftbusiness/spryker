@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -9,7 +9,6 @@ namespace Pyz\Zed\DataImport\Business\Model\DataImportStep;
 
 use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Spryker\Shared\Kernel\Store;
-use Spryker\Zed\CmsPageDataImport\Business\DataSet\CmsPageDataSet;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class UrlAwareLocalizedAttributesExtractorStep extends LocalizedAttributesExtractorStep

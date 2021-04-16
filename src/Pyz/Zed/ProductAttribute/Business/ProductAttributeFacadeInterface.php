@@ -1,4 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
 
 namespace Pyz\Zed\ProductAttribute\Business;
 
@@ -9,9 +14,9 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeFacadeInterface as Spr
 interface ProductAttributeFacadeInterface extends SprykerProductAttributeFacadeInterface
 {
     /**
-     * @param ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
      *
-     * @return ProductAttributeKeysCollectionTransfer
+     * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
     public function getKeysToShowOnPdp(
         ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer

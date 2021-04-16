@@ -1,4 +1,5 @@
 {% extends molecule('product-item', '@SprykerShop:ShopUi') %}
+{% import molecule('product-item') as macros %}
 
 {% define data = {
     cashback: null,
@@ -18,15 +19,15 @@
 
         </div>
 
-            {% if data.idProductAbstract %}
-                {% block productAbstractLabels %}
-                    {% widget 'ProductAbstractLabelWidget' args [data.idProductAbstract] with {
-                        data: {
-                            parentJsName: config.jsName,
-                        },
-                    } only %}{% endwidget %}
-                {% endblock %}
-            {% endif %}
+        {% if data.idProductAbstract %}
+            {% block productAbstractLabels %}
+                {% widget 'ProductAbstractLabelWidget' args [data.idProductAbstract] with {
+                    data: {
+                        parentJsName: config.jsName,
+                    },
+                } only %}{% endwidget %}
+            {% endblock %}
+        {% endif %}
 
 
         {% block content %}
@@ -34,7 +35,7 @@
                 {% block name %}
                     {% if data.name and data.url %}
                         {% block link %}
-                            {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate, data.product.affiliate_data ?? data.product.affiliateData] with {
+                            {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate, data.product.affiliate_data ?? data.product.affiliateData, data.idProductAbstract] with {
                                 data: {
                                     parentJsName: config.jsName,
                                     configName: config.name,
@@ -54,7 +55,9 @@
 
                 {% block price %}
                     <div class="{{ config.name }}__price">
-                        {% if can('SeePricePermissionPlugin') %}
+                        {% if data.product.is_affiliate %}
+                            {% widget 'ProductAffiliateOffersPriceWidget' args [data.idProductAbstract] only %}{% endwidget %}
+                        {% elseif can('SeePricePermissionPlugin') %}
                             {% embed molecule('money-price') with {
                                 data: {
                                     isAffiliate: data.product.is_affiliate | default(false),
@@ -78,20 +81,25 @@
             </div>
 
             {% block footer %}
-                {% set cashback = data.cashback %}
+                {% if data.product.is_affiliate | default(false) %}
+                    {% widget 'ProductAffiliateOffersWidget' args [data.idProductAbstract] only %}{% endwidget %}
+                {% else %}
+                    {% set cashback = data.cashback %}
 
-                {% if cashback %}
-                    <div class="{{ config.name }}__footer">
-                        {% include molecule('cashback') with {
-                            modifiers: ['small'],
-                            data: {
-                                cashback: cashback,
-                                shoppingPoints: data.shoppingPoints,
-                                iconModifiers: [''],
-                            },
-                        } only %}
-                    </div>
+                    {% if cashback %}
+                        <div class="{{ config.name }}__footer">
+                            {% include molecule('cashback') with {
+                                modifiers: ['small'],
+                                data: {
+                                    cashback: cashback,
+                                    shoppingPoints: data.shoppingPoints,
+                                    iconModifiers: [''],
+                                },
+                            } only %}
+                        </div>
+                    {% endif %}
                 {% endif %}
+
             {% endblock %}
         {% endblock %}
     </div>
@@ -102,7 +110,7 @@
     {% set modifiers = ['spaceless'] %}
 
     {% block productThumbnail %}
-        {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate, data.product.affiliate_data ?? data.product.affiliateData] with {
+        {% widget 'ProductUrlWidget' args [data.product.is_affiliate ?? data.product.isAffiliate, data.product.affiliate_data ?? data.product.affiliateData,data.idProductAbstract] with {
             data: {
                 parentJsName: config.jsName,
                 configName: config.name,

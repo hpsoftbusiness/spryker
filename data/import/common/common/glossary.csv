@@ -19878,7 +19878,7 @@ discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen "
 shipment.lead.time,"Lieferzeit: ca. 3-7 Werktage",de_DE
 shipment.lead.time,"Delivery time: approx. 3-7 working days",en_US
 afiliate.legal.text,"Dieses Produkt wird von einem Drittanbieter verkauft. Für Preisgestaltung, Produktbeschreibung, Lagerstand und Versand ist ausschließlich der Drittanbieter verantwortlich. Zur Haftung von myWorld für Hyperlinks sowie deren Inhalt wird auf die für den myWorld Marktplatz geltenden Nutzungsbedingungen verwiesen.",de_DE
-afiliate.legal.text,"This product is sold by a third party seller. The seller is solely responsible for pricing, product description, stock levels and shipping. Regarding myWorld’s liability for hyperlinks and their content, we refer to the terms of use applicable for the myWorld marketplace.",en_us
+afiliate.legal.text,"This product is sold by a third party seller. The seller is solely responsible for pricing, product description, stock levels and shipping. Regarding myWorld’s liability for hyperlinks and their content, we refer to the terms of use applicable for the myWorld marketplace.",en_US
 pdp.include.vat,"inkl. MwSt.",de_DE
 pdp.include.vat,"incl. VAT",en_US
 pdp.price.from,"ab",de_DE
@@ -19913,3 +19913,29 @@ checkout.step.benefit_deal.with_method,with,en_US
 checkout.step.benefit_deal.with_method,mit,de_DE
 checkout.step.benefit_deal.or,or,en_US
 checkout.step.benefit_deal.or,oder,de_DE
+merchant_profile.email,Email Address,en_US
+merchant_profile.email,E-Mail,de_DE
+merchant_profile.address,Address,en_US
+merchant_profile.address,Adresse,de_DE
+merchant_profile.phone,Phone,en_US
+merchant_profile.phone,Telefon,de_DE
+merchant_profile.terms_and_conditions,Terms & Conditions,en_US
+merchant_profile.terms_and_conditions,AGB,de_DE
+merchant_profile.cancellation_policy,Cancellation Policy,en_US
+merchant_profile.cancellation_policy,Widerrufsbelehrung,de_DE
+merchant_profile.imprint,Imprint,en_US
+merchant_profile.imprint,Impressum,de_DE
+merchant_profile.privacy,Data Privacy,en_US
+merchant_profile.privacy,Datenschutz,de_DE
+merchant_profile.delivery_time,Delivery Time,en_US
+merchant_profile.delivery_time,Lieferzeit,de_DE
+error.429,Zu viele Anfragen,de_DE
+error.429,Too Many Requests,en_US
+security_blocker_page.error.account_blocked,"Too many log in attempts from your address. Please wait %minutes% minutes before trying again.",en_US
+security_blocker_page.error.account_blocked,"Warten Sie bitte %minutes% Minuten, bevor Sie es erneut versuchen.",de_DE
+merchant_product_offer.view_seller,View Seller,en_US
+merchant_product_offer.view_seller,Händler ansehen,de_DE
+merchant_product_offer.sold_by,Sold by,en_US
+merchant_product_offer.sold_by,Verkauft durch,de_DE
+product.filter.merchant_name,Merchant,en_US
+product.filter.merchant_name,Händler,de_DE

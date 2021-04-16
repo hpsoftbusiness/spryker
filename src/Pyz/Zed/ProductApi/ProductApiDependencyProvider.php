@@ -1,11 +1,16 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi;
 
-use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
-use Spryker\Zed\Kernel\Container;
 use Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductBridge;
 use Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiBridge;
+use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
 
 class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -50,9 +55,9 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function provideApiQueryContainer(Container $container): Container
     {
@@ -64,9 +69,9 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function provideProductFacade(Container $container): Container
     {
@@ -78,9 +83,9 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function provideApiFacade(Container $container): Container
     {
@@ -92,9 +97,9 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function provideLocaleFacade(Container $container): Container
     {
@@ -106,9 +111,9 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function provideProductCategoryFacade(Container $container): Container
     {

@@ -7,11 +7,8 @@
 
 namespace Pyz\Yves\MyWorldPayment;
 
-use Pyz\Yves\MyWorldPayment\Form\BenefitVouchersForm;
 use Pyz\Yves\MyWorldPayment\Form\BonusSubForm;
-use Pyz\Yves\MyWorldPayment\Form\DataProvider\BenefitVouchersFormDataProvider;
 use Pyz\Yves\MyWorldPayment\Form\DataProvider\BonusFormDataProvider;
-use Spryker\Client\Product\ProductClientInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 

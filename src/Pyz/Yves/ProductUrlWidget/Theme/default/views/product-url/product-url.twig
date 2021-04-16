@@ -5,6 +5,7 @@
     targetBlank: _widget.targetBlank,
     suggestion: null,
     thumbnail: null,
+    offer: null,
     image: null,
     parentJsName: null,
     configName: null,
@@ -39,13 +40,22 @@
                 targetBlank: data.targetBlank,
             },
         } only %}
+    {% elseif data.offer %}
+        {% include molecule('offer-url', 'ProductUrlWidget') with {
+            data: {
+                url: data.url is empty ? data.originUrl : data.url,
+                configName: data.configName,
+                parentJsName: data.parentJsName,
+                targetBlank: data.targetBlank,
+            },
+        } only %}
     {% else %}
         {% if data.url %}
             <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
                href="{{ data.url }}" target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% else %}
             <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
-               href="{{ path(data.originUrl) }}"
+               href="{{ data.originUrl }}"
                target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% endif %}
     {% endif %}

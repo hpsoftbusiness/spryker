@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract;
 
-use Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -54,16 +53,14 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException
-     *
      * @return void
      */
     protected function checkSkuProductAlreadyExists(DataSetInterface $dataSet): void
     {
-        $sku = $dataSet[static::KEY_ABSTRACT_SKU];
-        if (isset($this->skuProductConcreteList[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" already exists.', $sku));
-        }
+//        $sku = $dataSet[static::KEY_ABSTRACT_SKU];
+//        if (isset($this->skuProductConcreteList[$sku])) {
+//            throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" already exists.', $sku));
+//        }
 
 //        if (isset($this->resolved[$sku])) {
 //            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" has been already imported.', $sku));

@@ -1,0 +1,30 @@
+{% extends template('widget') %}
+
+{% define data = {
+    offers: _widget.offers,
+} %}
+
+{% block body %}
+    {% if data.offers|length == 1 %}
+        {% for offer in data.offers %}
+            <div class="product-item__footer">
+                {% include molecule('cashback') with {
+                    modifiers: ['small'],
+                    data: {
+                        cashback: offer.standardCashback,
+                        shoppingPoints: offer.standardStoryPoints,
+                        iconModifiers: [''],
+                        symbol: '',
+                    },
+                } only %}
+                {# TODO:: styling image size/position #}
+                <img style="position: absolute;right: 15px;height: 35px; bottom: 5px" src="{{ offer.logo }}" alt="">
+            </div>
+        {% endfor %}
+    {% elseif data.offers|length > 1 %}
+        <div class="product-item__footer">
+            {# TODO:: add translate #}
+            More than one offer
+        </div>
+    {% endif %}
+{% endblock %}

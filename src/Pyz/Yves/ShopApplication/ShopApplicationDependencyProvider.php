@@ -9,6 +9,8 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CustomerPage\Plugin\Application\SsoSecurityApplicationPlugin;
 use Pyz\Yves\GoogleAnalyticWidget\Widget\GoogleAnalyticWidget;
+use Pyz\Yves\ProductAffiliateOffersPriceWidget\Widget\ProductAffiliateOffersPriceWidget;
+use Pyz\Yves\ProductAffiliateOffersWidget\Widget\ProductAffiliateOffersWidget;
 use Pyz\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Pyz\Yves\ProductUrlWidget\Widget\ProductUrlWidget;
@@ -49,8 +51,12 @@ use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProduct
 use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\DiscountVoucherFormWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
+use SprykerShop\Yves\MerchantProductWidget\Widget\MerchantProductWidget;
+use SprykerShop\Yves\MerchantProductWidget\Widget\ProductSoldByMerchantWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\OrderCancelWidget\Widget\OrderCancelButtonWidget;
+use SprykerShop\Yves\PriceProductVolumeWidget\Widget\CurrentProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceProductWidget\Widget\PriceProductWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
@@ -74,7 +80,9 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidg
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchGridWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
@@ -162,6 +170,14 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductAbstractAddToCartButtonWidget::class,
             GoogleAnalyticWidget::class,
             ProductUrlWidget::class,
+            ProductConcreteSearchWidget::class,
+            ProductConcreteAddWidget::class,
+            ProductSoldByMerchantWidget::class,
+            MerchantProductWidget::class,
+            MerchantProductOfferWidget::class,
+            ProductAffiliateOffersWidget::class,
+            CurrentProductPriceVolumeWidget::class,
+            ProductAffiliateOffersPriceWidget::class,
         ];
     }
 

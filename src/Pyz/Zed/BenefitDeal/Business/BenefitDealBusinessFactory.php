@@ -16,7 +16,6 @@ use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReader;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpander;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpanderInterface;
-use Pyz\Zed\BenefitDeal\Dependency\Plugin\ItemBenefitDealHydratorPluginInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -70,7 +69,7 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return ItemBenefitDealHydratorPluginInterface[]
+     * @return \Pyz\Zed\BenefitDeal\Dependency\Plugin\ItemBenefitDealHydratorPluginInterface[]
      */
     private function getItemBenefitDealHydratorPlugins(): array
     {

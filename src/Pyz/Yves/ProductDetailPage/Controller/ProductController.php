@@ -55,13 +55,13 @@ class ProductController extends SprykerShopProductController
             );
         }
 
-        if ($viewData['product']->getIsAffiliate()) {
-            $affiliateData = $viewData['product']->getAffiliateData();
-            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl(
-                $affiliateData
-            );
-            $viewData['product']->setAffiliateData($affiliateData);
-        }
+//        if ($viewData['product']->getIsAffiliate()) {
+//            $affiliateData = $viewData['product']->getAffiliateData();
+//            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl(
+//                $affiliateData
+//            );
+//            $viewData['product']->setAffiliateData($affiliateData);
+//        }
 
         return $viewData;
     }
@@ -76,7 +76,7 @@ class ProductController extends SprykerShopProductController
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
 
         if (!$customerTransfer) {
-            return $affiliateData[self::KEY_AFFILIATE_DEEPLINK];
+            return $affiliateData[self::KEY_AFFILIATE_DEEPLINK] ?? '';
         }
 
         return $this->getFactory()->getProductAffiliateService()

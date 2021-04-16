@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Business\Mapper;
 
-use Generated\Shared\Transfer\ApiRequestTransfer;
 use Generated\Shared\Transfer\CategoryCollectionTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
@@ -13,10 +17,10 @@ interface TransferMapperInterface
 {
     /**
      * @param array $productEntityCollection
-     * @param LocaleTransfer $localeTransfer,
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param string $title
      *
-     * @return ProductsResponseApiTransfer
+     * @return \Generated\Shared\Transfer\ProductsResponseApiTransfer
      */
     public function toTransferCollection(
         array $productEntityCollection,
@@ -25,10 +29,10 @@ interface TransferMapperInterface
     ): ProductsResponseApiTransfer;
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
-     * @param ProductUrlTransfer $productUrlTransfer
-     * @param LocaleTransfer $localeTransfer
-     * @param CategoryCollectionTransfer $productCategoryTransferCollection
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductUrlTransfer $productUrlTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\CategoryCollectionTransfer $productCategoryTransferCollection
      *
      * @return \Generated\Shared\Transfer\ProductApiTransfer
      */

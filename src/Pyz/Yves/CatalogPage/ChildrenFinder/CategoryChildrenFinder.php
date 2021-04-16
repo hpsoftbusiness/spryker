@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Yves\CatalogPage\ChildrenFinder;
 
 use Generated\Shared\Transfer\CategoryNodeStorageTransfer;
@@ -8,8 +13,8 @@ use Generated\Shared\Transfer\FacetSearchResultTransfer;
 class CategoryChildrenFinder implements CategoryChildrenFinderInterface
 {
     /**
-     * @param CategoryNodeStorageTransfer $categoryNode
-     * @param FacetSearchResultTransfer $filter
+     * @param \Generated\Shared\Transfer\CategoryNodeStorageTransfer $categoryNode
+     * @param \Generated\Shared\Transfer\FacetSearchResultTransfer $filter
      * @param bool $isEmptyCategoryFilterValueVisible
      *
      * @return bool
@@ -20,7 +25,7 @@ class CategoryChildrenFinder implements CategoryChildrenFinderInterface
         bool $isEmptyCategoryFilterValueVisible
     ): bool {
         if ($isEmptyCategoryFilterValueVisible) {
-            return (bool)sizeof($categoryNode->getChildren());
+            return (bool)count($categoryNode->getChildren());
         }
 
         foreach ($categoryNode->getChildren() as $child) {
@@ -28,12 +33,13 @@ class CategoryChildrenFinder implements CategoryChildrenFinderInterface
                 return true;
             }
         }
+
         return false;
     }
 
     /**
-     * @param CategoryNodeStorageTransfer $categoryNode
-     * @param FacetSearchResultTransfer $filter
+     * @param \Generated\Shared\Transfer\CategoryNodeStorageTransfer $categoryNode
+     * @param \Generated\Shared\Transfer\FacetSearchResultTransfer $filter
      *
      * @return bool
      */
@@ -46,6 +52,7 @@ class CategoryChildrenFinder implements CategoryChildrenFinderInterface
                 return (bool)$filterValue->getDocCount();
             }
         }
+
         return false;
     }
 }

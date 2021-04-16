@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttribute\Business;
 
 use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
@@ -9,9 +14,9 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeFacade as SprykerProdu
 class ProductAttributeFacade extends SprykerProductAttributeFacade implements ProductAttributeFacadeInterface
 {
     /**
-     * @param ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
      *
-     * @return ProductAttributeKeysCollectionTransfer
+     * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
     public function getKeysToShowOnPdp(
         ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer

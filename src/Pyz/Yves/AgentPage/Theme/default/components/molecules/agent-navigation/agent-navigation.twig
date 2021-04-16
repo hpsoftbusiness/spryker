@@ -1,4 +1,6 @@
 {% extends molecule('agent-navigation', '@SprykerShop:AgentPage') %}
+{% import model('component') as component %}
+{% import molecule('agent-navigation') as macros %}
 
 {% block body %}
     <ul class="{{ component.renderClass('menu', modifiers) }}">

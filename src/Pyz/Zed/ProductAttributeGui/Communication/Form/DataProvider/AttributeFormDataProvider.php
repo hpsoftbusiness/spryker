@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttributeGui\Communication\Form\DataProvider;
 
 use Pyz\Zed\ProductAttributeGui\Communication\Form\AttributeForm;
+use Spryker\Zed\ProductAttributeGui\Communication\Form\AttributeForm as SprykerAttributeForm;
 use Spryker\Zed\ProductAttributeGui\Communication\Form\DataProvider\AttributeFormDataProvider as SprykerAttributeFormDataProvider;
 
 class AttributeFormDataProvider extends SprykerAttributeFormDataProvider
@@ -16,7 +22,7 @@ class AttributeFormDataProvider extends SprykerAttributeFormDataProvider
     {
         if ($idProductManagementAttribute === null) {
             return [
-                \Spryker\Zed\ProductAttributeGui\Communication\Form\AttributeForm::FIELD_ALLOW_INPUT => false,
+                SprykerAttributeForm::FIELD_ALLOW_INPUT => false,
             ];
         }
 

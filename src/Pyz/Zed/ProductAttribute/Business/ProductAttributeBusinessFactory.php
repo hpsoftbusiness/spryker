@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\ProductAttribute\Business;
 
-use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader;
 use Pyz\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttributeTransferMapper;
+use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Pyz\Zed\ProductAttribute\ProductAttributeDependencyProvider;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory as SprykerProductAttributeBusinessFactory;
 
@@ -63,7 +63,8 @@ class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFac
         return new ProductAttributeTransferMapper(
             $this->getLocaleFacade(),
             $this->getGlossaryFacade(),
-            $this->createAttributeGlossaryKeyBuilder()
+            $this->createAttributeGlossaryKeyBuilder(),
+            $this->createTranslationMapper(),
         );
     }
 }

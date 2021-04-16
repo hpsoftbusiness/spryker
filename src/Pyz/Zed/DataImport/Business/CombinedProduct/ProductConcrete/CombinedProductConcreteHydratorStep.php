@@ -15,7 +15,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 50;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';

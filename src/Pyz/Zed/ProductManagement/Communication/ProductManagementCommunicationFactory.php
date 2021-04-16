@@ -22,7 +22,8 @@ class ProductManagementCommunicationFactory extends SprykerProductManagementComm
             $this->getProductQueryContainer(),
             $this->getLocaleFacade()->getCurrentLocale(),
             $this->createProductTypeHelper(),
-            $this->getRepository()
+            $this->getRepository(),
+            $this->getProductTableDataExpanderPlugins()
         );
     }
 }

@@ -26,7 +26,12 @@ use Spryker\Zed\ContentStorage\Communication\Plugin\Event\Subscriber\ContentStor
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\CustomerAccessStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantProductOfferSearchEventSubscriber;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantSearchEventSubscriber;
+use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
+use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Event\Subscriber\PriceProductOfferStorageEventSubscriber;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\Subscriber\PriceProductStorageEventSubscriber;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Event\Subscriber\ProductAlternativeStorageEventSubscriber;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\Subscriber\ProductCategoryFilterStorageEventSubscriber;
@@ -73,6 +78,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         /**
          * Storage Events
          */
+        $eventSubscriberCollection->add(new GlossaryStorageEventSubscriber());
         $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
         $eventSubscriberCollection->add(new AvailabilityStorageEventSubscriber());
         $eventSubscriberCollection->add(new CategoryStorageEventSubscriber());
@@ -125,6 +131,11 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductListSearchEventSubscriber());
 
         $eventSubscriberCollection->add(new PublisherSubscriber());
+
+        $eventSubscriberCollection->add(new MerchantSearchEventSubscriber());
+        $eventSubscriberCollection->add(new MerchantProductOfferSearchEventSubscriber());
+        $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
+        $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
 
         return $eventSubscriberCollection;
     }

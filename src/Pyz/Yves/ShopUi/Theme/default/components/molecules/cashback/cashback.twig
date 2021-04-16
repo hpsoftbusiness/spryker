@@ -8,6 +8,7 @@
     cashback: required,
     shoppingPoints: null,
     iconModifiers: ['medium-up'],
+    symbol: '%',
 } %}
 
 {% block component %}
@@ -20,7 +21,7 @@
 {% block body %}
     {% set shoppingPoints = data.shoppingPoints %}
 
-    {{ cashback }}% {{ 'global.cashback' | trans }}
+    {{ cashback }}{{ data.symbol}} {{ 'global.cashback' | trans }}
     {% if shoppingPoints %}
         + {{ shoppingPoints }}
         {% include atom('icon') with {

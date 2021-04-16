@@ -7,17 +7,21 @@
 
 namespace Pyz\Zed\PriceProductStorage;
 
-use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\PriceProductStorage\PriceProductStorageConfig as SprykerPriceProductStorageConfig;
 
 class PriceProductStorageConfig extends SprykerPriceProductStorageConfig
 {
+    public const PUBLISH_PRODUCT_ABSTRACT_PRICE = 'publish.product_abstract_price';
+    public const PUBLISH_PRODUCT_CONCRETE_PRICE = 'publish.product_concrete_price';
+
+    public const CHUNK_SIZE = 1000;
+
     /**
      * @return string|null
      */
     public function getPriceProductAbstractEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_ABSTRACT_PRICE;
     }
 
     /**
@@ -25,6 +29,14 @@ class PriceProductStorageConfig extends SprykerPriceProductStorageConfig
      */
     public function getPriceProductConcreteEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_CONCRETE_PRICE;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChunkSize(): int
+    {
+        return static::CHUNK_SIZE;
     }
 }

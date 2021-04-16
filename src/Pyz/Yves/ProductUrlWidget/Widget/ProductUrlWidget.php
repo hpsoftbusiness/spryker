@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ProductUrlWidget\Widget;
 
+use Generated\Shared\Transfer\ProductOfferStorageCriteriaTransfer;
 use Pyz\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
@@ -18,13 +19,28 @@ class ProductUrlWidget extends AbstractWidget
     public const NAME = 'ProductUrlWidget';
 
     /**
+     * @var bool
+     */
+    private $hasOneOffer = false;
+
+    /**
      * @param bool|null $isAffiliate
      * @param array $affiliateData
+     * @param int|null $abstractProduct
+     * @param bool $isConcrete
      */
-    public function __construct(?bool $isAffiliate, array $affiliateData)
-    {
-        $this->addParameter('url', $this->getProductUrl($isAffiliate, $affiliateData));
-        $this->addParameter('targetBlank', $this->getTargetBlank($isAffiliate));
+    public function __construct(
+        ?bool $isAffiliate,
+        array $affiliateData,
+        ?int $abstractProduct = null,
+        $isConcrete = false
+    ) {
+        if ($isAffiliate) {
+            $this->hasOneOffer($abstractProduct);
+        }
+
+        $this->addParameter('url', $this->getProductUrl($isAffiliate, $affiliateData, $isConcrete));
+        $this->addParameter('targetBlank', $this->getTargetBlank($isAffiliate, $isConcrete));
     }
 
     /**
@@ -46,14 +62,16 @@ class ProductUrlWidget extends AbstractWidget
     /**
      * @param bool|null $isAffiliate
      * @param array $affiliateData
+     * @param bool $isConcrete
      *
      * @return string
      */
-    protected function getProductUrl(?bool $isAffiliate, array $affiliateData): string
+    protected function getProductUrl(?bool $isAffiliate, array $affiliateData, bool $isConcrete): string
     {
-        //@TODO just return the url if there is only one affiliate
         if ($isAffiliate) {
-            return $this->getProductAffiliateTrackingUrl($affiliateData);
+            if ($this->hasOneOffer || $isConcrete) {
+                return $this->getProductAffiliateTrackingUrl($affiliateData);
+            }
         }
 
         return '';
@@ -79,22 +97,62 @@ class ProductUrlWidget extends AbstractWidget
     }
 
     /**
-     * @param bool|null $isAffiliate
+     * @param int|null $abstractProductId
      *
-     * @return bool
-     *
-     * TODO:: for merchants it should added checking for count of offers
+     * @return void
      */
-    private function getTargetBlank(?bool $isAffiliate): bool
+    protected function hasOneOffer(?int $abstractProductId): void
     {
-        if ($isAffiliate) {
-            $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+        if ($abstractProductId === null) {
+            $this->hasOneOffer = false;
 
-            if (!$customerTransfer) {
-                return false;
-            }
+            return;
+        }
+        $locale = $this->getLocale();
+        $abstractProducts = $this->getFactory()->getProductStorageClient()->getProductAbstractViewTransfers(
+            [$abstractProductId],
+            $locale
+        );
+        $concretes = [];
+
+        foreach ($abstractProducts as $abstractProduct) {
+            $concretes = array_merge(
+                $concretes,
+                array_keys($abstractProduct->getAttributeMap()->getProductConcreteIds())
+            );
         }
 
-        return true;
+        $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
+        $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
+
+        $offers = $this->getFactory()->getMerchantProductOfferStorageClient()->getProductOffersBySkus(
+            $productOfferCriteriaFilterTransfer
+        )->getProductOffersStorage();
+
+        $this->hasOneOffer = $offers->count() === 1;
+    }
+
+    /**
+     * @param bool|null $isAffiliate
+     * @param bool $isConcrete
+     *
+     * @return bool
+     */
+    private function getTargetBlank(?bool $isAffiliate, bool $isConcrete): bool
+    {
+        if ($isAffiliate) {
+            if (!$this->hasOneOffer) {
+                return false;
+            }
+            $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+
+            if (!$isConcrete && (!$this->hasOneOffer || !$customerTransfer)) {
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }

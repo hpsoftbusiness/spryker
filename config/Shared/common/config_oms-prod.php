@@ -2,13 +2,6 @@
 
 use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
-use Spryker\Shared\Kernel\KernelConstants;
-use Spryker\Shared\Nopayment\NopaymentConfig;
-use Spryker\Shared\Nopayment\NopaymentConstants;
-use Spryker\Shared\Oms\OmsConstants;
-use Spryker\Shared\Sales\SalesConstants;
-use Spryker\Zed\GiftCard\GiftCardConfig;
-use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------

@@ -181,7 +181,7 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
     }
 
     /**
-     * @return CustomerProductListCollectionTransfer
+     * @return \Generated\Shared\Transfer\CustomerProductListCollectionTransfer
      */
     protected function getDefaultCustomerProductListCollectionTransfer(): CustomerProductListCollectionTransfer
     {

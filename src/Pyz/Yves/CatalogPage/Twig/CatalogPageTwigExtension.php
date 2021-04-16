@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Yves\CatalogPage\Twig;
 
 use Generated\Shared\Transfer\CategoryNodeStorageTransfer;
@@ -14,13 +19,13 @@ class CatalogPageTwigExtension extends SprykerCatalogPageTwigExtension
     public const FUNCTION_EXISTS_CATEGORY_CHILD = 'existsCategoryChild';
 
     /**
-     * @var CategoryChildrenFinderInterface
+     * @var \Pyz\Yves\CatalogPage\ChildrenFinder\CategoryChildrenFinderInterface
      */
     protected $categoryChildrenFinder;
 
     /**
-     * @param UrlGeneratorInterface $activeSearchFilterUrlGenerator
-     * @param CategoryChildrenFinderInterface $categoryChildrenFinder
+     * @param \SprykerShop\Yves\CatalogPage\ActiveSearchFilter\UrlGeneratorInterface $activeSearchFilterUrlGenerator
+     * @param \Pyz\Yves\CatalogPage\ChildrenFinder\CategoryChildrenFinderInterface $categoryChildrenFinder
      */
     public function __construct(
         UrlGeneratorInterface $activeSearchFilterUrlGenerator,
@@ -41,14 +46,14 @@ class CatalogPageTwigExtension extends SprykerCatalogPageTwigExtension
                 new TwigFunction(
                     static::FUNCTION_EXISTS_CATEGORY_CHILD,
                     [$this, static::FUNCTION_EXISTS_CATEGORY_CHILD]
-                )
+                ),
             ]
         );
     }
 
     /**
-     * @param CategoryNodeStorageTransfer $categoryNode
-     * @param FacetSearchResultTransfer $filter
+     * @param \Generated\Shared\Transfer\CategoryNodeStorageTransfer $categoryNode
+     * @param \Generated\Shared\Transfer\FacetSearchResultTransfer $filter
      * @param bool|null $isEmptyCategoryFilterValueVisible
      *
      * @return bool
@@ -57,8 +62,7 @@ class CatalogPageTwigExtension extends SprykerCatalogPageTwigExtension
         CategoryNodeStorageTransfer $categoryNode,
         FacetSearchResultTransfer $filter,
         ?bool $isEmptyCategoryFilterValueVisible
-    )
-    {
+    ) {
         return $this->categoryChildrenFinder->existsCategoryChild(
             $categoryNode,
             $filter,

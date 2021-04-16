@@ -39,7 +39,7 @@ $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     // For the test this param required for pass the Payment Step post condition. Due the bug when priceToPay become 0.00
     'dummyPrepayment',
     MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME
+    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([

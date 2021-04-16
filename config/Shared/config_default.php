@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\Api\ApiConstants;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
 use Pyz\Shared\Oms\OmsConstants;
@@ -16,7 +17,6 @@ use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBui
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
-use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
@@ -46,6 +46,8 @@ use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
+use Spryker\Shared\SecurityBlocker\SecurityBlockerConstants;
+use Spryker\Shared\SecuritySystemUser\SecuritySystemUserConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -57,12 +59,13 @@ use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\User\UserConstants;
+use Spryker\Shared\Vault\VaultConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
-use Pyz\Shared\Api\ApiConstants;
 
 // ############################################################################
 // ############################## PRODUCTION CONFIGURATION ####################
@@ -166,6 +169,8 @@ $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
 
 $config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/quote-request($|/)|^(/en|/de)?/comment($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!/add)($|/)|^(/en|/de)?/checkout($|/))';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
+$config[CustomerPageConstants::CUSTOMER_REMEMBER_ME_SECRET] = 'hundnase';
+$config[CustomerPageConstants::CUSTOMER_REMEMBER_ME_LIFETIME] = 31536000;
 
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
     'password',
@@ -188,15 +193,9 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = getenv('SPRYKER_OAUTH_CLIENT_SECR
 $config[UserConstants::USER_SYSTEM_USERS] = [
     'yves_system',
 ];
-$config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
+
+$config[SecuritySystemUserConstants::AUTH_DEFAULT_CREDENTIALS] = [
     'yves_system' => [
-        'rules' => [
-            [
-                'bundle' => '*',
-                'controller' => 'gateway',
-                'action' => '*',
-            ],
-        ],
         'token' => getenv('SPRYKER_ZED_REQUEST_TOKEN') ?: '',
     ],
 ];
@@ -215,6 +214,8 @@ $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
     ],
 ];
 
+$config[VaultConstants::ENCRYPTION_KEY] = getenv('SPRYKER_VAULT_ENCRYPTION_KEY') ?: null;
+
 // >> BACKOFFICE
 
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
@@ -226,7 +227,7 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
-        'bundle' => 'auth',
+        'bundle' => 'security-gui',
         'controller' => '*',
         'action' => '*',
         'type' => 'allow',
@@ -290,9 +291,25 @@ $config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_S
 $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = getenv('SPRYKER_KEY_VALUE_STORE_PASSWORD');
 $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: 1;
 
+// >>> SECURITY_BLOCKER
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_DATABASE] = $config[StorageRedisConstants::STORAGE_REDIS_DATABASE];
+
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCKING_TTL] = 600;
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCK_FOR] = 300;
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCKING_NUMBER_OF_ATTEMPTS] = 10;
+
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_AGENT_BLOCKING_TTL] = 600;
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_AGENT_BLOCK_FOR] = 360;
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_AGENT_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
+
 // >>> SESSION
 
-$config[AuthConstants::SYSTEM_USER_SESSION_REDIS_LIFE_TIME] = 20;
+$config[SecuritySystemUserConstants::SYSTEM_USER_SESSION_REDIS_LIFE_TIME] = 20;
 $config[SessionRedisConstants::LOCKING_TIMEOUT_MILLISECONDS] = 0;
 $config[SessionRedisConstants::LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
 $config[SessionRedisConstants::LOCKING_LOCK_TTL_MILLISECONDS] = 0;
@@ -368,6 +385,7 @@ $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES]
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 $config[EventConstants::MAX_RETRY_ON_FAIL] = 5;
+$config[EventConstants::EVENT_CHUNK] = 500;
 $config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [

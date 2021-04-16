@@ -46,7 +46,6 @@
                         product: data.product,
                     },
                 } only %}
-
                 <div class="col page-layout-main__sidebar-pdp">
                     {% if data.product.isAffiliate %}
                         {% include molecule('product-affiliate', 'ProductDetailPage') with {
@@ -65,12 +64,17 @@
                             }
                         } only %}
                     {% endif %}
+                    {% widget 'MerchantProductOfferWidget' args [data.product] with {
+                        data:{
+                            isConcrete:true
+                        }
+                    } %}
+                    {% endwidget %}
                 </div>
             </div>
         </div>
 
         {% widget 'ProductAlternativeListWidget' args [data.product] only %}{% endwidget %}
-
         <div class="container__inner">
             {% include molecule('product-detail', 'ProductDetailPage') with {
                 data: {

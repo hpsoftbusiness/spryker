@@ -30,6 +30,9 @@ class ShoppingPointsItemHydratorPlugin extends AbstractPlugin implements ItemBen
         $itemTransfer->setTotalUsedShoppingPointsAmount($benefitDealEntityTransfer->getShoppingPointsAmount());
     }
 
+    /**
+     * @return string
+     */
     public function getType(): string
     {
         return $this->getConfig()->getShoppingPointsPaymentName();

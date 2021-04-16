@@ -1,11 +1,11 @@
 <?php
 
+use Pyz\Shared\Api\ApiConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
-use Pyz\Shared\Api\ApiConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################

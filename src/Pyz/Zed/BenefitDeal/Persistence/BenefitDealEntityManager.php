@@ -17,6 +17,8 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 class BenefitDealEntityManager extends AbstractEntityManager implements BenefitDealEntityManagerInterface
 {
     /**
+     * @param \Generated\Shared\Transfer\PyzSalesOrderBenefitDealEntityTransfer $benefitDealEntityTransfer
+     *
      * @return void
      */
     public function saveSalesOrderBenefitDeal(PyzSalesOrderBenefitDealEntityTransfer $benefitDealEntityTransfer): void

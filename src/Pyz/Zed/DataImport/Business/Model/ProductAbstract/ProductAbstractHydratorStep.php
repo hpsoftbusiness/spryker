@@ -19,7 +19,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductAbstractHydratorStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
@@ -84,17 +84,16 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $productAbstractEntityTransfer
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
-            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
-            ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
-            ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
+//            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
+            ->setAttributes(addslashes(json_encode($dataSet[static::KEY_ATTRIBUTES])));
+//            ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
+//            ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
 
         $affiliateAttributes = $dataSet[CombinedAttributesExtractorStep::KEY_AFFILIATE_ATTRIBUTES];
 
-        if ($affiliateAttributes !== []) {
-            $productAbstractEntityTransfer
-                ->setIsAffiliate($affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE])
-                ->setAffiliateData(json_encode($affiliateAttributes));
-        }
+        $productAbstractEntityTransfer
+            ->setIsAffiliate(isset($affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE]) && $affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE] === 'TRUE' ? 1 : 0)
+            ->setAffiliateData(json_encode($affiliateAttributes));
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
@@ -106,24 +105,25 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      */
     protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet): void
     {
-        if (!empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
-            return;
-        }
+//        Revert for MYW-867
+//        if (!empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
+//            return;
+//        }
 
         $localizedAttributeTransfer = [];
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productAbstractLocalizedAttributesEntityTransfer = new SpyProductAbstractLocalizedAttributesEntityTransfer();
             $productAbstractLocalizedAttributesEntityTransfer
-                ->setName($localizedAttributes[static::COLUMN_NAME])
-                ->setDescription($localizedAttributes[static::COLUMN_DESCRIPTION])
+                ->setName(addslashes($localizedAttributes[static::COLUMN_NAME]))
+                ->setDescription(addslashes($localizedAttributes[static::COLUMN_DESCRIPTION]))
                 ->setMetaTitle($localizedAttributes[static::COLUMN_META_TITLE])
                 ->setMetaDescription($localizedAttributes[static::COLUMN_META_DESCRIPTION])
                 ->setMetaKeywords($localizedAttributes[static::COLUMN_META_KEYWORDS])
                 ->setFkLocale($idLocale)
-                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
+                ->setAttributes(addslashes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES])));
 
-            $localizedAttributeTransfer[] = [
+            $localizedAttributeTransfer[$idLocale] = [
                 static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
                 static::KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER => $productAbstractLocalizedAttributesEntityTransfer,
             ];

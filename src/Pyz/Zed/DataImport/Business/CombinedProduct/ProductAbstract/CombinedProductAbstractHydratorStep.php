@@ -17,7 +17,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
@@ -33,8 +33,9 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
     public const COLUMN_NEW_FROM = 'product_abstract.new_from';
     public const COLUMN_NEW_TO = 'product_abstract.new_to';
 
-    public const COLUMN_IS_AFFILIATE = 'product.is_affiliate';
-    public const COLUMN_AFFILIATE_DATA = 'product.affiliate_data';
+    public const COLUMN_IS_AFFILIATE = 'is_affiliate';
+    public const COLUMN_AFFILIATE_DATA = 'affiliate_data';
+    public const COLUMN_IS_MAIN = 'is_main';
 
     public const COLUMN_BRAND_NAME = 'product.value_49';
 
@@ -87,8 +88,8 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
      */
     protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
     {
-        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: null;
-        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?: null;
+        $isAbstractSkuIsEmpty = $dataSet[static::COLUMN_ABSTRACT_SKU] ?? null;
+        $isConcreteSkuIsEmpty = $dataSet[static::COLUMN_CONCRETE_SKU] ?? null;
 
         if ($isAbstractSkuIsEmpty === null) {
             $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] = static::ASSIGNABLE_PRODUCT_TYPE_BOTH;
@@ -130,7 +131,7 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
         parent::importProductAbstract($dataSet);
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER]
-            ->setBrand($dataSet[static::COLUMN_BRAND_NAME]);
+            ->setBrand(addslashes($dataSet[static::COLUMN_BRAND_NAME]));
     }
 
     /**

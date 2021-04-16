@@ -276,10 +276,10 @@
             </tree>
         </pages>
     </content>
-    <merchant-gui>
-        <label>Merchants</label>
-        <title>Merchants</title>
-        <icon>fa-file-text-o</icon>
+    <marketplace>
+        <label>Marketplace</label>
+        <title>Marketplace</title>
+        <icon>fa-shopping-basket</icon>
         <pages>
             <merchant>
                 <label>Merchants</label>
@@ -288,8 +288,15 @@
                 <controller>list-merchant</controller>
                 <action>index</action>
             </merchant>
+            <product-offer-list>
+                <label>Offers</label>
+                <title>Offers</title>
+                <bundle>product-offer-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+            </product-offer-list>
         </pages>
-    </merchant-gui>
+    </marketplace>
     <merchandising>
         <label>Merchandising</label>
         <title>Merchandising</title>

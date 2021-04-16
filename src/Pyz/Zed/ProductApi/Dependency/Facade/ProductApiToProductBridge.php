@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Dependency\Facade;
 
 use Generated\Shared\Transfer\ProductAbstractTransfer;
@@ -9,12 +14,12 @@ use Spryker\Zed\Product\Business\ProductFacadeInterface;
 class ProductApiToProductBridge implements ProductApiToProductInterface
 {
     /**
-     * @var ProductFacadeInterface
+     * @var \Spryker\Zed\Product\Business\ProductFacadeInterface
      */
     protected $productFacade;
 
     /**
-     * @param ProductFacadeInterface $productFacade
+     * @param \Spryker\Zed\Product\Business\ProductFacadeInterface $productFacade
      */
     public function __construct(ProductFacadeInterface $productFacade)
     {
@@ -24,7 +29,7 @@ class ProductApiToProductBridge implements ProductApiToProductInterface
     /**
      * @param int $idProductAbstract
      *
-     * @return ProductAbstractTransfer
+     * @return \Generated\Shared\Transfer\ProductAbstractTransfer
      */
     public function findProductAbstractById(int $idProductAbstract): ProductAbstractTransfer
     {
@@ -32,9 +37,9 @@ class ProductApiToProductBridge implements ProductApiToProductInterface
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
-     * @return ProductUrlTransfer
+     * @return \Generated\Shared\Transfer\ProductUrlTransfer
      */
     public function getProductUrl(ProductAbstractTransfer $productAbstractTransfer): ProductUrlTransfer
     {

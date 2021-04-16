@@ -49,7 +49,7 @@ class ExportForm extends AbstractType
             static::FIELD_DATE_FROM,
             DateTimeType::class,
             [
-                'format' => static::VALIDITY_DATE_FORMAT,
+            //                'format' => static::VALIDITY_DATE_FORMAT,
                 'label' => 'Date From',
                 'widget' => 'single_text',
                 'required' => false,
@@ -88,7 +88,7 @@ class ExportForm extends AbstractType
             static::FIELD_DATE_TO,
             DateTimeType::class,
             [
-                'format' => static::VALIDITY_DATE_FORMAT,
+            //                'format' => static::VALIDITY_DATE_FORMAT,
                 'label' => 'Date To',
                 'widget' => 'single_text',
                 'required' => false,

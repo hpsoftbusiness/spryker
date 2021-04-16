@@ -11,11 +11,11 @@ use Pyz\Client\Catalog\CatalogClientInterface;
 use Pyz\Client\Customer\CustomerClientInterface;
 use Pyz\Yves\ContentNavigationWidget\Reader\CategoryReader;
 use Pyz\Yves\ContentNavigationWidget\Reader\CategoryReaderInterface;
-use Pyz\Yves\ContentNavigationWidget\Twig\ContentNavigationTwigFunction;
+use Pyz\Yves\ContentNavigationWidget\Twig\ContentNavigationTwigFunctionProvider;
 use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
+use Spryker\Shared\Twig\TwigFunctionProvider;
 use SprykerShop\Yves\ContentNavigationWidget\ContentNavigationWidgetFactory as SprykerShopContentNavigationWidgetFactory;
-use SprykerShop\Yves\ContentNavigationWidget\Twig\ContentNavigationTwigFunction as SprykerShopContentNavigationTwigFunction;
 use Twig\Environment;
 
 /**
@@ -27,11 +27,11 @@ class ContentNavigationWidgetFactory extends SprykerShopContentNavigationWidgetF
      * @param \Twig\Environment $twig
      * @param string $localeName
      *
-     * @return \SprykerShop\Yves\ContentNavigationWidget\Twig\ContentNavigationTwigFunction
+     * @return \Spryker\Shared\Twig\TwigFunctionProvider
      */
-    public function createContentNavigationTwigFunction(Environment $twig, string $localeName): SprykerShopContentNavigationTwigFunction
+    public function createContentNavigationTwigFunctionProvider(Environment $twig, string $localeName): TwigFunctionProvider
     {
-        return new ContentNavigationTwigFunction(
+        return new ContentNavigationTwigFunctionProvider(
             $twig,
             $localeName,
             $this->getContentNavigationClient(),

@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\Api\Communication;
 
 use Generated\Shared\Transfer\ApiRequestTransfer;
 use Generated\Shared\Transfer\ApiResponseTransfer;
 use Pyz\Shared\Api\ApiConstants;
-use Pyz\Zed\Api\Business\Exception\UnsupportedTransformerTypeException;
 use Pyz\Zed\Api\Communication\Transformer\SimpleTransformer;
 use Spryker\Zed\Api\Communication\ApiCommunicationFactory as SprykerApiCommunicationFactory;
 use Spryker\Zed\Api\Communication\Transformer\Transformer;

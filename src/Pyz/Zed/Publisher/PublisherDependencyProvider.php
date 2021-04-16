@@ -12,6 +12,10 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\Gloss
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
+use Spryker\Zed\MerchantSearch\Communication\Plugin\Publisher\Merchant\MerchantDeletePublisherPlugin;
+use Spryker\Zed\MerchantSearch\Communication\Plugin\Publisher\Merchant\MerchantWritePublisherPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoragePublisherPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\MerchantPublisherTriggerPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabel\ProductLabelWritePublisherPlugin as ProductLabelSearchWritePublisherPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabelProductAbstract\ProductLabelProductAbstractWritePublisherPlugin as ProductLabelProductAbstractSearchWritePublisherPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabelStore\ProductLabelStoreWritePublisherPlugin as ProductLabelStoreSearchWritePublisherPlugin;
@@ -43,7 +47,12 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductRelationStoragePlugins(),
             $this->getProductLabelStoragePlugins(),
             $this->getProductLabelSearchPlugins(),
-            $this->getReturnReasonSearchPlugins()
+            $this->getReturnReasonSearchPlugins(),
+            [
+                new MerchantStoragePublisherPlugin(),
+                new MerchantWritePublisherPlugin(),
+                new MerchantDeletePublisherPlugin(),
+            ]
         );
     }
 
@@ -58,6 +67,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductAbstractLabelPublisherTriggerPlugin(),
             new ProductLabelDictionaryPublisherTriggerPlugin(),
             new ReturnReasonPublisherTriggerPlugin(),
+            new MerchantPublisherTriggerPlugin(),
         ];
     }
 

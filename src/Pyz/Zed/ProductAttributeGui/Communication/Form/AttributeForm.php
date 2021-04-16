@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttributeGui\Communication\Form;
 
 use Spryker\Zed\ProductAttributeGui\Communication\Form\AttributeForm as SprykerAttributeForm;
@@ -33,7 +38,7 @@ class AttributeForm extends SprykerAttributeForm
      *
      * @return $this
      */
-    protected function addShowOnPdpField(FormBuilderInterface $builder): self
+    protected function addShowOnPdpField(FormBuilderInterface $builder)
     {
         $builder->add(static::FIELD_SHOW_ON_PDP, CheckboxType::class, [
             'label' => 'Show Attribute on Product Detail Page (PDP)',

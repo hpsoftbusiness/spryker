@@ -164,3 +164,15 @@ actions:
     source: data/import/common/common/marketplace/merchant.csv
   - data_entity: merchant-store
     source: data/import/common/common/marketplace/merchant_store.csv
+  - data_entity: merchant-profile
+    source: data/import/common/common/marketplace/merchant_profile.csv
+  - data_entity: merchant-profile-address
+    source: data/import/common/common/marketplace/merchant_profile_address.csv
+#  - data_entity: merchant-product
+#    source: data/import/common/common/marketplace/merchant_product.csv
+  - data_entity: merchant-product-offer
+    source: data/import/common/common/marketplace/merchant_product_offer.csv
+  - data_entity: merchant-product-offer-store
+    source: data/import/common/common/marketplace/merchant_product_offer_store.csv
+  - data_entity: price-product-offer
+    source: data/import/common/common/marketplace/price_product_offer.csv

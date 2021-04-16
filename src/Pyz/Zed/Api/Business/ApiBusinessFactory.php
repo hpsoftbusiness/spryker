@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\Api\Business;
 
 use Pyz\Shared\Api\ApiConstants;
@@ -8,7 +13,6 @@ use Pyz\Zed\Api\Business\Auth\XSprykerApiKeyAuth;
 use Pyz\Zed\Api\Business\Exception\UnsupportedAuthTypeException;
 use Pyz\Zed\Api\Business\Model\Dispatcher;
 use Pyz\Zed\Api\Business\Model\ResourceHandler;
-use Pyz\Zed\Api\Communication\SimpleTransformer;
 use Spryker\Zed\Api\Business\ApiBusinessFactory as SprykerApiBusinessFactory;
 
 class ApiBusinessFactory extends SprykerApiBusinessFactory
@@ -39,9 +43,9 @@ class ApiBusinessFactory extends SprykerApiBusinessFactory
     /**
      * @param string $authType
      *
-     * @return AuthInterface
+     * @throws \Pyz\Zed\Api\Business\Exception\UnsupportedAuthTypeException
      *
-     * @throws UnsupportedAuthTypeException
+     * @return \Pyz\Zed\Api\Business\Auth\AuthInterface
      */
     public function createAuth(string $authType): AuthInterface
     {

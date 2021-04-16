@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Business;
 
 use Pyz\Zed\Api\Business\ApiFacadeInterface;
@@ -16,12 +21,14 @@ use Pyz\Zed\ProductCategory\Business\ProductCategoryFacadeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 
+/**
+ * @method \Pyz\Zed\ProductApi\ProductApiConfig getConfig()
+ * @method \Pyz\Zed\ProductApi\Persistence\ProductApiQueryContainerInterface getQueryContainer()
+ */
 class ProductApiBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return ProductApiInterface
-     *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Pyz\Zed\ProductApi\Business\Model\ProductApiInterface
      */
     public function createProductApi(): ProductApiInterface
     {
@@ -36,7 +43,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return TransferMapperInterface
+     * @return \Pyz\Zed\ProductApi\Business\Mapper\TransferMapperInterface
      */
     public function createTransferMapper(): TransferMapperInterface
     {
@@ -44,7 +51,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return ProductApiToApiInterface
+     * @return \Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiInterface
      */
     protected function getApiQueryContainer(): ProductApiToApiInterface
     {
@@ -52,7 +59,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return ProductApiToProductInterface
+     * @return \Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductInterface
      */
     protected function getProductFacade(): ProductApiToProductInterface
     {
@@ -60,7 +67,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return ApiFacadeInterface
+     * @return \Pyz\Zed\Api\Business\ApiFacadeInterface
      */
     public function getApiFacade(): ApiFacadeInterface
     {
@@ -68,7 +75,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return LanguageValidatorInterface
+     * @return \Pyz\Zed\ProductApi\Business\Model\Validator\LanguageValidatorInterface
      */
     public function createLanguageValidator(): LanguageValidatorInterface
     {
@@ -76,9 +83,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return LocaleFacadeInterface
-     *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
     public function getLocaleFacade(): LocaleFacadeInterface
     {
@@ -86,9 +91,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return ProductCategoryFacadeInterface
-     *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \Pyz\Zed\ProductCategory\Business\ProductCategoryFacadeInterface
      */
     public function getProductCategoryFacade(): ProductCategoryFacadeInterface
     {

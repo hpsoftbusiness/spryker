@@ -42,7 +42,7 @@ class BenefitDealItemForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
      * @return $this
      */
@@ -72,7 +72,7 @@ class BenefitDealItemForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param ItemTransfer $itemTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
      * @return $this
      */

@@ -10,6 +10,7 @@ image:
         ini:
             "post_max_size": 600m
             "upload_max_filesize": 600m
+            "memory_limit": 3000M
         enabled-extensions:
             - blackfire
 composer:
@@ -65,7 +66,7 @@ groups:
 services:
     database:
         engine: mysql
-        version: mariadb-10.4
+        version: mariadb-10.5
         root:
             username: "root"
             password: "secret"
@@ -110,10 +111,6 @@ services:
         engine: redis-commander
         endpoints:
             redis-commander.myworld.local:
-    dashboard:
-        engine: dashboard
-        endpoints:
-            myworld.local:
 
 docker:
 

@@ -53,8 +53,8 @@ image:
     WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
     ini:
-      "post_max_size": 600m
-      "upload_max_filesize": 600m
+      "post_max_size": 1600m
+      "upload_max_filesize": 1600m
     enabled-extensions:
       - blackfire
       - newrelic
@@ -128,12 +128,12 @@ groups:
 services:
   database:
     engine: mysql
-    version: mariadb-10.4
+    version: mariadb-10.5
     root:
       username: "root"
       password: "secret"
     endpoints:
-      localhost:3306:
+      localhost:5432:
         protocol: tcp
   broker:
     engine: rabbitmq

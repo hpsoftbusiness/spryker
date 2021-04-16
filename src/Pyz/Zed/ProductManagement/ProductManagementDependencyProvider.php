@@ -9,6 +9,8 @@ namespace Pyz\Zed\ProductManagement;
 
 use Pyz\Zed\ProductManagement\Dependency\Facade\ProductManagementToProductBridge;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractViewActionViewDataExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductTableQueryCriteriaExpanderPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractEditViewExpanderPlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractFormEditTabsExpanderPlugin;
@@ -36,9 +38,12 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
-        $container->set(static::FACADE_PRODUCT, function (Container $container) {
-            return new ProductManagementToProductBridge($container->getLocator()->product()->facade());
-        });
+        $container->set(
+            static::FACADE_PRODUCT,
+            function (Container $container) {
+                return new ProductManagementToProductBridge($container->getLocator()->product()->facade());
+            }
+        );
 
         return $container;
     }
@@ -133,6 +138,26 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new ScheduledPriceProductConcreteEditViewExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractViewActionViewDataExpanderPluginInterface[]
+     */
+    protected function getProductAbstractViewActionViewDataExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductProductAbstractViewActionViewDataExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableQueryCriteriaExpanderPluginInterface[]
+     */
+    protected function getProductTableQueryCriteriaExpanderPluginInterfaces(): array
+    {
+        return [
+            new MerchantProductProductTableQueryCriteriaExpanderPlugin(),
         ];
     }
 }

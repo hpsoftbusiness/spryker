@@ -1,0 +1,16 @@
+{% extends template('widget') %}
+
+{% define data = {
+    price: _widget.price,
+} %}
+
+{% block body %}
+    {% include molecule('money-price') with {
+        data: {
+            isAffiliate: true,
+            amount: data.price.prices.DEFAULT | default(null),
+            originalAmount: data.price.prices.ORIGINAL | default(null),
+            currencyIsoCode: data.price.currency.code | default(null),
+        },
+    } only %}
+{% endblock %}

@@ -12,10 +12,9 @@
 {% set productName = data.product.name | default %}
 
 {% block body %}
-
     <h1 class="title title--product title--h2">{{ productName }}</h1>
 
-    <div class="spacing-bottom spacing-bottom--smaller">
+    {# <div class="spacing-bottom spacing-bottom--smaller">
         {% include molecule('money-price') with {
             modifiers: ['pdp'],
             data: {
@@ -24,14 +23,14 @@
             }
         } only %}
     </div>
-
+    #}
     <hr class="{{ config.name }}__separator">
-
+    {#
     <div class="{{ config.name }}__button-wrap">
         <a class="button button--large button--expand" target="_blank" href="{{ data.product.affiliateData.trackingUrl }}">
             {{ 'page.detail.affiliate-product-action' | trans }}
         </a>
     </div>
-
+    #}
     {% block colors %}{% endblock %}
 {% endblock %}

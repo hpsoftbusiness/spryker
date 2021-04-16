@@ -11,7 +11,7 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreH
 
 class CombinedProductAbstractStoreHydratorStep extends ProductAbstractStoreHydratorStep
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_STORE_NAME = 'product_abstract_store.store_name';

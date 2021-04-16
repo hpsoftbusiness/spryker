@@ -8,7 +8,7 @@
 namespace Pyz\Service\ProductDataImport\Plugin\Twig;
 
 use Spryker\Service\Twig\Plugin\AbstractTwigExtensionPlugin;
-use Spryker\Shared\Twig\TwigFilter;
+use Twig\TwigFilter;
 
 /**
  * @method \Pyz\Service\ProductDataImport\ProductDataImportService getService()

@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          name="zed"
-          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
-          namespace="Orm\Zed\ProductDataImport\Persistence"
-          package="src.Orm.Zed.ProductDataImport.Persistence">
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductDataImport\Persistence" package="src.Orm.Zed.ProductDataImport.Persistence">
 
     <table name="spy_product_data_import" idMethod="native" allowPkInsert="true" identifierQuoting="true">
         <column name="id_product_data_import" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
@@ -11,5 +7,5 @@
         <behavior name="timestampable"/>
         <column name="file_path" required="false" type="VARCHAR" default="NULL"/>
         <column name="result" required="false" type="CLOB" default="NULL"/>
-    </table>
+    <id-method-parameter value="spy_product_data_import_pk_seq"/></table>
 </database>

@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductApi\Communication\Plugin\Api;
 
 use Generated\Shared\Transfer\ApiDataTransfer;
 use Generated\Shared\Transfer\ApiRequestTransfer;
 use Pyz\Shared\Api\ApiConstants;
 use Pyz\Zed\Api\Business\Auth\AuthInterface;
-use Pyz\Zed\Api\Business\Auth\GetAuthInterface;
 use Pyz\Zed\Api\Communication\Transformer\GetTransformerTypeInterface;
 use RuntimeException;
 use Spryker\Zed\Api\ApiConfig;
@@ -98,11 +102,14 @@ abstract class AbstractProductApiResourcePlugin extends AbstractPlugin implement
     public function find(ApiRequestTransfer $apiRequestTransfer)
     {
         $this->getFacade()->validateLanguage($apiRequestTransfer);
+
         return $this->getFacade()->findProducts($apiRequestTransfer);
     }
 
     /**
-     * @param ApiRequestTransfer $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
+     *
+     * @return void
      */
     public function checkAuth(ApiRequestTransfer $apiRequestTransfer): void
     {

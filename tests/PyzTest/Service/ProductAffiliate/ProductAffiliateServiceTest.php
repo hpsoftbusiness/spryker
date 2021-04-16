@@ -9,7 +9,6 @@ namespace PyzTest\Service\ProductAffiliate;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException;
 use Pyz\Service\ProductAffiliate\Generator\ProductAffiliateLinkGenerator;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
@@ -60,6 +59,7 @@ class ProductAffiliateServiceTest extends Unit
      *
      * @param string $deeplink
      * @param string $affiliateNetwork
+     * @param string $affiliateMerchantID
      * @param string $expectedTrackingLink
      *
      * @return void
@@ -127,14 +127,14 @@ class ProductAffiliateServiceTest extends Unit
                 'https://www.dpbolvw.net/click-8270047-13427942?url=https%3A%2F%2Fwww.halloweencostumes.com.au%2Fteal-trick-or-treat-pumpkin.html%3Fmpid%3D220877',
                 'CJ',
                 '5549846',
-                'https://test-click.myworld.com/spryker?customerNumber=043010627559&network=CJ_AU&AdvertiserId=5549846&url=https%3A%2F%2Fwww.dpbolvw.net%2Fclick-8270047-13427942%3Furl%3Dhttps%253A%252F%252Fwww.halloweencostumes.com.au%252Fteal-trick-or-treat-pumpkin.html%253Fmpid%253D220877%26SID%3D%7BTrackingHash%7D'
+                'https://test-click.myworld.com/spryker?customerNumber=043010627559&network=CJ_AU&AdvertiserId=5549846&url=https%3A%2F%2Fwww.dpbolvw.net%2Fclick-8270047-13427942%3Furl%3Dhttps%253A%252F%252Fwww.halloweencostumes.com.au%252Fteal-trick-or-treat-pumpkin.html%253Fmpid%253D220877%26SID%3D%7BTrackingHash%7D',
             ],
             'UnknownAffiliateNetworkReturnsDeeplink' => [
                 'link',
                 'unknown',
                 '',
                 'link',
-            ]
+            ],
         ];
     }
 

@@ -23,7 +23,7 @@ use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 
 class ProductPriceHydratorStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 5000;
+    public const BULK_SIZE = 100;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';

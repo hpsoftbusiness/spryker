@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ProductAttribute\Business\Model\Attribute\Mapper;
 
 use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
@@ -9,9 +14,9 @@ use Spryker\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttribut
 interface ProductAttributeTransferMapperInterface extends SprykerProductAttributeTransferMapperInterface
 {
     /**
-     * @param ArrayCollection $productAttributesKeyCollection
+     * @param \Propel\Runtime\Collection\ArrayCollection $productAttributesKeyCollection
      *
-     * @return ProductAttributeKeysCollectionTransfer
+     * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
     public function convertProductAttributeKeysCollection(
         ArrayCollection $productAttributesKeyCollection

@@ -19,7 +19,7 @@ class ProductPageSearchMapper extends SprykerProductPageSearchMapper
     public function mapToProductPageSearchTransfer(array $productAbstractLocalizedData)
     {
         $productPageSearchTransfer = parent::mapToProductPageSearchTransfer($productAbstractLocalizedData);
-        $productPageSearchTransfer->setIsAffiliate($productAbstractLocalizedData['SpyProductAbstract']['is_affiliate'] ?? false);
+        $productPageSearchTransfer->setIsAffiliate((bool)$productAbstractLocalizedData['SpyProductAbstract']['is_affiliate'] ?? false);
         $productPageSearchTransfer->setAffiliateData(
             $productAbstractLocalizedData['SpyProductAbstract']['affiliate_data']
                 ? json_decode($productAbstractLocalizedData['SpyProductAbstract']['affiliate_data'], true)

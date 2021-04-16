@@ -33,7 +33,7 @@ class DataHelper
      * @var \PyzTest\Zed\MyWorldPaymentApi\StubTokenClient
      */
     private $stubClient;
-    
+
     public function __construct()
     {
         $this->stubClient = new StubTokenClient();

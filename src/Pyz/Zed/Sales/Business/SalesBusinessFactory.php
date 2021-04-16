@@ -8,10 +8,10 @@
 namespace Pyz\Zed\Sales\Business;
 
 use Pyz\Zed\Sales\Business\Order\OrderHydrator as OrderHydratorWithMultiShippingAddress;
+use Pyz\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapper;
 use Pyz\Zed\Sales\SalesDependencyProvider;
 use Spryker\Zed\Sales\Business\Order\OrderHydratorInterface;
 use Spryker\Zed\Sales\Business\SalesBusinessFactory as SprykerSalesBusinessFactory;
-use Pyz\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapper;
 use Spryker\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapperInterface;
 
 /**
