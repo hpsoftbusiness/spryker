@@ -9,6 +9,7 @@ namespace Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep;
 
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeValidateRequestTransfer;
+use Generated\Shared\Transfer\PaymentSessionRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;

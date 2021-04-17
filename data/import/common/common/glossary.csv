@@ -19939,3 +19939,11 @@ merchant_product_offer.sold_by,Sold by,en_US
 merchant_product_offer.sold_by,Verkauft durch,de_DE
 product.filter.merchant_name,Merchant,en_US
 product.filter.merchant_name,Händler,de_DE
+checkout.payment.my_world.error.transaction_failed,Payment transaction failed,de_DE
+checkout.payment.my_world.error.transaction_failed,Payment transaction failed,en_US
+checkout.payment.my_world.error.transaction_exceeded_value,Payment transaction amount exceeded available amount,de_DE
+checkout.payment.my_world.error.transaction_exceeded_value,Payment transaction amount exceeded available amount,en_US
+checkout.payment.my_world.error.transaction_batch_failed,Payment transaction was not processed due to another batch transaction failing,de_DE
+checkout.payment.my_world.error.transaction_batch_failed,Payment transaction was not processed due to another batch transaction failing,en_US
+checkout.payment.my_world.error.transaction_option_not_found,Payment transaction failed due to unknown payment option,de_DE
+checkout.payment.my_world.error.transaction_option_not_found,Payment transaction failed due to unknown payment option,en_US

@@ -8,6 +8,7 @@
 namespace Pyz\Zed\MyWorldPayment;
 
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
+use Pyz\Zed\MyWorldPaymentApi\MyWorldPaymentApiConfig;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**
@@ -17,6 +18,16 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
 {
     public const PAYMENT_METHOD_NAME = 'EVoucher';
     public const PAYMENT_METHOD_BENEFIT_VOUCHER_NAME = 'BenefitVouchers';
+
+    /**
+     * Map for payment transaction status codes to glossary translation key.
+     */
+    public const PAYMENT_TRANSACTION_ERRORS_DESCRIPTION_MAP = [
+        MyWorldPaymentApiConfig::PAYMENT_TRANSACTION_STATUS_CODE_FAILED => 'checkout.payment.my_world.error.transaction_failed',
+        MyWorldPaymentApiConfig::PAYMENT_TRANSACTION_STATUS_CODE_EXCEEDED_VALUE => 'checkout.payment.my_world.error.transaction_exceeded_value',
+        MyWorldPaymentApiConfig::PAYMENT_TRANSACTION_STATUS_CODE_BATCH_FAILED => 'checkout.payment.my_world.error.transaction_batch_failed',
+        MyWorldPaymentApiConfig::PAYMENT_TRANSACTION_STATUS_CODE_OPTION_NOT_FOUND => 'checkout.payment.my_world.error.transaction_option_not_found',
+    ];
 
     /**
      * @return int

@@ -12,6 +12,16 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class MyWorldPaymentApiConfig extends AbstractBundleConfig
 {
+    public const PAYMENT_STATUS_CHARGED = 'Charged';
+    public const PAYMENT_STATUS_FAILED = 'Failed';
+
+    public const PAYMENT_TRANSACTION_STATUS_CODE_ACCEPTED = 0;
+    public const PAYMENT_TRANSACTION_STATUS_CODE_IN_PROGRESS = 1;
+    public const PAYMENT_TRANSACTION_STATUS_CODE_FAILED = 100;
+    public const PAYMENT_TRANSACTION_STATUS_CODE_EXCEEDED_VALUE = 101;
+    public const PAYMENT_TRANSACTION_STATUS_CODE_BATCH_FAILED = 102;
+    public const PAYMENT_TRANSACTION_STATUS_CODE_OPTION_NOT_FOUND = 103;
+
     /**
      * @return string
      */

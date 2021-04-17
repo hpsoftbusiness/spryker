@@ -43,6 +43,13 @@ interface MyWorldPaymentFacadeInterface
     public function confirmPayment(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
 
     /**
+     * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
+     */
+    public function getPayment(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
+
+    /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
      *
      * @return void

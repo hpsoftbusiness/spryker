@@ -13,7 +13,6 @@ use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\BenefitDealStep;
-use Pyz\Yves\CheckoutPage\Process\Steps\ConfirmPaymentStep\PreConditionChecker as ConfirmPaymentStepPreConditionChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
@@ -189,7 +188,6 @@ class StepFactory extends SprykerShopStepFactory
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PLACE_ORDER,
             $this->getConfig()->getEscapeRoute(),
             $this->createProductSellableChecker(),
-            $this->createConfirmPaymentStepPreConditionChecker(),
             [
                 static::ERROR_CODE_GENERAL_FAILURE => self::ROUTE_CART,
                 'payment failed' => CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
@@ -281,18 +279,6 @@ class StepFactory extends SprykerShopStepFactory
     public function createSummaryStepPostConditionChecker(): PostConditionCheckerInterface
     {
         return new SummaryStepPostConditionChecker(
-            $this->getMyWorldPaymentClient(),
-            $this->getFlashMessenger(),
-            $this->getTranslatorService()
-        );
-    }
-
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
-     */
-    public function createConfirmPaymentStepPreConditionChecker(): PreConditionCheckerInterface
-    {
-        return new ConfirmPaymentStepPreConditionChecker(
             $this->getMyWorldPaymentClient(),
             $this->getFlashMessenger(),
             $this->getTranslatorService()

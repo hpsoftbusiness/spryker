@@ -18,6 +18,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
     public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
     public const LOCALE_CLIENT = 'LOCALE_CLIENT';
     public const CUSTOMER_GROUP_QUERY = 'CUSTOMER_GROUP_QUERY';
+    public const SERVICE_UTIL_POLLING = 'SERVICE_UTIL_POLLING';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -26,6 +27,10 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
+        $this->addUtilPollingService($container);
+
         return $container;
     }
 
@@ -138,5 +143,17 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
         });
 
         return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addUtilPollingService(Container $container): void
+    {
+        $container->set(self::SERVICE_UTIL_POLLING, static function (Container $container) {
+            return $container->getLocator()->utilPolling()->service();
+        });
     }
 }

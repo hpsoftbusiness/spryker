@@ -21,7 +21,6 @@ class ConfirmPaymentMapper extends AbstractMapper implements MyWorldPaymentApiMa
         $requestTransfer->requirePaymentConfirmationRequest();
 
         $requestTransfer->getPaymentConfirmationRequest()
-            ->requireConfirmationCode()
             ->requireSessionId();
     }
 

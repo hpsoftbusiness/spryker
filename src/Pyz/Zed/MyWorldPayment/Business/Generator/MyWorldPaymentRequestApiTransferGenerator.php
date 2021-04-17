@@ -130,6 +130,12 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
     protected function getCommonPriceForThePayments(ArrayObject $dwsDirectItems): int
     {
         return array_reduce($dwsDirectItems->getArrayCopy(), function (int $carry, MwsDirectPaymentOptionTransfer $directPaymentOptionTransfer) {
+            /**
+             * Shopping points amount is provided in units thus it doesn't need to be added to total amount sum.
+             */
+            if ($directPaymentOptionTransfer->getPaymentOptionId() === $this->myWorldPaymentConfig->getShoppingPointsPaymentOptionId()) {
+                return $carry;
+            }
             $carry += $directPaymentOptionTransfer->getAmount();
 
             return $carry;

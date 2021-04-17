@@ -25,11 +25,6 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
     protected $productSellableChecker;
 
     /**
-     * @var \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
-     */
-    private $preConditionChecker;
-
-    /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface $checkoutClient
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
      * @param string $currentLocale
@@ -37,7 +32,6 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
      * @param string $stepRoute
      * @param string|null $escapeRoute
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
-     * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface|array $preConditionChecker
      * @param array $errorCodeToRouteMatching
      */
     public function __construct(
@@ -48,7 +42,6 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
         $stepRoute,
         $escapeRoute,
         ProductSellableCheckerInterface $productSellableChecker,
-        PreConditionCheckerInterface $preConditionChecker,
         $errorCodeToRouteMatching = []
     ) {
         parent::__construct(
@@ -62,7 +55,6 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
         );
 
         $this->productSellableChecker = $productSellableChecker;
-        $this->preConditionChecker = $preConditionChecker;
     }
 
     /**
@@ -77,12 +69,6 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
         }
 
         if (!$quoteTransfer->getCheckoutConfirmed()) {
-            $this->escapeRoute = CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUMMARY;
-
-            return false;
-        }
-
-        if (!$this->preConditionChecker->check($quoteTransfer)) {
             $this->escapeRoute = CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUMMARY;
 
             return false;

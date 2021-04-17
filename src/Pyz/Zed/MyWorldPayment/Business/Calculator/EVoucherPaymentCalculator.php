@@ -71,7 +71,6 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
             }
         } else {
             $calculableObjectTransfer = $this->removeEVoucherPayment($calculableObjectTransfer);
-            $calculableObjectTransfer->setMyWorldPaymentSessionId(null);
         }
 
         return $calculableObjectTransfer;

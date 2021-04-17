@@ -14,6 +14,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 /**
  * @method \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentFacadeInterface getFacade()
  * @method \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig getConfig()
+ * @method \Pyz\Zed\MyWorldPayment\Communication\MyWorldPaymentCommunicationFactory getFactory()
  */
 class MyWorldPaymentBenefitVoucherQuoteCalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
 {
