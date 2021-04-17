@@ -14,7 +14,7 @@ class ProductImageStorageConfig extends SprykerProductImageStorageConfig
 {
     public const PUBLISH_PRODUCT_IMAGE = 'publish.product_image';
 
-    protected const CHUNK_SIZE = 100;
+    protected const CHUNK_SIZE = 500;
 
     /**
      * @return string|null
