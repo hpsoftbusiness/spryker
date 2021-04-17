@@ -17,7 +17,7 @@ use Spryker\Zed\ProductList\Dependency\ProductListEvents;
 
 class CombinedProductListProductConcreteBulkPdoMariaDbDataSetWriter implements DataSetWriterInterface
 {
-    protected const BULK_SIZE = 2500;
+    protected const BULK_SIZE = 100;
 
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
     public const KEY_ID_PRODUCT_CONCRETE = 'id_product_concrete';

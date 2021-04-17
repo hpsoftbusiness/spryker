@@ -15,7 +15,7 @@ class ProductStorageConfig extends SprykerProductStorageConfig
     public const PUBLISH_PRODUCT_ABSTRACT = 'publish.product_abstract';
     public const PUBLISH_PRODUCT_CONCRETE = 'publish.product_concrete';
 
-    protected const CHUNK_SIZE = 1000;
+    protected const CHUNK_SIZE = 100;
 
     /**
      * @return string|null

@@ -53,8 +53,10 @@ image:
     WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
     ini:
-      "post_max_size": 1600m
-      "upload_max_filesize": 1600m
+        "post_max_size": 1600m
+        "upload_max_filesize": 1600m
+        "opcache.enable_cli": 1
+        "apc.enable_cli": 1
     enabled-extensions:
       - blackfire
       - newrelic

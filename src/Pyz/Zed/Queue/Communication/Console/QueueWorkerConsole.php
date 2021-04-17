@@ -27,7 +27,7 @@ class QueueWorkerConsole extends SprykerQueueWorkerConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        if ($this->getFactory()->getStorageClient()->get('IS_DATA_IMPORT_IN_PROGRESS')) {
+        if (apcu_exists('IS_DATA_IMPORT_IN_PROGRESS') && apcu_fetch('IS_DATA_IMPORT_IN_PROGRESS')) {
             $output->writeln('<fg=red> Data Import in progress</>');
 
             return static::CODE_SUCCESS;

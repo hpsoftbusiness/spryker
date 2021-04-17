@@ -8,10 +8,10 @@
 namespace Pyz\Zed\ProductStorage\Business;
 
 use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductAbstractStorageMariaDbCte;
-use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductAbstractStoragePostgresCte;
 use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductConcreteStorageMariaDbCte;
-use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductConcreteStoragePostgresCte;
 use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface;
+use Pyz\Zed\ProductStorage\Business\Storage\ProductAbstractStorageWriter;
+use Pyz\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter;
 use Pyz\Zed\ProductStorage\ProductStorageDependencyProvider;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
@@ -24,23 +24,23 @@ use Spryker\Zed\ProductStorage\Business\ProductStorageBusinessFactory as Spryker
  */
 class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
 {
-//    /**
-//     * @return \Spryker\Zed\ProductStorage\Business\Storage\ProductAbstractStorageWriterInterface
-//     */
-//    public function createProductAbstractStorageWriter()
-//    {
-//        return new ProductAbstractStorageWriter(
-//            $this->getProductFacade(),
-//            $this->createAttributeMap(),
-//            $this->getQueryContainer(),
-//            $this->getStoreFacade(),
-//            $this->getConfig()->isSendingToQueue(),
-//            $this->getProductAbstractStorageExpanderPlugins(),
-//            $this->getSynchronizationService(),
-//            $this->getQueueClient(),
-//            $this->createProductAbstractStoragePgDbCte()
-//        );
-//    }
+    /**
+     * @return \Spryker\Zed\ProductStorage\Business\Storage\ProductAbstractStorageWriterInterface
+     */
+    public function createProductAbstractStorageWriter()
+    {
+        return new ProductAbstractStorageWriter(
+            $this->getProductFacade(),
+            $this->createAttributeMap(),
+            $this->getQueryContainer(),
+            $this->getStoreFacade(),
+            $this->getConfig()->isSendingToQueue(),
+            $this->getProductAbstractStorageExpanderPlugins(),
+            $this->getSynchronizationService(),
+            $this->getQueueClient(),
+            $this->createProductAbstractStorageMariaDbCte()
+        );
+    }
 
     /**
      * @return \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
@@ -51,27 +51,19 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
+     * @return \Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriterInterface
      */
-    public function createProductAbstractStoragePgDbCte(): ProductStorageCteStrategyInterface
+    public function createProductConcreteStorageWriter()
     {
-        return new ProductAbstractStoragePostgresCte();
+        return new ProductConcreteStorageWriter(
+            $this->getProductFacade(),
+            $this->getQueryContainer(),
+            $this->getConfig()->isSendingToQueue(),
+            $this->getSynchronizationService(),
+            $this->getQueueClient(),
+            $this->createProductConcreteStorageMariaDbCte()
+        );
     }
-
-//    /**
-//     * @return \Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriterInterface
-//     */
-//    public function createProductConcreteStorageWriter()
-//    {
-//        return new ProductConcreteStorageWriter(
-//            $this->getProductFacade(),
-//            $this->getQueryContainer(),
-//            $this->getConfig()->isSendingToQueue(),
-//            $this->getSynchronizationService(),
-//            $this->getQueueClient(),
-//            $this->createProductConcreteStoragePgDbCte()
-//        );
-//    }
 
     /**
      * @return \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
@@ -79,14 +71,6 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
     public function createProductConcreteStorageMariaDbCte(): ProductStorageCteStrategyInterface
     {
         return new ProductConcreteStorageMariaDbCte();
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
-     */
-    public function createProductConcreteStoragePgDbCte(): ProductStorageCteStrategyInterface
-    {
-        return new ProductConcreteStoragePostgresCte();
     }
 
     /**

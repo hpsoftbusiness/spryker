@@ -50,6 +50,9 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
     protected const COLUMN_PRICE_DATA = 'price_data';
     protected const COLUMN_PRICE_DATA_CHECKSUM = 'price_data_checksum';
 
+    protected const DEFAULT_PRICE_TYPE = 'DEFAULT';
+    protected const ORIGINAL_PRICE_TYPE = 'ORIGINAL';
+
     /**
      * @var array
      */
@@ -770,8 +773,8 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             static::COLUMN_PRICE_TYPE => $dataSet[static::KEY_PRICE_TYPE] ?: 'DEFAULT',
             static::COLUMN_STORE_NAME => $dataSet[static::KEY_STORE_NAME],
             static::COLUMN_CURRENCY => $dataSet[static::KEY_CURRENCY],
-            static::COLUMN_NET_PRICE => $dataSet[static::KEY_VALUE_NET],
-            static::COLUMN_GROSS_PRICE => $dataSet[static::KEY_VALUE_GROSS],
+            static::COLUMN_NET_PRICE => $this->getPrice($dataSet),
+            static::COLUMN_GROSS_PRICE => $this->getPrice($dataSet),
             static::COLUMN_CONCRETE_SKU => $dataSet[static::KEY_CONCRETE_SKU],
             static::COLUMN_MERCHANT_REFERENCE => $dataSet[static::KEY_MERCHANT_REFERENCE],
             static::COLUMN_PRODUCT_OFFER_REFERENCE => $this->getProductOfferReferenceKey($dataSet),
@@ -785,6 +788,20 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             ->generatePriceDataChecksum($priceData) : null;
 
         static::$priceProductOfferStoreCollection[] = $priceProductOfferStore;
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return float|null
+     */
+    protected function getPrice(DataSetInterface $dataSet): ?float
+    {
+        if (!empty($dataSet[static::KEY_VALUE_GROSS])) {
+            return (int)((string)((float)str_replace(',', '.', $dataSet[static::KEY_VALUE_GROSS]) * 100));
+        }
+
+        return null;
     }
 
     /**

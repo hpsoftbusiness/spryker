@@ -8,10 +8,10 @@
 namespace Pyz\Zed\ProductPageSearch\Business;
 
 use Pyz\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapper;
+use Pyz\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublisher;
+use Pyz\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisher;
 use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductAbstractPageSearchMariaDbPagePublisherCte;
-use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductAbstractPageSearchPostgresPagePublisherCte;
 use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductConcretePageSearchMariaDbPagePublisherCte;
-use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductConcretePageSearchPostgresPagePublisherCte;
 use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface;
 use Pyz\Zed\ProductPageSearch\ProductPageSearchDependencyProvider;
 use Spryker\Client\Queue\QueueClientInterface;
@@ -19,6 +19,7 @@ use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper;
 use Spryker\Zed\ProductPageSearch\Business\DataMapper\ProductAbstractSearchDataMapper;
 use Spryker\Zed\ProductPageSearch\Business\ProductPageSearchBusinessFactory as SprykerProductPageSearchBusinessFactory;
+use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisherInterface;
 
 class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessFactory
 {
@@ -74,22 +75,6 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
     /**
      * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
      */
-    public function createProductConcretePageSearchMariaDbPublisherCte(): ProductPagePublisherCteInterface
-    {
-        return new ProductConcretePageSearchMariaDbPagePublisherCte();
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
-     */
-    public function createProductConcretePageSearchPgDbPublisherCte(): ProductPagePublisherCteInterface
-    {
-        return new ProductConcretePageSearchPostgresPagePublisherCte();
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
-     */
     public function createProductAbstractPageSearchMariaDbPublisherCte(): ProductPagePublisherCteInterface
     {
         return new ProductAbstractPageSearchMariaDbPagePublisherCte();
@@ -98,49 +83,49 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
     /**
      * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
      */
-    public function createProductAbstractPageSearchPgDbPublisherCte(): ProductPagePublisherCteInterface
+    public function createProductConcretePageSearchMariaDbPublisherCte(): ProductPagePublisherCteInterface
     {
-        return new ProductAbstractPageSearchPostgresPagePublisherCte();
+        return new ProductConcretePageSearchMariaDbPagePublisherCte();
     }
 
-//    /**
-//     * @return \Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublisherInterface
-//     */
-//    public function createProductAbstractPagePublisher()
-//    {
-//        return new ProductAbstractPagePublisher(
-//            $this->getQueryContainer(),
-//            $this->getProductPageDataExpanderPlugins(),
-//            $this->getProductPageDataLoaderPlugins(),
-//            $this->createProductPageMapper(),
-//            $this->createProductPageWriter(),
-//            $this->getConfig(),
-//            $this->getStoreFacade(),
-//            $this->createAddToCartSkuReader(),
-//            $this->getProductAbstractPageAfterPublishPlugins(),
-//            $this->getSynchronizationService(),
-//            $this->getQueueClient(),
-//            $this->createProductAbstractPageSearchPgDbPublisherCte()
-//        );
-//    }
+    /**
+     * @return \Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublisherInterface
+     */
+    public function createProductAbstractPagePublisher()
+    {
+        return new ProductAbstractPagePublisher(
+            $this->getQueryContainer(),
+            $this->getProductPageDataExpanderPlugins(),
+            $this->getProductPageDataLoaderPlugins(),
+            $this->createProductPageMapper(),
+            $this->createProductPageWriter(),
+            $this->getConfig(),
+            $this->getStoreFacade(),
+            $this->createAddToCartSkuReader(),
+            $this->getProductAbstractPageAfterPublishPlugins(),
+            $this->getSynchronizationService(),
+            $this->getQueueClient(),
+            $this->createProductAbstractPageSearchMariaDbPublisherCte()
+        );
+    }
 
-//    /**
-//     * @return \Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisherInterface
-//     */
-//    public function createProductConcretePageSearchPublisher(): ProductConcretePageSearchPublisherInterface
-//    {
-//        return new ProductConcretePageSearchPublisher(
-//            $this->createProductConcretePageSearchReader(),
-//            $this->createProductConcretePageSearchWriter(),
-//            $this->getProductFacade(),
-//            $this->getUtilEncoding(),
-//            $this->createProductConcreteSearchDataMapper(),
-//            $this->getStoreFacade(),
-//            $this->getConfig(),
-//            $this->getProductConcretePageDataExpanderPlugins(),
-//            $this->getSynchronizationService(),
-//            $this->getQueueClient(),
-//            $this->createProductConcretePageSearchPgDbPublisherCte()
-//        );
-//    }
+    /**
+     * @return \Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisherInterface
+     */
+    public function createProductConcretePageSearchPublisher(): ProductConcretePageSearchPublisherInterface
+    {
+        return new ProductConcretePageSearchPublisher(
+            $this->createProductConcretePageSearchReader(),
+            $this->createProductConcretePageSearchWriter(),
+            $this->getProductFacade(),
+            $this->getUtilEncoding(),
+            $this->createProductConcreteSearchDataMapper(),
+            $this->getStoreFacade(),
+            $this->getConfig(),
+            $this->getProductConcretePageDataExpanderPlugins(),
+            $this->getSynchronizationService(),
+            $this->getQueueClient(),
+            $this->createProductConcretePageSearchMariaDbPublisherCte()
+        );
+    }
 }

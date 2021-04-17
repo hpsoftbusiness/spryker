@@ -14,7 +14,7 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
 {
     public const PUBLISH_URL = 'publish.url';
 
-    protected const CHUNK_SIZE = 1000;
+    protected const CHUNK_SIZE = 100;
 
     /**
      * @return string|null

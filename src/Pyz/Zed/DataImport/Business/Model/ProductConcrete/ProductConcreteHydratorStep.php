@@ -124,8 +124,8 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         foreach ($dataSet[static::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productLocalizedAttributesEntityTransfer = new SpyProductLocalizedAttributesEntityTransfer();
             $productLocalizedAttributesEntityTransfer
-                ->setName(addslashes($localizedAttributes[static::COLUMN_NAME]))
-                ->setDescription(addslashes($localizedAttributes[static::COLUMN_DESCRIPTION]))
+                ->setName(addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_NAME]))))
+                ->setDescription(addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_DESCRIPTION]))))
                 ->setIsComplete($localizedAttributes[static::KEY_IS_COMPLETE] ?? true)
                 ->setAttributes(addslashes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES])))
                 ->setFkLocale($idLocale);

@@ -11,6 +11,8 @@ image:
             "post_max_size": 600m
             "upload_max_filesize": 600m
             "memory_limit": 3000M
+            "opcache.enable_cli": 1
+            "apc.enable_cli": 1"
         enabled-extensions:
             - blackfire
 composer:
@@ -111,6 +113,10 @@ services:
         engine: redis-commander
         endpoints:
             redis-commander.myworld.local:
+    dashboard:
+        engine: dashboard
+        endpoints:
+            spryker.local:
 
 docker:
 

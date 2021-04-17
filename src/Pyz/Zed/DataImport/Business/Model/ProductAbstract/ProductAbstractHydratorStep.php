@@ -115,8 +115,8 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productAbstractLocalizedAttributesEntityTransfer = new SpyProductAbstractLocalizedAttributesEntityTransfer();
             $productAbstractLocalizedAttributesEntityTransfer
-                ->setName(addslashes($localizedAttributes[static::COLUMN_NAME]))
-                ->setDescription(addslashes($localizedAttributes[static::COLUMN_DESCRIPTION]))
+                ->setName(addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_NAME]))))
+                ->setDescription(addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_DESCRIPTION]))))
                 ->setMetaTitle($localizedAttributes[static::COLUMN_META_TITLE])
                 ->setMetaDescription($localizedAttributes[static::COLUMN_META_DESCRIPTION])
                 ->setMetaKeywords($localizedAttributes[static::COLUMN_META_KEYWORDS])

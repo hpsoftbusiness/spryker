@@ -8,10 +8,10 @@
 namespace Pyz\Zed\ProductImageStorage\Business;
 
 use Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageAbstractStorageMariaDbCte;
-use Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageAbstractStoragePgDbCte;
 use Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageConcreteStorageMariaDbCte;
-use Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageConcreteStoragePgDbCte;
 use Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface;
+use Pyz\Zed\ProductImageStorage\Business\Storage\ProductAbstractImageStorageWriter;
+use Pyz\Zed\ProductImageStorage\Business\Storage\ProductConcreteImageStorageWriter;
 use Pyz\Zed\UrlStorage\UrlStorageDependencyProvider;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
@@ -19,37 +19,37 @@ use Spryker\Zed\ProductImageStorage\Business\ProductImageStorageBusinessFactory 
 
 class ProductImageStorageBusinessFactory extends SprykerProductImageStorageBusinessFactory
 {
-//   /**
-//    * @return \Spryker\Zed\ProductImageStorage\Business\Storage\ProductAbstractImageStorageWriterInterface
-//    */
-//    public function createProductAbstractImageWriter()
-//    {
-//        return new ProductAbstractImageStorageWriter(
-//            $this->getProductImageFacade(),
-//            $this->getQueryContainer(),
-//            $this->getRepository(),
-//            $this->getConfig()->isSendingToQueue(),
-//            $this->getSynchronizationService(),
-//            $this->getQueueClient(),
-//            $this->createProductAbstractImageStoragePgDbCte()
-//        );
-//    }
+   /**
+    * @return \Spryker\Zed\ProductImageStorage\Business\Storage\ProductAbstractImageStorageWriterInterface
+    */
+    public function createProductAbstractImageWriter()
+    {
+        return new ProductAbstractImageStorageWriter(
+            $this->getProductImageFacade(),
+            $this->getQueryContainer(),
+            $this->getRepository(),
+            $this->getConfig()->isSendingToQueue(),
+            $this->getSynchronizationService(),
+            $this->getQueueClient(),
+            $this->createProductAbstractImageStorageMariaDbCte()
+        );
+    }
 
-//    /**
-//     * @return \Spryker\Zed\ProductImageStorage\Business\Storage\ProductConcreteImageStorageWriterInterface
-//     */
-//    public function createProductConcreteImageWriter()
-//    {
-//        return new ProductConcreteImageStorageWriter(
-//            $this->getProductImageFacade(),
-//            $this->getQueryContainer(),
-//            $this->getRepository(),
-//            $this->getConfig()->isSendingToQueue(),
-//            $this->getSynchronizationService(),
-//            $this->getQueueClient(),
-//            $this->createProductConcreteImageStoragePgDbCte()
-//        );
-//    }
+    /**
+     * @return \Spryker\Zed\ProductImageStorage\Business\Storage\ProductConcreteImageStorageWriterInterface
+     */
+    public function createProductConcreteImageWriter()
+    {
+        return new ProductConcreteImageStorageWriter(
+            $this->getProductImageFacade(),
+            $this->getQueryContainer(),
+            $this->getRepository(),
+            $this->getConfig()->isSendingToQueue(),
+            $this->getSynchronizationService(),
+            $this->getQueueClient(),
+            $this->createProductConcreteImageStorageMariaDbCte()
+        );
+    }
 
     /**
      * @return \Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface
@@ -62,25 +62,9 @@ class ProductImageStorageBusinessFactory extends SprykerProductImageStorageBusin
     /**
      * @return \Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface
      */
-    public function createProductAbstractImageStoragePgDbCte(): ProductImageStorageCteInterface
-    {
-        return new ProductImageAbstractStoragePgDbCte();
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface
-     */
     public function createProductConcreteImageStorageMariaDbCte(): ProductImageStorageCteInterface
     {
         return new ProductImageConcreteStorageMariaDbCte();
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface
-     */
-    public function createProductConcreteImageStoragePgDbCte(): ProductImageStorageCteInterface
-    {
-        return new ProductImageConcreteStoragePgDbCte();
     }
 
     /**
