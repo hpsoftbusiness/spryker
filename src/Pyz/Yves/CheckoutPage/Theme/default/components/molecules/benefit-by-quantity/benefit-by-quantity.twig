@@ -27,7 +27,6 @@
         {% for child in childrens %}
             <div class="{{ config.name }}__option-wrapper">
                 <label>
-                    {{ form_widget(child, {'attr': {'class': config.name ~ '__option-toggler', 'custom': 'false'}}) }}
                     <div class="{{ config.name }}__option">
                         {% for price in data.prices %}
                             {% if(price.quantity == child.vars.value) %}
