@@ -161,13 +161,13 @@ actions:
 
 #9. Merchant Setup import
   - data_entity: merchant
-    source: data/import/common/common/marketplace/merchant.csv
+    source: data/import/common/common/marketplace/merchant-local.csv
   - data_entity: merchant-store
-    source: data/import/common/common/marketplace/merchant_store.csv
+    source: data/import/common/common/marketplace/merchant-local.csv
   - data_entity: merchant-profile
-    source: data/import/common/common/marketplace/merchant_profile.csv
+    source: data/import/common/common/marketplace/merchant-local.csv
   - data_entity: merchant-profile-address
-    source: data/import/common/common/marketplace/merchant_profile_address.csv
+    source: data/import/common/common/marketplace/merchant-local.csv
 #  - data_entity: merchant-product
 #    source: data/import/common/common/marketplace/merchant_product.csv
   - data_entity: merchant-product-offer
