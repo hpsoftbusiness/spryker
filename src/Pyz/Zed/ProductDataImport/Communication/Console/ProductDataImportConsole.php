@@ -74,7 +74,7 @@ class ProductDataImportConsole extends Console
 
         $storageClient = $this->getFactory()->getStorageClient();
 
-//        $storageClient->set('IS_DATA_IMPORT_IN_PROGRESS', true);
+        $storageClient->set('IS_DATA_IMPORT_IN_PROGRESS', true);
         apcu_add('IS_DATA_IMPORT_IN_PROGRESS', true);
 
         if ($productDataImport) {
@@ -92,7 +92,7 @@ class ProductDataImportConsole extends Console
                     $progressBar->advance();
                 }
             } catch (Exception $e) {
-//                $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
+                $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
                 apcu_delete('IS_DATA_IMPORT_IN_PROGRESS');
             }
 
@@ -105,7 +105,7 @@ class ProductDataImportConsole extends Console
         }
         $progressBar->finish();
 
-//        $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
+        $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
         apcu_delete('IS_DATA_IMPORT_IN_PROGRESS');
 
         $output->writeln(' <fg=green> Finish</>');

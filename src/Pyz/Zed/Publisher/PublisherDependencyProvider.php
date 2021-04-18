@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Publisher;
 
+use Pyz\Zed\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryDeletePublisherPlugin as GlossaryKeyDeletePublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
@@ -48,12 +49,22 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductLabelStoragePlugins(),
             $this->getProductLabelSearchPlugins(),
             $this->getReturnReasonSearchPlugins(),
-            [
+            $this->getMerchantStoragePlugins()
+        );
+    }
+
+    /**
+     * @return array
+     */
+    protected function getMerchantStoragePlugins(): array
+    {
+        return [
+            MerchantStorageConfig::PUBLISH_MERCHANT => [
                 new MerchantStoragePublisherPlugin(),
                 new MerchantWritePublisherPlugin(),
                 new MerchantDeletePublisherPlugin(),
-            ]
-        );
+            ],
+        ];
     }
 
     /**

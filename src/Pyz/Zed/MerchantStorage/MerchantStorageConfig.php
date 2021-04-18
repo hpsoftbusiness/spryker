@@ -12,6 +12,8 @@ use Spryker\Zed\MerchantStorage\MerchantStorageConfig as BaseMerchantStorageConf
 
 class MerchantStorageConfig extends BaseMerchantStorageConfig
 {
+    public const PUBLISH_MERCHANT = 'publish.merchant';
+
     /**
      * @return string|null
      */

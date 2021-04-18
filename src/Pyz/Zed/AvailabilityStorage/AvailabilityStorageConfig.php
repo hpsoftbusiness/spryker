@@ -13,7 +13,7 @@ class AvailabilityStorageConfig extends SprykerAvailabilityStorageConfig
 {
     public const PUBLISH_AVAILABILITY = 'publish.availability';
 
-    protected const DEFAULT_CHUNK_SIZE = 500;
+    protected const DEFAULT_CHUNK_SIZE = 1000;
 
     /**
      * @return string|null

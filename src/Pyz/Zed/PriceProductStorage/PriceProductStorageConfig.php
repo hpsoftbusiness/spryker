@@ -14,7 +14,7 @@ class PriceProductStorageConfig extends SprykerPriceProductStorageConfig
     public const PUBLISH_PRODUCT_ABSTRACT_PRICE = 'publish.product_abstract_price';
     public const PUBLISH_PRODUCT_CONCRETE_PRICE = 'publish.product_concrete_price';
 
-    public const CHUNK_SIZE = 500;
+    public const CHUNK_SIZE = 1000;
 
     /**
      * @return string|null
