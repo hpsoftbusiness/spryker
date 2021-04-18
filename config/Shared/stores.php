@@ -38,7 +38,18 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
         'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
         // internal and shop
         'currencyIsoCode' => 'EUR',
-        'currencyIsoCodes' => ['EUR'],
+        'currencyIsoCodes' => [
+            'EUR',
+            'PLN',
+            'CZK',
+            'SEK',
+            'HUF',
+            'CHF',
+            'NOK',
+            'GBP',
+            'DKK',
+            'LEU',
+        ],
         'queuePools' => [
             'synchronizationPool' => [],
         ],
@@ -90,7 +101,18 @@ $stores['DE'] = [
     'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => ['EUR'],
+    'currencyIsoCodes' => [
+        'EUR',
+        'PLN',
+        'CZK',
+        'SEK',
+        'HUF',
+        'CHF',
+        'NOK',
+        'GBP',
+        'DKK',
+        'LEU',
+    ],
     'queuePools' => [
         'synchronizationPool' => [
             'DE-connection',

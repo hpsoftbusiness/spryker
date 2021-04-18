@@ -93,13 +93,14 @@ class ProductController extends SprykerShopProductController
      */
     protected function getFilterProductAttributes(array $attributes): array
     {
-        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
-        $productAttributeKeysCollectionTransfer->setKeys([]);
-        $keysToShowOnPdp = $this->getFactory()
-            ->getProductAttributeClient()
-            ->getKeysToShowOnPdp($productAttributeKeysCollectionTransfer)
-            ->getKeys();
-        $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
+        // TODO: enable later, this should not be Zed request because of performance concerns
+//        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
+//        $productAttributeKeysCollectionTransfer->setKeys([]);
+//        $keysToShowOnPdp = $this->getFactory()
+//            ->getProductAttributeClient()
+//            ->getKeysToShowOnPdp($productAttributeKeysCollectionTransfer)
+//            ->getKeys();
+//        $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
 
         $attributesToFilter = [
             'shopping_point_store',

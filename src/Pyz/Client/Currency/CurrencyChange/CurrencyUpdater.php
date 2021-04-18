@@ -10,9 +10,12 @@ namespace Pyz\Client\Currency\CurrencyChange;
 use NumberFormatter;
 use Spryker\Client\Currency\CurrencyChange\CurrencyUpdater as SprykerCurrencyUpdater;
 use Spryker\Client\Currency\Exception\CurrencyNotExistsException;
+use Spryker\Shared\Log\LoggerTrait;
 
 class CurrencyUpdater extends SprykerCurrencyUpdater implements CurrencyUpdaterInterface
 {
+    use LoggerTrait;
+
     /**
      * @param string $locale
      *
@@ -25,6 +28,8 @@ class CurrencyUpdater extends SprykerCurrencyUpdater implements CurrencyUpdaterI
         try {
             $this->setCurrentCurrencyIsoCode($currencyIsoCode);
         } catch (CurrencyNotExistsException $exception) {
+            $this->setCurrentCurrencyIsoCode($this->storeClient->getCurrentStore()->getDefaultCurrencyIsoCode());
+            $this->getLogger()->info('Currency ' . $currencyIsoCode . ' was not found in the config');
         }
     }
 

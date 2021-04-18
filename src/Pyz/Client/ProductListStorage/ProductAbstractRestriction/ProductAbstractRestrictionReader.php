@@ -44,7 +44,8 @@ class ProductAbstractRestrictionReader extends SprykerProductAbstractRestriction
         if ($customer) {
             $customerProductListCollectionTransfer = $customer->getCustomerProductListCollection();
         } else {
-            $customerProductListCollectionTransfer = $this->productListClient->getDefaultCustomerProductListCollection();
+            // TODO: we should not call zed here, it will cause performance problems
+            return false;
         }
 
         if (!$customerProductListCollectionTransfer) {
