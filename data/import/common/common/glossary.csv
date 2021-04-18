@@ -19947,3 +19947,11 @@ checkout.payment.my_world.error.transaction_batch_failed,Payment transaction was
 checkout.payment.my_world.error.transaction_batch_failed,Payment transaction was not processed due to another batch transaction failing,en_US
 checkout.payment.my_world.error.transaction_option_not_found,Payment transaction failed due to unknown payment option,de_DE
 checkout.payment.my_world.error.transaction_option_not_found,Payment transaction failed due to unknown payment option,en_US
+checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,de_DE
+checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,en_US
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount".,de_DE
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount.",en_US
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount.",de_DE
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount.",en_US
+checkout.currency.my_world.shopping_points,Shopping Points,de_DE
+checkout.currency.my_world.shopping_points,Shopping Points,en_US

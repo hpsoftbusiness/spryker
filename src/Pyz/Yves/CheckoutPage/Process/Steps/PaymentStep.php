@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
+use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
@@ -56,6 +57,11 @@ class PaymentStep extends SprykerShopPaymentStep
     private $checkoutPageConfig;
 
     /**
+     * @var \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface
+     */
+    private $preConditionChecker;
+
+    /**
      * @param \Pyz\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
      * @param \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface $integerToDecimalConverter
@@ -68,6 +74,7 @@ class PaymentStep extends SprykerShopPaymentStep
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
      * @param array $checkoutPaymentStepEnterPreCheckPlugins
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface $preConditionChecker
      */
     public function __construct(
         CheckoutPageConfig $checkoutPageConfig,
@@ -81,7 +88,8 @@ class PaymentStep extends SprykerShopPaymentStep
         FlashMessengerInterface $flashMessenger,
         CheckoutPageToCalculationClientInterface $calculationClient,
         array $checkoutPaymentStepEnterPreCheckPlugins,
-        ProductSellableCheckerInterface $productSellableChecker
+        ProductSellableCheckerInterface $productSellableChecker,
+        PreConditionCheckerInterface $preConditionChecker
     ) {
         parent::__construct(
             $paymentClient,
@@ -98,6 +106,7 @@ class PaymentStep extends SprykerShopPaymentStep
         $this->integerToDecimalConverter = $integerToDecimalConverter;
         $this->translator = $translator;
         $this->checkoutPageConfig = $checkoutPageConfig;
+        $this->preConditionChecker = $preConditionChecker;
     }
 
     /**
@@ -122,13 +131,19 @@ class PaymentStep extends SprykerShopPaymentStep
      *
      * @return bool
      */
-    public function preCondition(AbstractTransfer $quoteTransfer)
+    public function preCondition(AbstractTransfer $quoteTransfer): bool
     {
         $isQuoteValid = parent::preCondition($quoteTransfer);
         $isQuoteValid = $this->productSellableChecker->check($quoteTransfer, $isQuoteValid);
 
         if (!$isQuoteValid) {
             $this->escapeRoute = CartPageRouteProviderPlugin::ROUTE_NAME_CART;
+        }
+
+        if (!$this->preConditionChecker->check($quoteTransfer)) {
+            $this->escapeRoute = CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_BENEFIT;
+
+            return false;
         }
 
         return $isQuoteValid;
@@ -217,7 +232,7 @@ class PaymentStep extends SprykerShopPaymentStep
         if ($this->isInternalPaymentMethodSelected($abstractTransfer)) {
             $paymentSessionResponse = $this->myWorldPaymentClient->createPaymentSession($abstractTransfer);
 
-            if ($paymentSessionResponse->getIsSuccess() && $this->isCustomerHasAmountOfVouchers($abstractTransfer->getCustomer())) {
+            if ($paymentSessionResponse->getIsSuccess()) {
                 $paymentSessionResponse->requirePaymentSessionResponse();
                 $paymentSessionResponse->getPaymentSessionResponse()->requireSessionId();
                 $abstractTransfer->setMyWorldPaymentSessionId(

@@ -197,6 +197,11 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new RemoveSalesOrderThresholdExpenseCalculatorPlugin(), #SalesOrderThresholdFeature
             new FilterObsoleteShipmentExpensesCalculatorPlugin(),
 
+            /**
+             * Needs to be before PriceCalculatorPlugin to used benefit price for price calculations.
+             */
+            new ShoppingPointsQuoteCalculationPlugin(),
+
             new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
@@ -236,7 +241,6 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new PaymentCalculatorPlugin(),
             new MyWorldPaymentBenefitVoucherQuoteCalculationPlugin(),
-            new ShoppingPointsQuoteCalculationPlugin(),
         ];
 
         return $pluginStack;

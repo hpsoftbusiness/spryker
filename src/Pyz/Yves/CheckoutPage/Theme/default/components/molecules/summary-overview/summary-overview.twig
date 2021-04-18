@@ -61,6 +61,24 @@
         <strong class="float-right">{{ data.prices.grandTotal | money }}</strong>
     </li>
 
+    {% for payment in data.payments | filter(payment => payment.paymentProvider == 'myWorld') %}
+        {% if payment.paymentMethodName == 'ShoppingPoints' %}
+            <li class="list__item spacing-y">
+                {{ 'checkout.currency.my_world.shopping_points' | trans }}
+                <span class="float-right">
+                    - {{ payment.amount | money(false)}}
+                    {% include atom('icon') with {
+                        class: config.name ~ '__icon',
+                        modifiers: ['medium-up'],
+                        data: {
+                            name: 'shopping-point',
+                        },
+                    } only %}
+                </span>
+            </li>
+        {% endif %}
+    {% endfor %}
+
     <li class="{{ config.name }}__list-item">
         {% include molecule('gift-card-payment-summary', 'GiftCardWidget') ignore missing with {
             data: {

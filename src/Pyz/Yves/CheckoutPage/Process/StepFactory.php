@@ -16,6 +16,7 @@ use Pyz\Yves\CheckoutPage\Process\Steps\BenefitDealStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep\PaymentPreConditionChecker;
 use Pyz\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableChecker;
@@ -171,7 +172,8 @@ class StepFactory extends SprykerShopStepFactory
             $this->getFlashMessenger(),
             $this->getCalculationClient(),
             $this->getCheckoutPaymentStepEnterPreCheckPlugins(),
-            $this->createProductSellableChecker()
+            $this->createProductSellableChecker(),
+            $this->createPaymentPreConditionChecker(),
         );
     }
 
@@ -280,6 +282,17 @@ class StepFactory extends SprykerShopStepFactory
     {
         return new SummaryStepPostConditionChecker(
             $this->getMyWorldPaymentClient(),
+            $this->getFlashMessenger(),
+            $this->getTranslatorService()
+        );
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface
+     */
+    public function createPaymentPreConditionChecker(): PreConditionCheckerInterface
+    {
+        return new PaymentPreConditionChecker(
             $this->getFlashMessenger(),
             $this->getTranslatorService()
         );

@@ -100,6 +100,12 @@ class MyWorldPaymentPostSavePlugin extends AbstractPlugin implements CheckoutPos
      */
     private function assertPaymentSuccessful(MyWorldApiResponseTransfer $apiResponseTransfer): bool
     {
+        foreach ($apiResponseTransfer->getPaymentDataResponse()->getTransactions() as $paymentTransactionTransfer) {
+            if ($paymentTransactionTransfer->getStatusCode() !== MyWorldPaymentApiConfig::PAYMENT_TRANSACTION_STATUS_CODE_ACCEPTED) {
+                return false;
+            }
+        }
+
         return $apiResponseTransfer->getIsSuccess()
             && $apiResponseTransfer->getPaymentDataResponse()->getStatus() === MyWorldPaymentApiConfig::PAYMENT_STATUS_CHARGED;
     }
