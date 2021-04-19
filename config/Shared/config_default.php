@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Api\ApiConstants;
+use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
 use Pyz\Shared\Oms\OmsConstants;
@@ -596,3 +597,9 @@ $config[ApiConstants::X_SPRYKER_API_KEY] = 'GSEH@VH@yd+e"kbm^?,^224&U,9L_wXL';
 // ----------------------- MyWorld Payment API ----------------------------
 // ----------------------------------------------------------------------------
 require 'common/config_my-world-payment-api-development.php';
+
+// ----------------------------------------------------------------------------
+// ----------------------- Checkout feature flags -----------------------------
+// ----------------------------------------------------------------------------
+$config[CheckoutPageConstants::IS_CASHBACK_PAYMENT_FEATURE_ENABLED] = true;
+$config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = true;

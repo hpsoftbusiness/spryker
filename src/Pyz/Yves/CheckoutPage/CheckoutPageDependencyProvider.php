@@ -32,6 +32,9 @@ use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
+/**
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ */
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     public const SERVICE_TRANSLATOR = 'translator';
@@ -169,6 +172,10 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function addFormExpander(Container $container): Container
     {
         $container->set(static::FORM_EXPANDER, function () {
+            if (!$this->getConfig()->isCashbackFeatureEnabled()) {
+                return [];
+            }
+
             return [
                 new MyWorldPaymentBonusSubFormPlugin(),
             ];

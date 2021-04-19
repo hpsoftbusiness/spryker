@@ -36,14 +36,16 @@
         {% block fieldset %}
             <h2 class="title title--primary">{{ 'checkout.payment.provider.DummyPayment' | trans }}</h2>
 
-            {% include molecule('payment-use-evoucher', 'CheckoutPage') with {
-                data: {
-                    checkboxUseEVouchers: data.form.myWorldUseEVoucherBalance,
-                    availableAmountBonuses: embed.availableAmountBonuses,
-                    availableEVoucherForCharge: embed.availableEVoucherForCharge,
-                    currencyIsoCode: embed.currencyIsoCode,
-                },
-            } only %}
+            {% if data.form.myWorldUseEVoucherBalance is defined %}
+                {% include molecule('payment-use-evoucher', 'CheckoutPage') with {
+                    data: {
+                        checkboxUseEVouchers: data.form.myWorldUseEVoucherBalance,
+                        availableAmountBonuses: embed.availableAmountBonuses,
+                        availableEVoucherForCharge: embed.availableEVoucherForCharge,
+                        currencyIsoCode: embed.currencyIsoCode,
+                    },
+                } only %}
+            {% endif %}
 
             <div class="form_container">
                 <h2 class="title title--primary"></h2>

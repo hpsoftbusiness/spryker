@@ -78,19 +78,19 @@ class StepFactory extends SprykerShopStepFactory
      */
     public function getSteps(): array
     {
-        return [
+        return array_filter([
             $this->createEntryStep(),
             $this->createPyzCustomerStep(),
             $this->createAddressStep(),
             $this->createPyzShipmentStep(),
-            $this->createBenefitStep(),
+            $this->getConfig()->isBenefitDealFeatureEnabled() ? $this->createBenefitStep() : null,
             $this->createPaymentStep(),
             $this->createSummaryStep(),
             $this->createPlaceOrderStep(),
             $this->createAdyenCreditCard3dSecureStep(),
             $this->createSuccessStep(),
             $this->createErrorStep(),
-        ];
+        ]);
     }
 
     /**

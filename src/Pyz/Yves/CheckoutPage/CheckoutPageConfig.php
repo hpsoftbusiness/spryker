@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfig;
@@ -62,5 +63,21 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
     public function getBenefitStoreKey(): string
     {
         return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCashbackFeatureEnabled(): bool
+    {
+        return $this->get(CheckoutPageConstants::IS_CASHBACK_PAYMENT_FEATURE_ENABLED);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBenefitDealFeatureEnabled(): bool
+    {
+        return $this->get(CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED);
     }
 }
