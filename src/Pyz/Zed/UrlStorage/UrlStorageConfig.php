@@ -8,6 +8,7 @@
 namespace Pyz\Zed\UrlStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
+use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\UrlStorage\UrlStorageConfig as SprykerUrlStorageConfig;
 
 class UrlStorageConfig extends SprykerUrlStorageConfig
@@ -39,7 +40,7 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
      */
     public function getUrlEventQueueName(): ?string
     {
-        return static::PUBLISH_URL;
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**
@@ -49,7 +50,7 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
      */
     public function getUrlRedirectEventQueueName(): ?string
     {
-        return static::PUBLISH_URL;
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\AvailabilityStorage;
 
+use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\AvailabilityStorage\AvailabilityStorageConfig as SprykerAvailabilityStorageConfig;
 
 class AvailabilityStorageConfig extends SprykerAvailabilityStorageConfig
@@ -20,7 +21,7 @@ class AvailabilityStorageConfig extends SprykerAvailabilityStorageConfig
      */
     public function getEventQueueName(): ?string
     {
-        return static::PUBLISH_AVAILABILITY;
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**
