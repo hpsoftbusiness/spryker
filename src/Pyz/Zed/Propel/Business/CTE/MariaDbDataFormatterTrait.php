@@ -54,4 +54,50 @@ trait MariaDbDataFormatterTrait
 
         return implode(',', $values);
     }
+
+    /**
+     * @param array $data
+     *
+     * @return string
+     */
+    public function collectMultiInsertData(array $data): string
+    {
+        $queryParameters = '';
+
+        foreach ($data as $key => $itemData) {
+            $stringParam = implode(",", array_map(function ($param) {
+                if (is_string($param)) {
+                    return "'$param'";
+                }
+
+                return $param;
+            }, $itemData));
+            $queryParameters .= "(" . $stringParam . ")";
+
+            if (next($data)) {
+                $queryParameters .= ',';
+            }
+        }
+
+        return $queryParameters;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return string
+     */
+    public function collectMultiInsertDataForLocalizedAttributes(array $data): string
+    {
+        $queryParameters = '';
+
+        foreach ($data as $localizedData) {
+            if ($queryParameters !== '') {
+                $queryParameters .= ',';
+            }
+            $queryParameters .= $this->collectMultiInsertData($localizedData);
+        }
+
+        return $queryParameters;
+    }
 }

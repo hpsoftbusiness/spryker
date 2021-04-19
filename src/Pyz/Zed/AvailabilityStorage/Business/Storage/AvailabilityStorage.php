@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\AvailabilityStorage\Persistence\SpyAvailabilityStorage;
 use Propel\Runtime\Propel;
 use Pyz\Zed\AvailabilityStorage\Business\Storage\Cte\AvailabilityStorageCteInterface;
+use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Shared\Kernel\Store;
@@ -21,6 +22,8 @@ use Spryker\Zed\AvailabilityStorage\Persistence\AvailabilityStorageRepositoryInt
 
 class AvailabilityStorage extends SprykerAvailabilityStorage
 {
+    use MariaDbDataFormatterTrait;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -42,18 +45,12 @@ class AvailabilityStorage extends SprykerAvailabilityStorage
     protected $synchronizedMessageCollection = [];
 
     /**
-     * @var \Pyz\Zed\AvailabilityStorage\Business\Storage\Cte\AvailabilityStorageCteInterface
-     */
-    protected $availabilityStorageCte;
-
-    /**
      * @param \Spryker\Shared\Kernel\Store $store
      * @param \Spryker\Zed\AvailabilityStorage\Persistence\AvailabilityStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param \Spryker\Zed\AvailabilityStorage\Persistence\AvailabilityStorageRepositoryInterface $availabilityStorageRepository
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
-     * @param \Pyz\Zed\AvailabilityStorage\Business\Storage\Cte\AvailabilityStorageCteInterface $availabilityStorageCte
      */
     public function __construct(
         Store $store,
@@ -61,14 +58,12 @@ class AvailabilityStorage extends SprykerAvailabilityStorage
         $isSendingToQueue,
         AvailabilityStorageRepositoryInterface $availabilityStorageRepository,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        AvailabilityStorageCteInterface $availabilityStorageCte
+        QueueClientInterface $queueClient
     ) {
         parent::__construct($store, $queryContainer, $isSendingToQueue, $availabilityStorageRepository);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
-        $this->availabilityStorageCte = $availabilityStorageCte;
     }
 
     /**
@@ -209,23 +204,16 @@ class AvailabilityStorage extends SprykerAvailabilityStorage
             return;
         }
 
-        $stmt = Propel::getConnection()->prepare($this->getSql());
-        $stmt->execute($this->getParams());
-    }
+        $parameter = $this->collectMultiInsertData(
+            $this->synchronizedDataCollection
+        );
 
-    /**
-     * @return string
-     */
-    protected function getSql(): string
-    {
-        return $this->availabilityStorageCte->getSql();
-    }
+        $sql = 'INSERT INTO `spy_availability_storage` (`fk_product_abstract`, `fk_availability_abstract`, `data`, `store`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `fk_availability_abstract`=values(`fk_availability_abstract`), `data`=values(`data`), `store`=values(`store`), `key`=values(`key`);';
 
-    /**
-     * @return array
-     */
-    protected function getParams(): array
-    {
-        return $this->availabilityStorageCte->buildParams($this->synchronizedDataCollection);
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+
+        $this->synchronizedDataCollection = [];
     }
 }

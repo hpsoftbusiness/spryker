@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Generated\Shared\Transfer\UrlStorageTransfer;
 use Orm\Zed\UrlStorage\Persistence\SpyUrlStorage;
 use Propel\Runtime\Propel;
-use Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface;
+use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\UrlStorage\Business\Storage\UrlStorageWriter as SprykerUrlStorageWriter;
@@ -23,6 +23,8 @@ use Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface;
 
 class UrlStorageWriter extends SprykerUrlStorageWriter
 {
+    use MariaDbDataFormatterTrait;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -44,11 +46,6 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
-     * @var \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface
-     */
-    protected $urlStorageCte;
-
-    /**
      * @param \Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface $utilSanitize
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface $urlStorageRepository
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface $urlStorageEntityManager
@@ -56,7 +53,6 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
-     * @param \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface $urlStorageCte
      */
     public function __construct(
         UrlStorageToUtilSanitizeServiceInterface $utilSanitize,
@@ -65,14 +61,12 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         UrlStorageToStoreFacadeInterface $storeFacade,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        UrlStorageCteInterface $urlStorageCte
+        QueueClientInterface $queueClient
     ) {
         parent::__construct($utilSanitize, $urlStorageRepository, $urlStorageEntityManager, $storeFacade, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
-        $this->urlStorageCte = $urlStorageCte;
     }
 
     /**
@@ -130,7 +124,12 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     protected function add(array $urlStorage): void
     {
         $synchronizedData = $this->buildSynchronizedData($urlStorage, 'url', 'url');
-        $this->synchronizedDataCollection[] = $synchronizedData;
+        $this->synchronizedDataCollection[] = [
+            'fk_url' => $synchronizedData['fk_url'],
+            'url' => $synchronizedData['url'],
+            'data' => $synchronizedData['data'],
+            'key' => $synchronizedData['key'],
+        ];
 
         if ($this->isSendingToQueue) {
             $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'url');
@@ -210,23 +209,16 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
             return;
         }
 
-        $stmt = Propel::getConnection()->prepare($this->getSql());
-        $stmt->execute($this->getParams());
-    }
+        $parameter = $this->collectMultiInsertData(
+            $this->synchronizedDataCollection
+        );
 
-    /**
-     * @return string
-     */
-    protected function getSql(): string
-    {
-        return $this->urlStorageCte->getSql();
-    }
+        $sql = 'INSERT INTO `spy_url_storage` (`fk_url`, `url`, `data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_url`=values(`fk_url`), `url`=values(`url`), `data`=values(`data`), `key`=values(`key`);';
 
-    /**
-     * @return array
-     */
-    protected function getParams(): array
-    {
-        return $this->urlStorageCte->buildParams($this->synchronizedDataCollection);
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+
+        $this->synchronizedDataCollection = [];
     }
 }

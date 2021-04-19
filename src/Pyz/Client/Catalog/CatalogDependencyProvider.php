@@ -124,7 +124,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
 //            new CustomerProductListQueryExpanderPlugin(),
-            new SellableQueryExpanderPlugin(),
+//            new SellableQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
 
             /**

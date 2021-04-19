@@ -29,8 +29,7 @@ class AvailabilityStorageBusinessFactory extends SprykerAvailabilityStorageBusin
             $this->getConfig()->isSendingToQueue(),
             $this->getRepository(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createAvailabilityStorageMariaDbCte()
+            $this->getQueueClient()
         );
     }
 

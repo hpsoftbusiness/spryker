@@ -33,8 +33,7 @@ class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
             $this->getStoreFacade(),
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createUrlStorageMariaDbCte()
+            $this->getQueueClient()
         );
     }
 

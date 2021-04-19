@@ -35,8 +35,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
             $this->getQueryContainer(),
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createPriceProductAbstractStorageMariaDbCte()
+            $this->getQueueClient()
         );
     }
 
@@ -51,8 +50,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
             $this->getQueryContainer(),
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createPriceProductConcreteStorageMariaDbCte()
+            $this->getQueueClient()
         );
     }
 

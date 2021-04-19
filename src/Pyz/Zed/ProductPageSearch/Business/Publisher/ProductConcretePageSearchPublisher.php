@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Propel\Runtime\Propel;
-use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface;
+use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper;
@@ -28,6 +28,8 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearchPublisher
 {
+    use MariaDbDataFormatterTrait;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -37,11 +39,6 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @var \Spryker\Client\Queue\QueueClientInterface
      */
     protected $queueClient;
-
-    /**
-     * @var \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
-     */
-    protected $productConcretePagePublisherCte;
 
     /**
      * @var array
@@ -64,7 +61,6 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
-     * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productConcretePagePublisherCte
      */
     public function __construct(
         ProductConcretePageSearchReaderInterface $productConcretePageSearchReader,
@@ -76,8 +72,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchConfig $productPageSearchConfig,
         array $pageDataExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        ProductPagePublisherCteInterface $productConcretePagePublisherCte
+        QueueClientInterface $queueClient
     ) {
         parent::__construct(
             $productConcretePageSearchReader,
@@ -92,7 +87,6 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
-        $this->productConcretePagePublisherCte = $productConcretePagePublisherCte;
     }
 
     /**
@@ -169,7 +163,14 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected function add(ProductConcretePageSearchTransfer $productPageSearchTransfer): void
     {
         $synchronizedData = $this->buildSynchronizedData($productPageSearchTransfer, 'product_concrete');
-        $this->synchronizedDataCollection[] = $synchronizedData;
+        $this->synchronizedDataCollection[] = [
+            'fk_product' => $synchronizedData['fk_product'],
+            'store' => $synchronizedData['store'],
+            'locale' => $synchronizedData['locale'],
+            'data' => addslashes($synchronizedData['data']),
+            'structured_data' => addslashes($synchronizedData['structured_data']),
+            'key' => $synchronizedData['key'],
+        ];
 
         $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'product_concrete', ['type' => 'page']);
     }
@@ -261,14 +262,15 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             return;
         }
 
-        $con = Propel::getConnection();
+        $parameter = $this->collectMultiInsertData(
+            $this->synchronizedDataCollection
+        );
+        $sql = 'INSERT INTO `spy_product_concrete_page_search` (`fk_product`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product`=values(`fk_product`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
 
-        $sql = $this->productConcretePagePublisherCte->getSql();
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
 
-        $stmt = $con->prepare($sql);
-
-        $params = $this->productConcretePagePublisherCte->buildParams($this->synchronizedDataCollection);
-
-        $stmt->execute($params);
+        $this->synchronizedDataCollection = [];
     }
 }

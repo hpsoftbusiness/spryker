@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch;
 use Propel\Runtime\Propel;
-use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface;
+use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapperInterface;
@@ -26,6 +26,8 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 {
+    use MariaDbDataFormatterTrait;
+
     /**
      * @var \Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractPageAfterPublishPluginInterface[]
      */
@@ -40,11 +42,6 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @var \Spryker\Client\Queue\QueueClientInterface
      */
     protected $queueClient;
-
-    /**
-     * @var \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
-     */
-    protected $productAbstractPagePublisherCte;
 
     /**
      * @var array
@@ -68,7 +65,6 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractPageAfterPublishPluginInterface[] $productAbstractPageAfterPublishPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
-     * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productAbstractPagePublisherCte
      */
     public function __construct(
         ProductPageSearchQueryContainerInterface $queryContainer,
@@ -81,8 +77,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         AddToCartSkuReaderInterface $addToCartSkuReader,
         array $productAbstractPageAfterPublishPlugins,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        ProductPagePublisherCteInterface $productAbstractPagePublisherCte
+        QueueClientInterface $queueClient
     ) {
         parent::__construct(
             $queryContainer,
@@ -98,7 +93,6 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $this->productAbstractPageAfterPublishPlugins = $productAbstractPageAfterPublishPlugins;
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
-        $this->productAbstractPagePublisherCte = $productAbstractPagePublisherCte;
     }
 
     /**
@@ -208,7 +202,14 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     protected function add(ProductPageSearchTransfer $productPageSearchTransfer, array $searchDocument): void
     {
         $synchronizedData = $this->buildSynchronizedData($productPageSearchTransfer, $searchDocument, 'product_abstract');
-        $this->synchronizedDataCollection[] = $synchronizedData;
+        $this->synchronizedDataCollection[] = [
+            'fk_product_abstract' => $synchronizedData['fk_product_abstract'],
+            'store' => $synchronizedData['store'],
+            'locale' => $synchronizedData['locale'],
+            'data' => addslashes($synchronizedData['data']),
+            'structured_data' => addslashes($synchronizedData['structured_data']),
+            'key' => $synchronizedData['key'],
+        ];
 
         $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'product_abstract', ['type' => 'page']);
     }
@@ -304,14 +305,15 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             return;
         }
 
-        $sql = $this->productAbstractPagePublisherCte->getSql();
+        $parameter = $this->collectMultiInsertData(
+            $this->synchronizedDataCollection
+        );
+        $sql = 'INSERT INTO `spy_product_abstract_page_search` (`fk_product_abstract`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
 
-        $con = Propel::getConnection();
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
 
-        $stmt = $con->prepare($sql);
-
-        $params = $this->productAbstractPagePublisherCte->buildParams($this->synchronizedDataCollection);
-
-        $stmt->execute($params);
+        $this->synchronizedDataCollection = [];
     }
 }

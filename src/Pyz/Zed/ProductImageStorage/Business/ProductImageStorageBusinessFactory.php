@@ -30,8 +30,7 @@ class ProductImageStorageBusinessFactory extends SprykerProductImageStorageBusin
             $this->getRepository(),
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createProductAbstractImageStorageMariaDbCte()
+            $this->getQueueClient()
         );
     }
 
@@ -46,8 +45,7 @@ class ProductImageStorageBusinessFactory extends SprykerProductImageStorageBusin
             $this->getRepository(),
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createProductConcreteImageStorageMariaDbCte()
+            $this->getQueueClient()
         );
     }
 

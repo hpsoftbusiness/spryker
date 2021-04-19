@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributes;
 use Orm\Zed\ProductImageStorage\Persistence\SpyProductAbstractImageStorage;
 use Propel\Runtime\Propel;
-use Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface;
+use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductImageStorage\Business\Storage\ProductAbstractImageStorageWriter as SprykerProductAbstractImageStorageWriter;
@@ -23,6 +23,8 @@ use Spryker\Zed\ProductImageStorage\Persistence\ProductImageStorageRepositoryInt
 
 class ProductAbstractImageStorageWriter extends SprykerProductAbstractImageStorageWriter
 {
+    use MariaDbDataFormatterTrait;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -44,18 +46,12 @@ class ProductAbstractImageStorageWriter extends SprykerProductAbstractImageStora
     protected $synchronizedMessageCollection = [];
 
     /**
-     * @var \Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface
-     */
-    protected $productImageCte;
-
-    /**
      * @param \Spryker\Zed\ProductImageStorage\Dependency\Facade\ProductImageStorageToProductImageInterface $productImageFacade
      * @param \Spryker\Zed\ProductImageStorage\Persistence\ProductImageStorageQueryContainerInterface $queryContainer
      * @param \Spryker\Zed\ProductImageStorage\Persistence\ProductImageStorageRepositoryInterface $repository
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
-     * @param \Pyz\Zed\ProductImageStorage\Business\Storage\Cte\ProductImageStorageCteInterface $productImageCte
      */
     public function __construct(
         ProductImageStorageToProductImageInterface $productImageFacade,
@@ -63,14 +59,12 @@ class ProductAbstractImageStorageWriter extends SprykerProductAbstractImageStora
         ProductImageStorageRepositoryInterface $repository,
         $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        ProductImageStorageCteInterface $productImageCte
+        QueueClientInterface $queueClient
     ) {
         parent::__construct($productImageFacade, $queryContainer, $repository, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
-        $this->productImageCte = $productImageCte;
     }
 
     /**
@@ -240,23 +234,16 @@ class ProductAbstractImageStorageWriter extends SprykerProductAbstractImageStora
             return;
         }
 
-        $stmt = Propel::getConnection()->prepare($this->getSql());
-        $stmt->execute($this->getParams());
-    }
+        $parameter = $this->collectMultiInsertData(
+            $this->synchronizedDataCollection
+        );
 
-    /**
-     * @return string
-     */
-    protected function getSql(): string
-    {
-        return $this->productImageCte->getSql();
-    }
+        $sql = 'INSERT INTO `spy_product_abstract_image_storage` (`fk_product_abstract`, `data`, `locale`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `data`=values(`data`), `locale`=values(`locale`),  `key`=values(`key`);';
 
-    /**
-     * @return array
-     */
-    protected function getParams(): array
-    {
-        return $this->productImageCte->buildParams($this->synchronizedDataCollection);
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+
+        $this->synchronizedDataCollection = [];
     }
 }

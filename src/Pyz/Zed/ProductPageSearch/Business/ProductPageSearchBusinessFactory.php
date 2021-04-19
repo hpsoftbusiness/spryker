@@ -104,8 +104,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->createAddToCartSkuReader(),
             $this->getProductAbstractPageAfterPublishPlugins(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createProductAbstractPageSearchMariaDbPublisherCte()
+            $this->getQueueClient()
         );
     }
 
@@ -124,8 +123,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getConfig(),
             $this->getProductConcretePageDataExpanderPlugins(),
             $this->getSynchronizationService(),
-            $this->getQueueClient(),
-            $this->createProductConcretePageSearchMariaDbPublisherCte()
+            $this->getQueueClient()
         );
     }
 }

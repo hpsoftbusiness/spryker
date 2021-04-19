@@ -27,6 +27,7 @@ class ProductDataImportConsole extends Console
     private const  DATA_ENTITY_PRICE = 'combined-product-price';
     private const  DATA_ENTITY_STOCK = 'combined-product-stock';
     private const  DATA_ENTITY_LIST_CONCRETE = 'combined-product-list-product-concrete';
+    private const  DATA_ENTITY_GROUP = 'combined-product-group';
     private const  DATA_ENTITY_MERCHANT_PRODUCT_OFFER = 'merchant-product-offer';
     private const  DATA_ENTITY_MERCHANT_PRODUCT_OFFER_STORE = 'merchant-product-offer-store';
     private const  DATA_ENTITY_PRICE_PRODUCT_OFFER = 'price-product-offer';
@@ -35,10 +36,11 @@ class ProductDataImportConsole extends Console
         self::DATA_ENTITY_ABSTRACT,
         self::DATA_ENTITY_ABSTRACT_STORE,
         self::DATA_ENTITY_CONCRETE,
-        self::DATA_ENTITY_LIST_CONCRETE,
         self::DATA_ENTITY_IMAGE,
         self::DATA_ENTITY_PRICE,
         self::DATA_ENTITY_STOCK,
+        self::DATA_ENTITY_LIST_CONCRETE,
+        self::DATA_ENTITY_GROUP,
         self::DATA_ENTITY_MERCHANT_PRODUCT_OFFER,
         self::DATA_ENTITY_MERCHANT_PRODUCT_OFFER_STORE,
         self::DATA_ENTITY_PRICE_PRODUCT_OFFER,

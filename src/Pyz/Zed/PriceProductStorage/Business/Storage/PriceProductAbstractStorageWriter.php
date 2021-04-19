@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\PriceProductStorage\Persistence\SpyPriceProductAbstractStorage;
 use Propel\Runtime\Propel;
-use Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface;
+use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\PriceProductStorage\Business\Storage\PriceProductAbstractStorageWriter as SprykerPriceProductAbstractStorageWriter;
@@ -22,6 +22,8 @@ use Spryker\Zed\PriceProductStorage\Persistence\PriceProductStorageQueryContaine
 
 class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStorageWriter
 {
+    use MariaDbDataFormatterTrait;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -43,18 +45,12 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
     protected $synchronizedMessageCollection = [];
 
     /**
-     * @var \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface
-     */
-    private $priceProductAbstractStorageCte;
-
-    /**
      * @param \Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToPriceProductFacadeInterface $priceProductFacade
      * @param \Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\PriceProductStorage\Persistence\PriceProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
-     * @param \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface $priceProductAbstractStorageCte
      */
     public function __construct(
         PriceProductStorageToPriceProductFacadeInterface $priceProductFacade,
@@ -62,14 +58,12 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
         PriceProductStorageQueryContainerInterface $queryContainer,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        PriceProductStorageCteInterface $priceProductAbstractStorageCte
+        QueueClientInterface $queueClient
     ) {
         parent::__construct($priceProductFacade, $storeFacade, $queryContainer, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
-        $this->priceProductAbstractStorageCte = $priceProductAbstractStorageCte;
     }
 
     /**
@@ -240,23 +234,16 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
             return;
         }
 
-        $stmt = Propel::getConnection()->prepare($this->getSql());
-        $stmt->execute($this->getParams());
-    }
+        $parameter = $this->collectMultiInsertData(
+            $this->synchronizedDataCollection
+        );
 
-    /**
-     * @return string
-     */
-    protected function getSql(): string
-    {
-        return $this->priceProductAbstractStorageCte->getSql();
-    }
+        $sql = 'INSERT INTO `spy_price_product_abstract_storage` (`fk_product_abstract`, `data`, `store`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `data`=values(`data`), `store`=values(`store`), `key`=values(`key`);';
 
-    /**
-     * @return array
-     */
-    protected function getParams(): array
-    {
-        return $this->priceProductAbstractStorageCte->buildParams($this->synchronizedDataCollection);
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+
+        $this->synchronizedDataCollection = [];
     }
 }

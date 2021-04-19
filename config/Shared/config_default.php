@@ -492,7 +492,7 @@ $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 
 // >>> PRODUCT DATA IMPORT FROM FILE
-$config[ProductDataImportConstants::DEFAULT_FILE_MAX_SIZE] = '525M';
+$config[ProductDataImportConstants::DEFAULT_FILE_MAX_SIZE] = '800M';
 $config[ProductDataImportConstants::STORAGE_NAME] = 'files-import';
 
 // ----------------------------------------------------------------------------
