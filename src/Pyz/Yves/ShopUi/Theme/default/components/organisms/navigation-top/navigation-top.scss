@@ -28,7 +28,7 @@
             @include helper-effect-transition(color);
 
             &--active {
-                color: $setting-color-alt;
+                color: $setting-color-main;
             }
         }
     }

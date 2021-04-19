@@ -8,3 +8,7 @@
 @include basic-typography;
 @include basic-grid;
 @include basic-animation;
+
+a:hover {
+    color: $setting-color-alpha-7!important;
+}

@@ -19955,3 +19955,5 @@ checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunate
 checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount.",en_US
 checkout.currency.my_world.shopping_points,Shopping Points,de_DE
 checkout.currency.my_world.shopping_points,Shopping Points,en_US
+auth.login-button,Login mit myWorld,de_DE
+auth.login-button,Login with myWorld,en_US

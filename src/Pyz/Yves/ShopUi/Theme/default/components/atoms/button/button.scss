@@ -23,7 +23,7 @@
         &:focus,
         &:active {
             color: $setting-color-white;
-            background-color: $setting-color-yellow;
+            background-color: $setting-color-alpha-7;
             text-decoration: none;
         }
 
@@ -245,7 +245,7 @@
 
             &:hover,
             &:focus {
-                color: $setting-color-alt;
+                color: $setting-color-alpha-7;
             }
         }
 
@@ -261,8 +261,8 @@
 
         &--hollow-alert {
             background-color: $setting-color-transparent;
-            border: rem(1) solid $setting-color-alt;
-            color: $setting-color-alt;
+            border: rem(1) solid $setting-color-alpha-7;
+            color: $setting-color-alpha-7;
 
             &#{$name}--small {
                 padding-top: rem(10);

@@ -98,7 +98,7 @@
                 &--active {
                     & > #{$name}__link {
                         font-weight: fw(regular);
-                        color: $setting-color-alt;
+                        color: $setting-color-main;
                     }
                 }
             }
@@ -116,7 +116,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    color: $setting-color-alt;
+                    color: $setting-color-alpha-7;
                     text-decoration: underline;
                 }
             }
@@ -128,7 +128,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    color: $setting-color-alt;
+                    color: $setting-color-alpha-7;
                     text-decoration: underline;
                 }
 
