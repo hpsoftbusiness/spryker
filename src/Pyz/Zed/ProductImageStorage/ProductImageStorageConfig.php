@@ -8,7 +8,6 @@
 namespace Pyz\Zed\ProductImageStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\ProductImageStorage\ProductImageStorageConfig as SprykerProductImageStorageConfig;
 
 class ProductImageStorageConfig extends SprykerProductImageStorageConfig
@@ -30,7 +29,7 @@ class ProductImageStorageConfig extends SprykerProductImageStorageConfig
      */
     public function getProductImageAbstractEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_IMAGE;
     }
 
     /**
@@ -38,7 +37,7 @@ class ProductImageStorageConfig extends SprykerProductImageStorageConfig
      */
     public function getProductImageConcreteEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_IMAGE;
     }
 
     /**

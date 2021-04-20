@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\PriceProductStorage;
 
-use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\PriceProductStorage\PriceProductStorageConfig as SprykerPriceProductStorageConfig;
 
 class PriceProductStorageConfig extends SprykerPriceProductStorageConfig
@@ -22,7 +21,7 @@ class PriceProductStorageConfig extends SprykerPriceProductStorageConfig
      */
     public function getPriceProductAbstractEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_ABSTRACT_PRICE;
     }
 
     /**
@@ -30,7 +29,7 @@ class PriceProductStorageConfig extends SprykerPriceProductStorageConfig
      */
     public function getPriceProductConcreteEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_CONCRETE_PRICE;
     }
 
     /**

@@ -39,7 +39,7 @@ class ProductStorageConfig extends SprykerProductStorageConfig
      */
     public function getProductConcreteEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_CONCRETE;
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductStorageConfig extends SprykerProductStorageConfig
      */
     public function getProductAbstractEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_ABSTRACT;
     }
 
     /**

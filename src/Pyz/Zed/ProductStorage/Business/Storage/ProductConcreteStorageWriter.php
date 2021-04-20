@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage;
 use Propel\Runtime\Propel;
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter as SprykerProductConcreteStorageWriter;
@@ -24,8 +24,6 @@ use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface
  */
 class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 {
-    use MariaDbDataFormatterTrait;
-
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -47,23 +45,31 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
+     */
+    protected $productConcreteStorageCte;
+
+    /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productConcreteStorageCte
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
         ProductStorageQueryContainerInterface $queryContainer,
         $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        ProductStorageCteStrategyInterface $productConcreteStorageCte
     ) {
         parent::__construct($productFacade, $queryContainer, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->productConcreteStorageCte = $productConcreteStorageCte;
     }
 
     /**
@@ -246,17 +252,24 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             return;
         }
 
-        $parameter = $this->collectMultiInsertData(
-            $this->synchronizedDataCollection
-        );
+        $stmt = Propel::getConnection()->prepare($this->getSql());
+        $stmt->execute($this->getParams());
+    }
 
-        $sql = 'INSERT INTO `spy_product_concrete_storage` (`fk_product`, `data`, `locale`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product`=values(`fk_product`), `data`=values(`data`), `locale`=values(`locale`), `key`=values(`key`);';
+    /**
+     * @return string
+     */
+    protected function getSql(): string
+    {
+        return $this->productConcreteStorageCte->getSql();
+    }
 
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare($sql);
-        $statement->execute();
-
-        $this->synchronizedDataCollection = [];
+    /**
+     * @return string[]
+     */
+    protected function getParams(): array
+    {
+        return $this->productConcreteStorageCte->buildParams($this->synchronizedDataCollection);
     }
 
     /**
@@ -288,6 +301,8 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes))
             ->setIsAffiliate($isAffiliate)
             ->setAffiliateData($affiliateData);
+
+        $productStorageTransfer->setName(addslashes($productStorageTransfer->getName()));
 
         return $productStorageTransfer;
     }

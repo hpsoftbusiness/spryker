@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\ProductAbstractStorageTransfer;
 use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Propel\Runtime\Propel;
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface;
@@ -22,8 +22,6 @@ use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface
 
 class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 {
-    use MariaDbDataFormatterTrait;
-
     public const COL_FK_PRODUCT_SET = 'fk_product_set';
 
     /**
@@ -52,6 +50,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $productAbstractStorageExpanderPlugins = [];
 
     /**
+     * @var \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
+     */
+    protected $productAbstractStorageCte;
+
+    /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface $attributeMap
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
@@ -60,6 +63,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[] $productAbstractStorageExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productAbstractStorageCte
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
@@ -69,7 +73,8 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $isSendingToQueue,
         array $productAbstractStorageExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        ProductStorageCteStrategyInterface $productAbstractStorageCte
     ) {
         parent::__construct(
             $productFacade,
@@ -82,6 +87,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->productAbstractStorageCte = $productAbstractStorageCte;
     }
 
     /**
@@ -258,17 +264,24 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             return;
         }
 
-        $parameter = $this->collectMultiInsertData(
-            $this->synchronizedDataCollection
-        );
+        $stmt = Propel::getConnection()->prepare($this->getSql());
+        $stmt->execute($this->getParams());
+    }
 
-        $sql = 'INSERT INTO `spy_product_abstract_storage` (`fk_product_abstract`, `data`, `store`, `locale`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `data`=values(`data`), `store`=values(`store`), `locale`=values(`locale`), `key`=values(`key`);';
+    /**
+     * @return string
+     */
+    protected function getSql(): string
+    {
+        return $this->productAbstractStorageCte->getSql();
+    }
 
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare($sql);
-        $statement->execute();
-
-        $this->synchronizedDataCollection = [];
+    /**
+     * @return string[]
+     */
+    protected function getParams(): array
+    {
+        return $this->productAbstractStorageCte->buildParams($this->synchronizedDataCollection);
     }
 
     /**
