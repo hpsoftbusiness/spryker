@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\MyWorldPayment\Zed;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -92,6 +93,19 @@ class MyWorldPaymentStub extends ZedRequestStub implements MyWorldPaymentStubInt
         return (new MyWorldApiResponseTransfer())
             ->fromArray(
                 $this->zedStub->call('/my-world-payment/gateway/get-payment', $myWorldApiRequestTransfer)->toArray()
+            );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function getAvailableInternalPaymentPrices(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer
+    {
+        return (new AvailableInternalPaymentAmountTransfer())
+            ->fromArray(
+                $this->zedStub->call('/my-world-payment/gateway/get-available-internal-payment-prices', $quoteTransfer)->toArray()
             );
     }
 }

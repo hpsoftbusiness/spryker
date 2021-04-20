@@ -9,6 +9,8 @@ namespace Pyz\Yves\CheckoutPage;
 
 use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
+use Pyz\Shared\MyWorldPaymentApi\MyWorldPaymentApiConstants;
+use Pyz\Zed\MyWorldPaymentApi\MyWorldPaymentApiConfig;
 use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfig;
 
@@ -44,25 +46,9 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
     /**
      * @return string
      */
-    public function getBenefitSalesPriceKey(): string
+    public function getBenefitVoucherPaymentName(): string
     {
-        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBenefitAmountKey(): string
-    {
-        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBenefitStoreKey(): string
-    {
-        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER);
     }
 
     /**

@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\MyWorldPayment\Zed;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -47,4 +48,11 @@ interface MyWorldPaymentStubInterface
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
     public function getPayment(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function getAvailableInternalPaymentPrices(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer;
 }

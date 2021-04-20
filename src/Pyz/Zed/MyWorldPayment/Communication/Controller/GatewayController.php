@@ -7,17 +7,14 @@
 
 namespace Pyz\Zed\MyWorldPayment\Communication\Controller;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
 /**
- * Class GatewayController
- *
- * @package Pyz\Zed\MyWorldPayment\Communication\Controller
- *
- * @method \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentFacade getFacade()
+ * @method \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentFacadeInterface getFacade()
  */
 class GatewayController extends AbstractGatewayController
 {
@@ -69,5 +66,15 @@ class GatewayController extends AbstractGatewayController
     public function getPaymentAction(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer
     {
         return $this->getFacade()->getPayment($myWorldApiRequestTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function getAvailableInternalPaymentPricesAction(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer
+    {
+        return $this->getFacade()->calculateAvailablePricesForInternalPayments($quoteTransfer);
     }
 }

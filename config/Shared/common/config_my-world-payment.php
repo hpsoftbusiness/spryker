@@ -24,7 +24,6 @@ $config[MyWorldPaymentConstants::OPTION_NAME_TO_ID_MAP] = [
     $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT] => $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER_ACCOUNT],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER] => $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_SHOPPING_POINTS] => $config[MyWorldPaymentConstants::OPTION_SHOPPING_POINTS_ACCOUNT],
-    $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER] => $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT],
 ];
 // Currency/Unit to option map
 $config[MyWorldPaymentConstants::UNIT_TYPE_TO_OPTION_MAP] = [

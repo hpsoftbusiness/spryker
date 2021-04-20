@@ -19878,7 +19878,7 @@ discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen "
 shipment.lead.time,"Lieferzeit: ca. 3-7 Werktage",de_DE
 shipment.lead.time,"Delivery time: approx. 3-7 working days",en_US
 afiliate.legal.text,"Dieses Produkt wird von einem Drittanbieter verkauft. Für Preisgestaltung, Produktbeschreibung, Lagerstand und Versand ist ausschließlich der Drittanbieter verantwortlich. Zur Haftung von myWorld für Hyperlinks sowie deren Inhalt wird auf die für den myWorld Marktplatz geltenden Nutzungsbedingungen verwiesen.",de_DE
-afiliate.legal.text,"This product is sold by a third party seller. The seller is solely responsible for pricing, product description, stock levels and shipping. Regarding myWorld’s liability for hyperlinks and their content, we refer to the terms of use applicable for the myWorld marketplace.",en_US
+afiliate.legal.text,"This product is sold by a third party seller. The seller is solely responsible for pricing, product description, stock levels and shipping. Regarding myWorld’s liability for hyperlinks and their content, we refer to the terms of use applicable for the myWorld marketplace.",en_Us
 pdp.include.vat,"inkl. MwSt.",de_DE
 pdp.include.vat,"incl. VAT",en_US
 pdp.price.from,"ab",de_DE
@@ -19951,8 +19951,8 @@ checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,de_DE
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,en_US
 checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount".,de_DE
 checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount.",en_US
-checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount.",de_DE
-checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount.",en_US
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount. Needed amount: %currency% %needAmount%, your balance: %currency% %balanceAmount%",de_DE
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount.  Needed amount: %currency% %needAmount%, your balance: %currency% %balanceAmount%",en_US
 checkout.currency.my_world.shopping_points,Shopping Points,de_DE
 checkout.currency.my_world.shopping_points,Shopping Points,en_US
 auth.login-button,Login mit myWorld,de_DE

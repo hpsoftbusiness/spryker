@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
@@ -65,6 +66,7 @@ class SummaryStep extends SprykerSummaryStep
 
         if ($return) {
             $return = $this->preConditionChecker->check($quoteTransfer);
+            $this->escapeRoute = CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT;
         }
 
         return $return;

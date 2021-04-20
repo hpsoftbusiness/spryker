@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\MyWorldPayment\Business;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -124,6 +126,18 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
         $this->getFactory()
             ->createBenefitVoucherPaymentCalculator()
             ->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function calculateAvailablePricesForInternalPayments(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer
+    {
+        return $this->getFactory()
+            ->createPaymentPriceManager()
+            ->getAvailablePriceToPay($quoteTransfer);
     }
 
     /**

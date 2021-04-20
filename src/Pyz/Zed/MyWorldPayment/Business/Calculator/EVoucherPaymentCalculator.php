@@ -9,9 +9,10 @@ namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
@@ -29,13 +30,24 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
     protected $myWorldPaymentConfig;
 
     /**
+     * @var \Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface
+     */
+    private $paymentPriceManager;
+
+    /**
+     * EVoucherPaymentCalculator constructor.
+     *
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $marketplaceApiClient
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
      */
-    public function __construct(MyWorldMarketplaceApiClientInterface $marketplaceApiClient, MyWorldPaymentConfig $myWorldPaymentConfig)
-    {
+    public function __construct(
+        MyWorldMarketplaceApiClientInterface $marketplaceApiClient,
+        MyWorldPaymentConfig $myWorldPaymentConfig,
+        PaymentPriceManagerInterface $paymentPriceManager
+    ) {
         $this->marketplaceApiClient = $marketplaceApiClient;
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
+        $this->paymentPriceManager = $paymentPriceManager;
     }
 
     /**
@@ -61,18 +73,6 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
      */
     public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
-        if ($this->isEVoucherPaymentSelected($calculableObjectTransfer) && (bool)$calculableObjectTransfer->getMyWorldPaymentSessionId()) {
-            $eVoucherPayment = $this->getEVoucherPayment($calculableObjectTransfer);
-
-            if ($eVoucherPayment) {
-                $calculableObjectTransfer
-                    ->getTotals()
-                    ->setDiscountTotal($eVoucherPayment->getAmount());
-            }
-        } else {
-            $calculableObjectTransfer = $this->removeEVoucherPayment($calculableObjectTransfer);
-        }
-
         return $calculableObjectTransfer;
     }
 
@@ -83,41 +83,23 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
      */
     protected function addPaymentToQuote(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
-        $clientInformationResponseTransfer = $this->getCustomerInformation(
-            $calculableObjectTransfer->getOriginalQuote()->getCustomer()
-        );
+        $clientBalance = $calculableObjectTransfer->getOriginalQuote()->getCustomer()->getCustomerBalance();
 
-        if ($clientInformationResponseTransfer->getCustomerBalance()->getAvailableCashbackAmount()->toFloat() === 0.00) {
+        if ($clientBalance->getAvailableCashbackAmount()->toFloat() === 0.00) {
             return $calculableObjectTransfer;
         }
 
-        $availableVouchers = $clientInformationResponseTransfer->getCustomerBalance()->getAvailableCashbackAmount()->toInt() * 100;
-        $commonPrice = $this->getCommonAmountOfVouchersFromQuote($calculableObjectTransfer);
+        $availableVouchers = (int)($clientBalance->getAvailableCashbackAmount()->round(2)->toFloat() * 100);
+        $availableAmountOfVouchers = $this->paymentPriceManager->getAvailablePriceToPayByCalculableObject($calculableObjectTransfer);
 
         $calculableObjectTransfer->addPayment(
             $this->createEVouchersPaymentTransfer(
                 $availableVouchers,
-                $commonPrice > $availableVouchers ? $availableVouchers : $commonPrice
+                $availableAmountOfVouchers->getAvailableEVoucherToCharge()
             )
         );
 
         return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return int
-     */
-    protected function getCommonAmountOfVouchersFromQuote(CalculableObjectTransfer $calculableObjectTransfer): int
-    {
-        return array_reduce($calculableObjectTransfer->getItems()->getArrayCopy(), function (int $carry, ItemTransfer $itemTransfer) {
-            if ($itemTransfer->getSumPrice()) {
-                $carry += $itemTransfer->getSumPrice();
-            }
-
-            return $carry;
-        }, static::DEFAULT_COMMON_PRICE);
     }
 
     /**
@@ -129,11 +111,11 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
     protected function createEVouchersPaymentTransfer(int $availablePrice, int $chargePrice): PaymentTransfer
     {
         return (new PaymentTransfer())
-            ->setPaymentProvider($this->myWorldPaymentConfig->getOptionEVoucherName())
+            ->setPaymentProvider(SharedMyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD)
             ->setPaymentSelection($this->myWorldPaymentConfig->getOptionEVoucherName())
             ->setPaymentMethod($this->myWorldPaymentConfig->getOptionEVoucherName())
             ->setPaymentMethodName($this->myWorldPaymentConfig->getOptionEVoucherName())
-            ->setAvailableAmount($availablePrice)
+            ->setAvailableAmount($chargePrice)
             ->setAmount($chargePrice)
             ->setIsLimitedAmount(true);
     }
@@ -146,22 +128,6 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
     protected function isEVoucherPaymentSelected(CalculableObjectTransfer $calculableObjectTransfer): bool
     {
         return (bool)$calculableObjectTransfer->getMyWorldUseEVoucherBalance();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return bool
-     */
-    protected function isEVoucherAddedAlready(CalculableObjectTransfer $calculableObjectTransfer): bool
-    {
-        foreach ($calculableObjectTransfer->getPayments() as $paymentTransfer) {
-            if ($paymentTransfer->getPaymentSelection() === $this->myWorldPaymentConfig->getOptionEVoucherName()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**

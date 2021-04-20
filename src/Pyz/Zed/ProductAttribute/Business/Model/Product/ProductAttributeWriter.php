@@ -28,7 +28,7 @@ class ProductAttributeWriter extends SprykerProductAttributeWriter
      * @param \Spryker\Zed\ProductAttribute\Dependency\Facade\ProductAttributeToProductInterface $productFacade
      * @param \Spryker\Zed\ProductAttribute\Business\Model\Product\ProductReaderInterface $productReader
      * @param \Spryker\Zed\ProductAttribute\Dependency\Service\ProductAttributeToUtilSanitizeXssServiceInterface $utilSanitizeXssService
-     * @param \Pyz\Zed\ProductAttribute\Dependency\Plugin\ProductAttributePreSaveCheckPluginInterface[][] $productAttributePreSaveCheckPlugins
+     * @param \Pyz\Zed\ProductAttribute\Dependency\Plugin\ProductAttributePreSaveCheckPluginInterface[] $productAttributePreSaveCheckPlugins
      */
     public function __construct(
         ProductAttributeReaderInterface $reader,

@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\MyWorldPayment;
 
-use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Pyz\Zed\MyWorldPaymentApi\MyWorldPaymentApiConfig;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**
@@ -35,6 +35,22 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
     public function getOptionEVoucher(): int
     {
         return $this->get(MyWorldPaymentConstants::OPTION_EVOUCHER);
+    }
+
+    /**
+     * @return string
+     */
+    public function getEVoucherPaymentName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER);
+    }
+
+    /**
+     * @return int
+     */
+    public function getOptionBenefitVoucher(): int
+    {
+        return $this->get(MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT);
     }
 
     /**
@@ -131,6 +147,30 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
     public function getDefaultFlowsType(): int
     {
         return $this->get(MyWorldPaymentConstants::FLOWS_DEFAULT_TYPE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitSalesPriceKey(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitAmountKey(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitStoreKey(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
     }
 
     /**

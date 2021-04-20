@@ -19,7 +19,7 @@ interface MyWorldPaymentApiAdapterInterface
     public function sendRequest(array $data): ResponseInterface;
 
     /**
-     * @return $this
+     * @return \Pyz\Zed\MyWorldPaymentApi\Business\Adapter\AbstractAdapter
      */
-    public function allowUsingStubToken();
+    public function allowUsingStubToken(): AbstractAdapter;
 }

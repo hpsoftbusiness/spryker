@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\MyWorldPayment;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -73,4 +74,17 @@ interface MyWorldPaymentClientInterface
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
     public function getPayment(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Calculate available price by currently selected internal payments at the quota
+     * - Return transfer with available prices
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function getAvailableInternalPaymentPrices(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer;
 }

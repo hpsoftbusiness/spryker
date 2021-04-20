@@ -68,7 +68,7 @@ class MyWorldPaymentApiRequestDispatcher implements RequestDispatcherInterface
      */
     public function dispatchSendSmsCodeToCustomer(MyWorldApiRequestTransfer $apiRequestTransfer): MyWorldApiResponseTransfer
     {
-        $responseTransfer = $this->myWorldPaymentApiFacade->performCreatePaymentSessionApiCall($apiRequestTransfer);
+        $responseTransfer = $this->myWorldPaymentApiFacade->performGenerateSmsCodeApiCall($apiRequestTransfer);
 
         $this->paymentApiLog->save($apiRequestTransfer, $responseTransfer);
 

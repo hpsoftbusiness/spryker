@@ -32,6 +32,7 @@ class PlaceOrderStep extends SprykerShopPlaceOrderStep
      * @param string $stepRoute
      * @param string|null $escapeRoute
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface|array $preConditionChecker
      * @param array $errorCodeToRouteMatching
      */
     public function __construct(

@@ -40,6 +40,7 @@
 
     <transfer name="Quote">
         <property name="myWorldPaymentIsSmsAuthenticationRequired" type="bool"/>
+        <property name="totalUsedBenefitVouchersAmount" type="float" />
         <property name="myWorldPaymentSessionId" type="string"/>
         <property name="myWorldUseEVoucherBalance" type="bool"/>
     </transfer>
@@ -47,6 +48,7 @@
     <transfer name="CalculableObject">
         <property name="myWorldUseEVoucherBalance" type="bool"/>
         <property name="myWorldPaymentSessionId" type="string"/>
+        <property name="totalUsedBenefitVouchersAmount" type="float" />
     </transfer>
 
     <transfer name="Order">
@@ -57,5 +59,17 @@
     <transfer name="Item">
         <property name="useBenefitVoucher" type="bool"/>
         <property name="amountItemsToUseBenefitVoucher" type="int"/>
+        <property name="totalUsedBenefitVouchersAmount" type="float" />
+        <property name="benefitVoucherDealData" type="BenefitVoucherDealData"/>
+    </transfer>
+
+    <transfer name="BenefitVoucherDealData">
+        <property name="isStore" type="bool" description="Flag that define is the product can use benefit voucher"/>
+        <property name="amount" type="float" description="Amount of BV needs to change to provide new sales price"/>
+        <property name="salesPrice" type="float" description="New price for the product that will be applied to product after charge of some amount benefit vouchers"/>
+    </transfer>
+
+    <transfer name="AvailableInternalPaymentAmount">
+        <property name="availableEVoucherToCharge" type="int"/>
     </transfer>
 </transfers>

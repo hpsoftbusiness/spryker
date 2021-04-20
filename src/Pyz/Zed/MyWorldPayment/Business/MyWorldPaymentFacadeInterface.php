@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\MyWorldPayment\Business;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -76,6 +78,13 @@ interface MyWorldPaymentFacadeInterface
      * @return void
      */
     public function recalculatePricesForOrder(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function calculateAvailablePricesForInternalPayments(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer

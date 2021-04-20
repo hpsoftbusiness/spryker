@@ -10,52 +10,13 @@ namespace Pyz\Yves\CheckoutPage\Process\Steps;
 use ArrayObject;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
-use Spryker\Client\ProductStorage\ProductStorageClientInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Step\StepWithBreadcrumbInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AbstractBaseStep;
 
 class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInterface
 {
     protected const STEP_TITLE = 'checkout.step.benefit_deal.title';
-
-    /**
-     * @var \Spryker\Client\ProductStorage\ProductStorageClientInterface
-     */
-    private $productStorageClient;
-
-    /**
-     * @var \Spryker\Client\Locale\LocaleClient
-     */
-
-    private $localeClient;
-
-    /**
-     * @var \Pyz\Yves\CheckoutPage\CheckoutPageConfig
-     */
-    private $checkoutPageConfig;
-
-    /**
-     * @param \Spryker\Client\ProductStorage\ProductStorageClientInterface $productStorageClient
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface $localeClient
-     * @param \Pyz\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
-     * @param string $stepRoute
-     * @param string|null $escapeRoute
-     */
-    public function __construct(
-        ProductStorageClientInterface $productStorageClient,
-        CheckoutPageToLocaleClientInterface $localeClient,
-        CheckoutPageConfig $checkoutPageConfig,
-        string $stepRoute,
-        ?string $escapeRoute
-    ) {
-        parent::__construct($stepRoute, $escapeRoute);
-        $this->productStorageClient = $productStorageClient;
-        $this->localeClient = $localeClient;
-        $this->checkoutPageConfig = $checkoutPageConfig;
-    }
 
     /**
      * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
@@ -65,16 +26,6 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
     public function requireInput(AbstractTransfer $dataTransfer): bool
     {
         return $this->assertCartHasApplicableBenefitDeals($dataTransfer);
-    }
-
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
-     *
-     * @return bool
-     */
-    public function postCondition(AbstractTransfer $dataTransfer): bool
-    {
-        return true;
     }
 
     /**
@@ -111,6 +62,16 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
     /**
      * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
      *
+     * @return bool
+     */
+    public function postCondition(AbstractTransfer $dataTransfer)
+    {
+        return true;
+    }
+
+    /**
+     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
+     *
      * @return array
      */
     public function getTemplateVariables(AbstractTransfer $dataTransfer): array
@@ -120,20 +81,20 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
         $products = array_reduce(
             $dataTransfer->getItems()->getArrayCopy(),
             function (ArrayObject $carry, ItemTransfer $itemTransfer) {
-                $product = $this->getProductFromStorageForItemTransfer($itemTransfer);
-                $attributes = $product ? $product['attributes'] : $itemTransfer->getConcreteAttributes();
+                $benefitVoucherSalesData = $itemTransfer->getBenefitVoucherDealData();
                 $currencyCode = $itemTransfer->getPriceProduct()->getMoneyValue()->getCurrency()->getCode();
 
                 /**
                  * @TODO refactor properly after all payment branches are merged.
                  */
-                if ($product && ($this->isBenefitVouchersDataProvidedForProductAttributes($attributes))) {
+                if ($benefitVoucherSalesData && $benefitVoucherSalesData->getIsStore()) {
                     $carry[$itemTransfer->getIdProductAbstract()] = [
-                        'prices' => $this->calculateSalesPriceForQuantity($itemTransfer, $attributes),
+                        'prices' => $this->calculateSalesPriceForQuantity($itemTransfer),
                         'currencyCode' => $currencyCode,
+                        'subTotalForItems' => number_format((float)($itemTransfer->getSumSubtotalAggregation() / 100), 2),
                         'unitPrice' => number_format((float)$itemTransfer->getUnitPrice() / 100, 2),
                     ];
-                } elseif ($product && $itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+                } elseif ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
                     $carry[$itemTransfer->getIdProductAbstract()] = [
                         'prices' => [],
                         'currencyCode' => $currencyCode,
@@ -159,28 +120,24 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param array $productAttributes
      *
      * @return array
      */
-    protected function calculateSalesPriceForQuantity(ItemTransfer $itemTransfer, array $productAttributes): array
+    protected function calculateSalesPriceForQuantity(ItemTransfer $itemTransfer): array
     {
-        return array_reduce(
-            range(1, (int)$itemTransfer->getQuantity()),
-            function (array $carry, $index) use ($itemTransfer, $productAttributes) {
-                $salesPrice = ((float)$productAttributes[$this->checkoutPageConfig->getBenefitSalesPriceKey()]) * $index;
-                $benefitAmount = $productAttributes[$this->checkoutPageConfig->getBenefitAmountKey()] * $index;
+        //TODO: implement functionality for make available choice amount of items to pay in one ItemTransfer
+        $salesDataTransfer = $itemTransfer->getBenefitVoucherDealData();
+        $result = [];
 
-                $carry[] = [
-                    'salesPrice' => $salesPrice,
-                    'benefitAmount' => $benefitAmount,
-                    'quantity' => $index,
-                ];
+        if ($salesDataTransfer && $salesDataTransfer->getIsStore()) {
+            $result[] = [
+                'salesPrice' => $salesDataTransfer->getSalesPrice() * $itemTransfer->getQuantity(),
+                'benefitAmount' => $salesDataTransfer->getAmount() * $itemTransfer->getQuantity(),
+                'quantity' => $itemTransfer->getQuantity(),
+            ];
+        }
 
-                return $carry;
-            },
-            []
-        );
+        return $result;
     }
 
     /**
@@ -190,36 +147,17 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
      */
     protected function assertCartHasApplicableBenefitDeals(QuoteTransfer $quoteTransfer): bool
     {
-        foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+        foreach ($quoteTransfer->getItems() as $item) {
+            if ($item->getShoppingPointsDeal() && $item->getShoppingPointsDeal()->getIsActive()) {
                 return true;
             }
 
-            $product = $this->getProductFromStorageForItemTransfer($itemTransfer);
-            $attributes = $product ? $product['attributes'] : null;
-
-            if ($attributes && $this->isBenefitVouchersDataProvidedForProductAttributes($attributes)) {
+            if ($item->getBenefitVoucherDealData() && $item->getBenefitVoucherDealData()->getIsStore()) {
                 return true;
             }
         }
 
         return false;
-    }
-
-    /**
-     * @param array $attributes
-     *
-     * @return bool
-     */
-    protected function isBenefitVouchersDataProvidedForProductAttributes(array $attributes): bool
-    {
-        $benefitStoreKey = $this->checkoutPageConfig->getBenefitStoreKey();
-        $benefitSalesPriceKey = $this->checkoutPageConfig->getBenefitSalesPriceKey();
-        $benefitAmountKey = $this->checkoutPageConfig->getBenefitAmountKey();
-
-        return isset($attributes[$benefitAmountKey])
-            && isset($benefitSalesPriceKey)
-            && isset($attributes[$benefitStoreKey]);
     }
 
     /**
@@ -236,18 +174,5 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
         }
 
         return false;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return array|null
-     */
-    protected function getProductFromStorageForItemTransfer(ItemTransfer $itemTransfer): ?array
-    {
-        return $this->productStorageClient->findProductAbstractStorageData(
-            $itemTransfer->getIdProductAbstract(),
-            $this->localeClient->getCurrentLocale()
-        );
     }
 }

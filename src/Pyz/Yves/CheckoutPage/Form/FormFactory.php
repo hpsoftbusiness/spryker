@@ -47,11 +47,7 @@ class FormFactory extends SpyFormFactory
      */
     public function createBenefitDealFormDataProvider(): BenefitFormDataProvider
     {
-        return new BenefitFormDataProvider(
-            $this->getProductStorageClient(),
-            $this->getLocaleClient(),
-            $this->getConfig()
-        );
+        return new BenefitFormDataProvider();
     }
 
     /**

@@ -17,6 +17,8 @@ use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGe
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGeneratorInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLog;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLogInterface;
+use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
+use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\QuotePaymentPriceManager;
 use Pyz\Zed\MyWorldPayment\Business\RequestDispatcher\MyWorldPaymentApiRequestDispatcher;
 use Pyz\Zed\MyWorldPayment\Business\RequestDispatcher\RequestDispatcherInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
@@ -68,7 +70,11 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createEVoucherPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
-        return new EVoucherPaymentCalculator($this->getMyWorldMarketplaceApiClient(), $this->getConfig());
+        return new EVoucherPaymentCalculator(
+            $this->getMyWorldMarketplaceApiClient(),
+            $this->getConfig(),
+            $this->createPaymentPriceManager()
+        );
     }
 
     /**
@@ -78,8 +84,6 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     {
         return new BenefitVoucherPaymentCalculator(
             $this->getMyWorldMarketplaceApiClient(),
-            $this->getProductStorageClient(),
-            $this->getLocaleClient(),
             $this->getConfig()
         );
     }
@@ -134,5 +138,13 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createPaymentApiLog(): PaymentApiLogInterface
     {
         return new PaymentApiLog();
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface
+     */
+    public function createPaymentPriceManager(): PaymentPriceManagerInterface
+    {
+        return new QuotePaymentPriceManager();
     }
 }

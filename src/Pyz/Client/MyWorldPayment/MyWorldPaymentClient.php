@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\MyWorldPayment;
 
+use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -74,5 +75,15 @@ class MyWorldPaymentClient extends AbstractClient implements MyWorldPaymentClien
     public function getPayment(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer
     {
         return $this->getZedStub()->getPayment($myWorldApiRequestTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
+     */
+    public function getAvailableInternalPaymentPrices(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer
+    {
+        return $this->getZedStub()->getAvailableInternalPaymentPrices($quoteTransfer);
     }
 }

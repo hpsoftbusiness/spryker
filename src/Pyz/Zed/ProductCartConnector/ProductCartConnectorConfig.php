@@ -27,4 +27,28 @@ class ProductCartConnectorConfig extends SprykerProductCartConnectorConfig
     {
         return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS);
     }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherSalesPriceAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherStoreAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherAmountAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
+    }
 }

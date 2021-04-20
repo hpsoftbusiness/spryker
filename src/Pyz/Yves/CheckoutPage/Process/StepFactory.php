@@ -147,9 +147,6 @@ class StepFactory extends SprykerShopStepFactory
     public function createBenefitStep()
     {
         return new BenefitDealStep(
-            $this->getProductStorageClient(),
-            $this->getLocalClient(),
-            $this->getConfig(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_BENEFIT,
             $this->getConfig()->getEscapeRoute()
         );

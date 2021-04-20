@@ -36,8 +36,9 @@ $config[NopaymentConstants::NO_PAYMENT_METHODS] = [
 ];
 $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     GiftCardConfig::PROVIDER_NAME,
-    // For the test this param required for pass the Payment Step post condition. Due the bug when priceToPay become 0.00
+    // This param required for pass the Payment Step post condition at test env. Due the bug when priceToPay become 0.00
     'dummyPrepayment',
+    NopaymentConfig::PAYMENT_METHOD_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
 ];

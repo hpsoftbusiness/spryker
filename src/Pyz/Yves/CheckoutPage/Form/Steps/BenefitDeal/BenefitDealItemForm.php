@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints\EqualTo;
 
 /**
  * @method \Pyz\Yves\MyWorldPayment\MyWorldPaymentConfig getConfig()
@@ -49,7 +49,7 @@ class BenefitDealItemForm extends AbstractType
     private function addUseBenefitSubForm(FormBuilderInterface $builder, ItemTransfer $itemTransfer)
     {
         $builder->add(static::FIELD_USE_BENEFIT, CheckboxType::class, [
-            'value' => $itemTransfer->getUseBenefitVoucher() === null ? false : true,
+            'value' => (bool)$itemTransfer->getUseBenefitVoucher(),
             'label' => ' ',
             'required' => false,
         ]);
@@ -63,7 +63,7 @@ class BenefitDealItemForm extends AbstractType
             'multiple' => false,
             'placeholder' => false,
             'constraints' => [
-                new Range(['max' => (int)$itemTransfer->getQuantity(), 'min' => 1]),
+                new EqualTo((int)$itemTransfer->getQuantity())
             ],
         ]);
 
@@ -94,14 +94,12 @@ class BenefitDealItemForm extends AbstractType
      */
     protected function createArrayChoices(ItemTransfer $itemTransfer): array
     {
+        //TODO: implement functionality for make available choice amount of items to pay with BV in one ItemTransfer
         $max = (int)$itemTransfer->getQuantity();
-        $result = [];
 
-        for ($index = 1; $index <= $max; $index++) {
-            $result[$index] = $index;
-        }
-
-        return $result;
+        return [
+            $max => $max
+        ];
     }
 
     /**

@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
+use ArrayObject;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -17,6 +18,7 @@ use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
+use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginWithMessengerInterface;
@@ -171,6 +173,33 @@ class PaymentStep extends SprykerShopPaymentStep
     }
 
     /**
+     * Specification:
+     *  Method using at validation of the payment. It overrides for accept Nopayment method
+     *  in case the price to pay was covered by internal payments
+     *
+     * @param \Generated\Shared\Transfer\PaymentTransfer[]|\ArrayObject $paymentCollection
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function isValidPaymentSelection(ArrayObject $paymentCollection, QuoteTransfer $quoteTransfer): bool
+    {
+        $paymentMethods = $this->paymentClient->getAvailableMethods($quoteTransfer);
+
+        foreach ($paymentCollection as $candidatePayment) {
+            if (!$this->containsPayment($paymentMethods, $candidatePayment)) {
+                if ($candidatePayment->getPaymentProvider() === NopaymentConfig::PAYMENT_PROVIDER_NAME) {
+                    return $this->isInternalPaymentsCoverPriceToPay($quoteTransfer);
+                }
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $quoteTransfer
      *
@@ -270,49 +299,9 @@ class PaymentStep extends SprykerShopPaymentStep
      */
     protected function getAvailableChargeAmount(QuoteTransfer $quoteTransfer): float
     {
-        $amount = $this->getExistedAmountToCharge($quoteTransfer);
+        $availablePricesTransfer = $this->myWorldPaymentClient->getAvailableInternalPaymentPrices($quoteTransfer);
 
-        if ($amount) {
-            return (float)($amount / 100); // convert to float for show on page
-        }
-
-        $myWorldMarketplaceClientBalance = $quoteTransfer->getCustomer()->getCustomerBalance();
-
-        return $quoteTransfer->getTotals()->getPriceToPay() >= (int)$myWorldMarketplaceClientBalance->getAvailableCashbackAmount()->toFloat() * 100
-            ? $myWorldMarketplaceClientBalance->getAvailableCashbackAmount()->toFloat()
-            : $this->integerToDecimalConverter->convert($quoteTransfer->getTotals()->getPriceToPay());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return int|null
-     */
-    protected function getExistedAmountToCharge(QuoteTransfer $quoteTransfer): ?int
-    {
-        $payment = $this->getEVoucherPaymentMethod($quoteTransfer);
-
-        if ($payment) {
-            return $payment->getAmount();
-        }
-
-        return false;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentTransfer|null
-     */
-    protected function getEVoucherPaymentMethod(QuoteTransfer $quoteTransfer): ?PaymentTransfer
-    {
-        foreach ($quoteTransfer->getPayments() as $payment) {
-            if ($payment->getPaymentMethodName() === $this->checkoutPageConfig->getEVoucherPaymentName()) {
-                return $payment;
-            }
-        }
-
-        return null;
+        return $this->integerToDecimalConverter->convert($availablePricesTransfer->getAvailableEVoucherToCharge());
     }
 
     /**
@@ -329,5 +318,37 @@ class PaymentStep extends SprykerShopPaymentStep
         }
 
         return false;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function isInternalPaymentsCoverPriceToPay(QuoteTransfer $quoteTransfer): bool
+    {
+        if (!$this->isInternalPaymentMethodSelected($quoteTransfer)) {
+            return false;
+        }
+
+        $internalAmount = array_reduce(
+            $quoteTransfer->getPayments()->getArrayCopy(),
+            function(int $carry, PaymentTransfer $paymentTransfer) {
+                if (
+                    $paymentTransfer->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD
+                    && (
+                        $paymentTransfer->getPaymentMethodName() === $this->checkoutPageConfig->getBenefitVoucherPaymentName()
+                        || $paymentTransfer->getPaymentMethodName() === $this->checkoutPageConfig->getEVoucherPaymentName()
+                    )
+                ) {
+                    $carry += $paymentTransfer->getAmount();
+                }
+
+                return $carry;
+            },
+            0
+        );
+
+        return $quoteTransfer->getTotals()->getGrandTotal() <= $internalAmount;
     }
 }

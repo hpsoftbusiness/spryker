@@ -15,6 +15,7 @@ use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 
 class PreConditionChecker implements PreConditionCheckerInterface
 {
@@ -59,7 +60,7 @@ class PreConditionChecker implements PreConditionCheckerInterface
     {
         $quoteTransfer->setSmsCode(null);
 
-        if ($this->isMyWorldPaymentUsed($quoteTransfer) && $quoteTransfer->getMyWorldPaymentSessionId() && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
+        if ($this->wasPaymentSessionCreatedSuccessfully($quoteTransfer) && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
             $myWorldApiRequestTransfer = new MyWorldApiRequestTransfer();
             $myWorldApiRequestTransfer->setPaymentCodeGenerateRequest(
                 (new PaymentCodeGenerateRequestTransfer())
@@ -83,7 +84,18 @@ class PreConditionChecker implements PreConditionCheckerInterface
             return $myWorldApiResponseTransfer->getIsSuccess();
         }
 
-        return true;
+        return $this->wasPaymentSessionCreatedSuccessfully($quoteTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function wasPaymentSessionCreatedSuccessfully(QuoteTransfer $quoteTransfer): bool
+    {
+        return $this->isMyWorldPaymentUsed($quoteTransfer)
+            && $quoteTransfer->getMyWorldPaymentSessionId();
     }
 
     /**
@@ -93,18 +105,8 @@ class PreConditionChecker implements PreConditionCheckerInterface
      */
     protected function isMyWorldPaymentUsed(QuoteTransfer $quoteTransfer): bool
     {
-        return $quoteTransfer->getMyWorldUseEVoucherBalance() || $this->isBenefitVoucherSelected($quoteTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function isBenefitVoucherSelected(QuoteTransfer $quoteTransfer): bool
-    {
-        foreach ($quoteTransfer->getItems() as $item) {
-            if ($item->getUseBenefitVoucher()) {
+        foreach ($quoteTransfer->getPayments() as $payment) {
+            if ($payment->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD) {
                 return true;
             }
         }

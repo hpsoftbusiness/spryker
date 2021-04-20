@@ -203,6 +203,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ShoppingPointsQuoteCalculationPlugin(),
 
             new PriceCalculatorPlugin(),
+
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
 
@@ -237,8 +238,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new TaxTotalCalculatorPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
-            new MyWorldPaymentQuoteCalculationPlugin(),
 
+            new MyWorldPaymentQuoteCalculationPlugin(),
             new PaymentCalculatorPlugin(),
             new MyWorldPaymentBenefitVoucherQuoteCalculationPlugin(),
         ];

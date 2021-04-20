@@ -8,13 +8,13 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use ArrayObject;
+use Exception;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
-use Spryker\Client\Locale\LocaleClientInterface;
-use Spryker\Client\ProductStorage\ProductStorageClientInterface;
 
 class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
 {
@@ -31,31 +31,15 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     protected $myWorldPaymentConfig;
 
     /**
-     * @var \Spryker\Client\ProductStorage\ProductStorageClientInterface
-     */
-    private $productStorageClient;
-
-    /**
-     * @var \Spryker\Client\Locale\LocaleClientInterface
-     */
-    private $localeClient;
-
-    /**
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $marketplaceApiClient
-     * @param \Spryker\Client\ProductStorage\ProductStorageClientInterface $productStorageClient
-     * @param \Spryker\Client\Locale\LocaleClientInterface $localeClient
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
      */
     public function __construct(
         MyWorldMarketplaceApiClientInterface $marketplaceApiClient,
-        ProductStorageClientInterface $productStorageClient,
-        LocaleClientInterface $localeClient,
         MyWorldPaymentConfig $myWorldPaymentConfig
     ) {
         $this->marketplaceApiClient = $marketplaceApiClient;
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
-        $this->productStorageClient = $productStorageClient;
-        $this->localeClient = $localeClient;
     }
 
     /**
@@ -91,19 +75,31 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      */
     protected function reduceItemsPrices(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
-        $commonReduceAmount = 0;
+        $commonBenefitVouchersUsed = 0;
+        $commonReducedPrice = 0;
 
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher() && $this->isDiscountApplicableForProduct($itemTransfer)) {
-                $newPriceForItemsWithBenefitVouchers = $this->getSalesPrice($itemTransfer) * $this->getAmountOfItemsThatUseBenefitVouchers($itemTransfer);
-                $oldPriceForItemsWithBenefitVouchers = ($itemTransfer->getUnitPrice()) * $this->getAmountOfItemsThatUseBenefitVouchers($itemTransfer);
+            if ($itemTransfer->getUseBenefitVoucher() && $this->assertBenefitVoucherSalesPrice($itemTransfer)) {
+                $benefitSalesPrice = $itemTransfer->getBenefitVoucherDealData()->getSalesPrice();
+                $benefitAmount = $itemTransfer->getBenefitVoucherDealData()->getAmount();
 
-                $commonReduceAmount += ($oldPriceForItemsWithBenefitVouchers - $newPriceForItemsWithBenefitVouchers);
+                $newPriceForItemsWithBenefitVouchers = (int)((100 * $benefitSalesPrice) * $this->getAmountOfItemsThatUseBenefitVouchers($itemTransfer));
+
+                $oldPriceForItemsWithBenefitVouchers = $itemTransfer->getUnitPrice() * $this->getAmountOfItemsThatUseBenefitVouchers($itemTransfer);
+
+                $itemTransfer->setTotalUsedBenefitVouchersAmount(
+                    $benefitAmount * $itemTransfer->getAmountItemsToUseBenefitVoucher()
+                );
+
+                $commonBenefitVouchersUsed += $itemTransfer->getTotalUsedBenefitVouchersAmount();
+                $commonReducedPrice += $oldPriceForItemsWithBenefitVouchers - $newPriceForItemsWithBenefitVouchers;
             }
         }
 
-        if ($commonReduceAmount > 0) {
-            $payment = $this->createPaymentMethod($commonReduceAmount);
+        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount($commonBenefitVouchersUsed);
+
+        if ($commonReducedPrice > 0) {
+            $payment = $this->createPaymentMethod($commonReducedPrice);
 
             $calculableObjectTransfer->addPayment($payment);
         }
@@ -150,7 +146,9 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     {
         return (new PaymentTransfer())
             ->setAmount($amountOfCharged)
-            ->setPaymentProvider($this->myWorldPaymentConfig->getOptionBenefitVoucherName())
+            ->setIsLimitedAmount(true)
+            ->setAvailableAmount($amountOfCharged)
+            ->setPaymentProvider(SharedMyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD)
             ->setPaymentMethodName($this->myWorldPaymentConfig->getOptionBenefitVoucherName())
             ->setPaymentMethod($this->myWorldPaymentConfig->getOptionBenefitVoucherName())
             ->setPaymentSelection($this->myWorldPaymentConfig->getOptionBenefitVoucherName());
@@ -177,46 +175,15 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return bool
      */
-    protected function isDiscountApplicableForProduct(ItemTransfer $itemTransfer): bool
+    protected function assertBenefitVoucherSalesPrice(ItemTransfer $itemTransfer): bool
     {
-        $product = $this->getAbstractProductForItem($itemTransfer);
-        $attributes = $itemTransfer->getConcreteAttributes();
+        try {
+            $itemTransfer->requireBenefitVoucherDealData();
+            $itemTransfer->getBenefitVoucherDealData()->requireIsStore();
 
-        if ($product) {
-            $attributes = $product['attributes'];
+            return true;
+        } catch (Exception $exception) {
+            return false;
         }
-
-        return isset($attributes[$this->myWorldPaymentConfig->getProductAttributeKeyBenefitStore()])
-            ? $attributes[$this->myWorldPaymentConfig->getProductAttributeKeyBenefitStore()]
-            : false;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return int
-     */
-    protected function getSalesPrice(ItemTransfer $itemTransfer): int
-    {
-        $product = $this->getAbstractProductForItem($itemTransfer);
-        $attributes = $itemTransfer->getConcreteAttributes();
-
-        if ($product) {
-            $attributes = $product['attributes'];
-        }
-
-        return $attributes[$this->myWorldPaymentConfig->getProductAttributeKeyBenefitSalesPrice()] * 100;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return array|null
-     */
-    protected function getAbstractProductForItem(ItemTransfer $itemTransfer): ?array
-    {
-        $locale = $this->localeClient->getCurrentLocale();
-
-        return $this->productStorageClient->findProductAbstractStorageData($itemTransfer->getIdProductAbstract(), $locale);
     }
 }

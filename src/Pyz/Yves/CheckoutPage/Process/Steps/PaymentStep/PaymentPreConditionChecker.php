@@ -10,6 +10,7 @@ namespace Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Generated\Shared\Transfer\CustomerBalanceTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
+use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -71,9 +72,17 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
      */
     private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, CustomerBalanceTransfer $balanceTransfer): bool
     {
-        /**
-         * @todo add logic to compare cart items used Benefit Voucher total amount with customer available balance
-         */
+        if (!$this->isAvailableAmountOfBenefitVouchers($quoteTransfer)) {
+            $this->flashMessenger->addErrorMessage(
+                $this->translator
+                    ->trans(static::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE, [
+                        '%needAmount%' => $this->getCommonSelectedBenefitAmount($quoteTransfer),
+                        '%balanceAmount%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount()->toFloat(),
+                        '%currency%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherCurrency(),
+                    ])
+            );
+        }
+
         return true;
     }
 
@@ -104,5 +113,62 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
     {
         $translatedMessage = $this->translator->trans($messageTranslationKey);
         $this->flashMessenger->addErrorMessage($translatedMessage);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function isAvailableAmountOfBenefitVouchers(AbstractTransfer $quoteTransfer): bool
+    {
+        if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
+            return true;
+        }
+
+        $commonSelectedBenefitVouchers = $this->getCommonSelectedBenefitAmount($quoteTransfer);
+        $clientBalanceBenefitVouchers = $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount();
+
+        return $clientBalanceBenefitVouchers->greatherThanOrEquals($commonSelectedBenefitVouchers);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return int
+     */
+    protected function getCommonSelectedBenefitAmount(QuoteTransfer $quoteTransfer): int
+    {
+        $commonSelectedBenefitVouchers = 0;
+
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            $benefitVoucherSalesData = $itemTransfer->getBenefitVoucherDealData();
+
+            if ($itemTransfer->getUseBenefitVoucher()
+                && $itemTransfer->getAmountItemsToUseBenefitVoucher()
+                && $benefitVoucherSalesData
+                && $benefitVoucherSalesData->getIsStore()
+            ) {
+                $commonSelectedBenefitVouchers += $benefitVoucherSalesData->getAmount() * $itemTransfer->getAmountItemsToUseBenefitVoucher();
+            }
+        }
+
+        return $commonSelectedBenefitVouchers;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function hasBenefitDealsApplied(QuoteTransfer $quoteTransfer): bool
+    {
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            if ($itemTransfer->getUseBenefitVoucher() || $itemTransfer->getUseShoppingPoints()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
