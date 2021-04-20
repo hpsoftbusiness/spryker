@@ -10,7 +10,6 @@ namespace Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Generated\Shared\Transfer\CustomerBalanceTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
-use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -56,7 +55,11 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
         }
 
         if (!$this->assertBenefitVoucherBalance($quoteTransfer, $customerBalanceTransfer)) {
-            $this->addErrorMessage(self::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE);
+            $this->addErrorMessage(self::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE, [
+                '%needAmount%' => $this->getCommonSelectedBenefitAmount($quoteTransfer),
+                '%balanceAmount%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount()->toFloat(),
+                '%currency%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherCurrency(),
+            ]);
 
             return false;
         }
@@ -72,18 +75,14 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
      */
     private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, CustomerBalanceTransfer $balanceTransfer): bool
     {
-        if (!$this->isAvailableAmountOfBenefitVouchers($quoteTransfer)) {
-            $this->flashMessenger->addErrorMessage(
-                $this->translator
-                    ->trans(static::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE, [
-                        '%needAmount%' => $this->getCommonSelectedBenefitAmount($quoteTransfer),
-                        '%balanceAmount%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount()->toFloat(),
-                        '%currency%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherCurrency(),
-                    ])
-            );
+        if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
+            return true;
         }
 
-        return true;
+        $commonSelectedBenefitVouchers = $this->getCommonSelectedBenefitAmount($quoteTransfer);
+        $clientBalanceBenefitVouchers = $balanceTransfer->getAvailableBenefitVoucherAmount();
+
+        return $clientBalanceBenefitVouchers->greatherThanOrEquals($commonSelectedBenefitVouchers);
     }
 
     /**
@@ -106,30 +105,14 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
 
     /**
      * @param string $messageTranslationKey
+     * @param array $params
      *
      * @return void
      */
-    private function addErrorMessage(string $messageTranslationKey): void
+    private function addErrorMessage(string $messageTranslationKey, array $params = []): void
     {
-        $translatedMessage = $this->translator->trans($messageTranslationKey);
+        $translatedMessage = $this->translator->trans($messageTranslationKey, $params);
         $this->flashMessenger->addErrorMessage($translatedMessage);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function isAvailableAmountOfBenefitVouchers(AbstractTransfer $quoteTransfer): bool
-    {
-        if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
-            return true;
-        }
-
-        $commonSelectedBenefitVouchers = $this->getCommonSelectedBenefitAmount($quoteTransfer);
-        $clientBalanceBenefitVouchers = $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount();
-
-        return $clientBalanceBenefitVouchers->greatherThanOrEquals($commonSelectedBenefitVouchers);
     }
 
     /**

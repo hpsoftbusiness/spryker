@@ -55,6 +55,7 @@ class BenefitDealWriter implements BenefitDealWriterInterface
         $benefitDealEntityTransfer = new PyzSalesOrderBenefitDealEntityTransfer();
         $benefitDealEntityTransfer->setFkSalesOrder($idSalesOrder);
         $benefitDealEntityTransfer->setTotalShoppingPointsAmount($quoteTransfer->getTotalUsedShoppingPointsAmount());
+        $benefitDealEntityTransfer->setTotalBenefitVouchersAmount($quoteTransfer->getTotalUsedBenefitVouchersAmount());
 
         return $benefitDealEntityTransfer;
     }
@@ -66,12 +67,7 @@ class BenefitDealWriter implements BenefitDealWriterInterface
      */
     private function assertBenefitDealApplied(QuoteTransfer $quoteTransfer): bool
     {
-        try {
-            $quoteTransfer->requireTotalUsedShoppingPointsAmount();
-
-            return true;
-        } catch (RequiredTransferPropertyException $exception) {
-            return false;
-        }
+        return $quoteTransfer->getTotalUsedBenefitVouchersAmount() > 0
+            || $quoteTransfer->getTotalUsedShoppingPointsAmount() > 0;
     }
 }

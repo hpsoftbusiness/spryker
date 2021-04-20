@@ -139,7 +139,7 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
      */
     private function getBenefitVoucherStore(ItemTransfer $itemTransfer): bool
     {
-        return (bool)$itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherStoreAttributeName()];
+        return (bool)$itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherStoreAttributeName()] ?? false;
     }
 
     /**

@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\BenefitDeal;
 
+use Pyz\Zed\BenefitDeal\Communication\Plugin\ItemEntityExpander\BenefitVoucherItemEntityExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\ItemEntityExpander\ShoppingPointsItemEntityExpanderPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\ItemHydrator\BenefitVoucherItemHydratorPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\ItemHydrator\ShoppingPointsItemHydratorPlugin;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
@@ -44,6 +46,7 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
             static function () {
                 return [
                     new ShoppingPointsItemEntityExpanderPlugin(),
+                    new BenefitVoucherItemEntityExpanderPlugin(),
                 ];
             }
         );
@@ -61,6 +64,7 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
             static function () {
                 return [
                     new ShoppingPointsItemHydratorPlugin(),
+                    new BenefitVoucherItemHydratorPlugin(),
                 ];
             }
         );

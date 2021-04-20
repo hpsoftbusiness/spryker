@@ -19,4 +19,12 @@ class BenefitDealConfig extends AbstractBundleConfig
     {
         return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_SHOPPING_POINTS);
     }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherPaymentName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER);
+    }
 }
