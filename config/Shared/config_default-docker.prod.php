@@ -2,6 +2,8 @@
 
 use Pyz\Shared\Api\ApiConstants;
 use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
+use Pyz\Shared\Country\CountryConstants;
+use Pyz\Shared\Currency\CurrencyConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
@@ -80,3 +82,10 @@ require 'common/config_my-world-payment-api-prod.php';
 // ----------------------------------------------------------------------------
 $config[CheckoutPageConstants::IS_CASHBACK_PAYMENT_FEATURE_ENABLED] = false;
 $config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = false;
+
+// ----------------------------------------------------------------------------
+// ------------------ Currency/country feature flags --------------------------
+// ----------------------------------------------------------------------------
+
+$config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = false;
+$config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;

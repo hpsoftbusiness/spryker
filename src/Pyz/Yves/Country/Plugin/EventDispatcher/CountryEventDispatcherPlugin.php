@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @method \Pyz\Yves\Country\CountryFactory getFactory()
- * @method \Pyz\Yves\Country\CountryConfig getConfig()()
+ * @method \Pyz\Yves\Country\CountryConfig getConfig()
  */
 class CountryEventDispatcherPlugin extends AbstractPlugin implements EventDispatcherPluginInterface
 {
@@ -37,6 +37,10 @@ class CountryEventDispatcherPlugin extends AbstractPlugin implements EventDispat
      */
     public function extend(EventDispatcherInterface $eventDispatcher, ContainerInterface $container): EventDispatcherInterface
     {
+        if (!$this->getConfig()->isMultiCountryEnabled()) {
+            return $eventDispatcher;
+        }
+
         $eventDispatcher->addListener(
             KernelEvents::REQUEST,
             function (RequestEvent $event) use ($container) {

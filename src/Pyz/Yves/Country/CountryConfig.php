@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\Country;
 
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 use Spryker\Yves\Kernel\AbstractBundleConfig;
 
@@ -18,5 +19,13 @@ class CountryConfig extends AbstractBundleConfig
     public function getCountryToLocaleRelations(): array
     {
         return $this->get(LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS, []);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMultiCountryEnabled(): bool
+    {
+        return $this->get(CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED);
     }
 }

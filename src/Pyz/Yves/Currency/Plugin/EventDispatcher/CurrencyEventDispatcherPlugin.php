@@ -18,6 +18,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * @method \Pyz\Client\Currency\CurrencyClientInterface getClient()
  * @method \Pyz\Yves\Currency\CurrencyFactory getFactory()
+ * @method \Pyz\Yves\Currency\CurrencyConfig getConfig()
  */
 class CurrencyEventDispatcherPlugin extends AbstractPlugin implements EventDispatcherPluginInterface
 {
@@ -31,6 +32,10 @@ class CurrencyEventDispatcherPlugin extends AbstractPlugin implements EventDispa
      */
     public function extend(EventDispatcherInterface $eventDispatcher, ContainerInterface $container): EventDispatcherInterface
     {
+        if (!$this->getConfig()->isMultiCurrencyEnabled()) {
+            return $eventDispatcher;
+        }
+
         $eventDispatcher->addListener(
             KernelEvents::REQUEST,
             function (RequestEvent $event) use ($container) {

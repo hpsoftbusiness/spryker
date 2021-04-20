@@ -20,6 +20,7 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
 /**
  * @method \Pyz\Client\SearchElasticsearch\SearchElasticsearchFactory getFactory()
+ * @method \Pyz\Client\SearchElasticsearch\SearchElasticsearchConfig getConfig()
  */
 class SellableQueryExpanderPlugin extends AbstractPlugin implements QueryExpanderPluginInterface
 {
@@ -31,6 +32,10 @@ class SellableQueryExpanderPlugin extends AbstractPlugin implements QueryExpande
      */
     public function expandQuery(QueryInterface $searchQuery, array $requestParameters = []): QueryInterface
     {
+        if (!$this->getConfig()->isMultiCountryEnabled()) {
+            return $searchQuery;
+        }
+
         if (array_key_exists(CatalogConfig::PRODUCT_ABSTRACT_SELLABLE_FACET_NAME, $requestParameters)) {
             return $searchQuery;
         }
