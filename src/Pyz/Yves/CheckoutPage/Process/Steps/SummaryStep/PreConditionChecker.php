@@ -84,7 +84,9 @@ class PreConditionChecker implements PreConditionCheckerInterface
             return $myWorldApiResponseTransfer->getIsSuccess();
         }
 
-        return $this->wasPaymentSessionCreatedSuccessfully($quoteTransfer);
+        return $this->wasPaymentSessionCreatedSuccessfully($quoteTransfer) || !$this->isMyWorldPaymentUsed(
+                $quoteTransfer
+            );
     }
 
     /**
