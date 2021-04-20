@@ -100,8 +100,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         ];
     }
 
+
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
+     * @return \Spryker\Client\Catalog\Plugin\Elasticsearch\Query\ProductCatalogSearchQueryPlugin
      */
     protected function createCatalogSearchQueryPlugin()
     {
@@ -166,7 +167,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
 //            new CustomerProductListQueryExpanderPlugin(),
-            new SellableQueryExpanderPlugin(),
+//            new SellableQueryExpanderPlugin(),
             // Temporary added to filter cms pages from the suggestion list.
             new CmsPageFilterQueryExpanderPlugin(),
 
