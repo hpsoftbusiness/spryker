@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductPageSearch;
 
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAffiliateMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAttributesMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreFlagMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractSellableFacetPageMapExpanderPlugin;
 use Spryker\Shared\MerchantProductOfferSearch\MerchantProductOfferSearchConfig;
@@ -144,6 +145,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductListMapExpanderPlugin(),
             new ProductAbstractAffiliateMapExpanderPlugin(),
             new ProductAbstractBenefitStoreFlagMapExpanderPlugin(),
+            new ProductAbstractAttributesMapExpanderPlugin(),
             new ProductAbstractSellableFacetPageMapExpanderPlugin(),
             new MerchantProductAbstractMapExpanderPlugin(),
             new MerchantNamesProductAbstractMapExpanderPlugin(),

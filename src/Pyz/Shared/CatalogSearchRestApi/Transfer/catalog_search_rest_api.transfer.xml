@@ -11,6 +11,7 @@
         <property name="brand" type="string"/>
         <property name="benefit" type="RestCatalogSearchProductBenefit"/>
         <property name="sellable" type="array"/>
+        <property name="attributes" type="array"/>
     </transfer>
 
     <transfer name="RestCatalogSearchProductBenefit">
