@@ -1,5 +1,57 @@
 <?php
 $stores = [];
+
+$countries = [
+    'AT',
+    'BE',
+    'BG',
+    'HR',
+    'CH',
+    'CY',
+    'CZ',
+    'DK',
+    'EE',
+    'FI',
+    'FR',
+    'DE',
+    'GB',
+    'GR',
+    'HU',
+    'IE',
+    'IM',
+    'IT',
+    'LV',
+    'LT',
+    'LU',
+    'MT',
+    'MC',
+    'NO',
+    'NL',
+    'PL',
+    'PT',
+    'RO',
+    'SE',
+    'SI',
+    'SK',
+    'ES',
+    'UK',
+    'US',
+];
+
+$currencies = [
+    'EUR',
+    'PLN',
+    'CZK',
+    'SEK',
+    'HUF',
+    'CHF',
+    'NOK',
+    'GBP',
+    'DKK',
+    'LEU',
+    'USD',
+];
+
 if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     $activeStores = array_map('trim', explode(',', getenv('SPRYKER_ACTIVE_STORES')));
     $template = [
@@ -35,21 +87,10 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
 //            'it' => 'it_IT',
         ],
         // first entry is default
-        'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
+        'countries' => $countries,
         // internal and shop
         'currencyIsoCode' => 'EUR',
-        'currencyIsoCodes' => [
-            'EUR',
-            'PLN',
-            'CZK',
-            'SEK',
-            'HUF',
-            'CHF',
-            'NOK',
-            'GBP',
-            'DKK',
-            'LEU',
-        ],
+        'currencyIsoCodes' => $currencies,
         'queuePools' => [
             'synchronizationPool' => [],
         ],
@@ -98,21 +139,10 @@ $stores['DE'] = [
 //        'it' => 'it_IT',
     ],
     // first entry is default
-    'countries' => ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IM', 'IT', 'LV', 'LT', 'LU', 'MT', 'MC', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'],
+    'countries' => $countries,
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => [
-        'EUR',
-        'PLN',
-        'CZK',
-        'SEK',
-        'HUF',
-        'CHF',
-        'NOK',
-        'GBP',
-        'DKK',
-        'LEU',
-    ],
+    'currencyIsoCodes' => $currencies,
     'queuePools' => [
         'synchronizationPool' => [
             'DE-connection',

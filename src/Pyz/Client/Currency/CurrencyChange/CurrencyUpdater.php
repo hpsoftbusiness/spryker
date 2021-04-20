@@ -40,6 +40,12 @@ class CurrencyUpdater extends SprykerCurrencyUpdater implements CurrencyUpdaterI
      */
     private function getLocaleCurrencyIsoCode(string $locale): string
     {
+        // Otherwise guest users with EN locale get the dollar currency and don't see any products
+        // TODO: how do we deal with american users?
+        if ($locale === 'en_US') {
+            return 'EUR';
+        }
+
         $formatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
 
         return $formatter->getTextAttribute(NumberFormatter::CURRENCY_CODE);
