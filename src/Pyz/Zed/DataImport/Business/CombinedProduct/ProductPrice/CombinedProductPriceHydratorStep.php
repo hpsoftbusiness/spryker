@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\SpyPriceProductEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
+use Pyz\Shared\PriceProduct\PriceProductConfig;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
@@ -29,6 +30,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const COLUMN_PRICE_NET = 'product.value_56';
     public const COLUMN_PRICE_GROSS_ORIGINAL = 'product.value_57';
     public const COLUMN_PRICE_GROSS = 'product.value_58';
+    public const COLUMN_BENEFIT_PRICE = 'product.value_59';
     public const COLUMN_PRICE_DATA = 'product_price.price_data';
     public const COLUMN_PRICE_DATA_CHECKSUM = 'product_price.price_data_checksum';
     public const COLUMN_PRICE_TYPE = 'product_price.price_type';
@@ -49,12 +51,16 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const DEFAULT_PRICE_TYPE = 'DEFAULT';
     public const ORIGINAL_PRICE_TYPE = 'ORIGINAL';
 
+    /** @link \Pyz\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_SP_BENEFIT */
+    public const SP_BENEFIT_PRICE_TYPE = 'SP_BENEFIT';
+
     /**
      * @var array
      */
     public static $priceTypes = [
         self::DEFAULT_PRICE_TYPE => self::COLUMN_PRICE_GROSS,
 //        self::ORIGINAL_PRICE_TYPE => self::COLUMN_PRICE_GROSS_ORIGINAL,
+        self::SP_BENEFIT_PRICE_TYPE => self::COLUMN_BENEFIT_PRICE,
     ];
 
     /**
@@ -178,8 +184,13 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         $storeEntityTransfer = new SpyStoreEntityTransfer();
         $storeEntityTransfer->setName($dataSet[static::COLUMN_STORE] ?: 'DE');
 
-        $netPrice = $this->getNetPrice($dataSet);
-        $grossPrice = $this->getGrossPrice($dataSet);
+        if ($dataSet[static::COLUMN_PRICE_TYPE] === self::SP_BENEFIT_PRICE_TYPE) {
+            $netPrice = $this->getPriceValue($dataSet[self::COLUMN_BENEFIT_PRICE]);
+            $grossPrice = $this->getPriceValue($dataSet[self::COLUMN_BENEFIT_PRICE]);
+        } else {
+            $netPrice = $this->getNetPrice($dataSet);
+            $grossPrice = $this->getGrossPrice($dataSet);
+        }
 
         if ($dataSet[CombinedProductPriceHydratorStep::COLUMN_IS_AFFILIATE_PRODUCT] === 'TRUE') {
             $price = (int)((string)((float)str_replace(',', '.', $dataSet[CombinedProductPriceHydratorStep::COLUMN_AFFILIATE_PRODUCT_PRICE]) * 100));
@@ -211,7 +222,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
 
         if ($dataSet[CombinedProductPriceHydratorStep::COLUMN_PRICE_TYPE] ===
             CombinedProductPriceHydratorStep::DEFAULT_PRICE_TYPE && (int)$dataSet[$defaultNetPriceKey] > 0) {
-            return (int)((string)((float)str_replace(',', '.', $dataSet[$defaultNetPriceKey]) * 100));
+            return $this->getPriceValue($dataSet[$defaultNetPriceKey]);
         }
 
         return null;
@@ -234,9 +245,19 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         }
 
         if (!empty($dataSet[$defaultGrossPriceKey])) {
-            return (int)((string)((float)str_replace(',', '.', $dataSet[$defaultGrossPriceKey]) * 100));
+            return $this->getPriceValue($dataSet[$defaultGrossPriceKey]);
         }
 
         return null;
+    }
+
+    /**
+     * @param string $price
+     *
+     * @return int
+     */
+    private function getPriceValue(string $price): int
+    {
+        return (int)((string)((float)str_replace(',', '.', $price) * 100));
     }
 }
