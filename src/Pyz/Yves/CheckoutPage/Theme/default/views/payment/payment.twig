@@ -1,11 +1,5 @@
 {% extends view('payment', '@SprykerShop:CheckoutPage') %}
 
-{% define data = {
-    availableAmountBonuses: _view.clientsBalance.availableCashbackAmount,
-    availableEVoucherForCharge: _view.clientsBalance.availableEVouchersForCharge,
-    currencyIsoCode: _view.clientsBalance.availableCashbackCurrency,
-} %}
-
 {% block content %}
     {% embed molecule('form') with {
         modifiers: ['checkout-actions', 'checkout-form-elements'],
@@ -27,25 +21,18 @@
                 'DummyPrepayment/prepayment': ['prepayment', 'dummyPrepayment'],
             },
         },
-        embed: {
-            availableAmountBonuses: data.availableAmountBonuses,
-            availableEVoucherForCharge: data.availableEVoucherForCharge,
-            currencyIsoCode: data.currencyIsoCode,
-        },
     } only %}
         {% block fieldset %}
-            <h2 class="title title--primary">{{ 'checkout.payment.provider.DummyPayment' | trans }}</h2>
-
-            {% if data.form.myWorldUseEVoucherBalance is defined %}
-                {% include molecule('payment-use-evoucher', 'CheckoutPage') with {
-                    data: {
-                        checkboxUseEVouchers: data.form.myWorldUseEVoucherBalance,
-                        availableAmountBonuses: embed.availableAmountBonuses,
-                        availableEVoucherForCharge: embed.availableEVoucherForCharge,
-                        currencyIsoCode: embed.currencyIsoCode,
-                    },
-                } only %}
-            {% endif %}
+            <h2 class="title title--primary">{{ 'checkout.payment.provider.payment_methods' | trans }}</h2>
+            {% include molecule('myworld-payment', 'CheckoutPage') with {
+                data: {
+                    form: data.form,
+                    customerEVoucherBalance: data.form.vars.customer_balances.MyWorldEVoucher ?? 0,
+                    customerEVoucherOnBehalfOfMarketerBalance: data.form.vars.customer_balances.MyWorldEVoucherOnBehalfOfMarketer ?? 0,
+                    customerCashbackBalance: data.form.vars.customer_balances.MyWorldCashbackAccount ?? 0,
+                    currencyIsoCode: data.form.vars.currency_code,
+                },
+            } only %}
 
             <div class="form_container">
                 <h2 class="title title--primary"></h2>

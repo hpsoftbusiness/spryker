@@ -11,7 +11,7 @@ use SprykerShop\Yves\CheckoutPage\Controller\CheckoutController as SprykerShopCh
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageFactory getFactory()
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageFactory getFactory()
  * @method \Spryker\Client\Checkout\CheckoutClientInterface getClient()
  */
 class CheckoutController extends SprykerShopCheckoutController
@@ -59,5 +59,27 @@ class CheckoutController extends SprykerShopCheckoutController
             $this->getFactory()->getCustomerPageWidgetPlugins(),
             '@CheckoutPage/views/benefit-voucher/benefit-voucher.twig'
         );
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request|null $request
+     *
+     * @return mixed
+     */
+    public function errorAction(?Request $request = null)
+    {
+        if ($request === null) {
+            return $this->view([], [], '@CheckoutPage/views/order-fail/order-fail.twig');
+        }
+
+        $response = $this->createStepProcess()->process($request);
+
+        if (!is_array($response)) {
+            return $response;
+        }
+
+        $response = array_merge($response, ['errors' => $this->getFactory()->getMessengerClient()->getFlashErrorMessages()]);
+
+        return $this->view($response, [], '@CheckoutPage/views/order-fail/order-fail.twig');
     }
 }

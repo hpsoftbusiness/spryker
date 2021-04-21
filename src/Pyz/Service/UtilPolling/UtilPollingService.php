@@ -15,7 +15,12 @@ use Spryker\Service\Kernel\AbstractService;
 class UtilPollingService extends AbstractService implements UtilPollingServiceInterface
 {
     /**
-     * @return void
+     * @param callable $requestFunction
+     * @param callable $breakCondition
+     * @param int $timeInterval
+     * @param int $executionTimeLimit
+     *
+     * @return mixed
      */
     public function executePollingProcess(
         callable $requestFunction,

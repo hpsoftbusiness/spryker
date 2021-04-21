@@ -64,7 +64,7 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return void
      */
-    public function recalculatePricesForQuote(CalculableObjectTransfer $quoteTransfer): void;
+    public function recalculateEVoucherPaymentForQuote(CalculableObjectTransfer $quoteTransfer): void;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
@@ -85,7 +85,21 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return void
      */
-    public function recalculatePricesForOrder(CalculableObjectTransfer $calculableObjectTransfer): void;
+    public function recalculateEVoucherPaymentForOrder(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
+     *
+     * @return void
+     */
+    public function recalculateEVoucherMarketerPaymentForQuote(CalculableObjectTransfer $quoteTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
+     *
+     * @return void
+     */
+    public function recalculateCashbackPaymentForQuote(CalculableObjectTransfer $quoteTransfer): void;
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

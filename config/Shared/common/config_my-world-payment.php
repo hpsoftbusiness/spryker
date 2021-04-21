@@ -8,6 +8,8 @@ $config[MyWorldPaymentConstants::UNIT_TYPE_CURRENCY] = 'Currency';
 $config[MyWorldPaymentConstants::UNIT_TYPE_UNIT] = 'Unit';
 //Payment options names
 $config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER] = 'EVoucher';
+$config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER_ON_BEHALF_OF_MARKETER] = 'EVoucherMarketer';
+$config[MyWorldPaymentConstants::PAYMENT_NAME_CASHBACK] = 'Cashback';
 $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER_ACCOUNT] = 'Benefit Voucher Account';
 $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER] = 'BenefitVouchers';
 $config[MyWorldPaymentConstants::PAYMENT_NAME_SHOPPING_POINTS] = 'ShoppingPoints';
@@ -21,7 +23,9 @@ $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT] = 10;
 // Payment options names to options ids map
 $config[MyWorldPaymentConstants::OPTION_NAME_TO_ID_MAP] = [
     $config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER] => $config[MyWorldPaymentConstants::OPTION_EVOUCHER],
-    $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT] => $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER_ACCOUNT],
+    $config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER_ON_BEHALF_OF_MARKETER] = $config[MyWorldPaymentConstants::OPTION_EVOUCHER_ON_BEHALF_OF_MARKETER],
+    $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER_ACCOUNT] => $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT],
+    $config[MyWorldPaymentConstants::PAYMENT_NAME_CASHBACK] => $config[MyWorldPaymentConstants::OPTION_CASHBACK_ACCOUNT],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER] => $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_SHOPPING_POINTS] => $config[MyWorldPaymentConstants::OPTION_SHOPPING_POINTS_ACCOUNT],
 ];
@@ -56,4 +60,4 @@ $config[MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE] = 'benefit
 $config[MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT] = 'benefit_amount';
 $config[MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE] = 'benefit_store_sales_price';
 $config[MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_STORE] = 'shopping_point_store';
-$config[MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS] = 'product_sp_amount';
+$config[MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_AMOUNT] = 'product_sp_amount';

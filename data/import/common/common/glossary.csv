@@ -167,6 +167,7 @@ checkout.payment.cashback_info,"Si vous avez un crédit Cashback ou un crédit e
 checkout.payment.checkbox.use_evoucher_balance,Utilisez% price% de votre% solde% Cashback / solde de myWorld eVoucher,fr_FR
 checkout.payment_method.invalid,Le paiement à la caisse n'est pas valide,fr_FR
 checkout.payment.provider.DummyPayment,méthodes de payement,fr_FR
+checkout.payment.provider.payment_methods,méthodes de payement,fr_FR
 checkout.pre.check.shipment.failed,Méthode d'expédition non valide% method_name% (% carrier_name%).,fr_FR
 checkout.sales-order-threshold,Valeur minimum de commande,fr_FR
 checkout.step.address.is_sellable,"Cher client, les produits ne sont malheureusement pas disponibles dans votre adresse de livraison.",fr_FR
@@ -1695,6 +1696,7 @@ checkout.payment.cashback_info,"Se hai un credito Cashback o un credito eVoucher
 checkout.payment.checkbox.use_evoucher_balance,Utilizza il% price% del tuo saldo% Balance% Cashback / saldo eVoucher myWorld,it_IT
 checkout.payment_method.invalid,Il pagamento alla cassa non è valido,it_IT
 checkout.payment.provider.DummyPayment,Modalità di pagamento,it_IT
+checkout.payment.provider.payment_methods,Modalità di pagamento,it_IT
 checkout.pre.check.shipment.failed,Metodo di spedizione non valido% method_name% (% carrier_name%).,it_IT
 checkout.sales-order-threshold,Valore minimo dell'ordine,it_IT
 checkout.step.address.is_sellable,"Gentile cliente, i prodotti purtroppo non sono disponibili nel tuo indirizzo di consegna.",it_IT
@@ -3223,6 +3225,7 @@ checkout.payment.cashback_info,"Jeśli masz doładowanie Cashback lub eVoucher m
 checkout.payment.checkbox.use_evoucher_balance,Użyj% price% swojego% balance% Cashback / salda myWorld eVoucher,pl_PL
 checkout.payment_method.invalid,Płatność w ramach kasy jest nieprawidłowa,pl_PL
 checkout.payment.provider.DummyPayment,Metody Płatności,pl_PL
+checkout.payment.provider.payment_methods,Metody Płatności,pl_PL
 checkout.pre.check.shipment.failed,Nieprawidłowa metoda wysyłki% nazwa_metody% (% carrier_name%).,pl_PL
 checkout.sales-order-threshold,Minimalna wartość zamówienia,pl_PL
 checkout.step.address.is_sellable,"Drogi Kliencie, niestety produkty nie są dostępne w Twoim adresie dostawy.",pl_PL
@@ -4755,6 +4758,7 @@ checkout.payment.cashback_info,"If you have Cashback credit or myWorld eVoucher 
 checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,en_US
 checkout.payment_method.invalid,Checkout payment is not valid,en_US
 checkout.payment.provider.DummyPayment,Payment Methods,en_US
+checkout.payment.provider.payment_methods,Payment Methods,en_US
 checkout.pre.check.shipment.failed,Invalid shipping method %method_name% (%carrier_name%).,en_US
 checkout.sales-order-threshold,Minimum Order Value,en_US
 checkout.step.address.is_sellable,"Dear customer, products are unfortunately not available in your delivery address.",en_US
@@ -4772,7 +4776,7 @@ checkout.step.shipment,Go to Shipment,en_US
 checkout.step.shipment.provider.a,DHL,en_US
 checkout.step.shipment.provider.b,Hermes,en_US
 checkout.step.shipment.title,Shipment,en_US
-checkout.step.success.link,"Go to """"My Account""""",en_US
+checkout.step.success.link,"Go to ""My Account""",en_US
 checkout.step.success.sub_title,Your order has been placed successfully.,en_US
 checkout.step.success.text,You will get the order confirmation email in a few minutes. You can check and track your order in Your Account.,en_US
 checkout.step.success.title,Thank you.,en_US
@@ -6301,6 +6305,7 @@ checkout.payment.cashback_info,"If you have Cashback credit or myWorld eVoucher 
 checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,de_DE
 checkout.payment_method.invalid,Checkout Zahlung ist ungültig,de_DE
 checkout.payment.provider.DummyPayment,Zahlungsarten,de_DE
+checkout.payment.provider.payment_methods,Zahlungsarten,de_DE
 checkout.pre.check.shipment.failed,Ungültige Versandmethode %method_name% (%carrier_name%).,de_DE
 checkout.sales-order-threshold,Mindestbestellwert,de_DE
 checkout.step.address.is_sellable,"Lieber Kunde, sind Produkte in Ihrer Lieferadresse nicht verfügbar.",de_DE
@@ -7811,6 +7816,7 @@ checkout.payment.cashback_info,"Si tiene crédito de Cashback o crédito myWorld
 checkout.payment.checkbox.use_evoucher_balance,Use% price% de su% saldo% Cashback / myWorld eVoucher saldo,es_ES
 checkout.payment_method.invalid,El pago del checkout no es válido,es_ES
 checkout.payment.provider.DummyPayment,Métodos de pago,es_ES
+checkout.payment.provider.payment_methods,Métodos de pago,es_ES
 checkout.pre.check.shipment.failed,El método de envío% method_name% (% carrier_name%) no es válido.,es_ES
 checkout.sales-order-threshold,Valor de pedido mínimo,es_ES
 checkout.step.address.is_sellable,"Estimado cliente, lamentablemente los productos no están disponibles en su dirección de entrega.",es_ES
@@ -9339,6 +9345,7 @@ checkout.payment.cashback_info,"Pokud máte kredit Cashback nebo kredit myWorld 
 checkout.payment.checkbox.use_evoucher_balance,Použijte% cena% z vašeho% zůstatku% zůstatek Cashback / myWorld eVoucher,cs_CZ
 checkout.payment_method.invalid,Platba v pokladně není platná,cs_CZ
 checkout.payment.provider.DummyPayment,platební metody,cs_CZ
+checkout.payment.provider.payment_methods,platební metody,cs_CZ
 checkout.pre.check.shipment.failed,Neplatná metoda dopravy% method_name% (% carrier_name%).,cs_CZ
 checkout.sales-order-threshold,Minimální hodnota objednávky,cs_CZ
 checkout.step.address.is_sellable,"Vážený zákazníku, produkty bohužel nejsou k dispozici na vaší doručovací adrese.",cs_CZ
@@ -10867,6 +10874,7 @@ checkout.payment.cashback_info,Om du har Cashback-kredit eller myWorld eVoucher-
 checkout.payment.checkbox.use_evoucher_balance,Använd% pris% av din% -balans% Cashback / myWorld-eVouchersaldo,sv_SE
 checkout.payment_method.invalid,Betalning till kassan är inte giltig,sv_SE
 checkout.payment.provider.DummyPayment,Betalningsmetoder,sv_SE
+checkout.payment.provider.payment_methods,Betalningsmetoder,sv_SE
 checkout.pre.check.shipment.failed,Ogiltig leveransmetod% method_name% (% carrier_name%).,sv_SE
 checkout.sales-order-threshold,Minsta ordervärde,sv_SE
 checkout.step.address.is_sellable,"Kära kund, produkter finns tyvärr inte i din leveransadress.",sv_SE
@@ -12395,6 +12403,7 @@ checkout.payment.cashback_info,"Če imate dobroimetje Cashback ali dobroimetje m
 checkout.payment.checkbox.use_evoucher_balance,Uporabite% ceno% vašega% stanja% Cashback / myWorld eVoucher stanje,sl_SI
 checkout.payment_method.invalid,Plačilo na blagajni ni veljavno,sl_SI
 checkout.payment.provider.DummyPayment,načini plačila,sl_SI
+checkout.payment.provider.payment_methods,načini plačila,sl_SI
 checkout.pre.check.shipment.failed,Neveljaven način pošiljanja% ime_ime% (% ime_prevoznika%).,sl_SI
 checkout.sales-order-threshold,Minimalna vrednost naročila,sl_SI
 checkout.step.address.is_sellable,"Spoštovana stranka, izdelki žal niso na voljo na vašem naslovu za dostavo.",sl_SI
@@ -13923,6 +13932,7 @@ checkout.payment.cashback_info,"Se você tiver crédito de Cashback ou crédito 
 checkout.payment.checkbox.use_evoucher_balance,Use% price% of your% balance% Cashback / myWorld eVoucher saldo,pt_PT
 checkout.payment_method.invalid,O pagamento do checkout não é válido,pt_PT
 checkout.payment.provider.DummyPayment,Métodos de Pagamento,pt_PT
+checkout.payment.provider.payment_methods,Métodos de Pagamento,pt_PT
 checkout.pre.check.shipment.failed,Método de envio inválido% method_name% (% carrier_name%).,pt_PT
 checkout.sales-order-threshold,Valor mínimo do pedido,pt_PT
 checkout.step.address.is_sellable,"Caro cliente, infelizmente os produtos não estão disponíveis na sua morada de entrega.",pt_PT
@@ -15451,6 +15461,7 @@ checkout.payment.cashback_info,"Hvis du har Cashback-kreditt eller myWorld eVouc
 checkout.payment.checkbox.use_evoucher_balance,Bruk% pris% av% balansen% Cashback / myWorld eVoucher-saldo,nb_NO
 checkout.payment_method.invalid,Kassebetaling er ikke gyldig,nb_NO
 checkout.payment.provider.DummyPayment,betalingsmetoder,nb_NO
+checkout.payment.provider.payment_methods,betalingsmetoder,nb_NO
 checkout.pre.check.shipment.failed,Ugyldig leveringsmetode% method_name% (% carrier_name%).,nb_NO
 checkout.sales-order-threshold,Minimum ordreverdi,nb_NO
 checkout.step.address.is_sellable,"Kjære kunde, produkter er dessverre ikke tilgjengelig i leveringsadressen din.",nb_NO
@@ -16979,6 +16990,7 @@ checkout.payment.cashback_info,"Ak máte kredit Cashback alebo kredit myWorld eV
 checkout.payment.checkbox.use_evoucher_balance,Použite% cenu% z vášho% zostatku% Zostatok Cashback / myWorld eVoucher,sk_SK
 checkout.payment_method.invalid,Platba v pokladni je neplatná,sk_SK
 checkout.payment.provider.DummyPayment,spôsob platby,sk_SK
+checkout.payment.provider.payment_methods,spôsob platby,sk_SK
 checkout.pre.check.shipment.failed,Neplatný spôsob dodania% method_name% (% carrier_name%).,sk_SK
 checkout.sales-order-threshold,Minimálna hodnota objednávky,sk_SK
 checkout.step.address.is_sellable,"Vážený zákazník, produkty bohužiaľ nie sú k dispozícii na vašej doručovacej adrese.",sk_SK
@@ -18507,6 +18519,7 @@ checkout.payment.cashback_info,"Als je Cashback-tegoed of myWorld eVoucher-tegoe
 checkout.payment.checkbox.use_evoucher_balance,Gebruik% price% van uw% balance% Cashback / myWorld eVoucher-saldo,nl_NL
 checkout.payment_method.invalid,Afrekenen is niet geldig,nl_NL
 checkout.payment.provider.DummyPayment,Betalingsmethoden,nl_NL
+checkout.payment.provider.payment_methods,Betalingsmethoden,nl_NL
 checkout.pre.check.shipment.failed,Ongeldige verzendmethode% method_name% (% carrier_name%).,nl_NL
 checkout.sales-order-threshold,Minimale bestelwaarde,nl_NL
 checkout.step.address.is_sellable,"Geachte klant, producten zijn helaas niet beschikbaar op uw afleveradres.",nl_NL
@@ -19947,6 +19960,10 @@ checkout.payment.my_world.error.transaction_batch_failed,Payment transaction was
 checkout.payment.my_world.error.transaction_batch_failed,Payment transaction was not processed due to another batch transaction failing,en_US
 checkout.payment.my_world.error.transaction_option_not_found,Payment transaction failed due to unknown payment option,de_DE
 checkout.payment.my_world.error.transaction_option_not_found,Payment transaction failed due to unknown payment option,en_US
+checkout.step.error.link,Go to Cart,de_DE
+checkout.step.error.link,Go to Cart,en_US
+checkout.step.error.sub_title,Order failed due to errors:,de_DE
+checkout.step.error.sub_title,Order failed due to errors:,en_US
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,de_DE
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,en_US
 checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount".,de_DE
@@ -19957,3 +19974,17 @@ checkout.currency.my_world.shopping_points,Shopping Points,de_DE
 checkout.currency.my_world.shopping_points,Shopping Points,en_US
 auth.login-button,Login mit myWorld,de_DE
 auth.login-button,Login with myWorld,en_US
+checkout.payment.myworld.payment_methods.title,myWorld ePayment,de_DE
+checkout.payment.myworld.payment_methods.title,myWorld ePayment,en_US
+checkout.payment.myworld.payment_methods.subtitle,Du kannst zwischen folgenden myWorld ePayment-Methoden wahlen (optional):,de_DE
+checkout.payment.myworld.payment_methods.subtitle,You can choose between the following myWorld ePayment methods (optional):,en_US
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,de_DE
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,en_US
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,eVoucher (Marketer),de_DE
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,eVoucher (Marketer),en_US
+checkout.payment.myworld.payment_methods.method.cashback,Cashback,de_DE
+checkout.payment.myworld.payment_methods.method.cashback,Cashback,en_US
+checkout.payment.myworld.payment_methods.balance_text,Saldo,de_DE
+checkout.payment.myworld.payment_methods.balance_text,Balance,en_US
+product_detail_page.benefit_price.benefit_amount,max %amount%,de_DE
+product_detail_page.benefit_price.benefit_amount,max %amount%,en_US

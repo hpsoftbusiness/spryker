@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CheckoutPage\Process;
 
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
@@ -27,7 +26,6 @@ use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PostConditionChecker as Summ
 use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PreConditionChecker as SummaryStepPreConditionChecker;
 use Pyz\Yves\StepEngine\Process\StepCollection;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
-use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
@@ -63,14 +61,6 @@ class StepFactory extends SprykerShopStepFactory
     protected function getLocalClient(): CheckoutPageToLocaleClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);
-    }
-
-    /**
-     * @return mixed
-     */
-    protected function getMyWorldMarketplaceApiClient(): MyWorldMarketplaceApiClientInterface
-    {
-        return $this->getProvidedDependency(CheckoutPageDependencyProvider::MY_WORLD_MARKETPLACE_CLIENT);
     }
 
     /**
@@ -160,7 +150,6 @@ class StepFactory extends SprykerShopStepFactory
         return new PaymentStep(
             $this->getConfig(),
             $this->getTranslatorService(),
-            $this->getIntegerToDecimalConverter(),
             $this->getMyWorldPaymentClient(),
             $this->getPaymentClient(),
             $this->getPaymentMethodHandler(),
@@ -224,14 +213,6 @@ class StepFactory extends SprykerShopStepFactory
     public function getTranslatorService(): TranslatorInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_TRANSLATOR);
-    }
-
-    /**
-     * @return \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface
-     */
-    public function getIntegerToDecimalConverter(): IntegerToDecimalConverterInterface
-    {
-        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CONVERTER_INTEGER_TO_DECIMAL);
     }
 
     /**

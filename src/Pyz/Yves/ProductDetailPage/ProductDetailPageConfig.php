@@ -17,6 +17,30 @@ class ProductDetailPageConfig extends AbstractBundleConfig
      */
     public function getShoppingPointsAmountAttributeName(): string
     {
-        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS);
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_AMOUNT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAttributeKeyBenefitSalesPrice(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAttributeKeyBenefitStore(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAttributeKeyBenefitAmount(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
     }
 }

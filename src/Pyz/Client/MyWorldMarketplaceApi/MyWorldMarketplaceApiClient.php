@@ -46,4 +46,15 @@ class MyWorldMarketplaceApiClient extends AbstractClient implements MyWorldMarke
     {
         return $this->getFactory()->createCustomerInformationByCustomerNumber()->getCustomerInformationByCustomerNumber($customerTransfer);
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param string|null $currencyCode
+     *
+     * @return \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[]
+     */
+    public function getCustomerBalanceByCurrency(CustomerTransfer $customerTransfer, ?string $currencyCode = null): array
+    {
+        return $this->getFactory()->createCustomerBalanceRequestHandler()->getCustomerBalancesByCurrency($customerTransfer, $currencyCode);
+    }
 }

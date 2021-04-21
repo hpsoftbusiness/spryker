@@ -265,6 +265,6 @@ class MyWorldPaymentPostSavePlugin extends AbstractPlugin implements CheckoutPos
             }
         }
 
-        return false;
+        return $quoteTransfer->getTotalUsedShoppingPointsAmount() > 0;
     }
 }

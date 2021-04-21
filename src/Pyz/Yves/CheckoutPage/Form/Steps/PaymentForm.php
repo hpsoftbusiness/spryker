@@ -7,70 +7,209 @@
 
 namespace Pyz\Yves\CheckoutPage\Form\Steps;
 
+use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
 use SprykerShop\Yves\CheckoutPage\Form\Steps\PaymentForm as SpyPaymentForm;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageFactory getFactory()
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageFactory getFactory()
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
  */
 class PaymentForm extends SpyPaymentForm
 {
+    public const OPTION_KEY_CUSTOMER_BALANCES = 'customer_balances';
+    public const OPTION_KEY_CURRENCY_CODE = 'currency_code';
+    public const FORM_NAME = 'myWorldPaymentForm';
+
+    private const FORM_FIELD_USE_EVOUCHER_BALANCE = 'useEVoucherBalance';
+    private const FORM_FIELD_USE_EVOUCHER_ON_BEHALF_OF_MARKETER = 'useEVoucherOnBehalfOfMarketer';
+    private const FORM_FIELD_USE_CASHBACK_BALANCE = 'useCashbackBalance';
+
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array $options
      *
      * @return void
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         parent::buildForm($builder, $options);
-        $this->addStaticPaymentMethods($builder, $options);
+
+        if (!$this->getConfig()->isCashbackFeatureEnabled()) {
+            return;
+        }
+
+        /**
+         * @var \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[] $customerBalances
+         */
+        $customerBalances = $options[self::OPTION_KEY_CUSTOMER_BALANCES] ?? null;
+        if (!$customerBalances) {
+            return;
+        }
+
+        $subFormMethodsByPaymentOptionIdMap = $this->getFormFieldMethodMap();
+        foreach ($customerBalances as $customerBalance) {
+            if (!$this->isDiscountBalanceApplicable($customerBalance)) {
+                continue;
+            }
+
+            $subFormMethodsByPaymentOptionIdMap[$customerBalance->getPaymentOptionId()]($builder, $customerBalance);
+        }
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormView $view
+     * @param \Symfony\Component\Form\FormInterface $form
+     * @param array $options
+     *
+     * @return void
+     */
+    public function buildView(FormView $view, FormInterface $form, array $options): void
+    {
+        if (!$this->getConfig()->isCashbackFeatureEnabled()) {
+            return;
+        }
+
+        /**
+         * @var \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[] $customerBalances
+         */
+        $customerBalances = $options[self::OPTION_KEY_CUSTOMER_BALANCES];
+
+        $balanceTypeToAmountMap = [];
+        foreach ($customerBalances as $balanceByCurrencyTransfer) {
+            if (!$this->isDiscountBalanceApplicable($balanceByCurrencyTransfer)) {
+                continue;
+            }
+            $balanceTypeToAmountMap[$balanceByCurrencyTransfer->getPaymentOptionName()] =
+                $balanceByCurrencyTransfer->getTargetAvailableBalance()->toFloat();
+        }
+
+        $view->vars[self::OPTION_KEY_CUSTOMER_BALANCES] = $balanceTypeToAmountMap;
+        $view->vars[self::OPTION_KEY_CURRENCY_CODE] = $options[self::OPTION_KEY_CURRENCY_CODE];
+    }
+
+    /**
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
+     */
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        parent::configureOptions($resolver);
+
+        if (!$this->getConfig()->isCashbackFeatureEnabled()) {
+            return;
+        }
+
+        $resolver->setRequired(self::OPTION_KEY_CUSTOMER_BALANCES);
+        $resolver->setRequired(self::OPTION_KEY_CURRENCY_CODE);
     }
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * @param \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
      *
-     * @return $this
+     * @return void
      */
-    protected function addStaticPaymentMethods(FormBuilderInterface $builder, array $options)
-    {
-        $formExpanders = $this->getFormExpandersSubForms();
-
-        $this->addFormExpanders($builder, $formExpanders, $options);
-
-        return $this;
+    private function addUseEVoucherBalanceSubForm(
+        FormBuilderInterface $builder,
+        CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
+    ): void {
+        $builder->add(
+            self::FORM_FIELD_USE_EVOUCHER_BALANCE,
+            CheckboxType::class,
+            [
+                'label' => ' ',
+                'required' => false,
+                'disabled' => !$this->assertHasBalance($balanceByCurrencyTransfer),
+            ]
+        );
     }
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface[] $paymentMethodSubForms
-     * @param array $options
+     * @param \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
      *
-     * @return \SprykerShop\Yves\CheckoutPage\Form\Steps\PaymentForm
+     * @return void
      */
-    protected function addFormExpanders(FormBuilderInterface $builder, array $paymentMethodSubForms, array $options)
-    {
-        foreach ($paymentMethodSubForms as $paymentMethodSubForm) {
-            $paymentMethodSubForm->buildForm($builder, $options);
-        }
-
-        return $this;
+    private function addUseEVoucherOnBehalfOfMarketerSubForm(
+        FormBuilderInterface $builder,
+        CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
+    ): void {
+        $builder->add(
+            self::FORM_FIELD_USE_EVOUCHER_ON_BEHALF_OF_MARKETER,
+            CheckboxType::class,
+            [
+                'label' => ' ',
+                'required' => false,
+                'disabled' => !$this->assertHasBalance($balanceByCurrencyTransfer),
+            ]
+        );
     }
 
     /**
-     * @return array
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
+     *
+     * @return void
      */
-    protected function getFormExpandersSubForms(): array
+    private function addUseCashbackBalanceSubForm(
+        FormBuilderInterface $builder,
+        CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
+    ): void {
+        $builder->add(
+            self::FORM_FIELD_USE_CASHBACK_BALANCE,
+            CheckboxType::class,
+            [
+                'label' => ' ',
+                'required' => false,
+                'disabled' => !$this->assertHasBalance($balanceByCurrencyTransfer),
+            ]
+        );
+    }
+
+    /**
+     * @return callable[]
+     */
+    private function getFormFieldMethodMap(): array
     {
-        $paymentMethodSubForms = [];
+        return [
+            $this->getConfig()->getPaymentOptionIdEVoucher() =>
+                function (FormBuilderInterface $builder, CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer): void {
+                    $this->addUseEVoucherBalanceSubForm($builder, $balanceByCurrencyTransfer);
+                },
+            $this->getConfig()->getPaymentOptionIdEVoucherOnBehalfOfMarketer() =>
+                function (FormBuilderInterface $builder, CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer): void {
+                    $this->addUseEVoucherOnBehalfOfMarketerSubForm($builder, $balanceByCurrencyTransfer);
+                },
+            $this->getConfig()->getPaymentOptionIdCashback() =>
+                function (FormBuilderInterface $builder, CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer): void {
+                    $this->addUseCashbackBalanceSubForm($builder, $balanceByCurrencyTransfer);
+                },
+        ];
+    }
 
-        $paymentMethodPlugins = $this->getFactory()->getProvidedFormExpanders();
+    /**
+     * @param \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
+     *
+     * @return bool
+     */
+    private function isDiscountBalanceApplicable(CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer): bool
+    {
+        return array_key_exists($balanceByCurrencyTransfer->getPaymentOptionId(), $this->getFormFieldMethodMap());
+    }
 
-        foreach ($paymentMethodPlugins as $paymentMethodPluginCollectionPlugin) {
-            $paymentMethodSubForms[] = $this->createSubForm($paymentMethodPluginCollectionPlugin);
-        }
-
-        return $paymentMethodSubForms;
+    /**
+     * @param \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
+     *
+     * @return bool
+     */
+    private function assertHasBalance(CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer): bool
+    {
+        return $balanceByCurrencyTransfer->getTargetAvailableBalance()->greaterThan(0);
     }
 }

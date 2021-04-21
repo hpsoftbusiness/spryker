@@ -23,6 +23,12 @@ interface SsoConstants
 
     /**
      * Specification:
+     * - Customer account balance converted to target currency endpoint URL. Mandatory.
+     */
+    public const CUSTOMER_ACCOUNT_BALANCE_BY_CURRENCY_URL = 'SSO:CUSTOMER_ACCOUNT_BALANCE_BY_CURRENCY_URL';
+
+    /**
+     * Specification:
      * - SSO Authorize URL. Mandatory.
      */
     public const AUTHORIZE_URL = 'SSO:AUTHORIZE_URL';

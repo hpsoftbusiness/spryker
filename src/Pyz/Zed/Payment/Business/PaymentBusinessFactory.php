@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Payment\Business;
 
-use Pyz\Zed\Payment\Business\Calculation\PaymentCalculator;
 use Pyz\Zed\Payment\Business\Order\SalesPaymentHydrator;
 use Spryker\Zed\Payment\Business\PaymentBusinessFactory as SprykerPaymentBusinessFactory;
 
@@ -29,13 +28,5 @@ class PaymentBusinessFactory extends SprykerPaymentBusinessFactory
             $this->getQueryContainer(),
             $this->getRepository()
         );
-    }
-
-    /**
-     * @return \Spryker\Zed\Payment\Business\Calculation\PaymentCalculatorInterface
-     */
-    public function createPaymentCalculator()
-    {
-        return new PaymentCalculator();
     }
 }

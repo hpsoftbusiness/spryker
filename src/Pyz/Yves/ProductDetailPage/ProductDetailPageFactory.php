@@ -10,6 +10,8 @@ namespace Pyz\Yves\ProductDetailPage;
 use Pyz\Client\Customer\CustomerClientInterface;
 use Pyz\Client\ProductAttribute\ProductAttributeClientInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageFactory as SprykerShopProductDetailPageFactory;
 
 /**
@@ -39,5 +41,13 @@ class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
     public function getProductAttributeClient(): ProductAttributeClientInterface
     {
         return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_PRODUCT_ATTRIBUTE);
+    }
+
+    /**
+     * @return \Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface
+     */
+    public function createDecimalToIntegerConverter(): DecimalToIntegerConverterInterface
+    {
+        return new DecimalToIntegerConverter();
     }
 }

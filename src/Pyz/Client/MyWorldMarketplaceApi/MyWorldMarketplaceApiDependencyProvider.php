@@ -17,6 +17,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractDependencyProvider
     public const CLIENT_HTTP = 'CLIENT_HTTP';
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
     public const ERROR_LOGGER = 'ERROR_LOGGER';
+    public const CLIENT_CURRENCY = 'CLIENT_CURRENCY';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -28,6 +29,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractDependencyProvider
         $container = $this->addHttpClient($container);
         $container = $this->addUtilEncodingService($container);
         $container = $this->addErrorLogger($container);
+        $this->addCurrencyClient($container);
 
         return $container;
     }
@@ -72,5 +74,17 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractDependencyProvider
         });
 
         return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addCurrencyClient(Container $container): void
+    {
+        $container->set(self::CLIENT_CURRENCY, static function (Container $container) {
+            return $container->getLocator()->currency()->client();
+        });
     }
 }

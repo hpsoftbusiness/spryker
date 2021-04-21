@@ -7,8 +7,11 @@
 
 namespace Pyz\Yves\CheckoutPage\Form;
 
+use Pyz\Client\Currency\CurrencyClientInterface;
+use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Form\DataProvider\BenefitFormDataProvider;
+use Pyz\Yves\CheckoutPage\Form\DataProvider\PaymentFormDataProvider;
 use Pyz\Yves\CheckoutPage\Form\DataProvider\SummaryFormDataProvider;
 use Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal\BenefitDealCollectionForm;
 use Pyz\Yves\CheckoutPage\Form\Steps\PaymentForm;
@@ -28,10 +31,11 @@ class FormFactory extends SpyFormFactory
      */
     public function getPaymentFormCollection(): FormCollectionHandlerInterface
     {
-        $createPaymentSubForms = $this->getPaymentMethodSubForms();
-        $subFormDataProvider = $this->createSubFormDataProvider($createPaymentSubForms);
+        $formDataProvider = $this->getConfig()->isCashbackFeatureEnabled()
+            ? $this->createPaymentFormDataProvider()
+            : $this->createSubFormDataProvider($this->getPaymentMethodSubForms());
 
-        return $this->createSubFormCollection(PaymentForm::class, $subFormDataProvider);
+        return $this->createSubFormCollection(PaymentForm::class, $formDataProvider);
     }
 
     /**
@@ -76,5 +80,36 @@ class FormFactory extends SpyFormFactory
     public function getSummaryForm()
     {
         return SummaryForm::class;
+    }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
+     */
+    public function createPaymentFormDataProvider(): StepEngineFormDataProviderInterface
+    {
+        $createPaymentSubForms = $this->getPaymentMethodSubForms();
+        $subFormDataProvider = $this->createSubFormDataProvider($createPaymentSubForms);
+
+        return new PaymentFormDataProvider(
+            $subFormDataProvider,
+            $this->getMyWorldMarketingApiClient(),
+            $this->getCurrencyClient()
+        );
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
+     */
+    public function getMyWorldMarketingApiClient(): MyWorldMarketplaceApiClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_MY_WORLD_MARKETING_API);
+    }
+
+    /**
+     * @return \Pyz\Client\Currency\CurrencyClientInterface
+     */
+    public function getCurrencyClient(): CurrencyClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CURRENCY);
     }
 }

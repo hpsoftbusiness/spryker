@@ -6,3 +6,5 @@ dummyPrepayment,Prepayment,dummy,Dummy,1
 EVoucher,EVoucher,myWorld,MyWorld,1
 BenefitVouchers,BenefitVouchers,myWorld,MyWorld,1
 ShoppingPoints,ShoppingPoints,myWorld,MyWorld,1
+EVoucherMarketer,EVoucherMarketer,myWorld,MyWorld,1
+Cashback,Cashback,myWorld,MyWorld,1

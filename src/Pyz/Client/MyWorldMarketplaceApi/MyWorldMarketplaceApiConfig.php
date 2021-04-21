@@ -10,6 +10,9 @@ namespace Pyz\Client\MyWorldMarketplaceApi;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Spryker\Client\Kernel\AbstractBundleConfig;
 
+/**
+ * @method \Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig getSharedConfig()
+ */
 class MyWorldMarketplaceApiConfig extends AbstractBundleConfig
 {
     /**
@@ -58,5 +61,13 @@ class MyWorldMarketplaceApiConfig extends AbstractBundleConfig
     public function getScope(): string
     {
         return $this->get(MyWorldMarketplaceApiConstants::SCOPE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerBalanceByCurrencyUrl(): string
+    {
+        return $this->getSharedConfig()->getCustomerBalanceByCurrencyUrl();
     }
 }

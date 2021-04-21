@@ -98,7 +98,7 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return void
      */
-    public function recalculatePricesForQuote(CalculableObjectTransfer $quoteTransfer): void
+    public function recalculateEVoucherPaymentForQuote(CalculableObjectTransfer $quoteTransfer): void
     {
         $this->getFactory()
             ->createEVoucherPaymentCalculator()
@@ -110,11 +110,35 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return void
      */
-    public function recalculatePricesForOrder(CalculableObjectTransfer $calculableObjectTransfer): void
+    public function recalculateEVoucherPaymentForOrder(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $this->getFactory()
             ->createEVoucherPaymentCalculator()
             ->recalculateOrder($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
+     *
+     * @return void
+     */
+    public function recalculateEVoucherMarketerPaymentForQuote(CalculableObjectTransfer $quoteTransfer): void
+    {
+        $this->getFactory()
+            ->createEVoucherMarketerPaymentCalculator()
+            ->recalculateQuote($quoteTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
+     *
+     * @return void
+     */
+    public function recalculateCashbackPaymentForQuote(CalculableObjectTransfer $quoteTransfer): void
+    {
+        $this->getFactory()
+            ->createCashbackPaymentCalculator()
+            ->recalculateQuote($quoteTransfer);
     }
 
     /**

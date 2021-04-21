@@ -11,11 +11,11 @@ use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 
 class PreConditionChecker implements PreConditionCheckerInterface
 {
@@ -85,8 +85,8 @@ class PreConditionChecker implements PreConditionCheckerInterface
         }
 
         return $this->wasPaymentSessionCreatedSuccessfully($quoteTransfer) || !$this->isMyWorldPaymentUsed(
-                $quoteTransfer
-            );
+            $quoteTransfer
+        );
     }
 
     /**

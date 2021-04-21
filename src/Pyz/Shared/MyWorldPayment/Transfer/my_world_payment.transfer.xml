@@ -42,20 +42,37 @@
         <property name="myWorldPaymentIsSmsAuthenticationRequired" type="bool"/>
         <property name="totalUsedBenefitVouchersAmount" type="float" />
         <property name="myWorldPaymentSessionId" type="string"/>
-        <property name="myWorldUseEVoucherBalance" type="bool"/>
+        <property name="useEVoucherBalance" type="bool"/>
+        <property name="useEVoucherOnBehalfOfMarketer" type="bool"/>
+        <property name="useCashbackBalance" type="bool"/>
+        <property name="totalUsedCashbackBalanceAmount" type="int"/>
+        <property name="totalUsedEVoucherBalanceAmount" type="int"/>
+        <property name="totalUsedEVoucherMarketerBalanceAmount" type="int"/>
     </transfer>
 
     <transfer name="CalculableObject">
-        <property name="myWorldUseEVoucherBalance" type="bool"/>
         <property name="myWorldPaymentSessionId" type="string"/>
         <property name="totalUsedBenefitVouchersAmount" type="float"/>
+        <property name="myWorldPaymentData" type="PaymentDataResponse"/>
+        <property name="totalUsedBenefitVouchersAmount" type="float" />
+        <property name="useEVoucherBalance" type="bool"/>
+        <property name="useEVoucherOnBehalfOfMarketer" type="bool"/>
+        <property name="useCashbackBalance" type="bool"/>
+        <property name="totalUsedCashbackBalanceAmount" type="int"/>
+        <property name="totalUsedEVoucherBalanceAmount" type="int"/>
+        <property name="totalUsedEVoucherMarketerBalanceAmount" type="int"/>
         <property name="myWorldPaymentData" type="PaymentDataResponse"/>
     </transfer>
 
     <transfer name="Order">
-        <property name="myWorldUseEVoucherBalance" type="bool"/>
         <property name="myWorldPaymentSessionId" type="string"/>
         <property name="myWorldPaymentData" type="PaymentDataResponse"/>
+        <property name="useEVoucherBalance" type="bool"/>
+        <property name="useEVoucherOnBehalfOfMarketer" type="bool"/>
+        <property name="useCashbackBalance" type="bool"/>
+        <property name="totalUsedCashbackBalanceAmount" type="int"/>
+        <property name="totalUsedEVoucherBalanceAmount" type="int"/>
+        <property name="totalUsedEVoucherMarketerBalanceAmount" type="int"/>
     </transfer>
 
     <transfer name="Item">

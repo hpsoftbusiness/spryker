@@ -10,11 +10,20 @@ namespace Pyz\Zed\MyWorldPayment\Business;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\CashbackPaymentCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherMarketerPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\BenefitVoucherDirectPaymentTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\CashbackDirectPaymentTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherDirectPaymentTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherMarketerDirectPaymentTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\ShoppingPointsDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGeneratorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLog;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLogInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
@@ -25,6 +34,7 @@ use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface;
 use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\SequenceNumber\Business\SequenceNumberFacadeInterface;
 
@@ -75,8 +85,40 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
         return new EVoucherPaymentCalculator(
             $this->getMyWorldMarketplaceApiClient(),
             $this->getConfig(),
-            $this->createPaymentPriceManager()
+            $this->getDecimalToIntegerConverter()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     */
+    public function createCashbackPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    {
+        return new CashbackPaymentCalculator(
+            $this->getMyWorldMarketplaceApiClient(),
+            $this->getConfig(),
+            $this->getDecimalToIntegerConverter()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     */
+    public function createEVoucherMarketerPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    {
+        return new EVoucherMarketerPaymentCalculator(
+            $this->getMyWorldMarketplaceApiClient(),
+            $this->getConfig(),
+            $this->getDecimalToIntegerConverter()
+        );
+    }
+
+    /**
+     * @return \Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface
+     */
+    public function getDecimalToIntegerConverter(): DecimalToIntegerConverterInterface
+    {
+        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::DECIMAL_TO_INTEGER_CONVERTER);
     }
 
     /**
@@ -95,7 +137,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createShoppingPointsPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
-        return new ShoppingPointsPaymentCalculator($this->getConfig());
+        return new ShoppingPointsPaymentCalculator();
     }
 
     /**
@@ -103,7 +145,11 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createApiRequestGenerator(): MyWorldPaymentRequestApiTransferGeneratorInterface
     {
-        return new MyWorldPaymentRequestApiTransferGenerator($this->getConfig(), $this->getSequenceFacade());
+        return new MyWorldPaymentRequestApiTransferGenerator(
+            $this->getConfig(),
+            $this->getSequenceFacade(),
+            $this->createPaymentFlowsTransferGenerator()
+        );
     }
 
     /**
@@ -124,6 +170,31 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
             $this->getMyWorldPaymentApiFacade(),
             $this->createPaymentApiLog()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface
+     */
+    public function createPaymentFlowsTransferGenerator(): PaymentFlowsTransferGeneratorInterface
+    {
+        return new PaymentFlowsTransferGenerator(
+            $this->getConfig(),
+            $this->getDirectPaymentTransferGeneratorsStack()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\DirectPaymentTransferGeneratorInterface[]
+     */
+    public function getDirectPaymentTransferGeneratorsStack(): array
+    {
+        return [
+            new BenefitVoucherDirectPaymentTransferGenerator($this->getConfig()),
+            new CashbackDirectPaymentTransferGenerator($this->getConfig()),
+            new EVoucherDirectPaymentTransferGenerator($this->getConfig()),
+            new EVoucherMarketerDirectPaymentTransferGenerator($this->getConfig()),
+            new ShoppingPointsDirectPaymentTransferGenerator($this->getConfig()),
+        ];
     }
 
     /**

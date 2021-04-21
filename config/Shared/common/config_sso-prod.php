@@ -18,6 +18,8 @@ $config[SsoConstants::SSO_LOGIN_ENABLED] = true;
 $config[SsoConstants::TOKEN_URL] = getenv('SSO_TOKEN_URL') ? : 'https://id-test.cashbackworld.com/trunk/oauth/token';
 $config[SsoConstants::AUTHORIZE_URL] = getenv('SSO_AUTHORIZE_URL') ? : 'https://id-test.cashbackworld.com/trunk/oauth/authorize';
 $config[SsoConstants::CUSTOMER_INFORMATION_URL] = getenv('SSO_CUSTOMER_INFORMATION_URL') ? : 'https://preprod-marketplace-gateway.myworldwebservices.com/customers';
+$config[SsoConstants::CUSTOMER_ACCOUNT_BALANCE_BY_CURRENCY_URL] = getenv('SSO_CUSTOMER_ACCOUNT_BALANCE_BY_CURRENCY_URL')
+    ?: 'https://marketplace-gateway.myworldwebservices.com/customers/{customerID}/accounts/currency/{targetCurrency}';
 $config[SsoConstants::LOGIN_CHECK_PATH] = 'login_check';
 
 $config[SsoConstants::RESPONSE_TYPE] = 'code';

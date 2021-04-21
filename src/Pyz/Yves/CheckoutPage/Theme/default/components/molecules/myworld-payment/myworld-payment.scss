@@ -1,0 +1,22 @@
+@mixin checkout-page-myworld-payment($name: '.myworld-payment') {
+    #{$name} {
+        &__container {
+            padding: map-get($setting-spacing, bigger);
+        }
+
+        &__title {
+            font: fw(medium) rem(22)/rem(24) $setting-font-family;
+            margin-bottom: map-get($setting-spacing, small);
+        }
+
+        &__subtitle {
+            font: fw(default) rem(14)/rem(16) $setting-font-family;
+            margin-bottom: map-get($setting-spacing, small);
+        }
+
+        &__methods-container {
+        }
+    }
+}
+
+@include checkout-page-myworld-payment();

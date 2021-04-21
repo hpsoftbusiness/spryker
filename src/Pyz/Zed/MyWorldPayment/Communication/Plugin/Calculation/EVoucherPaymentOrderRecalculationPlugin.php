@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig getConfig()
  * @method \Pyz\Zed\MyWorldPayment\Communication\MyWorldPaymentCommunicationFactory getFactory()
  */
-class MyWorldPaymentQuoteCalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
+class EVoucherPaymentOrderRecalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
 {
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
@@ -25,6 +25,6 @@ class MyWorldPaymentQuoteCalculationPlugin extends AbstractPlugin implements Cal
      */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer): void
     {
-        $this->getFacade()->recalculatePricesForQuote($calculableObjectTransfer);
+        $this->getFacade()->recalculateEVoucherPaymentForOrder($calculableObjectTransfer);
     }
 }

@@ -2,20 +2,31 @@
 
 {% define data = {
     title: required,
-    message: required
+    message: required,
+    errors: _view.errors | default([])
 } %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block title %}{% endblock %}
-  
+
 {% block container %}
     <div class="page-layout-order-submitted">
-        {% include organism('success-page', 'CheckoutPage') with {
-            data: {
-                title: data.title,
-                message: data.message,
-            },
-        } only %}
+        {% if data.errors is empty %}
+            {% include organism('success-page', 'CheckoutPage') with {
+                data: {
+                    title: data.title,
+                    message: data.message,
+                },
+            } only %}
+        {% else %}
+            {% include organism('error-page', 'CheckoutPage') with {
+                data: {
+                    title: data.title,
+                    message: data.message,
+                    errors: data.errors
+                },
+            } only %}
+        {% endif %}
     </div>
 {% endblock %}

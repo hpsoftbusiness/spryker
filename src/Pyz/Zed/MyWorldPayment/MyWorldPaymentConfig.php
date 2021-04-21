@@ -184,7 +184,7 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
     /**
      * @return int
      */
-    public function getShoppingPointsPaymentOptionId(): int
+    public function getOptionShoppingPoints(): int
     {
         return $this->get(MyWorldPaymentConstants::OPTION_SHOPPING_POINTS_ACCOUNT);
     }
@@ -195,5 +195,37 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
     public function getMyWorldPaymentProviderKey(): string
     {
         return $this->getSharedConfig()::PAYMENT_PROVIDER_NAME_MY_WORLD;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOptionCashback(): int
+    {
+        return $this->get(MyWorldPaymentConstants::OPTION_CASHBACK_ACCOUNT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCashbackPaymentName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_CASHBACK);
+    }
+
+    /**
+     * @return int
+     */
+    public function getOptionEVoucherOnBehalfOfMarketer(): int
+    {
+        return $this->get(MyWorldPaymentConstants::OPTION_EVOUCHER_ON_BEHALF_OF_MARKETER);
+    }
+
+    /**
+     * @return string
+     */
+    public function getEVoucherOnBehalfOfMarketerPaymentName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER_ON_BEHALF_OF_MARKETER);
     }
 }

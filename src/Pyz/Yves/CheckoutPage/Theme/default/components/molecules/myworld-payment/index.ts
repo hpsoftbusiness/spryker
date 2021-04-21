@@ -1,0 +1,1 @@
+import './myworld-payment.scss';

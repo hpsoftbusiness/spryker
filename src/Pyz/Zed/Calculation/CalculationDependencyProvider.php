@@ -7,9 +7,11 @@
 
 namespace Pyz\Zed\Calculation;
 
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\CashbackPaymentQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherMarketerPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentBenefitVoucherQuoteCalculationPlugin;
-use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentOrderRecalculationPlugin;
-use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherPaymentOrderRecalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\ShoppingPointsQuoteCalculationPlugin;
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
@@ -217,6 +219,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new GiftCardCalculatorPlugin(), #GiftCardFeature
 
             new InitialGrandTotalCalculatorPlugin(),
+
             new DiscountCalculatorPlugin(),
             new DiscountAmountAggregatorForGenericAmountPlugin(),
             new ItemDiscountAmountFullAggregatorPlugin(),
@@ -239,7 +242,10 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
 
-            new MyWorldPaymentQuoteCalculationPlugin(),
+            new EVoucherPaymentQuoteCalculationPlugin(),
+            new CashbackPaymentQuoteCalculationPlugin(),
+            new EVoucherMarketerPaymentQuoteCalculationPlugin(),
+
             new PaymentCalculatorPlugin(),
             new MyWorldPaymentBenefitVoucherQuoteCalculationPlugin(),
         ];
@@ -282,7 +288,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new CanceledTotalCalculationPlugin(),
             new OrderTaxTotalCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
-            new MyWorldPaymentOrderRecalculationPlugin(),
+            new EVoucherPaymentOrderRecalculationPlugin(),
             new NetTotalCalculatorPlugin(),
         ];
     }

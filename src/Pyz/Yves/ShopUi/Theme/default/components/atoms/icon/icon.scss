@@ -165,4 +165,9 @@
         height: rem(5);
         color: $setting-color-white;
     }
+
+    &--cashback-balance {
+        width: rem(58);
+        height: rem(30);
+    }
 }

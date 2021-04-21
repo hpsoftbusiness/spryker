@@ -1,0 +1,42 @@
+@mixin checkout-page-myworld-payment-method($name: '.myworld-payment-method') {
+    #{$name} {
+        &__container {
+            border-radius: rem(5);
+            border: rem(1) solid $setting-color-gray-4;
+            margin-bottom: map-get($setting-spacing, small);
+            padding: map-get($setting-spacing, default);
+
+            &--disabled {
+                background-color: $setting-color-gray-2;
+            }
+        }
+
+        &__balance-name {
+            font: fw(medium) rem(14)/rem(18) $setting-font-family;
+        }
+
+        &__balance-text {
+            margin-right: map-get($setting-spacing, small);
+
+            &--disabled {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        &__amount {
+            color: #5cb885;
+            margin-right: map-get($setting-spacing, big);
+            font: fw(medium) rem(14)/rem(18) $setting-font-family;
+        }
+
+        &__use-balance {
+            @include helper-font-size(smaller);
+            padding-top: map-get($setting-spacing, default);
+            display: flex;
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-myworld-payment-method();

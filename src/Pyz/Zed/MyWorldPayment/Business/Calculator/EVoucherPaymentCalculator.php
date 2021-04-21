@@ -8,113 +8,23 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
-use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\PaymentTransfer;
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
-use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
-use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
-use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
-class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
+class EVoucherPaymentCalculator extends AbstractCashbackPaymentCalculator
 {
     /**
-     * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
+     * @return int
      */
-    protected $marketplaceApiClient;
-
-    /**
-     * @var \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig
-     */
-    protected $myWorldPaymentConfig;
-
-    /**
-     * @var \Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface
-     */
-    private $paymentPriceManager;
-
-    /**
-     * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $marketplaceApiClient
-     * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
-     * @param \Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface $paymentPriceManager
-     */
-    public function __construct(
-        MyWorldMarketplaceApiClientInterface $marketplaceApiClient,
-        MyWorldPaymentConfig $myWorldPaymentConfig,
-        PaymentPriceManagerInterface $paymentPriceManager
-    ) {
-        $this->marketplaceApiClient = $marketplaceApiClient;
-        $this->myWorldPaymentConfig = $myWorldPaymentConfig;
-        $this->paymentPriceManager = $paymentPriceManager;
+    protected function getPaymentOptionId(): int
+    {
+        return $this->myWorldPaymentConfig->getOptionEVoucher();
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
+     * @return string
      */
-    public function recalculateQuote(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    protected function getPaymentName(): string
     {
-        $calculableObjectTransfer = $this->removeEVoucherPayment($calculableObjectTransfer);
-
-        if ($this->isEVoucherPaymentSelected($calculableObjectTransfer)) {
-            $calculableObjectTransfer = $this->addPaymentToQuote($calculableObjectTransfer);
-        }
-
-        return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
-    public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
-    {
-        return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
-    protected function addPaymentToQuote(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
-    {
-        $clientBalance = $calculableObjectTransfer->getOriginalQuote()->getCustomer()->getCustomerBalance();
-
-        if ($clientBalance->getAvailableCashbackAmount()->toFloat() === 0.00) {
-            return $calculableObjectTransfer;
-        }
-
-        $availableVouchers = (int)($clientBalance->getAvailableCashbackAmount()->round(2)->toFloat() * 100);
-        $availableAmountOfVouchers = $this->paymentPriceManager->getAvailablePriceToPayByCalculableObject($calculableObjectTransfer);
-
-        $calculableObjectTransfer->addPayment(
-            $this->createEVouchersPaymentTransfer(
-                $availableVouchers,
-                $availableAmountOfVouchers->getAvailableEVoucherToCharge()
-            )
-        );
-
-        return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param int $availablePrice
-     * @param int $chargePrice
-     *
-     * @return \Generated\Shared\Transfer\PaymentTransfer
-     */
-    protected function createEVouchersPaymentTransfer(int $availablePrice, int $chargePrice): PaymentTransfer
-    {
-        return (new PaymentTransfer())
-            ->setPaymentProvider(SharedMyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD)
-            ->setPaymentSelection($this->myWorldPaymentConfig->getOptionEVoucherName())
-            ->setPaymentMethod($this->myWorldPaymentConfig->getOptionEVoucherName())
-            ->setPaymentMethodName($this->myWorldPaymentConfig->getOptionEVoucherName())
-            ->setAvailableAmount($chargePrice)
-            ->setAmount($chargePrice)
-            ->setIsLimitedAmount(true);
+        return $this->myWorldPaymentConfig->getEVoucherPaymentName();
     }
 
     /**
@@ -122,50 +32,21 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
      *
      * @return bool
      */
-    protected function isEVoucherPaymentSelected(CalculableObjectTransfer $calculableObjectTransfer): bool
+    protected function isPaymentSelected(CalculableObjectTransfer $calculableObjectTransfer): bool
     {
-        return (bool)$calculableObjectTransfer->getMyWorldUseEVoucherBalance();
+        return (bool)$calculableObjectTransfer->getUseEVoucherBalance();
     }
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     * @param int $usableBalanceAmount
      *
-     * @return \Generated\Shared\Transfer\PaymentTransfer|null
+     * @return void
      */
-    protected function getEVoucherPayment(CalculableObjectTransfer $calculableObjectTransfer): ?PaymentTransfer
-    {
-        foreach ($calculableObjectTransfer->getPayments() as $paymentTransfer) {
-            if ($paymentTransfer->getPaymentSelection() === $this->myWorldPaymentConfig->getOptionEVoucherName()) {
-                return $paymentTransfer;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
-    protected function removeEVoucherPayment(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
-    {
-        foreach ($calculableObjectTransfer->getPayments() as $index => $paymentTransfer) {
-            if ($paymentTransfer->getPaymentSelection() === $this->myWorldPaymentConfig->getOptionEVoucherName()) {
-                unset($calculableObjectTransfer->getPayments()[$index]);
-            }
-        }
-
-        return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected function getCustomerInformation(CustomerTransfer $customerTransfer): CustomerTransfer
-    {
-        return $this->marketplaceApiClient->getCustomerInformationByCustomerNumberOrId($customerTransfer);
+    protected function setTotalUsedBalanceForQuote(
+        CalculableObjectTransfer $calculableObjectTransfer,
+        int $usableBalanceAmount
+    ): void {
+        $calculableObjectTransfer->setTotalUsedEVoucherBalanceAmount($usableBalanceAmount);
     }
 }

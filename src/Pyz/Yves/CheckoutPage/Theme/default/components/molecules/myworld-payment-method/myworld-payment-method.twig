@@ -1,0 +1,37 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'myworld-payment-method',
+} %}
+
+{% define data = {
+    checkbox: required,
+    name: required,
+    amount: required,
+    currencyIsoCode: required,
+} %}
+
+{% block body %}
+    {% set isDisabled = data.checkbox.vars.disabled ?? false %}
+
+    <div class="{{ config.name }}__container grid {% if isDisabled %}{{ config.name }}__container--disabled{% endif %}">
+        <div class="col col--sm-6">
+            <label class="{{ config.name }}__use-balance">
+                {{ form_row(data.checkbox, {
+                    required: false
+                }) }}
+                <span class="{{ config.name }}__balance-name">{{ data.name }}</span>
+            </label>
+        </div>
+        <div class="col col--sm-6">
+            <span class="float-right">
+                <span class="{{ config.name }}__balance-text {% if isDisabled %}{{ config.name }}__balance-text--disabled{% endif %}">
+                    {{ 'checkout.payment.myworld.payment_methods.balance_text' | trans }}
+                </span>
+                <span class="{{ config.name }}__amount">
+                    {{ data.amount | money(true, data.currencyIsoCode) }}
+                </span>
+            </span>
+        </div>
+    </div>
+{% endblock %}

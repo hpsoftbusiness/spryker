@@ -7,9 +7,9 @@
 
 namespace Pyz\Shared\Sso;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class SsoConfig extends AbstractBundleConfig
+class SsoConfig extends AbstractSharedConfig
 {
     /**
      * @return string

@@ -8,8 +8,11 @@
 namespace Pyz\Client\MyWorldMarketplaceApi;
 
 use GuzzleHttp\ClientInterface;
+use Pyz\Client\Currency\CurrencyClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessToken;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerBalance\CustomerBalanceRequestHandler;
+use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerBalance\CustomerBalanceRequestHandlerInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumber;
 use Pyz\Client\MyWorldMarketplaceApi\Api\CustomerInformationByCustomerNumber\CustomerInformationByCustomerNumberInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\Request;
@@ -18,6 +21,8 @@ use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapper;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseMapper\ResponseMapperInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidator;
 use Pyz\Client\MyWorldMarketplaceApi\Api\ResponseValidator\ResponseValidatorInterface;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerBalanceMapper;
+use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerBalanceMapperInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapper;
 use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerInformationMapperInterface;
 use Spryker\Client\Kernel\AbstractFactory;
@@ -116,5 +121,35 @@ class MyWorldMarketplaceApiFactory extends AbstractFactory
             $this->getConfig(),
             $this->getErrorLogger()
         );
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\Api\CustomerBalance\CustomerBalanceRequestHandlerInterface
+     */
+    public function createCustomerBalanceRequestHandler(): CustomerBalanceRequestHandlerInterface
+    {
+        return new CustomerBalanceRequestHandler(
+            $this->createRequest(),
+            $this->createAccessToken(),
+            $this->getCurrencyClient(),
+            $this->createCustomerBalanceMapper(),
+            $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerBalanceMapperInterface
+     */
+    public function createCustomerBalanceMapper(): CustomerBalanceMapperInterface
+    {
+        return new CustomerBalanceMapper();
+    }
+
+    /**
+     * @return \Pyz\Client\Currency\CurrencyClientInterface
+     */
+    public function getCurrencyClient(): CurrencyClientInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::CLIENT_CURRENCY);
     }
 }

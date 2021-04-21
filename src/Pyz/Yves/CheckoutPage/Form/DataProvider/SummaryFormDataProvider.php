@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CheckoutPage\Form\DataProvider;
 
-use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Yves\CheckoutPage\Form\Steps\SummaryForm;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerShop\Yves\CheckoutPage\Form\DataProvider\SummaryFormDataProvider as SprykerSummaryFormDataProvider;
@@ -36,39 +35,10 @@ class SummaryFormDataProvider extends SprykerSummaryFormDataProvider
             );
         }
 
-        if ($this->isMyWorldPaymentSelected($quoteTransfer)
-            && $quoteTransfer->getMyWorldPaymentSessionId()
-            && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()
-        ) {
+        if ($quoteTransfer->getMyWorldPaymentSessionId() && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
             $options[SummaryForm::OPTION_SMS_CODE] = self::GLOSSARY_SMS_CODE;
         }
 
         return $options;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function isMyWorldPaymentSelected(QuoteTransfer $quoteTransfer): bool
-    {
-        return $quoteTransfer->getMyWorldUseEVoucherBalance() || $this->isBenefitVoucherSelected($quoteTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function isBenefitVoucherSelected(QuoteTransfer $quoteTransfer): bool
-    {
-        foreach ($quoteTransfer->getItems() as $item) {
-            if ($item->getUseBenefitVoucher()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

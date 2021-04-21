@@ -21,10 +21,26 @@ class NopaymentMethodFilter extends SpyNopaymentMethodFilter
      */
     public function filterPaymentMethods(PaymentMethodsTransfer $paymentMethodsTransfer, QuoteTransfer $quoteTransfer)
     {
-        if ($quoteTransfer->getTotals() && $quoteTransfer->getTotals()->getPriceToPay() === 0 && !$quoteTransfer->getMyWorldUseEVoucherBalance()) {
+        if (
+            $quoteTransfer->getTotals()
+            && $quoteTransfer->getTotals()->getPriceToPay() === 0
+            && !$this->assertMyWorldPaymentMethodSelected($quoteTransfer)
+        ) {
             return $this->disallowRegularPaymentMethods($paymentMethodsTransfer);
         }
 
         return $this->disallowNoPaymentMethods($paymentMethodsTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    private function assertMyWorldPaymentMethodSelected(QuoteTransfer $quoteTransfer): bool
+    {
+        return $quoteTransfer->getUseEVoucherBalance()
+            || $quoteTransfer->getUseEVoucherOnBehalfOfMarketer()
+            || $quoteTransfer->getUseCashbackBalance();
     }
 }

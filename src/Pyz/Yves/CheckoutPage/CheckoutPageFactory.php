@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Client\Messenger\MessengerClientInterface;
 use Pyz\Yves\CheckoutPage\Form\FormFactory;
 use Pyz\Yves\CheckoutPage\Process\StepFactory;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageFactory as SprykerShopCheckoutPageFactory;
@@ -30,10 +31,10 @@ class CheckoutPageFactory extends SprykerShopCheckoutPageFactory
     }
 
     /**
-     * @return array
+     * @return \Pyz\Client\Messenger\MessengerClientInterface
      */
-    public function getProvidedFormExpanders(): array
+    public function getMessengerClient(): MessengerClientInterface
     {
-        return $this->getProvidedDependency(CheckoutPageDependencyProvider::FORM_EXPANDER);
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_MESSENGER);
     }
 }

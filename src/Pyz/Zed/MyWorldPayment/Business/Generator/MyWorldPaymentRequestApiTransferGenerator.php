@@ -9,13 +9,11 @@ namespace Pyz\Zed\MyWorldPayment\Business\Generator;
 
 use ArrayObject;
 use DateTime;
-use Generated\Shared\Transfer\FlowsTransfer;
 use Generated\Shared\Transfer\MwsDirectPaymentOptionTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeValidateRequestTransfer;
 use Generated\Shared\Transfer\PaymentSessionRequestTransfer;
-use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SequenceNumberSettingsTransfer;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig as ZedMyWorldPaymentConfig;
@@ -38,15 +36,23 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
     private $sequenceNumberFacade;
 
     /**
+     * @var \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface
+     */
+    private $paymentFlowsTransferGenerator;
+
+    /**
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
      * @param \Spryker\Zed\SequenceNumber\Business\SequenceNumberFacadeInterface $sequenceNumberFacade
+     * @param \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface $paymentFlowsTransferGenerator
      */
     public function __construct(
         ZedMyWorldPaymentConfig $myWorldPaymentConfig,
-        SequenceNumberFacadeInterface $sequenceNumberFacade
+        SequenceNumberFacadeInterface $sequenceNumberFacade,
+        PaymentFlowsTransferGeneratorInterface $paymentFlowsTransferGenerator
     ) {
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
         $this->sequenceNumberFacade = $sequenceNumberFacade;
+        $this->paymentFlowsTransferGenerator = $paymentFlowsTransferGenerator;
     }
 
     /**
@@ -96,7 +102,7 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
      *
      * @return \Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer
      */
-    protected function createPaymentCodeGenerateRequestTransfer(QuoteTransfer $quoteTransfer): PaymentCodeGenerateRequestTransfer
+    private function createPaymentCodeGenerateRequestTransfer(QuoteTransfer $quoteTransfer): PaymentCodeGenerateRequestTransfer
     {
         return (new PaymentCodeGenerateRequestTransfer())
             ->setSessionId($quoteTransfer->getMyWorldPaymentSessionId());
@@ -107,16 +113,17 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
      *
      * @return \Generated\Shared\Transfer\PaymentSessionRequestTransfer
      */
-    protected function createPaymentSessionRequestTransfer(QuoteTransfer $quoteTransfer): PaymentSessionRequestTransfer
+    private function createPaymentSessionRequestTransfer(QuoteTransfer $quoteTransfer): PaymentSessionRequestTransfer
     {
-        $usedMyWorldPayments = $this->getListOfSelectedPaymentOptions($quoteTransfer);
+        $flowsTransfer = $this->paymentFlowsTransferGenerator->generate($quoteTransfer);
+        $paymentIds = $this->getSelectedPaymentOptionIds($flowsTransfer->getMwsDirect());
 
         return ($requestTransfer = new PaymentSessionRequestTransfer())
             ->setCurrencyId($quoteTransfer->getCurrency()->getCode())
             ->setReference($this->sequenceNumberFacade->generate($this->generateSequenceSettings()))
-            ->setPaymentOptions($this->getNamesOfPaymentsOptions($usedMyWorldPayments))
+            ->setPaymentOptions($paymentIds)
             ->setSsoAccessToken($quoteTransfer->getCustomer()->getSsoAccessToken())
-            ->setFlows($this->createFlowsTransferFromQuoteTransfer($quoteTransfer))
+            ->setFlows($flowsTransfer)
             ->setAmount(
                 $this->getCommonPriceForThePayments($requestTransfer->getFlows()->getMwsDirect())
             );
@@ -127,13 +134,13 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
      *
      * @return int
      */
-    protected function getCommonPriceForThePayments(ArrayObject $dwsDirectItems): int
+    private function getCommonPriceForThePayments(ArrayObject $dwsDirectItems): int
     {
         return array_reduce($dwsDirectItems->getArrayCopy(), function (int $carry, MwsDirectPaymentOptionTransfer $directPaymentOptionTransfer) {
             /**
              * Shopping points amount is provided in units thus it doesn't need to be added to total amount sum.
              */
-            if ($directPaymentOptionTransfer->getPaymentOptionId() === $this->myWorldPaymentConfig->getShoppingPointsPaymentOptionId()) {
+            if ($directPaymentOptionTransfer->getPaymentOptionId() === $this->myWorldPaymentConfig->getOptionShoppingPoints()) {
                 return $carry;
             }
             $carry += $directPaymentOptionTransfer->getAmount();
@@ -145,7 +152,7 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
     /**
      * @return \Generated\Shared\Transfer\SequenceNumberSettingsTransfer
      */
-    protected function generateSequenceSettings(): SequenceNumberSettingsTransfer
+    private function generateSequenceSettings(): SequenceNumberSettingsTransfer
     {
         $date = new DateTime();
 
@@ -154,124 +161,17 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
     }
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \ArrayObject|\Generated\Shared\Transfer\MwsDirectPaymentOptionTransfer[] $directPaymentOptionsTransferCollection
      *
-     * @return \Generated\Shared\Transfer\FlowsTransfer
+     * @return int[]
      */
-    protected function createFlowsTransferFromQuoteTransfer(QuoteTransfer $quoteTransfer): FlowsTransfer
+    private function getSelectedPaymentOptionIds(ArrayObject $directPaymentOptionsTransferCollection): array
     {
-        $listMwsDirect = new ArrayObject();
-
-        foreach ($quoteTransfer->getPayments() as $paymentTransfer) {
-            if ($this->isPaymentMethodForMyWorld($paymentTransfer->getPaymentSelection())) {
-                $unitType = $this->getUnitTypeForPayment($paymentTransfer);
-
-                $listMwsDirect->append(
-                    $this->createMwsDirectFromPaymentTransfer(
-                        $paymentTransfer,
-                        $this->getUnitByUnitType($unitType, $quoteTransfer),
-                        $unitType,
-                        $this->getOptionIdByName($paymentTransfer->getPaymentSelection())
-                    )
-                );
-            }
-        }
-
-        return (new FlowsTransfer())
-            ->setType($this->myWorldPaymentConfig->getDefaultFlowsType())
-            ->setMwsDirect($listMwsDirect);
-    }
-
-    /**
-     * @param string $unitType
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return string
-     */
-    protected function getUnitByUnitType(string $unitType, QuoteTransfer $quoteTransfer): string
-    {
-        return $unitType === $this->myWorldPaymentConfig->getUnitTypeCurrency()
-            ? $quoteTransfer->getCurrency()->getCode()
-            : $this->myWorldPaymentConfig->getUnitTypeUnit();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return array
-     */
-    protected function getListOfSelectedPaymentOptions(QuoteTransfer $quoteTransfer): array
-    {
-        $listSelectedOptions = [];
-
-        foreach ($quoteTransfer->getPayments() as $payment) {
-            if (array_key_exists($payment->getPaymentSelection(), $this->myWorldPaymentConfig->getMapOptionNameToOptionId())) {
-                $listSelectedOptions[] = $payment;
-            }
-        }
-
-        return $listSelectedOptions;
-    }
-
-    /**
-     * @param array $listOfPayments
-     *
-     * @return array
-     */
-    protected function getNamesOfPaymentsOptions(array $listOfPayments): array
-    {
-        return array_reduce($listOfPayments, function (array $carry, PaymentTransfer $item) {
-            $carry[] = $this->getOptionIdByName($item->getPaymentSelection());
-
-            return $carry;
-        }, []);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     *
-     * @return string
-     */
-    protected function getUnitTypeForPayment(PaymentTransfer $paymentTransfer): string
-    {
-        return $this->myWorldPaymentConfig
-            ->getUnitTypeToOptionIdMap()[$this->getOptionIdByName($paymentTransfer->getPaymentSelection())];
-    }
-
-    /**
-     * @param string $nameOfOption
-     *
-     * @return int
-     */
-    protected function getOptionIdByName(string $nameOfOption): int
-    {
-        return (int)$this->myWorldPaymentConfig->getOptionNameToIdMap()[$nameOfOption];
-    }
-
-    /**
-     * @param string $paymentMethodName
-     *
-     * @return bool
-     */
-    protected function isPaymentMethodForMyWorld(string $paymentMethodName): bool
-    {
-        return array_key_exists($paymentMethodName, $this->myWorldPaymentConfig->getOptionNameToIdMap());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     * @param string $unit
-     * @param string $unitType
-     * @param int $paymentOptionId
-     *
-     * @return \Generated\Shared\Transfer\MwsDirectPaymentOptionTransfer
-     */
-    protected function createMwsDirectFromPaymentTransfer(PaymentTransfer $paymentTransfer, string $unit, string $unitType, int $paymentOptionId): MwsDirectPaymentOptionTransfer
-    {
-        return (new MwsDirectPaymentOptionTransfer())
-            ->setAmount($paymentTransfer->getAmount())
-            ->setUnit($unit)
-            ->setUnitType($unitType)
-            ->setPaymentOptionId($paymentOptionId);
+        return array_map(
+            static function (MwsDirectPaymentOptionTransfer $directPaymentOptionTransfer): int {
+                return $directPaymentOptionTransfer->getPaymentOptionId();
+            },
+            $directPaymentOptionsTransferCollection->getArrayCopy()
+        );
     }
 }

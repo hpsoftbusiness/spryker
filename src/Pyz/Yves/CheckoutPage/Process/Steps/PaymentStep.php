@@ -17,7 +17,6 @@ use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
@@ -44,11 +43,6 @@ class PaymentStep extends SprykerShopPaymentStep
     private $myWorldPaymentClient;
 
     /**
-     * @var \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface
-     */
-    private $integerToDecimalConverter;
-
-    /**
      * @var \Spryker\Shared\Translator\TranslatorInterface
      */
     private $translator;
@@ -66,14 +60,13 @@ class PaymentStep extends SprykerShopPaymentStep
     /**
      * @param \Pyz\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
-     * @param \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface $integerToDecimalConverter
      * @param \Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface $myWorldPaymentClient
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface $paymentClient
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $paymentPlugins
+     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection|string $paymentPlugins
      * @param string $stepRoute
      * @param string $escapeRoute
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface|array $calculationClient
      * @param array $checkoutPaymentStepEnterPreCheckPlugins
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface $preConditionChecker
@@ -81,7 +74,6 @@ class PaymentStep extends SprykerShopPaymentStep
     public function __construct(
         CheckoutPageConfig $checkoutPageConfig,
         TranslatorInterface $translator,
-        IntegerToDecimalConverterInterface $integerToDecimalConverter,
         MyWorldPaymentClientInterface $myWorldPaymentClient,
         CheckoutPageToPaymentClientInterface $paymentClient,
         StepHandlerPluginCollection $paymentPlugins,
@@ -105,7 +97,6 @@ class PaymentStep extends SprykerShopPaymentStep
 
         $this->productSellableChecker = $productSellableChecker;
         $this->myWorldPaymentClient = $myWorldPaymentClient;
-        $this->integerToDecimalConverter = $integerToDecimalConverter;
         $this->translator = $translator;
         $this->checkoutPageConfig = $checkoutPageConfig;
         $this->preConditionChecker = $preConditionChecker;
@@ -122,7 +113,7 @@ class PaymentStep extends SprykerShopPaymentStep
         $isNeedToPay = $this->executeCheckoutPaymentStepEnterPreCheckPlugins($quoteTransfer) && (!$totals || $totals->getPriceToPay() > 0);
 
         if (!$isNeedToPay) {
-            return $quoteTransfer->getMyWorldUseEVoucherBalance();
+            return $quoteTransfer->getUseEVoucherBalance();
         }
 
         return true;
@@ -161,7 +152,7 @@ class PaymentStep extends SprykerShopPaymentStep
         $isQuoteValid = parent::postCondition($quoteTransfer);
 
         if ($isQuoteValid) {
-            if ($quoteTransfer->getMyWorldUseEVoucherBalance()
+            if ($quoteTransfer->getUseEVoucherBalance()
                 && !$quoteTransfer->getMyWorldPaymentSessionId()
                 && $this->isCustomerHasAmountOfVouchers($quoteTransfer->getCustomer())
             ) {
@@ -231,27 +222,6 @@ class PaymentStep extends SprykerShopPaymentStep
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
-     *
-     * @return array
-     */
-    public function getTemplateVariables(AbstractTransfer $dataTransfer): array
-    {
-        $myWorldMarketplaceClientBalance = $dataTransfer->getCustomer()->getCustomerBalance();
-
-        $variables['clientsBalance'] = [
-            'availableCashbackCurrency' => $myWorldMarketplaceClientBalance->getAvailableCashbackCurrency(),
-            'availableBenefitVoucherCurrency' => $myWorldMarketplaceClientBalance->getAvailableBenefitVoucherCurrency(),
-            'availableCashbackAmount' => $myWorldMarketplaceClientBalance->getAvailableCashbackAmount()->toFloat(),
-            'availableShoppingPointAmount' => $myWorldMarketplaceClientBalance->getAvailableShoppingPointAmount()->toFloat(),
-            'availableBenefitVoucherAmount' => $myWorldMarketplaceClientBalance->getAvailableBenefitVoucherAmount()->toFloat(),
-            'availableEVouchersForCharge' => $this->getAvailableChargeAmount($dataTransfer),
-        ];
-
-        return $variables;
-    }
-
-    /**
      * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $abstractTransfer
      *
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null
@@ -295,18 +265,6 @@ class PaymentStep extends SprykerShopPaymentStep
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return float
-     */
-    protected function getAvailableChargeAmount(QuoteTransfer $quoteTransfer): float
-    {
-        $availablePricesTransfer = $this->myWorldPaymentClient->getAvailableInternalPaymentPrices($quoteTransfer);
-
-        return $this->integerToDecimalConverter->convert($availablePricesTransfer->getAvailableEVoucherToCharge());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
      * @return bool
      */
     protected function isInternalPaymentMethodSelected(QuoteTransfer $quoteTransfer): bool
@@ -317,7 +275,7 @@ class PaymentStep extends SprykerShopPaymentStep
             }
         }
 
-        return false;
+        return $quoteTransfer->getTotalUsedShoppingPointsAmount() > 0;
     }
 
     /**
@@ -333,14 +291,8 @@ class PaymentStep extends SprykerShopPaymentStep
 
         $internalAmount = array_reduce(
             $quoteTransfer->getPayments()->getArrayCopy(),
-            function(int $carry, PaymentTransfer $paymentTransfer) {
-                if (
-                    $paymentTransfer->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD
-                    && (
-                        $paymentTransfer->getPaymentMethodName() === $this->checkoutPageConfig->getBenefitVoucherPaymentName()
-                        || $paymentTransfer->getPaymentMethodName() === $this->checkoutPageConfig->getEVoucherPaymentName()
-                    )
-                ) {
+            function (int $carry, PaymentTransfer $paymentTransfer) {
+                if ($paymentTransfer->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD) {
                     $carry += $paymentTransfer->getAmount();
                 }
 

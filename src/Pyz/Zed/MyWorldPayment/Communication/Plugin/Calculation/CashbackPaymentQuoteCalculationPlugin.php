@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig getConfig()
  * @method \Pyz\Zed\MyWorldPayment\Communication\MyWorldPaymentCommunicationFactory getFactory()
  */
-class MyWorldPaymentOrderRecalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
+class CashbackPaymentQuoteCalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
 {
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
@@ -25,6 +25,6 @@ class MyWorldPaymentOrderRecalculationPlugin extends AbstractPlugin implements C
      */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer): void
     {
-        $this->getFacade()->recalculatePricesForOrder($calculableObjectTransfer);
+        $this->getFacade()->recalculateCashbackPaymentForQuote($calculableObjectTransfer);
     }
 }

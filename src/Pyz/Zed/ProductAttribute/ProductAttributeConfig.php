@@ -45,6 +45,6 @@ class ProductAttributeConfig extends SprykerProductAttributeConfig
      */
     public function getShoppingPointsAmountAttributeName(): string
     {
-        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS);
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_AMOUNT);
     }
 }

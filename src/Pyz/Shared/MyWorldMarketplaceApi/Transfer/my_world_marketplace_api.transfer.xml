@@ -49,4 +49,13 @@
         <property name="availableMvoucherCurrency" type="string"/>
     </transfer>
 
+    <transfer name="CustomerBalanceByCurrency">
+        <property name="paymentOptionId" type="int"/>
+        <property name="paymentOptionName" type="string"/>
+        <property name="currencyID" type="string"/>
+        <property name="availableBalance" type="decimal"/>
+        <property name="targetCurrencyID" type="string"/>
+        <property name="targetAvailableBalance" type="decimal"/>
+        <property name="exchangeRate" type="decimal"/>
+    </transfer>
 </transfers>

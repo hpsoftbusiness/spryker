@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MyWorldPayment;
 
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -19,6 +20,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
     public const LOCALE_CLIENT = 'LOCALE_CLIENT';
     public const CUSTOMER_GROUP_QUERY = 'CUSTOMER_GROUP_QUERY';
     public const SERVICE_UTIL_POLLING = 'SERVICE_UTIL_POLLING';
+    public const DECIMAL_TO_INTEGER_CONVERTER = 'DECIMAL_TO_INTEGER_CONVERTER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -47,6 +49,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addCustomerGroup($container);
         $container = $this->addProductStorageClient($container);
         $container = $this->addLocaleClient($container);
+        $this->addDecimalToIntegerConverter($container);
 
         return $container;
     }
@@ -154,6 +157,18 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(self::SERVICE_UTIL_POLLING, static function (Container $container) {
             return $container->getLocator()->utilPolling()->service();
+        });
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addDecimalToIntegerConverter(Container $container): void
+    {
+        $container->set(self::DECIMAL_TO_INTEGER_CONVERTER, static function (Container $container) {
+            return new DecimalToIntegerConverter();
         });
     }
 }

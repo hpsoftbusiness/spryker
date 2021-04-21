@@ -131,7 +131,7 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
         return (int)array_reduce(
             $dwsDirectItems->getArrayCopy(),
             function (float $carry, MwsDirectPaymentOptionTransfer $directPaymentOptionTransfer) {
-                if ($directPaymentOptionTransfer->getPaymentOptionId() === $this->myWorldPaymentConfig->getShoppingPointsPaymentOptionId()) {
+                if ($directPaymentOptionTransfer->getPaymentOptionId() === $this->myWorldPaymentConfig->getOptionShoppingPoints()) {
                     return $carry;
                 }
                 $carry += $directPaymentOptionTransfer->getAmount();
