@@ -19,6 +19,7 @@ use Generated\Shared\Transfer\ProductPriceApiTransfer;
 use Generated\Shared\Transfer\ProductSpDealApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 
@@ -217,11 +218,17 @@ class TransferMapper implements TransferMapperInterface
     protected function getBvDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductBvDealApiTransfer
     {
         $productBcDealApi = new ProductBvDealApiTransfer();
+        $benefitStoreSalesPriceAttrKey = Config::get(
+            MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE
+        );
+        $benefitAmountAttrKey = Config::get(
+            MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT
+        );
         $productBcDealApi->setBvItemPrice($this->formatAmount(
-            $productAbstractTransfer->getAttributes()['Benefit_Store_sales_price'] ?? null
+            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
         ))
             ->setBvAmount($this->formatAmount(
-                $productAbstractTransfer->getAttributes()['Benefit_amount'] ?? null
+                $productAbstractTransfer->getAttributes()[$benefitAmountAttrKey] ?? null
             ));
 
         return $productBcDealApi;
@@ -234,9 +241,13 @@ class TransferMapper implements TransferMapperInterface
      */
     protected function getSpDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductSpDealApiTransfer
     {
+        $benefitStoreSalesPriceAttrKey = Config::get(
+            MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE
+        );
+
         $productSpDealApi = new ProductSpDealApiTransfer();
         $productSpDealApi->setSpItemPrice($this->formatAmount(
-            $productAbstractTransfer->getAttributes()['Benefit_Store_sales_price'] ?? null
+            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
         ))
             ->setSpAmount($this->formatAmount(
                 $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
