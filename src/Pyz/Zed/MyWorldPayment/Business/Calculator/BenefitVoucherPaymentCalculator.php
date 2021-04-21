@@ -83,12 +83,12 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
                 $benefitSalesPrice = $itemTransfer->getBenefitVoucherDealData()->getSalesPrice();
                 $benefitAmount = $itemTransfer->getBenefitVoucherDealData()->getAmount();
 
-                $newPriceForItemsWithBenefitVouchers = (int)((100 * $benefitSalesPrice) * $this->getAmountOfItemsThatUseBenefitVouchers($itemTransfer));
+                $newPriceForItemsWithBenefitVouchers = (int)((100 * $benefitSalesPrice) * $itemTransfer->getQuantity());
 
-                $oldPriceForItemsWithBenefitVouchers = $itemTransfer->getUnitPrice() * $this->getAmountOfItemsThatUseBenefitVouchers($itemTransfer);
+                $oldPriceForItemsWithBenefitVouchers = $itemTransfer->getUnitPrice() * $itemTransfer->getQuantity();
 
                 $itemTransfer->setTotalUsedBenefitVouchersAmount(
-                    $benefitAmount * $itemTransfer->getAmountItemsToUseBenefitVoucher()
+                    $benefitAmount * $itemTransfer->getQuantity()
                 );
 
                 $commonBenefitVouchersUsed += $itemTransfer->getTotalUsedBenefitVouchersAmount();
@@ -105,16 +105,6 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
         }
 
         return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return int
-     */
-    protected function getAmountOfItemsThatUseBenefitVouchers(ItemTransfer $itemTransfer): int
-    {
-        return $itemTransfer->getAmountItemsToUseBenefitVoucher() ?? static::DEFAULT_AMOUNT_OF_ITEMS;
     }
 
     /**

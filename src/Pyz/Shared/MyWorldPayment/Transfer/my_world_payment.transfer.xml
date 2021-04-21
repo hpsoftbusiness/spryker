@@ -58,7 +58,6 @@
 
     <transfer name="Item">
         <property name="useBenefitVoucher" type="bool"/>
-        <property name="amountItemsToUseBenefitVoucher" type="int"/>
         <property name="totalUsedBenefitVouchersAmount" type="float" />
         <property name="benefitVoucherDealData" type="BenefitVoucherDealData"/>
     </transfer>

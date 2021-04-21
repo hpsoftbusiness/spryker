@@ -54,19 +54,6 @@ class BenefitDealItemForm extends AbstractType
             'required' => false,
         ]);
 
-        $builder->add(static::FIELD_ITEMS_WITH_BENEFITS, ChoiceType::class, [
-            'data' => $itemTransfer->getAmountItemsToUseBenefitVoucher(),
-            'choices' => $this->createArrayChoices($itemTransfer),
-            'label' => false,
-            'required' => true,
-            'expanded' => true,
-            'multiple' => false,
-            'placeholder' => false,
-            'constraints' => [
-                new EqualTo((int)$itemTransfer->getQuantity())
-            ],
-        ]);
-
         return $this;
     }
 
@@ -85,21 +72,6 @@ class BenefitDealItemForm extends AbstractType
         ]);
 
         return $this;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return array
-     */
-    protected function createArrayChoices(ItemTransfer $itemTransfer): array
-    {
-        //TODO: implement functionality for make available choice amount of items to pay with BV in one ItemTransfer
-        $max = (int)$itemTransfer->getQuantity();
-
-        return [
-            $max => $max
-        ];
     }
 
     /**

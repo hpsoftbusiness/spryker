@@ -128,11 +128,10 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
             $benefitVoucherSalesData = $itemTransfer->getBenefitVoucherDealData();
 
             if ($itemTransfer->getUseBenefitVoucher()
-                && $itemTransfer->getAmountItemsToUseBenefitVoucher()
                 && $benefitVoucherSalesData
                 && $benefitVoucherSalesData->getIsStore()
             ) {
-                $commonSelectedBenefitVouchers += $benefitVoucherSalesData->getAmount() * $itemTransfer->getAmountItemsToUseBenefitVoucher();
+                $commonSelectedBenefitVouchers += $benefitVoucherSalesData->getAmount() * $itemTransfer->getQuantity();
             }
         }
 

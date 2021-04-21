@@ -81,7 +81,7 @@ class QuotePaymentPriceManager implements PaymentPriceManagerInterface
 
         foreach ($quoteTransfer->getItems() as $item) {
             if($item->getBenefitVoucherDealData() && $item->getUseBenefitVoucher()) {
-                $commonPrice += (int)(100 * $item->getBenefitVoucherDealData()->getSalesPrice()) * $item->getAmountItemsToUseBenefitVoucher();
+                $commonPrice += (int)(100 * $item->getBenefitVoucherDealData()->getSalesPrice()) * $item->getQuantity();
             }
         }
 

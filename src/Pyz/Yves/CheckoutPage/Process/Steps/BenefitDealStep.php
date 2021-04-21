@@ -121,23 +121,22 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return array
+     * @return array|null
      */
-    protected function calculateSalesPriceForQuantity(ItemTransfer $itemTransfer): array
+    protected function calculateSalesPriceForQuantity(ItemTransfer $itemTransfer): ?array
     {
         //TODO: implement functionality for make available choice amount of items to pay in one ItemTransfer
         $salesDataTransfer = $itemTransfer->getBenefitVoucherDealData();
-        $result = [];
 
         if ($salesDataTransfer && $salesDataTransfer->getIsStore()) {
-            $result[] = [
-                'salesPrice' => $salesDataTransfer->getSalesPrice() * $itemTransfer->getQuantity(),
+            return [
+                'salesPrice' => $salesDataTransfer->getSalesPrice() * $itemTransfer->getQuantity() * 100,
                 'benefitAmount' => $salesDataTransfer->getAmount() * $itemTransfer->getQuantity(),
                 'quantity' => $itemTransfer->getQuantity(),
             ];
         }
 
-        return $result;
+        return null;
     }
 
     /**
