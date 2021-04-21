@@ -80,14 +80,11 @@ class PaymentApiLog implements PaymentApiLogInterface
         $request = null;
         $response = null;
 
-        if ($requestTransfer->getPaymentSessionRequest()) {
-            $request = $this->abstractTransferToString($requestTransfer->getPaymentSessionRequest());
-            $response = $this->abstractTransferToString($responseTransfer->getPaymentSessionResponse());
-            $type = self::PAYMENT_SESSION_TYPE;
-        } elseif ($requestTransfer->getPaymentCodeGenerateRequest()) {
-            $request = $this->abstractTransferToString($requestTransfer->getPaymentCodeGenerateRequest());
-            $type = self::PAYMENT_CODE_GENERATE_TYPE;
-        } elseif ($requestTransfer->getPaymentCodeValidateRequest()) {
+        /**
+         * TODO: we can't identiy type of call just based on the request object.
+         * It would be better to refactor this part and use type directly as an input param
+         */
+        if ($requestTransfer->getPaymentCodeValidateRequest()) {
             $request = $this->abstractTransferToString($requestTransfer->getPaymentCodeValidateRequest());
             $response = $this->abstractTransferToString($responseTransfer->getPaymentCodeValidateResponse());
             $type = self::PAYMENT_CODE_VALIDATE_TYPE;
@@ -102,6 +99,13 @@ class PaymentApiLog implements PaymentApiLogInterface
             $request = $this->abstractTransferToString($requestTransfer->getPaymentDataRequest());
             $response = $this->abstractTransferToString($responseTransfer->getPaymentDataResponse());
             $type = self::PAYMENT_DATA_TYPE;
+        } elseif ($requestTransfer->getPaymentSessionRequest()) {
+            $request = $this->abstractTransferToString($requestTransfer->getPaymentSessionRequest());
+            $response = $this->abstractTransferToString($responseTransfer->getPaymentSessionResponse());
+            $type = self::PAYMENT_SESSION_TYPE;
+        } elseif ($requestTransfer->getPaymentCodeGenerateRequest()) {
+            $request = $this->abstractTransferToString($requestTransfer->getPaymentCodeGenerateRequest());
+            $type = self::PAYMENT_CODE_GENERATE_TYPE;
         }
 
         $apiLog->setRequest($request);
