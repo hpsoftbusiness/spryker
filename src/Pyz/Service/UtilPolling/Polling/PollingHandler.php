@@ -55,7 +55,7 @@ class PollingHandler implements PollingHandlerInterface
      */
     private function getPassedTime(float $startTime): float
     {
-        return ($this->getCurrentTime() - $startTime) / 1000;
+        return ($this->getCurrentTime() - $startTime);
     }
 
     /**

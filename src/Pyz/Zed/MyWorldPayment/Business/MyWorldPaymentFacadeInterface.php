@@ -9,9 +9,9 @@ namespace Pyz\Zed\MyWorldPayment\Business;
 
 use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
-use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
+use Generated\Shared\Transfer\PaymentDataResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 
 interface MyWorldPaymentFacadeInterface
@@ -50,6 +50,14 @@ interface MyWorldPaymentFacadeInterface
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
     public function getPayment(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\PaymentDataResponseTransfer $paymentDataResponseTransfer
+     * @param int $idSalesOrder
+     *
+     * @return void
+     */
+    public function saveMyWorldPaymentData(PaymentDataResponseTransfer $paymentDataResponseTransfer, int $idSalesOrder): void;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer

@@ -9,14 +9,16 @@ namespace Pyz\Zed\MyWorldPayment\Business;
 
 use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
-use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
+use Generated\Shared\Transfer\PaymentDataResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
  * @method \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentBusinessFactory getFactory()
+ * @method \Pyz\Zed\MyWorldPayment\Persistence\MyWorldPaymentEntityManagerInterface getEntityManager()
+ * @method \Pyz\Zed\MyWorldPayment\Persistence\MyWorldPaymentRepositoryInterface getRepository()
  */
 class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacadeInterface
 {
@@ -78,6 +80,17 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
         return $this->getFactory()
             ->createMyWorldPaymentApiRequestDispatcher()
             ->dispatchGetPayment($myWorldApiRequestTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\PaymentDataResponseTransfer $paymentDataResponseTransfer
+     * @param int $idSalesOrder
+     *
+     * @return void
+     */
+    public function saveMyWorldPaymentData(PaymentDataResponseTransfer $paymentDataResponseTransfer, int $idSalesOrder): void
+    {
+        $this->getEntityManager()->saveMyWorldPayment($paymentDataResponseTransfer, $idSalesOrder);
     }
 
     /**

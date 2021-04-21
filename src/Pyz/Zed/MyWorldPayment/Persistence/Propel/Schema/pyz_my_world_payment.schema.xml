@@ -11,7 +11,7 @@
 
         <column name="amount" required="true" type="INTEGER"/>
         <column name="currency_id" required="true" type="VARCHAR" size="5"/>
-        <column name="order_reference" required="true" type="VARCHAR" size="64"/>
+        <column name="order_reference" required="false" type="VARCHAR" size="64"/>
         <column name="payment_id" required="true" type="VARCHAR" size="36"/>
         <column name="reference" required="true" type="VARCHAR" size="36"/>
         <column name="status" required="true" type="ENUM" valueSet="new,charged,refund_in_progress,partial_refund_successful" defaultValue="new"/>

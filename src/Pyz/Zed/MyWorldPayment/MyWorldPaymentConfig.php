@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\MyWorldPayment;
 
-use Pyz\Zed\MyWorldPaymentApi\MyWorldPaymentApiConfig;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
+use Pyz\Zed\MyWorldPaymentApi\MyWorldPaymentApiConfig;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**

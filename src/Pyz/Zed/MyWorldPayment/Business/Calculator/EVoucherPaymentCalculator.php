@@ -11,14 +11,12 @@ use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
-use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
+use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
 {
-    private const DEFAULT_COMMON_PRICE = 0;
-
     /**
      * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
      */
@@ -35,10 +33,9 @@ class EVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
     private $paymentPriceManager;
 
     /**
-     * EVoucherPaymentCalculator constructor.
-     *
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $marketplaceApiClient
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
+     * @param \Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface $paymentPriceManager
      */
     public function __construct(
         MyWorldMarketplaceApiClientInterface $marketplaceApiClient,

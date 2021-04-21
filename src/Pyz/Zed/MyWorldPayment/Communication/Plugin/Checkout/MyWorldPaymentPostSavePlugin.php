@@ -61,10 +61,15 @@ class MyWorldPaymentPostSavePlugin extends AbstractPlugin implements CheckoutPos
 
         $paymentId = $apiResponseTransfer->getPaymentConfirmationResponseTransfer()->getPaymentId();
         $apiResponseTransfer = $this->getPayment($paymentId);
+        $this->getFacade()->saveMyWorldPaymentData(
+            $apiResponseTransfer->getPaymentDataResponse(),
+            $checkoutResponse->getSaveOrder()->getIdSalesOrder()
+        );
 
         if (!$this->assertPaymentSuccessful($apiResponseTransfer)) {
             $this->handleFailedPaymentErrors($apiResponseTransfer, $checkoutResponse);
         }
+
     }
 
     /**

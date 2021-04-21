@@ -14,6 +14,8 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 /**
  * @method \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentFacadeInterface getFacade()
  * @method \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig getConfig()
+ * @method \Pyz\Zed\MyWorldPayment\Persistence\MyWorldPaymentRepositoryInterface getRepository()
+ * @method \Pyz\Zed\MyWorldPayment\Persistence\MyWorldPaymentEntityManagerInterface getEntityManager()
  */
 class MyWorldPaymentCommunicationFactory extends AbstractCommunicationFactory
 {

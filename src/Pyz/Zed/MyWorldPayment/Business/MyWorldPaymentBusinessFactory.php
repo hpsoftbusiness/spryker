@@ -30,6 +30,8 @@ use Spryker\Zed\SequenceNumber\Business\SequenceNumberFacadeInterface;
 
 /**
  * @method \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig getConfig()
+ * @method \Pyz\Zed\MyWorldPayment\Persistence\MyWorldPaymentRepositoryInterface getRepository()
+ * @method \Pyz\Zed\MyWorldPayment\Persistence\MyWorldPaymentEntityManagerInterface getEntityManager()
  */
 class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
 {

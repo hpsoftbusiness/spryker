@@ -48,12 +48,14 @@
     <transfer name="CalculableObject">
         <property name="myWorldUseEVoucherBalance" type="bool"/>
         <property name="myWorldPaymentSessionId" type="string"/>
-        <property name="totalUsedBenefitVouchersAmount" type="float" />
+        <property name="totalUsedBenefitVouchersAmount" type="float"/>
+        <property name="myWorldPaymentData" type="PaymentDataResponse"/>
     </transfer>
 
     <transfer name="Order">
         <property name="myWorldUseEVoucherBalance" type="bool"/>
         <property name="myWorldPaymentSessionId" type="string"/>
+        <property name="myWorldPaymentData" type="PaymentDataResponse"/>
     </transfer>
 
     <transfer name="Item">

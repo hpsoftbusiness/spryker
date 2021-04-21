@@ -13,6 +13,7 @@ use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderItemExpanderP
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderPostSavePlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\OrderItemBenefitDealsPreSavePlugin;
 use Pyz\Zed\Customer\Communication\Plugin\Sales\CustomerOrderExpanderPreSavePlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Sales\MyWorldPaymentDataOrderExpanderPlugin;
 use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
 use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;
 use Pyz\Zed\SalesOrderUid\Communication\Plugin\Sales\UidOrderExpanderPreSavePlugin;
@@ -160,6 +161,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new IsCancellableOrderExpanderPlugin(),
             new StockProductOrderHydratePlugin(),
             new BenefitDealOrderExpanderPlugin(),
+            new MyWorldPaymentDataOrderExpanderPlugin(),
         ];
     }
 
