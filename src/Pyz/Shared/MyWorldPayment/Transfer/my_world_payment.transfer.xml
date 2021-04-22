@@ -83,8 +83,8 @@
 
     <transfer name="BenefitVoucherDealData">
         <property name="isStore" type="bool" description="Flag that define is the product can use benefit voucher"/>
-        <property name="amount" type="float" description="Amount of BV needs to change to provide new sales price"/>
-        <property name="salesPrice" type="float" description="New price for the product that will be applied to product after charge of some amount benefit vouchers"/>
+        <property name="amount" type="int" description="Amount of BV needs to change to provide new sales price"/>
+        <property name="salesPrice" type="int" description="New price for the product that will be applied to product after charge of some amount benefit vouchers"/>
     </transfer>
 
     <transfer name="AvailableInternalPaymentAmount">

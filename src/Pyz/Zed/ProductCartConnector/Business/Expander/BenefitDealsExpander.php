@@ -119,14 +119,15 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return float|null
+     * @return int|null
      */
-    private function getBenefitVoucherSalesPrice(ItemTransfer $itemTransfer): ?float
+    private function getBenefitVoucherSalesPrice(ItemTransfer $itemTransfer): ?int
     {
         $benefitVoucherSalesPrice = $itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherSalesPriceAttributeName()] ?? null;
+        $benefitVoucherSalesPrice = str_replace(',', '.', $benefitVoucherSalesPrice);
 
         if ($benefitVoucherSalesPrice !== null) {
-            $benefitVoucherSalesPrice = (float)$benefitVoucherSalesPrice;
+            $benefitVoucherSalesPrice = (int)($benefitVoucherSalesPrice * 100);
         }
 
         return $benefitVoucherSalesPrice;
@@ -145,14 +146,14 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return float|null
+     * @return int|null
      */
-    private function getBenefitVoucherAmount(ItemTransfer $itemTransfer): ?float
+    private function getBenefitVoucherAmount(ItemTransfer $itemTransfer): ?int
     {
         $benefitVoucherAmount = $itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherAmountAttributeName()] ?? null;
 
         if ($benefitVoucherAmount !== null) {
-            $benefitVoucherAmount = (float)$benefitVoucherAmount;
+            $benefitVoucherAmount = (int)$benefitVoucherAmount * 100;
         }
 
         return $benefitVoucherAmount;

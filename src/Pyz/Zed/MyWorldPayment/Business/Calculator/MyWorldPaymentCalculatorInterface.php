@@ -17,11 +17,4 @@ interface MyWorldPaymentCalculatorInterface
      * @return \Generated\Shared\Transfer\CalculableObjectTransfer
      */
     public function recalculateQuote(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer;
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
-    public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer;
 }

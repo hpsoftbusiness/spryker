@@ -63,33 +63,21 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return \Generated\Shared\Transfer\CalculableObjectTransfer
      */
-    public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
-    {
-        return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     protected function reduceItemsPrices(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         $commonBenefitVouchersUsed = 0;
         $commonReducedPrice = 0;
+        $availableAmountOfBenefitVoucher = $calculableObjectTransfer->getOriginalQuote()->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount();
 
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
             if ($itemTransfer->getUseBenefitVoucher() && $this->assertBenefitVoucherSalesPrice($itemTransfer)) {
                 $benefitSalesPrice = $itemTransfer->getBenefitVoucherDealData()->getSalesPrice();
-                $benefitAmount = $itemTransfer->getBenefitVoucherDealData()->getAmount();
 
-                $newPriceForItemsWithBenefitVouchers = (int)((100 * $benefitSalesPrice) * $itemTransfer->getQuantity());
+                $newPriceForItemsWithBenefitVouchers = (int)($benefitSalesPrice * $itemTransfer->getQuantity());
 
                 $oldPriceForItemsWithBenefitVouchers = $itemTransfer->getUnitPrice() * $itemTransfer->getQuantity();
 
-                $itemTransfer->setTotalUsedBenefitVouchersAmount(
-                    $benefitAmount * $itemTransfer->getQuantity()
-                );
+                $this->calculateItemUsedBenefitVouchers($itemTransfer, $availableAmountOfBenefitVoucher->toInt());
 
                 $commonBenefitVouchersUsed += $itemTransfer->getTotalUsedBenefitVouchersAmount();
                 $commonReducedPrice += $oldPriceForItemsWithBenefitVouchers - $newPriceForItemsWithBenefitVouchers;
@@ -105,6 +93,30 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
         }
 
         return $calculableObjectTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param int $availablePoints
+     *
+     * @return void
+     */
+    protected function calculateItemUsedBenefitVouchers(ItemTransfer $itemTransfer, int $availablePoints): void
+    {
+        if (!$this->assertBenefitVoucherSalesPrice($itemTransfer)) {
+            return;
+        }
+
+        $benefitVoucherDealData = $itemTransfer->getBenefitVoucherDealData();
+
+        $totalNeededBenefitVouchers = $itemTransfer->getQuantity() * $benefitVoucherDealData->getAmount();
+        if ($totalNeededBenefitVouchers > $availablePoints) {
+            return;
+        }
+
+        $itemTransfer->setTotalUsedBenefitVouchersAmount($totalNeededBenefitVouchers);
+        $itemTransfer->setUnitGrossPrice($benefitVoucherDealData->getSalesPrice());
+        $itemTransfer->setSumGrossPrice($benefitVoucherDealData->getSalesPrice() * $itemTransfer->getQuantity());
     }
 
     /**
@@ -171,7 +183,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
             $itemTransfer->requireBenefitVoucherDealData();
             $itemTransfer->getBenefitVoucherDealData()->requireIsStore();
 
-            return true;
+            return $itemTransfer->getBenefitVoucherDealData()->getIsStore();
         } catch (Exception $exception) {
             return false;
         }

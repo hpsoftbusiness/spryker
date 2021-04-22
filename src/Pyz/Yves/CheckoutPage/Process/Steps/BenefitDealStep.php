@@ -130,7 +130,7 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
 
         if ($salesDataTransfer && $salesDataTransfer->getIsStore()) {
             return [
-                'salesPrice' => $salesDataTransfer->getSalesPrice() * $itemTransfer->getQuantity() * 100,
+                'salesPrice' => $salesDataTransfer->getSalesPrice() * $itemTransfer->getQuantity(),
                 'benefitAmount' => $salesDataTransfer->getAmount() * $itemTransfer->getQuantity(),
                 'quantity' => $itemTransfer->getQuantity(),
             ];

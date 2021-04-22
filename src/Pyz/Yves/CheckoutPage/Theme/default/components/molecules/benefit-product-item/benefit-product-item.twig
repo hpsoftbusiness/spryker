@@ -60,16 +60,8 @@
             </div>
             {# @TODO Refactor properly when design for this step is approved #}
             {% if data.formType == 'useBenefitVoucher' %}
-{#                {% include molecule('benefit-by-quantity', 'CheckoutPage') with {#}
-{#                    data: {#}
-{#                        amountItemsToUseBenefitVoucher: data.item.amountItemsToUseBenefitVoucher,#}
-{#                        prices: prices,#}
-{#                        currencyCode: currencyCode,#}
-{#                        benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,#}
-{#                    },#}
-{#                } only %}#}
                 <div class="{{ config.name }}__total-price">{{ prices['salesPrice'] | money(true, currencyCode) }}
-                    - {{ prices['benefitAmount'] }}
+                    - {{ prices['benefitAmount'] | money(false, data.benefitVouchersCurrencyCode) }}
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
                         modifiers: ['medium-up'],
