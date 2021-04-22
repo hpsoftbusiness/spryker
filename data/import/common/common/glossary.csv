@@ -1233,6 +1233,7 @@ product_alternative_widget.not_applicable,N / A,fr_FR
 product_alternative_widget.product_alternative,Produits alternatifs,fr_FR
 product_alternative_widget.product_status.discontinued,Discontinué,fr_FR
 product_alternative_widget.show_all,Afficher tout,fr_FR
+product.multiple.affiliates,More than one offer,fr_FR
 product.attribute.battery,La batterie,fr_FR
 product.attribute.benefit_store,Magasin d'avantages,fr_FR
 product.attribute.camera,Caméra,fr_FR
@@ -2762,6 +2763,7 @@ product_alternative_widget.not_applicable,N / A,it_IT
 product_alternative_widget.product_alternative,Prodotti alternativi,it_IT
 product_alternative_widget.product_status.discontinued,Interrotto,it_IT
 product_alternative_widget.show_all,Mostra tutto,it_IT
+product.multiple.affiliates,More than one offer,it_IT
 product.attribute.battery,Batteria,it_IT
 product.attribute.benefit_store,Benefit Store,it_IT
 product.attribute.camera,telecamera,it_IT
@@ -4291,6 +4293,7 @@ product_alternative_widget.not_applicable,Nie dotyczy,pl_PL
 product_alternative_widget.product_alternative,Produkty alternatywne,pl_PL
 product_alternative_widget.product_status.discontinued,Przerwane,pl_PL
 product_alternative_widget.show_all,Pokaż wszystko,pl_PL
+product.multiple.affiliates,More than one offer,pl_PL
 product.attribute.battery,Bateria,pl_PL
 product.attribute.benefit_store,Sklep korzyści,pl_PL
 product.attribute.camera,Aparat fotograficzny,pl_PL
@@ -5824,6 +5827,7 @@ product_alternative_widget.not_applicable,N/A,en_US
 product_alternative_widget.product_alternative,Alternative products,en_US
 product_alternative_widget.product_status.discontinued,Discontinued,en_US
 product_alternative_widget.show_all,Show all,en_US
+product.multiple.affiliates,More than one offer,en_US
 product.attribute.battery,Battery,en_US
 product.attribute.benefit_store,Benefit Store,en_US
 product.attribute.camera,Camera,en_US
@@ -7371,6 +7375,7 @@ product_alternative_widget.not_applicable,N/A,de_DE
 product_alternative_widget.product_alternative,Alternative Produkte,de_DE
 product_alternative_widget.product_status.discontinued,Abgesetzt,de_DE
 product_alternative_widget.show_all,Zeige alles,de_DE
+product.multiple.affiliates,Mehr als ein Angebot,de_DE
 product.attribute.battery,Batterie,de_DE
 product.attribute.benefit_store,Vorteil Geschäft,de_DE
 product.attribute.camera,Camera,de_DE
@@ -8882,6 +8887,7 @@ product_alternative_widget.not_applicable,N / A,es_ES
 product_alternative_widget.product_alternative,Productos alternativos,es_ES
 product_alternative_widget.product_status.discontinued,Interrumpido,es_ES
 product_alternative_widget.show_all,Mostrar todo,es_ES
+product.multiple.affiliates,More than one offer,es_ES
 product.attribute.battery,Batería,es_ES
 product.attribute.benefit_store,Tienda de beneficios,es_ES
 product.attribute.camera,Cámara,es_ES
@@ -10411,6 +10417,7 @@ product_alternative_widget.not_applicable,N / A,cs_CZ
 product_alternative_widget.product_alternative,Alternativní produkty,cs_CZ
 product_alternative_widget.product_status.discontinued,Přerušeno,cs_CZ
 product_alternative_widget.show_all,Ukázat vše,cs_CZ
+product.multiple.affiliates,More than one offer,cs_CZ
 product.attribute.battery,baterie,cs_CZ
 product.attribute.benefit_store,Obchod výhod,cs_CZ
 product.attribute.camera,Fotoaparát,cs_CZ
@@ -11940,6 +11947,7 @@ product_alternative_widget.not_applicable,Ej tillämpligt,sv_SE
 product_alternative_widget.product_alternative,Alternativa produkter,sv_SE
 product_alternative_widget.product_status.discontinued,Avbruten,sv_SE
 product_alternative_widget.show_all,Visa allt,sv_SE
+product.multiple.affiliates,More than one offer,sv_SE
 product.attribute.battery,Batteri,sv_SE
 product.attribute.benefit_store,Fördelbutik,sv_SE
 product.attribute.camera,Kamera,sv_SE
@@ -13469,6 +13477,7 @@ product_alternative_widget.not_applicable,N / A,sl_SI
 product_alternative_widget.product_alternative,Alternativni izdelki,sl_SI
 product_alternative_widget.product_status.discontinued,Ukineno,sl_SI
 product_alternative_widget.show_all,Pokaži vse,sl_SI
+product.multiple.affiliates,More than one offer,sl_SI
 product.attribute.battery,Baterija,sl_SI
 product.attribute.benefit_store,Benefit Store,sl_SI
 product.attribute.camera,Kamera,sl_SI
@@ -14998,6 +15007,7 @@ product_alternative_widget.not_applicable,N / D,pt_PT
 product_alternative_widget.product_alternative,Produtos alternativos,pt_PT
 product_alternative_widget.product_status.discontinued,Interrompido,pt_PT
 product_alternative_widget.show_all,Mostre tudo,pt_PT
+product.multiple.affiliates,More than one offer,pt_PT
 product.attribute.battery,Bateria,pt_PT
 product.attribute.benefit_store,Loja de Benefícios,pt_PT
 product.attribute.camera,Câmera,pt_PT
@@ -16527,6 +16537,7 @@ product_alternative_widget.not_applicable,Ikke relevant,nb_NO
 product_alternative_widget.product_alternative,Alternative produkter,nb_NO
 product_alternative_widget.product_status.discontinued,Utgått,nb_NO
 product_alternative_widget.show_all,Vis alt,nb_NO
+product.multiple.affiliates,More than one offer,nb_NO
 product.attribute.battery,Batteri,nb_NO
 product.attribute.benefit_store,Fordel butikk,nb_NO
 product.attribute.camera,Kamera,nb_NO
@@ -18056,6 +18067,7 @@ product_alternative_widget.not_applicable,N / A,sk_SK
 product_alternative_widget.product_alternative,Alternatívne výrobky,sk_SK
 product_alternative_widget.product_status.discontinued,Predaj skončil,sk_SK
 product_alternative_widget.show_all,Ukázať všetko,sk_SK
+product.multiple.affiliates,More than one offer,sk_SK
 product.attribute.battery,Batéria,sk_SK
 product.attribute.benefit_store,Obchod s výhodami,sk_SK
 product.attribute.camera,fotoaparát,sk_SK
@@ -19585,6 +19597,7 @@ product_alternative_widget.not_applicable,Nvt,nl_NL
 product_alternative_widget.product_alternative,Alternatieve producten,nl_NL
 product_alternative_widget.product_status.discontinued,Stopgezet,nl_NL
 product_alternative_widget.show_all,Toon alles,nl_NL
+product.multiple.affiliates,More than one offer,nl_NL
 product.attribute.battery,Accu,nl_NL
 product.attribute.benefit_store,Benefit Store,nl_NL
 product.attribute.camera,Camera,nl_NL

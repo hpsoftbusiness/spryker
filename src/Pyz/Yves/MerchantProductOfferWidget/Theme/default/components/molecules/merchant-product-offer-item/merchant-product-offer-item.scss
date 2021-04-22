@@ -1,0 +1,17 @@
+@mixin merchant-product-offer-widget-merchant-product-offer-item($name: '.merchant-product-offer-item') {
+    #{$name} {
+        padding: map-get($setting-spacing, big) 0;
+
+        &:not(:last-child) {
+            border-bottom: rem(1) solid $setting-color-gray-3;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        @content;
+    }
+}
+
+@include merchant-product-offer-widget-merchant-product-offer-item;

@@ -18,8 +18,6 @@
     isConcrete: required,
 } %}
 
-{% block extraClass %} spacing-y{% endblock %}
-
 {% block body %}
     <div class="grid grid--nowrap">
         {% block offerInner %}
@@ -64,25 +62,28 @@
                                 {% block merchantInfoCol %}
                                     <div class="col col--expand">
                                         {% block merchantName %}
-                                            <div>
-                                                <strong>{{ data.merchantName }}</strong>
+                                            <div class="grid">
+                                                <strong class="col col--expand title title--h5">{{ data.merchantName }}</strong>
+                                                <div class="col">
+                                                    <div class="spacing-x spacing-x--big">
+                                                        {% widget 'ProductUrlWidget' args [true, data.affiliateData, null, data.isConcrete] with {
+                                                            data: {
+                                                                parentJsName: config.jsName,
+                                                                configName: config.name,
+                                                                offer: data.offer,
+                                                                originUrl: data.affiliateData['affiliate_deeplink'],
+                                                            },
+                                                        } only %}{% endwidget %}
+                                                    </div>
+                                                </div>
                                             </div>
                                         {% endblock %}
 
                                         {% block merchantLink %}
-                                            <a class="link link--small" href="{{ data.merchantUrl }}">
+                                            <a class="link link--small link--secondary" href="{{ data.merchantUrl }}">
                                                 {{ 'merchant_product_offer.view_seller' | trans }}
                                             </a>
                                         {% endblock %}
-                                        {% widget 'ProductUrlWidget' args [true, data.affiliateData, null, data.isConcrete] with {
-                                            data: {
-                                                parentJsName: config.jsName,
-                                                configName: config.name,
-                                                offer: data.offer,
-                                                originUrl: data.affiliateData['affiliate_deeplink'],
-                                            },
-                                        } only %}{% endwidget %}
-
                                     </div>
                                 {% endblock %}
                                 {% block priceCol %}

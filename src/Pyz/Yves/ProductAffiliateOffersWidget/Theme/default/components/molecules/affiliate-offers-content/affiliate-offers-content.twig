@@ -1,0 +1,40 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'affiliate-offers-content',
+} %}
+
+{% define data = {
+    offers: required,
+} %}
+
+{% block component %}
+    {% if data.offers | length %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if data.offers|length == 1 %}
+        {% for offer in data.offers %}
+            {% include molecule('cashback') with {
+                modifiers: ['small'],
+                data: {
+                    cashback: offer.standardCashback,
+                    shoppingPoints: offer.standardStoryPoints,
+                    iconModifiers: [''],
+                    symbol: '',
+                },
+            } only %}
+            {% include molecule('lazy-image') with {
+                class: config.name ~ '__logo',
+                data: {
+                    imageSrc: offer.logo,
+                },
+            } only %}
+        {% endfor %}
+    {% elseif data.offers|length > 1 %}
+        {# TODO:: add proper translate #}
+        {{ 'product.multiple.affiliates' | trans }}
+    {% endif %}
+{% endblock %}

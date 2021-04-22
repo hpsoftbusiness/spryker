@@ -1,0 +1,25 @@
+@mixin product-affiliate-offers-widget-affiliate-offers-content($name: '.affiliate-offers-content') {
+    #{$name} {
+        background: $setting-color-gray-1;
+        color: $setting-color-gray-5;
+        padding: rem(12) rem(50) rem(12) rem(16);
+        font-size: rem(14);
+        line-height: 1.2;
+        border-bottom-left-radius: rem(10);
+        border-bottom-right-radius: rem(10);
+        margin-top: auto;
+        position: relative;
+
+        &__logo {
+            height: 70%;
+            position: absolute;
+            right: rem(16);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @content;
+    }
+}
+
+@include product-affiliate-offers-widget-affiliate-offers-content;

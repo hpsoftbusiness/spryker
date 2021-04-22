@@ -14,11 +14,11 @@
     {# {% set isRadioButtonVisible = data.productOffers | length > 1 %} #}
     {% if data.productOffers %}
         {% block content %}
-            <div class="box box--dark box--spacingless spacing spacing--inner">
+            <div class="box box--dark box--spacingless spacing spacing--big spacing--inner">
                 {% block contentInner %}
                     {% block title %}
-                        <div>
-                            <strong>{{ 'merchant_product_offer.sold_by' | trans }}</strong>
+                        <div class="spacing-bottom spacing-bottom--medium">
+                            <strong class="title title--h4">{{ 'merchant_product_offer.sold_by' | trans }}</strong>
                         </div>
                     {% endblock %}
                     {% block productOfferList %}
