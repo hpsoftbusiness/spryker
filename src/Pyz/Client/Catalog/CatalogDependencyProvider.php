@@ -14,6 +14,7 @@ use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\BenefitStoreQueryExpande
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CategoryFacetQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CmsPageFilterQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\IsAffiliateQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\SellableQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\ShoppingPointStoreQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
