@@ -32,7 +32,7 @@ class SellableQueryExpanderPlugin extends AbstractPlugin implements QueryExpande
      */
     public function expandQuery(QueryInterface $searchQuery, array $requestParameters = []): QueryInterface
     {
-        if (!$this->getConfig()->isMultiCountryEnabled()) {
+        if (!$this->getFactory()->isMultiCountryEnabled()) {
             return $searchQuery;
         }
 

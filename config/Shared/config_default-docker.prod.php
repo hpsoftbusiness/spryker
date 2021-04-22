@@ -87,5 +87,5 @@ $config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = false;
 // ------------------ Currency/country feature flags --------------------------
 // ----------------------------------------------------------------------------
 
-$config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = false;
-$config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;
+$config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = true;
+$config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = true;

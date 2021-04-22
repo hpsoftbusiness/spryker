@@ -125,7 +125,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
 //            new CustomerProductListQueryExpanderPlugin(),
-//            new SellableQueryExpanderPlugin(),
+            new SellableQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
 
             /**
@@ -167,7 +167,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
 //            new CustomerProductListQueryExpanderPlugin(),
-//            new SellableQueryExpanderPlugin(),
+            new SellableQueryExpanderPlugin(),
             // Temporary added to filter cms pages from the suggestion list.
             new CmsPageFilterQueryExpanderPlugin(),
 

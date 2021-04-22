@@ -28,4 +28,12 @@ class SearchElasticsearchFactory extends SprykerSearchElasticsearchFactory
     {
         return $this->getProvidedDependency(SearchElasticsearchDependencyProvider::STORE);
     }
+
+    /**
+     * @return bool
+     */
+    public function isMultiCountryEnabled(): bool
+    {
+        return $this->getConfig()->isMultiCountryEnabled();
+    }
 }
