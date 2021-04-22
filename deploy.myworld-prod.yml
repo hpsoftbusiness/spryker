@@ -53,8 +53,8 @@ image:
     WEB_PROPERTY_ID: "GTM-53PNGR9"
   php:
     ini:
-      "post_max_size": 600m
-      "upload_max_filesize": 600m
+      "post_max_size": 1024M
+      "upload_max_filesize": 1024M
       "memory_limit": 3000M
     enabled-extensions:
       - blackfire
