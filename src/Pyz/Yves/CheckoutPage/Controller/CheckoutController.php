@@ -78,7 +78,8 @@ class CheckoutController extends SprykerShopCheckoutController
             return $response;
         }
 
-        $response = array_merge($response, ['errors' => $this->getFactory()->getMessengerClient()->getFlashErrorMessages()]);
+        $errorMessages = array_unique($this->getFactory()->getMessengerClient()->getFlashErrorMessages());
+        $response = array_merge($response, ['errors' => $errorMessages]);
 
         return $this->view($response, [], '@CheckoutPage/views/order-fail/order-fail.twig');
     }
