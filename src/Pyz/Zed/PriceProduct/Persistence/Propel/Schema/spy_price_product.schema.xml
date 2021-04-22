@@ -25,11 +25,13 @@
     </table>
 
     <table name="spy_price_product_store">
-<!--        <unique name="fk_currency_unique_fk_price_product_unique_fk_store_unique">-->
-<!--            <unique-column name="fk_currency"/>-->
-<!--            <unique-column name="fk_price_product"/>-->
-<!--            <unique-column name="fk_store"/>-->
-<!--        </unique>-->
+        <unique name="fk_currency_unique_fk_price_product_unique_fk_store_unique">
+            <unique-column name="fk_currency"/>
+            <unique-column name="fk_price_product"/>
+            <unique-column name="fk_store"/>
+            <unique-column name="gross_price"/>
+            <unique-column name="net_price"/>
+        </unique>
         <behavior name="event">
             <parameter name="spy_price_product_store_all" column="*"/>
         </behavior>

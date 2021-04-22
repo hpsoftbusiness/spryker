@@ -30,6 +30,8 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
 {
     use MariaDbDataFormatterTrait;
 
+    protected const BULK_SIZE = 100;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -262,15 +264,23 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             return;
         }
 
-        $parameter = $this->collectMultiInsertData(
-            $this->synchronizedDataCollection
-        );
-        $sql = 'INSERT INTO `spy_product_concrete_page_search` (`fk_product`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product`=values(`fk_product`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
+        $importDataCollection = [];
 
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare($sql);
-        $statement->execute();
+        foreach ($this->synchronizedDataCollection as $data) {
+            $importDataCollection[] = $data;
 
-        $this->synchronizedDataCollection = [];
+            if (count($importDataCollection) >= static::BULK_SIZE) {
+                $parameter = $this->collectMultiInsertData(
+                    $importDataCollection
+                );
+                $sql = 'INSERT INTO `spy_product_concrete_page_search` (`fk_product`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product`=values(`fk_product`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
+
+                $connection = Propel::getConnection();
+                $statement = $connection->prepare($sql);
+                $statement->execute();
+
+                $importDataCollection = [];
+            }
+        }
     }
 }

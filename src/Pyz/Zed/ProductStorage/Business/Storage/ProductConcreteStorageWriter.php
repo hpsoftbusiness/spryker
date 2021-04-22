@@ -24,6 +24,8 @@ use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface
  */
 class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 {
+    protected const BULK_SIZE = 100;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -252,24 +254,20 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             return;
         }
 
-        $stmt = Propel::getConnection()->prepare($this->getSql());
-        $stmt->execute($this->getParams());
-    }
+        $publishData = [];
 
-    /**
-     * @return string
-     */
-    protected function getSql(): string
-    {
-        return $this->productConcreteStorageCte->getSql();
-    }
+        foreach ($this->synchronizedDataCollection as $data) {
+            $publishData[] = $data;
 
-    /**
-     * @return string[]
-     */
-    protected function getParams(): array
-    {
-        return $this->productConcreteStorageCte->buildParams($this->synchronizedDataCollection);
+            if (count($publishData) >= static::BULK_SIZE) {
+                $stmt = Propel::getConnection()->prepare($this->productConcreteStorageCte->getSql());
+                $stmt->execute($this->productConcreteStorageCte->buildParams($publishData));
+
+                $publishData = [];
+            }
+        }
+
+        $this->synchronizedDataCollection = [];
     }
 
     /**

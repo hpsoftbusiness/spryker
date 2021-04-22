@@ -90,9 +90,9 @@ class QueueDependencyProvider extends SprykerDependencyProvider
      */
     protected function getProcessorMessagePlugins(Container $container)
     {
-        if (apcu_exists('IS_DATA_IMPORT_IN_PROGRESS') && apcu_fetch('IS_DATA_IMPORT_IN_PROGRESS')) {
-            return [];
-        }
+//        if (apcu_exists('IS_DATA_IMPORT_IN_PROGRESS') && apcu_fetch('IS_DATA_IMPORT_IN_PROGRESS')) {
+//            return [];
+//        }
 
         return [
             EventConstants::EVENT_QUEUE => new EventQueueMessageProcessorPlugin(),

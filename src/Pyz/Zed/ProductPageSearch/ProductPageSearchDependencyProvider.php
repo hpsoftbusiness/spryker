@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductPageSearch\CategoryNavigationProductPageSearchPublishTriggerPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAffiliateMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAttributesMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreFlagMapExpanderPlugin;
@@ -92,7 +93,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function addProductAbstractPageAfterPublishPlugins(Container $container): Container
     {
         $container->set(static::PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH, [
-//            new CategoryNavigationProductPageSearchPublishTriggerPlugin(),
+            new CategoryNavigationProductPageSearchPublishTriggerPlugin(),
         ]);
 
         return $container;
@@ -117,6 +118,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
+     *
      * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[]
      */
     protected function getDataLoaderPlugins()

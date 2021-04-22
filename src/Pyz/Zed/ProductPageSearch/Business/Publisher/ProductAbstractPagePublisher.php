@@ -28,6 +28,8 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 {
     use MariaDbDataFormatterTrait;
 
+    protected const BULK_SIZE = 100;
+
     /**
      * @var \Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractPageAfterPublishPluginInterface[]
      */
@@ -305,14 +307,24 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             return;
         }
 
-        $parameter = $this->collectMultiInsertData(
-            $this->synchronizedDataCollection
-        );
-        $sql = 'INSERT INTO `spy_product_abstract_page_search` (`fk_product_abstract`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
+        $importDataCollection = [];
 
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare($sql);
-        $statement->execute();
+        foreach ($this->synchronizedDataCollection as $data) {
+            $importDataCollection[] = $data;
+
+            if (count($importDataCollection) >= static::BULK_SIZE) {
+                $parameter = $this->collectMultiInsertData(
+                    $importDataCollection
+                );
+                $sql = 'INSERT INTO `spy_product_abstract_page_search` (`fk_product_abstract`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product_abstract`=values(`fk_product_abstract`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
+
+                $connection = Propel::getConnection();
+                $statement = $connection->prepare($sql);
+                $statement->execute();
+
+                $importDataCollection = [];
+            }
+        }
 
         $this->synchronizedDataCollection = [];
     }

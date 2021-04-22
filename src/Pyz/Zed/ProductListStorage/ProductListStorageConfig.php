@@ -7,18 +7,20 @@
 
 namespace Pyz\Zed\ProductListStorage;
 
+use Pyz\Zed\ProductStorage\ProductStorageConfig;
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\ProductListStorage\ProductListStorageConfig as SprykerProductListStorageConfig;
 
 class ProductListStorageConfig extends SprykerProductListStorageConfig
 {
+    public const PUBLISH_PRODUCT_LIST = ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE;
+
     /**
      * @return string|null
      */
     public function getProductAbstractProductListEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_LIST;
     }
 
     /**
@@ -26,7 +28,7 @@ class ProductListStorageConfig extends SprykerProductListStorageConfig
      */
     public function getProductConcreteProductListEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PUBLISH_PRODUCT_LIST;
     }
 
     /**

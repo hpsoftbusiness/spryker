@@ -630,7 +630,9 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                     LEFT JOIN spy_price_product_store ON (
                         spy_price_product_store.fk_price_product = input.id_price_product AND
                         spy_price_product_store.fk_currency = input.id_currency AND
-                        spy_price_product_store.fk_store = input.id_store
+                        spy_price_product_store.fk_store = input.id_store AND
+                        spy_price_product_store.gross_price = input.gross_price AND
+                        spy_price_product_store.net_price = input.net_price
                     )
                 )
                 (
@@ -645,9 +647,7 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                     price_data_checksum
                 FROM records
                 )
-                ON DUPLICATE KEY UPDATE gross_price = records.gross_price,
-                  net_price = records.net_price,
-                  price_data = records.price_data,
+                ON DUPLICATE KEY UPDATE price_data = records.price_data,
                   price_data_checksum = records.price_data_checksum
                 RETURNING id_price_product_store";
 

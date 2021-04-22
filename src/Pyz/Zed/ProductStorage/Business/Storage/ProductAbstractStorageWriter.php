@@ -24,6 +24,8 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 {
     public const COL_FK_PRODUCT_SET = 'fk_product_set';
 
+    protected const BULK_SIZE = 100;
+
     /**
      * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
      */
@@ -264,24 +266,20 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             return;
         }
 
-        $stmt = Propel::getConnection()->prepare($this->getSql());
-        $stmt->execute($this->getParams());
-    }
+        $publishData = [];
 
-    /**
-     * @return string
-     */
-    protected function getSql(): string
-    {
-        return $this->productAbstractStorageCte->getSql();
-    }
+        foreach ($this->synchronizedDataCollection as $data) {
+            $publishData[] = $data;
 
-    /**
-     * @return string[]
-     */
-    protected function getParams(): array
-    {
-        return $this->productAbstractStorageCte->buildParams($this->synchronizedDataCollection);
+            if (count($publishData) >= static::BULK_SIZE) {
+                $stmt = Propel::getConnection()->prepare($this->productConcreteStorageCte->getSql());
+                $stmt->execute($this->productConcreteStorageCte->buildParams($publishData));
+
+                $publishData = [];
+            }
+        }
+
+        $this->synchronizedDataCollection = [];
     }
 
     /**

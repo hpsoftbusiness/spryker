@@ -218,7 +218,9 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                     LEFT JOIN spy_price_product_store ON (
                         spy_price_product_store.fk_price_product = input.id_price_product AND
                         spy_price_product_store.fk_currency = id_currency AND
-                        spy_price_product_store.fk_store = id_store
+                        spy_price_product_store.fk_store = id_store AND
+                        spy_price_product_store.gross_price = input.gross_price AND
+                        spy_price_product_store.net_price = input.net_price
                     )
                 )
                 (

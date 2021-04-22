@@ -7,16 +7,18 @@
 
 namespace Pyz\Zed\ProductListSearch;
 
-use Spryker\Shared\Publisher\PublisherConfig;
+use Pyz\Zed\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Zed\ProductListSearch\ProductListSearchConfig as SprykerProductListSearchConfig;
 
 class ProductListSearchConfig extends SprykerProductListSearchConfig
 {
+    public const PRODUCT_LIST_SEARCH = ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE;
+
     /**
      * @return string|null
      */
     public function getEventQueueName(): ?string
     {
-        return PublisherConfig::PUBLISH_QUEUE;
+        return static::PRODUCT_LIST_SEARCH;
     }
 }

@@ -15,7 +15,7 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     public const PUBLISH_PRODUCT_ABSTRACT_PAGE = 'publish.product_abstract_page';
     public const PUBLISH_PRODUCT_CONCRETE_PAGE = 'publish.product_concrete_page';
 
-    protected const CHUNK_SIZE = 250;
+    protected const CHUNK_SIZE = 500;
 
     /**
      * {@inheritDoc}
