@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\SpyPriceProductEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
-use Pyz\Shared\PriceProduct\PriceProductConfig;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
@@ -51,7 +50,9 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const DEFAULT_PRICE_TYPE = 'DEFAULT';
     public const ORIGINAL_PRICE_TYPE = 'ORIGINAL';
 
-    /** @link \Pyz\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_SP_BENEFIT */
+    /**
+     * @link \Pyz\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_SP_BENEFIT
+     */
     public const SP_BENEFIT_PRICE_TYPE = 'SP_BENEFIT';
 
     /**

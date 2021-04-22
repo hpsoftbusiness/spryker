@@ -10,7 +10,6 @@ namespace Pyz\Zed\ProductManagement;
 use Pyz\Zed\ProductManagement\Dependency\Facade\ProductManagementToProductBridge;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractViewActionViewDataExpanderPlugin;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductTableQueryCriteriaExpanderPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractEditViewExpanderPlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractFormEditTabsExpanderPlugin;
@@ -156,8 +155,6 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      */
     protected function getProductTableQueryCriteriaExpanderPluginInterfaces(): array
     {
-        return [
-            new MerchantProductProductTableQueryCriteriaExpanderPlugin(),
-        ];
+        return [];
     }
 }

@@ -69,7 +69,6 @@ class MyWorldPaymentPostSavePlugin extends AbstractPlugin implements CheckoutPos
         if (!$this->assertPaymentSuccessful($apiResponseTransfer)) {
             $this->handleFailedPaymentErrors($apiResponseTransfer, $checkoutResponse);
         }
-
     }
 
     /**

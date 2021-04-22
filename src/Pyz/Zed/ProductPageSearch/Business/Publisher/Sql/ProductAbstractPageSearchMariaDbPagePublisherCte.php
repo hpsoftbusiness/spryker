@@ -45,7 +45,7 @@ class ProductAbstractPageSearchMariaDbPagePublisherCte implements ProductPagePub
      */
     public function getSql(): string
     {
-       return <<<SQL
+        return <<<SQL
            INSERT INTO spy_product_abstract_page_search(
                id_product_abstract_page_search,
                fk_product_abstract,

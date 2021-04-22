@@ -22,7 +22,8 @@ class MyWorldPaymentEntityManager extends AbstractEntityManager implements MyWor
      *
      * @return void
      */
-    public function saveMyWorldPayment(PaymentDataResponseTransfer $dataResponseTransfer, int $idSalesOrder): void {
+    public function saveMyWorldPayment(PaymentDataResponseTransfer $dataResponseTransfer, int $idSalesOrder): void
+    {
         $myWorldPaymentEntity = new PyzPaymentMyWorld();
         $myWorldPaymentEntity = $this->getFactory()->createMyWorldPaymentMapper()
             ->mapPaymentDataResponseTransferToEntity($dataResponseTransfer, $myWorldPaymentEntity);

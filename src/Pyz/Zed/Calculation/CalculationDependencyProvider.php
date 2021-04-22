@@ -9,8 +9,8 @@ namespace Pyz\Zed\Calculation;
 
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\CashbackPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherMarketerPaymentQuoteCalculationPlugin;
-use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentBenefitVoucherQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherPaymentQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentBenefitVoucherQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\ShoppingPointsQuoteCalculationPlugin;
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;

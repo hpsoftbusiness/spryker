@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\AvailabilityStorage\Persistence\SpyAvailabilityStorage;
 use Propel\Runtime\Propel;
-use Pyz\Zed\AvailabilityStorage\Business\Storage\Cte\AvailabilityStorageCteInterface;
 use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;

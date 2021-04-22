@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\PyzSalesOrderBenefitDealEntityTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Pyz\Zed\BenefitDeal\Persistence\BenefitDealEntityManagerInterface;
-use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
 class BenefitDealWriter implements BenefitDealWriterInterface
 {

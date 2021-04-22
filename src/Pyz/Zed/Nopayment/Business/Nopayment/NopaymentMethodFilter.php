@@ -21,8 +21,7 @@ class NopaymentMethodFilter extends SpyNopaymentMethodFilter
      */
     public function filterPaymentMethods(PaymentMethodsTransfer $paymentMethodsTransfer, QuoteTransfer $quoteTransfer)
     {
-        if (
-            $quoteTransfer->getTotals()
+        if ($quoteTransfer->getTotals()
             && $quoteTransfer->getTotals()->getPriceToPay() === 0
             && !$this->assertMyWorldPaymentMethodSelected($quoteTransfer)
         ) {
