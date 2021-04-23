@@ -10,7 +10,6 @@ namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 class TradeTrackerTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
     protected const AFFILIATE_PARTNER_NAME = 'TRADETRACKER';
-    protected const DEEPLINK_ADVERTISER_ID_PARAMETER = 'c';
 
     /**
      * @param string $productAffiliateDeepLink
@@ -19,14 +18,6 @@ class TradeTrackerTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDa
      */
     protected function getUrl(string $productAffiliateDeepLink): string
     {
-        return sprintf('%s&r={TrackingHash}', urldecode($productAffiliateDeepLink));
-    }
-
-    /**
-     * @return string
-     */
-    protected function getNetwork(): string
-    {
-        return 'TT_CH';
+        return sprintf('%s&r={trackingHash}', urldecode($productAffiliateDeepLink));
     }
 }

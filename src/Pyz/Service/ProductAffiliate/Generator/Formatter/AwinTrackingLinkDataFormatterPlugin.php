@@ -10,9 +10,6 @@ namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 class AwinTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
     protected const AFFILIATE_PARTNER_NAME = 'AWIN';
-    protected const DEEPLINK_ADVERTISER_ID_PARAMETER = 'm';
-
-    private const DEFAULT_NETWORK = 'AW_Dach';
 
     /**
      * @param string $productAffiliateDeepLink
@@ -21,14 +18,6 @@ class AwinTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormat
      */
     protected function getUrl(string $productAffiliateDeepLink): string
     {
-        return sprintf('%s&clickRef={TrackingHash}', urldecode($productAffiliateDeepLink));
-    }
-
-    /**
-     * @return string
-     */
-    protected function getNetwork(): string
-    {
-        return self::DEFAULT_NETWORK;
+        return sprintf('%s&clickRef={trackingHash}', urldecode($productAffiliateDeepLink));
     }
 }

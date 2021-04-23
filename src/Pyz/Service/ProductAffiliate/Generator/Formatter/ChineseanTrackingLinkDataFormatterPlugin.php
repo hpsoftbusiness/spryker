@@ -10,8 +10,6 @@ namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 class ChineseanTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
     protected const AFFILIATE_PARTNER_NAME = 'CHINESEAN';
-    protected const DEEPLINK_ADVERTISER_ID_PARAMETER = 'pId';
-    private const DEFAULT_NETWORK = 'CHINESEAN_USD';
 
     /**
      * @param string $productAffiliateDeepLink
@@ -20,14 +18,6 @@ class ChineseanTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataF
      */
     protected function getUrl(string $productAffiliateDeepLink): string
     {
-        return sprintf('%s&mId={TrackingHash}', urldecode($productAffiliateDeepLink));
-    }
-
-    /**
-     * @return string
-     */
-    protected function getNetwork(): string
-    {
-        return self::DEFAULT_NETWORK;
+        return sprintf('%s&mId={trackingHash}', urldecode($productAffiliateDeepLink));
     }
 }

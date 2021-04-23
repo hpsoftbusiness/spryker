@@ -16,7 +16,7 @@ class ProductAffiliateLinkGenerator implements ProductAffiliateLinkGeneratorInte
 {
     public const KEY_AFFILIATE_DEEPLINK = 'affiliate_deeplink';
     public const KEY_AFFILIATE_NETWORK = 'affiliate_network';
-    public const KEY_AFFILIATE_MERCHANT_ID = 'affiliate_merchant_id';
+    public const KEY_OFFICE_DEALER_ID = 'office_dealer_id';
 
     /**
      * @var \Pyz\Service\ProductAffiliate\ProductAffiliateConfig

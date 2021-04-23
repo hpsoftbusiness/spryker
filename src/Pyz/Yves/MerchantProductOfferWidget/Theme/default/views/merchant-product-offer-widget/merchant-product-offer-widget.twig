@@ -34,7 +34,7 @@
                                         price: productOffer.price.price | default(null),
                                         currencyIsoCode: productOffer.price.currency.code | default(null),
                                         isRadioButtonVisible: isRadioButtonVisible,
-                                        affiliateData:productOffer.affiliateData | jsonDecode(),
+                                        affiliateData:productOffer.affiliateData,
                                         isConcrete: data.isConcrete,
                                     },
                                     embed : {

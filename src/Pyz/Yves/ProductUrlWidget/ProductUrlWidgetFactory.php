@@ -12,6 +12,7 @@ use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use Pyz\Yves\ProductDetailPage\ProductDetailPageDependencyProvider;
 use Spryker\Client\MerchantProductOfferStorage\MerchantProductOfferStorageClient;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ProductUrlWidgetFactory extends AbstractFactory
@@ -48,5 +49,13 @@ class ProductUrlWidgetFactory extends AbstractFactory
         return $this->getProvidedDependency(
             ProductUrlWidgetDependencyProvider::MERCHANT_PRODUCT_OFFER_STORAGE_CLIENT
         );
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    public function getStore(): Store
+    {
+        return $this->getProvidedDependency(ProductUrlWidgetDependencyProvider::STORE);
     }
 }

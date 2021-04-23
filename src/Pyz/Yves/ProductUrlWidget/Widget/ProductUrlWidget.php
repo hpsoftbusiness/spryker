@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ProductUrlWidget\Widget;
 
 use Generated\Shared\Transfer\ProductOfferStorageCriteriaTransfer;
+use Pyz\Service\ProductAffiliate\Generator\ProductAffiliateLinkGenerator;
 use Pyz\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
@@ -26,12 +27,14 @@ class ProductUrlWidget extends AbstractWidget
     /**
      * @param bool|null $isAffiliate
      * @param array $affiliateData
+     * @param array|null $productAttributes
      * @param int|null $abstractProduct
      * @param bool $isConcrete
      */
     public function __construct(
         ?bool $isAffiliate,
         array $affiliateData,
+        ?array $productAttributes = [],
         ?int $abstractProduct = null,
         $isConcrete = false
     ) {
@@ -39,7 +42,7 @@ class ProductUrlWidget extends AbstractWidget
             $this->hasOneOffer($abstractProduct);
         }
 
-        $this->addParameter('url', $this->getProductUrl($isAffiliate, $affiliateData, $isConcrete));
+        $this->addParameter('url', $this->getProductUrl($isAffiliate, $affiliateData, $productAttributes, $isConcrete));
         $this->addParameter('targetBlank', $this->getTargetBlank($isAffiliate, $isConcrete));
     }
 
@@ -62,13 +65,23 @@ class ProductUrlWidget extends AbstractWidget
     /**
      * @param bool|null $isAffiliate
      * @param array $affiliateData
+     * @param array $productAttributes
      * @param bool $isConcrete
      *
      * @return string
      */
-    protected function getProductUrl(?bool $isAffiliate, array $affiliateData, bool $isConcrete): string
-    {
+    protected function getProductUrl(
+        ?bool $isAffiliate,
+        array $affiliateData,
+        array $productAttributes,
+        bool $isConcrete
+    ): string {
         if ($isAffiliate) {
+            if (!empty($productAttributes)) {
+                $affiliateData[ProductAffiliateLinkGenerator::KEY_OFFICE_DEALER_ID] =
+                    $productAttributes[ProductAffiliateLinkGenerator::KEY_OFFICE_DEALER_ID] ?? null;
+            }
+
             if ($this->hasOneOffer || $isConcrete) {
                 return $this->getProductAffiliateTrackingUrl($affiliateData);
             }
@@ -124,7 +137,7 @@ class ProductUrlWidget extends AbstractWidget
 
         $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
         $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-
+        $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
         $offers = $this->getFactory()->getMerchantProductOfferStorageClient()->getProductOffersBySkus(
             $productOfferCriteriaFilterTransfer
         )->getProductOffersStorage();
@@ -154,5 +167,13 @@ class ProductUrlWidget extends AbstractWidget
         }
 
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    private function getSellableCountryCode(): string
+    {
+        return $this->getFactory()->getStore()->getCurrentCountry();
     }
 }

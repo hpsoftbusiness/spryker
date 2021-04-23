@@ -10,10 +10,6 @@ namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 class AdmitadTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
     protected const AFFILIATE_PARTNER_NAME = 'ADMITAD';
-    /**
-     * @TODO Set AdvertiserId parameter and add this plugin to dependency provider plugin stack
-     */
-    protected const DEEPLINK_ADVERTISER_ID_PARAMETER = '';
 
     /**
      * @param string $productAffiliateDeepLink
@@ -22,14 +18,6 @@ class AdmitadTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFor
      */
     protected function getUrl(string $productAffiliateDeepLink): string
     {
-        return sprintf('%s&subid={TrackingHash}', urldecode($productAffiliateDeepLink));
-    }
-
-    /**
-     * @return string
-     */
-    protected function getNetwork(): string
-    {
-        return 'Admitad_{CountryID)';
+        return sprintf('%s&subid={trackingHash}', urldecode($productAffiliateDeepLink));
     }
 }

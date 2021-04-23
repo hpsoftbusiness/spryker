@@ -95,7 +95,7 @@ class ProductController extends SprykerShopProductController
         ProductViewTransfer $productViewTransfer,
         array $attributes
     ): void {
-        if ($attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore()]) {
+        if ($attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore()] ?? null) {
             $benefitSalesPrice = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice()] ?? null;
             $benefitAmount = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount()] ?? null;
             /**

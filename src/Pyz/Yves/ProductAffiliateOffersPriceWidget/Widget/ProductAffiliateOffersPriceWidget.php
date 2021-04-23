@@ -66,6 +66,7 @@ class ProductAffiliateOffersPriceWidget extends AbstractWidget
 
         $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
         $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
+        $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
 
         $productOfferStorageCollectionTransfer = $this->getFactory()->getMerchantProductOfferStorageClient(
         )->getProductOffersBySkus(
@@ -84,5 +85,13 @@ class ProductAffiliateOffersPriceWidget extends AbstractWidget
         }
 
         return $price;
+    }
+
+    /**
+     * @return string
+     */
+    private function getSellableCountryCode(): string
+    {
+        return $this->getFactory()->getStore()->getCurrentCountry();
     }
 }

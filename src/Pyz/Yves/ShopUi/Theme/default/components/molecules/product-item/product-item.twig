@@ -37,7 +37,12 @@
                 {% block name %}
                     {% if data.name and data.url %}
                         {% block link %}
-                            {% widget 'ProductUrlWidget' args [data.isAffiliate, data.affiliateData, data.idProductAbstract] with {
+                            {% widget 'ProductUrlWidget' args [
+                                data.isAffiliate,
+                                data.affiliateData,
+                                data.product.attributes ?? [],
+                                data.idProductAbstract
+                            ] with {
                                 data: {
                                     parentJsName: config.jsName,
                                     configName: config.name,
@@ -112,7 +117,12 @@
     {% set modifiers = ['spaceless'] %}
 
     {% block productThumbnail %}
-        {% widget 'ProductUrlWidget' args [data.isAffiliate, data.affiliateData, data.idProductAbstract] with {
+        {% widget 'ProductUrlWidget' args [
+            data.isAffiliate,
+            data.affiliateData,
+            data.product.attributes ?? [],
+            data.idProductAbstract
+        ] with {
             data: {
                 parentJsName: config.jsName,
                 configName: config.name,

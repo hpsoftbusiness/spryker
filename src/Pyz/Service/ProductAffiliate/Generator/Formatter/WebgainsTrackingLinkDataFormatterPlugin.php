@@ -10,7 +10,6 @@ namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 class WebgainsTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
     protected const AFFILIATE_PARTNER_NAME = 'WEBGAINS';
-    protected const DEEPLINK_ADVERTISER_ID_PARAMETER = 'wgprogramid';
 
     /**
      * @param string $productAffiliateDeepLink
@@ -19,14 +18,6 @@ class WebgainsTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFo
      */
     protected function getUrl(string $productAffiliateDeepLink): string
     {
-        return sprintf('%s&clickRef={TrackingHash}', urldecode($productAffiliateDeepLink));
-    }
-
-    /**
-     * @return string
-     */
-    protected function getNetwork(): string
-    {
-        return 'WEBGAINS';
+        return sprintf('%s&clickRef={trackingHash}', urldecode($productAffiliateDeepLink));
     }
 }

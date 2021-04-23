@@ -7,13 +7,9 @@
 
 namespace Pyz\Service\ProductAffiliate\Generator\Formatter;
 
-use Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException;
-use Pyz\Service\ProductAffiliate\Generator\ProductAffiliateLinkGenerator;
-
 class CJTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatterPlugin
 {
     protected const AFFILIATE_PARTNER_NAME = 'CJ';
-    private const DEFAULT_NETWORK = 'CJ_AU';
 
     /**
      * @param string $productAffiliateDeepLink
@@ -22,31 +18,6 @@ class CJTrackingLinkDataFormatterPlugin extends AbstractTrackingLinkDataFormatte
      */
     protected function getUrl(string $productAffiliateDeepLink): string
     {
-        return sprintf('%s&SID={TrackingHash}', $productAffiliateDeepLink);
-    }
-
-    /**
-     * @return string
-     */
-    protected function getNetwork(): string
-    {
-        return self::DEFAULT_NETWORK;
-    }
-
-    /**
-     * @param array $affiliateData
-     *
-     * @throws \Pyz\Service\ProductAffiliate\Generator\Exception\ProductAffiliateTrackingLinkGeneratorException
-     *
-     * @return string
-     */
-    protected function getAdvertiserId(array $affiliateData): string
-    {
-        $affiliateMerchantId = $affiliateData[ProductAffiliateLinkGenerator::KEY_AFFILIATE_MERCHANT_ID] ?? null;
-        if (!$affiliateMerchantId) {
-            throw new ProductAffiliateTrackingLinkGeneratorException('Affiliate merchant ID missing.');
-        }
-
-        return $affiliateMerchantId;
+        return sprintf('%s&SID={trackingHash}', $productAffiliateDeepLink);
     }
 }

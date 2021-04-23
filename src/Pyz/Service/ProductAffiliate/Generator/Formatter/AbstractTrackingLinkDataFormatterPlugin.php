@@ -19,17 +19,12 @@ abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin im
      */
     protected const AFFILIATE_PARTNER_NAME = '';
 
-    /**
-     * Should be overridden with value of a deeplink parameter containing AdvertiserId value.
-     */
-    protected const DEEPLINK_ADVERTISER_ID_PARAMETER = '';
-
     protected const PARAMETER_CUSTOMER_NUMBER = 'customerNumber';
-    protected const PARAMETER_NETWORK = 'network';
-    protected const PARAMETER_ADVERTISER_ID = 'AdvertiserId';
     protected const PARAMETER_URL = 'url';
+    protected const PARAMETER_DEALER = 'd';
 
     protected const EXCEPTION_MISSING_ADVERTISER_ID = 'Product affiliate deeplink url missing \'%s\' parameter for AdvertiserId.';
+    protected const EXCEPTION_MISSING_DEALER_ID = 'Product affiliate data missing dealer ID.';
 
     /**
      * @param array $affiliateData
@@ -41,8 +36,7 @@ abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin im
     {
         return [
             self::PARAMETER_CUSTOMER_NUMBER => $this->getMyWorldCustomerNumber($customerTransfer),
-            self::PARAMETER_NETWORK => $this->getNetwork(),
-            self::PARAMETER_ADVERTISER_ID => $this->getAdvertiserId($affiliateData),
+            self::PARAMETER_DEALER => $this->getDealer($affiliateData),
             self::PARAMETER_URL => $this->getUrl($affiliateData[ProductAffiliateLinkGenerator::KEY_AFFILIATE_DEEPLINK]),
         ];
     }
@@ -72,23 +66,19 @@ abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin im
      *
      * @return string
      */
-    protected function getAdvertiserId(array $affiliateData): string
+    protected function getDealer(array $affiliateData): string
     {
-        $productAffiliateDeeplink = $affiliateData[ProductAffiliateLinkGenerator::KEY_AFFILIATE_DEEPLINK];
-        $deeplinkQueryString = parse_url($productAffiliateDeeplink, PHP_URL_QUERY);
-        parse_str($deeplinkQueryString, $deeplinkArguments);
+        $dealer = $affiliateData[ProductAffiliateLinkGenerator::KEY_OFFICE_DEALER_ID] ?? null;
 
-        $advertiserId = $deeplinkArguments[static::DEEPLINK_ADVERTISER_ID_PARAMETER] ?? null;
-        if ($advertiserId === null) {
-            throw new ProductAffiliateTrackingLinkGeneratorException(
-                sprintf(
-                    self::EXCEPTION_MISSING_ADVERTISER_ID,
-                    self::DEEPLINK_ADVERTISER_ID_PARAMETER
-                )
-            );
+        if ($dealer === null) {
+            throw new ProductAffiliateTrackingLinkGeneratorException(self::EXCEPTION_MISSING_DEALER_ID);
         }
 
-        return $advertiserId;
+        if (is_array($dealer)) {
+            $dealer = array_shift($dealer);
+        }
+
+        return $dealer;
     }
 
     /**
@@ -97,9 +87,4 @@ abstract class AbstractTrackingLinkDataFormatterPlugin extends AbstractPlugin im
      * @return string
      */
     abstract protected function getUrl(string $productAffiliateDeepLink): string;
-
-    /**
-     * @return string
-     */
-    abstract protected function getNetwork(): string;
 }
