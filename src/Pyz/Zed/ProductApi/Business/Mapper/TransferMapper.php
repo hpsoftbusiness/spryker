@@ -203,7 +203,7 @@ class TransferMapper implements TransferMapperInterface
             : null;
         $productPriceApi = new ProductPriceApiTransfer();
         if ($moneyValue) {
-            $productPriceApi->setAmount($this->formatAmount($moneyValue->getGrossAmount()))
+            $productPriceApi->setAmount($this->formatAmount($moneyValue->getGrossAmount() / 100))
                 ->setCurrency($moneyValue->getCurrency()->getCode());
         }
 
