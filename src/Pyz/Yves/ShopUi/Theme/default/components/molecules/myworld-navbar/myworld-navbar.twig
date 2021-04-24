@@ -8,7 +8,7 @@
 {# TODO: This should come from API #}
 {% define data = {
     isLogoColored: false,
-    hasDropdown: true,
+    hasDropdown: false,
     inlineMenu: [
         {
             name: 'nav-logo-myworld-bw',
@@ -16,9 +16,36 @@
             targetUrl: 'https://www.cashbackworld.com'
         },
         {
-            name: 'nav-logo-marketplace-bw',
-            nameColored: 'nav-logo-marketplace-bw-colored',
-            targetUrl: 'https://marketplace.myworld.com'
+            name: 'nav-logo-benefit-lounge-bw',
+            nameColored: 'nav-logo-benefit-lounge-bw-colored',
+            targetUrl: 'https://www.cashbackworld.com/benefitlounge'
+        },
+        {
+            name: 'nav-logo-travelworld-bw',
+            nameColored: 'nav-logo-travelworld-bw-colored',
+            targetUrl: 'https://www.travelworld.com'
+        },
+        {
+            name: 'logo-cff-w-bar',
+            nameColored: 'nav-logo-cff-colored',
+            targetUrl: 'https://childandfamily.foundation'
+        },
+        {
+            name: 'logo-gff-w-bar',
+            nameColored: 'nav-logo-gff-colored',
+            targetUrl: 'https://greenfinity.foundation'
+        },
+        {
+            name: 'logo-onesense-w-bar',
+            nameColored: 'logo-onesense',
+            targetUrl: 'https://onesense.com'
+        },
+    ],
+    linksVisiableAfterLogin: [
+        {
+            name: 'nav-logo-myworld-bw',
+            nameColored: 'nav-logo-myworld-bw-colored',
+            targetUrl: 'https://www.cashbackworld.com'
         },
         {
             name: 'nav-logo-benefit-lounge-bw',
@@ -39,20 +66,27 @@
             name: 'nav-logo-benefit-store-bw',
             nameColored: 'nav-logo-benefit-store-bw-colored',
             targetUrl: 'https://lyconet.com/benefitstore'
-        }
+        },
+        {
+            name: 'logo-cff-w-bar',
+            nameColored: 'nav-logo-cff-colored',
+            targetUrl: 'https://childandfamily.foundation'
+        },
+        {
+            name: 'logo-gff-w-bar',
+            nameColored: 'nav-logo-gff-colored',
+            targetUrl: 'https://greenfinity.foundation'
+        },
+        {
+            name: 'logo-onesense-w-bar',
+            nameColored: 'logo-onesense',
+            targetUrl: 'https://onesense.com'
+        },
     ],
     dropdownMenu: [
         {
             name: 'nav-logo-cbw-partner-colored',
             targetUrl: 'https://partner.cashbackworld.com'
-        },
-        {
-            name: 'nav-logo-cff-colored',
-            targetUrl: 'https://childandfamily.foundation'
-        },
-        {
-            name: 'nav-logo-gff-colored',
-            targetUrl: 'https://greenfinity.foundation'
         },
         {
             name: 'nav-logo-organic-colored',
@@ -62,6 +96,23 @@
 } %}
 
 {% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% for navItem in data.linksVisiableAfterLogin %}
+            <div class="{{ config.name }}__item">
+                <a
+                    class="{{ config.name }}__link {{ navItem.name == 'nav-logo-marketplace-bw' ? config.name ~ '__link--active' }}"
+                    href="{{ navItem.targetUrl }}"
+                    target="_blank"
+                >
+                    <img
+                        src="{{ publicPath('images/' ~ (data.isLogoColored ? navItem.nameColored : navItem.name) ~ '.svg') }}"
+                        alt="{{ data.isLogoColored ? navItem.nameColored : navItem.name }}"
+                        class="{{ config.name }}__image"
+                    />
+                </a>
+            </div>
+        {% endfor %}
+        {% else %}
     {% for navItem in data.inlineMenu %}
         <div class="{{ config.name }}__item">
             <a
@@ -78,8 +129,11 @@
         </div>
     {% endfor %}
 
+
+    {% endif %}
+
+    {% if data.hasDropdown %}
     <div class="{{ config.name }}__dropdown">
-        {% if data.hasDropdown %}
             <button class="{{ config.name }}__dropdown-opener {{ config.jsName }}__dropdown-opener"
                     data-toggle-target-class-name="{{ config.jsName }}__dropdown-content">
                 {% include atom('icon') with {
@@ -89,7 +143,6 @@
                     },
                 } only %}
             </button>
-        {% endif %}
 
         <div class="{{ config.name }}__dropdown-content {{ data.hasDropdown ? config.jsName ~ '__dropdown-content is-hidden' }}">
             {% for navItem in data.dropdownMenu %}
@@ -119,4 +172,6 @@
             } only %}
         {% endif %}
     </div>
+    {% endif %}
+
 {% endblock %}
