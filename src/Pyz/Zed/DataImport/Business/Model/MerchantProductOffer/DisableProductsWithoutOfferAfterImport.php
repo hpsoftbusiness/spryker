@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\MerchantProductOffer;
 
-use Orm\Zed\Merchant\Persistence\Map\SpyMerchantTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
@@ -53,28 +52,16 @@ class DisableProductsWithoutOfferAfterImport implements DataImporterAfterImportI
                 [SpyProductOfferTableMap::COL_CONCRETE_SKU, true],
                 Criteria::LEFT_JOIN
             )
-            ->addJoin(
-                [SpyProductOfferTableMap::COL_FK_MERCHANT],
-                [SpyMerchantTableMap::COL_ID_MERCHANT],
-                Criteria::LEFT_JOIN
-            )
             ->where(sprintf('%s = ?', SpyProductAbstractTableMap::COL_IS_AFFILIATE), true)
-            ->where(sprintf('%s = "%s"', SpyMerchantTableMap::COL_MERCHANT_REFERENCE, $this->getMerchantReference()))
             ->where(sprintf('%s is null', SpyProductOfferTableMap::COL_ID_PRODUCT_OFFER))
             ->find();
 
         foreach ($products as $product) {
-            $product->setIsActive(false);
-            $product->save();
-            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $product->getIdProduct());
+            if ($product->isActive()) {
+                $product->setIsActive(false);
+                $product->save();
+                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $product->getIdProduct());
+            }
         }
-    }
-
-    /**
-     * @return string
-     */
-    private function getMerchantReference(): string
-    {
-        return $this->dataSet[MerchantReferenceToIdMerchantStep::MERCHANT_REFERENCE];
     }
 }
