@@ -27,19 +27,24 @@ class ShoppingPointsPaymentCalculator implements MyWorldPaymentCalculatorInterfa
         }
 
         $availableShoppingPointsAmount = $customerTransfer->getCustomerBalance()->getAvailableShoppingPointAmount()->toFloat();
-        $totalShoppingPointsAmountSpent = 0;
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
             if (!$itemTransfer->getUseShoppingPoints() || $availableShoppingPointsAmount === 0) {
+                $itemTransfer->setTotalUsedShoppingPointsAmount(0);
+
+                $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
+                $itemTransfer->setSumGrossPrice($itemTransfer->getOriginUnitGrossPrice() * $itemTransfer->getQuantity());
+
                 continue;
             }
 
             $this->calculateItemUsedShoppingPoints($itemTransfer, $availableShoppingPointsAmount);
             $totalItemUsedShoppingPoints = $itemTransfer->getTotalUsedShoppingPointsAmount();
-            $totalShoppingPointsAmountSpent += $totalItemUsedShoppingPoints;
             $availableShoppingPointsAmount -= $totalItemUsedShoppingPoints;
         }
 
-        $calculableObjectTransfer->setTotalUsedShoppingPointsAmount($totalShoppingPointsAmountSpent);
+        $calculableObjectTransfer->setTotalUsedShoppingPointsAmount(
+            $this->getCommonUsedShoppingPoints($calculableObjectTransfer)
+        );
 
         return $calculableObjectTransfer;
     }
@@ -47,11 +52,19 @@ class ShoppingPointsPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
+     * @return int
      */
-    public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    protected function getCommonUsedShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): int
     {
-        return $calculableObjectTransfer;
+        return array_reduce(
+            $calculableObjectTransfer->getItems()->getArrayCopy(),
+            function (int $carry, ItemTransfer $itemTransfer) {
+                $carry += $itemTransfer->getTotalUsedShoppingPointsAmount();
+
+                return $carry;
+            },
+            0
+        );
     }
 
     /**

@@ -65,7 +65,6 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      */
     protected function reduceItemsPrices(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
-        $commonBenefitVouchersUsed = 0;
         $commonReducedPrice = 0;
         $availableAmountOfBenefitVoucher = $calculableObjectTransfer->getOriginalQuote()->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount();
 
@@ -79,12 +78,21 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
 
                 $this->calculateItemUsedBenefitVouchers($itemTransfer, $availableAmountOfBenefitVoucher->toInt());
 
-                $commonBenefitVouchersUsed += $itemTransfer->getTotalUsedBenefitVouchersAmount();
                 $commonReducedPrice += $oldPriceForItemsWithBenefitVouchers - $newPriceForItemsWithBenefitVouchers;
+            } elseif (
+                !$itemTransfer->getUseBenefitVoucher()
+                && $this->assertBenefitVoucherSalesPrice($itemTransfer)
+            ) {
+                $itemTransfer->setTotalUsedBenefitVouchersAmount(0);
+
+                $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
+                $itemTransfer->setSumGrossPrice($itemTransfer->getOriginUnitGrossPrice() * $itemTransfer->getQuantity());
             }
         }
 
-        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount($commonBenefitVouchersUsed);
+        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount(
+            $this->getCommonUsedBenefitItems($calculableObjectTransfer)
+        );
 
         if ($commonReducedPrice > 0) {
             $payment = $this->createPaymentMethod($commonReducedPrice);
@@ -93,6 +101,24 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
         }
 
         return $calculableObjectTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return int
+     */
+    protected function getCommonUsedBenefitItems(CalculableObjectTransfer $calculableObjectTransfer): int
+    {
+        return array_reduce(
+            $calculableObjectTransfer->getItems()->getArrayCopy(),
+            function (int $carry, ItemTransfer $itemTransfer) {
+                $carry += $itemTransfer->getTotalUsedBenefitVouchersAmount();
+
+                return $carry;
+            },
+            0
+        );
     }
 
     /**
