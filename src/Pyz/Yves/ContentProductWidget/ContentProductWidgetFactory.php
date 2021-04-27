@@ -15,6 +15,9 @@ use SprykerShop\Yves\ContentProductWidget\ContentProductWidgetFactory as Spryker
 use SprykerShop\Yves\ContentProductWidget\Reader\ContentProductAbstractReaderInterface;
 use Twig\Environment;
 
+/**
+ * @method \Pyz\Yves\ContentProductWidget\ContentProductWidgetConfig getConfig()
+ */
 class ContentProductWidgetFactory extends SprykerContentProductWidgetFactory
 {
     /**
@@ -40,7 +43,8 @@ class ContentProductWidgetFactory extends SprykerContentProductWidgetFactory
         return new ContentProductAbstractReader(
             $this->getContentProductClient(),
             $this->getProductStorageClient(),
-            $this->getStore()
+            $this->getStore(),
+            $this->getConfig()
         );
     }
 

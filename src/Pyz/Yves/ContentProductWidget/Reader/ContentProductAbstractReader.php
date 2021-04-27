@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ContentProductWidget\Reader;
 
 use Generated\Shared\Transfer\ProductViewTransfer;
+use Pyz\Yves\ContentProductWidget\ContentProductWidgetConfig;
 use Spryker\Shared\Kernel\Store;
 use SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToContentProductClientBridgeInterface;
 use SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToProductStorageClientBridgeInterface;
@@ -23,18 +24,26 @@ class ContentProductAbstractReader extends SprykerContentProductAbstractReader
     private $store;
 
     /**
+     * @var \Pyz\Yves\ContentProductWidget\ContentProductWidgetConfig
+     */
+    private $config;
+
+    /**
      * @param \SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToContentProductClientBridgeInterface $contentProductClient
      * @param \SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToProductStorageClientBridgeInterface $productStorageClient
      * @param \Spryker\Shared\Kernel\Store $store
+     * @param \Pyz\Yves\ContentProductWidget\ContentProductWidgetConfig $config
      */
     public function __construct(
         ContentProductWidgetToContentProductClientBridgeInterface $contentProductClient,
         ContentProductWidgetToProductStorageClientBridgeInterface $productStorageClient,
-        Store $store
+        Store $store,
+        ContentProductWidgetConfig $config
     ) {
         parent::__construct($contentProductClient, $productStorageClient);
 
         $this->store = $store;
+        $this->config = $config;
     }
 
     /**
@@ -46,7 +55,7 @@ class ContentProductAbstractReader extends SprykerContentProductAbstractReader
     public function findProductAbstractCollection(string $contentKey, string $localeName): ?array
     {
         $productAbstractViewCollection = parent::findProductAbstractCollection($contentKey, $localeName);
-        if ($productAbstractViewCollection) {
+        if ($this->config->isMultiCountryEnabled() && $productAbstractViewCollection) {
             $productAbstractViewCollection = $this->filterSellableAbstractProductViews($productAbstractViewCollection);
         }
 
