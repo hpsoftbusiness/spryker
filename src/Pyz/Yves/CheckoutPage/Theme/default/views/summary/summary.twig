@@ -41,6 +41,7 @@
                             productOptionsModifiers: ['alternative'],
                             cashback: cartItem.concreteAttributes.cashback_amount | default(null),
                             shoppingPoints: cartItem.concreteAttributes.shopping_points | default(null),
+                            showCashbackPoints: _view.showCashbackPoints
                     },
                         embed: {
                             bundleItems: item.bundleItems | default([]),

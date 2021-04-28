@@ -86,6 +86,19 @@ class SummaryStep extends SprykerSummaryStep
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return array
+     */
+    public function getTemplateVariables(AbstractTransfer $quoteTransfer): array
+    {
+        $viewData = parent::getTemplateVariables($quoteTransfer);
+        $viewData['showCashbackPoints'] = $this->hasBenefitDealsApplied($quoteTransfer);
+
+        return $viewData;
+    }
+
+    /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -101,5 +114,21 @@ class SummaryStep extends SprykerSummaryStep
                 $quoteTransfer->setCheckoutConfirmed($isValid);
             }
         }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function hasBenefitDealsApplied(QuoteTransfer $quoteTransfer): bool
+    {
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            if ($itemTransfer->getUseBenefitVoucher() || $itemTransfer->getUseShoppingPoints()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
