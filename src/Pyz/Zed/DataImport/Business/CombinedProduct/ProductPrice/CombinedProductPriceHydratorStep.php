@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
+use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
@@ -95,10 +96,12 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         $this->importPriceData($dataSet);
 
         foreach (static::$priceTypes as $priceType => $priceAttributeKey) {
-            $dataSet[static::COLUMN_PRICE_TYPE] = $priceType;
+            if (isset($dataSet[$priceAttributeKey])) {
+                $dataSet[static::COLUMN_PRICE_TYPE] = $priceType;
 
-            $this->importPriceType($dataSet);
-            $this->importProductPrice($dataSet);
+                $this->importPriceType($dataSet);
+                $this->importProductPrice($dataSet);
+            }
         }
 
         $dataSet[static::PRICE_TYPE_TRANSFER] = static::$priceTypeEntityTransfers;
