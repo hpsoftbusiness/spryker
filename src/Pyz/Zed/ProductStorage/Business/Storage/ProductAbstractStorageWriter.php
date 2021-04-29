@@ -272,14 +272,25 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $publishData[] = $data;
 
             if (count($publishData) >= static::BULK_SIZE) {
-                $stmt = Propel::getConnection()->prepare($this->productConcreteStorageCte->getSql());
-                $stmt->execute($this->productConcreteStorageCte->buildParams($publishData));
+                $this->executePublishData($publishData);
 
                 $publishData = [];
             }
         }
+        if (count($publishData) > 0) {
+            $this->executePublishData($publishData);
+        }
 
         $this->synchronizedDataCollection = [];
+    }
+
+    /**
+     * @param $publishData
+     */
+    protected function executePublishData($publishData): void
+    {
+        $stmt = Propel::getConnection()->prepare($this->productAbstractStorageCte->getSql());
+        $stmt->execute($this->productAbstractStorageCte->buildParams($publishData));
     }
 
     /**

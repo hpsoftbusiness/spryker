@@ -53,6 +53,7 @@ class DisableProductsWithoutOfferAfterImport implements DataImporterAfterImportI
                 Criteria::LEFT_JOIN
             )
             ->where(sprintf('%s = ?', SpyProductAbstractTableMap::COL_IS_AFFILIATE), true)
+            ->where(sprintf('%s = ?', SpyProductTableMap::COL_IS_ACTIVE), true)
             ->where(sprintf('%s is null', SpyProductOfferTableMap::COL_ID_PRODUCT_OFFER))
             ->find();
 
