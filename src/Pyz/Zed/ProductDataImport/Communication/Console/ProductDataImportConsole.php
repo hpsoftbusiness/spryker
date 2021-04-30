@@ -32,6 +32,8 @@ class ProductDataImportConsole extends Console
     private const  DATA_ENTITY_MERCHANT_PRODUCT_OFFER_STORE = 'merchant-product-offer-store';
     private const  DATA_ENTITY_PRICE_PRODUCT_OFFER = 'price-product-offer';
 
+    public const DATA_IMPORT_KEY = 'IS_DATA_IMPORT_IN_PROGRESS';
+
     protected const DATA_ENTITY_FOR_PRODUCT = [
         self::DATA_ENTITY_ABSTRACT,
         self::DATA_ENTITY_ABSTRACT_STORE,
@@ -75,9 +77,7 @@ class ProductDataImportConsole extends Console
         $productDataImport = $this->getFacade()->getProductDataImportForImport();
 
         $storageClient = $this->getFactory()->getStorageClient();
-
-        $storageClient->set('IS_DATA_IMPORT_IN_PROGRESS', true);
-        apcu_add('IS_DATA_IMPORT_IN_PROGRESS', true);
+        $storageClient->set(static::DATA_IMPORT_KEY, true);
 
         if ($productDataImport) {
             Propel::disableInstancePooling();
@@ -94,8 +94,7 @@ class ProductDataImportConsole extends Console
                     $progressBar->advance();
                 }
             } catch (Exception $e) {
-                $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
-                apcu_delete('IS_DATA_IMPORT_IN_PROGRESS');
+                $storageClient->delete(static::DATA_IMPORT_KEY);
             }
 
             $output->writeln(' <fg=yellow> Clear file</>');
@@ -107,8 +106,7 @@ class ProductDataImportConsole extends Console
         }
         $progressBar->finish();
 
-        $storageClient->delete('IS_DATA_IMPORT_IN_PROGRESS');
-        apcu_delete('IS_DATA_IMPORT_IN_PROGRESS');
+        $storageClient->delete(static::DATA_IMPORT_KEY);
 
         $output->writeln(' <fg=green> Finish</>');
         $messenger->info(

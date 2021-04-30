@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Queue\Communication\Console;
 
+use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole as SprykerQueueWorkerConsole;
 use Symfony\Component\Console\Input\InputInterface;
@@ -27,7 +28,7 @@ class QueueWorkerConsole extends SprykerQueueWorkerConsole
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        if (apcu_exists('IS_DATA_IMPORT_IN_PROGRESS') && apcu_fetch('IS_DATA_IMPORT_IN_PROGRESS')) {
+        if ($this->getFactory()->getStorageClient()->get(ProductDataImportConsole::DATA_IMPORT_KEY) !== null) {
             $output->writeln('<fg=red> Data Import in progress</>');
 
             return static::CODE_SUCCESS;
