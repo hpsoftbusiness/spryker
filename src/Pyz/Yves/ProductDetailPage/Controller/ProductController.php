@@ -160,6 +160,9 @@ class ProductController extends SprykerShopProductController
             'customer_group_4',
             'customer_group_5',
             'product_sp_amount',
+            $this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore(),
+            $this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount(),
+            $this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice(),
         ];
 
         foreach (array_keys($attributes) as $attributeKey) {
