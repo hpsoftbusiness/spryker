@@ -18,7 +18,6 @@ class CombinedProductGroupMandatoryColumnCondition extends CombinedProductMandat
     {
         return [
             CombinedProductGroupWriter::COLUMN_PRODUCT_GROUP_KEY,
-            CombinedProductGroupWriter::COLUMN_POSITION,
         ];
     }
 }

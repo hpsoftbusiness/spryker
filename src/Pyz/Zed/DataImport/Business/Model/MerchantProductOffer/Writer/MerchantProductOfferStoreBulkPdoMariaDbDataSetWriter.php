@@ -36,6 +36,8 @@ class MerchantProductOfferStoreBulkPdoMariaDbDataSetWriter implements DataSetWri
     protected const KEY_MERCHANT_REFERENCE = 'product.value_10';
     protected const KEY_CONCRETE_SKU = 'concrete_sku';
 
+    protected const IS_AFFILIATE_KEY = 'product.value_73';
+
     /**
      * @var array
      */
@@ -100,6 +102,10 @@ class MerchantProductOfferStoreBulkPdoMariaDbDataSetWriter implements DataSetWri
      */
     public function flush()
     {
+        if (static::$merchantProductOfferStoreCollection === []) {
+            return;
+        }
+
         $this->persistProductOfferStore();
         $this->collectProductOfferEvents();
 
@@ -242,10 +248,12 @@ class MerchantProductOfferStoreBulkPdoMariaDbDataSetWriter implements DataSetWri
      */
     protected function collectMerchantProductOfferStoreCollection(DataSetInterface $dataSet): void
     {
-        static::$merchantProductOfferStoreCollection[] = [
-            static::COLUMN_STORE_NAME => $dataSet[static::KEY_STORE_NAME],
-            static::PRODUCT_OFFER_REFERENCE => $this->getProductOfferReference($dataSet),
-        ];
+        if (isset($dataSet[static::IS_AFFILIATE_KEY]) && $dataSet[static::IS_AFFILIATE_KEY] === 'TRUE') {
+            static::$merchantProductOfferStoreCollection[] = [
+                static::COLUMN_STORE_NAME => $dataSet[static::KEY_STORE_NAME],
+                static::PRODUCT_OFFER_REFERENCE => $this->getProductOfferReference($dataSet),
+            ];
+        }
     }
 
     /**

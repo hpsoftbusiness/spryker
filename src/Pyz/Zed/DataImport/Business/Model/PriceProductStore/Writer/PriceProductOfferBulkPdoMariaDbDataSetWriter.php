@@ -53,6 +53,8 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
     protected const DEFAULT_PRICE_TYPE = 'DEFAULT';
     protected const ORIGINAL_PRICE_TYPE = 'ORIGINAL';
 
+    protected const IS_AFFILIATE_KEY = 'product.value_73';
+
     /**
      * @var array
      */
@@ -150,6 +152,10 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
      */
     public function flush()
     {
+        if (static::$priceProductOfferStoreCollection === []) {
+            return;
+        }
+
         $this->collectProductOffersIds();
         $this->collectPriceTypeIds();
         $this->collectProductIds();
@@ -769,25 +775,27 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
      */
     protected function collectPriceProductOfferCollection(DataSetInterface $dataSet): void
     {
-        $priceProductOfferStore = [
-            static::COLUMN_PRICE_TYPE => $dataSet[static::KEY_PRICE_TYPE] ?: 'DEFAULT',
-            static::COLUMN_STORE_NAME => $dataSet[static::KEY_STORE_NAME],
-            static::COLUMN_CURRENCY => $dataSet[static::KEY_CURRENCY],
-            static::COLUMN_NET_PRICE => $this->getPrice($dataSet),
-            static::COLUMN_GROSS_PRICE => $this->getPrice($dataSet),
-            static::COLUMN_CONCRETE_SKU => $dataSet[static::KEY_CONCRETE_SKU],
-            static::COLUMN_MERCHANT_REFERENCE => $dataSet[static::KEY_MERCHANT_REFERENCE],
-            static::COLUMN_PRODUCT_OFFER_REFERENCE => $this->getProductOfferReferenceKey($dataSet),
-            static::COLUMN_PRICE_DATA => '',
-            static::COLUMN_PRICE_DATA_CHECKSUM => '',
-        ];
+        if (isset($dataSet[static::IS_AFFILIATE_KEY]) && $dataSet[static::IS_AFFILIATE_KEY] === 'TRUE') {
+            $priceProductOfferStore = [
+                static::COLUMN_PRICE_TYPE => $dataSet[static::KEY_PRICE_TYPE] ?: 'DEFAULT',
+                static::COLUMN_STORE_NAME => $dataSet[static::KEY_STORE_NAME],
+                static::COLUMN_CURRENCY => $dataSet[static::KEY_CURRENCY],
+                static::COLUMN_NET_PRICE => $this->getPrice($dataSet),
+                static::COLUMN_GROSS_PRICE => $this->getPrice($dataSet),
+                static::COLUMN_CONCRETE_SKU => $dataSet[static::KEY_CONCRETE_SKU],
+                static::COLUMN_MERCHANT_REFERENCE => $dataSet[static::KEY_MERCHANT_REFERENCE],
+                static::COLUMN_PRODUCT_OFFER_REFERENCE => $this->getProductOfferReferenceKey($dataSet),
+                static::COLUMN_PRICE_DATA => '',
+                static::COLUMN_PRICE_DATA_CHECKSUM => '',
+            ];
 
-        $priceData = $this->getPriceData($dataSet);
-        $priceProductOfferStore[static::COLUMN_PRICE_DATA] = $priceData[static::COLUMN_VOLUME_PRICES] !== null ? $this->utilEncodingService->encodeJson($priceData) : null;
-        $priceProductOfferStore[static::COLUMN_PRICE_DATA_CHECKSUM] = $priceData[static::COLUMN_VOLUME_PRICES] !== null ? $this->priceProductFacade
-            ->generatePriceDataChecksum($priceData) : null;
+            $priceData = $this->getPriceData($dataSet);
+            $priceProductOfferStore[static::COLUMN_PRICE_DATA] = $priceData[static::COLUMN_VOLUME_PRICES] !== null ? $this->utilEncodingService->encodeJson($priceData) : null;
+            $priceProductOfferStore[static::COLUMN_PRICE_DATA_CHECKSUM] = $priceData[static::COLUMN_VOLUME_PRICES] !== null ? $this->priceProductFacade
+                ->generatePriceDataChecksum($priceData) : null;
 
-        static::$priceProductOfferStoreCollection[] = $priceProductOfferStore;
+            static::$priceProductOfferStoreCollection[] = $priceProductOfferStore;
+        }
     }
 
     /**

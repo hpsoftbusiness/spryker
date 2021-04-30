@@ -45,6 +45,12 @@ class DisableProductsWithoutOfferAfterImport implements DataImporterAfterImportI
      */
     public function afterImport()
     {
+        if (!isset($this->dataSet[MerchantReferenceToIdMerchantStep::MERCHANT_REFERENCE]) ||
+            $this->dataSet[MerchantReferenceToIdMerchantStep::MERCHANT_REFERENCE] === ""
+        ) {
+            return;
+        }
+
         $products = SpyProductQuery::create()
             ->leftJoinSpyProductAbstract()
             ->addJoin(

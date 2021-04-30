@@ -36,6 +36,8 @@ class MerchantProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterIn
 
     protected const AFFILIATE_DATA_KEY = 'affiliate_data';
 
+    protected const IS_AFFILIATE_KEY = 'product.value_73';
+
     /**
      * @var array
      */
@@ -95,6 +97,10 @@ class MerchantProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterIn
      */
     public function flush()
     {
+        if (static::$merchantProductOfferCollection === []) {
+            return;
+        }
+
         $this->persistProductOffer();
 
         $this->eventFacade->triggerBulk(MerchantProductOfferEvents::MERCHANT_PRODUCT_OFFER_PUBLISH, static::$entityEventTransfers);
@@ -227,16 +233,18 @@ class MerchantProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterIn
      */
     protected function collectMerchantProductOfferCollection(DataSetInterface $dataSet): void
     {
-        static::$merchantProductOfferCollection[] = [
-            static::PRODUCT_OFFER_REFERENCE => $this->getProductOfferReference($dataSet),
-            static::CONCRETE_SKU => $dataSet[static::CONCRETE_SKU],
-            static::MERCHANT_REFERENCE => $dataSet[static::KEY_MERCHANT_REFERENCE],
-            static::MERCHANT_SKU => $dataSet[static::MERCHANT_SKU] ?? null,
-            static::ID_MERCHANT => $dataSet[static::ID_MERCHANT],
-            static::IS_ACTIVE => true,
-            static::APPROVAL_STATUS => $dataSet[static::APPROVAL_STATUS] ?? ProductOfferConfig::STATUS_APPROVED,
-            static::AFFILIATE_DATA_KEY => json_encode($dataSet[static::AFFILIATE_DATA_KEY]),
-        ];
+        if (isset($dataSet[static::IS_AFFILIATE_KEY]) && $dataSet[static::IS_AFFILIATE_KEY] === 'TRUE') {
+            static::$merchantProductOfferCollection[] = [
+                static::PRODUCT_OFFER_REFERENCE => $this->getProductOfferReference($dataSet),
+                static::CONCRETE_SKU => $dataSet[static::CONCRETE_SKU],
+                static::MERCHANT_REFERENCE => $dataSet[static::KEY_MERCHANT_REFERENCE],
+                static::MERCHANT_SKU => $dataSet[static::MERCHANT_SKU] ?? null,
+                static::ID_MERCHANT => $dataSet[static::ID_MERCHANT],
+                static::IS_ACTIVE => true,
+                static::APPROVAL_STATUS => $dataSet[static::APPROVAL_STATUS] ?? ProductOfferConfig::STATUS_APPROVED,
+                static::AFFILIATE_DATA_KEY => json_encode($dataSet[static::AFFILIATE_DATA_KEY]),
+            ];
+        }
     }
 
     /**

@@ -49,6 +49,12 @@ class DisableMerchantProductOffersBeforeImport implements DataImporterBeforeImpo
      */
     public function beforeImport(): void
     {
+        if (!isset($this->dataSet[MerchantReferenceToIdMerchantStep::MERCHANT_REFERENCE]) ||
+            $this->dataSet[MerchantReferenceToIdMerchantStep::MERCHANT_REFERENCE] === ""
+        ) {
+            return;
+        }
+
         $merchant = SpyMerchantQuery::create()->findOneByMerchantReference($this->getMerchantReference());
         $spyProductOffers = SpyProductOfferQuery::create()->findByFkMerchant($merchant->getIdMerchant());
 
