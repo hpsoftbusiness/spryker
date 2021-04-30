@@ -79,8 +79,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
                 $this->calculateItemUsedBenefitVouchers($itemTransfer, $availableAmountOfBenefitVoucher->toInt());
 
                 $commonReducedPrice += $oldPriceForItemsWithBenefitVouchers - $newPriceForItemsWithBenefitVouchers;
-            } elseif (
-                !$itemTransfer->getUseBenefitVoucher()
+            } elseif (!$itemTransfer->getUseBenefitVoucher()
                 && $this->assertBenefitVoucherSalesPrice($itemTransfer)
             ) {
                 $itemTransfer->setTotalUsedBenefitVouchersAmount(0);

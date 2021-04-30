@@ -52,4 +52,18 @@ interface BenefitDealFacadeInterface
      * @return \Generated\Shared\Transfer\ItemTransfer[]
      */
     public function expandOrderItems(array $itemTransfers): array;
+
+    /**
+     * Specification:
+     * - Hydrate $resultQuoteTransfer items with benefit deals usage flags from source quote items.
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $resultQuoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $sourceQuoteTransfer
+     *
+     * @return void
+     */
+    public function equalizeQuoteItemsBenefitDealUsageFlags(
+        QuoteTransfer $resultQuoteTransfer,
+        QuoteTransfer $sourceQuoteTransfer
+    ): void;
 }

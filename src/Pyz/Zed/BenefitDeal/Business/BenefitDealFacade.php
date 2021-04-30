@@ -75,4 +75,17 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     {
         return $this->getFactory()->createItemBenefitDealReader()->hydrateOrderItemsWithBenefitDeals($itemTransfers);
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $resultQuoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $sourceQuoteTransfer
+     *
+     * @return void
+     */
+    public function equalizeQuoteItemsBenefitDealUsageFlags(
+        QuoteTransfer $resultQuoteTransfer,
+        QuoteTransfer $sourceQuoteTransfer
+    ): void {
+        $this->getFactory()->createQuoteEqualizer()->equalize($resultQuoteTransfer, $sourceQuoteTransfer);
+    }
 }

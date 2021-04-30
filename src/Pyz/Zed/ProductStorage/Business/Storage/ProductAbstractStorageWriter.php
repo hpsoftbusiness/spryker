@@ -285,7 +285,9 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param $publishData
+     * @param mixed $publishData
+     *
+     * @return void
      */
     protected function executePublishData($publishData): void
     {

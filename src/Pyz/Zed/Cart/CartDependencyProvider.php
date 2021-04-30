@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Cart;
 
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealQuoteChangeObserverPlugin;
 use Pyz\Zed\PriceCartConnector\Communication\Plugin\Cart\BenefitPriceItemExpanderPlugin;
 use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
 use Pyz\Zed\ProductCartConnector\Communication\Plugin\Cart\BenefitDealsItemExpanderPlugin;
@@ -187,6 +188,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new DiscountQuoteChangeObserverPlugin(),
             new BundleItemPriceQuoteChangeObserverPlugin(),
+            new BenefitDealQuoteChangeObserverPlugin(),
         ];
     }
 

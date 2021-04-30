@@ -183,7 +183,7 @@ abstract class AbstractAdapter implements MyWorldPaymentApiAdapterInterface
     /**
      * @return $this
      */
-    public function allowUsingStubToken(): AbstractAdapter
+    public function allowUsingStubToken()
     {
         $this->isSubToken = true;
 

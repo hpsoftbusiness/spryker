@@ -273,7 +273,9 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     }
 
     /**
-     * @param $publishData
+     * @param mixed $publishData
+     *
+     * @return void
      */
     protected function executePublishData($publishData): void
     {

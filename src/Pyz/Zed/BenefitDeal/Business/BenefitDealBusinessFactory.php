@@ -14,6 +14,8 @@ use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriter;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriterInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReader;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReaderInterface;
+use Pyz\Zed\BenefitDeal\Business\Quote\QuoteEqualizer;
+use Pyz\Zed\BenefitDeal\Business\Quote\QuoteEqualizerInterface;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpander;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpanderInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -58,6 +60,14 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
     public function createItemPreSaveExpander(): ItemPreSaveExpanderInterface
     {
         return new ItemPreSaveExpander($this->getItemEntityExpanderPlugins());
+    }
+
+    /**
+     * @return \Pyz\Zed\BenefitDeal\Business\Quote\QuoteEqualizerInterface
+     */
+    public function createQuoteEqualizer(): QuoteEqualizerInterface
+    {
+        return new QuoteEqualizer();
     }
 
     /**
