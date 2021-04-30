@@ -23,6 +23,14 @@ class ProductDetailPageConfig extends AbstractBundleConfig
     /**
      * @return string
      */
+    public function getProductAttributeKeyShoppingPointsStore(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_STORE);
+    }
+
+    /**
+     * @return string
+     */
     public function getProductAttributeKeyBenefitSalesPrice(): string
     {
         return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);

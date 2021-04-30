@@ -116,7 +116,7 @@ class ProductController extends SprykerShopProductController
             $productViewTransfer
                 ->setBenefitAmount($benefitAmount)
                 ->setBenefitSalesPrice($benefitSalesPrice);
-        } else {
+        } elseif ($attributes[$this->getFactory()->getConfig()->getProductAttributeKeyShoppingPointsStore()] ?? null) {
             $productViewTransfer->setShoppingPointsAmount(
                 $attributes[$this->getFactory()->getConfig()->getShoppingPointsAmountAttributeName()] ?? null
             );
