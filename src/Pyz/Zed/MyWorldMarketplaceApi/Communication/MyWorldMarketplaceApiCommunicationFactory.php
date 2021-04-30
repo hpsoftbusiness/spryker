@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Communication;
 
+use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Zed\Calculation\Business\CalculationFacadeInterface;
@@ -14,7 +15,6 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\Refund\Business\RefundFacadeInterface;
 
 /**
- * @method \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiQueryContainer getQueryContainer()
  * @method \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig getConfig()
  * @method \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface getEntityManager()
  * @method \Pyz\Zed\MyWorldMarketplaceApi\Business\MyWorldMarketplaceApiFacadeInterface getFacade()
@@ -43,5 +43,13 @@ class MyWorldMarketplaceApiCommunicationFactory extends AbstractCommunicationFac
     public function getRefundFacade(): RefundFacadeInterface
     {
         return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::FACADE_REFUND);
+    }
+
+    /**
+     * @return \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
+     */
+    public function getMyWorldMarketplaceApiClient(): MyWorldMarketplaceApiClientInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::CLIENT_MY_WORLD_MARKETPLACE_API);
     }
 }

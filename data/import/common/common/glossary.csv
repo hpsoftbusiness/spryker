@@ -20001,6 +20001,16 @@ checkout.payment.myworld.payment_methods.balance_text,Saldo,de_DE
 checkout.payment.myworld.payment_methods.balance_text,Balance,en_US
 product_detail_page.benefit_price.benefit_amount,max %amount%,de_DE
 product_detail_page.benefit_price.benefit_amount,max %amount%,en_US
+customer.balance.my_world_e_voucher,eVoucher,de_DE
+customer.balance.my_world_e_voucher,eVoucher,en_US
+customer.balance.my_world_cashback_account,Cashback,de_DE
+customer.balance.my_world_cashback_account,Cashback,en_US
+customer.balance.my_world_benefit_voucher_account,Benefit Voucher,de_DE
+customer.balance.my_world_benefit_voucher_account,Benefit Voucher,en_US
+customer.balance.my_world_shopping_points_account,Shopping Points,de_DE
+customer.balance.my_world_shopping_points_account,Shopping Points,en_US
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,eVoucher (Marketer),de_DE
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,eVoucher (Marketer),en_US
 oms.state.failed,fehlgeschlagen,de_DE
 oms.state.failed,Failed,en_US
 oms.state.myworld_payment_pending,MyWorld payment pending,de_DE

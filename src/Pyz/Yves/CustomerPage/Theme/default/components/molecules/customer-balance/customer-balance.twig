@@ -1,0 +1,40 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'customer-balance',
+} %}
+
+{% define data = {
+    type: required,
+    amount: required,
+    currency: null,
+} %}
+
+{% block body %}
+    {% set balanceName = 'customer.balance.' ~ data.type %}
+
+    <div class="{{ config.name }} grid">
+        <div class="col col--sm-6">
+            <span class="{{ config.name }}__name">
+                {{ balanceName | trans }}:
+            </span>
+        </div>
+        <div class="col col--sm-6 {{ config.name }}__amount">
+            <span class="float-right">
+
+                {% if data.currency %}
+                    {{ data.amount | money(true, data.currency) }}
+                {% else %}
+                    {{ data.amount | money(false) }}
+                    {% include atom('icon') with {
+                        class: config.name ~ '__icon',
+                        data: {
+                            name: 'shopping-point',
+                        },
+                    } only %}
+                {% endif %}
+
+            </span>
+        </div>
+    </div>
+{% endblock %}

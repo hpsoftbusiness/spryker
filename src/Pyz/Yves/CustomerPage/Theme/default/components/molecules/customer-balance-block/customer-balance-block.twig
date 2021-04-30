@@ -1,0 +1,35 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'customer-balance-block',
+} %}
+
+{% define data = {
+    balances: required,
+} %}
+
+{% block body %}
+    <div class="{{ config.name }}">
+        {% include molecule('title-box', 'CustomerPage') with {
+            data: {
+                title: 'customer.account.shopping_points_and_cashback' | trans,
+            },
+        } only %}
+        <div class="{{ config.name }}__balances-container">
+            {% for balance in data.balances %}
+                {% set balanceType = balance.paymentOptionName | pascalToSnakeCase %}
+                {% set balanceAmount = balance.targetAvailableBalance.toFloat ?? balance.availableBalance.toFloat ?? 0 %}
+                {% set currencyIsoCode = balance.targetCurrencyID %}
+
+                {% include molecule('customer-balance', 'CustomerPage') with {
+                    data: {
+                        type: balanceType,
+                        amount: balanceAmount,
+                        currency: currencyIsoCode,
+                    }
+                } only %}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

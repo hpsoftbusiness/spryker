@@ -1,0 +1,17 @@
+@mixin customer-page-customer-balance($name: '.customer-balance') {
+    #{$name} {
+        font: fw(default) rem(16)/rem(18) $setting-font-family;
+
+        &__name {
+            padding-left: map-get($setting-spacing, default);
+        }
+
+        &__amount {
+            padding-right: map-get($setting-spacing, default);
+        }
+
+        @content;
+    }
+}
+
+@include customer-page-customer-balance();

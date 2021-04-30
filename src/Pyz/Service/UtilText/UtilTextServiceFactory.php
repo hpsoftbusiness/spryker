@@ -7,8 +7,12 @@
 
 namespace Pyz\Service\UtilText;
 
+use Pyz\Service\UtilText\Model\Filter\CamelCaseToSnakeCase;
+use Pyz\Service\UtilText\Model\Filter\CamelCaseToSnakeCaseInterface;
 use Pyz\Service\UtilText\Model\Slug;
 use Spryker\Service\UtilText\UtilTextServiceFactory as SprykerUtilTextServiceFactory;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 
 class UtilTextServiceFactory extends SprykerUtilTextServiceFactory
 {
@@ -18,5 +22,21 @@ class UtilTextServiceFactory extends SprykerUtilTextServiceFactory
     public function createTextSlug()
     {
         return new Slug();
+    }
+
+    /**
+     * @return \Pyz\Service\UtilText\Model\Filter\CamelCaseToSnakeCaseInterface
+     */
+    public function createCamelCaseToSnakeCase(): CamelCaseToSnakeCaseInterface
+    {
+        return new CamelCaseToSnakeCase($this->createCamelCaseToSnakeCaseNameConverter());
+    }
+
+    /**
+     * @return \Symfony\Component\Serializer\NameConverter\NameConverterInterface
+     */
+    public function createCamelCaseToSnakeCaseNameConverter(): NameConverterInterface
+    {
+        return new CamelCaseToSnakeCaseNameConverter();
     }
 }

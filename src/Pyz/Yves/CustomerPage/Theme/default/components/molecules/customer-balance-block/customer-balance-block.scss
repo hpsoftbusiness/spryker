@@ -1,0 +1,10 @@
+@mixin customer-page-customer-balance-block($name: '.customer-balance-block') {
+    #{$name} {
+
+        &__balances-container {}
+
+        @content;
+    }
+}
+
+@include customer-page-customer-balance-block();

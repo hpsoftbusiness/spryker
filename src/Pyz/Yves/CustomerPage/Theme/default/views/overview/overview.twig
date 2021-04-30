@@ -46,26 +46,11 @@
 
         <div class="col--sm-12 col--lg-6">
             <div class="box">
-                {% include molecule('title-box', 'CustomerPage') with {
+                {% include molecule('customer-balance-block', 'CustomerPage') with {
                     data: {
-                        title: 'customer.account.shopping_points_and_cashback' | trans,
+                        balances: data.customer.balances,
                     },
                 } only %}
-
-                {% if data.customer.customerBalance ?? false %}
-                    <ul class="menu menu--customer-account">
-                        {% if data.customer.customerBalance.getAvailableCashbackAmount %}
-                            <li class="menu__item">{{ 'customer.account.available.cashback.amount' | trans }}: {{ data.customer.customerBalance.getAvailableCashbackAmount.toFloat() | money(true, data.customer.customerBalance.getAvailableCashbackCurrency) }}</li>
-                        {% endif %}
-                        {% if data.customer.customerBalance.getAvailableShoppingPointAmount %}
-                            <li class="menu__item">{{ 'customer.account.available.shopping.point.amount' | trans }}: {{ data.customer.customerBalance.getAvailableShoppingPointAmount.toFloat()}}</li>
-                        {% endif %}
-                        {% if data.customer.customerBalance.getAvailableBenefitVoucherAmount %}
-                            <li class="menu__item">{{ 'customer.account.available.benefit.voucher.amount' | trans }}: {{ data.customer.customerBalance.getAvailableBenefitVoucherAmount.toFloat() | money(true, data.customer.customerBalance.getAvailableBenefitVoucherCurrency) }}</li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
-            </div>
         </div>
 
         <div class="col--sm-12 col--lg-6">

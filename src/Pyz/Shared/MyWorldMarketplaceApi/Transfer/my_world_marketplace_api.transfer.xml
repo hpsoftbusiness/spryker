@@ -49,6 +49,10 @@
         <property name="availableMvoucherCurrency" type="string"/>
     </transfer>
 
+    <transfer name="Customer">
+        <property name="balances" type="CustomerBalanceByCurrency[]" singular="balance"/>
+    </transfer>
+
     <transfer name="CustomerBalanceByCurrency">
         <property name="paymentOptionId" type="int"/>
         <property name="paymentOptionName" type="string"/>

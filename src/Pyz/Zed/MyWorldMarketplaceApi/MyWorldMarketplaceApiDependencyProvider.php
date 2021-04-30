@@ -50,6 +50,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
         $container = $this->addSalesFacade($container);
         $container = $this->addCalculationFacade($container);
         $container = $this->addRefundFacade($container);
+        $container = $this->addMyWorldMarketplaceApiClient($container);
 
         return $container;
     }
