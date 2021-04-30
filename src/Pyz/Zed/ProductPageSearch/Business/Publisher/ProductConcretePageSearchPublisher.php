@@ -270,17 +270,33 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $importDataCollection[] = $data;
 
             if (count($importDataCollection) >= static::BULK_SIZE) {
-                $parameter = $this->collectMultiInsertData(
-                    $importDataCollection
-                );
-                $sql = 'INSERT INTO `spy_product_concrete_page_search` (`fk_product`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product`=values(`fk_product`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
-
-                $connection = Propel::getConnection();
-                $statement = $connection->prepare($sql);
-                $statement->execute();
+                $this->executeProductConcretePagePublish($importDataCollection);
 
                 $importDataCollection = [];
             }
         }
+
+        if (count($importDataCollection) > 0) {
+            $this->executeProductConcretePagePublish($importDataCollection);
+        }
+
+        $this->synchronizedDataCollection = [];
+    }
+
+    /**
+     * @param array $importDataCollection
+     *
+     * @return void
+     */
+    protected function executeProductConcretePagePublish(array $importDataCollection): void
+    {
+        $parameter = $this->collectMultiInsertData(
+            $importDataCollection
+        );
+        $sql = 'INSERT INTO `spy_product_concrete_page_search` (`fk_product`, `store`, `locale`, `data`, `structured_data`, `key`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE `fk_product`=values(`fk_product`), `store`=values(`store`), `locale`=values(`locale`), `data`=values(`data`), `structured_data`=values(`structured_data`), `key`=values(`key`);';
+
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
     }
 }
