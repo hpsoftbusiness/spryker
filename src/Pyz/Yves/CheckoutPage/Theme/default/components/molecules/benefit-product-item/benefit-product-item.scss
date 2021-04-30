@@ -37,9 +37,17 @@
 
         &__total-price {
             @include helper-font-weight(bold);
+        }
+
+        &__benefit-price {
+            @include helper-font-weight(bold);
+            line-height: rem(20);
+            display: flex;
+            align-items: center;
+            color: $setting-color-main;
 
             @include helper-breakpoint(lg) {
-                text-align: right;
+                justify-content: flex-end;
             }
         }
 
@@ -66,6 +74,10 @@
                 display: flex;
                 align-items: center;
             }
+        }
+
+        &__icon {
+            margin-left: rem(3);
         }
 
         @content;

@@ -50,7 +50,7 @@
                 <div class="{{ config.name }}__total-price">{{ subTotalPrice | money(true, currencyCode) }}</div>
                 <div class="{{ config.name }}__single-unit-price">{{ unitPrice | money(true, currencyCode) }}</div>
                 {% include molecule('cashback') with {
-                    modifiers: ['alternative', 'align-right'],
+                    modifiers: ['align-right', 'small'],
                     data: {
                         cashback: data.product.concreteAttributes['cashback_amount'],
                         shoppingPoints: data.product.concreteAttributes['shopping_points'],
@@ -60,8 +60,10 @@
             </div>
             {# @TODO Refactor properly when design for this step is approved #}
             {% if data.formType == 'useBenefitVoucher' %}
-                <div class="{{ config.name }}__total-price">{{ prices['salesPrice'] | money(true, currencyCode) }}
-                    - {{ prices['benefitAmount'] | money(false, data.benefitVouchersCurrencyCode) }}
+                <div class="{{ config.name }}__benefit-price">
+                    <span>
+                        {{- prices['salesPrice'] | money(true, currencyCode) -}} - {{- prices['benefitAmount'] | money(false, data.benefitVouchersCurrencyCode) -}}
+                    </span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
                         modifiers: ['medium-up'],
@@ -79,9 +81,12 @@
                     <span>{{ 'checkout.step.benefit_deal.use_voucher' | trans }}</span>
                 </label>
             {% elseif data.formType == 'useShoppingPoints' %}
-                <div class="{{ config.name }}__total-price">{{ product.shoppingPointsDeal.price | money(true, currencyCode) }}
-                    {% set shoppingPoints = product.shoppingPointsDeal.shoppingPointsQuantity %}
-                    - {{ shoppingPoints }}
+                <div class="{{ config.name }}__benefit-price">
+                    <span>
+                        {{ product.shoppingPointsDeal.price | money(true, currencyCode) }}
+                        {% set shoppingPoints = product.shoppingPointsDeal.shoppingPointsQuantity %}
+                        - {{ shoppingPoints }}
+                    </span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
                         modifiers: ['medium-up'],
