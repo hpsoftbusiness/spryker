@@ -59,7 +59,7 @@ class ProductAffiliateServiceTest extends Unit
      *
      * @param string $deeplink
      * @param string $affiliateNetwork
-     * @param string $affiliateMerchantID
+     * @param string $officeDealerId
      * @param string $expectedTrackingLink
      *
      * @return void

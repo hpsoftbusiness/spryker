@@ -9,6 +9,7 @@ namespace Pyz\Zed\Adyen\Business;
 
 use Pyz\Zed\Adyen\Business\Expander\OrderExpander;
 use Pyz\Zed\Adyen\Business\Expander\OrderExpanderInterface;
+use Pyz\Zed\Adyen\Business\Hook\AdyenPostSaveHook;
 use Pyz\Zed\Adyen\Business\Hook\Mapper\MakePayment\CreditCardMapper;
 use Pyz\Zed\Adyen\Business\Oms\Handler\RefundCommandHandler;
 use Pyz\Zed\Adyen\Business\Oms\Handler\RefundCommandHandlerInterface;
@@ -17,6 +18,7 @@ use Pyz\Zed\Adyen\Business\Oms\Mapper\RefundCommandMapper;
 use Pyz\Zed\Adyen\Business\Oms\Mapper\RefundCommandMapperInterface;
 use Pyz\Zed\Adyen\Business\Writer\AdyenWriter;
 use SprykerEco\Zed\Adyen\Business\AdyenBusinessFactory as SprykerEcoAdyenBusinessFactory;
+use SprykerEco\Zed\Adyen\Business\Hook\AdyenHookInterface;
 use SprykerEco\Zed\Adyen\Business\Hook\Mapper\MakePayment\AdyenMapperInterface;
 use SprykerEco\Zed\Adyen\Business\Oms\Mapper\AdyenCommandMapperInterface;
 use SprykerEco\Zed\Adyen\Business\Writer\AdyenWriterInterface;
@@ -28,6 +30,18 @@ use SprykerEco\Zed\Adyen\Business\Writer\AdyenWriterInterface;
  */
 class AdyenBusinessFactory extends SprykerEcoAdyenBusinessFactory
 {
+    /**
+     * @return \SprykerEco\Zed\Adyen\Business\Hook\AdyenHookInterface
+     */
+    public function createPostCheckHook(): AdyenHookInterface
+    {
+        return new AdyenPostSaveHook(
+            $this->getAdyenApiFacade(),
+            $this->createMapperResolver(),
+            $this->createSaverResolver()
+        );
+    }
+
     /**
      * @return \Pyz\Zed\Adyen\Business\Expander\OrderExpanderInterface
      */

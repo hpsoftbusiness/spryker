@@ -23,7 +23,7 @@ class NopaymentMethodFilter extends SpyNopaymentMethodFilter
     {
         if ($quoteTransfer->getTotals()
             && $quoteTransfer->getTotals()->getPriceToPay() === 0
-            && !$this->assertMyWorldPaymentMethodSelected($quoteTransfer)
+            && $this->assertMyWorldPaymentMethodSelected($quoteTransfer)
         ) {
             return $this->disallowRegularPaymentMethods($paymentMethodsTransfer);
         }

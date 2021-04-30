@@ -23,6 +23,9 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
         GiftCardConfig::PROVIDER_NAME,
         NopaymentConfig::PAYMENT_PROVIDER_NAME,
         MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
     ],
     'Oms' => [
         GiftCardConfig::PROVIDER_NAME,
@@ -32,12 +35,17 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
 $config[NopaymentConstants::NO_PAYMENT_METHODS] = [
     NopaymentConfig::PAYMENT_PROVIDER_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
 ];
 $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     GiftCardConfig::PROVIDER_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
     NopaymentConfig::PAYMENT_PROVIDER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([

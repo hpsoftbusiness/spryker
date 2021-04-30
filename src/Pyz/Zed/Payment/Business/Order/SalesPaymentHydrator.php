@@ -10,6 +10,7 @@ namespace Pyz\Zed\Payment\Business\Order;
 use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Payment\Persistence\SpySalesPayment;
 use Pyz\Zed\Payment\Persistence\PaymentRepositoryInterface;
+use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Zed\Payment\Business\Order\SalesPaymentHydrator as SprykerSalesPaymentHydrator;
 use Spryker\Zed\Payment\Dependency\Plugin\Sales\PaymentHydratorPluginCollectionInterface;
 use Spryker\Zed\Payment\Persistence\PaymentQueryContainerInterface;
@@ -59,6 +60,9 @@ class SalesPaymentHydrator extends SprykerSalesPaymentHydrator
     protected function mapPaymentTransfer(SpySalesPayment $salesPaymentEntity)
     {
         $paymentTransfer = parent::mapPaymentTransfer($salesPaymentEntity);
+        if ($paymentTransfer->getPaymentProvider() === NopaymentConfig::PAYMENT_PROVIDER_NAME) {
+            return $paymentTransfer;
+        }
 
         $paymentMethodName = $this->paymentRepository->findPaymentMethodByKey($salesPaymentEntity->getSalesPaymentMethodType()->getPaymentMethod())->getName();
         $paymentTransfer->setPaymentMethodName($paymentMethodName);

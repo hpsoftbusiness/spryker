@@ -124,10 +124,10 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
     private function getBenefitVoucherSalesPrice(ItemTransfer $itemTransfer): ?int
     {
         $benefitVoucherSalesPrice = $itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherSalesPriceAttributeName()] ?? null;
-        $benefitVoucherSalesPrice = str_replace(',', '.', $benefitVoucherSalesPrice);
 
         if ($benefitVoucherSalesPrice !== null) {
-            $benefitVoucherSalesPrice = (int)($benefitVoucherSalesPrice * 100);
+            $benefitVoucherSalesPrice = str_replace(',', '.', $benefitVoucherSalesPrice);
+            $benefitVoucherSalesPrice = (int)$benefitVoucherSalesPrice * 100;
         }
 
         return $benefitVoucherSalesPrice;

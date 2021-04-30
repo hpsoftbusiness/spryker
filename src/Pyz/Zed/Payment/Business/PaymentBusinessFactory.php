@@ -8,6 +8,8 @@
 namespace Pyz\Zed\Payment\Business;
 
 use Pyz\Zed\Payment\Business\Order\SalesPaymentHydrator;
+use Pyz\Zed\Payment\Business\Order\SalesPaymentSaver;
+use Spryker\Zed\Payment\Business\Order\SalesPaymentSaverInterface;
 use Spryker\Zed\Payment\Business\PaymentBusinessFactory as SprykerPaymentBusinessFactory;
 
 /**
@@ -28,5 +30,13 @@ class PaymentBusinessFactory extends SprykerPaymentBusinessFactory
             $this->getQueryContainer(),
             $this->getRepository()
         );
+    }
+
+    /**
+     * @return \Spryker\Zed\Payment\Business\Order\SalesPaymentSaverInterface
+     */
+    protected function createPaymentSaver(): SalesPaymentSaverInterface
+    {
+        return new SalesPaymentSaver($this->getQueryContainer());
     }
 }

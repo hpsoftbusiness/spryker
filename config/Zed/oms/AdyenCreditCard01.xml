@@ -15,6 +15,8 @@
 
         <states>
             <state name="new" reserved="true"/>
+            <state name="myWorld payment pending" display="oms.state.myworld_payment_pending" reserved="true"/>
+            <state name="failed" display="oms.state.failed" reserved="false"/>
             <state name="reserved" reserved="true"/>
             <state name="order confirmation email sent" reserved="true"/>
             <state name="order in processing email sent" reserved="true"/>
@@ -40,13 +42,31 @@
             <event name="start turnover cancellation process" onEnter="true"/>
             <event name="close" timeout="20days"/>
             <event name="pass" onEnter="true"/>
+            <event name="pass 1 minute" timeout="1 minute"/>
             <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
         </events>
 
         <transitions>
-            <transition condition="Oms/TrueCondition" happy="true">
+            <transition happy="true" condition="MyWorld/IsMyWorldPaymentInitiated">
+                <source>new</source>
+                <target>myWorld payment pending</target>
+            </transition>
+
+            <transition>
                 <source>new</source>
                 <target>reserved</target>
+            </transition>
+
+            <transition happy="true" condition="MyWorld/IsMyWorldPaymentProcessed">
+                <source>myWorld payment pending</source>
+                <target>reserved</target>
+                <event>pass 1 minute</event>
+            </transition>
+
+            <transition>
+                <source>myWorld payment pending</source>
+                <target>failed</target>
+                <event>pass 1 minute</event>
             </transition>
 
             <transition happy="true">

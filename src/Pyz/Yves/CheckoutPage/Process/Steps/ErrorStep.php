@@ -8,12 +8,30 @@
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Spryker\Client\Quote\QuoteClientInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ErrorStep as SprykerShopErrorStep;
 use Symfony\Component\HttpFoundation\Request;
 
 class ErrorStep extends SprykerShopErrorStep
 {
+    /**
+     * @var \Spryker\Client\Quote\QuoteClientInterface
+     */
+    private $quoteClient;
+
+    /**
+     * @param string $stepRoute
+     * @param string|null $escapeRoute
+     * @param \Spryker\Client\Quote\QuoteClientInterface $quoteClient
+     */
+    public function __construct($stepRoute, $escapeRoute, QuoteClientInterface $quoteClient)
+    {
+        parent::__construct($stepRoute, $escapeRoute);
+
+        $this->quoteClient = $quoteClient;
+    }
+
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -25,6 +43,8 @@ class ErrorStep extends SprykerShopErrorStep
         $quoteTransfer->setOrderReference(null)
             ->getPayment()
             ->setPaymentSelection(null);
+
+        $this->quoteClient->clearQuote();
 
         return $quoteTransfer;
     }

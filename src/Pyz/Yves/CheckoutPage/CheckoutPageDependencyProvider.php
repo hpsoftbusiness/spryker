@@ -86,6 +86,20 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addQuoteClient(Container $container): Container
+    {
+        $container->set(self::CLIENT_QUOTE, static function (Container $container) {
+            return $container->getLocator()->quote()->client();
+        });
+
+        return $container;
+    }
+
+    /**
      * @param string $subForm
      * @param string $blockPrefix
      *

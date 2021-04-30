@@ -29,6 +29,7 @@ use Spryker\Client\ProductStorage\ProductStorageClientInterface;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface;
 use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin as SprykerShopCheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
@@ -148,7 +149,6 @@ class StepFactory extends SprykerShopStepFactory
     public function createPaymentStep()
     {
         return new PaymentStep(
-            $this->getConfig(),
             $this->getTranslatorService(),
             $this->getMyWorldPaymentClient(),
             $this->getPaymentClient(),
@@ -203,7 +203,8 @@ class StepFactory extends SprykerShopStepFactory
     {
         return new ErrorStep(
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
-            $this->getConfig()->getEscapeRoute()
+            $this->getConfig()->getEscapeRoute(),
+            $this->getQuoteClient()
         );
     }
 
@@ -274,5 +275,13 @@ class StepFactory extends SprykerShopStepFactory
             $this->getFlashMessenger(),
             $this->getTranslatorService()
         );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface|\Spryker\Client\Quote\QuoteClientInterface
+     */
+    public function getQuoteClient(): CheckoutPageToQuoteClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_QUOTE);
     }
 }

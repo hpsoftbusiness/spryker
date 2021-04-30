@@ -12,6 +12,8 @@ use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CancelTurnove
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Command\CreateTurnoverCommandByOrderPlugin;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCancelledConditionPlugin;
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCreatedConditionPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Oms\Condition\IsMyWorldPaymentInitiated;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Oms\Condition\IsMyWorldPaymentProcessed;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\RefundCalculationCommandByOrderPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendShippingConfirmationPlugin;
@@ -174,6 +176,9 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             // ----- Turnover
             $conditionCollection->add(new IsTurnoverCreatedConditionPlugin(), 'MyWorld/IsTurnoverCreated');
             $conditionCollection->add(new IsTurnoverCancelledConditionPlugin(), 'MyWorld/IsTurnoverCancelled');
+
+            $conditionCollection->add(new IsMyWorldPaymentInitiated(), 'MyWorld/IsMyWorldPaymentInitiated');
+            $conditionCollection->add(new IsMyWorldPaymentProcessed(), 'MyWorld/IsMyWorldPaymentProcessed');
 
             return $conditionCollection;
         });

@@ -13,7 +13,6 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
-use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
@@ -48,17 +47,11 @@ class PaymentStep extends SprykerShopPaymentStep
     private $translator;
 
     /**
-     * @var \Pyz\Yves\CheckoutPage\CheckoutPageConfig
-     */
-    private $checkoutPageConfig;
-
-    /**
      * @var \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface
      */
     private $preConditionChecker;
 
     /**
-     * @param \Pyz\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
      * @param \Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface $myWorldPaymentClient
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface $paymentClient
@@ -72,7 +65,6 @@ class PaymentStep extends SprykerShopPaymentStep
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface $preConditionChecker
      */
     public function __construct(
-        CheckoutPageConfig $checkoutPageConfig,
         TranslatorInterface $translator,
         MyWorldPaymentClientInterface $myWorldPaymentClient,
         CheckoutPageToPaymentClientInterface $paymentClient,
@@ -98,7 +90,6 @@ class PaymentStep extends SprykerShopPaymentStep
         $this->productSellableChecker = $productSellableChecker;
         $this->myWorldPaymentClient = $myWorldPaymentClient;
         $this->translator = $translator;
-        $this->checkoutPageConfig = $checkoutPageConfig;
         $this->preConditionChecker = $preConditionChecker;
     }
 
@@ -109,14 +100,17 @@ class PaymentStep extends SprykerShopPaymentStep
      */
     public function requireInput(AbstractTransfer $quoteTransfer)
     {
-        $totals = $quoteTransfer->getTotals();
-        $isNeedToPay = $this->executeCheckoutPaymentStepEnterPreCheckPlugins($quoteTransfer) && (!$totals || $totals->getPriceToPay() > 0);
-
-        if (!$isNeedToPay) {
-            return $quoteTransfer->getUseEVoucherBalance();
-        }
-
         return true;
+    }
+
+    /**
+     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
+     *
+     * @return bool
+     */
+    public function isBreadcrumbItemHidden(AbstractTransfer $dataTransfer): bool
+    {
+        return false;
     }
 
     /**
@@ -152,10 +146,7 @@ class PaymentStep extends SprykerShopPaymentStep
         $isQuoteValid = parent::postCondition($quoteTransfer);
 
         if ($isQuoteValid) {
-            if ($quoteTransfer->getUseEVoucherBalance()
-                && !$quoteTransfer->getMyWorldPaymentSessionId()
-                && $this->isCustomerHasAmountOfVouchers($quoteTransfer->getCustomer())
-            ) {
+            if ($this->isInternalPaymentMethodSelected($quoteTransfer) && !$quoteTransfer->getMyWorldPaymentSessionId()) {
                 $isQuoteValid = false;
             }
         }
@@ -201,6 +192,11 @@ class PaymentStep extends SprykerShopPaymentStep
         if (!$this->executeCheckoutPaymentStepEnterPreCheckPlugins($quoteTransfer)) {
             return $quoteTransfer;
         }
+
+        /**
+         *  Recalculating quote totals with selected MyWorld payment methods (necessary for NoPayment method).
+         */
+        $quoteTransfer = $this->calculationClient->recalculate($quoteTransfer);
         $paymentSelection = $this->getPaymentSelectionWithFallback($quoteTransfer);
 
         if ($paymentSelection === null) {
@@ -214,6 +210,10 @@ class PaymentStep extends SprykerShopPaymentStep
                 $paymentHandler->setFlashMessenger($this->flashMessenger);
             }
             $paymentHandler->addToDataClass($request, $quoteTransfer);
+
+            /**
+             * Recalculating quote with payment handler changes.
+             */
             $quoteTransfer = $this->calculationClient->recalculate($quoteTransfer);
             $quoteTransfer = $this->handlePaymentSessionCreation($quoteTransfer);
         }

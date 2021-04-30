@@ -16,7 +16,7 @@ class EVoucherMarketerPaymentCalculator extends AbstractCashbackPaymentCalculato
       */
     protected function getPaymentOptionId(): int
     {
-        return $this->myWorldPaymentConfig->getOptionCashback();
+        return $this->myWorldPaymentConfig->getOptionEVoucherOnBehalfOfMarketer();
     }
 
     /**

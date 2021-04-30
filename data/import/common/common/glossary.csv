@@ -20001,3 +20001,7 @@ checkout.payment.myworld.payment_methods.balance_text,Saldo,de_DE
 checkout.payment.myworld.payment_methods.balance_text,Balance,en_US
 product_detail_page.benefit_price.benefit_amount,max %amount%,de_DE
 product_detail_page.benefit_price.benefit_amount,max %amount%,en_US
+oms.state.failed,fehlgeschlagen,de_DE
+oms.state.failed,Failed,en_US
+oms.state.myworld_payment_pending,MyWorld payment pending,de_DE
+oms.state.myworld_payment_pending,MyWorld payment pending,en_US

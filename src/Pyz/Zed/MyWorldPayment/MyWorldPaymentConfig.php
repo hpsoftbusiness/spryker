@@ -16,8 +16,10 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
  */
 class MyWorldPaymentConfig extends AbstractBundleConfig
 {
-    public const PAYMENT_METHOD_NAME = 'EVoucher';
+    public const PAYMENT_METHOD_EVOUCHER_NAME = 'EVoucher';
     public const PAYMENT_METHOD_BENEFIT_VOUCHER_NAME = 'BenefitVouchers';
+    public const PAYMENT_METHOD_CASHBACK_NAME = 'Cashback';
+    public const PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME = 'EVoucherMarketer';
 
     /**
      * Map for payment transaction status codes to glossary translation key.

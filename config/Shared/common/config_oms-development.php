@@ -23,8 +23,10 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
     'Payment' => [
         GiftCardConfig::PROVIDER_NAME,
         NopaymentConfig::PAYMENT_PROVIDER_NAME,
-        MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
         MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
     ],
     'Oms' => [
         GiftCardConfig::PROVIDER_NAME,
@@ -39,8 +41,10 @@ $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     // This param required for pass the Payment Step post condition at test env. Due the bug when priceToPay become 0.00
     'dummyPrepayment',
     NopaymentConfig::PAYMENT_METHOD_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([

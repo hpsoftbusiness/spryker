@@ -6,70 +6,143 @@
 
     <process name="Nopayment01" main="true">
         <subprocesses>
-            <process>DummyRefund</process>
-            <process>DummyReturn</process>
+            <process>Turnover</process>
         </subprocesses>
 
         <states>
             <state name="new" reserved="true" display="oms.state.new"/>
-            <state name="paid" reserved="true" display="oms.state.paid"/>
-            <state name="exported" reserved="true" display="oms.state.in-progress"/>
-            <state name="waiting for conformation" reserved="true" display="oms.state.in-progress"/>
-            <state name="shipped" reserved="true" display="oms.state.shipped"/>
-            <state name="delivered" display="oms.state.delivered"/>
-            <state name="closed" display="oms.state.closed"/>
+            <state name="myWorld payment pending" display="oms.state.myworld_payment_pending" reserved="true"/>
+            <state name="failed" display="oms.state.failed" reserved="false"/>
+            <state name="reserved" reserved="true"/>
+            <state name="order confirmation email sent" reserved="true"/>
+            <state name="captured" reserved="true"/>
+            <state name="order in processing email sent" reserved="true"/>
+            <state name="package packed" reserved="true"/>
+            <state name="waiting for tracking number" reserved="true"/>
+            <state name="shipped"/>
+            <state name="invoice generated"/>
+            <state name="invoice with tracking number sent"/>
+            <state name="refund calculated"/>
+            <state name="closed"/>
         </states>
 
+        <events>
+            <event name="send order confirmation email" onEnter="true" command="Oms/SendOrderConfirmation"/>
+            <event name="money received" onEnter="true"/>
+            <event name="cancel" manual="true"/>
+            <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
+            <event name="cancel payment" manual="true"/>
+            <event name="capture payment" timeout="1hour" manual="true"/>
+            <event name="ship the order" manual="true" command="Stock/DeductStock"/>
+            <event name="start turnover creation process" onEnter="true"/>
+            <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
+            <event name="confirm shipping" onEnter="true" command="Oms/SendShippingConfirmation"/>
+            <event name="initiate refund process" manual="true"/>
+            <event name="start turnover cancellation process" manual="true"/>
+            <event name="close" timeout="20days"/>
+            <event name="pass" onEnter="true"/>
+            <event name="pass 1 minute" timeout="1 minute"/>
+            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
+        </events>
+
         <transitions>
-            <transition happy="true">
+            <transition>
                 <source>new</source>
-                <target>paid</target>
-                <event>authorize</event>
+                <target>myWorld payment pending</target>
+            </transition>
+
+            <transition happy="true" condition="MyWorld/IsMyWorldPaymentProcessed">
+                <source>myWorld payment pending</source>
+                <target>reserved</target>
+                <event>pass 1 minute</event>
+            </transition>
+
+            <transition>
+                <source>myWorld payment pending</source>
+                <target>failed</target>
+                <event>pass 1 minute</event>
             </transition>
 
             <transition happy="true">
-                <source>paid</source>
-                <target>exported</target>
-                <event>export</event>
+                <source>reserved</source>
+                <target>order confirmation email sent</target>
+                <event>send order confirmation email</event>
             </transition>
 
             <transition happy="true">
-                <source>exported</source>
-                <target>waiting for conformation</target>
-                <event>confirmation</event>
+                <source>order confirmation email sent</source>
+                <target>captured</target>
+                <event>money received</event>
             </transition>
 
             <transition happy="true">
-                <source>waiting for conformation</source>
+                <source>captured</source>
+                <target>order in processing email sent</target>
+                <event>send order in processing email</event>
+            </transition>
+
+            <transition happy="true">
+                <source>order in processing email sent</source>
+                <target>package packed</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>package packed</source>
+                <target>waiting for tracking number</target>
+                <event>pass</event>
+            </transition>
+
+            <transition happy="true">
+                <source>waiting for tracking number</source>
                 <target>shipped</target>
-                <event>ship</event>
+                <event>ship the order</event>
             </transition>
 
             <transition happy="true">
                 <source>shipped</source>
-                <target>delivered</target>
-                <event>stock-update</event>
+                <target>invoice generated</target>
+                <event>generate invoice</event>
             </transition>
 
             <transition happy="true">
-                <source>delivered</source>
+                <source>invoice generated</source>
+                <target>invoice with tracking number sent</target>
+                <event>confirm shipping</event>
+            </transition>
+
+            <transition happy="true">
+                <source>invoice with tracking number sent</source>
+                <target>ready for turnover creation</target>
+                <event>start turnover creation process</event>
+            </transition>
+
+            <transition happy="true">
+                <source>turnover created</source>
                 <target>closed</target>
                 <event>close</event>
             </transition>
 
-        </transitions>
+            <transition>
+                <source>turnover created</source>
+                <target>ready for turnover cancellation</target>
+                <event>start turnover cancellation process</event>
+            </transition>
 
-        <events>
-            <event name="authorize" onEnter="true"/>
-            <event name="export" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
-            <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
-            <event name="stock-update" manual="true"/>
-            <event name="close" manual="true" timeout="1 hour"/>
-            <event name="confirmation" manual="true" timeout="1 minute"/>
-        </events>
+            <transition>
+                <source>turnover cancelled</source>
+                <target>refund calculated</target>
+                <event>calculate refund</event>
+            </transition>
+
+            <transition>
+                <source>refund calculated</source>
+                <target>closed</target>
+                <event>pass</event>
+            </transition>
+        </transitions>
     </process>
 
-    <process name="DummyRefund" file="DummySubprocess/DummyRefund01.xml"/>
-    <process name="DummyReturn" file="DummySubprocess/DummyReturn01.xml"/>
+    <process name="Turnover" file="Subprocess/Turnover01.xml"/>
 
 </statemachine>
