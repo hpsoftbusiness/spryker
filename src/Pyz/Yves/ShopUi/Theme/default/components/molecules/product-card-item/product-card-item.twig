@@ -18,7 +18,8 @@
     productOptionsModifiers: [],
     cashback: null,
     shoppingPoints: null,
-    showCashbackPoints: data.showCashbackPoints | true
+    showCashbackPoints: data.showCashbackPoints | default(true),
+
 } %}
 
 {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) and data.canEditCart %}
@@ -70,6 +71,7 @@
 
                 <div class="grid grid--right">
                     {% set cashback = data.cashback %}
+                    {% set showCashbackPoints = data.showCashbackPoints %}
                     {% if cashback and showCashbackPoints %}
                         {% include molecule('cashback') with {
                             class: config.name ~ '__cashback col',

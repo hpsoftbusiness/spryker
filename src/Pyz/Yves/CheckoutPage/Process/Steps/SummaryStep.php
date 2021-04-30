@@ -93,7 +93,7 @@ class SummaryStep extends SprykerSummaryStep
     public function getTemplateVariables(AbstractTransfer $quoteTransfer): array
     {
         $viewData = parent::getTemplateVariables($quoteTransfer);
-        $viewData['showCashbackPoints'] = $this->hasBenefitDealsApplied($quoteTransfer);
+        $viewData['showCashbackPoints'] = !$this->hasBenefitDealsApplied($quoteTransfer);
 
         return $viewData;
     }
