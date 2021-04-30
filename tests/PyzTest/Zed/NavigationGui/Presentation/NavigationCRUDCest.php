@@ -28,6 +28,8 @@ class NavigationCRUDCest
     public const ELEMENT_TIMEOUT = 5;
 
     /**
+     * @skip CRUD test is skipped
+     *
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
      *
      * @return void
