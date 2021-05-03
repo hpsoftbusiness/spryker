@@ -22,7 +22,7 @@
         class: colClass,
         modifiers: modifiers,
         data: {
-            title: 'product.attribute.description' | trans,
+            title: data.isAffiliate ? 'product_detail_page.desclaimer_text' | trans : 'product.attribute.description' | trans,
             triggerClass: config.jsName ~ '__trigger-description' ~ (data.index is not empty ? '-' ~ data.index : ''),
             targetClass: config.jsName ~ '__target-description' ~ (data.index is not empty ? '-' ~ data.index : ''),
             hiddenClass: data.hiddenClass,
@@ -34,12 +34,14 @@
         }
     } only %}
         {% block contentText %}
-            {% if embed.description is not empty %}
-                {{ embed.description | raw }}
+            {% if not embed.isAffiliate %}
+                {% if embed.description is not empty %}
+                    {{ embed.description | raw }}
+                {% endif %}
+                <div class="spacing-top spacing-top--bigger">{{ 'product.attribute.sku' | trans }}: {{ embed.sku }}</div>
             {% endif %}
-            <div class="spacing-top spacing-top--bigger">{{ 'product.attribute.sku' | trans }}: {{ embed.sku }}</div>
             {% if embed.isAffiliate %}
-                <div class="spacing-top spacing-top--bigger">
+                <div class="spacing-top">
                     {{ 'afiliate.legal.text' | trans }}
                 </div>
             {% endif %}

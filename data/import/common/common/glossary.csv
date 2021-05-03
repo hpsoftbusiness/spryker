@@ -20015,3 +20015,5 @@ oms.state.failed,fehlgeschlagen,de_DE
 oms.state.failed,Failed,en_US
 oms.state.myworld_payment_pending,MyWorld payment pending,de_DE
 oms.state.myworld_payment_pending,MyWorld payment pending,en_US
+product_detail_page.desclaimer_text, Desclaimer,en_US
+product_detail_page.desclaimer_text, Haftungsausschluss,de_DE

@@ -46,7 +46,7 @@ class ProductController extends SprykerShopProductController
 
         $viewData['product']
             ->setAttributes(
-                $this->getFilterProductAttributes($viewData['product']->getAttributes())
+                $this->getFilterProductAttributes($viewData['product']->getAttributes(), $viewData['product']->getIsAffiliate())
             );
         foreach ($viewData['product']['bundledProducts'] as $bundledProduct) {
             $bundledProduct->setAttributes(
@@ -125,10 +125,10 @@ class ProductController extends SprykerShopProductController
 
     /**
      * @param array $attributes
-     *
+     * @param bool $isAffiliate
      * @return array
      */
-    protected function getFilterProductAttributes(array $attributes): array
+    protected function getFilterProductAttributes(array $attributes, bool $isAffiliate): array
     {
         // TODO: enable later, this should not be Zed request because of performance concerns
 //        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
@@ -138,6 +138,7 @@ class ProductController extends SprykerShopProductController
 //            ->getKeysToShowOnPdp($productAttributeKeysCollectionTransfer)
 //            ->getKeys();
 //        $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
+
 
         $attributesToFilter = [
             'shopping_point_store',
@@ -164,6 +165,17 @@ class ProductController extends SprykerShopProductController
             $this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount(),
             $this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice(),
         ];
+
+        if ($isAffiliate){
+            $attributesToHide = [
+                'product_stock.name',
+                'delivery_time',
+                'affiliate_availability',
+                'affiliate_displayed_price',
+            ];
+
+            $attributesToFilter = array_merge($attributesToFilter, $attributesToHide);
+        }
 
         foreach (array_keys($attributes) as $attributeKey) {
             if (in_array($attributeKey, $attributesToFilter) || strpos($attributeKey, 'sellable_') !== false) {
