@@ -39,7 +39,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
         return array_merge(
             parent::getPriceDimensionQueryCriteriaPlugins(),
             [
-                new PriceProductOfferPriceDimensionQueryCriteriaPlugin(),
+//                new PriceProductOfferPriceDimensionQueryCriteriaPlugin(),
             ]
         );
     }
@@ -50,7 +50,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceDimensionConcreteSaverPlugins(): array
     {
         return [
-            new PriceProductOfferPriceDimensionConcreteSaverPlugin(),
+//            new PriceProductOfferPriceDimensionConcreteSaverPlugin(),
         ];
     }
 
@@ -60,7 +60,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceProductDimensionExpanderStrategyPlugins(): array
     {
         return [
-            new PriceProductOfferPriceProductDimensionExpanderStrategyPlugin(),
+//            new PriceProductOfferPriceProductDimensionExpanderStrategyPlugin(),
         ];
     }
 }
