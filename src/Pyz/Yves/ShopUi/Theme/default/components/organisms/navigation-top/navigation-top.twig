@@ -61,13 +61,16 @@
                         },
                     } only %}
                 </li>
-                <li class="{{ config.name }}" style="z-index: 20">
-                    {% include atom('link') with {
-                        data: {
-                            name: 'auth.login-button' | trans,
-                            url: '/login'
-                        }
-                    } only %}
+                <li class="{{ config.name }}" id="login-button" style="z-index: 20">
+                    <a href="/login" class="button button--expand">
+                        {% include atom('icon') with {
+                            modifiers: ['bigger'],
+                            data: {
+                                name: 'my-world'
+                            }
+                        } only %}
+                        {{ 'auth.login-button' | trans }}
+                    </a>
                 </li>
 {# TODO: add register link #}
 {#                <li class="{{ config.name }}__item {{ config.name }}__item--register">#}
