@@ -91,6 +91,11 @@
                             {% block fieldset %}
                                 <h2 class="js-payment-method-{{ embed.index }} {% if embed.index != '1-0' %} is-hidden{% endif %} title title--medium spacing-bottom--big">{{ embed.toggler.vars.label | trans }}</h2>
                                 <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
+                                    {% if data.form.vars.template_path == 'Adyen/credit-card' %}
+                                        <p class="spacing-top spacing-top--big spacing-x">
+                                            {{ 'page.checkout.payment.3d_secure_text' | trans }}
+                                        </p>
+                                    {% endif %}
                                     <div class="col col--sm-12">
                                         {% if data.customForms[data.form.vars.template_path] is not defined %}
                                             {{ parent() }}
