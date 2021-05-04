@@ -13,6 +13,7 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
  * @method \Pyz\Yves\ProductAffiliateOffersWidget\ProductAffiliateOffersWidgetFactory getFactory()
+ * @method \Pyz\Yves\ProductAffiliateOffersWidget\ProductAffiliateOffersWidgetConfig getConfig()
  */
 class ProductAffiliateOffersWidget extends AbstractWidget
 {
@@ -69,7 +70,10 @@ class ProductAffiliateOffersWidget extends AbstractWidget
 
         $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
         $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-        $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
+
+        if ($this->getConfig()->isMultiCountryFeatureEnabled()) {
+            $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
+        }
 
         return $this->getFactory()->getMerchantProductOfferStorageClient()->getProductOffersBySkus(
             $productOfferCriteriaFilterTransfer

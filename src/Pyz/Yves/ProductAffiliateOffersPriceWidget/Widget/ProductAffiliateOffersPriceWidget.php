@@ -12,7 +12,8 @@ use Generated\Shared\Transfer\ProductOfferStorageCriteriaTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
- * @method \Pyz\Yves\ProductAffiliateOffersWidget\ProductAffiliateOffersWidgetFactory getFactory()
+ * @method \Pyz\Yves\ProductAffiliateOffersPriceWidget\ProductAffiliateOffersPriceWidgetFactory getFactory()
+ * @method \Pyz\Yves\ProductAffiliateOffersPriceWidget\ProductAffiliateOffersPriceWidgetConfig getConfig()
  */
 class ProductAffiliateOffersPriceWidget extends AbstractWidget
 {
@@ -66,7 +67,10 @@ class ProductAffiliateOffersPriceWidget extends AbstractWidget
 
         $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
         $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-        $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
+
+        if ($this->getConfig()->isMultiCountryFeatureEnabled()) {
+            $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
+        }
 
         $productOfferStorageCollectionTransfer = $this->getFactory()->getMerchantProductOfferStorageClient(
         )->getProductOffersBySkus(

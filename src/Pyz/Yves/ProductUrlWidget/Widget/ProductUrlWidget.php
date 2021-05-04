@@ -14,6 +14,7 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
  * @method \Pyz\Yves\ProductUrlWidget\ProductUrlWidgetFactory getFactory()
+ * @method \Pyz\Yves\ProductUrlWidget\ProductUrlWidgetConfig getConfig()
  */
 class ProductUrlWidget extends AbstractWidget
 {
@@ -137,7 +138,9 @@ class ProductUrlWidget extends AbstractWidget
 
         $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
         $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-        $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
+        if ($this->getConfig()->isMultiCountryFeatureEnabled()) {
+            $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
+        }
         $offers = $this->getFactory()->getMerchantProductOfferStorageClient()->getProductOffersBySkus(
             $productOfferCriteriaFilterTransfer
         )->getProductOffersStorage();
