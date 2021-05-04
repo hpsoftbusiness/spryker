@@ -95,12 +95,17 @@ class ProductController extends SprykerShopProductController
         ProductViewTransfer $productViewTransfer,
         array $attributes
     ): void {
-        if ($attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore()] ?? null) {
+        $benefitStoreKey = $this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore();
+
+        if (isset($attributes[$benefitStoreKey]) && $attributes[$benefitStoreKey]) {
             $benefitSalesPrice = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice()] ?? null;
             $benefitAmount = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount()] ?? null;
             /**
              * @todo Remove conversions once benefit sales price and amount import is updated to convert it to cents (integer)
              */
+            $benefitSalesPrice = str_replace(',', '.', $benefitSalesPrice);
+            $benefitAmount = str_replace(',', '.', $benefitAmount);
+
             if ($benefitSalesPrice !== null) {
                 $benefitSalesPrice = $this->getFactory()->createDecimalToIntegerConverter()->convert(
                     (float)$benefitSalesPrice
