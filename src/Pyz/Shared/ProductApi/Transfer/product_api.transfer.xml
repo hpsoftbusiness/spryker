@@ -20,6 +20,8 @@
         <property name="price" type="ProductPriceApi"/>
         <property name="bvDeal" type="ProductBvDealApi"/>
         <property name="spDeal" type="ProductSpDealApi"/>
+        <property name="marketerOnly" type="bool"/>
+        <property name="cbwPrivateOnly" type="bool"/>
     </transfer>
 
     <transfer name="ProductBenefitApi">

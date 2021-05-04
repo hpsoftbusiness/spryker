@@ -76,7 +76,9 @@ class TransferMapper implements TransferMapperInterface
             ->setBenefit($this->getBenefitApi($productAbstractTransfer))
             ->setPrice($this->getPriceApi($productAbstractTransfer))
             ->setBvDeal($this->getBvDealApi($productAbstractTransfer))
-            ->setSpDeal($this->getSpDealApi($productAbstractTransfer));
+            ->setSpDeal($this->getSpDealApi($productAbstractTransfer))
+            ->setMarketerOnly($this->getMarketerOnlyFlag($productAbstractTransfer))
+            ->setCbwPrivateOnly($this->getCbwPrivateOnlyFlag($productAbstractTransfer));
 
         return $productApiTransfer;
     }
@@ -254,6 +256,30 @@ class TransferMapper implements TransferMapperInterface
             ));
 
         return $productSpDealApi;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     *
+     * @return bool|null
+     */
+    protected function getMarketerOnlyFlag(ProductAbstractTransfer $productAbstractTransfer): ?bool
+    {
+        $flagValue = $productAbstractTransfer->getAttributes()['marketer_only'] ?? false;
+
+        return $flagValue === true || $flagValue === '1';
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     *
+     * @return bool|null
+     */
+    protected function getCbwPrivateOnlyFlag(ProductAbstractTransfer $productAbstractTransfer): ?bool
+    {
+        $flagValue = $productAbstractTransfer->getAttributes()['cbw_private_only'] ?? false;
+
+        return $flagValue === true || $flagValue === '1';
     }
 
     /**
