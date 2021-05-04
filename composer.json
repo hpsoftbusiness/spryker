@@ -10,6 +10,7 @@
     "ext-gmp": "*",
     "ext-intl": "*",
     "ext-json": "*",
+    "ext-pdo": "*",
     "ext-pdo_pgsql": "*",
     "ext-pgsql": "*",
     "ext-readline": "*",
@@ -219,7 +220,7 @@
     "spryker/uuid": "^1.0.0",
     "spryker/wishlists-rest-api": "^1.4.3",
     "swiftmailer/swiftmailer": "^5.4.12",
-    "ext-pdo": "*"
+    "symfony/http-client": "^5.2"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
