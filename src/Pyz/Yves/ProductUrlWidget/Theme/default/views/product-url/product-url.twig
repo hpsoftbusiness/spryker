@@ -15,6 +15,7 @@
     originalPrice: null,
     originUrl: null,
     alt: null,
+    idProductAbstract: null,
 } %}
 
 {% block body %}
@@ -28,6 +29,7 @@
                 originalPrice: data.originalPrice,
                 alt: data.alt,
                 targetBlank: data.targetBlank,
+                idProductAbstract: data.idProductAbstract,
             },
         } only %}
     {% elseif data.thumbnail %}

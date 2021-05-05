@@ -1,11 +1,16 @@
 {% extends molecule('suggestion-product', '@SprykerShop:CatalogPage') %}
 
+{% define data = {
+    isAffiliate: data.product.is_affiliate ?? data.product.isAffiliate,
+    affiliateData:  data.product.affiliate_data ?? data.product.affiliateData,
+    idProductAbstract: data.product.id_product_abstract ?? data.product.idProductAbstract,
+} %}
 {% block body %}
     {% widget 'ProductUrlWidget' args [
-        data.product.is_affiliate ?? data.product.isAffiliate,
-        data.product.affiliate_data ?? data.product.affiliateData,
+        data.isAffiliate,
+        data.affiliateData,
         data.product.attributes ?? [],
-        data.product.id_product_abstract ?? data.idProductAbstract
+        data.idProductAbstract
     ] with {
             data: {
             originUrl: data.url,
@@ -15,6 +20,7 @@
             price: data.price,
             originalPrice: data.originalPrice ?? null,
             alt: data.alt,
+            idProductAbstract: data.idProductAbstract,
         },
-    } only %}{% endwidget %}
+        } only %}{% endwidget %}
 {% endblock %}
