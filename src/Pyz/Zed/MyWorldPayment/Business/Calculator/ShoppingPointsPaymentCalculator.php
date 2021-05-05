@@ -52,13 +52,13 @@ class ShoppingPointsPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
-     * @return int
+     * @return float
      */
-    protected function getCommonUsedShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): int
+    protected function getCommonUsedShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): float
     {
         return array_reduce(
             $calculableObjectTransfer->getItems()->getArrayCopy(),
-            function (int $carry, ItemTransfer $itemTransfer) {
+            function (float $carry, ItemTransfer $itemTransfer) {
                 $carry += $itemTransfer->getTotalUsedShoppingPointsAmount();
 
                 return $carry;
