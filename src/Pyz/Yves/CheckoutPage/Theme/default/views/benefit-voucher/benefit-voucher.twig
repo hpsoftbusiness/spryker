@@ -27,7 +27,6 @@
         modifiers: ['checkout-actions', 'checkout-form-elements'],
         data: {
             form: _view.benefit_deal_collection_form,
-            benefitSalesInfo: _view.benefitSalesInfo,
             benefitVouchersCurrencyCode: _view.customerBalance.benefitVouchersCurrencyCode,
             submit: {
                 enable: true,
@@ -50,7 +49,6 @@
                             item: item,
                             formType: item.children | keys | first,
                             product: item.vars.value,
-                            benefitSalesInfo: data.benefitSalesInfo,
                             benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,
                         },
                     } only %}

@@ -7,26 +7,18 @@
 {% define data = {
     product: required,
     formType: required,
-    benefitSalesInfo: {},
     item: {},
     benefitVouchersCurrencyCode: '',
 } %}
 
 {% set product = data.product %}
 {% set abstractProductId = product.idProductAbstract %}
-{% set productInfo = data.benefitSalesInfo[abstractProductId] %}
 {% set productBrand = product.concreteAttributes['brand'] %}
 {% set images = product.images %} {#It can be empty array#}
-{% set currencyCode = productInfo['currencyCode'] %}
+{% set currencyCode = product.priceProduct.moneyValue.currency.code %}
 {% set unitPrice = product.originUnitGrossPrice %}
 {% set subTotalPrice = product.quantity * unitPrice %}
-{% set prices = productInfo['prices'] %}
-
-{#                    Array with the prices for different variants of BV amount items#}
-{#                        Elements of the array: #}
-{#                    'salesPrice' => The price to pay for the items with Benefit Vouchers#}
-{#                    'benefitAmount' => Amount of the vouchers need to be charged to buy the amount of the items but the mentioned sales Price#}
-{#                    'quantity' => the quantity of items that define sales price and benefit vouchers amount that need to be charged#}
+{% set chargeAmountData = product.benefitDealChargeAmountData %}
 
 {% block body %}
     {% include molecule('product-image') with {
@@ -62,7 +54,7 @@
             {% if data.formType == 'useBenefitVoucher' %}
                 <div class="{{ config.name }}__benefit-price">
                     <span>
-                        {{- prices['salesPrice'] | money(true, currencyCode) -}} - {{- prices['benefitAmount'] | money(false, data.benefitVouchersCurrencyCode) -}}
+                        {{- chargeAmountData.unitSalesPriceAmount | money(true, currencyCode) -}} - {{- chargeAmountData.totalBenefitVouchersAmount | money(false, data.benefitVouchersCurrencyCode) -}}
                     </span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
@@ -83,8 +75,8 @@
             {% elseif data.formType == 'useShoppingPoints' %}
                 <div class="{{ config.name }}__benefit-price">
                     <span>
-                        {{ product.shoppingPointsDeal.price | money(true, currencyCode) }}
-                        {% set shoppingPoints = product.shoppingPointsDeal.shoppingPointsQuantity %}
+                        {{ chargeAmountData.totalSalesPriceAmount | money(true, currencyCode) }}
+                        {% set shoppingPoints = chargeAmountData.totalShoppingPointsAmount %}
                         - {{ shoppingPoints }}
                     </span>
                     {% include atom('icon') with {

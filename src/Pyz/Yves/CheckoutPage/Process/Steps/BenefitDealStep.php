@@ -78,37 +78,7 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
     {
         $availableBalance = $dataTransfer->getCustomer()->getCustomerBalance();
 
-        $products = array_reduce(
-            $dataTransfer->getItems()->getArrayCopy(),
-            function (ArrayObject $carry, ItemTransfer $itemTransfer) {
-                $benefitVoucherSalesData = $itemTransfer->getBenefitVoucherDealData();
-                $currencyCode = $itemTransfer->getPriceProduct()->getMoneyValue()->getCurrency()->getCode();
-
-                /**
-                 * @TODO refactor properly after all payment branches are merged.
-                 */
-                if ($benefitVoucherSalesData && $benefitVoucherSalesData->getIsStore()) {
-                    $carry[$itemTransfer->getIdProductAbstract()] = [
-                        'prices' => $this->calculateSalesPriceForQuantity($itemTransfer),
-                        'currencyCode' => $currencyCode,
-                        'subTotalForItems' => number_format((float)($itemTransfer->getSumSubtotalAggregation() / 100), 2),
-                        'unitPrice' => number_format((float)$itemTransfer->getUnitPrice() / 100, 2),
-                    ];
-                } elseif ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
-                    $carry[$itemTransfer->getIdProductAbstract()] = [
-                        'prices' => [],
-                        'currencyCode' => $currencyCode,
-                        'unitPrice' => $itemTransfer->getOriginUnitGrossPrice(),
-                    ];
-                }
-
-                return $carry;
-            },
-            new ArrayObject()
-        );
-
         return [
-            'benefitSalesInfo' => $products,
             'customerBalance' => [
                 'benefitVouchersBalance' => $availableBalance->getAvailableBenefitVoucherAmount()->toFloat(),
                 'benefitVouchersCurrencyCode' => $availableBalance->getAvailableBenefitVoucherCurrency(),
@@ -117,27 +87,6 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
                 'cashbackCurrencyCode' => $availableBalance->getAvailableCashbackCurrency(),
             ],
         ];
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return array|null
-     */
-    protected function calculateSalesPriceForQuantity(ItemTransfer $itemTransfer): ?array
-    {
-        //TODO: implement functionality for make available choice amount of items to pay in one ItemTransfer
-        $salesDataTransfer = $itemTransfer->getBenefitVoucherDealData();
-
-        if ($salesDataTransfer && $salesDataTransfer->getIsStore()) {
-            return [
-                'salesPrice' => $salesDataTransfer->getSalesPrice() * $itemTransfer->getQuantity(),
-                'benefitAmount' => $salesDataTransfer->getAmount() * $itemTransfer->getQuantity(),
-                'quantity' => $itemTransfer->getQuantity(),
-            ];
-        }
-
-        return null;
     }
 
     /**

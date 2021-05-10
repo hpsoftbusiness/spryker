@@ -105,13 +105,13 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
-     * @return int
+     * @return float
      */
-    protected function getCommonUsedBenefitItems(CalculableObjectTransfer $calculableObjectTransfer): int
+    protected function getCommonUsedBenefitItems(CalculableObjectTransfer $calculableObjectTransfer): float
     {
         return array_reduce(
             $calculableObjectTransfer->getItems()->getArrayCopy(),
-            function (int $carry, ItemTransfer $itemTransfer) {
+            function (float $carry, ItemTransfer $itemTransfer) {
                 $carry += $itemTransfer->getTotalUsedBenefitVouchersAmount();
 
                 return $carry;

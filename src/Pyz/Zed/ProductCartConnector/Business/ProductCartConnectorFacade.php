@@ -24,4 +24,14 @@ class ProductCartConnectorFacade extends SprykerProductCartConnectorFacade imple
     {
         return $this->getFactory()->createBenefitDealsExpander()->expandItems($cartChangeTransfer);
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     */
+    public function expandItemsWithBenefitDealsChargeAmount(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
+    {
+        return $this->getFactory()->createBenefitDealsChargeAmountExpander()->expandItems($cartChangeTransfer);
+    }
 }

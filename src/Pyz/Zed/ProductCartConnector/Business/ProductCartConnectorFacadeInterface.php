@@ -21,4 +21,14 @@ interface ProductCartConnectorFacadeInterface extends SprykerProductCartConnecto
      * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
     public function expandItemsWithBenefitDeals(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
+
+    /**
+     * Specification:
+     * - Expand cart change items with benefit deals charge amount data.
+     *
+     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     */
+    public function expandItemsWithBenefitDealsChargeAmount(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
 }

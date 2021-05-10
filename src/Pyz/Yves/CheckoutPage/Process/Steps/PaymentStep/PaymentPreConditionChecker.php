@@ -95,8 +95,10 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
     {
         $totalUsedShoppingPointsSum = 0;
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseShoppingPoints()) {
-                $totalUsedShoppingPointsSum += $itemTransfer->getShoppingPointsDeal()->getShoppingPointsQuantity() * $itemTransfer->getQuantity();
+            $chargeAmountData = $itemTransfer->getBenefitDealChargeAmountData();
+
+            if ($itemTransfer->getUseShoppingPoints() && $chargeAmountData) {
+                $totalUsedShoppingPointsSum += $chargeAmountData->getTotalShoppingPointsAmount();
             }
         }
 
@@ -125,13 +127,10 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
         $commonSelectedBenefitVouchers = 0;
 
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            $benefitVoucherSalesData = $itemTransfer->getBenefitVoucherDealData();
+            $chargeAmountData = $itemTransfer->getBenefitDealChargeAmountData();
 
-            if ($itemTransfer->getUseBenefitVoucher()
-                && $benefitVoucherSalesData
-                && $benefitVoucherSalesData->getIsStore()
-            ) {
-                $commonSelectedBenefitVouchers += $benefitVoucherSalesData->getAmount() * $itemTransfer->getQuantity();
+            if ($itemTransfer->getUseBenefitVoucher() && $chargeAmountData) {
+                $commonSelectedBenefitVouchers += $chargeAmountData->getTotalBenefitVouchersAmount();
             }
         }
 

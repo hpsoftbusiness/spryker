@@ -188,6 +188,28 @@
             }
         }
 
+        &__benefit-deal {
+            @include helper-font-weight(bold);
+
+            @include helper-breakpoint(lg) {
+                text-align: right;
+            }
+        }
+
+        &__benefit-deal-or {
+            @include helper-font-weight(regular);
+            margin: map-get($setting-spacing, default) 0;
+        }
+
+        &__deal-original-price {
+            text-decoration: line-through;
+            color: $setting-color-gray-5;
+        }
+
+        &__new-price {
+            color: $setting-color-yellow;
+        }
+
         @content;
     }
 }
