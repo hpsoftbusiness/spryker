@@ -1,0 +1,27 @@
+@mixin shop-ui-customer-balance($name: '.customer-balance') {
+    #{$name} {
+        @include helper-font-size(small);
+        @include helper-font-weight(bold);
+        display: flex;
+        flex-wrap: wrap;
+        color: $setting-color-gray-5;
+        flex-grow: 1;
+
+        &__intro {
+            @include helper-font-weight(regular);
+            margin-right: map-get($setting-spacing, small);
+        }
+
+        &__point-balance {
+            margin-right: map-get($setting-spacing, default);
+            color: $setting-color-main;
+        }
+
+        &__benefit-voucher-balance {
+            color: $setting-color-black;
+        }
+        @content;
+    }
+}
+
+@include shop-ui-customer-balance;

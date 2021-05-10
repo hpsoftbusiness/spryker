@@ -6,7 +6,22 @@
 } %}
 
 {% block content %}
-    <h2 class="title title--primary">{{ 'checkout.step.benefit_deal.title' | trans }}</h2>
+    <h2 class="title title--primary grid grid--middle grid--justify">
+        <div class="col">
+            {{ 'checkout.step.benefit_deal.title' | trans }}
+        </div>
+
+        <div class="col">
+            {% include molecule('customer-balance') with {
+                class: 'text-right',
+                data: {
+                    shoppingPointBalance: _view.customerBalance.shoppingPointBalance,
+                    benefitVouchersCurrencyCode: _view.customerBalance.benefitVouchersCurrencyCode,
+                    benefitVouchersBalance: _view.customerBalance.benefitVouchersBalance,
+                },
+            } only %}
+        </div>
+    </h2>
 
     {% embed molecule('form') with {
         modifiers: ['checkout-actions', 'checkout-form-elements'],

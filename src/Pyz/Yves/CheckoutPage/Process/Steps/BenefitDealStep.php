@@ -112,6 +112,7 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
             'customerBalance' => [
                 'benefitVouchersBalance' => $availableBalance->getAvailableBenefitVoucherAmount()->toFloat(),
                 'benefitVouchersCurrencyCode' => $availableBalance->getAvailableBenefitVoucherCurrency(),
+                'shoppingPointBalance' => $availableBalance->getAvailableShoppingPointAmount(),
                 'cashbackBalance' => $availableBalance->getAvailableCashbackAmount()->toFloat(),
                 'cashbackCurrencyCode' => $availableBalance->getAvailableCashbackCurrency(),
             ],
