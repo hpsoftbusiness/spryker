@@ -89,7 +89,7 @@ class ProductAbstractSellableFacetPageMapExpanderPlugin extends AbstractPlugin i
     /**
      * @param mixed $attributeValue
      *
-     * @return string
+     * @return bool
      */
     private function extractSingularAttributeValue($attributeValue): bool
     {
