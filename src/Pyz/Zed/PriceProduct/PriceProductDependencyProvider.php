@@ -8,15 +8,8 @@
 namespace Pyz\Zed\PriceProduct;
 
 use Spryker\Zed\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
-use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceDimensionConcreteSaverPlugin;
-use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceDimensionQueryCriteriaPlugin;
-use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceProductDimensionExpanderStrategyPlugin;
 use Spryker\Zed\PriceProductVolume\Communication\Plugin\PriceProductExtension\PriceProductVolumeExtractorPlugin;
 
-/**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
     /**
@@ -39,7 +32,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
         return array_merge(
             parent::getPriceDimensionQueryCriteriaPlugins(),
             [
-//                new PriceProductOfferPriceDimensionQueryCriteriaPlugin(),
+            //                new PriceProductOfferPriceDimensionQueryCriteriaPlugin(),
             ]
         );
     }

@@ -131,6 +131,7 @@ class ProductController extends SprykerShopProductController
     /**
      * @param array $attributes
      * @param bool $isAffiliate
+     *
      * @return array
      */
     protected function getFilterProductAttributes(array $attributes, bool $isAffiliate): array
@@ -171,7 +172,7 @@ class ProductController extends SprykerShopProductController
             $this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice(),
         ];
 
-        if ($isAffiliate){
+        if ($isAffiliate) {
             $attributesToHide = [
                 'product_stock.name',
                 'delivery_time',
