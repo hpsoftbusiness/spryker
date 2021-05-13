@@ -13,13 +13,18 @@ use Spryker\Zed\Kernel\Container;
 
 class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const MY_WORLD_MARKETPLACE_API_CLIENT = 'MY_WORLD_MARKETPLACE_API_CLIENT';
-    public const MY_WORLD_PAYMENT_API_FACADE = 'MY_WORLD_PAYMENT_API_FACADE';
-    public const SEQUENCE_FACADE = 'SEQUENCE_FACADE';
+    public const FACADE_MY_WORLD_PAYMENT_API = 'FACADE_MY_WORLD_PAYMENT_API';
+    public const FACADE_SEQUENCE = 'FACADE_SEQUENCE';
+
+    public const CLIENT_MY_WORLD_MARKETPLACE_API = 'CLIENT_MY_WORLD_MARKETPLACE_API';
     public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
-    public const LOCALE_CLIENT = 'LOCALE_CLIENT';
-    public const CUSTOMER_GROUP_QUERY = 'CUSTOMER_GROUP_QUERY';
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
+
     public const SERVICE_UTIL_POLLING = 'SERVICE_UTIL_POLLING';
+    public const SERVICE_CUSTOMER = 'SERVICE_CUSTOMER';
+
+    public const QUERY_CONTAINER_CUSTOMER_GROUP = 'QUERY_CONTAINER_CUSTOMER_GROUP';
+
     public const DECIMAL_TO_INTEGER_CONVERTER = 'DECIMAL_TO_INTEGER_CONVERTER';
 
     /**
@@ -46,10 +51,11 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addMyWorldMarketplaceApiClient($container);
         $container = $this->addMyWorldPaymentFacade($container);
         $container = $this->addSequenceFacade($container);
-        $container = $this->addCustomerGroup($container);
+        $container = $this->addCustomerGroupQueryContainer($container);
         $container = $this->addProductStorageClient($container);
         $container = $this->addLocaleClient($container);
         $this->addDecimalToIntegerConverter($container);
+        $this->addCustomerService($container);
 
         return $container;
     }
@@ -71,7 +77,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function addMyWorldMarketplaceApiClient(Container $container): Container
     {
-        $container->set(static::MY_WORLD_MARKETPLACE_API_CLIENT, function (Container $container) {
+        $container->set(static::CLIENT_MY_WORLD_MARKETPLACE_API, function (Container $container) {
             return $container->getLocator()->myWorldMarketplaceApi()->client();
         });
 
@@ -85,7 +91,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function addMyWorldPaymentFacade(Container $container): Container
     {
-        $container->set(static::MY_WORLD_PAYMENT_API_FACADE, function (Container $container) {
+        $container->set(static::FACADE_MY_WORLD_PAYMENT_API, function (Container $container) {
             return $container->getLocator()->myWorldPaymentApi()->facade();
         });
 
@@ -99,7 +105,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function addSequenceFacade(Container $container): Container
     {
-        $container->set(static::SEQUENCE_FACADE, function (Container $container) {
+        $container->set(static::FACADE_SEQUENCE, function (Container $container) {
             return $container->getLocator()->sequenceNumber()->facade();
         });
 
@@ -111,9 +117,9 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addCustomerGroup(Container $container): Container
+    protected function addCustomerGroupQueryContainer(Container $container): Container
     {
-        $container->set(static::CUSTOMER_GROUP_QUERY, function (Container $container) {
+        $container->set(static::QUERY_CONTAINER_CUSTOMER_GROUP, function (Container $container) {
             return $container->getLocator()->customerGroup()->queryContainer();
         });
 
@@ -141,7 +147,7 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addLocaleClient(Container $container): Container
     {
-        $container->set(static::LOCALE_CLIENT, function (Container $container) {
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
             return $container->getLocator()->locale()->client();
         });
 
@@ -167,8 +173,20 @@ class MyWorldPaymentDependencyProvider extends AbstractBundleDependencyProvider
      */
     private function addDecimalToIntegerConverter(Container $container): void
     {
-        $container->set(self::DECIMAL_TO_INTEGER_CONVERTER, static function (Container $container) {
+        $container->set(self::DECIMAL_TO_INTEGER_CONVERTER, static function () {
             return new DecimalToIntegerConverter();
+        });
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addCustomerService(Container $container): void
+    {
+        $container->set(self::SERVICE_CUSTOMER, static function (Container $container) {
+            return $container->getLocator()->customer()->service();
         });
     }
 }

@@ -20,6 +20,7 @@ class MyWorldPaymentConfig extends AbstractBundleConfig
     public const PAYMENT_METHOD_BENEFIT_VOUCHER_NAME = 'BenefitVouchers';
     public const PAYMENT_METHOD_CASHBACK_NAME = 'Cashback';
     public const PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME = 'EVoucherMarketer';
+    public const PAYMENT_METHOD_SHOPPING_POINTS = 'ShoppingPoints';
 
     /**
      * Map for payment transaction status codes to glossary translation key.

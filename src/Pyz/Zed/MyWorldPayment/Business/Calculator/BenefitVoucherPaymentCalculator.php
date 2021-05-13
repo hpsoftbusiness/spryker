@@ -12,34 +12,32 @@ use Exception;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
 {
-    protected const DEFAULT_AMOUNT_OF_ITEMS = 1;
-
-    /**
-     * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
-     */
-    protected $marketplaceApiClient;
-
     /**
      * @var \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig
      */
-    protected $myWorldPaymentConfig;
+    private $myWorldPaymentConfig;
 
     /**
-     * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $marketplaceApiClient
+     * @var \Pyz\Service\Customer\CustomerServiceInterface
+     */
+    private $customerService;
+
+    /**
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
+     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
      */
     public function __construct(
-        MyWorldMarketplaceApiClientInterface $marketplaceApiClient,
-        MyWorldPaymentConfig $myWorldPaymentConfig
+        MyWorldPaymentConfig $myWorldPaymentConfig,
+        CustomerServiceInterface $customerService
     ) {
-        $this->marketplaceApiClient = $marketplaceApiClient;
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
+        $this->customerService = $customerService;
     }
 
     /**
@@ -63,38 +61,39 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return \Generated\Shared\Transfer\CalculableObjectTransfer
      */
-    protected function reduceItemsPrices(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    private function reduceItemsPrices(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
-        $commonReducedPrice = 0;
-        $availableAmountOfBenefitVoucher = $calculableObjectTransfer->getOriginalQuote()->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount();
+        $totalBenefitVouchersDiscountAmount = 0;
+        $customerTransfer = $calculableObjectTransfer->getOriginalQuote()->getCustomer();
+        $availableAmountOfBenefitVoucher = $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer);
 
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher() && $this->assertBenefitVoucherSalesPrice($itemTransfer)) {
-                $benefitSalesPrice = $itemTransfer->getBenefitVoucherDealData()->getSalesPrice();
+            if (!$this->assertBenefitVoucherDealData($itemTransfer)) {
+                $itemTransfer->setUseBenefitVoucher(false);
 
-                $newPriceForItemsWithBenefitVouchers = (int)($benefitSalesPrice * $itemTransfer->getQuantity());
+                continue;
+            }
 
-                $oldPriceForItemsWithBenefitVouchers = $itemTransfer->getUnitPrice() * $itemTransfer->getQuantity();
+            if ($itemTransfer->getUseBenefitVoucher()) {
+                $benefitVoucherData = $itemTransfer->getBenefitVoucherDealData();
+                $totalItemBenefitVoucherDiscountAmount = (int)($benefitVoucherData->getAmount() * $itemTransfer->getQuantity());
+                if ($totalBenefitVouchersDiscountAmount + $totalItemBenefitVoucherDiscountAmount > $availableAmountOfBenefitVoucher) {
+                    $this->clearItemBenefitVoucherSelection($itemTransfer);
 
-                $this->calculateItemUsedBenefitVouchers($itemTransfer, $availableAmountOfBenefitVoucher->toInt());
+                    continue;
+                }
 
-                $commonReducedPrice += $oldPriceForItemsWithBenefitVouchers - $newPriceForItemsWithBenefitVouchers;
-            } elseif (!$itemTransfer->getUseBenefitVoucher()
-                && $this->assertBenefitVoucherSalesPrice($itemTransfer)
-            ) {
-                $itemTransfer->setTotalUsedBenefitVouchersAmount(0);
-
-                $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
-                $itemTransfer->setSumGrossPrice($itemTransfer->getOriginUnitGrossPrice() * $itemTransfer->getQuantity());
+                $this->calculateItemUsedBenefitVouchers($itemTransfer, $totalItemBenefitVoucherDiscountAmount);
+                $totalBenefitVouchersDiscountAmount += $totalItemBenefitVoucherDiscountAmount;
+            } else {
+                $this->clearItemBenefitVoucherSelection($itemTransfer);
             }
         }
 
-        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount(
-            $this->getCommonUsedBenefitItems($calculableObjectTransfer)
-        );
+        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount($totalBenefitVouchersDiscountAmount);
 
-        if ($commonReducedPrice > 0) {
-            $payment = $this->createPaymentMethod($commonReducedPrice);
+        if ($totalBenefitVouchersDiscountAmount > 0) {
+            $payment = $this->createPaymentMethod($totalBenefitVouchersDiscountAmount);
 
             $calculableObjectTransfer->addPayment($payment);
         }
@@ -103,43 +102,29 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return float
+     * @return void
      */
-    protected function getCommonUsedBenefitItems(CalculableObjectTransfer $calculableObjectTransfer): float
+    private function clearItemBenefitVoucherSelection(ItemTransfer $itemTransfer): void
     {
-        return array_reduce(
-            $calculableObjectTransfer->getItems()->getArrayCopy(),
-            function (float $carry, ItemTransfer $itemTransfer) {
-                $carry += $itemTransfer->getTotalUsedBenefitVouchersAmount();
-
-                return $carry;
-            },
-            0
-        );
+        $itemTransfer->setUseBenefitVoucher(false);
+        $itemTransfer->setTotalUsedBenefitVouchersAmount(0);
+        $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
+        $itemTransfer->setSumGrossPrice($itemTransfer->getOriginUnitGrossPrice() * $itemTransfer->getQuantity());
     }
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param int $availablePoints
+     * @param int $totalItemBenefitVoucherAmount
      *
      * @return void
      */
-    protected function calculateItemUsedBenefitVouchers(ItemTransfer $itemTransfer, int $availablePoints): void
+    private function calculateItemUsedBenefitVouchers(ItemTransfer $itemTransfer, int $totalItemBenefitVoucherAmount): void
     {
-        if (!$this->assertBenefitVoucherSalesPrice($itemTransfer)) {
-            return;
-        }
-
         $benefitVoucherDealData = $itemTransfer->getBenefitVoucherDealData();
 
-        $totalNeededBenefitVouchers = $itemTransfer->getQuantity() * $benefitVoucherDealData->getAmount();
-        if ($totalNeededBenefitVouchers > $availablePoints) {
-            return;
-        }
-
-        $itemTransfer->setTotalUsedBenefitVouchersAmount($totalNeededBenefitVouchers);
+        $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherAmount);
         $itemTransfer->setUnitGrossPrice($benefitVoucherDealData->getSalesPrice());
         $itemTransfer->setSumGrossPrice($benefitVoucherDealData->getSalesPrice() * $itemTransfer->getQuantity());
     }
@@ -149,7 +134,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return \Generated\Shared\Transfer\CalculableObjectTransfer
      */
-    protected function removePaymentMethod(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    private function removePaymentMethod(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         $newList = new ArrayObject();
 
@@ -169,7 +154,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return \Generated\Shared\Transfer\PaymentTransfer
      */
-    protected function createPaymentMethod(int $amountOfCharged): PaymentTransfer
+    private function createPaymentMethod(int $amountOfCharged): PaymentTransfer
     {
         return (new PaymentTransfer())
             ->setAmount($amountOfCharged)
@@ -186,7 +171,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return bool
      */
-    protected function isBenefitVoucherUseSelected(CalculableObjectTransfer $calculableObjectTransfer): bool
+    private function isBenefitVoucherUseSelected(CalculableObjectTransfer $calculableObjectTransfer): bool
     {
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
             if ($itemTransfer->getUseBenefitVoucher()) {
@@ -202,7 +187,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return bool
      */
-    protected function assertBenefitVoucherSalesPrice(ItemTransfer $itemTransfer): bool
+    private function assertBenefitVoucherDealData(ItemTransfer $itemTransfer): bool
     {
         try {
             $itemTransfer->requireBenefitVoucherDealData();

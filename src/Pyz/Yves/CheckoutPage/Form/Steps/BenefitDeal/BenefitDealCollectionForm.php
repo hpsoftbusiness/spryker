@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @method \Pyz\Yves\MyWorldPayment\MyWorldPaymentConfig getConfig()
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
  */
 class BenefitDealCollectionForm extends AbstractType
 {

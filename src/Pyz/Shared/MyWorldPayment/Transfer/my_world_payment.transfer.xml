@@ -40,7 +40,7 @@
 
     <transfer name="Quote">
         <property name="myWorldPaymentIsSmsAuthenticationRequired" type="bool"/>
-        <property name="totalUsedBenefitVouchersAmount" type="float" />
+        <property name="totalUsedBenefitVouchersAmount" type="int" />
         <property name="myWorldPaymentSessionId" type="string"/>
         <property name="useEVoucherBalance" type="bool"/>
         <property name="useEVoucherOnBehalfOfMarketer" type="bool"/>
@@ -52,9 +52,8 @@
 
     <transfer name="CalculableObject">
         <property name="myWorldPaymentSessionId" type="string"/>
-        <property name="totalUsedBenefitVouchersAmount" type="float"/>
+        <property name="totalUsedBenefitVouchersAmount" type="int"/>
         <property name="myWorldPaymentData" type="PaymentDataResponse"/>
-        <property name="totalUsedBenefitVouchersAmount" type="float" />
         <property name="useEVoucherBalance" type="bool"/>
         <property name="useEVoucherOnBehalfOfMarketer" type="bool"/>
         <property name="useCashbackBalance" type="bool"/>
@@ -77,7 +76,7 @@
 
     <transfer name="Item">
         <property name="useBenefitVoucher" type="bool"/>
-        <property name="totalUsedBenefitVouchersAmount" type="float"/>
+        <property name="totalUsedBenefitVouchersAmount" type="int"/>
         <property name="benefitVoucherDealData" type="BenefitVoucherDealData"/>
         <property name="benefitDealChargeAmountData" type="BenefitDealChargeAmountData"/>
     </transfer>

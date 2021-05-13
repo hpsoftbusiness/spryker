@@ -9,7 +9,7 @@
                 primaryKey="true"/>
         <column name="fk_sales_order" required="true" type="INTEGER"/>
         <column name="total_shopping_points_amount" type="FLOAT" defaultValue="0"/>
-        <column name="total_benefit_vouchers_amount" type="FLOAT" defaultValue="0"/>
+        <column name="total_benefit_vouchers_amount" type="INTEGER" defaultValue="0"/>
 
         <unique name="pyz_sales_order_benefit_deal-fk-sales-order">
             <unique-column name="fk_sales_order"/>
@@ -35,7 +35,7 @@
         <column name="type" type="VARCHAR" required="true"/>
         <column name="origin_unit_gross_price" type="INTEGER"/>
         <column name="shopping_points_amount" type="FLOAT"/>
-        <column name="benefit_voucher_amount" type="FLOAT"/>
+        <column name="benefit_voucher_amount" type="INTEGER"/>
 
         <foreign-key foreignTable="spy_sales_order_item" name="pyz_sales_order_item_benefit_deal-fk_sales_order_item"
                      phpName="SpySalesOrderItem">

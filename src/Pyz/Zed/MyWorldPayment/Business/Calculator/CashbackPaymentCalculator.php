@@ -8,17 +8,10 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
 
 class CashbackPaymentCalculator extends AbstractCashbackPaymentCalculator
 {
-    /**
-     * @return int
-     */
-    protected function getPaymentOptionId(): int
-    {
-        return $this->myWorldPaymentConfig->getOptionCashback();
-    }
-
     /**
      * @return string
      */
@@ -48,5 +41,15 @@ class CashbackPaymentCalculator extends AbstractCashbackPaymentCalculator
         int $usableBalanceAmount
     ): void {
         $calculableObjectTransfer->setTotalUsedCashbackBalanceAmount($usableBalanceAmount);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return int
+     */
+    protected function getCustomerBalanceAmount(CustomerTransfer $customerTransfer): int
+    {
+        return $this->customerService->getCustomerCashbackBalanceAmount($customerTransfer);
     }
 }

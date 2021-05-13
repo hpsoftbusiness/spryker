@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\MyWorldPayment\Business;
 
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\CashbackPaymentCalculator;
@@ -50,15 +50,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function getMyWorldPaymentApiFacade(): MyWorldPaymentApiFacadeInterface
     {
-        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::MY_WORLD_PAYMENT_API_FACADE);
-    }
-
-    /**
-     * @return \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
-     */
-    public function getMyWorldMarketplaceApiClient(): MyWorldMarketplaceApiClientInterface
-    {
-        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::MY_WORLD_MARKETPLACE_API_CLIENT);
+        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::FACADE_MY_WORLD_PAYMENT_API);
     }
 
     /**
@@ -74,7 +66,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function getLocaleClient(): LocaleClientInterface
     {
-        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::LOCALE_CLIENT);
+        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::CLIENT_LOCALE);
     }
 
     /**
@@ -83,9 +75,8 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createEVoucherPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
         return new EVoucherPaymentCalculator(
-            $this->getMyWorldMarketplaceApiClient(),
+            $this->getCustomerService(),
             $this->getConfig(),
-            $this->getDecimalToIntegerConverter()
         );
     }
 
@@ -95,9 +86,8 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createCashbackPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
         return new CashbackPaymentCalculator(
-            $this->getMyWorldMarketplaceApiClient(),
+            $this->getCustomerService(),
             $this->getConfig(),
-            $this->getDecimalToIntegerConverter()
         );
     }
 
@@ -107,9 +97,8 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createEVoucherMarketerPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
         return new EVoucherMarketerPaymentCalculator(
-            $this->getMyWorldMarketplaceApiClient(),
+            $this->getCustomerService(),
             $this->getConfig(),
-            $this->getDecimalToIntegerConverter()
         );
     }
 
@@ -127,8 +116,8 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createBenefitVoucherPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
         return new BenefitVoucherPaymentCalculator(
-            $this->getMyWorldMarketplaceApiClient(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->getCustomerService()
         );
     }
 
@@ -137,7 +126,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createShoppingPointsPaymentCalculator(): MyWorldPaymentCalculatorInterface
     {
-        return new ShoppingPointsPaymentCalculator();
+        return new ShoppingPointsPaymentCalculator($this->getCustomerService());
     }
 
     /**
@@ -157,7 +146,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function getSequenceFacade(): SequenceNumberFacadeInterface
     {
-        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::SEQUENCE_FACADE);
+        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::FACADE_SEQUENCE);
     }
 
     /**
@@ -202,7 +191,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function getCustomerGroupQuery(): CustomerGroupQueryContainerInterface
     {
-        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::CUSTOMER_GROUP_QUERY);
+        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::QUERY_CONTAINER_CUSTOMER_GROUP);
     }
 
     /**
@@ -219,5 +208,13 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createPaymentPriceManager(): PaymentPriceManagerInterface
     {
         return new QuotePaymentPriceManager();
+    }
+
+    /**
+     * @return \Pyz\Service\Customer\CustomerServiceInterface
+     */
+    public function getCustomerService(): CustomerServiceInterface
+    {
+        return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::SERVICE_CUSTOMER);
     }
 }

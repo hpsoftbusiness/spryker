@@ -47,7 +47,7 @@ class ProductSellableChecker implements ProductSellableCheckerInterface
      */
     public function check(QuoteTransfer $quoteTransfer, bool $isQuoteValid): bool
     {
-        foreach ($quoteTransfer->getItems() as $idx => $itemTransfer) {
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $attributes = $itemTransfer->getConcreteAttributes();
             $countryIso2Code = $itemTransfer->getShipment()->getShippingAddress()->getIso2Code();
             $sellableAttributeKey = sprintf(static::KEY_SELLABLE_ATTRIBUTE_PATTERN, strtolower($countryIso2Code));

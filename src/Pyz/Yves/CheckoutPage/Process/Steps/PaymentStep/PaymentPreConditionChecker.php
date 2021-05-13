@@ -7,8 +7,9 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 
-use Generated\Shared\Transfer\CustomerBalanceTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -29,15 +30,23 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
     private $translator;
 
     /**
+     * @var \Pyz\Service\Customer\CustomerServiceInterface
+     */
+    private $customerService;
+
+    /**
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
+     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
      */
     public function __construct(
         FlashMessengerInterface $flashMessenger,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        CustomerServiceInterface $customerService
     ) {
         $this->flashMessenger = $flashMessenger;
         $this->translator = $translator;
+        $this->customerService = $customerService;
     }
 
     /**
@@ -47,18 +56,18 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
      */
     public function check(QuoteTransfer $quoteTransfer): bool
     {
-        $customerBalanceTransfer = $quoteTransfer->getCustomer()->getCustomerBalance();
-        if (!$this->assertShoppingPointsBalance($quoteTransfer, $customerBalanceTransfer)) {
+        $customerTransfer = $quoteTransfer->getCustomer();
+        if (!$this->assertShoppingPointsBalance($quoteTransfer, $customerTransfer)) {
             $this->addErrorMessage(self::ERROR_NOT_ENOUGH_SHOPPING_POINTS);
 
             return false;
         }
 
-        if (!$this->assertBenefitVoucherBalance($quoteTransfer, $customerBalanceTransfer)) {
+        if (!$this->assertBenefitVoucherBalance($quoteTransfer, $customerTransfer)) {
             $this->addErrorMessage(self::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE, [
                 '%needAmount%' => $this->getCommonSelectedBenefitAmount($quoteTransfer),
-                '%balanceAmount%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherAmount()->toFloat(),
-                '%currency%' => $quoteTransfer->getCustomer()->getCustomerBalance()->getAvailableBenefitVoucherCurrency(),
+                '%balanceAmount%' => $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer),
+                '%currency%' => $quoteTransfer->getCurrency()->getCode(),
             ]);
 
             return false;
@@ -69,29 +78,29 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerBalanceTransfer $balanceTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return bool
      */
-    private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, CustomerBalanceTransfer $balanceTransfer): bool
+    private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
             return true;
         }
 
         $commonSelectedBenefitVouchers = $this->getCommonSelectedBenefitAmount($quoteTransfer);
-        $clientBalanceBenefitVouchers = $balanceTransfer->getAvailableBenefitVoucherAmount();
+        $benefitVoucherBalance = $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer);
 
-        return $clientBalanceBenefitVouchers->greatherThanOrEquals($commonSelectedBenefitVouchers);
+        return $commonSelectedBenefitVouchers <= $benefitVoucherBalance;
     }
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerBalanceTransfer $balanceTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return bool
      */
-    private function assertShoppingPointsBalance(QuoteTransfer $quoteTransfer, CustomerBalanceTransfer $balanceTransfer): bool
+    private function assertShoppingPointsBalance(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         $totalUsedShoppingPointsSum = 0;
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
@@ -102,7 +111,9 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
             }
         }
 
-        return $totalUsedShoppingPointsSum <= $balanceTransfer->getAvailableShoppingPointAmount()->toFloat();
+        $shoppingPointsBalance = $this->customerService->getCustomerShoppingPointsBalanceAmount($customerTransfer);
+
+        return $totalUsedShoppingPointsSum <= $shoppingPointsBalance;
     }
 
     /**

@@ -57,7 +57,7 @@ class CheckoutController extends SprykerShopCheckoutController
         return $this->view(
             $response,
             $this->getFactory()->getCustomerPageWidgetPlugins(),
-            '@CheckoutPage/views/benefit-voucher/benefit-voucher.twig'
+            '@CheckoutPage/views/benefit-deal/benefit-deal.twig'
         );
     }
 

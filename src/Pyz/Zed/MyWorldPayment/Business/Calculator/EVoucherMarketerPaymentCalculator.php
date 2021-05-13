@@ -8,17 +8,10 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
 
 class EVoucherMarketerPaymentCalculator extends AbstractCashbackPaymentCalculator
 {
-     /**
-      * @return int
-      */
-    protected function getPaymentOptionId(): int
-    {
-        return $this->myWorldPaymentConfig->getOptionEVoucherOnBehalfOfMarketer();
-    }
-
     /**
      * @return string
      */
@@ -48,5 +41,15 @@ class EVoucherMarketerPaymentCalculator extends AbstractCashbackPaymentCalculato
         int $usableBalanceAmount
     ): void {
         $calculableObjectTransfer->setTotalUsedEVoucherMarketerBalanceAmount($usableBalanceAmount);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return int
+     */
+    protected function getCustomerBalanceAmount(CustomerTransfer $customerTransfer): int
+    {
+        return $this->customerService->getCustomerMarketerEVoucherBalanceAmount($customerTransfer);
     }
 }

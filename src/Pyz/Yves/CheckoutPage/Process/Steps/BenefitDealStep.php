@@ -8,6 +8,8 @@
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Service\Customer\CustomerServiceInterface;
+use Pyz\Yves\CheckoutPage\Process\Steps\BreadcrumbChecker\BreadcrumbStatusCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Step\StepWithBreadcrumbInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AbstractBaseStep;
@@ -15,6 +17,34 @@ use SprykerShop\Yves\CheckoutPage\Process\Steps\AbstractBaseStep;
 class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInterface
 {
     protected const STEP_TITLE = 'checkout.step.benefit_deal.title';
+
+    /**
+     * @var \Pyz\Service\Customer\CustomerServiceInterface
+     */
+    private $customerService;
+
+    /**
+     * @var \Pyz\Yves\CheckoutPage\Process\Steps\BreadcrumbChecker\BreadcrumbStatusCheckerInterface
+     */
+    private $breadcrumbEnabledChecker;
+
+    /**
+     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
+     * @param \Pyz\Yves\CheckoutPage\Process\Steps\BreadcrumbChecker\BreadcrumbStatusCheckerInterface $breadcrumbEnabledChecker
+     * @param string $stepRoute
+     * @param string|null $escapeRoute
+     */
+    public function __construct(
+        CustomerServiceInterface $customerService,
+        BreadcrumbStatusCheckerInterface $breadcrumbEnabledChecker,
+        $stepRoute,
+        $escapeRoute
+    ) {
+        parent::__construct($stepRoute, $escapeRoute);
+
+        $this->customerService = $customerService;
+        $this->breadcrumbEnabledChecker = $breadcrumbEnabledChecker;
+    }
 
     /**
      * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $dataTransfer
@@ -44,7 +74,7 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
         /**
          * @var \Generated\Shared\Transfer\QuoteTransfer $dataTransfer
          */
-        return $this->hasBenefitDealsApplied($dataTransfer);
+        return $this->breadcrumbEnabledChecker->isEnabled($dataTransfer);
     }
 
     /**
@@ -74,15 +104,13 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
      */
     public function getTemplateVariables(AbstractTransfer $dataTransfer): array
     {
-        $availableBalance = $dataTransfer->getCustomer()->getCustomerBalance();
+        $customerTransfer = $dataTransfer->getCustomer();
 
         return [
             'customerBalance' => [
-                'benefitVouchersBalance' => $availableBalance->getAvailableBenefitVoucherAmount()->toFloat(),
-                'benefitVouchersCurrencyCode' => $availableBalance->getAvailableBenefitVoucherCurrency(),
-                'shoppingPointBalance' => $availableBalance->getAvailableShoppingPointAmount(),
-                'cashbackBalance' => $availableBalance->getAvailableCashbackAmount()->toFloat(),
-                'cashbackCurrencyCode' => $availableBalance->getAvailableCashbackCurrency(),
+                'benefitVouchersBalance' => $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer),
+                'benefitVouchersCurrencyCode' => $dataTransfer->getCurrency()->getCode(),
+                'shoppingPointBalance' => $this->customerService->getCustomerShoppingPointsBalanceAmount($customerTransfer),
             ],
         ];
     }
@@ -100,22 +128,6 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
             }
 
             if ($item->getBenefitVoucherDealData() && $item->getBenefitVoucherDealData()->getIsStore()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function hasBenefitDealsApplied(QuoteTransfer $quoteTransfer): bool
-    {
-        foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher() || $itemTransfer->getUseShoppingPoints()) {
                 return true;
             }
         }

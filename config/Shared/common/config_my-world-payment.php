@@ -23,7 +23,7 @@ $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT] = 10;
 // Payment options names to options ids map
 $config[MyWorldPaymentConstants::OPTION_NAME_TO_ID_MAP] = [
     $config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER] => $config[MyWorldPaymentConstants::OPTION_EVOUCHER],
-    $config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER_ON_BEHALF_OF_MARKETER] = $config[MyWorldPaymentConstants::OPTION_EVOUCHER_ON_BEHALF_OF_MARKETER],
+    $config[MyWorldPaymentConstants::PAYMENT_NAME_E_VOUCHER_ON_BEHALF_OF_MARKETER] => $config[MyWorldPaymentConstants::OPTION_EVOUCHER_ON_BEHALF_OF_MARKETER],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER_ACCOUNT] => $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_CASHBACK] => $config[MyWorldPaymentConstants::OPTION_CASHBACK_ACCOUNT],
     $config[MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER] => $config[MyWorldPaymentConstants::OPTION_BENEFIT_VOUCHER_ACCOUNT],

@@ -12,6 +12,8 @@ use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\BenefitDealStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\BreadcrumbChecker\BreadcrumbStatusChecker;
+use Pyz\Yves\CheckoutPage\Process\Steps\BreadcrumbChecker\BreadcrumbStatusCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\CustomerStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ErrorStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
@@ -30,6 +32,7 @@ use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin as SprykerShopCheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
@@ -138,9 +141,22 @@ class StepFactory extends SprykerShopStepFactory
     public function createBenefitStep()
     {
         return new BenefitDealStep(
+            $this->getCustomerService(),
+            $this->createBenefitDealBreadcrumbStatusChecker(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_BENEFIT,
             $this->getConfig()->getEscapeRoute()
         );
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\BreadcrumbChecker\BreadcrumbStatusCheckerInterface
+     */
+    public function createBenefitDealBreadcrumbStatusChecker(): BreadcrumbStatusCheckerInterface
+    {
+        return new BreadcrumbStatusChecker([
+            $this->createAddressStepPostConditionChecker(),
+            $this->createShipmentStepPostConditionChecker(),
+        ]);
     }
 
     /**
@@ -273,8 +289,17 @@ class StepFactory extends SprykerShopStepFactory
     {
         return new PaymentPreConditionChecker(
             $this->getFlashMessenger(),
-            $this->getTranslatorService()
+            $this->getTranslatorService(),
+            $this->getCustomerService()
         );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface|\Pyz\Service\Customer\CustomerServiceInterface
+     */
+    public function getCustomerService(): CheckoutPageToCustomerServiceInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_CUSTOMER);
     }
 
     /**

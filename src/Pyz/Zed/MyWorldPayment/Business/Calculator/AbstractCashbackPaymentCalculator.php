@@ -8,19 +8,17 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
-use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
-use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
 
 abstract class AbstractCashbackPaymentCalculator implements MyWorldPaymentCalculatorInterface
 {
     /**
-     * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
+     * @var \Pyz\Service\Customer\CustomerServiceInterface
      */
-    protected $marketplaceApiClient;
+    protected $customerService;
 
     /**
      * @var \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig
@@ -28,23 +26,15 @@ abstract class AbstractCashbackPaymentCalculator implements MyWorldPaymentCalcul
     protected $myWorldPaymentConfig;
 
     /**
-     * @var \Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface
-     */
-    protected $decimalToIntegerConverter;
-
-    /**
-     * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $marketplaceApiClient
+     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
-     * @param \Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface $decimalToIntegerConverter
      */
     public function __construct(
-        MyWorldMarketplaceApiClientInterface $marketplaceApiClient,
-        MyWorldPaymentConfig $myWorldPaymentConfig,
-        DecimalToIntegerConverterInterface $decimalToIntegerConverter
+        CustomerServiceInterface $customerService,
+        MyWorldPaymentConfig $myWorldPaymentConfig
     ) {
-        $this->marketplaceApiClient = $marketplaceApiClient;
+        $this->customerService = $customerService;
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
-        $this->decimalToIntegerConverter = $decimalToIntegerConverter;
     }
 
     /**
@@ -137,47 +127,6 @@ abstract class AbstractCashbackPaymentCalculator implements MyWorldPaymentCalcul
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[] $customerBalancesCollection
-     * @param int $idPaymentOption
-     *
-     * @return \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer|null
-     */
-    protected function findBalanceByPaymentOptionId(
-        array $customerBalancesCollection,
-        int $idPaymentOption
-    ): ?CustomerBalanceByCurrencyTransfer {
-        foreach ($customerBalancesCollection as $balanceByCurrencyTransfer) {
-            if ($balanceByCurrencyTransfer->getPaymentOptionId() === $idPaymentOption) {
-                return $balanceByCurrencyTransfer;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return int
-     */
-    protected function getCustomerBalanceAmount(CustomerTransfer $customerTransfer): int
-    {
-        $balances = $this->marketplaceApiClient->getCustomerBalanceByCurrency($customerTransfer);
-        $eVoucherCustomerBalance = $this->findBalanceByPaymentOptionId(
-            $balances,
-            $this->getPaymentOptionId()
-        );
-
-        if (!$eVoucherCustomerBalance) {
-            return 0;
-        }
-
-        return $this->decimalToIntegerConverter->convert(
-            $eVoucherCustomerBalance->getTargetAvailableBalance()->toFloat()
-        );
-    }
-
-    /**
      * @param int $customerBalanceAmount
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
@@ -189,9 +138,11 @@ abstract class AbstractCashbackPaymentCalculator implements MyWorldPaymentCalcul
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
      * @return int
      */
-    abstract protected function getPaymentOptionId(): int;
+    abstract protected function getCustomerBalanceAmount(CustomerTransfer $customerTransfer): int;
 
     /**
      * @return string

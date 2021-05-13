@@ -10,10 +10,24 @@ namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
+use Pyz\Service\Customer\CustomerServiceInterface;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
 class ShoppingPointsPaymentCalculator implements MyWorldPaymentCalculatorInterface
 {
+    /**
+     * @var \Pyz\Service\Customer\CustomerServiceInterface
+     */
+    private $customerService;
+
+    /**
+     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
+     */
+    public function __construct(CustomerServiceInterface $customerService)
+    {
+        $this->customerService = $customerService;
+    }
+
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
@@ -26,9 +40,9 @@ class ShoppingPointsPaymentCalculator implements MyWorldPaymentCalculatorInterfa
             return $calculableObjectTransfer;
         }
 
-        $availableShoppingPointsAmount = $customerTransfer->getCustomerBalance()->getAvailableShoppingPointAmount()->toFloat();
+        $availableShoppingPointsAmount = $this->customerService->getCustomerShoppingPointsBalanceAmount($customerTransfer);
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if (!$itemTransfer->getUseShoppingPoints() || $availableShoppingPointsAmount === 0) {
+            if (!$itemTransfer->getUseShoppingPoints() || $availableShoppingPointsAmount === (float)0) {
                 $itemTransfer->setTotalUsedShoppingPointsAmount(0);
 
                 $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
@@ -38,8 +52,7 @@ class ShoppingPointsPaymentCalculator implements MyWorldPaymentCalculatorInterfa
             }
 
             $this->calculateItemUsedShoppingPoints($itemTransfer, $availableShoppingPointsAmount);
-            $totalItemUsedShoppingPoints = $itemTransfer->getTotalUsedShoppingPointsAmount();
-            $availableShoppingPointsAmount -= $totalItemUsedShoppingPoints;
+            $availableShoppingPointsAmount -= $itemTransfer->getTotalUsedShoppingPointsAmount();
         }
 
         $calculableObjectTransfer->setTotalUsedShoppingPointsAmount(
