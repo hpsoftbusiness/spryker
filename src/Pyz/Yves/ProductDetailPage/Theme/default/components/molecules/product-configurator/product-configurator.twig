@@ -16,7 +16,7 @@
 } %}
 
 {% set options = [] %}
-{% set productName = data.product.name | default %}
+{% set productName = data.product.name | default  | replace({'\\': ''}) %}
 {% set sku = data.product.sku %}
 {% set availabilityWidget = '' %}
 {% set isProductConcrete = data.product.idProductConcrete is not empty %}

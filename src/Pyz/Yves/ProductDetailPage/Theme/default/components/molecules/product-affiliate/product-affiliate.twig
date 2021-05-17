@@ -12,7 +12,7 @@
 {% set productName = data.product.name | default %}
 
 {% block body %}
-    <h1 class="title title--product title--h2">{{ productName }}</h1>
+    <h1 class="title title--product title--h2">{{ productName  | replace({'\\': ''}) }}</h1>
 
     {# <div class="spacing-bottom spacing-bottom--smaller">
         {% include molecule('money-price') with {

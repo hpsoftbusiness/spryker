@@ -7,12 +7,6 @@
 
 namespace Pyz\Client\RabbitMq;
 
-use Pyz\Zed\AvailabilityStorage\AvailabilityStorageConfig;
-use Pyz\Zed\PriceProductStorage\PriceProductStorageConfig;
-use Pyz\Zed\ProductImageStorage\ProductImageStorageConfig;
-use Pyz\Zed\ProductPageSearch\ProductPageSearchConfig;
-use Pyz\Zed\ProductStorage\ProductStorageConfig;
-use Pyz\Zed\UrlStorage\UrlStorageConfig;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -83,15 +77,6 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
             GlossaryStorageConfig::PUBLISH_TRANSLATION,
-            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
-            UrlStorageConfig::PUBLISH_URL,
-            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT,
-            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE,
-            ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE,
-            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE,
-            ProductImageStorageConfig::PUBLISH_PRODUCT_IMAGE,
-            PriceProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT_PRICE,
-            PriceProductStorageConfig::PUBLISH_PRODUCT_CONCRETE_PRICE,
         ];
     }
 

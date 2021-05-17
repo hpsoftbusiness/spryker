@@ -139,7 +139,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
                     static::$priceProductAbstractCollection[$keyToCheck] = array_merge(
                         $productPriceItem[self::COLUMN_PRICE_TYPE],
                         $productPriceItem[ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT],
-                        $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0]
+                        $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0],
                     );
                 }
             }

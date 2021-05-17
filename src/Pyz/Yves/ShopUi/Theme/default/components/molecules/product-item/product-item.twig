@@ -46,7 +46,7 @@
                                 data: {
                                     parentJsName: config.jsName,
                                     configName: config.name,
-                                    dataName: data.name,
+                                    dataName: data.name | replace({'\\': ''}) ,
                                     originUrl: data.url,
                                 },
                             } only %}{% endwidget %}
@@ -55,7 +55,7 @@
 
                     {% if data.name and not data.url %}
                         {% block title %}
-                            <span class="{{ config.name }}__name {{ config.jsName }}__name">{{ data.name }}</span>
+                            <span class="{{ config.name }}__name {{ config.jsName }}__name">{{ data.name | replace({'\\': ''}) }}</span>
                         {% endblock %}
                     {% endif %}
                 {% endblock %}

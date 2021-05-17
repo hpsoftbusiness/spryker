@@ -107,7 +107,7 @@ class CombinedProductListProductConcreteBulkPdoMariaDbDataSetWriter implements D
         $results = array_unique($this->propelExecutor->execute($sql, $parameters), SORT_REGULAR);
 
         foreach ($results as $result) {
-            DataImporterPublisher::addEvent(ProductListEvents::PRODUCT_LIST_PRODUCT_CONCRETE_PUBLISH, $result[static::KEY_ID_PRODUCT_CONCRETE]);
+            DataImporterPublisher::addEvent(ProductListEvents::PRODUCT_LIST_PRODUCT_CONCRETE_PUBLISH, (int)$result[static::KEY_ID_PRODUCT_CONCRETE]);
         }
     }
 

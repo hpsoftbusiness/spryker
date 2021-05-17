@@ -29,7 +29,7 @@ class ProductStockMariaDbSql implements ProductStockSqlInterface
                       id_stock as idStock,
                       spy_stock.name as spyStockName
                     FROM (
-                           SELECT DISTINCT
+                           SELECT
                                 NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.names, \',\', n.digit + 1), \',\', -1), \'\') as name
                            FROM (
                                 SELECT ? as names
@@ -75,7 +75,7 @@ class ProductStockMariaDbSql implements ProductStockSqlInterface
                       id_stock as idStock,
                       id_product
                     FROM (
-                           SELECT DISTINCT
+                           SELECT
                                 NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skus, \',\', n.digit + 1), \',\', -1), \'\') as sku,
                                 NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.stockNames, \',\', n.digit + 1), \',\', -1), \'\') as stock_name,
                                 NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.quantities, \',\', n.digit + 1), \',\', -1), \'\') as quantity,
@@ -137,7 +137,7 @@ class ProductStockMariaDbSql implements ProductStockSqlInterface
                   input.store,
                   spy_availability_abstract.id_availability_abstract as idAvailabilityAbstract
                 FROM (
-                   SELECT DISTINCT
+                   SELECT
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skus, \',\', n.digit + 1), \',\', -1), \'\') as sku,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.qtys, \',\', n.digit + 1), \',\', -1), \'\') as qty,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.stores, \',\', n.digit + 1), \',\', -1), \'\') as store
@@ -193,7 +193,7 @@ class ProductStockMariaDbSql implements ProductStockSqlInterface
                   id_availability as idAvailability,
                   id_availability_abstract as idAvailabilityAbstract
                 FROM (
-                   SELECT DISTINCT
+                   SELECT
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skus, \',\', n.digit + 1), \',\', -1), \'\') as sku,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.qtys, \',\', n.digit + 1), \',\', -1), \'\') as qty,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.is_never_out_of_stocks, \',\', n.digit + 1), \',\', -1), \'\') as is_never_out_of_stock,
@@ -212,7 +212,7 @@ class ProductStockMariaDbSql implements ProductStockSqlInterface
                 ) input
                 INNER JOIN spy_product ON spy_product.sku = input.sku
                 INNER JOIN spy_product_abstract ON spy_product_abstract.id_product_abstract = spy_product.fk_product_abstract
-                INNER JOIN spy_availability_abstract ON spy_availability_abstract.abstract_sku = spy_product_abstract.sku AND spy_availability_abstract.fk_store = input.store
+                INNER JOIN spy_availability_abstract ON (spy_availability_abstract.abstract_sku = spy_product_abstract.sku AND spy_availability_abstract.fk_store = input.store)
                 LEFT JOIN spy_availability ON spy_availability.sku = input.sku AND spy_availability.fk_store = input.store
             )
             (

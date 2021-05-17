@@ -25,12 +25,15 @@
     </table>
 
     <table name="spy_price_product_store">
+        <column name="price_product_store_key" type="VARCHAR" size="32" required="false"/>
+        <index>
+            <index-column name="price_product_store_key"/>
+        </index>
         <unique name="fk_currency_unique_fk_price_product_unique_fk_store_unique">
             <unique-column name="fk_currency"/>
             <unique-column name="fk_price_product"/>
             <unique-column name="fk_store"/>
-            <unique-column name="gross_price"/>
-            <unique-column name="net_price"/>
+            <unique-column name="price_product_store_key"/>
         </unique>
         <behavior name="event">
             <parameter name="spy_price_product_store_all" column="*"/>

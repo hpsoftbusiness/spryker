@@ -7,18 +7,6 @@
 
 namespace Pyz\Zed\Queue;
 
-use Pyz\Zed\AvailabilityStorage\AvailabilityStorageConfig;
-use Pyz\Zed\AvailabilityStorage\Communication\Plugin\Queue\AvailabilityStorageEventQueueMessageProcessorPlugin;
-use Pyz\Zed\PriceProductStorage\Communication\Plugin\Queue\PriceProductStorageEventQueueMessageProcessorPlugin;
-use Pyz\Zed\PriceProductStorage\PriceProductStorageConfig;
-use Pyz\Zed\ProductImageStorage\Communication\Plugin\Queue\ProductImageStorageEventQueueMessageProcessorPlugin;
-use Pyz\Zed\ProductImageStorage\ProductImageStorageConfig;
-use Pyz\Zed\ProductPageSearch\Communication\Plugin\Queue\ProductPageEventQueueMessageProcessorPlugin;
-use Pyz\Zed\ProductPageSearch\ProductPageSearchConfig;
-use Pyz\Zed\ProductStorage\Communication\Plugin\Queue\ProductStorageEventQueueMessageProcessorPlugin;
-use Pyz\Zed\ProductStorage\ProductStorageConfig;
-use Pyz\Zed\UrlStorage\Communication\Plugin\Queue\UrlStorageEventQueueMessageProcessorPlugin;
-use Pyz\Zed\UrlStorage\UrlStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
@@ -100,15 +88,6 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             PublisherConfig::PUBLISH_QUEUE => new EventQueueMessageProcessorPlugin(),
             PublisherConfig::PUBLISH_RETRY_QUEUE => new EventRetryQueueMessageProcessorPlugin(),
             GlossaryStorageConfig::PUBLISH_TRANSLATION => new EventQueueMessageProcessorPlugin(),
-            AvailabilityStorageConfig::PUBLISH_AVAILABILITY => new AvailabilityStorageEventQueueMessageProcessorPlugin(),
-            UrlStorageConfig::PUBLISH_URL => new UrlStorageEventQueueMessageProcessorPlugin(),
-            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT => new ProductStorageEventQueueMessageProcessorPlugin(),
-            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE => new ProductStorageEventQueueMessageProcessorPlugin(),
-            ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE => new ProductPageEventQueueMessageProcessorPlugin(),
-            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE => new ProductPageEventQueueMessageProcessorPlugin(),
-            ProductImageStorageConfig::PUBLISH_PRODUCT_IMAGE => new ProductImageStorageEventQueueMessageProcessorPlugin(),
-            PriceProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT_PRICE => new PriceProductStorageEventQueueMessageProcessorPlugin(),
-            PriceProductStorageConfig::PUBLISH_PRODUCT_CONCRETE_PRICE => new PriceProductStorageEventQueueMessageProcessorPlugin(),
             Config::get(LogConstants::LOG_QUEUE_NAME) => new LogglyLoggerQueueMessageProcessorPlugin(),
             CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),

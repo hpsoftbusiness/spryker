@@ -34,7 +34,7 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                   input.id_price_type,
                   spy_price_product.id_price_product as idPriceProduct
                 FROM (
-                        SELECT DISTINCT
+                        SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.%1\$ss, ',', n.digit + 1), ',', -1), '') as %1\$s,
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.id_price_types, ',', n.digit + 1), ',', -1), '') as id_price_type
                         FROM (
@@ -77,22 +77,18 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                 SELECT
                   input.%1\$s,
                   input.id_price_type,
-                  input.sort_key,
                   spy_price_product.id_price_product
                         FROM (
-                            SELECT DISTINCT
+                            SELECT
                                 NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.%1\$ss, ',', n.digit + 1), ',', -1), '') as %1\$s,
-                                NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.id_price_types, ',', n.digit + 1), ',', -1), '') as id_price_type,
-                                NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sort_keys, ',', n.digit + 1), ',', -1), '') as sort_key
+                                NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.id_price_types, ',', n.digit + 1), ',', -1), '') as id_price_type
                             FROM (
                                 SELECT ? as %1\$ss,
-                                       ? as id_price_types,
-                                       ? as sort_keys
+                                       ? as id_price_types
                             ) temp
                             INNER JOIN n
                               ON LENGTH(REPLACE(%1\$ss, ',', '')) <= LENGTH(%1\$ss) - n.digit
                                   AND LENGTH(REPLACE(id_price_types, ',', '')) <= LENGTH(id_price_types) - n.digit
-                                  AND LENGTH(REPLACE(sort_keys, ',', '')) <= LENGTH(sort_keys) - n.digit
                         ) input
                         LEFT JOIN spy_price_product ON (spy_price_product.fk_price_type = input.id_price_type AND spy_price_product.%2\$s = input.%1\$s)
             ) SELECT records.%1\$s, records.id_price_product FROM records";
@@ -119,22 +115,18 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                 SELECT
                   input.name,
                   input.price_mode_configuration,
-                  input.order_key,
                   spy_price_type.id_price_type as price_type_id
                 FROM (
-                    SELECT DISTINCT
+                    SELECT
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.names, \',\', n.digit + 1), \',\', -1), \'\') as name,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_mode_configurations, \',\', n.digit + 1), \',\', -1), \'\') as price_mode_configuration,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.order_keys, \',\', n.digit + 1), \',\', -1), \'\') as order_key
+                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_mode_configurations, \',\', n.digit + 1), \',\', -1), \'\') as price_mode_configuration
                     FROM (
                         SELECT ? as names,
-                               ? as price_mode_configurations,
-                               ? as order_keys
+                               ? as price_mode_configurations
                     ) temp
                     INNER JOIN n
                       ON LENGTH(REPLACE(names, \',\', \'\')) <= LENGTH(names) - n.digit
                           AND LENGTH(REPLACE(price_mode_configurations, \',\', \'\')) <= LENGTH(price_mode_configurations) - n.digit
-                          AND LENGTH(REPLACE(order_keys, \',\', \'\')) <= LENGTH(order_keys) - n.digit
                 ) input
                 LEFT JOIN spy_price_type ON spy_price_type.name = input.name
             )
@@ -145,7 +137,7 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                     price_mode_configuration
                 FROM records
             )
-            ON DUPLICATE KEY UPDATE name = records.name,
+            ON DUPLICATE KEY UPDATE
                 price_mode_configuration = records.price_mode_configuration';
     }
 
@@ -167,7 +159,8 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
               net_price,
               gross_price,
               price_data,
-              price_data_checksum
+              price_data_checksum,
+              price_product_store_key
             )
             WITH RECURSIVE n(digit) AS (
                 SELECT 0 as digit
@@ -183,10 +176,11 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                    input.gross_price,
                    input.price_data,
                    input.price_data_checksum,
+                   input.price_product_store_key,
                    spy_price_product_store.id_price_product_store as idPriceProductStore
                 FROM
                     (
-                       SELECT DISTINCT
+                       SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.id_stores, ',', n.digit + 1), ',', -1), '') as id_store,
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.id_currencies, ',', n.digit + 1), ',', -1), '') as id_currency,
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.%3\$ss, ',', n.digit + 1), ',', -1), '') as %3\$s,
@@ -194,7 +188,9 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.gross_prices, ',', n.digit + 1), ',', -1), '') as gross_price,
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.net_prices, ',', n.digit + 1), ',', -1), '') as net_price,
                             REPLACE(NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_datas, ',', n.digit + 1), ',', -1), ''), '|', ',') as price_data,
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_data_checksums, ',', n.digit + 1), ',', -1), '') as price_data_checksum
+                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_data_checksums, ',', n.digit + 1), ',', -1), '') as price_data_checksum,
+                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_product_store_keys, ',', n.digit + 1), ',', -1), '') as price_product_store_key
+
                        FROM (
                             SELECT ? as id_stores,
                                    ? as id_currencies,
@@ -203,7 +199,8 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                                    ? as gross_prices,
                                    ? as net_prices,
                                    ? as price_datas,
-                                   ? as price_data_checksums
+                                   ? as price_data_checksums,
+                                   ? as price_product_store_keys
                        ) temp
                        INNER JOIN n
                           ON LENGTH(REPLACE(id_stores, ',', '')) <= LENGTH(id_stores) - n.digit
@@ -214,13 +211,13 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                             AND LENGTH(REPLACE(price_datas, ',', '')) <= LENGTH(price_datas) - n.digit
                             AND LENGTH(REPLACE(price_data_checksums, ',', '')) <= LENGTH(price_data_checksums) - n.digit
                             AND LENGTH(REPLACE(net_prices, ',', '')) <= LENGTH(net_prices) - n.digit
+                            AND LENGTH(REPLACE(price_product_store_keys, ',', '')) <= LENGTH(price_product_store_keys) - n.digit
                     ) input
                     LEFT JOIN spy_price_product_store ON (
                         spy_price_product_store.fk_price_product = input.id_price_product AND
-                        spy_price_product_store.fk_currency = id_currency AND
-                        spy_price_product_store.fk_store = id_store AND
-                        spy_price_product_store.gross_price = input.gross_price AND
-                        spy_price_product_store.net_price = input.net_price
+                        spy_price_product_store.fk_currency = input.id_currency AND
+                        spy_price_product_store.fk_store = input.id_store AND
+                        spy_price_product_store.price_product_store_key = input.price_product_store_key
                     )
                 )
                 (
@@ -232,13 +229,15 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                     net_price,
                     gross_price,
                     price_data,
-                    price_data_checksum
+                    price_data_checksum,
+                    price_product_store_key
                 FROM records
                 )
                 ON DUPLICATE KEY UPDATE gross_price = records.gross_price,
                   net_price = records.net_price,
                   price_data = records.price_data,
-                  price_data_checksum = records.price_data_checksum
+                  price_data_checksum = records.price_data_checksum,
+                  price_product_store_key = records.price_product_store_key
                 RETURNING id_price_product_store";
 
         return sprintf($sql, $tableName, $foreignKey, $idProduct);
@@ -263,7 +262,7 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                   input.id_price_product_store,
                   spy_price_product_default.id_price_product_default as price_product_default_id
                 FROM (
-                       SELECT DISTINCT
+                       SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.id_price_product_stores, \',\', n.digit + 1), \',\', -1), \'\') as id_price_product_store
                        FROM (
                             SELECT ? as id_price_product_stores
@@ -294,24 +293,20 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                 SELECT 1 + digit FROM n WHERE digit < ?
             ), records AS (
                 SELECT
-                  input.sortKey,
                   input.store,
                   spy_store.id_store as id_store
                 FROM
                     (
-                       SELECT DISTINCT
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey,
+                       SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.stores, \',\', n.digit + 1), \',\', -1), \'\') as store
                        FROM (
-                            SELECT ? as sortKeys,
-                                   ? as stores
+                            SELECT ? as stores
                        ) temp
                        INNER JOIN n
-                          ON LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
-                            AND LENGTH(REPLACE(stores, \',\', \'\')) <= LENGTH(stores) - n.digit
+                            ON LENGTH(REPLACE(stores, \',\', \'\')) <= LENGTH(stores) - n.digit
                     ) input
                     LEFT JOIN spy_store ON spy_store.name = input.store
-            ) SELECT records.id_store FROM records ORDER BY records.sortKey';
+            ) SELECT records.id_store FROM records';
     }
 
     /**
@@ -326,24 +321,20 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                     SELECT 1 + digit FROM n WHERE digit < ?
                 ), records AS (
                 SELECT
-                  input.sortKey,
                   input.currency,
                   spy_currency.id_currency as id_currency
                 FROM
                     (
-                       SELECT DISTINCT
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey,
+                       SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.currencies, \',\', n.digit + 1), \',\', -1), \'\') as currency
                        FROM (
-                            SELECT ? as sortKeys,
-                                   ? as currencies
+                            SELECT ? as currencies
                        ) temp
                        INNER JOIN n
-                          ON LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
-                            AND LENGTH(REPLACE(currencies, \',\', \'\')) <= LENGTH(currencies) - n.digit
+                            ON LENGTH(REPLACE(currencies, \',\', \'\')) <= LENGTH(currencies) - n.digit
                     ) input
                 LEFT JOIN spy_currency ON spy_currency.code = input.currency
-            ) SELECT records.id_currency FROM records ORDER BY records.sortKey;';
+            ) SELECT records.id_currency FROM records;';
     }
 
     /**
@@ -361,20 +352,16 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
                 SELECT 1 + digit FROM n WHERE digit < ?
             ), records AS (
                 SELECT
-                  input.sortKey,
                   input.sku,
                   %1\$s.%2\$s as %2\$s
                 FROM (
-                   SELECT DISTINCT
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, ',', n.digit + 1), ',', -1), '') as sortKey,
+                   SELECT
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skus, ',', n.digit + 1), ',', -1), '') as sku
                    FROM (
-                        SELECT ? as sortKeys,
-                               ? as skus
+                        SELECT ? as skus
                    ) temp
                    INNER JOIN n
-                      ON LENGTH(REPLACE(sortKeys, ',', '')) <= LENGTH(sortKeys) - n.digit
-                        AND LENGTH(REPLACE(skus, ',', '')) <= LENGTH(skus) - n.digit
+                        ON LENGTH(REPLACE(skus, ',', '')) <= LENGTH(skus) - n.digit
                 ) input
                 LEFT JOIN %1\$s ON %1\$s.sku = input.sku
             ) SELECT records.%2\$s FROM records";
@@ -395,22 +382,18 @@ class ProductPriceMariaDbSql implements ProductPriceSqlInterface
             ), records AS (
                 SELECT
                   input.price_type,
-                  input.sortKey,
                   spy_price_type.id_price_type
                 FROM (
-                   SELECT DISTINCT
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_types, \',\', n.digit + 1), \',\', -1), \'\') as price_type,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey
+                   SELECT
+                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_types, \',\', n.digit + 1), \',\', -1), \'\') as price_type
                    FROM (
-                        SELECT ? as price_types,
-                               ? as sortKeys
+                        SELECT ? as price_types
                    ) temp
                    INNER JOIN n
                       ON LENGTH(REPLACE(price_types, \',\', \'\')) <= LENGTH(price_types) - n.digit
-                        AND LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
                 ) input
                 LEFT JOIN spy_price_type ON spy_price_type.name = input.price_type
             )
-            ( SELECT records.id_price_type FROM records ORDER BY records.sortKey )';
+            (SELECT records.id_price_type FROM records)';
     }
 }

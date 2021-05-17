@@ -25,14 +25,12 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $rowCount = count($priceTypeCollection);
         $priceType = $this->dataFormatter->formatStringList($priceTypeCollection, $rowCount);
         $priceMode = $this->dataFormatter->formatStringList($priceTypeModeCollection, $rowCount);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($priceTypeCollection), $rowCount);
 
         $sql = $this->productPriceSql->createPriceTypeSQL();
         $parameters = [
             $rowCount,
             $priceType,
             $priceMode,
-            $orderKey,
         ];
 
         $this->propelExecutor->execute($sql, $parameters, false);
@@ -49,14 +47,12 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
 
         $rowCount = count($priceTypeCollection);
         $priceType = $this->dataFormatter->formatStringList($priceTypeCollection, $rowCount);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($priceTypeCollection), $rowCount);
 
         $sql = $this->productPriceSql->collectPriceTypes();
 
         $parameters = [
             $rowCount,
             $priceType,
-            $orderKey,
         ];
 
         $priceTypeIds = $this->propelExecutor->execute($sql, $parameters);
@@ -77,14 +73,12 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $storeNameCollection = $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME);
 
         $rowCount = count($storeNameCollection);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($storeNameCollection), $rowCount);
         $store = $this->dataFormatter->formatStringList($storeNameCollection, $rowCount);
 
         $sql = $this->productPriceSql->convertStoreNameToId();
 
         $parameters = [
             $rowCount,
-            $orderKey,
             $store,
         ];
 
@@ -106,14 +100,12 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $currencyNameCollection = $this->dataFormatter->getCollectionDataByKey($currencyCollection, ProductPriceHydratorStep::KEY_CURRENCY_NAME);
 
         $rowCount = count($currencyNameCollection);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($currencyNameCollection), $rowCount);
         $currency = $this->dataFormatter->formatStringList($currencyNameCollection, $rowCount);
 
         $sql = $this->productPriceSql->convertCurrencyNameToId();
 
         $parameters = [
             $rowCount,
-            $orderKey,
             $currency,
         ];
 
@@ -140,13 +132,11 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
 
         $rowCount = count($productConcreteSkuCollection);
         $productSku = $this->dataFormatter->formatStringList($productConcreteSkuCollection, $rowCount);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($productConcreteSkuCollection), $rowCount);
 
         $sql = $this->productPriceSql->convertProductSkuToId($tableName, $productKey);
 
         $parameters = [
             $rowCount,
-            $orderKey,
             $productSku,
         ];
 
@@ -209,7 +199,6 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
 
         $rowCount = count($productCollection);
         $product = $this->dataFormatter->formatStringList($productCollection, $rowCount);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($productCollection), $rowCount);
         $priceType = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE),
             $rowCount
@@ -224,7 +213,6 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
             $rowCount,
             $product,
             $priceType,
-            $orderKey,
         ];
 
         $result = $this->propelExecutor->execute($selectProductPriceSql, $priceProductAbstractProductParameters);
@@ -292,6 +280,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
             $netPrice,
             $priceData,
             $checksum,
+            $productPrice,
         ];
 
         $sql = $this->productPriceSql->createPriceProductStoreSql(

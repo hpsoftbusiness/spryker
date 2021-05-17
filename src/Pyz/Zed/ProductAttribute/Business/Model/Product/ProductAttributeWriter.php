@@ -58,7 +58,7 @@ class ProductAttributeWriter extends SprykerProductAttributeWriter
             $value = $this->sanitizeString($attribute['value']);
 
             if (strpos($key, 'sellable_') !== false) {
-                $value = $value ?: '0';
+                $value = (bool)$value ?: false;
             }
 
             if ($value === '') {

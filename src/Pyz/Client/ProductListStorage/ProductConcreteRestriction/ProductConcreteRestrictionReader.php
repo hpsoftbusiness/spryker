@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\ProductListStorage\ProductConcreteRestriction;
 
+use Generated\Shared\Transfer\CustomerProductListCollectionTransfer;
 use Pyz\Client\ProductList\ProductListClientInterface;
 use Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface;
 use Spryker\Client\ProductListStorage\ProductConcreteRestriction\ProductConcreteRestrictionReader as SprykerProductConcreteRestrictionReader;
@@ -44,7 +45,8 @@ class ProductConcreteRestrictionReader extends SprykerProductConcreteRestriction
         if ($customer) {
             $customerProductListCollectionTransfer = $customer->getCustomerProductListCollection();
         } else {
-            $customerProductListCollectionTransfer = $this->productListClient->getDefaultCustomerProductListCollection();
+//            $customerProductListCollectionTransfer = $this->productListClient->getDefaultCustomerProductListCollection();
+            $customerProductListCollectionTransfer = $this->getDefaultCustomerProductListCollection();
         }
 
         if (!$customerProductListCollectionTransfer) {
@@ -55,5 +57,17 @@ class ProductConcreteRestrictionReader extends SprykerProductConcreteRestriction
         $customerBlacklistIds = $customerProductListCollectionTransfer->getBlacklistIds() ?: [];
 
         return $this->isProductConcreteRestrictedInProductLists($idProduct, $customerWhitelistIds, $customerBlacklistIds);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CustomerProductListCollectionTransfer
+     */
+    public function getDefaultCustomerProductListCollection(): CustomerProductListCollectionTransfer
+    {
+        $customerProductListCollectionTransfer = new CustomerProductListCollectionTransfer();
+//        TODO:: investigate and uncomment
+//        $customerProductListCollectionTransfer->addWhitelistId(CustomerGroupConstants::ID_CUSTOMER_MW);
+
+        return $customerProductListCollectionTransfer;
     }
 }

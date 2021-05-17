@@ -2122,7 +2122,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createCombinedAttributesExtractorStep())
-            ->addStep($this->createProductConcreteAttributesUniqueCheckStep())
             ->addStep(
                 $this->createCombinedProductLocalizedAttributesExtractorStep(
                     [

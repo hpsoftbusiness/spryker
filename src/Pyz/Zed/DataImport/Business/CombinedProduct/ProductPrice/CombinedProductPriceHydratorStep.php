@@ -51,6 +51,8 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const DEFAULT_PRICE_TYPE = 'DEFAULT';
     public const ORIGINAL_PRICE_TYPE = 'ORIGINAL';
 
+    public const COLUMN_PRICE_PRODUCT_STORE_KEY = 'price_product_store_key';
+
     /**
      * @link \Pyz\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_SP_BENEFIT
      */
@@ -61,7 +63,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
      */
     public static $priceTypes = [
         self::DEFAULT_PRICE_TYPE => self::COLUMN_PRICE_GROSS,
-//        self::ORIGINAL_PRICE_TYPE => self::COLUMN_PRICE_GROSS_ORIGINAL,
+        self::ORIGINAL_PRICE_TYPE => self::COLUMN_PRICE_GROSS_ORIGINAL,
         self::SP_BENEFIT_PRICE_TYPE => self::COLUMN_BENEFIT_PRICE,
     ];
 

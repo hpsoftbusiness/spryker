@@ -46,6 +46,7 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
     protected const KEY_ID_CURRENCY = 'id_currency';
     protected const KEY_ID_PRICE_PRODUCT_STORE = 'id_price_product_store';
     protected const KEY_ID_PRICE_PRODUCT_OFFER = 'id_price_product_offer';
+    protected const KEY_PRICE_PRODUCT_STORE_KEY = 'price_product_store_key';
 
     protected const COLUMN_PRICE_DATA = 'price_data';
     protected const COLUMN_PRICE_DATA_CHECKSUM = 'price_data_checksum';
@@ -183,7 +184,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
         $productOfferReferenceCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductOfferStoreCollection, self::COLUMN_PRODUCT_OFFER_REFERENCE);
 
         $rowCount = count($productOfferReferenceCollection);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($productOfferReferenceCollection), $rowCount);
         $productOfferReference = $this->dataFormatter->formatStringList($productOfferReferenceCollection, $rowCount);
 
         $sql = '
@@ -193,28 +193,23 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                 SELECT 1 + digit FROM n WHERE digit < ?
             ), records AS (
                 SELECT
-                  input.orderKey,
                   input.productOfferReference,
                   spy_product_offer.id_product_offer as id_product_offer
                 FROM
                     (
                        SELECT
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.orderKeys, \',\', n.digit + 1), \',\', -1), \'\') as orderKey,
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.productOfferReferences, \',\', n.digit + 1), \',\', -1), \'\') as productOfferReference
                        FROM (
-                            SELECT ? as orderKeys,
-                                   ? as productOfferReferences
+                            SELECT ? as productOfferReferences
                        ) temp
                        INNER JOIN n
-                          ON LENGTH(REPLACE(orderKeys, \',\', \'\')) <= LENGTH(orderKeys) - n.digit
-                            AND LENGTH(REPLACE(productOfferReferences, \',\', \'\')) <= LENGTH(productOfferReferences) - n.digit
+                            ON LENGTH(REPLACE(productOfferReferences, \',\', \'\')) <= LENGTH(productOfferReferences) - n.digit
                     ) input
                     LEFT JOIN spy_product_offer ON spy_product_offer.product_offer_reference = input.productOfferReference
             ) SELECT records.id_product_offer FROM records';
 
         $result = $this->propelExecutor->execute($sql, [
             $rowCount,
-            $orderKey,
             $productOfferReference,
         ]);
 
@@ -279,7 +274,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
         ], false);
 
         $rowCount = count($priceTypeCollection);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($priceTypeCollection), $rowCount);
         $priceType = $this->dataFormatter->formatStringList($priceTypeCollection, $rowCount);
 
         $sql = '
@@ -290,27 +284,22 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             ), records AS (
                 SELECT
                   input.price_type,
-                  input.sortKey,
                   spy_price_type.id_price_type
                 FROM (
-                   SELECT DISTINCT
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_types, \',\', n.digit + 1), \',\', -1), \'\') as price_type,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey
+                   SELECT
+                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_types, \',\', n.digit + 1), \',\', -1), \'\') as price_type
                    FROM (
-                        SELECT ? as price_types,
-                               ? as sortKeys
+                        SELECT ? as price_types
                    ) temp
                    INNER JOIN n
                       ON LENGTH(REPLACE(price_types, \',\', \'\')) <= LENGTH(price_types) - n.digit
-                        AND LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
                 ) input
                 LEFT JOIN spy_price_type ON spy_price_type.name = input.price_type
-            ) SELECT records.id_price_type FROM records ORDER BY records.sortKey';
+            ) SELECT records.id_price_type FROM records';
 
         $result = $this->propelExecutor->execute($sql, [
             $rowCount,
             $priceType,
-            $orderKey,
         ]);
 
         foreach ($result as $priceTypeData) {
@@ -337,19 +326,15 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             ), records AS (
                 SELECT
                   input.sku,
-                  input.sortKey,
                   spy_product.id_product
                 FROM (
                    SELECT
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skus, \',\', n.digit + 1), \',\', -1), \'\') as sku,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey
+                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skus, \',\', n.digit + 1), \',\', -1), \'\') as sku
                    FROM (
-                        SELECT ? as skus,
-                               ? as sortKeys
+                        SELECT ? as skus
                    ) temp
                    INNER JOIN n
                       ON LENGTH(REPLACE(skus, \',\', \'\')) <= LENGTH(skus) - n.digit
-                        AND LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
                 ) input
                 LEFT JOIN spy_product ON spy_product.sku = input.sku
             ) SELECT records.id_product FROM records';
@@ -357,7 +342,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
         $result = $this->propelExecutor->execute($sql, [
             $rowCount,
             $product,
-            $orderKey,
         ]);
 
         foreach ($result as $productData) {
@@ -407,7 +391,9 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                           ON LENGTH(REPLACE(id_products, ',', '')) <= LENGTH(id_products) - n.digit
                               AND LENGTH(REPLACE(id_price_types, ',', '')) <= LENGTH(id_price_types) - n.digit
                     ) input
-                LEFT JOIN spy_price_product ON (spy_price_product.fk_price_type = input.id_price_type AND spy_price_product.fk_product = input.id_product)
+                LEFT JOIN spy_price_product ON (
+                    spy_price_product.fk_price_type = input.id_price_type AND spy_price_product.fk_product = input.id_product
+                )
             )
             (
               SELECT
@@ -442,7 +428,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
         $storeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductOfferStoreCollection, self::COLUMN_STORE_NAME);
 
         $rowCount = count($storeCollection);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($storeCollection), $rowCount);
         $store = $this->dataFormatter->formatStringList($storeCollection, $rowCount);
 
         $sql = '
@@ -452,28 +437,23 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                 SELECT 1 + digit FROM n WHERE digit < ?
             ), records AS (
                 SELECT
-                  input.sortKey,
                   input.store,
                   spy_store.id_store as id_store
                 FROM
                     (
-                       SELECT DISTINCT
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey,
+                       SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.stores, \',\', n.digit + 1), \',\', -1), \'\') as store
                        FROM (
-                            SELECT ? as sortKeys,
-                                   ? as stores
+                            SELECT ? as stores
                        ) temp
                        INNER JOIN n
-                          ON LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
-                            AND LENGTH(REPLACE(stores, \',\', \'\')) <= LENGTH(stores) - n.digit
+                            ON LENGTH(REPLACE(stores, \',\', \'\')) <= LENGTH(stores) - n.digit
                     ) input
                     LEFT JOIN spy_store ON spy_store.name = input.store
-            ) SELECT records.id_store FROM records ORDER BY records.sortKey';
+            ) SELECT records.id_store FROM records';
 
         $results = $this->propelExecutor->execute($sql, [
             $rowCount,
-            $orderKey,
             $store,
         ]);
 
@@ -490,7 +470,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
         $currencyCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductOfferStoreCollection, self::COLUMN_CURRENCY);
 
         $rowCount = count($currencyCollection);
-        $orderKey = $this->dataFormatter->formatStringList(array_keys($currencyCollection), $rowCount);
         $currency = $this->dataFormatter->formatStringList($currencyCollection, $rowCount);
 
         $sql = '
@@ -500,28 +479,23 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                     SELECT 1 + digit FROM n WHERE digit < ?
                 ), records AS (
                 SELECT
-                  input.sortKey,
                   input.currency,
                   spy_currency.id_currency as id_currency
                 FROM
                     (
-                       SELECT DISTINCT
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.sortKeys, \',\', n.digit + 1), \',\', -1), \'\') as sortKey,
+                       SELECT
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.currencies, \',\', n.digit + 1), \',\', -1), \'\') as currency
                        FROM (
-                            SELECT ? as sortKeys,
-                                   ? as currencies
+                            SELECT ? as currencies
                        ) temp
                        INNER JOIN n
-                          ON LENGTH(REPLACE(sortKeys, \',\', \'\')) <= LENGTH(sortKeys) - n.digit
-                            AND LENGTH(REPLACE(currencies, \',\', \'\')) <= LENGTH(currencies) - n.digit
+                            ON LENGTH(REPLACE(currencies, \',\', \'\')) <= LENGTH(currencies) - n.digit
                     ) input
                 LEFT JOIN spy_currency ON spy_currency.code = input.currency
-            ) SELECT records.id_currency FROM records ORDER BY records.sortKey;';
+            ) SELECT records.id_currency FROM records;';
 
         $results = $this->propelExecutor->execute($sql, [
             $rowCount,
-            $orderKey,
             $currency,
         ]);
 
@@ -568,6 +542,9 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             $this->dataFormatter->getCollectionDataByKey(static::$priceProductOfferStoreCollection, static::COLUMN_PRICE_DATA_CHECKSUM),
             $rowCount
         );
+        $priceProductStoreKey = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductOfferStoreCollection, static::KEY_PRICE_PRODUCT_STORE_KEY)
+        );
 
         $parameters = [
             $rowCount,
@@ -578,6 +555,7 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             $netPrice,
             $priceData,
             $checksum,
+            $priceProductStoreKey,
         ];
 
         $sql = "
@@ -589,7 +567,8 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
               net_price,
               gross_price,
               price_data,
-              price_data_checksum
+              price_data_checksum,
+              price_product_store_key
             )
             WITH RECURSIVE n(digit) AS (
                 SELECT 0 as digit
@@ -604,6 +583,7 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                    input.gross_price,
                    input.price_data,
                    input.price_data_checksum,
+                   input.price_product_store_key,
                    spy_price_product_store.id_price_product_store as idPriceProductStore
                 FROM
                     (
@@ -614,7 +594,8 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.gross_prices, ',', n.digit + 1), ',', -1), '') as gross_price,
                             NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.net_prices, ',', n.digit + 1), ',', -1), '') as net_price,
                             REPLACE(NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_datas, ',', n.digit + 1), ',', -1), ''), '|', ',') as price_data,
-                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_data_checksums, ',', n.digit + 1), ',', -1), '') as price_data_checksum
+                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_data_checksums, ',', n.digit + 1), ',', -1), '') as price_data_checksum,
+                            NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.price_product_store_keys, ',', n.digit + 1), ',', -1), '') as price_product_store_key
                        FROM (
                             SELECT ? as id_stores,
                                    ? as id_currencies,
@@ -622,7 +603,8 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                                    ? as gross_prices,
                                    ? as net_prices,
                                    ? as price_datas,
-                                   ? as price_data_checksums
+                                   ? as price_data_checksums,
+                                   ? as price_product_store_keys
                        ) temp
                        INNER JOIN n
                           ON LENGTH(REPLACE(id_stores, ',', '')) <= LENGTH(id_stores) - n.digit
@@ -632,13 +614,15 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                             AND LENGTH(REPLACE(price_datas, ',', '')) <= LENGTH(price_datas) - n.digit
                             AND LENGTH(REPLACE(price_data_checksums, ',', '')) <= LENGTH(price_data_checksums) - n.digit
                             AND LENGTH(REPLACE(net_prices, ',', '')) <= LENGTH(net_prices) - n.digit
+                            AND LENGTH(REPLACE(price_product_store_keys, ',', '')) <= LENGTH(price_product_store_keys) - n.digit
                     ) input
                     LEFT JOIN spy_price_product_store ON (
                         spy_price_product_store.fk_price_product = input.id_price_product AND
                         spy_price_product_store.fk_currency = input.id_currency AND
                         spy_price_product_store.fk_store = input.id_store AND
                         spy_price_product_store.gross_price = input.gross_price AND
-                        spy_price_product_store.net_price = input.net_price
+                        spy_price_product_store.net_price = input.net_price AND
+                        spy_price_product_store.price_product_store_key = input.price_product_store_key
                     )
                 )
                 (
@@ -650,10 +634,14 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                     net_price,
                     gross_price,
                     price_data,
-                    price_data_checksum
+                    price_data_checksum,
+                    price_product_store_key
                 FROM records
                 )
-                ON DUPLICATE KEY UPDATE price_data = records.price_data,
+                ON DUPLICATE KEY UPDATE
+                  gross_price = records.gross_price,
+                  net_price = records.net_price,
+                  price_data = records.price_data,
                   price_data_checksum = records.price_data_checksum
                 RETURNING id_price_product_store";
 
@@ -676,21 +664,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             $rowCount
         );
 
-        $store = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$storeIds, static::KEY_ID_STORE),
-            $rowCount
-        );
-
-        $currency = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$currencyIds, static::KEY_ID_CURRENCY),
-            $rowCount
-        );
-
-        $productPrice = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$priceProductIds, static::KEY_ID_PRICE_PRODUCT),
-            $rowCount
-        );
-
         $priceProductStore = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$priceProductStoreIds, static::KEY_ID_PRICE_PRODUCT_STORE),
             $rowCount
@@ -699,9 +672,6 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
         $parameters = [
             $rowCount,
             $productOffer,
-            $store,
-            $currency,
-            $productPrice,
             $priceProductStore,
         ];
 
@@ -718,37 +688,23 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
             ), records AS (
                 SELECT
                   input.productOffer,
-                  input.store,
-                  input.currency,
-                  input.productPrice,
                   input.priceProductStore,
                   spy_price_product_offer.id_price_product_offer as idPriceProductOffer
                 FROM (
-                   SELECT DISTINCT
+                   SELECT
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.productOffers, \',\', n.digit + 1), \',\', -1), \'\') as productOffer,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.stores, \',\', n.digit + 1), \',\', -1), \'\') as store,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.currencies, \',\', n.digit + 1), \',\', -1), \'\') as currency,
-                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.productPrices, \',\', n.digit + 1), \',\', -1), \'\') as productPrice,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.priceProductStores, \',\', n.digit + 1), \',\', -1), \'\') as priceProductStore
                    FROM (
                         SELECT ? as productOffers,
-                               ? as stores,
-                               ? as currencies,
-                               ? as productPrices,
                                ? as priceProductStores
                    ) temp
                    INNER JOIN n
                       ON LENGTH(REPLACE(productOffers, \',\', \'\')) <= LENGTH(productOffers) - n.digit
-                        AND LENGTH(REPLACE(stores, \',\', \'\')) <= LENGTH(stores) - n.digit
-                        AND LENGTH(REPLACE(currencies, \',\', \'\')) <= LENGTH(currencies) - n.digit
-                        AND LENGTH(REPLACE(productPrices, \',\', \'\')) <= LENGTH(productPrices) - n.digit
                         AND LENGTH(REPLACE(priceProductStores, \',\', \'\')) <= LENGTH(priceProductStores) - n.digit
                  ) input
-                LEFT JOIN spy_price_product_offer ON spy_price_product_offer.fk_product_offer = input.productOffer
-                LEFT JOIN spy_price_product_store ON (
-                    spy_price_product_store.fk_store = input.store AND
-                    spy_price_product_store.fk_currency = input.currency AND
-                    spy_price_product_store.fk_price_product = input.productPrice
+                LEFT JOIN spy_price_product_offer ON (
+                    spy_price_product_offer.fk_product_offer = input.productOffer AND
+                    spy_price_product_offer.fk_price_product_store = input.priceProductStore
                 )
             )
             (
@@ -758,7 +714,8 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                 productOffer
               FROM records
             )
-            ON DUPLICATE KEY UPDATE fk_product_offer = records.productOffer
+            ON DUPLICATE KEY UPDATE fk_product_offer = records.productOffer,
+                fk_price_product_store = records.priceProductStore
             RETURNING id_price_product_offer';
 
         $results = $this->propelExecutor->execute($sql, $parameters);
@@ -785,6 +742,7 @@ class PriceProductOfferBulkPdoMariaDbDataSetWriter implements DataSetWriterInter
                 static::COLUMN_CONCRETE_SKU => $dataSet[static::KEY_CONCRETE_SKU],
                 static::COLUMN_MERCHANT_REFERENCE => $dataSet[static::KEY_MERCHANT_REFERENCE],
                 static::COLUMN_PRODUCT_OFFER_REFERENCE => $this->getProductOfferReferenceKey($dataSet),
+                static::KEY_PRICE_PRODUCT_STORE_KEY => $this->getProductOfferReferenceKey($dataSet),
                 static::COLUMN_PRICE_DATA => '',
                 static::COLUMN_PRICE_DATA_CHECKSUM => '',
             ];
