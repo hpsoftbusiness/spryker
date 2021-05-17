@@ -22,6 +22,9 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInterface
 {
     /**
+     * Specification:
+     * - If benefit deals were applied for the order, deals total amounts are persisted to pyz_sales_order_benefit_deal table.
+     *
      * @param \Generated\Shared\Transfer\SaveOrderTransfer $saveOrderTransfer
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -38,6 +41,9 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     }
 
     /**
+     * Specification:
+     * - Expands OrderTransfer with order benefit deal data.
+     *
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
@@ -48,6 +54,9 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     }
 
     /**
+     * Specification:
+     * - Expands SpySalesOrderItemEntityTransfer with item benefit deal data if benefit deals were applied fot the item.
+     *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      * @param \Generated\Shared\Transfer\SpySalesOrderItemEntityTransfer $salesOrderItemEntity

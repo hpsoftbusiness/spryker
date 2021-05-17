@@ -50,7 +50,9 @@ class ShoppingPointsItemEntityExpanderPlugin extends AbstractPlugin implements I
      */
     private function assertBenefitDealIsApplicable(ItemTransfer $itemTransfer): bool
     {
-        return $itemTransfer->getShoppingPointsDeal()->getShoppingPointsQuantity() > 0 && $itemTransfer->getUseShoppingPoints();
+        return $itemTransfer->getShoppingPointsDeal()
+            && $itemTransfer->getShoppingPointsDeal()->getShoppingPointsQuantity() > 0
+            && $itemTransfer->getUseShoppingPoints();
     }
 
     /**
