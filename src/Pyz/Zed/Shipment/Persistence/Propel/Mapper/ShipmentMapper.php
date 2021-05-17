@@ -27,15 +27,18 @@ class ShipmentMapper extends SprykerShipmentMapper
         $shipmentTransfer = parent::mapShipmentEntityToShipmentTransferWithDetails($salesShipmentEntity, $shipmentTransfer);
 
         $salesOrder = $salesShipmentEntity->getOrder();
-        $salesExpense = $salesOrder->getExpenses()[0];
+        $expenses = $salesOrder->getExpenses();
 
-        $storeCurrencyPrice = $salesOrder->getPriceMode() === ShipmentConstants::PRICE_MODE_GROSS ?
-            $salesExpense->getGrossPrice() :
-            $salesExpense->getNetPrice();
+        if ($expenses->count() > 0) {
+            $salesExpense = $salesOrder->getExpenses()[0];
+            $storeCurrencyPrice = $salesOrder->getPriceMode() === ShipmentConstants::PRICE_MODE_GROSS ?
+                $salesExpense->getGrossPrice() :
+                $salesExpense->getNetPrice();
+        }
 
         $methodTransfer = $shipmentTransfer->getMethod()
             ->setCurrencyIsoCode($salesOrder->getCurrencyIsoCode())
-            ->setStoreCurrencyPrice($storeCurrencyPrice);
+            ->setStoreCurrencyPrice($storeCurrencyPrice ?? null);
 
         return $shipmentTransfer
             ->setMethod($methodTransfer);
