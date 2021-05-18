@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace PyzTest\Client\MyWorldMarketplaceApi\Client;
 
 use Codeception\TestCase\Test;
@@ -13,6 +18,16 @@ use Spryker\Client\Session\SessionClient;
 use Spryker\Glue\GlueApplication\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * Auto-generated group annotations
+ *
+ * @group PyzTest
+ * @group Client
+ * @group MyWorldMarketplaceApi
+ * @group Client
+ * @group MyWorldMarketplaceApiClientTest
+ * Add your own group annotations below this line
+ */
 class MyWorldMarketplaceApiClientTest extends Test
 {
     /**
@@ -25,6 +40,9 @@ class MyWorldMarketplaceApiClientTest extends Test
      */
     protected $sut;
 
+    /**
+     * @return void
+     */
     protected function _before()
     {
         $this->sut = $this->tester->getLocator()->myWorldMarketplaceApi()->client();
@@ -37,6 +55,9 @@ class MyWorldMarketplaceApiClientTest extends Test
         $this->setUpSession();
     }
 
+    /**
+     * @return void
+     */
     public function testGetCustomerBalanceByCurrency()
     {
         $customerTransfer = new CustomerTransfer();
@@ -53,6 +74,9 @@ class MyWorldMarketplaceApiClientTest extends Test
         $this->assertSame('2706.15', $customerBalances[0]->getAvailableBalance()->toString());
     }
 
+    /**
+     * @return \GuzzleHttp\Client
+     */
     private function getHttpClientMock(): Client
     {
         $accessTokenResponse = '{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlVWc3JQVnhueVRGMmxXNzFWVHMxUlJNdGZFWSJ9.eyJjbGllbnRfaWQiOiJzcHJ5a2VyX2FwaV9hdF9kZXYiLCJzY29wZSI6ImFwaXRlc3QiLCJpc3MiOiJpZC5seW9uZXNzLmludGVybmFsIiwiYXVkIjoibHlvIiwiZXhwIjoxNjIxMjY0Njg0LCJuYmYiOjE2MjEyNjI4ODR9.KOzoFRSZORAC04ygbV2JD2rm-dqDSqYtDEF1cPHgueBipFLqH3CEaRQohKCxA0tjoX1lPCE8tn5y-WejFa_IB9pnOaG9l6ikyFgz8w1ewNaSUpRSxfJ16mdTN4UWWUR6aOKEKXHME71p46nuUMHGSgNH9ocDVDWSW-n7IL04Sd2UZl7wKdqmuioXQx--6e0c7PAgfSN_fV_6R_82NIa1qMNftcXwgR8yK1Pb3O6y_cS_axpNfHMv11_XscF_2EjVtGdqA81poRADkXIml5UaWbEBquupanTklqwfPSUbXMLROu8A2T5SMv1WXURMBPMkwER_hK2E3B_jp5mYBiegVw","token_type":"Bearer","expires_in":1800,"refresh_token":null}';
@@ -62,11 +86,15 @@ class MyWorldMarketplaceApiClientTest extends Test
             new Response(200, [], $customerBalanceResponse),
         ]);
         $handlerStack = HandlerStack::create($mockHandler);
+
         return new Client([
-            'handler' => $handlerStack
+            'handler' => $handlerStack,
         ]);
     }
 
+    /**
+     * @return void
+     */
     private function setUpSession(): void
     {
         (new SessionClient())->setContainer(

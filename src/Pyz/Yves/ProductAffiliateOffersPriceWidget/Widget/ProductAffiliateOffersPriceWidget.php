@@ -79,7 +79,7 @@ class ProductAffiliateOffersPriceWidget extends AbstractWidget
         $price = null;
 
         if (!$productOfferStorageCollectionTransfer->getProductOffersStorage()->count(
-            ) && isset($abstractProducts[0])) {
+        ) && isset($abstractProducts[0])) {
             return (new CurrentProductPriceTransfer())->fromArray(
                 $abstractProducts[0]->toArray(),
                 true
