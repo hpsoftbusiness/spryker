@@ -7,8 +7,8 @@
 
 namespace Pyz\Client\Search;
 
+use Pyz\Client\MerchantProductOfferSearch\Plugin\MerchantNameSearchConfigExpanderPlugin;
 use Spryker\Client\Kernel\Container;
-use Spryker\Client\MerchantProductOfferSearch\Plugin\MerchantNameSearchConfigExpanderPlugin;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchAdapterPlugin;
