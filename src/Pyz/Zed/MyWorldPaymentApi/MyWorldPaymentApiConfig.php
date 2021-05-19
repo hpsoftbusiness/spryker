@@ -15,6 +15,10 @@ class MyWorldPaymentApiConfig extends AbstractBundleConfig
     public const PAYMENT_STATUS_CHARGED = 'Charged';
     public const PAYMENT_STATUS_FAILED = 'Failed';
 
+    public const PAYMENT_TRANSACTION_STATUS_NAME_ACCEPTED = 'Accepted';
+    public const PAYMENT_TRANSACTION_STATUS_NAME_IN_PROGRESS = 'InProgress';
+    public const PAYMENT_TRANSACTION_STATUS_NAME_FAILED = 'Failed';
+
     public const PAYMENT_TRANSACTION_STATUS_CODE_ACCEPTED = 0;
     public const PAYMENT_TRANSACTION_STATUS_CODE_IN_PROGRESS = 1;
     public const PAYMENT_TRANSACTION_STATUS_CODE_FAILED = 100;
