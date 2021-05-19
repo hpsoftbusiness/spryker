@@ -54,10 +54,10 @@
     {% else %}
         {% if data.url %}
             <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
-               href="{{ data.url }}" target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
+               href="{{ path(data.url) }}" target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% else %}
             <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
-               href="{{ data.originUrl }}"
+               href="{{ path(data.originUrl) }}"
                target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% endif %}
     {% endif %}
