@@ -11,6 +11,7 @@ use Codeception\Test\Unit;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiBusinessFactory;
 use PyzTest\Zed\MyWorldPaymentApi\DataHelper;
+use PyzTest\Zed\MyWorldPaymentApi\ExpiredTokenDataHelper;
 
 /**
  * Auto-generated group annotations
@@ -26,6 +27,8 @@ use PyzTest\Zed\MyWorldPaymentApi\DataHelper;
  */
 class MyWorldPaymentApiFacadeTest extends Unit
 {
+    private const ERROR_CODE_MWS_IDENTITY_TOKEN_EXPIRED_OR_INVALID = 2;
+
     /**
      * @var \Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacade
      */
@@ -219,6 +222,33 @@ class MyWorldPaymentApiFacadeTest extends Unit
         );
 
         $this->assertNotNull($myWorldApiResponseTransfer->getError());
+    }
+
+    /**
+     * @return void
+     */
+    public function testSendSessionRequestWithExpiredToken(): void
+    {
+        $transfer = (new ExpiredTokenDataHelper())->getMyWorldApiRequestTransfer();
+        $adapter = $this
+            ->businessFactory
+            ->createPaymentSessionAdapter(
+                $transfer
+            )
+            ->allowUsingStubToken();
+        $converter = $this->businessFactory->createPaymentSessionConverter();
+        $mapper = $this->businessFactory->createPaymentSessionMapper();
+
+        $response = $this->businessFactory
+            ->createMyWorldPaymentApiRequest(
+                $adapter,
+                $converter,
+                $mapper
+            )
+            ->request($transfer);
+
+        $this->assertSame(false, $response->getIsSuccess());
+        $this->assertSame(self::ERROR_CODE_MWS_IDENTITY_TOKEN_EXPIRED_OR_INVALID, $response->getError()->getErrorCode());
     }
 
     /**

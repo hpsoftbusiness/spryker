@@ -58,7 +58,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\PaymentSessionRequestTransfer
      */
-    private function getPaymentSessionRequest(): PaymentSessionRequestTransfer
+    protected function getPaymentSessionRequest(): PaymentSessionRequestTransfer
     {
         $ssoAccessToken = $this->getSsoAccessToken();
         $paymentSessionRequestTransfer = (new PaymentSessionRequestBuilder(
@@ -108,7 +108,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer
      */
-    private function getPaymentCodeGenerateRequestTransfer(): PaymentCodeGenerateRequestTransfer
+    protected function getPaymentCodeGenerateRequestTransfer(): PaymentCodeGenerateRequestTransfer
     {
         return (new PaymentCodeGenerateRequestBuilder())->build();
     }
@@ -116,7 +116,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\PaymentCodeValidateRequestTransfer
      */
-    private function getPaymentCodeValidateRequestTransfer(): PaymentCodeValidateRequestTransfer
+    protected function getPaymentCodeValidateRequestTransfer(): PaymentCodeValidateRequestTransfer
     {
         return (new PaymentCodeValidateRequestBuilder(['confirmationCode' => 999999]))->build();
     }
@@ -124,7 +124,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
      */
-    private function getSsoAccessToken(): SsoAccessTokenTransfer
+    protected function getSsoAccessToken(): SsoAccessTokenTransfer
     {
         $token = $this->stubClient->getStubToken();
 
@@ -138,7 +138,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\PaymentConfirmationRequestTransfer
      */
-    private function getPaymentConfirmationRequestTransfer(): PaymentConfirmationRequestTransfer
+    protected function getPaymentConfirmationRequestTransfer(): PaymentConfirmationRequestTransfer
     {
         return (new PaymentConfirmationRequestBuilder(['confirmationCode' => 999999]))->build();
     }
@@ -146,7 +146,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\PaymentDataRequestTransfer
      */
-    private function getPaymentDataRequestTransfer(): PaymentDataRequestTransfer
+    protected function getPaymentDataRequestTransfer(): PaymentDataRequestTransfer
     {
         return (new PaymentDataRequestBuilder(['paymentId' => '799ADE3F-9B78-E911-80C6-AC162D7C8193']))->build();
     }
@@ -154,7 +154,7 @@ class DataHelper
     /**
      * @return \Generated\Shared\Transfer\PaymentRefundRequestTransfer
      */
-    private function getPaymentRefundRequestTransfer(): PaymentRefundRequestTransfer
+    protected function getPaymentRefundRequestTransfer(): PaymentRefundRequestTransfer
     {
         $paymentRefundRequestTransfer = (new PaymentRefundRequestBuilder(
             ['paymentId' => '799ADE3F-9B78-E911-80C6-AC162D7C8193', 'amount' => 1, 'currencyId' => 'EUR']
