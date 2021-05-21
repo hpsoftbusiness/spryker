@@ -7,7 +7,11 @@
 
 namespace Pyz\Yves\CustomerPage\Security\Guard;
 
+use DateInterval;
+use DateTime;
+use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use Pyz\Client\Sso\SsoClientInterface;
+use Spryker\Client\Customer\CustomerClientInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -20,6 +24,8 @@ use Symfony\Component\Security\Http\HttpUtils;
 
 class SsoAuthenticator extends AbstractGuardAuthenticator
 {
+    protected const BUFFER_TIME_TO_REFRESH_ACCESS_TOKEN = 60 * 5;
+
     /**
      * @var \Symfony\Component\Security\Http\HttpUtils
      */
@@ -46,24 +52,32 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     protected $locale;
 
     /**
+     * @var \Spryker\Client\Customer\CustomerClientInterface
+     */
+    protected $customerClient;
+
+    /**
      * @param \Symfony\Component\Security\Http\HttpUtils $httpUtils
      * @param \Pyz\Client\Sso\SsoClientInterface $ssoClient
      * @param \Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface $authenticationSuccessHandler
      * @param \Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface $authenticationFailureHandler
      * @param string $locale
+     * @param \Spryker\Client\Customer\CustomerClientInterface $customerClient
      */
     public function __construct(
         HttpUtils $httpUtils,
         SsoClientInterface $ssoClient,
         AuthenticationSuccessHandlerInterface $authenticationSuccessHandler,
         AuthenticationFailureHandlerInterface $authenticationFailureHandler,
-        string $locale
+        string $locale,
+        CustomerClientInterface $customerClient
     ) {
         $this->httpUtils = $httpUtils;
         $this->ssoClient = $ssoClient;
         $this->authenticationSuccessHandler = $authenticationSuccessHandler;
         $this->authenticationFailureHandler = $authenticationFailureHandler;
         $this->locale = $locale;
+        $this->customerClient = $customerClient;
     }
 
     /**
@@ -91,7 +105,8 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function supports(Request $request)
     {
-        return $this->httpUtils->checkRequestPath($request, '/' . $this->ssoClient->getLoginCheckPath());
+        return $this->isRequestPathLoginCheck($request)
+            || $this->isAccessTokenAboutToExpire();
     }
 
     /**
@@ -103,29 +118,19 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        $exception = new AuthenticationException();
-
-        if (strpos($request->getPathInfo(), $this->ssoClient->getLoginCheckPath()) !== false) {
-            if ($request->query->get('error') !== null) {
-                throw $exception;
-            }
-
-            $code = $request->query->get('code');
-            if ($code === null) {
-                throw $exception;
-            }
-            $ssoAccessTokenTransfer = $this->ssoClient->getAccessTokenByCode($code);
-
-            if (!$ssoAccessTokenTransfer->getIdToken()) {
-                throw $exception;
-            }
-
-            $this->setReferer($request);
-
-            return $ssoAccessTokenTransfer;
+        if ($this->isRequestPathLoginCheck($request)) {
+            $ssoAccessTokenTransfer = $this->getAccessToken($request);
         }
 
-        throw $exception;
+        if ($this->isAccessTokenAboutToExpire()) {
+            $ssoAccessTokenTransfer = $this->refreshAccessToken();
+
+            if (!$ssoAccessTokenTransfer->getIdToken()) {
+                throw new AuthenticationException();
+            }
+        }
+
+        return $ssoAccessTokenTransfer;
     }
 
     /**
@@ -192,6 +197,16 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
+     * @return bool
+     */
+    protected function isRequestPathLoginCheck(Request $request): bool
+    {
+        return $this->httpUtils->checkRequestPath($request, '/' . $this->ssoClient->getLoginCheckPath());
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
      * @return void
      */
     protected function setReferer(Request $request): void
@@ -203,5 +218,71 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
 
             $request->headers->set('Referer', $referer);
         }
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isAccessTokenAboutToExpire(): bool
+    {
+        $customer = $this->customerClient->getCustomer();
+        if ($customer === null) {
+            return false;
+        }
+        $expireDuration = sprintf('PT%sS', $customer->getSsoAccessToken()->getExpiresIn());
+        $expireInterval = new DateInterval($expireDuration);
+
+        $createdAtString = $customer->getSsoAccessToken()->getCreatedAt();
+        $createdAt = new DateTime($createdAtString);
+        $expiredAt = $createdAt->add($expireInterval);
+
+        $minDuration = sprintf('PT%sS', static::BUFFER_TIME_TO_REFRESH_ACCESS_TOKEN);
+        $minInterval = new DateInterval($minDuration);
+        $expiredAt->sub($minInterval);
+
+        return $expiredAt < new DateTime();
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AuthenticationException
+     *
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    protected function getAccessToken(Request $request): SsoAccessTokenTransfer
+    {
+        $exception = new AuthenticationException();
+
+        if ($request->query->get('error') !== null) {
+            throw $exception;
+        }
+
+        $code = $request->query->get('code');
+        if ($code === null) {
+            throw $exception;
+        }
+
+        $ssoAccessTokenTransfer = $this->ssoClient->getAccessTokenByCode($code);
+        if (!$ssoAccessTokenTransfer->getIdToken()) {
+            throw $exception;
+        }
+
+        $this->setReferer($request);
+
+        return $ssoAccessTokenTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    protected function refreshAccessToken(): SsoAccessTokenTransfer
+    {
+        $refreshToken = $this->customerClient
+            ->getCustomer()
+            ->getSsoAccessToken()
+            ->getRefreshToken();
+
+        return $this->ssoClient->getAccessTokenByRefreshToken($refreshToken);
     }
 }

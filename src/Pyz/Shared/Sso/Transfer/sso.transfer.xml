@@ -13,6 +13,7 @@
         <property name="tokenType" type="string"/>
         <property name="expiresIn" type="int"/>
         <property name="refreshToken" type="string"/>
+        <property name="createdAt" type="string" /> <!-- Format ISO 8601: YYYY-MM-DDThh:mm:ss.sssTZD Example: 2017-07-17T13:42:40.428+01:00 -->
     </transfer>
 
 </transfers>

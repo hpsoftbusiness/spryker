@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\Sso\Client;
 
+use DateTime;
 use Exception;
 use Generated\Shared\Transfer\SsoAccessTokenTransfer;
 use GuzzleHttp\ClientInterface;
@@ -52,12 +53,35 @@ class UserToken implements UserTokenInterface
      */
     public function getAccessTokenByCode(string $code): SsoAccessTokenTransfer
     {
-        $accessTokenRequestParams = $this->getAccessTokenRequestParams($code);
+        $requestParams = $this->getAccessTokenRequestParams($code);
+
+        return $this->getAccessTokenByRequestParams($requestParams);
+    }
+
+    /**
+     * @param string $refreshToken
+     *
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    public function getAccessTokenByRefreshToken(string $refreshToken): SsoAccessTokenTransfer
+    {
+        $requestParams = $this->getRequestParamsByRefreshToken($refreshToken);
+
+        return $this->getAccessTokenByRequestParams($requestParams);
+    }
+
+    /**
+     * @param array $requestParams
+     *
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    protected function getAccessTokenByRequestParams(array $requestParams): SsoAccessTokenTransfer
+    {
         try {
             $result = $this->httpClient->request(
                 'POST',
                 $this->ssoConfig->getTokenUrl(),
-                $accessTokenRequestParams
+                $requestParams
             );
         } catch (Exception $e) {
             $this->errorLogger->log($e);
@@ -65,7 +89,18 @@ class UserToken implements UserTokenInterface
             return new SsoAccessTokenTransfer();
         }
 
-        return (new SsoAccessTokenTransfer())->fromArray(json_decode($result->getBody()->getContents(), true));
+        $ssoAccessTokenTransfer = new SsoAccessTokenTransfer();
+        $ssoAccessTokenTransfer->fromArray(
+            json_decode(
+                $result->getBody()->getContents(),
+                true
+            )
+        );
+        $ssoAccessTokenTransfer->setCreatedAt(
+            (new DateTime())->format('c')
+        );
+
+        return $ssoAccessTokenTransfer;
     }
 
     /**
@@ -81,6 +116,29 @@ class UserToken implements UserTokenInterface
                 'scope' => $this->ssoConfig->getScope(),
                 'code' => $code,
                 'redirect_uri' => $this->ssoConfig->getRedirectUrl(),
+            ],
+            'headers' => [
+                'User-Agent' => $this->ssoConfig->getUserAgent(),
+            ],
+            'auth' => [
+                $this->ssoConfig->getClientId(),
+                $this->ssoConfig->getClientSecret(),
+            ],
+        ];
+    }
+
+    /**
+     * @param string $refreshToken
+     *
+     * @return array[]
+     */
+    protected function getRequestParamsByRefreshToken(string $refreshToken): array
+    {
+        return [
+            'form_params' => [
+                'grant_type' => 'refresh_token',
+                'refresh_token' => $refreshToken,
+                'scope' => $this->ssoConfig->getScope(),
             ],
             'headers' => [
                 'User-Agent' => $this->ssoConfig->getUserAgent(),

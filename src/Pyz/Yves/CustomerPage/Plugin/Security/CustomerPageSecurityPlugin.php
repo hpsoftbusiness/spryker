@@ -82,7 +82,8 @@ class CustomerPageSecurityPlugin extends SprykerCustomerPageSecurityPlugin
                 $this->getFactory()->getSsoClient(),
                 $this->getFactory()->createCustomerAuthenticationSuccessHandler(),
                 $this->getFactory()->createCustomerAuthenticationFailureHandler(),
-                $this->getLocale()
+                $this->getLocale(),
+                $this->getFactory()->getCustomerClient()
             );
         });
 

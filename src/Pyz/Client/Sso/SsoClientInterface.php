@@ -43,4 +43,11 @@ interface SsoClientInterface
      * @return bool
      */
     public function isSsoLoginEnabled(): bool;
+
+    /**
+     * @param string $refreshToken
+     *
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    public function getAccessTokenByRefreshToken(string $refreshToken): SsoAccessTokenTransfer;
 }

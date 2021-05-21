@@ -17,4 +17,11 @@ interface UserTokenInterface
      * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
      */
     public function getAccessTokenByCode(string $code): SsoAccessTokenTransfer;
+
+    /**
+     * @param string $refreshToken
+     *
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    public function getAccessTokenByRefreshToken(string $refreshToken): SsoAccessTokenTransfer;
 }

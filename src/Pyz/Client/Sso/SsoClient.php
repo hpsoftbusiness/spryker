@@ -27,6 +27,16 @@ class SsoClient extends AbstractClient implements SsoClientInterface
     }
 
     /**
+     * @param string $refreshToken
+     *
+     * @return \Generated\Shared\Transfer\SsoAccessTokenTransfer
+     */
+    public function getAccessTokenByRefreshToken(string $refreshToken): SsoAccessTokenTransfer
+    {
+        return $this->getFactory()->createUserTokenClient()->getAccessTokenByRefreshToken($refreshToken);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\SsoAccessTokenTransfer $ssoAccessTokenTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer|null
