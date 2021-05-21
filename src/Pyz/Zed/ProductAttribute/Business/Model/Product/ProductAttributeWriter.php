@@ -55,10 +55,10 @@ class ProductAttributeWriter extends SprykerProductAttributeWriter
         foreach ($attributes as $attribute) {
             $key = $attribute[ProductAttributeKeyTransfer::KEY];
             $localeCode = $attribute['locale_code'];
-            $value = $this->sanitizeString($attribute['value']);
 
-            if (strpos($key, 'sellable_') !== false) {
-                $value = (bool)$value ?: false;
+            $value = $attribute['value'];
+            if (!is_bool($value)) {
+                $value = $this->sanitizeString($value);
             }
 
             if ($value === '') {
