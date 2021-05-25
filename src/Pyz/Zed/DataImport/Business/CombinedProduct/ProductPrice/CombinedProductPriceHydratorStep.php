@@ -54,9 +54,9 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public const COLUMN_PRICE_PRODUCT_STORE_KEY = 'price_product_store_key';
 
     /**
-     * @link \Pyz\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_SP_BENEFIT
+     * @link \Pyz\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_BENEFIT
      */
-    public const SP_BENEFIT_PRICE_TYPE = 'SP_BENEFIT';
+    public const BENEFIT_PRICE_TYPE = 'BENEFIT';
 
     /**
      * @var array
@@ -64,7 +64,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     public static $priceTypes = [
         self::DEFAULT_PRICE_TYPE => self::COLUMN_PRICE_GROSS,
         self::ORIGINAL_PRICE_TYPE => self::COLUMN_PRICE_GROSS_ORIGINAL,
-        self::SP_BENEFIT_PRICE_TYPE => self::COLUMN_BENEFIT_PRICE,
+        self::BENEFIT_PRICE_TYPE => self::COLUMN_BENEFIT_PRICE,
     ];
 
     /**
@@ -190,7 +190,7 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         $storeEntityTransfer = new SpyStoreEntityTransfer();
         $storeEntityTransfer->setName($dataSet[static::COLUMN_STORE] ?: 'DE');
 
-        if ($dataSet[static::COLUMN_PRICE_TYPE] === self::SP_BENEFIT_PRICE_TYPE) {
+        if ($dataSet[static::COLUMN_PRICE_TYPE] === self::BENEFIT_PRICE_TYPE) {
             $netPrice = $this->getPriceValue($dataSet[self::COLUMN_BENEFIT_PRICE]);
             $grossPrice = $this->getPriceValue($dataSet[self::COLUMN_BENEFIT_PRICE]);
         } else {

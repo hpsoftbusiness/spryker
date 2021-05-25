@@ -34,7 +34,7 @@ class Install extends SprykerInstall
         return [
             $this->config->getPriceTypeDefaultName(),
             $this->config->getPriceTypeOriginalName(),
-            $this->config->getPriceTypeSPBenefitName(),
+            $this->config->getPriceTypeBenefitName(),
         ];
     }
 }

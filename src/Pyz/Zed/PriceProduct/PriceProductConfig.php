@@ -22,9 +22,9 @@ class PriceProductConfig extends SprykerPriceProductConfig
     /**
      * @return string
      */
-    public function getPriceTypeSPBenefitName(): string
+    public function getPriceTypeBenefitName(): string
     {
-        return $this->getSharedConfig()->getPriceTypeSPBenefitName();
+        return $this->getSharedConfig()->getPriceTypeBenefitName();
     }
 
     /**

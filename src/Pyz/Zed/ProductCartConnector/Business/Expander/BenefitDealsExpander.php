@@ -51,14 +51,9 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
     private function expandWithBenefitVouchers(ItemTransfer $itemTransfer): void
     {
         if ($this->isBenefitDealDataProvidedAtAttribute($itemTransfer)) {
-            $salesPrice = $this->getBenefitVoucherSalesPrice($itemTransfer);
-            $store = $this->getBenefitVoucherStore($itemTransfer);
-            $amount = $this->getBenefitVoucherAmount($itemTransfer);
-
             $benefitVoucher = new BenefitVoucherDealDataTransfer();
-            $benefitVoucher->setSalesPrice($salesPrice);
-            $benefitVoucher->setAmount($amount);
-            $benefitVoucher->setIsStore($store);
+            $benefitVoucher->setAmount($this->getBenefitVoucherAmount($itemTransfer));
+            $benefitVoucher->setIsStore($this->getBenefitVoucherStore($itemTransfer));
 
             $itemTransfer->setBenefitVoucherDealData($benefitVoucher);
         }
@@ -71,8 +66,7 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
      */
     private function isBenefitDealDataProvidedAtAttribute(ItemTransfer $itemTransfer): bool
     {
-        return $this->getBenefitVoucherSalesPrice($itemTransfer)
-            && $this->getBenefitVoucherStore($itemTransfer)
+        return $this->getBenefitVoucherStore($itemTransfer)
             && $this->getBenefitVoucherAmount($itemTransfer);
     }
 
@@ -114,23 +108,6 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
         }
 
         return $shoppingPointsQuantity;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return int|null
-     */
-    private function getBenefitVoucherSalesPrice(ItemTransfer $itemTransfer): ?int
-    {
-        $benefitVoucherSalesPrice = $itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherSalesPriceAttributeName()] ?? null;
-
-        if ($benefitVoucherSalesPrice !== null) {
-            $benefitVoucherSalesPrice = str_replace(',', '.', $benefitVoucherSalesPrice);
-            $benefitVoucherSalesPrice = (int)$benefitVoucherSalesPrice * 100;
-        }
-
-        return $benefitVoucherSalesPrice;
     }
 
     /**

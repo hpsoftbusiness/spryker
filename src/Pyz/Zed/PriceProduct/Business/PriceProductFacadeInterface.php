@@ -17,5 +17,5 @@ interface PriceProductFacadeInterface extends SprykerPriceProductFacadeInterface
      *
      * @return string
      */
-    public function getSPBenefitPriceTypeName(): string;
+    public function getBenefitPriceTypeName(): string;
 }

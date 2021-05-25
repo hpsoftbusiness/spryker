@@ -11,15 +11,15 @@ use Spryker\Shared\PriceProduct\PriceProductConfig as SprykerPriceProductConfig;
 
 class PriceProductConfig extends SprykerPriceProductConfig
 {
-    private const PRICE_TYPE_SP_BENEFIT = 'SP_BENEFIT';
+    private const PRICE_TYPE_BENEFIT = 'BENEFIT';
     private const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
 
     /**
      * @return string
      */
-    public function getPriceTypeSPBenefitName(): string
+    public function getPriceTypeBenefitName(): string
     {
-        return self::PRICE_TYPE_SP_BENEFIT;
+        return self::PRICE_TYPE_BENEFIT;
     }
 
     /**

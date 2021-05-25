@@ -85,7 +85,7 @@
     {% set cashback = data.cashback %}
     {% set benefitVoucherPrice = data.product.benefitSalesPrice ?? null %}
     {% set benefitAmount = data.product.benefitAmount ?? null %}
-    {% set shoppingPointsBenefitPrice =  data.product.prices.SP_BENEFIT ?? null %}
+    {% set benefitPrice =  data.product.prices.BENEFIT ?? null %}
     {% set shoppoingPointsAmount = data.product.shoppingPointsAmount ?? null %}
     <div class="grid spacing-bottom spacing-bottom--biggest spacing-top">
         {% if benefitVoucherPrice and benefitAmount %}
@@ -102,12 +102,12 @@
                     }
                 } only %}
             </div>
-        {% elseif shoppingPointsBenefitPrice and shoppoingPointsAmount %}
+        {% elseif benefitPrice and shoppoingPointsAmount %}
             <div class="col col--sm-6 col--md-5">
                 {% include molecule('product-benefit-price', 'ProductDetailPage') with {
                     data: {
                         regularPriceAmount: data.product.price,
-                        benefitPriceAmount: shoppingPointsBenefitPrice,
+                        benefitPriceAmount: benefitPrice,
                         benefitCurrencyAmount: shoppoingPointsAmount,
                         benefitCurrencyType: 'shopping-point'
                     }

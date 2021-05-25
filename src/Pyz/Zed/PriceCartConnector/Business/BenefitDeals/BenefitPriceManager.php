@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PriceProductFilterTransfer;
 use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
+use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
 class BenefitPriceManager implements BenefitPriceManagerInterface
 {
@@ -35,7 +36,7 @@ class BenefitPriceManager implements BenefitPriceManagerInterface
     public function expandItemsWithBenefitPrices(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
         foreach ($cartChangeTransfer->getItems() as $itemTransfer) {
-            $this->expandItemWithShoppingPointsPrice($itemTransfer, $cartChangeTransfer);
+            $this->expandItemWithBenefitPrices($itemTransfer, $cartChangeTransfer);
         }
 
         return $cartChangeTransfer;
@@ -47,15 +48,87 @@ class BenefitPriceManager implements BenefitPriceManagerInterface
      *
      * @return void
      */
-    private function expandItemWithShoppingPointsPrice(ItemTransfer $itemTransfer, CartChangeTransfer $cartChangeTransfer): void
+    private function expandItemWithBenefitPrices(ItemTransfer $itemTransfer, CartChangeTransfer $cartChangeTransfer): void
     {
-        $shoppingPointsDealTransfer = $itemTransfer->getShoppingPointsDeal();
-        if (!$shoppingPointsDealTransfer || !$shoppingPointsDealTransfer->getIsActive()) {
+        if (!$this->isBenefitDealDataExist($itemTransfer)) {
             return;
         }
 
         $priceProductFilter = $this->createPriceProductFilterTransfer($cartChangeTransfer, $itemTransfer);
-        $shoppingPointsDealTransfer->setPrice($this->priceProductFacade->findPriceFor($priceProductFilter));
+        $price = $this->priceProductFacade->findPriceFor($priceProductFilter);
+
+        if ($this->assertBenefitVoucherDealData($itemTransfer)) {
+            $this->setBenefitVoucherPrice($itemTransfer, $price);
+        }
+
+        if ($this->assertShoppingPointsDealData($itemTransfer)) {
+            $this->setShoppingPointsPrice($itemTransfer, $price);
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return bool
+     */
+    private function isBenefitDealDataExist(ItemTransfer $itemTransfer): bool
+    {
+        return $this->assertBenefitVoucherDealData($itemTransfer)
+            || $this->assertShoppingPointsDealData($itemTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return bool
+     */
+    private function assertBenefitVoucherDealData(ItemTransfer $itemTransfer): bool
+    {
+        try {
+            $itemTransfer->requireBenefitVoucherDealData();
+
+            return $itemTransfer->getBenefitVoucherDealData()->getIsStore();
+        } catch (RequiredTransferPropertyException $exception) {
+            return false;
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return bool
+     */
+    private function assertShoppingPointsDealData(ItemTransfer $itemTransfer): bool
+    {
+        try {
+            $itemTransfer->requireShoppingPointsDeal();
+
+            return $itemTransfer->getShoppingPointsDeal()->getIsActive();
+        } catch (RequiredTransferPropertyException $exception) {
+            return false;
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param float $price
+     *
+     * @return void
+     */
+    private function setBenefitVoucherPrice(ItemTransfer $itemTransfer, float $price): void
+    {
+        $itemTransfer->getBenefitVoucherDealData()->setSalesPrice($price);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param float $price
+     *
+     * @return void
+     */
+    private function setShoppingPointsPrice(ItemTransfer $itemTransfer, float $price): void
+    {
+        $itemTransfer->getShoppingPointsDeal()->setPrice($price);
     }
 
     /**
@@ -73,6 +146,6 @@ class BenefitPriceManager implements BenefitPriceManagerInterface
             ->setStoreName($cartChangeTransfer->getQuote()->getStore()->getName())
             ->setPriceMode($cartChangeTransfer->getQuote()->getPriceMode())
             ->setCurrencyIsoCode($cartChangeTransfer->getQuote()->getCurrency()->getCode())
-            ->setPriceTypeName($this->priceProductFacade->getSPBenefitPriceTypeName());
+            ->setPriceTypeName($this->priceProductFacade->getBenefitPriceTypeName());
     }
 }
