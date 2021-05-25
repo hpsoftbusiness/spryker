@@ -87,7 +87,7 @@
                     {% endif %}
                 </div>
 
-                {% if data.product is not empty %}
+                {% if data.product is not empty and data.product.customer is not empty %}
                         {% set amountBenefitVochers = data.productItem.benefitDealChargeAmountData.totalBenefitVouchersAmount %}
                         {% set amountShoppingPoints = data.productItem.benefitDealChargeAmountData.totalShoppingPointsAmount %}
                         {% set newSalesPrice = data.productItem.benefitDealChargeAmountData.totalSalesPriceAmount %}
