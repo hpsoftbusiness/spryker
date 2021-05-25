@@ -1,4 +1,4 @@
-namespace: PyzTest\Zed\Payment
+namespace: PyzTest\Zed\Sales
 
 paths:
     tests: .
@@ -9,12 +9,12 @@ paths:
 coverage:
     enabled: true
     remote: false
-    whitelist: { include: ['../../../../src/Pyz/Zed/Payment/*'] }
+    whitelist: { include: ['../../../../src/Pyz/Zed/Sales/*'] }
 
 suites:
     Business:
         path: Business
-        class_name: PaymentBusinessTester
+        class_name: SalesBusinessTester
         modules:
             enabled:
                 - Asserts
@@ -23,5 +23,6 @@ suites:
                     projectNamespaces: ['Pyz']
 
                 - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\Propel\Helper\TransactionHelper
                 - \PyzTest\Shared\Sales\Helper\SalesOrderDataHelper
