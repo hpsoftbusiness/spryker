@@ -10,6 +10,7 @@ namespace Pyz\Zed\ProductDataImport\Business\Model;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportMessageTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
+use Generated\Shared\Transfer\ProductDataImportResultTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport;
 use Pyz\Zed\DataImport\Business\DataImportFacadeInterface;
@@ -187,7 +188,7 @@ class ProductDataImport implements ProductDataImportInterface
         $productDataImportEntity = $this->queryContainer->queryProductImports()->findOneByIdProductDataImport(
             $productDataImportTransfer->getIdProductDataImport()
         );
-        $productDataImportEntity->setStatus(ProductDataImportInterface::STATUS_IN_PROGRESSES[$dataEntity]);
+        $productDataImportEntity->setStatus($this->generateInProgressStatus($dataEntity));
         $productDataImportEntity->save();
 
         return $productDataImportEntity;
@@ -211,16 +212,16 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
-     * @param array $resultArray
+     * @param \Generated\Shared\Transfer\ProductDataImportResultTransfer $productDataImportResultTransfer
      * @param int $id
      *
      * @return void
      */
-    public function saveResult(array $resultArray, int $id): void
+    public function saveResult(ProductDataImportResultTransfer $productDataImportResultTransfer, int $id): void
     {
         $productDataImportEntity = $this->queryContainer->queryProductImports()->findOneByIdProductDataImport($id);
         $result = json_decode($productDataImportEntity->getResult(), true) ?? [];
-        array_push($result, $resultArray[0]);
+        array_push($result, $productDataImportResultTransfer->toArrayRecursiveCamelCased());
 
         $productDataImportEntity->setResult(json_encode($result));
 
@@ -246,5 +247,71 @@ class ProductDataImport implements ProductDataImportInterface
         }
 
         return $productDataImport;
+    }
+
+    /**
+     * @param int $productDataImportId
+     *
+     * @return void
+     */
+    public function setMainStatus(int $productDataImportId): void
+    {
+        $productDataImportEntity = $this->queryContainer->queryProductImports()->findOneByIdProductDataImport(
+            $productDataImportId
+        );
+
+        $statuses = array_map(
+            function (array $productDataImportResultArray) {
+                return $productDataImportResultArray['status'];
+            },
+            json_decode($productDataImportEntity->getResult(), true)
+        );
+
+        $productDataImportEntity->setStatus($this->getStatus($statuses));
+
+        $this->getTransactionHandler()->handleTransaction(
+            function () use ($productDataImportEntity) {
+                $productDataImportEntity->save();
+            }
+        );
+    }
+
+    /**
+     * @param array $statuses
+     *
+     * @return string
+     */
+    private function getStatus(array $statuses): string
+    {
+        $successArray = array_filter(
+            $statuses,
+            function ($status) {
+                return $status === ProductDataImportInterface::STATUS_SUCCESS;
+            }
+        );
+        $failedArray = array_filter(
+            $statuses,
+            function ($status) {
+                return $status === ProductDataImportInterface::STATUS_FAILED;
+            }
+        );
+        if (count($statuses) === count($successArray)) {
+            return ProductDataImportInterface::STATUS_SUCCESS;
+        }
+        if (count($statuses) === count($failedArray)) {
+            return ProductDataImportInterface::STATUS_FAILED;
+        }
+
+        return ProductDataImportInterface::STATUS_PARTIAL_FAILED;
+    }
+
+    /**
+     * @param string $dataEntity
+     *
+     * @return string
+     */
+    private function generateInProgressStatus(string $dataEntity): string
+    {
+        return sprintf(ProductDataImportInterface::STATUS_IN_PROGRESS, $dataEntity);
     }
 }

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductDataImport\Business;
 
+use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
@@ -17,10 +18,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class ProductDataImportFacade extends AbstractFacade implements ProductDataImportFacadeInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $transfer
-     * @param \Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider $dataProvider
-     *
-     * @return void
+     * @inheritDoc
      */
     public function saveFile(ProductDataImportTransfer $transfer, ProductDataImportFormDataProvider $dataProvider): void
     {
@@ -29,7 +27,7 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
+     * @inheritDoc
      */
     public function getProductDataImportForImport(): ?ProductDataImportTransfer
     {
@@ -54,29 +52,26 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
         );
 
         $this->saveImportResult(
-            [$dataImporterReportTransfer->setImportType($dataEntity)],
+            $dataImporterReportTransfer->setImportType($dataEntity),
             $productDataImportTransfer->getIdProductDataImport()
         );
     }
 
     /**
-     * @param array $resultArray
-     * @param int $id
-     *
-     * @return void
+     * @inheritDoc
      */
-    public function saveImportResult(array $resultArray, int $id): void
+    public function saveImportResult(DataImporterReportTransfer $dataImporterReportTransfer, int $id): void
     {
-        $resultArray = $this->getFactory()->createProductDataImportResult(
-        )->collectionDataImporterReportTransferToString($resultArray);
+        $productDataImportResultTransfer =
+            $this->getFactory()
+                ->createProductDataImportResult()
+                ->getDataImporterReportResultTransfers($dataImporterReportTransfer);
 
-        $this->getFactory()->createProductDataImport()->saveResult($resultArray, $id);
+        $this->getFactory()->createProductDataImport()->saveResult($productDataImportResultTransfer, $id);
     }
 
     /**
-     * @param int $id
-     *
-     * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
+     * @inheritDoc
      */
     public function getProductDataImportTransferById(int $id): ?ProductDataImportTransfer
     {
@@ -84,9 +79,7 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
-     *
-     * @return void
+     * @inheritDoc
      */
     public function prepareImportFile(ProductDataImportTransfer $productDataImportTransfer): void
     {
@@ -98,10 +91,18 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     }
 
     /**
-     * @return void
+     * @inheritDoc
      */
     public function clearImportFile(): void
     {
         $this->getFactory()->createFileHandler()->clearImportFile();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setMainStatus(int $productDataImportId): void
+    {
+        $this->getFactory()->createProductDataImport()->setMainStatus($productDataImportId);
     }
 }

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductDataImport\Communication\Console;
 
+use Exception;
 use Propel\Runtime\Propel;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -93,6 +94,7 @@ class ProductDataImportConsole extends Console
                     $this->getFacade()->import($productDataImport, $dataEntity);
                     $progressBar->advance();
                 }
+                $this->getFacade()->setMainStatus($productDataImport->getIdProductDataImport());
             } catch (Exception $e) {
                 $storageClient->delete(static::DATA_IMPORT_KEY);
             }

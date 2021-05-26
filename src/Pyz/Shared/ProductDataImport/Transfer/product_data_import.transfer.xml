@@ -15,4 +15,12 @@
         <property name="fileUpload" type="FileUpload"/>
     </transfer>
 
+    <transfer name="ProductDataImportResult">
+        <property name="status" type="string"/>
+        <property name="type" type="string"/>
+        <property name="importedCount" type="int"/>
+        <property name="failed" type="int"/>
+        <property name="messages" type="array"/>
+    </transfer>
+
 </transfers>

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductDataImport\Business;
 
+use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
 
@@ -43,14 +44,21 @@ interface ProductDataImportFacadeInterface
     ): void;
 
     /**
-     * @param array $resultArray
+     * @param \Generated\Shared\Transfer\DataImporterReportTransfer $dataImporterReportTransfer
      * @param int $id
      *
      * @throws \Propel\Runtime\Exception\PropelException
      *
      * @return void
      */
-    public function saveImportResult(array $resultArray, int $id): void;
+    public function saveImportResult(DataImporterReportTransfer $dataImporterReportTransfer, int $id): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer
+     *
+     * @return void
+     */
+    public function prepareImportFile(ProductDataImportTransfer $productDataImportTransfer): void;
 
     /**
      * @param int $id
@@ -58,4 +66,16 @@ interface ProductDataImportFacadeInterface
      * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
     public function getProductDataImportTransferById(int $id): ?ProductDataImportTransfer;
+
+    /**
+     * @return void
+     */
+    public function clearImportFile(): void;
+
+    /**
+     * @param int $productDataImportId
+     *
+     * @return void
+     */
+    public function setMainStatus(int $productDataImportId): void;
 }

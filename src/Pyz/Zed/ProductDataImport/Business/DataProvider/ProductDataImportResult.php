@@ -8,32 +8,38 @@
 namespace Pyz\Zed\ProductDataImport\Business\DataProvider;
 
 use ArrayObject;
+use Generated\Shared\Transfer\DataImporterReportTransfer;
+use Generated\Shared\Transfer\ProductDataImportResultTransfer;
+use Pyz\Zed\ProductDataImport\Business\Model\ProductDataImportInterface;
 
 class ProductDataImportResult
 {
     /**
-     * @param \Generated\Shared\Transfer\DataImporterReportTransfer[] $transferReports
+     * @param \Generated\Shared\Transfer\DataImporterReportTransfer $dataImporterReportTransfer
      *
-     * @return array
+     * @return \Generated\Shared\Transfer\ProductDataImportResultTransfer
      */
-    public function collectionDataImporterReportTransferToString(array $transferReports): array
-    {
-        $result = [];
-        foreach ($transferReports as $transfer) {
-            $transferResult['status'] = $transfer->getIsSuccess() ? 'success' : 'failed';
+    public function getDataImporterReportResultTransfers(
+        DataImporterReportTransfer $dataImporterReportTransfer
+    ): ProductDataImportResultTransfer {
+        $productDataImportResultTransfer = new ProductDataImportResultTransfer();
 
-            foreach ($transfer->getDataImporterReports() as $reportTransfer) {
-                $transferResult['type'] = $reportTransfer->getImportType();
-                $transferResult['importedCount'] = $reportTransfer->getImportedDataSetCount();
-                $transferResult['failed'] = $reportTransfer->getExpectedImportableDataSetCount() -
-                    $reportTransfer->getImportedDataSetCount();
+        $productDataImportResultTransfer->setStatus(
+            $dataImporterReportTransfer->getIsSuccess(
+            ) ? ProductDataImportInterface::STATUS_SUCCESS : ProductDataImportInterface::STATUS_FAILED
+        );
 
-                $transferResult['messages'] = $this->getMessages($reportTransfer->getMessages());
-            }
-            $result[] = $transferResult;
+        foreach ($dataImporterReportTransfer->getDataImporterReports() as $reportTransfer) {
+            $productDataImportResultTransfer->setType($reportTransfer->getImportType());
+            $productDataImportResultTransfer->setImportedCount($reportTransfer->getImportedDataSetCount());
+            $productDataImportResultTransfer->setFailed(
+                $reportTransfer->getExpectedImportableDataSetCount() - $reportTransfer->getImportedDataSetCount()
+            );
+
+            $productDataImportResultTransfer->setMessages($this->getMessages($reportTransfer->getMessages()));
         }
 
-        return $result;
+        return $productDataImportResultTransfer;
     }
 
     /**
