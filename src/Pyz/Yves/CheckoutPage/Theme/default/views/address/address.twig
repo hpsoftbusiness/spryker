@@ -1,8 +1,22 @@
 {% extends view('address', '@SprykerShop:CheckoutPage') %}
 
+{% define data = {
+    forms: {
+        address: _view.addressesForm,
+        shipping: _view.addressesForm.shippingAddress,
+        billing: _view.addressesForm.billingAddress,
+        items: _view.addressesForm.multiShippingAddresses | default([]),
+        bundleItems: _view.addressesForm.multiShippingAddressesForBundleItems | default([]),
+    },
+    backUrl: _view.previousStepUrl,
+    isMultipleShipmentEnabled: _view.addressesForm.isMultipleShipmentEnabled.vars.value,
+    title: 'checkout.step.address.title' | trans,
+    isBillingSameAsShippingChecked: _view.addressesForm.billingSameAsShipping.vars.value | default(false)
+
+} %}
+
 {% block content %}
     {% set jsAddressClass = 'js-address' %}
-
     {% embed molecule('form') with {
         modifiers: ['checkout-actions', 'checkout-form-elements'],
         data: {
@@ -22,7 +36,7 @@
             },
             isMultipleShipmentEnabled: data.isMultipleShipmentEnabled,
             jsAddressClass: jsAddressClass,
-            isBillingSameAsShippingChecked: data.forms.billing.id_customer_address.vars.choices is empty,
+            isBillingSameAsShippingChecked: data.isBillingSameAsShippingChecked,
         },
     } only %}
         {% block fields %}
