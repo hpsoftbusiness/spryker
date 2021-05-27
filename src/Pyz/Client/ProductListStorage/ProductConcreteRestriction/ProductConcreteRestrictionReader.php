@@ -8,32 +8,11 @@
 namespace Pyz\Client\ProductListStorage\ProductConcreteRestriction;
 
 use Generated\Shared\Transfer\CustomerProductListCollectionTransfer;
-use Pyz\Client\ProductList\ProductListClientInterface;
-use Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface;
+use Pyz\Shared\CustomerGroup\CustomerGroupConstants;
 use Spryker\Client\ProductListStorage\ProductConcreteRestriction\ProductConcreteRestrictionReader as SprykerProductConcreteRestrictionReader;
-use Spryker\Client\ProductListStorage\ProductListProductConcreteStorage\ProductListProductConcreteStorageReaderInterface;
 
 class ProductConcreteRestrictionReader extends SprykerProductConcreteRestrictionReader
 {
-    /**
-     * @var \Pyz\Client\ProductList\ProductListClientInterface
-     */
-    protected $productListClient;
-
-    /**
-     * @param \Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface $customerClient
-     * @param \Spryker\Client\ProductListStorage\ProductListProductConcreteStorage\ProductListProductConcreteStorageReaderInterface $productListProductConcreteStorageReader
-     * @param \Pyz\Client\ProductList\ProductListClientInterface $productListClient
-     */
-    public function __construct(
-        ProductListStorageToCustomerClientInterface $customerClient,
-        ProductListProductConcreteStorageReaderInterface $productListProductConcreteStorageReader,
-        ProductListClientInterface $productListClient
-    ) {
-        parent::__construct($customerClient, $productListProductConcreteStorageReader);
-        $this->productListClient = $productListClient;
-    }
-
     /**
      * @param int $idProduct
      *
@@ -45,7 +24,6 @@ class ProductConcreteRestrictionReader extends SprykerProductConcreteRestriction
         if ($customer) {
             $customerProductListCollectionTransfer = $customer->getCustomerProductListCollection();
         } else {
-//            $customerProductListCollectionTransfer = $this->productListClient->getDefaultCustomerProductListCollection();
             $customerProductListCollectionTransfer = $this->getDefaultCustomerProductListCollection();
         }
 
@@ -65,8 +43,7 @@ class ProductConcreteRestrictionReader extends SprykerProductConcreteRestriction
     public function getDefaultCustomerProductListCollection(): CustomerProductListCollectionTransfer
     {
         $customerProductListCollectionTransfer = new CustomerProductListCollectionTransfer();
-//        TODO:: investigate and uncomment
-//        $customerProductListCollectionTransfer->addWhitelistId(CustomerGroupConstants::ID_CUSTOMER_MW);
+        $customerProductListCollectionTransfer->addWhitelistId(CustomerGroupConstants::ID_CUSTOMER_MW);
 
         return $customerProductListCollectionTransfer;
     }

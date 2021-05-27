@@ -7,7 +7,6 @@
 
 namespace Pyz\Client\ProductListStorage;
 
-use Pyz\Client\ProductList\ProductListClientInterface;
 use Pyz\Client\ProductListStorage\ProductAbstractRestriction\ProductAbstractRestrictionReader;
 use Pyz\Client\ProductListStorage\ProductConcreteRestriction\ProductConcreteRestrictionReader;
 use Spryker\Client\ProductListStorage\ProductAbstractRestriction\ProductAbstractRestrictionReaderInterface;
@@ -23,8 +22,7 @@ class ProductListStorageFactory extends SprykerProductListStorageFactory
     {
         return new ProductAbstractRestrictionReader(
             $this->getCustomerClient(),
-            $this->createProductListProductAbstractStorageReader(),
-            $this->getProductListClient()
+            $this->createProductListProductAbstractStorageReader()
         );
     }
 
@@ -35,16 +33,7 @@ class ProductListStorageFactory extends SprykerProductListStorageFactory
     {
         return new ProductConcreteRestrictionReader(
             $this->getCustomerClient(),
-            $this->createProductListProductConcreteStorageReader(),
-            $this->getProductListClient()
+            $this->createProductListProductConcreteStorageReader()
         );
-    }
-
-    /**
-     * @return \Pyz\Client\ProductList\ProductListClientInterface
-     */
-    public function getProductListClient(): ProductListClientInterface
-    {
-        return $this->getProvidedDependency(ProductListStorageDependencyProvider::CLIENT_PRODUCT_LIST);
     }
 }

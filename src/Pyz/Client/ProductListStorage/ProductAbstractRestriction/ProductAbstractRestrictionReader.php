@@ -7,32 +7,12 @@
 
 namespace Pyz\Client\ProductListStorage\ProductAbstractRestriction;
 
-use Pyz\Client\ProductList\ProductListClientInterface;
-use Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface;
+use Generated\Shared\Transfer\CustomerProductListCollectionTransfer;
+use Pyz\Shared\CustomerGroup\CustomerGroupConstants;
 use Spryker\Client\ProductListStorage\ProductAbstractRestriction\ProductAbstractRestrictionReader as SprykerProductAbstractRestrictionReader;
-use Spryker\Client\ProductListStorage\ProductListProductAbstractStorage\ProductListProductAbstractStorageReaderInterface;
 
 class ProductAbstractRestrictionReader extends SprykerProductAbstractRestrictionReader
 {
-    /**
-     * @var \Pyz\Client\ProductList\ProductListClientInterface
-     */
-    protected $productListClient;
-
-    /**
-     * @param \Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface $customerClient
-     * @param \Spryker\Client\ProductListStorage\ProductListProductAbstractStorage\ProductListProductAbstractStorageReaderInterface $productListProductAbstractStorageReader
-     * @param \Pyz\Client\ProductList\ProductListClientInterface $productListClient
-     */
-    public function __construct(
-        ProductListStorageToCustomerClientInterface $customerClient,
-        ProductListProductAbstractStorageReaderInterface $productListProductAbstractStorageReader,
-        ProductListClientInterface $productListClient
-    ) {
-        parent::__construct($customerClient, $productListProductAbstractStorageReader);
-        $this->productListClient = $productListClient;
-    }
-
     /**
      * @param int $idProductAbstract
      *
@@ -44,8 +24,7 @@ class ProductAbstractRestrictionReader extends SprykerProductAbstractRestriction
         if ($customer) {
             $customerProductListCollectionTransfer = $customer->getCustomerProductListCollection();
         } else {
-            // TODO: we should not call zed here, it will cause performance problems
-            return false;
+            $customerProductListCollectionTransfer = $this->getDefaultCustomerProductListCollection();
         }
 
         if (!$customerProductListCollectionTransfer) {
@@ -56,5 +35,16 @@ class ProductAbstractRestrictionReader extends SprykerProductAbstractRestriction
         $customerBlacklistIds = $customerProductListCollectionTransfer->getBlacklistIds() ?: [];
 
         return $this->checkIfProductAbstractIsRestricted($idProductAbstract, $customerWhitelistIds, $customerBlacklistIds);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CustomerProductListCollectionTransfer
+     */
+    public function getDefaultCustomerProductListCollection(): CustomerProductListCollectionTransfer
+    {
+        $customerProductListCollectionTransfer = new CustomerProductListCollectionTransfer();
+        $customerProductListCollectionTransfer->addWhitelistId(CustomerGroupConstants::ID_CUSTOMER_MW);
+
+        return $customerProductListCollectionTransfer;
     }
 }
