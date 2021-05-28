@@ -79,6 +79,10 @@ class Customer extends SprykerCustomer
     {
         $customerResponseTransfer = parent::add($customerTransfer);
 
+        if (!$customerResponseTransfer->getIsSuccess()) {
+            return $customerResponseTransfer;
+        }
+
         $customerTransfer = $this->executePostCustomerCreatePlugins($customerResponseTransfer->getCustomerTransfer());
         $customerResponseTransfer->setCustomerTransfer($customerTransfer);
 
