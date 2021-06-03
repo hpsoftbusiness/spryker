@@ -17,7 +17,10 @@ class MessengerClient extends SprykerMessengerClient implements MessengerClientI
      */
     public function getFlashErrorMessages(): array
     {
-        return $this->getFlashBag()->get(MessengerConfig::FLASH_MESSAGES_ERROR);
+        /** @var \Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface $flashBag */
+        $flashBag = $this->getFlashBag();
+
+        return $flashBag->get(MessengerConfig::FLASH_MESSAGES_ERROR);
     }
 
     /**
@@ -25,7 +28,10 @@ class MessengerClient extends SprykerMessengerClient implements MessengerClientI
      */
     public function getFlashSuccessMessages(): array
     {
-        return $this->getFlashBag()->get(MessengerConfig::FLASH_MESSAGES_SUCCESS);
+        /** @var \Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface $flashBag */
+        $flashBag = $this->getFlashBag();
+
+        return $flashBag->get(MessengerConfig::FLASH_MESSAGES_SUCCESS);
     }
 
     /**
@@ -33,6 +39,9 @@ class MessengerClient extends SprykerMessengerClient implements MessengerClientI
      */
     public function getFlashInfoMessages(): array
     {
-        return $this->getFlashBag()->get(MessengerConfig::FLASH_MESSAGES_INFO);
+        /** @var \Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface $flashBag */
+        $flashBag = $this->getFlashBag();
+
+        return $flashBag->get(MessengerConfig::FLASH_MESSAGES_INFO);
     }
 }

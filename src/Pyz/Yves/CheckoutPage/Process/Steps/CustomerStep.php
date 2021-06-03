@@ -24,6 +24,7 @@ class CustomerStep extends SprykerCustomerStep
      */
     public function preCondition(AbstractTransfer $quoteTransfer)
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         if (!$this->isCustomerLoggedIn()) {
             $this->escapeRoute = static::ROUTE_NAME_LOGIN;
 

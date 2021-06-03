@@ -13,6 +13,8 @@ use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportF
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
+ * @SuppressWarnings(PHPMD.FacadeRule)
+ *
  * @method \Pyz\Zed\ProductDataImport\Business\ProductDataImportBusinessFactory getFactory()
  */
 class ProductDataImportFacade extends AbstractFacade implements ProductDataImportFacadeInterface

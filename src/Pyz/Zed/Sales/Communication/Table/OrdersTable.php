@@ -47,7 +47,7 @@ class OrdersTable extends SprykerOrdersTable
     protected function configure(TableConfiguration $config)
     {
         $config = parent::configure($config);
-        $url = Url::generate(
+        $url = (string)Url::generate(
             '/table',
             $this->getRequest()->query->all()
         );

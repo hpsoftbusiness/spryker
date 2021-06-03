@@ -60,17 +60,19 @@ class ExportForm extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank(),
-                    new Callback([
-                        'callback' => function ($dateFrom, ExecutionContextInterface $context) {
-                            if (!$dateFrom || !isset($context->getRoot()->getData()[static::FIELD_DATE_TO])) {
-                                return;
-                            }
+                    new Callback(
+                        [
+                            'callback' => function ($dateFrom, ExecutionContextInterface $context) {
+                                if (!$dateFrom || !isset($context->getRoot()->getData()[static::FIELD_DATE_TO])) {
+                                    return;
+                                }
 
-                            if ($dateFrom > $context->getRoot()->getData()[static::FIELD_DATE_TO]) {
-                                $context->addViolation('Date from cannot be later than Date to.');
-                            }
-                        },
-                    ]),
+                                if ($dateFrom > $context->getRoot()->getData()[static::FIELD_DATE_TO]) {
+                                    $context->addViolation('Date from cannot be later than Date to.');
+                                }
+                            },
+                        ]
+                    ),
                 ],
             ]
         );
@@ -100,17 +102,19 @@ class ExportForm extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank(),
-                    new Callback([
-                        'callback' => function ($dateTo, ExecutionContextInterface $context) {
-                            if (!$dateTo || !isset($context->getRoot()->getData()[static::FIELD_DATE_FROM])) {
-                                return;
-                            }
+                    new Callback(
+                        [
+                            'callback' => function ($dateTo, ExecutionContextInterface $context) {
+                                if (!$dateTo || !isset($context->getRoot()->getData()[static::FIELD_DATE_FROM])) {
+                                    return;
+                                }
 
-                            if ($dateTo && ($dateTo < $context->getRoot()->getData()[static::FIELD_DATE_FROM])) {
-                                $context->addViolation('Date to cannot be earlier than Date from.');
-                            }
-                        },
-                    ]),
+                                if (($dateTo < $context->getRoot()->getData()[static::FIELD_DATE_FROM])) {
+                                    $context->addViolation('Date to cannot be earlier than Date from.');
+                                }
+                            },
+                        ]
+                    ),
                 ],
             ]
         );

@@ -32,7 +32,7 @@ class EVoucherDirectPaymentTransferGenerator extends AbstractDirectPaymentTransf
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return mixed
+     * @return int
      */
     protected function getAmount(QuoteTransfer $quoteTransfer): int
     {

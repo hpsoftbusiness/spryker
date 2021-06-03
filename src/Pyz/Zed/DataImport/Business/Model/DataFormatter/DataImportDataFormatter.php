@@ -267,6 +267,9 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
                 if (is_string($param)) {
                     return "'$param'";
                 }
+                if (is_bool($param)) {
+                    return (int)$param;
+                }
 
                 return $param;
             }, $itemData));

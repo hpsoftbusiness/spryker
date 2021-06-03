@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\ApiRequestTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Shared\ProductApi\ProductApiConstants;
+use Pyz\Zed\ProductApi\Business\Exception\UnsupportedResourceException;
 use Pyz\Zed\ProductApi\Business\Mapper\TransferMapperInterface;
 use Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductInterface;
 use Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiInterface;
@@ -87,7 +88,6 @@ class ProductApi implements ProductApiInterface
         $query = $this->buildQuery($apiRequestTransfer);
         $localeTransfer = $this->localeFacade->getLocale($this->getLanguage($apiRequestTransfer));
 
-        /** @var \Generated\Shared\Transfer\ProductsResponseApiTransfer $collection */
         $responseApiTransfer = $this->transferMapper->toTransferCollection(
             $query->find()->toArray(),
             $localeTransfer,
@@ -116,10 +116,11 @@ class ProductApi implements ProductApiInterface
     ) {
         $productTransfer = $this->productFacade->findProductAbstractById($idProductAbstract);
         $productUrl = $this->productFacade->getProductUrl($productTransfer);
-        $productCategoryTransferCollection = $this->productCategoryFacade->getCategoryTransferCollectionByIdProductAbstract(
-            $productTransfer->getIdProductAbstract(),
-            $localeTransfer
-        );
+        $productCategoryTransferCollection = $this->productCategoryFacade
+            ->getCategoryTransferCollectionByIdProductAbstract(
+                $productTransfer->getIdProductAbstract(),
+                $localeTransfer
+            );
 
         return $this->transferMapper->toTransfer(
             $productTransfer,
@@ -131,6 +132,8 @@ class ProductApi implements ProductApiInterface
 
     /**
      * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
+     *
+     * @throws \Pyz\Zed\ProductApi\Business\Exception\UnsupportedResourceException
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
@@ -151,6 +154,8 @@ class ProductApi implements ProductApiInterface
                 return $this->queryContainer->queryLyconet();
             case ProductApiConfig::RESOURCE_FEATURED_PRODUCTS:
                 return $this->queryContainer->queryFeaturedProducts();
+            default:
+                throw new UnsupportedResourceException($apiRequestTransfer->getResource());
         }
     }
 

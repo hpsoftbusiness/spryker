@@ -8,7 +8,7 @@
 namespace Pyz\Client\MyWorldMarketplaceApi\Api\CustomerBalance;
 
 use Generated\Shared\Transfer\CustomerTransfer;
-use Pyz\Client\Currency\CurrencyClient;
+use Pyz\Client\Currency\CurrencyClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface;
 use Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerBalanceMapperInterface;
@@ -30,7 +30,7 @@ class CustomerBalanceRequestHandler implements CustomerBalanceRequestHandlerInte
     private $accessToken;
 
     /**
-     * @var \Pyz\Client\Currency\CurrencyClient
+     * @var \Pyz\Client\Currency\CurrencyClientInterface
      */
     private $currencyClient;
 
@@ -47,14 +47,14 @@ class CustomerBalanceRequestHandler implements CustomerBalanceRequestHandlerInte
     /**
      * @param \Pyz\Client\MyWorldMarketplaceApi\Api\Request\RequestInterface $request
      * @param \Pyz\Client\MyWorldMarketplaceApi\Api\AccessToken\AccessTokenInterface $accessToken
-     * @param \Pyz\Client\Currency\CurrencyClient $currencyClient
+     * @param \Pyz\Client\Currency\CurrencyClientInterface $currencyClient
      * @param \Pyz\Client\MyWorldMarketplaceApi\Mapper\CustomerBalanceMapperInterface $mapper
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig $config
      */
     public function __construct(
         RequestInterface $request,
         AccessTokenInterface $accessToken,
-        CurrencyClient $currencyClient,
+        CurrencyClientInterface $currencyClient,
         CustomerBalanceMapperInterface $mapper,
         MyWorldMarketplaceApiConfig $config
     ) {

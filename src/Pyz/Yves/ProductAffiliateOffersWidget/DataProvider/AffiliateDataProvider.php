@@ -20,7 +20,7 @@ class AffiliateDataProvider implements AffiliateDataProviderInterface
     public function getData(ProductOfferStorageCollectionTransfer $productOfferStorageCollectionTransfer): array
     {
         $offers = [];
-        if ($productOfferStorageCollectionTransfer->getProductOffersStorage() === null) {
+        if (count($productOfferStorageCollectionTransfer->getProductOffersStorage()) === 0) {
             return $offers;
         }
         foreach ($productOfferStorageCollectionTransfer->getProductOffersStorage() as $productOffer) {

@@ -12,6 +12,10 @@ use Generated\Shared\Transfer\AuthorizationHeaderRequestTransfer;
 interface MyWorldPaymentApiServiceInterface
 {
     /**
+     * Get authorization header
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\AuthorizationHeaderRequestTransfer $authorizationHeaderRequest
      *
      * @return string

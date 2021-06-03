@@ -30,10 +30,10 @@ class AvailabilityPresentationTester extends Actor
 {
     use _generated\AvailabilityPresentationTesterActions;
 
-    public const FUJITSU_PRODUCT_ID = 118;
-    public const FUJITSU_PRODUCT_PAGE = '/en/fujitsu-esprimo-e420-118';
+    public const HEADPHONES_PRODUCT_ID = 118;
+    public const HEADPHONES_PRODUCT_PAGE = '/en/headphones-white-a4251740701016';
     public const FUJITSU2_PRODUCT_PAGE = '/en/fujitsu-esprimo-e920-119';
-    public const ADD_FUJITSU2_PRODUCT_TO_CART_URL = '/cart/add/119_29804808';
+    public const ADD_HEADPHONES_PRODUCT_TO_CART_URL = '/cart/add/4251740701016';
 
     public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 119_29804808 only has availability of 10.';
 

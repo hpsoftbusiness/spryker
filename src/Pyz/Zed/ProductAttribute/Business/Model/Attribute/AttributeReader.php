@@ -20,6 +20,11 @@ class AttributeReader extends SprykerAttributeReader implements AttributeReaderI
     protected $productAttributeQueryContainer;
 
     /**
+     * @var \Pyz\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttributeTransferMapperInterface
+     */
+    protected $productAttributeTransferMapper;
+
+    /**
      * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
      *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
@@ -27,6 +32,7 @@ class AttributeReader extends SprykerAttributeReader implements AttributeReaderI
     public function getKeysToShowOnPdp(
         ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
     ): ProductAttributeKeysCollectionTransfer {
+        /** @var \Propel\Runtime\Collection\ArrayCollection $arrayCollection */
         $arrayCollection = $this->productAttributeQueryContainer
             ->queryProductAttributeCollection()
             ->filterByShowOnPdp(true)
@@ -48,7 +54,7 @@ class AttributeReader extends SprykerAttributeReader implements AttributeReaderI
     {
         $attributeEntity = $this->getProductManagementAttributeEntityByKey($key);
         if (!$attributeEntity) {
-             return null;
+            return null;
         }
 
         return $this->productAttributeTransferMapper->convertProductAttribute($attributeEntity);

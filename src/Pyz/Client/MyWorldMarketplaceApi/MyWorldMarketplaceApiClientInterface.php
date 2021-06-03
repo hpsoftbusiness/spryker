@@ -14,11 +14,19 @@ use Generated\Shared\Transfer\MyWorldMarketplaceApiResponseTransfer;
 interface MyWorldMarketplaceApiClientInterface
 {
     /**
+     * Get access token
+     *
+     * @api
+     *
      * @return \Generated\Shared\Transfer\AccessTokenTransfer
      */
     public function getAccessToken(): AccessTokenTransfer;
 
     /**
+     * Get customer Information by Customer number or id
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
@@ -26,13 +34,21 @@ interface MyWorldMarketplaceApiClientInterface
     public function getCustomerInformationByCustomerNumberOrId(CustomerTransfer $customerTransfer): CustomerTransfer;
 
     /**
+     * Perform api request
+     *
+     * @api
+     *
      * @param string $url
      * @param array $requestParams
      * @param string $requestMethod
      *
      * @return \Generated\Shared\Transfer\MyWorldMarketplaceApiResponseTransfer
      */
-    public function performApiRequest(string $url, array $requestParams = [], string $requestMethod = 'POST'): MyWorldMarketplaceApiResponseTransfer;
+    public function performApiRequest(
+        string $url,
+        array $requestParams = [],
+        string $requestMethod = 'POST'
+    ): MyWorldMarketplaceApiResponseTransfer;
 
     /**
      * Specification:
@@ -40,10 +56,15 @@ interface MyWorldMarketplaceApiClientInterface
      * - Returns collection of balances.
      * - If currency code is not provided falls back to store currency code.
      *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param string|null $currencyCode
      *
      * @return \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[]
      */
-    public function getCustomerBalanceByCurrency(CustomerTransfer $customerTransfer, ?string $currencyCode = null): array;
+    public function getCustomerBalanceByCurrency(
+        CustomerTransfer $customerTransfer,
+        ?string $currencyCode = null
+    ): array;
 }

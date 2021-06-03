@@ -19,7 +19,7 @@ use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 class CustomerInformation implements CustomerInformationInterface
 {
     /**
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\ClientInterface
      */
     protected $httpClient;
 

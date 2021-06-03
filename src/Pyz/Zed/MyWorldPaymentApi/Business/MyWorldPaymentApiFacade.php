@@ -12,6 +12,8 @@ use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
+ * @SuppressWarnings(PHPMD.FacadeRule)
+ *
  * @method \Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiBusinessFactory getFactory()
  */
 class MyWorldPaymentApiFacade extends AbstractFacade implements MyWorldPaymentApiFacadeInterface

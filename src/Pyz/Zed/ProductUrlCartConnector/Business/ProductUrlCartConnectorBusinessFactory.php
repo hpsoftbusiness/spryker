@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductUrlCartConnector\Business;
 
+use Pyz\Zed\Product\Business\ProductFacadeInterface;
 use Pyz\Zed\ProductUrlCartConnector\Business\Expander\ProductUrlExpander;
 use Pyz\Zed\ProductUrlCartConnector\ProductUrlCartConnectorDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -28,9 +29,9 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ProductRelation\Business\ProductRelationFacadeInterface
+     * @return \Pyz\Zed\Product\Business\ProductFacadeInterface
      */
-    protected function getProductFacade()
+    protected function getProductFacade(): ProductFacadeInterface
     {
         return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_PRODUCT);
     }

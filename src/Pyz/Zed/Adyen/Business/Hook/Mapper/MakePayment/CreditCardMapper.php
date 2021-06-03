@@ -18,12 +18,18 @@ use SprykerEco\Zed\Adyen\Business\Hook\Mapper\MakePayment\CreditCardMapper as Sp
 class CreditCardMapper extends SprykerEcoCreditCardMapper
 {
     /**
+     * @var \Pyz\Zed\Adyen\AdyenConfig
+     */
+    protected $config;
+
+    /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\AdyenApiMakePaymentRequestTransfer
      */
-    protected function createMakePaymentRequestTransfer(QuoteTransfer $quoteTransfer): AdyenApiMakePaymentRequestTransfer
-    {
+    protected function createMakePaymentRequestTransfer(
+        QuoteTransfer $quoteTransfer
+    ): AdyenApiMakePaymentRequestTransfer {
         $adyenApiAmountTransfer = $this->createAmountTransfer($quoteTransfer);
 
         return (new AdyenApiMakePaymentRequestTransfer())
@@ -46,7 +52,9 @@ class CreditCardMapper extends SprykerEcoCreditCardMapper
         QuoteTransfer $quoteTransfer,
         AdyenApiAmountTransfer $adyenApiAmountTransfer
     ): ArrayObject {
-        $commissionAmount = (int)round($adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest());
+        $commissionAmount = (int)round(
+            $adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest()
+        );
         $marketplaceAmount = (int)$adyenApiAmountTransfer->getValue() - $commissionAmount;
 
         $marketplaceSplitTransfer = (new AdyenApiSplitTransfer())
@@ -64,9 +72,11 @@ class CreditCardMapper extends SprykerEcoCreditCardMapper
             ->setType(AdyenConfig::SPLIT_TYPE_COMMISSION)
             ->setReference($quoteTransfer->getPayment()->getAdyenPayment()->getSplitCommissionReference());
 
-        return new ArrayObject([
-            $marketplaceSplitTransfer,
-            $commissionSplitTransfer,
-        ]);
+        return new ArrayObject(
+            [
+                $marketplaceSplitTransfer,
+                $commissionSplitTransfer,
+            ]
+        );
     }
 }

@@ -37,3 +37,8 @@ suites:
               - \SprykerTest\Shared\Application\Helper\YvesHelper
               - \SprykerTest\Shared\Application\Helper\ZedHelper
               - \SprykerTest\Zed\SalesOrderThreshold\Helper\SalesOrderThresholdHelper
+#extensions:
+#    enabled:
+#        - Codeception\Extension\Recorder
+#        - Codeception\Extension\RunFailed
+#        - Codeception\Extension\Logger

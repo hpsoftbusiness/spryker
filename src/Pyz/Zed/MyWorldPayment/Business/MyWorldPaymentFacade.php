@@ -39,8 +39,9 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
-    public function sendSmsCodeToCustomer(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer
-    {
+    public function sendSmsCodeToCustomer(
+        MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+    ): MyWorldApiResponseTransfer {
         return $this->getFactory()
             ->createMyWorldPaymentApiRequestDispatcher()
             ->dispatchSendSmsCodeToCustomer($myWorldApiRequestTransfer);
@@ -88,8 +89,10 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return void
      */
-    public function saveMyWorldPaymentData(PaymentDataResponseTransfer $paymentDataResponseTransfer, int $idSalesOrder): void
-    {
+    public function saveMyWorldPaymentData(
+        PaymentDataResponseTransfer $paymentDataResponseTransfer,
+        int $idSalesOrder
+    ): void {
         $this->getEntityManager()->saveMyWorldPayment($paymentDataResponseTransfer, $idSalesOrder);
     }
 
@@ -103,18 +106,6 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
         $this->getFactory()
             ->createEVoucherPaymentCalculator()
             ->recalculateQuote($quoteTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
-    public function recalculateEVoucherPaymentForOrder(CalculableObjectTransfer $calculableObjectTransfer): void
-    {
-        $this->getFactory()
-            ->createEVoucherPaymentCalculator()
-            ->recalculateOrder($calculableObjectTransfer);
     }
 
     /**
@@ -146,20 +137,9 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return void
      */
-    public function recalculateItemsPricesForBenefitVoucherOrder(CalculableObjectTransfer $calculableObjectTransfer): void
-    {
-        $this->getFactory()
-            ->createBenefitVoucherPaymentCalculator()
-            ->recalculateOrder($calculableObjectTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
-    public function recalculateItemsPricesForBenefitVoucherQuote(CalculableObjectTransfer $calculableObjectTransfer): void
-    {
+    public function recalculateItemsPricesForBenefitVoucherQuote(
+        CalculableObjectTransfer $calculableObjectTransfer
+    ): void {
         $this->getFactory()
             ->createBenefitVoucherPaymentCalculator()
             ->recalculateQuote($calculableObjectTransfer);
@@ -170,8 +150,9 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
      */
-    public function calculateAvailablePricesForInternalPayments(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer
-    {
+    public function calculateAvailablePricesForInternalPayments(
+        QuoteTransfer $quoteTransfer
+    ): AvailableInternalPaymentAmountTransfer {
         return $this->getFactory()
             ->createPaymentPriceManager()
             ->getAvailablePriceToPay($quoteTransfer);

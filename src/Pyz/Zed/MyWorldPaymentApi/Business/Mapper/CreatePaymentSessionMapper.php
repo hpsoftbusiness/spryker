@@ -85,6 +85,7 @@ class CreatePaymentSessionMapper extends AbstractMapper implements MyWorldPaymen
             ->getSsoAccessToken()
             ->requireAccessToken();
 
+        /** @var array $flowsTransfer */
         $flowsTransfer = $requestTransfer->getPaymentSessionRequest()->getFlows();
 
         /** @var \Generated\Shared\Transfer\FlowsTransfer $flowTransfer */

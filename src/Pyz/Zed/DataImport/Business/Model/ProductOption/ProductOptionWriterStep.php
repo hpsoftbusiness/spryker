@@ -73,20 +73,31 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
                 ->filterBySku($abstractProductSkuCollection, Criteria::IN)
                 ->find();
 
-            foreach ($abstractProductIdCollection as $idProductAbstract) {
+            foreach ($abstractProductIdCollection as $spyProductAbstract) {
                 SpyProductAbstractProductOptionGroupQuery::create()
                     ->filterByFkProductOptionGroup($productOptionGroupEntity->getIdProductOptionGroup())
-                    ->filterByFkProductAbstract($idProductAbstract)
+                    ->filterByFkProductAbstract($spyProductAbstract)
                     ->findOneOrCreate()
                     ->save();
 
-                $this->addPublishEvents(ProductOptionEvents::PRODUCT_ABSTRACT_PRODUCT_OPTION_PUBLISH, $idProductAbstract);
+                $this->addPublishEvents(
+                    ProductOptionEvents::PRODUCT_ABSTRACT_PRODUCT_OPTION_PUBLISH,
+                    $spyProductAbstract->getIdProductAbstract()
+                );
             }
         }
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $attributes) {
-            $this->findOrCreateTranslation($dataSet[static::KEY_OPTION_NAME_TRANSLATION_KEY], $attributes[static::KEY_OPTION_NAME], $idLocale);
-            $this->findOrCreateTranslation($dataSet[static::KEY_GROUP_NAME_TRANSLATION_KEY], $attributes[static::KEY_GROUP_NAME], $idLocale);
+            $this->findOrCreateTranslation(
+                $dataSet[static::KEY_OPTION_NAME_TRANSLATION_KEY],
+                $attributes[static::KEY_OPTION_NAME],
+                $idLocale
+            );
+            $this->findOrCreateTranslation(
+                $dataSet[static::KEY_GROUP_NAME_TRANSLATION_KEY],
+                $attributes[static::KEY_GROUP_NAME],
+                $idLocale
+            );
         }
     }
 

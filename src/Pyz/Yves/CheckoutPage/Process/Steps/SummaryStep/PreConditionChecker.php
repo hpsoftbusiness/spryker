@@ -60,19 +60,24 @@ class PreConditionChecker implements PreConditionCheckerInterface
     {
         $quoteTransfer->setSmsCode(null);
 
-        if ($this->wasPaymentSessionCreatedSuccessfully($quoteTransfer) && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
+        if ($this->wasPaymentSessionCreatedSuccessfully(
+            $quoteTransfer
+        ) && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
             $myWorldApiRequestTransfer = new MyWorldApiRequestTransfer();
             $myWorldApiRequestTransfer->setPaymentCodeGenerateRequest(
                 (new PaymentCodeGenerateRequestTransfer())
-                ->setSessionId($quoteTransfer->getMyWorldPaymentSessionId())
+                    ->setSessionId($quoteTransfer->getMyWorldPaymentSessionId())
             );
 
-            $myWorldApiResponseTransfer = $this->myWorldPaymentClient->sendSmsCodeToCustomer($myWorldApiRequestTransfer);
+            $myWorldApiResponseTransfer = $this->myWorldPaymentClient->sendSmsCodeToCustomer(
+                $myWorldApiRequestTransfer
+            );
 
             if (!$myWorldApiResponseTransfer->getIsSuccess()) {
                 $myWorldApiResponseTransfer->requireError();
 
-                if ($myWorldApiResponseTransfer->getError()->getErrorCode() === MyWorldPaymentConstants::RESPONSE_ERROR_CODE_GENERATION_NOT_CONFIGURED) {
+                if ($myWorldApiResponseTransfer->getError()->getErrorCode(
+                ) === MyWorldPaymentConstants::RESPONSE_ERROR_CODE_GENERATION_NOT_CONFIGURED) {
                     return true;
                 } else {
                     $this->flashMessenger->addErrorMessage(

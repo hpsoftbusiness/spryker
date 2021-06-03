@@ -11,10 +11,13 @@ use Spryker\Client\SearchElasticsearch\SearchElasticsearchFactory as SprykerSear
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\SearchElasticsearch\Dependency\Client\SearchElasticsearchToLocaleClientInterface;
 
+/**
+ * @method \Pyz\Client\SearchElasticsearch\SearchElasticsearchConfig getConfig()
+ */
 class SearchElasticsearchFactory extends SprykerSearchElasticsearchFactory
 {
     /**
-     * @return \Spryker\Shared\SearchElasticsearch\Dependency\Client\SearchElasticsearchToLocaleClientInterface|\Pyz\Client\Locale\LocaleClientInterface
+     * @return \Spryker\Shared\SearchElasticsearch\Dependency\Client\SearchElasticsearchToLocaleClientInterface
      */
     public function getLocaleClient(): SearchElasticsearchToLocaleClientInterface
     {

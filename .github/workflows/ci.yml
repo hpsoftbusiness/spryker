@@ -76,8 +76,8 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-composer-
 
-#             - name: Composer validate
-#               run: composer validate
+            - name: Composer validate
+              run: composer validate
 
             - name: Composer install
               run: |
@@ -149,12 +149,11 @@ jobs:
             - name: Run CodeStyle checks
               run: vendor/bin/console code:sniff:style
 
-# Should be fixed
-#            - name: Run Architecture rules
-#              run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
-#
-#            - name: Run PHPStan
-#              run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/
+            - name: Run Architecture rules
+              run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+
+            - name: Run PHPStan
+              run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/
 
     php-74-mariadb-acceptance-alpine:
         name: "PHP 7.3 / MariaDB / Acceptance / Alpine"

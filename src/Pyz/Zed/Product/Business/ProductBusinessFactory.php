@@ -40,7 +40,15 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
      */
     public function createCheckedOrderItem(): CheckerOrderItem
     {
-        return new CheckerOrderItem(new SpySalesOrderItemQuery());
+        return new CheckerOrderItem($this->createSpySalesOrderItemQuery());
+    }
+
+    /**
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery
+     */
+    public function createSpySalesOrderItemQuery(): SpySalesOrderItemQuery
+    {
+        return new SpySalesOrderItemQuery();
     }
 
     /**

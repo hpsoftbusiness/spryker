@@ -41,7 +41,7 @@ class CheckoutAvailabilityCest
         $i->expectTo('Availability changed during SM processing.');
         $i->truncateSalesOrderThresholds();
 
-        $i->amOnPage(AvailabilityPresentationTester::FUJITSU_PRODUCT_PAGE);
+        $i->amOnPage(AvailabilityPresentationTester::HEADPHONES_PRODUCT_PAGE);
 
         $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
 
@@ -53,7 +53,7 @@ class CheckoutAvailabilityCest
         $i->amZed();
         $i->amLoggedInUser();
 
-        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, AvailabilityPresentationTester::FUJITSU_PRODUCT_ID));
+        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, AvailabilityPresentationTester::HEADPHONES_PRODUCT_ID));
 
         $i->waitForElementVisible(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH, 30);
         $reservedProductsBefore = $i->grabTextFrom(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH);
@@ -71,7 +71,7 @@ class CheckoutAvailabilityCest
         $i->click(sprintf(OrderDetailPage::OMS_EVENT_TRIGGER_XPATH, 'return'));
         $i->click(sprintf(OrderDetailPage::OMS_EVENT_TRIGGER_XPATH, 'refund'));
 
-        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, AvailabilityPresentationTester::FUJITSU_PRODUCT_ID));
+        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, AvailabilityPresentationTester::HEADPHONES_PRODUCT_ID));
 
         $i->waitForElementVisible(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH, 10);
         $reservedProductsAfter = $i->grabTextFrom(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH);

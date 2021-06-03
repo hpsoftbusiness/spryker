@@ -11,6 +11,9 @@ use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
 use Generated\Shared\Transfer\ProductManagementAttributeTransfer;
 use Spryker\Zed\ProductAttribute\Business\ProductAttributeFacade as SprykerProductAttributeFacade;
 
+/**
+ * @method \Pyz\Zed\ProductAttribute\Business\ProductAttributeBusinessFactory getFactory()
+ */
 class ProductAttributeFacade extends SprykerProductAttributeFacade implements ProductAttributeFacadeInterface
 {
     /**

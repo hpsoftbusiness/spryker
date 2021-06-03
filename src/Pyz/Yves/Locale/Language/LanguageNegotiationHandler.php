@@ -61,7 +61,7 @@ class LanguageNegotiationHandler implements LanguageNegotiationHandlerInterface
      */
     private function findAcceptedLanguage(string $acceptLanguage, array $storeCountries): ?AcceptLanguage
     {
-        /** @var \Negotiation\AcceptLanguage $acceptedLanguage */
+        /** @var \Negotiation\AcceptLanguage|null $acceptedLanguage */
         $acceptedLanguage = $this->negotiator->getBest($acceptLanguage, $storeCountries);
 
         return $acceptedLanguage;

@@ -15,6 +15,9 @@ use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
+/**
+ * @method \Pyz\Client\SearchElasticsearch\SearchElasticsearchFactory getFactory()
+ */
 class CmsPageFilterQueryExpanderPlugin extends AbstractPlugin implements QueryExpanderPluginInterface
 {
     protected const FILTER_TYPE = 'cms_page';
@@ -64,11 +67,13 @@ class CmsPageFilterQueryExpanderPlugin extends AbstractPlugin implements QueryEx
     {
         $boolQuery = $query->getQuery();
         if (!$boolQuery instanceof BoolQuery) {
-            throw new InvalidArgumentException(sprintf(
-                'Is Active query expander available only with %s, got: %s',
-                BoolQuery::class,
-                get_class($boolQuery)
-            ));
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Is Active query expander available only with %s, got: %s',
+                    BoolQuery::class,
+                    get_class($boolQuery)
+                )
+            );
         }
 
         return $boolQuery;

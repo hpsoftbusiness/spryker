@@ -17,6 +17,7 @@ use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Shared\Nopayment\NopaymentConfig;
+use Spryker\Shared\Translator\TranslatorInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginWithMessengerInterface;
@@ -25,7 +26,6 @@ use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationCli
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep as SprykerShopPaymentStep;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PaymentStep extends SprykerShopPaymentStep
 {
@@ -52,14 +52,14 @@ class PaymentStep extends SprykerShopPaymentStep
     private $preConditionChecker;
 
     /**
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
+     * @param \Spryker\Shared\Translator\TranslatorInterface $translator
      * @param \Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface $myWorldPaymentClient
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface $paymentClient
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection|string $paymentPlugins
+     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $paymentPlugins
      * @param string $stepRoute
      * @param string $escapeRoute
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface|array $calculationClient
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
      * @param array $checkoutPaymentStepEnterPreCheckPlugins
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCheckerInterface $productSellableChecker
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface $preConditionChecker
@@ -98,7 +98,7 @@ class PaymentStep extends SprykerShopPaymentStep
      *
      * @return bool
      */
-    public function requireInput(AbstractTransfer $quoteTransfer)
+    public function requireInput(AbstractTransfer $quoteTransfer): bool
     {
         return true;
     }
@@ -143,10 +143,13 @@ class PaymentStep extends SprykerShopPaymentStep
      */
     public function postCondition(AbstractTransfer $quoteTransfer): bool
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         $isQuoteValid = parent::postCondition($quoteTransfer);
 
         if ($isQuoteValid) {
-            if ($this->isInternalPaymentMethodSelected($quoteTransfer) && !$quoteTransfer->getMyWorldPaymentSessionId()) {
+            /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
+            if ($this->isInternalPaymentMethodSelected($quoteTransfer) &&
+                !$quoteTransfer->getMyWorldPaymentSessionId()) {
                 $isQuoteValid = false;
             }
         }
@@ -189,6 +192,7 @@ class PaymentStep extends SprykerShopPaymentStep
      */
     public function execute(Request $request, AbstractTransfer $quoteTransfer)
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         if (!$this->executeCheckoutPaymentStepEnterPreCheckPlugins($quoteTransfer)) {
             return $quoteTransfer;
         }
@@ -222,7 +226,7 @@ class PaymentStep extends SprykerShopPaymentStep
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $abstractTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $abstractTransfer
      *
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null
      */
@@ -240,7 +244,8 @@ class PaymentStep extends SprykerShopPaymentStep
                 $abstractTransfer->setMyWorldPaymentIsSmsAuthenticationRequired(
                     in_array('SMS', $paymentSessionResponse->getPaymentSessionResponse()->getTwoFactorAuth())
                 );
-            } elseif ($this->isCustomerHasAmountOfVouchers($abstractTransfer->getCustomer()) && !$paymentSessionResponse->getIsSuccess()) {
+            } elseif ($this->isCustomerHasAmountOfVouchers($abstractTransfer->getCustomer()) &&
+                !$paymentSessionResponse->getIsSuccess()) {
                 $this->flashMessenger->addErrorMessage(
                     $this->translator->trans(static::API_ERROR_MESSAGE)
                 );

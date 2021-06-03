@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Pyz\Shared\Sso\SsoConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
@@ -247,3 +248,5 @@ require 'common/config_adyen-development.php';
 // >>> SSO
 
 require 'common/config_sso-development.php';
+
+$config[SsoConstants::SSO_LOGIN_ENABLED] = false;

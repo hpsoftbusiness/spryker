@@ -10,6 +10,9 @@ namespace Pyz\Zed\ProductAttribute\Communication\Controller;
 use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
+/**
+ * @method \Pyz\Zed\ProductAttribute\Business\ProductAttributeFacade getFacade()
+ */
 class GatewayController extends AbstractGatewayController
 {
     /**

@@ -28,7 +28,9 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
-    public function sendSmsCodeToCustomer(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
+    public function sendSmsCodeToCustomer(
+        MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+    ): MyWorldApiResponseTransfer;
 
     /**
      * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
@@ -57,7 +59,10 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return void
      */
-    public function saveMyWorldPaymentData(PaymentDataResponseTransfer $paymentDataResponseTransfer, int $idSalesOrder): void;
+    public function saveMyWorldPaymentData(
+        PaymentDataResponseTransfer $paymentDataResponseTransfer,
+        int $idSalesOrder
+    ): void;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
@@ -71,21 +76,9 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return void
      */
-    public function recalculateItemsPricesForBenefitVoucherOrder(CalculableObjectTransfer $calculableObjectTransfer): void;
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
-    public function recalculateItemsPricesForBenefitVoucherQuote(CalculableObjectTransfer $calculableObjectTransfer): void;
-
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
-    public function recalculateEVoucherPaymentForOrder(CalculableObjectTransfer $calculableObjectTransfer): void;
+    public function recalculateItemsPricesForBenefitVoucherQuote(
+        CalculableObjectTransfer $calculableObjectTransfer
+    ): void;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
@@ -106,7 +99,9 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
      */
-    public function calculateAvailablePricesForInternalPayments(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer;
+    public function calculateAvailablePricesForInternalPayments(
+        QuoteTransfer $quoteTransfer
+    ): AvailableInternalPaymentAmountTransfer;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer

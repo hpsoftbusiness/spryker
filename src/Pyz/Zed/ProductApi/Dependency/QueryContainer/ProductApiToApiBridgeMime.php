@@ -10,7 +10,7 @@ namespace Pyz\Zed\ProductApi\Dependency\QueryContainer;
 use Generated\Shared\Transfer\ApiItemTransfer;
 use Spryker\Zed\Api\Persistence\ApiQueryContainerInterface;
 
-class ProductApiToApiBridge implements ProductApiToApiInterface
+class ProductApiToApiBridgeMime implements ProductApiToApiInterface
 {
     /**
      * @var \Spryker\Zed\Api\Persistence\ApiQueryContainerInterface

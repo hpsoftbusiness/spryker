@@ -8,6 +8,8 @@
 namespace Pyz\Yves\CheckoutPage\Process;
 
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
+use Pyz\Client\Quote\QuoteClientInterface;
+use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\AdyenCreditCard3dSecureStep;
@@ -28,15 +30,13 @@ use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PostConditionChecker as Summ
 use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PreConditionChecker as SummaryStepPreConditionChecker;
 use Pyz\Yves\StepEngine\Process\StepCollection;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use Spryker\Shared\Translator\TranslatorInterface;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin as SprykerShopCheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
@@ -72,19 +72,21 @@ class StepFactory extends SprykerShopStepFactory
      */
     public function getSteps(): array
     {
-        return array_filter([
-            $this->createEntryStep(),
-            $this->createPyzCustomerStep(),
-            $this->createAddressStep(),
-            $this->createPyzShipmentStep(),
-            $this->getConfig()->isBenefitDealFeatureEnabled() ? $this->createBenefitStep() : null,
-            $this->createPaymentStep(),
-            $this->createSummaryStep(),
-            $this->createPlaceOrderStep(),
-            $this->createAdyenCreditCard3dSecureStep(),
-            $this->createSuccessStep(),
-            $this->createErrorStep(),
-        ]);
+        return array_filter(
+            [
+                $this->createEntryStep(),
+                $this->createPyzCustomerStep(),
+                $this->createAddressStep(),
+                $this->createPyzShipmentStep(),
+                $this->getConfig()->isBenefitDealFeatureEnabled() ? $this->createBenefitStep() : null,
+                $this->createPaymentStep(),
+                $this->createSummaryStep(),
+                $this->createPlaceOrderStep(),
+                $this->createAdyenCreditCard3dSecureStep(),
+                $this->createSuccessStep(),
+                $this->createErrorStep(),
+            ]
+        );
     }
 
     /**
@@ -141,7 +143,7 @@ class StepFactory extends SprykerShopStepFactory
     public function createBenefitStep()
     {
         return new BenefitDealStep(
-            $this->getCustomerService(),
+            $this->getPyzCustomerService(),
             $this->createBenefitDealBreadcrumbStatusChecker(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_BENEFIT,
             $this->getConfig()->getEscapeRoute()
@@ -153,10 +155,12 @@ class StepFactory extends SprykerShopStepFactory
      */
     public function createBenefitDealBreadcrumbStatusChecker(): BreadcrumbStatusCheckerInterface
     {
-        return new BreadcrumbStatusChecker([
-            $this->createAddressStepPostConditionChecker(),
-            $this->createShipmentStepPostConditionChecker(),
-        ]);
+        return new BreadcrumbStatusChecker(
+            [
+                $this->createAddressStepPostConditionChecker(),
+                $this->createShipmentStepPostConditionChecker(),
+            ]
+        );
     }
 
     /**
@@ -220,12 +224,12 @@ class StepFactory extends SprykerShopStepFactory
         return new ErrorStep(
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
             $this->getConfig()->getEscapeRoute(),
-            $this->getQuoteClient()
+            $this->getPyzQuoteClient()
         );
     }
 
     /**
-     * @return \Symfony\Contracts\Translation\TranslatorInterface
+     * @return \Spryker\Shared\Translator\TranslatorInterface
      */
     public function getTranslatorService(): TranslatorInterface
     {
@@ -290,22 +294,22 @@ class StepFactory extends SprykerShopStepFactory
         return new PaymentPreConditionChecker(
             $this->getFlashMessenger(),
             $this->getTranslatorService(),
-            $this->getCustomerService()
+            $this->getPyzCustomerService()
         );
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface|\Pyz\Service\Customer\CustomerServiceInterface
+     * @return \Pyz\Service\Customer\CustomerServiceInterface
      */
-    public function getCustomerService(): CheckoutPageToCustomerServiceInterface
+    public function getPyzCustomerService(): CustomerServiceInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_CUSTOMER);
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface|\Spryker\Client\Quote\QuoteClientInterface
+     * @return \Pyz\Client\Quote\QuoteClientInterface
      */
-    public function getQuoteClient(): CheckoutPageToQuoteClientInterface
+    public function getPyzQuoteClient(): QuoteClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_QUOTE);
     }

@@ -91,7 +91,10 @@ class ProductSetIdsWidget extends AbstractWidget
      */
     protected function getProductSetDataStorageTransfer(int $idProductSet): ?ProductSetDataStorageTransfer
     {
-        return $this->getFactory()->getProductSetStorageClient()->getProductSetByIdProductSet($idProductSet, $this->getLocale());
+        return $this->getFactory()->getProductSetStorageClient()->getProductSetByIdProductSet(
+            $idProductSet,
+            $this->getLocale()
+        );
     }
 
     /**
@@ -127,7 +130,8 @@ class ProductSetIdsWidget extends AbstractWidget
      */
     protected function getSelectedAttributes(int $idProductAbstract): array
     {
-        $attributes = $this->getRequest()->query->get(static::PARAM_ATTRIBUTE, []);
+        $attributes = $this->getRequest()->query->get(static::PARAM_ATTRIBUTE);
+        $attributes = $this->toArray($attributes);
 
         return isset($attributes[$idProductAbstract]) ? array_filter($attributes[$idProductAbstract]) : [];
     }
@@ -138,5 +142,19 @@ class ProductSetIdsWidget extends AbstractWidget
     protected function getRequest(): Request
     {
         return $this->getApplication()['request'];
+    }
+
+    /**
+     * @param mixed $attributes
+     *
+     * @return array
+     */
+    private function toArray($attributes): array
+    {
+        if ($attributes === null) {
+            return [];
+        }
+
+        return is_array($attributes) ? $attributes : [];
     }
 }

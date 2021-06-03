@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\ApiResponseTransfer;
 use Pyz\Shared\Api\ApiConstants;
 use Pyz\Zed\Api\Communication\Transformer\SimpleTransformer;
 use Spryker\Zed\Api\Communication\ApiCommunicationFactory as SprykerApiCommunicationFactory;
-use Spryker\Zed\Api\Communication\Transformer\Transformer;
 use Spryker\Zed\Api\Communication\Transformer\TransformerInterface;
 
 /**
@@ -32,15 +31,22 @@ class ApiCommunicationFactory extends SprykerApiCommunicationFactory
     ): TransformerInterface {
         switch ($apiResponseTransfer->getTransformerType()) {
             case ApiConstants::TRANSFORMER_SIMPLE:
-                return new SimpleTransformer(
-                    $this->createFormatter($apiRequestTransfer->getFormatType()),
-                    $this->getConfig()
-                );
+                return $this->createSimpleTransformer($apiRequestTransfer);
             default:
-                return new Transformer(
-                    $this->createFormatter($apiRequestTransfer->getFormatType()),
-                    $this->getConfig()
-                );
+                return $this->createTransformer($apiRequestTransfer);
         }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
+     *
+     * @return \Pyz\Zed\Api\Communication\Transformer\SimpleTransformer
+     */
+    public function createSimpleTransformer(ApiRequestTransfer $apiRequestTransfer): SimpleTransformer
+    {
+        return new SimpleTransformer(
+            $this->createFormatter($apiRequestTransfer->getFormatType()),
+            $this->getConfig()
+        );
     }
 }

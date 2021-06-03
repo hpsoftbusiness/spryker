@@ -32,8 +32,11 @@ class MyWorldMarketplaceApiClient extends AbstractClient implements MyWorldMarke
      *
      * @return \Generated\Shared\Transfer\MyWorldMarketplaceApiResponseTransfer
      */
-    public function performApiRequest(string $url, array $requestParams = [], string $requestMethod = 'POST'): MyWorldMarketplaceApiResponseTransfer
-    {
+    public function performApiRequest(
+        string $url,
+        array $requestParams = [],
+        string $requestMethod = 'POST'
+    ): MyWorldMarketplaceApiResponseTransfer {
         return $this->getFactory()->createRequest()->request($url, $requestParams, $requestMethod);
     }
 
@@ -44,7 +47,9 @@ class MyWorldMarketplaceApiClient extends AbstractClient implements MyWorldMarke
      */
     public function getCustomerInformationByCustomerNumberOrId(CustomerTransfer $customerTransfer): CustomerTransfer
     {
-        return $this->getFactory()->createCustomerInformationByCustomerNumber()->getCustomerInformationByCustomerNumber($customerTransfer);
+        return $this->getFactory()->createCustomerInformationByCustomerNumber()->getCustomerInformationByCustomerNumber(
+            $customerTransfer
+        );
     }
 
     /**
@@ -53,8 +58,13 @@ class MyWorldMarketplaceApiClient extends AbstractClient implements MyWorldMarke
      *
      * @return \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[]
      */
-    public function getCustomerBalanceByCurrency(CustomerTransfer $customerTransfer, ?string $currencyCode = null): array
-    {
-        return $this->getFactory()->createCustomerBalanceRequestHandler()->getCustomerBalancesByCurrency($customerTransfer, $currencyCode);
+    public function getCustomerBalanceByCurrency(
+        CustomerTransfer $customerTransfer,
+        ?string $currencyCode = null
+    ): array {
+        return $this->getFactory()->createCustomerBalanceRequestHandler()->getCustomerBalancesByCurrency(
+            $customerTransfer,
+            $currencyCode
+        );
     }
 }

@@ -60,7 +60,7 @@ abstract class AbstractAdapter implements MyWorldPaymentApiAdapterInterface
     protected $myWorldApiRequestTransfer;
 
     /**
-     * @var false
+     * @var bool
      */
     private $isSubToken = false;
 

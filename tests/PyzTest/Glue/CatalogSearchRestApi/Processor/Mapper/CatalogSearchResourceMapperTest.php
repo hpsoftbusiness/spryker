@@ -146,6 +146,6 @@ class CatalogSearchResourceMapperTest extends Unit
      */
     private function createCatalogSearchResourceMapper(): CatalogSearchResourceMapperInterface
     {
-        return new CatalogSearchResourceMapper($this->currencyClientMock);
+        return new CatalogSearchResourceMapper($this->currencyClientMock, []);
     }
 }

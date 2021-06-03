@@ -25,6 +25,7 @@ class CatalogController extends SprykerCatalogController
             static function (AbstractTransfer $facetResultTransfer): bool {
                 /**
                  * @var \Generated\Shared\Transfer\FacetConfigTransfer|null $config
+                 * @var \Generated\Shared\Transfer\RangeSearchResultTransfer|\Generated\Shared\Transfer\FacetSearchResultTransfer $facetResultTransfer
                  */
                 $config = $facetResultTransfer->getConfig();
                 if (!$facetResultTransfer->getConfig()) {

@@ -21,8 +21,10 @@ class ProductExpander extends SprykerProductExpander
      *
      * @return void
      */
-    protected function expandItemWithProductConcrete(ProductConcreteTransfer $productConcreteTransfer, ItemTransfer $itemTransfer)
-    {
+    protected function expandItemWithProductConcrete(
+        ProductConcreteTransfer $productConcreteTransfer,
+        ItemTransfer $itemTransfer
+    ) {
         $localizedProductName = $this->productFacade->getLocalizedProductConcreteName(
             $productConcreteTransfer,
             $this->localeFacade->getCurrentLocale()
@@ -47,10 +49,12 @@ class ProductExpander extends SprykerProductExpander
     protected function getLocalizedAttributes(ProductConcreteTransfer $productConcreteTransfer): array
     {
         $localizedAttributes = [];
-        foreach ($productConcreteTransfer->getLocalizedAttributes() as $productConcretelocalizedAttributes) {
-            $localizedAttributesData = json_decode($productConcretelocalizedAttributes->getAttributes(), true);
+        foreach ($productConcreteTransfer->getLocalizedAttributes() as $productConcreteLocalizedAttributes) {
+            // @phpstan-ignore-next-line
+            $localizedAttributesData = json_decode($productConcreteLocalizedAttributes->getAttributes(), true);
             $filteredLocalizedAttributesData = $this->filterSellableAttributes($localizedAttributesData);
-            $localizedAttributes[$productConcretelocalizedAttributes->getLocale()->getLocaleName()] = $filteredLocalizedAttributesData;
+            $localizedAttributes[$productConcreteLocalizedAttributes->getLocale()->getLocaleName()] =
+                $filteredLocalizedAttributesData;
         }
 
         return $localizedAttributes;
@@ -64,7 +68,10 @@ class ProductExpander extends SprykerProductExpander
     protected function filterSellableAttributes(array $localizedAttributes): array
     {
         foreach ($localizedAttributes as $localizedAttributeKey => $localizedAttributeValue) {
-            if (strpos($localizedAttributeKey, static::KEY_SELLABLE_ATTRIBUTE) !== false && !(bool)$localizedAttributeValue) {
+            if (strpos(
+                $localizedAttributeKey,
+                static::KEY_SELLABLE_ATTRIBUTE
+            ) !== false && !(bool)$localizedAttributeValue) {
                 unset($localizedAttributes[$localizedAttributeKey]);
             }
         }

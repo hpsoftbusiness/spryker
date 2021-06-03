@@ -30,8 +30,10 @@ class CurrencyEventDispatcherPlugin extends AbstractPlugin implements EventDispa
      *
      * @return \Spryker\Shared\EventDispatcher\EventDispatcherInterface
      */
-    public function extend(EventDispatcherInterface $eventDispatcher, ContainerInterface $container): EventDispatcherInterface
-    {
+    public function extend(
+        EventDispatcherInterface $eventDispatcher,
+        ContainerInterface $container
+    ): EventDispatcherInterface {
         if (!$this->getConfig()->isMultiCurrencyEnabled()) {
             return $eventDispatcher;
         }
@@ -74,7 +76,7 @@ class CurrencyEventDispatcherPlugin extends AbstractPlugin implements EventDispa
     private function getCustomerTransfer(ContainerInterface $container): ?CustomerTransfer
     {
         /**
-         * @var \SprykerShop\Yves\CustomerPage\Security\Customer $customer
+         * @var \SprykerShop\Yves\CustomerPage\Security\Customer|null $customer
          */
         $customer = $container->get(self::SERVICE_USER);
 

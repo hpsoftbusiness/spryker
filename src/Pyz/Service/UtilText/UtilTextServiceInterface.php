@@ -15,6 +15,8 @@ interface UtilTextServiceInterface extends SprykerUtilTextServiceInterface
      * Specification:
      * - Converts CamelCased string to snake_case.
      *
+     * @api
+     *
      * @param string $string
      *
      * @return string

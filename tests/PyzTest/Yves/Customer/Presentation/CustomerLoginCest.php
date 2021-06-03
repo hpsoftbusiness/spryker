@@ -7,9 +7,9 @@
 
 namespace PyzTest\Yves\Customer\Presentation;
 
+use PyzTest\Yves\Application\PageObject\Homepage;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
-use PyzTest\Yves\Customer\PageObject\CustomerOverviewPage;
 use PyzTest\Yves\Customer\PageObject\CustomerPasswordForgottenPage;
 
 /**
@@ -25,8 +25,6 @@ use PyzTest\Yves\Customer\PageObject\CustomerPasswordForgottenPage;
 class CustomerLoginCest
 {
     /**
-     * @skip
-     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -38,8 +36,6 @@ class CustomerLoginCest
     }
 
     /**
-     * @skip
-     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -52,7 +48,7 @@ class CustomerLoginCest
     }
 
     /**
-     * @skip
+     * @group qwerty
      *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
@@ -63,6 +59,6 @@ class CustomerLoginCest
         $i->amOnPage(CustomerLoginPage::URL);
         $customerTransfer = $i->haveRegisteredCustomer();
         $i->submitLoginForm($customerTransfer->getEmail(), $customerTransfer->getPassword());
-        $i->seeCurrentUrlEquals(CustomerOverviewPage::URL);
+        $i->seeCurrentUrlEquals(Homepage::URL);
     }
 }

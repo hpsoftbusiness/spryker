@@ -66,7 +66,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     protected static $priceProductStoreIds = [];
 
     /**
-     * @var int[]
+     * @var array
      */
     protected static $priceProductIds = [];
 
@@ -332,11 +332,19 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
 
         foreach ($result as $columns) {
             static::$priceProductIds[] = [
-                ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT => $columns[ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT],
-                ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT => $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT],
+                ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT =>
+                    $columns[ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT],
+                ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT =>
+                    $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT],
             ];
-            DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
-            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+            DataImporterPublisher::addEvent(
+                PriceProductEvents::PRICE_ABSTRACT_PUBLISH,
+                $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]
+            );
+            DataImporterPublisher::addEvent(
+                ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
+                $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]
+            );
         }
     }
 
@@ -352,10 +360,14 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
 
         foreach ($result as $columns) {
             static::$priceProductIds[] = [
-                ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT => $columns[ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT],
+                ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT =>
+                    $columns[ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT],
                 ProductPriceHydratorStep::KEY_ID_PRODUCT => $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT],
             ];
-            DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]);
+            DataImporterPublisher::addEvent(
+                PriceProductEvents::PRICE_CONCRETE_PUBLISH,
+                $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]
+            );
         }
     }
 

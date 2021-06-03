@@ -12,7 +12,7 @@ use Orm\Zed\Product\Persistence\SpyProductAttributeKeyQuery;
 class DefaultAttributeManager implements DefaultAttributeManagerInterface
 {
     /**
-     * @var null[]
+     * @var string[]
      */
     private $attributes = [
         'sellable_ae',

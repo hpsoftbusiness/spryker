@@ -16,6 +16,8 @@ interface UtilPollingServiceInterface
      * - Break condition callable needs to accept one parameter - request function's response and return boolean value.
      * - Returns result of the last $requestFunction invocation.
      *
+     * @api
+     *
      * @param callable $requestFunction
      * @param callable $breakCondition
      * @param int $timeInterval

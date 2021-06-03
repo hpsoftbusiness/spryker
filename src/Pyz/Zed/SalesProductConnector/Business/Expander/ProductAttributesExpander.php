@@ -51,7 +51,8 @@ class ProductAttributesExpander implements ProductAttributesExpanderInterface
     public function expandOrderItemsWithProductAttributes(array $itemTransfers): array
     {
         $productConcreteSkus = $this->extractProductConcreteSkus($itemTransfers);
-        $productConcreteTransfers = $this->salesProductConnectorRepository->getRawProductConcreteTransfersByConcreteSkus($productConcreteSkus);
+        $productConcreteTransfers = $this->salesProductConnectorRepository
+            ->getRawProductConcreteTransfersByConcreteSkus($productConcreteSkus);
         $mappedProductConcreteTransfers = $this->indexProductConcreteTransfersBySku($productConcreteTransfers);
 
         foreach ($itemTransfers as $itemTransfer) {
@@ -60,9 +61,9 @@ class ProductAttributesExpander implements ProductAttributesExpanderInterface
             if (!$productConcreteTransfer) {
                 continue;
             }
-
             $itemTransfer->setConcreteAttributes(
                 array_merge(
+                    // @phpstan-ignore-next-line
                     $this->utilEncodingService->decodeJson($productConcreteTransfer->getAttributes(), true),
                     $this->extractLocalizedAttributesByCurrentLocaleCode($productConcreteTransfer)
                 )
@@ -82,6 +83,7 @@ class ProductAttributesExpander implements ProductAttributesExpanderInterface
         $currentIdLocale = $this->localeFacade->getCurrentLocale()->getIdLocale();
         foreach ($productConcreteTransfer->getLocalizedAttributes() as $localizedAttribute) {
             if ($localizedAttribute->getLocale()->getIdLocale() === $currentIdLocale) {
+                // @phpstan-ignore-next-line
                 return $this->utilEncodingService->decodeJson($localizedAttribute->getAttributes(), true);
             }
         }

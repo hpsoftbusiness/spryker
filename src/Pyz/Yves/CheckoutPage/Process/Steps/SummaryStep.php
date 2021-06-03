@@ -21,12 +21,12 @@ use Symfony\Component\HttpFoundation\Request;
 class SummaryStep extends SprykerSummaryStep
 {
     /**
-     * @var \Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PreConditionChecker
+     * @var \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface
      */
     private $preConditionChecker;
 
     /**
-     * @var \Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PostConditionChecker
+     * @var \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
      */
     private $postConditionChecker;
 
@@ -50,7 +50,15 @@ class SummaryStep extends SprykerSummaryStep
         PreConditionCheckerInterface $preConditionChecker,
         PostConditionCheckerInterface $postConditionChecker
     ) {
-        parent::__construct($productBundleClient, $shipmentService, $checkoutPageConfig, $stepRoute, $escapeRoute, $checkoutClient);
+        parent::__construct(
+            $productBundleClient,
+            $shipmentService,
+            $checkoutPageConfig,
+            $stepRoute,
+            $escapeRoute,
+            $checkoutClient
+        );
+
         $this->preConditionChecker = $preConditionChecker;
         $this->postConditionChecker = $postConditionChecker;
     }

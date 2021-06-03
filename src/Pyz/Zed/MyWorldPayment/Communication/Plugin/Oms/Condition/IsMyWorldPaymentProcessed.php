@@ -22,7 +22,7 @@ class IsMyWorldPaymentProcessed extends AbstractPlugin implements ConditionInter
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
-     * @return bool|void
+     * @return bool
      */
     public function check(SpySalesOrderItem $orderItem): bool
     {

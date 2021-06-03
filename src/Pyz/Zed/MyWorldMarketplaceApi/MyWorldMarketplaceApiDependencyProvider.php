@@ -23,6 +23,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     public const PROPEL_QUERY_SALES_ORDER_ITEM = 'PROPEL_QUERY_SALES_ORDER_ITEM';
+    public const SSO_CLIENT = 'SSO_CLIENT';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -51,6 +52,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
         $container = $this->addCalculationFacade($container);
         $container = $this->addRefundFacade($container);
         $container = $this->addMyWorldMarketplaceApiClient($container);
+        $container = $this->addSsoClient($container);
 
         return $container;
     }
@@ -161,6 +163,20 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
     {
         $container->set(static::FACADE_REFUND, function (Container $container) {
             return $container->getLocator()->refund()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addSsoClient(Container $container): Container
+    {
+        $container->set(static::SSO_CLIENT, function (Container $container) {
+            return $container->getLocator()->sso()->client();
         });
 
         return $container;

@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\Event\Business;
 
-use Spryker\Zed\Event\Business\EventFacade as SprykerEventFacade;
+use Spryker\Zed\Product\Dependency\Facade\ProductToEventInterface;
 
-class EventFacade extends SprykerEventFacade implements EventFacadeInterface
+interface EventFacadeInterface extends ProductToEventInterface
 {
 }

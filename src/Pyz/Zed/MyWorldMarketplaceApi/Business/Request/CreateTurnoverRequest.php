@@ -119,14 +119,16 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
         $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
         $accessTokenTransfer->requireAccessToken();
 
-        $requestBody = $this->utilEncodingService->encodeJson([
-            'Reference' => $this->getTurnoverReference($orderTransfer),
-            'Date' => date(DateTime::ISO8601, strtotime($orderTransfer->getCreatedAt())),
-            'Amount' => (string)bcdiv($orderTransfer->getTotals()->getPriceToPay(), 100, 2),
-            'Currency' => $orderTransfer->getCurrencyIsoCode(),
-            'SegmentNumber' => static::SEGMENT_NUMBER,
-            'ProfileIdentifier' => $this->getDealerId($orderTransfer),
-        ]);
+        $requestBody = $this->utilEncodingService->encodeJson(
+            [
+                'Reference' => $this->getTurnoverReference($orderTransfer),
+                'Date' => date(DateTime::ISO8601, strtotime($orderTransfer->getCreatedAt())),
+                'Amount' => bcdiv((string)$orderTransfer->getTotals()->getPriceToPay(), '100', 2),
+                'Currency' => $orderTransfer->getCurrencyIsoCode(),
+                'SegmentNumber' => static::SEGMENT_NUMBER,
+                'ProfileIdentifier' => $this->getDealerId($orderTransfer),
+            ]
+        );
 
         return [
             'headers' => [

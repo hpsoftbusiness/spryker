@@ -32,17 +32,20 @@ class BenefitFormDataProvider implements StepEngineFormDataProviderInterface
      */
     public function getOptions(AbstractTransfer $quoteTransfer)
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         return [
             BenefitDealCollectionForm::OPTION_KEY_ITEMS => array_reduce(
                 $quoteTransfer->getItems()->getArrayCopy(),
                 function (ArrayObject $carry, ItemTransfer $itemTransfer) {
-                    if ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+                    if ($itemTransfer->getShoppingPointsDeal() &&
+                        $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
                         $carry->append($itemTransfer);
 
                         return $carry;
                     }
 
-                    if ($itemTransfer->getBenefitVoucherDealData() && $itemTransfer->getBenefitVoucherDealData()->getIsStore()) {
+                    if ($itemTransfer->getBenefitVoucherDealData() &&
+                        $itemTransfer->getBenefitVoucherDealData()->getIsStore()) {
                         $carry->append($itemTransfer);
                     }
 

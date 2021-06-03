@@ -24,8 +24,6 @@ use Spryker\Shared\ProductRelation\ProductRelationTypes;
 class ProductRelationCreateRelationCest
 {
     /**
-     * @skip
-     *
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
      *
      * @return void
@@ -41,13 +39,13 @@ class ProductRelationCreateRelationCest
 
         $i->fillField('//*[@id="product_relation_productRelationKey"]', uniqid('key-', false));
         $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
-        $i->filterProductsByName('Samsung Bundle');
+        $i->filterProductsByName('EliteClub');
         $i->wait(5);
-        $i->selectProduct(214);
+        $i->selectProduct('0008');
 
         $i->switchToAssignProductsTab();
 
-        $i->selectProductRule('product_sku', 'equal', '123');
+        $i->selectProductRule('product_sku', 'equal', (string)rand(5, 200));
 
         $i->clickSaveButton();
 

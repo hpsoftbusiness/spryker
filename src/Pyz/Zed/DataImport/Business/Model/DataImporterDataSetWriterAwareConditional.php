@@ -78,9 +78,7 @@ class DataImporterDataSetWriterAwareConditional extends DataImporterDataSetWrite
                 $imported = $imported + $dataImporterReportTransfer->getImportedDataSetCount();
 
                 if ($dataImportException instanceof TransactionRolledBackAwareExceptionInterface) {
-                    if ($rolledCount > 1) {
-                        $rolledCount = $dataImportException->getRolledBackRowsCount();
-                    }
+                    $rolledCount = $dataImportException->getRolledBackRowsCount();
                     $dataImporterReportTransfer = $this->recalculateImportedDataSetCount(
                         $dataImporterReportTransfer,
                         $dataImportException
@@ -88,7 +86,7 @@ class DataImporterDataSetWriterAwareConditional extends DataImporterDataSetWrite
                 }
                 $countError = count($dataImporterReportTransfer->getMessages());
                 $dataSetPosition = $dataImporterReportTransfer->getImportedDataSetCount(
-                ) + $countError + $rolledCount + + $imported + 1;
+                ) + $countError + $rolledCount + $imported + 1;
                 $exceptionMessage = $this->buildExceptionMessage(
                     $dataImportException,
                     $dataSetPosition

@@ -84,6 +84,8 @@ services:
         engine: jenkins
     mail_catcher:
         engine: mailhog
+    webdriver:
+        engine: chromedriver
 
 docker:
 

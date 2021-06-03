@@ -21,6 +21,8 @@ class CurrencyClient extends SprykerCurrencyClient implements CurrencyClientInte
      */
     public function setCurrentCurrencyByLocale(string $localeName): void
     {
-        $this->getFactory()->createCurrencyUpdater()->setCurrentCurrencyByLocale($localeName);
+        /** @var \Pyz\Client\Currency\CurrencyChange\CurrencyUpdaterInterface $currencyUpdater */
+        $currencyUpdater = $this->getFactory()->createCurrencyUpdater();
+        $currencyUpdater->setCurrentCurrencyByLocale($localeName);
     }
 }

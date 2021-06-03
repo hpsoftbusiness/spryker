@@ -36,7 +36,7 @@ class AvailabilityAddToCartCest
 
         $i->amLoggedInCustomer();
 
-        $i->amOnPage(AvailabilityPresentationTester::ADD_FUJITSU2_PRODUCT_TO_CART_URL);
+        $i->amOnPage(AvailabilityPresentationTester::ADD_HEADPHONES_PRODUCT_TO_CART_URL);
 
         $i->see(CartListPage::CART_HEADER);
 

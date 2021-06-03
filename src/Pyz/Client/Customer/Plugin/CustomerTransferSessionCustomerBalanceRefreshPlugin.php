@@ -15,7 +15,8 @@ use Spryker\Client\Kernel\AbstractPlugin;
  * @method \Pyz\Client\Customer\CustomerClientInterface getClient()
  * @method \Pyz\Client\Customer\CustomerFactory getFactory() : AbstractFactory
  */
-class CustomerTransferSessionCustomerBalanceRefreshPlugin extends AbstractPlugin implements CustomerSessionGetPluginInterface
+class CustomerTransferSessionCustomerBalanceRefreshPlugin extends AbstractPlugin implements
+    CustomerSessionGetPluginInterface
 {
     /**
      * {@inheritDoc}
@@ -28,7 +29,9 @@ class CustomerTransferSessionCustomerBalanceRefreshPlugin extends AbstractPlugin
     public function execute(CustomerTransfer $customerTransfer)
     {
         if (!$customerTransfer->getCustomerBalance()) {
-            $customerTransfer = $this->getFactory()->getMyWorldMarketplaceApiClient()->getCustomerInformationByCustomerNumberOrId($customerTransfer);
+            $customerTransfer = $this->getFactory()
+                ->getMyWorldMarketplaceApiClient()
+                ->getCustomerInformationByCustomerNumberOrId($customerTransfer);
             $this->getClient()->setCustomer($customerTransfer);
         }
     }

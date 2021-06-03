@@ -87,7 +87,7 @@ class MailHandler extends SprykerMailHandler
         $addressTransfer = new AddressTransfer();
         $addressTransfer->fromArray($shippingAddressEntity->toArray(), true);
 
-        if ($countryEntity) {
+        if ($countryEntity !== null) {
             $countryTransfer = (new CountryTransfer())->fromArray($countryEntity->toArray(), true);
             $addressTransfer->setCountry($countryTransfer);
         }
@@ -108,7 +108,7 @@ class MailHandler extends SprykerMailHandler
         $addressTransfer = new AddressTransfer();
         $addressTransfer->fromArray($billingAddressEntity->toArray(), true);
 
-        if ($countryEntity) {
+        if ($countryEntity !== null) {
             $countryTransfer = (new CountryTransfer())->fromArray($countryEntity->toArray(), true);
             $addressTransfer->setCountry($countryTransfer);
         }

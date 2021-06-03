@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @method \Spryker\Client\Product\ProductClientInterface getClient()
  * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageFactory getFactory()
+ * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageConfig getConfig()
  */
 class ProductController extends SprykerShopProductController
 {
@@ -46,7 +47,10 @@ class ProductController extends SprykerShopProductController
 
         $viewData['product']
             ->setAttributes(
-                $this->getFilterProductAttributes($viewData['product']->getAttributes(), $viewData['product']->getIsAffiliate())
+                $this->getFilterProductAttributes(
+                    $viewData['product']->getAttributes(),
+                    $viewData['product']->getIsAffiliate()
+                )
             );
         foreach ($viewData['product']['bundledProducts'] as $bundledProduct) {
             $bundledProduct->setAttributes(
@@ -98,8 +102,10 @@ class ProductController extends SprykerShopProductController
         $benefitStoreKey = $this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore();
 
         if (isset($attributes[$benefitStoreKey]) && $attributes[$benefitStoreKey]) {
-            $benefitSalesPrice = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice()] ?? null;
-            $benefitAmount = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount()] ?? null;
+            $benefitSalesPrice = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice(
+            )] ?? null;
+            $benefitAmount = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount(
+            )] ?? null;
             /**
              * @todo Remove conversions once benefit sales price and amount import is updated to convert it to cents (integer)
              */
@@ -189,9 +195,12 @@ class ProductController extends SprykerShopProductController
             }
         }
 
-        return array_filter($attributes, function ($value) {
-            return $value !== null && $value !== '' && $value !== false;
-        });
+        return array_filter(
+            $attributes,
+            function ($value) {
+                return $value !== null && $value !== '' && $value !== false;
+            }
+        );
     }
 
     /**

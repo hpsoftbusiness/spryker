@@ -118,6 +118,8 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
+        $ssoAccessTokenTransfer = new SsoAccessTokenTransfer();
+
         if ($this->isRequestPathLoginCheck($request)) {
             $ssoAccessTokenTransfer = $this->getAccessToken($request);
         }

@@ -118,6 +118,8 @@ services:
         engine: dashboard
         endpoints:
             spryker.local:
+    webdriver:
+        engine: chromedriver
 
 docker:
 

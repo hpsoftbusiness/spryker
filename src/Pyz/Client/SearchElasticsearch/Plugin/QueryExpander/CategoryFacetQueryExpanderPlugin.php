@@ -12,6 +12,9 @@ use Pyz\Shared\SearchElasticsearch\SearchElasticsearchConfig;
 use Spryker\Client\SearchElasticsearch\Config\FacetConfigInterface;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
 
+/**
+ * @method \Pyz\Client\SearchElasticsearch\SearchElasticsearchFactory getFactory()
+ */
 class CategoryFacetQueryExpanderPlugin extends FacetQueryExpanderPlugin
 {
     /**
@@ -22,8 +25,12 @@ class CategoryFacetQueryExpanderPlugin extends FacetQueryExpanderPlugin
      *
      * @return void
      */
-    protected function addFacetAggregationToQuery(Query $query, FacetConfigInterface $facetConfig, array $facetFilters, array $requestParameters): void
-    {
+    protected function addFacetAggregationToQuery(
+        Query $query,
+        FacetConfigInterface $facetConfig,
+        array $facetFilters,
+        array $requestParameters
+    ): void {
         $boolQuery = $this->getBoolQuery($query);
 
         $activeFilters = $facetConfig->getActiveParamNames($requestParameters);
@@ -43,7 +50,12 @@ class CategoryFacetQueryExpanderPlugin extends FacetQueryExpanderPlugin
         $query->addAggregation($facetAggregation);
 
         if (in_array($facetConfigTransfer->getName(), $activeFilters, true)) {
-            $globalAggregation = $this->createGlobalAggregation($facetFilters, $facetConfigTransfer, $boolQuery, $facetAggregation);
+            $globalAggregation = $this->createGlobalAggregation(
+                $facetFilters,
+                $facetConfigTransfer,
+                $boolQuery,
+                $facetAggregation
+            );
 
             $query->addAggregation($globalAggregation);
         }

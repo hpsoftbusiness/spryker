@@ -255,9 +255,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_STOCK:
                 return $this->createCombinedProductStockImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_GROUP:
-                return $this->createCombinedProductGroupImporter($dataImportConfigurationActionTransfer);
+                return $this->getCombinedProductGroupImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_LIST_PRODUCT_CONCRETE:
-                return $this->createCombinedProductListProductConcreteImporter($dataImportConfigurationActionTransfer);
+                return $this->getCombinedProductListProductConcreteImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_LIST_CUSTOMER_GROUP:
                 return $this->createProductListCustomerGroupImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
@@ -287,11 +287,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             case DataImportConfig::IMPORT_TYPE_NAVIGATION_NODE:
                 return $this->createNavigationNodeImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER:
-                return $this->createMerchantProductOfferImporter($dataImportConfigurationActionTransfer);
+                return $this->getMerchantProductOfferImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER_STORE:
-                return $this->createMerchantProductOfferStoreImporter($dataImportConfigurationActionTransfer);
+                return $this->getMerchantProductOfferStoreImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER:
-                return $this->createPriceProductOfferImporter($dataImportConfigurationActionTransfer);
+                return $this->getPriceProductOfferImporter($dataImportConfigurationActionTransfer);
             default:
                 return null;
         }
@@ -2149,7 +2149,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
-    public function createCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
+    public function getCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
     {
         $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
@@ -2242,7 +2242,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
-    public function createCombinedProductListProductConcreteImporter(
+    public function getCombinedProductListProductConcreteImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
     ) {
         $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
@@ -2321,7 +2321,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|null
      */
-    public function createMerchantProductOfferImporter(
+    public function getMerchantProductOfferImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
     ): ?DataImporterInterface {
         $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
@@ -2467,7 +2467,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|null
      */
-    public function createMerchantProductOfferStoreImporter(
+    public function getMerchantProductOfferStoreImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
     ): ?DataImporterInterface {
         $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
@@ -2575,7 +2575,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|null
      */
-    public function createPriceProductOfferImporter(
+    public function getPriceProductOfferImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
     ): ?DataImporterInterface {
         $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
@@ -2873,7 +2873,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Sql\ProductGroupSqlInterface
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductGroup\Sql\ProductGroupSqlInterface
      */
     protected function createProductGroupMariaDbSql(): ProductGroupSqlInterface
     {

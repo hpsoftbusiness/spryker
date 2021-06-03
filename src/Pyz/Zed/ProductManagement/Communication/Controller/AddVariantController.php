@@ -27,9 +27,11 @@ class AddVariantController extends SprykerAddVariantController
      */
     public function indexAction(Request $request)
     {
-        $idProductAbstract = $this->castId($request->get(
-            self::PARAM_ID_PRODUCT_ABSTRACT
-        ));
+        $idProductAbstract = $this->castId(
+            $request->get(
+                self::PARAM_ID_PRODUCT_ABSTRACT
+            )
+        );
 
         $productAbstractTransfer = $this->getFactory()
             ->getProductFacade()
@@ -50,7 +52,7 @@ class AddVariantController extends SprykerAddVariantController
             ->getFactory()
             ->getProductVariantFormAdd(
                 $dataProvider->getData($priceDimension),
-                $dataProvider->getOptions($idProductAbstract, ProductManagementConfig::PRODUCT_TYPE_REGULAR)
+                $dataProvider->getOptions($productAbstractTransfer, ProductManagementConfig::PRODUCT_TYPE_REGULAR)
             )
             ->handleRequest($request);
 
@@ -62,7 +64,9 @@ class AddVariantController extends SprykerAddVariantController
                 ->createProductFormTransferGenerator()
                 ->buildProductConcreteTransfer($productAbstractTransfer, $form);
 
-            $productConcreteTransfer->setAttributes(array_merge($productConcreteTransfer->getAttributes(), $this->getFacade()->getDefaultAttributes()));
+            $productConcreteTransfer->setAttributes(
+                array_merge($productConcreteTransfer->getAttributes(), $this->getFacade()->getDefaultAttributes())
+            );
 
             $this->getFactory()
                 ->getProductFacade()
@@ -76,22 +80,31 @@ class AddVariantController extends SprykerAddVariantController
                 ->getProductFacade()
                 ->touchProductConcrete($productConcreteTransfer->getIdProductConcrete());
 
-            $this->addSuccessMessage('The product [%s] was saved successfully.', [
-                '%s' => $productConcreteTransfer->getSku(),
-            ]);
+            $this->addSuccessMessage(
+                'The product [%s] was saved successfully.',
+                [
+                    '%s' => $productConcreteTransfer->getSku(),
+                ]
+            );
 
-            return $this->createRedirectResponseAfterAdd($productConcreteTransfer->getIdProductConcrete(), $type, $request);
+            return $this->createRedirectResponseAfterAdd(
+                $productConcreteTransfer->getIdProductConcrete(),
+                $type,
+                $request
+            );
         }
 
-        return $this->viewResponse([
-            'form' => $form->createView(),
-            'currentLocale' => $this->getFactory()->getLocaleFacade()->getCurrentLocale()->getLocaleName(),
-            'productAbstract' => $productAbstractTransfer,
-            'localeCollection' => $localeProvider->getLocaleCollection(),
-            'attributeLocaleCollection' => $localeProvider->getLocaleCollection(true),
-            'productConcreteFormAddTabs' => $this->getFactory()->createProductConcreteFormAddTabs()->createView(),
-            'bundledProductTable' => $bundledProductTable->render(),
-            'type' => ProductManagementConfig::PRODUCT_TYPE_REGULAR,
-        ]);
+        return $this->viewResponse(
+            [
+                'form' => $form->createView(),
+                'currentLocale' => $this->getFactory()->getLocaleFacade()->getCurrentLocale()->getLocaleName(),
+                'productAbstract' => $productAbstractTransfer,
+                'localeCollection' => $localeProvider->getLocaleCollection(),
+                'attributeLocaleCollection' => $localeProvider->getLocaleCollection(true),
+                'productConcreteFormAddTabs' => $this->getFactory()->createProductConcreteFormAddTabs()->createView(),
+                'bundledProductTable' => $bundledProductTable->render(),
+                'type' => ProductManagementConfig::PRODUCT_TYPE_REGULAR,
+            ]
+        );
     }
 }

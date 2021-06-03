@@ -66,6 +66,7 @@ class DataHelper
                 'PaymentOptions' => [1, 9, 8],
                 'Amount' => 10,
                 'CurrencyId' => 'USD',
+                'Reference' => 'Reference_' . time(),
             ]
         ))->build();
 

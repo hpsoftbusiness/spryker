@@ -11,6 +11,9 @@ use Pyz\Zed\ProductCategory\Business\Expander\OrderItemExpander;
 use Pyz\Zed\ProductCategory\Business\Expander\OrderItemExpanderInterface;
 use Spryker\Zed\ProductCategory\Business\ProductCategoryBusinessFactory as SprykerProductCategoryBusinessFactory;
 
+/**
+ * @method \Pyz\Zed\ProductCategory\Persistence\ProductCategoryRepositoryInterface getRepository()
+ */
 class ProductCategoryBusinessFactory extends SprykerProductCategoryBusinessFactory
 {
     /**

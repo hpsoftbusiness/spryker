@@ -35,7 +35,8 @@ class SummaryFormDataProvider extends SprykerSummaryFormDataProvider
             );
         }
 
-        if ($quoteTransfer->getMyWorldPaymentSessionId() && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
+        if ($quoteTransfer->getMyWorldPaymentSessionId(
+        ) && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
             $options[SummaryForm::OPTION_SMS_CODE] = self::GLOSSARY_SMS_CODE;
         }
 

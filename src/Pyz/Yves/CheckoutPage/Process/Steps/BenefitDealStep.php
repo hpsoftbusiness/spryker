@@ -53,6 +53,7 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
      */
     public function requireInput(AbstractTransfer $dataTransfer): bool
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $dataTransfer */
         return $this->assertCartHasApplicableBenefitDeals($dataTransfer);
     }
 
@@ -104,19 +105,24 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
      */
     public function getTemplateVariables(AbstractTransfer $dataTransfer): array
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $dataTransfer */
         $customerTransfer = $dataTransfer->getCustomer();
 
         return [
             'customerBalance' => [
-                'benefitVouchersBalance' => $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer),
+                'benefitVouchersBalance' => $this->customerService->getCustomerBenefitVoucherBalanceAmount(
+                    $customerTransfer
+                ),
                 'benefitVouchersCurrencyCode' => $dataTransfer->getCurrency()->getCode(),
-                'shoppingPointBalance' => $this->customerService->getCustomerShoppingPointsBalanceAmount($customerTransfer),
+                'shoppingPointBalance' => $this->customerService->getCustomerShoppingPointsBalanceAmount(
+                    $customerTransfer
+                ),
             ],
         ];
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return bool
      */

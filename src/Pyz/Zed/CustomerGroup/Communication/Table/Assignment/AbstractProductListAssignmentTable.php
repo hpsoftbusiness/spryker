@@ -77,12 +77,14 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
      */
     protected function configureHeader(TableConfiguration $config): void
     {
-        $config->setHeader([
-            static::COL_SELECT_CHECKBOX => 'Select',
-            static::COL_ID_PRODUCT_LIST => 'ID',
-            static::COL_TITLE => 'Title',
-            static::COL_TYPE => 'Type',
-        ]);
+        $config->setHeader(
+            [
+                static::COL_SELECT_CHECKBOX => 'Select',
+                static::COL_ID_PRODUCT_LIST => 'ID',
+                static::COL_TITLE => 'Title',
+                static::COL_TYPE => 'Type',
+            ]
+        );
     }
 
     /**
@@ -92,9 +94,11 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
      */
     protected function configureRawColumns(TableConfiguration $config): void
     {
-        $config->setRawColumns([
-            static::COL_SELECT_CHECKBOX,
-        ]);
+        $config->setRawColumns(
+            [
+                static::COL_SELECT_CHECKBOX,
+            ]
+        );
     }
 
     /**
@@ -109,11 +113,13 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
             TableConfiguration::SORT_ASC
         );
 
-        $config->setSortable([
-            static::COL_ID_PRODUCT_LIST,
-            static::COL_TITLE,
-            static::COL_TYPE,
-        ]);
+        $config->setSortable(
+            [
+                static::COL_ID_PRODUCT_LIST,
+                static::COL_TITLE,
+                static::COL_TYPE,
+            ]
+        );
     }
 
     /**
@@ -123,11 +129,13 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
      */
     protected function configureSearching(TableConfiguration $config): void
     {
-        $config->setSearchable([
-            static::COL_ID_PRODUCT_LIST,
-            static::COL_TITLE,
-            static::COL_TYPE,
-        ]);
+        $config->setSearchable(
+            [
+                static::COL_ID_PRODUCT_LIST,
+                static::COL_TITLE,
+                static::COL_TYPE,
+            ]
+        );
     }
 
     /**
@@ -137,12 +145,14 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
      */
     protected function configureUrl(TableConfiguration $config): void
     {
-        $config->setUrl(sprintf(
-            '%s?%s=%s',
-            $this->defaultUrl,
-            static::PARAM_ID_CUSTOMER_GROUP,
-            $this->idCustomerGroup
-        ));
+        $config->setUrl(
+            sprintf(
+                '%s?%s=%s',
+                $this->defaultUrl,
+                static::PARAM_ID_CUSTOMER_GROUP,
+                $this->idCustomerGroup
+            )
+        );
     }
 
     /**
@@ -168,7 +178,7 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
     protected function buildResultData(ObjectCollection $customerEntities): array
     {
         $tableRows = [];
-
+        /** @var \Orm\Zed\ProductList\Persistence\SpyProductList $productListEntity */
         foreach ($customerEntities as $productListEntity) {
             $tableRows[] = $this->getRow($productListEntity);
         }
@@ -204,11 +214,15 @@ abstract class AbstractProductListAssignmentTable extends AbstractTable
             'js-product-list-checkbox',
             $productListEntity->getIdProductList(),
             $this->getCheckboxCheckedAttribute(),
-            htmlspecialchars($this->utilEncoding->encodeJson([
-                'id' => $productListEntity->getIdProductList(),
-                'title' => $productListEntity->getTitle(),
-                'type' => $productListEntity->getType(),
-            ]))
+            htmlspecialchars(
+                $this->utilEncoding->encodeJson(
+                    [
+                        'id' => $productListEntity->getIdProductList(),
+                        'title' => $productListEntity->getTitle(),
+                        'type' => $productListEntity->getType(),
+                    ]
+                )
+            )
         );
     }
 

@@ -48,8 +48,10 @@ class BenefitPriceManager implements BenefitPriceManagerInterface
      *
      * @return void
      */
-    private function expandItemWithBenefitPrices(ItemTransfer $itemTransfer, CartChangeTransfer $cartChangeTransfer): void
-    {
+    private function expandItemWithBenefitPrices(
+        ItemTransfer $itemTransfer,
+        CartChangeTransfer $cartChangeTransfer
+    ): void {
         if (!$this->isBenefitDealDataExist($itemTransfer)) {
             return;
         }
@@ -111,22 +113,22 @@ class BenefitPriceManager implements BenefitPriceManagerInterface
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param float $price
+     * @param int $price
      *
      * @return void
      */
-    private function setBenefitVoucherPrice(ItemTransfer $itemTransfer, float $price): void
+    private function setBenefitVoucherPrice(ItemTransfer $itemTransfer, int $price): void
     {
         $itemTransfer->getBenefitVoucherDealData()->setSalesPrice($price);
     }
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param float $price
+     * @param int $price
      *
      * @return void
      */
-    private function setShoppingPointsPrice(ItemTransfer $itemTransfer, float $price): void
+    private function setShoppingPointsPrice(ItemTransfer $itemTransfer, int $price): void
     {
         $itemTransfer->getShoppingPointsDeal()->setPrice($price);
     }

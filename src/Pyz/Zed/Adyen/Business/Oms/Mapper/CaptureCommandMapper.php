@@ -20,6 +20,11 @@ use SprykerEco\Zed\Adyen\Business\Oms\Mapper\CaptureCommandMapper as SprykerEcoC
 class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
 {
     /**
+     * @var \Pyz\Zed\Adyen\AdyenConfig
+     */
+    protected $config;
+
+    /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
@@ -52,7 +57,9 @@ class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
         PaymentAdyenTransfer $paymentAdyenTransfer,
         AdyenApiAmountTransfer $adyenApiAmountTransfer
     ): ArrayObject {
-        $commissionAmount = (int)round($adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest());
+        $commissionAmount = (int)round(
+            $adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest()
+        );
         $marketplaceAmount = (int)$adyenApiAmountTransfer->getValue() - $commissionAmount;
 
         $marketplaceSplitTransfer = (new AdyenApiSplitTransfer())
@@ -70,9 +77,11 @@ class CaptureCommandMapper extends SprykerEcoCaptureCommandMapper
             ->setType(AdyenConfig::SPLIT_TYPE_COMMISSION)
             ->setReference($paymentAdyenTransfer->getSplitCommissionReference());
 
-        return new ArrayObject([
-            $marketplaceSplitTransfer,
-            $commissionSplitTransfer,
-        ]);
+        return new ArrayObject(
+            [
+                $marketplaceSplitTransfer,
+                $commissionSplitTransfer,
+            ]
+        );
     }
 }

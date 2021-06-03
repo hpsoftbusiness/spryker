@@ -17,6 +17,8 @@ interface CustomerServiceInterface extends SprykerCustomerServiceInterface
      * - Searches for shopping point balance in CustomerTransfer balances array.
      * - Returns amount as float value.
      *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return float
@@ -27,6 +29,8 @@ interface CustomerServiceInterface extends SprykerCustomerServiceInterface
      * Specification:
      * - Searches for eVoucher balance in CustomerTransfer balances array.
      * - Returns integer value (in cents).
+     *
+     * @api
      *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
@@ -39,6 +43,8 @@ interface CustomerServiceInterface extends SprykerCustomerServiceInterface
      * - Searches for Cashback balance in CustomerTransfer balances array.
      * - Returns integer value (in cents).
      *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return int
@@ -50,6 +56,8 @@ interface CustomerServiceInterface extends SprykerCustomerServiceInterface
      * - Searches for eVoucher on behalf of marketer balance in CustomerTransfer balances array.
      * - Returns integer value (in cents).
      *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return int
@@ -60,6 +68,8 @@ interface CustomerServiceInterface extends SprykerCustomerServiceInterface
      * Specification:
      * - Searches for Benefit Voucher balance in CustomerTransfer balances array.
      * - Returns integer value (in cents).
+     *
+     * @api
      *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *

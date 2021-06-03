@@ -43,10 +43,6 @@ class OrderItemExpander implements OrderItemExpanderInterface
                 $itemTransfer->getProductConcrete()->getFkProductAbstract()
             );
 
-            if (!$categoryTransfer) {
-                continue;
-            }
-
             $itemTransfer->setCategories($categoryTransfer);
         }
 

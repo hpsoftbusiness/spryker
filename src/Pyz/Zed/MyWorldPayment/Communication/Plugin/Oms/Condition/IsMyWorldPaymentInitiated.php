@@ -65,7 +65,7 @@ class IsMyWorldPaymentInitiated extends AbstractPlugin implements ConditionInter
 
         foreach ($orderPayments as $orderPayment) {
             $paymentMethodType = $orderPayment->getSalesPaymentMethodType();
-            if ($paymentMethodType
+            if ($paymentMethodType !== null
                  && $paymentMethodType->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD
             ) {
                 return true;

@@ -97,7 +97,7 @@ abstract class AbstractProductApiResourcePlugin extends AbstractPlugin implement
      *
      * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
-     * @return \Generated\Shared\Transfer\ApiCollectionTransfer
+     * @return \Generated\Shared\Transfer\ApiCollectionTransfer|\Generated\Shared\Transfer\ApiItemTransfer
      */
     public function find(ApiRequestTransfer $apiRequestTransfer)
     {

@@ -16,6 +16,8 @@ interface LocaleClientInterface extends SprykerLocaleClientInterface
      * - Returns country code mapped for current locale in config.
      * - If locale is not mapped for any country code, extracts country from locale code.
      *
+     * @api
+     *
      * @return string
      */
     public function getCountryCodeForCurrentLocale(): string;
@@ -23,6 +25,8 @@ interface LocaleClientInterface extends SprykerLocaleClientInterface
     /**
      * Specification:
      * - Returns country code mapped for current locale in config.
+     *
+     * @api
      *
      * @param string $locale
      *
@@ -34,6 +38,8 @@ interface LocaleClientInterface extends SprykerLocaleClientInterface
      * Specification:
      * - Returns locale name mapped for provided country code in config.
      * - If mapping for provided country code is missing, returns null.
+     *
+     * @api
      *
      * @param string $countryIsoCode
      *

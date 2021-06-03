@@ -43,7 +43,10 @@ class FormFactory extends SpyFormFactory
      */
     public function getBenefitFormCollection(): FormCollectionHandlerInterface
     {
-        return $this->createFormCollection([BenefitDealCollectionForm::class], $this->createBenefitDealFormDataProvider());
+        return $this->createFormCollection(
+            [BenefitDealCollectionForm::class],
+            $this->createBenefitDealFormDataProvider()
+        );
     }
 
     /**

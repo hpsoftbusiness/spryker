@@ -45,7 +45,7 @@ class TaxRateCreatePage
             'percentage' => '5',
         ],
         self::TAX_RATE_INVALID => [
-            'name' => '',
+            'name' => 'name',
             'country' => 'No country',
             'percentage' => 'test',
         ],

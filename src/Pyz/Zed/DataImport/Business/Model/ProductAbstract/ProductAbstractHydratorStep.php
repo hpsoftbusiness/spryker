@@ -79,7 +79,9 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     protected function importProductAbstract(DataSetInterface $dataSet): void
     {
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
-        $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]);
+        $productAbstractEntityTransfer->setSku(
+            $dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU]
+        );
 
         $productAbstractEntityTransfer
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
@@ -92,7 +94,10 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $affiliateAttributes = $dataSet[CombinedAttributesExtractorStep::KEY_AFFILIATE_ATTRIBUTES];
 
         $productAbstractEntityTransfer
-            ->setIsAffiliate(isset($affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE]) && $affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE] === 'TRUE' ? 1 : 0)
+            ->setIsAffiliate(
+                isset($affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE]) &&
+                $affiliateAttributes[static::KEY_IS_PRODUCT_AFFILIATE] === 'TRUE'
+            )
             ->setAffiliateData(json_encode($affiliateAttributes));
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
@@ -113,10 +118,17 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $localizedAttributeTransfer = [];
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
-            $productAbstractLocalizedAttributesEntityTransfer = new SpyProductAbstractLocalizedAttributesEntityTransfer();
+            $productAbstractLocalizedAttributesEntityTransfer = new SpyProductAbstractLocalizedAttributesEntityTransfer(
+            );
             $productAbstractLocalizedAttributesEntityTransfer
-                ->setName(addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_NAME]))))
-                ->setDescription(addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_DESCRIPTION]))))
+                ->setName(
+                    addslashes(str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_NAME])))
+                )
+                ->setDescription(
+                    addslashes(
+                        str_replace('"', '', html_entity_decode($localizedAttributes[static::COLUMN_DESCRIPTION]))
+                    )
+                )
                 ->setMetaTitle($localizedAttributes[static::COLUMN_META_TITLE])
                 ->setMetaDescription($localizedAttributes[static::COLUMN_META_DESCRIPTION])
                 ->setMetaKeywords($localizedAttributes[static::COLUMN_META_KEYWORDS])
@@ -147,11 +159,13 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
         foreach ($categoryKeys as $index => $categoryKey) {
             if (!isset($dataSet[static::COLUMN_CATEGORY_KEYS][$categoryKey])) {
-                throw new DataKeyNotFoundInDataSetException(sprintf(
-                    'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
-                    $categoryKey,
-                    implode(array_values($dataSet[static::COLUMN_CATEGORY_KEYS]))
-                ));
+                throw new DataKeyNotFoundInDataSetException(
+                    sprintf(
+                        'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
+                        $categoryKey,
+                        implode(array_values($dataSet[static::COLUMN_CATEGORY_KEYS]))
+                    )
+                );
             }
 
             $productOrder = 0;

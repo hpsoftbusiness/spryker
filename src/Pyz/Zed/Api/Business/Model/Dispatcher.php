@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Api\Business\Model;
 
+use ArrayObject;
 use Generated\Shared\Transfer\ApiCollectionTransfer;
 use Generated\Shared\Transfer\ApiItemTransfer;
 use Generated\Shared\Transfer\ApiMetaTransfer;

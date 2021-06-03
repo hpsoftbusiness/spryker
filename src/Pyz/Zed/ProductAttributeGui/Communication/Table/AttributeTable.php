@@ -22,23 +22,32 @@ class AttributeTable extends SprykerAttributeTable
         $urls = [];
 
         $urls[] = $this->generateViewButton(
-            Url::generate('/product-attribute-gui/attribute/view', [
-                'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
-            ]),
+            (string)Url::generate(
+                '/product-attribute-gui/attribute/view',
+                [
+                    'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
+                ]
+            ),
             'View'
         );
 
         $urls[] = $this->generateEditButton(
-            Url::generate('/product-attribute-gui/attribute/edit', [
-                'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
-            ]),
+            (string)Url::generate(
+                '/product-attribute-gui/attribute/edit',
+                [
+                    'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
+                ]
+            ),
             'Edit'
         );
 
         $urls[] = $this->generateRemoveButton(
-            Url::generate('/product-attribute-gui/attribute/delete', [
-                'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
-            ]),
+            (string)Url::generate(
+                '/product-attribute-gui/attribute/delete',
+                [
+                    'id' => $item[static::COL_ID_PRODUCT_MANAGEMENT_ATTRIBUTE],
+                ]
+            ),
             'Delete'
         );
 

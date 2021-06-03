@@ -34,3 +34,8 @@ suites:
               - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
               - \SprykerTest\Shared\Application\Helper\ZedHelper
               - \SprykerTest\Shared\Application\Helper\YvesHelper
+#extensions:
+#    enabled:
+#        - Codeception\Extension\Recorder
+#        - Codeception\Extension\RunFailed
+#        - Codeception\Extension\Logger

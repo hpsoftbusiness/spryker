@@ -16,7 +16,7 @@ class CustomerGroupPersistenceFactory extends SprykerCustomerGroupPersistenceFac
     /**
      * @return \Orm\Zed\CustomerGroupProductList\Persistence\PyzCustomerGroupToProductListQuery
      */
-    public function createCustomerGroupToProductListQuery(): PyzCustomerGroupToProductListQuery
+    public function getCustomerGroupToProductListQuery(): PyzCustomerGroupToProductListQuery
     {
         return $this->getProvidedDependency(CustomerGroupDependencyProvider::PROPEL_QUERY_CUSTOMER_GROUP_TO_PRODUCT_LIST);
     }

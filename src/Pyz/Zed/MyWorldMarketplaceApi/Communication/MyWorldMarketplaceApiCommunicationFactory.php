@@ -8,6 +8,7 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi\Communication;
 
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Zed\Calculation\Business\CalculationFacadeInterface;
@@ -51,5 +52,13 @@ class MyWorldMarketplaceApiCommunicationFactory extends AbstractCommunicationFac
     public function getMyWorldMarketplaceApiClient(): MyWorldMarketplaceApiClientInterface
     {
         return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::CLIENT_MY_WORLD_MARKETPLACE_API);
+    }
+
+    /**
+     * @return \Pyz\Client\Sso\SsoClientInterface
+     */
+    public function getSsoClient(): SsoClientInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::SSO_CLIENT);
     }
 }

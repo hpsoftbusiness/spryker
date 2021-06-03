@@ -21,15 +21,18 @@ class AttributeTranslationFormCollectionDataProvider extends SprykerAttributeTra
     protected function getValueTranslations($idProductManagementAttribute, $idLocale): array
     {
         $attributeValueEntities = $this->productAttributeQueryContainer
-            ->queryProductManagementAttributeValueWithTranslation($idProductManagementAttribute, $idLocale, '', null, null)
+            ->queryProductManagementAttributeValueWithTranslation($idProductManagementAttribute, $idLocale)
             ->find();
 
         $attributeValues = [];
         foreach ($attributeValueEntities as $attributeValueEntity) {
             $attributeValues[] = [
-                AttributeValueTranslationForm::FIELD_ID_PRODUCT_MANAGEMENT_ATTRIBUTE_VALUE => $attributeValueEntity->getIdProductManagementAttributeValue(),
+                AttributeValueTranslationForm::FIELD_ID_PRODUCT_MANAGEMENT_ATTRIBUTE_VALUE =>
+                    $attributeValueEntity->getIdProductManagementAttributeValue(),
                 AttributeValueTranslationForm::FIELD_VALUE => $attributeValueEntity->getValue(),
-                AttributeValueTranslationForm::FIELD_TRANSLATION => $attributeValueEntity->getVirtualColumn('translation'),
+                AttributeValueTranslationForm::FIELD_TRANSLATION => $attributeValueEntity->getVirtualColumn(
+                    'translation'
+                ),
                 AttributeValueTranslationForm::FIELD_FK_LOCALE => $attributeValueEntity->getVirtualColumn('fk_locale'),
             ];
         }

@@ -15,7 +15,7 @@ interface TurnoverRequestInterface
      * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @return mixed
+     * @return void
      */
     public function request(array $orderItemIds, OrderTransfer $orderTransfer): void;
 }

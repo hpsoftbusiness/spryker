@@ -162,7 +162,7 @@ class ProductUrlWidget extends AbstractWidget
             }
             $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
 
-            if (!$isConcrete && (!$this->hasOneOffer || !$customerTransfer)) {
+            if (!$isConcrete && !$customerTransfer) {
                 return false;
             }
 

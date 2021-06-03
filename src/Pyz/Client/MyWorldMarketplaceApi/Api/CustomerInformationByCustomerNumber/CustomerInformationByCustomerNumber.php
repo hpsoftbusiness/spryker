@@ -68,7 +68,9 @@ class CustomerInformationByCustomerNumber implements CustomerInformationByCustom
         );
 
         if ($myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
-            $mappedCustomerTransfer = $this->customerInformationMapper->mapDataToCustomerTransfer($myWorldMarketplaceApiResponseTransfer->getData());
+            $mappedCustomerTransfer = $this->customerInformationMapper->mapDataToCustomerTransfer(
+                $myWorldMarketplaceApiResponseTransfer->getData()
+            );
 
             return $customerTransfer->fromArray($mappedCustomerTransfer->modifiedToArray(), true);
         }

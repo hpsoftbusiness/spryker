@@ -37,7 +37,7 @@ class ProductAttributeGuiCommunicationFactory extends SprykerProductAttributeGui
     }
 
     /**
-     * @return mixed|\Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface
+     * @return \Spryker\Zed\ProductAttributeGui\Dependency\QueryContainer\ProductAttributeGuiToProductAttributeQueryContainerInterface
      */
     public function getProductAttributeQueryContainer(): ProductAttributeGuiToProductAttributeQueryContainerInterface
     {

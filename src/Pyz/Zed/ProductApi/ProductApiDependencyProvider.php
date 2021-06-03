@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\ProductApi;
 
-use Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductBridge;
-use Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiBridge;
+use Pyz\Zed\ProductApi\Dependency\Facade\ProductApiToProductMime;
+use Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiBridgeMime;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -49,7 +49,6 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
         $container = parent::providePersistenceLayerDependencies($container);
 
         $container = $this->provideApiQueryContainer($container);
-        $container = $this->provideApiQueryBuilderQueryContainer($container);
 
         return $container;
     }
@@ -62,7 +61,7 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     protected function provideApiQueryContainer(Container $container): Container
     {
         $container->set(static::QUERY_CONTAINER_API, function (Container $container) {
-            return new ProductApiToApiBridge($container->getLocator()->api()->queryContainer());
+            return new ProductApiToApiBridgeMime($container->getLocator()->api()->queryContainer());
         });
 
         return $container;
@@ -76,7 +75,7 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     protected function provideProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
-            return new ProductApiToProductBridge($container->getLocator()->product()->facade());
+            return new ProductApiToProductMime($container->getLocator()->product()->facade());
         });
 
         return $container;

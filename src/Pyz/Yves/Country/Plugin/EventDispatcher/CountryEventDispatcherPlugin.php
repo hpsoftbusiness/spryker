@@ -35,8 +35,10 @@ class CountryEventDispatcherPlugin extends AbstractPlugin implements EventDispat
      *
      * @return \Spryker\Shared\EventDispatcher\EventDispatcherInterface
      */
-    public function extend(EventDispatcherInterface $eventDispatcher, ContainerInterface $container): EventDispatcherInterface
-    {
+    public function extend(
+        EventDispatcherInterface $eventDispatcher,
+        ContainerInterface $container
+    ): EventDispatcherInterface {
         if (!$this->getConfig()->isMultiCountryEnabled()) {
             return $eventDispatcher;
         }
@@ -93,7 +95,7 @@ class CountryEventDispatcherPlugin extends AbstractPlugin implements EventDispat
     private function getCustomerTransfer(ContainerInterface $container): ?CustomerTransfer
     {
         /**
-         * @var \SprykerShop\Yves\CustomerPage\Security\Customer $customer
+         * @var \SprykerShop\Yves\CustomerPage\Security\Customer|null $customer
          */
         $customer = $container->get(self::SERVICE_USER);
 

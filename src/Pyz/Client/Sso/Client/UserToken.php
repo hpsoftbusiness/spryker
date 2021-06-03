@@ -17,7 +17,7 @@ use Spryker\Shared\ErrorHandler\ErrorLoggerInterface;
 class UserToken implements UserTokenInterface
 {
     /**
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\ClientInterface
      */
     protected $httpClient;
 

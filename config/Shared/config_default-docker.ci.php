@@ -6,6 +6,7 @@
 
 
 use Monolog\Logger;
+use Pyz\Shared\Sso\SsoConstants;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -27,3 +28,5 @@ $config[PropelConstants::LOG_FILE_PATH]
     = $config[LogConstants::LOG_FILE_PATH]
     = $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME]
     = getenv('SPRYKER_LOG_STDOUT') ?: '/dev/null';
+
+$config[SsoConstants::SSO_LOGIN_ENABLED] = false;

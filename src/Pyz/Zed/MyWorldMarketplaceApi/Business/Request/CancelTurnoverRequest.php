@@ -118,10 +118,12 @@ class CancelTurnoverRequest implements CancelTurnoverRequestInterface
         $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
         $accessTokenTransfer->requireAccessToken();
 
-        $requestBody = $this->utilEncodingService->encodeJson([
-            'Amount' => (string)bcdiv($refundTransfer->getAmount(), 100, 2),
-            'Currency' => $orderTransfer->getCurrencyIsoCode(),
-        ]);
+        $requestBody = $this->utilEncodingService->encodeJson(
+            [
+                'Amount' => bcdiv((string)$refundTransfer->getAmount(), '100', 2),
+                'Currency' => $orderTransfer->getCurrencyIsoCode(),
+            ]
+        );
 
         return [
             'headers' => [

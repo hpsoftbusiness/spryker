@@ -14,6 +14,9 @@ use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
+/**
+ * @method \Pyz\Client\SearchElasticsearch\SearchElasticsearchFactory getFactory()
+ */
 abstract class AbstractBoolQueryExpanderPlugin extends AbstractPlugin implements QueryExpanderPluginInterface
 {
     protected const BOOL_PARAMETER_INDEXED_FIELD_NAME = '';
@@ -65,11 +68,13 @@ abstract class AbstractBoolQueryExpanderPlugin extends AbstractPlugin implements
     {
         $boolQuery = $query->getQuery();
         if (!$boolQuery instanceof BoolQuery) {
-            throw new InvalidArgumentException(sprintf(
-                'Is Affiliate query expander available only with %s, got: %s',
-                BoolQuery::class,
-                get_class($boolQuery)
-            ));
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Is Affiliate query expander available only with %s, got: %s',
+                    BoolQuery::class,
+                    get_class($boolQuery)
+                )
+            );
         }
 
         return $boolQuery;

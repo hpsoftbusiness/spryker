@@ -85,7 +85,7 @@ class LocaleLocalePlugin extends SprykerLocaleLocalePlugin
      */
     private function getRequest(): Request
     {
-        if (!$this->request) {
+        if ($this->request === null) {
             $this->request = Request::createFromGlobals();
         }
 

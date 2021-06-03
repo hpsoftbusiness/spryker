@@ -33,9 +33,13 @@ class ProductAttributeZedStub implements ProductAttributeZedStubInterface
     public function getKeysToShowOnPdp(
         ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
     ): ProductAttributeKeysCollectionTransfer {
-        return $this->zedRequestClient->call(
+        $transfer = $this->zedRequestClient->call(
             '/product-attribute/gateway/get-keys-to-show-on-pdp',
             $productAttributeKeysCollectionTransfer
         );
+        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
+        $productAttributeKeysCollectionTransfer->fromArray($transfer->toArray());
+
+        return $productAttributeKeysCollectionTransfer;
     }
 }

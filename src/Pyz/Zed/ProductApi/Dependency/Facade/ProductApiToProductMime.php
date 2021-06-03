@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
 
-class ProductApiToProductBridge implements ProductApiToProductInterface
+class ProductApiToProductMime implements ProductApiToProductInterface
 {
     /**
      * @var \Spryker\Zed\Product\Business\ProductFacadeInterface

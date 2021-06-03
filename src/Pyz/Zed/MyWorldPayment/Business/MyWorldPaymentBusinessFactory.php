@@ -178,12 +178,52 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function getDirectPaymentTransferGeneratorsStack(): array
     {
         return [
-            new BenefitVoucherDirectPaymentTransferGenerator($this->getConfig()),
-            new CashbackDirectPaymentTransferGenerator($this->getConfig()),
-            new EVoucherDirectPaymentTransferGenerator($this->getConfig()),
-            new EVoucherMarketerDirectPaymentTransferGenerator($this->getConfig()),
-            new ShoppingPointsDirectPaymentTransferGenerator($this->getConfig()),
+            $this->createBenefitVoucherDirectPaymentTransferGenerator(),
+            $this->createCashbackDirectPaymentTransferGenerator(),
+            $this->createEVoucherDirectPaymentTransferGenerator(),
+            $this->createEVoucherMarketerDirectPaymentTransferGenerator(),
+            $this->createShoppingPointsDirectPaymentTransferGenerator(),
         ];
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\BenefitVoucherDirectPaymentTransferGenerator
+     */
+    public function createBenefitVoucherDirectPaymentTransferGenerator(): BenefitVoucherDirectPaymentTransferGenerator
+    {
+        return new BenefitVoucherDirectPaymentTransferGenerator($this->getConfig());
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\CashbackDirectPaymentTransferGenerator
+     */
+    public function createCashbackDirectPaymentTransferGenerator(): CashbackDirectPaymentTransferGenerator
+    {
+        return new CashbackDirectPaymentTransferGenerator($this->getConfig());
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherDirectPaymentTransferGenerator
+     */
+    public function createEVoucherDirectPaymentTransferGenerator(): EVoucherDirectPaymentTransferGenerator
+    {
+        return new EVoucherDirectPaymentTransferGenerator($this->getConfig());
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherMarketerDirectPaymentTransferGenerator
+     */
+    public function createEVoucherMarketerDirectPaymentTransferGenerator(): EVoucherMarketerDirectPaymentTransferGenerator
+    {
+        return new EVoucherMarketerDirectPaymentTransferGenerator($this->getConfig());
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\ShoppingPointsDirectPaymentTransferGenerator
+     */
+    public function createShoppingPointsDirectPaymentTransferGenerator(): ShoppingPointsDirectPaymentTransferGenerator
+    {
+        return new ShoppingPointsDirectPaymentTransferGenerator($this->getConfig());
     }
 
     /**

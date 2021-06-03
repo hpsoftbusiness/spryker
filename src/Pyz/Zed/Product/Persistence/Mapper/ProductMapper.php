@@ -27,8 +27,7 @@ class ProductMapper extends SprykerProductMapper
         $productConcreteTransfer->fromArray($productEntity->toArray(), true);
 
         $attributes = $this->utilEncodingService->decodeJson($productEntity->getAttributes(), true);
-        $productConcreteTransfer
-            ->setAttributes(is_array($attributes) ? $attributes : []);
+        $productConcreteTransfer->setAttributes($attributes);
 
         $productConcreteTransfer->setIdProductConcrete($productEntity->getIdProduct());
 
@@ -40,7 +39,10 @@ class ProductMapper extends SprykerProductMapper
 
         foreach ($productEntity->getSpyProductLocalizedAttributess() as $productLocalizedAttributesEntity) {
             $productConcreteTransfer->addLocalizedAttributes(
-                $this->mapProductLocalizedAttributesEntityToTransfer($productLocalizedAttributesEntity, new LocalizedAttributesTransfer())
+                $this->mapProductLocalizedAttributesEntityToTransfer(
+                    $productLocalizedAttributesEntity,
+                    new LocalizedAttributesTransfer()
+                )
             );
         }
 

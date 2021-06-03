@@ -98,6 +98,8 @@ class TransferMapper implements TransferMapperInterface
                 return $localizedAttributes;
             }
         }
+
+        return new LocalizedAttributesTransfer();
     }
 
     /**
@@ -150,11 +152,14 @@ class TransferMapper implements TransferMapperInterface
             return null;
         }
 
-        foreach ($productCategoryTransferCollection->getCategories()[0]->getLocalizedAttributes() as $localizedAttributes) {
+        foreach ($productCategoryTransferCollection->getCategories()[0]->getLocalizedAttributes(
+        ) as $localizedAttributes) {
             if ($localizedAttributes->getLocale()->getIdLocale() === $localeTransfer->getIdLocale()) {
                 return $localizedAttributes->getName();
             }
         }
+
+        return null;
     }
 
     /**
@@ -173,6 +178,8 @@ class TransferMapper implements TransferMapperInterface
                     . $url->getUrl();
             }
         }
+
+        return Config::get(ApplicationConstants::BASE_URL_YVES);
     }
 
     /**
@@ -183,12 +190,16 @@ class TransferMapper implements TransferMapperInterface
     protected function getBenefitApi(ProductAbstractTransfer $productAbstractTransfer): ProductBenefitApiTransfer
     {
         $benefitApi = new ProductBenefitApiTransfer();
-        $benefitApi->setCashbackAmount($this->formatAmount(
-            $productAbstractTransfer->getAttributes()['cashback_amount'] ?? null
-        ))
-            ->setShoppingPointsAmount($this->formatAmount(
-                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
-            ));
+        $benefitApi->setCashbackAmount(
+            $this->formatAmount(
+                $productAbstractTransfer->getAttributes()['cashback_amount'] ?? null
+            )
+        )
+            ->setShoppingPointsAmount(
+                $this->formatAmount(
+                    $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+                )
+            );
 
         return $benefitApi;
     }
@@ -226,12 +237,16 @@ class TransferMapper implements TransferMapperInterface
         $benefitAmountAttrKey = Config::get(
             MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT
         );
-        $productBcDealApi->setBvItemPrice($this->formatAmount(
-            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
-        ))
-            ->setBvAmount($this->formatAmount(
-                $productAbstractTransfer->getAttributes()[$benefitAmountAttrKey] ?? null
-            ));
+        $productBcDealApi->setBvItemPrice(
+            $this->formatAmount(
+                $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
+            )
+        )
+            ->setBvAmount(
+                $this->formatAmount(
+                    $productAbstractTransfer->getAttributes()[$benefitAmountAttrKey] ?? null
+                )
+            );
 
         return $productBcDealApi;
     }
@@ -248,12 +263,16 @@ class TransferMapper implements TransferMapperInterface
         );
 
         $productSpDealApi = new ProductSpDealApiTransfer();
-        $productSpDealApi->setSpItemPrice($this->formatAmount(
-            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
-        ))
-            ->setSpAmount($this->formatAmount(
-                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
-            ));
+        $productSpDealApi->setSpItemPrice(
+            $this->formatAmount(
+                $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
+            )
+        )
+            ->setSpAmount(
+                $this->formatAmount(
+                    $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+                )
+            );
 
         return $productSpDealApi;
     }

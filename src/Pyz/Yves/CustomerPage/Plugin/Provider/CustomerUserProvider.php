@@ -32,7 +32,7 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
     }
 
     /**
-     * @param string $username
+     * @param mixed $username
      *
      * @return \SprykerShop\Yves\CustomerPage\Security\Customer|\Symfony\Component\Security\Core\User\UserInterface
      */

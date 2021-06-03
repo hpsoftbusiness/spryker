@@ -7,12 +7,14 @@
 
 namespace Pyz\Zed\Api\Business\Exception;
 
+use Exception;
+
 class XSprykerApiKeyException extends AuthException
 {
     /**
-     * @param string $message [optional] The Exception message to throw.
-     * @param int $code [optional] The Exception code.
-     * @param \Exception|null $previous [optional] The previous exception used for the exception chaining. Since 5.3.0
+     * @param string $message
+     * @param int $code
+     * @param \Exception|null $previous
      */
     public function __construct($message = 'Wrong X-Spryker-API-Key', $code = 401, ?Exception $previous = null)
     {

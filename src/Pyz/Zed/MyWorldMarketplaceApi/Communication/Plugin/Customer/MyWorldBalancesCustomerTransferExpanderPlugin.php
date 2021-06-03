@@ -26,8 +26,12 @@ class MyWorldBalancesCustomerTransferExpanderPlugin extends AbstractPlugin imple
      */
     public function expandTransfer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
-        $balances = $this->getFactory()->getMyWorldMarketplaceApiClient()->getCustomerBalanceByCurrency($customerTransfer);
-        $customerTransfer->setBalances(new ArrayObject($balances));
+        if ($this->getFactory()->getSsoClient()->isSsoLoginEnabled()) {
+            $balances = $this->getFactory()->getMyWorldMarketplaceApiClient()->getCustomerBalanceByCurrency(
+                $customerTransfer
+            );
+            $customerTransfer->setBalances(new ArrayObject($balances));
+        }
 
         return $customerTransfer;
     }

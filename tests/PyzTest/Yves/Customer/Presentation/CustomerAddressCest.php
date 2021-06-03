@@ -37,7 +37,7 @@ class CustomerAddressCest
 
         $addressTransfer = CustomerAddressesPage::getAddressData(CustomerAddressesPage::ADDRESS_A);
 
-        $i->selectOption(CustomerAddressPage::FORM_FIELD_SELECTOR_SALUTATION, $addressTransfer->getSalutation());
+//        $i->selectOption(CustomerAddressPage::FORM_FIELD_SELECTOR_SALUTATION, $addressTransfer->getSalutation());
         $i->fillField(CustomerAddressPage::FORM_FIELD_SELECTOR_FIRST_NAME, $addressTransfer->getFirstName());
         $i->fillField(CustomerAddressPage::FORM_FIELD_SELECTOR_LAST_NAME, $addressTransfer->getLastName());
         $i->fillField(CustomerAddressPage::FORM_FIELD_SELECTOR_COMPANY, $addressTransfer->getCompany());

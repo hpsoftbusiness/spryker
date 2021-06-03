@@ -17,7 +17,7 @@ use Spryker\Client\PriceProductOfferStorage\Plugin\PriceProductStorage\PriceProd
 class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProductOfferStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferReferenceStrategyPluginInterface[]
+     * @return array
      */
     protected function getProductOfferReferenceStrategyPlugins(): array
     {

@@ -28,6 +28,7 @@ use PyzTest\Zed\MyWorldPaymentApi\ExpiredTokenDataHelper;
 class MyWorldPaymentApiFacadeTest extends Unit
 {
     private const ERROR_CODE_MWS_IDENTITY_TOKEN_EXPIRED_OR_INVALID = 2;
+    private const MAX_REPEAT_COUNT = 3;
 
     /**
      * @var \Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacade
@@ -56,13 +57,21 @@ class MyWorldPaymentApiFacadeTest extends Unit
     }
 
     /**
+     * @param int $repeatCount
+     *
      * @return string|null
      */
-    private function getSessionId(): ?string
+    private function getSessionId($repeatCount = 1): ?string
     {
         $response = $this->sendSessionRequest();
         if ($response->getIsSuccess()) {
             return $response->getPaymentSessionResponse()->getSessionId();
+        }
+        if ($repeatCount <= self::MAX_REPEAT_COUNT) {
+            $newReference = 'New_Reference__' . time();
+            $this->myWorldApiRequestTransfer->getPaymentSessionRequest()->setReference($newReference);
+
+            return $this->getSessionId(++$repeatCount);
         }
 
         return null;

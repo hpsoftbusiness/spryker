@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -7,8 +7,8 @@
 
 namespace Pyz\Client\Quote;
 
-use Spryker\Client\Quote\QuoteClient as SprykerQuoteClient;
+use Spryker\Client\Quote\QuoteClientInterface as SprykerQuoteClientInterface;
 
-class QuoteClient extends SprykerQuoteClient implements QuoteClientInterface
+interface QuoteClientInterface extends SprykerQuoteClientInterface
 {
 }

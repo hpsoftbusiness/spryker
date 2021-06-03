@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductManagement\Dependency\Facade;
 
 use Spryker\Zed\ProductManagement\Dependency\Facade\ProductManagementToProductBridge as SprykerProductManagementToProductBridge;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class ProductManagementToProductBridge extends SprykerProductManagementToProductBridge
 {
     /**

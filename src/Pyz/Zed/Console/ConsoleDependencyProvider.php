@@ -11,7 +11,6 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
-use Pyz\Zed\MyWorldMarketplaceApi\Communication\Console\MyWorldMarketplaceApiConsole;
 use Pyz\Zed\Product\Communication\Console\ProductDataHealerConsole;
 use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
 use Pyz\Zed\ProductPageSearch\Communication\Console\ProductAbstractPageSearchRefreshConsole;
@@ -175,7 +174,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function getConsoleCommands(Container $container)
     {
         $commands = [
-            new MyWorldMarketplaceApiConsole(),
             new CacheWarmerConsole(),
             new BuildNavigationConsole(),
             new RemoveNavigationCacheConsole(),

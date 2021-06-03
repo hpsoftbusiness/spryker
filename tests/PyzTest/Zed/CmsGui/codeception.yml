@@ -31,3 +31,8 @@ suites:
                   host: 0.0.0.0
                   restart: false
               - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+#extensions:
+#    enabled:
+#        - Codeception\Extension\Recorder
+#        - Codeception\Extension\RunFailed
+#        - Codeception\Extension\Logger

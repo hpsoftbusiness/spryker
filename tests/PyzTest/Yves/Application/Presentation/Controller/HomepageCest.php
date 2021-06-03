@@ -24,6 +24,8 @@ use PyzTest\Yves\Application\PageObject\Homepage;
 class HomepageCest
 {
     /**
+     * @skip
+     *
      * @param \PyzTest\Yves\Application\ApplicationPresentationTester $i
      *
      * @return void

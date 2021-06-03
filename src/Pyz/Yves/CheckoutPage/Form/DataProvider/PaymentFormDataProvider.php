@@ -53,6 +53,7 @@ class PaymentFormDataProvider implements StepEngineFormDataProviderInterface
      */
     public function getData(AbstractTransfer $quoteTransfer): QuoteTransfer
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         return $this->subFormDataProviders->getData($quoteTransfer);
     }
 
@@ -63,6 +64,7 @@ class PaymentFormDataProvider implements StepEngineFormDataProviderInterface
      */
     public function getOptions(AbstractTransfer $quoteTransfer): array
     {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         $options = $this->subFormDataProviders->getOptions($quoteTransfer);
         $currencyIsoCode = $this->currencyClient->getCurrent()->getCode();
         $customerBalances = $this->myWorldMarketingApiClient->getCustomerBalanceByCurrency(
@@ -70,9 +72,12 @@ class PaymentFormDataProvider implements StepEngineFormDataProviderInterface
             $currencyIsoCode
         );
 
-        return array_merge($options, [
-            PaymentForm::OPTION_KEY_CUSTOMER_BALANCES => $customerBalances,
-            PaymentForm::OPTION_KEY_CURRENCY_CODE => $currencyIsoCode,
-        ]);
+        return array_merge(
+            $options,
+            [
+                PaymentForm::OPTION_KEY_CUSTOMER_BALANCES => $customerBalances,
+                PaymentForm::OPTION_KEY_CURRENCY_CODE => $currencyIsoCode,
+            ]
+        );
     }
 }

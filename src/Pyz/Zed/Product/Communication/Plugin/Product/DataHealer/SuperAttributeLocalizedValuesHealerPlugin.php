@@ -69,7 +69,11 @@ class SuperAttributeLocalizedValuesHealerPlugin extends AbstractPlugin implement
             foreach ($spyProductBulk as $spyProduct) {
                 $attributes = $this->decodeAttributes($spyProduct->getAttributes());
                 $relevantSuperAttributes = array_intersect(array_keys($attributes), $superAttributeKeys);
-                $this->addMissingProductLocalizedSuperAttributeValues($spyProduct, $attributes, $relevantSuperAttributes);
+                $this->addMissingProductLocalizedSuperAttributeValues(
+                    $spyProduct,
+                    $attributes,
+                    $relevantSuperAttributes
+                );
             }
         }
 
@@ -167,7 +171,8 @@ class SuperAttributeLocalizedValuesHealerPlugin extends AbstractPlugin implement
 
                 foreach ($attributeValueTransfer->getLocalizedValues() as $attributeValueTranslationTransfer) {
                     $idLocale = $attributeValueTranslationTransfer->getFkLocale();
-                    $this->superAttributesValueMap[$key][$value][$idLocale] = $attributeValueTranslationTransfer->getTranslation();
+                    $this->superAttributesValueMap[$key][$value][$idLocale] =
+                        $attributeValueTranslationTransfer->getTranslation();
                 }
             }
         }
@@ -188,7 +193,10 @@ class SuperAttributeLocalizedValuesHealerPlugin extends AbstractPlugin implement
         foreach ($spyProduct->getSpyProductLocalizedAttributessJoinLocale() as $spyProductLocalizedAttributes) {
             $locale = $spyProductLocalizedAttributes->getLocale();
             $productLocalizedAttributes = $this->decodeAttributes($spyProductLocalizedAttributes->getAttributes());
-            $translatedSuperAttributes = array_intersect(array_keys($productLocalizedAttributes), $relevantSuperAttributes);
+            $translatedSuperAttributes = array_intersect(
+                array_keys($productLocalizedAttributes),
+                $relevantSuperAttributes
+            );
             if (count($translatedSuperAttributes) === count($relevantSuperAttributes)) {
                 continue;
             }
@@ -211,14 +219,16 @@ class SuperAttributeLocalizedValuesHealerPlugin extends AbstractPlugin implement
                 $spyProductLocalizedAttributes->setAttributes($this->encodeAttributes($productLocalizedAttributes));
                 $spyProductLocalizedAttributes->save();
 
-                if ($this->logger) {
-                    $this->logger->info(sprintf(
-                        'Product (ID %d) attribute %s value for locale %s translated to %s.',
-                        $spyProduct->getIdProduct(),
-                        $nonTranslatedAttribute,
-                        $locale->getLocaleName(),
-                        $supposedValueTranslation
-                    ));
+                if ($this->logger !== null) {
+                    $this->logger->info(
+                        sprintf(
+                            'Product (ID %d) attribute %s value for locale %s translated to %s.',
+                            $spyProduct->getIdProduct(),
+                            $nonTranslatedAttribute,
+                            $locale->getLocaleName(),
+                            $supposedValueTranslation
+                        )
+                    );
                 }
 
                 $this->updatedProductIds[] = $spyProduct->getIdProduct();

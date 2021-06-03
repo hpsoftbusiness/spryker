@@ -19,8 +19,8 @@ use Generated\Shared\Transfer\CustomerTransfer;
  * @group Customer
  * @group Business
  * @group Facade
- * @group Test
  * @group CustomerFacadeTest
+ * Add your own group annotations below this line
  */
 class CustomerFacadeTest extends Unit
 {

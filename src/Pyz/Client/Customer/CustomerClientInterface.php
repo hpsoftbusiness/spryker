@@ -15,6 +15,10 @@ use SprykerShop\Yves\CustomerPage\Dependency\Client\CustomerPageToCustomerClient
 interface CustomerClientInterface extends SprykerCustomerClientInterface, CustomerPageToCustomerClientInterface
 {
     /**
+     * Create customer
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerResponseTransfer

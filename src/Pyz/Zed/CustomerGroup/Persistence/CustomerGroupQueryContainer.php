@@ -28,7 +28,7 @@ class CustomerGroupQueryContainer extends SprykerCustomerGroupQueryContainer imp
         int $idCustomerGroup
     ): PyzCustomerGroupToProductListQuery {
         return $this->getFactory()
-            ->createCustomerGroupToProductListQuery()
+            ->getCustomerGroupToProductListQuery()
             ->filterByFkCustomerGroup($idCustomerGroup);
     }
 }

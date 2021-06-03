@@ -23,6 +23,9 @@ class CustomerClient extends SprykerCustomerClient implements CustomerClientInte
      */
     public function createCustomer(CustomerTransfer $customerTransfer): CustomerResponseTransfer
     {
-        return $this->getFactory()->createZedCustomerStub()->create($customerTransfer);
+        /** @var \Pyz\Client\Customer\Zed\CustomerStubInterface $customerStub */
+        $customerStub = $this->getFactory()->createZedCustomerStub();
+
+        return $customerStub->create($customerTransfer);
     }
 }

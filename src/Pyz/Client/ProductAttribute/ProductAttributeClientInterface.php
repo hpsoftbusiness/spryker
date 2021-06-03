@@ -12,6 +12,10 @@ use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
 interface ProductAttributeClientInterface
 {
     /**
+     * Get keys to Shown On Pdp
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
      *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer

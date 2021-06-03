@@ -12,6 +12,10 @@ use Spryker\Client\Currency\CurrencyClientInterface as SprykerCurrencyClientInte
 interface CurrencyClientInterface extends SprykerCurrencyClientInterface
 {
     /**
+     * Set current currency by locale
+     *
+     * @api
+     *
      * @param string $localeName
      *
      * @return void

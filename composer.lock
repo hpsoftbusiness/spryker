@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb5011f3631dfb4de27dc34cc68952f8",
+    "content-hash": "ea507fb7bbaa49c798a6970430b5b2bd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -41652,16 +41652,16 @@
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "63ea08880a44df809bdfbca08597e1b68cee9f87"
+                "reference": "ebbe729c630415e8caf6b0087e457906f0c6c0c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/63ea08880a44df809bdfbca08597e1b68cee9f87",
-                "reference": "63ea08880a44df809bdfbca08597e1b68cee9f87",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/ebbe729c630415e8caf6b0087e457906f0c6c0c6",
+                "reference": "ebbe729c630415e8caf6b0087e457906f0c6c0c6",
                 "shasum": ""
             },
             "require": {
@@ -41700,7 +41700,11 @@
                 "browser-testing",
                 "codeception"
             ],
-            "time": "2021-01-17T19:23:20+00:00"
+            "support": {
+                "issues": "https://github.com/Codeception/module-webdriver/issues",
+                "source": "https://github.com/Codeception/module-webdriver/tree/1.2.1"
+            },
+            "time": "2021-04-23T17:30:57+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -41973,6 +41977,51 @@
                 }
             ],
             "time": "2020-11-13T08:04:11+00:00"
+        },
+        {
+            "name": "dms/phpunit-arraysubset-asserts",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rdohms/phpunit-arraysubset-asserts.git",
+                "reference": "8c5038a36860511ef579c48afd36d553b3f8c23f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rdohms/phpunit-arraysubset-asserts/zipball/8c5038a36860511ef579c48afd36d553b3f8c23f",
+                "reference": "8c5038a36860511ef579c48afd36d553b3f8c23f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0 || ^8.0",
+                "phpunit/phpunit": "^4.8.36 || ^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "require-dev": {
+                "dms/coding-standard": "^8",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "assertarraysubset-autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Dohms",
+                    "email": "rdohms@gmail.com"
+                }
+            ],
+            "description": "This package provides ArraySubset and related asserts once deprecated in PHPUnit 8",
+            "support": {
+                "issues": "https://github.com/rdohms/phpunit-arraysubset-asserts/issues",
+                "source": "https://github.com/rdohms/phpunit-arraysubset-asserts/tree/v0.3.0"
+            },
+            "time": "2021-04-22T08:17:59+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -45972,22 +46021,24 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.31.0",
+            "version": "3.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "164ae5c5dd38e90267b1220faf8030a9ee3e80c1"
+                "reference": "a7ad13c54b90faa8eb601b6d10beb6dacf4492b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/164ae5c5dd38e90267b1220faf8030a9ee3e80c1",
-                "reference": "164ae5c5dd38e90267b1220faf8030a9ee3e80c1",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/a7ad13c54b90faa8eb601b6d10beb6dacf4492b5",
+                "reference": "a7ad13c54b90faa8eb601b6d10beb6dacf4492b5",
                 "shasum": ""
             },
             "require": {
                 "codeception/codeception": "^2.3.5 || ^3.0.0 ||  ^4.0.0",
+                "dms/phpunit-arraysubset-asserts": "^0.1.0 || ^0.2.0 || ^0.3.0",
+                "fzaninotto/faker": "^1.6.0",
                 "mikey179/vfsstream": "^1.6",
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application": "^3.12.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
@@ -46007,7 +46058,6 @@
                 "spryker/twig": "^3.0.0"
             },
             "suggest": {
-                "spryker-sdk/codeception-phantoman": "If you want to use WebDriverHelper.",
                 "spryker/silex": "Add this when you still want to use the abandoned Silex."
             },
             "type": "library",
@@ -46025,6 +46075,7 @@
                     "SprykerTest\\Glue\\Testify\\Tester\\": "tests/SprykerTest/Glue/Testify/_support/Tester/",
                     "SprykerTest\\Yves\\Testify\\Helper\\": "tests/SprykerTest/Yves/Testify/_support/Helper/",
                     "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/",
+                    "SprykerTest\\Service\\Testify\\Helper\\": "tests/SprykerTest/Service/Testify/_support/Helper/",
                     "SprykerTest\\Shared\\Testify\\Fixtures\\": "tests/SprykerTest/Shared/Testify/_support/Fixtures/",
                     "SprykerTest\\Shared\\Testify\\Tester\\": "tests/SprykerTest/Shared/Testify/_support/Tester/",
                     "SprykerTest\\Shared\\Testify\\StepOverride\\": "tests/SprykerTest/Shared/Testify/_support/StepOverride/",
@@ -46036,7 +46087,10 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2020-10-06T09:24:11+00:00"
+            "support": {
+                "source": "https://github.com/spryker/testify/tree/3.38.0"
+            },
+            "time": "2021-05-18T08:45:26+00:00"
         },
         {
             "name": "spryker/web-profiler",

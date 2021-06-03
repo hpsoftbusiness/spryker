@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductAttribute\Business;
 
 use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReader;
+use Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface;
 use Pyz\Zed\ProductAttribute\Business\Model\Attribute\Mapper\ProductAttributeTransferMapper;
 use Pyz\Zed\ProductAttribute\Business\Model\Product\ProductAttributeWriter;
 use Pyz\Zed\ProductAttribute\ProductAttributeDependencyProvider;
@@ -44,9 +45,9 @@ class ProductAttributeBusinessFactory extends SprykerProductAttributeBusinessFac
     }
 
     /**
-     * @return \Spryker\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface
+     * @return \Pyz\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterface
      */
-    public function createAttributeReader()
+    public function createAttributeReader(): AttributeReaderInterface
     {
         return new AttributeReader(
             $this->getQueryContainer(),

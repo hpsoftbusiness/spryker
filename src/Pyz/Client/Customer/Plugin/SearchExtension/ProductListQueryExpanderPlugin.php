@@ -20,6 +20,7 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
 /**
  * @method \Spryker\Client\Customer\CustomerClientInterface getClient()
+ * @method \Pyz\Client\Customer\CustomerFactory getFactory()
  */
 class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpanderPluginInterface
 {
@@ -170,11 +171,13 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
     {
         $boolQuery = $query->getQuery();
         if (!$boolQuery instanceof BoolQuery) {
-            throw new InvalidArgumentException(sprintf(
-                'Product List Query Expander available only with %s, got: %s',
-                BoolQuery::class,
-                get_class($boolQuery)
-            ));
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Product List Query Expander available only with %s, got: %s',
+                    BoolQuery::class,
+                    get_class($boolQuery)
+                )
+            );
         }
 
         return $boolQuery;

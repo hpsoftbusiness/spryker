@@ -16,6 +16,8 @@ interface MessengerClientInterface extends SprykerMessengerClientInterface
      * - Returns array of errors saved in session for flash messages.
      * - Unsets flash error messages from session.
      *
+     * @api
+     *
      * @return string[]
      */
     public function getFlashErrorMessages(): array;
@@ -25,6 +27,8 @@ interface MessengerClientInterface extends SprykerMessengerClientInterface
      * - Returns array of success messaged saved in session for flash.
      * - Unsets flash success messages from session.
      *
+     * @api
+     *
      * @return string[]
      */
     public function getFlashSuccessMessages(): array;
@@ -33,6 +37,8 @@ interface MessengerClientInterface extends SprykerMessengerClientInterface
      * Specification:
      * - Returns array of info messaged saved in session for flash.
      * - Unsets flash info messages from session.
+     *
+     * @api
      *
      * @return string[]
      */

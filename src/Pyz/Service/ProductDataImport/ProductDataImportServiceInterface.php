@@ -10,6 +10,10 @@ namespace Pyz\Service\ProductDataImport;
 interface ProductDataImportServiceInterface
 {
     /**
+     * Function jsonDecode for twig
+     *
+     * @api
+     *
      * @param string $jsonString
      *
      * @return array

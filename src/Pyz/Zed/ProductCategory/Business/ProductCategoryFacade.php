@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductCategory\Business;
 
 use Spryker\Zed\ProductCategory\Business\ProductCategoryFacade as SprykerProductCategoryFacade;
 
+/**
+ * @method \Pyz\Zed\ProductCategory\Business\ProductCategoryBusinessFactory getFactory()
+ */
 class ProductCategoryFacade extends SprykerProductCategoryFacade implements ProductCategoryFacadeInterface
 {
     /**

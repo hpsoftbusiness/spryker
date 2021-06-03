@@ -43,11 +43,11 @@ class CheckoutController extends SprykerShopCheckoutController
      */
     public function benefitVoucherAction(Request $request)
     {
+        /** @var \Pyz\Yves\CheckoutPage\Form\FormFactory $formFactory */
+        $formFactory = $this->getFactory()->createCheckoutFormFactory();
         $response = $this->createStepProcess()->process(
             $request,
-            $this->getFactory()
-                ->createCheckoutFormFactory()
-                ->getBenefitFormCollection()
+            $formFactory->getBenefitFormCollection()
         );
 
         if (!is_array($response)) {
