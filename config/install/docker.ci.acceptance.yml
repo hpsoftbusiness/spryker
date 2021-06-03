@@ -110,3 +110,6 @@ sections:
 
         publish-and-sync:
             command: "vendor/bin/console queue:worker:start --stop-when-empty"
+
+        check-errors:
+            command: "vendor/bin/console queue:check:errors"

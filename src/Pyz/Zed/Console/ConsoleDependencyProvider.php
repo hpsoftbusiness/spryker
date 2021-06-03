@@ -16,6 +16,7 @@ use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
 use Pyz\Zed\ProductPageSearch\Communication\Console\ProductAbstractPageSearchRefreshConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Pyz\Zed\Queue\Communication\Console\QueueWorkerConsole;
+use Pyz\Zed\QueueErrorChecker\Communication\Console\QueueErrorCheckerConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -340,6 +341,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ProductDataImportConsole(),
             new ProductOfferValidityConsole(),
             new ProductDataHealerConsole(),
+            new QueueErrorCheckerConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
