@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ProductAffiliateOffersPriceWidget\Widget;
 
 use Generated\Shared\Transfer\CurrentProductPriceTransfer;
-use Generated\Shared\Transfer\ProductOfferStorageCriteriaTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
@@ -51,39 +50,11 @@ class ProductAffiliateOffersPriceWidget extends AbstractWidget
      */
     private function getLowerPrice(int $abstractProductId): ?CurrentProductPriceTransfer
     {
-        $locale = $this->getLocale();
-        $abstractProducts = $this->getFactory()->getProductStorageClient()->getProductAbstractViewTransfers(
-            [$abstractProductId],
-            $locale
-        );
-        $concretes = [];
+        $productOfferStorageCollectionTransfer = $this->getFactory()
+            ->getProductAbstractOffersClient()
+            ->getProductOffersByAbstractId($abstractProductId, $this->getLocale());
 
-        foreach ($abstractProducts as $abstractProduct) {
-            $concretes = array_merge(
-                $concretes,
-                array_keys($abstractProduct->getAttributeMap()->getProductConcreteIds())
-            );
-        }
-
-        $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
-        $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-
-        if ($this->getConfig()->isMultiCountryFeatureEnabled()) {
-            $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
-        }
-
-        $productOfferStorageCollectionTransfer = $this->getFactory()->getMerchantProductOfferStorageClient(
-        )->getProductOffersBySkus(
-            $productOfferCriteriaFilterTransfer
-        );
         $price = null;
-
-        if (!$productOfferStorageCollectionTransfer->getProductOffersStorage()->count() && isset($abstractProducts[0])) {
-            return (new CurrentProductPriceTransfer())->fromArray(
-                $abstractProducts[0]->toArray(),
-                true
-            );
-        }
 
         foreach ($productOfferStorageCollectionTransfer->getProductOffersStorage() as $offerStorageTransfer) {
             if ($price === null) {
@@ -96,13 +67,5 @@ class ProductAffiliateOffersPriceWidget extends AbstractWidget
         }
 
         return $price;
-    }
-
-    /**
-     * @return string
-     */
-    private function getSellableCountryCode(): string
-    {
-        return $this->getFactory()->getStore()->getCurrentCountry();
     }
 }

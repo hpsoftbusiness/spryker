@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ProductUrlWidget\Widget;
 
-use Generated\Shared\Transfer\ProductOfferStorageCriteriaTransfer;
 use Pyz\Service\ProductAffiliate\Generator\ProductAffiliateLinkGenerator;
 use Pyz\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
@@ -122,30 +121,12 @@ class ProductUrlWidget extends AbstractWidget
 
             return;
         }
-        $locale = $this->getLocale();
-        $abstractProducts = $this->getFactory()->getProductStorageClient()->getProductAbstractViewTransfers(
-            [$abstractProductId],
-            $locale
-        );
-        $concretes = [];
 
-        foreach ($abstractProducts as $abstractProduct) {
-            $concretes = array_merge(
-                $concretes,
-                array_keys($abstractProduct->getAttributeMap()->getProductConcreteIds())
-            );
-        }
+        $productOfferStorageCollectionTransfer = $this->getFactory()
+            ->getProductAbstractOffersClient()
+            ->getProductOffersByAbstractId($abstractProductId, $this->getLocale());
 
-        $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
-        $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-        if ($this->getConfig()->isMultiCountryFeatureEnabled()) {
-            $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
-        }
-        $offers = $this->getFactory()->getMerchantProductOfferStorageClient()->getProductOffersBySkus(
-            $productOfferCriteriaFilterTransfer
-        )->getProductOffersStorage();
-
-        $this->hasOneOffer = $offers->count() === 1;
+        $this->hasOneOffer = $productOfferStorageCollectionTransfer->getProductOffersStorage()->count() === 1;
     }
 
     /**
@@ -170,13 +151,5 @@ class ProductUrlWidget extends AbstractWidget
         }
 
         return false;
-    }
-
-    /**
-     * @return string
-     */
-    private function getSellableCountryCode(): string
-    {
-        return $this->getFactory()->getStore()->getCurrentCountry();
     }
 }

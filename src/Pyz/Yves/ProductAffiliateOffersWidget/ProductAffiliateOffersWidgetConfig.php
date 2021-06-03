@@ -7,16 +7,8 @@
 
 namespace Pyz\Yves\ProductAffiliateOffersWidget;
 
-use Pyz\Shared\Country\CountryConstants;
 use Spryker\Yves\Kernel\AbstractBundleConfig;
 
 class ProductAffiliateOffersWidgetConfig extends AbstractBundleConfig
 {
-    /**
-     * @return bool
-     */
-    public function isMultiCountryFeatureEnabled(): bool
-    {
-        return $this->get(CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED, false);
-    }
 }

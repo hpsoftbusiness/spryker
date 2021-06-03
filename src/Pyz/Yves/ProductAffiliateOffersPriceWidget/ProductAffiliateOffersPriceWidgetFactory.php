@@ -7,11 +7,9 @@
 
 namespace Pyz\Yves\ProductAffiliateOffersPriceWidget;
 
+use Pyz\Client\ProductAbstractOffers\ProductAbstractOffersClientInterface;
 use Pyz\Yves\ProductAffiliateOffersWidget\DataProvider\AffiliateDataProvider;
 use Pyz\Yves\ProductAffiliateOffersWidget\DataProvider\AffiliateDataProviderInterface;
-use Spryker\Client\MerchantProductOfferStorage\MerchantProductOfferStorageClient;
-use Spryker\Client\ProductStorage\ProductStorageClientInterface;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ProductAffiliateOffersPriceWidgetFactory extends AbstractFactory
@@ -25,30 +23,12 @@ class ProductAffiliateOffersPriceWidgetFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ProductStorage\ProductStorageClientInterface
+     * @return \Pyz\Client\ProductAbstractOffers\ProductAbstractOffersClientInterface
      */
-    public function getProductStorageClient(): ProductStorageClientInterface
+    public function getProductAbstractOffersClient(): ProductAbstractOffersClientInterface
     {
         return $this->getProvidedDependency(
-            ProductAffiliateOffersPriceWidgetDependencyProvider::PRODUCT_STORAGE_CLIENT
+            ProductAffiliateOffersPriceWidgetDependencyProvider::PRODUCT_ABSTRACT_OFFERS_CLIENT
         );
-    }
-
-    /**
-     * @return \Spryker\Client\MerchantProductOfferStorage\MerchantProductOfferStorageClient
-     */
-    public function getMerchantProductOfferStorageClient(): MerchantProductOfferStorageClient
-    {
-        return $this->getProvidedDependency(
-            ProductAffiliateOffersPriceWidgetDependencyProvider::MERCHANT_PRODUCT_OFFER_STORAGE_CLIENT
-        );
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    public function getStore(): Store
-    {
-        return $this->getProvidedDependency(ProductAffiliateOffersPriceWidgetDependencyProvider::STORE);
     }
 }

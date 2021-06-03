@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ProductAffiliateOffersWidget\Widget;
 
 use Generated\Shared\Transfer\ProductOfferStorageCollectionTransfer;
-use Generated\Shared\Transfer\ProductOfferStorageCriteriaTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
@@ -54,37 +53,7 @@ class ProductAffiliateOffersWidget extends AbstractWidget
      */
     private function getProductOffers(int $abstractProductId): ProductOfferStorageCollectionTransfer
     {
-        $locale = $this->getLocale();
-        $abstractProducts = $this->getFactory()->getProductStorageClient()->getProductAbstractViewTransfers(
-            [$abstractProductId],
-            $locale
-        );
-        $concretes = [];
-
-        foreach ($abstractProducts as $abstractProduct) {
-            $concretes = array_merge(
-                $concretes,
-                array_keys($abstractProduct->getAttributeMap()->getProductConcreteIds())
-            );
-        }
-
-        $productOfferCriteriaFilterTransfer = new ProductOfferStorageCriteriaTransfer();
-        $productOfferCriteriaFilterTransfer->setProductConcreteSkus(array_values($concretes));
-
-        if ($this->getConfig()->isMultiCountryFeatureEnabled()) {
-            $productOfferCriteriaFilterTransfer->setSellableIso2Code($this->getSellableCountryCode());
-        }
-
-        return $this->getFactory()->getMerchantProductOfferStorageClient()->getProductOffersBySkus(
-            $productOfferCriteriaFilterTransfer
-        );
-    }
-
-    /**
-     * @return string
-     */
-    private function getSellableCountryCode(): string
-    {
-        return $this->getFactory()->getStore()->getCurrentCountry();
+        return $this->getFactory()->getProductAbstractOffersClient()
+            ->getProductOffersByAbstractId($abstractProductId, $this->getLocale());
     }
 }

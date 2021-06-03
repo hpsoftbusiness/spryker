@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ProductUrlWidget;
 
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 
@@ -15,9 +14,7 @@ class ProductUrlWidgetDependencyProvider extends AbstractBundleDependencyProvide
 {
     public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
     public const SERVICE_PRODUCT_AFFILIATE = 'SERVICE_PRODUCT_AFFILIATE';
-    public const PRODUCT_STORAGE_CLIENT = 'PRODUCT_STORAGE_CLIENT';
-    public const MERCHANT_PRODUCT_OFFER_STORAGE_CLIENT = 'MERCHANT_PRODUCT_OFFER_STORAGE_CLIENT';
-    public const STORE = 'STORE';
+    public const PRODUCT_ABSTRACT_OFFERS_CLIENT = 'PRODUCT_ABSTRACT_OFFERS_CLIENT';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -28,9 +25,7 @@ class ProductUrlWidgetDependencyProvider extends AbstractBundleDependencyProvide
     {
         $container = $this->addCustomerClient($container);
         $container = $this->addProductAffiliateService($container);
-        $container = $this->addMerchantProductOfferStorageClient($container);
-        $container = $this->addProductStorageClient($container);
-        $container = $this->addStore($container);
+        $container = $this->addProductAbstractOffersClient($container);
 
         return $container;
     }
@@ -74,46 +69,12 @@ class ProductUrlWidgetDependencyProvider extends AbstractBundleDependencyProvide
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addMerchantProductOfferStorageClient(Container $container): Container
+    protected function addProductAbstractOffersClient(Container $container): Container
     {
         $container->set(
-            static::MERCHANT_PRODUCT_OFFER_STORAGE_CLIENT,
+            static::PRODUCT_ABSTRACT_OFFERS_CLIENT,
             function (Container $container) {
-                return $container->getLocator()->merchantProductOfferStorage()->client();
-            }
-        );
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    protected function addProductStorageClient(Container $container): Container
-    {
-        $container->set(
-            static::PRODUCT_STORAGE_CLIENT,
-            function (Container $container) {
-                return $container->getLocator()->productStorage()->client();
-            }
-        );
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    private function addStore(Container $container): Container
-    {
-        $container->set(
-            static::STORE,
-            function () {
-                return Store::getInstance();
+                return $container->getLocator()->productAbstractOffers()->client();
             }
         );
 
