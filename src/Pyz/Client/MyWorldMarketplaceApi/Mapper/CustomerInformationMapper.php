@@ -51,7 +51,7 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
             ->setPhone($data['MobilePhoneNumber'])
             ->setIsActive($data['Status'] === 'Active')
             ->setCountryId($data['CountryID'] ?? null)
-            ->setCustomerType($data['CustomerType'])
+            ->setCustomerType($this->mapCustomerType($data['CustomerType']))
             ->setCustomerBalance($this->mapCustomerBalance($data));
 
         return $customerTransfer;

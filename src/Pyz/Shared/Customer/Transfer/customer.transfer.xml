@@ -8,7 +8,7 @@
         <property name="myWorldCustomerNumber" type="string"/>
         <property name="cardNumber" type="string"/>
         <property name="countryId" type="string"/>
-        <property name="customerType" type="int"/>
+        <property name="customerType" type="string"/>
         <property name="isActive" type="bool"/>
         <property name="ssoAccessToken" type="SsoAccessToken"/>
         <property name="customerBalance" type="CustomerBalance"/>
