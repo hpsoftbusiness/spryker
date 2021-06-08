@@ -7,9 +7,9 @@ paths:
     log: _output
 
 coverage:
-    enabled: true
+    enabled: false
     remote: false
-    whitelist: { include: ['../../../../src/*'] }
+#    whitelist: { include: ['../../../../src/*'] }
 
 suites:
     Presentation:
@@ -17,23 +17,23 @@ suites:
         class_name: ProductRelationPresentationTester
         modules:
             enabled:
-              - Asserts
-              - \PyzTest\Shared\Testify\Helper\Environment
-              - \SprykerTest\Shared\Config\Helper\ConfigInit
-              - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                  projectNamespaces: ['Pyz']
+                - Asserts
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Config\Helper\ConfigInit
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
 
-              - \SprykerTest\Shared\Propel\Helper\PropelInstallHelper
-              - WebDriver:
-                  url: ''
-                  browser: chrome
-                  window_size: 1920x1080
-                  host: 0.0.0.0
-                  restart: false
-              - \SprykerTest\Shared\Discount\Helper\DiscountDataHelper
-              - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
-              - \SprykerTest\Shared\Application\Helper\ZedHelper
-              - \SprykerTest\Shared\Application\Helper\YvesHelper
+                - \SprykerTest\Shared\Propel\Helper\PropelInstallHelper
+                -   WebDriver:
+                        url: ''
+                        browser: chrome
+                        window_size: 1920x1080
+                        host: 0.0.0.0
+                        restart: false
+                - \SprykerTest\Shared\Discount\Helper\DiscountDataHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Application\Helper\ZedHelper
+                - \SprykerTest\Shared\Application\Helper\YvesHelper
 #extensions:
 #    enabled:
 #        - Codeception\Extension\Recorder

@@ -13,7 +13,7 @@ image:
             "memory_limit": 3000M
             "opcache.enable_cli": 0
             "opcache.enable": 1
-            "apc.enable_cli": 1"
+            "apc.enable_cli": 1
         enabled-extensions:
             - blackfire
 composer:

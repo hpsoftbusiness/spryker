@@ -9,7 +9,12 @@ paths:
 coverage:
     enabled: true
     remote: false
-    whitelist: { include: ['../../../../src/Pyz/Glue/CatalogSearchRestApi/*'] }
+    whitelist:
+        include: [ '../../../../src/Pyz/Glue/CatalogSearchRestApi/*.php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
 
 suites:
     Processor:
@@ -19,8 +24,8 @@ suites:
             enabled:
                 - Asserts
                 - \PyzTest\Shared\Testify\Helper\Environment
-                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                    projectNamespaces: ['Pyz']
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
     Plugin:
         path: Plugin
         class_name: CatalogSearchRestApiPluginTester

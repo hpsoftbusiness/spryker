@@ -223,6 +223,7 @@
     "symfony/http-client": "^5.2"
   },
   "require-dev": {
+    "codeception/c3": "2.*",
     "codeception/codeception": "<4.1.2",
     "codeception/module-asserts": "^1.1",
     "codeception/module-cli": "^1.0",

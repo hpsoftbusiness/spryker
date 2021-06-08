@@ -9,8 +9,12 @@ paths:
 coverage:
     enabled: true
     remote: false
-    whitelist: { include: ['../../../../src/Yves/CheckoutPage/*'] }
-
+    whitelist:
+        include: [ '../../../../src/Pyz/Yves/CheckoutPage/*.php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
 suites:
     Process:
         path: Process
@@ -23,8 +27,8 @@ suites:
                 - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
-                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                      projectNamespaces: ['Pyz']
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
     Form:
         path: Form
         class_name: CheckoutPageFormTester

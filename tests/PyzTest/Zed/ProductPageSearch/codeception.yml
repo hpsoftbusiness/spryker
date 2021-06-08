@@ -9,7 +9,12 @@ paths:
 coverage:
     enabled: true
     remote: false
-    whitelist: { include: ['../../../../src/Pyz/Zed/ProductPageSearch/*'] }
+    whitelist:
+        include: [ '../../../../src/Pyz/Zed/ProductPageSearch/*.php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
 
 suites:
     Communication:

@@ -15,14 +15,20 @@ settings:
     bootstrap: _bootstrap.php
     suite_class: \PHPUnit_Framework_TestSuite
     colors: true
-    memory_limit: 1024M
+    memory_limit: 2048M
     log: true
 
 coverage:
     enabled: true
     remote: true
     c3_url: 'http://zed.de.shop-suite.local'
-    whitelist: { include: ['src/Pyz/*.php'] }
+    show_only_summary: true
+    whitelist:
+        include: ['src/Pyz/*.php']
+        exclude:
+            - src/Pyz/*/*DependencyProvider.php
+            - src/Pyz/*/*Config.php
+            - src/Pyz/*/*Factory.php
 
 extensions:
     enabled:
