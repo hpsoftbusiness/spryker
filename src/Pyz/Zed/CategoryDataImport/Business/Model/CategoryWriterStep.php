@@ -35,7 +35,7 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
 
     protected const NODE_KEY_SUFFIX = '_NODE_';
 
-    protected const DEFAULT_ROOT_CATEGORY = 'demoshop';
+    protected const DEFAULT_ROOT_CATEGORY = 'shop';
     protected const DEFAULT_NODE_TYPE = 'category';
 
     /**

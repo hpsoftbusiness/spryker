@@ -1,4 +1,4 @@
-# Example of a B2C demo shop 'full' data import (all categories).
+#'full' data import for local environment.
 version: 0
 
 actions:

@@ -1,10 +1,8 @@
 # MyWorld Project
-[![Build Status](https://travis-ci.org/spryker-shop/b2c-demo-shop.svg?branch=master)](https://travis-ci.org/spryker-shop/b2c-demo-shop)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-shop/b2c-demo-shop/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-shop/b2c-demo-shop/?branch=master)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 
 ## Vagrant Installation
-To install the B2C Demo Shop in Vagrant on your machine, follow [Developer Getting Started Guide](https://documentation.spryker.com/docs/dev-getting-started).
+To install the project in Vagrant on your machine, follow [Developer Getting Started Guide](https://documentation.spryker.com/docs/dev-getting-started).
 
 __NOTE: instead of `vagrant up` run `VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-projects/myworld-project.git" vagrant up`__.
 
@@ -32,7 +30,7 @@ Recommended system requirements for MacOS:
 Run the commands:
 ```bash
 mkdir myworld && cd myworld
-git clone git@github.com:spryker-projects/myworld-project.git ./
+git clone git@github.com:360codelab/spryker-marketplace.git ./
 git submodule update --init --force docker
 ```
 
@@ -138,8 +136,8 @@ docker/sdk up --build --assets --data
 **No data on Storefront**
 
 Use the following services to check the status of queues and jobs:
-- queue.spryker.local
-- scheduler.spryker.local
+- queue.myworld.local
+- scheduler.myworld.local
 
 **Fail whale**
 

@@ -213,7 +213,7 @@ checkout.step.summary.with_method,Avec,fr_FR
 checkout.summary.item.bundle.description,Articles dans le lot:,fr_FR
 checkout.summary.item.option.description,Options de produit:,fr_FR
 checkout.thank.you,Merci,fr_FR
-checkout.this.is.demoshop,Ceci est un démoshop,fr_FR
+checkout.this.is.shop,Ceci est un démoshop,fr_FR
 cms.page.filter.per,Par page,fr_FR
 cms.page.itemsFound,Objets trouvés,fr_FR
 cms.page.sort.name_asc,Trier par nom croissant,fr_FR
@@ -1743,7 +1743,7 @@ checkout.step.summary.with_method,Con,it_IT
 checkout.summary.item.bundle.description,Articoli nel pacchetto:,it_IT
 checkout.summary.item.option.description,Opzioni di prodotto:,it_IT
 checkout.thank.you,Grazie,it_IT
-checkout.this.is.demoshop,Questo è un demo,it_IT
+checkout.this.is.shop,Questo è un demo,it_IT
 cms.page.filter.per,Per pagina,it_IT
 cms.page.itemsFound,Oggetti trovati,it_IT
 cms.page.sort.name_asc,Ordina per nome crescente,it_IT
@@ -3273,7 +3273,7 @@ checkout.step.summary.with_method,Z,pl_PL
 checkout.summary.item.bundle.description,Przedmioty w pakiecie:,pl_PL
 checkout.summary.item.option.description,Opcje produktu:,pl_PL
 checkout.thank.you,Dziękuję Ci,pl_PL
-checkout.this.is.demoshop,To jest sklep demo,pl_PL
+checkout.this.is.shop,To jest sklep demo,pl_PL
 cms.page.filter.per,Na stronę,pl_PL
 cms.page.itemsFound,Znalezione przedmioty,pl_PL
 cms.page.sort.name_asc,Sortuj według nazwy rosnąco,pl_PL
@@ -4807,7 +4807,7 @@ checkout.step.summary.with_method,With,en_US
 checkout.summary.item.bundle.description,Items in the bundle:,en_US
 checkout.summary.item.option.description,Product options:,en_US
 checkout.thank.you,Thank you,en_US
-checkout.this.is.demoshop,This is a demoshop,en_US
+checkout.this.is.shop,This is a shop,en_US
 cms.page.filter.per,Per Page,en_US
 cms.page.itemsFound,Items found,en_US
 cms.page.sort.name_asc,Sort by name ascending,en_US
@@ -6355,7 +6355,7 @@ checkout.step.summary.with_method,Mit,de_DE
 checkout.summary.item.bundle.description,Produkte in diesem Bündel:,de_DE
 checkout.summary.item.option.description,Produktoptionen:,de_DE
 checkout.thank.you,Vielen Dank,de_DE
-checkout.this.is.demoshop,Das ist ein Demoshop,de_DE
+checkout.this.is.shop,Das ist ein Shop,de_DE
 cms.page.filter.per,Pro Seite,de_DE
 cms.page.itemsFound,Artikel gefunden,de_DE
 cms.page.sort.name_asc,Nach Name aufsteigend sortieren,de_DE
@@ -7867,7 +7867,7 @@ checkout.step.summary.with_method,Con,es_ES
 checkout.summary.item.bundle.description,Elementos del paquete:,es_ES
 checkout.summary.item.option.description,Opciones de producto:,es_ES
 checkout.thank.you,Gracias,es_ES
-checkout.this.is.demoshop,Esta es una demoshop,es_ES
+checkout.this.is.shop,Esta es una shop,es_ES
 cms.page.filter.per,Por página,es_ES
 cms.page.itemsFound,Artículos encontrados,es_ES
 cms.page.sort.name_asc,Ordenar por nombre ascendente,es_ES
@@ -9397,7 +9397,7 @@ checkout.step.summary.with_method,S,cs_CZ
 checkout.summary.item.bundle.description,Položky v balíčku:,cs_CZ
 checkout.summary.item.option.description,Možnosti produktu:,cs_CZ
 checkout.thank.you,Děkuju,cs_CZ
-checkout.this.is.demoshop,Toto je demoshop,cs_CZ
+checkout.this.is.shop,Toto je shop,cs_CZ
 cms.page.filter.per,Na stránku,cs_CZ
 cms.page.itemsFound,Nalezené položky,cs_CZ
 cms.page.sort.name_asc,Seřadit podle názvu vzestupně,cs_CZ
@@ -10927,7 +10927,7 @@ checkout.step.summary.with_method,Med,sv_SE
 checkout.summary.item.bundle.description,Föremål i paketet:,sv_SE
 checkout.summary.item.option.description,Produktalternativ:,sv_SE
 checkout.thank.you,Tack,sv_SE
-checkout.this.is.demoshop,Det här är en demoshop,sv_SE
+checkout.this.is.shop,Det här är en shop,sv_SE
 cms.page.filter.per,Per sida,sv_SE
 cms.page.itemsFound,Hittade saker,sv_SE
 cms.page.sort.name_asc,Sortera efter stigande namn,sv_SE
@@ -12457,7 +12457,7 @@ checkout.step.summary.with_method,S,sl_SI
 checkout.summary.item.bundle.description,Elementi v svežnju:,sl_SI
 checkout.summary.item.option.description,Možnosti izdelka:,sl_SI
 checkout.thank.you,Hvala vam,sl_SI
-checkout.this.is.demoshop,To je predstavitvena trgovina,sl_SI
+checkout.this.is.shop,To je predstavitvena trgovina,sl_SI
 cms.page.filter.per,Na stran,sl_SI
 cms.page.itemsFound,Najdeni predmeti,sl_SI
 cms.page.sort.name_asc,Razvrsti po imenu naraščajoče,sl_SI
@@ -13987,7 +13987,7 @@ checkout.step.summary.with_method,Com,pt_PT
 checkout.summary.item.bundle.description,Itens do pacote:,pt_PT
 checkout.summary.item.option.description,Opções de produto:,pt_PT
 checkout.thank.you,Obrigada,pt_PT
-checkout.this.is.demoshop,Esta é uma demoshop,pt_PT
+checkout.this.is.shop,Esta é uma shop,pt_PT
 cms.page.filter.per,Por página,pt_PT
 cms.page.itemsFound,Itens encontrados,pt_PT
 cms.page.sort.name_asc,Classificar por nome em ordem crescente,pt_PT
@@ -15517,7 +15517,7 @@ checkout.step.summary.with_method,Med,nb_NO
 checkout.summary.item.bundle.description,Varer i pakken:,nb_NO
 checkout.summary.item.option.description,Produktalternativer:,nb_NO
 checkout.thank.you,Takk skal du ha,nb_NO
-checkout.this.is.demoshop,Dette er en demoshop,nb_NO
+checkout.this.is.shop,Dette er en shop,nb_NO
 cms.page.filter.per,Per side,nb_NO
 cms.page.itemsFound,Varer funnet,nb_NO
 cms.page.sort.name_asc,Sorter etter stigende navn,nb_NO
@@ -17047,7 +17047,7 @@ checkout.step.summary.with_method,S,sk_SK
 checkout.summary.item.bundle.description,Položky v balíku:,sk_SK
 checkout.summary.item.option.description,Možnosti produktu:,sk_SK
 checkout.thank.you,Ďakujem,sk_SK
-checkout.this.is.demoshop,Toto je demoshop,sk_SK
+checkout.this.is.shop,Toto je shop,sk_SK
 cms.page.filter.per,Na stránku,sk_SK
 cms.page.itemsFound,Nájdené položky,sk_SK
 cms.page.sort.name_asc,Zoradiť vzostupne podľa názvu,sk_SK
@@ -18577,7 +18577,7 @@ checkout.step.summary.with_method,Met,nl_NL
 checkout.summary.item.bundle.description,Artikelen in de bundel:,nl_NL
 checkout.summary.item.option.description,Product opties:,nl_NL
 checkout.thank.you,Dank u,nl_NL
-checkout.this.is.demoshop,Dit is een demoshop,nl_NL
+checkout.this.is.shop,Dit is een shop,nl_NL
 cms.page.filter.per,Per pagina,nl_NL
 cms.page.itemsFound,Voorwerpen gevonden,nl_NL
 cms.page.sort.name_asc,Sorteer op naam oplopend,nl_NL
