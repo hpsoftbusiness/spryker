@@ -311,6 +311,6 @@ class StepFactory extends SprykerShopStepFactory
      */
     public function getPyzQuoteClient(): QuoteClientInterface
     {
-        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_QUOTE);
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::PYZ_CLIENT_QUOTE);
     }
 }

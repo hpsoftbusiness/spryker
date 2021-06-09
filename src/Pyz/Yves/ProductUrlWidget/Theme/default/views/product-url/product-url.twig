@@ -16,6 +16,7 @@
     originUrl: null,
     alt: null,
     idProductAbstract: null,
+    isAffiliate: _widget.isAffiliate,
 } %}
 
 {% block body %}
@@ -30,6 +31,7 @@
                 alt: data.alt,
                 targetBlank: data.targetBlank,
                 idProductAbstract: data.idProductAbstract,
+                isAffiliate: data.isAffiliate,
             },
         } only %}
     {% elseif data.thumbnail %}

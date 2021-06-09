@@ -42,6 +42,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     public const CLIENT_MY_WORLD_MARKETING_API = 'CLIENT_MY_WORLD_MARKETING_API';
     public const CLIENT_CURRENCY = 'CLIENT_CURRENCY';
     public const CLIENT_MESSENGER = 'CLIENT_MESSENGER';
+    public const PYZ_CLIENT_QUOTE = 'PYZ_CLIENT_QUOTE';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -60,6 +61,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $this->addMyWorldMarketingApiClient($container);
         $this->addCurrencyClient($container);
         $this->addMessengerClient($container);
+        $this->addPyzQuoteClient($container);
 
         return $container;
     }
@@ -90,9 +92,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addQuoteClient(Container $container): Container
+    protected function addPyzQuoteClient(Container $container): Container
     {
-        $container->set(self::CLIENT_QUOTE, static function (Container $container) {
+        $container->set(self::PYZ_CLIENT_QUOTE, static function (Container $container) {
             return $container->getLocator()->quote()->client();
         });
 

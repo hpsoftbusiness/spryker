@@ -44,6 +44,7 @@ class ProductUrlWidget extends AbstractWidget
 
         $this->addParameter('url', $this->getProductUrl($isAffiliate, $affiliateData, $productAttributes, $isConcrete));
         $this->addParameter('targetBlank', $this->getTargetBlank($isAffiliate, $isConcrete));
+        $this->addParameter('isAffiliate', $isAffiliate ?: false);
     }
 
     /**
