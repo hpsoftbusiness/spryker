@@ -17,6 +17,7 @@ use Generated\Shared\Transfer\PaymentDataRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Service\Customer\CustomerService;
 use Pyz\Service\Customer\CustomerServiceInterface;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacade;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface;
@@ -386,12 +387,14 @@ class MyWorldPaymentFacadeTest extends Unit
 
         // Assert
         $itemTransfer = $calculableObjectTransfer->getItems()[0];
-        $sumGrossPrice = $benefitVoucherDealData->getSalesPrice() * $itemTransfer->getQuantity();
 
         $this->assertEquals($benefitVoucherDealData->getAmount(), $calculableObjectTransfer->getTotalUsedBenefitVouchersAmount());
         $this->assertEquals($benefitVoucherDealData->getAmount(), $itemTransfer->getTotalUsedBenefitVouchersAmount());
-        $this->assertEquals($benefitVoucherDealData->getSalesPrice(), $itemTransfer->getUnitGrossPrice());
-        $this->assertEquals($sumGrossPrice, $itemTransfer->getSumGrossPrice());
+        $this->assertEquals($itemTransfer->getOriginUnitGrossPrice(), $itemTransfer->getUnitGrossPrice());
+        $this->assertCount(1, $calculableObjectTransfer->getPayments());
+        $paymentTransfer = $calculableObjectTransfer->getPayments()[0];
+        $this->assertEquals(MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME, $paymentTransfer->getPaymentMethod());
+        $this->assertEquals($benefitVoucherDealData->getAmount(), $paymentTransfer->getAmount());
     }
 
     /**

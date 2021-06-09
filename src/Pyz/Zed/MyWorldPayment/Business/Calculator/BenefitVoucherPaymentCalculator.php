@@ -83,7 +83,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
                     continue;
                 }
 
-                $this->calculateItemUsedBenefitVouchers($itemTransfer, $totalItemBenefitVoucherDiscountAmount);
+                $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherDiscountAmount);
                 $totalBenefitVouchersDiscountAmount += $totalItemBenefitVoucherDiscountAmount;
             } else {
                 $this->clearItemBenefitVoucherSelection($itemTransfer);
@@ -110,23 +110,6 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
     {
         $itemTransfer->setUseBenefitVoucher(false);
         $itemTransfer->setTotalUsedBenefitVouchersAmount(0);
-        $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
-        $itemTransfer->setSumGrossPrice($itemTransfer->getOriginUnitGrossPrice() * $itemTransfer->getQuantity());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param int $totalItemBenefitVoucherAmount
-     *
-     * @return void
-     */
-    private function calculateItemUsedBenefitVouchers(ItemTransfer $itemTransfer, int $totalItemBenefitVoucherAmount): void
-    {
-        $benefitVoucherDealData = $itemTransfer->getBenefitVoucherDealData();
-
-        $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherAmount);
-        $itemTransfer->setUnitGrossPrice($benefitVoucherDealData->getSalesPrice());
-        $itemTransfer->setSumGrossPrice($benefitVoucherDealData->getSalesPrice() * $itemTransfer->getQuantity());
     }
 
     /**

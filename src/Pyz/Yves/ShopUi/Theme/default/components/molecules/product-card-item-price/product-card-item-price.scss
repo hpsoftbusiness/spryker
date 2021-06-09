@@ -1,0 +1,12 @@
+@mixin product-card-item-price($name: '.product-card-item-price') {
+    #{$name} {
+        text-align: right;
+        font: fw(medium) rem(14) $setting-font-family;
+
+        &__regular-price {
+            margin: rem(8) 0;
+        }
+    }
+}
+
+@include product-card-item-price();

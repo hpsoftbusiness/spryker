@@ -8,7 +8,6 @@
 namespace PyzTest\Zed\MyWorldPayment;
 
 use ArrayObject;
-use Generated\Shared\DataBuilder\BenefitVoucherDealDataBuilder;
 use Generated\Shared\DataBuilder\CalculableObjectBuilder;
 use Generated\Shared\DataBuilder\CustomerBalanceBuilder;
 use Generated\Shared\DataBuilder\CustomerBalanceByCurrencyBuilder;
@@ -56,7 +55,7 @@ class DataHelper
 
     protected const API_FACADE_DEFAULT_TRANSACTION_ACCEPTED = [
         PaymentTransactionTransfer::PAYMENT_OPTION_ID => 12,
-        PaymentTransactionTransfer::AMOUNT => 1222,
+        PaymentTransactionTransfer::AMOUNT => 1000,
         PaymentTransactionTransfer::STATUS => MyWorldPaymentApiConfig::PAYMENT_TRANSACTION_STATUS_NAME_ACCEPTED,
         PaymentTransactionTransfer::BATCH_NUMBER => 123412341234,
         PaymentTransactionTransfer::DATE_TIME => '2020-06-14T15:28:17Z',
@@ -139,9 +138,9 @@ class DataHelper
     ];
 
     public const BENEFIT_VOUCHER_DEAL_DEFAULT_SEED = [
-        BenefitVoucherDealDataTransfer::AMOUNT => 2,
+        BenefitVoucherDealDataTransfer::AMOUNT => 222,
         BenefitVoucherDealDataTransfer::IS_STORE => true,
-        BenefitVoucherDealDataTransfer::SALES_PRICE => 1222,
+        BenefitVoucherDealDataTransfer::SALES_PRICE => 1000,
     ];
 
     public const CALCULABLE_OBJECT_DEFAULT_SEED = [
@@ -334,7 +333,7 @@ class DataHelper
     {
         $shoppingPointsDealSeedData = $this->createShoppingPointsDealBuilder($setDefaultSeed)->getSeedData();
 
-        return $this->createItemBuilder($setDefaultSeed, [
+        return $this->createItemBuilder([
                 ItemTransfer::TOTAL_USED_SHOPPING_POINTS_AMOUNT => $shoppingPointsDealSeedData[ShoppingPointsDealTransfer::SHOPPING_POINTS_QUANTITY],
                 ItemTransfer::USE_SHOPPING_POINTS => $shoppingPointsDealSeedData[ShoppingPointsDealTransfer::IS_ACTIVE],
                 ItemTransfer::SHOPPING_POINTS_DEAL => $shoppingPointsDealSeedData,
@@ -342,30 +341,33 @@ class DataHelper
     }
 
     /**
-     * @param bool $setDefaultSeed
+     * @param array $overrideData
      *
      * @return \Generated\Shared\DataBuilder\ItemBuilder
      */
-    public function createItemBuilderWithBenefitVoucherDeal(bool $setDefaultSeed = true): ItemBuilder
+    public function createItemBuilderWithBenefitVoucherDeal(array $overrideData = []): ItemBuilder
     {
-        $benefitDealSeedData = $this->createBenefitVoucherDealBuilder($setDefaultSeed)->getSeedData();
+        $seedData = array_merge(
+            self::ITEM_DEFAULT_SEED,
+            [
+                ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => self::BENEFIT_VOUCHER_DEAL_DEFAULT_SEED,
+                ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => self::BENEFIT_VOUCHER_DEAL_DEFAULT_SEED[BenefitVoucherDealDataTransfer::AMOUNT],
+            ],
+            $overrideData
+        );
 
-        return $this->createItemBuilder($setDefaultSeed, [
-            ItemTransfer::USE_BENEFIT_VOUCHER => $benefitDealSeedData[BenefitVoucherDealDataTransfer::IS_STORE],
-            ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => $benefitDealSeedData[BenefitVoucherDealDataTransfer::AMOUNT],
-            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => $benefitDealSeedData,
-        ]);
+        return $this->createItemBuilder($seedData);
     }
 
     /**
-     * @param bool $setDefaultSeed
-     * @param array $overRideData
+     * @param array $overrideData
      *
      * @return \Generated\Shared\DataBuilder\ItemBuilder
      */
-    public function createItemBuilder(bool $setDefaultSeed = true, array $overRideData = []): ItemBuilder
+    public function createItemBuilder(array $overrideData = []): ItemBuilder
     {
-        return new ItemBuilder($setDefaultSeed ? self::ITEM_DEFAULT_SEED + $overRideData : $overRideData);
+        return new ItemBuilder(array_merge(self::ITEM_DEFAULT_SEED, $overrideData));
     }
 
     /**
@@ -379,17 +381,6 @@ class DataHelper
         return new ShoppingPointsDealBuilder(
             $setDefaultSeed ? self::SHOPPING_POINTS_DEAL_DEFAULT_SEED + $override : $override
         );
-    }
-
-    /**
-     * @param bool $setDefaultSeed
-     * @param array $override
-     *
-     * @return \Generated\Shared\DataBuilder\BenefitVoucherDealDataBuilder
-     */
-    public function createBenefitVoucherDealBuilder(bool $setDefaultSeed = true, array $override = []): BenefitVoucherDealDataBuilder
-    {
-        return new BenefitVoucherDealDataBuilder($setDefaultSeed ? self::BENEFIT_VOUCHER_DEAL_DEFAULT_SEED + $override : $override);
     }
 
     /**

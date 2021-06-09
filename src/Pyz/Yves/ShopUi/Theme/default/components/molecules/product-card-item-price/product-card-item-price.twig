@@ -1,0 +1,81 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-card-item-price',
+    tag: 'div',
+} %}
+
+{% define data = {
+    productItem: required,
+    currencyIsoCode: null
+} %}
+
+{% block body %}
+    {% if can('SeePricePermissionPlugin') %}
+        {% set useBenefitVoucher =  data.productItem.useBenefitVoucher | default(false)
+            and data.productItem.benefitVoucherDealData is defined %}
+        {% set useShoppingPoints =  data.productItem.useShoppingPoints | default(false)
+            and data.productItem.shoppingPointsDeal is defined %}
+        {% set benefitDealApplied = useBenefitVoucher or useShoppingPoints %}
+        {% if benefitDealApplied %}
+            {% block benefitPrice%}
+                {% set price = useBenefitVoucher ? data.productItem.benefitVoucherDealData.salesPrice : data.productItem.shoppingPointsDeal.price %}
+                {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+                <div class="{{ config.name }}__benefit-price">
+                    {% include molecule('money-price') with {
+                        modifiers: ['medium-size'],
+                        data: {
+                            amount: productItemSubTotal | default(null)
+                        },
+                    } only %}
+                </div>
+            {% endblock %}
+        {% endif%}
+
+        {% block regularPrice %}
+            <div class="{{ config.name }}__regular-price">
+                {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                {% if useShoppingPoints %}
+                    {% set price = data.productItem.originUnitGrossPrice %}
+                {% endif %}
+                {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+                {% include molecule('money-price') with {
+                    modifiers: benefitDealApplied ? ['small', 'strikethrough'] : ['medium-size'],
+                    data: {
+                        amount: productItemSubTotal | default(null),
+                        originalAmount: data.productItem.prices.ORIGINAL is not defined
+                            or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL,
+                        priceVatText: benefitDealApplied ? null : 'pdp.include.vat'
+                    },
+                } only %}
+                <span class="{{ config.name }}__benefit-used">
+                    {% if useBenefitVoucher %}
+                        {% block benefitVoucherAmount %}
+                            - {{ data.productItem.totalUsedBenefitVouchersAmount | money(false, data.currencyIsoCode) }}
+                            {% include atom('icon') with {
+                                class: config.name ~ '__icon',
+                                modifiers: ['medium-up'],
+                                data: {
+                                    name: 'benefit-point',
+                                },
+                            } only %}
+                        {% endblock %}
+                    {% elseif useShoppingPoints %}
+                        {% block shoppingPointsAmount %}
+                            - {{ data.productItem.totalUsedShoppingPointsAmount }}
+                            {% include atom('icon') with {
+                                class: config.name ~ '__icon',
+                                modifiers: ['medium-up'],
+                                data: {
+                                    name: 'shopping-point',
+                                },
+                            } only %}
+                        {% endblock %}
+                    {% endif %}
+                </span>
+            </div>
+        {% endblock %}
+    {% else %}
+        {{ 'customer.access.cannot_see_price' | trans }}
+    {% endif %}
+{% endblock %}

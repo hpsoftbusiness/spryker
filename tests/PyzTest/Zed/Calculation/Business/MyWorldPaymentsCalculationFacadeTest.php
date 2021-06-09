@@ -328,8 +328,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
-        self::assertEquals(1650, $totals->getPriceToPay());
+        self::assertEquals(2450, $totals->getGrandTotal());
+        self::assertEquals(2050, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -358,8 +358,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
-        self::assertEquals(3250, $totals->getPriceToPay());
+        self::assertEquals(4050, $totals->getGrandTotal());
+        self::assertEquals(3650, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -396,8 +396,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
-        self::assertEquals(2700, $totals->getPriceToPay());
+        self::assertEquals(4050, $totals->getGrandTotal());
+        self::assertEquals(3100, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -440,8 +440,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
-        self::assertEquals(2700, $totals->getPriceToPay());
+        self::assertEquals(4050, $totals->getGrandTotal());
+        self::assertEquals(3100, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -484,8 +484,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
-        self::assertEquals(2700, $totals->getPriceToPay());
+        self::assertEquals(4050, $totals->getGrandTotal());
+        self::assertEquals(3100, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -517,8 +517,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $customerSPBalance = $this->buildCustomerBalanceByCurrencyTransfer($this->getShoppingPointBalanceFixtureData());
         $customerCashbackBalance = $this->buildCustomerBalanceByCurrencyTransfer([
             CustomerBalanceByCurrencyTransfer::EXCHANGE_RATE => 1,
-            CustomerBalanceByCurrencyTransfer::AVAILABLE_BALANCE => 35.50,
-            CustomerBalanceByCurrencyTransfer::TARGET_AVAILABLE_BALANCE => 35.50,
+            CustomerBalanceByCurrencyTransfer::AVAILABLE_BALANCE => 40.50,
+            CustomerBalanceByCurrencyTransfer::TARGET_AVAILABLE_BALANCE => 40.50,
             CustomerBalanceByCurrencyTransfer::PAYMENT_OPTION_ID => 6,
         ]);
 
@@ -529,7 +529,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
+        self::assertEquals(4050, $totals->getGrandTotal());
         self::assertEquals(0, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
@@ -541,7 +541,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
             MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
-            3250
+            3650
         );
         self::assertEquals(400, $calculatedQuote->getTotalUsedBenefitVouchersAmount());
         self::assertEquals(10, $calculatedQuote->getTotalUsedShoppingPointsAmount());
@@ -562,8 +562,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $customerSPBalance = $this->buildCustomerBalanceByCurrencyTransfer($this->getShoppingPointBalanceFixtureData());
         $customerEVoucherBalance = $this->buildCustomerBalanceByCurrencyTransfer([
             CustomerBalanceByCurrencyTransfer::EXCHANGE_RATE => 1,
-            CustomerBalanceByCurrencyTransfer::AVAILABLE_BALANCE => 35.50,
-            CustomerBalanceByCurrencyTransfer::TARGET_AVAILABLE_BALANCE => 35.50,
+            CustomerBalanceByCurrencyTransfer::AVAILABLE_BALANCE => 40.50,
+            CustomerBalanceByCurrencyTransfer::TARGET_AVAILABLE_BALANCE => 40.50,
             CustomerBalanceByCurrencyTransfer::PAYMENT_OPTION_ID => 1,
         ]);
 
@@ -574,7 +574,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
+        self::assertEquals(4050, $totals->getGrandTotal());
         self::assertEquals(0, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
@@ -586,7 +586,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
             MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
-            3250
+            3650
         );
         self::assertEquals(400, $calculatedQuote->getTotalUsedBenefitVouchersAmount());
         self::assertEquals(10, $calculatedQuote->getTotalUsedShoppingPointsAmount());
@@ -607,8 +607,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $customerSPBalance = $this->buildCustomerBalanceByCurrencyTransfer($this->getShoppingPointBalanceFixtureData());
         $customerMarketerEVoucherBalance = $this->buildCustomerBalanceByCurrencyTransfer([
             CustomerBalanceByCurrencyTransfer::EXCHANGE_RATE => 1,
-            CustomerBalanceByCurrencyTransfer::AVAILABLE_BALANCE => 35.50,
-            CustomerBalanceByCurrencyTransfer::TARGET_AVAILABLE_BALANCE => 35.50,
+            CustomerBalanceByCurrencyTransfer::AVAILABLE_BALANCE => 40.50,
+            CustomerBalanceByCurrencyTransfer::TARGET_AVAILABLE_BALANCE => 40.50,
             CustomerBalanceByCurrencyTransfer::PAYMENT_OPTION_ID => 2,
         ]);
 
@@ -619,7 +619,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(3650, $totals->getGrandTotal());
+        self::assertEquals(4050, $totals->getGrandTotal());
         self::assertEquals(0, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
@@ -631,7 +631,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
             MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
-            3250
+            3650
         );
         self::assertEquals(400, $calculatedQuote->getTotalUsedBenefitVouchersAmount());
         self::assertEquals(10, $calculatedQuote->getTotalUsedShoppingPointsAmount());
@@ -661,8 +661,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
-        self::assertEquals(1100, $totals->getPriceToPay());
+        self::assertEquals(2450, $totals->getGrandTotal());
+        self::assertEquals(1500, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -701,8 +701,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
-        self::assertEquals(1100, $totals->getPriceToPay());
+        self::assertEquals(2450, $totals->getGrandTotal());
+        self::assertEquals(1500, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -741,8 +741,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
-        self::assertEquals(1100, $totals->getPriceToPay());
+        self::assertEquals(2450, $totals->getGrandTotal());
+        self::assertEquals(1500, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
@@ -782,7 +782,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
+        self::assertEquals(2450, $totals->getGrandTotal());
         self::assertEquals(0, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
@@ -793,7 +793,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
             MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
-            1650
+            2050
         );
         self::assertEquals(400, $calculatedQuote->getTotalUsedBenefitVouchersAmount());
     }
@@ -823,7 +823,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
+        self::assertEquals(2450, $totals->getGrandTotal());
         self::assertEquals(0, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
@@ -834,7 +834,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
             MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
-            1650
+            2050
         );
         self::assertEquals(400, $calculatedQuote->getTotalUsedBenefitVouchersAmount());
     }
@@ -864,7 +864,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $calculatedQuote = $this->facade->recalculateQuote($quoteTransfer);
 
         $totals = $calculatedQuote->getTotals();
-        self::assertEquals(2050, $totals->getGrandTotal());
+        self::assertEquals(2450, $totals->getGrandTotal());
         self::assertEquals(0, $totals->getPriceToPay());
 
         $this->assertQuoteHasMyWorldPaymentMethod(
@@ -875,7 +875,7 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
         $this->assertQuoteHasMyWorldPaymentMethod(
             $calculatedQuote,
             MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
-            1650
+            2050
         );
         self::assertEquals(400, $calculatedQuote->getTotalUsedBenefitVouchersAmount());
     }
