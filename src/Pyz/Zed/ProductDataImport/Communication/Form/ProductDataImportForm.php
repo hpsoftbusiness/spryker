@@ -9,6 +9,7 @@ namespace Pyz\Zed\ProductDataImport\Communication\Form;
 
 use Generated\Shared\Transfer\FileUploadTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
+use Pyz\Zed\ProductDataImport\Communication\Form\Constrain\CsvFileConstrain;
 use Spryker\Zed\FileManagerGui\Communication\Form\Validator\Constraints\File;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
@@ -26,8 +27,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ProductDataImportForm extends AbstractType
 {
     public const FILED_FILE_UPLOAD = 'fileUpload';
-    public const OPTION_ALLOWED_MIME_TYPES = ['text/plain'];
+    public const OPTION_ALLOWED_MIME_TYPES = ['text/plain', 'csv'];
+    protected const CSV_FILE_DELIMITER = ',';
     protected const ERROR_MIME_TYPE_MESSAGE = 'File type is not allowed for uploading, it can be only csv file';
+    protected const ERROR_CSV_DELIMITER_INCORRECT_MESSAGE = 'Csv file has incorrect delimiter. It should be " {{delimiter}} "';
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -51,6 +54,9 @@ class ProductDataImportForm extends AbstractType
             static::FILED_FILE_UPLOAD,
             FileType::class,
             [
+                'attr' => [
+                    'accept' => '.csv',
+                ],
                 'constraints' => [
                     new File(
                         [
@@ -59,6 +65,10 @@ class ProductDataImportForm extends AbstractType
                             'mimeTypesMessage' => static::ERROR_MIME_TYPE_MESSAGE,
                         ]
                     ),
+                    new CsvFileConstrain([
+                        'delimiter' => self::CSV_FILE_DELIMITER,
+                        'incorrectSeparatorMessage' => self::ERROR_CSV_DELIMITER_INCORRECT_MESSAGE,
+                    ]),
                 ],
             ]
         );
