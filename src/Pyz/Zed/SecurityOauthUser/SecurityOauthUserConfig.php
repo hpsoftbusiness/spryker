@@ -21,6 +21,6 @@ class SecurityOauthUserConfig extends SprykerSecurityOauthUserConfig
      */
     public function getAuthenticationStrategy(): string
     {
-        return static::AUTHENTICATION_STRATEGY_CREATE_USER_ON_FIRST_LOGIN;
+        return static::AUTHENTICATION_STRATEGY_ACCEPT_ONLY_EXISTING_USERS;
     }
 }
