@@ -733,9 +733,9 @@ error.404_description,Cette page est introuvable. Veuillez revenir en arrière,f
 error_page.home_link,Aller à la page d'accueil,fr_FR
 error_page.text,Nous n'avons pas trouvé la page que vous recherchez.,fr_FR
 error_page.title,Page non trouvée.,fr_FR
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,fr_FR
+footer.facebook.url,https://www.facebook.com/myWorld.int,fr_FR
 footer.follow,Suivez nous,fr_FR
-footer.instagram.url,https://www.instagram.com/cashback.world/,fr_FR
+footer.instagram.url,https://www.instagram.com/myworld.global/,fr_FR
 footer.logo.link.imprint,/ fr / empreinte,fr_FR
 footer.logo.link.privacy,/ fr / confidentialité,fr_FR
 footer.logo.text,Construit avec,fr_FR
@@ -745,7 +745,7 @@ footer.navigation_title.information,Informations,fr_FR
 footer.navigation_title.legal_information,Information légale,fr_FR
 footer.navigation_title.propositions,Gagnez de l'argent avec myWorld,fr_FR
 footer.official_partner,Partenaire officiel,fr_FR
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,fr_FR
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,fr_FR
 footer.providers__title,Expédition et paiement,fr_FR
 footer_subscribe.subscription_placeholder,Ajouter un e-mail,fr_FR
 footer_subscribe.subscription_text,Inscrivez-vous et restez toujours à jour,fr_FR
@@ -2263,9 +2263,9 @@ error.404_description,Questa pagina non può essere trovata. Per favore torna in
 error_page.home_link,Vai alla pagina principale,it_IT
 error_page.text,Non siamo riusciti a trovare la pagina che stai cercando.,it_IT
 error_page.title,Pagina non trovata.,it_IT
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,it_IT
+footer.facebook.url,https://www.facebook.com/myWorld.int,it_IT
 footer.follow,Seguici,it_IT
-footer.instagram.url,https://www.instagram.com/cashback.world/,it_IT
+footer.instagram.url,https://www.instagram.com/myworld.global/,it_IT
 footer.logo.link.imprint,/ it / impronta,it_IT
 footer.logo.link.privacy,/ it / privacy,it_IT
 footer.logo.text,Costruito con,it_IT
@@ -2275,7 +2275,7 @@ footer.navigation_title.information,Informazione,it_IT
 footer.navigation_title.legal_information,Informazione legale,it_IT
 footer.navigation_title.propositions,Guadagna soldi con myWorld,it_IT
 footer.official_partner,Partner ufficiale,it_IT
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,it_IT
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,it_IT
 footer.providers__title,Spedizione e pagamento,it_IT
 footer_subscribe.subscription_placeholder,Aggiungi email,it_IT
 footer_subscribe.subscription_text,Iscriviti e rimani sempre aggiornato,it_IT
@@ -3793,9 +3793,9 @@ error.404_description,"Nie można znaleźć tej strony. Wróć, proszę",pl_PL
 error_page.home_link,Wróć do strony głównej,pl_PL
 error_page.text,"Nie mogliśmy znaleźć strony, której szukasz.",pl_PL
 error_page.title,Strona nie znaleziona.,pl_PL
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,pl_PL
+footer.facebook.url,https://www.facebook.com/myWorld.int,pl_PL
 footer.follow,Podążaj za nami,pl_PL
-footer.instagram.url,https://www.instagram.com/cashback.world/,pl_PL
+footer.instagram.url,https://www.instagram.com/myworld.global/,pl_PL
 footer.logo.link.imprint,/ en / imprint,pl_PL
 footer.logo.link.privacy,/ pl / prywatność,pl_PL
 footer.logo.text,Zbudowany z,pl_PL
@@ -3805,7 +3805,7 @@ footer.navigation_title.information,Informacja,pl_PL
 footer.navigation_title.legal_information,Informacje prawne,pl_PL
 footer.navigation_title.propositions,Zarabiaj z myWorld,pl_PL
 footer.official_partner,Oficjalny partner,pl_PL
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,pl_PL
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,pl_PL
 footer.providers__title,Wysyłka i płatność,pl_PL
 footer_subscribe.subscription_placeholder,Dodaj e-mail,pl_PL
 footer_subscribe.subscription_text,Zarejestruj się i bądź zawsze na bieżąco,pl_PL
@@ -5327,9 +5327,9 @@ error.404_description,This page can not be found. Please go back,en_US
 error_page.home_link,Go to Homepage,en_US
 error_page.text,We couldn't find the page you're looking for.,en_US
 error_page.title,Page not found.,en_US
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,en_US
+footer.facebook.url,https://www.facebook.com/myWorld.int,en_US
 footer.follow,Follow us,en_US
-footer.instagram.url,https://www.instagram.com/cashback.world/,en_US
+footer.instagram.url,https://www.instagram.com/myworld.global/,en_US
 footer.logo.link.imprint,/en/imprint,en_US
 footer.logo.link.privacy,/en/privacy,en_US
 footer.logo.text,Built with,en_US
@@ -5339,7 +5339,7 @@ footer.navigation_title.information,Information,en_US
 footer.navigation_title.legal_information,Legal information,en_US
 footer.navigation_title.propositions,Earn money with myWorld,en_US
 footer.official_partner,Official partner,en_US
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,en_US
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,en_US
 footer.providers__title,Shipment and Payment,en_US
 footer_subscribe.subscription_placeholder,Add email,en_US
 footer_subscribe.subscription_text,Sign up and always stay up to date,en_US
@@ -6875,9 +6875,9 @@ error.404_description,Die Seite kann nicht gefunden werden. Bitte gehe zurück,d
 error_page.home_link,Zur Startseite,de_DE
 error_page.text,Wir konnten die von Ihnen gesuchte Seite nicht finden.,de_DE
 error_page.title,Seite nicht gefunden.,de_DE
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,de_DE
+footer.facebook.url,https://www.facebook.com/myWorld.int,de_DE
 footer.follow,Folgen Sie uns auf,de_DE
-footer.instagram.url,https://www.instagram.com/cashback.world/,de_DE
+footer.instagram.url,https://www.instagram.com/myworld.global/,de_DE
 footer.logo.link.imprint,/de/impressum,de_DE
 footer.logo.link.privacy,/de/datenschutz,de_DE
 footer.logo.text,Erstellt mit,de_DE
@@ -6887,7 +6887,7 @@ footer.navigation_title.information,Informationen,de_DE
 footer.navigation_title.legal_information,Rechtliche Hinweise,de_DE
 footer.navigation_title.propositions,Geld verdienen mit myWorld,de_DE
 footer.official_partner,Offizieller Partner,de_DE
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,de_DE
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,de_DE
 footer.providers__title,Zahlung und Versand,de_DE
 footer_subscribe.subscription_placeholder,E-Mail eingeben,de_DE
 footer_subscribe.subscription_text,Registriere dich jetzt und bleibe auf dem Laufenden,de_DE
@@ -8387,9 +8387,9 @@ error.404_description,No se puede encontrar esta página. Por favor regresa,es_E
 error_page.home_link,Ir a la página de inicio,es_ES
 error_page.text,No pudimos encontrar la página que busca.,es_ES
 error_page.title,Página no encontrada.,es_ES
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,es_ES
+footer.facebook.url,https://www.facebook.com/myWorld.int,es_ES
 footer.follow,Síganos,es_ES
-footer.instagram.url,https://www.instagram.com/cashback.world/,es_ES
+footer.instagram.url,https://www.instagram.com/myworld.global/,es_ES
 footer.logo.link.imprint,/ es / pie de imprenta,es_ES
 footer.logo.link.privacy,/ es / privacidad,es_ES
 footer.logo.text,Construido con,es_ES
@@ -8399,7 +8399,7 @@ footer.navigation_title.information,Información,es_ES
 footer.navigation_title.legal_information,Información legal,es_ES
 footer.navigation_title.propositions,Gana dinero con myWorld,es_ES
 footer.official_partner,Socio oficial,es_ES
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,es_ES
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,es_ES
 footer.providers__title,Envío y pago,es_ES
 footer_subscribe.subscription_placeholder,Agregar correo electrónico,es_ES
 footer_subscribe.subscription_text,Regístrese y manténgase siempre actualizado,es_ES
@@ -9917,9 +9917,9 @@ error.404_description,Tuto stránku nelze najít. Vraťte se zpět,cs_CZ
 error_page.home_link,Jít na domovskou stránku,cs_CZ
 error_page.text,"Stránku, kterou hledáte, jsme nenašli.",cs_CZ
 error_page.title,Stránka nenalezena.,cs_CZ
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,cs_CZ
+footer.facebook.url,https://www.facebook.com/myWorld.int,cs_CZ
 footer.follow,Následuj nás,cs_CZ
-footer.instagram.url,https://www.instagram.com/cashback.world/,cs_CZ
+footer.instagram.url,https://www.instagram.com/myworld.global/,cs_CZ
 footer.logo.link.imprint,/ en / otisk,cs_CZ
 footer.logo.link.privacy,/ en / soukromí,cs_CZ
 footer.logo.text,Postaveno s,cs_CZ
@@ -9929,7 +9929,7 @@ footer.navigation_title.information,Informace,cs_CZ
 footer.navigation_title.legal_information,Legální informace,cs_CZ
 footer.navigation_title.propositions,Vydělávejte peníze s myWorld,cs_CZ
 footer.official_partner,Oficiální partner,cs_CZ
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,cs_CZ
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,cs_CZ
 footer.providers__title,Zásilka a platba,cs_CZ
 footer_subscribe.subscription_placeholder,Přidat e-mail,cs_CZ
 footer_subscribe.subscription_text,Zaregistrujte se a mějte vždy aktuální informace,cs_CZ
@@ -11447,9 +11447,9 @@ error.404_description,Denna sida kan inte hittas. Snälla gå tillbaka,sv_SE
 error_page.home_link,Gå till hemsidan,sv_SE
 error_page.text,Vi kunde inte hitta sidan du letade efter.,sv_SE
 error_page.title,Sidan hittas inte.,sv_SE
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,sv_SE
+footer.facebook.url,https://www.facebook.com/myWorld.int,sv_SE
 footer.follow,Följ oss,sv_SE
-footer.instagram.url,https://www.instagram.com/cashback.world/,sv_SE
+footer.instagram.url,https://www.instagram.com/myworld.global/,sv_SE
 footer.logo.link.imprint,/ sv / avtryck,sv_SE
 footer.logo.link.privacy,/ sv / sekretess,sv_SE
 footer.logo.text,Byggd med,sv_SE
@@ -11459,7 +11459,7 @@ footer.navigation_title.information,Information,sv_SE
 footer.navigation_title.legal_information,Juridisk information,sv_SE
 footer.navigation_title.propositions,Tjäna pengar med myWorld,sv_SE
 footer.official_partner,Officiell partner,sv_SE
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,sv_SE
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,sv_SE
 footer.providers__title,Leverans och betalning,sv_SE
 footer_subscribe.subscription_placeholder,Lägg till e-post,sv_SE
 footer_subscribe.subscription_text,Registrera dig och håll dig alltid uppdaterad,sv_SE
@@ -12977,9 +12977,9 @@ error.404_description,Te strani ni mogoče najti. Pojdi nazaj,sl_SI
 error_page.home_link,Pojdite na domačo stran,sl_SI
 error_page.text,"Nismo mogli najti strani, ki ste jo iskali.",sl_SI
 error_page.title,Stran ni najdena.,sl_SI
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,sl_SI
+footer.facebook.url,https://www.facebook.com/myWorld.int,sl_SI
 footer.follow,Sledi nam,sl_SI
-footer.instagram.url,https://www.instagram.com/cashback.world/,sl_SI
+footer.instagram.url,https://www.instagram.com/myworld.global/,sl_SI
 footer.logo.link.imprint,/ en / odtis,sl_SI
 footer.logo.link.privacy,/ sl / zasebnost,sl_SI
 footer.logo.text,Zgrajeno z,sl_SI
@@ -12989,7 +12989,7 @@ footer.navigation_title.information,Informacije,sl_SI
 footer.navigation_title.legal_information,Pravne informacije,sl_SI
 footer.navigation_title.propositions,Zaslužite z myWorld,sl_SI
 footer.official_partner,Uradni partner,sl_SI
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,sl_SI
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,sl_SI
 footer.providers__title,Pošiljanje in plačilo,sl_SI
 footer_subscribe.subscription_placeholder,Dodajte e-poštni naslov,sl_SI
 footer_subscribe.subscription_text,Prijavite se in bodite vedno na tekočem,sl_SI
@@ -14507,9 +14507,9 @@ error.404_description,Esta página não pode ser encontrada. Por favor volte,pt_
 error_page.home_link,Vá para a página inicial,pt_PT
 error_page.text,Não foi possível encontrar a página que você está procurando.,pt_PT
 error_page.title,Página não encontrada.,pt_PT
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,pt_PT
+footer.facebook.url,https://www.facebook.com/myWorld.int,pt_PT
 footer.follow,Siga-nos,pt_PT
-footer.instagram.url,https://www.instagram.com/cashback.world/,pt_PT
+footer.instagram.url,https://www.instagram.com/myworld.global/,pt_PT
 footer.logo.link.imprint,/ en / imprint,pt_PT
 footer.logo.link.privacy,/ en / privacy,pt_PT
 footer.logo.text,Construído com,pt_PT
@@ -14519,7 +14519,7 @@ footer.navigation_title.information,Em formação,pt_PT
 footer.navigation_title.legal_information,Informação legal,pt_PT
 footer.navigation_title.propositions,Ganhe dinheiro com myWorld,pt_PT
 footer.official_partner,Parceiro oficial,pt_PT
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,pt_PT
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,pt_PT
 footer.providers__title,Remessa e Pagamento,pt_PT
 footer_subscribe.subscription_placeholder,Adicionar email,pt_PT
 footer_subscribe.subscription_text,Cadastre-se e fique sempre atualizado,pt_PT
@@ -16037,9 +16037,9 @@ error.404_description,Denne siden kan ikke bli funnet. Vennligst gå tilbake,nb_
 error_page.home_link,Gå til hjemmesiden,nb_NO
 error_page.text,Vi fant ikke siden du lette etter.,nb_NO
 error_page.title,Side ikke funnet.,nb_NO
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,nb_NO
+footer.facebook.url,https://www.facebook.com/myWorld.int,nb_NO
 footer.follow,Følg oss,nb_NO
-footer.instagram.url,https://www.instagram.com/cashback.world/,nb_NO
+footer.instagram.url,https://www.instagram.com/myworld.global/,nb_NO
 footer.logo.link.imprint,/ no / avtrykk,nb_NO
 footer.logo.link.privacy,/ no / personvern,nb_NO
 footer.logo.text,Bygget med,nb_NO
@@ -16049,7 +16049,7 @@ footer.navigation_title.information,Informasjon,nb_NO
 footer.navigation_title.legal_information,Juridisk informasjon,nb_NO
 footer.navigation_title.propositions,Tjen penger med myWorld,nb_NO
 footer.official_partner,Offisiell partner,nb_NO
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,nb_NO
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,nb_NO
 footer.providers__title,Forsendelse og betaling,nb_NO
 footer_subscribe.subscription_placeholder,Legg til e-post,nb_NO
 footer_subscribe.subscription_text,Registrer deg og hold deg oppdatert,nb_NO
@@ -17567,9 +17567,9 @@ error.404_description,"Táto stránka sa nenašla. Vráťte sa, prosím",sk_SK
 error_page.home_link,Prejdi na domovskú stránku,sk_SK
 error_page.text,"Stránku, ktorú hľadáte, sme nenašli.",sk_SK
 error_page.title,Stránka nenájdená.,sk_SK
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,sk_SK
+footer.facebook.url,https://www.facebook.com/myWorld.int,sk_SK
 footer.follow,Nasleduj nás,sk_SK
-footer.instagram.url,https://www.instagram.com/cashback.world/,sk_SK
+footer.instagram.url,https://www.instagram.com/myworld.global/,sk_SK
 footer.logo.link.imprint,/ sk / odtlačok,sk_SK
 footer.logo.link.privacy,/ sk / súkromie,sk_SK
 footer.logo.text,Postavené s,sk_SK
@@ -17579,7 +17579,7 @@ footer.navigation_title.information,Informácie,sk_SK
 footer.navigation_title.legal_information,Právne informácie,sk_SK
 footer.navigation_title.propositions,Zarábajte peniaze s myWorld,sk_SK
 footer.official_partner,Oficiálny partner,sk_SK
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,sk_SK
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,sk_SK
 footer.providers__title,Zásielka a platba,sk_SK
 footer_subscribe.subscription_placeholder,Pridajte e-mail,sk_SK
 footer_subscribe.subscription_text,Zaregistrujte sa a buďte stále informovaní,sk_SK
@@ -19097,9 +19097,9 @@ error.404_description,Deze pagina is niet gevonden. Ga alsjeblieft terug,nl_NL
 error_page.home_link,Ga naar homepagina,nl_NL
 error_page.text,We kunnen de pagina die u zoekt niet vinden.,nl_NL
 error_page.title,Pagina niet gevonden.,nl_NL
-footer.facebook.url,https://www.facebook.com/cashbackworld.int/,nl_NL
+footer.facebook.url,https://www.facebook.com/myWorld.int,nl_NL
 footer.follow,Volg ons,nl_NL
-footer.instagram.url,https://www.instagram.com/cashback.world/,nl_NL
+footer.instagram.url,https://www.instagram.com/myworld.global/,nl_NL
 footer.logo.link.imprint,/ en / afdruk,nl_NL
 footer.logo.link.privacy,/ nl / privacy,nl_NL
 footer.logo.text,Gebouwd met,nl_NL
@@ -19109,7 +19109,7 @@ footer.navigation_title.information,Informatie,nl_NL
 footer.navigation_title.legal_information,Legale informatie,nl_NL
 footer.navigation_title.propositions,Verdien geld met myWorld,nl_NL
 footer.official_partner,Officiële partner,nl_NL
-footer.pinterest.url,https://www.pinterest.com/cashbackworld/,nl_NL
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,nl_NL
 footer.providers__title,Verzending en betaling,nl_NL
 footer_subscribe.subscription_placeholder,E-mailadres toevoegen,nl_NL
 footer_subscribe.subscription_text,Schrijf je in en blijf altijd op de hoogte,nl_NL
