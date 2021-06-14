@@ -152,6 +152,10 @@ class PaymentStep extends SprykerShopPaymentStep
                 !$quoteTransfer->getMyWorldPaymentSessionId()) {
                 $isQuoteValid = false;
             }
+
+            if (!$this->isInternalPaymentMethodSelected($quoteTransfer) && $quoteTransfer->getMyWorldPaymentSessionId()) {
+                $this->removeSessionInformationFromQuote($quoteTransfer);
+            }
         }
 
         return $isQuoteValid;
@@ -256,6 +260,17 @@ class PaymentStep extends SprykerShopPaymentStep
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return void
+     */
+    protected function removeSessionInformationFromQuote(QuoteTransfer $quoteTransfer): void
+    {
+        $quoteTransfer->setMyWorldPaymentSessionId(null);
+        $quoteTransfer->setMyWorldPaymentIsSmsAuthenticationRequired(null);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customer
      *
      * @return bool
@@ -274,13 +289,35 @@ class PaymentStep extends SprykerShopPaymentStep
      */
     protected function isInternalPaymentMethodSelected(QuoteTransfer $quoteTransfer): bool
     {
+        return $this->isMyWorldPaymentMethodSelected($quoteTransfer)
+            || $this->isBenefitDealApplied($quoteTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function isMyWorldPaymentMethodSelected(QuoteTransfer $quoteTransfer): bool
+    {
         foreach ($quoteTransfer->getPayments() as $paymentTransfer) {
             if ($paymentTransfer->getPaymentProvider() === MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD) {
                 return true;
             }
         }
 
-        return $quoteTransfer->getTotalUsedShoppingPointsAmount() > 0;
+        return false;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return bool
+     */
+    protected function isBenefitDealApplied(QuoteTransfer $quoteTransfer): bool
+    {
+        return $quoteTransfer->getTotalUsedShoppingPointsAmount()
+            || $quoteTransfer->getTotalUsedBenefitVouchersAmount();
     }
 
     /**
