@@ -79,9 +79,9 @@
                 </div>
 
                 {% if data.product is not empty and data.product.customer is not empty %}
-                        {% set amountBenefitVochers = data.productItem.benefitDealChargeAmountData.totalBenefitVouchersAmount %}
-                        {% set amountShoppingPoints = data.productItem.benefitDealChargeAmountData.totalShoppingPointsAmount %}
-                        {% set newSalesPrice = data.productItem.benefitDealChargeAmountData.totalSalesPriceAmount %}
+                        {% set amountBenefitVochers = data.productItem.benefitDealChargeAmountData.totalBenefitVouchersAmount ?? null %}
+                        {% set amountShoppingPoints = data.productItem.benefitDealChargeAmountData.totalShoppingPointsAmount ?? null %}
+                        {% set newSalesPrice = data.productItem.benefitDealChargeAmountData.totalSalesPriceAmount ?? null %}
                         {% set benefitVoucherCurrency = data.product.customer.customerBalance.availableBenefitVoucherCurrency %}
 
                         {% if can('SeePricePermissionPlugin') %}
