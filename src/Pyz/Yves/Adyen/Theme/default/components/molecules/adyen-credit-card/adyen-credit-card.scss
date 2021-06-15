@@ -7,6 +7,18 @@
 
     $adyen-name: '.adyen-checkout';
 
+    img[src*="amex.svg"] {
+        background-image: url('/assets/current/default/images/logo-amex.svg') !important;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        width: 100%;
+        height: 3em;
+        padding: 0.5em;
+        margin-left: 40.7em;
+        left: 0em;
+        margin-top: 0.3em;
+    }
+
     #{$adyen-name}__input {
         padding: rem(16) rem(18) rem(14);
         border: rem(1) solid $setting-color-input-border;
