@@ -2,6 +2,9 @@ includes:
     - vendor/spryker-sdk/phpstan-spryker/extension.neon
 
 parameters:
+    parallel:
+        maximumNumberOfProcesses: 1
+        processTimeout: 6000.0
     excludes_analyse:
         - %rootDir%/../../../src/Generated/*
         - %rootDir%/../../../src/Orm/*
