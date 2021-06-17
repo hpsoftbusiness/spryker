@@ -56,7 +56,7 @@
     {% else %}
         {% if data.url %}
             <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
-               href="{{ path(data.url) }}" target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
+               href="{% if 'http' in data.url %}{{ data.url }}{% else %}{{ path(data.url) }}{% endif %}" target="{% if data.targetBlank %}_blank  {% endif %}">{{ data.dataName }}</a>
         {% else %}
             <a class="{{ data.configName }}__name {{ data.parentJsName }}__name {{ data.parentJsName }}__link-detail-page"
                href="{{ path(data.originUrl) }}"
