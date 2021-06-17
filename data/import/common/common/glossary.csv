@@ -20023,3 +20023,5 @@ product_item.benefit_deal.or,or,en_US
 product_item.benefit_deal.or,oder,de_DE
 customer.balance.into,Du hast:,de_DE
 customer.balance.into,You have:,en_US
+BenefitVouchers,Benefit Vouchers,en_US
+BenefitVouchers,Benefit Vouchers,de_DE

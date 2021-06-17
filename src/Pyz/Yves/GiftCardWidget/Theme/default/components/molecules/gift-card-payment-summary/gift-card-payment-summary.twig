@@ -28,7 +28,7 @@
             </li>
         {% else %}
             <li class="{{ config.name }}__list-item">
-                {{ payment.paymentMethod }} <span class="float-right">- {{ payment.amount | money }}</span>
+                {{ payment.paymentMethod | trans }} <span class="float-right">- {{ payment.amount | money }}</span>
             </li>
         {% endif %}
     {% endfor %}
