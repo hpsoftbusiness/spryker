@@ -7,16 +7,18 @@
 
 namespace Pyz\Zed\Adyen\Business\Hook\Mapper\MakePayment;
 
-use ArrayObject;
 use Generated\Shared\Transfer\AdyenApiAmountTransfer;
 use Generated\Shared\Transfer\AdyenApiMakePaymentRequestTransfer;
-use Generated\Shared\Transfer\AdyenApiSplitTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Pyz\Shared\Adyen\AdyenConfig;
+use Pyz\Zed\Adyen\Business\Traits\AdyenApiSplitsTrait;
+use Pyz\Zed\Adyen\Business\Traits\AdyenPaymentTrait;
 use SprykerEco\Zed\Adyen\Business\Hook\Mapper\MakePayment\CreditCardMapper as SprykerEcoCreditCardMapper;
 
 class CreditCardMapper extends SprykerEcoCreditCardMapper
 {
+    use AdyenApiSplitsTrait;
+    use AdyenPaymentTrait;
+
     /**
      * @var \Pyz\Zed\Adyen\AdyenConfig
      */
@@ -39,44 +41,28 @@ class CreditCardMapper extends SprykerEcoCreditCardMapper
             ->setReturnUrl($this->getReturnUrl())
             ->setCountryCode($quoteTransfer->getBillingAddress()->getIso2Code())
             ->setShopperIP($quoteTransfer->getPayment()->getAdyenPayment()->getClientIp())
-            ->setSplits($this->createAdyenApiSplits($quoteTransfer, $adyenApiAmountTransfer));
+            ->setSplits(
+                $this->createAdyenApiSplits(
+                    $quoteTransfer->getPayment()->getAdyenPayment()->getSplitMarketplaceReference(),
+                    $quoteTransfer->getPayment()->getAdyenPayment()->getSplitCommissionReference(),
+                    $adyenApiAmountTransfer
+                )
+            );
     }
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\AdyenApiAmountTransfer $adyenApiAmountTransfer
      *
-     * @return \ArrayObject
+     * @return \Generated\Shared\Transfer\AdyenApiAmountTransfer
      */
-    protected function createAdyenApiSplits(
-        QuoteTransfer $quoteTransfer,
-        AdyenApiAmountTransfer $adyenApiAmountTransfer
-    ): ArrayObject {
-        $commissionAmount = (int)round(
-            $adyenApiAmountTransfer->getValue() * $this->config->getSplitAccountCommissionInterest()
-        );
-        $marketplaceAmount = (int)$adyenApiAmountTransfer->getValue() - $commissionAmount;
+    protected function createAmountTransfer(QuoteTransfer $quoteTransfer): AdyenApiAmountTransfer
+    {
+        $paymentsCollection = clone $quoteTransfer->getPayments();
+        $paymentsCollection->append($quoteTransfer->getPayment());
+        $amount = $this->getAdyenPaymentTransfer($paymentsCollection)->getAmount();
 
-        $marketplaceSplitTransfer = (new AdyenApiSplitTransfer())
-            ->setAmount(
-                (new AdyenApiAmountTransfer())->setValue($marketplaceAmount)
-            )
-            ->setType(AdyenConfig::SPLIT_TYPE_MARKETPLACE)
-            ->setAccount($this->config->getSplitAccount())
-            ->setReference($quoteTransfer->getPayment()->getAdyenPayment()->getSplitMarketplaceReference());
-
-        $commissionSplitTransfer = (new AdyenApiSplitTransfer())
-            ->setAmount(
-                (new AdyenApiAmountTransfer())->setValue($commissionAmount)
-            )
-            ->setType(AdyenConfig::SPLIT_TYPE_COMMISSION)
-            ->setReference($quoteTransfer->getPayment()->getAdyenPayment()->getSplitCommissionReference());
-
-        return new ArrayObject(
-            [
-                $marketplaceSplitTransfer,
-                $commissionSplitTransfer,
-            ]
-        );
+        return (new AdyenApiAmountTransfer())
+            ->setCurrency($quoteTransfer->getCurrency()->getCode())
+            ->setValue($amount);
     }
 }

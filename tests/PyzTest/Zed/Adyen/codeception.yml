@@ -1,0 +1,32 @@
+namespace: PyzTest\Zed\Adyen
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include: [ '../../../../src/Pyz/Zed/Adyen/*php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
+
+suites:
+    Business:
+        path: Business
+        class_name: AdyenBusinessTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
+
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
