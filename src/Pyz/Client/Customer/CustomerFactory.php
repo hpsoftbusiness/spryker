@@ -8,8 +8,8 @@
 namespace Pyz\Client\Customer;
 
 use Pyz\Client\Customer\Zed\CustomerStub;
+use Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
-use Pyz\Client\ProductList\ProductListClientInterface;
 use Spryker\Client\Customer\CustomerFactory as SprykerCustomerFactory;
 
 class CustomerFactory extends SprykerCustomerFactory
@@ -31,10 +31,10 @@ class CustomerFactory extends SprykerCustomerFactory
     }
 
     /**
-     * @return \Pyz\Client\ProductList\ProductListClientInterface
+     * @return \Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface
      */
-    public function getProductListClient(): ProductListClientInterface
+    public function getCustomerGroupStorageClient(): CustomerGroupStorageClientInterface
     {
-        return $this->getProvidedDependency(CustomerDependencyProvider::CLIENT_PRODUCT_LIST);
+        return $this->getProvidedDependency(CustomerDependencyProvider::CLIENT_CUSTOMER_GROUP_STORAGE);
     }
 }

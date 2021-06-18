@@ -16,6 +16,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 /**
  * @method \Pyz\Zed\CustomerGroupProductList\Persistence\CustomerGroupProductListRepositoryInterface getRepository()
  * @method \Pyz\Zed\CustomerGroupProductList\Persistence\CustomerGroupProductListEntityManagerInterface getEntityManager()
+ * @method \Pyz\Zed\CustomerGroupProductList\CustomerGroupProductListConfig getConfig()
  */
 class CustomerGroupProductListPersistenceFactory extends AbstractPersistenceFactory
 {

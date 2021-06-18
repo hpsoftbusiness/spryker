@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Synchronization;
 
+use Pyz\Zed\CustomerGroupStorage\Communication\Plugin\Synchronization\CustomerGroupSynchronizationDataPlugin;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Synchronization\AvailabilitySynchronizationDataPlugin;
 use Spryker\Zed\CategoryImageStorage\Communication\Plugin\Synchronization\CategoryImageSynchronizationDataBulkPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Synchronization\CategoryPageSynchronizationDataPlugin;
@@ -123,6 +124,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductConcreteProductOffersSynchronizationDataPlugin(),
             new ProductOfferSynchronizationDataPlugin(),
             new PriceProductOfferSynchronizationDataPlugin(),
+            new CustomerGroupSynchronizationDataPlugin(),
         ];
     }
 }

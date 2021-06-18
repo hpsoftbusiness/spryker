@@ -8,11 +8,33 @@
 namespace Pyz\Client\ProductListStorage\ProductConcreteRestriction;
 
 use Generated\Shared\Transfer\CustomerProductListCollectionTransfer;
+use Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface;
 use Pyz\Shared\CustomerGroup\CustomerGroupConstants;
+use Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface;
 use Spryker\Client\ProductListStorage\ProductConcreteRestriction\ProductConcreteRestrictionReader as SprykerProductConcreteRestrictionReader;
+use Spryker\Client\ProductListStorage\ProductListProductConcreteStorage\ProductListProductConcreteStorageReaderInterface;
 
 class ProductConcreteRestrictionReader extends SprykerProductConcreteRestrictionReader
 {
+    /**
+     * @var \Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface
+     */
+    protected $customerGroupStorageClient;
+
+    /**
+     * @param \Spryker\Client\ProductListStorage\Dependency\Client\ProductListStorageToCustomerClientInterface $customerClient
+     * @param \Spryker\Client\ProductListStorage\ProductListProductConcreteStorage\ProductListProductConcreteStorageReaderInterface $productListProductConcreteStorageReader
+     * @param \Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface $customerGroupStorageClient
+     */
+    public function __construct(
+        ProductListStorageToCustomerClientInterface $customerClient,
+        ProductListProductConcreteStorageReaderInterface $productListProductConcreteStorageReader,
+        CustomerGroupStorageClientInterface $customerGroupStorageClient
+    ) {
+        parent::__construct($customerClient, $productListProductConcreteStorageReader);
+        $this->customerGroupStorageClient = $customerGroupStorageClient;
+    }
+
     /**
      * @param int $idProduct
      *
@@ -42,9 +64,10 @@ class ProductConcreteRestrictionReader extends SprykerProductConcreteRestriction
      */
     public function getDefaultCustomerProductListCollection(): CustomerProductListCollectionTransfer
     {
-        $customerProductListCollectionTransfer = new CustomerProductListCollectionTransfer();
-        $customerProductListCollectionTransfer->addWhitelistId(CustomerGroupConstants::ID_CUSTOMER_MW);
-
-        return $customerProductListCollectionTransfer;
+        return $this
+            ->customerGroupStorageClient
+            ->getCustomerProductListCollectionByIdCustomerGroup(
+                CustomerGroupConstants::ID_CUSTOMER_MW
+            );
     }
 }

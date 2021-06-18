@@ -14,6 +14,7 @@ use Generated\Shared\Search\PageIndexMap;
 use Generated\Shared\Transfer\CustomerProductListCollectionTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use InvalidArgumentException;
+use Pyz\Shared\CustomerGroup\CustomerGroupConstants;
 use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
@@ -189,7 +190,9 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
     protected function getDefaultCustomerProductListCollectionTransfer(): CustomerProductListCollectionTransfer
     {
         return $this->getFactory()
-            ->getProductListClient()
-            ->getDefaultCustomerProductListCollection();
+            ->getCustomerGroupStorageClient()
+            ->getCustomerProductListCollectionByIdCustomerGroup(
+                CustomerGroupConstants::ID_CUSTOMER_MW
+            );
     }
 }

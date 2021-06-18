@@ -9,11 +9,12 @@ namespace Pyz\Zed\Queue\Business;
 
 use Generated\Shared\Transfer\QueueDumpRequestTransfer;
 use Generated\Shared\Transfer\QueueDumpResponseTransfer;
+use Spryker\Zed\Queue\Business\QueueFacadeInterface as SprykerQueueFacadeInterface;
 
 /**
  * @method \Pyz\Zed\Queue\Business\QueueBusinessFactory getFactory()
  */
-interface QueueFacadeInterface
+interface QueueFacadeInterface extends SprykerQueueFacadeInterface
 {
     /**
      * Specification:

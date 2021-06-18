@@ -123,7 +123,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SpellingSuggestionQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
-//            new CustomerProductListQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
             new SellableQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
 
@@ -165,7 +165,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SuggestionByTypeQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
-//            new CustomerProductListQueryExpanderPlugin(),
+            new CustomerProductListQueryExpanderPlugin(),
             new SellableQueryExpanderPlugin(),
             // Temporary added to filter cms pages from the suggestion list.
             new CmsPageFilterQueryExpanderPlugin(),

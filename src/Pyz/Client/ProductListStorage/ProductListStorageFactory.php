@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\ProductListStorage;
 
+use Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface;
 use Pyz\Client\ProductListStorage\ProductAbstractRestriction\ProductAbstractRestrictionReader;
 use Pyz\Client\ProductListStorage\ProductConcreteRestriction\ProductConcreteRestrictionReader;
 use Spryker\Client\ProductListStorage\ProductAbstractRestriction\ProductAbstractRestrictionReaderInterface;
@@ -22,7 +23,8 @@ class ProductListStorageFactory extends SprykerProductListStorageFactory
     {
         return new ProductAbstractRestrictionReader(
             $this->getCustomerClient(),
-            $this->createProductListProductAbstractStorageReader()
+            $this->createProductListProductAbstractStorageReader(),
+            $this->getCustomerGroupStorageClient()
         );
     }
 
@@ -33,7 +35,16 @@ class ProductListStorageFactory extends SprykerProductListStorageFactory
     {
         return new ProductConcreteRestrictionReader(
             $this->getCustomerClient(),
-            $this->createProductListProductConcreteStorageReader()
+            $this->createProductListProductConcreteStorageReader(),
+            $this->getCustomerGroupStorageClient()
         );
+    }
+
+    /**
+     * @return \Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface
+     */
+    public function getCustomerGroupStorageClient(): CustomerGroupStorageClientInterface
+    {
+        return $this->getProvidedDependency(ProductListStorageDependencyProvider::CLIENT_CUSTOMER_GROUP_STORAGE);
     }
 }

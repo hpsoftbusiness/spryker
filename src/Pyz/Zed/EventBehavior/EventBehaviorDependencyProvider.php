@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\EventBehavior;
 
+use Pyz\Zed\CustomerGroupStorage\Communication\Plugin\Event\CustomerGroupEventResourceQueryContainerPlugin;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\AvailabilityEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\CategoryPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryNodeEventResourceQueryContainerPlugin;
@@ -85,6 +86,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin(),
             new ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin(),
             new GlossaryPublisherTriggerPlugin(),
+            new CustomerGroupEventResourceQueryContainerPlugin(),
         ];
     }
 }

@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\RabbitMq;
 
+use Pyz\Shared\CustomerGroupStorage\CustomerGroupStorageConstants;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -107,6 +108,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
             MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_ERROR_QUEUE,
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
+            CustomerGroupStorageConstants::CUSTOMER_GROUP_SYNC_STORAGE_QUEUE,
         ];
     }
 

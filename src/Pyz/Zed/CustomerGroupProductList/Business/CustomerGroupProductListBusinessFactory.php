@@ -14,6 +14,7 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 /**
  * @method \Pyz\Zed\CustomerGroupProductList\Persistence\CustomerGroupProductListRepositoryInterface getRepository()
  * @method \Pyz\Zed\CustomerGroupProductList\Persistence\CustomerGroupProductListEntityManagerInterface getEntityManager()
+ * @method \Pyz\Zed\CustomerGroupProductList\CustomerGroupProductListConfig getConfig()
  */
 class CustomerGroupProductListBusinessFactory extends AbstractBusinessFactory
 {

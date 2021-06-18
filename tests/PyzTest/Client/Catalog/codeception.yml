@@ -1,0 +1,31 @@
+namespace: PyzTest\Client\Catalog
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+
+suites:
+    Client:
+        path: Client
+        class_name: CatalogClientTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                    projectNamespaces: ['Pyz']
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Application\Helper\ZedHelper
+                - \SprykerTest\Zed\ProductList\Helper\ProductListHelper
+                - \SprykerTest\Zed\CustomerGroup\Helper\CustomerGroupHelper
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Shared\Tax\Helper\TaxSetDataHelper
+                - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper

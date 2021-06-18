@@ -27,6 +27,10 @@
         </index>
 
         <id-method-parameter value="pyz_customer_group_to_product_list_pk_seq"/>
+
+        <behavior name="event">
+            <parameter name="pyz_customer_group_to_product_list_all" column="*"/>
+        </behavior>
     </table>
 
 </database>
