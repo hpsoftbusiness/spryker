@@ -8,6 +8,7 @@
 namespace PyzTest\Zed\MyWorldPaymentApi\Business;
 
 use Codeception\Test\Unit;
+use Exception;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiBusinessFactory;
 use PyzTest\Zed\MyWorldPaymentApi\DataHelper;
@@ -59,6 +60,8 @@ class MyWorldPaymentApiFacadeTest extends Unit
     /**
      * @param int $repeatCount
      *
+     * @throws \Exception
+     *
      * @return string|null
      */
     private function getSessionId($repeatCount = 1): ?string
@@ -74,7 +77,7 @@ class MyWorldPaymentApiFacadeTest extends Unit
             return $this->getSessionId(++$repeatCount);
         }
 
-        return null;
+        throw new Exception("Session ID not fount. Exception message: " . $response->getError()->getErrorMessage());
     }
 
     /**
@@ -140,22 +143,32 @@ class MyWorldPaymentApiFacadeTest extends Unit
      */
     public function testValidateNotValidSmsCode()
     {
-        $this->myWorldApiRequestTransfer->getPaymentCodeValidateRequest()->setSessionId(
-            $this->sessionId
-        )->setConfirmationCode(1);
-        $adapter = $this->businessFactory->createValidateSmsCodeAdapter(
-            $this->myWorldApiRequestTransfer
-        )->allowUsingStubToken();
+        $this->myWorldApiRequestTransfer
+            ->getPaymentCodeValidateRequest()
+            ->setSessionId(
+                $this->sessionId
+            )
+            ->setConfirmationCode(1);
+
+        $adapter = $this
+            ->businessFactory
+            ->createValidateSmsCodeAdapter(
+                $this->myWorldApiRequestTransfer
+            )
+            ->allowUsingStubToken();
         $converter = $this->businessFactory->createValidateSmsCodeConverter();
         $mapper = $this->businessFactory->createValidateSmsCodeMapper();
 
-        $myWorldApiResponseTransfer = $this->businessFactory->createMyWorldPaymentApiRequest(
-            $adapter,
-            $converter,
-            $mapper
-        )->request(
-            $this->myWorldApiRequestTransfer
-        );
+        $myWorldApiResponseTransfer = $this
+            ->businessFactory
+            ->createMyWorldPaymentApiRequest(
+                $adapter,
+                $converter,
+                $mapper
+            )
+            ->request(
+                $this->myWorldApiRequestTransfer
+            );
 
         $this->assertFalse($myWorldApiResponseTransfer->getPaymentCodeValidateResponse()->getIsValid());
         $this->assertNotNull($myWorldApiResponseTransfer->getPaymentCodeValidateResponse()->getDescription());

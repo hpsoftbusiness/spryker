@@ -8,6 +8,8 @@
 namespace Pyz\Zed\BenefitDeal\Business;
 
 use Pyz\Zed\BenefitDeal\BenefitDealDependencyProvider;
+use Pyz\Zed\BenefitDeal\Business\Label\ProductAbstractRelationReader;
+use Pyz\Zed\BenefitDeal\Business\Label\ProductAbstractRelationReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReader;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriter;
@@ -19,6 +21,7 @@ use Pyz\Zed\BenefitDeal\Business\Quote\QuoteEqualizerInterface;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpander;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpanderInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface;
 
 /**
  * @method \Pyz\Zed\BenefitDeal\BenefitDealConfig getConfig()
@@ -68,6 +71,26 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
     public function createQuoteEqualizer(): QuoteEqualizerInterface
     {
         return new QuoteEqualizer();
+    }
+
+    /**
+     * @return \Pyz\Zed\BenefitDeal\Business\Label\ProductAbstractRelationReaderInterface
+     */
+    public function createProductAbstractRelationReader(): ProductAbstractRelationReaderInterface
+    {
+        return new ProductAbstractRelationReader(
+            $this->getProductLabelFacade(),
+            $this->getRepository(),
+            $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface
+     */
+    public function getProductLabelFacade(): ProductLabelFacadeInterface
+    {
+        return $this->getProvidedDependency(BenefitDealDependencyProvider::FACADE_PRODUCT_LABEL);
     }
 
     /**

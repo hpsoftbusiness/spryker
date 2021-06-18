@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ProductDetailPage\Controller;
 
 use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\ProductViewTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,13 +36,6 @@ class ProductController extends SprykerShopProductController
             (new ItemTransfer())->setIdProductAbstract($viewData['product']->getIdProductAbstract())
         );
         $viewData['cart'] = $quoteTransfer;
-
-        $productAttributesData = $viewData['product']->getAttributes();
-        $viewData['product']
-            ->setCashbackAmount($productAttributesData['cashback_amount'] ?? null)
-            ->setShoppingPoints($productAttributesData['shopping_points'] ?? null);
-
-        $this->hydrateProductViewWithBenefitDealData($viewData['product'], $productAttributesData);
 
         $viewData['product']
             ->setAttributes(
@@ -87,51 +79,6 @@ class ProductController extends SprykerShopProductController
                 $affiliateData,
                 $customerTransfer
             );
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param array $attributes
-     *
-     * @return void
-     */
-    protected function hydrateProductViewWithBenefitDealData(
-        ProductViewTransfer $productViewTransfer,
-        array $attributes
-    ): void {
-        $benefitStoreKey = $this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore();
-
-        if (isset($attributes[$benefitStoreKey]) && $attributes[$benefitStoreKey]) {
-            $benefitSalesPrice = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice(
-            )] ?? null;
-            $benefitAmount = $attributes[$this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount(
-            )] ?? null;
-            /**
-             * @todo Remove conversions once benefit sales price and amount import is updated to convert it to cents (integer)
-             */
-            $benefitSalesPrice = str_replace(',', '.', $benefitSalesPrice);
-            $benefitAmount = str_replace(',', '.', $benefitAmount);
-
-            if ($benefitSalesPrice !== null) {
-                $benefitSalesPrice = $this->getFactory()->createDecimalToIntegerConverter()->convert(
-                    (float)$benefitSalesPrice
-                );
-            }
-
-            if ($benefitAmount !== null) {
-                $benefitAmount = $this->getFactory()->createDecimalToIntegerConverter()->convert(
-                    (float)$benefitAmount
-                );
-            }
-
-            $productViewTransfer
-                ->setBenefitAmount($benefitAmount)
-                ->setBenefitSalesPrice($benefitSalesPrice);
-        } elseif ($attributes[$this->getFactory()->getConfig()->getProductAttributeKeyShoppingPointsStore()] ?? null) {
-            $productViewTransfer->setShoppingPointsAmount(
-                $attributes[$this->getFactory()->getConfig()->getShoppingPointsAmountAttributeName()] ?? null
-            );
-        }
     }
 
     /**

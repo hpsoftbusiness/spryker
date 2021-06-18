@@ -24,4 +24,32 @@ interface BenefitDealRepositoryInterface
      * @return \Generated\Shared\Transfer\PyzSalesOrderItemBenefitDealEntityTransfer[]
      */
     public function findSalesOrderItemBenefitDealsByIdSalesOrderItem(int $idSalesOrderItem): array;
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingInactiveByBenefitProductLabelId(int $idProductLabel): array;
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingActiveByBenefitProductLabelId(int $idProductLabel): array;
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingInactiveByShoppingPointProductLabelId(int $idProductLabel): array;
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingActiveByShoppingPointProductLabelId(int $idProductLabel): array;
 }

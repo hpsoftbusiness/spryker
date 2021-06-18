@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\BenefitDeal;
 
+use Pyz\Shared\BenefitDeal\BenefitDealConfig as BenefitDealSharedConfig;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
@@ -26,5 +27,21 @@ class BenefitDealConfig extends AbstractBundleConfig
     public function getBenefitVoucherPaymentName(): string
     {
         return $this->get(MyWorldPaymentConstants::PAYMENT_NAME_BENEFIT_VOUCHER);
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabelBenefitName(): string
+    {
+        return BenefitDealSharedConfig::LABEL_NAME_BENEFIT;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabelShoppingPointName(): string
+    {
+        return BenefitDealSharedConfig::LABEL_NAME_SHOPPING_POINT;
     }
 }

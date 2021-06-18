@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductLabel;
 
+use Pyz\Zed\BenefitDeal\Communication\Plugin\ProductBenefitLabelUpdaterPlugin;
 use Pyz\Zed\ExampleProductSalePage\Communication\Plugin\ExampleProductSalePageLabelUpdaterPlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\ProductAlternativeLabelUpdaterPlugin;
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\ProductDiscontinuedLabelUpdaterPlugin;
@@ -25,6 +26,7 @@ class ProductLabelDependencyProvider extends SprykerProductLabelDependencyProvid
             new ExampleProductSalePageLabelUpdaterPlugin(),
             new ProductAlternativeLabelUpdaterPlugin(),
             new ProductDiscontinuedLabelUpdaterPlugin(),
+            new ProductBenefitLabelUpdaterPlugin(),
         ];
     }
 }

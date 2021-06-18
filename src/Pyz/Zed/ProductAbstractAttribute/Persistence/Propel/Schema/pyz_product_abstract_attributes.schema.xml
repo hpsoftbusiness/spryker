@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed"
+          xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\ProductAbstractAttribute\Persistence" package="src.Orm.Zed.ProductAbstractAttribute.Persistence">
+
+    <table name="pyz_product_abstract_attribute">
+        <column name="id_product_abstract_attribute" required="true" type="INTEGER" autoIncrement="true"
+                primaryKey="true"/>
+        <column name="fk_product_abstract" required="true" type="INTEGER"/>
+        <column name="benefit_store" type="BOOLEAN"/>
+        <column name="shopping_point" type="BOOLEAN"/>
+
+        <unique name="pyz_product_abstract_attribute-fk_product_abstract-unique">
+            <unique-column name="fk_product_abstract"/>
+        </unique>
+
+        <foreign-key foreignTable="spy_product_abstract" name="pyz_product_abstract_attribute-fk_product_abstract"
+                     phpName="SpyProductAbstract">
+            <reference local="fk_product_abstract" foreign="id_product_abstract"/>
+        </foreign-key>
+    </table>
+
+</database>

@@ -37,4 +37,14 @@ class ProductFacade extends SprykerProductFacade implements ProductFacadeInterfa
     {
         $this->getFactory()->createProductRemover()->markAbstractProductAsRemoved($idProductAbstract);
     }
+
+    /**
+     * @param int[] $productAbstractIds
+     *
+     * @return \Generated\Shared\Transfer\ProductAbstractTransfer[]
+     */
+    public function getRawProductAbstractsByProductAbstractIds(array $productAbstractIds): array
+    {
+        return $this->getRepository()->getRawProductAbstractsByProductAbstractIds($productAbstractIds);
+    }
 }

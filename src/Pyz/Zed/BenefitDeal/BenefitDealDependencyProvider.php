@@ -18,6 +18,7 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
 {
     public const PLUGINS_ITEM_ENTITY_EXPANDER = 'PLUGINS_ITEM_ENTITY_EXPANDER';
     public const PLUGINS_ITEM_BENEFIT_DEAL_HYDRATOR = 'PLUGINS_ITEM_BENEFIT_DEAL_HYDRATOR';
+    public const FACADE_PRODUCT_LABEL = 'FACADE_PRODUCT_LABEL';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -27,9 +28,9 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
-
-        $this->addItemEntityExpanderPlugins($container);
-        $this->addItemBenefitDealHydratorPlugins($container);
+        $container = $this->addItemEntityExpanderPlugins($container);
+        $container = $this->addItemBenefitDealHydratorPlugins($container);
+        $container = $this->addProductLabelFacade($container);
 
         return $container;
     }
@@ -37,9 +38,35 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return void
+     * @return \Spryker\Zed\Kernel\Container
      */
-    private function addItemEntityExpanderPlugins(Container $container): void
+    public function providePersistenceLayerDependencies(Container $container): Container
+    {
+        $container = parent::providePersistenceLayerDependencies($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addProductLabelFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_PRODUCT_LABEL, function (Container $container) {
+            return $container->getLocator()->productLabel()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    private function addItemEntityExpanderPlugins(Container $container): Container
     {
         $container->set(
             self::PLUGINS_ITEM_ENTITY_EXPANDER,
@@ -50,14 +77,16 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
                 ];
             }
         );
+
+        return $container;
     }
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return void
+     * @return \Spryker\Zed\Kernel\Container
      */
-    private function addItemBenefitDealHydratorPlugins(Container $container): void
+    private function addItemBenefitDealHydratorPlugins(Container $container): Container
     {
         $container->set(
             self::PLUGINS_ITEM_BENEFIT_DEAL_HYDRATOR,
@@ -68,5 +97,7 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
                 ];
             }
         );
+
+        return $container;
     }
 }

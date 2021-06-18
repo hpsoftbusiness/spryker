@@ -97,4 +97,14 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     ): void {
         $this->getFactory()->createQuoteEqualizer()->equalize($resultQuoteTransfer, $sourceQuoteTransfer);
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
+     */
+    public function findProductLabelProductAbstractRelationChanges(): array
+    {
+        return $this->getFactory()
+            ->createProductAbstractRelationReader()
+            ->findProductLabelProductAbstractRelationChanges();
+    }
 }

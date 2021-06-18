@@ -9,9 +9,12 @@ namespace Pyz\Zed\BenefitDeal\Persistence;
 
 use Orm\Zed\BenefitDeal\Persistence\PyzSalesOrderBenefitDealQuery;
 use Orm\Zed\BenefitDeal\Persistence\PyzSalesOrderItemBenefitDealQuery;
+use Orm\Zed\ProductAbstractAttribute\Persistence\PyzProductAbstractAttributeQuery;
+use Pyz\Zed\BenefitDeal\BenefitDealDependencyProvider;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\BenefitDealMapper;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\ItemBenefitDealMapper;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
+use Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface;
 
 /**
  * @method \Pyz\Zed\BenefitDeal\Persistence\BenefitDealRepositoryInterface getRepository()
@@ -20,6 +23,14 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class BenefitDealPersistenceFactory extends AbstractPersistenceFactory
 {
+    /**
+     * @return \Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface
+     */
+    public function getProductLabelFacade(): ProductLabelFacadeInterface
+    {
+        return $this->getProvidedDependency(BenefitDealDependencyProvider::FACADE_PRODUCT_LABEL);
+    }
+
     /**
      * @return \Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\BenefitDealMapper
      */
@@ -50,5 +61,13 @@ class BenefitDealPersistenceFactory extends AbstractPersistenceFactory
     public function createPyzSalesOrderItemBenefitDealQuery(): PyzSalesOrderItemBenefitDealQuery
     {
         return PyzSalesOrderItemBenefitDealQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\ProductAbstractAttribute\Persistence\PyzProductAbstractAttributeQuery
+     */
+    public function createProductAbstractAttributeQuery(): PyzProductAbstractAttributeQuery
+    {
+        return PyzProductAbstractAttributeQuery::create();
     }
 }

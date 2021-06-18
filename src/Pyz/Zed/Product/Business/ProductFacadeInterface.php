@@ -29,4 +29,11 @@ interface ProductFacadeInterface extends SprykerProductFacadeInterface
      * @return void
      */
     public function markProductAsRemoved(int $idProductAbstract): void;
+
+    /**
+     * @param int[] $productAbstractIds
+     *
+     * @return \Generated\Shared\Transfer\ProductAbstractTransfer[]
+     */
+    public function getRawProductAbstractsByProductAbstractIds(array $productAbstractIds): array;
 }

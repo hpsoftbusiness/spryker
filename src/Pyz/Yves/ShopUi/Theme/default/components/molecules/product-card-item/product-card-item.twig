@@ -19,7 +19,7 @@
     cashback: null,
     shoppingPoints: null,
     showCashbackPoints: data.showCashbackPoints | default(true),
-
+    customer: null,
 } %}
 
 {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) and data.canEditCart %}
@@ -37,6 +37,14 @@
                             image: data.productItem.images[0].externalUrlLarge | default(null),
                         },
                     } only %}
+
+                    {% block productAbstractLabels %}
+                        {% widget 'ProductAbstractLabelWidget' args [data.productItem.idProductAbstract] with {
+                            data: {
+                                parentJsName: config.jsName,
+                            },
+                        } only %}{% endwidget %}
+                    {% endblock %}
 
                     {% block labels %}{% endblock %}
                     {% block groups %}{% endblock %}
@@ -78,11 +86,11 @@
                     {% endif %}
                 </div>
 
-                {% if data.product is not empty and data.product.customer is not empty %}
-                        {% set amountBenefitVochers = data.productItem.benefitDealChargeAmountData.totalBenefitVouchersAmount ?? null %}
-                        {% set amountShoppingPoints = data.productItem.benefitDealChargeAmountData.totalShoppingPointsAmount ?? null %}
-                        {% set newSalesPrice = data.productItem.benefitDealChargeAmountData.totalSalesPriceAmount ?? null %}
-                        {% set benefitVoucherCurrency = data.product.customer.customerBalance.availableBenefitVoucherCurrency %}
+                {% if data.customer is not empty %}
+                        {% set amountBenefitVochers = data.productItem.benefitDealChargeAmountData.totalBenefitVouchersAmount %}
+                        {% set amountShoppingPoints = data.productItem.benefitDealChargeAmountData.totalShoppingPointsAmount %}
+                        {% set newSalesPrice = data.productItem.benefitDealChargeAmountData.totalSalesPriceAmount %}
+                        {% set benefitVoucherCurrency = data.customer.customerBalance.availableBenefitVoucherCurrency %}
 
                         {% if can('SeePricePermissionPlugin') %}
                             {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}

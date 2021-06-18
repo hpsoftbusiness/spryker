@@ -2,8 +2,11 @@
 {% import molecule('product-item') as macros %}
 
 {% define data = {
-    cashback: null,
-    shoppingPoints: null,
+    cashback: data.product.cashbackAmount | default(null),
+    benefitAmount: data.product.benefitAmount | default(null),
+    benefitSalesPrice: data.product.benefitSalesPrice | default(null),
+    shoppingPointsAmount: data.product.shoppingPointsAmount | default(null),
+    shoppingPoints: data.product.shoppingPoints | default(null),
     isAffiliate: data.product.is_affiliate ?? data.product.isAffiliate,
     affiliateData: data.product.affiliate_data ?? data.product.affiliateData,
 } %}
@@ -13,6 +16,20 @@
 {% endblock %}
 
 {% block body %}
+{#    {{ data.product.cashback_amount }}#}
+    {% set cashback = data.cashback %}
+    {% set benefitAmount = data.benefitAmount %}
+    {% set benefitVoucherPrice = data.benefitSalesPrice %}
+    {% set shoppoingPointsAmount = data.shoppingPointsAmount %}
+    {% set shoppingPointsBenefitPrice =  data.product.prices.SP_BENEFIT ?? null %}
+
+    <ul>
+        <li>benefitVoucherPrice: {{ benefitVoucherPrice }}</li>
+        <li>benefitAmount: {{ benefitAmount }}</li>
+        <li>shoppingPointsBenefitPrice: {{ shoppingPointsBenefitPrice }}</li>
+        <li>shoppoingPointsAmount: {{ shoppoingPointsAmount }}</li>
+    </ul>
+
     <div class="{{ config.name }}__container">
         <div class="{{ config.name }}__image-wrap">
             {% block imageContainer %}

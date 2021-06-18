@@ -8,6 +8,8 @@
 namespace Pyz\Zed\BenefitDeal\Persistence;
 
 use Generated\Shared\Transfer\PyzSalesOrderBenefitDealEntityTransfer;
+use Orm\Zed\ProductAbstractAttribute\Persistence\Map\PyzProductAbstractAttributeTableMap;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\BenefitDealMapper;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\ItemBenefitDealMapper;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
@@ -17,6 +19,9 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class BenefitDealRepository extends AbstractRepository implements BenefitDealRepositoryInterface
 {
+    protected const BENEFIT_STORE_VALUE_ACTIVE = 1;
+    protected const BENEFIT_STORE_VALUE_INACTIVE = 0;
+
     /**
      * @param int $idSalesOrder
      *
@@ -52,6 +57,88 @@ class BenefitDealRepository extends AbstractRepository implements BenefitDealRep
 
         return $this->getItemBenefitDealMapper()
             ->mapEntityCollectionToTransfers($salesOrderItemBenefitDealEntities->getData());
+    }
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingInactiveByBenefitProductLabelId(int $idProductLabel): array
+    {
+        return $this->getFactory()
+            ->createProductAbstractAttributeQuery()
+            ->select([PyzProductAbstractAttributeTableMap::COL_FK_PRODUCT_ABSTRACT])
+            ->filterByBenefitStore(static::BENEFIT_STORE_VALUE_INACTIVE)
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductLabelProductAbstractQuery('rel', Criteria::LEFT_JOIN)
+                    ->filterByFkProductLabel($idProductLabel)
+                ->endUse()
+            ->endUse()
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingActiveByBenefitProductLabelId(int $idProductLabel): array
+    {
+        return $this->getFactory()
+            ->createProductAbstractAttributeQuery()
+            ->select([PyzProductAbstractAttributeTableMap::COL_FK_PRODUCT_ABSTRACT])
+            ->filterByBenefitStore(true)
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductLabelProductAbstractQuery('rel', Criteria::LEFT_JOIN)
+                    ->filterByFkProductLabel(null, Criteria::ISNULL)
+                ->endUse()
+            ->endUse()
+            ->addJoinCondition('rel', sprintf('rel.fk_product_label = %d', $idProductLabel))
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingInactiveByShoppingPointProductLabelId(int $idProductLabel): array
+    {
+        return $this->getFactory()
+            ->createProductAbstractAttributeQuery()
+            ->select([PyzProductAbstractAttributeTableMap::COL_FK_PRODUCT_ABSTRACT])
+            ->filterByShoppingPoint(false)
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductLabelProductAbstractQuery('rel', Criteria::LEFT_JOIN)
+                    ->filterByFkProductLabel($idProductLabel)
+                ->endUse()
+            ->endUse()
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingActiveByShoppingPointProductLabelId(int $idProductLabel): array
+    {
+        return $this->getFactory()
+            ->createProductAbstractAttributeQuery()
+            ->select([PyzProductAbstractAttributeTableMap::COL_FK_PRODUCT_ABSTRACT])
+            ->filterByShoppingPoint(true)
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductLabelProductAbstractQuery('rel', Criteria::LEFT_JOIN)
+                    ->filterByFkProductLabel(null, Criteria::ISNULL)
+                ->endUse()
+            ->endUse()
+            ->addJoinCondition('rel', sprintf('rel.fk_product_label = %d', $idProductLabel))
+            ->find()
+            ->toArray();
     }
 
     /**
