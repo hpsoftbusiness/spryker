@@ -14,9 +14,11 @@ use Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeValidateRequestTransfer;
 use Generated\Shared\Transfer\PaymentConfirmationRequestTransfer;
 use Generated\Shared\Transfer\PaymentDataRequestTransfer;
+use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Service\Customer\CustomerService;
 use Pyz\Service\Customer\CustomerServiceInterface;
+use Pyz\Zed\MyWorldPayment\Business\Exception\MyWorldPaymentException;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacade;
@@ -80,6 +82,12 @@ class MyWorldPaymentFacadeTest extends Unit
         // Arrange
         $quoteBuilder = $this->tester->dataHelper->createQuoteBuilder(true, [
             QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 2,
+            QuoteTransfer::PAYMENTS => [
+                [
+                    PaymentTransfer::PAYMENT_METHOD => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+                    PaymentTransfer::AMOUNT => 2,
+                ],
+            ],
         ]);
         $quoteBuilder->withItem(
             $this->tester->dataHelper->createItemBuilderWithBenefitVoucherDeal()
@@ -102,6 +110,12 @@ class MyWorldPaymentFacadeTest extends Unit
         $quoteBuilder = $this->tester->dataHelper->createQuoteBuilder(true, [
             QuoteTransfer::USE_CASHBACK_BALANCE => true,
             QuoteTransfer::TOTAL_USED_CASHBACK_BALANCE_AMOUNT => 12,
+            QuoteTransfer::PAYMENTS => [
+                [
+                    PaymentTransfer::PAYMENT_METHOD => MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+                    PaymentTransfer::AMOUNT => 12,
+                ],
+            ],
         ]);
 
         //Act
@@ -121,6 +135,12 @@ class MyWorldPaymentFacadeTest extends Unit
         $quoteBuilder = $this->tester->dataHelper->createQuoteBuilder(true, [
             QuoteTransfer::USE_E_VOUCHER_BALANCE => true,
             QuoteTransfer::TOTAL_USED_E_VOUCHER_BALANCE_AMOUNT => 12,
+            QuoteTransfer::PAYMENTS => [
+                [
+                    PaymentTransfer::PAYMENT_METHOD => MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
+                    PaymentTransfer::AMOUNT => 12,
+                ],
+            ],
         ]);
 
         //Act
@@ -140,6 +160,12 @@ class MyWorldPaymentFacadeTest extends Unit
         $quoteBuilder = $this->tester->dataHelper->createQuoteBuilder(true, [
             QuoteTransfer::USE_E_VOUCHER_ON_BEHALF_OF_MARKETER => true,
             QuoteTransfer::TOTAL_USED_E_VOUCHER_MARKETER_BALANCE_AMOUNT => 12,
+            QuoteTransfer::PAYMENTS => [
+                [
+                    PaymentTransfer::PAYMENT_METHOD => MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
+                    PaymentTransfer::AMOUNT => 2,
+                ],
+            ],
         ]);
 
         //Act
@@ -159,6 +185,12 @@ class MyWorldPaymentFacadeTest extends Unit
         $quoteBuilder = $this->tester->dataHelper->createQuoteBuilder(true, [
             QuoteTransfer::TOTAL_USED_SHOPPING_POINTS_AMOUNT => 2,
             QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 2,
+            QuoteTransfer::PAYMENTS => [
+                [
+                    PaymentTransfer::PAYMENT_METHOD => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+                    PaymentTransfer::AMOUNT => 2,
+                ],
+            ],
         ]);
 
         $quoteBuilder->withAnotherItem(
@@ -174,6 +206,29 @@ class MyWorldPaymentFacadeTest extends Unit
         // Assert
         $this->assertTrue($response->getIsSuccess());
         $this->assertNotNull($response->getPaymentSessionResponse());
+    }
+
+    /**
+     * @return void
+     */
+    public function testCreatePaymentSessionWithBenefitVoucherThrowsExceptionIfPaymentMethodMissing(): void
+    {
+        $this->expectException(MyWorldPaymentException::class);
+
+        // Arrange
+        $quoteBuilder = $this->tester->dataHelper->createQuoteBuilder(true, [
+            QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 2,
+        ]);
+
+        $quoteBuilder->withAnotherItem(
+            $this->tester->dataHelper->createItemBuilderWithShoppingPointsDeal()
+        );
+        $quoteBuilder->withAnotherItem(
+            $this->tester->dataHelper->createItemBuilderWithBenefitVoucherDeal()
+        );
+
+        //Act
+        $this->tester->getFacade()->createPaymentSession($quoteBuilder->build());
     }
 
     /**

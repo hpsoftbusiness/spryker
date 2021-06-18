@@ -8,9 +8,12 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 class EVoucherDirectPaymentTransferGenerator extends AbstractDirectPaymentTransferGenerator
 {
+    protected const PAYMENT_METHOD_NAME = MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME;
+
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -27,15 +30,5 @@ class EVoucherDirectPaymentTransferGenerator extends AbstractDirectPaymentTransf
     protected function getPaymentOptionId(): int
     {
         return $this->config->getOptionEVoucher();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return int
-     */
-    protected function getAmount(QuoteTransfer $quoteTransfer): int
-    {
-        return $quoteTransfer->getTotalUsedEVoucherBalanceAmount();
     }
 }

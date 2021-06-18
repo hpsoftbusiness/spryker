@@ -8,9 +8,12 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 class BenefitVoucherDirectPaymentTransferGenerator extends AbstractDirectPaymentTransferGenerator
 {
+    protected const PAYMENT_METHOD_NAME = MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME;
+
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -27,15 +30,5 @@ class BenefitVoucherDirectPaymentTransferGenerator extends AbstractDirectPayment
     protected function getPaymentOptionId(): int
     {
         return $this->config->getOptionBenefitVoucher();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return int
-     */
-    protected function getAmount(QuoteTransfer $quoteTransfer): int
-    {
-        return (int)$quoteTransfer->getTotalUsedBenefitVouchersAmount();
     }
 }

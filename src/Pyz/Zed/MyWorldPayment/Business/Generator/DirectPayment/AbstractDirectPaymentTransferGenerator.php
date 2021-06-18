@@ -8,23 +8,33 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment;
 
 use Generated\Shared\Transfer\MwsDirectPaymentOptionTransfer;
+use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Zed\MyWorldPayment\Business\Exception\MyWorldPaymentException;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 abstract class AbstractDirectPaymentTransferGenerator implements DirectPaymentTransferGeneratorInterface
 {
     /**
-     * @var \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig
+     * Specification:
+     * - To be overridden with relevant payment method names final direct payment transfer generators.
      */
-    protected $config;
+    protected const PAYMENT_METHOD_NAME = '';
 
-    /**
-     * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $config
-     */
+    private const EXCEPTION_PAYMENT_METHOD_NOT_FOUND = 'Payment method %s for MyWorld direct payment transfer generation not found.';
+
+        /**
+         * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $config
+         */
     public function __construct(MyWorldPaymentConfig $config)
     {
         $this->config = $config;
     }
+
+    /**
+     * @var \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig
+     */
+    protected $config;
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -67,6 +77,39 @@ abstract class AbstractDirectPaymentTransferGenerator implements DirectPaymentTr
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
+     * @return \Generated\Shared\Transfer\PaymentTransfer|null
+     */
+    protected function findPaymentByName(QuoteTransfer $quoteTransfer): ?PaymentTransfer
+    {
+        foreach ($quoteTransfer->getPayments() as $paymentTransfer) {
+            if ($paymentTransfer->getPaymentMethod() === static::PAYMENT_METHOD_NAME) {
+                return $paymentTransfer;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @throws \Pyz\Zed\MyWorldPayment\Business\Exception\MyWorldPaymentException
+     *
+     * @return mixed
+     */
+    protected function getAmount(QuoteTransfer $quoteTransfer)
+    {
+        $paymentMethod = $this->findPaymentByName($quoteTransfer);
+        if (!$paymentMethod) {
+            throw new MyWorldPaymentException(sprintf(self::EXCEPTION_PAYMENT_METHOD_NOT_FOUND, self::PAYMENT_METHOD_NAME));
+        }
+
+        return (int)$paymentMethod->getAmount();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return bool
      */
     abstract public function isPaymentUsed(QuoteTransfer $quoteTransfer): bool;
@@ -75,11 +118,4 @@ abstract class AbstractDirectPaymentTransferGenerator implements DirectPaymentTr
      * @return int
      */
     abstract protected function getPaymentOptionId(): int;
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return mixed
-     */
-    abstract protected function getAmount(QuoteTransfer $quoteTransfer);
 }

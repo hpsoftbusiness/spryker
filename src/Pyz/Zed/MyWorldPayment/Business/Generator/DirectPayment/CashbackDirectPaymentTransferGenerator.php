@@ -8,9 +8,12 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 class CashbackDirectPaymentTransferGenerator extends AbstractDirectPaymentTransferGenerator
 {
+    protected const PAYMENT_METHOD_NAME = MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME;
+
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -27,15 +30,5 @@ class CashbackDirectPaymentTransferGenerator extends AbstractDirectPaymentTransf
     protected function getPaymentOptionId(): int
     {
         return $this->config->getOptionCashback();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return mixed
-     */
-    protected function getAmount(QuoteTransfer $quoteTransfer)
-    {
-        return $quoteTransfer->getTotalUsedCashbackBalanceAmount();
     }
 }
