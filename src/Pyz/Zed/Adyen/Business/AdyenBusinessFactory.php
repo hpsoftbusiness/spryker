@@ -11,6 +11,7 @@ use Pyz\Zed\Adyen\Business\Expander\OrderExpander;
 use Pyz\Zed\Adyen\Business\Expander\OrderExpanderInterface;
 use Pyz\Zed\Adyen\Business\Hook\AdyenPostSaveHook;
 use Pyz\Zed\Adyen\Business\Hook\Mapper\MakePayment\CreditCardMapper;
+use Pyz\Zed\Adyen\Business\Hook\Saver\MakePayment\CreditCardSaver;
 use Pyz\Zed\Adyen\Business\Oms\Handler\RefundCommandHandler;
 use Pyz\Zed\Adyen\Business\Oms\Handler\RefundCommandHandlerInterface;
 use Pyz\Zed\Adyen\Business\Oms\Mapper\CaptureCommandMapper;
@@ -20,6 +21,7 @@ use Pyz\Zed\Adyen\Business\Writer\AdyenWriter;
 use SprykerEco\Zed\Adyen\Business\AdyenBusinessFactory as SprykerEcoAdyenBusinessFactory;
 use SprykerEco\Zed\Adyen\Business\Hook\AdyenHookInterface;
 use SprykerEco\Zed\Adyen\Business\Hook\Mapper\MakePayment\AdyenMapperInterface;
+use SprykerEco\Zed\Adyen\Business\Hook\Saver\MakePayment\AdyenSaverInterface;
 use SprykerEco\Zed\Adyen\Business\Oms\Mapper\AdyenCommandMapperInterface;
 use SprykerEco\Zed\Adyen\Business\Writer\AdyenWriterInterface;
 
@@ -102,5 +104,18 @@ class AdyenBusinessFactory extends SprykerEcoAdyenBusinessFactory
     public function createCreditCardMakePaymentMapper(): AdyenMapperInterface
     {
         return new CreditCardMapper($this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\Adyen\Business\Hook\Saver\MakePayment\AdyenSaverInterface
+     */
+    public function createCreditCardMakePaymentSaver(): AdyenSaverInterface
+    {
+        return new CreditCardSaver(
+            $this->createReader(),
+            $this->createWriter(),
+            $this->getUtilEncodingService(),
+            $this->getConfig()
+        );
     }
 }
