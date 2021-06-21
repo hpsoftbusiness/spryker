@@ -20,6 +20,7 @@ function AttributeManager() {
     };
 
     var jsonLoader = {};
+    const defaultAttributeId = '_';
 
     jsonLoader.load = function(input) {
         var json = $(input).html();
@@ -35,6 +36,16 @@ function AttributeManager() {
     _attributeManager.getLocaleCollection = function() {
         return _attributeManager.locales;
     };
+
+    _attributeManager.getDefaultLocale = function () {
+        const defaultAttributeObject = _attributeManager.locales.find(locale => locale.id_locale === defaultAttributeId);
+
+        if (!defaultAttributeObject) {
+            throw new Error('Default Attribute isn\'t provided');
+        }
+
+        return defaultAttributeObject;
+    }
 
     _attributeManager.extractKeysFromTable = function() {
         var keys = [];
@@ -87,6 +98,7 @@ function AttributeManager() {
     _attributeManager.generateDataToAdd = function(key, idAttribute, attributeMetadata) {
         var dataToAdd = [];
         var locales = _attributeManager.getLocaleCollection();
+        var defaultLocale = _attributeManager.getDefaultLocale();
 
         dataToAdd.push(key);
 
@@ -98,7 +110,9 @@ function AttributeManager() {
                 readOnly = ' readonly="true" ';
             }
 
-            var item = '<input type="' + attributeMetadata.input_type + '"' +
+            var item = defaultLocale.id_locale !== localeData.id_locale && attributeMetadata.input_type === 'checkbox'
+                ? ' '
+                : '<input type="' + attributeMetadata.input_type + '"' +
                 ' class="spryker-form-autocomplete form-control ui-autocomplete-input kv_attribute_autocomplete" ' +
                 ' data-allow_input="' + attributeMetadata.allow_input + '"' +
                 ' data-is_super="' + attributeMetadata.is_super + '"' +

@@ -34,28 +34,33 @@
             {% if productAttributes[localeCode][key] is defined %}
                 {% set attributeValue = productAttributes[localeCode][key] %}
                 <td>
-                    <input
-                        {% if isReadOnly %}
-                            readonly="readonly"
-                        {% endif %}
-                        id="{{ inputId }}"
-                        name="{{ inputName }}"
-                        type="{{ inputType }}"
-                        class="spryker-form-autocomplete form-control ui-autocomplete-input kv_attribute_autocomplete"
-                        value="{{ attributeValue }}"
-                        data-allow_input="{{ allowInput }}"
-                        data-is_super="{{ isSuper }}"
-                        data-is_read_only="{{ isReadOnly }}"
-                        data-attribute_key="{{ key }}"
-                        data-is_attribute_input
-                        data-id_attribute="{{ idAttribute }}"
-                        data-locale_code="{{ localeData['locale_name'] }}"
-                        data-is_hidden="{{ isHidden }}"
-                        {% if (isSellable or isCheckbox) and attributeValue %}checked{% endif %}
-                    /><span style="display: none">{{ attributeValue }}</span>
+                    {% if localeCode != '_' and isCheckbox and attributeValue == false %}
+                    {% else %}
+                        <input
+                            {% if isReadOnly %}
+                                readonly="readonly"
+                            {% endif %}
+                            id="{{ inputId }}"
+                            name="{{ inputName }}"
+                            type="{{ inputType }}"
+                            class="spryker-form-autocomplete form-control ui-autocomplete-input kv_attribute_autocomplete"
+                            value="{{ attributeValue }}"
+                            data-allow_input="{{ allowInput }}"
+                            data-is_super="{{ isSuper }}"
+                            data-is_read_only="{{ isReadOnly }}"
+                            data-attribute_key="{{ key }}"
+                            data-is_attribute_input
+                            data-id_attribute="{{ idAttribute }}"
+                            data-locale_code="{{ localeData['locale_name'] }}"
+                            data-is_hidden="{{ isHidden }}"
+                            {% if (isSellable or isCheckbox) and attributeValue %}checked{% endif %}
+                        /><span style="display: none">{{ attributeValue }}</span>
+                    {% endif %}
                 </td>
             {% else %}
                 <td>
+                    {% if localeCode != '_' and isCheckbox %}
+                    {% else %}
                         <input
                             {% if isReadOnly %}
                                 readonly="readonly"
@@ -75,6 +80,7 @@
                             data-is_hidden="{{ isHidden }}"
                         />
                         <span style="display: none"></span>
+                    {% endif %}
                 </td>
             {% endif %}
         {% endfor %}
