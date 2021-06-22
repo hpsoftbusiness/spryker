@@ -20,6 +20,8 @@
 
     <transfer name="ProductAbstract">
         <property name="isRemoved" type="bool"/>
+        <property name="affiliateData" type="string"/>
+        <property name="isAffiliate" type="bool"/>
     </transfer>
 
     <transfer name="ProductConcrete">
