@@ -14,7 +14,7 @@ use Pyz\Zed\MyWorldPayment\Business\Calculator\CashbackPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherMarketerPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface;
-use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentQuoteCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\BenefitVoucherDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\CashbackDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherDirectPaymentTransferGenerator;
@@ -128,11 +128,11 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface|\Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentOrderCalculatorInterface
      */
-    public function createShoppingPointsPaymentCalculator(): MyWorldPaymentQuoteCalculatorInterface
+    public function createShoppingPointsPaymentCalculator()
     {
-        return new ShoppingPointsPaymentQuoteCalculator($this->getCustomerService());
+        return new ShoppingPointsPaymentCalculator($this->getCustomerService());
     }
 
     /**

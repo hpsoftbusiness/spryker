@@ -8,6 +8,8 @@
 namespace PyzTest\Zed\MyWorldPayment;
 
 use Codeception\Actor;
+use Generated\Shared\DataBuilder\CalculableObjectBuilder;
+use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 
 /**
@@ -44,5 +46,15 @@ class MyWorldPaymentCommunicationTester extends Actor
         }
 
         return $salesOrder;
+    }
+
+    /**
+     * @param array $overrideData
+     *
+     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
+     */
+    public function buildCalculableObjectTransfer(array $overrideData): CalculableObjectTransfer
+    {
+        return (new CalculableObjectBuilder($overrideData))->build();
     }
 }

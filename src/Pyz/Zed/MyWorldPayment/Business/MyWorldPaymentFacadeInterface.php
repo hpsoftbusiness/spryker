@@ -120,6 +120,13 @@ interface MyWorldPaymentFacadeInterface
     public function recalculateQuoteShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void;
 
     /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateOrderShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
      * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
      *
      * @return void

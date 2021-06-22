@@ -182,6 +182,16 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateOrderShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this->getFactory()->createShoppingPointsPaymentCalculator()->recalculateOrder($calculableObjectTransfer);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
      *
      * @return void

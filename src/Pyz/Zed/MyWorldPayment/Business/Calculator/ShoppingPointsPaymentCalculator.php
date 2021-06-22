@@ -13,7 +13,9 @@ use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
 use Pyz\Service\Customer\CustomerServiceInterface;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
-class ShoppingPointsPaymentQuoteCalculator implements MyWorldPaymentQuoteCalculatorInterface
+class ShoppingPointsPaymentCalculator implements
+    MyWorldPaymentQuoteCalculatorInterface,
+    MyWorldPaymentOrderCalculatorInterface
 {
     /**
      * @var \Pyz\Service\Customer\CustomerServiceInterface
@@ -58,6 +60,30 @@ class ShoppingPointsPaymentQuoteCalculator implements MyWorldPaymentQuoteCalcula
         $calculableObjectTransfer->setTotalUsedShoppingPointsAmount(
             $this->getCommonUsedShoppingPoints($calculableObjectTransfer)
         );
+
+        return $calculableObjectTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
+     */
+    public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    {
+        foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
+            if (!$itemTransfer->getUseShoppingPoints()) {
+                continue;
+            }
+
+            $shoppingPointsDealTransfer = $itemTransfer->getShoppingPointsDeal();
+            if (!$shoppingPointsDealTransfer || !$this->assertShoppingPointsDealTransfer($shoppingPointsDealTransfer)) {
+                continue;
+            }
+
+            $totalItemUsedShoppingPointAmount = $itemTransfer->getQuantity() * $shoppingPointsDealTransfer->getShoppingPointsQuantity();
+            $itemTransfer->setTotalUsedShoppingPointsAmount($totalItemUsedShoppingPointAmount);
+        }
 
         return $calculableObjectTransfer;
     }
