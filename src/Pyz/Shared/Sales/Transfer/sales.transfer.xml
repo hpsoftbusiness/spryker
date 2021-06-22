@@ -11,6 +11,7 @@
     <transfer name="Order">
         <property name="uid" type="string"/>
         <property name="orderDetailsComments" type="OrderDetailsComments"/>
+        <property name="mainPayment" type="Payment"/>
     </transfer>
 
 </transfers>

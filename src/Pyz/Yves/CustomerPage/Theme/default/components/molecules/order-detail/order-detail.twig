@@ -107,6 +107,7 @@
                 {% include molecule('order-payment', 'CustomerPage') with {
                     data: {
                         payments: data.order.payments,
+                        mainPayment: data.order.mainPayment,
                         currencyIsoCode: data.order.currencyIsoCode,
                     },
                 } only %}

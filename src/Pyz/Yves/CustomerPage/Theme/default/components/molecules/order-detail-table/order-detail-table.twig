@@ -30,6 +30,7 @@
                             productOptionsModifiers: ['alternative'],
                             cashback: cartItem.concreteAttributes.cashback_amount | default(null),
                             shoppingPoints: cartItem.concreteAttributes.shopping_points | default(null),
+                            currencyIsoCode: data.order.currencyIsoCode
                         },
                         embed: {
                             order: data.order,

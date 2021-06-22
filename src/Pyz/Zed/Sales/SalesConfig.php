@@ -9,12 +9,27 @@ namespace Pyz\Zed\Sales;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Shared\Adyen\AdyenConfig;
+use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Sales\SalesConfig as SprykerSalesConfig;
 
 class SalesConfig extends SprykerSalesConfig
 {
     public const ORDER_REFERENCE_PREFIX_NUMBER = 1279;
+
+    /**
+     * Specification:
+     * - Defines priority of the payment methods that are supposed to be considered as main payment type for the order.
+     */
+    public const MAIN_PAYMENT_METHOD_PRIORITY_LIST = [
+        AdyenConfig::ADYEN_CREDIT_CARD,
+        DummyPrepaymentConfig::DUMMY_PREPAYMENT,
+        MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
+        MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
+    ];
 
     /**
      * Defines the prefix for the sequence number which is the public id of an order.

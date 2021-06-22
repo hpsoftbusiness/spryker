@@ -7,9 +7,12 @@
 
 namespace Pyz\Zed\Payment\Business\Order;
 
+use ArrayObject;
 use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\PaymentTransfer;
 use Orm\Zed\Payment\Persistence\SpySalesPayment;
 use Pyz\Zed\Payment\Persistence\PaymentRepositoryInterface;
+use Pyz\Zed\Sales\SalesConfig;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Zed\Payment\Business\Order\SalesPaymentHydrator as SprykerSalesPaymentHydrator;
 use Spryker\Zed\Payment\Dependency\Plugin\Sales\PaymentHydratorPluginCollectionInterface;
@@ -32,8 +35,11 @@ class SalesPaymentHydrator extends SprykerSalesPaymentHydrator
         PaymentQueryContainerInterface $paymentQueryContainer,
         PaymentRepositoryInterface $paymentRepository
     ) {
-        $this->paymentHydratePluginCollection = $paymentHydratePluginCollection;
-        $this->paymentQueryContainer = $paymentQueryContainer;
+        parent::__construct(
+            $paymentHydratePluginCollection,
+            $paymentQueryContainer
+        );
+
         $this->paymentRepository = $paymentRepository;
     }
 
@@ -48,6 +54,7 @@ class SalesPaymentHydrator extends SprykerSalesPaymentHydrator
 
         $salesPayments = $this->findSalesPaymentByIdSalesOrder($orderTransfer);
         $orderTransfer = $this->hydrate($salesPayments, $orderTransfer);
+        $this->setMainOrderPayment($orderTransfer);
 
         return $orderTransfer;
     }
@@ -68,5 +75,44 @@ class SalesPaymentHydrator extends SprykerSalesPaymentHydrator
         $paymentTransfer->setPaymentMethodName($paymentMethodName);
 
         return $paymentTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    private function setMainOrderPayment(OrderTransfer $orderTransfer): void
+    {
+        if ($orderTransfer->getPayments()->count() === 0) {
+            return;
+        }
+
+        foreach (SalesConfig::MAIN_PAYMENT_METHOD_PRIORITY_LIST as $mainPaymentMethodName) {
+            if ($mainPaymentMethod = $this->findPaymentMethodByName($orderTransfer->getPayments(), $mainPaymentMethodName)) {
+                $orderTransfer->setMainPayment($mainPaymentMethod);
+
+                return;
+            }
+        }
+
+        $orderTransfer->setMainPayment($orderTransfer->getPayments()[0]);
+    }
+
+    /**
+     * @param \ArrayObject|\Generated\Shared\Transfer\PaymentTransfer[] $paymentTransfers
+     * @param string $paymentMethodName
+     *
+     * @return \Generated\Shared\Transfer\PaymentTransfer|null
+     */
+    private function findPaymentMethodByName(ArrayObject $paymentTransfers, string $paymentMethodName): ?PaymentTransfer
+    {
+        foreach ($paymentTransfers as $paymentTransfer) {
+            if ($paymentTransfer->getPaymentMethod() === $paymentMethodName) {
+                return $paymentTransfer;
+            }
+        }
+
+        return null;
     }
 }

@@ -51,8 +51,17 @@
         {{ 'customer.order.taxTotal' | trans }}
     </li>
 
+    {% set mainPaymentMethodName = data.order.mainPayment.paymentMethod ?? null %}
+    {% for payment in data.order.payments %}
+        {% if payment.paymentMethod != mainPaymentMethodName and payment.amount > 0 %}
+            <li class="{{ config.name }}__list-item">
+                {{ payment.paymentMethod | trans }} <span class="float-right">- {{ payment.amount | money }}</span>
+            </li>
+        {% endif %}
+    {% endfor %}
+
     <li class="{{ config.name }}__item {{ config.name }}__item--total">
-        <strong class="float-right">{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</strong>
-        <strong>{{ 'customer.order.grandTotal' | trans }}</strong>
+        <strong class="float-right">{{ data.order.totals.priceToPay | money(true, data.order.currencyIsoCode) }}</strong>
+        <strong>{{ 'customer.order.priceToPay' | trans }}</strong>
     </li>
 {% endblock %}
