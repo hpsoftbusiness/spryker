@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Adyen;
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Zed\Refund\RefundConfig;
 use SprykerEco\Zed\Adyen\AdyenConfig as SprykerEcoAdyenConfig;
 
 class AdyenConfig extends SprykerEcoAdyenConfig
@@ -24,6 +25,16 @@ class AdyenConfig extends SprykerEcoAdyenConfig
     public const ADYEN_RESULT_CODE_RECEIVED = 'Received';
     public const ADYEN_RESULT_CODE_REDIRECT_SHOPPER = 'RedirectShopper';
     public const ADYEN_RESULT_CODE_REFUSED = 'Refused';
+
+    /**
+     * Specification:
+     * - Adyen order item payment status to item refund status map.
+     */
+    public const PAYMENT_TO_REFUND_STATUS_MAP = [
+        self::OMS_STATUS_REFUND_PENDING => RefundConfig::PAYMENT_REFUND_STATUS_PENDING,
+        self::OMS_STATUS_REFUND_FAILED => RefundConfig::PAYMENT_REFUND_STATUS_FAILED,
+        self::OMS_STATUS_REFUNDED => RefundConfig::PAYMENT_REFUND_STATUS_PROCESSED,
+    ];
 
     /**
      * @return string

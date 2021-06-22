@@ -146,6 +146,19 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateItemsPricesForBenefitVoucherOrder(
+        CalculableObjectTransfer $calculableObjectTransfer
+    ): void {
+        $this->getFactory()
+            ->createBenefitVoucherPaymentCalculator()
+            ->recalculateOrder($calculableObjectTransfer);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
@@ -166,5 +179,15 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
     public function recalculateQuoteShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $this->getFactory()->createShoppingPointsPaymentCalculator()->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
+     *
+     * @return void
+     */
+    public function processRefunds(array $refundTransfers): void
+    {
+        $this->getFactory()->createRefundProcessor()->processRefunds($refundTransfers);
     }
 }

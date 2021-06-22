@@ -1,0 +1,38 @@
+namespace: PyzTest\Zed\Refund
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include:
+            - ../../../../src/Pyz/Zed/Refund/*.php
+            - ../../../../src/Pyz/Zed/MyWorldPayment/Communication/Plugin/Refund/*.php
+            - ../../../../src/Pyz/Zed/Adyen/Communication/Plugin/Refund/*.php
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
+
+suites:
+    Business:
+        path: Business
+        class_name: RefundBusinessTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
+
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \PyzTest\Shared\Sales\Helper\SalesOrderDataHelper
+                - \PyzTest\Zed\Refund\Helper\BusinessDataHelper

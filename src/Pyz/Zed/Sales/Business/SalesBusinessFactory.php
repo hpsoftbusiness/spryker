@@ -34,7 +34,8 @@ class SalesBusinessFactory extends SprykerSalesBusinessFactory
             $this->getCustomerFacade(),
             $this->getHydrateOrderPlugins(),
             $this->getOrderItemExpanderPlugins(),
-            $this->getCustomerOrderAccessCheckPlugins()
+            $this->getCustomerOrderAccessCheckPlugins(),
+            $this->getOrderExpenseExpanderPlugins()
         );
     }
 
@@ -68,6 +69,14 @@ class SalesBusinessFactory extends SprykerSalesBusinessFactory
     public function getOrderItemForExportExpanderPlugins()
     {
         return $this->getProvidedDependency(SalesDependencyProvider::PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER);
+    }
+
+    /**
+     * @return \Pyz\Zed\Sales\Dependency\Plugin\OrderExpenseExpanderPluginInterface[]
+     */
+    public function getOrderExpenseExpanderPlugins(): array
+    {
+        return $this->getProvidedDependency(SalesDependencyProvider::PLUGINS_ORDER_EXPENSE_EXPANDER);
     }
 
     /**

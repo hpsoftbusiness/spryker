@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="MyWorldRefund01">
+        <states>
+            <state name="myWorld refund due to payment failure" display="oms.state.my_world_refund_due_to_payment_failure"/>
+            <state name="myWorld refunded" display="oms.state.my_world_refunded"/>
+            <state name="myWorld refund failed" display="oms.state.my_world_refund_failed"/>
+        </states>
+
+        <events>
+            <event name="refund myWorld payments" manual="true" timeout="1 hour" command="Refund/MyWorldOnFailedPayment"/>
+            <event name="refund myWorld payments manually" manual="true"/>
+            <event name="retry refund" manual="true"/>
+            <event name="pass" onEnter="true"/>
+        </events>
+
+        <transitions>
+            <transition condition="Refund/IsRefunded" happy="true">
+                <source>myWorld refund due to payment failure</source>
+                <target>myWorld refunded</target>
+                <event>refund myWorld payments</event>
+            </transition>
+
+            <transition>
+                <source>myWorld refund due to payment failure</source>
+                <target>myWorld refund failed</target>
+                <event>refund myWorld payments</event>
+            </transition>
+
+            <transition>
+                <source>myWorld refund failed</source>
+                <target>myWorld refund due to payment failure</target>
+                <event>retry refund</event>
+            </transition>
+
+            <transition>
+                <source>myWorld refund failed</source>
+                <target>myWorld refunded</target>
+                <event>refund myWorld payments manually</event>
+            </transition>
+        </transitions>
+    </process>
+</statemachine>

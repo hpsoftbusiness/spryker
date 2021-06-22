@@ -23,7 +23,7 @@ class CreateRefundMapper extends AbstractMapper implements MyWorldPaymentApiMapp
         $requestTransfer->getPaymentRefundRequest()
             ->requirePaymentId()
             ->requireAmount()
-            ->requireCurrencyId()
+            ->requireCurrency()
             ->requirePartialRefunds();
     }
 
@@ -38,7 +38,6 @@ class CreateRefundMapper extends AbstractMapper implements MyWorldPaymentApiMapp
 
         $requestArray = $requestTransfer->getPaymentRefundRequest()->toArray(true, true);
 
-        $requestArray = $this->removeRedundantParams($requestArray);
         $requestArray = $this->capitalizeArrayKeysRecursive($requestArray);
         $requestArray = $this->normalizeArrayKeys($requestArray);
 

@@ -9,6 +9,7 @@ namespace Pyz\Zed\MyWorldPayment\Business\RequestDispatcher;
 
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
+use Generated\Shared\Transfer\PaymentDataResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGeneratorInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLogInterface;
@@ -113,6 +114,24 @@ class MyWorldPaymentApiRequestDispatcher implements RequestDispatcherInterface
         $responseTransfer = $this->myWorldPaymentApiFacade->performGetPaymentApiCall($apiRequestTransfer);
 
         $this->paymentApiLog->save($apiRequestTransfer, $responseTransfer);
+
+        return $responseTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\PaymentDataResponseTransfer $paymentDataResponseTransfer
+     * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
+     */
+    public function dispatchRefundPayment(
+        PaymentDataResponseTransfer $paymentDataResponseTransfer,
+        array $refundTransfers
+    ): MyWorldApiResponseTransfer {
+        $requestTransfer = $this->apiTransferGenerator->createRefundRequest($paymentDataResponseTransfer, $refundTransfers);
+        $responseTransfer = $this->myWorldPaymentApiFacade->performCreateRefundApiCall($requestTransfer);
+
+        $this->paymentApiLog->save($requestTransfer, $responseTransfer);
 
         return $responseTransfer;
     }

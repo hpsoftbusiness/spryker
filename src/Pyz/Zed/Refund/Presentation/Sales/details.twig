@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-sm-12">
+        {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Refund Details' } %}
+
+            {% block widget_content %}
+                {% if refundDetailsCollections is not empty %}
+                    <table class="footable table toggle-arrow-tiny" data-qa="refund-list">
+                        <thead>
+                        <tr class="text-left">
+                            <th>{{ 'Name' | trans }}</th>
+                            <th>{{ 'Payment Provider' | trans }}</th>
+                            <th>{{ 'Payment Method' | trans }}</th>
+                            <th>{{ 'Amount' | trans }}</th>
+                            <th>{{ 'Status' | trans }}</th>
+                            <th>{{ 'Time' | trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for detailsCollection in refundDetailsCollections %}
+                            <tr data-qa="refund-row" class="refund-details__name-row">
+                                <td>{{ detailsCollection.name }}</td>
+                            </tr>
+                            {% for refundDetails in detailsCollection.refundDetails %}
+                                <tr class="{{ loop.last ? 'refund-details--bottom-border' : '' }}">
+                                    <td></td>
+                                    <td>{{ refundDetails.paymentProvider }}</td>
+                                    <td>{{ refundDetails.paymentMethod }}</td>
+                                    <td data-qa="refund-amount-raw" data-qa-raw="{{ refundDetails.amount }}">{{ refundDetails.amount | money(true, order.currencyIsoCode) }}</td>
+                                    <td>
+                                        {% set labelModifier = 'label-success' %}
+                                        {% if refundDetails.status == 'pending' %}
+                                            {% set labelModifier = 'label-warning' %}
+                                        {% elseif refundDetails.status == 'failed' %}
+                                            {% set labelModifier = 'label-error' %}
+                                        {% elseif refundDetails.status == 'processed' %}
+                                            {% set labelModifier = 'label-info' %}
+                                        {% endif %}
+                                        <span class="label {{ labelModifier }}">
+                                            {{ refundDetails.status }}
+                                        </span>
+                                    </td>
+                                    <td>{{ refundDetails.createdAt | date }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <span class="text-left">{{ 'No refunds for this order' | trans }}</span>
+                {% endif %}
+            {% endblock %}
+
+        {% endembed %}
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="{{ assetsPath('css/spryker-zed-refund-main.css') }}" />
+<script src="{{ assetsPath('js/spryker-zed-refund-main.js') }}"></script>
+

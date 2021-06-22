@@ -20,10 +20,12 @@ class BenefitDealsItemExpanderPlugin extends AbstractPlugin implements ItemExpan
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer|void
+     * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer)
+    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
-        return $this->getFacade()->expandItemsWithBenefitDeals($cartChangeTransfer);
+        $this->getFacade()->expandItemsWithBenefitDeals($cartChangeTransfer->getItems());
+
+        return $cartChangeTransfer;
     }
 }

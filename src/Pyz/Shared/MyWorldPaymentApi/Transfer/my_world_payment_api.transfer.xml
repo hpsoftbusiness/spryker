@@ -85,7 +85,7 @@
     <transfer name="PaymentRefundRequest">
         <property name="paymentId" type="string"/>
         <property name="amount" type="int"/>
-        <property name="currencyId" type="string"/>
+        <property name="currency" type="string"/>
         <property name="partialRefunds" type="PartialRefund[]" singular="partialRefund"/>
     </transfer>
 

@@ -76,6 +76,9 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     }
 
     /**
+     * Specification:
+     * - Expands ItemTransfers with benefit deal data from the database.
+     *
      * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
      * @return \Generated\Shared\Transfer\ItemTransfer[]

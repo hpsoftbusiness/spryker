@@ -23,7 +23,6 @@ use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacade;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface;
-use PyzTest\Zed\MyWorldPayment\DataHelper;
 use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
 use Spryker\Zed\SequenceNumber\Business\SequenceNumberFacade;
 
@@ -44,6 +43,11 @@ class MyWorldPaymentFacadeTest extends Unit
      * @var \PyzTest\Zed\MyWorldPayment\MyWorldPaymentBusinessTester
      */
     protected $tester;
+
+    /**
+     * @var \Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface|\PHPUnit\Framework\MockObject\MockObject
+     */
+    private $myWorldPaymentApiFacadeMock;
 
     /**
      * @return void
@@ -455,10 +459,12 @@ class MyWorldPaymentFacadeTest extends Unit
     /**
      * @return void
      */
-    public function setDefaultDependencies(): void
+    private function setDefaultDependencies(): void
     {
+        $this->myWorldPaymentApiFacadeMock = $this->mockMyWorldPaymentApiFacade();
+
         $this->tester->setDependency(MyWorldPaymentDependencyProvider::SERVICE_CUSTOMER, $this->createCustomerServiceMock());
-        $this->tester->setDependency(MyWorldPaymentDependencyProvider::FACADE_MY_WORLD_PAYMENT_API, $this->createMyWorldPaymentApiFacade());
+        $this->tester->setDependency(MyWorldPaymentDependencyProvider::FACADE_MY_WORLD_PAYMENT_API, $this->myWorldPaymentApiFacadeMock);
         $this->tester->setDependency(MyWorldPaymentDependencyProvider::FACADE_SEQUENCE, new SequenceNumberFacade());
         $this->tester->setDependency(MyWorldPaymentDependencyProvider::DECIMAL_TO_INTEGER_CONVERTER, new DecimalToIntegerConverter());
     }
@@ -470,25 +476,25 @@ class MyWorldPaymentFacadeTest extends Unit
     {
         $mock = $this->createMock(CustomerService::class);
         $mock->method('getCustomerCashbackBalanceAmount')
-            ->willReturn(DataHelper::CUSTOMER_SERVICE_CASHBACK_DEFAULT_BALANCE);
+            ->willReturn(BusinessDataHelper::CUSTOMER_SERVICE_CASHBACK_DEFAULT_BALANCE);
         $mock->method('getUniqueAddressKey')
             ->willReturn('');
         $mock->method('getCustomerShoppingPointsBalanceAmount')
-            ->willReturn(DataHelper::CUSTOMER_SERVICE_SHOPPING_POINTS_DEFAULT_BALANCE);
+            ->willReturn(BusinessDataHelper::CUSTOMER_SERVICE_SHOPPING_POINTS_DEFAULT_BALANCE);
         $mock->method('getCustomerEVoucherBalanceAmount')
-            ->willReturn(DataHelper::CUSTOMER_SERVICE_E_VOUCHER_DEFAULT_BALANCE);
+            ->willReturn(BusinessDataHelper::CUSTOMER_SERVICE_E_VOUCHER_DEFAULT_BALANCE);
         $mock->method('getCustomerMarketerEVoucherBalanceAmount')
-            ->willReturn(DataHelper::CUSTOMER_SERVICE_MARKETER_DEFAULT_BALANCE);
+            ->willReturn(BusinessDataHelper::CUSTOMER_SERVICE_MARKETER_DEFAULT_BALANCE);
         $mock->method('getCustomerBenefitVoucherBalanceAmount')
-            ->willReturn(DataHelper::CUSTOMER_SERVICE_BENEFIT_EVOUCHER_DEFAULT_BALANCE);
+            ->willReturn(BusinessDataHelper::CUSTOMER_SERVICE_BENEFIT_EVOUCHER_DEFAULT_BALANCE);
 
         return $mock;
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface
+     * @return \Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface|\PHPUnit\Framework\MockObject\MockObject
      */
-    private function createMyWorldPaymentApiFacade(): MyWorldPaymentApiFacadeInterface
+    private function mockMyWorldPaymentApiFacade(): MyWorldPaymentApiFacadeInterface
     {
         $mock = $this->createMock(MyWorldPaymentApiFacade::class);
         $mock->method('performCreatePaymentSessionApiCall')

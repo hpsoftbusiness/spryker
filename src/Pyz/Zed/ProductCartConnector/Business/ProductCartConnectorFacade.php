@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\ProductCartConnector\Business;
 
-use Generated\Shared\Transfer\CartChangeTransfer;
 use Spryker\Zed\ProductCartConnector\Business\ProductCartConnectorFacade as SprykerProductCartConnectorFacade;
 
 /**
@@ -16,22 +15,22 @@ use Spryker\Zed\ProductCartConnector\Business\ProductCartConnectorFacade as Spry
 class ProductCartConnectorFacade extends SprykerProductCartConnectorFacade implements ProductCartConnectorFacadeInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItemsWithBenefitDeals(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
+    public function expandItemsWithBenefitDeals(iterable $itemTransfers): void
     {
-        return $this->getFactory()->createBenefitDealsExpander()->expandItems($cartChangeTransfer);
+        $this->getFactory()->createBenefitDealsExpander()->expandItems($itemTransfers);
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItemsWithBenefitDealsChargeAmount(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
+    public function expandItemsWithBenefitDealsChargeAmount(iterable $itemTransfers): void
     {
-        return $this->getFactory()->createBenefitDealsChargeAmountExpander()->expandItems($cartChangeTransfer);
+        $this->getFactory()->createBenefitDealsChargeAmountExpander()->expandItems($itemTransfers);
     }
 }

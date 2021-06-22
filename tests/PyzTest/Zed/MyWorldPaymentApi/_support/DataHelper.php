@@ -158,7 +158,7 @@ class DataHelper
     protected function getPaymentRefundRequestTransfer(): PaymentRefundRequestTransfer
     {
         $paymentRefundRequestTransfer = (new PaymentRefundRequestBuilder(
-            ['paymentId' => '799ADE3F-9B78-E911-80C6-AC162D7C8193', 'amount' => 1, 'currencyId' => 'EUR']
+            ['paymentId' => '799ADE3F-9B78-E911-80C6-AC162D7C8193', 'amount' => 1, 'currency' => 'EUR']
         ))->build();
         $partialRefunds = new ArrayObject(
             [

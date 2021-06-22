@@ -14,12 +14,20 @@ use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverC
 use Pyz\Zed\MyWorldMarketplaceApi\Communication\Plugin\Oms\Condition\IsTurnoverCreatedConditionPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Oms\Condition\IsMyWorldPaymentInitiated;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Oms\Condition\IsMyWorldPaymentProcessed;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Oms\Condition\IsMyWorldPaymentUsed;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\RefundCalculationCommandByOrderPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderInProcessingPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Command\SendShippingConfirmationPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Is1HourNotPassedConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\ManualRefundCommand;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\MyWorldRefundOnFailedPaymentCommand;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\ProcessRefundCommand;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\ValidateRefundCommand;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsFailedCondition;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsPendingCondition;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsRefundedCondition;
 use Pyz\Zed\Stock\Communication\Plugin\Command\DeductStockCommandPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
@@ -134,11 +142,17 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new CapturePlugin(), 'Adyen/Capture');
             $commandCollection->add(new AdyenRefundCommandByOrderPlugin(), 'Adyen/Refund');
             $commandCollection->add(new CancelOrRefundPlugin(), 'Adyen/CancelOrRefund');
-            $commandCollection->add(new RefundCalculationCommandByOrderPlugin(), 'Oms/RefundCalculation');
 
             // ----- Turnover
             $commandCollection->add(new CreateTurnoverCommandByOrderPlugin(), 'MyWorld/CreateTurnover');
             $commandCollection->add(new CancelTurnoverCommandByOrderPlugin(), 'MyWorld/CancelTurnover');
+
+            // ----- Refund
+            $commandCollection->add(new RefundCalculationCommandByOrderPlugin(), 'Oms/RefundCalculation');
+            $commandCollection->add(new ProcessRefundCommand(), 'Refund/Process');
+            $commandCollection->add(new ValidateRefundCommand(), 'Refund/Validate');
+            $commandCollection->add(new MyWorldRefundOnFailedPaymentCommand(), 'Refund/MyWorldOnFailedPayment');
+            $commandCollection->add(new ManualRefundCommand(), 'Refund/ManualRefund');
 
             return $commandCollection;
         });
@@ -177,8 +191,15 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new IsTurnoverCreatedConditionPlugin(), 'MyWorld/IsTurnoverCreated');
             $conditionCollection->add(new IsTurnoverCancelledConditionPlugin(), 'MyWorld/IsTurnoverCancelled');
 
+            // ----- MyWorld Payments
             $conditionCollection->add(new IsMyWorldPaymentInitiated(), 'MyWorld/IsMyWorldPaymentInitiated');
             $conditionCollection->add(new IsMyWorldPaymentProcessed(), 'MyWorld/IsMyWorldPaymentProcessed');
+            $conditionCollection->add(new IsMyWorldPaymentUsed(), 'MyWorld/IsMyWorldPaymentUsed');
+
+            // ----- Refund
+            $conditionCollection->add(new IsFailedCondition(), 'Refund/IsFailed');
+            $conditionCollection->add(new IsPendingCondition(), 'Refund/IsPending');
+            $conditionCollection->add(new IsRefundedCondition(), 'Refund/IsRefunded');
 
             return $conditionCollection;
         });

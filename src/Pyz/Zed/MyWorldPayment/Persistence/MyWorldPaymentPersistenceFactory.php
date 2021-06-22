@@ -8,7 +8,9 @@
 namespace Pyz\Zed\MyWorldPayment\Persistence;
 
 use Orm\Zed\MyWorldPayment\Persistence\PyzPaymentMyWorldQuery;
+use Orm\Zed\Payment\Persistence\SpySalesPaymentQuery;
 use Pyz\Zed\MyWorldPayment\Persistence\Propel\Mapper\MyWorldPaymentMapper;
+use Pyz\Zed\MyWorldPayment\Persistence\Propel\Mapper\PaymentMapper;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
@@ -32,5 +34,21 @@ class MyWorldPaymentPersistenceFactory extends AbstractPersistenceFactory
     public function createMyWorldPaymentMapper(): MyWorldPaymentMapper
     {
         return new MyWorldPaymentMapper();
+    }
+
+    /**
+     * @return \Orm\Zed\Payment\Persistence\SpySalesPaymentQuery
+     */
+    public function createSpySalesPaymentQuery(): SpySalesPaymentQuery
+    {
+        return SpySalesPaymentQuery::create();
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Persistence\Propel\Mapper\PaymentMapper
+     */
+    public function createPaymentMapper(): PaymentMapper
+    {
+        return new PaymentMapper();
     }
 }

@@ -8,7 +8,6 @@
 namespace Pyz\Zed\ProductCartConnector\Business\Expander;
 
 use Generated\Shared\Transfer\BenefitVoucherDealDataTransfer;
-use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
 use Pyz\Zed\ProductCartConnector\ProductCartConnectorConfig;
@@ -29,18 +28,16 @@ class BenefitDealsExpander implements BenefitDealsExpanderInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
+    public function expandItems(iterable $itemTransfers): void
     {
-        foreach ($cartChangeTransfer->getItems() as $itemTransfer) {
+        foreach ($itemTransfers as $itemTransfer) {
             $this->expandWithShoppingPoints($itemTransfer);
             $this->expandWithBenefitVouchers($itemTransfer);
         }
-
-        return $cartChangeTransfer;
     }
 
     /**

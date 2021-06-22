@@ -11,6 +11,7 @@
             <process>Capture</process>
             <process>Refund</process>
             <process>Turnover</process>
+            <process>MyWorldRefundOnPaymentFailure</process>
         </subprocesses>
 
         <states>
@@ -164,13 +165,26 @@
                 <target>closed</target>
                 <event>pass</event>
             </transition>
+
+            <transition condition="MyWorld/IsMyWorldPaymentUsed">
+                <source>invalid</source>
+                <target>myWorld refund due to payment failure</target>
+                <event>pass</event>
+            </transition>
+
+            <transition condition="MyWorld/IsMyWorldPaymentUsed">
+                <source>cancelled</source>
+                <target>myWorld refund due to payment failure</target>
+                <event>pass</event>
+            </transition>
         </transitions>
     </process>
 
     <process name="Authorization" file="Subprocess/Authorization01.xml"/>
     <process name="Cancellation" file="Subprocess/Cancellation01.xml"/>
     <process name="Capture" file="Subprocess/Capture01.xml"/>
-    <process name="Refund" file="Subprocess/Refund01.xml"/>
+    <process name="Refund" file="Subprocess/Refund02.xml"/>
     <process name="Turnover" file="Subprocess/Turnover01.xml"/>
+    <process name="MyWorldRefundOnPaymentFailure" file="Subprocess/MyWorldRefund01.xml"/>
 
 </statemachine>

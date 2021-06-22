@@ -10,7 +10,7 @@ namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 
-class EVoucherMarketerPaymentCalculator extends AbstractCashbackPaymentCalculator
+class EVoucherMarketerPaymentCalculator extends AbstractCashbackPaymentQuoteCalculator
 {
     /**
      * @return string

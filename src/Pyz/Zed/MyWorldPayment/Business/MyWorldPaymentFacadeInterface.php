@@ -81,6 +81,15 @@ interface MyWorldPaymentFacadeInterface
     ): void;
 
     /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateItemsPricesForBenefitVoucherOrder(
+        CalculableObjectTransfer $calculableObjectTransfer
+    ): void;
+
+    /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $quoteTransfer
      *
      * @return void
@@ -109,4 +118,11 @@ interface MyWorldPaymentFacadeInterface
      * @return void
      */
     public function recalculateQuoteShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
+     *
+     * @return void
+     */
+    public function processRefunds(array $refundTransfers): void;
 }

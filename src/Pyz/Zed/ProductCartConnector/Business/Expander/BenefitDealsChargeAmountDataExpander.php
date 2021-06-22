@@ -8,20 +8,19 @@
 namespace Pyz\Zed\ProductCartConnector\Business\Expander;
 
 use Generated\Shared\Transfer\BenefitDealChargeAmountDataTransfer;
-use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
 class BenefitDealsChargeAmountDataExpander implements BenefitDealsExpanderInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
+    public function expandItems(iterable $itemTransfers): void
     {
-        foreach ($cartChangeTransfer->getItems() as $item) {
+        foreach ($itemTransfers as $item) {
             $amountDataTransfer = $item->getBenefitDealChargeAmountData();
 
             if ($this->isBenefitVoucherDataProvided($item)) {
@@ -32,8 +31,6 @@ class BenefitDealsChargeAmountDataExpander implements BenefitDealsExpanderInterf
 
             $item->setBenefitDealChargeAmountData($amountDataTransfer);
         }
-
-        return $cartChangeTransfer;
     }
 
     /**

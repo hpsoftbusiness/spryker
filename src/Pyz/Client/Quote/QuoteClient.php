@@ -8,7 +8,10 @@
 namespace Pyz\Client\Quote;
 
 use Spryker\Client\Quote\QuoteClient as SprykerQuoteClient;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface;
 
-class QuoteClient extends SprykerQuoteClient implements QuoteClientInterface
+class QuoteClient extends SprykerQuoteClient implements
+    QuoteClientInterface,
+    CheckoutPageToQuoteClientInterface
 {
 }

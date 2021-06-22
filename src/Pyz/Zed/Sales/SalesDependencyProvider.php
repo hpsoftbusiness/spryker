@@ -15,6 +15,9 @@ use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\OrderItemBenefitDealsPreSaveP
 use Pyz\Zed\Customer\Communication\Plugin\Sales\CustomerOrderExpanderPreSavePlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Sales\MyWorldPaymentDataOrderExpanderPlugin;
 use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
+use Pyz\Zed\ProductCartConnector\Communication\Plugin\Sales\BenefitDealDataOrderItemExpanderPlugin;
+use Pyz\Zed\Refund\Communication\Plugin\Sales\ExpenseRefundExpanderPlugin;
+use Pyz\Zed\Refund\Communication\Plugin\Sales\ItemRefundExpanderPlugin;
 use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;
 use Pyz\Zed\SalesOrderUid\Communication\Plugin\Sales\UidOrderExpanderPreSavePlugin;
 use Pyz\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductAttributesOrderItemExpanderPlugin;
@@ -54,6 +57,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
 {
     public const PLUGINS_ORDER_FOR_EXPORT_EXPANDER = 'PLUGINS_ORDER_FOR_EXPORT_EXPANDER';
     public const PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER = 'PLUGINS_ORDER_ITEM_FOR_EXPORT_EXPANDER';
+    public const PLUGINS_ORDER_EXPENSE_EXPANDER = 'PLUGINS_ORDER_EXPENSE_EXPANDER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -65,6 +69,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addOrderForExportExpanderPlugins($container);
         $container = $this->addOrderItemForExportExpanderPlugins($container);
+        $container = $this->addOrderExpenseExpanderPlugins($container);
 
         return $container;
     }
@@ -236,6 +241,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemStateOrderItemExpanderPlugin(),
             new ProductAttributesOrderItemExpanderPlugin(),
             new BenefitDealOrderItemExpanderPlugin(),
+            new BenefitDealDataOrderItemExpanderPlugin(),
+            new ItemRefundExpanderPlugin(),
         ];
     }
 
@@ -248,5 +255,21 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OrderAggregatedItemStateSearchOrderExpanderPlugin(),
             new IsCancellableSearchOrderExpanderPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    private function addOrderExpenseExpanderPlugins(Container $container): Container
+    {
+        $container->set(self::PLUGINS_ORDER_EXPENSE_EXPANDER, function () {
+            return [
+                new ExpenseRefundExpanderPlugin(),
+            ];
+        });
+
+        return $container;
     }
 }

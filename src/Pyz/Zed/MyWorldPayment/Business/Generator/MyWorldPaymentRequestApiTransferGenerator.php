@@ -13,9 +13,12 @@ use Generated\Shared\Transfer\MwsDirectPaymentOptionTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeValidateRequestTransfer;
+use Generated\Shared\Transfer\PaymentDataResponseTransfer;
 use Generated\Shared\Transfer\PaymentSessionRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SequenceNumberSettingsTransfer;
+use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlow\PaymentFlowsTransferGeneratorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PaymentRefundRequestTransferGeneratorInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig as ZedMyWorldPaymentConfig;
 use Spryker\Zed\SequenceNumber\Business\SequenceNumberFacadeInterface;
 
@@ -36,23 +39,31 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
     private $sequenceNumberFacade;
 
     /**
-     * @var \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface
+     * @var \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlow\PaymentFlowsTransferGeneratorInterface
      */
     private $paymentFlowsTransferGenerator;
 
     /**
+     * @var \Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PaymentRefundRequestTransferGeneratorInterface
+     */
+    private $paymentRefundRequestTransferGenerator;
+
+    /**
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
      * @param \Spryker\Zed\SequenceNumber\Business\SequenceNumberFacadeInterface $sequenceNumberFacade
-     * @param \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface $paymentFlowsTransferGenerator
+     * @param \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlow\PaymentFlowsTransferGeneratorInterface $paymentFlowsTransferGenerator
+     * @param \Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PaymentRefundRequestTransferGeneratorInterface $paymentRefundRequestTransferGenerator
      */
     public function __construct(
         ZedMyWorldPaymentConfig $myWorldPaymentConfig,
         SequenceNumberFacadeInterface $sequenceNumberFacade,
-        PaymentFlowsTransferGeneratorInterface $paymentFlowsTransferGenerator
+        PaymentFlowsTransferGeneratorInterface $paymentFlowsTransferGenerator,
+        PaymentRefundRequestTransferGeneratorInterface $paymentRefundRequestTransferGenerator
     ) {
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
         $this->sequenceNumberFacade = $sequenceNumberFacade;
         $this->paymentFlowsTransferGenerator = $paymentFlowsTransferGenerator;
+        $this->paymentRefundRequestTransferGenerator = $paymentRefundRequestTransferGenerator;
     }
 
     /**
@@ -95,6 +106,19 @@ class MyWorldPaymentRequestApiTransferGenerator implements MyWorldPaymentRequest
                 (new PaymentSessionRequestTransfer())
                     ->setSsoAccessToken($quoteTransfer->getCustomer()->getSsoAccessToken())
             );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\PaymentDataResponseTransfer $paymentDataResponseTransfer
+     * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiRequestTransfer
+     */
+    public function createRefundRequest(
+        PaymentDataResponseTransfer $paymentDataResponseTransfer,
+        array $refundTransfers
+    ): MyWorldApiRequestTransfer {
+        return $this->paymentRefundRequestTransferGenerator->generate($paymentDataResponseTransfer, $refundTransfers);
     }
 
     /**

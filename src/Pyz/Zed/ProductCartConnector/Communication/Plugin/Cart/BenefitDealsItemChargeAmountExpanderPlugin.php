@@ -20,10 +20,12 @@ class BenefitDealsItemChargeAmountExpanderPlugin extends AbstractPlugin implemen
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer|void
+     * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer)
+    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
-        return $this->getFacade()->expandItemsWithBenefitDealsChargeAmount($cartChangeTransfer);
+        $this->getFacade()->expandItemsWithBenefitDealsChargeAmount($cartChangeTransfer->getItems());
+
+        return $cartChangeTransfer;
     }
 }

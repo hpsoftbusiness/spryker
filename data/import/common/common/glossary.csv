@@ -20015,6 +20015,28 @@ oms.state.failed,fehlgeschlagen,de_DE
 oms.state.failed,Failed,en_US
 oms.state.myworld_payment_pending,MyWorld payment pending,de_DE
 oms.state.myworld_payment_pending,MyWorld payment pending,en_US
+oms.state.my_world_refund_due_to_payment_failure,MyWorld refund due to payment failure,de_DE
+oms.state.my_world_refund_due_to_payment_failure,MyWorld refund due to payment failure,en_US
+oms.state.my_world_refunded,MyWorld refunded,de_DE
+oms.state.my_world_refunded,MyWorld refunded,en_US
+oms.state.my_world_refund_failed,MyWorld refund failed,de_DE
+oms.state.my_world_refund_failed,MyWorld refund failed,en_US
+oms.state.ready_for_refund,Ready for refund,de_DE
+oms.state.ready_for_refund,Ready for refund,en_US
+oms.state.calculating_refund,Calculating refund,de_DE
+oms.state.calculating_refund,Calculating refund,en_US
+oms.state.processing_refund,Processing refund,de_DE
+oms.state.processing_refund,Processing refund,en_US
+oms.state.validating_refund,Validating refund,de_DE
+oms.state.validating_refund,Validating refund,en_US
+oms.state.refund_failed,Refund failed,de_DE
+oms.state.refund_failed,Refund failed,en_US
+oms.state.refund_pending_next_try,Pending refund next try,de_DE
+oms.state.refund_pending_next_try,Pending refund next try,en_US
+oms.state.refund_pending,Refund pending,de_DE
+oms.state.refund_pending,Refund pending,en_US
+oms.state.refunded,Refunded,de_DE
+oms.state.refunded,Refunded,en_US
 product_detail_page.desclaimer_text, Desclaimer,en_US
 product_detail_page.desclaimer_text, Haftungsausschluss,de_DE
 page.checkout.payment.3d_secure_text,"Please make sure that the credit card you entered has been verified for the new 3d Secure system. Without this verification the transaction will not be possible, for more information please contact your credit card provider.",en_US

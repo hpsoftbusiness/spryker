@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="Refund02">
+        <states>
+            <state name="ready for refund" display="oms.state.ready_for_refund"/>
+            <state name="calculating refund" display="oms.state.calculating_refund"/>
+            <state name="processing refund" display="oms.state.processing_refund"/>
+            <state name="validating refund" display="oms.state.validating_refund"/>
+            <state name="refund failed" display="oms.state.refund_failed"/>
+            <state name="refund pending next try" display="oms.state.refund_pending_next_try"/>
+            <state name="refund pending" display="oms.state.refund_pending"/>
+            <state name="refunded" display="oms.state.refunded"/>
+        </states>
+
+        <events>
+            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
+            <event name="process refund" onEnter="true" command="Refund/Process"/>
+            <event name="validate refund" onEnter="true" command="Refund/Validate"/>
+            <event name="refund manually" manual="true" command="Refund/ManualRefund"/>
+            <event name="retry refund" manual="true"/>
+            <event name="pass" onEnter="true"/>
+            <event name="pass 5 minute" timeout="5 minute"/>
+            <event name="pass 10 minute" timeout="10 minute"/>
+            <event name="skip timeout" manual="true"/>
+        </events>
+
+        <transitions>
+            <transition>
+                <source>ready for refund</source>
+                <target>calculating refund</target>
+                <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>calculating refund</source>
+                <target>processing refund</target>
+                <event>calculate refund</event>
+            </transition>
+
+            <transition>
+                <source>processing refund</source>
+                <target>refund pending</target>
+                <event>process refund</event>
+            </transition>
+
+            <transition>
+                <source>refund pending</source>
+                <target>validating refund</target>
+                <event>pass 5 minute</event>
+            </transition>
+
+            <transition>
+                <source>refund pending</source>
+                <target>validating refund</target>
+                <event>skip timeout</event>
+            </transition>
+
+            <transition condition="Refund/IsRefunded" happy="true">
+                <source>validating refund</source>
+                <target>refunded</target>
+                <event>validate refund</event>
+            </transition>
+
+            <transition condition="Refund/IsPending">
+                <source>validating refund</source>
+                <target>refund pending next try</target>
+                <event>validate refund</event>
+            </transition>
+
+            <transition condition="Refund/IsFailed">
+                <source>validating refund</source>
+                <target>refund failed</target>
+                <event>validate refund</event>
+            </transition>
+
+            <transition>
+                <source>refund pending next try</source>
+                <target>validating refund</target>
+                <event>pass 10 minute</event>
+            </transition>
+
+            <transition>
+                <source>refund failed</source>
+                <target>processing refund</target>
+                <event>retry refund</event>
+            </transition>
+
+            <transition>
+                <source>refund failed</source>
+                <target>refunded</target>
+                <event>refund manually</event>
+            </transition>
+        </transitions>
+    </process>
+</statemachine>

@@ -17,4 +17,11 @@ interface MyWorldPaymentRepositoryInterface
      * @return \Generated\Shared\Transfer\PaymentDataResponseTransfer|null
      */
     public function findMyWorldPaymentByIdSalesOrder(int $idSalesOrder): ?PaymentDataResponseTransfer;
+
+    /**
+     * @param int $idSalesOrder
+     *
+     * @return \Generated\Shared\Transfer\PaymentTransfer[]
+     */
+    public function findOrderMyWorldPaymentsByIdSalesOrder(int $idSalesOrder): array;
 }

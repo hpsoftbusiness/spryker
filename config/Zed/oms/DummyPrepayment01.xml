@@ -7,6 +7,8 @@
     <process name="DummyPrepayment01" main="true">
         <subprocesses>
             <process>Turnover</process>
+            <process>Refund</process>
+            <process>MyWorldRefundOnPaymentFailure</process>
         </subprocesses>
 
         <states>
@@ -23,7 +25,6 @@
             <state name="shipped"/>
             <state name="invoice generated"/>
             <state name="invoice with tracking number sent"/>
-            <state name="refund calculated"/>
             <state name="closed"/>
         </states>
 
@@ -43,7 +44,6 @@
             <event name="close" timeout="20days"/>
             <event name="pass" onEnter="true"/>
             <event name="pass 1 minute" timeout="1 minute"/>
-            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
         </events>
 
         <transitions>
@@ -137,24 +137,32 @@
 
             <transition>
                 <source>turnover created</source>
+                <target>ready for refund</target>
+                <event>initiate refund process</event>
+            </transition>
+
+            <transition>
+                <source>refunded</source>
                 <target>ready for turnover cancellation</target>
                 <event>start turnover cancellation process</event>
             </transition>
 
             <transition>
                 <source>turnover cancelled</source>
-                <target>refund calculated</target>
-                <event>calculate refund</event>
+                <target>closed</target>
+                <event>close</event>
             </transition>
 
-            <transition>
-                <source>refund calculated</source>
-                <target>closed</target>
+            <transition condition="MyWorld/IsMyWorldPaymentUsed">
+                <source>cancelled</source>
+                <target>myWorld refund due to payment failure</target>
                 <event>pass</event>
             </transition>
         </transitions>
     </process>
 
     <process name="Turnover" file="Subprocess/Turnover01.xml"/>
+    <process name="Refund" file="Subprocess/Refund02.xml"/>
+    <process name="MyWorldRefundOnPaymentFailure" file="Subprocess/MyWorldRefund01.xml"/>
 
 </statemachine>

@@ -8,15 +8,17 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use ArrayObject;
-use Exception;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
+use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
-class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterface
+class BenefitVoucherPaymentCalculator implements
+    MyWorldPaymentQuoteCalculatorInterface,
+    MyWorldPaymentOrderCalculatorInterface
 {
     /**
      * @var \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig
@@ -50,7 +52,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
         $calculableObjectTransfer = $this->removePaymentMethod($calculableObjectTransfer);
 
         if ($this->isBenefitVoucherUseSelected($calculableObjectTransfer)) {
-            $calculableObjectTransfer = $this->reduceItemsPrices($calculableObjectTransfer);
+            $calculableObjectTransfer = $this->calculateBenefitVouchersAmount($calculableObjectTransfer);
         }
 
         return $calculableObjectTransfer;
@@ -61,7 +63,27 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
      *
      * @return \Generated\Shared\Transfer\CalculableObjectTransfer
      */
-    private function reduceItemsPrices(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    {
+        foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
+            if (!$itemTransfer->getUseBenefitVoucher() || !$this->assertBenefitVoucherDealData($itemTransfer)) {
+                continue;
+            }
+
+            $benefitVoucherData = $itemTransfer->getBenefitVoucherDealData();
+            $totalItemBenefitVoucherDiscountAmount = (int)($benefitVoucherData->getAmount() * $itemTransfer->getQuantity());
+            $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherDiscountAmount);
+        }
+
+        return $calculableObjectTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
+     */
+    private function calculateBenefitVouchersAmount(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         $totalBenefitVouchersDiscountAmount = 0;
         $customerTransfer = $calculableObjectTransfer->getOriginalQuote()->getCustomer();
@@ -177,7 +199,7 @@ class BenefitVoucherPaymentCalculator implements MyWorldPaymentCalculatorInterfa
             $itemTransfer->getBenefitVoucherDealData()->requireIsStore();
 
             return $itemTransfer->getBenefitVoucherDealData()->getIsStore();
-        } catch (Exception $exception) {
+        } catch (RequiredTransferPropertyException $exception) {
             return false;
         }
     }

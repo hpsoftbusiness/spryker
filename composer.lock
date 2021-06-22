@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa19086569f795d84eb1f0398059fbda",
+    "content-hash": "1c2b695aae32780bf0eea199271cfa25",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5047,6 +5047,9 @@
                 "proprietary"
             ],
             "description": "Refunds [feature]",
+            "support": {
+                "source": "https://github.com/spryker-feature/refunds/tree/master"
+            },
             "time": "2020-09-02T09:34:27+00:00"
         },
         {

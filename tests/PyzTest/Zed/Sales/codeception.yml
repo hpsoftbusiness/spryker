@@ -10,7 +10,9 @@ coverage:
     enabled: true
     remote: false
     whitelist:
-        include: [ '../../../../src/Pyz/Zed/Sales/*.php' ]
+        include:
+            - ../../../../src/Pyz/Zed/Sales/*.php
+            - ../../../../src/Pyz/Zed/BenefitDeal/Communication/*.php
         exclude:
             - ../../../../src/Pyz/*/*DependencyProvider.php
             - ../../../../src/Pyz/*/*Config.php
@@ -28,6 +30,7 @@ suites:
                         projectNamespaces: [ 'Pyz' ]
 
                 - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\Propel\Helper\TransactionHelper
                 - \PyzTest\Shared\Sales\Helper\SalesOrderDataHelper

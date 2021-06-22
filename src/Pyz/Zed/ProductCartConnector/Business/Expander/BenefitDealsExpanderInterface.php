@@ -7,14 +7,12 @@
 
 namespace Pyz\Zed\ProductCartConnector\Business\Expander;
 
-use Generated\Shared\Transfer\CartChangeTransfer;
-
 interface BenefitDealsExpanderInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
+    public function expandItems(iterable $itemTransfers): void;
 }

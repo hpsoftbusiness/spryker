@@ -104,6 +104,7 @@ class SalesFacadeTest extends Unit
             self::DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_BV[PyzSalesOrderItemBenefitDealEntityTransfer::ORIGIN_UNIT_GROSS_PRICE],
             $orderTransfer->getItems()[0]->getOriginUnitGrossPrice()
         );
+        self::assertTrue($orderTransfer->getItems()[0]->getUseBenefitVoucher());
 
         self::assertEquals(
             self::DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_SP[PyzSalesOrderItemBenefitDealEntityTransfer::SHOPPING_POINTS_AMOUNT],

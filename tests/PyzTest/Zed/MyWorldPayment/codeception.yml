@@ -9,7 +9,12 @@ paths:
 coverage:
     enabled: true
     remote: false
-#    whitelist: { include: ['../../../../src/*'] }
+    whitelist:
+        include: [ '../../../../src/Pyz/Zed/MyWorldPayment/*php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
 
 suites:
     Business:
@@ -26,4 +31,20 @@ suites:
                 - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
                 - \SprykerTest\Shared\Propel\Helper\TransactionHelper
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
-                - \SprykerTest\Zed\Sales\Helper\BusinessHelper
+                - \PyzTest\Shared\Sales\Helper\SalesOrderDataHelper
+    Communication:
+        path: Communication
+        class_name: MyWorldPaymentCommunicationTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \PyzTest\Shared\Sales\Helper\SalesOrderDataHelper
+                - \PyzTest\Zed\MyWorldPayment\Communication\CommunicationDataHelper

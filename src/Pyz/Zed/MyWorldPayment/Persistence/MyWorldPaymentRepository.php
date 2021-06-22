@@ -8,6 +8,7 @@
 namespace Pyz\Zed\MyWorldPayment\Persistence;
 
 use Generated\Shared\Transfer\PaymentDataResponseTransfer;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 
 /**
@@ -33,5 +34,22 @@ class MyWorldPaymentRepository extends AbstractRepository implements MyWorldPaym
             $entity,
             new PaymentDataResponseTransfer()
         );
+    }
+
+    /**
+     * @param int $idSalesOrder
+     *
+     * @return \Generated\Shared\Transfer\PaymentTransfer[]
+     */
+    public function findOrderMyWorldPaymentsByIdSalesOrder(int $idSalesOrder): array
+    {
+        $paymentEntities = $this->getFactory()->createSpySalesPaymentQuery()
+            ->filterByFkSalesOrder($idSalesOrder)
+            ->useSalesPaymentMethodTypeQuery()
+            ->filterByPaymentProvider(MyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD)
+            ->endUse()
+            ->find();
+
+        return $this->getFactory()->createPaymentMapper()->mapSalesPaymentEntityCollectionToTransfers($paymentEntities);
     }
 }

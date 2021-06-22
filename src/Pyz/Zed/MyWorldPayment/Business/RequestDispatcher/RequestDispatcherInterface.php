@@ -9,6 +9,7 @@ namespace Pyz\Zed\MyWorldPayment\Business\RequestDispatcher;
 
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
+use Generated\Shared\Transfer\PaymentDataResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 
 interface RequestDispatcherInterface
@@ -47,4 +48,15 @@ interface RequestDispatcherInterface
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
     public function dispatchGetPayment(MyWorldApiRequestTransfer $apiRequestTransfer): MyWorldApiResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\PaymentDataResponseTransfer $paymentDataResponseTransfer
+     * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
+     */
+    public function dispatchRefundPayment(
+        PaymentDataResponseTransfer $paymentDataResponseTransfer,
+        array $refundTransfers
+    ): MyWorldApiResponseTransfer;
 }

@@ -7,28 +7,27 @@
 
 namespace Pyz\Zed\ProductCartConnector\Business;
 
-use Generated\Shared\Transfer\CartChangeTransfer;
 use Spryker\Zed\ProductCartConnector\Business\ProductCartConnectorFacadeInterface as SprykerProductCartConnectorFacadeInterface;
 
 interface ProductCartConnectorFacadeInterface extends SprykerProductCartConnectorFacadeInterface
 {
     /**
      * Specification:
-     * - Expand cart change items with benefit deals data.
+     * - Expand items with benefit deals data.
      *
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItemsWithBenefitDeals(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
+    public function expandItemsWithBenefitDeals(iterable $itemTransfers): void;
 
     /**
      * Specification:
-     * - Expand cart change items with benefit deals charge amount data.
+     * - Expand items with benefit deals charge amount data.
      *
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return void
      */
-    public function expandItemsWithBenefitDealsChargeAmount(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
+    public function expandItemsWithBenefitDealsChargeAmount(iterable $itemTransfers): void;
 }

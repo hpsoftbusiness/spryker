@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Calculation;
 
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\BenefitVoucherOrderCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\CashbackPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherMarketerPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherPaymentQuoteCalculationPlugin;
@@ -288,6 +289,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new OrderTaxTotalCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
+
+            new BenefitVoucherOrderCalculationPlugin(),
         ];
     }
 

@@ -78,6 +78,7 @@ class SalesConfig extends SprykerSalesConfig
             'shipment' => '/shipment/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
+            'refund_details' => '/refund/sales/details',
         ];
 
         $externalBlocks = parent::getSalesDetailExternalBlocksUrls();

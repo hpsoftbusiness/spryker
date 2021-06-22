@@ -13,8 +13,8 @@ use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\CashbackPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherMarketerPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherPaymentCalculator;
-use Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface;
-use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentQuoteCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\BenefitVoucherDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\CashbackDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherDirectPaymentTransferGenerator;
@@ -22,12 +22,18 @@ use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherMarketerDire
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\ShoppingPointsDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\MyWorldPaymentRequestApiTransferGeneratorInterface;
-use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGenerator;
-use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlow\PaymentFlowsTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlow\PaymentFlowsTransferGeneratorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PartialRefund\PartialRefundTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PartialRefund\PartialRefundTransferGeneratorInterface;
+use Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PaymentRefundRequestTransferGenerator;
+use Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PaymentRefundRequestTransferGeneratorInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLog;
 use Pyz\Zed\MyWorldPayment\Business\PaymentApiLog\PaymentApiLogInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\PaymentPriceManagerInterface;
 use Pyz\Zed\MyWorldPayment\Business\PaymentPriceManager\QuotePaymentPriceManager;
+use Pyz\Zed\MyWorldPayment\Business\Refund\RefundProcessor;
+use Pyz\Zed\MyWorldPayment\Business\Refund\RefundProcessorInterface;
 use Pyz\Zed\MyWorldPayment\Business\RequestDispatcher\MyWorldPaymentApiRequestDispatcher;
 use Pyz\Zed\MyWorldPayment\Business\RequestDispatcher\RequestDispatcherInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
@@ -70,9 +76,9 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface
      */
-    public function createEVoucherPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    public function createEVoucherPaymentCalculator(): MyWorldPaymentQuoteCalculatorInterface
     {
         return new EVoucherPaymentCalculator(
             $this->getCustomerService(),
@@ -81,9 +87,9 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface
      */
-    public function createCashbackPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    public function createCashbackPaymentCalculator(): MyWorldPaymentQuoteCalculatorInterface
     {
         return new CashbackPaymentCalculator(
             $this->getCustomerService(),
@@ -92,9 +98,9 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface
      */
-    public function createEVoucherMarketerPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    public function createEVoucherMarketerPaymentCalculator(): MyWorldPaymentQuoteCalculatorInterface
     {
         return new EVoucherMarketerPaymentCalculator(
             $this->getCustomerService(),
@@ -111,9 +117,9 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface|\Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentOrderCalculatorInterface
      */
-    public function createBenefitVoucherPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    public function createBenefitVoucherPaymentCalculator()
     {
         return new BenefitVoucherPaymentCalculator(
             $this->getConfig(),
@@ -122,11 +128,11 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentCalculatorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface
      */
-    public function createShoppingPointsPaymentCalculator(): MyWorldPaymentCalculatorInterface
+    public function createShoppingPointsPaymentCalculator(): MyWorldPaymentQuoteCalculatorInterface
     {
-        return new ShoppingPointsPaymentCalculator($this->getCustomerService());
+        return new ShoppingPointsPaymentQuoteCalculator($this->getCustomerService());
     }
 
     /**
@@ -137,7 +143,8 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
         return new MyWorldPaymentRequestApiTransferGenerator(
             $this->getConfig(),
             $this->getSequenceFacade(),
-            $this->createPaymentFlowsTransferGenerator()
+            $this->createPaymentFlowsTransferGenerator(),
+            $this->createPaymentRefundRequestTransferGenerator()
         );
     }
 
@@ -162,7 +169,36 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlowsTransferGeneratorInterface
+     * @return \Pyz\Zed\MyWorldPayment\Business\Refund\RefundProcessorInterface
+     */
+    public function createRefundProcessor(): RefundProcessorInterface
+    {
+        return new RefundProcessor(
+            $this->getRepository(),
+            $this->createMyWorldPaymentApiRequestDispatcher()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PaymentRefundRequestTransferGeneratorInterface
+     */
+    public function createPaymentRefundRequestTransferGenerator(): PaymentRefundRequestTransferGeneratorInterface
+    {
+        return new PaymentRefundRequestTransferGenerator(
+            $this->createPartialRefundTransferGenerator()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\Refund\PartialRefund\PartialRefundTransferGeneratorInterface
+     */
+    public function createPartialRefundTransferGenerator(): PartialRefundTransferGeneratorInterface
+    {
+        return new PartialRefundTransferGenerator($this->getConfig());
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Generator\PaymentFlow\PaymentFlowsTransferGeneratorInterface
      */
     public function createPaymentFlowsTransferGenerator(): PaymentFlowsTransferGeneratorInterface
     {

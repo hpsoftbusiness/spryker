@@ -9,13 +9,14 @@ namespace Pyz\Zed\Sales\Business;
 
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
+use Spryker\Zed\Refund\Dependency\Facade\RefundToSalesInterface;
 use Spryker\Zed\Sales\Business\SalesFacade as SprykerSalesFacade;
 
 /**
  * @method \Pyz\Zed\Sales\Business\SalesBusinessFactory getFactory()
  * @method \Pyz\Zed\Sales\Persistence\SalesRepositoryInterface getRepository()
  */
-class SalesFacade extends SprykerSalesFacade implements SalesFacadeInterface
+class SalesFacade extends SprykerSalesFacade implements SalesFacadeInterface, RefundToSalesInterface
 {
     /**
      * @inheritDoc

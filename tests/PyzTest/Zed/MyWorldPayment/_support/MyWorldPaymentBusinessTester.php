@@ -11,6 +11,7 @@ use Codeception\Actor;
 use Codeception\Scenario;
 use Orm\Zed\MyWorldPayment\Persistence\PyzPaymentMyWorldQuery;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
+use PyzTest\Zed\MyWorldPayment\Business\BusinessDataHelper;
 
 /**
  * Inherited Methods
@@ -33,7 +34,7 @@ class MyWorldPaymentBusinessTester extends Actor
     use _generated\MyWorldPaymentBusinessTesterActions;
 
     /**
-     * @var \PyzTest\Zed\MyWorldPayment\DataHelper $dataHelper
+     * @var \PyzTest\Zed\MyWorldPayment\Business\BusinessDataHelper $dataHelper
      */
     public $dataHelper;
 
@@ -43,7 +44,7 @@ class MyWorldPaymentBusinessTester extends Actor
     public function __construct(Scenario $scenario)
     {
         parent::__construct($scenario);
-        $this->dataHelper = new DataHelper();
+        $this->dataHelper = new BusinessDataHelper();
     }
 
     /**

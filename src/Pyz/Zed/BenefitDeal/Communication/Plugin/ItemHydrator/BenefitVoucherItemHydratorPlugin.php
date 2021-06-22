@@ -28,6 +28,7 @@ class BenefitVoucherItemHydratorPlugin extends AbstractPlugin implements ItemBen
     {
         $itemTransfer->setOriginUnitGrossPrice($benefitDealEntityTransfer->getOriginUnitGrossPrice());
         $itemTransfer->setTotalUsedBenefitVouchersAmount($benefitDealEntityTransfer->getBenefitVoucherAmount());
+        $itemTransfer->setUseBenefitVoucher(true);
     }
 
     /**
