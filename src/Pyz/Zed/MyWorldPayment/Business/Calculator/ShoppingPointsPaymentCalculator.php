@@ -9,7 +9,6 @@ namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
 use Pyz\Service\Customer\CustomerServiceInterface;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
@@ -44,11 +43,12 @@ class ShoppingPointsPaymentCalculator implements
 
         $availableShoppingPointsAmount = $this->customerService->getCustomerShoppingPointsBalanceAmount($customerTransfer);
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if (!$itemTransfer->getUseShoppingPoints() || $availableShoppingPointsAmount === (float)0) {
+            if (!$itemTransfer->getUseShoppingPoints()
+                || $availableShoppingPointsAmount === (float)0
+                || !$this->assertItemShoppingPointsDeal($itemTransfer)
+            ) {
                 $itemTransfer->setTotalUsedShoppingPointsAmount(0);
-
-                $itemTransfer->setUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
-                $itemTransfer->setSumGrossPrice($itemTransfer->getOriginUnitGrossPrice() * $itemTransfer->getQuantity());
+                $itemTransfer->setUseShoppingPoints(false);
 
                 continue;
             }
@@ -72,15 +72,11 @@ class ShoppingPointsPaymentCalculator implements
     public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if (!$itemTransfer->getUseShoppingPoints()) {
+            if (!$itemTransfer->getUseShoppingPoints() || !$this->assertItemShoppingPointsDeal($itemTransfer)) {
                 continue;
             }
 
             $shoppingPointsDealTransfer = $itemTransfer->getShoppingPointsDeal();
-            if (!$shoppingPointsDealTransfer || !$this->assertShoppingPointsDealTransfer($shoppingPointsDealTransfer)) {
-                continue;
-            }
-
             $totalItemUsedShoppingPointAmount = $itemTransfer->getQuantity() * $shoppingPointsDealTransfer->getShoppingPointsQuantity();
             $itemTransfer->setTotalUsedShoppingPointsAmount($totalItemUsedShoppingPointAmount);
         }
@@ -115,35 +111,31 @@ class ShoppingPointsPaymentCalculator implements
     private function calculateItemUsedShoppingPoints(ItemTransfer $itemTransfer, float $availablePoints): void
     {
         $shoppingPointsDealTransfer = $itemTransfer->getShoppingPointsDeal();
-        if (!$shoppingPointsDealTransfer || !$this->assertShoppingPointsDealTransfer($shoppingPointsDealTransfer)) {
-            return;
-        }
-
         $totalShoppingPointsForItem = $itemTransfer->getQuantity() * $shoppingPointsDealTransfer->getShoppingPointsQuantity();
         if ($totalShoppingPointsForItem > $availablePoints) {
             return;
         }
 
         $itemTransfer->setTotalUsedShoppingPointsAmount($totalShoppingPointsForItem);
-        $itemTransfer->setUnitGrossPrice($shoppingPointsDealTransfer->getPrice());
-        $itemTransfer->setSumGrossPrice($shoppingPointsDealTransfer->getPrice() * $itemTransfer->getQuantity());
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ShoppingPointsDealTransfer $shoppingPointsDealTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
      * @return bool
      */
-    private function assertShoppingPointsDealTransfer(ShoppingPointsDealTransfer $shoppingPointsDealTransfer): bool
+    private function assertItemShoppingPointsDeal(ItemTransfer $itemTransfer): bool
     {
         try {
-            $shoppingPointsDealTransfer->requireIsActive();
-            $shoppingPointsDealTransfer->requireShoppingPointsQuantity();
-            $shoppingPointsDealTransfer->requirePrice();
+            $itemTransfer->requireShoppingPointsDeal();
+            $itemTransfer->getShoppingPointsDeal()->requireIsActive();
+            $itemTransfer->getShoppingPointsDeal()->requireShoppingPointsQuantity();
+            $itemTransfer->getShoppingPointsDeal()->requirePrice();
         } catch (RequiredTransferPropertyException $exception) {
             return false;
         }
 
-        return $shoppingPointsDealTransfer->getShoppingPointsQuantity() > 0 && $shoppingPointsDealTransfer->getPrice() > 0;
+        return $itemTransfer->getShoppingPointsDeal()->getShoppingPointsQuantity() > 0
+            && $itemTransfer->getShoppingPointsDeal()->getPrice() > 0;
     }
 }

@@ -409,7 +409,7 @@ class MyWorldPaymentFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testRecalculateShoppingPointsPaymentForQuoteSuccess(): void
+    public function testRecalculateShoppingPointsAppliedAmountForQuoteSuccess(): void
     {
         // Arrange
         $itemTransfer = $this->tester->dataHelper->createItemBuilderWithShoppingPointsDeal()->build();
@@ -422,12 +422,9 @@ class MyWorldPaymentFacadeTest extends Unit
 
         // Assert
         $itemTransfer = $calculableObjectTransfer->getItems()[0];
-        $sumGrossPrice = $shoppingPointDealData->getPrice() * $itemTransfer->getQuantity();
 
         $this->assertEquals($shoppingPointDealData->getShoppingPointsQuantity(), $calculableObjectTransfer->getTotalUsedShoppingPointsAmount());
         $this->assertEquals($shoppingPointDealData->getShoppingPointsQuantity(), $itemTransfer->getTotalUsedShoppingPointsAmount());
-        $this->assertEquals($shoppingPointDealData->getPrice(), $itemTransfer->getUnitGrossPrice());
-        $this->assertEquals($sumGrossPrice, $itemTransfer->getSumGrossPrice());
     }
 
     /**

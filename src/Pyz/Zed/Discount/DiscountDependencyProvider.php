@@ -7,6 +7,10 @@
 
 namespace Pyz\Zed\Discount;
 
+use Pyz\Zed\Discount\Communication\Plugin\Calculator\BenefitPriceDiscountCalculator;
+use Pyz\Zed\Discount\Communication\Plugin\Collector\ShoppingPointsItemDiscountCollectorPlugin;
+use Pyz\Zed\Discount\Communication\Plugin\InternalDiscount\ShoppingPointsDiscountPlugin;
+use Pyz\Zed\Discount\Communication\Plugin\InternalDiscountCollectorStrategyPlugin;
 use Spryker\Zed\CustomerGroupDiscountConnector\Communication\Plugin\DecisionRule\CustomerGroupDecisionRulePlugin;
 use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormDataExpanderPlugin;
@@ -21,6 +25,7 @@ use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotio
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionViewBlockProviderPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\PromotionCollectedDiscountGroupingStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardDiscountableItemFilterPlugin;
+use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\Collector\ProductAttributeCollectorPlugin;
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\DecisionRule\ProductAttributeDecisionRulePlugin;
 use Spryker\Zed\ProductLabelDiscountConnector\Communication\Plugin\Collector\ProductLabelCollectorPlugin;
@@ -36,6 +41,54 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 
 class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
 {
+    public const FACADE_GLOSSARY = 'FACADE_GLOSSARY';
+
+    public const PLUGIN_CALCULATOR_BENEFIT_PRICE = 'PLUGIN_CALCULATOR_BENEFIT_PRICE';
+    public const PLUGIN_INTERNAL_DISCOUNT = 'PLUGIN_INTERNAL_DISCOUNT';
+    public const PLUGIN_INTERNAL_DISCOUNT_COLLECTOR = 'PLUGIN_INTERNAL_DISCOUNT_COLLECTOR';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+
+        $this->addInternalDiscountPlugins($container);
+        $this->addInternalDiscountCollectorPlugins($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideCommunicationLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
+        $this->addGlossaryFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @return \Spryker\Zed\Discount\Dependency\Plugin\DiscountCalculatorPluginInterface[]
+     */
+    public function getAvailableCalculatorPlugins(): array
+    {
+        return array_merge(
+            parent::getAvailableCalculatorPlugins(),
+            [
+                self::PLUGIN_CALCULATOR_BENEFIT_PRICE => new BenefitPriceDiscountCalculator(),
+            ]
+        );
+    }
+
     /**
      * @return \Spryker\Zed\Discount\Dependency\Plugin\DecisionRulePluginInterface[]
      */
@@ -93,6 +146,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     {
         return [
             new DiscountPromotionCollectorStrategyPlugin(),
+            new InternalDiscountCollectorStrategyPlugin(),
         ];
     }
 
@@ -183,5 +237,45 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
         return [
             new PromotionCollectedDiscountGroupingStrategyPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addInternalDiscountPlugins(Container $container): void
+    {
+        $container->set(self::PLUGIN_INTERNAL_DISCOUNT, function () {
+            return [
+                new ShoppingPointsDiscountPlugin(),
+            ];
+        });
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addInternalDiscountCollectorPlugins(Container $container): void
+    {
+        $container->set(self::PLUGIN_INTERNAL_DISCOUNT_COLLECTOR, function () {
+            return [
+                new ShoppingPointsItemDiscountCollectorPlugin(),
+            ];
+        });
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addGlossaryFacade(Container $container): void
+    {
+        $container->set(self::FACADE_GLOSSARY, static function (Container $container) {
+            return $container->getLocator()->glossary()->facade();
+        });
     }
 }

@@ -27,7 +27,7 @@
             {% for voucherDiscount in data.voucherDiscounts %}
                 <li class="grid grid--justify spacing-y">
                     <span class="col col--sm-8">
-                        {{ voucherDiscount.displayName }}
+                        {{ voucherDiscount.displayName | trans }}
                         {% if data.isQuoteEditable %}
                             <br/>
                             {% include molecule('single-button-form') with {
@@ -54,7 +54,7 @@
         <ul>
             {% for ruleDiscount in data.ruleDiscounts %}
                 <li class="grid grid--justify spacing-y">
-                    <span class="col col--sm-8">{{ ruleDiscount.displayName }}</span>
+                    <span class="col col--sm-8">{{ ruleDiscount.displayName | trans }}</span>
                     <span class="col col--expand text-right">- {{ ruleDiscount.amount | money }}</span>
                 </li>
             {% endfor %}

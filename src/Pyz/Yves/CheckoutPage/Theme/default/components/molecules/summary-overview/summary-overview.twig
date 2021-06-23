@@ -12,7 +12,7 @@
             <div class="spacing-top">
                 {% for discount in discounts %}
                     <div class="grid grid--justify">
-                        <span class="col col--sm-8 col--lg-10 text-secondary">{{ discount.displayName }}</span>
+                        <span class="col col--sm-8 col--lg-10 text-secondary">{{ discount.displayName | trans }}</span>
                         <span class="col col--expand text-right">- {{ discount.amount | money }}</span>
                     </div>
                 {% endfor %}

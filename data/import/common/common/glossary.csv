@@ -20047,5 +20047,7 @@ customer.balance.into,Du hast:,de_DE
 customer.balance.into,You have:,en_US
 BenefitVouchers,Benefit Vouchers,en_US
 BenefitVouchers,Benefit Vouchers,de_DE
+discount.internal.shopping_points,Shopping Points,en_US
+discount.internal.shopping_points,Shopping Points,de_DE
 customer.order.priceToPay,Sum,en_US
 customer.order.priceToPay,Summe,de_DE

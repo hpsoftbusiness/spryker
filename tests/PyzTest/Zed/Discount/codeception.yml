@@ -1,0 +1,45 @@
+namespace: PyzTest\Zed\Discount
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include: [ '../../../../src/Pyz/Zed/Discount/*.php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
+
+suites:
+    Business:
+        path: Business
+        class_name: DiscountBusinessTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
+
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \PyzTest\Zed\Discount\DataHelper
+    Communication:
+        path: Communication
+        class_name: DiscountCommunicationTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
+
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \PyzTest\Zed\Discount\DataHelper
