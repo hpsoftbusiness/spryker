@@ -7,11 +7,10 @@
 
 namespace Pyz\Zed\Cart;
 
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealQuoteChangeObserverPlugin;
-use Pyz\Zed\PriceCartConnector\Communication\Plugin\Cart\BenefitPriceItemExpanderPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\ChargeAmountItemExpanderPlugin;
 use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
-use Pyz\Zed\ProductCartConnector\Communication\Plugin\Cart\BenefitDealsItemChargeAmountExpanderPlugin;
-use Pyz\Zed\ProductCartConnector\Communication\Plugin\Cart\BenefitDealsItemExpanderPlugin;
 use Pyz\Zed\ProductUrlCartConnector\Communication\Plugin\ProductUrlCartExpanderPlugin;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
@@ -86,12 +85,11 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
-            new BenefitDealsItemExpanderPlugin(),
-            new BenefitPriceItemExpanderPlugin(),
+            new BenefitDealItemExpanderPlugin(),
             /**
              * That is mandatory to place this expander after 'BenefitDealsItemExpanderPlugin'
              */
-            new BenefitDealsItemChargeAmountExpanderPlugin(),
+            new ChargeAmountItemExpanderPlugin(),
         ];
     }
 

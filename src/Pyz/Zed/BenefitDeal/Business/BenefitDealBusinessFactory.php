@@ -14,12 +14,18 @@ use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReader;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriter;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriterInterface;
+use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitDealChargeAmountExpander;
+use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitDealChargeAmountExpanderInterface;
+use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitExpander;
+use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitExpanderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReader;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Quote\QuoteEqualizer;
 use Pyz\Zed\BenefitDeal\Business\Quote\QuoteEqualizerInterface;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpander;
 use Pyz\Zed\BenefitDeal\Business\Sales\ItemPreSaveExpanderInterface;
+use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
+use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface;
 
@@ -86,11 +92,47 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitExpanderInterface
+     */
+    public function createItemBenefitExpander(): ItemBenefitExpanderInterface
+    {
+        return new ItemBenefitExpander(
+            $this->getPriceProductFacade(),
+            $this->getStoreClient(),
+            $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitDealChargeAmountExpanderInterface
+     */
+    public function createItemBenefitDealChargeAmountExpander(): ItemBenefitDealChargeAmountExpanderInterface
+    {
+        return new ItemBenefitDealChargeAmountExpander();
+    }
+
+    /**
      * @return \Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface
      */
     public function getProductLabelFacade(): ProductLabelFacadeInterface
     {
         return $this->getProvidedDependency(BenefitDealDependencyProvider::FACADE_PRODUCT_LABEL);
+    }
+
+    /**
+     * @return \Spryker\Client\Store\StoreClientInterface
+     */
+    public function getStoreClient(): StoreClientInterface
+    {
+        return $this->getProvidedDependency(BenefitDealDependencyProvider::CLIENT_STORE);
+    }
+
+    /**
+     * @return \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    public function getPriceProductFacade(): PriceProductFacadeInterface
+    {
+        return $this->getProvidedDependency(BenefitDealDependencyProvider::FACADE_PRICE_PRODUCT);
     }
 
     /**

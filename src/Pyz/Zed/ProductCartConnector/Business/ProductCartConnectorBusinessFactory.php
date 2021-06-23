@@ -7,9 +7,6 @@
 
 namespace Pyz\Zed\ProductCartConnector\Business;
 
-use Pyz\Zed\ProductCartConnector\Business\Expander\BenefitDealsChargeAmountDataExpander;
-use Pyz\Zed\ProductCartConnector\Business\Expander\BenefitDealsExpander;
-use Pyz\Zed\ProductCartConnector\Business\Expander\BenefitDealsExpanderInterface;
 use Pyz\Zed\ProductCartConnector\Business\Expander\ProductExpander;
 use Spryker\Zed\ProductCartConnector\Business\ProductCartConnectorBusinessFactory as SprykerProductCartConnectorBusinessFactory;
 
@@ -28,21 +25,5 @@ class ProductCartConnectorBusinessFactory extends SprykerProductCartConnectorBus
             $this->getLocaleFacade(),
             $this->getProductFacade()
         );
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductCartConnector\Business\Expander\BenefitDealsExpanderInterface
-     */
-    public function createBenefitDealsExpander(): BenefitDealsExpanderInterface
-    {
-        return new BenefitDealsExpander($this->getConfig());
-    }
-
-    /**
-     * @return \Pyz\Zed\ProductCartConnector\Business\Expander\BenefitDealsExpanderInterface
-     */
-    public function createBenefitDealsChargeAmountExpander(): BenefitDealsExpanderInterface
-    {
-        return new BenefitDealsChargeAmountDataExpander();
     }
 }

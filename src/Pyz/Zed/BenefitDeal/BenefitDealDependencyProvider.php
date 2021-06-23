@@ -18,7 +18,11 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
 {
     public const PLUGINS_ITEM_ENTITY_EXPANDER = 'PLUGINS_ITEM_ENTITY_EXPANDER';
     public const PLUGINS_ITEM_BENEFIT_DEAL_HYDRATOR = 'PLUGINS_ITEM_BENEFIT_DEAL_HYDRATOR';
+
     public const FACADE_PRODUCT_LABEL = 'FACADE_PRODUCT_LABEL';
+    public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
+
+    public const CLIENT_STORE = 'CLIENT_STORE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -31,6 +35,8 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addItemEntityExpanderPlugins($container);
         $container = $this->addItemBenefitDealHydratorPlugins($container);
         $container = $this->addProductLabelFacade($container);
+        $container = $this->addPriceProductFacade($container);
+        $container = $this->addStoreClient($container);
 
         return $container;
     }
@@ -97,6 +103,34 @@ class BenefitDealDependencyProvider extends AbstractBundleDependencyProvider
                 ];
             }
         );
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    private function addPriceProductFacade(Container $container): Container
+    {
+        $container->set(self::FACADE_PRICE_PRODUCT, static function (Container $container) {
+            return $container->getLocator()->priceProduct()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    private function addStoreClient(Container $container): Container
+    {
+        $container->set(self::CLIENT_STORE, static function (Container $container) {
+            return $container->getLocator()->store()->client();
+        });
 
         return $container;
     }

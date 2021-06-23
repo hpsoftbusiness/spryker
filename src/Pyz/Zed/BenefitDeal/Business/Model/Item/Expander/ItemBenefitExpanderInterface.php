@@ -5,14 +5,15 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductCartConnector\Business\Expander;
+namespace Pyz\Zed\BenefitDeal\Business\Model\Item\Expander;
 
-interface BenefitDealsExpanderInterface
+interface ItemBenefitExpanderInterface
 {
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
+     * @param string|null $currencyIsoCode
      *
      * @return void
      */
-    public function expandItems(iterable $itemTransfers): void;
+    public function expandItems(iterable $itemTransfers, ?string $currencyIsoCode): void;
 }

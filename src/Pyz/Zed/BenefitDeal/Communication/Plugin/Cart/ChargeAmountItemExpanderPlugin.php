@@ -5,17 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductCartConnector\Communication\Plugin\Cart;
+namespace Pyz\Zed\BenefitDeal\Communication\Plugin\Cart;
 
 use Generated\Shared\Transfer\CartChangeTransfer;
 use Spryker\Zed\CartExtension\Dependency\Plugin\ItemExpanderPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \Pyz\Zed\ProductCartConnector\Business\ProductCartConnectorFacadeInterface getFacade()
- * @method \Pyz\Zed\ProductCartConnector\ProductCartConnectorConfig getConfig()
+ * @method \Pyz\Zed\BenefitDeal\Business\BenefitDealFacadeInterface getFacade()
+ * @method \Pyz\Zed\BenefitDeal\BenefitDealConfig getConfig()
  */
-class BenefitDealsItemExpanderPlugin extends AbstractPlugin implements ItemExpanderPluginInterface
+class ChargeAmountItemExpanderPlugin extends AbstractPlugin implements ItemExpanderPluginInterface
 {
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
@@ -24,7 +24,7 @@ class BenefitDealsItemExpanderPlugin extends AbstractPlugin implements ItemExpan
      */
     public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
-        $this->getFacade()->expandItemsWithBenefitDeals($cartChangeTransfer->getItems());
+        $this->getFacade()->expandItemsWithBenefitDealChargeAmount($cartChangeTransfer->getItems());
 
         return $cartChangeTransfer;
     }

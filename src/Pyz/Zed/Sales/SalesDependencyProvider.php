@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Sales;
 
 use Pyz\Zed\Adyen\Communication\Plugin\Sales\AdyenPaymentOrderExpanderPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealDataOrderItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\BenefitDealOrderPostSavePlugin;
@@ -15,7 +16,6 @@ use Pyz\Zed\BenefitDeal\Communication\Plugin\Sales\OrderItemBenefitDealsPreSaveP
 use Pyz\Zed\Customer\Communication\Plugin\Sales\CustomerOrderExpanderPreSavePlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Sales\MyWorldPaymentDataOrderExpanderPlugin;
 use Pyz\Zed\Product\Communication\Plugin\Sales\ProductConcreteOrderItemExpanderPlugin;
-use Pyz\Zed\ProductCartConnector\Communication\Plugin\Sales\BenefitDealDataOrderItemExpanderPlugin;
 use Pyz\Zed\Refund\Communication\Plugin\Sales\ExpenseRefundExpanderPlugin;
 use Pyz\Zed\Refund\Communication\Plugin\Sales\ItemRefundExpanderPlugin;
 use Pyz\Zed\SalesInvoice\Communication\Plugin\Sales\SalesInvoiceOrderExpanderPlugin;

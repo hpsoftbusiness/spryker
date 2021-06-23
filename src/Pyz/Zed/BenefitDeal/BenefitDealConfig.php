@@ -44,4 +44,44 @@ class BenefitDealConfig extends AbstractBundleConfig
     {
         return BenefitDealSharedConfig::LABEL_NAME_SHOPPING_POINT;
     }
+
+    /**
+     * @return string
+     */
+    public function getShoppingPointStoreAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_STORE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getShoppingPointsAmountAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_AMOUNT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherSalesPriceAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherStoreAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitVoucherAmountAttributeName(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
+    }
 }

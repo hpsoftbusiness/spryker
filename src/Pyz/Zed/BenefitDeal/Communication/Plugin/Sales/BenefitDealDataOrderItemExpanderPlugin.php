@@ -5,14 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductCartConnector\Communication\Plugin\Sales;
+namespace Pyz\Zed\BenefitDeal\Communication\Plugin\Sales;
 
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPluginInterface;
 
 /**
- * @method \Pyz\Zed\ProductCartConnector\Business\ProductCartConnectorFacadeInterface getFacade()
- * @method \Pyz\Zed\ProductCartConnector\ProductCartConnectorConfig getConfig()
+ * @method \Pyz\Zed\BenefitDeal\Business\BenefitDealFacadeInterface getFacade()
+ * @method \Pyz\Zed\BenefitDeal\BenefitDealConfig getConfig()
  */
 class BenefitDealDataOrderItemExpanderPlugin extends AbstractPlugin implements OrderItemExpanderPluginInterface
 {
@@ -23,7 +23,7 @@ class BenefitDealDataOrderItemExpanderPlugin extends AbstractPlugin implements O
      */
     public function expand(array $itemTransfers): array
     {
-        $this->getFacade()->expandItemsWithBenefitDeals($itemTransfers);
+        $this->getFacade()->expandItemsWithBenefitDealsData($itemTransfers);
 
         return $itemTransfers;
     }

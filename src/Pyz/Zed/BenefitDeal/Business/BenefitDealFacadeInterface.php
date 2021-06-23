@@ -78,4 +78,23 @@ interface BenefitDealFacadeInterface
      * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
      */
     public function findProductLabelProductAbstractRelationChanges(): array;
+
+    /**
+     * Specification:
+     * - Expands ItemTransfers with BenefitVoucherDealDataTransfer or ShoppingPointsDealTransfer.
+     * - Hydrates price property of either of these transfers with BENEFIT deal price.
+     *
+     * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
+     * @param string|null $currencyIsoCode
+     *
+     * @return void
+     */
+    public function expandItemsWithBenefitDealsData(iterable $itemTransfers, ?string $currencyIsoCode = null): void;
+
+    /**
+     * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
+     *
+     * @return void
+     */
+    public function expandItemsWithBenefitDealChargeAmount(iterable $itemTransfers): void;
 }

@@ -110,4 +110,25 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
             ->createProductAbstractRelationReader()
             ->findProductLabelProductAbstractRelationChanges();
     }
+
+    /**
+     * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
+     * @param string|null $currencyIsoCode
+     *
+     * @return void
+     */
+    public function expandItemsWithBenefitDealsData(iterable $itemTransfers, ?string $currencyIsoCode = null): void
+    {
+        $this->getFactory()->createItemBenefitExpander()->expandItems($itemTransfers, $currencyIsoCode);
+    }
+
+    /**
+     * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
+     *
+     * @return void
+     */
+    public function expandItemsWithBenefitDealChargeAmount(iterable $itemTransfers): void
+    {
+        $this->getFactory()->createItemBenefitDealChargeAmountExpander()->expandItems($itemTransfers);
+    }
 }
