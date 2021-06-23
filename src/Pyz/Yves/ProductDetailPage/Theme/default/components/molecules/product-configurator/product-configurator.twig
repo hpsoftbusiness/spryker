@@ -61,11 +61,7 @@
     </div>
 
     <div class="spacing-bottom spacing-bottom--big">
-        <div class="row">
-            <span class="{{ config.name }}__regular-price-text">
-                {{ 'pdp.price.regular_price' | trans }}
-            </span>
-        </div>
+
         <div class="row">
             {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
             {% nowidget %}
@@ -86,49 +82,43 @@
     {% set benefitVoucherPrice = data.product.benefitSalesPrice ?? null %}
     {% set benefitAmount = data.product.benefitAmount ?? null %}
     {% set benefitPrice =  data.product.prices.BENEFIT ?? null %}
-    {% set shoppoingPointsAmount = data.product.shoppingPointsAmount ?? null %}
+    {% set shoppingPoints = data.product.shoppingPoints ?? null %}
     <div class="grid spacing-bottom spacing-bottom--biggest spacing-top">
+
         {% if benefitVoucherPrice and benefitAmount %}
+
             {% set benefitAmountText =  'product_detail_page.benefit_price.benefit_amount' | trans({
                 '%amount%': benefitAmount | money
             })%}
+
             <div class="col col--sm-6 col--md-5">
                 {% include molecule('product-benefit-price', 'ProductDetailPage') with {
                     data: {
                         regularPriceAmount: data.product.price,
                         benefitPriceAmount: benefitVoucherPrice,
-                        benefitCurrencyAmount: benefitAmountText,
-                        benefitCurrencyType: 'benefit-voucher'
+                        benefitCurrencyAmount: benefitAmount,
                     }
                 } only %}
             </div>
-        {% elseif benefitPrice and shoppoingPointsAmount %}
-            <div class="col col--sm-6 col--md-5">
-                {% include molecule('product-benefit-price', 'ProductDetailPage') with {
-                    data: {
-                        regularPriceAmount: data.product.price,
-                        benefitPriceAmount: benefitPrice,
-                        benefitCurrencyAmount: shoppoingPointsAmount,
-                        benefitCurrencyType: 'shopping-point'
-                    }
-                } only %}
-            </div>
+
+        {% elseif  benefitPrice  and shoppingPoints %}
+                <div class="col col--sm-6 col--md-5">
+                    {% include molecule('product-shop-price', 'ProductDetailPage') with {
+                        data: {
+                            regularPriceAmount: data.product.price,
+                            benefitPriceAmount: benefitPrice,
+                            benefitCurrencyAmount: shoppingPoints,
+                        }
+                    } only %}
+                </div>
         {% endif %}
     </div>
 
-    {% if cashback %}
-        {% include molecule('cashback') with {
-            data: {
-                cashback: cashback,
-                shoppingPoints: data.shoppingPoints,
-            },
-        } only %}
-    {% endif %}
-
+    {% if (benefitVoucherPrice and benefitAmount) %}
     <div class="spacing-top">
         {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
     </div>
-
+    {% endif %}
     <div class="spacing-top">
         {{ 'shipment.lead.time' | trans }}
     </div>

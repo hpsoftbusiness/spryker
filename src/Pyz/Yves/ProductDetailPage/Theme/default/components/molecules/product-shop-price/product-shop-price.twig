@@ -1,21 +1,22 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'product-benefit-price',
+    name: 'product-shop-price',
 } %}
 
 {% define data = {
     regularPriceAmount: required,
     benefitPriceAmount: required,
     benefitCurrencyAmount: required,
-    benefitCurrencyType: 'benefit-voucher',
+    benefitCurrencyType: 'shopping-point',
 } %}
 
 {% block body %}
+
     <div class="spacing-top spacing-bottom">
-            <span class="{{ config.name }}__title-text {{ config.name }}__title-text--{{ data.benefitCurrencyType }}">
-                <h3>{{ 'Benefit price' | trans }}</h3>
-            </span>
+            <span class="{{ config.name }}__title-text {{ config.name }}__title-text--{{ data.benefitCurrencyType }}"></span>
+        <h3>{{ 'Benefit price' | trans }}</h3>
+
     </div>
     <div class="col">
         <div class="{{ config.name }}__benefit-price-amount--{{ data.benefitCurrencyType }}">
@@ -26,15 +27,15 @@
                     priceVatText: null
                 }
             } only %}
-                <div class="voucher">
-                <span class="voucher-amount">+{{ data.benefitCurrencyAmount }}</span>
-                &nbsp;<svg class="icon icon-allign" data-qa="component icon" title="benefit-point">
-                    <use xlink:href="#:benefit-point"></use>
+            <div class="shopping-points">
+                <span>+{{ data.benefitCurrencyAmount }}</span>
+                &nbsp;<svg class="icon icon-allign" data-qa="component icon" title="shopping-point">
+                    <use xlink:href="#:shopping-point"></use>
                 </svg>
             </div>
         </div>
         <div class="row">
-            <span class="{{ config.name }}__mode "> {{ 'pdp.include.vat' | trans }}</span>
+                <span class="{{ config.name }}__mode ">{{ 'pdp.include.vat' | trans }}</span>
         </div>
     </div>
 {% endblock %}

@@ -1,11 +1,8 @@
-@mixin product-detail-page-product-benefit-price($name: '.product-benefit-price') {
+@mixin product-detail-page-product-shop-price($name: '.product-shop-price') {
     $shopping-points-main-color: #008000;
     $benefit-voucher-main-color: #000;
 
-
     #{$name} {
-
-
         &__title-text {
             font-weight: 850;
             font-size: 0.7em;
@@ -17,6 +14,9 @@
             &--benefit-voucher{
                 color: $benefit-voucher-main-color;
             }
+        }
+        .icon {
+            fill: blue
         }
 
         &__benefit-price-amount--shopping-point {
@@ -51,31 +51,23 @@
     }
 }
 
-@include product-detail-page-product-benefit-price();
+@include product-detail-page-product-shop-price();
 
-
-#\:benefit-point > g:nth-child(1) > path:nth-child(1) {
-    fill: #F29533;
+#\:shopping-point > path:nth-child(2) {
+    fill: #5cb885;
 }
 
-#\:benefit-point > g:nth-child(1) > path:nth-child(3) {
-    fill: #F29533;
+#\:shopping-point > path:nth-child(3) {
+    fill: #5cb885;
 }
 
-#\:benefit-point > g:nth-child(1) > path:nth-child(2) {
-    fill: #F29533;
-}
-
-.voucher {
+.shopping-points {
     float:right;
     padding-top: 5px;
 }
 
-.voucher-amount {
-    vertical-align: middle;
-}
-
 .icon-allign {
-    vertical-align: middle;
+    fill: #5cb885;
+    margin-top: -0.3em;
     transform: scale(2);
 }
