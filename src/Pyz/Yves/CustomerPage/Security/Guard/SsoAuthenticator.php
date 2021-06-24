@@ -228,7 +228,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     protected function isAccessTokenAboutToExpire(): bool
     {
         $customer = $this->customerClient->getCustomer();
-        if ($customer === null) {
+        if ($customer === null || $customer->getSsoAccessToken() === null) {
             return false;
         }
         $expireDuration = sprintf('PT%sS', $customer->getSsoAccessToken()->getExpiresIn());
