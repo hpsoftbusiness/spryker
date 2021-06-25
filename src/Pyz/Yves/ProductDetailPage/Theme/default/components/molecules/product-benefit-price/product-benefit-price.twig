@@ -27,7 +27,7 @@
                 }
             } only %}
                 <div class="voucher">
-                <span class="voucher-amount">+{{ data.benefitCurrencyAmount }}</span>
+                <span class="voucher-amount">+{{ data.benefitCurrencyAmount | money }}</span>
                 &nbsp;<svg class="icon icon-allign" data-qa="component icon" title="benefit-point">
                     <use xlink:href="#:benefit-point"></use>
                 </svg>
