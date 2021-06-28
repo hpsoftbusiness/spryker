@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\PriceProduct;
 
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Spryker\Zed\PriceProduct\PriceProductConfig as SprykerPriceProductConfig;
 
 /**
@@ -33,5 +34,13 @@ class PriceProductConfig extends SprykerPriceProductConfig
     public function getPriceTypeOriginalName(): string
     {
         return $this->getSharedConfig()->getPriceTypeOriginalName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAttributeKeyBenefitSalesPrice(): string
+    {
+        return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE);
     }
 }

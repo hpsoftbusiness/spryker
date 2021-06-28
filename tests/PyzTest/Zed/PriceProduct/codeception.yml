@@ -1,0 +1,34 @@
+namespace: PyzTest\Zed\PriceProduct
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include: [ '../../../../src/Pyz/Zed/PriceProduct/*.php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
+
+suites:
+    Communication:
+        path: Communication
+        class_name: PriceProductCommunicationTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: [ 'Pyz' ]
+
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
