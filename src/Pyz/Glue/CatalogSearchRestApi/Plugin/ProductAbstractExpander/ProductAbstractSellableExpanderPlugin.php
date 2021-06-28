@@ -17,6 +17,7 @@ class ProductAbstractSellableExpanderPlugin extends AbstractPlugin implements Ca
     use SingularAttributeValueHelperTrait;
 
     private const ATTRIBUTE_SELLABLE_PREFIX = 'sellable_';
+    private const ATTRIBUTES_KEY = 'attributes';
 
     /**
      * @param array $abstractProductData
@@ -39,7 +40,9 @@ class ProductAbstractSellableExpanderPlugin extends AbstractPlugin implements Ca
     private function collectSellableAttributes(array $abstractProductData): array
     {
         $sellableAttributes = [];
-        foreach ($abstractProductData as $key => $value) {
+        $attributes = $abstractProductData[self::ATTRIBUTES_KEY];
+
+        foreach ($attributes as $key => $value) {
             if (strpos($key, self::ATTRIBUTE_SELLABLE_PREFIX) !== false) {
                 $sellableAttributes[$key] = (bool)$this->extractSingularAttributeValue($value);
             }

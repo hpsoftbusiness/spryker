@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch\Business;
 
+use Pyz\Zed\ProductPageSearch\Business\Attribute\ProductPageAttribute;
 use Pyz\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapper;
 use Pyz\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublisher;
 use Pyz\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisher;
@@ -16,6 +17,7 @@ use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInte
 use Pyz\Zed\ProductPageSearch\ProductPageSearchDependencyProvider;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
+use Spryker\Zed\ProductPageSearch\Business\Attribute\ProductPageAttributeInterface;
 use Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper;
 use Spryker\Zed\ProductPageSearch\Business\DataMapper\ProductAbstractSearchDataMapper;
 use Spryker\Zed\ProductPageSearch\Business\ProductPageSearchBusinessFactory as SprykerProductPageSearchBusinessFactory;
@@ -124,6 +126,16 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getProductConcretePageDataExpanderPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductPageSearch\Business\Attribute\ProductPageAttributeInterface
+     */
+    public function createProductPageAttribute(): ProductPageAttributeInterface
+    {
+        return new ProductPageAttribute(
+            $this->getProductFacade()
         );
     }
 }

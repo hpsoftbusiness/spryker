@@ -5,6 +5,8 @@
         class: 'col col--sm-6 col--lg-3',
         data: {
             product: data.product,
+            benefitAmount: data.product.attributes.benefit_amount | default(null),
+            shoppingPointsAmount: data.product.attributes.product_sp_amount | default(null),
         },
     } only %}
 {% endblock %}

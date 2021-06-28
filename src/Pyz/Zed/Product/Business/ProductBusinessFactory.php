@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Product\Business;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery;
+use Pyz\Zed\Product\Business\Attribute\AttributeEncoder;
 use Pyz\Zed\Product\Business\Expander\OrderItemExpander;
 use Pyz\Zed\Product\Business\Expander\OrderItemExpanderInterface;
 use Pyz\Zed\Product\Business\Product\CheckerOrderItem;
@@ -15,6 +16,7 @@ use Pyz\Zed\Product\Business\Product\ProductConcreteRemover;
 use Pyz\Zed\Product\Business\Product\Variant\VariantGenerator;
 use Pyz\Zed\Product\ProductDependencyProvider;
 use Pyz\Zed\ProductAttribute\Business\ProductAttributeFacadeInterface;
+use Spryker\Zed\Product\Business\Attribute\AttributeEncoderInterface;
 use Spryker\Zed\Product\Business\Product\Variant\VariantGeneratorInterface;
 use Spryker\Zed\Product\Business\ProductBusinessFactory as SprykerProductBusinessFactory;
 
@@ -83,5 +85,13 @@ class ProductBusinessFactory extends SprykerProductBusinessFactory
     public function getProductAttributeFacade(): ProductAttributeFacadeInterface
     {
         return $this->getProvidedDependency(ProductDependencyProvider::FACADE_PRODUCT_ATTRIBUTE);
+    }
+
+    /**
+     * @return \Spryker\Zed\Product\Business\Attribute\AttributeEncoderInterface
+     */
+    public function createAttributeEncoder(): AttributeEncoderInterface
+    {
+        return new AttributeEncoder($this->getUtilEncodingService());
     }
 }

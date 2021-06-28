@@ -79,15 +79,14 @@
     </div>
 
     {% set cashback = data.cashback %}
-    {% set benefitVoucherPrice = data.product.benefitSalesPrice ?? null %}
     {% set benefitAmount = data.product.benefitAmount ?? null %}
-    {% set benefitPrice =  data.product.prices.BENEFIT ?? null %}
-    {% set shoppingPoints = data.product.shoppingPoints ?? null %}
+    {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
+    {% set shoppingPointsAmount = data.product.shoppingPointsAmount ?? null %}
     <div class="grid spacing-bottom spacing-bottom--biggest spacing-top">
 
-        {% if benefitVoucherPrice and benefitAmount %}
+        {% if benefitPrice and benefitAmount %}
 
-            {% set benefitAmountText =  'product_detail_page.benefit_price.benefit_amount' | trans({
+            {% set benefitAmountText = 'product_detail_page.benefit_price.benefit_amount' | trans({
                 '%amount%': benefitAmount | money
             })%}
 
@@ -95,30 +94,29 @@
                 {% include molecule('product-benefit-price', 'ProductDetailPage') with {
                     data: {
                         regularPriceAmount: data.product.price,
-                        benefitPriceAmount: benefitVoucherPrice,
+                        benefitPriceAmount: benefitPrice,
                         benefitCurrencyAmount: benefitAmount,
                     }
                 } only %}
             </div>
 
-        {% elseif  benefitPrice  and shoppingPoints %}
+        {% elseif benefitPrice and shoppingPointsAmount %}
                 <div class="col col--sm-6 col--md-5">
                     {% include molecule('product-shop-price', 'ProductDetailPage') with {
                         data: {
                             regularPriceAmount: data.product.price,
                             benefitPriceAmount: benefitPrice,
-                            benefitCurrencyAmount: shoppingPoints,
+                            benefitCurrencyAmount: shoppingPointsAmount,
                         }
                     } only %}
                 </div>
         {% endif %}
     </div>
 
-    {% if (benefitVoucherPrice and benefitAmount) %}
     <div class="spacing-top">
         {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
     </div>
-    {% endif %}
+
     <div class="spacing-top">
         {{ 'shipment.lead.time' | trans }}
     </div>

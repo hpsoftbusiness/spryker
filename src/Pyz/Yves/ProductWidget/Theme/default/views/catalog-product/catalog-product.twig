@@ -11,7 +11,7 @@
 
     {% set image = data.product.images | last %}
 
-    {# TODO: benefitAmount and benefitSalesPrice will come from product price after finishing MYW-1057. #}
+    {# TODO: benefitAmount will come from product price after finishing MYW-1057. #}
     {% embed productTemplate with {
         productTemplate: productTemplate,
         class: class,
@@ -21,11 +21,10 @@
             image: image.external_url_small | default(null),
             name: data.product.abstract_name,
             idProductAbstract: data.product.id_product_abstract,
-            cashback: data.product.cashback_amount[0] | default(null),
-            shoppingPoints: data.product.shopping_points[0] | default(null),
-            benefitAmount: data.product.attributes.benefit_amount[0] | default(null),
-            benefitSalesPrice: data.product.attributes.benefit_store_sales_price[0] | default(null),
-            shoppingPointsAmount: data.product.attributes.product_sp_amount[0] | default(null),
+            cashback: data.product.cashback_amount | default(null),
+            shoppingPoints: data.product.shopping_points | default(null),
+            benefitAmount: data.product.attributes.benefit_amount | default(null),
+            shoppingPointsAmount: data.product.attributes.product_sp_amount | default(null),
         },
     } only %}
         {% block labels %}

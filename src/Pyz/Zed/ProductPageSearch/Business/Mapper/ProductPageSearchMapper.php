@@ -28,6 +28,30 @@ class ProductPageSearchMapper extends SprykerProductPageSearchMapper
         );
         $productPageSearchTransfer->setBrand($productAbstractLocalizedData['SpyProductAbstract']['attributes']['brand'] ?? null);
 
+        if ($productPageSearchTransfer->getAttributes()) {
+            $productPageSearchTransfer->setAttributes(
+                $this->sanitizeBooleansValues($productPageSearchTransfer->getAttributes())
+            );
+        }
+
         return $productPageSearchTransfer;
+    }
+
+    /**
+     * TODO: refactor how we deal with boolean values: https://spryker.atlassian.net/browse/MYW-1275
+     *
+     * @param array $values
+     *
+     * @return array
+     */
+    private function sanitizeBooleansValues(array $values): array
+    {
+        foreach ($values as $key => $value) {
+            if (is_string($value) && ($value === '1' || $value === '0')) {
+                $values[$key] = (bool)$value[0];
+            }
+        }
+
+        return $values;
     }
 }
