@@ -62,45 +62,57 @@
                     {% endblock %}
                 </div>
                 <div class="grid grid--right">
-                    {% block price %}
-                        {% include molecule('product-card-item-price') with {
-                            data: {
-                                productItem: data.productItem
-                            },
-                        } only %}
-                    {% endblock %}
-                </div>
+                    {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                    {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
 
-                <div class="grid grid--right">
-                    {% set cashback = data.cashback %}
-                    {% set showCashbackPoints = data.showCashbackPoints %}
-                    {% if cashback and showCashbackPoints %}
-                        {% include molecule('cashback') with {
-                            class: config.name ~ '__cashback col',
+                    {% if can('SeePricePermissionPlugin') %}
+                        {% include molecule('money-price') with {
                             modifiers: ['small'],
+                            class: component.renderClass(config.name ~ '__price', modifiers) ~ ' col col--lg-4 col--sm-12',
                             data: {
-                                cashback: cashback,
-                                shoppingPoints: data.shoppingPoints,
-                                iconModifiers: [''],
+                                amount: productItemSubTotal | default(null),
+                                originalAmount: data.productItem.prices.ORIGINAL is not defined or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL
                             },
                         } only %}
+                    {% else %}
+                        {{ 'customer.access.cannot_see_price' | trans }}
                     {% endif %}
                 </div>
 
+                {% set isBenefitVoucherDealActive = data.productItem.benefitVoucherDealData.isStore ?? false %}
+                {% set isShoppingPointsDealActive = data.productItem.shoppingPointsDeal.isActive ?? false %}
+
+                {% if isBenefitVoucherDealActive == false and isShoppingPointsDealActive == false %}
+                    <div class="grid grid--right">
+                        {% set cashback = data.cashback %}
+                        {% set showCashbackPoints = data.showCashbackPoints %}
+                        {% if cashback and showCashbackPoints %}
+                            {% include molecule('cashback') with {
+                                class: config.name ~ '__cashback col',
+                                modifiers: ['small'],
+                                data: {
+                                    cashback: cashback,
+                                    shoppingPoints: data.shoppingPoints,
+                                    iconModifiers: [''],
+                                },
+                            } only %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+
                 {% block benefitPrice %}
-                    {% set amountBenefitVochers = data.productItem.totalUsedBenefitVouchersAmount %}
-                    {% set amountShoppingPoints = data.productItem.totalUsedShoppingPointsAmount %}
                     {% set benefitVoucherCurrency = data.currencyIsoCode %}
 
                     {% if can('SeePricePermissionPlugin') %}
-                        {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                        {% if isBenefitVoucherDealActive == true %}
+                            {% set price = data.productItem.benefitVoucherDealData.salesPrice * data.productItem.quantity %}
+                            {% set amountBenefitVochers = data.productItem.benefitVoucherDealData.amount * data.productItem.quantity %}
 
-                        {% if amountBenefitVochers is not null %}
                             <div class="{{ config.name }}__benefit-deal">
                                 <div class="{{ config.name }}__benefit-deal-or">{{ 'product_item.benefit_deal.or' | trans }}</div>
                                 <div>
                                     <span class="{{ config.name }}__deal-original-price">{{ price | money }}</span>
-                                    -
+                                    +
                                     <span class="{{ config.name }}__deal-vouchers">
                                         {{- amountBenefitVochers | money(true, benefitVoucherCurrency) -}}
                                         {% include atom('icon') with {
@@ -111,12 +123,14 @@
                                     </span>
                                 </div>
                             </div>
-                        {% elseif amountShoppingPoints is not null %}
+                        {% elseif isShoppingPointsDealActive == true %}
+                            {% set price = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
+                            {% set amountShoppingPoints = data.productItem.shoppingPointsDeal.shoppingPointsQuantity * data.productItem.quantity %}
                             <div class="{{ config.name }}__benefit-deal">
                                 <div class="{{ config.name }}__benefit-deal-or">{{ 'product_item.benefit_deal.or' | trans }}</div>
                                 <div>
                                     <span class="{{ config.name }}__deal-original-price">{{ price | money }}</span>
-                                    -
+                                    +
                                     <span class="{{ config.name }}__deal-vouchers">
                                         {{- amountShoppingPoints -}}
                                         {% include atom('icon') with {

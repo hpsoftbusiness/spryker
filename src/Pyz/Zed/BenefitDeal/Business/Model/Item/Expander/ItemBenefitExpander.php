@@ -62,52 +62,48 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
         }
 
         foreach ($itemTransfers as $itemTransfer) {
-            $this->expandWithShoppingPoints($itemTransfer);
-            $this->expandWithBenefitVouchers($itemTransfer);
-            $this->expandItemWithBenefitPrices($itemTransfer, $currencyIsoCode);
+            if ($this->isBenefitVoucherStoreActive($itemTransfer)) {
+                $this->expandWithBenefitVouchers($itemTransfer, $currencyIsoCode);
+            } elseif ($this->isShoppingPointStoreActive($itemTransfer)) {
+                $this->expandWithShoppingPoints($itemTransfer, $currencyIsoCode);
+            }
         }
     }
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param string $currencyIsoCode
      *
      * @return void
      */
-    private function expandWithBenefitVouchers(ItemTransfer $itemTransfer): void
+    private function expandWithBenefitVouchers(ItemTransfer $itemTransfer, string $currencyIsoCode): void
     {
-        if ($this->isBenefitDealDataProvidedAtAttribute($itemTransfer)) {
-            $benefitVoucher = new BenefitVoucherDealDataTransfer();
-            $benefitVoucher->setAmount($this->getBenefitVoucherAmount($itemTransfer));
-            $benefitVoucher->setIsStore($this->getBenefitVoucherStore($itemTransfer));
+        $benefitVoucher = new BenefitVoucherDealDataTransfer();
+        $benefitVoucher->setAmount($this->getBenefitVoucherAmount($itemTransfer));
+        $benefitVoucher->setIsStore($this->isBenefitVoucherStoreActive($itemTransfer));
+        $benefitVoucher->setSalesPrice($this->getBenefitPriceAmount($itemTransfer, $currencyIsoCode));
 
+        if ($this->assertBenefitVoucherDealData($benefitVoucher)) {
             $itemTransfer->setBenefitVoucherDealData($benefitVoucher);
         }
     }
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
-    private function isBenefitDealDataProvidedAtAttribute(ItemTransfer $itemTransfer): bool
-    {
-        return $this->getBenefitVoucherStore($itemTransfer)
-            && $this->getBenefitVoucherAmount($itemTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param string $currencyIsoCode
      *
      * @return void
      */
-    private function expandWithShoppingPoints(ItemTransfer $itemTransfer): void
+    private function expandWithShoppingPoints(ItemTransfer $itemTransfer, string $currencyIsoCode): void
     {
         $shoppingPointsDealTransfer = new ShoppingPointsDealTransfer();
-        $isShoppingPointsStoreActive = $this->isShoppingPointStoreActiveForItem($itemTransfer);
-        $shoppingPointsDealTransfer->setIsActive($isShoppingPointsStoreActive);
+        $shoppingPointsDealTransfer->setIsActive($this->isShoppingPointStoreActive($itemTransfer));
+        $shoppingPointsDealTransfer->setPrice($this->getBenefitPriceAmount($itemTransfer, $currencyIsoCode));
         $shoppingPointsDealTransfer->setShoppingPointsQuantity($this->getShoppingPointsQuantity($itemTransfer));
 
-        $itemTransfer->setShoppingPointsDeal($shoppingPointsDealTransfer);
+        if ($this->assertShoppingPointsDealData($shoppingPointsDealTransfer)) {
+            $itemTransfer->setShoppingPointsDeal($shoppingPointsDealTransfer);
+        }
     }
 
     /**
@@ -115,7 +111,7 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
      *
      * @return bool
      */
-    private function isShoppingPointStoreActiveForItem(ItemTransfer $itemTransfer): bool
+    private function isShoppingPointStoreActive(ItemTransfer $itemTransfer): bool
     {
         return (bool)($itemTransfer->getConcreteAttributes()[$this->config->getShoppingPointStoreAttributeName()] ?? false);
     }
@@ -140,7 +136,7 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
      *
      * @return bool
      */
-    private function getBenefitVoucherStore(ItemTransfer $itemTransfer): bool
+    private function isBenefitVoucherStoreActive(ItemTransfer $itemTransfer): bool
     {
         return (bool)($itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherStoreAttributeName()] ?? false);
     }
@@ -165,91 +161,49 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      * @param string $currencyIsoCode
      *
-     * @return void
+     * @return int|null
      */
-    private function expandItemWithBenefitPrices(
-        ItemTransfer $itemTransfer,
-        string $currencyIsoCode
-    ): void {
-        if (!$this->isBenefitDealDataExist($itemTransfer)) {
-            return;
-        }
-
+    private function getBenefitPriceAmount(ItemTransfer $itemTransfer, string $currencyIsoCode): ?int
+    {
         $priceProductFilter = $this->createPriceProductFilterTransfer($itemTransfer, $currencyIsoCode);
-        $price = $this->priceProductFacade->findPriceFor($priceProductFilter);
 
-        if ($this->assertBenefitVoucherDealData($itemTransfer)) {
-            $this->setBenefitVoucherPrice($itemTransfer, $price);
-        }
-
-        if ($this->assertShoppingPointsDealData($itemTransfer)) {
-            $this->setShoppingPointsPrice($itemTransfer, $price);
-        }
+        return $this->priceProductFacade->findPriceFor($priceProductFilter);
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param \Generated\Shared\Transfer\BenefitVoucherDealDataTransfer $benefitVoucherDealDataTransfer
      *
      * @return bool
      */
-    private function isBenefitDealDataExist(ItemTransfer $itemTransfer): bool
-    {
-        return $this->assertBenefitVoucherDealData($itemTransfer)
-            || $this->assertShoppingPointsDealData($itemTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
-    private function assertBenefitVoucherDealData(ItemTransfer $itemTransfer): bool
+    private function assertBenefitVoucherDealData(BenefitVoucherDealDataTransfer $benefitVoucherDealDataTransfer): bool
     {
         try {
-            $itemTransfer->requireBenefitVoucherDealData();
+            $benefitVoucherDealDataTransfer->requireIsStore();
+            $benefitVoucherDealDataTransfer->requireAmount();
+            $benefitVoucherDealDataTransfer->requireSalesPrice();
 
-            return $itemTransfer->getBenefitVoucherDealData()->getIsStore();
+            return true;
         } catch (RequiredTransferPropertyException $exception) {
             return false;
         }
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param \Generated\Shared\Transfer\ShoppingPointsDealTransfer $shoppingPointsDealTransfer
      *
      * @return bool
      */
-    private function assertShoppingPointsDealData(ItemTransfer $itemTransfer): bool
+    private function assertShoppingPointsDealData(ShoppingPointsDealTransfer $shoppingPointsDealTransfer): bool
     {
         try {
-            $itemTransfer->requireShoppingPointsDeal();
+            $shoppingPointsDealTransfer->requireIsActive();
+            $shoppingPointsDealTransfer->requirePrice();
+            $shoppingPointsDealTransfer->requireShoppingPointsQuantity();
 
-            return $itemTransfer->getShoppingPointsDeal()->getIsActive();
+            return true;
         } catch (RequiredTransferPropertyException $exception) {
             return false;
         }
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param int $price
-     *
-     * @return void
-     */
-    private function setBenefitVoucherPrice(ItemTransfer $itemTransfer, int $price): void
-    {
-        $itemTransfer->getBenefitVoucherDealData()->setSalesPrice($price);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param int $price
-     *
-     * @return void
-     */
-    private function setShoppingPointsPrice(ItemTransfer $itemTransfer, int $price): void
-    {
-        $itemTransfer->getShoppingPointsDeal()->setPrice($price);
     }
 
     /**
