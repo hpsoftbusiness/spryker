@@ -78,16 +78,8 @@
         <property name="useBenefitVoucher" type="bool"/>
         <property name="totalUsedBenefitVouchersAmount" type="int"/>
         <property name="benefitVoucherDealData" type="BenefitVoucherDealData"/>
-        <property name="benefitDealChargeAmountData" type="BenefitDealChargeAmountData"/>
-    </transfer>
-
-    <transfer name="BenefitDealChargeAmountData">
-        <property name="unitBenefitVouchersAmount" type="float"/>
-        <property name="unitShoppingPointsAmount" type="float"/>
-        <property name="totalBenefitVouchersAmount" type="float"/>
-        <property name="totalShoppingPointsAmount" type="float"/>
-        <property name="unitSalesPriceAmount" type="int" />
-        <property name="totalSalesPriceAmount" type="int" />
+        <property name="unitBenefitPrice" type="int"/>
+        <property name="sumBenefitPrice" type="int"/>
     </transfer>
 
     <transfer name="BenefitVoucherDealData">

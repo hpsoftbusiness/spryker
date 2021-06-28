@@ -9,7 +9,6 @@ namespace Pyz\Zed\Cart;
 
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealQuoteChangeObserverPlugin;
-use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\ChargeAmountItemExpanderPlugin;
 use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
 use Pyz\Zed\ProductUrlCartConnector\Communication\Plugin\ProductUrlCartExpanderPlugin;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
@@ -86,10 +85,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new BenefitDealItemExpanderPlugin(),
-            /**
-             * That is mandatory to place this expander after 'BenefitDealsItemExpanderPlugin'
-             */
-            new ChargeAmountItemExpanderPlugin(),
         ];
     }
 

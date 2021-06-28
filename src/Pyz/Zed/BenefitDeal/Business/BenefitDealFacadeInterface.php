@@ -90,11 +90,4 @@ interface BenefitDealFacadeInterface
      * @return void
      */
     public function expandItemsWithBenefitDealsData(iterable $itemTransfers, ?string $currencyIsoCode = null): void;
-
-    /**
-     * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
-     *
-     * @return void
-     */
-    public function expandItemsWithBenefitDealChargeAmount(iterable $itemTransfers): void;
 }

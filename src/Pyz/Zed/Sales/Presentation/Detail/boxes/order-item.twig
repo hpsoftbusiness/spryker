@@ -69,6 +69,17 @@
     <div class="tax-info">{{ 'incl. %tax_amount% % tax' | trans({'%tax_amount%': orderItem.taxRate | default(0)}) }}</div>
 </td>
 <td>
+    {% if orderItem.useBenefitVoucher %}
+        {% set benefitPrice = orderItem.benefitVoucherDealData.salesPrice ?? 0 %}
+        {{ benefitPrice | money(true, order.currencyIsoCode) }}
+    {% elseif orderItem.useShoppingPoints %}
+        {% set benefitPrice = orderItem.shoppingPointsDeal.price ?? 0 %}
+        {{ benefitPrice | money(true, order.currencyIsoCode) }}
+    {% else %}
+        {{ '-' }}
+    {% endif %}
+</td>
+<td>
     {% if orderItem.useShoppingPoints %}
         {{ orderItem.totalUsedShoppingPointsAmount ?? 0 }}
     {% else %}
@@ -77,9 +88,8 @@
 </td>
 <td>
     {% if orderItem.useBenefitVoucher %}
-        {% set usedBenefitVoucherAmount = orderItem.use ?? 0 %}
+        {% set usedBenefitVoucherAmount = orderItem.totalUsedBenefitVouchersAmount ?? 0 %}
         {{ usedBenefitVoucherAmount | money(true, order.currencyIsoCode) }}
-
     {% else %}
         {{ '-' }}
     {% endif %}

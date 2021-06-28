@@ -54,6 +54,7 @@ class ShoppingPointsPaymentCalculator implements
             }
 
             $this->calculateItemUsedShoppingPoints($itemTransfer, $availableShoppingPointsAmount);
+            $this->setUnitBenefitPrice($itemTransfer);
             $availableShoppingPointsAmount -= $itemTransfer->getTotalUsedShoppingPointsAmount();
         }
 
@@ -79,9 +80,22 @@ class ShoppingPointsPaymentCalculator implements
             $shoppingPointsDealTransfer = $itemTransfer->getShoppingPointsDeal();
             $totalItemUsedShoppingPointAmount = $itemTransfer->getQuantity() * $shoppingPointsDealTransfer->getShoppingPointsQuantity();
             $itemTransfer->setTotalUsedShoppingPointsAmount($totalItemUsedShoppingPointAmount);
+            $this->setUnitBenefitPrice($itemTransfer);
         }
 
         return $calculableObjectTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return void
+     */
+    private function setUnitBenefitPrice(ItemTransfer $itemTransfer): void
+    {
+        $unitBenefitPrice = $itemTransfer->getShoppingPointsDeal()->getPrice();
+        $itemTransfer->setUnitBenefitPrice($unitBenefitPrice);
+        $itemTransfer->setSumBenefitPrice($unitBenefitPrice * $itemTransfer->getQuantity());
     }
 
     /**

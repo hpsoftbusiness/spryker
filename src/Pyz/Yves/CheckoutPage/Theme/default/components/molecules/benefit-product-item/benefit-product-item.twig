@@ -18,7 +18,6 @@
 {% set currencyCode = product.priceProduct.moneyValue.currency.code %}
 {% set unitPrice = product.originUnitGrossPrice %}
 {% set subTotalPrice = product.quantity * unitPrice %}
-{% set chargeAmountData = product.benefitDealChargeAmountData %}
 
 {% block body %}
     {% include molecule('product-image') with {
@@ -52,9 +51,10 @@
             </div>
             {# @TODO Refactor properly when design for this step is approved #}
             {% if data.formType == 'useBenefitVoucher' %}
+                {% set benefitVoucherDeal = product.benefitVoucherDealData %}
                 <div class="{{ config.name }}__benefit-price">
                     <span>
-                        {{- chargeAmountData.unitSalesPriceAmount | money(true, currencyCode) -}} - {{- chargeAmountData.totalBenefitVouchersAmount | money(false, data.benefitVouchersCurrencyCode) -}}
+                        {{- benefitVoucherDeal.salesPrice | money(true, currencyCode) -}} - {{- benefitVoucherDeal.amount | money(false, data.benefitVouchersCurrencyCode) -}}
                     </span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
@@ -73,11 +73,11 @@
                     <span>{{ 'checkout.step.benefit_deal.use_voucher' | trans }}</span>
                 </label>
             {% elseif data.formType == 'useShoppingPoints' %}
+                {% set shoppingPointsDeal = product.shoppingPointsDeal %}
                 <div class="{{ config.name }}__benefit-price">
                     <span>
-                        {{ chargeAmountData.totalSalesPriceAmount | money(true, currencyCode) }}
-                        {% set shoppingPoints = chargeAmountData.totalShoppingPointsAmount %}
-                        - {{ shoppingPoints }}
+                        {{ shoppingPointsDeal.price | money(true, currencyCode) }}
+                        - {{ shoppingPointsDeal.shoppingPointsQuantity }}
                     </span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',

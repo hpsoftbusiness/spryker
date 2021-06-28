@@ -14,8 +14,6 @@ use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReader;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriter;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealWriterInterface;
-use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitDealChargeAmountExpander;
-use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitDealChargeAmountExpanderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitExpander;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitExpanderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\Item\ItemBenefitDealReader;
@@ -101,14 +99,6 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
             $this->getStoreClient(),
             $this->getConfig()
         );
-    }
-
-    /**
-     * @return \Pyz\Zed\BenefitDeal\Business\Model\Item\Expander\ItemBenefitDealChargeAmountExpanderInterface
-     */
-    public function createItemBenefitDealChargeAmountExpander(): ItemBenefitDealChargeAmountExpanderInterface
-    {
-        return new ItemBenefitDealChargeAmountExpander();
     }
 
     /**

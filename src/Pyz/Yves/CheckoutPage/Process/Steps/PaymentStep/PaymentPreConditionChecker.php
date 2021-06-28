@@ -65,7 +65,7 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
 
         if (!$this->assertBenefitVoucherBalance($quoteTransfer, $customerTransfer)) {
             $this->addErrorMessage(self::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE, [
-                '%needAmount%' => $this->getCommonSelectedBenefitAmount($quoteTransfer),
+                '%needAmount%' => $quoteTransfer->getTotalUsedBenefitVouchersAmount(),
                 '%balanceAmount%' => $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer),
                 '%currency%' => $quoteTransfer->getCurrency()->getCode(),
             ]);
@@ -88,10 +88,9 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
             return true;
         }
 
-        $commonSelectedBenefitVouchers = $this->getCommonSelectedBenefitAmount($quoteTransfer);
         $benefitVoucherBalance = $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer);
 
-        return $commonSelectedBenefitVouchers <= $benefitVoucherBalance;
+        return $quoteTransfer->getTotalUsedBenefitVouchersAmount() <= $benefitVoucherBalance;
     }
 
     /**
@@ -104,10 +103,10 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
     {
         $totalUsedShoppingPointsSum = 0;
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            $chargeAmountData = $itemTransfer->getBenefitDealChargeAmountData();
+            $shoppingPointsDeal = $itemTransfer->getShoppingPointsDeal();
 
-            if ($itemTransfer->getUseShoppingPoints() && $chargeAmountData) {
-                $totalUsedShoppingPointsSum += $chargeAmountData->getTotalShoppingPointsAmount();
+            if ($itemTransfer->getUseShoppingPoints() && $shoppingPointsDeal) {
+                $totalUsedShoppingPointsSum += ($shoppingPointsDeal->getShoppingPointsQuantity() * $itemTransfer->getQuantity());
             }
         }
 
@@ -126,26 +125,6 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
     {
         $translatedMessage = $this->translator->trans($messageTranslationKey, $params);
         $this->flashMessenger->addErrorMessage($translatedMessage);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return int
-     */
-    protected function getCommonSelectedBenefitAmount(QuoteTransfer $quoteTransfer): int
-    {
-        $commonSelectedBenefitVouchers = 0;
-
-        foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            $chargeAmountData = $itemTransfer->getBenefitDealChargeAmountData();
-
-            if ($itemTransfer->getUseBenefitVoucher() && $chargeAmountData) {
-                $commonSelectedBenefitVouchers += $chargeAmountData->getTotalBenefitVouchersAmount();
-            }
-        }
-
-        return $commonSelectedBenefitVouchers;
     }
 
     /**

@@ -10,7 +10,6 @@ namespace PyzTest\Yves\CheckoutPage\Process\Steps;
 use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\PaymentBuilder;
-use Generated\Shared\Transfer\BenefitDealChargeAmountDataTransfer;
 use Generated\Shared\Transfer\BenefitVoucherDealDataTransfer;
 use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -140,10 +139,6 @@ class PaymentStepTest extends Unit
                     ShoppingPointsDealTransfer::SHOPPING_POINTS_QUANTITY => 5,
                     ShoppingPointsDealTransfer::PRICE => 1000,
                 ],
-                ItemTransfer::BENEFIT_DEAL_CHARGE_AMOUNT_DATA => [
-                    BenefitDealChargeAmountDataTransfer::TOTAL_SHOPPING_POINTS_AMOUNT => 10,
-                    BenefitDealChargeAmountDataTransfer::UNIT_SHOPPING_POINTS_AMOUNT => 5,
-                ],
                 ItemTransfer::CONCRETE_ATTRIBUTES => [
                     'sellable_de' => true,
                 ],
@@ -166,6 +161,7 @@ class PaymentStepTest extends Unit
         $customerTransfer = $this->buildCustomerTransfer();
         $quoteTransfer = $this->tester->buildQuoteTransfer([
             QuoteTransfer::CUSTOMER => $customerTransfer->toArray(),
+            QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
         ], [
             [
                 ItemTransfer::ID_PRODUCT_ABSTRACT => 2,
@@ -173,10 +169,6 @@ class PaymentStepTest extends Unit
                 ItemTransfer::ORIGIN_UNIT_GROSS_PRICE => 1200,
                 ItemTransfer::QUANTITY => 2,
                 ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                ItemTransfer::BENEFIT_DEAL_CHARGE_AMOUNT_DATA => [
-                    BenefitDealChargeAmountDataTransfer::TOTAL_BENEFIT_VOUCHERS_AMOUNT => 10,
-                    BenefitDealChargeAmountDataTransfer::UNIT_BENEFIT_VOUCHERS_AMOUNT => 5,
-                ],
                 ItemTransfer::CONCRETE_ATTRIBUTES => [
                     'sellable_de' => true,
                 ],

@@ -121,14 +121,4 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     {
         $this->getFactory()->createItemBenefitExpander()->expandItems($itemTransfers, $currencyIsoCode);
     }
-
-    /**
-     * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
-     *
-     * @return void
-     */
-    public function expandItemsWithBenefitDealChargeAmount(iterable $itemTransfers): void
-    {
-        $this->getFactory()->createItemBenefitDealChargeAmountExpander()->expandItems($itemTransfers);
-    }
 }

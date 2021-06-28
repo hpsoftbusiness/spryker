@@ -73,6 +73,7 @@ class BenefitVoucherPaymentCalculator implements
             $benefitVoucherData = $itemTransfer->getBenefitVoucherDealData();
             $totalItemBenefitVoucherDiscountAmount = (int)($benefitVoucherData->getAmount() * $itemTransfer->getQuantity());
             $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherDiscountAmount);
+            $this->setUnitBenefitPrice($itemTransfer);
         }
 
         return $calculableObjectTransfer;
@@ -106,6 +107,7 @@ class BenefitVoucherPaymentCalculator implements
                 }
 
                 $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherDiscountAmount);
+                $this->setUnitBenefitPrice($itemTransfer);
                 $totalBenefitVouchersDiscountAmount += $totalItemBenefitVoucherDiscountAmount;
             } else {
                 $this->clearItemBenefitVoucherSelection($itemTransfer);
@@ -121,6 +123,22 @@ class BenefitVoucherPaymentCalculator implements
         }
 
         return $calculableObjectTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return void
+     */
+    private function setUnitBenefitPrice(ItemTransfer $itemTransfer): void
+    {
+        /**
+         * TODO-Mantas adjust after BV amount splitting was implemented.
+         */
+        $unitBenefitAmount = (int)($itemTransfer->getTotalUsedBenefitVouchersAmount() / $itemTransfer->getQuantity());
+        $unitBenefitPrice = $itemTransfer->getUnitGrossPrice() - $unitBenefitAmount;
+        $itemTransfer->setUnitBenefitPrice($unitBenefitPrice);
+        $itemTransfer->setSumBenefitPrice($unitBenefitPrice * $itemTransfer->getQuantity());
     }
 
     /**

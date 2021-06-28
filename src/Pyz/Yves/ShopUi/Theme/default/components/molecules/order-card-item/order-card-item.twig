@@ -1,0 +1,46 @@
+{% extends molecule('product-card-item', 'ShopUi') %}
+{% import model('component') as component %}
+
+{% define config = {
+    name: 'order-card-item',
+    tag: 'article',
+} %}
+
+{% block price %}
+    {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+    {% if data.productItem.useShoppingPoints %}
+        {% set price = data.productItem.unitBenefitPrice ?? data.productItem.unitPrice  %}
+    {% endif %}
+    {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+
+    {% if can('SeePricePermissionPlugin') %}
+        {% include molecule('money-price') with {
+            modifiers: ['medium'],
+            class: component.renderClass(config.name ~ '__price', modifiers) ~ ' col col--lg-4 col--sm-12',
+            data: {
+                amount: productItemSubTotal | default(null),
+                originalAmount: data.productItem.prices.ORIGINAL is not defined or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL
+            },
+        } only %}
+    {% else %}
+        {{ 'customer.access.cannot_see_price' | trans }}
+    {% endif %}
+{% endblock %}
+
+{% block benefitPrice %}
+    <div class="grid grid--right">
+        {% if data.productItem.useBenefitVoucher %}
+            <span class="{{ config.name }}__benefit-price">
+                                 - {{- data.productItem.totalUsedBenefitVouchersAmount | money(false) -}}
+                            </span>
+            {% include atom('icon') with {
+                class: config.name ~ '__icon',
+                modifiers: ['medium-up'],
+                data: {
+                    name: 'benefit-point',
+                },
+            } only %}
+        {% endif %}
+    </div>
+{% endblock %}
+
