@@ -123,9 +123,38 @@ class PaymentApiLog implements PaymentApiLogInterface
     private function abstractTransferToString(?AbstractTransfer $abstractTransfer): ?string
     {
         if ($abstractTransfer) {
-            return json_encode($abstractTransfer->toArray());
+            $requestData = $this->normalizeArray($abstractTransfer->toArray());
+
+            return json_encode($requestData);
         }
 
         return null;
+    }
+
+    /**
+     * Specification:
+     * - Due to https://bugs.php.net/bug.php?id=72567 bug json_encode float serialization precision is set to 14.
+     * Converting float to string prevents incorrect rounding of float values.
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    private function normalizeArray(array $data): array
+    {
+        return array_map(
+            function ($value) {
+                if (is_array($value)) {
+                    return $this->normalizeArray($value);
+                }
+
+                if (is_float($value)) {
+                    return (string)$value;
+                }
+
+                return $value;
+            },
+            $data,
+        );
     }
 }
