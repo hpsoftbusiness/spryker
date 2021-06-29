@@ -55,11 +55,6 @@ class BenefitPriceDataHealerPlugin extends AbstractPlugin implements ProductData
      */
     private $logger;
 
-    public function __construct()
-    {
-        $this->converter = $this->getFactory()->createDecimalToIntegerConverter();
-    }
-
     /**
      * @return string
      */
@@ -76,6 +71,7 @@ class BenefitPriceDataHealerPlugin extends AbstractPlugin implements ProductData
     public function execute(?LoggerInterface $logger = null): void
     {
         $this->logger = $logger;
+        $this->setConverter();
 
         $benefitTypeTransfer = $this->getBenefitPriceType();
         $currencyTransfer = $this->getFactory()->getCurrencyFacade()->getDefaultCurrencyForCurrentStore();
@@ -355,5 +351,13 @@ class BenefitPriceDataHealerPlugin extends AbstractPlugin implements ProductData
         }
 
         return $priceType;
+    }
+
+    /**
+     * @return void
+     */
+    private function setConverter(): void
+    {
+        $this->converter = $this->getFactory()->createDecimalToIntegerConverter();
     }
 }
