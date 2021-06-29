@@ -47,7 +47,12 @@ class CustomerGroupStorageRepository extends AbstractRepository implements Custo
             ->setName($data[SpyCustomerGroupTableMap::COL_NAME])
             ->setDescription($data[SpyCustomerGroupTableMap::COL_DESCRIPTION]);
 
-        $productListIds = explode(',', $data[CustomerGroupTransfer::PRODUCT_LISTS]);
+        $productListGrouped = $data[CustomerGroupTransfer::PRODUCT_LISTS];
+        if ($productListGrouped === null) {
+            $productListIds = [];
+        } else {
+            $productListIds = explode(',', $productListGrouped);
+        }
         foreach ($productListIds as $productListId) {
             $productList = (new CustomerGroupToProductListTransfer())
                 ->setIdCustomerGroup($data[SpyCustomerGroupTableMap::COL_ID_CUSTOMER_GROUP])
