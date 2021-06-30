@@ -68,14 +68,26 @@
 
 .voucher {
     float:right;
-    padding-top: 5px;
+    margin-top: -2em;
+    margin-right: -0.7em;
 }
 
 .voucher-amount {
     vertical-align: middle;
+    font-size: 1.5em;
 }
 
-.icon-allign {
-    vertical-align: middle;
-    transform: scale(2);
+.icon-allign-benefit{
+    margin-top: -0.2em;
+    transform: scale(1.5);
+}
+
+.svg.icon:nth-child(2) {
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.voucher-amount
+{
+   font: 700 1.875rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }

@@ -63,11 +63,23 @@
 
 .shopping-points {
     float:right;
-    padding-top: 5px;
 }
 
 .icon-allign {
     fill: #5cb885;
-    margin-top: -0.3em;
-    transform: scale(2);
+    margin-top: -0.6em;
+    transform: scale(1.5);
+}
+
+svg.icon:nth-child(2) {
+    border: 1px solid darkblue;
+    border-radius: 50%;
+}
+
+.shopping-points > span:nth-child(1) {
+    font-size: 1.5em;
+}
+
+.shopping-points > span:nth-child(1) {
+  font: 700 1.875rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
