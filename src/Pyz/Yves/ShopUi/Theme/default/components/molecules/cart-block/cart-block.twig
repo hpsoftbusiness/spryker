@@ -73,16 +73,9 @@
             {% endif %}
         {% endfor %}
 
-        {% if data.quote.totals.discounttotal %}
-            <div class="{{ config.name }}__total grid grid--middle grid--justify">
-                <strong class="{{ config.name }}__total-text col">{{ 'cart.discounts' | trans }}</strong>
-                <strong class="{{ config.name }}__total-text col">- {{ data.quote.totals.discounttotal | money }}</strong>
-            </div>
-        {% endif %}
-
         <div class="{{ config.name }}__total grid grid--middle grid--justify">
             <strong class="{{ config.name }}__total-text col">{{ 'cart.total' | trans }}</strong>
-            <strong class="{{ config.name }}__total-text col">{{ data.quote.totals.grandTotal | money }}</strong>
+            <strong class="{{ config.name }}__total-text col">{{ data.quote.totals.subTotal | money }}</strong>
         </div>
 
         {% set canProceedToCheckout = data.quote.items is not empty
