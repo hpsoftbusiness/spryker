@@ -4,10 +4,12 @@
 {% define data = {
     cashback: data.product.cashbackAmount | default(null),
     benefitAmount: data.product.benefitAmount | default(null),
+    benefitSalesPrice: data.product.benefitSalesPrice | default(null),
     shoppingPointsAmount: data.product.shoppingPointsAmount | default(null),
     shoppingPoints: data.product.shoppingPoints | default(null),
     isAffiliate: data.product.is_affiliate ?? data.product.isAffiliate,
     affiliateData: data.product.affiliate_data ?? data.product.affiliateData,
+    priceVatText: 'pdp.include.vat',
 } %}
 
 {% block extraClass %}
@@ -15,17 +17,11 @@
 {% endblock %}
 
 {% block body %}
+    {# {{ data.product.cashback_amount }} #}
     {% set cashback = data.cashback %}
     {% set benefitAmount = data.benefitAmount %}
     {% set shoppingPointsAmount = data.shoppingPointsAmount %}
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
-
-    <ul style="display: none">
-        <li>benefitVoucherPrice: {{ benefitPrice }}</li>
-        <li>benefitAmount: {{ benefitAmount }}</li>
-        <li>shoppingPointsBenefitPrice: {{ benefitPrice }}</li>
-        <li>shoppingPointsAmount: {{ shoppingPointsAmount }}</li>
-    </ul>
 
     <div class="{{ config.name }}__container">
         <div class="{{ config.name }}__image-wrap">
@@ -44,7 +40,6 @@
                 } only %}{% endwidget %}
             {% endblock %}
         {% endif %}
-
 
         {% block content %}
             <div class="{{ config.name }}__info">
@@ -75,28 +70,48 @@
                 {% endblock %}
 
                 {% block price %}
-                    <div class="{{ config.name }}__price">
-                        {% if data.isAffiliate %}
-                            {% widget 'ProductAffiliateOffersPriceWidget' args [data.idProductAbstract] only %}{% endwidget %}
-                        {% elseif can('SeePricePermissionPlugin') %}
-                            {% embed molecule('money-price') with {
+                    {% set defaultPriceJsName = config.jsName ? config.jsName ~ '__default-price' %}
+                    {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
+                    {% set benefitClass = benefitAmount ? '--benefit_voucher' : shoppingPointsAmount ? '--shopping_points' : '' %}
+                    {% set hasBenefitPrice = (benefitAmount or shoppingPointsAmount) ?: false %}
+                    {% set priceClass = hasBenefitPrice ? '__original_price' : '__price' %}
+
+                    {% if data.isAffiliate is defined and data.isAffiliate %}
+                        <span>{{ 'pdp.price.from' | trans }}</span>
+                    {% endif %}
+
+                    <div class="row">
+                        <span class="{{ config.name }}{{ priceClass }}">
+                            {{- defaultPrice | money(true, data.currencyIsoCode) -}}&nbsp;
+                        </span>
+                    </div>
+                    <div class="row {{ config.name }}{{ benefitClass }}">
+                        {% if benefitAmount %}
+                            {{- benefitPrice | money(true, data.currencyIsoCode) -}} &nbsp;
+                            + &nbsp; {{- benefitAmount | money(true, data.currencyIsoCode) -}}
+                            {% include atom('icon') with {
+                                class: config.name ~ '__icon',
                                 data: {
-                                    isAffiliate: data.isAffiliate | default(false),
-                                    amount: data.product.prices.DEFAULT | default(null),
-                                    originalAmount: data.product.prices.ORIGINAL | default(null),
-                                    currencyIsoCode: data.currencyIsoCode,
-                                    parentJsName: config.jsName,
+                                    name: 'benefit-point',
                                 },
                             } only %}
-                                {% block originalPrice %}
-                                    {% block originalPriceInner %}
-                                        {{ parent() }}
-                                    {% endblock %}
-                                {% endblock %}
-                            {% endembed %}
-                        {% else %}
-                            {{- 'customer.access.cannot_see_price' | trans -}}
+
+                        {% elseif shoppingPointsAmount %}
+                            {{- benefitPrice | money(true, data.currencyIsoCode) -}} &nbsp;
+                            - &nbsp; {{ shoppingPointsAmount }}
+                            {% include atom('icon') with {
+                                class: config.name ~ '__icon',
+                                data: {
+                                    name: 'shopping-point',
+                                },
+                            } only %}
+
                         {% endif %}
+
+                        <span class="{{ config.name }}__inc-vat">
+                            {{ 'pdp.include.vat' | trans }}
+                        </span>
+
                     </div>
                 {% endblock %}
             </div>
@@ -105,20 +120,12 @@
                 {% if data.isAffiliate | default(false) %}
                     {% widget 'ProductAffiliateOffersWidget' args [data.idProductAbstract] only %}{% endwidget %}
                 {% else %}
-                    {% set cashback = data.cashback %}
+                    <span class="{{ config.name }}__footer">
+                        <span class="display-block {{ config.name }}__footer-logo" width="110" align="center" valign="middle">
+                            <img src="{{ ('/assets/current/default/images/nav-logo-myworld-bw.svg') }}" alt="myWorld" title="myWorld" width="96" height="37" style="display: inline-block;">
+                        </span>
+                    </span>
 
-                    {% if cashback %}
-                        <div class="{{ config.name }}__footer">
-                            {% include molecule('cashback') with {
-                                modifiers: ['small'],
-                                data: {
-                                    cashback: cashback,
-                                    shoppingPoints: data.shoppingPoints,
-                                    iconModifiers: [''],
-                                },
-                            } only %}
-                        </div>
-                    {% endif %}
                 {% endif %}
 
             {% endblock %}
