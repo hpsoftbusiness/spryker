@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use Pyz\Client\CustomerGroup\CustomerGroupClientInterface;
 use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Yves\CustomerPage\CustomerAddress\AddressChoicesResolver;
 use Pyz\Yves\CustomerPage\Form\FormFactory;
@@ -77,5 +78,13 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     public function getCountryClient(): CountryClientInterface
     {
         return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_COUNTRY);
+    }
+
+    /**
+     * @return \Pyz\Client\CustomerGroup\CustomerGroupClientInterface
+     */
+    public function getCustomerGroupClient(): CustomerGroupClientInterface
+    {
+        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_CUSTOMER_GROUP);
     }
 }

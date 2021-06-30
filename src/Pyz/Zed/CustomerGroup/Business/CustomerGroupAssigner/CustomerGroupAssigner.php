@@ -8,7 +8,6 @@
 namespace Pyz\Zed\CustomerGroup\Business\CustomerGroupAssigner;
 
 use Generated\Shared\Transfer\CustomerGroupToCustomerAssignmentTransfer;
-use Generated\Shared\Transfer\CustomerGroupTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Zed\CustomerGroup\CustomerGroupConfig;
 use Pyz\Zed\CustomerGroup\Persistence\CustomerGroupRepositoryInterface;
@@ -49,41 +48,62 @@ class CustomerGroupAssigner implements CustomerGroupAssignerInterface
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \Generated\Shared\Transfer\CustomerGroupTransfer|null
+     * @return void
      */
-    public function assignCustomerToDefaultGroupByCustomerType(CustomerTransfer $customerTransfer): ?CustomerGroupTransfer
+    public function assignCustomerToDefaultGroups(CustomerTransfer $customerTransfer): void
     {
         $customerTransfer->requireIdCustomer();
-        $customerGroupTransfer = $this->getCustomerGroupByCustomerType($customerTransfer);
+        $customerGroups = $this->getCustomerGroupFromCustomerTransfer($customerTransfer);
 
-        if ($customerGroupTransfer !== null) {
+        foreach ($customerGroups as $customerGroupTransfer) {
             $customerGroupToCustomerAssignmentTransfer = new CustomerGroupToCustomerAssignmentTransfer();
-            $customerGroupToCustomerAssignmentTransfer->setIdCustomerGroup($customerGroupTransfer->getIdCustomerGroup())
-                ->addIdCustomerToAssign($customerTransfer->getIdCustomer());
-
+            $customerGroupToCustomerAssignmentTransfer
+                ->setIdCustomerGroup(
+                    $customerGroupTransfer->getIdCustomerGroup()
+                )
+                ->addIdCustomerToAssign(
+                    $customerTransfer->getIdCustomer()
+                );
             $customerGroupTransfer->setCustomerAssignment($customerGroupToCustomerAssignmentTransfer);
-
             $this->customerGroup->update($customerGroupTransfer);
         }
-
-        return $customerGroupTransfer;
     }
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \Generated\Shared\Transfer\CustomerGroupTransfer|null
+     * @return \Generated\Shared\Transfer\CustomerGroupTransfer[]
      */
-    protected function getCustomerGroupByCustomerType(CustomerTransfer $customerTransfer): ?CustomerGroupTransfer
+    protected function getCustomerGroupFromCustomerTransfer(CustomerTransfer $customerTransfer): array
     {
-        if ($customerTransfer->getCustomerType()) {
-            $customerTypeToCustomerGroupNameMap = $this->customerGroupConfig->getCustomerTypeToCustomerGroupNameMap();
+        $customerGroups = [];
+        if ($customerTransfer->getIsEliteClub()) {
+            $customerGroupEliteClub = $this
+                ->customerGroupRepository
+                ->findCustomerGroupByName(
+                    CustomerGroupConfig::CUSTOMER_GROUP_NAME_ELITE_CLUB
+                );
 
-            if (!empty($customerTypeToCustomerGroupNameMap[$customerTransfer->getCustomerType()])) {
-                return $this->customerGroupRepository->findCustomerGroupByName($customerTypeToCustomerGroupNameMap[$customerTransfer->getCustomerType()]);
+            if ($customerGroupEliteClub !== null) {
+                $customerGroups[] = $customerGroupEliteClub;
             }
         }
 
-        return null;
+        if ($customerTransfer->getCustomerType()) {
+            $customerTypeToCustomerGroupNameMap = $this
+                ->customerGroupConfig
+                ->getCustomerTypeToCustomerGroupNameMap();
+
+            $customerGroupName = $customerTypeToCustomerGroupNameMap[$customerTransfer->getCustomerType()] ?? null;
+            if ($customerGroupName !== null) {
+                $customerGroups[] = $this
+                    ->customerGroupRepository
+                    ->findCustomerGroupByName(
+                        $customerGroupName
+                    );
+            }
+        }
+
+        return $customerGroups;
     }
 }

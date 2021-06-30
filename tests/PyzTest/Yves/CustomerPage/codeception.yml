@@ -1,0 +1,29 @@
+namespace: PyzTest\Yves\CustomerPage
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include: [ '../../../../src/Pyz/Yves/CustomerPage/*.php' ]
+        exclude:
+            - ../../../../src/Pyz/*/*DependencyProvider.php
+            - ../../../../src/Pyz/*/*Config.php
+            - ../../../../src/Pyz/*/*Factory.php
+suites:
+    Security:
+        path: Security
+        class_name: CustomerPageProcessTester
+        modules:
+            enabled:
+                - \SprykerTest\Yves\Application\Helper\ApplicationHelper
+                - \SprykerTest\Service\Container\Helper\ContainerHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                    projectNamespaces: [ 'Pyz' ]
+                - \PyzTest\Yves\Customer\Helper\CustomerHelper

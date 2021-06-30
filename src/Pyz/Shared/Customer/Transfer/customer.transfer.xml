@@ -12,6 +12,7 @@
         <property name="isActive" type="bool"/>
         <property name="ssoAccessToken" type="SsoAccessToken"/>
         <property name="customerBalance" type="CustomerBalance"/>
+        <property name="isEliteClub" type="bool"/>
     </transfer>
 
     <transfer name="Order">

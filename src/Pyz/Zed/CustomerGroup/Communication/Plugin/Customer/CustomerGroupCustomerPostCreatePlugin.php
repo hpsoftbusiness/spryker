@@ -26,7 +26,7 @@ class CustomerGroupCustomerPostCreatePlugin extends AbstractPlugin implements Cu
      */
     public function execute(CustomerTransfer $customerTransfer): CustomerTransfer
     {
-        $this->getFacade()->assignCustomerToDefaultGroupByCustomerType($customerTransfer);
+        $this->getFacade()->assignCustomerToDefaultGroups($customerTransfer);
 
         return $customerTransfer;
     }

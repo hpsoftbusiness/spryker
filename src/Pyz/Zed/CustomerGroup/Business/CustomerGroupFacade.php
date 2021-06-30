@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\CustomerGroup\Business;
 
-use Generated\Shared\Transfer\CustomerGroupTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Zed\CustomerGroup\Business\CustomerGroupFacade as SprykerCustomerGroupFacade;
 
@@ -19,10 +18,26 @@ class CustomerGroupFacade extends SprykerCustomerGroupFacade implements Customer
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \Generated\Shared\Transfer\CustomerGroupTransfer|null
+     * @return void
      */
-    public function assignCustomerToDefaultGroupByCustomerType(CustomerTransfer $customerTransfer): ?CustomerGroupTransfer
+    public function assignCustomerToDefaultGroups(CustomerTransfer $customerTransfer): void
     {
-        return $this->getFactory()->createCustomerGroupAssigner()->assignCustomerToDefaultGroupByCustomerType($customerTransfer);
+        $this
+            ->getFactory()
+            ->createCustomerGroupAssigner()
+            ->assignCustomerToDefaultGroups($customerTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return void
+     */
+    public function removeCustomerFromAllGroups(CustomerTransfer $customerTransfer): void
+    {
+        $this
+            ->getFactory()
+            ->createCustomerGroup()
+            ->removeCustomerFromAllGroups($customerTransfer);
     }
 }

@@ -63,8 +63,22 @@ class CustomerUserProvider extends SprykerCustomerUserProvider
         $loadedCustomerTransfer = $this->loadCustomerByMyWorldCustomerId($customerTransfer->getMyWorldCustomerId());
 
         if ($loadedCustomerTransfer->getIdCustomer() === null) {
-            $customerResponseTransfer = $this->getFactory()->getCustomerClient()->createCustomer($customerTransfer);
+            $customerResponseTransfer = $this->getFactory()
+                ->getCustomerClient()
+                ->createCustomer($customerTransfer);
             $loadedCustomerTransfer = $customerResponseTransfer->getCustomerTransfer();
+        } else {
+            $customerTransfer
+                ->setIdCustomer(
+                    $loadedCustomerTransfer->getIdCustomer()
+                );
+
+            $this
+                ->getFactory()
+                ->getCustomerGroupClient()
+                ->reassignCustomerGroups(
+                    $customerTransfer
+                );
         }
 
         $loadedCustomerTransfer->setSsoAccessToken($ssoAccessTokenTransfer);

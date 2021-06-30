@@ -11,6 +11,8 @@ use Spryker\Zed\CustomerGroup\CustomerGroupConfig as SprykerCustomerGroupConfig;
 
 class CustomerGroupConfig extends SprykerCustomerGroupConfig
 {
+    public const CUSTOMER_GROUP_NAME_ELITE_CLUB = 'EliteClub_Deal';
+
     /**
      * @see \Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap::COL_CUSTOMER_TYPE_CUSTOMER
      */

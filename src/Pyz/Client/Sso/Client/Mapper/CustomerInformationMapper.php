@@ -52,7 +52,8 @@ class CustomerInformationMapper implements CustomerInformationMapperInterface
             ->setIsActive($data['Data']['Status'] === 'Active')
             ->setCountryId($data['Data']['CountryID'] ?? null)
             ->setCustomerType($this->mapCustomerType($data['Data']['CustomerType']))
-            ->setCustomerBalance($this->mapCustomerBalance($data));
+            ->setCustomerBalance($this->mapCustomerBalance($data))
+            ->setIsEliteClub($data['Data']['EliteClub'] !== null);
 
         return $customerTransfer;
     }
