@@ -7,8 +7,10 @@
 
 {% block body %}
     {% set payment = data.mainPayment ?? data.payments[0] %}
-    <li class="{{ config.name }}__item">{{ payment.paymentProvider | trans }}</li>
-    <li class="{{ config.name }}__item">{{ 'customer.order.payment_method' | trans }}: {{ payment.paymentMethod | trans | capitalize }}</li>
+    {% set methodTranslationKey = 'payment.payment_method.' ~ (payment.paymentMethod | pascalToSnakeCase) %}
+    {% set providerTranslationKey = 'payment.payment_provider.' ~ (payment.paymentProvider | pascalToSnakeCase) %}
+    <li class="{{ config.name }}__item">{{ providerTranslationKey | trans }}</li>
+    <li class="{{ config.name }}__item">{{ 'customer.order.payment_method' | trans }}: {{ methodTranslationKey | trans }}</li>
     <li class="{{ config.name }}__item">{{ payment.amount | money(true, data.currencyIsoCode) }}</li>
 
     {% if data.payments[0].paymentMethod == 'dummyPrepayment' %}

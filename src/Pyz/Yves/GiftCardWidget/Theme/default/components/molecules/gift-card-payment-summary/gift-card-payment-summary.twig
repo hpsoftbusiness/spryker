@@ -28,7 +28,9 @@
             </li>
         {% else %}
             <li class="{{ config.name }}__list-item">
-                {{ payment.paymentMethod | trans }} <span class="float-right">- {{ payment.amount | money }}</span>
+                {% set paymentMethodTranslationKey = 'payment.payment_method.' ~ (payment.paymentMethod | pascalToSnakeCase) %}
+                {{ paymentMethodTranslationKey | trans }}
+                <span class="float-right">- {{ payment.amount | money }}</span>
             </li>
         {% endif %}
     {% endfor %}

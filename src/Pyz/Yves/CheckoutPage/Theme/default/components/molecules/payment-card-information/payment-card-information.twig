@@ -14,7 +14,8 @@
     {% set dummyPayment = 'dummyPaymentCreditCard' %}
 
     <h4 class="title title--secondary-small grid grid--middle">
-        <span class="spacing-right spacing-right--big">{{ data.payment.paymentMethod | trans }}</span>
+        {% set paymentMethodTranslationKey = 'payment.payment_method.' ~ (data.payment.paymentMethod | pascalToSnakeCase) %}
+        <span class="spacing-right spacing-right--big">{{ paymentMethodTranslationKey | trans }}</span>
 
         {% if data.payment.dummyPayment and data.payment.dummyPayment.cardType %}
             <span class="{{ config.name }}__logo">
@@ -29,7 +30,8 @@
                     {% if payment.giftCard is defined and payment.giftCard %}
                         {{ 'cart.giftcard.label' | trans }}
                     {% else %}
-                        {{ payment.paymentMethod }}
+                        {% set paymentMethodTranslationKey = 'payment.payment_method.' ~ (payment.paymentMethod | pascalToSnakeCase) %}
+                        {{ paymentMethodTranslationKey | trans }}
                     {% endif %}
                 </li>
             {% endfor %}
