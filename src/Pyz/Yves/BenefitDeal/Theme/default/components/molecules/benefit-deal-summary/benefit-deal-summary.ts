@@ -9,6 +9,7 @@ export default class BenefitDealSummary extends Component {
     protected recalculateRoute: string;
     protected finalAmountSelector: string;
     protected totalUsedShoppingPointsSelector: string;
+    protected useBenefitVoucherSelector: string;
 
     protected readyCallback(): void {
     }
@@ -21,8 +22,11 @@ export default class BenefitDealSummary extends Component {
         this.recalculateRoute = '/calculation/recalculate';
         this.finalAmountSelector = '#benefit-deal-summary__final-amount';
         this.totalUsedShoppingPointsSelector = '.benefit-deal-summary__total-used-shopping-points';
+        this.useBenefitVoucherSelector = '#benefit_deal_collection_form_useBenefitVoucher';
 
+        this.enableDisableBenefitVouchersAmount();
         this.recalculatePriceToPay();
+        this.onUseBenefitVoucherChange();
         this.onInputChange();
     }
 
@@ -30,10 +34,29 @@ export default class BenefitDealSummary extends Component {
         let self = this;
         $(self.useShoppingPointSelector
             + ','
+            + self.useBenefitVoucherSelector
+            + ','
             + self.benefitVouchersAmountSelector
         ).on('input', function() {
             self.recalculatePriceToPay();
         });
+    }
+
+    protected onUseBenefitVoucherChange(): void {
+        let self = this;
+        $(self.useBenefitVoucherSelector).on('input', function() {
+            self.enableDisableBenefitVouchersAmount();
+        });
+    }
+
+    protected enableDisableBenefitVouchersAmount(): void {
+        let self = this,
+        useBenefitVoucher = $(self.useBenefitVoucherSelector).prop('checked');
+        if (useBenefitVoucher) {
+            $(self.benefitVouchersAmountSelector).removeAttr('disabled');
+        } else {
+            $(self.benefitVouchersAmountSelector).attr('disabled', 'disabled');
+        }
     }
 
     protected recalculatePriceToPay(): void {
@@ -49,7 +72,8 @@ export default class BenefitDealSummary extends Component {
         let self = this,
             callData = {
                 items: {},
-                total_used_benefit_voucher_amount: $(this.benefitVouchersAmountSelector).val()
+                total_used_benefit_voucher_amount: $(this.benefitVouchersAmountSelector).val(),
+                use_benefit_voucher: $(this.useBenefitVoucherSelector).prop('checked')
             };
 
         $(self.useShoppingPointSelector).each(function() {

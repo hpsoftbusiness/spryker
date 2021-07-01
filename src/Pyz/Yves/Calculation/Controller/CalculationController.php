@@ -41,7 +41,7 @@ class CalculationController extends AbstractController
 
         $totalVoucherAmount = (int)($requestData['total_used_benefit_voucher_amount'] ?? 0);
         $totalVoucherAmount *= 100;
-        $isBenefitVoucherUsed = $totalVoucherAmount > 0;
+        $isBenefitVoucherUsed = (bool)($requestData['use_benefit_voucher'] ?? false);
         $quote->setUseBenefitVoucher($isBenefitVoucherUsed);
         $quote->setTotalUsedBenefitVouchersAmount($totalVoucherAmount);
 

@@ -62,6 +62,19 @@
 
             <li class="{{ config.name }}__item {{ config.name }}__total spacing-y spacing-y--bigger">
                 <label class="{{ config.name }}__use-benefit">
+                    {{ form_widget(data.form.useBenefitVoucher, {
+                        required: false,
+                        component: molecule('toggler-checkbox'),
+                        label: 'checkout.step.benefit_deal.use_voucher' | trans,
+                        attributes: {
+                            'target-class-name': 'benefit-deal-use-voucher'
+                        }
+                    }) }}
+                </label>
+            </li>
+
+            <li class="{{ config.name }}__item {{ config.name }}__total spacing-y spacing-y--bigger">
+                <label class="{{ config.name }}__use-benefit">
                     {{ form_widget(data.form.totalUsedBenefitVouchersAmount, {
                         required: false,
                     }) }}
