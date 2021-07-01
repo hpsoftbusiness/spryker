@@ -49,8 +49,7 @@
 
     {% if data.promotion == true and data.promotionKind == 'shopping-point' %}
 
-        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">-&nbsp;{{ data.discount | money(false, data.currencyIsoCode) }}</span>
-        &nbsp;&nbsp;
+        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">-&nbsp;{{ data.discount }}</span>&nbsp;
         <svg class="icon icon-allign-shopping" data-qa="component icon" title="shopping-point">
             <use xlink:href="#:shopping-point"></use>
         </svg>
