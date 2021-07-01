@@ -36,13 +36,13 @@ class SalesFacadeTest extends Unit
     ];
 
     private const DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_BV = [
-        PyzSalesOrderItemBenefitDealEntityTransfer::ORIGIN_UNIT_GROSS_PRICE => 1500,
+        PyzSalesOrderItemBenefitDealEntityTransfer::UNIT_BENEFIT_PRICE => 1500,
         PyzSalesOrderItemBenefitDealEntityTransfer::BENEFIT_VOUCHER_AMOUNT => 500,
         PyzSalesOrderItemBenefitDealEntityTransfer::TYPE => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
     ];
 
     private const DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_SP = [
-        PyzSalesOrderItemBenefitDealEntityTransfer::ORIGIN_UNIT_GROSS_PRICE => 1000,
+        PyzSalesOrderItemBenefitDealEntityTransfer::UNIT_BENEFIT_PRICE => 1000,
         PyzSalesOrderItemBenefitDealEntityTransfer::SHOPPING_POINTS_AMOUNT => 25.55,
         PyzSalesOrderItemBenefitDealEntityTransfer::TYPE => MyWorldPaymentConfig::PAYMENT_METHOD_SHOPPING_POINTS,
     ];
@@ -101,8 +101,8 @@ class SalesFacadeTest extends Unit
             $orderTransfer->getItems()[0]->getTotalUsedBenefitVouchersAmount()
         );
         self::assertEquals(
-            self::DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_BV[PyzSalesOrderItemBenefitDealEntityTransfer::ORIGIN_UNIT_GROSS_PRICE],
-            $orderTransfer->getItems()[0]->getOriginUnitGrossPrice()
+            self::DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_BV[PyzSalesOrderItemBenefitDealEntityTransfer::UNIT_BENEFIT_PRICE],
+            $orderTransfer->getItems()[0]->getUnitBenefitPrice()
         );
         self::assertTrue($orderTransfer->getItems()[0]->getUseBenefitVoucher());
 
@@ -111,8 +111,8 @@ class SalesFacadeTest extends Unit
             $orderTransfer->getItems()[1]->getTotalUsedShoppingPointsAmount()
         );
         self::assertEquals(
-            self::DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_SP[PyzSalesOrderItemBenefitDealEntityTransfer::ORIGIN_UNIT_GROSS_PRICE],
-            $orderTransfer->getItems()[1]->getOriginUnitGrossPrice()
+            self::DATA_SALES_ORDER_ITEM_BENEFIT_DEAL_SP[PyzSalesOrderItemBenefitDealEntityTransfer::UNIT_BENEFIT_PRICE],
+            $orderTransfer->getItems()[1]->getUnitBenefitPrice()
         );
     }
 

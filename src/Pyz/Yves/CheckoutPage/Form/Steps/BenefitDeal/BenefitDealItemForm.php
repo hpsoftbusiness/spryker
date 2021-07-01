@@ -10,6 +10,7 @@ namespace Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal;
 use Generated\Shared\Transfer\ItemTransfer;
 use Spryker\Yves\Kernel\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,6 +21,7 @@ class BenefitDealItemForm extends AbstractType
 {
     public const FIELD_USE_BENEFIT = 'useBenefitVoucher';
     public const FIELD_USE_SHOPPING_POINTS = 'useShoppingPoints';
+    public const FIELD_OTHER_ITEM = 'otherItem';
     public const FIELD_ITEMS_WITH_BENEFITS = 'amountItemsToUseBenefitVoucher';
 
     /**
@@ -31,28 +33,17 @@ class BenefitDealItemForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $itemTransfer = $this->findItemTransfer($builder, $options);
-        if ($itemTransfer->getShoppingPointsDeal() && $itemTransfer->getShoppingPointsDeal()->getIsActive()) {
+        if ($itemTransfer->getShoppingPointsDeal()
+            && $itemTransfer->getShoppingPointsDeal()->getIsActive()
+        ) {
             $this->addUseShoppingPointsSubForm($builder, $itemTransfer);
-        } else {
+        } elseif ($itemTransfer->getBenefitVoucherDealData()
+            && $itemTransfer->getBenefitVoucherDealData()->getAmount() > 0
+        ) {
             $this->addUseBenefitSubForm($builder, $itemTransfer);
+        } else {
+            $this->addOtherItemSubForm($builder);
         }
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return $this
-     */
-    private function addUseBenefitSubForm(FormBuilderInterface $builder, ItemTransfer $itemTransfer)
-    {
-        $builder->add(static::FIELD_USE_BENEFIT, CheckboxType::class, [
-            'value' => (bool)$itemTransfer->getUseBenefitVoucher(),
-            'label' => ' ',
-            'required' => false,
-        ]);
-
-        return $this;
     }
 
     /**
@@ -67,6 +58,40 @@ class BenefitDealItemForm extends AbstractType
             'value' => (bool)$itemTransfer->getUseShoppingPoints(),
             'label' => ' ',
             'required' => false,
+            'attr' => [
+                'class' => 'benefit_deal_use_shopping_points',
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return $this
+     */
+    private function addUseBenefitSubForm(FormBuilderInterface $builder, ItemTransfer $itemTransfer)
+    {
+        $builder->add(static::FIELD_USE_BENEFIT, HiddenType::class, [
+            'data' => (bool)$itemTransfer->getUseBenefitVoucher(),
+            'label' => ' ',
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return $this
+     */
+    private function addOtherItemSubForm(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_OTHER_ITEM, HiddenType::class, [
+            'data' => false,
+            'label' => ' ',
         ]);
 
         return $this;

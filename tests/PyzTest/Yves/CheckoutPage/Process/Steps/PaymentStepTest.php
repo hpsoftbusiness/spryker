@@ -30,6 +30,7 @@ use Pyz\Yves\CheckoutPage\Process\Steps\ProductSellableChecker\ProductSellableCh
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\DummyPaymentStepHandlerPlugin;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use PyzTest\Yves\CheckoutPage\CheckoutPageProcessTester;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverter;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Translator\TranslatorInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
@@ -154,6 +155,8 @@ class PaymentStepTest extends Unit
     }
 
     /**
+     * @group testNotEnoughBenefitVouchersBalanceCausesPreConditionFail
+     *
      * @return void
      */
     public function testNotEnoughBenefitVouchersBalanceCausesPreConditionFail(): void
@@ -162,6 +165,7 @@ class PaymentStepTest extends Unit
         $quoteTransfer = $this->tester->buildQuoteTransfer([
             QuoteTransfer::CUSTOMER => $customerTransfer->toArray(),
             QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
+            QuoteTransfer::USE_BENEFIT_VOUCHER => true,
         ], [
             [
                 ItemTransfer::ID_PRODUCT_ABSTRACT => 2,
@@ -261,6 +265,8 @@ class PaymentStepTest extends Unit
 
         $quoteTransfer = $this->tester->buildQuoteTransfer([
             QuoteTransfer::CUSTOMER => $customerTransfer->toArray(),
+            QuoteTransfer::USE_BENEFIT_VOUCHER => true,
+            QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 100,
         ], [
             [
                 ItemTransfer::ID_PRODUCT_ABSTRACT => 2,
@@ -511,7 +517,8 @@ class PaymentStepTest extends Unit
         return new PaymentPreConditionChecker(
             $this->mockFlashMessenger(),
             $this->mockTranslator(),
-            $this->tester->getLocator()->customer()->service()
+            $this->tester->getLocator()->customer()->service(),
+            new IntegerToDecimalConverter()
         );
     }
 

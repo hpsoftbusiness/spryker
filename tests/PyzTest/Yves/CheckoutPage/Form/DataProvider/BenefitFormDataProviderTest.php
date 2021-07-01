@@ -51,7 +51,7 @@ class BenefitFormDataProviderTest extends Unit
     /**
      * @return void
      */
-    public function testFormOptionsAppendedWithBenefitDealItemsOnly(): void
+    public function testFormOptionsAppendedWithAllItems(): void
     {
         $quoteTransfer = $this->tester->buildQuoteTransfer([], [
             [
@@ -84,13 +84,7 @@ class BenefitFormDataProviderTest extends Unit
          */
         $benefitDealItems = $options[BenefitDealCollectionForm::OPTION_KEY_ITEMS] ?? null;
         self::assertNotNull($benefitDealItems);
-        self::assertCount(2, $benefitDealItems);
-        foreach ($benefitDealItems as $itemTransfer) {
-            self::assertContains($itemTransfer->getSku(), [
-                self::ITEM_SKU_WITH_BV_DEAL_ACTIVE,
-                self::ITEM_SKU_WITH_SP_DEAL_ACTIVE,
-            ]);
-        }
+        self::assertCount($quoteTransfer->getItems()->count(), $benefitDealItems);
     }
 
     /**

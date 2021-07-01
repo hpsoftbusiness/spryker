@@ -147,7 +147,7 @@ class BenefitDealFacadeTest extends Unit
                 BenefitVoucherDealDataTransfer::IS_STORE => true,
             ],
             ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 25,
-            ItemTransfer::ORIGIN_UNIT_GROSS_PRICE => 125,
+            ItemTransfer::UNIT_BENEFIT_PRICE => 1500,
         ]);
         $salesOrderItemEntityTransfer = new SpySalesOrderItemEntityTransfer();
 
@@ -163,8 +163,8 @@ class BenefitDealFacadeTest extends Unit
             $salesOrderItemEntityTransfer->getPyzSalesOrderItemBenefitDeals()[0]->getBenefitVoucherAmount()
         );
         self::assertEquals(
-            125,
-            $salesOrderItemEntityTransfer->getPyzSalesOrderItemBenefitDeals()[0]->getOriginUnitGrossPrice()
+            1500,
+            $salesOrderItemEntityTransfer->getPyzSalesOrderItemBenefitDeals()[0]->getUnitBenefitPrice()
         );
     }
 
@@ -199,7 +199,7 @@ class BenefitDealFacadeTest extends Unit
                 ShoppingPointsDealTransfer::SHOPPING_POINTS_QUANTITY => 5,
             ],
             ItemTransfer::TOTAL_USED_SHOPPING_POINTS_AMOUNT => 10,
-            ItemTransfer::ORIGIN_UNIT_GROSS_PRICE => 125,
+            ItemTransfer::UNIT_BENEFIT_PRICE => 125,
         ]);
         $salesOrderItemEntityTransfer = new SpySalesOrderItemEntityTransfer();
 
@@ -216,7 +216,7 @@ class BenefitDealFacadeTest extends Unit
         );
         self::assertEquals(
             125,
-            $salesOrderItemEntityTransfer->getPyzSalesOrderItemBenefitDeals()[0]->getOriginUnitGrossPrice()
+            $salesOrderItemEntityTransfer->getPyzSalesOrderItemBenefitDeals()[0]->getUnitBenefitPrice()
         );
     }
 
@@ -265,14 +265,14 @@ class BenefitDealFacadeTest extends Unit
             if ($itemEntity->getSku() === self::ITEM_SKU_WITH_BENEFIT_VOUCHER) {
                 $itemBenefitDealEntity->setType(self::PAYMENT_NAME_BENEFIT_VOUCHER);
                 $itemBenefitDealEntity->setBenefitVoucherAmount(25);
-                $itemBenefitDealEntity->setOriginUnitGrossPrice(150);
+                $itemBenefitDealEntity->setUnitBenefitPrice(150);
                 $itemBenefitDealEntity->save();
             }
 
             if ($itemEntity->getSku() === self::ITEM_SKU_WITH_SHOPPING_POINTS) {
                 $itemBenefitDealEntity->setType(self::PAYMENT_NAME_SHOPPING_POINTS);
                 $itemBenefitDealEntity->setShoppingPointsAmount(10);
-                $itemBenefitDealEntity->setOriginUnitGrossPrice(200);
+                $itemBenefitDealEntity->setUnitBenefitPrice(200);
                 $itemBenefitDealEntity->save();
             }
 
@@ -281,13 +281,13 @@ class BenefitDealFacadeTest extends Unit
 
         $this->sut->expandOrderItems($itemTransfers);
 
-        self::assertEquals(150, $itemTransfers[0]->getOriginUnitGrossPrice());
+        self::assertEquals(150, $itemTransfers[0]->getUnitBenefitPrice());
         self::assertEquals(25, $itemTransfers[0]->getTotalUsedBenefitVouchersAmount());
 
-        self::assertEquals(200, $itemTransfers[1]->getOriginUnitGrossPrice());
+        self::assertEquals(200, $itemTransfers[1]->getUnitBenefitPrice());
         self::assertEquals(10, $itemTransfers[1]->getTotalUsedShoppingPointsAmount());
 
-        self::assertNull($itemTransfers[2]->getOriginUnitGrossPrice());
+        self::assertNull($itemTransfers[2]->getUnitBenefitPrice());
         self::assertNull($itemTransfers[2]->getTotalUsedShoppingPointsAmount());
         self::assertNull($itemTransfers[2]->getTotalUsedBenefitVouchersAmount());
     }

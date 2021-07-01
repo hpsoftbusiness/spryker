@@ -312,6 +312,8 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
     }
 
     /**
+     * @group testQuoteBenefitVouchersCalculatedCorrectly
+     *
      * @return void
      */
     public function testQuoteBenefitVouchersCalculatedCorrectly(): void
@@ -1130,8 +1132,19 @@ class MyWorldPaymentsCalculationFacadeTest extends Unit
      */
     private function createQuote(CustomerTransfer $customerTransfer, array $items): QuoteTransfer
     {
+        $totalUsedBenefitVouchersAmount = array_reduce($items, function (int $carry, ItemTransfer $itemTransfer) {
+            $totalBenefitAmount = 0;
+            if ($itemTransfer->getBenefitVoucherDealData() !== null) {
+                $totalBenefitAmount = $itemTransfer->getBenefitVoucherDealData()->getAmount() * $itemTransfer->getQuantity();
+            }
+
+            return $carry + $totalBenefitAmount;
+        }, 0);
+
         return $this->tester->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer->toArray(),
+            QuoteTransfer::USE_BENEFIT_VOUCHER => true,
+            QuoteTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => $totalUsedBenefitVouchersAmount,
             QuoteTransfer::ITEMS => array_map(function (ItemTransfer $itemTransfer) {
                 return $itemTransfer->toArray();
             }, $items),

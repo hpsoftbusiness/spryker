@@ -7,19 +7,24 @@
 
 namespace Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal;
 
+use Pyz\Yves\CheckoutPage\Form\FormFactory;
 use Spryker\Yves\Kernel\Form\AbstractType;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 /**
  * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageFactory getFactory()()
  */
 class BenefitDealCollectionForm extends AbstractType
 {
     public const FORM_FIELD_BENEFIT_ITEMS = 'benefitItems';
-
     public const OPTION_KEY_ITEMS = 'benefitItems';
+    public const FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT = 'totalUsedBenefitVouchersAmount';
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -30,6 +35,7 @@ class BenefitDealCollectionForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->addCollectionsForUseBenefitVouchers($builder, $options);
+        $this->addFieldTotalUsedBenefitVouchersAmount($builder, $options);
     }
 
     /**
@@ -62,5 +68,41 @@ class BenefitDealCollectionForm extends AbstractType
                 static::OPTION_KEY_ITEMS => $listItems,
             ],
         ]);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $options
+     *
+     * @return void
+     */
+    protected function addFieldTotalUsedBenefitVouchersAmount(FormBuilderInterface $builder, array $options): void
+    {
+        $builder->add(static::FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT, NumberType::class, [
+            'constraints' => [
+                new PositiveOrZero(),
+            ],
+            'html5' => true,
+            'scale' => 0,
+        ]);
+
+        $builder->get(static::FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT)
+            ->addModelTransformer($this->getBenefitVoucherAmountTransformer());
+    }
+
+    /**
+     * @return \Symfony\Component\Form\DataTransformerInterface
+     */
+    private function getBenefitVoucherAmountTransformer(): DataTransformerInterface
+    {
+        return $this->getFormFactory()->createBenefitVoucherAmountTransformer();
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Form\FormFactory
+     */
+    private function getFormFactory(): FormFactory
+    {
+        return $this->getFactory()->createCheckoutFormFactory();
     }
 }

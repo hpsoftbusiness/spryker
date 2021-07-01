@@ -70,7 +70,7 @@
 </td>
 <td>
     {% if orderItem.useBenefitVoucher %}
-        {% set benefitPrice = orderItem.benefitVoucherDealData.salesPrice ?? 0 %}
+        {% set benefitPrice = orderItem.unitBenefitPrice ?? orderItem.benefitVoucherDealData.salesPrice ?? 0 %}
         {{ benefitPrice | money(true, order.currencyIsoCode) }}
     {% elseif orderItem.useShoppingPoints %}
         {% set benefitPrice = orderItem.shoppingPointsDeal.price ?? 0 %}

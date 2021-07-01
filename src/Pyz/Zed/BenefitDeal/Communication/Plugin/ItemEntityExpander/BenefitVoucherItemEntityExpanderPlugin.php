@@ -37,8 +37,8 @@ class BenefitVoucherItemEntityExpanderPlugin extends AbstractPlugin implements I
         }
 
         $orderSalesItemBenefitDealEntity = new PyzSalesOrderItemBenefitDealEntityTransfer();
-        $orderSalesItemBenefitDealEntity->setOriginUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
         $orderSalesItemBenefitDealEntity->setBenefitVoucherAmount($itemTransfer->getTotalUsedBenefitVouchersAmount());
+        $orderSalesItemBenefitDealEntity->setUnitBenefitPrice($itemTransfer->getUnitBenefitPrice());
         $orderSalesItemBenefitDealEntity->setType($this->getType());
         $salesOrderItemEntity->addPyzSalesOrderItemBenefitDeals($orderSalesItemBenefitDealEntity);
     }

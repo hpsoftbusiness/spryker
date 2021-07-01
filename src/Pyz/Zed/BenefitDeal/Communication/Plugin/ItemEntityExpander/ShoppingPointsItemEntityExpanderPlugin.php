@@ -37,8 +37,8 @@ class ShoppingPointsItemEntityExpanderPlugin extends AbstractPlugin implements I
         }
 
         $orderSalesItemBenefitDealEntity = new PyzSalesOrderItemBenefitDealEntityTransfer();
-        $orderSalesItemBenefitDealEntity->setOriginUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
         $orderSalesItemBenefitDealEntity->setShoppingPointsAmount($itemTransfer->getTotalUsedShoppingPointsAmount());
+        $orderSalesItemBenefitDealEntity->setUnitBenefitPrice($itemTransfer->getUnitBenefitPrice());
         $orderSalesItemBenefitDealEntity->setType($this->getType());
         $salesOrderItemEntity->addPyzSalesOrderItemBenefitDeals($orderSalesItemBenefitDealEntity);
     }

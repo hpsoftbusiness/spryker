@@ -8,6 +8,8 @@
 namespace PyzTest\Zed\Sales;
 
 use Codeception\Actor;
+use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\Transfer\ItemTransfer;
 
 /**
  * Inherited Methods
@@ -29,7 +31,13 @@ class SalesBusinessTester extends Actor
 {
     use _generated\SalesBusinessTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * @param array $overrideData
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    public function buildItemTransfer(array $overrideData): ItemTransfer
+    {
+        return (new ItemBuilder($overrideData))->build();
+    }
 }

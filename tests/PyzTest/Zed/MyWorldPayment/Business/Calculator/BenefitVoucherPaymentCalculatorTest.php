@@ -12,8 +12,9 @@ use Generated\Shared\DataBuilder\CalculableObjectBuilder;
 use Generated\Shared\Transfer\BenefitVoucherDealDataTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
-use Pyz\Service\Customer\CustomerServiceInterface;
+use Generated\Shared\Transfer\PaymentTransfer;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
+use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 
 /**
  * Auto-generated group annotations
@@ -49,18 +50,20 @@ class BenefitVoucherPaymentCalculatorTest extends Unit
     /**
      * @dataProvider provideItemData
      *
-     * @param array $itemData
+     * @param array $calculableObjectData
      * @param array $itemExpectedTotalUsedBenefitVoucherAmount
+     * @param int|null $expectedTotalUsedBenefitVoucherAmount
      *
      * @return void
      */
-    public function testBenefitVoucherAmountSplitByQuantity(
-        array $itemData,
-        array $itemExpectedTotalUsedBenefitVoucherAmount
+    public function testRecalculateQuote(
+        array $calculableObjectData,
+        array $itemExpectedTotalUsedBenefitVoucherAmount,
+        ?int $expectedTotalUsedBenefitVoucherAmount
     ): void {
-        $calculableObjectTransfer = $this->buildCalculableObjectTransfer($itemData);
+        $calculableObjectTransfer = $this->buildCalculableObjectTransfer($calculableObjectData);
 
-        $calculableObjectTransfer = $this->sut->recalculateOrder($calculableObjectTransfer);
+        $calculableObjectTransfer = $this->sut->recalculateQuote($calculableObjectTransfer);
 
         foreach ($calculableObjectTransfer->getItems() as $index => $itemTransfer) {
             self::assertEquals(
@@ -68,6 +71,57 @@ class BenefitVoucherPaymentCalculatorTest extends Unit
                 $itemTransfer->getTotalUsedBenefitVouchersAmount()
             );
         }
+
+        self::assertEquals(
+            $expectedTotalUsedBenefitVoucherAmount,
+            $calculableObjectTransfer->getTotalUsedBenefitVouchersAmount()
+        );
+
+        $paymentTransfer = $this->findBenefitVoucherPaymentMethod($calculableObjectTransfer);
+        if (!$expectedTotalUsedBenefitVoucherAmount) {
+            self::assertNull($paymentTransfer);
+        } else {
+            self::assertEquals($expectedTotalUsedBenefitVoucherAmount, $paymentTransfer->getAmount());
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function testRecalculateOrderSetsBenefitPrice(): void
+    {
+        $calculableObjectTransfer = $this->buildCalculableObjectTransfer([
+            CalculableObjectTransfer::ITEMS => [
+                [
+                    ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                    ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
+                    ItemTransfer::QUANTITY => 1,
+                    ItemTransfer::UNIT_GROSS_PRICE => 600,
+                ],
+                [
+                    ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => null,
+                    ItemTransfer::QUANTITY => 1,
+                    ItemTransfer::UNIT_GROSS_PRICE => 600,
+                ],
+                [
+                    ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                    ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
+                    ItemTransfer::QUANTITY => 2,
+                    ItemTransfer::UNIT_GROSS_PRICE => 600,
+                ],
+            ],
+        ]);
+
+        $this->sut->recalculateOrder($calculableObjectTransfer);
+
+        self::assertEquals(400, $calculableObjectTransfer->getItems()[0]->getUnitBenefitPrice());
+        self::assertEquals(400, $calculableObjectTransfer->getItems()[0]->getSumBenefitPrice());
+
+        self::assertNull($calculableObjectTransfer->getItems()[1]->getUnitBenefitPrice());
+        self::assertNull($calculableObjectTransfer->getItems()[1]->getSumBenefitPrice());
+
+        self::assertEquals(500, $calculableObjectTransfer->getItems()[2]->getUnitBenefitPrice());
+        self::assertEquals(1000, $calculableObjectTransfer->getItems()[2]->getSumBenefitPrice());
     }
 
     /**
@@ -77,147 +131,201 @@ class BenefitVoucherPaymentCalculatorTest extends Unit
     {
         return [
             'single item with Benefit Voucher' => [
-                'items' => [
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 200,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::USE_BENEFIT_VOUCHER => true,
+                    CalculableObjectTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 600,
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 2,
+                            ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 200,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
+                            ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
                     ],
                 ],
-                'expectedAmount' => [
-                    200,
+                'expectedItemAmount' => [
+                    400,
                 ],
+                'expectedTotalAmount' => 400,
             ],
-            'single item with higher quantity and Benefit Voucher' => [
-                'items' => [
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 200,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+            'single item with lower quantity and Benefit Voucher' => [
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::USE_BENEFIT_VOUCHER => true,
+                    CalculableObjectTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 300,
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 2,
+                            ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 200,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
-                    ],
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 200,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+                        [
+                            ItemTransfer::QUANTITY => 1,
+                            ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
                     ],
                 ],
-                'expectedAmount' => [
-                    200,
-                    200,
+                'expectedItemAmount' => [
+                    300,
+                    null,
                 ],
+                'expectedTotalAmount' => 300,
             ],
             'multiple items with Benefit Voucher' => [
-                'items' => [
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 200,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::USE_BENEFIT_VOUCHER => true,
+                    CalculableObjectTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 720,
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 2,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 200,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
-                    ],
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 200,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+                        [
+                            ItemTransfer::QUANTITY => 1,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 300,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 400,
-
-                    ],
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => false,
-                    ],
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 100,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+                        [
+                            ItemTransfer::QUANTITY => 1,
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
-                    ],
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 100,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+                        [
+                            ItemTransfer::QUANTITY => 3,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 80,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
                     ],
                 ],
                 'expectedAmount' => [
-                    200,
-                    200,
+                    400,
+                    300,
                     null,
-                    100,
-                    100,
+                    20,
                 ],
+                'expectedTotalAmount' => 720,
             ],
             'item missing Benefit Voucher data' => [
-                'items' => [
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 300,
+                    CalculableObjectTransfer::USE_BENEFIT_VOUCHER => true,
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 1,
+                            ItemTransfer::USE_BENEFIT_VOUCHER => true,
+                        ],
                     ],
                 ],
                 'expectedAmount' => [
                     null,
                 ],
+                'expectedTotalAmount' => null,
             ],
-            'item not flagged for Benefit Voucher does not get processed' => [
-                'items' => [
-                    [
-                        ItemTransfer::QUANTITY => 1,
-                        ItemTransfer::USE_BENEFIT_VOUCHER => false,
-                        ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
-                            BenefitVoucherDealDataTransfer::AMOUNT => 100,
-                            BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
-                            BenefitVoucherDealDataTransfer::IS_STORE => true,
+            'quote use benefit voucher flag not set' => [
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 300,
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 1,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 200,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
                         ],
-                        ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
                     ],
                 ],
                 'expectedAmount' => [
-                    200,
+                    null,
                 ],
+                'expectedTotalAmount' => null,
+            ],
+            'item not flagged for item Benefit Voucher gets cleared' => [
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 1,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 100,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
+                            ItemTransfer::TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT => 200,
+                        ],
+                    ],
+                ],
+                'expectedAmount' => [
+                    null,
+                ],
+                'expectedTotalAmount' => null,
+            ],
+            'payment method removed if Benefit Voucher not applied' => [
+                'calculableObjectData' => [
+                    CalculableObjectTransfer::ITEMS => [
+                        [
+                            ItemTransfer::QUANTITY => 1,
+                            ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
+                                BenefitVoucherDealDataTransfer::AMOUNT => 100,
+                                BenefitVoucherDealDataTransfer::SALES_PRICE => 800,
+                                BenefitVoucherDealDataTransfer::IS_STORE => true,
+                            ],
+                        ],
+                    ],
+                    CalculableObjectTransfer::PAYMENTS => [
+                        [
+                            PaymentTransfer::PAYMENT_METHOD => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+                            PaymentTransfer::PAYMENT_SELECTION => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+                            PaymentTransfer::AMOUNT => 100,
+                        ],
+                    ],
+                ],
+                'expectedAmount' => [
+                    null,
+                ],
+                'expectedTotalAmount' => null,
             ],
         ];
     }
 
     /**
-     * @param array $itemData
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return \Generated\Shared\Transfer\PaymentTransfer|null
+     */
+    private function findBenefitVoucherPaymentMethod(CalculableObjectTransfer $calculableObjectTransfer): ?PaymentTransfer
+    {
+        foreach ($calculableObjectTransfer->getPayments() as $paymentTransfer) {
+            if ($paymentTransfer->getPaymentMethod() === MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME) {
+                return $paymentTransfer;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array $overrideData
      *
      * @return \Generated\Shared\Transfer\CalculableObjectTransfer
      */
-    private function buildCalculableObjectTransfer(array $itemData): CalculableObjectTransfer
+    private function buildCalculableObjectTransfer(array $overrideData): CalculableObjectTransfer
     {
-        return (new CalculableObjectBuilder([
-            CalculableObjectTransfer::ITEMS => $itemData,
-        ]))->build();
+        return (new CalculableObjectBuilder($overrideData))->build();
     }
 
     /**
@@ -226,16 +334,7 @@ class BenefitVoucherPaymentCalculatorTest extends Unit
     private function createBenefitVoucherPaymentCalculator(): BenefitVoucherPaymentCalculator
     {
         return new BenefitVoucherPaymentCalculator(
-            $this->tester->getConfig(),
-            $this->mockCustomerService()
+            $this->tester->getConfig()
         );
-    }
-
-    /**
-     * @return \Pyz\Service\Customer\CustomerServiceInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    private function mockCustomerService(): CustomerServiceInterface
-    {
-        return $this->createMock(CustomerServiceInterface::class);
     }
 }

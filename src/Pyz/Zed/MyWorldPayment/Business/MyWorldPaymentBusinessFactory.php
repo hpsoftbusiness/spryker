@@ -121,10 +121,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createBenefitVoucherPaymentCalculator()
     {
-        return new BenefitVoucherPaymentCalculator(
-            $this->getConfig(),
-            $this->getCustomerService()
-        );
+        return new BenefitVoucherPaymentCalculator($this->getConfig());
     }
 
     /**

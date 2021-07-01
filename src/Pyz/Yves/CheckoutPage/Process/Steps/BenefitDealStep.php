@@ -109,6 +109,7 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
         $customerTransfer = $dataTransfer->getCustomer();
 
         return [
+            'quoteTransfer' => $dataTransfer,
             'customerBalance' => [
                 'benefitVouchersBalance' => $this->customerService->getCustomerBenefitVoucherBalanceAmount(
                     $customerTransfer

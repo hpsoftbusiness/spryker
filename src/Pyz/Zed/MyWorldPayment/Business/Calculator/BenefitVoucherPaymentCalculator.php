@@ -11,7 +11,6 @@ use ArrayObject;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
-use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
@@ -26,20 +25,12 @@ class BenefitVoucherPaymentCalculator implements
     private $myWorldPaymentConfig;
 
     /**
-     * @var \Pyz\Service\Customer\CustomerServiceInterface
-     */
-    private $customerService;
-
-    /**
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
-     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
      */
     public function __construct(
-        MyWorldPaymentConfig $myWorldPaymentConfig,
-        CustomerServiceInterface $customerService
+        MyWorldPaymentConfig $myWorldPaymentConfig
     ) {
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
-        $this->customerService = $customerService;
     }
 
     /**
@@ -50,9 +41,24 @@ class BenefitVoucherPaymentCalculator implements
     public function recalculateQuote(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         $calculableObjectTransfer = $this->removePaymentMethod($calculableObjectTransfer);
+        $this->clearAppliedBenefitVouchers($calculableObjectTransfer);
 
-        if ($this->isBenefitVoucherUseSelected($calculableObjectTransfer)) {
-            $calculableObjectTransfer = $this->calculateBenefitVouchersAmount($calculableObjectTransfer);
+        if (!$calculableObjectTransfer->getUseBenefitVoucher()
+            || !$calculableObjectTransfer->getTotalUsedBenefitVouchersAmount()) {
+            $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount(null);
+
+            return $calculableObjectTransfer;
+        }
+
+        $this->calculateUsedBenefitVoucherAmountForItems($calculableObjectTransfer);
+        $this->recalculateTotalUsedBenefitVoucherAmount($calculableObjectTransfer);
+
+        if ($calculableObjectTransfer->getTotalUsedBenefitVouchersAmount() > 0) {
+            $payment = $this->createPaymentMethod($calculableObjectTransfer->getTotalUsedBenefitVouchersAmount());
+
+            $calculableObjectTransfer->addPayment($payment);
+        } else {
+            $calculableObjectTransfer->setUseBenefitVoucher(false);
         }
 
         return $calculableObjectTransfer;
@@ -66,13 +72,10 @@ class BenefitVoucherPaymentCalculator implements
     public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if (!$itemTransfer->getUseBenefitVoucher() || !$this->assertBenefitVoucherDealData($itemTransfer)) {
+            if (!$this->assertBenefitVoucherDealApplied($itemTransfer)) {
                 continue;
             }
 
-            $benefitVoucherData = $itemTransfer->getBenefitVoucherDealData();
-            $totalItemBenefitVoucherDiscountAmount = (int)($benefitVoucherData->getAmount() * $itemTransfer->getQuantity());
-            $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherDiscountAmount);
             $this->setUnitBenefitPrice($itemTransfer);
         }
 
@@ -82,47 +85,55 @@ class BenefitVoucherPaymentCalculator implements
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
+     * @return void
      */
-    private function calculateBenefitVouchersAmount(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
+    private function calculateUsedBenefitVoucherAmountForItems(CalculableObjectTransfer $calculableObjectTransfer): void
     {
-        $totalBenefitVouchersDiscountAmount = 0;
-        $customerTransfer = $calculableObjectTransfer->getOriginalQuote()->getCustomer();
-        $availableAmountOfBenefitVoucher = $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer);
-
+        $totalApplicableBenefitAmount = $calculableObjectTransfer->getTotalUsedBenefitVouchersAmount();
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if (!$this->assertBenefitVoucherDealData($itemTransfer)) {
-                $itemTransfer->setUseBenefitVoucher(false);
+            if ($totalApplicableBenefitAmount === 0) {
+                break;
+            }
 
+            if (!$this->assertItemBenefitVoucherApplicable($itemTransfer)) {
                 continue;
             }
 
-            if ($itemTransfer->getUseBenefitVoucher()) {
-                $benefitVoucherData = $itemTransfer->getBenefitVoucherDealData();
-                $totalItemBenefitVoucherDiscountAmount = (int)($benefitVoucherData->getAmount() * $itemTransfer->getQuantity());
-                if ($totalBenefitVouchersDiscountAmount + $totalItemBenefitVoucherDiscountAmount > $availableAmountOfBenefitVoucher) {
-                    $this->clearItemBenefitVoucherSelection($itemTransfer);
-
-                    continue;
-                }
-
-                $itemTransfer->setTotalUsedBenefitVouchersAmount($totalItemBenefitVoucherDiscountAmount);
-                $this->setUnitBenefitPrice($itemTransfer);
-                $totalBenefitVouchersDiscountAmount += $totalItemBenefitVoucherDiscountAmount;
-            } else {
-                $this->clearItemBenefitVoucherSelection($itemTransfer);
+            $itemApplicableBenefitAmount = $itemTransfer->getBenefitVoucherDealData()->getAmount() * $itemTransfer->getQuantity();
+            $amountToApply = min($totalApplicableBenefitAmount, $itemApplicableBenefitAmount);
+            if ($amountToApply > 0) {
+                $itemTransfer->setTotalUsedBenefitVouchersAmount($amountToApply);
+                $itemTransfer->setUseBenefitVoucher(true);
             }
+            $totalApplicableBenefitAmount -= $amountToApply;
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    private function recalculateTotalUsedBenefitVoucherAmount(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $totalAppliedAmount = 0;
+        foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
+            $totalAppliedAmount += (int)$itemTransfer->getTotalUsedBenefitVouchersAmount();
         }
 
-        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount($totalBenefitVouchersDiscountAmount);
+        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount($totalAppliedAmount);
+    }
 
-        if ($totalBenefitVouchersDiscountAmount > 0) {
-            $payment = $this->createPaymentMethod($totalBenefitVouchersDiscountAmount);
-
-            $calculableObjectTransfer->addPayment($payment);
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    private function clearAppliedBenefitVouchers(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
+            $this->clearItemBenefitVoucherSelection($itemTransfer);
         }
-
-        return $calculableObjectTransfer;
     }
 
     /**
@@ -132,9 +143,6 @@ class BenefitVoucherPaymentCalculator implements
      */
     private function setUnitBenefitPrice(ItemTransfer $itemTransfer): void
     {
-        /**
-         * TODO-Mantas adjust after BV amount splitting was implemented.
-         */
         $unitBenefitAmount = (int)($itemTransfer->getTotalUsedBenefitVouchersAmount() / $itemTransfer->getQuantity());
         $unitBenefitPrice = $itemTransfer->getUnitGrossPrice() - $unitBenefitAmount;
         $itemTransfer->setUnitBenefitPrice($unitBenefitPrice);
@@ -149,7 +157,7 @@ class BenefitVoucherPaymentCalculator implements
     private function clearItemBenefitVoucherSelection(ItemTransfer $itemTransfer): void
     {
         $itemTransfer->setUseBenefitVoucher(false);
-        $itemTransfer->setTotalUsedBenefitVouchersAmount(0);
+        $itemTransfer->setTotalUsedBenefitVouchersAmount(null);
     }
 
     /**
@@ -190,19 +198,20 @@ class BenefitVoucherPaymentCalculator implements
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
      * @return bool
      */
-    private function isBenefitVoucherUseSelected(CalculableObjectTransfer $calculableObjectTransfer): bool
+    private function assertBenefitVoucherDealApplied(ItemTransfer $itemTransfer): bool
     {
-        foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher()) {
-                return true;
-            }
-        }
+        try {
+            $itemTransfer->requireUseBenefitVoucher();
+            $itemTransfer->requireTotalUsedBenefitVouchersAmount();
 
-        return false;
+            return $itemTransfer->getUseBenefitVoucher();
+        } catch (RequiredTransferPropertyException $exception) {
+            return false;
+        }
     }
 
     /**
@@ -210,10 +219,12 @@ class BenefitVoucherPaymentCalculator implements
      *
      * @return bool
      */
-    private function assertBenefitVoucherDealData(ItemTransfer $itemTransfer): bool
+    private function assertItemBenefitVoucherApplicable(ItemTransfer $itemTransfer): bool
     {
         try {
             $itemTransfer->requireBenefitVoucherDealData();
+            $itemTransfer->getBenefitVoucherDealData()->requireSalesPrice();
+            $itemTransfer->getBenefitVoucherDealData()->requireAmount();
             $itemTransfer->getBenefitVoucherDealData()->requireIsStore();
 
             return $itemTransfer->getBenefitVoucherDealData()->getIsStore();

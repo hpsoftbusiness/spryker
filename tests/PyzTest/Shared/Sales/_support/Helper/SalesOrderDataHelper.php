@@ -132,7 +132,7 @@ class SalesOrderDataHelper extends BusinessHelper
     {
         $orderItemBenefitDealEntity = new PyzSalesOrderItemBenefitDeal();
         $orderItemBenefitDealEntity->setType(MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME);
-        $orderItemBenefitDealEntity->setOriginUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
+        $orderItemBenefitDealEntity->setUnitBenefitPrice($itemTransfer->getUnitBenefitPrice());
         $orderItemBenefitDealEntity->setBenefitVoucherAmount($itemTransfer->getTotalUsedBenefitVouchersAmount());
         $orderItemBenefitDealEntity->setFkSalesOrderItem($idSalesOrderItem);
         $orderItemBenefitDealEntity->save();
@@ -148,7 +148,7 @@ class SalesOrderDataHelper extends BusinessHelper
     {
         $orderItemBenefitDealEntity = new PyzSalesOrderItemBenefitDeal();
         $orderItemBenefitDealEntity->setType(MyWorldPaymentConfig::PAYMENT_METHOD_SHOPPING_POINTS);
-        $orderItemBenefitDealEntity->setOriginUnitGrossPrice($itemTransfer->getOriginUnitGrossPrice());
+        $orderItemBenefitDealEntity->setUnitBenefitPrice($itemTransfer->getUnitBenefitPrice());
         $orderItemBenefitDealEntity->setShoppingPointsAmount($itemTransfer->getTotalUsedShoppingPointsAmount());
         $orderItemBenefitDealEntity->setFkSalesOrderItem($idSalesOrderItem);
         $orderItemBenefitDealEntity->save();

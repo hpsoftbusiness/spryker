@@ -10,6 +10,7 @@ namespace PyzTest\Zed\MyWorldPayment\Business;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentCodeGenerateRequestTransfer;
 use Generated\Shared\Transfer\PaymentCodeValidateRequestTransfer;
 use Generated\Shared\Transfer\PaymentConfirmationRequestTransfer;
@@ -433,10 +434,14 @@ class MyWorldPaymentFacadeTest extends Unit
     public function testRecalculateBenefitVoucherForQuoteSuccess(): void
     {
         // Arrange
-        $itemTransfer = $this->tester->dataHelper->createItemBuilderWithBenefitVoucherDeal()->build();
+        $itemTransfer = $this->tester->dataHelper->createItemBuilderWithBenefitVoucherDeal([
+            ItemTransfer::QUANTITY => 3,
+        ])->build();
         $benefitVoucherDealData = $itemTransfer->getBenefitVoucherDealData();
         $calculableObjectTransfer = $this->tester->dataHelper->createCalculableObjectBuilder()->build();
         $calculableObjectTransfer->addItem($itemTransfer);
+        $calculableObjectTransfer->setTotalUsedBenefitVouchersAmount(700);
+        $calculableObjectTransfer->setUseBenefitVoucher(true);
 
         // Act
         $this->tester->getFacade()->recalculateItemsPricesForBenefitVoucherQuote($calculableObjectTransfer);
@@ -444,13 +449,12 @@ class MyWorldPaymentFacadeTest extends Unit
         // Assert
         $itemTransfer = $calculableObjectTransfer->getItems()[0];
 
-        $this->assertEquals($benefitVoucherDealData->getAmount(), $calculableObjectTransfer->getTotalUsedBenefitVouchersAmount());
-        $this->assertEquals($benefitVoucherDealData->getAmount(), $itemTransfer->getTotalUsedBenefitVouchersAmount());
-        $this->assertEquals($itemTransfer->getOriginUnitGrossPrice(), $itemTransfer->getUnitGrossPrice());
+        $this->assertEquals(666, $calculableObjectTransfer->getTotalUsedBenefitVouchersAmount());
+        $this->assertEquals(666, $itemTransfer->getTotalUsedBenefitVouchersAmount());
         $this->assertCount(1, $calculableObjectTransfer->getPayments());
         $paymentTransfer = $calculableObjectTransfer->getPayments()[0];
         $this->assertEquals(MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME, $paymentTransfer->getPaymentMethod());
-        $this->assertEquals($benefitVoucherDealData->getAmount(), $paymentTransfer->getAmount());
+        $this->assertEquals($itemTransfer->getTotalUsedBenefitVouchersAmount(), $paymentTransfer->getAmount());
     }
 
     /**

@@ -1,0 +1,45 @@
+@mixin checkout-page-benefit-deal-summary($name: '.benefit-deal-summary') {
+    #{$name} {
+        margin-top: rem(26);
+
+        &__inner {
+            border-top: rem(1) dotted $setting-color-gray-3;
+            overflow: hidden;
+            margin-bottom: rem(10);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                margin-bottom: rem(36);
+            }
+        }
+
+        &__item {
+            font: fw(regular) rem(14) $setting-font-family;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                font-size: rem(16);
+            }
+        }
+
+        &__tax {
+            color: $setting-color-gray-5;
+            font-size: rem(13);
+            margin-top: rem(10);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                font-size: rem(14);
+            }
+        }
+
+        &__total {
+            text-transform: uppercase;
+            font-size: rem(16);
+            font-weight: fw(bold);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                font-size: rem(18);
+            }
+        }
+    }
+}
+
+@include checkout-page-benefit-deal-summary();

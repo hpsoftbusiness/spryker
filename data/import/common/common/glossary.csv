@@ -19939,6 +19939,10 @@ checkout.step.benefit_deal.with_method,with,en_US
 checkout.step.benefit_deal.with_method,mit,de_DE
 checkout.step.benefit_deal.or,or,en_US
 checkout.step.benefit_deal.or,oder,de_DE
+checkout.step.benefit_deal.benefit_voucher,Benefit Voucher,en_US
+checkout.step.benefit_deal.benefit_voucher,Benefit Voucher,de_DE
+checkout.step.benefit_deal.total_used_shopping_points,Used Shopping Points,en_US
+checkout.step.benefit_deal.total_used_shopping_points,Eingelöste Shopping Points,de_DE
 merchant_profile.email,Email Address,en_US
 merchant_profile.email,E-Mail,de_DE
 merchant_profile.address,Address,en_US

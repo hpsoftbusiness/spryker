@@ -30,6 +30,8 @@ use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PostConditionChecker as Summ
 use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PreConditionChecker as SummaryStepPreConditionChecker;
 use Pyz\Yves\StepEngine\Process\StepCollection;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverter;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
 use Spryker\Shared\Translator\TranslatorInterface;
 use Spryker\Yves\StepEngine\Dependency\Step\StepInterface;
 use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
@@ -294,8 +296,17 @@ class StepFactory extends SprykerShopStepFactory
         return new PaymentPreConditionChecker(
             $this->getFlashMessenger(),
             $this->getTranslatorService(),
-            $this->getPyzCustomerService()
+            $this->getPyzCustomerService(),
+            $this->createIntegerToDecimalConverter()
         );
+    }
+
+    /**
+     * @return \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface
+     */
+    private function createIntegerToDecimalConverter(): IntegerToDecimalConverterInterface
+    {
+        return new IntegerToDecimalConverter();
     }
 
     /**

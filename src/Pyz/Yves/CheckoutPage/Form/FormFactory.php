@@ -14,12 +14,18 @@ use Pyz\Yves\CheckoutPage\Form\DataProvider\BenefitFormDataProvider;
 use Pyz\Yves\CheckoutPage\Form\DataProvider\PaymentFormDataProvider;
 use Pyz\Yves\CheckoutPage\Form\DataProvider\SummaryFormDataProvider;
 use Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal\BenefitDealCollectionForm;
+use Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal\Transformer\BenefitVoucherAmountTransformer;
 use Pyz\Yves\CheckoutPage\Form\Steps\PaymentForm;
 use Pyz\Yves\CheckoutPage\Form\Steps\SummaryForm;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverter;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface;
 use SprykerShop\Yves\CheckoutPage\Form\FormFactory as SpyFormFactory;
+use Symfony\Component\Form\DataTransformerInterface;
 
 /**
  * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
@@ -101,6 +107,17 @@ class FormFactory extends SpyFormFactory
     }
 
     /**
+     * @return \Symfony\Component\Form\DataTransformerInterface
+     */
+    public function createBenefitVoucherAmountTransformer(): DataTransformerInterface
+    {
+        return new BenefitVoucherAmountTransformer(
+            $this->createDecimalToIntegerConverter(),
+            $this->createIntegerToDecimalConverter()
+        );
+    }
+
+    /**
      * @return \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
      */
     public function getMyWorldMarketingApiClient(): MyWorldMarketplaceApiClientInterface
@@ -114,5 +131,21 @@ class FormFactory extends SpyFormFactory
     public function getCurrencyClient(): CurrencyClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CURRENCY);
+    }
+
+    /**
+     * @return \Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface
+     */
+    public function createDecimalToIntegerConverter(): DecimalToIntegerConverterInterface
+    {
+        return new DecimalToIntegerConverter();
+    }
+
+    /**
+     * @return \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface
+     */
+    public function createIntegerToDecimalConverter(): IntegerToDecimalConverterInterface
+    {
+        return new IntegerToDecimalConverter();
     }
 }

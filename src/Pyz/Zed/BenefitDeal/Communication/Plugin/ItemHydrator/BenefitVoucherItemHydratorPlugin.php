@@ -26,8 +26,8 @@ class BenefitVoucherItemHydratorPlugin extends AbstractPlugin implements ItemBen
      */
     public function hydrateItem(ItemTransfer $itemTransfer, PyzSalesOrderItemBenefitDealEntityTransfer $benefitDealEntityTransfer): void
     {
-        $itemTransfer->setOriginUnitGrossPrice($benefitDealEntityTransfer->getOriginUnitGrossPrice());
         $itemTransfer->setTotalUsedBenefitVouchersAmount($benefitDealEntityTransfer->getBenefitVoucherAmount());
+        $itemTransfer->setUnitBenefitPrice($benefitDealEntityTransfer->getUnitBenefitPrice());
         $itemTransfer->setUseBenefitVoucher(true);
     }
 

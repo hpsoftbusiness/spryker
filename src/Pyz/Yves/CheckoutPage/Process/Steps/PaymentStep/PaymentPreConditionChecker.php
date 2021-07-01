@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
+use Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -35,18 +36,26 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
     private $customerService;
 
     /**
+     * @var \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface
+     */
+    private $integerToDecimalConverter;
+
+    /**
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
      * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
+     * @param \Spryker\Shared\Money\Converter\IntegerToDecimalConverterInterface $integerToDecimalConverter
      */
     public function __construct(
         FlashMessengerInterface $flashMessenger,
         TranslatorInterface $translator,
-        CustomerServiceInterface $customerService
+        CustomerServiceInterface $customerService,
+        IntegerToDecimalConverterInterface $integerToDecimalConverter
     ) {
         $this->flashMessenger = $flashMessenger;
         $this->translator = $translator;
         $this->customerService = $customerService;
+        $this->integerToDecimalConverter = $integerToDecimalConverter;
     }
 
     /**
@@ -63,10 +72,11 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
             return false;
         }
 
-        if (!$this->assertBenefitVoucherBalance($quoteTransfer, $customerTransfer)) {
+        $customerBenefitVoucherBalance = $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer);
+        if (!$this->assertBenefitVoucherBalance($quoteTransfer, $customerBenefitVoucherBalance)) {
             $this->addErrorMessage(self::ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE, [
-                '%needAmount%' => $quoteTransfer->getTotalUsedBenefitVouchersAmount(),
-                '%balanceAmount%' => $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer),
+                '%needAmount%' => $this->integerToDecimalConverter->convert($quoteTransfer->getTotalUsedBenefitVouchersAmount()),
+                '%balanceAmount%' => $this->integerToDecimalConverter->convert($customerBenefitVoucherBalance),
                 '%currency%' => $quoteTransfer->getCurrency()->getCode(),
             ]);
 
@@ -78,17 +88,15 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param int $benefitVoucherBalance
      *
      * @return bool
      */
-    private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
+    private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, int $benefitVoucherBalance): bool
     {
         if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
             return true;
         }
-
-        $benefitVoucherBalance = $this->customerService->getCustomerBenefitVoucherBalanceAmount($customerTransfer);
 
         return $quoteTransfer->getTotalUsedBenefitVouchersAmount() <= $benefitVoucherBalance;
     }
@@ -134,12 +142,6 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
      */
     protected function hasBenefitDealsApplied(QuoteTransfer $quoteTransfer): bool
     {
-        foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher() || $itemTransfer->getUseShoppingPoints()) {
-                return true;
-            }
-        }
-
-        return false;
+        return $quoteTransfer->getUseBenefitVoucher() && $quoteTransfer->getTotalUsedBenefitVouchersAmount();
     }
 }
