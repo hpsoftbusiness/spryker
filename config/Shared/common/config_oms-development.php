@@ -45,6 +45,7 @@ $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
+    AdyenConfig::ADYEN_CREDIT_CARD,
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([
