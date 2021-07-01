@@ -53,22 +53,25 @@
                 {{ 'page.product.seller' | trans }} <a class="{{ config.name }}__link" href="https://corporate.myworld.com/">myWorld.com</a>
             </span>
         </div>
-
         {# TODO: Make this product meta dynamic #}
         <div class="{{ config.name }}__status">
             {{ 'page.product.condition' | trans }}: <strong>{{ 'page.product.status' | trans }}</strong>
         </div>
+
     </div>
 
-    <div class="spacing-bottom spacing-bottom--big">
-
+    <hr class="product-configurator__separator">
         <div class="row">
             {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
             {% nowidget %}
+
                 <div class="col">
+                    {% set showRegular = true %}
                     {% include molecule('money-price') with {
                         modifiers: ['pdp'],
                         data: {
+                            promotion: false,
+                            regular: showRegular,
                             amount: data.product.price,
                             originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
                         }
@@ -76,13 +79,10 @@
                 </div>
             {% endwidget %}
         </div>
-    </div>
-
     {% set cashback = data.cashback %}
     {% set benefitAmount = data.product.benefitAmount ?? null %}
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
     {% set shoppingPointsAmount = data.product.shoppingPointsAmount ?? null %}
-    <div class="grid spacing-bottom spacing-bottom--biggest spacing-top">
 
         {% if benefitPrice and benefitAmount %}
 
@@ -90,33 +90,44 @@
                 '%amount%': benefitAmount | money
             })%}
 
-            <div class="col col--sm-6 col--md-5">
+            <hr class="product-configurator__separator aa">
+
                 {% include molecule('product-benefit-price', 'ProductDetailPage') with {
                     data: {
                         regularPriceAmount: data.product.price,
                         benefitPriceAmount: benefitPrice,
                         benefitCurrencyAmount: benefitAmount,
+                        promotionKind: 'benefit',
+                        promotion: 'true',
+                        regular: 'false'
                     }
                 } only %}
-            </div>
 
-        {% elseif benefitPrice and shoppingPointsAmount %}
-                <div class="col col--sm-6 col--md-5">
+            <hr class="benefit">
+            <div class="shop-prom-benefit">
+        {% elseif benefitPrice and shoppingPointsAmount   %}
+
+                    <hr class="product-configurator__separator">
                     {% include molecule('product-shop-price', 'ProductDetailPage') with {
                         data: {
                             regularPriceAmount: data.product.price,
                             benefitPriceAmount: benefitPrice,
                             benefitCurrencyAmount: shoppingPointsAmount,
+                            promotionKind: 'shopping-point',
+                            promotion: 'true',
+                            regular: 'false'
                         }
                     } only %}
-                </div>
+            <hr class="product-configurator__separator">
+            <div class="shop-prom">
         {% endif %}
-    </div>
+
+
 
     <div class="spacing-top">
         {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
     </div>
-
+    </div>
     <div class="spacing-top">
         {{ 'shipment.lead.time' | trans }}
     </div>

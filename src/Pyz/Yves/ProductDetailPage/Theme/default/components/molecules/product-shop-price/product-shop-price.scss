@@ -83,3 +83,42 @@ svg.icon:nth-child(2) {
 .shopping-points > span:nth-child(1) {
   font: 700 1.875rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
+
+hr.product-configurator__separator:nth-child(5) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 1.1875rem 0;
+}
+
+.product-shop-price {
+    margin-top: -5.5em;
+}
+
+hr.product-configurator__separator:nth-child(7) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 4.9rem 0;
+}
+
+span.money-price__amount:nth-child(5) {
+    color: #5cb85c;
+}
+
+.product-shop-price__benefit-price-amount-- > span:nth-child(1) > span:nth-child(2) {
+    color: #5cb85c;
+    font-size: 1.5em;
+}
+
+.product-shop-price__benefit-price-amount-- > span:nth-child(1) > span:nth-child(1) {
+    text-decoration: line-through;
+    color: #909090;
+    font-size: 1.5em;
+}
+
+.icon-allign-shopping {
+    margin-top: -0.5em;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+.shop-prom {
+    margin-top: -3.3em;
+}

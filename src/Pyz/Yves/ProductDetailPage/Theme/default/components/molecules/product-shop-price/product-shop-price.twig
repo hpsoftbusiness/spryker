@@ -8,14 +8,14 @@
     regularPriceAmount: required,
     benefitPriceAmount: required,
     benefitCurrencyAmount: required,
-    benefitCurrencyType: 'shopping-point',
+    benefitCurrencyType: '',
 } %}
 
 {% block body %}
-
+    <hr>
     <div class="spacing-top spacing-bottom">
             <span class="{{ config.name }}__title-text {{ config.name }}__title-text--{{ data.benefitCurrencyType }}"></span>
-        <h3>{{ 'Benefit price' | trans }}</h3>
+        <h3>{{ 'Shopping Point Deal' | trans }}</h3>
 
     </div>
     <div class="col">
@@ -23,19 +23,17 @@
             {% include molecule('money-price') with {
                 modifiers: ['pdp'],
                 data: {
+                    regularPriceAmount: data.regularPriceAmount,
+                    regular: data.regularPriceAmount,
                     amount: data.benefitPriceAmount,
-                    priceVatText: null
+                    discount: data.benefitCurrencyAmount,
+                    priceVatText: null,
+                    promotionKind: 'shopping-point',
+                    promotion: 'true',
+                    regular: 'false',
                 }
             } only %}
-            <div class="shopping-points">
-                <span>+{{ data.benefitCurrencyAmount}}</span>
-                &nbsp;&nbsp;<svg class="icon icon-allign" data-qa="component icon" title="shopping-point">
-                    <use xlink:href="#:shopping-point"></use>
-                </svg>
-            </div>
-        </div>
-        <div class="row">
-                <span class="{{ config.name }}__mode ">{{ 'pdp.include.vat' | trans }}</span>
+
         </div>
     </div>
 {% endblock %}

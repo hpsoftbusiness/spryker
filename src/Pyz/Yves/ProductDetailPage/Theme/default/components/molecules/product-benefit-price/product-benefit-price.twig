@@ -12,29 +12,25 @@
 } %}
 
 {% block body %}
-    <div class="spacing-top spacing-bottom">
-            <span class="{{ config.name }}__title-text {{ config.name }}__title-text--{{ data.benefitCurrencyType }}">
-                <h3>{{ 'Benefit price' | trans }}</h3>
-            </span>
+    <br>
+
+    <span class="{{ config.name }}__title-text {{ config.name }}__title-text--{{ data.benefitCurrencyType }}">
+        <br>
+                <h3>{{ 'Benefit Voucher Price' | trans }}</h3>
+    </span>
+
+    <div class="{{ config.name }}__benefit-price-amount--{{ data.benefitCurrencyType }}">
+        {% include molecule('money-price') with {
+            modifiers: ['pdp'],
+            data: {
+                promotionKind: 'benefit',
+                promotion: 'true',
+                regular: 'false',
+                amount: data.benefitPriceAmount,
+                discount: data.benefitCurrencyAmount,
+                priceVatText: null
+            }
+        } only %}
     </div>
-    <div class="col">
-        <div class="{{ config.name }}__benefit-price-amount--{{ data.benefitCurrencyType }}">
-            {% include molecule('money-price') with {
-                modifiers: ['pdp'],
-                data: {
-                    amount: data.benefitPriceAmount,
-                    priceVatText: null
-                }
-            } only %}
-                <div class="voucher">
-                <span class="voucher-amount">&nbsp;+&nbsp;{{ data.benefitCurrencyAmount | money }}</span>
-                &nbsp;&nbsp;<svg class="icon icon-allign-benefit" data-qa="component icon" title="benefit-point">
-                    <use xlink:href="#:benefit-point"></use>
-                </svg>
-            </div>
-        </div>
-        <div class="row">
-            <span class="{{ config.name }}__mode "> {{ 'pdp.include.vat' | trans }}</span>
-        </div>
-    </div>
+
 {% endblock %}

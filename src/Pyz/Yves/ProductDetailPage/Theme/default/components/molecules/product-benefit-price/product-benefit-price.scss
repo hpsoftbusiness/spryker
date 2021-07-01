@@ -78,7 +78,7 @@
 }
 
 .icon-allign-benefit{
-    margin-top: -0.2em;
+    margin-top: -0.9em;
     transform: scale(1.5);
 }
 
@@ -90,4 +90,51 @@
 .voucher-amount
 {
    font: 700 1.875rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+
+.product-benefit-price__benefit-price-amount--benefit-voucher > span:nth-child(1) > span:nth-child(2) {
+    margin-left: - 0.4em;
+}
+
+body > div > main > div > div:nth-child(1) > div > div > section > hr:nth-child(3) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 0.78rem 0;
+}
+
+body > div > main > div > div:nth-child(1) > div > div > section > div.product-benefit-price > hr {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 1.1875rem 0;
+}
+
+body > div > main > div > div:nth-child(1) > div > div > section > hr:nth-child(5) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 5.9rem 0;
+}
+
+hr.product-configurator__separator:nth-child(7) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 5.9rem 0;
+}
+
+body > div > main > div > div:nth-child(1) > div > div > section > div.product-benefit-price {
+    margin-top: -8.1em;
+}
+
+hr.product-configurator__separator:nth-child(7) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 1.8rem 0;
+}
+
+.shop-prom-benefit {
+    margin-top: -0.3em;
+}
+
+hr.product-configurator__separator:nth-child(7) {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 0.9rem 0;
+}
+
+.benefit {
+    border-bottom: 0.0625rem solid #ddd;
+    margin: 1.5rem 0;
 }
