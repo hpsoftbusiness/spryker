@@ -19,7 +19,8 @@
 {% block body %}
     {# {{ data.product.cashback_amount }} #}
     {% set cashback = data.cashback %}
-    {% set benefitAmount = data.benefitAmount %}
+    {# TODO: refactor. It can be that benefitAmount is an array (when two concretes have two different values) #}
+    {% set benefitAmount = data.benefitAmount[0] ?? data.benefitAmount %}
     {% set shoppingPointsAmount = data.shoppingPointsAmount %}
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
 
