@@ -1,0 +1,17 @@
+@mixin product-detail-page-product-price($name: '.product-price') {
+
+    #{$name} {
+        &__title-text {
+            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+        }
+
+        &__separator {
+            border-bottom: 0.0625rem solid #ddd;
+            margin: 0.9rem 0;
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-page-product-price();

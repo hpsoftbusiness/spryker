@@ -60,171 +60,111 @@
 
     </div>
 
-    <hr class="product-configurator__separator">
-        <div class="row">
-            {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
-            {% nowidget %}
+    {% include molecule('product-price', 'ProductDetailPage') with {
+        data: {
+            product: data.product
+        }
+    } only %}
 
-                <div class="col">
-                    {% set showRegular = true %}
-                    {% include molecule('money-price') with {
-                        modifiers: ['pdp'],
-                        data: {
-                            promotion: false,
-                            regular: showRegular,
-                            amount: data.product.price,
-                            originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
-                        }
-                    } only %}
-                </div>
-            {% endwidget %}
+    <div class="shop-prom">
+        <div class="spacing-top">
+            {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
         </div>
-    {% set cashback = data.cashback %}
-    {% set benefitAmount = data.product.benefitAmount ?? null %}
-    {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
-    {% set shoppingPointsAmount = data.product.shoppingPointsAmount ?? null %}
-    {% set noPromotionBlock = '' %}
-    {% set promotionBlock = '' %}
-        {% if benefitPrice and benefitAmount %}
-            {% set promotionBlock = 'benefit' %}
-            {% set benefitAmountText = 'product_detail_page.benefit_price.benefit_amount' | trans({
-                '%amount%': benefitAmount | money
-            })%}
+    </div>
+    <div class="spacing-top">
+        {{ 'shipment.lead.time' | trans }}
+    </div>
 
-            <hr class="product-configurator__separator aa">
-                {% include molecule('product-benefit-price', 'ProductDetailPage') with {
+    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
+        {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
+            class: config.name ~ '__form spacing-y spacing-y--bigger',
+            data: {
+                sku: data.product.sku,
+                idProductConcrete: data.product.idProductConcrete | default
+            }
+        } only %}
+    {% endif %}
+
+    {% if data.isBundle != null %}
+        {% embed molecule('toggler-item') with {
+            modifiers: ['option'],
+            data: {
+                title: 'bundle.title' | trans,
+                triggerClass: config.jsName ~ '__trigger-bundle',
+                targetClass: config.jsName ~ '__target-bundle',
+                isActive: true,
+            },
+            embed: {
+                bundleItems: data.bundleItems,
+            }
+        } only %}
+            {% block contentText %}
+                {% include molecule('bundle-option-list', 'ProductDetailPage') with {
                     data: {
-                        regularPriceAmount: data.product.price,
-                        benefitPriceAmount: benefitPrice,
-                        benefitCurrencyAmount: benefitAmount,
-                        promotionKind: 'benefit',
-                        promotion: 'true',
-                        regular: 'false'
+                        bundleItems: embed.bundleItems,
                     }
                 } only %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
 
-            <hr class="benefit">
-            <div class="shop-prom-benefit">
-        {% elseif benefitPrice and shoppingPointsAmount %}
-            {% set promotionBlock = 'points' %}
-            <hr class="product-configurator__separator">
-                    {% include molecule('product-shop-price', 'ProductDetailPage') with {
-                        data: {
-                            regularPriceAmount: data.product.price,
-                            benefitPriceAmount: benefitPrice,
-                            benefitCurrencyAmount: shoppingPointsAmount,
-                            promotionKind: 'shopping-point',
-                            promotion: 'true',
-                            regular: 'false'
-                        }
-                    } only %}
-                <hr class="product-configurator__separator">
-                <div class="shop-prom-shopping">
-        {% elseif 'no-promo' %}
-            <hr class="product-configurator__separator">
-            {% set noPromotionBlock = 'shop-prom' %}
-        {% endif %}
+    {% block colors %}
+        {% widget 'ProductGroupColorWidget' args [data.product.idProductAbstract, data.product.selectedAttributes ?? []] use view('product-detail-color-selector', 'ProductGroupWidget') only %}{% endwidget %}
+    {% endblock %}
 
-        <div class="{{ noPromotionBlock }}">
-            <div class="spacing-top">
-                {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
-            </div>
-            <div class="spacing-top">
-                {{ 'shipment.lead.time' | trans }}
-            </div>
-            {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
-                    {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
-                        class: config.name ~ '__form spacing-y spacing-y--bigger',
-                        data: {
-                            sku: data.product.sku,
-                            idProductConcrete: data.product.idProductConcrete | default
-                        }
-                    } only %}
-            {% endif %}
+    {% include molecule('variant-configurator', 'ProductDetailPage') with {
+        data: {
+            superAttributes: data.product.attributeMap.superAttributes,
+            selectedAttributes: data.product.selectedAttributes,
+            availableAttributes: data.product.availableAttributes
+        }
+    } only %}
 
-            {% if data.isBundle != null %}
-                    {% embed molecule('toggler-item') with {
-                        modifiers: ['option'],
-                        data: {
-                            title: 'bundle.title' | trans,
-                            triggerClass: config.jsName ~ '__trigger-bundle',
-                            targetClass: config.jsName ~ '__target-bundle',
-                            isActive: true,
-                        },
-                        embed: {
-                            bundleItems: data.bundleItems,
-                        }
-                    } only %}
-                        {% block contentText %}
-                            {% include molecule('bundle-option-list', 'ProductDetailPage') with {
-                                data: {
-                                    bundleItems: embed.bundleItems,
-                                }
-                            } only %}
-                        {% endblock %}
-                    {% endembed %}
-            {% endif %}
+    <hr class="{{ config.name }}__separator" />
 
-                {% block colors %}
-                    {% widget 'ProductGroupColorWidget' args [data.product.idProductAbstract, data.product.selectedAttributes ?? []] use view('product-detail-color-selector', 'ProductGroupWidget') only %}{% endwidget %}
-                {% endblock %}
+    {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
+        {% block embeddedData %}
+            {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}{% endwidget %}
 
-                {% include molecule('variant-configurator', 'ProductDetailPage') with {
+            {% if not data.isDisabled and can('SeeAddToCartPermissionPlugin') %}
+
+                {% embed molecule('toggler-item') with {
+                    modifiers: ['option', 'pdp'],
                     data: {
-                        superAttributes: data.product.attributeMap.superAttributes,
-                        selectedAttributes: data.product.selectedAttributes,
-                        availableAttributes: data.product.availableAttributes
-                    }
+                        title: 'cart.item_quantity' | trans,
+                        isToggler: false,
+                    },
                 } only %}
-
-                <hr class="{{ config.name }}__separator" />
-
-                {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
-                    {% block embeddedData %}
-                        {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}{% endwidget %}
-
-                        {% if not data.isDisabled and can('SeeAddToCartPermissionPlugin') %}
-
-                            {% embed molecule('toggler-item') with {
-                                modifiers: ['option', 'pdp'],
-                                data: {
-                                    title: 'cart.item_quantity' | trans,
-                                    isToggler: false,
-                                },
-                            } only %}
-                                {% block contentText %}
-                                    {% include molecule('quantity-counter') with {
-                                        modifiers: ['quantity-large', 'no-spacing'],
-                                        data: {
-                                            readOnly: true,
-                                        },
-                                    } only %}
-                                {% endblock %}
-                            {% endembed %}
-
-                        {% else %}
-                            <input type="hidden" class="js-volume-price__quantity">
-                        {% endif %}
-
-                        {% include molecule('availability-product', 'AvailabilityWidget') ignore missing with {
+                    {% block contentText %}
+                        {% include molecule('quantity-counter') with {
+                            modifiers: ['quantity-large', 'no-spacing'],
                             data: {
-                                idProductConcrete: data.product.idProductConcrete,
-                                isAvailable: data.product.available,
+                                readOnly: true,
                             },
                         } only %}
-
-                        {% widget 'ProductDiscontinuedNoteWidget' args [data.product.sku] only %}{% endwidget %}
-                        {% if can('SeeAddToCartPermissionPlugin') %}
-                            <div class="{{ data.config.name }}__button-wrap">
-                                <button class="button button--large button--expand" {{ data.isDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }} data-init-single-click>
-                                    {{ 'page.detail.add-to-cart' | trans }}
-                                </button>
-                            </div>
-                        {% endif %}
                     {% endblock %}
-                {% endwidget %}
-        </div>
-        {% if promotionBlock != '' %}
-            </div>
-        {% endif %}
+                {% endembed %}
+
+            {% else %}
+                <input type="hidden" class="js-volume-price__quantity">
+            {% endif %}
+
+            {% include molecule('availability-product', 'AvailabilityWidget') ignore missing with {
+                data: {
+                    idProductConcrete: data.product.idProductConcrete,
+                    isAvailable: data.product.available,
+                },
+            } only %}
+
+            {% widget 'ProductDiscontinuedNoteWidget' args [data.product.sku] only %}{% endwidget %}
+
+            {% if can('SeeAddToCartPermissionPlugin') %}
+                <div class="{{ data.config.name }}__button-wrap">
+                    <button class="button button--large button--expand" {{ data.isDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }} data-init-single-click>
+                        {{ 'page.detail.add-to-cart' | trans }}
+                    </button>
+                </div>
+            {% endif %}
+        {% endblock %}
+    {% endwidget %}
 {% endblock %}

@@ -1,50 +1,29 @@
 @mixin product-detail-page-product-benefit-price($name: '.product-benefit-price') {
-    $shopping-points-main-color: #008000;
-    $benefit-voucher-main-color: #000;
-
+    $benefit-voucher-main-color: #ff902e;
 
     #{$name} {
-
-
         &__title-text {
-            font-weight: 850;
-            font-size: 0.7em;
+            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+        }
 
-            &--shopping-point {
-                color: $shopping-points-main-color;
-            }
+        &__benefit-price-amount {
+            color: $benefit-voucher-main-color;
 
-            &--benefit-voucher{
+            & > svg {
+                padding-left: 0.1em;
                 color: $benefit-voucher-main-color;
+                fill: $benefit-voucher-main-color;
+                margin-top: -0.8em;
+                transform: scale(1.5);
             }
         }
 
-        &__benefit-price-amount--shopping-point {
-            color: #5cb85c;
+        &__vat {
+            padding-left: 0.3em;
         }
 
-        &__benefit-price-amount--benefit-voucher {
-            color: #ff902e;
-        }
-
-        &__regular-price-amount {
-            font-size: 0.7em;
-            color: #6f7274;
-            text-decoration: line-through
-        }
-
-        &__benefit-currency {
-            font-weight: 850;
-            font-size: 0.7em;
-            padding-left: 0.5em;
-
-            &--shopping-point {
-                color: $shopping-points-main-color;
-            }
-
-            &--benefit-voucher {
-                color: $benefit-voucher-main-color;
-            }
+        &__plus {
+            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
         }
 
         @content;
@@ -52,89 +31,3 @@
 }
 
 @include product-detail-page-product-benefit-price();
-
-
-#\:benefit-point > g:nth-child(1) > path:nth-child(1) {
-    fill: #F29533;
-}
-
-#\:benefit-point > g:nth-child(1) > path:nth-child(3) {
-    fill: #F29533;
-}
-
-#\:benefit-point > g:nth-child(1) > path:nth-child(2) {
-    fill: #F29533;
-}
-
-.voucher {
-    float:right;
-    margin-top: -2em;
-    margin-right: -0.7em;
-}
-
-.voucher-amount {
-    vertical-align: middle;
-    font-size: 1.5em;
-}
-
-.icon-allign-benefit{
-    margin-top: -0.9em;
-    transform: scale(1.5);
-}
-
-.svg.icon:nth-child(2) {
-    border: 1px solid black;
-    border-radius: 50%;
-}
-
-.voucher-amount
-{
-   font: 700 1.875rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
-}
-
-.product-benefit-price__benefit-price-amount--benefit-voucher > span:nth-child(1) > span:nth-child(2) {
-    margin-left: - 0.4em;
-}
-
-body > div > main > div > div:nth-child(1) > div > div > section > hr:nth-child(3) {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 0.78rem 0;
-}
-
-body > div > main > div > div:nth-child(1) > div > div > section > div.product-benefit-price > hr {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 1.1875rem 0;
-}
-
-body > div > main > div > div:nth-child(1) > div > div > section > hr:nth-child(5) {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 5.9rem 0;
-}
-
-hr.product-configurator__separator:nth-child(7) {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 5.9rem 0;
-}
-
-body > div > main > div > div:nth-child(1) > div > div > section > div.product-benefit-price {
-    margin-top: -8.1em;
-}
-
-hr.product-configurator__separator:nth-child(7) {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 1.8rem 0;
-}
-
-.shop-prom-benefit {
-    margin-top: -0.3em;
-}
-
-hr.product-configurator__separator:nth-child(7) {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 0.9rem 0;
-}
-
-.benefit {
-    border-bottom: 0.0625rem solid #ddd;
-    margin: 1.5rem 0;
-}

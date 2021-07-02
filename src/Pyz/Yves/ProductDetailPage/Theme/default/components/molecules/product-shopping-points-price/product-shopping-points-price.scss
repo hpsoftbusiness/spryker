@@ -1,0 +1,35 @@
+@mixin product-detail-page-product-shopping-points-price($name: '.product-shopping-points-price') {
+    $shopping-points-icon-color: #5cb885;
+    $shopping-points-text-color: #5cb85c;
+
+    #{$name} {
+        &__title-text {
+            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+        }
+
+
+        &__benefit {
+            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+        }
+
+        &__benefit-amount {
+            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            color: $shopping-points-text-color;
+
+            & > svg {
+                padding-left: 0.1em;
+                fill: $shopping-points-icon-color;
+                margin-top: -0.3em;
+                transform: scale(1.5);
+            }
+        }
+
+        &__benefit-price-amount {
+            color: $shopping-points-text-color;
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-page-product-shopping-points-price();

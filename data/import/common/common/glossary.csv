@@ -6348,7 +6348,7 @@ checkout.step.summary.sms_code_send_error,Es gab leider einen Fehler beim zusend
 checkout.step.summary.sub_total,Zwischensumme,de_DE
 checkout.step.summary.tax,Mehrwertsteuer,de_DE
 checkout.step.summary.title,Übersicht Bestellung,de_DE
-checkout.step.summary.total,Checkout abschließen,de_DE
+checkout.step.summary.total,Zur Kasse abschließen,de_DE
 checkout.step.summary.tracking_code,Sendungsverfolgungscode,de_DE
 checkout.step.summary.uid,UID,de_DE
 checkout.step.summary.with_method,Mit,de_DE
@@ -19913,6 +19913,10 @@ pdp.price,Preis,de_DE
 pdp.price,Price,en_US
 pdp.price.regular_price,"Regular Preis",de_DE
 pdp.price.regular_price,"Regular price",en_US
+pdp.price.shopping_points_price,Shopping Point Deal,de_DE
+pdp.price.shopping_points_price,Shopping Point Deal,en_US
+pdp.price.benefit_voucher_price,Benefit Voucher Price,de_DE
+pdp.price.benefit_voucher_price,Benefit Voucher Price,en_US
 page.checkout.summary.sms_code,SMS Code,de_DE
 page.checkout.summary.sms_code,SMS Code,en_US
 checkout.step.summary.sms_code_send_error,Es gab leider einen Fehler beim zusenden des SMS Codes,de_DE
@@ -20074,4 +20078,6 @@ payment.payment_provider.adyen,Adyen,en_US
 payment.payment_provider.my_world,MyWorld,de_DE
 payment.payment_provider.my_world,MyWorld,en_US
 payment.payment_provider.nopayment,Nopayment,en_US
-payment.payment_provider.nopayment,Nopayment,en_US
+payment.payment_provider.nopayment,Nopayment,de_DE
+payment.payment_method.dummy_prepayment,Prepayment,en_US
+payment.payment_method.dummy_prepayment,Prepayment,de_DE

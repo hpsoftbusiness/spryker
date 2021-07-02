@@ -2,63 +2,21 @@
 
 {% define data = {
     priceVatText: 'pdp.include.vat',
-    regular: '',
-    promotion: true,
-    promotionKind: '',
-    discount: '',
-    regular: null,
-    regularPriceAmount: null
 } %}
 
 {% block defaultPriceInner %}
-
-    {% if data.regular == 'true' %}
-        <h3>Regular price</h3>
-    {% endif %}
-
     {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
     {% if data.isAffiliate is defined and data.isAffiliate %}
         <span>{{ 'pdp.price.from' | trans }}</span>
     {% endif %}
 
-    {% if data.promotion != true %}
-        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
-        {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
+    <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
+        {{- data.amount | money(true, data.currencyIsoCode) -}}
     </span>
-    {% endif %}
-
-    {% if data.promotion == true and data.promotionKind == 'benefit' %}
-        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
-        {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
-    </span>
-    {% endif %}
-
-    {% if data.promotion == true and data.promotionKind == 'shopping-point' %}
-    <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">{{- data.regularPriceAmount | money(true, data.currencyIsoCode)-}}</span>
-    {% endif %}
-
-
-    {% if data.promotion == 'true' and data.promotionKind == 'benefit' %}
-        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">+&nbsp;{{ data.discount | money(false, data.currencyIsoCode) }}</span>
-        &nbsp;
-        <svg class="icon icon-allign-benefit" data-qa="component icon" title="benefit-point">
-            <use xlink:href="#:benefit-point"></use>
-        </svg>
-    {% endif %}
-
-    {% if data.promotion == true and data.promotionKind == 'shopping-point' %}
-
-        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">-&nbsp;{{ data.discount }}</span>&nbsp;
-        <svg class="icon icon-allign-shopping" data-qa="component icon" title="shopping-point">
-            <use xlink:href="#:shopping-point"></use>
-        </svg>
-
-        <br>
-        <span class="{{ config.name }}__amount {{ defaultPriceJsName }}">
-        {{- data.amount | money(true, data.currencyIsoCode) -}}&nbsp;
+    {% if data.priceVatText %}
+        <span class="{{ config.name }}__mode {{ defaultPriceJsName }}">
+            {{ 'pdp.include.vat' | trans }}
         </span>
-
     {% endif %}
-<br>
 {% endblock %}

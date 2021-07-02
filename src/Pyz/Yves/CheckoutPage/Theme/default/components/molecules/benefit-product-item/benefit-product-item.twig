@@ -56,7 +56,7 @@
                 {% set benefitVoucherAmount = benefitVoucherDeal.amount * product.quantity %}
                 <div class="{{ config.name }}__benefit-price">
                     <span>
-                        {{- benefitVoucherSalesPrice | money(true, currencyCode) -}} + {{- benefitVoucherAmount | money(false, data.benefitVouchersCurrencyCode) -}}
+                        {{- benefitVoucherSalesPrice | money(true, currencyCode) -}}&nbsp;+&nbsp;{{- benefitVoucherAmount | money(false, data.benefitVouchersCurrencyCode) -}}
                     </span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',

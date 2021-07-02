@@ -104,6 +104,7 @@ class BenefitVoucherPaymentCalculator implements
             if ($amountToApply > 0) {
                 $itemTransfer->setTotalUsedBenefitVouchersAmount($amountToApply);
                 $itemTransfer->setUseBenefitVoucher(true);
+                $itemTransfer->setSumBenefitPrice($itemTransfer->getSumGrossPrice() - $amountToApply);
             }
             $totalApplicableBenefitAmount -= $amountToApply;
         }

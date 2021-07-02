@@ -3,6 +3,7 @@
     $image-width-with-checkbox: rem(158);
     $image-small-width: rem(100);
     $additional-info-width: rem(350);
+    $benefit-voucher-main-color: #ff902e;
 
     #{$name} {
         &__title {
@@ -72,46 +73,33 @@
         }
 
         &__price {
-            font: fw(medium) rem(17)/rem(23) $setting-font-family;
             text-align: left;
+            font: fw(medium) rem(15)/rem(17) $setting-font-family;
+            line-height: 1.7;
+            width: auto;
+            align-self: flex-start;
 
             @include helper-breakpoint-media-min($lg-min) {
                 text-align: right;
             }
+        }
 
-            &--mini-cart {
-                font-size: rem(15);
-                line-height: rem(20);
-                align-self: flex-start;
-            }
+        &__vat {
+            padding-left: 0.3em;
+            font: fw(regular) rem(15)/rem(17) $setting-font-family;
+        }
 
-            &--secondary,
-            &--alternative {
-                text-align: left;
-                font: fw(medium) rem(15)/rem(17) $setting-font-family;
-                width: 100%;
-                margin-bottom: rem(5);
-            }
-
-            &--alternative {
-                @include helper-breakpoint-media-min($lg-min) {
-                    text-align: right;
-                    width: auto;
-                    margin: rem(10) 0;
-                    align-self: flex-start;
-                }
+        &__benefit {
+            & > svg {
+                margin-top: -0.2em;
+                margin-left: 0.1em
             }
         }
 
-        &__benefit-price {
+        &__benefit-amount {
             @include helper-font-weight(bold);
-            line-height: rem(20);
-            display: flex;
-            align-items: center;
-
-            @include helper-breakpoint(lg) {
-                justify-content: flex-end;
-            }
+            line-height: map-get($setting-font-line-height, default);
+            color: $benefit-voucher-main-color;
         }
 
         &__option {

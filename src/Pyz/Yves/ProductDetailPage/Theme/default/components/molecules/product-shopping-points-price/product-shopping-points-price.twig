@@ -1,0 +1,51 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-shopping-points-price',
+} %}
+
+{% define data = {
+    defaultPriceAmount: required,
+    benefitPriceAmount: required,
+    shoppingPointsAmount: required,
+} %}
+
+{% block body %}
+    <div class="row spacing-top spacing-bottom">
+        <span class="{{ config.name }}__title-text">
+            {{ 'pdp.price.shopping_points_price' | trans }}
+        </span>
+    </div>
+
+    <div class="row {{ config.name }}__benefit">
+        {% include molecule('money-price') with {
+            modifiers: ['strikethrough'],
+            data: {
+                amount: data.defaultPriceAmount,
+                priceVatText: null
+            }
+        } only %}
+
+        <span class="{{ config.name }}__benefit-amount">
+            &#8208;&nbsp;{{ data.shoppingPointsAmount }}
+            {% include atom('icon') with {
+                class: config.name ~ '__icon',
+                modifiers: ['medium-up'],
+                data: {
+                    name: 'shopping-point',
+                },
+            } only %}
+        </span>
+    </div>
+
+    <div class="row">
+        <span class="{{ config.name }}__benefit-price-amount">
+            {% include molecule('money-price') with {
+                modifiers: ['pdp'],
+                data: {
+                    amount: data.benefitPriceAmount
+                }
+            } only %}
+        </span>
+    </div>
+{% endblock %}

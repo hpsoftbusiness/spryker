@@ -6,41 +6,55 @@
     tag: 'article',
 } %}
 
-{% block price %}
-    {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
-    {% if data.productItem.useShoppingPoints %}
-        {% set price = data.productItem.unitBenefitPrice ?? data.productItem.unitPrice  %}
-    {% endif %}
-    {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+{% macro renderPrice(defaultPrice, modifiers, originalPrice = null,  showVatText = true) %}
+    {% include molecule('money-price') with {
+        modifiers: ['medium'],
+        class: component.renderClass('order-card-item__price', modifiers),
+        data: {
+            amount: defaultPrice,
+            originalAmount: originalPrice,
+            priceVatText: showVatText is same as true ? 'pdp.include.vat' : null
+        },
+    } only %}
+{% endmacro %}
 
-    {% if can('SeePricePermissionPlugin') %}
-        {% include molecule('money-price') with {
-            modifiers: ['medium'],
-            class: component.renderClass(config.name ~ '__price', modifiers) ~ ' col col--lg-4 col--sm-12',
-            data: {
-                amount: productItemSubTotal | default(null),
-                originalAmount: data.productItem.prices.ORIGINAL is not defined or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL
-            },
-        } only %}
-    {% else %}
-        {{ 'customer.access.cannot_see_price' | trans }}
-    {% endif %}
+{% set benefitVoucherApplied = data.productItem.useBenefitVoucher %}
+{% set shoppingPointsApplied = data.productItem.useShoppingPoints %}
+{% set originalPrice = data.productItem.prices.ORIGINAL is not defined or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL %}
+
+{% block price %}
+    <div class="grid grid--right">
+        <div class="row">
+            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+            {% if benefitVoucherApplied %}
+                {% set price = data.productItem.sumBenefitPrice ?? data.productItem.sumGrossPrice  %}
+                {{ _self.renderPrice(price, modifiers, null, false) }}
+                <span class="{{ config.name }}__benefit">
+                    <span class="{{ config.name }}__benefit-amount">
+                        + {{ data.productItem.totalUsedBenefitVouchersAmount | money }}
+                    </span>
+                    {% include atom('icon') with {
+                        class: config.name ~ '__icon',
+                        modifiers: ['medium-up'],
+                        data: {
+                            name: 'benefit-point',
+                        },
+                    } only %}
+                    <span class="{{ config.name }}__vat">
+                        {{ 'pdp.include.vat' | trans }}
+                    </span>
+                </span>
+            {% elseif shoppingPointsApplied %}
+                {% set price = data.productItem.unitBenefitPrice ?? data.productItem.unitPrice %}
+                {{ _self.renderPrice(price, modifiers) }}
+            {% else %}
+                {% set price = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+                {{ _self.renderPrice(price, modifiers) }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block benefitPrice %}
-    <div class="grid grid--right">
-        {% if data.productItem.useBenefitVoucher %}
-            <span class="{{ config.name }}__benefit-price">
-                                 - {{- data.productItem.totalUsedBenefitVouchersAmount | money(false) -}}
-                            </span>
-            {% include atom('icon') with {
-                class: config.name ~ '__icon',
-                modifiers: ['medium-up'],
-                data: {
-                    name: 'benefit-point',
-                },
-            } only %}
-        {% endif %}
-    </div>
 {% endblock %}
 

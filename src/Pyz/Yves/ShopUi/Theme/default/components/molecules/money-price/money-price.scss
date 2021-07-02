@@ -4,6 +4,7 @@
             font-size: inherit;
 
             &--original {
+                text-decoration: line-through;
                 font-size: rem(12);
                 color: $setting-color-gray-4;
                 min-height: rem(18);
@@ -42,10 +43,16 @@
             }
         }
 
+        &--pdp-benefit & {
+            &__amount {
+                font: fw(bold) map-get($setting-font-size, 2) $setting-font-family;
+            }
+        }
+
         &--strikethrough & {
             &__amount {
                 text-decoration: line-through;
-                color: $setting-color-gray-4;
+                color: $setting-color-gray-5;
                 min-height: rem(18);
             }
         }
