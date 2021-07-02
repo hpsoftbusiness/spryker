@@ -10,7 +10,7 @@
 } %}
 
 {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
-{% set benefitVoucherDealEnabled = data.product.benefitAmount is not null and benefitPrice is not null %}
+{% set benefitVoucherDealEnabled = data.product.benefitAmount is not null and benefitPrice is not null and benefitPrice != 0.00 %}
 {% set shoppingPointsDealEnabled = data.product.shoppingPointsAmount is not null and benefitPrice is not null %}
 
 {% block body %}
