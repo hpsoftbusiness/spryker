@@ -28,6 +28,7 @@ class ShoppingPointsItemHydratorPlugin extends AbstractPlugin implements ItemBen
     {
         $itemTransfer->setTotalUsedShoppingPointsAmount($benefitDealEntityTransfer->getShoppingPointsAmount());
         $itemTransfer->setUnitBenefitPrice($benefitDealEntityTransfer->getUnitBenefitPrice());
+        $itemTransfer->setSumBenefitPrice($benefitDealEntityTransfer->getUnitBenefitPrice() * $itemTransfer->getQuantity());
         $itemTransfer->setUseShoppingPoints(true);
     }
 

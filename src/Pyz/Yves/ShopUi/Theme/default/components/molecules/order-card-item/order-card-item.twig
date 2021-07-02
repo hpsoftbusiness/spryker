@@ -45,7 +45,7 @@
                     </span>
                 </span>
             {% elseif shoppingPointsApplied %}
-                {% set price = data.productItem.unitBenefitPrice ?? data.productItem.unitPrice %}
+                {% set price = data.productItem.sumBenefitPrice ?? data.productItem.sumPrice %}
                 {{ _self.renderPrice(price, modifiers) }}
             {% else %}
                 {% set price = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
