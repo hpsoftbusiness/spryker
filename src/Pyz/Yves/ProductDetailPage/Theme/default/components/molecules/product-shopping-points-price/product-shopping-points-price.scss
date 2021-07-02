@@ -28,6 +28,11 @@
             color: $shopping-points-text-color;
         }
 
+        &__vat {
+            font-weight: fw(regular);
+            color: $setting-color-black;
+        }
+
         @content;
     }
 }

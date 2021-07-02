@@ -43,9 +43,13 @@
             {% include molecule('money-price') with {
                 modifiers: ['pdp'],
                 data: {
-                    amount: data.benefitPriceAmount
+                    amount: data.benefitPriceAmount,
+                    priceVatText: null
                 }
             } only %}
+        </span>
+        <span class="{{ config.name }}__vat">
+            {{ 'pdp.include.vat' | trans }}
         </span>
     </div>
 {% endblock %}
