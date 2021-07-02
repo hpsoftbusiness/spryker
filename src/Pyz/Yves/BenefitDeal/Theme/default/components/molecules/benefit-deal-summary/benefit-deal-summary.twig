@@ -44,7 +44,7 @@
                 class: config.name ~ '__item spacing-y spacing-y--bigger',
                 data: {
                     voucherDiscounts: data.cart.voucherDiscounts,
-                    ruleDiscounts: data.cart.cartRuleDiscounts,
+                    ruleDiscounts: data.cart.cartRuleDiscounts | filter (discount => discount.discountType != 'internal_discount') ,
                     discountTotal: data.cart.totals.discounttotal,
                     isQuoteEditable: data.isQuoteEditable,
                 },
