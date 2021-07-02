@@ -47,7 +47,9 @@
                         shoppingPoints: data.product.concreteAttributes['shopping_points'],
                     },
                 } only %}
+                {% if data.formType == 'useBenefitVoucher' or data.formType == 'useShoppingPoints' %}
                 <div class="{{ config.name }}__or">{{ 'checkout.step.benefit_deal.or' | trans }}</div>
+                {% endif %}
             </div>
             {# @TODO Refactor properly when design for this step is approved #}
             {% if data.formType == 'useBenefitVoucher' %}
@@ -96,6 +98,8 @@
                     }) }}
                     <span>{{ 'checkout.step.benefit_deal.use_shopping_points' | trans }}</span>
                 </label>
+            {% else %}
+                {{ form_widget(data.item) }}
             {% endif %}
         </div>
     </div>

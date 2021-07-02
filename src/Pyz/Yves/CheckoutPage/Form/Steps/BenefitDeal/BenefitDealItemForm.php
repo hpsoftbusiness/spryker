@@ -21,7 +21,7 @@ class BenefitDealItemForm extends AbstractType
 {
     public const FIELD_USE_BENEFIT = 'useBenefitVoucher';
     public const FIELD_USE_SHOPPING_POINTS = 'useShoppingPoints';
-    public const FIELD_OTHER_ITEM = 'otherItem';
+    public const FIELD_REGULAR_ITEM = 'regularItem';
     public const FIELD_ITEMS_WITH_BENEFITS = 'amountItemsToUseBenefitVoucher';
 
     /**
@@ -89,8 +89,8 @@ class BenefitDealItemForm extends AbstractType
      */
     private function addOtherItemSubForm(FormBuilderInterface $builder)
     {
-        $builder->add(static::FIELD_OTHER_ITEM, HiddenType::class, [
-            'data' => false,
+        $builder->add(static::FIELD_REGULAR_ITEM, HiddenType::class, [
+            'data' => true,
             'label' => ' ',
         ]);
 

@@ -5,6 +5,7 @@
 
     <transfer name="Item">
         <property name="useShoppingPoints" type="bool"/>
+        <property name="regularItem" type="bool"/>
         <property name="shoppingPointsDeal" type="ShoppingPointsDeal"/>
         <property name="totalUsedShoppingPointsAmount" type="float"/>
     </transfer>
