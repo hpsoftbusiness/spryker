@@ -87,15 +87,7 @@ export default class BenefitDealSummary extends Component {
 
     protected updateTotalUsedShoppingPoints(data): void
     {
-        let self = this;
-        let totalUsedShoppingPoints = data.items.reduce(function (sum, currentItem) {
-            let shoppingPointsQty = 0;
-            if (currentItem.use_shopping_points === true) {
-                shoppingPointsQty = currentItem.shopping_points_deal.shopping_points_quantity;
-            }
-            return sum + shoppingPointsQty;
-        }, 0)
-        $(self.totalUsedShoppingPointsSelector).text(totalUsedShoppingPoints);
+        $(this.totalUsedShoppingPointsSelector).text(data.total_used_shopping_points_amount);
     }
 }
 

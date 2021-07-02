@@ -9,6 +9,7 @@
         <property name="currency" type="Currency"/>
         <property name="priceMode" type="string"/>
         <property name="totalUsedBenefitVouchersAmount" type="int" />
+        <property name="totalUsedShoppingPointsAmount" type="float"/>
     </transfer>
 
     <transfer name="TotalsFormatted">
