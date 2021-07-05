@@ -6327,7 +6327,7 @@ checkout.step.shipment,Weiter zum Versand,de_DE
 checkout.step.shipment.provider.a,DHL,de_DE
 checkout.step.shipment.provider.b,Hermes,de_DE
 checkout.step.shipment.title,Versand,de_DE
-checkout.step.success.link,"Gehe zum """"Benutzerkonto""""",de_DE
+checkout.step.success.link,"Gehe zum Benutzerkonto",de_DE
 checkout.step.success.sub_title,Deine Bestellung ist erfolgreich bei uns eingegangen.,de_DE
 checkout.step.success.text,Die Bestellbestätigung wurde soeben per E-Mail versendet. In deinem Benutzerkonto kannst deine Bestellung überprüfen und nachverfolgen.,de_DE
 checkout.step.success.title,Vielen Dank.,de_DE
