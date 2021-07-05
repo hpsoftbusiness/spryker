@@ -71,6 +71,7 @@ class BenefitDealStepTest extends Unit
             [
                 ItemTransfer::SHOPPING_POINTS_DEAL => [
                     ShoppingPointsDealTransfer::IS_ACTIVE => true,
+                    ShoppingPointsDealTransfer::PRICE => 1,
                 ],
             ],
         ]);
@@ -89,6 +90,7 @@ class BenefitDealStepTest extends Unit
             [
                 ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
                     BenefitVoucherDealDataTransfer::IS_STORE => true,
+                    BenefitVoucherDealDataTransfer::SALES_PRICE => 1,
                 ],
             ],
         ]);
@@ -107,11 +109,13 @@ class BenefitDealStepTest extends Unit
             [
                 ItemTransfer::BENEFIT_VOUCHER_DEAL_DATA => [
                     BenefitVoucherDealDataTransfer::IS_STORE => true,
+                    BenefitVoucherDealDataTransfer::SALES_PRICE => 1,
                 ],
             ],
             [
                 ItemTransfer::SHOPPING_POINTS_DEAL => [
                     ShoppingPointsDealTransfer::IS_ACTIVE => true,
+                    ShoppingPointsDealTransfer::PRICE => 1,
                 ],
             ],
         ]);
@@ -227,6 +231,7 @@ class BenefitDealStepTest extends Unit
             [
                 ItemTransfer::SHOPPING_POINTS_DEAL => [
                     ShoppingPointsDealTransfer::IS_ACTIVE => true,
+                    ShoppingPointsDealTransfer::PRICE => 1,
                 ],
             ],
         ]);
