@@ -18,4 +18,5 @@ class ProductApiConfig extends AbstractBundleConfig
     public const RESOURCE_ONE_SENSE = 'one-sense';
     public const RESOURCE_LYCONET = 'lyconet';
     public const RESOURCE_FEATURED_PRODUCTS = 'featured-products';
+    public const RESOURCE_ELITE_CLUB_EC_DEAL_ONLY = 'elite-club-ec-deal-only';
 }

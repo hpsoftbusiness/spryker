@@ -21,6 +21,11 @@
             padding: rem(15) 0;
             display: block;
 
+            @media (max-width: 959px) {
+                margin: rem(15) 0;
+                padding: 0;
+            }
+
             @include helper-breakpoint-media-min($lg-min) {
                 @include helper-effect-transition(background-color);
                 display: flex;

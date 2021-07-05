@@ -94,7 +94,7 @@ class ProductAbstractSellableFacetPageMapExpanderPlugin extends AbstractPlugin i
     private function extractSingularAttributeValue($attributeValue): bool
     {
         if (!is_array($attributeValue)) {
-            return $attributeValue;
+            return (bool)$attributeValue;
         }
 
         if (!count($attributeValue)) {

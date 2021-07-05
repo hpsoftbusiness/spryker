@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Api;
 
 use Pyz\Zed\ProductApi\Communication\Plugin\Api\BvDealsProductApiResourcePlugin;
+use Pyz\Zed\ProductApi\Communication\Plugin\Api\EliteClubEcDealOnlyProductApiResourcePlugin;
 use Pyz\Zed\ProductApi\Communication\Plugin\Api\EliteClubProductApiResourcePlugin;
 use Pyz\Zed\ProductApi\Communication\Plugin\Api\FeaturedProductApiResourcePlugin;
 use Pyz\Zed\ProductApi\Communication\Plugin\Api\LyconetProductApiResourcePlugin;
@@ -31,6 +32,7 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
             new OneSenseProductApiResourcePlugin(),
             new LyconetProductApiResourcePlugin(),
             new FeaturedProductApiResourcePlugin(),
+            new EliteClubEcDealOnlyProductApiResourcePlugin(),
         ];
     }
 }

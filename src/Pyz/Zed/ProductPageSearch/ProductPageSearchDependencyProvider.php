@@ -49,6 +49,7 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as Spryker
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
+    public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
     public const PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH = 'PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH';
 
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';

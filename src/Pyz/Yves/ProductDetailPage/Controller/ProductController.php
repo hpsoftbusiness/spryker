@@ -8,18 +8,46 @@
 namespace Pyz\Yves\ProductDetailPage\Controller;
 
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\ProductViewTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Yves\ProductDetailPage\Exception\ProductAccessDeniedForUserNotLoggedInException;
+use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Config\Config;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
+use SprykerShop\Yves\ProductDetailPage\Exception\ProductAccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Spryker\Client\Product\ProductClientInterface getClient()
- * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageFactory getFactory()
  * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageConfig getConfig()
+ * @method \Pyz\Yves\ProductDetailPage\ProductDetailPageFactory getFactory()
  */
 class ProductController extends SprykerShopProductController
 {
     private const KEY_AFFILIATE_DEEPLINK = 'affiliate_deeplink';
+
+    /**
+     * @param array $productData
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Spryker\Yves\Kernel\View\View|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function detailAction(array $productData, Request $request)
+    {
+        try {
+            $viewData = $this->executeDetailAction($productData, $request);
+        } catch (ProductAccessDeniedForUserNotLoggedInException $e) {
+            $redirectTo = Config::get(ApplicationConstants::BASE_URL_YVES) . $request->getPathInfo();
+
+            return $this->redirectResponseExternal($this->getFactory()->getSsoClient()->getAuthorizeUrl($this->getLocale(), $redirectTo));
+        }
+
+        return $this->view(
+            $viewData,
+            $this->getFactory()->getProductDetailPageWidgetPlugins(),
+            '@ProductDetailPage/views/pdp/pdp.twig'
+        );
+    }
 
     /**
      * @param array $productData
@@ -37,17 +65,22 @@ class ProductController extends SprykerShopProductController
         );
         $viewData['cart'] = $quoteTransfer;
 
+        $productAttributesData = $viewData['product']->getAttributes();
+        $viewData['product']
+            ->setCashbackAmount($productAttributesData['cashback_amount'] ?? null)
+            ->setShoppingPoints($productAttributesData['shopping_points'] ?? null);
+
         $viewData['product']
             ->setAttributes(
-                $this->getFilterProductAttributes(
-                    $viewData['product']->getAttributes(),
-                    $viewData['product']->getIsAffiliate()
-                )
+                $this->getFilterProductAttributes($viewData['product']->getAttributes())
             );
-        foreach ($viewData['product']['bundledProducts'] as $bundledProduct) {
-            $bundledProduct->setAttributes(
-                $this->getFilterBundleProductAttributes($bundledProduct->getAttributes())
+
+        if ($viewData['product']->getIsAffiliate()) {
+            $affiliateData = $viewData['product']->getAffiliateData();
+            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl(
+                $affiliateData
             );
+            $viewData['product']->setAffiliateData($affiliateData);
         }
 
 //        if ($viewData['product']->getIsAffiliate()) {
@@ -83,11 +116,10 @@ class ProductController extends SprykerShopProductController
 
     /**
      * @param array $attributes
-     * @param bool $isAffiliate
      *
      * @return array
      */
-    protected function getFilterProductAttributes(array $attributes, bool $isAffiliate): array
+    protected function getFilterProductAttributes(array $attributes): array
     {
         // TODO: enable later, this should not be Zed request because of performance concerns
 //        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
@@ -100,6 +132,7 @@ class ProductController extends SprykerShopProductController
 
 
         $attributesToFilter = [
+            'benefit_store',
             'shopping_point_store',
             'cashback_amount',
             'shopping_points',
@@ -109,6 +142,8 @@ class ProductController extends SprykerShopProductController
             'dropshipment_possible',
             'dropshipment_supplier',
             'office_dealer_id',
+            'benefit_store_sales_price',
+            'benefit_amount',
             'base_price_display_value',
             'base_price_net_value',
             'base_price_unit',
@@ -120,21 +155,12 @@ class ProductController extends SprykerShopProductController
             'customer_group_4',
             'customer_group_5',
             'product_sp_amount',
+            'marketer_only',
+            'featured_products',
             $this->getFactory()->getConfig()->getProductAttributeKeyBenefitStore(),
             $this->getFactory()->getConfig()->getProductAttributeKeyBenefitAmount(),
             $this->getFactory()->getConfig()->getProductAttributeKeyBenefitSalesPrice(),
         ];
-
-        if ($isAffiliate) {
-            $attributesToHide = [
-                'product_stock.name',
-                'delivery_time',
-                'affiliate_availability',
-                'affiliate_displayed_price',
-            ];
-
-            $attributesToFilter = array_merge($attributesToFilter, $attributesToHide);
-        }
 
         foreach (array_keys($attributes) as $attributeKey) {
             if (in_array($attributeKey, $attributesToFilter) || strpos($attributeKey, 'sellable_') !== false) {
@@ -142,32 +168,63 @@ class ProductController extends SprykerShopProductController
             }
         }
 
-        return array_filter(
-            $attributes,
-            function ($value) {
-                return $value !== null && $value !== '' && $value !== false;
-            }
-        );
+        return array_filter($attributes, function ($value) {
+            return $value !== null && $value !== '' && $value !== false;
+        });
     }
 
     /**
-     * @param array $attributes
+     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
      *
-     * @return array
+     * @throws \SprykerShop\Yves\ProductDetailPage\Exception\ProductAccessDeniedException
+     * @throws \Pyz\Yves\ProductDetailPage\Exception\ProductAccessDeniedForUserNotLoggedInException
+     *
+     * @return void
      */
-    protected function getFilterBundleProductAttributes(array $attributes): array
+    protected function assertProductAbstractRestrictions(ProductViewTransfer $productViewTransfer): void
     {
-        $attributesToFilter = [
-            'manufacturer',
-            'brand',
-            'color',
-            'size',
-            'gender',
-            'ean',
-            'gtin',
-            'mpn',
-        ];
+        if (empty($productViewTransfer->getIdProductAbstract())) {
+            return;
+        }
+        $productAbstractRestricted = $this->getFactory()
+            ->getProductStorageClient()
+            ->isProductAbstractRestricted($productViewTransfer->getIdProductAbstract());
 
-        return array_intersect_key($attributes, array_flip($attributesToFilter));
+        if (!$productAbstractRestricted) {
+            return;
+        }
+
+        if ($this->getFactory()->getCustomerClient()->isLoggedIn()) {
+            throw new ProductAccessDeniedException(static::GLOSSARY_KEY_PRODUCT_ACCESS_DENIED);
+        }
+        throw new ProductAccessDeniedForUserNotLoggedInException();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
+     *
+     * @throws \Pyz\Yves\ProductDetailPage\Exception\ProductAccessDeniedForUserNotLoggedInException
+     * @throws \SprykerShop\Yves\ProductDetailPage\Exception\ProductAccessDeniedException
+     *
+     * @return void
+     */
+    protected function assertProductConcreteRestrictions(ProductViewTransfer $productViewTransfer): void
+    {
+        if (empty($productViewTransfer->getIdProductConcrete())) {
+            return;
+        }
+
+        $productConcreteRestricted = $this->getFactory()
+            ->getProductStorageClient()
+            ->isProductConcreteRestricted($productViewTransfer->getIdProductConcrete());
+
+        if (!$productConcreteRestricted) {
+            return;
+        }
+
+        if ($this->getFactory()->getCustomerClient()->isLoggedIn()) {
+            throw new ProductAccessDeniedException(static::GLOSSARY_KEY_PRODUCT_ACCESS_DENIED);
+        }
+        throw new ProductAccessDeniedForUserNotLoggedInException();
     }
 }

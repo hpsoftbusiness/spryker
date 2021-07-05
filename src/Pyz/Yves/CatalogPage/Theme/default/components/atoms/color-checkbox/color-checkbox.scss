@@ -34,87 +34,121 @@
             box-shadow: 0 rem(2) rem(10) 0 $setting-color-alpha-2;
 
             &.White,
+            &.white,
             &.Weiß,
+            &.weiß,
             &.Weiss {
                 background-color: $filter-color-white;
             }
 
             &.Dark,
+            &.dark,
             &.Black,
-            &.Schwarz {
+            &.black,
+            &.Schwarz,
+            &.schwarz {
                 background-color: $filter-color-black;
             }
 
             &.Grey,
+            &.grey,
+            &.grau,
             &.Grau {
                 background-color: $filter-color-gray;
             }
 
             &.Silberfarben,
+            &.silberfarben,
             &.Silver,
-            &.Silber {
+            &.silver,
+            &.Silber,
+            &.silber {
                 background-color: $filter-color-silver;
             }
 
             &.Blue,
-            &.Blau {
+            &.blue,
+            &.Blau,
+            &.blau {
                 background-color: $filter-color-blue;
             }
 
             &.Yellow,
+            &.yellow,
+            &.gelb,
             &.Gelb {
                 background-color: $filter-color-yellow;
             }
 
             &.Purple,
+            &.purple,
+            &.lila,
             &.Lila {
                 background-color: $filter-color-purple;
             }
 
-            &.Pink {
+            &.Pink,
+            &.pink {
                 background-color: $filter-color-pink;
             }
 
             &.Platinum,
-            &.Platin {
+            &.platinum,
+            &.Platin,
+            &.platin {
                 background-color: $filter-color-platinum;
             }
 
             &.Copper,
-            &.Kupfer {
+            &.copper,
+            &.Kupfer,
+            &.kupfer {
                 background-color: $filter-color-copper;
             }
 
+            &.orange,
             &.Orange {
                 background-color: $filter-color-organge;
             }
 
+            &.gold,
             &.Gold {
                 background-color: $filter-color-gold;
             }
 
             &.Navy,
+            &.navy,
+            &.marineblau,
             &.Marineblau {
                 background-color: $filter-color-navy;
             }
 
             &.Green,
-            &.Grün {
+            &.green,
+            &.Grün,
+            &.grün {
                 background-color: $filter-color-green;
             }
 
             &.Red,
-            &.Rot {
+            &.red,
+            &.Rot,
+            &.rot {
                 background-color: $filter-color-red;
             }
 
             &.Brown,
-            &.Braun {
+            &.brown,
+            &.Braun,
+            &.braun {
                 background-color: $filter-color-brown;
             }
 
             &.Multicolor,
+            &.multicolor,
             &.Multicolored,
+            &.multicolored,
+            &.mehrfarbig,
             &.Mehrfarbig {
                 background: linear-gradient(to right bottom, $filter-color-red 25%, $filter-color-green 50%, $filter-color-blue 75%);
             }

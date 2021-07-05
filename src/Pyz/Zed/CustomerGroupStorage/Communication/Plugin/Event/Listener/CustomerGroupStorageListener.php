@@ -40,6 +40,7 @@ class CustomerGroupStorageListener extends AbstractPlugin implements EventHandle
                 break;
             case CustomerGroupEvents::ENTITY_SPY_CUSTOMER_GROUP_DELETE:
             case CustomerGroupProductListEvents::ENTITY_PYZ_CUSTOMER_GROUP_TO_PRODUCT_LIST_DELETE:
+            case CustomerGroupEvents::CUSTOMER_GROUP_UNPUBLISH:
                 /* @phpstan-ignore-next-line */
                 $this->getFacade()->unpublish((int)$transfer->getId());
                 break;

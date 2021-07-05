@@ -53,4 +53,9 @@ interface ProductApiQueryContainerInterface extends QueryContainerInterface
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryFeaturedProducts(): SpyProductAbstractQuery;
+
+    /**
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
+     */
+    public function queryEliteClubEcDealOnly(): SpyProductAbstractQuery;
 }

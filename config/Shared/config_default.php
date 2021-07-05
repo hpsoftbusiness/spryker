@@ -456,8 +456,7 @@ $config[MailConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD') ?: null;
 $config[MailConstants::SENDER_EMAIL] = getenv('SPRYKER_MAIL_SENDER_EMAIL') ?: null;
 $config[MailConstants::SENDER_NAME] = getenv('SPRYKER_MAIL_SENDER_NAME') ?: null;
 
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mterm@myworld.com';
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = '';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [];
 
 $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [];
 
@@ -582,7 +581,7 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [];
 $config[TaxConstants::DEFAULT_TAX_RATE] = 20;
 
 // ----------------------------------------------------------------------------
-// ------------------------------ GOOGLE ANALYTIC ------------------------------------
+// ------------------------------ GOOGLE ANALYTIC -----------------------------
 // ----------------------------------------------------------------------------
 
 $config[GoogleAnalyticConstants::WEB_PROPERTY_ID] = getenv('WEB_PROPERTY_ID') ?: 'no-web-property-id';

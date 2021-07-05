@@ -94,10 +94,9 @@ class OrderInProcessingMailTypePlugin extends AbstractPlugin implements MailType
      */
     protected function setRecipient(MailBuilderInterface $mailBuilder)
     {
-        $mailBuilder->addRecipient(
-            $this->getConfig()->getMailOrderInProcessingRecipientEmail(),
-            $this->getConfig()->getMailOrderInProcessingRecipientName()
-        );
+        foreach ($this->getConfig()->getMailOrderInProcessingRecipients() as $recipientEmail => $recipientName) {
+            $mailBuilder->addRecipient($recipientEmail, $recipientName);
+        }
 
         return $this;
     }

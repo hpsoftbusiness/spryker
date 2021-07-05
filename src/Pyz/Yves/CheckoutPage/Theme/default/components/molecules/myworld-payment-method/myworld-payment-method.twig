@@ -28,7 +28,7 @@
                 <span class="{{ config.name }}__balance-text {% if isDisabled %}{{ config.name }}__balance-text--disabled{% endif %}">
                     {{ 'checkout.payment.myworld.payment_methods.balance_text' | trans }}
                 </span>
-                <span class="{{ config.name }}__amount" data-amount="{{ data.amount }}">
+                <span class="{{ config.name }}__amount">
                     {{ data.amount | money(true, data.currencyIsoCode) }}
                 </span>
             </span>

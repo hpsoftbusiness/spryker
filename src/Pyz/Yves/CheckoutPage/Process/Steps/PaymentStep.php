@@ -162,18 +162,6 @@ class PaymentStep extends SprykerShopPaymentStep
     }
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return array
-     */
-    public function getTemplateVariables(AbstractTransfer $quoteTransfer)
-    {
-        return [
-            'quoteTransfer' => $quoteTransfer,
-        ];
-    }
-
-    /**
      * Specification:
      *  Method using at validation of the payment. It overrides for accept Nopayment method
      *  in case the price to pay was covered by internal payments

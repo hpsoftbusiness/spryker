@@ -27,12 +27,12 @@ class AttributesExtractorStep implements DataImportStepInterface
         $affiliateAttributes = [];
 
         foreach ($dataSet as $key => $value) {
-            if (!preg_match('/^' . $this->getAttributeKeyPrefix() . '(\d+)$/', $key, $match)) {
+            if (!preg_match('/^' . $this->getAttributeKeyPrefix() . '(\d+)$/', trim($key), $match)) {
                 continue;
             }
 
             $attributeValueKey = $this->getAttributeValuePrefix() . $match[1];
-            $attributeKey = trim(strtolower(str_replace(' ', '_', $value)));
+            $attributeKey = trim(strtolower(str_replace(' ', '_', trim($value))));
             $attributeValue = trim($dataSet[$attributeValueKey]);
 
             if ($attributeKey !== '') {

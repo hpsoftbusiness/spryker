@@ -176,6 +176,14 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
+     * @return array
+     */
+    public static function getResolvedKeyList(): array
+    {
+        return array_keys(static::$resolved);
+    }
+
+    /**
      * @return void
      */
     public function flush(): void

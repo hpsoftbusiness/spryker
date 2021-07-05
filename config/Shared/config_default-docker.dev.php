@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
+use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -173,5 +174,13 @@ require 'common/config_my-world-marketplace-api-development.php';
 $config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = '7pyou7b7v0';
 
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.myworld.com/spryker';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MAIL ----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
+    'nataliia.popkova@spryker.com' => 'Warehouse Manager',
+];
 
 require 'common/config_my-world-payment.php';

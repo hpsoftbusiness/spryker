@@ -17,13 +17,5 @@ interface OmsConstants extends SprykerOmsConstants
      *
      * @api
      */
-    public const MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL = 'OMS:MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL';
-
-    /**
-     * Specification:
-     * - Defines a recipient's name for the order-in-processing mail.
-     *
-     * @api
-     */
-    public const MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME = 'OMS:MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME';
+    public const MAIL_ORDER_IN_PROCESSING_RECIPIENTS = 'OMS:MAIL_ORDER_IN_PROCESSING_RECIPIENTS';
 }

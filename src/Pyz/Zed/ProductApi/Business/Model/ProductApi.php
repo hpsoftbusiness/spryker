@@ -11,6 +11,7 @@ use ArrayObject;
 use Generated\Shared\Transfer\ApiItemTransfer;
 use Generated\Shared\Transfer\ApiRequestTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
+use Generated\Shared\Transfer\ProductApiTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Shared\ProductApi\ProductApiConstants;
 use Pyz\Zed\ProductApi\Business\Exception\UnsupportedResourceException;
@@ -113,7 +114,7 @@ class ProductApi implements ProductApiInterface
     protected function get(
         int $idProductAbstract,
         LocaleTransfer $localeTransfer
-    ) {
+    ): ProductApiTransfer {
         $productTransfer = $this->productFacade->findProductAbstractById($idProductAbstract);
         $productUrl = $this->productFacade->getProductUrl($productTransfer);
         $productCategoryTransferCollection = $this->productCategoryFacade
@@ -154,6 +155,8 @@ class ProductApi implements ProductApiInterface
                 return $this->queryContainer->queryLyconet();
             case ProductApiConfig::RESOURCE_FEATURED_PRODUCTS:
                 return $this->queryContainer->queryFeaturedProducts();
+            case ProductApiConfig::RESOURCE_ELITE_CLUB_EC_DEAL_ONLY:
+                return $this->queryContainer->queryEliteClubEcDealOnly();
             default:
                 throw new UnsupportedResourceException($apiRequestTransfer->getResource());
         }

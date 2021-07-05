@@ -19,12 +19,16 @@ use Generated\Shared\Transfer\ProductPriceApiTransfer;
 use Generated\Shared\Transfer\ProductSpDealApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
-use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
+use Pyz\Shared\PriceProduct\PriceProductConfig;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 
 class TransferMapper implements TransferMapperInterface
 {
+    // TODO: use shared constants with \Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants
+    public const PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE = 'benefit_store_sales_price';
+    public const PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT = 'benefit_amount';
+
     /**
      * @param array $productEntityCollection
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
@@ -75,6 +79,7 @@ class TransferMapper implements TransferMapperInterface
             ->setProductUrl($this->getProductUrl($productUrlTransfer, $localeTransfer))
             ->setBenefit($this->getBenefitApi($productAbstractTransfer))
             ->setPrice($this->getPriceApi($productAbstractTransfer))
+            ->setOriginalGrossPrice($this->getOriginalGrossPriceApi($productAbstractTransfer))
             ->setBvDeal($this->getBvDealApi($productAbstractTransfer))
             ->setSpDeal($this->getSpDealApi($productAbstractTransfer))
             ->setMarketerOnly($this->getMarketerOnlyFlag($productAbstractTransfer))
@@ -226,27 +231,43 @@ class TransferMapper implements TransferMapperInterface
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
+     * @return \Generated\Shared\Transfer\ProductPriceApiTransfer
+     */
+    protected function getOriginalGrossPriceApi(ProductAbstractTransfer $productAbstractTransfer): ProductPriceApiTransfer
+    {
+        $productPriceApiTransfer = new ProductPriceApiTransfer();
+
+        foreach ($productAbstractTransfer->getPrices() as $priceProductTransfer) {
+            if ($priceProductTransfer->getPriceTypeName() === PriceProductConfig::PRICE_TYPE_ORIGINAL) {
+                $grossAmount = $priceProductTransfer->getMoneyValue()->getGrossAmount();
+                $productPriceApiTransfer->setAmount(
+                    $this->formatAmount($grossAmount !== null ? $grossAmount / 100 : null)
+                )
+                    ->setCurrency($priceProductTransfer->getMoneyValue()->getCurrency()->getCode());
+
+                return $productPriceApiTransfer;
+            }
+        }
+
+        return $productPriceApiTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     *
      * @return \Generated\Shared\Transfer\ProductBvDealApiTransfer
      */
     protected function getBvDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductBvDealApiTransfer
     {
         $productBcDealApi = new ProductBvDealApiTransfer();
-        $benefitStoreSalesPriceAttrKey = Config::get(
-            MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE
-        );
-        $benefitAmountAttrKey = Config::get(
-            MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT
-        );
-        $productBcDealApi->setBvItemPrice(
-            $this->formatAmount(
-                $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
-            )
-        )
-            ->setBvAmount(
-                $this->formatAmount(
-                    $productAbstractTransfer->getAttributes()[$benefitAmountAttrKey] ?? null
-                )
-            );
+        $benefitStoreSalesPriceAttrKey = self::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE;
+        $benefitAmountAttrKey = self::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT;
+        $productBcDealApi->setBvItemPrice($this->formatAmount(
+            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
+        ))
+            ->setBvAmount($this->formatAmount(
+                $productAbstractTransfer->getAttributes()[$benefitAmountAttrKey] ?? null
+            ));
 
         return $productBcDealApi;
     }
@@ -258,21 +279,15 @@ class TransferMapper implements TransferMapperInterface
      */
     protected function getSpDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductSpDealApiTransfer
     {
-        $benefitStoreSalesPriceAttrKey = Config::get(
-            MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE
-        );
+        $benefitStoreSalesPriceAttrKey = self::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE;
 
         $productSpDealApi = new ProductSpDealApiTransfer();
-        $productSpDealApi->setSpItemPrice(
-            $this->formatAmount(
-                $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
-            )
-        )
-            ->setSpAmount(
-                $this->formatAmount(
-                    $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
-                )
-            );
+        $productSpDealApi->setSpItemPrice($this->formatAmount(
+            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
+        ))
+            ->setSpAmount($this->formatAmount(
+                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+            ));
 
         return $productSpDealApi;
     }

@@ -18,6 +18,7 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
 class ProductUrlWidget extends AbstractWidget
 {
     public const NAME = 'ProductUrlWidget';
+    private const KEY_AFFILIATE_NETWORK = 'affiliate_network';
 
     /**
      * @var bool
@@ -99,7 +100,12 @@ class ProductUrlWidget extends AbstractWidget
     protected function getProductAffiliateTrackingUrl(array $affiliateData): string
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        if (!$customerTransfer) {
+        /**
+         * @TODO change fallback to null when product import files are updated with 'affiliate_network' attribute
+         */
+        $affiliateNetwork = $affiliateData[self::KEY_AFFILIATE_NETWORK] ?? 'AWIN';
+
+        if (!$customerTransfer || !$affiliateNetwork) {
             return CustomerPageRouteProviderPlugin::ROUTE_NAME_LOGIN;
         }
 

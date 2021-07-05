@@ -16,6 +16,7 @@ use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\CombinedProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
@@ -54,6 +55,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
     public function flush(): void
     {
         DataImporterPublisher::triggerEvents();
+
+        $this->productImageRepository->flush();
     }
 
     /**
@@ -65,30 +68,50 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
     {
         $productImageSetEntityTransfer = $this->getProductImageSetTransfer($dataSet);
 
-        if ($productImageSetEntityTransfer->getFkProductAbstract() !== null) {
-            $this->importProductImage($dataSet, $productImageSetEntityTransfer);
+        $abstractProductImageSet = $this->productImageRepository->getProductImageSetEntity(
+            $productImageSetEntityTransfer->getName(),
+            $productImageSetEntityTransfer->getFkLocale(),
+            $productImageSetEntityTransfer->getFkProductAbstract()
+        )->getProductImageSetKey();
+
+        if ($productImageSetEntityTransfer->getFkProductAbstract() !== null &&
+            !in_array($abstractProductImageSet, ProductImageRepository::getResolvedProductImageSetsKeyList())) {
+            $this->importProductImage(
+                $dataSet,
+                $productImageSetEntityTransfer,
+                $productImageSetEntityTransfer->getFkProductAbstract()
+            );
         }
 
         if ($productImageSetEntityTransfer->getFkProduct() !== null) {
-            $this->importProductImage($dataSet, $productImageSetEntityTransfer);
+            $this->importProductImage(
+                $dataSet,
+                $productImageSetEntityTransfer,
+                null,
+                $productImageSetEntityTransfer->getFkProduct()
+            );
         }
     }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $productImageSetEntityTransfer
+     * @param int|null $productAbstractId
+     * @param int|null $productConcreteId
      *
      * @return void
      */
-    protected function importProductImage(DataSetInterface $dataSet, SpyProductImageSetEntityTransfer $productImageSetEntityTransfer): void
-    {
+    protected function importProductImage(
+        DataSetInterface $dataSet,
+        SpyProductImageSetEntityTransfer $productImageSetEntityTransfer,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null
+    ): void {
         $productImageSetEntity = $this->productImageRepository->getProductImageSetEntity(
             $productImageSetEntityTransfer->getName(),
             $productImageSetEntityTransfer->getFkLocale(),
-            (int)$productImageSetEntityTransfer->getFkProductAbstract(),
-            //             revert for MYW-867
-            //            (int)$productImageSetEntityTransfer->getFkProduct(),
-            null,
+            $productAbstractId,
+            $productConcreteId,
             $productImageSetEntityTransfer->getProductImageSetKey()
         );
 
@@ -175,6 +198,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
     protected function getProductImageSetTransfer(DataSetInterface $dataSet): SpyProductImageSetEntityTransfer
     {
         $localId = null;
+        /** @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $spyProductImageSetEntityTransfer */
         $spyProductImageSetEntityTransfer = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
         $localeName = $dataSet[CombinedProductImageHydratorStep::COLUMN_LOCALE] ?? null;
 
@@ -235,7 +259,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
                 ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
                 $productImageSetEntity->getFkProductAbstract()
             );
-        } elseif ($productImageSetEntity->getFkProduct()) {
+        }
+        if ($productImageSetEntity->getFkProduct()) {
             DataImporterPublisher::addEvent(
                 ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
                 $productImageSetEntity->getFkProduct()

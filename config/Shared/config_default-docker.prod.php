@@ -9,6 +9,7 @@ use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
+use Spryker\Shared\Event\EventConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
@@ -46,8 +47,10 @@ require 'common/config_sso-prod.php';
 // ------------------------------ MAIL ----------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'mp.vendormgmt@myworld.com';
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
+    'mp.vendormgmt@myworld.com' => 'Warehouse Manager',
+    'mterm@myworld.com' => 'Warehouse Manager',
+];
 
 $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
     'mp.vendormgmt@myworld.com' => 'Warehouse Manager',
@@ -58,7 +61,7 @@ $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
 // ----------------------------------------------------------------------------
 
 require 'common/config_my-world-marketplace-api-prod.php';
-$config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z57777';
+$config[MyWorldMarketplaceApiConstants::ORDER_REFERENCE_PREFIX] = 'azx0z77777';
 
 $config[ProductAffiliateConstants::TRACKING_URL_PATH] = getenv('AFFILIATE_TRACKING_URL_PATH');
 
@@ -89,3 +92,5 @@ $config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = false;
 
 $config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = false;
 $config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;
+
+$config[EventConstants::LOGGER_ACTIVE] = true;

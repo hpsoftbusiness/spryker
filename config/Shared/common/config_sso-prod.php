@@ -23,8 +23,8 @@ $config[SsoConstants::CUSTOMER_ACCOUNT_BALANCE_BY_CURRENCY_URL] = getenv('SSO_CU
 $config[SsoConstants::LOGIN_CHECK_PATH] = 'login_check';
 
 $config[SsoConstants::RESPONSE_TYPE] = 'code';
-$config[SsoConstants::CLIENT_ID] = getenv('SSO_CLIENT_ID') ? : 'spryker_sso_dev';
-$config[SsoConstants::CLIENT_SECRET] = getenv('SSO_CLIENT_SECRET') ? : 'spryker_sso_dev';
+$config[SsoConstants::CLIENT_ID] = getenv('SSO_CLIENT_ID');
+$config[SsoConstants::CLIENT_SECRET] = getenv('SSO_CLIENT_SECRET');
 $config[SsoConstants::USER_AGENT] = 'Spryker/202009.0';
 $config[SsoConstants::SCOPE] = 'openid';
 

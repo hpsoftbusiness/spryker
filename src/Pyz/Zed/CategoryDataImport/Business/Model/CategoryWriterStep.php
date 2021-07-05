@@ -126,11 +126,15 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
      */
     protected function createNavigationNode(DataSetInterface $dataSet, string $navigationMode)
     {
+        if ($dataSet[static::KEY_PARENT_CATEGORY_KEY] !== 'demoshop') {
+            return;
+        }
+
         if (!isset($this->idNavigationNodeBuffer[$navigationMode])) {
             $this->idNavigationNodeBuffer[$navigationMode] = $this->resolveIdNavigation($navigationMode);
         }
 
-        $navigationNodeKey = strtolower($navigationMode . static::NODE_KEY_SUFFIX . $dataSet[static::KEY_NODE_ORDER]);
+        $navigationNodeKey = strtolower($navigationMode . static::NODE_KEY_SUFFIX . $dataSet[static::KEY_URL_ID]);
         $navigationNodeEntity = SpyNavigationNodeQuery::create()
             ->filterByFkNavigation($this->idNavigationNodeBuffer[$navigationMode])
             ->filterByNodeKey($navigationNodeKey)
@@ -147,8 +151,7 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
             ->findOneOrCreate();
 
         $categoryKey = static::KEY_NAME . '.' . array_search($dataSet[static::KEY_LOCALE_ID], $dataSet['locales']);
-        $navigationNodeLocalizedTitle = $dataSet['localizedAttributes'][$dataSet[static::KEY_LOCALE_ID]][static::KEY_NAME] ?? $dataSet[$categoryKey];
-        $navigationNodeLocalizedAttributesEntity->setTitle($navigationNodeLocalizedTitle);
+        $navigationNodeLocalizedAttributesEntity->setTitle($dataSet[$categoryKey]);
         $navigationNodeLocalizedAttributesEntity->setFkUrl($dataSet[static::KEY_URL_ID]);
         $navigationNodeEntity->addSpyNavigationNodeLocalizedAttributes($navigationNodeLocalizedAttributesEntity);
         $navigationNodeEntity->save();

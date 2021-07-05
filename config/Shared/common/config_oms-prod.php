@@ -1,5 +1,6 @@
 <?php
 
+use Pyz\Shared\Adyen\AdyenConfig;
 use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Spryker\Shared\Kernel\KernelConstants;
@@ -8,7 +9,6 @@ use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\GiftCard\GiftCardConfig;
-use SprykerEco\Shared\Adyen\AdyenConfig;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
@@ -56,11 +56,7 @@ $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([
     'DummyPrepayment01',
 ], $config[OmsConstants::ACTIVE_PROCESSES]);
 
-$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = array_replace(
-    $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING],
-    [
-        NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
-        GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
-        DummyPrepaymentConfig::DUMMY_PREPAYMENT => 'DummyPrepayment01',
-    ]
-);
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    DummyPrepaymentConfig::DUMMY_PREPAYMENT => 'DummyPrepayment01',
+    AdyenConfig::ADYEN_CREDIT_CARD => 'AdyenCreditCard01',
+];

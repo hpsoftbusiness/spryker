@@ -73,8 +73,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::COLUMN_IMAGE_SET_NAME]);
 
-//        revert for MYW-867
-//        if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]) && empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
         if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
             $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
         }
@@ -89,6 +87,11 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
         if (isset($dataSet[static::KEY_IMAGE_SET_FK_LOCALE])) {
             $imageSetEntityTransfer->setFkLocale($dataSet[static::KEY_IMAGE_SET_FK_LOCALE]);
+
+            if ($imageSetEntityTransfer->getProductImageSetKey() === null) {
+                $imageSetEntityTransfer = $this->generateProductImageSetKey($imageSetEntityTransfer);
+            }
+
             $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
 
             return;
@@ -98,6 +101,10 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
             ->setLocaleName($dataSet[static::COLUMN_LOCALE]);
 
         $imageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
+
+        if ($imageSetEntityTransfer->getProductImageSetKey() === null) {
+            $imageSetEntityTransfer = $this->generateProductImageSetKey($imageSetEntityTransfer);
+        }
 
         $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
@@ -144,5 +151,26 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         }
 
         return static::IMAGE_TO_IMAGE_SET_RELATION_ORDER;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $spyProductImageSetEntityTransfer
+     *
+     * @return \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
+     */
+    private function generateProductImageSetKey(
+        SpyProductImageSetEntityTransfer $spyProductImageSetEntityTransfer
+    ): SpyProductImageSetEntityTransfer {
+        $productImageSetKey = sprintf(
+            '%s:%d:%d:%d',
+            $spyProductImageSetEntityTransfer->getName(),
+            $spyProductImageSetEntityTransfer->getFkLocale(),
+            $spyProductImageSetEntityTransfer->getFkProductAbstract() ?? 0,
+            $spyProductImageSetEntityTransfer->getFkProduct() ?? 0
+        );
+
+        $spyProductImageSetEntityTransfer->setProductImageSetKey($productImageSetKey);
+
+        return $spyProductImageSetEntityTransfer;
     }
 }

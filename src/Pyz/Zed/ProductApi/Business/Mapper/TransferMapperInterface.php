@@ -10,6 +10,7 @@ namespace Pyz\Zed\ProductApi\Business\Mapper;
 use Generated\Shared\Transfer\CategoryCollectionTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
+use Generated\Shared\Transfer\ProductApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
 
@@ -41,5 +42,5 @@ interface TransferMapperInterface
         ProductUrlTransfer $productUrlTransfer,
         LocaleTransfer $localeTransfer,
         CategoryCollectionTransfer $productCategoryTransferCollection
-    );
+    ): ProductApiTransfer;
 }

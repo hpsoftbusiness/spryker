@@ -11,8 +11,8 @@ use Spryker\Shared\PriceProduct\PriceProductConfig as SprykerPriceProductConfig;
 
 class PriceProductConfig extends SprykerPriceProductConfig
 {
-    private const PRICE_TYPE_BENEFIT = 'BENEFIT';
-    private const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
+    public const PRICE_TYPE_BENEFIT = 'BENEFIT';
+    public const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
 
     /**
      * @return string

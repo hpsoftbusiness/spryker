@@ -21,18 +21,10 @@ class OmsConfig extends SprykerOmsConfig
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getMailOrderInProcessingRecipientEmail(): string
+    public function getMailOrderInProcessingRecipients(): array
     {
-        return $this->get(OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL);
-    }
-
-    /**
-     * @return string
-     */
-    public function getMailOrderInProcessingRecipientName(): string
-    {
-        return $this->get(OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME);
+        return $this->get(OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS);
     }
 }

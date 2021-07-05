@@ -11,11 +11,10 @@
     customerEVoucherOnBehalfOfMarketerBalance: required,
     customerCashbackBalance: required,
     currencyIsoCode: required,
-    grandTotal: required,
 } %}
 
 {% block body %}
-    <div class="{{ config.name }}__container" data-grand-total="{{ data.grandTotal }}">
+    <div class="{{ config.name }}__container">
         <div class="{{ config.name }}__title">{{ 'checkout.payment.myworld.payment_methods.title' | trans }}</div>
         <div class="{{ config.name }}__subtitle">{{ 'checkout.payment.myworld.payment_methods.subtitle' | trans }}</div>
         <div class="{{ config.name }}__methods-container">

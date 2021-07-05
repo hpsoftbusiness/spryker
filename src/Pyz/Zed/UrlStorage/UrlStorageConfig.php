@@ -50,7 +50,7 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
      */
     public function getUrlRedirectEventQueueName(): ?string
     {
-        return static::PUBLISH_URL;
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**

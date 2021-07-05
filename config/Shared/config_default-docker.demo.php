@@ -5,6 +5,7 @@ use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
+use Spryker\Shared\Event\EventConstants;
 
 // ############################################################################
 // ############################## DEMO/TESTING CONFIGURATION ##################
@@ -42,8 +43,9 @@ require 'common/config_sso-demo.php';
 // ------------------------------ MAIL ----------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_EMAIL] = 'nataliia.popkova@spryker.com';
-$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENT_NAME] = 'Warehouse Manager';
+$config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
+    'nataliia.popkova@spryker.com' => 'Warehouse Manager',
+];
 
 $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
     'nataliia.popkova@spryker.com' => 'Warehouse Manager',
@@ -67,3 +69,5 @@ $config[ProductDataImportConstants::STORAGE_NAME] = 'aws-files-import';
 require 'common/config_my-world-payment-api-development.php';
 
 require 'common/config_my-world-payment.php';
+
+$config[EventConstants::LOGGER_ACTIVE] = true;

@@ -47,4 +47,11 @@ interface ProductImageRepositoryInterface
         int $productImageSetId,
         int $productImageId
     ): SpyProductImageSetToProductImage;
+
+    /**
+     * flushing static variables
+     *
+     * @return void
+     */
+    public function flush(): void;
 }

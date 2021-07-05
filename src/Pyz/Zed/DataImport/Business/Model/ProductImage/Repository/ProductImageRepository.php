@@ -19,17 +19,17 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     /**
      * @var \Orm\Zed\ProductImage\Persistence\SpyProductImageSet[]
      */
-    protected $resolvedProductImageSets = [];
+    protected static $resolvedProductImageSets = [];
 
     /**
      * @var \Orm\Zed\ProductImage\Persistence\SpyProductImage[]
      */
-    protected $resolvedProductImages = [];
+    protected static $resolvedProductImages = [];
 
     /**
      * @var \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage[]
      */
-    protected $resolvedProductImageSetToProductImageRelations = [];
+    protected static $resolvedProductImageSetToProductImageRelations = [];
 
     /**
      * @param string $name
@@ -47,13 +47,25 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         ?int $productConcreteId = null,
         ?string $productImageSetKey = null
     ): SpyProductImageSet {
-        $key = $this->buildProductImageSetKey($name, $localeId, $productAbstractId, $productConcreteId, $productImageSetKey);
+        $key = $this->buildProductImageSetKey(
+            $name,
+            $localeId,
+            $productAbstractId,
+            $productConcreteId,
+            $productImageSetKey
+        );
 
         if (!isset($this->resolvedProductImageSets[$key])) {
-            $this->resolvedProductImageSets[$key] = $this->getProductImageSet($name, $localeId, $productAbstractId, $productConcreteId, $productImageSetKey);
+            static::$resolvedProductImageSets[$key] = $this->getProductImageSet(
+                $name,
+                $localeId,
+                $productAbstractId,
+                $productConcreteId,
+                $productImageSetKey
+            );
         }
 
-        return $this->resolvedProductImageSets[$key];
+        return static::$resolvedProductImageSets[$key];
     }
 
     /**
@@ -64,10 +76,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     public function getProductImageEntity(string $productImageKey): SpyProductImage
     {
         if (!isset($this->resolvedProductImages[$productImageKey])) {
-            $this->resolvedProductImages[$productImageKey] = $this->getProductImage($productImageKey);
+            static::$resolvedProductImages[$productImageKey] = $this->getProductImage($productImageKey);
         }
 
-        return $this->resolvedProductImages[$productImageKey];
+        return static::$resolvedProductImages[$productImageKey];
     }
 
     /**
@@ -83,10 +95,23 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         $key = $this->buildProductImageSetToProductImageRelationKey($productImageSetId, $productImageId);
 
         if (!isset($this->resolvedProductImageSetToProductImageRelations[$key])) {
-            $this->resolvedProductImageSetToProductImageRelations[$key] = $this->getProductImageSetToProductImageRelation($productImageSetId, $productImageId);
+            static::$resolvedProductImageSetToProductImageRelations[$key] = $this->getProductImageSetToProductImageRelation(
+                $productImageSetId,
+                $productImageId
+            );
         }
 
-        return $this->resolvedProductImageSetToProductImageRelations[$key];
+        return static::$resolvedProductImageSetToProductImageRelations[$key];
+    }
+
+    /**
+     * @return void
+     */
+    public function flush(): void
+    {
+        static::$resolvedProductImages = [];
+        static::$resolvedProductImageSets = [];
+        static::$resolvedProductImageSetToProductImageRelations = [];
     }
 
     /**
@@ -194,5 +219,13 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         }
 
         return $query->findOneOrCreate();
+    }
+
+    /**
+     * @return array
+     */
+    public static function getResolvedProductImageSetsKeyList(): array
+    {
+        return array_keys(static::$resolvedProductImageSets);
     }
 }

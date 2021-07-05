@@ -46,7 +46,18 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        if (!in_array($dataSet[CombinedProductAbstractHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE], CombinedProductAbstractHydratorStep::ASSIGNABLE_PRODUCT_TYPES, true)) {
+        $isAssignableProductType = in_array(
+            $dataSet[CombinedProductAbstractHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE],
+            CombinedProductAbstractHydratorStep::ASSIGNABLE_PRODUCT_TYPES,
+            true
+        );
+
+        $skuIsInResolvedKeyList = in_array(
+            $dataSet[CombinedProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU],
+            ProductRepository::getResolvedKeyList()
+        );
+
+        if (!$isAssignableProductType || $skuIsInResolvedKeyList) {
             return;
         }
 

@@ -15,7 +15,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class ProductApiQueryContainer extends AbstractQueryContainer implements ProductApiQueryContainerInterface
 {
-    protected const PRODUCTS_LIMIT = 25;
+    protected const PRODUCTS_LIMIT = 100;
 
     /**
      * @param int $idProductAbstract
@@ -91,6 +91,15 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     {
         return $this->queryFind()
             ->where("JSON_VALUE(attributes, '$.featured_products') IS TRUE");
+    }
+
+    /**
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
+     */
+    public function queryEliteClubEcDealOnly(): SpyProductAbstractQuery
+    {
+        return $this->queryFind()
+            ->where("JSON_VALUE(attributes, '$.ec_deal_only') IS TRUE");
     }
 
     /**

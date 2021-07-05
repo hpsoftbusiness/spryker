@@ -9,6 +9,7 @@ namespace Pyz\Yves\ProductDetailPage;
 
 use Pyz\Client\Customer\CustomerClientInterface;
 use Pyz\Client\ProductAttribute\ProductAttributeClientInterface;
+use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
 use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
@@ -49,5 +50,13 @@ class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
     public function createDecimalToIntegerConverter(): DecimalToIntegerConverterInterface
     {
         return new DecimalToIntegerConverter();
+    }
+
+    /**
+     * @return \Pyz\Client\Sso\SsoClientInterface
+     */
+    public function getSsoClient(): SsoClientInterface
+    {
+        return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_SSO);
     }
 }

@@ -13,7 +13,6 @@ use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Pyz\Zed\Product\Communication\Console\ProductDataHealerConsole;
 use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
-use Pyz\Zed\ProductPageSearch\Communication\Console\ProductAbstractPageSearchRefreshConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Pyz\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Pyz\Zed\QueueErrorChecker\Communication\Console\QueueErrorCheckerConsole;
@@ -266,7 +265,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new EventBehaviorTriggerTimeoutConsole(),
             new PublisherTriggerEventsConsole(),
             new ExportSynchronizedDataConsole(),
-            new ProductAbstractPageSearchRefreshConsole(),
 
             // Setup commands
             new RunnerConsole(),

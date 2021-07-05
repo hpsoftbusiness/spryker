@@ -18,6 +18,7 @@
         <property name="productUrl" type="string"/>
         <property name="benefit" type="ProductBenefitApi"/>
         <property name="price" type="ProductPriceApi"/>
+        <property name="originalGrossPrice" type="ProductPriceApi"/>
         <property name="bvDeal" type="ProductBvDealApi"/>
         <property name="spDeal" type="ProductSpDealApi"/>
         <property name="marketerOnly" type="bool"/>
