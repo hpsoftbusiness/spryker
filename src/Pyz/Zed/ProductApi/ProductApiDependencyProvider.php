@@ -20,6 +20,7 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     public const FACADE_API = 'FACADE_API';
     public const FACADE_LOCALE = 'FACADE_LOCALE';
     public const FACADE_PRODUCT_CATEGORY = 'FACADE_PRODUCT_CATEGORY';
+    public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -35,6 +36,7 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->provideProductFacade($container);
         $container = $this->provideLocaleFacade($container);
         $container = $this->provideProductCategoryFacade($container);
+        $container = $this->providePriceProductFacade($container);
 
         return $container;
     }
@@ -118,6 +120,20 @@ class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::FACADE_PRODUCT_CATEGORY, function (Container $container) {
             return $container->getLocator()->productCategory()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function providePriceProductFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_PRICE_PRODUCT, function (Container $container) {
+            return $container->getLocator()->priceProduct()->facade();
         });
 
         return $container;

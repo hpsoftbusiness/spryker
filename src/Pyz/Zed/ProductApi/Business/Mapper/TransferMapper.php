@@ -19,7 +19,7 @@ use Generated\Shared\Transfer\ProductPriceApiTransfer;
 use Generated\Shared\Transfer\ProductSpDealApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
-use Pyz\Shared\PriceProduct\PriceProductConfig;
+use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 
@@ -28,6 +28,19 @@ class TransferMapper implements TransferMapperInterface
     // TODO: use shared constants with \Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants
     public const PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE = 'benefit_store_sales_price';
     public const PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT = 'benefit_amount';
+
+    /**
+     * @var \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    protected $priceProductFacade;
+
+    /**
+     * @param \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
+     */
+    public function __construct(PriceProductFacadeInterface $priceProductFacade)
+    {
+        $this->priceProductFacade = $priceProductFacade;
+    }
 
     /**
      * @param array $productEntityCollection
@@ -238,7 +251,7 @@ class TransferMapper implements TransferMapperInterface
         $productPriceApiTransfer = new ProductPriceApiTransfer();
 
         foreach ($productAbstractTransfer->getPrices() as $priceProductTransfer) {
-            if ($priceProductTransfer->getPriceTypeName() === PriceProductConfig::PRICE_TYPE_ORIGINAL) {
+            if ($priceProductTransfer->getPriceTypeName() === $this->priceProductFacade->getPriceTypeOriginalName()) {
                 $grossAmount = $priceProductTransfer->getMoneyValue()->getGrossAmount();
                 $productPriceApiTransfer->setAmount(
                     $this->formatAmount($grossAmount !== null ? $grossAmount / 100 : null)

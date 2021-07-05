@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductApi\Business;
 
 use Pyz\Zed\Api\Business\ApiFacadeInterface;
+use Pyz\Zed\PriceProduct\Business\PriceProductFacade;
 use Pyz\Zed\ProductApi\Business\Mapper\TransferMapper;
 use Pyz\Zed\ProductApi\Business\Mapper\TransferMapperInterface;
 use Pyz\Zed\ProductApi\Business\Model\ProductApi;
@@ -47,7 +48,7 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
      */
     public function createTransferMapper(): TransferMapperInterface
     {
-        return new TransferMapper();
+        return new TransferMapper($this->getPriceProductFacade());
     }
 
     /**
@@ -96,5 +97,13 @@ class ProductApiBusinessFactory extends AbstractBusinessFactory
     public function getProductCategoryFacade(): ProductCategoryFacadeInterface
     {
         return $this->getProvidedDependency(ProductApiDependencyProvider::FACADE_PRODUCT_CATEGORY);
+    }
+
+    /**
+     * @return \Pyz\Zed\PriceProduct\Business\PriceProductFacade
+     */
+    protected function getPriceProductFacade(): PriceProductFacade
+    {
+        return $this->getProvidedDependency(ProductApiDependencyProvider::FACADE_PRICE_PRODUCT);
     }
 }

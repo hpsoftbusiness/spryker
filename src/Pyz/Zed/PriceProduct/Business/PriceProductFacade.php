@@ -24,4 +24,12 @@ class PriceProductFacade extends SprykerPriceProductFacade implements
     {
         return $this->getFactory()->getConfig()->getPriceTypeBenefitName();
     }
+
+    /**
+     * @return string
+     */
+    public function getPriceTypeOriginalName(): string
+    {
+        return $this->getFactory()->getConfig()->getPriceTypeOriginalName();
+    }
 }
