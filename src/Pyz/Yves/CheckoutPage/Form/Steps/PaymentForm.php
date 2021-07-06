@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage\Form\Steps;
 
 use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
+use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
 use SprykerShop\Yves\CheckoutPage\Form\Steps\PaymentForm as SpyPaymentForm;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -78,14 +79,14 @@ class PaymentForm extends SpyPaymentForm
          * @var \Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer[] $customerBalances
          */
         $customerBalances = $options[self::OPTION_KEY_CUSTOMER_BALANCES];
-
+        $converter = $this->getDecimalToIntegerConverter();
         $balanceTypeToAmountMap = [];
         foreach ($customerBalances as $balanceByCurrencyTransfer) {
             if (!$this->isDiscountBalanceApplicable($balanceByCurrencyTransfer)) {
                 continue;
             }
             $balanceTypeToAmountMap[$balanceByCurrencyTransfer->getPaymentOptionName()] =
-                $balanceByCurrencyTransfer->getTargetAvailableBalance()->toFloat();
+                $converter->convert($balanceByCurrencyTransfer->getTargetAvailableBalance()->toFloat());
         }
 
         $view->vars[self::OPTION_KEY_CUSTOMER_BALANCES] = $balanceTypeToAmountMap;
@@ -211,5 +212,13 @@ class PaymentForm extends SpyPaymentForm
     private function assertHasBalance(CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer): bool
     {
         return $balanceByCurrencyTransfer->getTargetAvailableBalance()->greaterThan(0);
+    }
+
+    /**
+     * @return \Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface
+     */
+    private function getDecimalToIntegerConverter(): DecimalToIntegerConverterInterface
+    {
+        return $this->getFactory()->createCheckoutFormFactory()->createDecimalToIntegerConverter();
     }
 }
