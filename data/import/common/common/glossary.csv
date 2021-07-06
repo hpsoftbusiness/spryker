@@ -3083,6 +3083,10 @@ agent.control_bar.logout,Wyloguj,pl_PL
 agent.control_bar.logout_as_customer,Pomoc dla klientów końcowych,pl_PL
 agent.control_bar.username,Agent:,pl_PL
 agent.login.email,E-mail,pl_PL
+validator.check.phone,Błędny numer telefonu,pl_PL
+validator.check.phone,Invalid phone number,en_US
+validator.check.phone,ungültige Rufnummer,de_DE
+validator.check.phone,ungültige Rufnummer,de_AT
 agent.login.password,Hasło,pl_PL
 agent.login.title,Uzyskaj dostęp do swojego konta,pl_PL
 auth.email,E-mail,pl_PL

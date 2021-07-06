@@ -162,6 +162,7 @@ trait AddressFormTrait
             'constraints' => [
                 $this->createNotBlankConstraint($options),
                 $this->createMaxLengthConstraint($options),
+                $this->createPhoneNumberConstraint($options),
             ],
         ]);
 

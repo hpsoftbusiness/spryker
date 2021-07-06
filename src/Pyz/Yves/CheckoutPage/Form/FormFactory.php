@@ -148,4 +148,12 @@ class FormFactory extends SpyFormFactory
     {
         return new IntegerToDecimalConverter();
     }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
+     */
+    public function createAddressFormCollection()
+    {
+        return $this->createFormCollection($this->getAddressFormTypes(), $this->getCheckoutAddressFormDataProviderPlugin());
+    }
 }

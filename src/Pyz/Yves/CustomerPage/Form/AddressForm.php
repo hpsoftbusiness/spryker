@@ -11,6 +11,7 @@ use Pyz\Yves\CustomerPage\CustomerPageConfig;
 use SprykerShop\Yves\CustomerPage\Form\AddressForm as SprykerAddressForm;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * @method \Pyz\Yves\CustomerPage\CustomerPageConfig getConfig()
@@ -61,6 +62,22 @@ class AddressForm extends SprykerAddressForm
     {
         return new Length([
             'max' => CustomerPageConfig::MAX_LENGTH,
+        ]);
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return \Symfony\Component\Validator\Constraints\Regex
+     */
+    public function createPhoneNumberConstraint(array $options)
+    {
+        $validationGroup = $this->getValidationGroup($options);
+
+        return new Regex([
+            'pattern' => '/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/m',
+            'message' => 'validator.check.phone',
+            'groups' => $validationGroup,
         ]);
     }
 }
