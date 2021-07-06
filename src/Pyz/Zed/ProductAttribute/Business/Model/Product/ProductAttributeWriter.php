@@ -57,7 +57,10 @@ class ProductAttributeWriter extends SprykerProductAttributeWriter
             $localeCode = $attribute['locale_code'];
             $value = $attribute['value'];
 
-            if (!is_bool($value)) {
+            if (!is_bool($value)
+                && !is_numeric($value)
+                && is_string($value)
+            ) {
                 $value = $this->sanitizeString($attribute['value']);
             }
 
