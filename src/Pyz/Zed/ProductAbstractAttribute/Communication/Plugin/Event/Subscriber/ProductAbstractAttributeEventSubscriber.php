@@ -26,11 +26,25 @@ class ProductAbstractAttributeEventSubscriber extends AbstractPlugin implements 
      */
     public function getSubscribedEvents(EventCollectionInterface $eventCollection): EventCollectionInterface
     {
+        $this->addProductAbstractPublishListener($eventCollection);
         $this->addProductAbstractCreateListener($eventCollection);
         $this->addProductAbstractUpdateListener($eventCollection);
         $this->addProductAbstractDeleteListener($eventCollection);
 
         return $eventCollection;
+    }
+
+    /**
+     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
+     *
+     * @return void
+     */
+    protected function addProductAbstractPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(
+            ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
+            new ProductAbstractPublishListener()
+        );
     }
 
     /**
