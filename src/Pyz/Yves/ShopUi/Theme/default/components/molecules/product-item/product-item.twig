@@ -19,10 +19,11 @@
 {% block body %}
     {# {{ data.product.cashback_amount }} #}
     {% set cashback = data.cashback %}
-    {# TODO: refactor. It can be that benefitAmount is an array (when two concretes have two different values) #}
-    {% set benefitAmount = data.benefitAmount[0] ?? data.benefitAmount %}
-    {% set shoppingPointsAmount = data.shoppingPointsAmount %}
+    {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
+    {% set benefitStore = benefitPrice > 0 and (data.product.attributes.benefit_store ?? false) %}
+    {% set benefitAmount = defaultPrice - benefitPrice %}
+    {% set shoppingPointsAmount = data.shoppingPointsAmount %}
 
     <div class="{{ config.name }}__container">
         <div class="{{ config.name }}__image-wrap">
@@ -72,9 +73,8 @@
 
                 {% block price %}
                     {% set defaultPriceJsName = config.jsName ? config.jsName ~ '__default-price' %}
-                    {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
-                    {% set benefitClass = benefitAmount ? '--benefit_voucher' : shoppingPointsAmount ? '--shopping_points' : '' %}
-                    {% set hasBenefitPrice = (benefitAmount or shoppingPointsAmount) ?: false %}
+                    {% set benefitClass = benefitStore ? '--benefit_voucher' : shoppingPointsAmount ? '--shopping_points' : '' %}
+                    {% set hasBenefitPrice = (benefitStore or shoppingPointsAmount) ?: false %}
                     {% set priceClass = hasBenefitPrice ? '__original_price' : '__price' %}
 
                     {% if data.isAffiliate is defined and data.isAffiliate %}
@@ -87,7 +87,7 @@
                         </span>
                     </div>
                     <div class="row {{ config.name }}{{ benefitClass }}">
-                        {% if benefitAmount %}
+                        {% if benefitStore %}
                             {{- benefitPrice | money(true, data.currencyIsoCode) -}} &nbsp;
                             + &nbsp; {{- benefitAmount | money(true, data.currencyIsoCode) -}}
                             {% include atom('icon') with {
@@ -96,7 +96,6 @@
                                     name: 'benefit-point',
                                 },
                             } only %}
-
                         {% elseif shoppingPointsAmount %}
                             {{- benefitPrice | money(true, data.currencyIsoCode) -}} &nbsp;
                             - &nbsp; {{ shoppingPointsAmount }}
@@ -106,7 +105,6 @@
                                     name: 'shopping-point',
                                 },
                             } only %}
-
                         {% endif %}
 
                         <span class="{{ config.name }}__inc-vat">
