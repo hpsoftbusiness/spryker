@@ -48,6 +48,14 @@ class BenefitDealConfig extends AbstractBundleConfig
     /**
      * @return string
      */
+    public function getLabelInsteadOfName(): string
+    {
+        return BenefitDealSharedConfig::LABEL_NAME_INSTEAD_OF;
+    }
+
+    /**
+     * @return string
+     */
     public function getShoppingPointStoreAttributeName(): string
     {
         return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_STORE);

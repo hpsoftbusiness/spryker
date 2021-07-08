@@ -17,7 +17,6 @@
 {% endblock %}
 
 {% block body %}
-    {# {{ data.product.cashback_amount }} #}
     {% set cashback = data.cashback %}
     {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
@@ -38,6 +37,8 @@
                 {% widget 'ProductAbstractLabelWidget' args [data.idProductAbstract] with {
                     data: {
                         parentJsName: config.jsName,
+                        product: data.product,
+                        currencyIsoCode: data.currencyIsoCode,
                     },
                 } only %}{% endwidget %}
             {% endblock %}

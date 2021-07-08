@@ -8,8 +8,11 @@
 namespace Pyz\Zed\BenefitDeal\Persistence;
 
 use Generated\Shared\Transfer\PyzSalesOrderBenefitDealEntityTransfer;
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\ProductAbstractAttribute\Persistence\Map\PyzProductAbstractAttributeTableMap;
+use Orm\Zed\ProductLabel\Persistence\Map\SpyProductLabelProductAbstractTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\ActiveQuery\Criterion\BasicModelCriterion;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\BenefitDealMapper;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\ItemBenefitDealMapper;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
@@ -139,6 +142,268 @@ class BenefitDealRepository extends AbstractRepository implements BenefitDealRep
             ->addJoinCondition('rel', sprintf('rel.fk_product_label = %d', $idProductLabel))
             ->find()
             ->toArray();
+    }
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingActiveByInsteadOfProductLabelId(int $idProductLabel): array
+    {
+        $productAbstractQuery = $this
+            ->getFactory()
+            ->createProductAbstractQuery()
+            ->select(SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT)
+            ->distinct();
+
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        $productAbstractQuery = $productAbstractQuery
+            ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
+                ->addJoinCondition(
+                    'priceTypeOrigin',
+                    'priceTypeOrigin.name = ?',
+                    'ORIGINAL'
+                )
+                ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse();
+
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        $productAbstractQuery = $productAbstractQuery
+            ->usePriceProductQuery('priceProductBenefit', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeBenefit', Criteria::INNER_JOIN)
+                ->addJoinCondition(
+                    'priceTypeBenefit',
+                    'priceTypeBenefit.name = ?',
+                    'BENEFIT'
+                )
+                ->usePriceProductStoreQuery('priceProductStoreBenefit', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultBenefit', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse();
+
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        $productAbstractQuery = $productAbstractQuery
+            ->usePriceProductQuery('priceProductDefault', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeDefault', Criteria::INNER_JOIN)
+                ->addJoinCondition(
+                    'priceTypeDefault',
+                    'priceTypeDefault.name = ?',
+                    'DEFAULT'
+                )
+                ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse();
+
+        $productAbstractQuery = $productAbstractQuery
+            ->useSpyProductLabelProductAbstractQuery('rel', Criteria::LEFT_JOIN)
+                ->filterByFkProductLabel(null, Criteria::ISNULL)
+            ->endUse()
+            ->addJoinCondition(
+                'rel',
+                sprintf('rel.fk_product_label = %d', $idProductLabel)
+            )
+            ->addAnd('rel.fk_product_label', null, Criteria::ISNULL)
+            ->addAnd(
+                'priceProductDefaultOriginal.id_price_product_default',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addAnd(
+                'priceProductDefaultDefault.id_price_product_default',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addAnd(
+                'priceProductDefaultBenefit.id_price_product_default',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addAnd(
+                'priceProductStoreOrigin.gross_price',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addAnd(
+                'priceProductStoreBenefit.gross_price',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreBenefit.fk_store = priceProductStoreDefault.fk_store'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreBenefit.fk_currency = priceProductStoreDefault.fk_currency'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreOrigin.gross_price > priceProductStoreDefault.gross_price'
+            );
+
+        return $productAbstractQuery
+                ->find()
+                ->toArray();
+    }
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return array
+     */
+    public function findProductAbstractIdsBecomingInactiveByInsteadOfProductLabelId(int $idProductLabel): array
+    {
+        $productLabelProductAbstractQuery = $this
+            ->getFactory()
+            ->createProductLabelProductAbstractQuery()
+            ->filterByFkProductLabel($idProductLabel)
+            ->select(SpyProductLabelProductAbstractTableMap::COL_FK_PRODUCT_ABSTRACT)
+            ->distinct();
+
+        $productAbstractQuery = $productLabelProductAbstractQuery
+            ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN);
+
+        $productAbstractQuery = $productAbstractQuery
+            ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
+                ->addJoinCondition(
+                    'priceTypeOrigin',
+                    'priceTypeOrigin.name = ?',
+                    'ORIGINAL'
+                )
+                ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse();
+
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        $productAbstractQuery = $productAbstractQuery
+            ->usePriceProductQuery('priceProductBenefit', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeBenefit', Criteria::INNER_JOIN)
+                ->addJoinCondition(
+                    'priceTypeBenefit',
+                    'priceTypeBenefit.name = ?',
+                    'BENEFIT'
+                )
+                ->usePriceProductStoreQuery('priceProductStoreBenefit', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultBenefit', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse();
+
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        $productAbstractQuery = $productAbstractQuery
+            ->usePriceProductQuery('priceProductDefault', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeDefault', Criteria::INNER_JOIN)
+                ->addJoinCondition(
+                    'priceTypeDefault',
+                    'priceTypeDefault.name = ?',
+                    'DEFAULT'
+                )
+                ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse();
+
+        $productLabelProductAbstractQuery = $productAbstractQuery->endUse();
+
+        $productLabelProductAbstractQuery = $productLabelProductAbstractQuery
+            ->addAnd(
+                'priceProductDefaultOriginal.id_price_product_default',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addAnd(
+                'priceProductDefaultBenefit.id_price_product_default',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addAnd(
+                'priceProductDefaultDefault.id_price_product_default',
+                null,
+                Criteria::ISNOTNULL
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreBenefit.fk_store = priceProductStoreDefault.fk_store'
+            )
+            ->addJoinCondition(
+                'priceProductStoreDefault',
+                'priceProductStoreBenefit.fk_currency = priceProductStoreDefault.fk_currency'
+            );
+
+        $orCriterion = $this->getBasicModelCriterion(
+            $productLabelProductAbstractQuery,
+            'priceProductStoreOrigin.gross_price < priceProductStoreDefault.gross_price',
+            'priceProductStoreOrigin.gross_price'
+        );
+        $orCriterion->addOr(
+            $productLabelProductAbstractQuery
+                ->getNewCriterion(
+                    'priceProductStoreOrigin.gross_price',
+                    null,
+                    Criteria::ISNULL
+                )
+        );
+        $orCriterion->addOr(
+            $productLabelProductAbstractQuery
+                ->getNewCriterion(
+                    'priceProductStoreBenefit.gross_price',
+                    null,
+                    Criteria::ISNULL
+                )
+        );
+        $orCriterion->addOr(
+            $productLabelProductAbstractQuery
+                ->getNewCriterion(
+                    'priceProductStoreDefault.gross_price',
+                    null,
+                    Criteria::ISNULL
+                )
+        );
+
+        return $productLabelProductAbstractQuery
+            ->addAnd($orCriterion)
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @param \Propel\Runtime\ActiveQuery\Criteria $criteria
+     * @param string $clause
+     * @param \Propel\Runtime\Map\ColumnMap|string $column
+     *
+     * @return \Propel\Runtime\ActiveQuery\Criterion\BasicModelCriterion
+     */
+    protected function getBasicModelCriterion(Criteria $criteria, string $clause, $column): BasicModelCriterion
+    {
+        return new BasicModelCriterion($criteria, $clause, $column);
     }
 
     /**

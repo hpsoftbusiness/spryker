@@ -81,6 +81,18 @@ interface BenefitDealFacadeInterface
 
     /**
      * Specification:
+     * - Returns a list of Product Label - Product Abstract relation to assign and deassign.
+     * - The results are used to persist product label relation changes into database.
+     * - The plugin is called when the ProductLabelRelationUpdaterConsole command is executed.
+     *
+     * @api
+     *
+     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
+     */
+    public function findInsteadOfProductLabelProductAbstractRelationChanges(): array;
+
+    /**
+     * Specification:
      * - Expands ItemTransfers with BenefitVoucherDealDataTransfer or ShoppingPointsDealTransfer.
      * - Hydrates price property of either of these transfers with BENEFIT deal price.
      *

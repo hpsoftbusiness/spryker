@@ -9,7 +9,9 @@ namespace Pyz\Zed\BenefitDeal\Persistence;
 
 use Orm\Zed\BenefitDeal\Persistence\PyzSalesOrderBenefitDealQuery;
 use Orm\Zed\BenefitDeal\Persistence\PyzSalesOrderItemBenefitDealQuery;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductAbstractAttribute\Persistence\PyzProductAbstractAttributeQuery;
+use Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery;
 use Pyz\Zed\BenefitDeal\BenefitDealDependencyProvider;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\BenefitDealMapper;
 use Pyz\Zed\BenefitDeal\Persistence\Propel\Mapper\ItemBenefitDealMapper;
@@ -69,5 +71,21 @@ class BenefitDealPersistenceFactory extends AbstractPersistenceFactory
     public function createProductAbstractAttributeQuery(): PyzProductAbstractAttributeQuery
     {
         return PyzProductAbstractAttributeQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
+     */
+    public function createProductAbstractQuery(): SpyProductAbstractQuery
+    {
+        return SpyProductAbstractQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery
+     */
+    public function createProductLabelProductAbstractQuery(): SpyProductLabelProductAbstractQuery
+    {
+        return SpyProductLabelProductAbstractQuery::create();
     }
 }

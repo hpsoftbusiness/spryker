@@ -4,3 +4,4 @@ NEW,1,1,0,template:tag,,,New,Neu,,2
 SALE,1,1,0,highlight,,,SALE %,SALE %,,3
 BENEFIT,1,1,0,template:tag,,,BENEFIT,BENEFIT,,1
 SHOPPING_POINT,1,1,0,template:tag,,,SHOPPING_POINT,SHOPPING_POINT,,1
+INSTEAD_OF,1,1,1,template:instead-of,,,Instead Of,Statt,,2

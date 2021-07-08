@@ -27,14 +27,6 @@
             shoppingPointsAmount: data.product.attributes.product_sp_amount | default(null),
         },
     } only %}
-        {% block labels %}
-            {% widget 'ProductConcreteLabelWidget' args [data.product.id_product_labels] with {
-                data: {
-                    parentJsName: config.jsName,
-                },
-            } only %}{% endwidget %}
-        {% endblock %}
-
         {% block rating %}{% endblock %}
     {% endembed %}
 {% endblock %}
