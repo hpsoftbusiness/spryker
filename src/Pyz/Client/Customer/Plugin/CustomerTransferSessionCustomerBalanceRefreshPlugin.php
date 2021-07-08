@@ -13,7 +13,7 @@ use Spryker\Client\Kernel\AbstractPlugin;
 
 /**
  * @method \Pyz\Client\Customer\CustomerClientInterface getClient()
- * @method \Pyz\Client\Customer\CustomerFactory getFactory() : AbstractFactory
+ * @method \Pyz\Client\Customer\CustomerFactory getFactory()
  */
 class CustomerTransferSessionCustomerBalanceRefreshPlugin extends AbstractPlugin implements
     CustomerSessionGetPluginInterface
@@ -28,6 +28,10 @@ class CustomerTransferSessionCustomerBalanceRefreshPlugin extends AbstractPlugin
      */
     public function execute(CustomerTransfer $customerTransfer)
     {
+        if (!$this->getFactory()->getConfig()->isSsoLoginEnabled()) {
+            return;
+        }
+
         if (!$customerTransfer->getCustomerBalance()) {
             $customerTransfer = $this->getFactory()
                 ->getMyWorldMarketplaceApiClient()

@@ -102,7 +102,8 @@ class FormFactory extends SpyFormFactory
         return new PaymentFormDataProvider(
             $subFormDataProvider,
             $this->getMyWorldMarketingApiClient(),
-            $this->getCurrencyClient()
+            $this->getCurrencyClient(),
+            $this->getConfig()
         );
     }
 

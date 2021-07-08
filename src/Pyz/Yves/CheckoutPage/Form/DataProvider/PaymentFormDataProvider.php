@@ -10,6 +10,7 @@ namespace Pyz\Yves\CheckoutPage\Form\DataProvider;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\Currency\CurrencyClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
+use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Pyz\Yves\CheckoutPage\Form\Steps\PaymentForm;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
@@ -32,18 +33,26 @@ class PaymentFormDataProvider implements StepEngineFormDataProviderInterface
     private $currencyClient;
 
     /**
+     * @var \Pyz\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    private $config;
+
+    /**
      * @param \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface $subFormDataProviders
      * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $myWorldMarketingApiClient
      * @param \Pyz\Client\Currency\CurrencyClientInterface $currencyClient
+     * @param \Pyz\Yves\CheckoutPage\CheckoutPageConfig $config
      */
     public function __construct(
         StepEngineFormDataProviderInterface $subFormDataProviders,
         MyWorldMarketplaceApiClientInterface $myWorldMarketingApiClient,
-        CurrencyClientInterface $currencyClient
+        CurrencyClientInterface $currencyClient,
+        CheckoutPageConfig $config
     ) {
         $this->subFormDataProviders = $subFormDataProviders;
         $this->myWorldMarketingApiClient = $myWorldMarketingApiClient;
         $this->currencyClient = $currencyClient;
+        $this->config = $config;
     }
 
     /**
@@ -67,10 +76,15 @@ class PaymentFormDataProvider implements StepEngineFormDataProviderInterface
         /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         $options = $this->subFormDataProviders->getOptions($quoteTransfer);
         $currencyIsoCode = $this->currencyClient->getCurrent()->getCode();
-        $customerBalances = $this->myWorldMarketingApiClient->getCustomerBalanceByCurrency(
-            $quoteTransfer->getCustomer(),
-            $currencyIsoCode
-        );
+
+        if ($this->config->isSsoLoginEnabled()) {
+            $customerBalances = $this->myWorldMarketingApiClient->getCustomerBalanceByCurrency(
+                $quoteTransfer->getCustomer(),
+                $currencyIsoCode
+            );
+        } else {
+            $customerBalances = [];
+        }
 
         return array_merge(
             $options,

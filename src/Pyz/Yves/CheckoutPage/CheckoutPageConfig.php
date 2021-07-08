@@ -9,6 +9,7 @@ namespace Pyz\Yves\CheckoutPage;
 
 use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
+use Pyz\Shared\Sso\SsoConstants;
 use SprykerEco\Shared\Adyen\AdyenConstants;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfig;
 
@@ -87,5 +88,13 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
     public function getPaymentOptionIdEVoucherOnBehalfOfMarketer(): int
     {
         return $this->get(MyWorldPaymentConstants::OPTION_EVOUCHER_ON_BEHALF_OF_MARKETER);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool
+    {
+        return $this->get(SsoConstants::SSO_LOGIN_ENABLED, false);
     }
 }
