@@ -62,8 +62,18 @@ class CalculationController extends AbstractController
                 new QuoteCalculationResponseTransfer()
             );
 
+        /**
+         * Specification:
+         * - Due to https://bugs.php.net/bug.php?id=72567 bug json_encode float serialization precision is set to 14.
+         * Converting float to string prevents incorrect rounding of float values.
+         *
+         * @TODO Remove this typecasting once SP are refactored to be calculated in minor units.
+         */
+        $responseData = $responseTransfer->toArray();
+        $responseData['total_used_shopping_points_amount'] = (string)$responseTransfer->getTotalUsedShoppingPointsAmount();
+
         return $this->jsonResponse(
-            $responseTransfer->toArray()
+            $responseData
         );
     }
 }
