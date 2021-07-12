@@ -11,6 +11,7 @@ use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
+use Pyz\Zed\Turnover\Business\TurnoverFacadeInterface;
 use Spryker\Zed\Calculation\Business\CalculationFacadeInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\Refund\Business\RefundFacadeInterface;
@@ -60,5 +61,13 @@ class MyWorldMarketplaceApiCommunicationFactory extends AbstractCommunicationFac
     public function getSsoClient(): SsoClientInterface
     {
         return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::SSO_CLIENT);
+    }
+
+    /**
+     * @return \Pyz\Zed\Turnover\Business\TurnoverFacadeInterface
+     */
+    public function getTurnoverFacade(): TurnoverFacadeInterface
+    {
+        return $this->getProvidedDependency(MyWorldMarketplaceApiDependencyProvider::FACADE_TURNOVER);
     }
 }

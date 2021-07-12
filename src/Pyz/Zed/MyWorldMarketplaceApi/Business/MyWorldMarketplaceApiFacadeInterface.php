@@ -8,7 +8,7 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business;
 
 use Generated\Shared\Transfer\OrderTransfer;
-use Generated\Shared\Transfer\RefundTransfer;
+use Generated\Shared\Transfer\TurnoverTransfer;
 
 interface MyWorldMarketplaceApiFacadeInterface
 {
@@ -23,9 +23,9 @@ interface MyWorldMarketplaceApiFacadeInterface
     /**
      * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
+     * @param \Generated\Shared\Transfer\TurnoverTransfer $turnoverTransfer
      *
      * @return void
      */
-    public function cancelTurnover(array $orderItemIds, OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): void;
+    public function cancelTurnover(array $orderItemIds, OrderTransfer $orderTransfer, TurnoverTransfer $turnoverTransfer): void;
 }

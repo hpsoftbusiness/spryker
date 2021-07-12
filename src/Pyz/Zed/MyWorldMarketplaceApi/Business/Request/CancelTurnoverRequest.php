@@ -8,7 +8,7 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
 use Generated\Shared\Transfer\OrderTransfer;
-use Generated\Shared\Transfer\RefundTransfer;
+use Generated\Shared\Transfer\TurnoverTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
 use Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface;
@@ -57,15 +57,15 @@ class CancelTurnoverRequest implements CancelTurnoverRequestInterface
     /**
      * @param int[] $orderItemIds
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
+     * @param \Generated\Shared\Transfer\TurnoverTransfer $turnoverTransfer
      *
      * @return void
      */
-    public function request(array $orderItemIds, OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): void
+    public function request(array $orderItemIds, OrderTransfer $orderTransfer, TurnoverTransfer $turnoverTransfer): void
     {
         $myWorldMarketplaceApiResponseTransfer = $this->myWorldMarketplaceApiClient->performApiRequest(
             $this->buildRequestUrl($orderTransfer),
-            $this->getRequestParams($orderTransfer, $refundTransfer)
+            $this->getRequestParams($orderTransfer, $turnoverTransfer)
         );
 
         if (!$myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
@@ -109,18 +109,18 @@ class CancelTurnoverRequest implements CancelTurnoverRequestInterface
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
+     * @param \Generated\Shared\Transfer\TurnoverTransfer $turnoverTransfer
      *
      * @return array
      */
-    protected function getRequestParams(OrderTransfer $orderTransfer, RefundTransfer $refundTransfer): array
+    protected function getRequestParams(OrderTransfer $orderTransfer, TurnoverTransfer $turnoverTransfer): array
     {
         $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
         $accessTokenTransfer->requireAccessToken();
 
         $requestBody = $this->utilEncodingService->encodeJson(
             [
-                'Amount' => bcdiv((string)$refundTransfer->getAmount(), '100', 2),
+                'Amount' => bcdiv((string)$turnoverTransfer->getAmount(), '100', 2),
                 'Currency' => $orderTransfer->getCurrencyIsoCode(),
             ]
         );
