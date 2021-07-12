@@ -60,17 +60,13 @@ $product-item-border-radius: rem(10);
         }
 
         &__price {
-            color: $setting-color-main;
-            font-weight: fw(medium);
-            font-size: rem(15);
-            margin-bottom: rem(10);
+            @include helper-font-size(small);
         }
 
         &__original_price {
-            @include helper-font-size(small);
             display: block;
             color: $setting-color-dark;
-            text-decoration: line-through;
+            margin-bottom: 0.5rem;
         }
 
         &__footer {
@@ -83,6 +79,31 @@ $product-item-border-radius: rem(10);
             border-bottom-right-radius: $product-item-border-radius;
             margin-top: auto;
             height: 40px;
+        }
+
+        &__footer_content {
+            margin-top: 0.75rem;
+        }
+
+        &__footer_content_text {
+            display: inline;
+            width: 50%;
+            float: left;
+            height: auto;
+            margin-top: auto;
+        }
+
+        &__footer_content_logo {
+            display: inline;
+            width: 50%;
+            float: right;
+            height: auto;
+            margin-top: auto;
+        }
+
+        &__footer_content_logo_img {
+            max-width: 50%;
+            float: right;
         }
 
         &--with-spaces {

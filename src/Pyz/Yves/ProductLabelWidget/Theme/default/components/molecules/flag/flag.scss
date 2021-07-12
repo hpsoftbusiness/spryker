@@ -30,22 +30,8 @@
             color: $setting-color-alt;
         }
 
-        &--sp_deal {
-            background: $setting-color-cashback;
-            display: inline-block;
-            position: absolute;
-            color: #fff;
-            font-size: 12px;
-            font-family: CeraPro-Medium,sans-serif;
-            border-radius: 5px;
-            padding: 4px 6px;
-            top: -11px;
-            right: 25px;
-            z-index: 1;
-        }
-
-        &--bv_deal {
-            background: $setting-color-black;
+        &--sp_bv_deal {
+            background: $setting-color-red-1;
             display: inline-block;
             position: absolute;
             color: #fff;
