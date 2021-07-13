@@ -82,6 +82,8 @@
         <property name="benefitVoucherDealData" type="BenefitVoucherDealData"/>
         <property name="unitBenefitPrice" type="int"/>
         <property name="sumBenefitPrice" type="int"/>
+        <property name="segmentNumber" type="int"/>
+        <property name="turnoverAmount" type="int"/>
     </transfer>
 
     <transfer name="BenefitVoucherDealData">

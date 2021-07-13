@@ -12,8 +12,12 @@ use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\CashbackPaymentQuote
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherMarketerPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\EVoucherPaymentQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\MyWorldPaymentBenefitVoucherQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\SegmentNumberOrderCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\SegmentNumberQuoteCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\ShoppingPointsOrderCalculationPlugin;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\ShoppingPointsQuoteCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\TurnoverOrderCalculationPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Calculation\TurnoverQuoteCalculationPlugin;
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorForGenericAmountPlugin;
@@ -249,6 +253,9 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new EVoucherMarketerPaymentQuoteCalculationPlugin(),
 
             new PaymentCalculatorPlugin(),
+
+            new TurnoverQuoteCalculationPlugin(),
+            new SegmentNumberQuoteCalculationPlugin(),
         ];
 
         return $pluginStack;
@@ -293,6 +300,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new BenefitVoucherOrderCalculationPlugin(),
             new ShoppingPointsOrderCalculationPlugin(),
+            new TurnoverOrderCalculationPlugin(),
+            new SegmentNumberOrderCalculationPlugin(),
         ];
     }
 

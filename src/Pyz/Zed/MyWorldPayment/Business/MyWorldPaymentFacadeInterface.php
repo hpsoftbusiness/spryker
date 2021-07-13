@@ -127,6 +127,34 @@ interface MyWorldPaymentFacadeInterface
     public function recalculateOrderShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void;
 
     /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteTurnover(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateOrderTurnover(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteSegmentNumber(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateOrderSegmentNumber(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
      * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
      *
      * @return void
