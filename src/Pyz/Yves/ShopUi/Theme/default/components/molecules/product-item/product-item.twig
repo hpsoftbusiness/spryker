@@ -96,9 +96,8 @@
                             } only %}
                         {% elseif shoppingPointsAmount %}
                             <span class="{{ config.name }}--shopping_points">
-                                - &nbsp; {{- benefitAmount | money(true, data.currencyIsoCode) -}}
+                                - &nbsp; {{ shoppingPointsAmount }}
                             </span>
-                            - &nbsp; {{ shoppingPointsAmount }}
 
                             {% include atom('icon') with {
                                 class: config.name ~ '__icon',

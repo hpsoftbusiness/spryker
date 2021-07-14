@@ -29,8 +29,8 @@
         {% if label.type == labelInsteadOfType %}
             {% set componentName = 'instead-of' %}
             {% set componentModifiers = [] %}
-            {% set labelJsClass = config.jsName ~ '__label-instead-of' %}
-            {% set labelTextJsClass = config.jsName ~ '__label-instead-of-text' %}
+            {% set labelJsClass = data.parentJsName ~ '__label-instead-of' %}
+            {% set labelTextJsClass = data.parentJsName ~ '__label-instead-of-text' %}
         {% endif %}
 
         {% set component = include(

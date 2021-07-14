@@ -7,15 +7,12 @@
         color: #fff;
         font-size: 12px;
         font-family: CeraPro-Medium,sans-serif;
+        font-weight: bold;
         border-radius: 5px;
         padding: 4px 6px;
         top: -11px;
         right: 25px;
         z-index: 1;
-
-        &-text {
-            text-decoration: line-through;
-        }
 
         @content;
     }
