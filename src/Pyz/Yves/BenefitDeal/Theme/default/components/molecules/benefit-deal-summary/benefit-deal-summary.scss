@@ -2,6 +2,14 @@
     #{$name} {
         margin-top: rem(26);
 
+        &__total-amount {
+            background-color: #d3d3d3;
+        }
+
+        &__benefit-voucher-amount-container {
+            float: right;
+        }
+
         &__inner {
             border-top: rem(1) dotted $setting-color-gray-3;
             overflow: hidden;
@@ -31,13 +39,43 @@
         }
 
         &__total {
-            text-transform: uppercase;
             font-size: rem(16);
             font-weight: fw(bold);
 
             @include helper-breakpoint-media-min($lg-min) {
                 font-size: rem(18);
             }
+        }
+
+        .input--expand {
+            float: right;
+            width: 36%;
+            margin-top: -0.2em;
+            margin-right: 2.1em;
+            height: 1em;
+        }
+
+        .benefit-deal-summary {
+            margin-top: -3.375rem;
+        }
+
+        .benefit-deal-summary {
+            margin-top: -5.375rem;
+        }
+
+        .benefit-deal-summary__inner {
+            margin-top: -7em;
+            border: none;
+        }
+
+        .icon {
+            margin-top: -0.3em;
+        }
+
+        .benefit {
+            margin-top: -1.2em;
+            margin-right: -17.6em;
+            float: right;
         }
     }
 }

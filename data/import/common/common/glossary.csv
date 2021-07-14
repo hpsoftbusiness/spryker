@@ -4689,7 +4689,8 @@ cart.pre.check.quantity.min.failed,Minimum quantity requirements for product SKU
 cart.pre.check.quantity.value.failed,Wrong quantity for product SKU '%sku%'.,en_US
 cart.pre.check.shipment.failed,Can't apply these changes. The shipment method not found. Please select another shipment method.,en_US
 cart.price,Price,en_US
-cart.price.grand.total,Total amount,en_US
+cart.price.grand.total,Total,en_US
+cart.price.grand.total,Gesamt,de_DE
 cart.price.subtotal,Subtotal,en_US
 cart.product-option,Product Options,en_US
 cart.promotion.items,Promotional products,en_US
@@ -4703,7 +4704,8 @@ cart.title_content,Shopping Cart,en_US
 cart.title_sidebar,Order overview,en_US
 cart.total,Total,en_US
 cart.total.discount,Discount,en_US
-cart.total.price_to_pay,Price to pay,en_US
+cart.total.price_to_pay,Total Price to pay,en_US
+cart.total.price_to_pay,Gesamtpreis to pay,de_DE
 cart.total.tax_total,Tax,en_US
 cart.validate.items.price.changed,Prices have been changed for products with SKU '%sku%'.,en_US
 cart.voucher.apply.failed,Your voucher code is invalid.,en_US
@@ -4794,6 +4796,7 @@ checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.grand_total,Grand Total,en_US
 checkout.step.summary.items,Items,en_US
 checkout.step.summary.overview,Overview,en_US
+checkout.step.summary.overview,Bestellübersicht,de_DE
 checkout.step.summary.payment,Payment,en_US
 checkout.step.summary.products,Products,en_US
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
@@ -19937,8 +19940,8 @@ checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cas
 checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,de_DE
 payment.step.api_request.error,"Sorry, something went wrong with the payment. Please try again later!",en_US
 payment.step.api_request.error,"Ups, scheinbar hat etwas mit der Zahlung nicht geklappt. Versuch es bitte später nocheinmal",de_DE
-checkout.step.benefit_deal.title,Benefit Deals,en_US
-checkout.step.benefit_deal.title,Benefit Deals,de_DE
+checkout.step.benefit_deal.title,Order overview,en_US
+checkout.step.benefit_deal.title,Order overview,de_DE
 checkout.step.benefit_deal.use_voucher,Use the Benefit Vouchers (BV) for discount,en_US
 checkout.step.benefit_deal.use_voucher,Verwenden Sie die Benefit Vouchers (BV) für Rabatte,de_DE
 checkout.step.benefit_deal.items,Items,en_US
@@ -19947,9 +19950,9 @@ checkout.step.benefit_deal.with_method,with,en_US
 checkout.step.benefit_deal.with_method,mit,de_DE
 checkout.step.benefit_deal.or,or,en_US
 checkout.step.benefit_deal.or,oder,de_DE
-checkout.step.benefit_deal.benefit_voucher,Benefit Voucher,en_US
-checkout.step.benefit_deal.benefit_voucher,Benefit Voucher,de_DE
-checkout.step.benefit_deal.total_used_shopping_points,Used Shopping Points,en_US
+checkout.step.benefit_deal.benefit_voucher,Used total Benefit Voucher amount,en_US
+checkout.step.benefit_deal.benefit_voucher,Verwendeter Gesamtbetrag des Benefit Vouchers,de_DE
+checkout.step.benefit_deal.total_used_shopping_points,Used Total Shopping Points,en_US
 checkout.step.benefit_deal.total_used_shopping_points,Eingelöste Shopping Points,de_DE
 merchant_profile.email,Email Address,en_US
 merchant_profile.email,E-Mail,de_DE

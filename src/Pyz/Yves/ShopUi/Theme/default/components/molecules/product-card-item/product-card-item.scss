@@ -226,8 +226,20 @@
 
         }
 
+        &--deal-benefit {
+            color: #ff902e;
+        }
+
+        &--deal-vouchers {
+            color: #5cb885;
+        }
+
         @content;
     }
 }
 
 @include shop-ui-product-card-item();
+
+.money-price__amount {
+    font: 500 1.3375rem/1.0625rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}

@@ -10,7 +10,6 @@ namespace Pyz\Yves\CheckoutPage\Form\Steps\BenefitDeal;
 use Pyz\Yves\CheckoutPage\Form\FormFactory;
 use Spryker\Yves\Kernel\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +24,6 @@ class BenefitDealCollectionForm extends AbstractType
 {
     public const FORM_FIELD_BENEFIT_ITEMS = 'benefitItems';
     public const OPTION_KEY_ITEMS = 'benefitItems';
-    public const FORM_FIELD_USE_BENEFIT_VOUCHER = 'useBenefitVoucher';
     public const FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT = 'totalUsedBenefitVouchersAmount';
 
     /**
@@ -38,7 +36,6 @@ class BenefitDealCollectionForm extends AbstractType
     {
         $this->addCollectionsForUseBenefitVouchers($builder, $options);
         $this->addFieldTotalUsedBenefitVouchersAmount($builder, $options);
-        $this->addFieldTotalUseBenefitVoucher($builder, $options);
     }
 
     /**
@@ -91,19 +88,6 @@ class BenefitDealCollectionForm extends AbstractType
 
         $builder->get(static::FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT)
             ->addModelTransformer($this->getBenefitVoucherAmountTransformer());
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
-     *
-     * @return void
-     */
-    protected function addFieldTotalUseBenefitVoucher(FormBuilderInterface $builder, array $options): void
-    {
-        $builder->add(static::FORM_FIELD_USE_BENEFIT_VOUCHER, CheckboxType::class, [
-            'label' => '',
-        ]);
     }
 
     /**

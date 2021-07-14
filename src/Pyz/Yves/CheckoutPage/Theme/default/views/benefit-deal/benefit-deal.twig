@@ -8,7 +8,7 @@
 {% block content %}
     <h2 class="title title--primary grid grid--middle grid--justify">
         <div class="col">
-            {{ 'checkout.step.benefit_deal.title' | trans }}
+            {{ 'cart.title_sidebar' | trans }}
         </div>
 
         <div class="col">
@@ -57,7 +57,6 @@
                     </div>
 
                     <div class="page-layout-cart__col page-layout-cart__col--sidebar">
-                        <h3>{{ 'cart.title_sidebar' | trans }}</h3>
                         {% include molecule('benefit-deal-summary', 'BenefitDeal') with {
                             data: {
                                 cart: _view.quoteTransfer,

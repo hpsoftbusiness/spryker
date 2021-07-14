@@ -44,7 +44,6 @@
             line-height: rem(20);
             display: flex;
             align-items: center;
-            color: $setting-color-main;
 
             @include helper-breakpoint(lg) {
                 justify-content: flex-end;
@@ -80,6 +79,24 @@
             margin-left: rem(3);
         }
 
+        .checkbox__container {
+            visibility: hidden;
+        }
+        .benefit-product-item__use-benefit {
+            visibility: hidden;
+        }
+
+        .benefit-voucher {
+            color: #ff902e;
+        }
+
+        .shopping-points {
+            color: #5cb885;
+        }
+
+        .benefit-product-item__total-price {
+            font-size: 1rem;
+        }
         @content;
     }
 }
