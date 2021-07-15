@@ -60,31 +60,63 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
         $this->logger = $logger;
 
         /** @var \Orm\Zed\Product\Persistence\SpyProduct[] $spyProductBulk */
-        foreach ($this->getProducts() as $spyProductBulk) {
+        foreach ($this->getConcreteProducts() as $spyProductBulk) {
             foreach ($spyProductBulk as $spyProduct) {
-                $attributes = $this->decodeAttributes(
-                    $spyProduct->getAttributes()
-                );
-                foreach ($attributes as $key => $value) {
-                    if (substr($key, 0, 9) === 'sellable_') {
-                        $attributes[$key] = (bool)$value;
-                    }
-                }
+                $this->updatedConcreteProductIds[] = $spyProduct->getIdProduct();
                 $spyProduct->setAttributes(
-                    $this->encodeAttributes($attributes)
+                    $this->fixAttributes(
+                        $spyProduct->getAttributes()
+                    )
                 );
                 $spyProduct->save();
 
                 $this->logger->info(
                     sprintf(
-                        'Sellable attributes are converted to boolean for the Product (ID: %d) .',
+                        'Sellable attributes are converted to boolean for the Product Concrete (ID: %d) .',
                         $spyProduct->getIdProduct()
                     )
                 );
             }
         }
 
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstract[] $spyProductBulk */
+        foreach ($this->getAbstractProducts() as $spyProductBulk) {
+            foreach ($spyProductBulk as $spyProduct) {
+                $this->updatedAbstractProductIds[] = $spyProduct->getIdProductAbstract();
+                $spyProduct->setAttributes(
+                    $this->fixAttributes(
+                        $spyProduct->getAttributes()
+                    )
+                );
+                $spyProduct->save();
+
+                $this->logger->info(
+                    sprintf(
+                        'Sellable attributes are converted to boolean for the Product Abstract (ID: %d) .',
+                        $spyProduct->getIdProductAbstract()
+                    )
+                );
+            }
+        }
+
         $this->publishAffectedProducts();
+    }
+
+    /**
+     * @param string $attributesJson
+     *
+     * @return string
+     */
+    private function fixAttributes(string $attributesJson): string
+    {
+        $attributes = $this->decodeAttributes($attributesJson);
+        foreach ($attributes as $key => $value) {
+            if (substr($key, 0, 9) === 'sellable_') {
+                $attributes[$key] = (bool)$value;
+            }
+        }
+
+        return $this->encodeAttributes($attributes);
     }
 
     /**
@@ -134,7 +166,7 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
     /**
      * @return \Generator
      */
-    private function getProducts(): Generator
+    private function getConcreteProducts(): Generator
     {
         $criteria = $this
             ->getQueryContainer()
@@ -147,6 +179,28 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
         for ($offset = 0; $offset < $totalProductsCount; $offset += self::QUERY_BULK_SIZE) {
             yield $criteria
                 ->orderByIdProduct()
+                ->offset($offset)
+                ->limit(self::QUERY_BULK_SIZE)
+                ->find();
+        }
+    }
+
+    /**
+     * @return \Generator
+     */
+    private function getAbstractProducts(): Generator
+    {
+        $criteria = $this
+            ->getQueryContainer()
+            ->queryProductAbstract()
+            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
+            ->addOr("spy_product_abstract.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE);
+
+        $totalProductsCount = $criteria->count();
+
+        for ($offset = 0; $offset < $totalProductsCount; $offset += self::QUERY_BULK_SIZE) {
+            yield $criteria
+                ->orderByIdProductAbstract()
                 ->offset($offset)
                 ->limit(self::QUERY_BULK_SIZE)
                 ->find();
