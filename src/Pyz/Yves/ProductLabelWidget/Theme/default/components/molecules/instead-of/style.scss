@@ -2,7 +2,7 @@
     #{$name} {
 
         background: $setting-color-red-1;
-        display: inline-block;
+        display: none;
         position: absolute;
         color: #fff;
         font-size: 12px;
@@ -26,12 +26,14 @@
             }
 
             right: 65px;
+            display: inline-block;
         }
     }
 
     #{'.js-product-item'} {
         &__label-instead-of {
             right: 25px;
+            display: inline-block;
         }
     }
 }
