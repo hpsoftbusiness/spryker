@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Product;
 
 use Pyz\Zed\PriceProduct\Communication\Plugin\Product\BenefitPriceDataHealerPlugin;
+use Pyz\Zed\Product\Communication\Plugin\Product\DataHealer\SellableProductAttributeHealerPlugin;
 use Pyz\Zed\Product\Communication\Plugin\Product\DataHealer\SuperAttributeLocalizedValuesHealerPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductAbstract\PriceProductAbstractAfterCreatePlugin;
@@ -264,6 +265,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
         return [
             new SuperAttributeLocalizedValuesHealerPlugin(),
             new BenefitPriceDataHealerPlugin(),
+            new SellableProductAttributeHealerPlugin(),
         ];
     }
 }
