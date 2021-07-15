@@ -25,7 +25,7 @@
 
 {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) and data.canEditCart %}
 {% set productItemBox = (data.productItem.productOptions is defined and data.productItem.productOptions is empty) ? '' : config.name ~ '__box--with-options' %}
-    {% set internalPrice = null %}
+
 {% block body %}
     <div class="{{ component.renderClass(config.name ~ '__box', modifiers) }} {{ productItemBox }}">
         <div class="grid {{ data.additionalContainerClass }}">
@@ -62,30 +62,24 @@
                     {% endblock %}
                 </div>
 
-
                 {% set isBenefitVoucherDealActive = data.productItem.benefitVoucherDealData.isStore ?? false %}
                 {% set isShoppingPointsDealActive = data.productItem.shoppingPointsDeal.isActive ?? false %}
 
                 {% if isBenefitVoucherDealActive == false and isShoppingPointsDealActive == false %}
                     <div class="grid grid--right">
-                        {% block prices %}
-                            {% set shoppingPrice = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
-                            {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * shoppingPrice : shoppingPrice %}
-
-                            {% if can('SeePricePermissionPlugin') %}
-                                {% include molecule('money-price') with {
-                                    modifiers: ['small'],
-                                    class: 'money-price-modifier',
-                                    data: {
-                                        amount: productItemSubTotal | default(null),
-                                        priceVatText: null,
-                                        originalAmount: data.productItem.prices.ORIGINAL is not defined or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL
-                                    },
-                                } only %}
-                            {% else %}
-                                {{ 'customer.access.cannot_see_price' | trans }}
-                            {% endif %}
-                        {% endblock %}
+                        {% set cashback = data.cashback %}
+                        {% set showCashbackPoints = data.showCashbackPoints %}
+                        {% if cashback and showCashbackPoints %}
+                            {% include molecule('cashback') with {
+                                class: config.name ~ '__cashback col',
+                                modifiers: ['small'],
+                                data: {
+                                    cashback: cashback,
+                                    shoppingPoints: data.shoppingPoints,
+                                    iconModifiers: [''],
+                                },
+                            } only %}
+                        {% endif %}
                     </div>
                 {% endif %}
 
@@ -94,15 +88,13 @@
 
                     {% if can('SeePricePermissionPlugin') %}
                         {% if isBenefitVoucherDealActive == true %}
-                            {% set internalPrice = data.productItem.benefitVoucherDealData.salesPrice * data.productItem.quantity %}
-                            {% set price1 = data.productItem.benefitVoucherDealData.salesPrice %}
                             {% set amountBenefitVochers = data.productItem.benefitVoucherDealData.amount * data.productItem.quantity %}
-
-                            <div class="{{ config.name }}__benefit-deal">
+                            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                            <div class="{{ config.name }}__benefit-deal ">
                                 <div>
-                                    <span class="{{ config.name }}">{{ internalPrice | money }}</span>
-                                    -
-                                    <span class="{{ config.name }}--deal-benefit">
+                                    <span class="{{ config.name }}">{{ price | money }}</span>
+                                    -&nbsp;
+                                    <span class="{{ config.name }}__deal-vouchers {{ config.name }}--benefit_voucher">
                                         {{- amountBenefitVochers | money(true, benefitVoucherCurrency) -}}
                                         {% include atom('icon') with {
                                             data: {
@@ -113,16 +105,13 @@
                                 </div>
                             </div>
                         {% elseif isShoppingPointsDealActive == true %}
-                            {% set internalPrice = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
-
-
-                            {% set price1= data.productItem.shoppingPointsDeal.price %}
+                            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
                             {% set amountShoppingPoints = data.productItem.shoppingPointsDeal.shoppingPointsQuantity * data.productItem.quantity %}
                             <div class="{{ config.name }}__benefit-deal">
                                 <div>
-                                    <span class="{{ config.name }}">{{ internalPrice | money  }}</span>
-                                    -
-                                    <span class="{{ config.name }}--deal-vouchers">
+                                    <span class="{{ config.name }}">{{ price | money }}</span>
+                                    <span class="{{ config.name }}__deal-vouchers  {{ config.name }}--shopping_points">
+                                        -&nbsp;
                                         {{- amountShoppingPoints -}}
                                         {% include atom('icon') with {
                                             data: {
@@ -139,23 +128,15 @@
                 <div class="grid grid--right">
                     {% block price %}
                         {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
-                        {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
-                        {% if isShoppingPointsDealActive == true %}
-                            {% set internalPrice = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
-                        {% elseif isBenefitVoucherDealActive== true %}
-                            {% set internalPrice = data.productItem.benefitVoucherDealData.salesPrice %}
-                    {% else %}
+                        {% if isBenefitVoucherDealActive == true %}
+                            {% set price = data.productItem.benefitVoucherDealData.salesPrice * data.productItem.quantity %}
+                        {% elseif isShoppingPointsDealActive == true %}
+                            {% set price = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
                         {% endif %}
+                        {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+
                         {% if can('SeePricePermissionPlugin') %}
-                            {% include molecule('money-price') with {
-                                modifiers: ['small'],
-                                class: component.renderClass(config.name ~ '__price', modifiers) ~ ' col col--lg-4 col--sm-12',
-                                data: {
-                                    amount: productItemSubTotal | default(null),
-                                    priceVatText: null,
-                                    originalAmount: data.productItem.prices.ORIGINAL is not defined or data.productItem.prices.ORIGINAL is empty ? null : data.productItem.prices.ORIGINAL,
-                                },
-                            } only %}
+                            <span class="{{ config.name }}">{{ price | money }}</span>
                         {% else %}
                             {{ 'customer.access.cannot_see_price' | trans }}
                         {% endif %}
@@ -164,6 +145,17 @@
 
                 {% if not data.isPromotionItem %}
                     <div class="{{ component.renderClass(config.name ~ '__options', modifiers) }}">
+                        {% block options %}
+                            {% if data.attributes is not empty %}
+                                {% include molecule('product-item-variant-selector') with {
+                                    data: {
+                                        productItem: data.productItem,
+                                        productItemAttributes: data.attributes | filterAttributes
+                                    }
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
                         <div class="grid grid--justify grid--gap">
                             <div class="col">
                                 {% block quantity %}

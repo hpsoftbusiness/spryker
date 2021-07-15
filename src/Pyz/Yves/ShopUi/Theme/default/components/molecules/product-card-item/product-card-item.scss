@@ -189,8 +189,7 @@
         }
 
         &__benefit-deal {
-            @include helper-font-weight(bold);
-
+            font-size: 0.8rem;
             @include helper-breakpoint(lg) {
                 text-align: right;
             }
