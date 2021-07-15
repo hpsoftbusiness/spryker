@@ -5800,7 +5800,7 @@ page.product.details,Details,en_US
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_thumbnail,Product Image,en_US
 page.product.seller,Seller,en_US
-page.product.shipping-fee-from,Shipping from,en_US
+page.product.shipping-fee-from,plus Shipping from,en_US
 page.product.similar-products,You might also like,en_US
 page.product.status,New,en_US
 page.product.upsell-products,Similar products,en_US
@@ -5816,6 +5816,8 @@ payment.paypal,PayPal,en_US
 payment.prepay,Prepayment,en_US
 payment.step.api_request.error,"Sorry, something went wrong with the payment. Please try again later!",en_US
 pdp.include.vat,incl. VAT,en_US
+pdp.include.tax,incl. Tax,en_US
+pdp.include.tax,inklusive Steuern,de_DE
 pdp.price.from,from,en_US
 persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US

@@ -27,7 +27,7 @@
         } only %}
 
         <span class="{{ config.name }}__benefit-amount">
-            &#8208;&nbsp;{{ data.shoppingPointsAmount }}
+            &#8208;&nbsp;{{ data.shoppingPointsAmount | number_format(2, '.', ',') }}
             {% include atom('icon') with {
                 class: config.name ~ '__icon',
                 modifiers: ['medium-up'],
@@ -47,9 +47,6 @@
                     priceVatText: null
                 }
             } only %}
-        </span>
-        <span class="{{ config.name }}__vat">
-            {{ 'pdp.include.vat' | trans }}
         </span>
     </div>
 {% endblock %}
