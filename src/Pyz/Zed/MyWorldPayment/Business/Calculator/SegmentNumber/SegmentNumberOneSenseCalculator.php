@@ -16,7 +16,7 @@ class SegmentNumberOneSenseCalculator implements
     MyWorldPaymentQuoteCalculatorInterface,
     MyWorldPaymentOrderCalculatorInterface
 {
-    protected const SEGMENT_NUMBER_ONESENSE_PRODUCTS = 5;
+    public const SEGMENT_NUMBER_ONESENSE_PRODUCTS = 5;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer

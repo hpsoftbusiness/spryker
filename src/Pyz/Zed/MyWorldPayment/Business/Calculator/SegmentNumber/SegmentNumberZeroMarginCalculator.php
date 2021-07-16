@@ -17,7 +17,7 @@ class SegmentNumberZeroMarginCalculator implements
     MyWorldPaymentQuoteCalculatorInterface,
     MyWorldPaymentOrderCalculatorInterface
 {
-    protected const SEGMENT_NUMBER_ZERO_MARGIN = 4;
+    public const SEGMENT_NUMBER_ZERO_MARGIN = 4;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer

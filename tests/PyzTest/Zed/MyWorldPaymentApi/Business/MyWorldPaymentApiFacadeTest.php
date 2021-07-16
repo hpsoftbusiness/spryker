@@ -58,29 +58,6 @@ class MyWorldPaymentApiFacadeTest extends Unit
     }
 
     /**
-     * @param int $repeatCount
-     *
-     * @throws \Exception
-     *
-     * @return string|null
-     */
-    private function getSessionId($repeatCount = 1): ?string
-    {
-        $response = $this->sendSessionRequest();
-        if ($response->getIsSuccess()) {
-            return $response->getPaymentSessionResponse()->getSessionId();
-        }
-        if ($repeatCount <= self::MAX_REPEAT_COUNT) {
-            $newReference = 'New_Reference__' . time();
-            $this->myWorldApiRequestTransfer->getPaymentSessionRequest()->setReference($newReference);
-
-            return $this->getSessionId(++$repeatCount);
-        }
-
-        throw new Exception("Session ID not fount. Exception message: " . $response->getError()->getErrorMessage());
-    }
-
-    /**
      * @return void
      */
     public function testCreatingPaymentSession()
@@ -271,6 +248,29 @@ class MyWorldPaymentApiFacadeTest extends Unit
 
         $this->assertSame(false, $response->getIsSuccess());
         $this->assertSame(self::ERROR_CODE_MWS_IDENTITY_TOKEN_EXPIRED_OR_INVALID, $response->getError()->getErrorCode());
+    }
+
+    /**
+     * @param int $repeatCount
+     *
+     * @throws \Exception
+     *
+     * @return string|null
+     */
+    private function getSessionId($repeatCount = 1): ?string
+    {
+        $response = $this->sendSessionRequest();
+        if ($response->getIsSuccess()) {
+            return $response->getPaymentSessionResponse()->getSessionId();
+        }
+        if ($repeatCount <= self::MAX_REPEAT_COUNT) {
+            $newReference = 'New_Reference__' . time();
+            $this->myWorldApiRequestTransfer->getPaymentSessionRequest()->setReference($newReference);
+
+            return $this->getSessionId(++$repeatCount);
+        }
+
+        throw new Exception("Session ID not fount. Exception message: " . $response->getError()->getErrorMessage());
     }
 
     /**

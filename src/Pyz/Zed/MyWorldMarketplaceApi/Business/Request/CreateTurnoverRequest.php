@@ -77,6 +77,11 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
     {
         $segmentGroups = $this->getSegmentGroups($orderTransfer);
         foreach ($segmentGroups as $segmentNumber => $segmentGroup) {
+            foreach ($segmentGroup as $key => $item) {
+                if (!in_array($item->getIdSalesOrderItem(), $orderItemIds)) {
+                    unset($segmentGroup[$key]);
+                }
+            }
             $this->requestForOneSegmentGroup($orderTransfer, $segmentGroup, $segmentNumber);
         }
     }

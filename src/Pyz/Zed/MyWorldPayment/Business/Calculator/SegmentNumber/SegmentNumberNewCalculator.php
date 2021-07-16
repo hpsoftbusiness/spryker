@@ -16,7 +16,7 @@ class SegmentNumberNewCalculator implements
     MyWorldPaymentQuoteCalculatorInterface,
     MyWorldPaymentOrderCalculatorInterface
 {
-    protected const SEGMENT_NUMBER_NEW = 1;
+    public const SEGMENT_NUMBER_NEW = 1;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
