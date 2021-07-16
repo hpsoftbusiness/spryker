@@ -9,6 +9,7 @@
     product: required
 } %}
 
+{% set originalPrice = data.product.prices.ORIGINAL ?? null %}
 {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
 {% set benefitVoucherDealEnabled = data.product.benefitAmount is not null and benefitPrice is not null and benefitPrice != 0.00 %}
 {% set shoppingPointsDealEnabled = data.product.shoppingPointsAmount is not null and benefitPrice is not null %}
@@ -20,7 +21,7 @@
             {% include molecule('product-benefit-price', 'ProductDetailPage') with {
                 data: {
                     regularPrice: data.product.price,
-                    price: data.product.prices.ORIGINAL,
+                    price: originalPrice,
                     amount: data.product.benefitAmount,
                     promotionPrice: benefitPrice
                 }
@@ -39,7 +40,7 @@
                 modifiers: ['pdp'],
                 data: {
                     amount: data.product.price,
-                    originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
+                    originalAmount: originalPrice
                 }
             } only %}
         {% endif %}
