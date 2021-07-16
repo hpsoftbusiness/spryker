@@ -99,6 +99,32 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
             }
         }
 
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributes[] $spyProductBulk */
+        foreach ($this->getLocalizedAbstractProducts() as $spyProductBulk) {
+            foreach ($spyProductBulk as $spyProduct) {
+                $this->updatedAbstractProductIds[] = $spyProduct->getFkProductAbstract();
+                $spyProduct->setAttributes(
+                    $this->fixAttributes(
+                        $spyProduct->getAttributes()
+                    )
+                );
+                $spyProduct->save();
+            }
+        }
+
+        /** @var \Orm\Zed\Product\Persistence\SpyProductLocalizedAttributes[] $spyProductBulk */
+        foreach ($this->getLocalizedProducts() as $spyProductBulk) {
+            foreach ($spyProductBulk as $spyProduct) {
+                $this->updatedConcreteProductIds[] = $spyProduct->getFkProduct();
+                $spyProduct->setAttributes(
+                    $this->fixAttributes(
+                        $spyProduct->getAttributes()
+                    )
+                );
+                $spyProduct->save();
+            }
+        }
+
         $this->publishAffectedProducts();
     }
 
@@ -172,17 +198,10 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
             ->getQueryContainer()
             ->queryProduct()
             ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
-            ->addOr("spy_product.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE);
+            ->addOr("spy_product.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->orderByIdProduct();
 
-        $totalProductsCount = $criteria->count();
-
-        for ($offset = 0; $offset < $totalProductsCount; $offset += self::QUERY_BULK_SIZE) {
-            yield $criteria
-                ->orderByIdProduct()
-                ->offset($offset)
-                ->limit(self::QUERY_BULK_SIZE)
-                ->find();
-        }
+        return $this->paginateCriteria($criteria);
     }
 
     /**
@@ -194,13 +213,54 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
             ->getQueryContainer()
             ->queryProductAbstract()
             ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
-            ->addOr("spy_product_abstract.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE);
+            ->addOr("spy_product_abstract.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->orderByIdProductAbstract();
 
+        return $this->paginateCriteria($criteria);
+    }
+
+    /**
+     * @return \Generator
+     */
+    private function getLocalizedAbstractProducts(): Generator
+    {
+        $criteria = $this
+            ->getQueryContainer()
+            ->queryProductAbstractLocalizedAttributes(1)
+            ->clear()
+            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
+            ->addOr("spy_product_abstract_localized_attributes.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->orderByIdAbstractAttributes();
+
+        return $this->paginateCriteria($criteria);
+    }
+
+    /**
+     * @return \Generator
+     */
+    private function getLocalizedProducts(): Generator
+    {
+        $criteria = $this
+            ->getQueryContainer()
+            ->queryProductLocalizedAttributes(1)
+            ->clear()
+            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
+            ->addOr("spy_product_localized_attributes.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->orderByIdProductAttributes();
+
+        return $this->paginateCriteria($criteria);
+    }
+
+    /**
+     * @param Criteria $criteria
+     * @return Generator
+     */
+    private function paginateCriteria(Criteria $criteria): Generator
+    {
         $totalProductsCount = $criteria->count();
 
         for ($offset = 0; $offset < $totalProductsCount; $offset += self::QUERY_BULK_SIZE) {
             yield $criteria
-                ->orderByIdProductAbstract()
                 ->offset($offset)
                 ->limit(self::QUERY_BULK_SIZE)
                 ->find();
