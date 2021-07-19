@@ -252,8 +252,9 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
     }
 
     /**
-     * @param Criteria $criteria
-     * @return Generator
+     * @param \Propel\Runtime\ActiveQuery\Criteria $criteria
+     *
+     * @return \Generator
      */
     private function paginateCriteria(Criteria $criteria): Generator
     {
