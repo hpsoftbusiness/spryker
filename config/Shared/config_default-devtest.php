@@ -217,3 +217,7 @@ require 'common/config_adyen-development.php';
 require 'common/config_sso-development.php';
 
 $config[SsoConstants::SSO_LOGIN_ENABLED] = false;
+
+if (!empty(getenv('SPRYKER_CLUSTER'))) {
+    return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-devtest.php');
+}

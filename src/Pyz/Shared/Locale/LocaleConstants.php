@@ -14,4 +14,10 @@ interface LocaleConstants
      * - Country to locale relations array. E.g. [ 'AT' => 'de_DE' ]
      */
     public const COUNTRY_TO_LOCALE_RELATIONS = 'COUNTRY_TO_LOCALE_RELATIONS';
+
+    /**
+     * Specification:
+     * - Locals for store for cluster
+     */
+    public const LOCALS_PER_STORES = 'LOCALS_PER_STORES';
 }

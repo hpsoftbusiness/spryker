@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Pyz\Shared\DataImport\DataImportConstants;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 /**
@@ -65,6 +66,8 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getDefaultYamlConfigPath(): ?string
     {
-        return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'data/import/local/full_EU.yml';
+        $cluster = $this->get(DataImportConstants::SPRYKER_CLUSTER, 'EU');
+
+        return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'data/import/local/full_' . $cluster . '.yml';
     }
 }

@@ -6,6 +6,10 @@ tag: 'dev'
 environment: docker.dev
 image:
     tag: spryker/php:7.3-alpine3.12
+    environment:
+        SPRYKER_CLUSTER: "cluster-1"
+        SPRYKER_DEFAULT_STORE: "DE"
+        SPRYKER_ACTIVE_STORES: "DE,AT"
     php:
         ini:
             "post_max_size": 600m
@@ -23,10 +27,10 @@ assets:
     mode: development
 
 regions:
-    EU:
+    cluster-1:
         services:
             database:
-                database: eu-docker
+                database: cluster-1-docker
                 username: spryker
                 password: secret
 
@@ -39,9 +43,17 @@ regions:
                         namespace: 1
                     search:
                         namespace: de_search
+            AT:
+                services:
+                    broker:
+                        namespace: at-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: at_search
 groups:
-    EU:
-        region: EU
+    cluster-1:
+        region: cluster-1
         applications:
             yves_eu:
                 application: yves
@@ -51,11 +63,18 @@ groups:
                         services:
                             session:
                                 namespace: 1
+                    yves.at.myworld.local:
+                        store: AT
+                        services:
+                            session:
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
                     glue.de.myworld.local:
                         store: DE
+                    glue.at.myworld.local:
+                        store: AT
             zed_eu:
                 application: zed
                 http:
@@ -63,6 +82,11 @@ groups:
                 endpoints:
                     zed.de.myworld.local:
                         store: DE
+                        services:
+                            session:
+                                namespace: 3
+                    zed.at.myworld.local:
+                        store: AT
                         services:
                             session:
                                 namespace: 3

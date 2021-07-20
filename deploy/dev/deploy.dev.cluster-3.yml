@@ -1,0 +1,213 @@
+version: "0.1"
+
+namespace: myworld_b2c_dev
+tag: 'dev'
+
+environment: docker.dev
+image:
+    tag: spryker/php:7.3-alpine3.12
+    environment:
+        SPRYKER_CLUSTER: "cluster-3"
+        SPRYKER_DEFAULT_STORE: "PL"
+        SPRYKER_ACTIVE_STORES: "PL,RO,SK,SL"
+    php:
+        ini:
+            "post_max_size": 600m
+            "upload_max_filesize": 600m
+            "memory_limit": 3000M
+            "opcache.enable_cli": 0
+            "opcache.enable": 1
+            "apc.enable_cli": 1
+        enabled-extensions:
+            - blackfire
+composer:
+    mode: ''
+    autoload: ''
+assets:
+    mode: development
+
+regions:
+    cluster-3:
+        services:
+            database:
+                database: cluster-3-docker
+                username: spryker
+                password: secret
+
+        stores:
+            PL:
+                services:
+                    broker:
+                        namespace: pl-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: pl_search
+            RO:
+                services:
+                    broker:
+                        namespace: ro-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: ro_search
+            SK:
+                services:
+                    broker:
+                        namespace: sk-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: sk_search
+            SL:
+                services:
+                    broker:
+                        namespace: sl-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: sl_search
+groups:
+    cluster-3:
+        region: cluster-3
+        applications:
+            yves_eu:
+                application: yves
+                endpoints:
+                    yves.pl.myworld.local:
+                        store: PL
+                        services:
+                            session:
+                                namespace: 1
+                    yves.ro.myworld.local:
+                        store: RO
+                        services:
+                            session:
+                                namespace: 2
+                    yves.sk.myworld.local:
+                        store: SK
+                        services:
+                            session:
+                                namespace: 3
+                    yves.sl.myworld.local:
+                        store: SL
+                        services:
+                            session:
+                                namespace: 4
+            glue_eu:
+                application: glue
+                endpoints:
+                    glue.pl.myworld.local:
+                        store: PL
+                    glue.ro.myworld.local:
+                        store: RO
+                    glue.sk.myworld.local:
+                        store: SK
+                    glue.sl.myworld.local:
+                        store: SL
+            zed_eu:
+                application: zed
+                http:
+                    max-request-body-size: 1600m
+                endpoints:
+                    zed.pl.myworld.local:
+                        store: PL
+                        services:
+                            session:
+                                namespace: 5
+                    zed.ro.myworld.local:
+                        store: RO
+                        services:
+                            session:
+                                namespace: 5
+                    zed.sk.myworld.local:
+                        store: SK
+                        services:
+                            session:
+                                namespace: 5
+                    zed.sl.myworld.local:
+                        store: SL
+                        services:
+                            session:
+                                namespace: 5
+services:
+    database:
+        engine: mysql
+        version: mariadb-10.5
+        root:
+            username: "root"
+            password: "secret"
+        endpoints:
+            localhost:3306:
+                protocol: tcp
+    broker:
+        engine: rabbitmq
+        api:
+            username: "spryker"
+            password: "secret"
+        endpoints:
+            queue.myworld.local:
+            localhost:5672:
+                protocol: tcp
+    session:
+        engine: redis
+    key_value_store:
+        engine: redis
+        endpoints:
+            localhost:16379:
+                protocol: tcp
+    search:
+        engine: elastic
+        version: 6.8
+        endpoints:
+            localhost:9200:
+                protocol: tcp
+    scheduler:
+        engine: jenkins
+        endpoints:
+            scheduler.myworld.local:
+    mail_catcher:
+        engine: mailhog
+        endpoints:
+            mail.myworld.local:
+    swagger:
+        engine: swagger-ui
+        endpoints:
+            swagger.myworld.local:
+    redis-gui:
+        engine: redis-commander
+        endpoints:
+            redis-commander.myworld.local:
+    dashboard:
+        engine: dashboard
+        endpoints:
+            spryker.local:
+    webdriver:
+        engine: chromedriver
+
+docker:
+
+    ssl:
+        enabled: true
+        redirect: true
+
+    testing:
+        store: PL
+
+    debug:
+        enabled: true
+        xdebug:
+            enabled: true
+
+    mount:
+        native:
+            platforms:
+                - linux
+
+        mutagen:
+            platforms:
+                - macos
+
+        docker-sync:
+            platforms:
+                - windows

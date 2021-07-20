@@ -1,0 +1,5 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,PL,PLN,495,495
+myworld_standard_shipment_method,RO,RON,495,495
+myworld_standard_shipment_method,SK,EUR,495,495
+myworld_standard_shipment_method,SL,EUR,495,495

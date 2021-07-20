@@ -1,6 +1,6 @@
-name,is_active,is_dynamic,is_exclusive,front_end_reference,valid_from,valid_to,name.en_US,name.de_DE,product_abstract_skus,priority
-Standard label,1,0,0,,,,Standard Label,Standard Label,,1
-NEW,1,1,0,template:tag,,,New,Neu,,2
-SALE,1,1,0,highlight,,,SALE %,SALE %,,3
-BENEFIT,1,1,0,template:tag,,,BENEFIT,BENEFIT,,1
-SHOPPING_POINT,1,1,0,template:tag,,,SHOPPING_POINT,SHOPPING_POINT,,1
+name,is_active,is_dynamic,is_exclusive,front_end_reference,valid_from,valid_to,name.en_US,name.de_DE,product_abstract_skus,priority,name.pl_PL,name.ro_RO,name.sk_SK,name.sl_SI,name.it_IT,name.pt_PT
+Standard label,1,0,0,,,,Standard Label,Standard Label,,1,Standard Label,Standard Label,Standard Label,Standard Label,Standard Label,Standard Label
+NEW,1,1,0,template:tag,,,New,Neu,,2,Neu,Neu,Neu,Neu,Neu,Neu
+SALE,1,1,0,highlight,,,SALE %,SALE %,,3,SALE %,SALE %,SALE %,SALE %,SALE %,SALE %
+BENEFIT,1,1,0,template:tag,,,BENEFIT,BENEFIT,,1,BENEFIT,BENEFIT,BENEFIT,BENEFIT,BENEFIT,BENEFIT
+SHOPPING_POINT,1,1,0,template:tag,,,SHOPPING_POINT,SHOPPING_POINT,,1,SHOPPING_POINT,SHOPPING_POINT,SHOPPING_POINT,SHOPPING_POINT,SHOPPING_POINT,SHOPPING_POINT

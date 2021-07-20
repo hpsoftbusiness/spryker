@@ -1,16 +1,16 @@
-navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,title.de_DE,url.de_DE,css_class.de_DE,valid_from,valid_to
-FOOTER_NAVIGATION_LEGAL,node_key_33,,cms_page,Imprint,/en/imprint,,Impressum,/de/impressum,,,
-FOOTER_NAVIGATION_LEGAL,node_key_35,,cms_page,Privacy Policy,/en/privacy,,Datenschutzerklärung,/de/datenschutz,,,
-FOOTER_NAVIGATION_LEGAL,node_key_94,,cms_page,Terms and Conditions,/en/gtc,,Allgemeine Geschäftsbedingungen,/de/agb,,,
-FOOTER_NAVIGATION_LEGAL,node_key_95,,cms_page,Terms of use,/en/terms-of-use,,Nutzungsbedingungen,/de/nutzungsbedingungen,,,
-FOOTER_NAVIGATION_INFO,node_key_96,,cms_page,About myWorld.com,/en/about-us,,Über myWorld.com,/de/uber-uns,,,
-PAYMENT_PROVIDERS,node_key_36,,label,Paypal,,paypal,Paypal,,paypal,,
-PAYMENT_PROVIDERS,node_key_37,,label,Klarna,,klarna,Klarna,,klarna,,
-SHIPMENT_PROVIDERS,node_key_38,,label,DHL,,dhl,DHL,,dhl,,
-SOCIAL_LINKS,node_key_39,,external_url,Twitter,https://twitter.com/myWorld_uk/,twitter,Twitter,https://twitter.com/myWorld_de/,twitter,,
-SOCIAL_LINKS,node_key_40,,external_url,Pinterest,https://www.pinterest.de/myworld_uk/,pinterest,Pinterest,https://www.pinterest.com/myworld_de/,pinterest,,
-SOCIAL_LINKS,node_key_41,,external_url,Instagram,https://www.instagram.com/myworld.com_uk/,instagram,Instagram,https://www.instagram.com/myworld.com_deutschland/,instagram,,
-SOCIAL_LINKS,node_key_42,,external_url,Facebook,https://www.facebook.com/myWorldcomUK/,facebook,Facebook,https://www.facebook.com/myworldcom-deutschland-838309199874712/,facebook,,
-PARTNERS,node_key_91,,label,Paypal,,paypal,Paypal,,paypal,,
-PARTNERS,node_key_92,,label,Klarna,,klarna,Klarna,,klarna,,
-PARTNERS,node_key_93,,label,DHL,,dhl,DHL,,dhl,,
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,title.de_DE,url.de_DE,css_class.de_DE,valid_from,valid_to,title.pl_PL,title.ro_RO,title.sk_SK,title.sl_SI,url.pl_PL,url.ro_RO,url.sk_SK,url.sl_SI,css_class.pl_PL,css_class.ro_RO,css_class.sk_SK,css_class.sl_SI,title.it_IT,title.pt_PT,url.it_IT,url.pt_PT,css_class.it_IT,css_class.pt_PT
+FOOTER_NAVIGATION_LEGAL,node_key_33,,cms_page,Imprint,/en/imprint,,Impressum,/de/impressum,,,,Imprint,Imprint,Imprint,Imprint,/pl/impressum,/ro/impressum,/sk/impressum,/si/impressum,,,,,Imprint,Imprint,/it/imprint,/pt/imprint,,
+FOOTER_NAVIGATION_LEGAL,node_key_35,,cms_page,Privacy Policy,/en/privacy,,Datenschutzerklärung,/de/datenschutz,,,,Privacy Policy,Privacy Policy,Privacy Policy,Privacy Policy,/pl/datenschutz,/ro/datenschutz,/sk/datenschutz,/si/datenschutz,,,,,Privacy Policy,Privacy Policy,/it/privacy,/pt/privacy,,
+FOOTER_NAVIGATION_LEGAL,node_key_94,,cms_page,Terms and Conditions,/en/gtc,,Allgemeine Geschäftsbedingungen,/de/agb,,,,Terms and Conditions,Terms and Conditions,Terms and Conditions,Terms and Conditions,/pl/agb,/ro/agb,/sk/agb,/si/agb,,,,,Terms and Conditions,Terms and Conditions,/it/gtc,/pt/gtc,,
+FOOTER_NAVIGATION_LEGAL,node_key_95,,cms_page,Terms of use,/en/terms-of-use,,Nutzungsbedingungen,/de/nutzungsbedingungen,,,,Terms of use,Terms of use,Terms of use,Terms of use,/pl/nutzungsbedingungen,/ro/nutzungsbedingungen,/sk/nutzungsbedingungen,/si/nutzungsbedingungen,,,,,Terms of use,Terms of use,/it/terms-of-use,/pt/terms-of-use,,
+FOOTER_NAVIGATION_INFO,node_key_96,,cms_page,About myWorld.com,/en/about-us,,Über myWorld.com,/de/uber-uns,,,,About myWorld.com,About myWorld.com,About myWorld.com,About myWorld.com,/pl/uber-uns,/ro/uber-uns,/sk/uber-uns,/si/uber-uns,,,,,About myWorld.com,About myWorld.com,/it/about-us,/pt/about-us,,
+PAYMENT_PROVIDERS,node_key_36,,label,Paypal,,paypal,Paypal,,paypal,,,Paypal,Paypal,Paypal,Paypal,,,,,paypal,paypal,paypal,paypal,Paypal,Paypal,,,paypal,paypal
+PAYMENT_PROVIDERS,node_key_37,,label,Klarna,,klarna,Klarna,,klarna,,,Klarna,Klarna,Klarna,Klarna,,,,,klarna,klarna,klarna,klarna,Klarna,Klarna,,,klarna,klarna
+SHIPMENT_PROVIDERS,node_key_38,,label,DHL,,dhl,DHL,,dhl,,,DHL,DHL,DHL,DHL,,,,,dhl,dhl,dhl,dhl,DHL,DHL,,,dhl,dhl
+SOCIAL_LINKS,node_key_39,,external_url,Twitter,https://twitter.com/myWorld_uk/,twitter,Twitter,https://twitter.com/myWorld_de/,twitter,,,Twitter,Twitter,Twitter,Twitter,https://twitter.com/myWorld_de/,https://twitter.com/myWorld_de/,https://twitter.com/myWorld_de/,https://twitter.com/myWorld_de/,twitter,twitter,twitter,twitter,Twitter,Twitter,https://twitter.com/myWorld_uk/,https://twitter.com/myWorld_uk/,twitter,twitter
+SOCIAL_LINKS,node_key_40,,external_url,Pinterest,https://www.pinterest.de/myworld_uk/,pinterest,Pinterest,https://www.pinterest.com/myworld_de/,pinterest,,,Pinterest,Pinterest,Pinterest,Pinterest,https://www.pinterest.com/myworld_de/,https://www.pinterest.com/myworld_de/,https://www.pinterest.com/myworld_de/,https://www.pinterest.com/myworld_de/,pinterest,pinterest,pinterest,pinterest,Pinterest,Pinterest,https://www.pinterest.de/myworld_uk/,https://www.pinterest.de/myworld_uk/,pinterest,pinterest
+SOCIAL_LINKS,node_key_41,,external_url,Instagram,https://www.instagram.com/myworld.com_uk/,instagram,Instagram,https://www.instagram.com/myworld.com_deutschland/,instagram,,,Instagram,Instagram,Instagram,Instagram,https://www.instagram.com/myworld.com_deutschland/,https://www.instagram.com/myworld.com_deutschland/,https://www.instagram.com/myworld.com_deutschland/,https://www.instagram.com/myworld.com_deutschland/,instagram,instagram,instagram,instagram,Instagram,Instagram,https://www.instagram.com/myworld.com_uk/,https://www.instagram.com/myworld.com_uk/,instagram,instagram
+SOCIAL_LINKS,node_key_42,,external_url,Facebook,https://www.facebook.com/myWorldcomUK/,facebook,Facebook,https://www.facebook.com/myworldcom-deutschland-838309199874712/,facebook,,,Facebook,Facebook,Facebook,Facebook,https://www.facebook.com/myworldcom-deutschland-838309199874712/,https://www.facebook.com/myworldcom-deutschland-838309199874712/,https://www.facebook.com/myworldcom-deutschland-838309199874712/,https://www.facebook.com/myworldcom-deutschland-838309199874712/,facebook,facebook,facebook,facebook,Facebook,Facebook,https://www.facebook.com/myWorldcomUK/,https://www.facebook.com/myWorldcomUK/,facebook,facebook
+PARTNERS,node_key_91,,label,Paypal,,paypal,Paypal,,paypal,,,Paypal,Paypal,Paypal,Paypal,,,,,paypal,paypal,paypal,paypal,Paypal,Paypal,,,paypal,paypal
+PARTNERS,node_key_92,,label,Klarna,,klarna,Klarna,,klarna,,,Klarna,Klarna,Klarna,Klarna,,,,,klarna,klarna,klarna,klarna,Klarna,Klarna,,,klarna,klarna
+PARTNERS,node_key_93,,label,DHL,,dhl,DHL,,dhl,,,DHL,DHL,DHL,DHL,,,,,dhl,dhl,dhl,dhl,DHL,DHL,,,dhl,dhl

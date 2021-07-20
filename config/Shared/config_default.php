@@ -6,7 +6,9 @@ use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Currency\CurrencyConstants;
+use Pyz\Shared\DataImport\DataImportConstants;
 use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
+use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
@@ -149,11 +151,14 @@ $trustedHosts
     = $config[HttpConstants::YVES_TRUSTED_HOSTS]
     = array_filter(explode(',', getenv('SPRYKER_TRUSTED_HOSTS') ?: ''));
 
-$config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
-    'threedssvc.pay1.de', // trusted Payone domain
-    'www.sofort.com', // trusted Payone domain
-    'checkoutshopper-test.adyen.com', //trusted Adyen domain
-]);
+$config[KernelConstants::DOMAIN_WHITELIST] = array_merge(
+    $trustedHosts,
+    [
+        'threedssvc.pay1.de', // trusted Payone domain
+        'www.sofort.com', // trusted Payone domain
+        'checkoutshopper-test.adyen.com', //trusted Adyen domain
+    ]
+);
 
 $config[SessionConstants::YVES_SESSION_COOKIE_SAMESITE] = 'none'; //Allows redirect customer via POST
 
@@ -612,3 +617,23 @@ $config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = true;
 
 $config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = false;
 $config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;
+
+// ----------------------------------------------------------------------------
+// ----------------------- Data Import Cluster -----------------------------
+// ----------------------------------------------------------------------------
+
+$config[DataImportConstants::SPRYKER_CLUSTER] = getenv('SPRYKER_CLUSTER') ?? 'EU';
+
+// ----------------------------------------------------------------------------
+// ----------------------- Locals for per store -----------------------------
+// ----------------------------------------------------------------------------
+$config[LocaleConstants::LOCALS_PER_STORES] = [
+    'AT' => ['en_US', 'de_DE'],
+    'DE' => ['en_US', 'de_DE'],
+    'IT' => ['en_US', 'it_IT'],
+    'PT' => ['en_US', 'pt_PT'],
+    'PL' => ['en_US', 'pl_PL'],
+    'RO' => ['en_US', 'ro_RO'],
+    'SK' => ['en_US', 'sk_SK'],
+    'SL' => ['en_US', 'sl_SI'],
+];

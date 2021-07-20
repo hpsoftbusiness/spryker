@@ -19,7 +19,7 @@ use Spryker\Zed\ProductStorage\Business\Attribute\AttributeMap;
 use Spryker\Zed\ProductStorage\Business\ProductStorageBusinessFactory as SprykerProductStorageBusinessFactory;
 
 /**
- * @method \Spryker\Zed\ProductStorage\ProductStorageConfig getConfig()
+ * @method \Pyz\Zed\ProductStorage\ProductStorageConfig getConfig()
  * @method \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface getQueryContainer()
  */
 class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
@@ -38,7 +38,8 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getProductAbstractStorageExpanderPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductAbstractStorageMariaDbCte()
+            $this->createProductAbstractStorageMariaDbCte(),
+            $this->getConfig()
         );
     }
 

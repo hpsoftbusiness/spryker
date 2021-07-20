@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage;
 
+use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\ProductStorage\ProductStorageConfig as SprykerProductStorageConfig;
@@ -56,5 +57,17 @@ class ProductStorageConfig extends SprykerProductStorageConfig
     public function getChunkSize(): int
     {
         return static::CHUNK_SIZE;
+    }
+
+    /**
+     * @param string $store
+     *
+     * @return array
+     */
+    public function getLocalsByStore(string $store): array
+    {
+        $localsPerStore = $this->get(LocaleConstants::LOCALS_PER_STORES, []);
+
+        return $localsPerStore[$store] ?? [];
     }
 }

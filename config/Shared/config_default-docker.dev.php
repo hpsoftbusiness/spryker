@@ -184,3 +184,7 @@ $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
 ];
 
 require 'common/config_my-world-payment.php';
+
+if (!empty(getenv('SPRYKER_CLUSTER'))) {
+    return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.dev.php');
+}

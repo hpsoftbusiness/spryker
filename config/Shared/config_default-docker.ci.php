@@ -30,3 +30,7 @@ $config[PropelConstants::LOG_FILE_PATH]
     = getenv('SPRYKER_LOG_STDOUT') ?: '/dev/null';
 
 $config[SsoConstants::SSO_LOGIN_ENABLED] = false;
+
+if (!empty(getenv('SPRYKER_CLUSTER'))) {
+    return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.ci.php');
+}

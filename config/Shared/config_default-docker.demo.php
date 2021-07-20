@@ -71,3 +71,7 @@ require 'common/config_my-world-payment-api-development.php';
 require 'common/config_my-world-payment.php';
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
+
+if (!empty(getenv('SPRYKER_CLUSTER'))) {
+    return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.demo.php');
+}

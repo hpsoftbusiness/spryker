@@ -181,7 +181,7 @@ jobs:
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   cd docker && git checkout b5cac67054022d16f7d1df62dd5fd5f5567fd0e3 && cd ..
-                  docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+                  docker/sdk boot -v deploy/ci/deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
@@ -213,7 +213,7 @@ jobs:
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   cd docker && git checkout b5cac67054022d16f7d1df62dd5fd5f5567fd0e3 && cd ..
-                  docker/sdk boot deploy.ci.functional.mariadb.yml -v
+                  docker/sdk boot deploy/ci/deploy.ci.functional.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
@@ -242,7 +242,7 @@ jobs:
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   cd docker && git checkout b5cac67054022d16f7d1df62dd5fd5f5567fd0e3 && cd ..
-                  docker/sdk boot deploy.ci.api.mariadb.yml -v
+                  docker/sdk boot deploy/ci/deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept fixtures
                   docker/sdk testing console queue:worker:start --stop-when-empty
@@ -274,7 +274,7 @@ jobs:
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   cd docker && git checkout b5cac67054022d16f7d1df62dd5fd5f5567fd0e3 && cd ..
-                  docker/sdk boot deploy.dev.yml
+                  docker/sdk boot deploy/dev/deploy.dev.cluster-1.yml
                   docker/sdk up -t -x
                   docker/sdk console cache:class-resolver:build
                   docker/sdk cli -x -t php -dxdebug.mode=coverage vendor/bin/codecept run -c codeception.ci.functional.yml --coverage

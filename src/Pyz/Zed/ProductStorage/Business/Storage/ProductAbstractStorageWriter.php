@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Propel\Runtime\Propel;
 use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface;
+use Pyz\Zed\ProductStorage\ProductStorageConfig;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface;
@@ -57,6 +58,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $productAbstractStorageCte;
 
     /**
+     * @var \Pyz\Zed\ProductStorage\ProductStorageConfig
+     */
+    private $config;
+
+    /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface $attributeMap
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
@@ -66,6 +72,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productAbstractStorageCte
+     * @param \Pyz\Zed\ProductStorage\ProductStorageConfig $config
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
@@ -76,7 +83,8 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         array $productAbstractStorageExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        ProductStorageCteStrategyInterface $productAbstractStorageCte
+        ProductStorageCteStrategyInterface $productAbstractStorageCte,
+        ProductStorageConfig $config
     ) {
         parent::__construct(
             $productFacade,
@@ -90,6 +98,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
         $this->productAbstractStorageCte = $productAbstractStorageCte;
+        $this->config = $config;
     }
 
     /**
@@ -120,12 +129,14 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
                 continue;
             }
 
-            $this->addProductAbstractStorageEntity(
-                $productAbstractLocalizedEntity,
-                $pair[static::STORE_NAME],
-                $pair[static::LOCALE_NAME],
-                $attributeMapBulk
-            );
+            if (in_array($pair[static::LOCALE_NAME], $this->config->getLocalsByStore($pair[static::STORE_NAME]))) {
+                $this->addProductAbstractStorageEntity(
+                    $productAbstractLocalizedEntity,
+                    $pair[static::STORE_NAME],
+                    $pair[static::LOCALE_NAME],
+                    $attributeMapBulk
+                );
+            }
         }
 
         $this->write();

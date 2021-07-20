@@ -94,3 +94,7 @@ $config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = false;
 $config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
+
+if (!empty(getenv('SPRYKER_CLUSTER'))) {
+    return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.prod.php');
+}
