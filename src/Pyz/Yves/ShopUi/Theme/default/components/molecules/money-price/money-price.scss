@@ -60,3 +60,10 @@
 }
 
 @include shop-ui-money-price();
+
+.money-price-modifier {
+    font-size: 0.875rem;
+    display: block;
+    color: #bbbbbb;
+    text-decoration: line-through;
+}

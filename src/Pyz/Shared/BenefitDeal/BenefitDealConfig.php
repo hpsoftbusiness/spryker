@@ -13,4 +13,5 @@ class BenefitDealConfig extends AbstractSharedConfig
 {
     public const LABEL_NAME_BENEFIT = 'BENEFIT';
     public const LABEL_NAME_SHOPPING_POINT = 'SHOPPING_POINT';
+    public const LABEL_NAME_INSTEAD_OF = 'INSTEAD_OF';
 }

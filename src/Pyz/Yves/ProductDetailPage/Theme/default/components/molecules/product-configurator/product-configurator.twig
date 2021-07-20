@@ -67,9 +67,12 @@
     } only %}
 
     <div class="shop-prom">
-        <div class="spacing-top">
+        <span class="{{ config.name }}__vat">
+            {{ 'pdp.include.tax' | trans }},
+        </span>
+        <span>
             {{ 'page.product.shipping-fee-from' | trans }} {{ data.shippingPriceFrom | money }}
-        </div>
+        </span>
     </div>
     <div class="spacing-top">
         {{ 'shipment.lead.time' | trans }}

@@ -102,7 +102,8 @@ class FormFactory extends SpyFormFactory
         return new PaymentFormDataProvider(
             $subFormDataProvider,
             $this->getMyWorldMarketingApiClient(),
-            $this->getCurrencyClient()
+            $this->getCurrencyClient(),
+            $this->getConfig()
         );
     }
 
@@ -147,5 +148,13 @@ class FormFactory extends SpyFormFactory
     public function createIntegerToDecimalConverter(): IntegerToDecimalConverterInterface
     {
         return new IntegerToDecimalConverter();
+    }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
+     */
+    public function createAddressFormCollection()
+    {
+        return $this->createFormCollection($this->getAddressFormTypes(), $this->getCheckoutAddressFormDataProviderPlugin());
     }
 }

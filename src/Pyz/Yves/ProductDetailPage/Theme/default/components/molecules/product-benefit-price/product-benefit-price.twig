@@ -5,8 +5,10 @@
 } %}
 
 {% define data = {
-    benefitPriceAmount: required,
-    benefitAmount: required,
+    price: required,
+    amount: required,
+    regularPrice: required,
+    promotionPrice: required
 } %}
 
 {% block body %}
@@ -18,17 +20,24 @@
 
     <div class="{{ config.name }}__benefit-price-amount">
         {% include molecule('money-price') with {
-            modifiers: ['pdp'],
+            modifiers: ['strikethrough'],
             data: {
-                amount: data.benefitPriceAmount,
+                amount: data.price,
                 priceVatText: null
             }
         } only %}
-        <span class="{{ config.name }}__plus">+</span>
         {% include molecule('money-price') with {
             modifiers: ['pdp'],
             data: {
-                amount: data.benefitAmount,
+                amount: data.regularPrice,
+                priceVatText: null,
+            }
+        } only %}
+        <span class="{{ config.name }}__plus">-</span>
+        {% include molecule('money-price') with {
+            modifiers: ['pdp'],
+            data: {
+                amount: data.amount,
                 priceVatText: null
             }
         } only %}
@@ -39,9 +48,14 @@
                 name: 'benefit-point',
             },
         } only %}
-        <span class="{{ config.name }}__vat">
-            {{ 'pdp.include.vat' | trans }}
-        </span>
+        <br>
+        {% include molecule('money-price') with {
+            modifiers: ['pdp'],
+            data: {
+                amount: data.promotionPrice,
+                priceVatText: null
+            }
+        } only %}
     </div>
 
 {% endblock %}

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Customer;
 
+use Pyz\Shared\Sso\SsoConstants;
 use Spryker\Zed\Customer\CustomerConfig as SprykerCustomerConfig;
 
 class CustomerConfig extends SprykerCustomerConfig
@@ -22,5 +23,13 @@ class CustomerConfig extends SprykerCustomerConfig
             'sales' => '/sales/customer/customer-orders',
             'notes' => '/customer-note-gui/index/index',
         ] + parent::getCustomerDetailExternalBlocksUrls();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSsoLoginEnabled(): bool
+    {
+        return $this->get(SsoConstants::SSO_LOGIN_ENABLED, false);
     }
 }

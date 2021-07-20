@@ -9,6 +9,7 @@ namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
 use DateTime;
 use Exception;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
@@ -74,14 +75,45 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
      */
     public function request(array $orderItemIds, OrderTransfer $orderTransfer): void
     {
-        $myWorldMarketplaceApiResponseTransfer = $this->myWorldMarketplaceApiClient->performApiRequest(
-            $this->buildRequestUrl($orderTransfer),
-            $this->getRequestParams($orderTransfer)
-        );
+        $segmentGroups = $this->getSegmentGroups($orderTransfer);
+        foreach ($segmentGroups as $segmentNumber => $segmentGroup) {
+            foreach ($segmentGroup as $key => $item) {
+                if (!in_array($item->getIdSalesOrderItem(), $orderItemIds)) {
+                    unset($segmentGroup[$key]);
+                }
+            }
+            $this->requestForOneSegmentGroup($orderTransfer, $segmentGroup, $segmentNumber);
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param int $segmentNumber
+     *
+     * @return void
+     */
+    protected function requestForOneSegmentGroup(
+        OrderTransfer $orderTransfer,
+        array $items,
+        int $segmentNumber
+    ): void {
+        $myWorldMarketplaceApiResponseTransfer = $this
+            ->myWorldMarketplaceApiClient
+            ->performApiRequest(
+                $this->buildRequestUrl($orderTransfer),
+                $this->getRequestParams($orderTransfer, $items, $segmentNumber)
+            );
 
         if (!$myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
             return;
         }
+
+        $orderItemIds = array_reduce($items, function (array $orderItemIds, ItemTransfer $item) {
+            $orderItemIds[] = $item->getIdSalesOrderItem();
+
+            return $orderItemIds;
+        }, []);
 
         $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCreated($orderItemIds);
     }
@@ -107,37 +139,6 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
         }
 
         return sprintf('%s/customers/%s/turnovers', $this->myWorldMarketplaceApiConfig->getApiUrl(), $customerId);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return array
-     */
-    protected function getRequestParams(OrderTransfer $orderTransfer): array
-    {
-        $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
-        $accessTokenTransfer->requireAccessToken();
-
-        $requestBody = $this->utilEncodingService->encodeJson(
-            [
-                'Reference' => $this->getTurnoverReference($orderTransfer),
-                'Date' => date(DateTime::ISO8601, strtotime($orderTransfer->getCreatedAt())),
-                'Amount' => bcdiv((string)$orderTransfer->getTotals()->getPriceToPay(), '100', 2),
-                'Currency' => $orderTransfer->getCurrencyIsoCode(),
-                'SegmentNumber' => static::SEGMENT_NUMBER,
-                'ProfileIdentifier' => $this->getDealerId($orderTransfer),
-            ]
-        );
-
-        return [
-            'headers' => [
-                'Authorization' => sprintf('Bearer %s', $accessTokenTransfer->getAccessToken()),
-                'Accept' => 'application/vnd.myworld.services-v1+json',
-                'Content-Type' => 'application/json',
-            ],
-            'body' => $requestBody,
-        ];
     }
 
     /**
@@ -170,5 +171,60 @@ class CreateTurnoverRequest implements TurnoverRequestInterface
             $orderTransfer->getOrderReference(),
             strtotime($orderTransfer->getCreatedAt())
         );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param array $items
+     * @param int $segmentNumber
+     *
+     * @return array
+     */
+    protected function getRequestParams(OrderTransfer $orderTransfer, array $items, int $segmentNumber): array
+    {
+        $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
+        $accessTokenTransfer->requireAccessToken();
+        $turnoverAmount = array_reduce($items, function ($sum, ItemTransfer $itemTransfer) {
+            return $sum + $itemTransfer->getTurnoverAmount();
+        }, 0);
+
+        $requestBody = $this->utilEncodingService->encodeJson(
+            [
+                'Reference' => $this->getTurnoverReference($orderTransfer),
+                'Date' => date(DateTime::ISO8601, strtotime($orderTransfer->getCreatedAt())),
+                'Amount' => bcdiv((string)$turnoverAmount, '100', 2),
+                'Currency' => $orderTransfer->getCurrencyIsoCode(),
+                'SegmentNumber' => $segmentNumber,
+                'ProfileIdentifier' => $this->getDealerId($orderTransfer),
+            ]
+        );
+
+        return [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s', $accessTokenTransfer->getAccessToken()),
+                'Accept' => 'application/vnd.myworld.services-v1+json',
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $requestBody,
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer[][]
+     */
+    protected function getSegmentGroups(OrderTransfer $orderTransfer): array
+    {
+        $segmentGroups = [];
+        foreach ($orderTransfer->getItems() as $item) {
+            $segmentNumber = $item->getSegmentNumber();
+            if (!isset($segmentGroups[$segmentNumber])) {
+                $segmentGroups[$segmentNumber] = [];
+            }
+            $segmentGroups[$item->getSegmentNumber()][] = $item;
+        }
+
+        return $segmentGroups;
     }
 }

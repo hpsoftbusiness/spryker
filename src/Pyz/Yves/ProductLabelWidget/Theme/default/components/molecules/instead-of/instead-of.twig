@@ -1,0 +1,23 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'instead-of',
+    tag: 'span',
+} %}
+
+{% define data = {
+    text: '',
+    textClass: '',
+    originalPrice: data.product.prices.ORIGINAL ?? 0,
+} %}
+
+{% define attributes = {
+    'data-label-tag-type': '',
+} %}
+
+{% block body %}
+    <span class="{{ config.name }}__text {{ data.textClass }}">
+        {{ data.text }}
+        <s>{{ data.originalPrice | money(true, data.currencyIsoCode) }}</s>
+    </span>
+{% endblock %}

@@ -4,7 +4,7 @@ includes:
 parameters:
     parallel:
         maximumNumberOfProcesses: 1
-        processTimeout: 6000.0
+        processTimeout: 600000.0
     excludes_analyse:
         - %rootDir%/../../../src/Generated/*
         - %rootDir%/../../../src/Orm/*

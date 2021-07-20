@@ -54,10 +54,17 @@ class ProductAttributeWriter extends SprykerProductAttributeWriter
 
         foreach ($attributes as $attribute) {
             $key = $attribute[ProductAttributeKeyTransfer::KEY];
+            // TODO: We are going to get rid of customer_groups (https://spryker.atlassian.net/browse/MYW-1358)
+            if (substr($key, 0, 15) === 'customer_group_') {
+                continue;
+            }
             $localeCode = $attribute['locale_code'];
             $value = $attribute['value'];
 
-            if (!is_bool($value)) {
+            if (!is_bool($value)
+                && !is_numeric($value)
+                && is_string($value)
+            ) {
                 $value = $this->sanitizeString($attribute['value']);
             }
 

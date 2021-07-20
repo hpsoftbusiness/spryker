@@ -1,9 +1,17 @@
 {% extends molecule('label-group', '@SprykerShop:ProductLabelWidget') %}
 
+{% define data = {
+    labels: [],
+    parentJsName: '',
+    product: null,
+    currencyIsoCode: null,
+}  %}
+
 {% block body %}
     {% set leftColumnComponents = [] %}
     {% set rightColumnComponents = [] %}
     {% set labelTagType = 'template:tag' %}
+    {% set labelInsteadOfType = 'template:instead-of' %}
 
     {% for label in data.labels %}
         {% set componentName = 'flag' %}
@@ -18,6 +26,13 @@
             {% set labelTextJsClass = config.jsName ~ '__label-tag-text' %}
         {% endif %}
 
+        {% if label.type == labelInsteadOfType %}
+            {% set componentName = 'instead-of' %}
+            {% set componentModifiers = [] %}
+            {% set labelJsClass = data.parentJsName ~ '__label-instead-of' %}
+            {% set labelTextJsClass = data.parentJsName ~ '__label-instead-of-text' %}
+        {% endif %}
+
         {% set component = include(
             [
                 molecule(componentName, 'ProductLabelWidget')
@@ -28,6 +43,8 @@
                 data: {
                     text: label.text,
                     textClass: labelTextJsClass,
+                    product: data.product,
+                    currencyIsoCode: data.currencyIsoCode,
                 },
                 attributes: {
                     'data-label-tag-type': label.type == labelTagType ? labelTagType,

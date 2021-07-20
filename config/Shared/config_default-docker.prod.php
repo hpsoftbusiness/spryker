@@ -83,8 +83,8 @@ require 'common/config_my-world-payment-api-prod.php';
 // ----------------------------------------------------------------------------
 // ----------------------- Checkout feature flags -----------------------------
 // ----------------------------------------------------------------------------
-$config[CheckoutPageConstants::IS_CASHBACK_PAYMENT_FEATURE_ENABLED] = false;
-$config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = false;
+$config[CheckoutPageConstants::IS_CASHBACK_PAYMENT_FEATURE_ENABLED] = true;
+$config[CheckoutPageConstants::IS_BENEFIT_DEAL_PAYMENT_FEATURE_ENABLED] = true;
 
 // ----------------------------------------------------------------------------
 // ------------------ Currency/country feature flags --------------------------

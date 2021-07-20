@@ -2,16 +2,15 @@ import Component from 'ShopUi/models/component';
 import $ from 'jquery/dist/jquery';
 
 export default class BenefitDealSummary extends Component {
-    protected useShoppingPointSelector: string;
-    protected useShoppingPointIdRegex: RegExp;
-    protected benefitVouchersAmountId: string;
-    protected benefitVouchersAmountSelector: string;
-    protected recalculateRoute: string;
-    protected finalAmountSelector: string;
-    protected totalUsedShoppingPointsSelector: string;
-    protected useBenefitVoucherSelector: string;
-
-    protected readyCallback(): void {
+        protected useShoppingPointSelector: string;
+        protected useShoppingPointIdRegex: RegExp;
+        protected benefitVouchersAmountId: string;
+        protected benefitVouchersAmountSelector: string;
+        protected recalculateRoute: string;
+        protected finalAmountSelector: string;
+        protected invoke_make_blank: boolean;
+        protected totalUsedShoppingPointsSelector: string;
+        protected readyCallback(): void {
     }
 
     protected init(): void {
@@ -22,41 +21,30 @@ export default class BenefitDealSummary extends Component {
         this.recalculateRoute = '/calculation/recalculate';
         this.finalAmountSelector = '#benefit-deal-summary__final-amount';
         this.totalUsedShoppingPointsSelector = '.benefit-deal-summary__total-used-shopping-points';
-        this.useBenefitVoucherSelector = '#benefit_deal_collection_form_useBenefitVoucher';
-
-        this.enableDisableBenefitVouchersAmount();
+        $(this.useShoppingPointSelector).prop('checked', true);
         this.recalculatePriceToPay();
-        this.onUseBenefitVoucherChange();
         this.onInputChange();
+        this.invoke_make_blank = true;
+    }
+
+    protected makeBlank(): void {
+        if (this.invoke_make_blank)
+        {
+            var amount = Math.floor($('#benefitVoucherAmount').val()/100);
+
+            if (Number.isNaN(amount)) {
+                amount = 0;
+            }
+            $('#benefit_deal_collection_form_totalUsedBenefitVouchersAmount').val(amount);
+            this.invoke_make_blank = false;
+        }
     }
 
     protected onInputChange(): void {
         let self = this;
-        $(self.useShoppingPointSelector
-            + ','
-            + self.useBenefitVoucherSelector
-            + ','
-            + self.benefitVouchersAmountSelector
-        ).on('input', function() {
+        $(self.benefitVouchersAmountSelector).on('input', function() {
             self.recalculatePriceToPay();
         });
-    }
-
-    protected onUseBenefitVoucherChange(): void {
-        let self = this;
-        $(self.useBenefitVoucherSelector).on('input', function() {
-            self.enableDisableBenefitVouchersAmount();
-        });
-    }
-
-    protected enableDisableBenefitVouchersAmount(): void {
-        let self = this,
-        useBenefitVoucher = $(self.useBenefitVoucherSelector).prop('checked');
-        if (useBenefitVoucher) {
-            $(self.benefitVouchersAmountSelector).removeAttr('disabled');
-        } else {
-            $(self.benefitVouchersAmountSelector).attr('disabled', 'disabled');
-        }
     }
 
     protected recalculatePriceToPay(): void {
@@ -65,6 +53,7 @@ export default class BenefitDealSummary extends Component {
             $(self.finalAmountSelector).text(data.totals_formatted.price_to_pay);
             self.updateTotalUsedShoppingPoints(data);
             document.getElementById(self.benefitVouchersAmountId).value = data.total_used_benefit_vouchers_amount / 100;
+            self.makeBlank();
         });
     }
 
@@ -73,13 +62,13 @@ export default class BenefitDealSummary extends Component {
             callData = {
                 items: {},
                 total_used_benefit_voucher_amount: $(this.benefitVouchersAmountSelector).val(),
-                use_benefit_voucher: $(this.useBenefitVoucherSelector).prop('checked')
+                use_benefit_voucher: true
             };
 
         $(self.useShoppingPointSelector).each(function() {
             let useShoppingPointKey = $(this).attr('id').replace(self.useShoppingPointIdRegex, '$1');
             callData['items'][useShoppingPointKey] = {
-                use_shopping_point: $(this).prop('checked')
+                use_shopping_point: true
             };
         });
         return JSON.stringify(callData);
@@ -90,4 +79,5 @@ export default class BenefitDealSummary extends Component {
         $(this.totalUsedShoppingPointsSelector).text(data.total_used_shopping_points_amount);
     }
 }
+
 

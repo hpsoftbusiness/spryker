@@ -76,4 +76,18 @@ interface CustomerServiceInterface extends SprykerCustomerServiceInterface
      * @return int
      */
     public function getCustomerBenefitVoucherBalanceAmount(CustomerTransfer $customerTransfer): int;
+
+    /**
+     * Specification:
+     * - Searches for internal payment balance by provided payment option ID in CustomerTransfer balances array.
+     * - Returns integer value (in cents).
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param int $idPaymentOption
+     *
+     * @return int
+     */
+    public function getCustomerBalanceAmountByPaymentOptionId(CustomerTransfer $customerTransfer, int $idPaymentOption): int;
 }

@@ -53,6 +53,7 @@
 
                         {% for item in itemsExceptConfiguredBundles %}
                             {% set cartItem = item.bundleProduct ?? item %}
+
                             {% embed molecule('product-card-item') with {
                                 modifiers: ['expand', 'secondary', 'alternative', 'right-indent-from-tablet'],
                                 data: {

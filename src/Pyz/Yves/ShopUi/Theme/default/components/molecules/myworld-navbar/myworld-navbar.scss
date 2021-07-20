@@ -4,12 +4,12 @@
             background-color: $setting-color-black;
             display: flex;
             align-items: stretch;
-            height: 30px;
+            height: 34px;
         }
 
         &__item {
             border-bottom: rem(1) solid $setting-color-gray-3;
-            height: 30px;
+            height: 34px;
             width: 120px;
 
             @include helper-breakpoint-media-min($lg-min) {
@@ -18,8 +18,10 @@
         }
 
         &__link {
-            padding: rem(15) 0;
+            padding: 0;
+            width: 100%;
             display: block;
+            position: relative;
 
             @media (max-width: 959px) {
                 margin: rem(15) 0;
@@ -47,8 +49,14 @@
 
         &__image {
             display: block;
-            max-width: unset;
-            max-height: unset;
+            /* max-width: unset; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            //display: block;
+            //max-width: unset;
+            //max-height: unset;
         }
 
         &__dropdown {

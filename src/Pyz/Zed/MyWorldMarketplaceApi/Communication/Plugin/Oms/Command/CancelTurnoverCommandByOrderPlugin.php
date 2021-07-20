@@ -41,9 +41,9 @@ class CancelTurnoverCommandByOrderPlugin extends AbstractPlugin implements Comma
         }
 
         $orderTransfer = $this->getFactory()->getCalculationFacade()->recalculateOrder($orderTransfer);
-        $refundTransfer = $this->getFactory()->getRefundFacade()->calculateRefund($orderItems, $orderEntity);
+        $turnoverTransfer = $this->getFactory()->getTurnoverFacade()->calculateTurnover($orderItems, $orderEntity);
 
-        $this->getFacade()->cancelTurnover($this->getOrderItemIds($orderItems), $orderTransfer, $refundTransfer);
+        $this->getFacade()->cancelTurnover($this->getOrderItemIds($orderItems), $orderTransfer, $turnoverTransfer);
 
         return [];
     }

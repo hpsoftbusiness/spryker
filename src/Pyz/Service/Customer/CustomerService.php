@@ -82,4 +82,15 @@ class CustomerService extends SprykerCustomerService implements
             $this->getFactory()->getConfig()->getPaymentOptionIdBenefitVoucher()
         );
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param int $idPaymentOption
+     *
+     * @return int
+     */
+    public function getCustomerBalanceAmountByPaymentOptionId(CustomerTransfer $customerTransfer, int $idPaymentOption): int
+    {
+        return $this->getFactory()->createBalanceResolver()->resolveBalanceAmount($customerTransfer, $idPaymentOption);
+    }
 }

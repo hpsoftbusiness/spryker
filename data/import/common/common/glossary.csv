@@ -3083,6 +3083,10 @@ agent.control_bar.logout,Wyloguj,pl_PL
 agent.control_bar.logout_as_customer,Pomoc dla klientów końcowych,pl_PL
 agent.control_bar.username,Agent:,pl_PL
 agent.login.email,E-mail,pl_PL
+validator.check.phone,Błędny numer telefonu,pl_PL
+validator.check.phone,Invalid phone number,en_US
+validator.check.phone,ungültige Rufnummer,de_DE
+validator.check.phone,ungültige Rufnummer,de_AT
 agent.login.password,Hasło,pl_PL
 agent.login.title,Uzyskaj dostęp do swojego konta,pl_PL
 auth.email,E-mail,pl_PL
@@ -4685,7 +4689,8 @@ cart.pre.check.quantity.min.failed,Minimum quantity requirements for product SKU
 cart.pre.check.quantity.value.failed,Wrong quantity for product SKU '%sku%'.,en_US
 cart.pre.check.shipment.failed,Can't apply these changes. The shipment method not found. Please select another shipment method.,en_US
 cart.price,Price,en_US
-cart.price.grand.total,Total amount,en_US
+cart.price.grand.total,Total,en_US
+cart.price.grand.total,Gesamt,de_DE
 cart.price.subtotal,Subtotal,en_US
 cart.product-option,Product Options,en_US
 cart.promotion.items,Promotional products,en_US
@@ -4699,7 +4704,8 @@ cart.title_content,Shopping Cart,en_US
 cart.title_sidebar,Order overview,en_US
 cart.total,Total,en_US
 cart.total.discount,Discount,en_US
-cart.total.price_to_pay,Price to pay,en_US
+cart.total.price_to_pay,Total Price to pay,en_US
+cart.total.price_to_pay,Gesamtpreis to pay,de_DE
 cart.total.tax_total,Tax,en_US
 cart.validate.items.price.changed,Prices have been changed for products with SKU '%sku%'.,en_US
 cart.voucher.apply.failed,Your voucher code is invalid.,en_US
@@ -4790,6 +4796,7 @@ checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.grand_total,Grand Total,en_US
 checkout.step.summary.items,Items,en_US
 checkout.step.summary.overview,Overview,en_US
+checkout.step.summary.overview,Bestellübersicht,de_DE
 checkout.step.summary.payment,Payment,en_US
 checkout.step.summary.products,Products,en_US
 checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
@@ -5793,7 +5800,7 @@ page.product.details,Details,en_US
 page.product.details.slider_image,Product Image,en_US
 page.product.details.slider_thumbnail,Product Image,en_US
 page.product.seller,Seller,en_US
-page.product.shipping-fee-from,Shipping from,en_US
+page.product.shipping-fee-from,plus Shipping from,en_US
 page.product.similar-products,You might also like,en_US
 page.product.status,New,en_US
 page.product.upsell-products,Similar products,en_US
@@ -5809,6 +5816,8 @@ payment.paypal,PayPal,en_US
 payment.prepay,Prepayment,en_US
 payment.step.api_request.error,"Sorry, something went wrong with the payment. Please try again later!",en_US
 pdp.include.vat,incl. VAT,en_US
+pdp.include.tax,incl. Tax,en_US
+pdp.include.tax,inklusive Steuern,de_DE
 pdp.price.from,from,en_US
 persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US
@@ -6327,7 +6336,7 @@ checkout.step.shipment,Weiter zum Versand,de_DE
 checkout.step.shipment.provider.a,DHL,de_DE
 checkout.step.shipment.provider.b,Hermes,de_DE
 checkout.step.shipment.title,Versand,de_DE
-checkout.step.success.link,"Gehe zum """"Benutzerkonto""""",de_DE
+checkout.step.success.link,"Gehe zum Benutzerkonto",de_DE
 checkout.step.success.sub_title,Deine Bestellung ist erfolgreich bei uns eingegangen.,de_DE
 checkout.step.success.text,Die Bestellbestätigung wurde soeben per E-Mail versendet. In deinem Benutzerkonto kannst deine Bestellung überprüfen und nachverfolgen.,de_DE
 checkout.step.success.title,Vielen Dank.,de_DE
@@ -19933,8 +19942,8 @@ checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cas
 checkout.payment.checkbox.use_evoucher_balance,Use %price% of your %balance% Cashback/myWorld eVoucher balance,de_DE
 payment.step.api_request.error,"Sorry, something went wrong with the payment. Please try again later!",en_US
 payment.step.api_request.error,"Ups, scheinbar hat etwas mit der Zahlung nicht geklappt. Versuch es bitte später nocheinmal",de_DE
-checkout.step.benefit_deal.title,Benefit Deals,en_US
-checkout.step.benefit_deal.title,Benefit Deals,de_DE
+checkout.step.benefit_deal.title,Order overview,en_US
+checkout.step.benefit_deal.title,Order overview,de_DE
 checkout.step.benefit_deal.use_voucher,Use the Benefit Vouchers (BV) for discount,en_US
 checkout.step.benefit_deal.use_voucher,Verwenden Sie die Benefit Vouchers (BV) für Rabatte,de_DE
 checkout.step.benefit_deal.items,Items,en_US
@@ -19943,9 +19952,9 @@ checkout.step.benefit_deal.with_method,with,en_US
 checkout.step.benefit_deal.with_method,mit,de_DE
 checkout.step.benefit_deal.or,or,en_US
 checkout.step.benefit_deal.or,oder,de_DE
-checkout.step.benefit_deal.benefit_voucher,Benefit Voucher,en_US
-checkout.step.benefit_deal.benefit_voucher,Benefit Voucher,de_DE
-checkout.step.benefit_deal.total_used_shopping_points,Used Shopping Points,en_US
+checkout.step.benefit_deal.benefit_voucher,Used total Benefit Voucher amount,en_US
+checkout.step.benefit_deal.benefit_voucher,Verwendeter Gesamtbetrag des Benefit Vouchers,de_DE
+checkout.step.benefit_deal.total_used_shopping_points,Used Total Shopping Points,en_US
 checkout.step.benefit_deal.total_used_shopping_points,Eingelöste Shopping Points,de_DE
 merchant_profile.email,Email Address,en_US
 merchant_profile.email,E-Mail,de_DE

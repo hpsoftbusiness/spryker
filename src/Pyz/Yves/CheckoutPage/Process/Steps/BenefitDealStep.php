@@ -130,11 +130,17 @@ class BenefitDealStep extends AbstractBaseStep implements StepWithBreadcrumbInte
     protected function assertCartHasApplicableBenefitDeals(QuoteTransfer $quoteTransfer): bool
     {
         foreach ($quoteTransfer->getItems() as $item) {
-            if ($item->getShoppingPointsDeal() && $item->getShoppingPointsDeal()->getIsActive()) {
+            if ($item->getShoppingPointsDeal()
+                && $item->getShoppingPointsDeal()->getIsActive()
+                && $item->getShoppingPointsDeal()->getPrice()
+            ) {
                 return true;
             }
 
-            if ($item->getBenefitVoucherDealData() && $item->getBenefitVoucherDealData()->getIsStore()) {
+            if ($item->getBenefitVoucherDealData()
+                && $item->getBenefitVoucherDealData()->getIsStore()
+                && $item->getBenefitVoucherDealData()->getSalesPrice()
+            ) {
                 return true;
             }
         }

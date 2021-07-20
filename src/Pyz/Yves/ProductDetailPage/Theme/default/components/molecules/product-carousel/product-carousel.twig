@@ -6,7 +6,8 @@
 } %}
 
 {% define data = {
-    product: required
+    product: required,
+    currencyIsoCode: null,
 } %}
 
 {% block body %}
@@ -39,5 +40,11 @@
             }'
         }
     } only %}
-    {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
+    {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] with {
+        data: {
+            parentJsName: config.jsName,
+            product: data.product,
+            currencyIsoCode: data.currencyIsoCode,
+        },
+    } only %}{% endwidget %}
 {% endblock %}

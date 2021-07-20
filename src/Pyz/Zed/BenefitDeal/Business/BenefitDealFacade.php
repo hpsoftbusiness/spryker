@@ -112,6 +112,16 @@ class BenefitDealFacade extends AbstractFacade implements BenefitDealFacadeInter
     }
 
     /**
+     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
+     */
+    public function findInsteadOfProductLabelProductAbstractRelationChanges(): array
+    {
+        return $this->getFactory()
+            ->createProductAbstractRelationReader()
+            ->findInsteadOfProductLabelProductAbstractRelationChanges();
+    }
+
+    /**
      * @param iterable|\Generated\Shared\Transfer\ItemTransfer[] $itemTransfers
      * @param string|null $currencyIsoCode
      *

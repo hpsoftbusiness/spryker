@@ -1,0 +1,41 @@
+@mixin product-label-widget-instead_of($name: '.instead-of') {
+    #{$name} {
+
+        background: $setting-color-red-1;
+        display: none;
+        position: absolute;
+        color: #fff;
+        font-size: 12px;
+        font-family: CeraPro-Medium,sans-serif;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 4px 6px;
+        top: -11px;
+        z-index: 1;
+
+        @content;
+    }
+
+    #{'.js-product-carousel'} {
+        &__label-instead-of {
+            @media only screen and (max-width: 1055px) {
+                right:25px;
+            }
+            @media (min-width: 1056px) and (max-width: 1585px) {
+                right: 50px;
+            }
+
+            right: 65px;
+            display: inline-block;
+        }
+    }
+
+    #{'.js-product-item'} {
+        &__label-instead-of {
+            right: 25px;
+            display: inline-block;
+        }
+    }
+}
+
+@include product-label-widget-instead_of();

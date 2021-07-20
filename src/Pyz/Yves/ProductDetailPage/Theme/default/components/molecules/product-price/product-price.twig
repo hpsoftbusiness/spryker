@@ -9,39 +9,21 @@
     product: required
 } %}
 
+{% set originalPrice = data.product.prices.ORIGINAL ?? null %}
 {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
 {% set benefitVoucherDealEnabled = data.product.benefitAmount is not null and benefitPrice is not null and benefitPrice != 0.00 %}
 {% set shoppingPointsDealEnabled = data.product.shoppingPointsAmount is not null and benefitPrice is not null %}
 
 {% block body %}
-    {% block regularPrice %}
-        <hr class="{{ config.name }}__separator" />
-        {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
-            {% nowidget %}
-            <div class="row spacing-top spacing-bottom">
-                <span class="{{ config.name }}__title-text">
-                    {{ 'pdp.price.regular_price' | trans }}
-                </span>
-            </div>
-            <div class="row">
-                {% include molecule('money-price') with {
-                    modifiers: ['pdp'],
-                    data: {
-                        amount: data.product.price,
-                        originalAmount: data.product.prices.ORIGINAL is not defined ? null : data.product.prices.ORIGINAL
-                    }
-                } only %}
-            </div>
-        {% endwidget %}
-    {% endblock %}
-
     {% block benefitDealPrice %}
         {% if benefitVoucherDealEnabled %}
             <hr class="{{ config.name }}__separator" />
             {% include molecule('product-benefit-price', 'ProductDetailPage') with {
                 data: {
-                    benefitPriceAmount: benefitPrice,
-                    benefitAmount: data.product.benefitAmount
+                    regularPrice: data.product.price,
+                    price: originalPrice,
+                    amount: data.product.benefitAmount,
+                    promotionPrice: benefitPrice
                 }
             } only %}
         {% elseif shoppingPointsDealEnabled %}
@@ -51,6 +33,14 @@
                     defaultPriceAmount: data.product.price,
                     benefitPriceAmount: benefitPrice,
                     shoppingPointsAmount: data.product.shoppingPointsAmount
+                }
+            } only %}
+        {% else %}
+            {% include molecule('money-price') with {
+                modifiers: ['pdp'],
+                data: {
+                    amount: data.product.price,
+                    originalAmount: originalPrice
                 }
             } only %}
         {% endif %}

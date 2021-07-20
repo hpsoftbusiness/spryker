@@ -192,6 +192,58 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteTurnover(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this
+            ->getFactory()
+            ->createTurnoverCalculator()
+            ->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateOrderTurnover(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this
+            ->getFactory()
+            ->createTurnoverCalculator()
+            ->recalculateOrder($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteSegmentNumber(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this
+            ->getFactory()
+            ->createSegmentNumberCalculator()
+            ->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateOrderSegmentNumber(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this
+            ->getFactory()
+            ->createSegmentNumberCalculator()
+            ->recalculateOrder($calculableObjectTransfer);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\RefundTransfer[] $refundTransfers
      *
      * @return void

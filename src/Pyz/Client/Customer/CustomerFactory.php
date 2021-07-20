@@ -12,6 +12,9 @@ use Pyz\Client\CustomerGroupStorage\CustomerGroupStorageClientInterface;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Spryker\Client\Customer\CustomerFactory as SprykerCustomerFactory;
 
+/**
+ * @method \Pyz\Client\Customer\CustomerConfig getConfig()
+ */
 class CustomerFactory extends SprykerCustomerFactory
 {
     /**

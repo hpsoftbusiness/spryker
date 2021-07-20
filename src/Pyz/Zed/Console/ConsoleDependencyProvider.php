@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Console;
 
+use Pyz\Zed\Customer\Communication\Plugin\Console\CustomerSprykerCreateConsole;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
@@ -333,6 +334,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataExportConsole(),
             new CustomerPasswordResetConsole(),
             new CustomerPasswordSetConsole(),
+            new CustomerSprykerCreateConsole(),
 
             new OrderInvoiceSendConsole(),
 

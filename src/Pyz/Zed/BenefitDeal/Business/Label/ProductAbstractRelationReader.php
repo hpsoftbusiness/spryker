@@ -113,11 +113,44 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
     /**
      * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
      */
+    public function findInsteadOfProductLabelProductAbstractRelationChanges(): array
+    {
+        $labelEntity = $this->getInsteadOfLabel();
+        if (!$labelEntity->getIsActive()) {
+            return [];
+        }
+
+        $relationsTransfer = new ProductLabelProductAbstractRelationsTransfer();
+        $relationsTransfer->setIdProductLabel(
+            $labelEntity->getIdProductLabel()
+        );
+
+        $idsToAssign = $this->benefitDealRepository
+            ->findProductAbstractIdsBecomingActiveByInsteadOfProductLabelId(
+                $labelEntity->getIdProductLabel()
+            );
+        $relationsTransfer->setIdsProductAbstractToAssign($idsToAssign);
+
+        $idsToDeAssign = $this->benefitDealRepository
+            ->findProductAbstractIdsBecomingInactiveByInsteadOfProductLabelId(
+                $labelEntity->getIdProductLabel()
+            );
+        $relationsTransfer->setIdsProductAbstractToDeAssign($idsToDeAssign);
+
+        return [
+            $relationsTransfer,
+        ];
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
+     */
     public function findProductLabelProductAbstractRelationChanges(): array
     {
         return array_merge(
             $this->findBenefitProductLabelProductAbstractRelationChanges(),
-            $this->findShoppingPointProductLabelProductAbstractRelationChanges()
+            $this->findShoppingPointProductLabelProductAbstractRelationChanges(),
+            $this->findInsteadOfProductLabelProductAbstractRelationChanges()
         );
     }
 
@@ -138,6 +171,16 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
     {
         return $this->getProductLabelEntityByName(
             $this->benefitDealConfig->getLabelShoppingPointName()
+        );
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductLabelTransfer
+     */
+    protected function getInsteadOfLabel(): ProductLabelTransfer
+    {
+        return $this->getProductLabelEntityByName(
+            $this->benefitDealConfig->getLabelInsteadOfName()
         );
     }
 

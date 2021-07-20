@@ -52,4 +52,18 @@ interface BenefitDealRepositoryInterface
      * @return int[]
      */
     public function findProductAbstractIdsBecomingActiveByShoppingPointProductLabelId(int $idProductLabel): array;
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingActiveByInsteadOfProductLabelId(int $idProductLabel): array;
+
+    /**
+     * @param int $idProductLabel
+     *
+     * @return int[]
+     */
+    public function findProductAbstractIdsBecomingInactiveByInsteadOfProductLabelId(int $idProductLabel): array;
 }

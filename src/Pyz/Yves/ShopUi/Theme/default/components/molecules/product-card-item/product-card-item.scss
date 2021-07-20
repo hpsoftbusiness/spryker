@@ -189,8 +189,7 @@
         }
 
         &__benefit-deal {
-            @include helper-font-weight(bold);
-
+            font-size: 0.8rem;
             @include helper-breakpoint(lg) {
                 text-align: right;
             }
@@ -210,34 +209,6 @@
             color: $setting-color-yellow;
         }
 
-        &--sp_deal {
-            background: $setting-color-cashback;
-            display: inline-block;
-            position: absolute;
-            color: #fff;
-            font-size: 12px;
-            font-family: CeraPro-Medium,sans-serif;
-            border-radius: 5px;
-            padding: 4px 6px;
-            top: -11px;
-            right: 25px;
-            z-index: 1;
-        }
-
-        &--bv_deal {
-            background: $setting-color-black;
-            display: inline-block;
-            position: absolute;
-            color: #fff;
-            font-size: 12px;
-            font-family: CeraPro-Medium,sans-serif;
-            border-radius: 5px;
-            padding: 4px 6px;
-            top: -11px;
-            right: 25px;
-            z-index: 1;
-        }
-
         &__original_price {
             @include helper-font-size(small);
             display: block;
@@ -254,8 +225,20 @@
 
         }
 
+        &--deal-benefit {
+            color: #ff902e;
+        }
+
+        &--deal-vouchers {
+            color: #5cb885;
+        }
+
         @content;
     }
 }
 
 @include shop-ui-product-card-item();
+
+.money-price__amount {
+    font: 500 1.3375rem/1.0625rem "Cera Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}

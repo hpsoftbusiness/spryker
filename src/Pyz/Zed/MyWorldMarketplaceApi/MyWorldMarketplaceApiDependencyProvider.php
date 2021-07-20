@@ -8,6 +8,7 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery;
+use Pyz\Zed\Turnover\Business\TurnoverFacadeInterface;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -24,6 +25,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
 
     public const PROPEL_QUERY_SALES_ORDER_ITEM = 'PROPEL_QUERY_SALES_ORDER_ITEM';
     public const SSO_CLIENT = 'SSO_CLIENT';
+    public const FACADE_TURNOVER = 'FACADE_TURNOVER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -53,6 +55,7 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
         $container = $this->addRefundFacade($container);
         $container = $this->addMyWorldMarketplaceApiClient($container);
         $container = $this->addSsoClient($container);
+        $container = $this->addTurnoverFacade($container);
 
         return $container;
     }
@@ -177,6 +180,20 @@ class MyWorldMarketplaceApiDependencyProvider extends AbstractBundleDependencyPr
     {
         $container->set(static::SSO_CLIENT, function (Container $container) {
             return $container->getLocator()->sso()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    private function addTurnoverFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_TURNOVER, function (Container $container): TurnoverFacadeInterface {
+            return $container->getLocator()->turnover()->facade();
         });
 
         return $container;

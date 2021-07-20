@@ -12,4 +12,9 @@
         <column name="vat_number" size="255" type="VARCHAR"/>
         <column name="state" size="255" type="VARCHAR"/>
     </table>
+
+    <table name="spy_sales_order_item">
+        <column name="segment_number" type="INTEGER"/>
+        <column name="turnover_amount" type="INTEGER"/>
+    </table>
 </database>
