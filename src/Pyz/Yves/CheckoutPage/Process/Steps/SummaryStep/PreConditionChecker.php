@@ -15,6 +15,7 @@ use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PreConditionChecker implements PreConditionCheckerInterface
@@ -60,9 +61,15 @@ class PreConditionChecker implements PreConditionCheckerInterface
     {
         $quoteTransfer->setSmsCode(null);
 
-        if ($this->wasPaymentSessionCreatedSuccessfully(
-            $quoteTransfer
-        ) && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
+        /**
+         * TODO: general logic of sms confirmation should be fixed:
+         * - moved to proper place - checker shouldn't update the state
+         * - remove usage of global variables
+         */
+        if (strtoupper($_SERVER['REQUEST_METHOD']) !== Request::METHOD_POST &&
+            $this->wasPaymentSessionCreatedSuccessfully($quoteTransfer) &&
+            $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()
+        ) {
             $myWorldApiRequestTransfer = new MyWorldApiRequestTransfer();
             $myWorldApiRequestTransfer->setPaymentCodeGenerateRequest(
                 (new PaymentCodeGenerateRequestTransfer())

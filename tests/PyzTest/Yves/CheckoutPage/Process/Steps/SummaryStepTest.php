@@ -78,6 +78,8 @@ class SummaryStepTest extends Unit
         $this->myWorldPaymentClientMock = $this->mockMyWorldPaymentClient();
         $this->messengerMock = $this->mockFlashMessenger();
         $this->sut = $this->createSummaryStep();
+        //mock global variable
+        $_SERVER['REQUEST_METHOD'] = Request::METHOD_GET;
     }
 
     /**
