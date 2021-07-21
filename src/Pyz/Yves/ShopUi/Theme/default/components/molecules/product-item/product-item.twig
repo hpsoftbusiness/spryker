@@ -73,9 +73,12 @@
                 {% endblock %}
 
                 {% block price %}
-                    {% set defaultPriceJsName = config.jsName ? config.jsName ~ '__default-price' %}
-                    {% set benefitClass = benefitStore ? '--benefit_voucher' : shoppingPointsAmount ? '--shopping_points' : '' %}
-                    {% set hasBenefitPrice = (benefitStore or shoppingPointsAmount) ?: false %}
+                {% set defaultPriceJsName = config.jsName ? config.jsName ~ '__default-price' %}
+                {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
+                {% set benefitVoucherDealEnabled = benefitAmount is not null and benefitPrice is not null %}
+                {% set shoppingPointsDealEnabled = shoppingPointsAmount is not null and benefitPrice is not null %}
+                {% set benefitClass = benefitVoucherDealEnabled ? '--benefit_voucher' : shoppingPointsDealEnabled ? '--shopping_points' : '' %}
+                {% set hasBenefitPrice = (benefitVoucherDealEnabled or shoppingPointsDealEnabled) ?: false %}
 
                     {% if data.isAffiliate is defined and data.isAffiliate %}
                         <span>{{ 'pdp.price.from' | trans }}</span>
@@ -83,7 +86,7 @@
 
                     <div class="row {{ config.name }}__price">
                         {{- defaultPrice | money(true, data.currencyIsoCode) -}}&nbsp;
-                        {% if benefitStore %}
+                        {% if benefitVoucherDealEnabled %}
                             <span class="{{ config.name }}--benefit_voucher">
                                 - &nbsp; {{- benefitAmount | money(true, data.currencyIsoCode) -}}
                             </span>
@@ -94,7 +97,7 @@
                                     name: 'benefit-point',
                                 },
                             } only %}
-                        {% elseif shoppingPointsAmount %}
+                        {% elseif shoppingPointsDealEnabled %}
                             <span class="{{ config.name }}--shopping_points">
                                 - &nbsp; {{ shoppingPointsAmount }}
                             </span>
@@ -109,7 +112,7 @@
                     </div>
                     {% if benefitStore or shoppingPointsAmount %}
                         <div class="row {{ config.name }}{{ benefitClass }} {{ config.name }}__original_price }}">
-                          {{- benefitPrice | money(true, data.currencyIsoCode) -}}
+                            {{- benefitPrice | money(true, data.currencyIsoCode) -}}
                         </div>
                     {% endif %}
                 {% endblock %}
