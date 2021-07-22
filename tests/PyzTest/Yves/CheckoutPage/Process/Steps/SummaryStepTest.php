@@ -9,7 +9,6 @@ namespace PyzTest\Yves\CheckoutPage\Process\Steps;
 
 use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\PaymentBuilder;
-use Generated\Shared\Transfer\MyWorldApiErrorResponseTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\PaymentCodeValidateResponseTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
@@ -17,7 +16,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
-use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep\PostConditionChecker;
@@ -78,44 +76,6 @@ class SummaryStepTest extends Unit
         $this->myWorldPaymentClientMock = $this->mockMyWorldPaymentClient();
         $this->messengerMock = $this->mockFlashMessenger();
         $this->sut = $this->createSummaryStep();
-        //mock global variable
-        $_SERVER['REQUEST_METHOD'] = Request::METHOD_GET;
-    }
-
-    /**
-     * @return void
-     */
-    public function testErrorMessageIfMyWorldPaymentCodeSendingFailed(): void
-    {
-        $quoteTransfer = $this->tester->buildQuoteTransfer();
-        $benefitVoucherPayment = $this->buildPaymentTransfer([
-            PaymentTransfer::PAYMENT_PROVIDER => SharedMyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD,
-            PaymentTransfer::PAYMENT_METHOD_NAME => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
-        ]);
-        $quoteTransfer->addPayment($benefitVoucherPayment);
-        $quoteTransfer->setMyWorldPaymentSessionId(CheckoutPageProcessTester::PAYMENT_SESSION_ID);
-        $quoteTransfer->setMyWorldPaymentIsSmsAuthenticationRequired(true);
-
-        $this->myWorldPaymentClientMock
-            ->expects(self::once())
-            ->method('sendSmsCodeToCustomer')
-            ->willReturn(
-                (new MyWorldApiResponseTransfer())
-                    ->setIsSuccess(false)
-                    ->setError(new MyWorldApiErrorResponseTransfer())
-            );
-
-        $this->messengerMock
-            ->expects(self::once())
-            ->method('addErrorMessage');
-
-        $isValid = $this->sut->preCondition($quoteTransfer);
-
-        self::assertFalse($isValid);
-        self::assertEquals(
-            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
-            $this->sut->getEscapeRoute()
-        );
     }
 
     /**
@@ -130,31 +90,9 @@ class SummaryStepTest extends Unit
         ]);
         $quoteTransfer->addPayment($benefitVoucherPayment);
 
-        $quoteTransfer->addPayment($benefitVoucherPayment);
-        $this->myWorldPaymentClientMock
-            ->expects(self::never())
-            ->method('sendSmsCodeToCustomer');
-
         $isValid = $this->sut->preCondition($quoteTransfer);
 
         self::assertFalse($isValid);
-    }
-
-    /**
-     * @return void
-     */
-    public function testPaymentConfirmationCodeSmsIsNotSentIfNotRequired(): void
-    {
-        $quoteTransfer = $this->tester->buildQuoteTransfer();
-        $benefitVoucherPayment = $this->buildPaymentTransfer([
-            PaymentTransfer::PAYMENT_PROVIDER => SharedMyWorldPaymentConfig::PAYMENT_PROVIDER_NAME_MY_WORLD,
-            PaymentTransfer::PAYMENT_METHOD_NAME => MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
-        ]);
-        $quoteTransfer->addPayment($benefitVoucherPayment);
-        $quoteTransfer->setMyWorldPaymentSessionId(CheckoutPageProcessTester::PAYMENT_SESSION_ID);
-        $this->myWorldPaymentClientMock
-            ->expects(self::never())
-            ->method('sendSmsCodeToCustomer');
     }
 
     /**
@@ -181,14 +119,6 @@ class SummaryStepTest extends Unit
         $quoteTransfer->addPayment($benefitVoucherPayment);
         $quoteTransfer->setMyWorldPaymentSessionId(CheckoutPageProcessTester::PAYMENT_SESSION_ID);
         $quoteTransfer->setMyWorldPaymentIsSmsAuthenticationRequired(true);
-
-        $this->myWorldPaymentClientMock
-            ->expects(self::once())
-            ->method('sendSmsCodeToCustomer')
-            ->willReturn(
-                (new MyWorldApiResponseTransfer())
-                    ->setIsSuccess(true)
-            );
 
         $this->myWorldPaymentClientMock
             ->expects(self::once())
@@ -227,14 +157,6 @@ class SummaryStepTest extends Unit
         $quoteTransfer->addPayment($benefitVoucherPayment);
         $quoteTransfer->setMyWorldPaymentSessionId(CheckoutPageProcessTester::PAYMENT_SESSION_ID);
         $quoteTransfer->setMyWorldPaymentIsSmsAuthenticationRequired(true);
-
-        $this->myWorldPaymentClientMock
-            ->expects(self::once())
-            ->method('sendSmsCodeToCustomer')
-            ->willReturn(
-                (new MyWorldApiResponseTransfer())
-                    ->setIsSuccess(true)
-            );
 
         $this->myWorldPaymentClientMock
             ->expects(self::once())
@@ -333,11 +255,7 @@ class SummaryStepTest extends Unit
      */
     private function createPreConditionChecker(): PreConditionCheckerInterface
     {
-        return new PreConditionChecker(
-            $this->myWorldPaymentClientMock,
-            $this->messengerMock,
-            $this->mockTranslator()
-        );
+        return new PreConditionChecker();
     }
 
     /**
