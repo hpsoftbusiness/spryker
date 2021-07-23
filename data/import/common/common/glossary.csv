@@ -20056,6 +20056,8 @@ oms.state.refunded,Refunded,de_DE
 oms.state.refunded,Refunded,en_US
 oms.state.reserved,Reserved,de_DE
 oms.state.reserved,Reserved,en_US
+oms.state.invoice-generated,Invoice generated,en_US
+oms.state.invoice-generated,Rechnung erstellt,de_DE
 product_detail_page.desclaimer_text, Desclaimer,en_US
 product_detail_page.desclaimer_text, Haftungsausschluss,de_DE
 page.checkout.payment.3d_secure_text,"Please make sure that the credit card you entered has been verified for the new 3d Secure system. Without this verification the transaction will not be possible, for more information please contact your credit card provider.",en_US
