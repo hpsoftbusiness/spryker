@@ -10,10 +10,13 @@ namespace Pyz\Zed\Oms\Business;
 use Pyz\Zed\Oms\Business\Calculator\InitiationTimeoutCalculator;
 use Pyz\Zed\Oms\Business\Calculator\TimeoutProcessorTimeoutCalculatorInterface;
 use Pyz\Zed\Oms\Business\Mail\MailHandler;
+use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\Oms\Business\OmsBusinessFactory as SprykerOmsBusinessFactory;
 
 class OmsBusinessFactory extends SprykerOmsBusinessFactory
 {
+    use LoggerTrait;
+
     /**
      * @return \Pyz\Zed\Oms\Business\Calculator\TimeoutProcessorTimeoutCalculatorInterface
      */
@@ -30,7 +33,8 @@ class OmsBusinessFactory extends SprykerOmsBusinessFactory
         return new MailHandler(
             $this->getSalesFacade(),
             $this->getMailFacade(),
-            $this->getOmsOrderMailExpanderPlugins()
+            $this->getOmsOrderMailExpanderPlugins(),
+            $this->getLogger()
         );
     }
 }
