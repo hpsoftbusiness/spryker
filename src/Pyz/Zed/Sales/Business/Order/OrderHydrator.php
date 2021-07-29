@@ -115,11 +115,6 @@ class OrderHydrator extends SprykerOrderHydrator
     protected function hydrateOrderComments(SpySalesOrder $orderEntity, OrderTransfer $orderTransfer): void
     {
         $salesOrderCommentEntities = $orderEntity->getOrderComments();
-
-        if ($salesOrderCommentEntities->isEmpty()) {
-            return;
-        }
-
         $orderDetailsCommentsTransfer = new OrderDetailsCommentsTransfer();
 
         foreach ($salesOrderCommentEntities as $salesOrderCommentEntity) {
