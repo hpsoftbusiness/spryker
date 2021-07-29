@@ -24,8 +24,10 @@
             } only %}
         </div>
     {% endif %}
+
     {% if data.benefitVouchersBalance %}
         <div class="{{ config.name }}__benefit-voucher-balance">
+            <input id="benefitVoucherAmount" type="hidden" value="{{ data.benefitVouchersBalance }}">
             {{ data.benefitVouchersBalance | money(true, data.benefitVouchersCurrencyCode) }}
             {% include atom('icon') with {
                 data: {
