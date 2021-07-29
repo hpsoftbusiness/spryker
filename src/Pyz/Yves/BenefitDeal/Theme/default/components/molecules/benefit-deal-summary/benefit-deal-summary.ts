@@ -27,15 +27,23 @@ export default class BenefitDealSummary extends Component {
         this.invoke_make_blank = true;
     }
 
-    protected makeBlank(): void {
+    protected setBenefitVoucherDefaultPointAmount(): void {
         if (this.invoke_make_blank)
         {
-            var amount = Math.floor($('#benefitVoucherAmount').val()/100);
+            var youHave = Math.floor($('#benefitVoucherAmount').val()/100);
 
-            if (Number.isNaN(amount)) {
-                amount = 0;
+            if (Number.isNaN(youHave)) {
+                youHave = 0;
             }
-            $('#benefit_deal_collection_form_totalUsedBenefitVouchersAmount').val(amount);
+
+            var total = $('#total').val();
+
+            if (total < youHave) {
+                $('#benefit_deal_collection_form_totalUsedBenefitVouchersAmount').val(total);
+            }
+            else {
+                $('#benefit_deal_collection_form_totalUsedBenefitVouchersAmount').val(youHave);
+            }
             this.invoke_make_blank = false;
         }
     }
@@ -53,7 +61,7 @@ export default class BenefitDealSummary extends Component {
             $(self.finalAmountSelector).text(data.totals_formatted.price_to_pay);
             self.updateTotalUsedShoppingPoints(data);
             document.getElementById(self.benefitVouchersAmountId).value = data.total_used_benefit_vouchers_amount / 100;
-            self.makeBlank();
+            self.setBenefitVoucherDefaultPointAmount();
         });
     }
 

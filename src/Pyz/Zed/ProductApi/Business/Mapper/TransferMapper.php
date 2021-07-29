@@ -10,6 +10,7 @@ namespace Pyz\Zed\ProductApi\Business\Mapper;
 use Generated\Shared\Transfer\CategoryCollectionTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\LocalizedAttributesTransfer;
+use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductApiTransfer;
 use Generated\Shared\Transfer\ProductBenefitApiTransfer;
@@ -19,16 +20,13 @@ use Generated\Shared\Transfer\ProductPriceApiTransfer;
 use Generated\Shared\Transfer\ProductSpDealApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
+use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 
 class TransferMapper implements TransferMapperInterface
 {
-    // TODO: use shared constants with \Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants
-    public const PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE = 'benefit_store_sales_price';
-    public const PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT = 'benefit_amount';
-
     /**
      * @var \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface
      */
@@ -82,6 +80,7 @@ class TransferMapper implements TransferMapperInterface
         CategoryCollectionTransfer $productCategoryTransferCollection
     ): ProductApiTransfer {
         $localizedAttributes = $this->getLocalizedAttributes($productAbstractTransfer, $localeTransfer);
+        $benefitGrossPrice = $this->getBenefitGrossPrice($productAbstractTransfer);
 
         $productApiTransfer = new ProductApiTransfer();
         $productApiTransfer->setProductId($productAbstractTransfer->getIdProductAbstract())
@@ -93,8 +92,8 @@ class TransferMapper implements TransferMapperInterface
             ->setBenefit($this->getBenefitApi($productAbstractTransfer))
             ->setPrice($this->getPriceApi($productAbstractTransfer))
             ->setOriginalGrossPrice($this->getOriginalGrossPriceApi($productAbstractTransfer))
-            ->setBvDeal($this->getBvDealApi($productAbstractTransfer))
-            ->setSpDeal($this->getSpDealApi($productAbstractTransfer))
+            ->setBvDeal($this->getBvDealApi($productAbstractTransfer, $benefitGrossPrice))
+            ->setSpDeal($this->getSpDealApi($productAbstractTransfer, $benefitGrossPrice))
             ->setMarketerOnly($this->getMarketerOnlyFlag($productAbstractTransfer))
             ->setCbwPrivateOnly($this->getCbwPrivateOnlyFlag($productAbstractTransfer));
 
@@ -243,24 +242,52 @@ class TransferMapper implements TransferMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param string $priceTypeName
+     *
+     * @return \Generated\Shared\Transfer\MoneyValueTransfer|null
+     */
+    protected function getMoneyValue(
+        ProductAbstractTransfer $productAbstractTransfer,
+        string $priceTypeName
+    ): ?MoneyValueTransfer {
+        foreach ($productAbstractTransfer->getPrices() as $priceProductTransfer) {
+            if ($priceProductTransfer->getPriceTypeName() === $priceTypeName) {
+                return $priceProductTransfer->getMoneyValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\MoneyValueTransfer|null $moneyValueTransfer
+     *
+     * @return string|null
+     */
+    protected function getFormattedGrossAmountByMoneyValue(?MoneyValueTransfer $moneyValueTransfer): ?string
+    {
+        if ($moneyValueTransfer === null) {
+            return null;
+        }
+        $grossAmount = $moneyValueTransfer->getGrossAmount();
+
+        return $this->formatAmount($grossAmount !== null ? $grossAmount / 100 : null);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
      * @return \Generated\Shared\Transfer\ProductPriceApiTransfer
      */
     protected function getOriginalGrossPriceApi(ProductAbstractTransfer $productAbstractTransfer): ProductPriceApiTransfer
     {
+        $moneyValueTransfer = $this->getMoneyValue(
+            $productAbstractTransfer,
+            $this->priceProductFacade->getPriceTypeOriginalName()
+        );
         $productPriceApiTransfer = new ProductPriceApiTransfer();
-
-        foreach ($productAbstractTransfer->getPrices() as $priceProductTransfer) {
-            if ($priceProductTransfer->getPriceTypeName() === $this->priceProductFacade->getPriceTypeOriginalName()) {
-                $grossAmount = $priceProductTransfer->getMoneyValue()->getGrossAmount();
-                $productPriceApiTransfer->setAmount(
-                    $this->formatAmount($grossAmount !== null ? $grossAmount / 100 : null)
-                )
-                    ->setCurrency($priceProductTransfer->getMoneyValue()->getCurrency()->getCode());
-
-                return $productPriceApiTransfer;
-            }
-        }
+        $productPriceApiTransfer->setAmount($this->getFormattedGrossAmountByMoneyValue($moneyValueTransfer))
+            ->setCurrency($moneyValueTransfer ? $moneyValueTransfer->getCurrency()->getCode() : null);
 
         return $productPriceApiTransfer;
     }
@@ -268,16 +295,31 @@ class TransferMapper implements TransferMapperInterface
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
+     * @return string|null
+     */
+    protected function getBenefitGrossPrice(ProductAbstractTransfer $productAbstractTransfer): ?string
+    {
+        $moneyValueTransfer = $this->getMoneyValue(
+            $productAbstractTransfer,
+            $this->priceProductFacade->getBenefitPriceTypeName()
+        );
+
+        return $this->getFormattedGrossAmountByMoneyValue($moneyValueTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param string|null $benefitGrossPrice
+     *
      * @return \Generated\Shared\Transfer\ProductBvDealApiTransfer
      */
-    protected function getBvDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductBvDealApiTransfer
-    {
+    protected function getBvDealApi(
+        ProductAbstractTransfer $productAbstractTransfer,
+        ?string $benefitGrossPrice
+    ): ProductBvDealApiTransfer {
         $productBcDealApi = new ProductBvDealApiTransfer();
-        $benefitStoreSalesPriceAttrKey = self::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE;
-        $benefitAmountAttrKey = self::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT;
-        $productBcDealApi->setBvItemPrice($this->formatAmount(
-            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
-        ))
+        $benefitAmountAttrKey = Config::get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
+        $productBcDealApi->setBvItemPrice($benefitGrossPrice)
             ->setBvAmount($this->formatAmount(
                 $productAbstractTransfer->getAttributes()[$benefitAmountAttrKey] ?? null
             ));
@@ -287,19 +329,20 @@ class TransferMapper implements TransferMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
+     * @param string|null $benefitGrossPrice
      *
      * @return \Generated\Shared\Transfer\ProductSpDealApiTransfer
      */
-    protected function getSpDealApi(ProductAbstractTransfer $productAbstractTransfer): ProductSpDealApiTransfer
-    {
-        $benefitStoreSalesPriceAttrKey = self::PRODUCT_ATTRIBUTE_KEY_BENEFIT_STORE_SALES_PRICE;
+    protected function getSpDealApi(
+        ProductAbstractTransfer $productAbstractTransfer,
+        ?string $benefitGrossPrice
+    ): ProductSpDealApiTransfer {
+        $spAmountKey = Config::get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_AMOUNT);
 
         $productSpDealApi = new ProductSpDealApiTransfer();
-        $productSpDealApi->setSpItemPrice($this->formatAmount(
-            $productAbstractTransfer->getAttributes()[$benefitStoreSalesPriceAttrKey] ?? null
-        ))
+        $productSpDealApi->setSpItemPrice($benefitGrossPrice)
             ->setSpAmount($this->formatAmount(
-                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+                $productAbstractTransfer->getAttributes()[$spAmountKey] ?? null
             ));
 
         return $productSpDealApi;

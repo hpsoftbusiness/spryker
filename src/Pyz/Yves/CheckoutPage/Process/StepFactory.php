@@ -269,11 +269,7 @@ class StepFactory extends SprykerShopStepFactory
      */
     public function createSummaryStepPreConditionChecker(): PreConditionCheckerInterface
     {
-        return new SummaryStepPreConditionChecker(
-            $this->getMyWorldPaymentClient(),
-            $this->getFlashMessenger(),
-            $this->getTranslatorService()
-        );
+        return new SummaryStepPreConditionChecker();
     }
 
     /**

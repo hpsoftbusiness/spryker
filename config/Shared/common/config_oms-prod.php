@@ -35,16 +35,13 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
 
 $config[NopaymentConstants::NO_PAYMENT_METHODS] = [
     NopaymentConfig::PAYMENT_PROVIDER_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
 ];
+
 $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
     GiftCardConfig::PROVIDER_NAME,
-    NopaymentConfig::PAYMENT_PROVIDER_NAME,
-    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
+    NopaymentConfig::PAYMENT_METHOD_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_NAME,
+    MyWorldPaymentConfig::PAYMENT_METHOD_BENEFIT_VOUCHER_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_CASHBACK_NAME,
     MyWorldPaymentConfig::PAYMENT_METHOD_EVOUCHER_ON_BEHALF_OF_MARKETER_NAME,
     AdyenConfig::ADYEN_CREDIT_CARD,
@@ -56,7 +53,12 @@ $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([
     'DummyPrepayment01',
 ], $config[OmsConstants::ACTIVE_PROCESSES]);
 
-$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
-    DummyPrepaymentConfig::DUMMY_PREPAYMENT => 'DummyPrepayment01',
-    AdyenConfig::ADYEN_CREDIT_CARD => 'AdyenCreditCard01',
-];
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = array_replace(
+    $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING],
+    [
+        NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
+        GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
+        AdyenConfig::ADYEN_CREDIT_CARD => 'AdyenCreditCard01',
+        DummyPrepaymentConfig::DUMMY_PREPAYMENT => 'DummyPrepayment01',
+    ]
+);
