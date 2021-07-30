@@ -33,6 +33,8 @@ class BenefitFormDataProvider implements StepEngineFormDataProviderInterface
         /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
         return [
             BenefitDealCollectionForm::OPTION_KEY_ITEMS => $quoteTransfer->getItems(),
+            BenefitDealCollectionForm::OPTION_KEY_CUSTOMER_BALANCE => $quoteTransfer->getCustomer()->getCustomerBalance(),
+            BenefitDealCollectionForm::OPTION_KEY_QUOTE => $quoteTransfer,
         ];
     }
 }
