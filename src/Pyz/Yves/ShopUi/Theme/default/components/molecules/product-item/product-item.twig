@@ -21,7 +21,7 @@
     {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
     {% set benefitStore = benefitPrice > 0 and (data.product.attributes.benefit_store ?? false) %}
-    {% set benefitAmount = defaultPrice - benefitPrice %}
+    {% set benefitAmount = data.benefitAmount %}
     {% set shoppingPointsAmount = data.shoppingPointsAmount %}
 
     <div class="{{ config.name }}__container">
@@ -75,10 +75,9 @@
                 {% block price %}
                 {% set defaultPriceJsName = config.jsName ? config.jsName ~ '__default-price' %}
                 {% set defaultPrice = data.product.prices.DEFAULT | default(null) %}
-                {% set benefitVoucherDealEnabled = benefitAmount is not null and benefitPrice is not null %}
-                {% set shoppingPointsDealEnabled = shoppingPointsAmount is not null and benefitPrice is not null %}
+                {% set benefitVoucherDealEnabled = benefitAmount is not null and benefitAmount > 0 and benefitPrice is not null %}
+                {% set shoppingPointsDealEnabled = shoppingPointsAmount is not null and shoppingPointsAmount > 0 and benefitPrice is not null %}
                 {% set benefitClass = benefitVoucherDealEnabled ? '--benefit_voucher' : shoppingPointsDealEnabled ? '--shopping_points' : '' %}
-                {% set hasBenefitPrice = (benefitVoucherDealEnabled or shoppingPointsDealEnabled) ?: false %}
 
                     {% if data.isAffiliate is defined and data.isAffiliate %}
                         <span>{{ 'pdp.price.from' | trans }}</span>
