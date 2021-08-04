@@ -44,7 +44,8 @@ class ContentProductWidgetFactory extends SprykerContentProductWidgetFactory
             $this->getContentProductClient(),
             $this->getProductStorageClient(),
             $this->getStore(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->getProductListStorageClient()
         );
     }
 
@@ -54,5 +55,13 @@ class ContentProductWidgetFactory extends SprykerContentProductWidgetFactory
     public function getStore(): Store
     {
         return $this->getProvidedDependency(ContentProductWidgetDependencyProvider::STORE);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductListStorageClient()
+    {
+        return $this->getProvidedDependency(ContentProductWidgetDependencyProvider::CLIENT_PRODUCT_LIST_STORAGE);
     }
 }

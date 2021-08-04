@@ -14,6 +14,7 @@ use SprykerShop\Yves\ContentProductWidget\ContentProductWidgetDependencyProvider
 class ContentProductWidgetDependencyProvider extends SprykerContentProductWidgetDependencyProvider
 {
     public const STORE = 'STORE';
+    public const CLIENT_PRODUCT_LIST_STORAGE = 'CLIENT_PRODUCT_LIST_STORAGE';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -25,6 +26,7 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
         $container = parent::provideDependencies($container);
 
         $this->addStore($container);
+        $this->addProductListStorageClient($container);
 
         return $container;
     }
@@ -38,6 +40,18 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
     {
         $container->set(self::STORE, static function () {
             return Store::getInstance();
+        });
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return void
+     */
+    private function addProductListStorageClient(Container $container)
+    {
+        $container->set(self::CLIENT_PRODUCT_LIST_STORAGE, static function (Container $container) {
+            return $container->getLocator()->productListStorage()->client();
         });
     }
 }

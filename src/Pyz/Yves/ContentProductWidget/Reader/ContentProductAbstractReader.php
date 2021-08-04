@@ -9,6 +9,7 @@ namespace Pyz\Yves\ContentProductWidget\Reader;
 
 use Generated\Shared\Transfer\ProductViewTransfer;
 use Pyz\Yves\ContentProductWidget\ContentProductWidgetConfig;
+use Spryker\Client\ProductListStorage\ProductListStorageClientInterface;
 use Spryker\Shared\Kernel\Store;
 use SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToContentProductClientBridgeInterface;
 use SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToProductStorageClientBridgeInterface;
@@ -29,21 +30,29 @@ class ContentProductAbstractReader extends SprykerContentProductAbstractReader
     private $config;
 
     /**
+     * @var \Spryker\Client\ProductListStorage\ProductListStorageClientInterface
+     */
+    private $productListStorageClient;
+
+    /**
      * @param \SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToContentProductClientBridgeInterface $contentProductClient
      * @param \SprykerShop\Yves\ContentProductWidget\Dependency\Client\ContentProductWidgetToProductStorageClientBridgeInterface $productStorageClient
      * @param \Spryker\Shared\Kernel\Store $store
      * @param \Pyz\Yves\ContentProductWidget\ContentProductWidgetConfig $config
+     * @param \Spryker\Client\ProductListStorage\ProductListStorageClientInterface $productListStorageClient
      */
     public function __construct(
         ContentProductWidgetToContentProductClientBridgeInterface $contentProductClient,
         ContentProductWidgetToProductStorageClientBridgeInterface $productStorageClient,
         Store $store,
-        ContentProductWidgetConfig $config
+        ContentProductWidgetConfig $config,
+        ProductListStorageClientInterface $productListStorageClient
     ) {
         parent::__construct($contentProductClient, $productStorageClient);
 
         $this->store = $store;
         $this->config = $config;
+        $this->productListStorageClient = $productListStorageClient;
     }
 
     /**
@@ -55,8 +64,27 @@ class ContentProductAbstractReader extends SprykerContentProductAbstractReader
     public function findProductAbstractCollection(string $contentKey, string $localeName): ?array
     {
         $productAbstractViewCollection = parent::findProductAbstractCollection($contentKey, $localeName);
-        if ($this->config->isMultiCountryEnabled() && $productAbstractViewCollection) {
-            $productAbstractViewCollection = $this->filterSellableAbstractProductViews($productAbstractViewCollection);
+
+        $filteredProductAbstractViewCollection = $this->filterByRestrictedProducts($productAbstractViewCollection);
+
+        if ($this->config->isMultiCountryEnabled() && $filteredProductAbstractViewCollection) {
+            $filteredProductAbstractViewCollection = $this->filterSellableAbstractProductViews($filteredProductAbstractViewCollection);
+        }
+
+        return $filteredProductAbstractViewCollection;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductViewTransfer[] $productAbstractViewCollection
+     *
+     * @return \Generated\Shared\Transfer\ProductViewTransfer[]
+     */
+    private function filterByRestrictedProducts(array $productAbstractViewCollection): array
+    {
+        foreach ($productAbstractViewCollection as $key => $item) {
+            if ($this->productListStorageClient->isProductAbstractRestricted($item->getIdProductAbstract())) {
+                unset($productAbstractViewCollection[$key]);
+            }
         }
 
         return $productAbstractViewCollection;

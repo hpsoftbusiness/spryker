@@ -64,7 +64,7 @@ abstract class AbstractCashbackRefundCalculatorPlugin extends AbstractMyWorldRef
      */
     private function calculateRefundAmount(int $canceledAmount, PaymentTransfer $paymentTransfer): int
     {
-        $refundAmount = min($canceledAmount, (int) $paymentTransfer->getRefundableAmount());
+        $refundAmount = min($canceledAmount, (int)$paymentTransfer->getRefundableAmount());
         $paymentTransfer->setRefundableAmount($paymentTransfer->getRefundableAmount() - $refundAmount);
 
         return $refundAmount;

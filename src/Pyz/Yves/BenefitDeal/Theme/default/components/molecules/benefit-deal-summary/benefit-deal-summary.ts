@@ -4,10 +4,10 @@ import $ from 'jquery/dist/jquery';
 export default class BenefitDealSummary extends Component {
     protected useShoppingPointSelector: string;
     protected useShoppingPointIdRegex: RegExp;
-    protected benefitVouchersAmountId: string;
-    protected benefitVouchersAmountSelector: string;
-    protected recalculateRoute: string;
     protected finalAmountSelector: string;
+    protected recalculateRoute: string;
+    protected benefitVouchersAmountSelector: string;
+    protected benefitVouchersAmountId: string;
     protected totalUsedShoppingPointsSelector: string;
     protected readyCallback(): void {
     }
@@ -15,8 +15,7 @@ export default class BenefitDealSummary extends Component {
     protected init(): void {
         this.useShoppingPointSelector = '.benefit_deal_use_shopping_points';
         this.useShoppingPointIdRegex = /benefit_deal_collection_form_benefitItems_(.*)_useShoppingPoints/;
-        this.benefitVouchersAmountId = 'benefit_deal_collection_form_totalUsedBenefitVouchersAmount';
-        this.benefitVouchersAmountSelector = '#' + this.benefitVouchersAmountId;
+        this.benefitVouchersAmountSelector = '#benefit_deal_collection_form_totalUsedBenefitVouchersAmount';
         this.recalculateRoute = '/calculation/recalculate';
         this.finalAmountSelector = '#benefit-deal-summary__final-amount';
         this.totalUsedShoppingPointsSelector = '.benefit-deal-summary__total-used-shopping-points';
@@ -64,4 +63,3 @@ export default class BenefitDealSummary extends Component {
         $(this.totalUsedShoppingPointsSelector).text(data.total_used_shopping_points_amount);
     }
 }
-
