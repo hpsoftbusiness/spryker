@@ -17,6 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @method \Pyz\Zed\Product\Communication\ProductCommunicationFactory getFactory()
  * @method \Pyz\Zed\Product\Business\ProductFacadeInterface getFacade()
  * @method \Pyz\Zed\Product\Persistence\ProductQueryContainerInterface getQueryContainer()
+ * @method \Pyz\Zed\Product\Persistence\ProductRepositoryInterface getRepository()
  */
 class ProductDataHealerConsole extends Console
 {

@@ -5,18 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductManagement\Business;
+namespace Pyz\Zed\ProductManagement\Business\GroupAction;
 
 use Generated\Shared\Transfer\ProductGroupActionTransfer;
-use Spryker\Zed\ProductManagement\Business\ProductManagementFacadeInterface as SprykerProductManagementFacadeInterface;
 
-interface ProductManagementFacadeInterface extends SprykerProductManagementFacadeInterface
+interface GroupActionManagerInterface
 {
-    /**
-     * @return array
-     */
-    public function getDefaultAttributes(): array;
-
     /**
      * @param \Generated\Shared\Transfer\ProductGroupActionTransfer $groupActionTransfer
      *

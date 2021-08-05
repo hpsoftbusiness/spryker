@@ -1,0 +1,26 @@
+{% if config.header is defined %}
+<thead>
+    {% if config.filters is defined %}
+        <tr class="table-filter-row">
+            {% for id, value in config.header %}
+                <th class="table-filter-cell" id="table-filter-cell_{{ id }}">
+                    {% if config.filters[id] is defined %}
+                        {{ form_widget(config.filters[id]) }}
+                    {% endif %}
+                </th>
+            {% endfor %}
+        </tr>
+    {% endif %}
+    <tr>
+        {% for id, value in config.header %}
+        <th id="{{ id }}">
+            {% if id == 'select_all' %}
+                {{ value | raw }}
+            {% else %}
+                {{ value | trans }}
+            {% endif %}
+        </th>
+        {% endfor %}
+    </tr>
+</thead>
+{%  endif %}

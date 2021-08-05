@@ -36,4 +36,16 @@ interface ProductFacadeInterface extends SprykerProductFacadeInterface
      * @return \Generated\Shared\Transfer\ProductAbstractTransfer[]
      */
     public function getRawProductAbstractsByProductAbstractIds(array $productAbstractIds): array;
+
+    /**
+     * Specification:
+     * - Finds product concrete ids by product abstract ids.
+     *
+     * @api
+     *
+     * @param int[] $idsProductAbstract
+     *
+     * @return int[]
+     */
+    public function findProductConcreteIdsByAbstractProductIds(array $idsProductAbstract): array;
 }
