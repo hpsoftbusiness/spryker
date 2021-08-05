@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 /**
@@ -25,6 +26,8 @@ class BenefitDealCollectionForm extends AbstractType
     public const FORM_FIELD_BENEFIT_ITEMS = 'benefitItems';
     public const OPTION_KEY_ITEMS = 'benefitItems';
     public const FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT = 'totalUsedBenefitVouchersAmount';
+    public const OPTION_KEY_CUSTOMER_BALANCE = 'customerBalance';
+    public const OPTION_KEY_QUOTE = 'quote';
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -46,6 +49,8 @@ class BenefitDealCollectionForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver): OptionsResolver
     {
         $resolver->setDefined(static::OPTION_KEY_ITEMS);
+        $resolver->setDefined(static::OPTION_KEY_QUOTE);
+        $resolver->setDefined(static::OPTION_KEY_CUSTOMER_BALANCE);
 
         return $resolver;
     }
@@ -78,16 +83,80 @@ class BenefitDealCollectionForm extends AbstractType
      */
     protected function addFieldTotalUsedBenefitVouchersAmount(FormBuilderInterface $builder, array $options): void
     {
+        $defaultBenefitAmount = $this->getDefaultBenefitAmount($options);
+        $customerAmount = $this->getCustomerAvailableBenefitVoucherAmount($options);
+
         $builder->add(static::FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT, NumberType::class, [
             'constraints' => [
                 new PositiveOrZero(),
+                new LessThanOrEqual($customerAmount),
             ],
             'html5' => true,
-            'scale' => 0,
+            'scale' => 2,
+            'data' => $defaultBenefitAmount,
         ]);
 
         $builder->get(static::FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT)
             ->addModelTransformer($this->getBenefitVoucherAmountTransformer());
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return int
+     */
+    protected function getDefaultBenefitAmount(array $options): int
+    {
+        /** @var \Generated\Shared\Transfer\QuoteTransfer $quote */
+        $quote = $options[static::OPTION_KEY_QUOTE];
+        $currentAmount = $quote->getTotalUsedBenefitVouchersAmount();
+        if ($currentAmount > 0) {
+            return $currentAmount;
+        }
+
+        $customerAmount = $this->getCustomerAvailableBenefitVoucherAmount($options);
+        $itemsAmount = $this->getSumBenefitAmount($options);
+        $default = $customerAmount;
+        if ($customerAmount > $itemsAmount) {
+            $default = $itemsAmount;
+        }
+
+        return $default;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return int
+     */
+    protected function getCustomerAvailableBenefitVoucherAmount(array $options): int
+    {
+        /** @var \Generated\Shared\Transfer\CustomerBalanceTransfer $customerBalance */
+        $customerBalance = $options[static::OPTION_KEY_CUSTOMER_BALANCE];
+
+        return (int)floor($customerBalance->getAvailableBenefitVoucherAmount()->toFloat() * 100);
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return int
+     */
+    protected function getSumBenefitAmount(array $options): int
+    {
+        /** @var \Generated\Shared\Transfer\ItemTransfer[] $items */
+        $items = $options[static::OPTION_KEY_ITEMS];
+        $sumBenefitAmount = 0;
+        foreach ($items as $item) {
+            $benefitVoucherDeal = $item->getBenefitVoucherDealData();
+            if ($benefitVoucherDeal === null) {
+                continue;
+            }
+            $itemBenefitAmount = $benefitVoucherDeal->getAmount() * $item->getQuantity();
+            $sumBenefitAmount = $sumBenefitAmount + $itemBenefitAmount;
+        }
+
+        return $sumBenefitAmount;
     }
 
     /**

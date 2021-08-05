@@ -36,13 +36,14 @@
         </div>
 
         <div class="{{ config.name }}__benefites">
+            {# @TODO Refactor properly when design for this step is approved #}
             {% if data.formType == 'useBenefitVoucher' %}
                 {% set benefitVoucherDeal = product.benefitVoucherDealData %}
                 {% set benefitVoucherSalesPrice = benefitVoucherDeal.salesPrice * product.quantity %}
                 {% set benefitVoucherAmount = benefitVoucherDeal.amount * product.quantity %}
                 <div class="{{ config.name }}__benefit-price">
-                    <span>{{- subTotalPrice | money(true, currencyCode) -}}&nbsp</span>
-                    <span class="benefit-voucher">-&nbsp</span>
+                    <span>{{- benefitVoucherSalesPrice | money(true, currencyCode) -}}&nbsp;</span>
+                    <span class="benefit-voucher">+&nbsp;</span>
                     <span class="benefit-voucher">{{- benefitVoucherAmount | money(false, data.benefitVouchersCurrencyCode) -}}</span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
@@ -58,17 +59,14 @@
                         required: false
                     }) }}
                 </label>
-                <div class="{{ config.name }}__prices">
-                    <div class="{{ config.name }}__total-price">{{ benefitVoucherSalesPrice | money(true, currencyCode) }}</div>
-                </div>
             {% elseif data.formType == 'useShoppingPoints' %}
                 {% set shoppingPointsDeal = product.shoppingPointsDeal %}
                 {% set shoppingPointsPrice = shoppingPointsDeal.price * product.quantity %}
                 {% set ShoppingPointsAmount = shoppingPointsDeal.shoppingPointsQuantity * product.quantity %}
                 <div class="{{ config.name }}__benefit-price">
                     <span>
-                        {{ subTotalPrice | money(true, currencyCode) }}</span>
-                    <span class="shopping-points">&nbsp-&nbsp</span>
+                        {{ shoppingPointsPrice | money(true, currencyCode) }}</span>
+                    <span class="shopping-points">- </span>
                     <span class="shopping-points">{{ ShoppingPointsAmount }}</span>
                     {% include atom('icon') with {
                         class: config.name ~ '__icon',
@@ -85,12 +83,12 @@
                     }) }}
                     <span>{{ 'checkout.step.benefit_deal.use_shopping_points' | trans }}</span>
                 </label>
-                <div class="{{ config.name }}__prices">
-                    <div class="{{ config.name }}__total-price">{{ shoppingPointsPrice | money(true, currencyCode) }}</div>
-                </div>
             {% else %}
                 {{ form_widget(data.item) }}
             {% endif %}
+            <div class="{{ config.name }}__prices">
+                <div class="{{ config.name }}__total-price">{{ subTotalPrice | money(true, currencyCode) }}</div>
+            </div>
         </div>
     </div>
 {% endblock %}
