@@ -14,6 +14,8 @@ class CatalogConfig extends SprykerCatalogConfig
 {
     public const PRODUCT_ABSTRACT_SELLABLE_FACET_NAME = SharedCatalogConfig::PRODUCT_ABSTRACT_SELLABLE_FACET_NAME;
 
+    public const PRODUCT_ABSTRACT_DEAL_FACET_NAME = SharedCatalogConfig::PRODUCT_ABSTRACT_DEAL_FACET_NAME;
+
     protected const PAGINATION_CATALOG_SEARCH_DEFAULT_ITEMS_PER_PAGE = 40;
 
     protected const PAGINATION_VALID_ITEMS_PER_PAGE = [

@@ -20094,3 +20094,5 @@ payment.payment_provider.nopayment,Nopayment,en_US
 payment.payment_provider.nopayment,Nopayment,de_DE
 payment.payment_method.dummy_prepayment,Prepayment,en_US
 payment.payment_method.dummy_prepayment,Prepayment,de_DE
+product.filter.deal,Deal,en_US
+product.filter.deal,Deal,de_DE

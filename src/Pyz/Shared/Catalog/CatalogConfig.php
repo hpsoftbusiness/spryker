@@ -12,4 +12,5 @@ use Spryker\Shared\Kernel\AbstractBundleConfig;
 class CatalogConfig extends AbstractBundleConfig
 {
     public const PRODUCT_ABSTRACT_SELLABLE_FACET_NAME = 'sellable';
+    public const PRODUCT_ABSTRACT_DEAL_FACET_NAME = 'deal';
 }

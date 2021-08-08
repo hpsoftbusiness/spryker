@@ -59,6 +59,14 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     }
 
     /**
+     * @return string
+     */
+    public function getProductAbstractDealFacetName(): string
+    {
+        return CatalogConfig::PRODUCT_ABSTRACT_DEAL_FACET_NAME;
+    }
+
+    /**
      * @return int
      */
     public function getChunkSize(): int
