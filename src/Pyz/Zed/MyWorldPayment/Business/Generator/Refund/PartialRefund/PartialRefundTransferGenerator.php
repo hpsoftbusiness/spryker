@@ -97,7 +97,7 @@ class PartialRefundTransferGenerator implements PartialRefundTransferGeneratorIn
     {
         $maxAvailableAmount = 0;
         foreach ($itemTransfers as $itemTransfer) {
-            if ($itemTransfer->getUseBenefitVoucher()) {
+            if ($itemTransfer->getUseBenefitVoucher() && $itemTransfer->getBenefitVoucherDealData() !== null) {
                 $maxAvailableAmount += $itemTransfer->getBenefitVoucherDealData()->getAmount();
             }
         }
