@@ -173,11 +173,11 @@ groups:
                 endpoints:
                     www.pl.marketplace.myworld.com:
                         store: PL
-                   www.ro.marketplace.myworld.com:
+                    www.ro.marketplace.myworld.com:
                         store: RO
-                   www.sk.marketplace.myworld.com:
+                    www.sk.marketplace.myworld.com:
                         store: SK
-                   www.sl.marketplace.myworld.com:
+                    www.sl.marketplace.myworld.com:
                         store: SL
             Zed:
                 application: zed

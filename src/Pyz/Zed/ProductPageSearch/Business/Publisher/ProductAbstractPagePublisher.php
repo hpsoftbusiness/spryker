@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch;
 use Propel\Runtime\Propel;
+use Pyz\Zed\ProductPageSearch\ProductPageSearchConfig;
 use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
@@ -22,7 +23,6 @@ use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublishe
 use Spryker\Zed\ProductPageSearch\Business\Reader\AddToCartSkuReaderInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface;
-use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 {
@@ -56,12 +56,17 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Pyz\Zed\ProductPageSearch\ProductPageSearchConfig
+     */
+    protected $productPageSearchConfig;
+
+    /**
      * @param \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface $queryContainer
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[] $productPageDataLoaderPlugins
      * @param \Spryker\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapperInterface $productPageSearchMapper
      * @param \Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterface $productPageSearchWriter
-     * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
+     * @param \Pyz\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductPageSearch\Business\Reader\AddToCartSkuReaderInterface $addToCartSkuReader
      * @param \Pyz\Zed\ProductPageSearch\Dependency\Plugin\ProductAbstractPageAfterPublishPluginInterface[] $productAbstractPageAfterPublishPlugins
@@ -95,6 +100,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $this->productAbstractPageAfterPublishPlugins = $productAbstractPageAfterPublishPlugins;
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->productPageSearchConfig = $productPageSearchConfig;
     }
 
     /**
@@ -142,15 +148,19 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 
                 continue;
             }
-
-            $this->storeProductAbstractPageSearchEntity(
-                $productAbstractLocalizedEntity,
-                $productAbstractPageSearchEntity,
-                $pairedEntity[static::STORE_NAME],
+            if (in_array(
                 $pairedEntity[static::LOCALE_NAME],
-                $pageDataExpanderPlugins,
-                $isRefresh
-            );
+                $this->productPageSearchConfig->getLocalsByStore($pairedEntity[static::STORE_NAME])
+            )) {
+                $this->storeProductAbstractPageSearchEntity(
+                    $productAbstractLocalizedEntity,
+                    $productAbstractPageSearchEntity,
+                    $pairedEntity[static::STORE_NAME],
+                    $pairedEntity[static::LOCALE_NAME],
+                    $pageDataExpanderPlugins,
+                    $isRefresh
+                );
+            }
         }
 
         $this->write();

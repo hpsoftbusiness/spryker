@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductPageSearch;
 
 use Pyz\Shared\Catalog\CatalogConfig;
+use Pyz\Shared\Locale\LocaleConstants;
 use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig as SprykerProductPageSearchConfig;
 
@@ -64,5 +65,17 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     public function getChunkSize(): int
     {
         return static::CHUNK_SIZE;
+    }
+
+    /**
+     * @param string $store
+     *
+     * @return array
+     */
+    public function getLocalsByStore(string $store): array
+    {
+        $localsPerStore = $this->get(LocaleConstants::LOCALS_PER_STORES, []);
+
+        return $localsPerStore[$store] ?? [];
     }
 }

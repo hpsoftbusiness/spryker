@@ -23,6 +23,9 @@ use Spryker\Zed\ProductPageSearch\Business\DataMapper\ProductAbstractSearchDataM
 use Spryker\Zed\ProductPageSearch\Business\ProductPageSearchBusinessFactory as SprykerProductPageSearchBusinessFactory;
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisherInterface;
 
+/**
+ * @method \Pyz\Zed\ProductPageSearch\ProductPageSearchConfig getConfig()
+ */
 class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessFactory
 {
     /**

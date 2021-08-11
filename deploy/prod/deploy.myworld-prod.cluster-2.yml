@@ -143,7 +143,7 @@ groups:
                 endpoints:
                     www.it.marketplace.myworld.com:
                         store: IT
-                   www.pt.marketplace.myworld.com:
+                    www.pt.marketplace.myworld.com:
                         store: PT
             Zed:
                 application: zed

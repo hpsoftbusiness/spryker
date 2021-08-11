@@ -9,6 +9,7 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CustomerPage\Plugin\Application\SsoSecurityApplicationPlugin;
 use Pyz\Yves\GoogleAnalyticWidget\Widget\GoogleAnalyticWidget;
+use Pyz\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use Pyz\Yves\ProductAffiliateOffersPriceWidget\Widget\ProductAffiliateOffersPriceWidget;
 use Pyz\Yves\ProductAffiliateOffersWidget\Widget\ProductAffiliateOffersWidget;
 use Pyz\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
@@ -50,7 +51,6 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderIt
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\DiscountVoucherFormWidget;
-use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
 use SprykerShop\Yves\MerchantProductWidget\Widget\MerchantProductWidget;
 use SprykerShop\Yves\MerchantProductWidget\Widget\ProductSoldByMerchantWidget;
