@@ -133,39 +133,39 @@ groups:
             Redirects:
                 application: static
                 endpoints:
-                    pl.myworld.cloud.spryker.toys:
+                    pl.myworld-mca.cloud.spryker.toys:
                         store: PL
                         redirect:
                             type: 302
-                            url: www.pl.myworld.cloud.spryker.toys
-                    ro.myworld.cloud.spryker.toys:
+                            url: www.pl.myworld-mca.cloud.spryker.toys
+                    ro.myworld-mca.cloud.spryker.toys:
                         store: RO
                         redirect:
                             type: 302
-                            url: www.ro.myworld.cloud.spryker.toys
-                    sk.myworld.cloud.spryker.toys:
+                            url: www.ro.myworld-mca.cloud.spryker.toys
+                    sk.myworld-mca.cloud.spryker.toys:
                         store: SK
                         redirect:
                             type: 302
-                            url: www.sk.myworld.cloud.spryker.toys
-                    sl.myworld.cloud.spryker.toys:
+                            url: www.sk.myworld-mca.cloud.spryker.toys
+                    sl.myworld-mca.cloud.spryker.toys:
                         store: SL
                         redirect:
                             type: 302
-                            url: www.sl.myworld.cloud.spryker.toys
+                            url: www.sl.myworld-mca.cloud.spryker.toys
             Yves:
                 application: yves
                 endpoints:
-                    www.pl.myworld.cloud.spryker.toys:
+                    www.pl.myworld-mca.cloud.spryker.toys:
                         store: PL
                         <<: *frontend-auth
-                    www.ro.myworld.cloud.spryker.toys:
+                    www.ro.myworld-mca.cloud.spryker.toys:
                         store: RO
                         <<: *frontend-auth
-                    www.sk.myworld.cloud.spryker.toys:
+                    www.sk.myworld-mca.cloud.spryker.toys:
                         store: SK
                         <<: *frontend-auth
-                    www.sl.myworld.cloud.spryker.toys:
+                    www.sl.myworld-mca.cloud.spryker.toys:
                         store: SL
                         <<: *frontend-auth
             Zed:
@@ -173,28 +173,28 @@ groups:
                 http:
                     max-request-body-size: 1600m
                 endpoints:
-                    zed.pl.myworld.cloud.spryker.toys:
+                    zed.pl.myworld-mca.cloud.spryker.toys:
                         store: PL
                         <<: *frontend-auth
-                    zed.ro.myworld.cloud.spryker.toys:
+                    zed.ro.myworld-mca.cloud.spryker.toys:
                         store: RO
                         <<: *frontend-auth
-                    zed.sk.myworld.cloud.spryker.toys:
+                    zed.sk.myworld-mca.cloud.spryker.toys:
                         store: SK
                         <<: *frontend-auth
-                    zed.sl.myworld.cloud.spryker.toys:
+                    zed.sl.myworld-mca.cloud.spryker.toys:
                         store: SL
                         <<: *frontend-auth
             Glue:
                 application: glue
                 endpoints:
-                    glue.pl.myworld.cloud.spryker.toys:
+                    glue.pl.myworld-mca.cloud.spryker.toys:
                         store: PL
-                    glue.ro.myworld.cloud.spryker.toys:
+                    glue.ro.myworld-mca.cloud.spryker.toys:
                         store: RO
-                    glue.sk.myworld.cloud.spryker.toys:
+                    glue.sk.myworld-mca.cloud.spryker.toys:
                         store: SK
-                    glue.sl.myworld.cloud.spryker.toys:
+                    glue.sl.myworld-mca.cloud.spryker.toys:
                         store: SL
 
 services:
@@ -213,7 +213,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            rabbitmq.myworld.cloud.spryker.toys:
+            rabbitmq.myworld-mca.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -232,11 +232,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            jenkins.myworld.cloud.spryker.toys:
+            jenkins.myworld-mca.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.myworld.cloud.spryker.toys:
+            mail.myworld-mca.cloud.spryker.toys:
 
 docker:
 
