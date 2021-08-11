@@ -59,10 +59,10 @@ image:
         SPRYKER_CLUSTER: "cluster-3"
         SPRYKER_DEFAULT_STORE: "PL"
         SPRYKER_ACTIVE_STORES: "PL,RO,SK,SL"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r cluster-3/pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r cluster-3/production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r cluster-3/destructive --no-ansi -vvv"
         WEB_PROPERTY_ID: "GTM-53PNGR9"
     php:
         ini:
