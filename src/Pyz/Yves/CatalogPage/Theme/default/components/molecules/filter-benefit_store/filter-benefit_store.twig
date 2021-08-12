@@ -1,0 +1,36 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'filter-benefit_store'
+} %}
+
+{% define data = {
+    filter: null,
+} %}
+
+{% set activeValues = data.filter.activeValue %}
+{% set inputComponent = atom('checkbox') %}
+
+{% block body %}
+    <ul class="grid spacing-bottom">
+
+        {% for filterValue in data.filter.values %}
+            <li class="{{ config.name }}__item spacing-right">
+
+                {% include inputComponent with {
+                    class: config.name ~ '__benefit_store',
+                    attributes: {
+                        name: data.filter.config.parameterName,
+                        value: filterValue.value,
+                        checked: (filterValue.value in activeValues)
+                    },
+                    data: {
+                        label: 'product.filter.benefit_store' | trans
+                    }
+                } only %}
+
+            </li>
+        {% endfor %}
+
+    </ul>
+{% endblock %}
