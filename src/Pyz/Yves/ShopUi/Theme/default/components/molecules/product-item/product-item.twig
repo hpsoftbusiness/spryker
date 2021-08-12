@@ -21,7 +21,7 @@
     {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
     {% set benefitStore = benefitPrice > 0 and (data.product.attributes.benefit_store ?? false) %}
     {% set shopping_point_store = benefitPrice > 0 and (data.product.attributes.shopping_point_store ?? false) %}
-    {% set benefitAmount = defaultPrice ?? 0 - benefitPrice ?? 0 %}
+    {% set benefitAmount = benefitPrice ? defaultPrice - benefitPrice : null %}
     {% set shoppingPointsAmount = data.shoppingPointsAmount %}
     {% set benefitVoucherDealEnabled = benefitAmount is not null and benefitAmount > 0 and benefitStore %}
     {% set shoppingPointsDealEnabled = shoppingPointsAmount is not null and shoppingPointsAmount > 0 and shopping_point_store %}
