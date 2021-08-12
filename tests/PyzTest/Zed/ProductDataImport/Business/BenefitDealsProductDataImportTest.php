@@ -28,12 +28,14 @@ class BenefitDealsProductDataImportTest extends AbstractProductDataImportTest
     private const ABSTRACT_SKU_SHOPPING_POINTS_ITEM = '0011';
     private const CONCRETE_SKU_SHOPPING_POINTS_ITEM_1 = '4251740701405-0011';
     private const CONCRETE_SKU_SHOPPING_POINTS_ITEM_2 = '4251740701412-0011';
+    private const APPLICATION_STORE = 'APPLICATION_STORE';
 
     /**
      * @return void
      */
     public function testProductImportCorrectlyImportsBenefitDealAttributes(): void
     {
+        $_SERVER[self::APPLICATION_STORE] = null;
         $statusCode = $this->executeProductDataImport(self::TEST_FILE_NAME);
 
         self::assertEquals(0, $statusCode);

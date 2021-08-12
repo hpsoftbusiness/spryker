@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\DataImport\DataImportConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
@@ -182,6 +183,8 @@ $config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.mywo
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
     'nataliia.popkova@spryker.com' => 'Warehouse Manager',
 ];
+
+$config[DataImportConstants::NEED_STORE_RELATION_VALIDATION] = false;
 
 require 'common/config_my-world-payment.php';
 

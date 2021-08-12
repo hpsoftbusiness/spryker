@@ -8,15 +8,17 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\Product;
 
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
+use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 
 class CombinedProductLocalizedAttributesExtractorStep extends ProductLocalizedAttributesExtractorStep
 {
     /**
+     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      * @param array $defaultAttributes
      */
-    public function __construct(array $defaultAttributes = [])
+    public function __construct(ProductRepositoryInterface $productRepository, array $defaultAttributes = [])
     {
-        parent::__construct($defaultAttributes);
+        parent::__construct($productRepository, $defaultAttributes);
     }
 
     /**

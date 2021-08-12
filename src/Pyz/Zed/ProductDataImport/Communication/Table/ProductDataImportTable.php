@@ -23,6 +23,7 @@ class ProductDataImportTable extends AbstractTable
     public const COL_STATUS = 'status';
     public const COL_UPDATED_AT = 'updated_at';
     public const COL_FILE_PATH = 'file_path';
+    public const COL_STORE = 'store';
     public const COL_IMPORT_RESULT = 'result';
 
     public const ACTIONS = 'Actions';
@@ -55,6 +56,7 @@ class ProductDataImportTable extends AbstractTable
                 static::COL_CREATED_AT => 'Create At',
                 static::COL_UPDATED_AT => 'Updated At',
                 static::COL_FILE_PATH => 'File path',
+                static::COL_STORE => 'Store',
                 static::COL_STATUS => 'Status',
                 static::ACTIONS => self::ACTIONS,
             ]
@@ -69,15 +71,17 @@ class ProductDataImportTable extends AbstractTable
                 SpyProductDataImportTableMap::COL_STATUS,
                 SpyProductDataImportTableMap::COL_CREATED_AT,
                 SpyProductDataImportTableMap::COL_UPDATED_AT,
+                SpyProductDataImportTableMap::COL_STORE,
                 SpyProductDataImportTableMap::COL_ID_PRODUCT_DATA_IMPORT,
             ]
         );
         $config->setSortable(
             [
                 static::COL_ID => '#',
-                static::COL_CREATED_AT => 'Registration Date',
-                static::COL_UPDATED_AT => 'Create At',
-                static::COL_STATUS => 'Status',
+                static::COL_CREATED_AT => 'created_at',
+                static::COL_UPDATED_AT => 'updated_at',
+                static::COL_STATUS => 'status',
+                static::COL_STORE => 'store',
             ]
         );
         $config->setUrl('table');

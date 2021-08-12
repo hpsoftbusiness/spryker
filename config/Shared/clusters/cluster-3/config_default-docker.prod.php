@@ -10,7 +10,7 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'PL' => 'pl_PL',
     'RO' => 'ro_RO',
     'SK' => 'sk_SK',
-    'SI' => 'sl_SI',
+    'SL' => 'sl_SI',
 ];
 
 // TODO:: create ORIGIN KEYS for prod environment
@@ -19,7 +19,7 @@ $adyenCredentials = [
         'PL' => getenv('ADYEN_ORIGIN_KEYS_PL') ?: '',
         'RO' => getenv('ADYEN_ORIGIN_KEYS_RO') ?: '',
         'SK' => getenv('ADYEN_ORIGIN_KEYS_SK') ?: '',
-        'SL' => getenv('ADYEN_ORIGIN_KEYS_SI') ?: '',
+        'SL' => getenv('ADYEN_ORIGIN_KEYS_SL') ?: '',
     ],
 ];
 

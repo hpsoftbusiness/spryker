@@ -10,9 +10,11 @@ namespace Pyz\Zed\ProductDataImport\Communication\Form;
 use Generated\Shared\Transfer\FileUploadTransfer;
 use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Pyz\Zed\ProductDataImport\Communication\Form\Constrain\CsvFileConstrain;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\FileManagerGui\Communication\Form\Validator\Constraints\File;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -27,6 +29,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ProductDataImportForm extends AbstractType
 {
     public const FILED_FILE_UPLOAD = 'fileUpload';
+    public const FILED_STORE = 'store';
     public const OPTION_ALLOWED_MIME_TYPES = ['text/plain', 'csv'];
     protected const CSV_FILE_DELIMITER = ',';
     protected const ERROR_MIME_TYPE_MESSAGE = 'File type is not allowed for uploading, it can be only csv file';
@@ -50,28 +53,40 @@ class ProductDataImportForm extends AbstractType
      */
     protected function addUploadedFileField(FormBuilderInterface $builder)
     {
-        $builder->add(
-            static::FILED_FILE_UPLOAD,
-            FileType::class,
-            [
-                'attr' => [
-                    'accept' => '.csv',
-                ],
-                'constraints' => [
-                    new File(
-                        [
-                            'maxSize' => $this->getConfig()->getDefaultFileMaxSize(),
-                            'mimeTypes' => static::OPTION_ALLOWED_MIME_TYPES,
-                            'mimeTypesMessage' => static::ERROR_MIME_TYPE_MESSAGE,
-                        ]
-                    ),
-                    new CsvFileConstrain([
-                        'delimiter' => self::CSV_FILE_DELIMITER,
-                        'incorrectSeparatorMessage' => self::ERROR_CSV_DELIMITER_INCORRECT_MESSAGE,
-                    ]),
-                ],
-            ]
-        );
+        $stores = Store::getInstance()->getAllowedStores();
+
+        $builder
+            ->add(
+                static::FILED_STORE,
+                ChoiceType::class,
+                [
+                    'choices' => array_combine($stores, $stores),
+                ]
+            )
+            ->add(
+                static::FILED_FILE_UPLOAD,
+                FileType::class,
+                [
+                    'attr' => [
+                        'accept' => '.csv',
+                    ],
+                    'constraints' => [
+                        new File(
+                            [
+                                'maxSize' => $this->getConfig()->getDefaultFileMaxSize(),
+                                'mimeTypes' => static::OPTION_ALLOWED_MIME_TYPES,
+                                'mimeTypesMessage' => static::ERROR_MIME_TYPE_MESSAGE,
+                            ]
+                        ),
+                        new CsvFileConstrain(
+                            [
+                                'delimiter' => self::CSV_FILE_DELIMITER,
+                                'incorrectSeparatorMessage' => self::ERROR_CSV_DELIMITER_INCORRECT_MESSAGE,
+                            ]
+                        ),
+                    ],
+                ]
+            );
 
         $builder->get(static::FILED_FILE_UPLOAD)
             ->addModelTransformer(

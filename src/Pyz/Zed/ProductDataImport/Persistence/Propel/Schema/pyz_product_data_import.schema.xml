@@ -6,6 +6,7 @@
         <column name="status" required="true" type="VARCHAR" default="new"/>
         <behavior name="timestampable"/>
         <column name="file_path" required="false" type="VARCHAR" default="NULL"/>
+        <column name="store" required="false" type="VARCHAR" default="NULL"/>
         <column name="result" required="false" type="CLOB" default="NULL"/>
     <id-method-parameter value="spy_product_data_import_pk_seq"/></table>
 </database>

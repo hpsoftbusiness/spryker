@@ -70,4 +70,12 @@ class DataImportConfig extends SprykerDataImportConfig
 
         return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'data/import/local/full_' . $cluster . '.yml';
     }
+
+    /**
+     * @return bool
+     */
+    public function getNeedStoreRelationValidation(): bool
+    {
+        return (bool)$this->get(DataImportConstants::NEED_STORE_RELATION_VALIDATION, true);
+    }
 }

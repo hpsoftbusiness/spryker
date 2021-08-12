@@ -28,9 +28,11 @@ interface ProductDataImportFacadeInterface
     ): void;
 
     /**
+     * @param string|null $store
+     *
      * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
-    public function getProductDataImportForImport(): ?ProductDataImportTransfer;
+    public function getProductDataImportForImport(?string $store): ?ProductDataImportTransfer;
 
     /**
      * @param \Generated\Shared\Transfer\ProductDataImportTransfer $productDataImportTransfer

@@ -18,6 +18,7 @@ use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\Writer\CombinedP
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreHydratorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\ValidationStoreImportStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\Writer\CombinedProductAbstractStoreBulkPdoMariaDbDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\Writer\CombinedProductAbstractStorePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete\CombinedProductConcreteHydratorStep;
@@ -1012,7 +1013,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                         ProductConcreteHydratorStep::COLUMN_NAME,
                         ProductConcreteHydratorStep::COLUMN_DESCRIPTION,
                         ProductConcreteHydratorStep::COLUMN_IS_SEARCHABLE,
-                    ]
+                    ],
+                    false
                 )
             )
             ->addStep(
@@ -1523,12 +1525,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param array $defaultAttributes
+     * @param bool $isAbstract
      *
      * @return \Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep
      */
-    protected function createProductLocalizedAttributesExtractorStep(array $defaultAttributes = [])
+    protected function createProductLocalizedAttributesExtractorStep(array $defaultAttributes = [], $isAbstract = true)
     {
-        return new ProductLocalizedAttributesExtractorStep($defaultAttributes);
+        return new ProductLocalizedAttributesExtractorStep(
+            $this->createProductRepository(),
+            $defaultAttributes,
+            $isAbstract
+        );
     }
 
     /**
@@ -1538,7 +1545,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCombinedProductLocalizedAttributesExtractorStep(array $defaultAttributes = [])
     {
-        return new CombinedProductLocalizedAttributesExtractorStep($defaultAttributes);
+        return new CombinedProductLocalizedAttributesExtractorStep(
+            $this->createProductRepository(),
+            $defaultAttributes
+        );
     }
 
     /**
@@ -1804,6 +1814,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             CombinedProductPriceHydratorStep::BULK_SIZE
         );
         $dataSetStepBroker
+            ->addStep($this->createValidationStoreImportStep())
             ->addStep(
                 new CombinedProductPriceHydratorStep(
                     $this->getPriceProductFacade(),
@@ -1863,6 +1874,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             CombinedProductImageHydratorStep::BULK_SIZE
         );
         $dataSetStepBroker
+            ->addStep($this->createValidationStoreImportStep())
             ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(CombinedProductImageHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
             ->addStep($this->createProductSkuToIdProductStep(CombinedProductImageHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
 //            ->addStep($this->createLocaleNameToIdStep(CombinedProductImageHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
@@ -1920,6 +1932,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             CombinedProductStockHydratorStep::BULK_SIZE
         );
         $dataSetStepBroker
+            ->addStep($this->createValidationStoreImportStep())
             ->addStep(new CombinedProductStockHydratorStep());
 
         $dataImporter->setDataSetCondition($this->createCombinedProductStockMandatoryColumnCondition());
@@ -1982,7 +1995,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(
             CombinedProductAbstractStoreHydratorStep::BULK_SIZE
         );
-        $dataSetStepBroker->addStep(new CombinedProductAbstractStoreHydratorStep());
+        $dataSetStepBroker
+            ->addStep($this->createValidationStoreImportStep())
+            ->addStep(new CombinedProductAbstractStoreHydratorStep());
 
         $dataImporter->setDataSetCondition($this->createCombinedProductAbstractStoreMandatoryColumnCondition());
         $dataImporter->setDataSetCondition($this->createCombinedProductAbstractStoreDataSetCondition());
@@ -2046,6 +2061,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
         $dataSetStepBroker
 //            ->addStep($this->createProductAbstractCheckExistenceStep())
+            ->addStep($this->createValidationStoreImportStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAddCategoryKeysStep())
             ->addStep($this->createTaxSetNameToIdTaxSetStep(CombinedProductAbstractHydratorStep::COLUMN_TAX_SET_NAME))
@@ -2073,6 +2089,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->setDataSetWriter($this->createCombinedProductAbstractDataSetWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\ValidationStoreImportStep
+     */
+    protected function createValidationStoreImportStep(): ValidationStoreImportStep
+    {
+        return new ValidationStoreImportStep($this->getConfig());
     }
 
     /**
@@ -2120,6 +2144,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             CombinedProductConcreteHydratorStep::BULK_SIZE
         );
         $dataSetStepBroker
+            ->addStep($this->createValidationStoreImportStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createCombinedAttributesExtractorStep())
             ->addStep(
@@ -2156,6 +2181,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductGroupBulkPdoMariaDbDataSetWriter::BULK_SIZE);
+        $dataSetStepBroker->addStep($this->createValidationStoreImportStep());
 
         $dataImporter->setDataSetCondition($this->createCombinedProductGroupMandatoryColumnCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
@@ -2255,6 +2281,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             CombinedProductListProductConcreteWriter::BULK_SIZE
         );
         $dataSetStepBroker
+            ->addStep($this->createValidationStoreImportStep())
             ->addStep($this->createCombinedProductListProductConcreteAttributesExtractorStep());
 //            ->addStep($this->createProductSkuToIdProductStep(
 //                CombinedProductListProductConcreteWriter::COLUMN_CONCRETE_SKU,
@@ -2336,6 +2363,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(MerchantProductOfferStoreBulkPdoMariaDbDataSetWriter::BULK_SIZE);
+        $dataSetStepBroker->addStep($this->createValidationStoreImportStep());
         $dataSetStepBroker->addStep($this->createMerchantReferenceToIdMerchantStep());
         $dataSetStepBroker->addStep($this->createAffiliateDataStep());
 
@@ -2477,7 +2505,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(
             MerchantProductOfferStoreBulkPdoMariaDbDataSetWriter::BULK_SIZE
         );
-
+        $dataSetStepBroker->addStep($this->createValidationStoreImportStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetCondition($this->createCombinedProductListProductConcreteMandatoryColumnCondition());
         $dataImporter->setDataSetWriter($this->createMerchantProductOfferStoreDataSetWriters());
@@ -2583,7 +2611,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(PriceProductStoreWriterStep::BULK_SIZE);
         $dataImporter->setDataSetCondition($this->createCombinedProductListProductConcreteMandatoryColumnCondition());
-
+        $dataSetStepBroker->addStep($this->createValidationStoreImportStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createPriceProductOfferDataSetWriters());
 

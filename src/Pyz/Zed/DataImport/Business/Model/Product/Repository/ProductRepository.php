@@ -11,7 +11,9 @@ use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
+use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
+use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Propel\Runtime\Collection\ArrayCollection;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
@@ -21,6 +23,8 @@ class ProductRepository implements ProductRepositoryInterface
     public const ID_PRODUCT = 'idProduct';
     public const ID_PRODUCT_ABSTRACT = 'idProductAbstract';
     public const ABSTRACT_SKU = 'abstractSku';
+
+    private const LOCALE_KEY = 'FkLocale';
 
     /**
      * @var array
@@ -99,7 +103,9 @@ class ProductRepository implements ProductRepositoryInterface
         /** @var \Propel\Runtime\Collection\ArrayCollection $productData */
         $productData = SpyProductQuery::create()
             ->joinWithSpyProductAbstract()
-            ->select([SpyProductTableMap::COL_ATTRIBUTES, SpyProductTableMap::COL_SKU, SpyProductAbstractTableMap::COL_SKU])
+            ->select(
+                [SpyProductTableMap::COL_ATTRIBUTES, SpyProductTableMap::COL_SKU, SpyProductAbstractTableMap::COL_SKU]
+            )
             ->find();
 
         return $productData;
@@ -189,5 +195,61 @@ class ProductRepository implements ProductRepositoryInterface
     public function flush(): void
     {
         static::$resolved = [];
+    }
+
+    /**
+     * @param string $sku
+     *
+     * @return array
+     */
+    public function getProductAbstractLocalizedAttributesBySku(string $sku): array
+    {
+        if (!isset(static::$resolved[$sku])) {
+            try {
+                $this->resolveProductByAbstractSku($sku);
+            } catch (EntityNotFoundException $exception) {
+                return [];
+            }
+        }
+
+        $productAbstractId = static::$resolved[$sku][static::ID_PRODUCT_ABSTRACT];
+
+        $productAbstractLocalizedAttributes = SpyProductAbstractLocalizedAttributesQuery::create()
+            ->findByFkProductAbstract($productAbstractId)
+            ->toArray();
+        $productAbstractLocalizedAttributesByLocal = [];
+
+        foreach ($productAbstractLocalizedAttributes as $abstractLocalizedAttribute) {
+            $productAbstractLocalizedAttributesByLocal[$abstractLocalizedAttribute[static::LOCALE_KEY]] =
+                $abstractLocalizedAttribute;
+        }
+
+        return $productAbstractLocalizedAttributesByLocal;
+    }
+
+    /**
+     * @param string $sku
+     *
+     * @return array
+     */
+    public function getProductConcreteLocalizedAttributesBySku(string $sku): array
+    {
+        if (!isset(static::$resolved[$sku])) {
+            $this->resolveProductByConcreteSku($sku);
+        }
+
+        $productConcreteId = static::$resolved[$sku][static::ID_PRODUCT_ABSTRACT];
+
+        $productLocalizedAttributes = SpyProductLocalizedAttributesQuery::create()
+            ->findByFkProduct($productConcreteId)
+            ->toArray();
+        $productLocalizedAttributesByLocal = [];
+
+        foreach ($productLocalizedAttributes as $abstractLocalizedAttribute) {
+            $productLocalizedAttributesByLocal[$abstractLocalizedAttribute[static::LOCALE_KEY]] =
+                $abstractLocalizedAttribute;
+        }
+
+        return $productLocalizedAttributesByLocal;
     }
 }

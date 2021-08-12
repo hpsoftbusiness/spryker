@@ -31,9 +31,9 @@ class ProductDataImportFacade extends AbstractFacade implements ProductDataImpor
     /**
      * @inheritDoc
      */
-    public function getProductDataImportForImport(): ?ProductDataImportTransfer
+    public function getProductDataImportForImport(?string $store): ?ProductDataImportTransfer
     {
-        return $this->getFactory()->createProductDataImport()->getProductDataImportForImport();
+        return $this->getFactory()->createProductDataImport()->getProductDataImportForImport($store);
     }
 
     /**

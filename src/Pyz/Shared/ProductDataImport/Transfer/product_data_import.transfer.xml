@@ -10,6 +10,7 @@
         <property name="createdAt" type="string"/>
         <property name="updatedAt" type="string"/>
         <property name="filePath" type="string"/>
+        <property name="store" type="string"/>
         <property name="result" type="string"/>
 
         <property name="fileUpload" type="FileUpload"/>

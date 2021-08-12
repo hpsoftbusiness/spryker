@@ -68,4 +68,18 @@ interface ProductRepositoryInterface
      * @return void
      */
     public function flush(): void;
+
+    /**
+     * @param string $sku
+     *
+     * @return array
+     */
+    public function getProductAbstractLocalizedAttributesBySku(string $sku): array;
+
+    /**
+     * @param string $sku
+     *
+     * @return array
+     */
+    public function getProductConcreteLocalizedAttributesBySku(string $sku): array;
 }

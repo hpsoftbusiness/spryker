@@ -15,6 +15,7 @@ use Generated\Shared\Transfer\ProductDataImportTransfer;
 use Orm\Zed\ProductDataImport\Persistence\SpyProductDataImport;
 use Pyz\Zed\DataImport\Business\DataImportFacadeInterface;
 use Pyz\Zed\ProductDataImport\Communication\Form\DataProvider\ProductDataImportFormDataProvider;
+use Pyz\Zed\ProductDataImport\Communication\Table\ProductDataImportTable;
 use Pyz\Zed\ProductDataImport\Persistence\ProductDataImportQueryContainerInterface;
 use Pyz\Zed\ProductDataImport\ProductDataImportConfig;
 use Spryker\Service\FileSystem\FileSystemServiceInterface;
@@ -159,13 +160,18 @@ class ProductDataImport implements ProductDataImportInterface
     }
 
     /**
+     * @param string|null $store
+     *
      * @return \Generated\Shared\Transfer\ProductDataImportTransfer|null
      */
-    public function getProductDataImportForImport(): ?ProductDataImportTransfer
+    public function getProductDataImportForImport(?string $store): ?ProductDataImportTransfer
     {
         $productDataImport = null;
-        $spyProductDataImport = $this->queryContainer->queryProductImports()->findOneByStatus(
-            ProductDataImportInterface::STATUS_NEW
+        $spyProductDataImport = $this->queryContainer->queryProductImports()->findOneByArray(
+            [
+                ProductDataImportTable::COL_STATUS => ProductDataImportInterface::STATUS_NEW,
+                ProductDataImportTable::COL_STORE => $store,
+            ]
         );
         if ($spyProductDataImport) {
             $productDataImport = new ProductDataImportTransfer();

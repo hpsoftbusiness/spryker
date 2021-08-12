@@ -38,6 +38,9 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
     protected const DEFAULT_ROOT_CATEGORY = 'shop';
     protected const DEFAULT_NODE_TYPE = 'category';
 
+    protected const CRUTCH_LANGUAGE_IDENTIFIER = 'at';
+    protected const CRUTCH_LOCALE = 'de_AT';
+
     /**
      * @var array
      */
@@ -72,6 +75,11 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
         foreach ($categoryEntity->getAttributes() as $categoryAttributesEntity) {
             $idLocale = $categoryAttributesEntity->getFkLocale();
             $languageIdentifier = $this->getLanguageIdentifier($idLocale, $dataSet);
+
+            if ($categoryAttributesEntity->getLocale()->getLocaleName() === self::CRUTCH_LOCALE) {
+                $languageIdentifier = self::CRUTCH_LANGUAGE_IDENTIFIER;
+            }
+
             $urlPathParts = [$languageIdentifier];
             if (!$categoryNodeEntity->getIsRoot()) {
                 $parentUrl = $this->categoryReader->getParentUrl(

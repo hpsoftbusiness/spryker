@@ -44,6 +44,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
             // first entry is default
             'en' => 'en_US',
             'de' => 'de_DE',
+            'at' => 'de_AT',
         ],
 
         // internal and shop

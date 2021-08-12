@@ -16,4 +16,13 @@ class DataImportConstants
      * @api
      */
     public const SPRYKER_CLUSTER = 'SPRYKER_CLUSTER';
+
+    /**
+     * Specification:
+     * - bool value.
+     * - checking if we need Zed/DataImport/Business/CombinedProduct/ProductAbstractStore/ValidationStoreImportStep
+     *
+     * @api
+     */
+    public const NEED_STORE_RELATION_VALIDATION = 'NEED_STORE_RELATION_VALIDATION';
 }

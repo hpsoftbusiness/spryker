@@ -7,7 +7,7 @@ use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
-    'AT' => 'de_DE',
+    'AT' => 'de_AT',
     'DE' => 'de_DE',
 ];
 

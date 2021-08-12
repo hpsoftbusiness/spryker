@@ -5,6 +5,6 @@
 use Pyz\Shared\Locale\LocaleConstants;
 
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
-    'AT' => 'de_DE',
+    'AT' => 'de_AT',
     'DE' => 'de_DE',
 ];

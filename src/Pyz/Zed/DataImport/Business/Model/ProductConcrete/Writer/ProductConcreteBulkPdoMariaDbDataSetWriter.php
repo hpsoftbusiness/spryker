@@ -58,14 +58,18 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
      */
     protected function persistConcreteProductEntities(): void
     {
-        $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU);
+        $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(
+            static::$productConcreteCollection,
+            ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU
+        );
         $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
         $rowCount = count($rawAbstractSkus);
         $uniqueKey = $this->dataFormatter->formatStringList(
             array_keys(static::$productConcreteCollection),
             $rowCount
         );
-        $sql = '
+        if ($rowCount > 0) {
+            $sql = '
             WITH RECURSIVE n(digit) AS (
                 SELECT 0 as digit
                 UNION ALL
@@ -91,35 +95,41 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
                     LEFT JOIN spy_product_abstract ON spy_product_abstract.sku = input.abstract_sku
             ) SELECT records.product_abstract_id as id_product_abstract, records.abstract_sku, records.unique_key FROM records';
 
-        $results = $this->propelExecutor->execute($sql, [
-            $rowCount,
-            $uniqueKey,
-            $abstractSkus,
-        ]);
+            $results = $this->propelExecutor->execute(
+                $sql,
+                [
+                    $rowCount,
+                    $uniqueKey,
+                    $abstractSkus,
+                ]
+            );
 
-        foreach ($results as $result) {
-            static::$productConcreteCollection[$result['unique_key']][ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU] = (int)$result[ProductConcreteHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
-        }
+            foreach ($results as $result) {
+                static::$productConcreteCollection[$result['unique_key']][ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU] = (int)$result[ProductConcreteHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
+            }
 
-        $parameter = $this->dataFormatter->collectMultiInsertData(
-            static::$productConcreteCollection
-        );
+            $parameter = $this->dataFormatter->collectMultiInsertData(
+                static::$productConcreteCollection
+            );
 
-        $sql = 'INSERT INTO `spy_product` (`sku`, `is_active`, `attributes`, `is_quantity_splittable`, `fk_product_abstract`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE sku=values(sku), is_active=values(is_active), attributes=values(attributes), attributes=values(attributes), is_quantity_splittable=values(is_quantity_splittable), fk_product_abstract=values(fk_product_abstract);';
+            $sql = 'INSERT INTO `spy_product` (`sku`, `is_active`, `attributes`, `is_quantity_splittable`, `fk_product_abstract`) VALUES' . $parameter . ' ON DUPLICATE KEY UPDATE sku=values(sku), is_active=values(is_active), attributes=values(attributes), attributes=values(attributes), is_quantity_splittable=values(is_quantity_splittable), fk_product_abstract=values(fk_product_abstract);';
 
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare($sql);
-        $statement->execute();
+            $connection = Propel::getConnection();
+            $statement = $connection->prepare($sql);
+            $statement->execute();
 
-        $rawConcreteSkus = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_SKU);
-        $concreteSkus = $this->dataFormatter->formatStringList($rawConcreteSkus);
-        $rowCount = count($rawConcreteSkus);
-        $sortKey = $this->dataFormatter->formatStringList(
-            array_keys($rawConcreteSkus),
-            $rowCount
-        );
+            $rawConcreteSkus = $this->dataFormatter->getCollectionDataByKey(
+                static::$productConcreteCollection,
+                ProductConcreteHydratorStep::KEY_SKU
+            );
+            $concreteSkus = $this->dataFormatter->formatStringList($rawConcreteSkus);
+            $rowCount = count($rawConcreteSkus);
+            $sortKey = $this->dataFormatter->formatStringList(
+                array_keys($rawConcreteSkus),
+                $rowCount
+            );
 
-        $sql = '
+            $sql = '
             WITH RECURSIVE n(digit) AS (
                 SELECT 0 as digit
                 UNION ALL
@@ -145,20 +155,27 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
                     LEFT JOIN spy_product ON spy_product.sku = input.concrete_sku
             ) SELECT records.product_id as id_product, records.concrete_sku FROM records';
 
-        $results = $this->propelExecutor->execute($sql, [
-            $rowCount,
-            $sortKey,
-            $concreteSkus,
-        ]);
+            $results = $this->propelExecutor->execute(
+                $sql,
+                [
+                    $rowCount,
+                    $sortKey,
+                    $concreteSkus,
+                ]
+            );
 
-        foreach ($results as $columns) {
-            foreach (static::$productLocalizedAttributesCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]] as $idLocale => $productLocalizedAttributesData) {
-                static::$productLocalizedAttributesCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]][$idLocale][ProductConcreteHydratorStep::KEY_SKU] = (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT];
+            foreach ($results as $columns) {
+                foreach (static::$productLocalizedAttributesCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]] as $idLocale => $productLocalizedAttributesData) {
+                    static::$productLocalizedAttributesCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]][$idLocale][ProductConcreteHydratorStep::KEY_SKU] = (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT];
+                }
+                foreach (static::$productSearchCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]] as $idLocale => $productSearchData) {
+                    static::$productSearchCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]][$idLocale][ProductConcreteHydratorStep::KEY_SKU] = (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT];
+                }
+                DataImporterPublisher::addEvent(
+                    ProductEvents::PRODUCT_CONCRETE_PUBLISH,
+                    (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT]
+                );
             }
-            foreach (static::$productSearchCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]] as $idLocale => $productSearchData) {
-                static::$productSearchCollection[$columns[ProductConcreteHydratorStep::COLUMN_CONCRETE_SKU]][$idLocale][ProductConcreteHydratorStep::KEY_SKU] = (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT];
-            }
-            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT]);
         }
     }
 

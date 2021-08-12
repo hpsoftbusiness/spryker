@@ -23,14 +23,16 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
 
         $sql = $this->productStockSql->createStockSQL();
 
-        $this->propelExecutor->execute(
-            $sql,
-            [
-                count($uniqueNames),
-                $name,
-            ],
-            false
-        );
+        if (count($names) > 0) {
+            $this->propelExecutor->execute(
+                $sql,
+                [
+                    count($uniqueNames),
+                    $name,
+                ],
+                false
+            );
+        }
     }
 
     /**

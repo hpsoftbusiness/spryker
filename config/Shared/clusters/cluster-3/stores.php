@@ -10,11 +10,11 @@ $currencies = [
         'SL' => 'EUR',
         ],
     'currencyIsoCodes' => [
-        'PL' => ['PLN', 'EUR'],
-        'RO' => ['RON', 'EUR'],
+        'PL' => ['PLN'],
+        'RO' => ['RON'],
         'SK' => ['EUR'],
         'SL' => ['EUR'],
-        ],
+    ],
 ];
 
 if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {

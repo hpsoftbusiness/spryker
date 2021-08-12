@@ -185,8 +185,9 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
     protected function importPriceProductStore(DataSetInterface $dataSet): SpyPriceProductStoreEntityTransfer
     {
         $currencyEntityTransfer = new SpyCurrencyEntityTransfer();
+//        TODO:: changed EUR to default currency
         $currencyEntityTransfer->setName($dataSet[static::COLUMN_CURRENCY] ?: 'EUR');
-
+//        TODO:: changed DE to default store
         $storeEntityTransfer = new SpyStoreEntityTransfer();
         $storeEntityTransfer->setName($dataSet[static::COLUMN_STORE] ?: 'DE');
 

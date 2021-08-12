@@ -49,6 +49,7 @@ class ProductDataImportConsole extends Console
         self::DATA_ENTITY_PRICE_PRODUCT_OFFER,
     ];
 
+    private const APPLICATION_STORE = 'APPLICATION_STORE';
     public const COMMAND_NAME = 'data:product:import-file';
     public const DESCRIPTION = 'Import products from file that was uploaded from Zed, data in table: spy_product_data_import';
 
@@ -75,48 +76,53 @@ class ProductDataImportConsole extends Console
 
         $messenger = $this->getMessenger();
         $result = null;
-        $productDataImport = $this->getFacade()->getProductDataImportForImport();
+
+        $store = $_SERVER[self::APPLICATION_STORE];
+        $productDataImport = $this->getFacade()->getProductDataImportForImport($store);
 
         $storageClient = $this->getFactory()->getStorageClient();
-        $storageClient->set(static::DATA_IMPORT_KEY, true);
 
-        if ($productDataImport) {
-            Propel::disableInstancePooling();
+        if ($storageClient->get(static::DATA_IMPORT_KEY) === null) {
+            $storageClient->set(static::DATA_IMPORT_KEY, true);
 
-            $output->writeln(' <fg=yellow> Prepare import</>');
-            $this->getFacade()->prepareImportFile($productDataImport);
+            if ($productDataImport) {
+                Propel::disableInstancePooling();
 
-            $progressBar->advance();
+                $output->writeln(' <fg=yellow> Prepare import</>');
+                $this->getFacade()->prepareImportFile($productDataImport);
 
-            try {
-                foreach (self::DATA_ENTITY_FOR_PRODUCT as $dataEntity) {
-                    $output->writeln(sprintf(' <fg=yellow> Start import: %s</>', $dataEntity));
-                    $this->getFacade()->import($productDataImport, $dataEntity);
-                    $progressBar->advance();
+                $progressBar->advance();
+
+                try {
+                    foreach (self::DATA_ENTITY_FOR_PRODUCT as $dataEntity) {
+                        $output->writeln(sprintf(' <fg=yellow> Start import: %s</>', $dataEntity));
+                        $this->getFacade()->import($productDataImport, $dataEntity);
+                        $progressBar->advance();
+                    }
+                    $this->getFacade()->setMainStatus($productDataImport->getIdProductDataImport());
+                } catch (Exception $e) {
+                    $storageClient->delete(static::DATA_IMPORT_KEY);
                 }
-                $this->getFacade()->setMainStatus($productDataImport->getIdProductDataImport());
-            } catch (Exception $e) {
-                $storageClient->delete(static::DATA_IMPORT_KEY);
+
+                $output->writeln(' <fg=yellow> Clear file</>');
+
+                $this->getFacade()->clearImportFile();
+                $progressBar->advance();
+
+                Propel::enableInstancePooling();
             }
+            $progressBar->finish();
 
-            $output->writeln(' <fg=yellow> Clear file</>');
+            $storageClient->delete(static::DATA_IMPORT_KEY);
 
-            $this->getFacade()->clearImportFile();
-            $progressBar->advance();
-
-            Propel::enableInstancePooling();
+            $output->writeln(' <fg=green> Finish</>');
+            $messenger->info(
+                sprintf(
+                    'You just executed %s!',
+                    static::COMMAND_NAME,
+                )
+            );
         }
-        $progressBar->finish();
-
-        $storageClient->delete(static::DATA_IMPORT_KEY);
-
-        $output->writeln(' <fg=green> Finish</>');
-        $messenger->info(
-            sprintf(
-                'You just executed %s!',
-                static::COMMAND_NAME,
-            )
-        );
 
         return static::CODE_SUCCESS;
     }
