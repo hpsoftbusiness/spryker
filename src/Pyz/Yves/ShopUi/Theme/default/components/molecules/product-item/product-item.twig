@@ -108,7 +108,7 @@
                             } only %}
                         {% endif %}
                     </div>
-                    {% if benefitStore or shoppingPointsAmount %}
+                    {% if benefitVoucherDealEnabled or shoppingPointsDealEnabled %}
                         <div class="row {{ config.name }}{{ benefitClass }} {{ config.name }}__original_price }}">
                             {{- benefitPrice | money(true, data.currencyIsoCode) -}}
                         </div>
