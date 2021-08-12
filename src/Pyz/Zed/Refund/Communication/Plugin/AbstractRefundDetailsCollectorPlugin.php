@@ -64,6 +64,10 @@ abstract class AbstractRefundDetailsCollectorPlugin implements RefundDetailsColl
         usort(
             $refundDetailsTransfers,
             static function (RefundDetailTransfer $first, RefundDetailTransfer $second): int {
+                if (!$first->getCreatedAt() || !$second->getCreatedAt()) {
+                    return !$first->getCreatedAt() ? -1 : 1;
+                }
+
                 return strtotime($first->getCreatedAt()) - strtotime($second->getCreatedAt());
             }
         );
