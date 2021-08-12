@@ -67,6 +67,7 @@ abstract class AbstractRefundDetailsCollectorPlugin implements RefundDetailsColl
                 if (!$first->getCreatedAt() || !$second->getCreatedAt()) {
                     return !$first->getCreatedAt() ? -1 : 1;
                 }
+
                 return strtotime($first->getCreatedAt()) - strtotime($second->getCreatedAt());
             }
         );
