@@ -9,6 +9,7 @@ namespace Pyz\Zed\Cart;
 
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealQuoteChangeObserverPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Cart\RemoveMyWorldPaymentsChoicePlugin;
 use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
 use Pyz\Zed\ProductUrlCartConnector\Communication\Plugin\ProductUrlCartExpanderPlugin;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
@@ -128,6 +129,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
             new ConfiguredBundleQuantityPostSavePlugin(),
+            new RemoveMyWorldPaymentsChoicePlugin(),
         ];
     }
 
