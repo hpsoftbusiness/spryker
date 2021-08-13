@@ -12,6 +12,10 @@ $currencies = [
         'PT' => ['EUR'],
     ],
 ];
+$countriesPerStore = [
+    'IT' => ['IT', 'MT'],
+    'PT' => ['PT'],
+];
 
 if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     $activeStores = array_map('trim', explode(',', getenv('SPRYKER_ACTIVE_STORES')));
@@ -57,14 +61,14 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     ];
 
     foreach ($activeStores as $store) {
-        $template['countries'] = [$store];
+        $template['countries'] = $countriesPerStore[$store] ?? [$store];
         $template['currencyIsoCode'] = $currencies['currencyIsoCode'][$store] ?? 'EUR';
         $template['currencyIsoCodes'] = $currencies['currencyIsoCodes'][$store] ?? ['EUR'];
         $stores[$store] = $template;
         $stores[$store]['storesWithSharedPersistence'] = array_diff($activeStores, [$store]);
         $stores[$store]['queuePools']['synchronizationPool'] = array_map(
             static function ($store) {
-                return $store . '-connection';
+                return $store.'-connection';
             },
             $activeStores
         );

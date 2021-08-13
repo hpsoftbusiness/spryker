@@ -80,7 +80,7 @@ use SprykerShop\Shared\ShopUi\ShopUiConstants;
 // ------------------------------ CODEBASE: TO REMOVE -------------------------
 // ----------------------------------------------------------------------------
 
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR.'/vendor/spryker';
 
 $config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = true;
 $config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = true;
@@ -111,8 +111,8 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 
 // >>> ERROR HANDLING
 
-$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/5xx.html';
-$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/5xx.html';
+$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR.'/public/Yves/errorpage/5xx.html';
+$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR.'/public/Zed/errorpage/5xx.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
 
 // >>> CMS
@@ -137,7 +137,7 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 // >>> TESTING
 
 if (class_exists(TestifyConstants::class)) {
-    $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+    $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR.'/Generated/Glue/Specification/spryker_rest_api.schema.yml';
     $config[TestifyConstants::BOOTSTRAP_CLASS_YVES] = YvesBootstrap::class;
     $config[TestifyConstants::BOOTSTRAP_CLASS_ZED] = ZedBootstrap::class;
 }
@@ -425,10 +425,10 @@ $defaultConnection = [
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
 foreach ($rabbitConnections as $key => $connection) {
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = $defaultConnection;
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_CONNECTION_NAME] = $key . '-connection';
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_CONNECTION_NAME] = $key.'-connection';
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_STORE_NAMES] = [$key];
     foreach ($connection as $constant => $value) {
-        $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
+        $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class.'::'.$constant)] = $value;
     }
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === APPLICATION_STORE;
 }
@@ -469,12 +469,12 @@ $config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [];
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     'files' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => APPLICATION_ROOT_DIR . '/data/DE/media/',
+        'root' => APPLICATION_ROOT_DIR.'/data/DE/media/',
         'path' => 'files/',
     ],
     'files-import' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => APPLICATION_ROOT_DIR . '/data/DE/import-files/',
+        'root' => APPLICATION_ROOT_DIR.'/data/DE/import-files/',
         'path' => 'files/',
     ],
     'aws-files-import' => [
@@ -489,7 +489,7 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     ],
     'product-import' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => APPLICATION_ROOT_DIR . '/data/import/common/DE/',
+        'root' => APPLICATION_ROOT_DIR.'/data/import/common/DE/',
         'path' => 'upload-file/',
     ],
 ];
@@ -511,7 +511,7 @@ $zedPort = ((int)getenv('SPRYKER_ZED_PORT')) ?: $zedDefaultPort;
 $config[ZedRequestConstants::HOST_ZED_API] = sprintf(
     '%s%s',
     getenv('SPRYKER_ZED_HOST') ?: 'not-configured-host',
-    $zedPort !== $zedDefaultPort ? ':' . $zedPort : ''
+    $zedPort !== $zedDefaultPort ? ':'.$zedPort : ''
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
@@ -545,12 +545,12 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[ProductManagementConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
     = sprintf(
-        'https://%s%s',
-        $yvesHost,
-        $yvesPort !== 443 ? ':' . $yvesPort : ''
-    );
+    'https://%s%s',
+    $yvesHost,
+    $yvesPort !== 443 ? ':'.$yvesPort : ''
+);
 
-$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/' . (getenv('SPRYKER_BUILD_HASH') ?: 'current') . '/%theme%/';
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/'.(getenv('SPRYKER_BUILD_HASH') ?: 'current').'/%theme%/';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ API -----------------------------------------
@@ -560,10 +560,10 @@ $glueHost = getenv('SPRYKER_API_HOST') ?: 'localhost';
 $gluePort = (int)(getenv('SPRYKER_API_PORT')) ?: 443;
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN]
     = sprintf(
-        'https://%s%s',
-        $glueHost,
-        $gluePort !== 443 ? ':' . $gluePort : ''
-    );
+    'https://%s%s',
+    $glueHost,
+    $gluePort !== 443 ? ':'.$gluePort : ''
+);
 
 if (class_exists(TestifyConstants::class)) {
     $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
@@ -636,4 +636,23 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'RO' => ['en' => 'en_US', 'ro' => 'ro_RO'],
     'SK' => ['en' => 'en_US', 'sk' => 'sk_SK'],
     'SL' => ['en' => 'en_US', 'sl' => 'sl_SI'],
+    'BE' => ['en' => 'en_US', 'nl' => 'nl_BE', 'fr' => 'fr_ BE'],
+    'BG' => ['en' => 'en_US', 'bg' => 'bg_BG'],
+    'HR' => ['en' => 'en_US', 'hr' => 'hr_HR'],
+    'CZ' => ['en' => 'en_US', 'cs' => 'cs_CZ'],
+    'DK' => ['en' => 'en_US', 'da' => 'da_DK'],
+    'ES' => ['en' => 'en_US', 'es' => 'es_ES '],
+    'EE' => ['en' => 'en_US', 'et' => 'et_EE', 'ru' => 'ru_RU'],
+//    'FI' => ['en' => 'en_US', 'fi' => 'fi_FI', 'sv' => 'sv_FI'],
+    'FR' => ['en' => 'en_US', 'fr' => 'fr_FR'],
+    'GR' => ['en' => 'en_US', 'el' => 'el_GR'],
+    'HU' => ['en' => 'en_US', 'hu' => 'hu_HU'],
+    'IE' => ['en' => 'en_IE'],
+    'LV' => ['en' => 'en_US', 'lv' => 'lv_LV', 'ru' => 'ru_RU'],
+    'LT' => ['en' => 'en_US', 'lt' => 'lt_LT', 'ru' => 'ru_RU'],
+    'NL' => ['en' => 'en_US', 'nl' => 'nl_NL'],
+    'NO' => ['en' => 'en_US', 'nn' => 'nn_NO '],
+//    'SE' => ['en' => 'en_US', 'sv' => 'sv_SE'],
+    'CH' => ['en' => 'en_US', 'de' => 'de_CH', 'it' => 'it_CH', 'fr' => 'fr_CH'],
+    'GB' => ['en' => 'en_GB'],
 ];
