@@ -7,7 +7,6 @@ export default class BenefitDealSummary extends Component {
     protected finalAmountSelector: string;
     protected recalculateRoute: string;
     protected benefitVouchersAmountSelector: string;
-    protected benefitVouchersAmountId: string;
     protected totalUsedShoppingPointsSelector: string;
     protected readyCallback(): void {
     }
@@ -19,7 +18,6 @@ export default class BenefitDealSummary extends Component {
         this.recalculateRoute = '/calculation/recalculate';
         this.finalAmountSelector = '#benefit-deal-summary__final-amount';
         this.totalUsedShoppingPointsSelector = '.benefit-deal-summary__total-used-shopping-points';
-
         $(this.useShoppingPointSelector).prop('checked', true);
         this.recalculatePriceToPay();
         this.onInputChange();
@@ -27,8 +25,12 @@ export default class BenefitDealSummary extends Component {
 
     protected onInputChange(): void {
         let self = this;
+        let timer, delay = 750;
         $(self.benefitVouchersAmountSelector).on('input', function() {
-            self.recalculatePriceToPay();
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                self.recalculatePriceToPay();
+            }, delay);
         });
     }
 
@@ -37,7 +39,7 @@ export default class BenefitDealSummary extends Component {
         $.post(self.recalculateRoute, self.getRecalculateCallData(), function(data) {
             $(self.finalAmountSelector).text(data.totals_formatted.price_to_pay);
             self.updateTotalUsedShoppingPoints(data);
-            document.getElementById(self.benefitVouchersAmountId).value = data.total_used_benefit_vouchers_amount / 100;
+            $(self.benefitVouchersAmountSelector).val(data.total_used_benefit_vouchers_amount / 100);
         });
     }
 

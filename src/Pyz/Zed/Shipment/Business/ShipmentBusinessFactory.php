@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Shipment\Business;
 
+use Pyz\Zed\Shipment\Business\Model\DefaultShipmentMethodQuoteExpander;
 use Pyz\Zed\Shipment\Business\Model\ShipmentTaxRateCalculator;
 use Spryker\Zed\Shipment\Business\ShipmentBusinessFactory as SprykerShipmentBusinessFactory;
 
@@ -22,5 +23,13 @@ class ShipmentBusinessFactory extends SprykerShipmentBusinessFactory
             $this->getTaxFacade(),
             $this->getShipmentService()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\Shipment\Business\Model\DefaultShipmentMethodQuoteExpanderInterface
+     */
+    public function createDefaultShipmentMethodQuoteExpander()
+    {
+        return new DefaultShipmentMethodQuoteExpander($this->getRepository());
     }
 }

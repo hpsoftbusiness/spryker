@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Quote;
 
+use Pyz\Zed\Shipment\Communication\Plugin\DefaultShipmentMethodQuoteExpandBeforeCreatePlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Quote\DefaultCurrencyQuoteExpandBeforeCreatePlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Quote\QuoteCurrencyValidatorPlugin;
 use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
@@ -34,6 +35,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new DefaultCurrencyQuoteExpandBeforeCreatePlugin(),
+            new DefaultShipmentMethodQuoteExpandBeforeCreatePlugin(),
         ];
     }
 }

@@ -3,7 +3,7 @@
         margin-top: rem(26);
 
         &__total-amount {
-            background-color: #d3d3d3;
+            background-color: #F4F4F4;
         }
 
         &__benefit-voucher-amount-container {
@@ -76,6 +76,16 @@
             margin-top: -1.2em;
             margin-right: -17.6em;
             float: right;
+        }
+
+        &__tax {
+            color: $setting-color-gray-5;
+            font-size: rem(13);
+            margin-top: rem(10);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                font-size: rem(14);
+            }
         }
     }
 }

@@ -87,16 +87,6 @@
                                     </div>
                                 {% endblock %}
 
-                                {% block options %}
-                                    {% if data.productItem.concreteAttributes is not empty %}
-                                        <ul>
-                                            {% for key, item in data.productItem.concreteAttributes | filterAttributes %}
-                                                <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                {% endblock %}
-
                                 {% block bundles %}
                                     {% include molecule('cart-bundle-list', 'ProductBundleWidget') ignore missing with {
                                         data: {

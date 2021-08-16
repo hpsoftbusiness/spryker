@@ -86,6 +86,11 @@
         <property name="turnoverAmount" type="int"/>
     </transfer>
 
+    <transfer name="Totals">
+        <property name="subtotalWithDeals" type="int"/>
+        <property name="grandTotalWithDeals" type="int"/>
+    </transfer>
+
     <transfer name="BenefitVoucherDealData">
         <property name="isStore" type="bool" description="Flag that define is the product can use benefit voucher"/>
         <property name="amount" type="int" description="Amount of BV needs to change to provide new sales price"/>

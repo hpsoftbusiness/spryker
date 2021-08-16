@@ -1,13 +1,12 @@
-@mixin shop-ui-order-card-item($name: '.order-card-item') {
-    $image-width: rem(120);
+@mixin shop-ui-product-card-item($name: '.product-card-item-card-block') {
+    $image-width: rem(110);
     $image-width-with-checkbox: rem(158);
-    $image-small-width: rem(100);
+    $image-small-width: rem(90);
     $additional-info-width: rem(350);
-    $benefit-voucher-main-color: #ff902e;
 
     #{$name} {
         &__title {
-            font: fw(medium) rem(17)/rem(23) $setting-font-family;
+            font: fw(regular) rem(16) $setting-font-family;
 
             &:hover {
                 text-decoration: none;
@@ -16,8 +15,8 @@
 
             &--mini-cart {
                 font-size: rem(15);
-                line-height: rem(20);
-                margin-bottom: rem(5);
+                line-height: rem(21);
+                font-weight: fw(regular);
             }
 
             &--secondary {
@@ -56,6 +55,10 @@
             }
         }
 
+        &__margin-bottom {
+            margin-bottom: rem(20);
+        }
+
         &__image {
             width: $image-width;
 
@@ -73,38 +76,41 @@
         }
 
         &__price {
+            font: fw(medium) rem(17)/rem(23) $setting-font-family;
             text-align: left;
-            font: fw(medium) rem(15)/rem(17) $setting-font-family;
-            line-height: 1.7;
-            width: auto;
-            align-self: flex-start;
 
             @include helper-breakpoint-media-min($lg-min) {
                 text-align: right;
             }
-        }
 
-        &__vat {
-            padding-left: 0.3em;
-            font: fw(regular) rem(15)/rem(17) $setting-font-family;
-        }
-
-        &__benefit {
-            & > svg {
-                margin-top: -0.2em;
-                margin-left: 0.1em
+            &--mini-cart {
+                font-size: rem(15);
+                line-height: rem(20);
+                align-self: flex-start;
             }
-        }
 
-        &__benefit-amount {
-            @include helper-font-weight(bold);
-            line-height: map-get($setting-font-line-height, default);
-            color: $benefit-voucher-main-color;
+            &--secondary,
+            &--alternative {
+                text-align: left;
+                font: fw(medium) rem(15)/rem(17) $setting-font-family;
+                width: 100%;
+                margin-bottom: rem(5);
+            }
+
+            &--alternative {
+                @include helper-breakpoint-media-min($lg-min) {
+                    text-align: right;
+                    width: auto;
+                    margin: rem(10) 0;
+                    align-self: flex-start;
+                }
+            }
         }
 
         &__option {
             &--mini-cart {
-                font: fw(regular) rem(13)/rem(17) $setting-font-family;
+                font: fw(regular) rem(13)/rem(15) $setting-font-family;
+                color:$setting-color-gray-5;
             }
         }
 
@@ -182,14 +188,14 @@
         }
 
         &--right-indent-from-tablet {
+            margin-top: 3rem;
             @include helper-breakpoint-media-min($lg-min) {
                 padding-right: rem(20);
             }
         }
 
         &__benefit-deal {
-            @include helper-font-weight(bold);
-
+            font-size: rem(12);
             @include helper-breakpoint(lg) {
                 text-align: right;
             }
@@ -209,12 +215,51 @@
             color: $setting-color-yellow;
         }
 
-        &__quantity {
-            font: fw(regular) rem(16) $setting-font-family;
+        &__original_price {
+            @include helper-font-size(small);
+            display: block;
+            color: $setting-color-dark;
+            text-decoration: line-through;
+        }
+
+        &--shopping_points {
+            color: $setting-color-cashback;
+        }
+
+        &--benefit_voucher {
+            color: $setting-color-lyconet;
+
+        }
+
+        &--deal-benefit {
+            color: #ff902e;
+        }
+
+        &__delete-product {
+            font-size: 0.9375rem;
             color: #909090;
+            margin-bottom: 5px;
+        }
+
+        &__quantity2 {
+            font-size: rem(15);
+            color: #909090;
+        }
+
+        &--deal-vouchers {
+            color: #5cb885;
+        }
+
+        &__price-bottom {
+            font: fw(regular) rem(14) $setting-font-family;
         }
 
         @content;
     }
 }
-@include shop-ui-order-card-item();
+
+@include shop-ui-product-card-item();
+
+.money-price__amount {
+    font: fw(medium) rem(20)/rem(16) $setting-font-family;
+}

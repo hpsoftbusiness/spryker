@@ -39,8 +39,9 @@ class CalculationController extends AbstractController
             ->getCartClient()
             ->getQuote();
 
-        $totalVoucherAmount = (int)($requestData['total_used_benefit_voucher_amount'] ?? 0);
-        $totalVoucherAmount *= 100;
+        $totalVoucherAmount = (string)($requestData['total_used_benefit_voucher_amount'] ?? 0);
+        $totalVoucherAmount = bcmul($totalVoucherAmount, '100');
+        $totalVoucherAmount = (int)$totalVoucherAmount;
         $isBenefitVoucherUsed = (bool)($requestData['use_benefit_voucher'] ?? false);
         $quote->setUseBenefitVoucher($isBenefitVoucherUsed);
         $quote->setTotalUsedBenefitVouchersAmount($totalVoucherAmount);

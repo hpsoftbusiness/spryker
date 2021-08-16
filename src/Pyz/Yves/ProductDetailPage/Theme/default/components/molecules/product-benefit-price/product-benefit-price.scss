@@ -3,7 +3,7 @@
 
     #{$name} {
         &__title-text {
-            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            font: fw(medium) rem(28) $setting-font-family;
         }
 
         &__benefit-price-amount {
@@ -26,6 +26,10 @@
 
         &__plus {
             font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+        }
+
+        span.money-price:nth-child(1) > span:nth-child(1) {
+            color: #909090;
         }
 
         span.money-price:nth-child(2) > span:nth-child(1) {

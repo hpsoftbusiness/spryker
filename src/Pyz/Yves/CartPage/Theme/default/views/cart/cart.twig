@@ -35,8 +35,7 @@
             <div class="col col--sm-12 col--lg-8">
                 <div class="page-layout-cart__col page-layout-cart__col--content">
                     <div class="cart-box grid grid--middle grid--justify">
-                        <h3 class="col">{{ 'cart.title_content' | trans }}</h3>
-                        <span class="cart-box__quantity col">{{ app['cart.quantity'] }} {{ 'item' | trans }}</span>
+                        <h3 class="col">{{ 'cart.title_content' | trans }}&nbsp;({{ app['cart.quantity'] }} {{ 'item' | trans }})</h3>
                     </div>
                     <div class="page-layout-cart__items-wrap">
                         {% widget 'QuoteConfiguredBundleWidget'
@@ -62,6 +61,7 @@
                                         cashback: cartItem.concreteAttributes.cashback_amount | default(null),
                                         shoppingPoints: cartItem.concreteAttributes.shopping_points | default(null),
                                         customer: data.cart.customer | default(null),
+                                        showRemoveTranslation: true,
                                     },
                                 } only %}
                             {% endif %}

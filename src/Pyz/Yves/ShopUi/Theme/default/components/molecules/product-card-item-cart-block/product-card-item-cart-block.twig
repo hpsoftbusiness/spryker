@@ -65,7 +65,7 @@
                     {% if canEditCart %}
                         <span class="grid grid--middle grid--center">
                             {% if data.showRemoveTranslation %}
-                                <span class="{{ config.name }}__delete-product">{{- 'cart.delete.button' | trans -}}</span>&nbsp;
+                                <span class="{{ config.name }}__delete-product">{{- 'cart.delete.buttton' | trans -}}</span>&nbsp;
                             {% endif %}
                         </span>
                         {% widget 'RemoveFromCartFormWidget' args [data.productItem, random()] only %}
@@ -120,7 +120,7 @@
                         {% endif %}
                     {% endblock %}
 
-                    <div class="grid grid--justify grid--gap" style="margin-top: -1.6rem;">
+                    <div class="grid grid--justify grid--gap" style="margin-top: -0.8rem;">
                         <div class="col left">
                             {% block quantity %}
                                 {% if canEditCart %}
@@ -155,7 +155,7 @@
                                             {% set amountBenefitVochers = data.productItem.benefitVoucherDealData.amount * data.productItem.quantity %}
                                             {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
                                             {% set summaryUnitPrice = price * data.productItem.quantity %}
-                                            <div class="{{ config.name }}__benefit-deal ">
+                                            <div class="{{ config.name }}__benefit-deal" style="margin-top: -0.3em;">
                                                 <div>
                                                     <span class="{{ config.name }}">{{ summaryUnitPrice | money }}</span>
                                                     -&nbsp;
