@@ -28,6 +28,7 @@
             &--sidebar {
                 @include helper-breakpoint-media-min($lg-min) {
                     padding-left: rem(20);
+                    border-left: rem(1) dotted $setting-color-gray-3;
                 }
             }
         }

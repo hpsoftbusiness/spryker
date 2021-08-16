@@ -31,18 +31,13 @@
         }
 
         &__total {
+            text-transform: uppercase;
             font-size: rem(16);
             font-weight: fw(bold);
 
             @include helper-breakpoint-media-min($lg-min) {
                 font-size: rem(18);
             }
-        }
-
-        &__tax-vat {
-            font-size: rem(15);
-            color: #909090;
-            text-transform: lowercase;
         }
     }
 }

@@ -55,7 +55,8 @@
         }
 
         &__total-text {
-            font: fw(bold) rem(16) $setting-font-family;
+            text-transform: uppercase;
+            font: fw(medium) rem(14) $setting-font-family;
         }
 
         &__empty-text {
@@ -70,18 +71,6 @@
             opacity: 0.4;
             text-transform: capitalize;
         }
-
-        &__vat {
-            color: $setting-color-gray-5;
-            text-transform: lowercase;
-            font: fw(regular) rem(15)/rem(17) $setting-font-family;
-        }
-
-        &__subtotal-text {
-            color: $setting-color-gray-5;
-            font: fw(regular) rem(15) $setting-font-family;
-        }
-
 
         @content;
     }

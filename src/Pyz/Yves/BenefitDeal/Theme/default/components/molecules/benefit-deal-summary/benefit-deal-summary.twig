@@ -15,13 +15,12 @@
 {% block body %}
     <div class="{{ config.name }}__inner">
         <ul>
-            <br>
             <li class="{{ config.name }}__item {{ config.name }}__subtotal">
                 {{ 'cart.price.subtotal' | trans }}
-                <span class="float-right">{{ data.cart.totals.subtotalWithDeals | money }}</span>
+                <span class="float-right">{{ data.cart.totals.subtotal | money }}</span>
             </li>
             {% if data.cart.shipment is not empty and data.cart.shipment.method is not empty %}
-                <li class="{{ config.name }}__item spacing-y">
+                <li class="{{ config.name }}__item spacing-y spacing-y--bigger">
                     {{ 'cart.shipping' | trans }}
                     {{ data.cart.shipment.method.name }}
                     <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money }}</span>
@@ -30,7 +29,7 @@
 
             {% for expense in data.cart.expenses %}
                 {% if expense.type == 'THRESHOLD_EXPENSE_TYPE' %}
-                    <li class="{{ config.name }}__item spacing-y">
+                    <li class="{{ config.name }}__item spacing-y spacing-y--bigger">
                         {{ 'sales-order-threshold.strategy.soft-minimum-threshold-fixed-fee' | trans }}
                         <span class="float-right">{{ expense.sumPrice | money }}</span>
                     </li>
@@ -38,7 +37,7 @@
             {% endfor %}
 
             {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                class: config.name ~ '__item spacing-y',
+                class: config.name ~ '__item spacing-y spacing-y--bigger',
                 data: {
                     voucherDiscounts: data.cart.voucherDiscounts,
                     ruleDiscounts: data.cart.cartRuleDiscounts | filter (discount => discount.discountType != 'internal_discount') ,
@@ -48,8 +47,8 @@
             } only %}
 
             <li class="{{ config.name }}__item {{ config.name }}__total spacing-y spacing-y--bigger">
-                <strong>{{ 'cart.price.grand.total' | trans }}&nbsp;<span class="{{ config.name }}__tax">({{ 'cart.include.vat' | trans }})</span></strong>
-                <strong class="float-right">{{   data.cart.totals.grandTotalWithDeals | money }}</strong>
+                <strong>{{ 'cart.price.grand.total' | trans }}</strong>
+                <strong class="float-right">{{ data.cart.totals.grandTotal | money }}</strong>
             </li>
 
             <div class="{{ config.name }}__total-amount">
@@ -58,8 +57,7 @@
                 {{ 'checkout.step.benefit_deal.total_used_shopping_points' | trans }}
                 <div class="{{ config.name }}__benefit-voucher-amount-container">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong
-                        class="{{ config.name }}__total-used-shopping-points  customer-balance__point-balance"></strong>
+                    <strong class="{{ config.name }}__total-used-shopping-points  customer-balance__point-balance"></strong>
                     <svg class="icon" data-qa="component icon" title="shopping-point">
                         <use xlink:href="#:shopping-point"></use>
                     </svg> &nbsp; &nbsp;
@@ -74,15 +72,14 @@
                 <label class="{{ config.name }}__use-benefit">
                     {{ form_widget(data.form.totalUsedBenefitVouchersAmount, {
                         required: false,
-                        'attr': {'min': '0','step': '0.01'}
                     }) }}
                 </label>
 
                 <label class="{{ config.name }}__use-benefit">
-                    <span>{{ 'checkout.step.benefit_deal.benefit_voucher' | trans }}</span>
+                        <span>{{ 'checkout.step.benefit_deal.benefit_voucher' | trans }}</span>
                 </label>
                 <br>
-                <svg class="icon benefit" data-qa="component icon" title="benefit-point">
+                <svg class="icon benefit" data-qa="component icon" title="benefit-point" >
                     <use xlink:href="#:benefit-point"></use>
                 </svg>&nbsp;&nbsp;
             </div>
@@ -90,5 +87,4 @@
             <strong>{{ 'cart.total.price_to_pay' | trans }}</strong>
             <strong class="float-right" id="{{ config.name }}__final-amount"></strong>
         </ul>
-    </div>
 {% endblock %}

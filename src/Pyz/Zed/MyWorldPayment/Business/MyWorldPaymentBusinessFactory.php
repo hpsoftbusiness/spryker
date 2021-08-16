@@ -13,11 +13,9 @@ use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\CashbackPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherMarketerPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherPaymentCalculator;
-use Pyz\Zed\MyWorldPayment\Business\Calculator\GrandTotalWithDealsCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\MyWorldPaymentQuoteCalculatorInterface;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\SegmentNumberCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentCalculator;
-use Pyz\Zed\MyWorldPayment\Business\Calculator\SubtotalWithDealsCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\TurnoverCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\BenefitVoucherDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\CashbackDirectPaymentTransferGenerator;
@@ -150,22 +148,6 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createSegmentNumberCalculator()
     {
         return new SegmentNumberCalculator();
-    }
-
-    /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\SubtotalWithDealsCalculator
-     */
-    public function createSubtotalWithDealsCalculator()
-    {
-        return new SubtotalWithDealsCalculator();
-    }
-
-    /**
-     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\GrandTotalWithDealsCalculator
-     */
-    public function createGrandTotalWithDealsCalculator()
-    {
-        return new GrandTotalWithDealsCalculator();
     }
 
     /**

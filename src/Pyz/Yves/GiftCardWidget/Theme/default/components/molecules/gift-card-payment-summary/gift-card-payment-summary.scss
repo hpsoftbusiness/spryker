@@ -5,14 +5,8 @@
             margin: rem(24) 0;
         }
 
-        &__myworld_e_payment {
-            font-size: 0.9375rem;
-            color: #909090;
-        }
-
         @content;
     }
-
 }
 
 @include gift-card-widget-gift-card-payment-summary();

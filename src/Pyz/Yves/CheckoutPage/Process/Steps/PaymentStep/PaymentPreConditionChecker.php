@@ -19,8 +19,6 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
 {
     private const ERROR_NOT_ENOUGH_SHOPPING_POINTS = 'checkout.step.benefit_deal.error.not_enough_shopping_points_balance';
     private const ERROR_NOT_ENOUGH_BENEFIT_VOUCHER_BALANCE = 'checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance';
-    private const ERROR_MIN_AMOUNT_BENEFIT_VOUCHER_TO_SPENT = 'checkout.step.benefit_deal.error.not_spent_min_voucher_balance';
-    private const MIN_VOUCHER_AMOUNT_TO_SPENT_WHEN_HAS_VOUCHER = 1;
 
     /**
      * @var \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface
@@ -85,16 +83,22 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
             return false;
         }
 
-        if (!$this->hasSpentMinVoucherBalance($quoteTransfer, $customerBenefitVoucherBalance)) {
-            $this->addErrorMessage(self::ERROR_MIN_AMOUNT_BENEFIT_VOUCHER_TO_SPENT, [
-                '%needAmount%' => $this->integerToDecimalConverter->convert(self::MIN_VOUCHER_AMOUNT_TO_SPENT_WHEN_HAS_VOUCHER),
-                '%currency%' => $quoteTransfer->getCurrency()->getCode(),
-            ]);
+        return true;
+    }
 
-            return false;
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param int $benefitVoucherBalance
+     *
+     * @return bool
+     */
+    private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, int $benefitVoucherBalance): bool
+    {
+        if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
+            return true;
         }
 
-        return true;
+        return $quoteTransfer->getTotalUsedBenefitVouchersAmount() <= $benefitVoucherBalance;
     }
 
     /**
@@ -133,59 +137,11 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param int $benefitVoucherBalance
-     *
-     * @return bool
-     */
-    private function assertBenefitVoucherBalance(QuoteTransfer $quoteTransfer, int $benefitVoucherBalance): bool
-    {
-        if (!$this->hasBenefitDealsApplied($quoteTransfer)) {
-            return true;
-        }
-
-        return $quoteTransfer->getTotalUsedBenefitVouchersAmount() <= $benefitVoucherBalance;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return bool
      */
     protected function hasBenefitDealsApplied(QuoteTransfer $quoteTransfer): bool
     {
         return $quoteTransfer->getUseBenefitVoucher() && $quoteTransfer->getTotalUsedBenefitVouchersAmount();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param int $benefitVoucherBalance
-     *
-     * @return bool
-     */
-    private function hasSpentMinVoucherBalance(QuoteTransfer $quoteTransfer, int $benefitVoucherBalance): bool
-    {
-        if (!$this->hasBenefitProductInCart($quoteTransfer)) {
-            return true;
-        }
-
-        return $quoteTransfer->getTotalUsedBenefitVouchersAmount() > self::MIN_VOUCHER_AMOUNT_TO_SPENT_WHEN_HAS_VOUCHER && $benefitVoucherBalance > 0;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
-    protected function hasBenefitProductInCart(QuoteTransfer $quoteTransfer): bool
-    {
-        $hasBenefitProductsInCart = false;
-        foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            $benefitVoucherDealData = $itemTransfer->getBenefitVoucherDealData();
-            if ($benefitVoucherDealData && $benefitVoucherDealData->getAmount()) {
-                $hasBenefitProductsInCart = true;
-            }
-        }
-
-        return $hasBenefitProductsInCart;
     }
 }

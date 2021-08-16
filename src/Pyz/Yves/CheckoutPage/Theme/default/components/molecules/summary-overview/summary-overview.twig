@@ -23,16 +23,23 @@
 
 {% block body %}
     <li class="{{ config.name }}__list-item">
-        <span class="float-right">{{ data.prices.grandTotal | money }}</span>
+        <span class="float-right">{{ data.prices.subTotal | money }}</span>
         <span>{{ 'checkout.step.summary.sub_total' | trans }}</span>
-        {% for shipmentGroup in data.shipmentGroups %}
-            {% set shippingMethod = shipmentGroup.shipment.method %}
+    </li>
 
-            <div class="grid grid--justify">
-                <span class="col col--sm-8 col--lg-10">{{ 'Shipping standard' | trans }}</span>
-                <span class="col col--expand text-right">{{ shippingMethod.storeCurrencyPrice | money }}</span>
-            </div>
-        {% endfor %}
+    <li class="{{ config.name }}__list-item">
+        <span>{{ 'checkout.step.summary.shipment_costs_total' | trans }}</span>
+
+        <div class="spacing-top">
+            {% for shipmentGroup in data.shipmentGroups %}
+                {% set shippingMethod = shipmentGroup.shipment.method %}
+
+                <div class="grid grid--justify">
+                    <span class="col col--sm-8 col--lg-10 text-secondary">{{ shippingMethod.carrierName | trans }} - {{ shippingMethod.name }}</span>
+                    <span class="col col--expand text-right">{{ shippingMethod.storeCurrencyPrice | money }}</span>
+                </div>
+            {% endfor %}
+        </div>
     </li>
 
     {% if data.prices.discountTotal %}
@@ -51,15 +58,31 @@
         {% endblock %}
     {% endwidget %}
 
-
     <li class="{{ config.name }}__list-item">
-        <span><strong>{{ 'checkout.step.summary.grand_total' | trans }}</strong></span>
-        <strong class="float-right" >{{ data.prices.subTotal | money }}</strong>
-        <br>
         <span class="float-right">{{ data.prices.tax | money }}</span>
         <span>{{ 'checkout.step.summary.tax' | trans }}</span>
     </li>
 
+    <li class="{{ config.name }}__list-item {{ config.name }}__list-item--total">
+        <strong>{{ 'checkout.step.summary.grand_total' | trans }}</strong>
+        <strong class="float-right">{{ data.prices.grandTotal | money }}</strong>
+    </li>
+
+    {% if data.totalUsedShoppingPoints > 0 %}
+        <li class="list__item spacing-y">
+            {{ 'checkout.currency.my_world.shopping_points' | trans }}
+            <span class="float-right">
+            - {{ data.totalUsedShoppingPoints }}
+            {% include atom('icon') with {
+                class: config.name ~ '__icon',
+                modifiers: ['medium-up'],
+                data: {
+                    name: 'shopping-point',
+                },
+            } only %}
+            </span>
+        </li>
+    {% endif %}
 
     <li class="{{ config.name }}__list-item">
         {% include molecule('gift-card-payment-summary', 'GiftCardWidget') ignore missing with {

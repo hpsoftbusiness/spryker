@@ -25,18 +25,16 @@
 
         {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.quote]) %}
         {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
-        {% set shipmentCost = data.quote.totals.grandTotalWithDeals - data.quote.totals.subtotalWithDeals %}
 
         {% for item in transformedCartItems %}
             {% if not item.configuredBundleItem %}
-                {% embed molecule('product-card-item-cart-block') with {
+                {% embed molecule('product-card-item') with {
                     modifiers: ['mini-cart', 'readonly'],
                     data: {
                         productItem: item,
                         cashback: item.concreteAttributes.cashback_amount | default(null),
                         shoppingPoints: item.concreteAttributes.shopping_points | default(null),
                         customer: data.quote.customer | default(null),
-                        showRemoveTranslation: false,
                     }
                 } only %}
                     {% import _self as component %}
@@ -55,6 +53,12 @@
                                 <span class="col">{{ optionPrice | money }}</span>
                             </div>
                         {% endif %}
+
+                        {% for attributeName, attribute in data.productItem.concreteAttributes | filterAttributes %}
+                            <div class="{{ component.renderClass(config.name ~ '__option', modifiers) }}">
+                                {{ ('product.attribute.' ~ attributeName) | trans }}: {{ attribute }}
+                            </div>
+                        {% endfor %}
                     {% endblock %}
 
                     {% block quantity %}
@@ -70,19 +74,8 @@
         {% endfor %}
 
         <div class="{{ config.name }}__total grid grid--middle grid--justify">
-            <strong class="{{ config.name }}__subtotal-text col">{{ 'cart.price.subtotal' | trans }}</strong>
-            <strong class="{{ config.name }}__subtotal-text col">{{ data.quote.totals.subtotalWithDeals | money }}</strong>
-        </div>
-        <div class="{{ config.name }}__total grid grid--middle grid--justify">
-            <strong class="{{ config.name }}__subtotal-text col">{{ 'cart.shipping_standard' | trans }}</strong>
-            <span class="{{ config.name }}__subtotal-text col">{{ shipmentCost | money }}</span>
-        </div>
-        <div class="{{ config.name }}__total grid grid--middle grid--justify">
             <strong class="{{ config.name }}__total-text col">{{ 'cart.total' | trans }}</strong>
-            <span class="{{ config.name }}__vat" style="margin-left: -13rem;">
-                ({{ 'pdp.include.vat' | trans }})
-            </span>
-            <strong class="{{ config.name }}__total-text col">{{ data.quote.totals.grandTotalWithDeals | money }}</strong>
+            <strong class="{{ config.name }}__total-text col">{{ data.quote.totals.subTotal | money }}</strong>
         </div>
 
         {% set canProceedToCheckout = data.quote.items is not empty
