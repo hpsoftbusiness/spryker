@@ -68,7 +68,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
         $stores[$store]['storesWithSharedPersistence'] = array_diff($activeStores, [$store]);
         $stores[$store]['queuePools']['synchronizationPool'] = array_map(
             static function ($store) {
-                return $store.'-connection';
+                return $store . '-connection';
             },
             $activeStores
         );
