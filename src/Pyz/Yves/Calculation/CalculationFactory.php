@@ -8,6 +8,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\Calculation;
 
+use Pyz\Client\Quote\QuoteClientInterface;
 use Pyz\Yves\Calculation\Mapper\CalculationResponseMapper;
 use Spryker\Client\Cart\CartClientInterface;
 use Spryker\Client\Money\MoneyClientInterface;
@@ -38,6 +39,14 @@ class CalculationFactory extends AbstractFactory
     public function getMoneyClient(): MoneyClientInterface
     {
         return $this->getProvidedDependency(CalculationDependencyProvider::CLIENT_MONEY);
+    }
+
+    /**
+     * @return \Pyz\Client\Quote\QuoteClientInterface
+     */
+    public function getQuoteClient(): QuoteClientInterface
+    {
+        return $this->getProvidedDependency(CalculationDependencyProvider::CLIENT_QUOTE);
     }
 
     /**

@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraint;
 
 class CreditCardValidationGroupResolver
 {
-    public const GRAND_TOTAL_COVERED_BY_INTERNAL_PAYMENT_GROUP = 'GRAND_TOTAL_COVERED_BY_INTERNAL_PAYMENT_GROUP';
+    public const PRICE_TO_PAY_COVERED_BY_INTERNAL_PAYMENT_GROUP = 'PRICE_TO_PAY_COVERED_BY_INTERNAL_PAYMENT_GROUP';
 
     /**
      * @var \Pyz\Yves\Adyen\AdyenConfig
@@ -66,11 +66,11 @@ class CreditCardValidationGroupResolver
 
         $selectedInternalPaymentOptionId = $this->findUsedInternalPaymentMethodOptionId($quoteTransfer);
         if ($selectedInternalPaymentOptionId === null
-            || !$this->assertInternalPaymentCoversGrantTotalAmount($quoteTransfer, $selectedInternalPaymentOptionId)) {
+            || !$this->assertInternalPaymentCoversPriceToPay($quoteTransfer, $selectedInternalPaymentOptionId)) {
             return [Constraint::DEFAULT_GROUP];
         }
 
-        return [self::GRAND_TOTAL_COVERED_BY_INTERNAL_PAYMENT_GROUP];
+        return [self::PRICE_TO_PAY_COVERED_BY_INTERNAL_PAYMENT_GROUP];
     }
 
     /**
@@ -79,7 +79,7 @@ class CreditCardValidationGroupResolver
      *
      * @return bool
      */
-    private function assertInternalPaymentCoversGrantTotalAmount(QuoteTransfer $quoteTransfer, int $paymentOptionId): bool
+    private function assertInternalPaymentCoversPriceToPay(QuoteTransfer $quoteTransfer, int $paymentOptionId): bool
     {
         $customerTransfer = $quoteTransfer->getCustomer();
         if (!$customerTransfer) {
@@ -87,9 +87,9 @@ class CreditCardValidationGroupResolver
         }
 
         $customerBalance = $this->customerService->getCustomerBalanceAmountByPaymentOptionId($customerTransfer, $paymentOptionId);
-        $grandTotalAmount = $quoteTransfer->getTotals()->getGrandTotal();
+        $priceToPay = $quoteTransfer->getTotals()->getPriceToPay();
 
-        return $customerBalance >= $grandTotalAmount;
+        return $customerBalance >= $priceToPay;
     }
 
     /**

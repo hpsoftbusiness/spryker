@@ -55,13 +55,13 @@ export default class MyworldPayment extends Component {
     }
 
     protected hasInternalPaymentFullAmount(internalPaymentBalance: number): boolean {
-        const grandTotalAmount = this.getGrandTotalAmount();
+        const priceToPay = this.getPriceToPay();
 
-        return internalPaymentBalance >= grandTotalAmount;
+        return internalPaymentBalance >= priceToPay;
     }
 
-    protected getGrandTotalAmount(): number {
-        return $('.myworld-payment__container').data('grand-total');
+    protected getPriceToPay(): number {
+        return $('.myworld-payment__container').data('price-to-pay');
     }
 }
 

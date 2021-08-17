@@ -54,6 +54,8 @@ class CalculationController extends AbstractController
             ->getClient()
             ->recalculate($quote);
 
+        $this->getFactory()->getQuoteClient()->setQuote($quoteRecalculated);
+
         $responseTransfer = $this
             ->getFactory()
             ->createCalculationResponseMapper()
