@@ -17,6 +17,10 @@ $currencies = [
     ],
 ];
 
+$countriesPerStore = [
+    'SL' => ['SI'],
+];
+
 if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     $activeStores = array_map('trim', explode(',', getenv('SPRYKER_ACTIVE_STORES')));
 
@@ -63,7 +67,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     ];
 
     foreach ($activeStores as $store) {
-        $template['countries'] = [$store];
+        $template['countries'] = $countriesPerStore[$store] ?? [$store];
         $template['currencyIsoCode'] = $currencies['currencyIsoCode'][$store] ?? 'EUR';
         $template['currencyIsoCodes'] = $currencies['currencyIsoCodes'][$store] ?? ['EUR'];
         $stores[$store] = $template;

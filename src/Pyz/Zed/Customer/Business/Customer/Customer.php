@@ -7,9 +7,13 @@
 
 namespace Pyz\Zed\Customer\Business\Customer;
 
+use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Orm\Zed\Customer\Persistence\SpyCustomer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
+use Propel\Runtime\Collection\ObjectCollection;
+use Pyz\Zed\Customer\CustomerConfig;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Customer\Business\Customer\Customer as SprykerCustomer;
 use Spryker\Zed\Customer\Business\Customer\EmailValidatorInterface;
@@ -17,7 +21,6 @@ use Spryker\Zed\Customer\Business\CustomerExpander\CustomerExpanderInterface;
 use Spryker\Zed\Customer\Business\CustomerPasswordPolicy\CustomerPasswordPolicyValidatorInterface;
 use Spryker\Zed\Customer\Business\Exception\CustomerNotFoundException;
 use Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface;
-use Spryker\Zed\Customer\CustomerConfig;
 use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailInterface;
 use Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface;
 use Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface;
@@ -30,9 +33,14 @@ class Customer extends SprykerCustomer
     protected $postCustomerCreatePlugins;
 
     /**
+     * @var \Pyz\Zed\Customer\CustomerConfig
+     */
+    protected $customerConfig;
+
+    /**
      * @param \Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface $queryContainer
      * @param \Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface $customerReferenceGenerator
-     * @param \Spryker\Zed\Customer\CustomerConfig $customerConfig
+     * @param \Pyz\Zed\Customer\CustomerConfig $customerConfig
      * @param \Spryker\Zed\Customer\Business\Customer\EmailValidatorInterface $emailValidator
      * @param \Spryker\Zed\Customer\Dependency\Facade\CustomerToMailInterface $mailFacade
      * @param \Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface $localeQueryContainer
@@ -125,7 +133,9 @@ class Customer extends SprykerCustomer
             $customerEntity = $this->queryContainer->queryCustomerByEmail($customerTransfer->getEmail())
                 ->findOne();
         } elseif ($customerTransfer->getRestorePasswordKey()) {
-            $customerEntity = $this->queryContainer->queryCustomerByRestorePasswordKey($customerTransfer->getRestorePasswordKey())
+            $customerEntity = $this->queryContainer->queryCustomerByRestorePasswordKey(
+                $customerTransfer->getRestorePasswordKey()
+            )
                 ->findOne();
         }
 
@@ -133,12 +143,14 @@ class Customer extends SprykerCustomer
             return $customerEntity;
         }
 
-        throw new CustomerNotFoundException(sprintf(
-            'Customer not found by either ID `%s`, email `%s` or restore password key `%s`.',
-            $customerTransfer->getIdCustomer(),
-            $customerTransfer->getEmail(),
-            $customerTransfer->getRestorePasswordKey()
-        ));
+        throw new CustomerNotFoundException(
+            sprintf(
+                'Customer not found by either ID `%s`, email `%s` or restore password key `%s`.',
+                $customerTransfer->getIdCustomer(),
+                $customerTransfer->getEmail(),
+                $customerTransfer->getRestorePasswordKey()
+            )
+        );
     }
 
     /**
@@ -155,5 +167,31 @@ class Customer extends SprykerCustomer
         $addressTransfer->setCountry($countryTransfer);
 
         return $addressTransfer;
+    }
+
+    /**
+     * @param \Propel\Runtime\Collection\ObjectCollection $addressEntities
+     * @param \Orm\Zed\Customer\Persistence\SpyCustomer $customer
+     *
+     * @return \Generated\Shared\Transfer\AddressesTransfer
+     */
+    protected function entityCollectionToTransferCollection(ObjectCollection $addressEntities, SpyCustomer $customer)
+    {
+        $addressCollection = new AddressesTransfer();
+
+        foreach ($addressEntities as $address) {
+            $addressTransfer = $this->entityToTransfer($address);
+            if ($addressTransfer->getStore() === $this->customerConfig->getStore()) {
+                if ($customer->getDefaultBillingAddress() === $address->getIdCustomerAddress()) {
+                    $addressTransfer->setIsDefaultBilling(true);
+                }
+                if ($customer->getDefaultShippingAddress() === $address->getIdCustomerAddress()) {
+                    $addressTransfer->setIsDefaultShipping(true);
+                }
+                $addressCollection->addAddress($addressTransfer);
+            }
+        }
+
+        return $addressCollection;
     }
 }

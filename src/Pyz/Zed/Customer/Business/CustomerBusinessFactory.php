@@ -8,10 +8,17 @@
 namespace Pyz\Zed\Customer\Business;
 
 use Pyz\Zed\Customer\Business\Anonymizer\CustomerAnonymizer;
+use Pyz\Zed\Customer\Business\Customer\Address;
 use Pyz\Zed\Customer\Business\Customer\Customer;
 use Pyz\Zed\Customer\CustomerDependencyProvider;
 use Spryker\Zed\Customer\Business\CustomerBusinessFactory as SprykerCustomerBusinessFactory;
 
+/**
+ * @method \Pyz\Zed\Customer\CustomerConfig getConfig()
+ * @method \Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface getQueryContainer()
+ * @method \Spryker\Zed\Customer\Persistence\CustomerEntityManagerInterface getEntityManager()
+ * @method \Spryker\Zed\Customer\Persistence\CustomerRepositoryInterface getRepository()
+ */
 class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
 {
     /**
@@ -53,5 +60,20 @@ class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
     public function getPostCustomerCreatePlugins(): array
     {
         return $this->getProvidedDependency(CustomerDependencyProvider::PLUGINS_POST_CUSTOMER_CREATE);
+    }
+
+    /**
+     * @return \Spryker\Zed\Customer\Business\Customer\AddressInterface
+     */
+    public function createAddress()
+    {
+        return new Address(
+            $this->getQueryContainer(),
+            $this->getCountryFacade(),
+            $this->getLocaleFacade(),
+            $this->createCustomerExpander(),
+            $this->getRepository(),
+            $this->getConfig()
+        );
     }
 }

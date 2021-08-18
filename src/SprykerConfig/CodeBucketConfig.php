@@ -31,7 +31,7 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
             'FR',
             'GR',
             'IE',
-            'UK',
+            'GB',
             'HU',
             'LV',
             'LT',

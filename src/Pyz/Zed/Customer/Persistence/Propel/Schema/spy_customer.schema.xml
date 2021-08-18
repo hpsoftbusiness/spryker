@@ -24,6 +24,7 @@
         <column name="address4" size="255" type="VARCHAR"/>
         <column name="vat_number" size="255" type="VARCHAR"/>
         <column name="state" size="255" type="VARCHAR"/>
+        <column name="store" size="2" type="VARCHAR"/>
     </table>
 
 </database>

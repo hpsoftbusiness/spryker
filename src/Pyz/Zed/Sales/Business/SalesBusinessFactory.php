@@ -7,10 +7,12 @@
 
 namespace Pyz\Zed\Sales\Business;
 
+use Pyz\Zed\Sales\Business\Customer\PaginatedCustomerOrderOverview;
 use Pyz\Zed\Sales\Business\Model\OrderItem\OrderItemTransformer;
 use Pyz\Zed\Sales\Business\Order\OrderHydrator as OrderHydratorWithMultiShippingAddress;
 use Pyz\Zed\Sales\Persistence\Propel\Mapper\SalesOrderItemMapper;
 use Pyz\Zed\Sales\SalesDependencyProvider;
+use Spryker\Zed\Sales\Business\Model\Customer\CustomerOrderOverviewInterface;
 use Spryker\Zed\Sales\Business\Model\OrderItem\OrderItemTransformerInterface;
 use Spryker\Zed\Sales\Business\Order\OrderHydratorInterface;
 use Spryker\Zed\Sales\Business\SalesBusinessFactory as SprykerSalesBusinessFactory;
@@ -103,5 +105,19 @@ class SalesBusinessFactory extends SprykerSalesBusinessFactory
     public function getOrderItemTransformerPlugins(): array
     {
         return $this->getProvidedDependency(SalesDependencyProvider::PLUGINS_ORDER_ITEM_TRANSFORMER);
+    }
+
+    /**
+     * @return \Spryker\Zed\Sales\Business\Model\Customer\CustomerOrderOverviewInterface
+     */
+    public function createPaginatedCustomerOrderOverview(): CustomerOrderOverviewInterface
+    {
+        return new PaginatedCustomerOrderOverview(
+            $this->getQueryContainer(),
+            $this->createCustomerOrderOverviewHydrator(),
+            $this->getOmsFacade(),
+            $this->getSearchOrderExpanderPlugins(),
+            $this->getStore()
+        );
     }
 }
