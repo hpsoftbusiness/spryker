@@ -12,7 +12,6 @@ use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Pyz\Zed\ProductManagement\Communication\Controller\IndexController;
 use Spryker\Service\UtilText\Model\Url\Url;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 use Spryker\Zed\ProductManagement\Communication\Table\ProductTable as SprykerProductTable;
 
@@ -133,7 +132,7 @@ class ProductTable extends SprykerProductTable
             static::COL_VARIANT_COUNT => $productAbstractEntity->getSpyProducts()->count(),
             static::COL_STATUS => $this->getAbstractProductStatusLabel($productAbstractEntity),
             static::COL_PRODUCT_TYPES => 'Product',
-            static::COL_STORE_RELATION => sprintf('<span class="label label-info">%s</span>', Store::getInstance()->getStoreName()),
+            static::COL_STORE_RELATION => $this->getStoreNames($productAbstractEntity->getIdProductAbstract()),
             static::COL_ACTIONS => implode(' ', $this->createActionColumn($productAbstractEntity)),
         ];
 
