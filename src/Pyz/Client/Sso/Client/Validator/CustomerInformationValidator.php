@@ -30,7 +30,10 @@ class CustomerInformationValidator implements CustomerInformationValidatorInterf
     public function isValid(array $data): bool
     {
         foreach (static::CUSTOMER_INFORMATION_KEYS as $key) {
-            if (!isset($data[static::KEY_DATA][$key])) {
+            /** @var array $keyDataArray */
+            $keyDataArray = $data[static::KEY_DATA] ?? [];
+
+            if (!array_key_exists($key, $keyDataArray)) {
                 return false;
             }
         }
