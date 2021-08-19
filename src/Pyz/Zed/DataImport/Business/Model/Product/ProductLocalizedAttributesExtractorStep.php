@@ -116,7 +116,8 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
 
             foreach ($this->defaultAttributes as $defaultAttribute) {
                 $defaultAttributeValue = $dataSet[$defaultAttribute . '.' . $localeName] ?? static::DEFAULT_VALUE;
-                if ($defaultAttribute === self::KEY_PRODUCT_NAME) {
+
+                if ($defaultAttribute === self::KEY_PRODUCT_NAME && $defaultAttributeValue === static::DEFAULT_VALUE) {
                     $defaultAttributeValue = $dataSet[$defaultAttribute . '.' . $localeName] ?? $this->sku;
                 }
 //                if ($defaultAttributeValue === null) {
@@ -280,7 +281,7 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
         }
         $existedLocalizedValues = $existLocalizedAttribute[static::LOCALIZED_ATTRIBUTE_MAP[$key]] ?? static::DEFAULT_VALUE;
 
-        if ($value !== static::DEFAULT_VALUE && $value !== $existedLocalizedValues) {
+        if ($value !== static::DEFAULT_VALUE && $value !== $existedLocalizedValues && $value !== $this->sku) {
             return $value;
         }
         if ($value === static::DEFAULT_VALUE && $key === self::KEY_PRODUCT_NAME &&
