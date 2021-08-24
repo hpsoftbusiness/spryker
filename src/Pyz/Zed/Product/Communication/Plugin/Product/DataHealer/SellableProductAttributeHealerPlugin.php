@@ -197,8 +197,9 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
         $criteria = $this
             ->getQueryContainer()
             ->queryProduct()
-            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
-            ->addOr("spy_product.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->filterByAttributes('%"sellable_%":"0"%', Criteria::LIKE)
+            ->addOr("spy_product.attributes", '%"sellable_%":"1"%', Criteria::LIKE)
+            ->addOr("spy_product.attributes", '%"sellable_%":"",%', Criteria::LIKE)
             ->orderByIdProduct();
 
         return $this->paginateCriteria($criteria);
@@ -212,8 +213,9 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
         $criteria = $this
             ->getQueryContainer()
             ->queryProductAbstract()
-            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
-            ->addOr("spy_product_abstract.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->filterByAttributes('%"sellable_%":"0"%', Criteria::LIKE)
+            ->addOr("spy_product_abstract.attributes", '%"sellable_%":"1"%', Criteria::LIKE)
+            ->addOr("spy_product_abstract.attributes", '%"sellable_%":"",%', Criteria::LIKE)
             ->orderByIdProductAbstract();
 
         return $this->paginateCriteria($criteria);
@@ -228,8 +230,9 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
             ->getQueryContainer()
             ->queryProductAbstractLocalizedAttributes(1)
             ->clear()
-            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
-            ->addOr("spy_product_abstract_localized_attributes.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->filterByAttributes('%"sellable_%":"0"%', Criteria::LIKE)
+            ->addOr("spy_product_abstract_localized_attributes.attributes", '%"sellable_%":"1"%', Criteria::LIKE)
+            ->addOr("spy_product_abstract_localized_attributes.attributes", '%"sellable_%":""%', Criteria::LIKE)
             ->orderByIdAbstractAttributes();
 
         return $this->paginateCriteria($criteria);
@@ -244,8 +247,9 @@ class SellableProductAttributeHealerPlugin extends AbstractPlugin implements Pro
             ->getQueryContainer()
             ->queryProductLocalizedAttributes(1)
             ->clear()
-            ->filterByAttributes("%\"sellable_de\":\"0\"%", Criteria::LIKE)
-            ->addOr("spy_product_localized_attributes.attributes", "%\"sellable_de\":\"1\"%", Criteria::LIKE)
+            ->filterByAttributes('%"sellable_%":"0"%', Criteria::LIKE)
+            ->addOr("spy_product_localized_attributes.attributes", '%"sellable_%":"1"%', Criteria::LIKE)
+            ->addOr("spy_product_localized_attributes.attributes", '%"sellable_%":""%', Criteria::LIKE)
             ->orderByIdProductAttributes();
 
         return $this->paginateCriteria($criteria);
