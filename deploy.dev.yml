@@ -14,6 +14,7 @@ image:
             "opcache.enable_cli": 0
             "opcache.enable": 1
             "apc.enable_cli": 1
+            "log_errors_max_len": 0
         enabled-extensions:
             - blackfire
 composer:

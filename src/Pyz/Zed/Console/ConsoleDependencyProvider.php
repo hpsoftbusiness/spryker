@@ -12,11 +12,13 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
+use Pyz\Zed\MyWorldMarketplaceApi\Communication\Console\UpdateEmptyTurnoverReferenceConsole;
 use Pyz\Zed\Product\Communication\Console\ProductDataHealerConsole;
 use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Pyz\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Pyz\Zed\QueueErrorChecker\Communication\Console\QueueErrorCheckerConsole;
+use Pyz\Zed\Sales\Communication\Console\UpdateEmptyTurnoverAmountConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -342,6 +344,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ProductOfferValidityConsole(),
             new ProductDataHealerConsole(),
             new QueueErrorCheckerConsole(),
+
+            new UpdateEmptyTurnoverAmountConsole(),
+            new UpdateEmptyTurnoverReferenceConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

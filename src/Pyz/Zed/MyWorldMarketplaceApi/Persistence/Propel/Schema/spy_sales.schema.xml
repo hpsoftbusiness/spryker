@@ -7,6 +7,6 @@
     <table name="spy_sales_order_item">
         <column name="is_turnover_created" type="BOOLEAN" required="true" default="false"/>
         <column name="is_turnover_cancelled" type="BOOLEAN" required="true" default="false"/>
+        <column name="turnover_reference" type="VARCHAR" size="255" required="false"/>
     </table>
-
 </database>

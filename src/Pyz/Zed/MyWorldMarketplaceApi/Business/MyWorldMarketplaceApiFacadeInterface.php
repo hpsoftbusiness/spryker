@@ -8,24 +8,22 @@
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business;
 
 use Generated\Shared\Transfer\OrderTransfer;
-use Generated\Shared\Transfer\TurnoverTransfer;
 
 interface MyWorldMarketplaceApiFacadeInterface
 {
     /**
-     * @param int[] $orderItemIds
+     * @param int $orderItemId
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return void
      */
-    public function createTurnover(array $orderItemIds, OrderTransfer $orderTransfer): void;
+    public function createTurnover(int $orderItemId, OrderTransfer $orderTransfer): void;
 
     /**
-     * @param int[] $orderItemIds
+     * @param int $orderItemId
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\TurnoverTransfer $turnoverTransfer
      *
      * @return void
      */
-    public function cancelTurnover(array $orderItemIds, OrderTransfer $orderTransfer, TurnoverTransfer $turnoverTransfer): void;
+    public function cancelTurnover(int $orderItemId, OrderTransfer $orderTransfer): void;
 }

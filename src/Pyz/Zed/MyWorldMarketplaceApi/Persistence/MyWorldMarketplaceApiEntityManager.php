@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Persistence;
 
+use Orm\Zed\Sales\Persistence\Base\SpySalesOrderItem;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 
 /**
@@ -15,36 +16,53 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 class MyWorldMarketplaceApiEntityManager extends AbstractEntityManager implements MyWorldMarketplaceApiEntityManagerInterface
 {
     /**
-     * @param int[] $orderItemIds
-     * @param bool $isTurnoverCreated
+     * @param int $orderItemId
      *
      * @return void
      */
-    public function setIsTurnoverCreated(array $orderItemIds, bool $isTurnoverCreated = true): void
+    public function setTurnoverCreated(int $orderItemId): void
     {
-        $salesOrderItemQuery = $this->getFactory()->getSalesOrderItemPropelQuery();
-        $salesOrderItemEntities = $salesOrderItemQuery->filterByIdSalesOrderItem_In($orderItemIds)->find();
-
-        foreach ($salesOrderItemEntities as $salesOrderItemEntity) {
-            $salesOrderItemEntity->setIsTurnoverCreated($isTurnoverCreated);
-            $salesOrderItemEntity->save();
-        }
+        $this->findOrderItemById($orderItemId)
+            ->setIsTurnoverCreated(true)
+            ->save();
     }
 
     /**
-     * @param int[] $orderItemIds
-     * @param bool $isTurnoverCancelled
+     * @param int $orderItemId
      *
      * @return void
      */
-    public function setIsTurnoverCancelled(array $orderItemIds, bool $isTurnoverCancelled = true): void
+    public function setTurnoverCancelled(int $orderItemId): void
     {
-        $salesOrderItemQuery = $this->getFactory()->getSalesOrderItemPropelQuery();
-        $salesOrderItemEntities = $salesOrderItemQuery->filterByIdSalesOrderItem_In($orderItemIds)->find();
+        $this->findOrderItemById($orderItemId)
+            ->setIsTurnoverCancelled(true)
+            ->save();
+    }
 
-        foreach ($salesOrderItemEntities as $salesOrderItemEntity) {
-            $salesOrderItemEntity->setIsTurnoverCancelled($isTurnoverCancelled);
-            $salesOrderItemEntity->save();
-        }
+    /**
+     * @param int $orderItemId
+     * @param string $turnoverReference
+     *
+     * @return void
+     */
+    public function updateTurnoverReference(int $orderItemId, string $turnoverReference): void
+    {
+        $this->findOrderItemById($orderItemId)
+            ->setTurnoverReference($turnoverReference)
+            ->save();
+    }
+
+    /**
+     * @param int $orderItemId
+     *
+     * @return \Orm\Zed\Sales\Persistence\Base\SpySalesOrderItem
+     */
+    protected function findOrderItemById(int $orderItemId): SpySalesOrderItem
+    {
+        return $this->getFactory()
+            ->getSalesOrderItemPropelQuery()
+            ->filterByIdSalesOrderItem($orderItemId)
+            ->find()
+            ->getFirst();
     }
 }
