@@ -18,8 +18,10 @@
         }
 
         &__title {
-            @include helper-font-size(small);
+            font: fw(regular) rem(15) $setting-font-family;
             margin-bottom: map-get($setting-spacing, default);
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         &__benefites {
@@ -40,7 +42,7 @@
         }
 
         &__benefit-price {
-            @include helper-font-weight(bold);
+            font: fw(regular) rem(12) $setting-font-family;
             line-height: rem(20);
             display: flex;
             align-items: center;
@@ -94,8 +96,13 @@
             color: #5cb885;
         }
 
+        &__quantity {
+            font-size: rem(15);
+            color: #909090;
+        }
+
         .benefit-product-item__total-price {
-            font-size: 1rem;
+            font: fw(regular) rem(16) $setting-font-family;
         }
         @content;
     }

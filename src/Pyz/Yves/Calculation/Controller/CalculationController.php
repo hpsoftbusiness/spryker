@@ -72,7 +72,13 @@ class CalculationController extends AbstractController
          * @TODO Remove this typecasting once SP are refactored to be calculated in minor units.
          */
         $responseData = $responseTransfer->toArray();
-        $responseData['total_used_shopping_points_amount'] = (string)$responseTransfer->getTotalUsedShoppingPointsAmount();
+        $responseData['total_used_shopping_points_amount'] = $this
+            ->getFactory()
+            ->createCalculationResponseMapper()
+            ->getFormattedShoppingPointsAmount(
+                $responseTransfer->getTotalUsedShoppingPointsAmount(),
+                $this->getLocale()
+            );
 
         return $this->jsonResponse(
             $responseData

@@ -19,6 +19,7 @@ use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
 use Spryker\Yves\CmsContentWidget\Plugin\Twig\CmsContentWidgetTwigPlugin;
 use Spryker\Yves\Http\Plugin\Twig\HttpKernelTwigPlugin;
 use Spryker\Yves\Http\Plugin\Twig\RuntimeLoaderTwigPlugin;
+use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Translator\Plugin\Twig\TranslatorTwigPlugin;
 use Spryker\Yves\Twig\Plugin\FilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\Plugin\FormFilesystemTwigLoaderPlugin;
@@ -52,6 +53,35 @@ use SprykerShop\Yves\WebProfilerWidget\Plugin\Twig\WebProfilerTwigLoaderPlugin;
  */
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container)
+    {
+        $container = parent::provideDependencies($container);
+        $container = $this->addLocaleClient($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addLocaleClient(Container $container)
+    {
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
+            return $container->getLocator()->locale()->client();
+        });
+
+        return $container;
+    }
+
     /**
      * @return \Spryker\Shared\TwigExtension\Dependency\Plugin\TwigPluginInterface[]
      */

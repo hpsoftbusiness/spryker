@@ -1,8 +1,9 @@
 @mixin shop-ui-product-quantity-input($name: '.product-quantity-input') {
     #{$name} {
         &__label {
-            font: fw(light) rem(13) $setting-font-family;
-            margin-right: rem(10);
+            font: fw(medium) rem(16) $setting-font-family;
+            color:  $setting-color-gray-5;
+            margin-right: rem(16);
         }
     }
 }

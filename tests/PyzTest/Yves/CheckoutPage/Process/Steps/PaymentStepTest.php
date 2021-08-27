@@ -21,6 +21,7 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
 use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
+use Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientBridge;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\PaymentStep\PaymentPreConditionChecker;
@@ -515,6 +516,7 @@ class PaymentStepTest extends Unit
     private function createPreConditionChecker(): PreConditionCheckerInterface
     {
         return new PaymentPreConditionChecker(
+            $this->mockLocaleClient(),
             $this->mockFlashMessenger(),
             $this->mockTranslator(),
             $this->tester->getLocator()->customer()->service(),
@@ -600,5 +602,16 @@ class PaymentStepTest extends Unit
             CustomerTransfer::BALANCES => $balances,
             CustomerTransfer::CUSTOMER_REFERENCE => 'TEST_001',
         ]))->build();
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientBridge
+     */
+    private function mockLocaleClient(): CheckoutPageToLocaleClientBridge
+    {
+        return $this->getMockBuilder(CheckoutPageToLocaleClientBridge::class)
+            ->setConstructorArgs([$this->tester->getLocator()->locale()->client()])
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
     }
 }

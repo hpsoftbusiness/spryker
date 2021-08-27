@@ -138,6 +138,20 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return void
      */
+    public function recalculateQuoteSubtotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteGrandTotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
     public function recalculateOrderTurnover(CalculableObjectTransfer $calculableObjectTransfer): void;
 
     /**

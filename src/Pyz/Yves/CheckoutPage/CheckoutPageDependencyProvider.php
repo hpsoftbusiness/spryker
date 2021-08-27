@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage;
 
 use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
+use Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientBridge;
 use Pyz\Yves\Country\Plugin\CheckoutPage\CountryAddressExpanderPlugin;
 use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\DummyPaymentStepHandlerPlugin;
@@ -60,6 +61,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container = $this->addProductStorageClient($container);
         $this->addMyWorldMarketingApiClient($container);
         $this->addCurrencyClient($container);
+        $this->addLocaleClient($container);
         $this->addMessengerClient($container);
         $this->addPyzQuoteClient($container);
 
@@ -295,5 +297,21 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container->set(self::CLIENT_MESSENGER, static function (Container $container) {
             return $container->getLocator()->messenger()->client();
         });
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addLocaleClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
+            return new CheckoutPageToLocaleClientBridge(
+                $container->getLocator()->locale()->client()
+            );
+        });
+
+        return $container;
     }
 }

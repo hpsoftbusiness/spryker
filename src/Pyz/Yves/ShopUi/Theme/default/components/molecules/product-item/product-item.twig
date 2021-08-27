@@ -97,7 +97,7 @@
                             } only %}
                         {% elseif shoppingPointsDealEnabled %}
                             <span class="{{ config.name }}--shopping_points">
-                                - &nbsp; {{ shoppingPointsAmount }}
+                                - &nbsp; {{ shoppingPointsAmount | formatShoppingPoints }}
                             </span>
 
                             {% include atom('icon') with {

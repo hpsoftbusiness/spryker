@@ -93,6 +93,7 @@ cart.pre.check.shipment.failed,Impossible d'appliquer ces modifications. La mét
 cart.price,Prix,fr_FR
 cart.price.grand.total,Montant total,fr_FR
 cart.price.subtotal,Total,fr_FR
+cart.price.subtotal_wo_deals,Total,fr_FR
 cart.product-option,Options de produit,fr_FR
 cart.promotion.items,Produits promotionnels,fr_FR
 cart.quantity.adjusted,La quantité d'article demandée a été ajustée dans la mesure où la quantité sélectionnée n'est pas disponible.,fr_FR
@@ -1623,6 +1624,7 @@ cart.pre.check.shipment.failed,Non è possibile applicare queste modifiche. Il m
 cart.price,Prezzo,it_IT
 cart.price.grand.total,Importo totale,it_IT
 cart.price.subtotal,totale parziale,it_IT
+cart.price.subtotal_wo_deals,totale parziale,it_IT
 cart.product-option,Opzioni di prodotto,it_IT
 cart.promotion.items,Prodotti promozionali,it_IT
 cart.quantity.adjusted,La quantità dell'articolo richiesta è stata rettificata nella misura in cui la quantità selezionata non è disponibile.,it_IT
@@ -3157,6 +3159,7 @@ cart.pre.check.shipment.failed,Nie można zastosować tych zmian. Nie znaleziono
 cart.price,Cena £,pl_PL
 cart.price.grand.total,Całkowita kwota,pl_PL
 cart.price.subtotal,Suma częściowa,pl_PL
+cart.price.subtotal_wo_deals,Suma częściowa,pl_PL
 cart.product-option,Opcje produktu,pl_PL
 cart.promotion.items,Produkty promocyjne,pl_PL
 cart.quantity.adjusted,"Żądana ilość pozycji została dostosowana, ponieważ wybrana ilość nie jest dostępna.",pl_PL
@@ -4643,6 +4646,7 @@ availability_notification_subscription.mail.unsubscribe,"Want to change how you 
 cart.add-to-shopping-list.form.placeholder,Enter name of a new shopping list,en_US
 cart.cart,Cart,en_US
 cart.checkout,Checkout,en_US
+cart.delete.button,Delete,en_US
 cart.code.apply.failed,Code could not be applied,en_US
 cart.code.enter-code,Enter voucher/gift card code,en_US
 cart.discounts,Discounts,en_US
@@ -4692,6 +4696,7 @@ cart.price,Price,en_US
 cart.price.grand.total,Total,en_US
 cart.price.grand.total,Gesamt,de_DE
 cart.price.subtotal,Subtotal,en_US
+cart.price.subtotal_wo_deals,Total,en_US
 cart.product-option,Product Options,en_US
 cart.promotion.items,Promotional products,en_US
 cart.quantity.adjusted,Requested item quantity was adjusted as far as selected quantity is not available.,en_US
@@ -4699,12 +4704,14 @@ cart.remove.items.success,Products were removed successfully,en_US
 cart.sales-order-threshold,Minimum Order Value,en_US
 cart.select.default_value,Please select a value,en_US
 cart.shipping,Shipping,en_US
+cart.shipping_standard,Shipping standard,en_US
 cart.shipping.order-item,+ Shipping,en_US
 cart.title_content,Shopping Cart,en_US
 cart.title_sidebar,Order overview,en_US
 cart.total,Total,en_US
+cart.total_wo_deals,Total,en_US
 cart.total.discount,Discount,en_US
-cart.total.price_to_pay,Total Price to pay,en_US
+cart.total.price_to_pay,Price to pay,en_US
 cart.total.price_to_pay,Gesamtpreis to pay,de_DE
 cart.total.tax_total,Tax,en_US
 cart.validate.items.price.changed,Prices have been changed for products with SKU '%sku%'.,en_US
@@ -4793,7 +4800,7 @@ checkout.step.summary,Go to Summary,en_US
 checkout.step.summary.billing_address,Billing Address,en_US
 checkout.step.summary.delivery_address,Delivery Address,en_US
 checkout.step.summary.delivery_method,Delivery method,en_US
-checkout.step.summary.grand_total,Grand Total,en_US
+checkout.step.summary.grand_total,Total,en_US
 checkout.step.summary.items,Items,en_US
 checkout.step.summary.overview,Overview,en_US
 checkout.step.summary.overview,Bestellübersicht,de_DE
@@ -4805,7 +4812,7 @@ checkout.step.summary.shipping,Shipment,en_US
 checkout.step.summary.sms_code_input_error,The SMS Code was not correct,en_US
 checkout.step.summary.sms_code_send_error,Send SMS Code ended in an error,en_US
 checkout.step.summary.sub_total,Subtotal,en_US
-checkout.step.summary.tax,Tax,en_US
+checkout.step.summary.tax,incl. Tax,en_US
 checkout.step.summary.title,Summary,en_US
 checkout.step.summary.total,Complete checkout,en_US
 checkout.step.summary.tracking_code,Delivery Tracking Code,en_US
@@ -5818,6 +5825,8 @@ payment.step.api_request.error,"Sorry, something went wrong with the payment. Pl
 pdp.include.vat,incl. VAT,en_US
 pdp.include.tax,incl. Tax,en_US
 pdp.include.tax,inklusive Steuern,de_DE
+cart.include.vat,incl. VAT,en_US
+cart.include.tax,inklusive Steuern,de_DE
 pdp.price.from,from,en_US
 persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US
@@ -6200,6 +6209,7 @@ cart.add-to-shopping-list.form.error.empty_name,Bitte gebe den Namen der Einkauf
 cart.add-to-shopping-list.form.placeholder,Gebe den Namen einer neuen Einkaufsliste ein,de_DE
 cart.cart,Warenkorb,de_DE
 cart.checkout,Zur Kasse,de_DE
+cart.delete.button,Löschen,de_DE
 cart.code.apply.failed,Gutscheincode konnte nicht angewendet werden,de_DE
 cart.code.enter-code,Gutscheincode/Geschenkgutscheincode eingeben,de_DE
 cart.discounts,Rabatte,de_DE
@@ -6244,6 +6254,7 @@ cart.pre.check.shipment.failed,Diese Änderungen können nicht angewendet werden
 cart.price,Preis,de_DE
 cart.price.grand.total,Zu zahlender Betrag,de_DE
 cart.price.subtotal,Zwischensumme,de_DE
+cart.price.subtotal_wo_deals,Originalpreis ohne Benefits,de_DE
 cart.product-option,Produktoptionen,de_DE
 cart.promotion.items,Aktionsprodukte,de_DE
 cart.quantity.adjusted,"Die angeforderte Artikelmenge wurde angepasst, soweit die ausgewählte Menge nicht verfügbar ist.",de_DE
@@ -6251,10 +6262,12 @@ cart.remove.items.success,Produkte wurden erfolgreich aus dem Warenkorb entfernt
 cart.sales-order-threshold,Mindestbestellwert,de_DE
 cart.select.default_value,Bitte einen Wert auswählen,de_DE
 cart.shipping,Versand,de_DE
+cart.shipping_standard,Versandstandard,de_DE
 cart.shipping.order-item,+ Versand,de_DE
 cart.title_content,Einkaufswagen,de_DE
 cart.title_sidebar,Bestellübersicht,de_DE
 cart.total,Gesamt,de_DE
+cart.total_wo_deals,Originalpreis ohne Benefits,de_DE
 cart.total.discount,Rabatt,de_DE
 cart.total.price_to_pay,Zu bezahlender Betrag,de_DE
 cart.total.tax_total,Mehrwertsteuer,de_DE
@@ -7756,6 +7769,7 @@ cart.pre.check.shipment.failed,No se pueden aplicar estos cambios. No se encontr
 cart.price,Precio,es_ES
 cart.price.grand.total,Cantidad total,es_ES
 cart.price.subtotal,Total parcial,es_ES
+cart.price.subtotal_wo_deals,Total parcial,es_ES
 cart.product-option,Opciones de producto,es_ES
 cart.promotion.items,Productos promocionales,es_ES
 cart.quantity.adjusted,La cantidad de artículo solicitada se ajustó en la medida en que la cantidad seleccionada no está disponible.,es_ES
@@ -9286,6 +9300,7 @@ cart.pre.check.shipment.failed,Tyto změny nelze použít. Způsob přepravy neb
 cart.price,Cena,cs_CZ
 cart.price.grand.total,Celková částka,cs_CZ
 cart.price.subtotal,Mezisoučet,cs_CZ
+cart.price.subtotal_wo_deals,Mezisoučet,cs_CZ
 cart.product-option,Možnosti produktu,cs_CZ
 cart.promotion.items,Reklamní produkty,cs_CZ
 cart.quantity.adjusted,"Množství požadované položky bylo upraveno, pokud vybrané množství není k dispozici.",cs_CZ
@@ -10816,6 +10831,7 @@ cart.pre.check.shipment.failed,Kan inte tillämpa dessa ändringar. Leveransmeto
 cart.price,Pris,sv_SE
 cart.price.grand.total,Totala summan,sv_SE
 cart.price.subtotal,Delsumma,sv_SE
+cart.price.subtotal_wo_deals,Delsumma,sv_SE
 cart.product-option,Produktalternativ,sv_SE
 cart.promotion.items,Kampanjprodukter,sv_SE
 cart.quantity.adjusted,Den begärda artikelkvantiteten justerades så långt den valda kvantiteten inte är tillgänglig.,sv_SE
@@ -12346,6 +12362,7 @@ cart.pre.check.shipment.failed,Teh sprememb ni mogoče uporabiti. Način pošilj
 cart.price,Cena,sl_SI
 cart.price.grand.total,Skupni znesek,sl_SI
 cart.price.subtotal,Vmesni seštevek,sl_SI
+cart.price.subtotal_wo_deals,Vmesni seštevek,sl_SI
 cart.product-option,Možnosti izdelka,sl_SI
 cart.promotion.items,Promocijski izdelki,sl_SI
 cart.quantity.adjusted,"Zahtevana količina izdelka je bila prilagojena, kolikor izbrana količina ni na voljo.",sl_SI
@@ -13876,6 +13893,7 @@ cart.pre.check.shipment.failed,Não é possível aplicar essas alterações. O m
 cart.price,Preço,pt_PT
 cart.price.grand.total,Montante total,pt_PT
 cart.price.subtotal,Subtotal,pt_PT
+cart.price.subtotal_wo_deals,Subtotal,pt_PT
 cart.product-option,Opções de Produto,pt_PT
 cart.promotion.items,Produtos promocionais,pt_PT
 cart.quantity.adjusted,"A quantidade de item solicitada foi ajustada, uma vez que a quantidade selecionada não está disponível.",pt_PT
@@ -15406,6 +15424,7 @@ cart.pre.check.shipment.failed,Kan ikke bruke disse endringene. Forsendelsesmeto
 cart.price,Pris,nb_NO
 cart.price.grand.total,Totale mengden,nb_NO
 cart.price.subtotal,Delsum,nb_NO
+cart.price.subtotal_wo_deals,Delsum,nb_NO
 cart.product-option,Produktalternativer,nb_NO
 cart.promotion.items,Salgsfremmende produkter,nb_NO
 cart.quantity.adjusted,Forespurt varemengde ble justert så langt det valgte antallet ikke er tilgjengelig.,nb_NO
@@ -16936,6 +16955,7 @@ cart.pre.check.shipment.failed,Tieto zmeny nie je možné použiť. Metóda prep
 cart.price,cena,sk_SK
 cart.price.grand.total,Celková suma,sk_SK
 cart.price.subtotal,Medzisúčet,sk_SK
+cart.price.subtotal_wo_deals,Medzisúčet,sk_SK
 cart.product-option,Možnosti produktu,sk_SK
 cart.promotion.items,Reklamné výrobky,sk_SK
 cart.quantity.adjusted,"Požadované množstvo položky bolo upravené, pokiaľ vybrané množstvo nie je k dispozícii.",sk_SK
@@ -18466,6 +18486,7 @@ cart.pre.check.shipment.failed,Deze wijzigingen kunnen niet worden toegepast. De
 cart.price,Prijs,nl_NL
 cart.price.grand.total,Totale hoeveelheid,nl_NL
 cart.price.subtotal,Subtotaal,nl_NL
+cart.price.subtotal_wo_deals,Subtotaal,nl_NL
 cart.product-option,Productopties,nl_NL
 cart.promotion.items,Reclame producten,nl_NL
 cart.quantity.adjusted,Het aangevraagde aantal artikelen is aangepast voor zover het geselecteerde aantal niet beschikbaar is.,nl_NL
@@ -19924,8 +19945,8 @@ pdp.price.regular_price,"Regular Preis",de_DE
 pdp.price.regular_price,"Regular price",en_US
 pdp.price.shopping_points_price,Shopping Point Deal,de_DE
 pdp.price.shopping_points_price,Shopping Point Deal,en_US
-pdp.price.benefit_voucher_price,Benefit Voucher Price,de_DE
-pdp.price.benefit_voucher_price,Benefit Voucher Price,en_US
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,de_DE
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,en_US
 page.checkout.summary.sms_code,SMS Code,de_DE
 page.checkout.summary.sms_code,SMS Code,en_US
 checkout.step.summary.sms_code_send_error,Es gab leider einen Fehler beim zusenden des SMS Codes,de_DE
@@ -19996,10 +20017,14 @@ checkout.step.error.sub_title,Order failed due to errors:,de_DE
 checkout.step.error.sub_title,Order failed due to errors:,en_US
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,de_DE
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,en_US
-checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount".,de_DE
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Leider haben Sie nicht genug SP, um dieses Produkt mit einem Rabatt zu kaufen.",de_DE
 checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount.",en_US
-checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount. Needed amount: %currency% %needAmount%, your balance: %currency% %balanceAmount%",de_DE
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Leider haben Sie nicht genug SP, um dieses Produkt mit einem Rabatt zu kaufen. Benötigte Menge: %currency% %needAmount%, Ihr Guthaben: %currency% %balanceAmount%",de_DE
 checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount. Needed amount: %currency% %needAmount%, your balance: %currency% %balanceAmount%",en_US
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Lieber Kunde, Sie müssen mindestens %needAmount% %currency% von Ihrem Benefit Voucher Guthaben ausgeben, um ein Benefit Voucher Deal Produkt erhalten zu können.",de_DE
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Dear Customer, You need to spend at least %needAmount% %currency% from your Benefit Voucher Balance to get a Benefit Voucher Deal Product.",en_US
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,"Maximaler Betrag sollte %maxAmount% %currency% sein (maximaler BV-Betrag)",de_DE
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,"Max amount should be %maxAmount% %currency% (max amount of BV). Please verify",en_US
 checkout.currency.my_world.shopping_points,Redeemed Shopping Points,de_DE
 checkout.currency.my_world.shopping_points,Redeemed Shopping Points,en_US
 auth.login-button,Login mit myWorld,de_DE
@@ -20008,8 +20033,8 @@ checkout.payment.myworld.payment_methods.title,myWorld ePayment,de_DE
 checkout.payment.myworld.payment_methods.title,myWorld ePayment,en_US
 checkout.payment.myworld.payment_methods.subtitle,Du kannst zwischen folgenden myWorld ePayment-Methoden wahlen (optional):,de_DE
 checkout.payment.myworld.payment_methods.subtitle,You can choose between the following myWorld ePayment methods (optional):,en_US
-checkout.payment.myworld.payment_methods.method.evoucher,myWorld eVoucher,de_DE
-checkout.payment.myworld.payment_methods.method.evoucher,myWorld eVoucher,en_US
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,de_DE
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,en_US
 checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher(Marketer),de_DE
 checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher(Marketer),en_US
 checkout.payment.myworld.payment_methods.method.cashback,Cashback,de_DE
@@ -20018,8 +20043,8 @@ checkout.payment.myworld.payment_methods.balance_text,Saldo,de_DE
 checkout.payment.myworld.payment_methods.balance_text,Balance,en_US
 product_detail_page.benefit_price.benefit_amount,max %amount%,de_DE
 product_detail_page.benefit_price.benefit_amount,max %amount%,en_US
-customer.balance.my_world_e_voucher,myWorld eVoucher,de_DE
-customer.balance.my_world_e_voucher,myWorld eVoucher,en_US
+customer.balance.my_world_e_voucher,eVoucher,de_DE
+customer.balance.my_world_e_voucher,eVoucher,en_US
 customer.balance.my_world_cashback_account,Cashback,de_DE
 customer.balance.my_world_cashback_account,Cashback,en_US
 customer.balance.my_world_benefit_voucher_account,Benefit Voucher,de_DE
@@ -20068,20 +20093,20 @@ product_item.benefit_deal.or,or,en_US
 product_item.benefit_deal.or,oder,de_DE
 customer.balance.into,Du hast:,de_DE
 customer.balance.into,You have:,en_US
-BenefitVouchers,Benefit Vouchers,en_US
-BenefitVouchers,Benefit Vouchers,de_DE
+BenefitVouchers,Benefit Voucher,en_US
+BenefitVouchers,Benefit Voucher,de_DE
 discount.internal.shopping_points,Shopping Points,en_US
 discount.internal.shopping_points,Shopping Points,de_DE
 customer.order.priceToPay,Sum,en_US
 customer.order.priceToPay,Summe,de_DE
 payment.payment_method.adyen_credit_card,Credit Card,en_US
 payment.payment_method.adyen_credit_card,Credit Card,de_DE
-payment.payment_method.benefit_vouchers,Benefit Vouchers,en_US
-payment.payment_method.benefit_vouchers,Benefit Vouchers,de_DE
+payment.payment_method.benefit_vouchers,Benefit Voucher,en_US
+payment.payment_method.benefit_vouchers,Benefit Voucher,de_DE
 payment.payment_method.cashback,Cashback,en_US
 payment.payment_method.cashback,Cashback,de_DE
-payment.payment_method.e_voucher,myWorld eVoucher,en_US
-payment.payment_method.e_voucher,myWorld eVoucher,de_DE
+payment.payment_method.e_voucher,eVoucher,en_US
+payment.payment_method.e_voucher,eVoucher,de_DE
 payment.payment_method.e_voucher_marketer,myWorld eVoucher(Marketer),en_US
 payment.payment_method.e_voucher_marketer,myWorld eVoucher(Marketer),de_DE
 payment.payment_method.paid,Bezahlt,de_DE

@@ -7,13 +7,15 @@
 
 namespace Pyz\Yves\CustomerPage\Plugin\Twig;
 
-use NumberFormatter;
 use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\TwigExtension\Dependency\Plugin\TwigPluginInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
 use Twig\Environment;
 use Twig\TwigFilter;
 
+/**
+ * @method \Pyz\Yves\CustomerPage\CustomerPageFactory getFactory()
+ */
 class FormatShoppingPointsFilterTwigPlugin extends AbstractPlugin implements TwigPluginInterface
 {
     public const FILTER_NAME_FORMAT_SHOPPING_POINTS_FILTER = 'formatShoppingPoints';
@@ -41,31 +43,8 @@ class FormatShoppingPointsFilterTwigPlugin extends AbstractPlugin implements Twi
         return new TwigFilter(
             static::FILTER_NAME_FORMAT_SHOPPING_POINTS_FILTER,
             function (float $shoppingPoints) {
-                return $this->getRoundedShoppingPoints($shoppingPoints);
+                return $this->getFactory()->getLocaleClient()->formatNumberDueToCountry($shoppingPoints);
             }
         );
-    }
-
-    /**
-     * @param float $shoppingPoints
-     *
-     * @return string
-     */
-    private function getRoundedShoppingPoints(float $shoppingPoints): string
-    {
-        $shoppingPoints = $this->floorPoints($shoppingPoints);
-        $formatter = new NumberFormatter($this->getLocale(), NumberFormatter::DECIMAL);
-
-        return $formatter->format($shoppingPoints);
-    }
-
-    /**
-     * @param float $shoppingPoints
-     *
-     * @return float
-     */
-    private function floorPoints(float $shoppingPoints): float
-    {
-        return floor($shoppingPoints * 100) / 100;
     }
 }

@@ -1,0 +1,267 @@
+@mixin shop-ui-product-card-item($name: '.product-card-item-cart') {
+    $image-width: rem(110);
+    $image-width-with-checkbox: rem(158);
+    $image-small-width: rem(90);
+    $additional-info-width: rem(350);
+
+    #{$name} {
+        &__title {
+            font: fw(regular) rem(16) $setting-font-family;
+
+            &:hover {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            &--mini-cart {
+                font-size: rem(15);
+                line-height: rem(21);
+                font-weight: fw(regular);
+            }
+
+            &--secondary {
+                font-size: rem(15);
+                line-height: rem(18);
+                margin: rem(10) 0;
+            }
+
+            &--readonly {
+                pointer-events: none;
+            }
+        }
+
+        &__content {
+            padding: 0 0 rem(5) rem(24);
+            width: calc(100% - #{$image-width});
+
+            &--mini-cart {
+                width: calc(100% - #{$image-small-width});
+            }
+
+            &--alternative {
+                padding: 0 0 0 rem(20);
+            }
+
+            &--additional-info {
+                padding: 0 0 0 rem(20);
+
+                @include helper-breakpoint-media-min($lg-min) {
+                    width: calc(100% - #{$image-width} - #{$additional-info-width});
+                }
+            }
+
+            &--with-checkbox {
+                width: calc(100% - #{$image-width-with-checkbox});
+            }
+        }
+
+        &__margin-bottom {
+            margin-bottom: rem(20);
+        }
+
+        &__image {
+            width: $image-width;
+
+            &--mini-cart {
+                width: $image-small-width;
+
+                .thumbnail {
+                    height: rem(60);
+                }
+            }
+
+            &--readonly {
+                pointer-events: none;
+            }
+        }
+
+        &__price {
+            font: fw(medium) rem(17)/rem(23) $setting-font-family;
+            text-align: left;
+
+            @include helper-breakpoint-media-min($lg-min) {
+                text-align: right;
+            }
+
+            &--mini-cart {
+                font-size: rem(15);
+                line-height: rem(20);
+                align-self: flex-start;
+            }
+
+            &--secondary,
+            &--alternative {
+                text-align: left;
+                font: fw(medium) rem(15)/rem(17) $setting-font-family;
+                width: 100%;
+                margin-bottom: rem(5);
+            }
+
+            &--alternative {
+                @include helper-breakpoint-media-min($lg-min) {
+                    text-align: right;
+                    width: auto;
+                    margin: rem(10) 0;
+                    align-self: flex-start;
+                }
+            }
+        }
+
+        &__option {
+            &--mini-cart {
+                font: fw(regular) rem(13)/rem(15) $setting-font-family;
+                color:$setting-color-gray-5;
+            }
+        }
+
+        &__box {
+            border-bottom: rem(1) solid $setting-color-gray-2;
+            padding-bottom: rem(18);
+            margin-bottom: rem(18);
+
+            &--with-options {
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+
+            &--mini-cart {
+                border-bottom: rem(1) dotted $setting-color-gray-3;
+                padding: rem(18) 0;
+                margin: 0;
+            }
+        }
+
+        &__options {
+            font: fw(medium) rem(13)/rem(15) $setting-font-family;
+            margin-bottom: rem(5);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                font: fw(medium) rem(16)/rem(22) $setting-font-family;
+            }
+        }
+
+        &__additional-info {
+            width: 100%;
+            padding-top: rem(15);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                padding-left: rem(15);
+                padding-top: 0;
+                max-width: $additional-info-width;
+            }
+        }
+
+        &__cashback {
+            width: 100%;
+            margin-bottom: rem(10);
+
+            @include helper-breakpoint-media-min($lg-min) {
+                width: auto;
+                margin-top: rem(-5);
+            }
+        }
+
+        &--cart {
+            #{$name}__image {
+                align-self: flex-start;
+            }
+
+            #{$name}__price {
+                font-weight: fw(bold);
+                margin-bottom: rem(15);
+                margin-top: rem(15);
+            }
+
+            #{$name}__cashback {
+                margin-top: rem(-5);
+                margin-bottom: rem(15);
+
+                @include helper-breakpoint-media-min($lg-min) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &--expand {
+            width: 100%;
+        }
+
+        &--right-indent-from-tablet {
+            margin-top: 3rem;
+            @include helper-breakpoint-media-min($lg-min) {
+                padding-right: rem(20);
+            }
+        }
+
+        &__benefit-deal {
+            font-size: rem(12);
+            @include helper-breakpoint(lg) {
+                text-align: right;
+            }
+        }
+
+        &__benefit-deal-or {
+            @include helper-font-weight(regular);
+            margin: map-get($setting-spacing, default) 0;
+        }
+
+        &__deal-original-price {
+            text-decoration: line-through;
+            color: $setting-color-gray-5;
+        }
+
+        &__new-price {
+            color: $setting-color-yellow;
+        }
+
+        &__original_price {
+            @include helper-font-size(small);
+            display: block;
+            color: $setting-color-dark;
+            text-decoration: line-through;
+        }
+
+        &--shopping_points {
+            color: $setting-color-cashback;
+        }
+
+        &--benefit_voucher {
+            color: $setting-color-lyconet;
+
+        }
+
+        &--deal-benefit {
+            color: #ff902e;
+        }
+
+        &__delete-product {
+            font-size: 0.9375rem;
+            color: #909090;
+            margin-bottom: 5px;
+        }
+
+        &__quantity2 {
+            font-size: rem(15);
+            color: #909090;
+        }
+
+        &--deal-vouchers {
+            color: #5cb885;
+        }
+
+        &__price-bottom {
+            font: fw(regular) rem(16) $setting-font-family;
+        }
+
+        .product-card-item__title {
+            margin-top: 2em;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-card-item();
+
+

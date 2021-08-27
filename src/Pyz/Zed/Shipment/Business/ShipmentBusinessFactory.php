@@ -8,7 +8,9 @@
 namespace Pyz\Zed\Shipment\Business;
 
 use Pyz\Zed\Shipment\Business\Model\ShipmentTaxRateCalculator;
+use Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodReader;
 use Spryker\Zed\Shipment\Business\ShipmentBusinessFactory as SprykerShipmentBusinessFactory;
+use Spryker\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodReaderInterface;
 
 class ShipmentBusinessFactory extends SprykerShipmentBusinessFactory
 {
@@ -21,6 +23,17 @@ class ShipmentBusinessFactory extends SprykerShipmentBusinessFactory
             $this->getQueryContainer(),
             $this->getTaxFacade(),
             $this->getShipmentService()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodReaderInterface
+     */
+    public function createShipmentMethodReader(): ShipmentMethodReaderInterface
+    {
+        return new ShipmentMethodReader(
+            $this->getRepository(),
+            $this->getCurrencyFacade()
         );
     }
 }

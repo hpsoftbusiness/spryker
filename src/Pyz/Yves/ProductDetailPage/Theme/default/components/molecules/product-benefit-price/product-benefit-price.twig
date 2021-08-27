@@ -17,30 +17,33 @@
             {{ 'pdp.price.benefit_voucher_price' | trans }}
         </span>
     </div>
-
     <div class="{{ config.name }}__benefit-price-amount">
+        {% if data.price is not null %}
+            {% include molecule('money-price') with {
+                modifiers: ['strikethrough'],
+                data: {
+                    amount: data.price,
+                    priceVatText: null
+                }
+            } only %}
+        {% endif %}
         {% include molecule('money-price') with {
-            modifiers: ['strikethrough'],
-            data: {
-                amount: data.price,
-                priceVatText: null
-            }
-        } only %}
-        {% include molecule('money-price') with {
-            modifiers: ['pdp'],
+            modifiers: [],
             data: {
                 amount: data.regularPrice,
                 priceVatText: null,
             }
         } only %}
-        <span class="{{ config.name }}__plus">-</span>
-        {% include molecule('money-price') with {
-            modifiers: ['pdp'],
-            data: {
-                amount: data.amount,
-                priceVatText: null
-            }
-        } only %}
+            <span class="{{ config.name }}__plus">-</span>
+        <span class="{{ config.name }}__second">
+            {% include molecule('money-price') with {
+                modifiers: ['pdp'],
+                data: {
+                    amount: data.amount,
+                    priceVatText: null
+                }
+            } only %}
+        </span>
         {% include atom('icon') with {
             class: config.name ~ '__icon',
             modifiers: ['medium-up'],
@@ -49,6 +52,7 @@
             },
         } only %}
         <br>
+        <div class="{{ config.name }}__low-price">
         {% include molecule('money-price') with {
             modifiers: ['pdp'],
             data: {
@@ -56,6 +60,6 @@
                 priceVatText: null
             }
         } only %}
+        </div>
     </div>
-
 {% endblock %}

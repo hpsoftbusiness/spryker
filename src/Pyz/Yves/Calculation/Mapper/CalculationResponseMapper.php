@@ -11,6 +11,7 @@ namespace Pyz\Yves\Calculation\Mapper;
 use Generated\Shared\Transfer\QuoteCalculationResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\TotalsFormattedTransfer;
+use NumberFormatter;
 use Spryker\Client\Money\MoneyClientInterface;
 
 class CalculationResponseMapper
@@ -71,5 +72,22 @@ class CalculationResponseMapper
         return $this->moneyClient->formatWithSymbol(
             $this->moneyClient->fromInteger($amount, null)
         );
+    }
+
+    /**
+     * @param float $shoppingPointsAmount
+     * @param string $locale
+     *
+     * @return string
+     */
+    public function getFormattedShoppingPointsAmount(float $shoppingPointsAmount, string $locale): string
+    {
+        $formatter = new NumberFormatter($locale, NumberFormatter::DECIMAL);
+        $formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, 2);
+        $formatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, 2);
+        $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, 2);
+        $formatter->setAttribute(NumberFormatter::DECIMAL_ALWAYS_SHOWN, 2);
+
+        return $formatter->format($shoppingPointsAmount);
     }
 }

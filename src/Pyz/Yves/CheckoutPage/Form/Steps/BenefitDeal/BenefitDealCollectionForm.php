@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 /**
@@ -89,7 +88,6 @@ class BenefitDealCollectionForm extends AbstractType
         $builder->add(static::FORM_FIELD_TOTAL_USED_BENEFIT_VOUCHERS_AMOUNT, NumberType::class, [
             'constraints' => [
                 new PositiveOrZero(),
-                new LessThanOrEqual($customerAmount),
             ],
             'html5' => true,
             'scale' => 2,

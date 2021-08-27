@@ -4,16 +4,16 @@
 
     #{$name} {
         &__title-text {
-            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            font: fw(medium) rem(16) $setting-font-family;
         }
 
-
         &__benefit {
-            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            font: rem(16) $setting-font-family;
+            color: $setting-color-black;
         }
 
         &__benefit-amount {
-            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            font: rem(16) $setting-font-family;
             color: $shopping-points-text-color;
 
             & > svg {
@@ -26,11 +26,16 @@
 
         &__benefit-price-amount {
             color: $shopping-points-text-color;
+            font: fw(bold) rem(24) $setting-font-family;
         }
 
         &__vat {
             font-weight: fw(regular);
             color: $setting-color-black;
+        }
+
+        .money-price--strikethrough-shopping > span:nth-child(1) {
+            font: rem(16) $setting-font-family;
         }
 
         @content;

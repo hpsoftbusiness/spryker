@@ -290,6 +290,7 @@ class StepFactory extends SprykerShopStepFactory
     public function createPaymentPreConditionChecker(): PreConditionCheckerInterface
     {
         return new PaymentPreConditionChecker(
+            $this->getLocale(),
             $this->getFlashMessenger(),
             $this->getTranslatorService(),
             $this->getPyzCustomerService(),
@@ -319,5 +320,13 @@ class StepFactory extends SprykerShopStepFactory
     public function getPyzQuoteClient(): QuoteClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PYZ_CLIENT_QUOTE);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocale()
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);
     }
 }

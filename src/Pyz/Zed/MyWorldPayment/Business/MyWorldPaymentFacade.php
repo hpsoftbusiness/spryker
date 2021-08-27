@@ -209,6 +209,26 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return void
      */
+    public function recalculateQuoteSubtotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this->getFactory()->createSubtotalWithDealsCalculator()->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteGrandTotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this->getFactory()->createGrandTotalWithDealsCalculator()->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
     public function recalculateOrderTurnover(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $this
