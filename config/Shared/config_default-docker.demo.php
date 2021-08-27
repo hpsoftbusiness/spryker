@@ -47,10 +47,11 @@ $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
     'nataliia.popkova@spryker.com' => 'Warehouse Manager',
 ];
 
-$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
-    'nataliia.popkova@spryker.com' => 'Warehouse Manager',
-    'olena.krivtsova@spryker.com' => 'Warehouse Manager',
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_TO] = [
+    'warehouse.manager@localhost' => 'Warehouse Manager',
 ];
+
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [];
 
 // ----------------------------------------------------------------------------
 // ----------------------- MyWorld Marketplace API ----------------------------

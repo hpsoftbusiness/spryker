@@ -51,4 +51,22 @@ class SalesInvoiceConfig extends SprykerSalesInvoiceConfig
 
         return $orderInvoiceRecipientsBcc;
     }
+
+    /**
+     * Specification:
+     * - Retrieves the TO that will be added to all sent order invoice email.
+     *
+     * @api
+     *
+     * @return \Generated\Shared\Transfer\MailRecipientTransfer[]
+     */
+    public function getOrderInvoiceTo(): array
+    {
+        $orderInvoiceRecipientsTo = [];
+        foreach ($this->get(SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_TO) as $email => $name) {
+            $orderInvoiceRecipientsTo[] = (new MailRecipientTransfer())->setEmail($email)->setName($name);
+        }
+
+        return $orderInvoiceRecipientsTo;
+    }
 }

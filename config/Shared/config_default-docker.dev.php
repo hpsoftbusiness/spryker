@@ -4,6 +4,7 @@ use Monolog\Logger;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductAffiliate\ProductAffiliateConstants;
+use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
@@ -182,5 +183,11 @@ $config[ProductAffiliateConstants::TRACKING_URL_PATH] = 'https://test-click.mywo
 $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
     'nataliia.popkova@spryker.com' => 'Warehouse Manager',
 ];
+
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_TO] = [
+    'warehouse.manager@localhost' => 'Warehouse Manager',
+];
+
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [];
 
 require 'common/config_my-world-payment.php';
