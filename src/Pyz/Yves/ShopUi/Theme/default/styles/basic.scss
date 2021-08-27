@@ -12,12 +12,13 @@
 a:hover {
     color: $setting-color-alpha-7!important;
 }
-.container--home-page{
-    margin-top: -100px;
-}
 
 @media (min-width:1440px) {
     .container {
         margin: 0px auto 0px auto;
     }
+}
+
+.container--home-page{
+    margin-top: -100px;
 }
