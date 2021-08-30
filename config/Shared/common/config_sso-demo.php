@@ -18,4 +18,4 @@ require 'config_sso-development.php';
 /**
  * @todo replace with normal ENV var
  */
-$config[SsoConstants::REDIRECT_URL] = 'https://www.de.myworld.cloud.spryker.toys/login_check';
+//$config[SsoConstants::REDIRECT_URL] = 'https://www.de.myworld.cloud.spryker.toys/login_check';
