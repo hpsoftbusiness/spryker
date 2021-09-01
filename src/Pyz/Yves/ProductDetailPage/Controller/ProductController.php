@@ -121,15 +121,11 @@ class ProductController extends SprykerShopProductController
      */
     protected function getFilterProductAttributes(array $attributes): array
     {
-        // TODO: enable later, this should not be Zed request because of performance concerns
-//        $productAttributeKeysCollectionTransfer = new ProductAttributeKeysCollectionTransfer();
-//        $productAttributeKeysCollectionTransfer->setKeys([]);
-//        $keysToShowOnPdp = $this->getFactory()
-//            ->getProductAttributeClient()
-//            ->getKeysToShowOnPdp($productAttributeKeysCollectionTransfer)
-//            ->getKeys();
-//        $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
-
+        $keysToShowOnPdp = $this->getFactory()
+            ->getProductAttributeStorageClient()
+            ->getKeysToShowOnPdp()
+            ->getKeys();
+        $attributes = array_intersect_key($attributes, array_flip($keysToShowOnPdp));
 
         $attributesToFilter = [
             'benefit_store',

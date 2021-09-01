@@ -14,13 +14,9 @@ use Spryker\Zed\ProductAttribute\Business\Model\Attribute\AttributeReaderInterfa
 interface AttributeReaderInterface extends SprykerAttributeReaderInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-     *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
-    public function getKeysToShowOnPdp(
-        ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-    ): ProductAttributeKeysCollectionTransfer;
+    public function getKeysToShowOnPdp(): ProductAttributeKeysCollectionTransfer;
 
     /**
      * @param string $key

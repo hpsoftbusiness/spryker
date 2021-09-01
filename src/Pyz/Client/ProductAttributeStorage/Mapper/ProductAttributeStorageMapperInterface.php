@@ -5,18 +5,18 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Client\ProductAttribute\Zed;
+namespace Pyz\Client\ProductAttributeStorage\Mapper;
 
 use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
 
-interface ProductAttributeZedStubInterface
+interface ProductAttributeStorageMapperInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+     * @param array $productAttributeKeys
      *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
-    public function getKeysToShowOnPdp(
-        ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+    public function mapArrayToProductAttributeKeysCollectionTransfer(
+        array $productAttributeKeys
     ): ProductAttributeKeysCollectionTransfer;
 }
