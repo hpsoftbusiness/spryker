@@ -75,7 +75,6 @@
                                        name="groupKey">
                             {% endblock %}
                         {% endwidget %}
-                    {% else %}
                     {% endif %}
 
                 </div>
@@ -90,75 +89,57 @@
                     </div>
                 {% endif %}
 
+                {% set price = data.productItem.unitPrice * data.productItem.quantity %}
+
                 {% block benefitPrice %}
                     {% set benefitVoucherCurrency = data.currencyIsoCode %}
                     {% if can('SeePricePermissionPlugin') %}
                         {% if isBenefitVoucherDealActive == true %}
                             {% set amountBenefitVochers = data.productItem.benefitVoucherDealData.amount * data.productItem.quantity %}
-                            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
                             <div class="{{ config.name }}__benefit-deal benefit-deal-formatter">
                                 <div>
-                                    <span class="{{ config.name }}">{{ price | money }}</span>
-                                    -&nbsp;
-                                    <span class="{{ config.name }}__deal-vouchers {{ config.name }}--benefit_voucher" style="color: #ff902e">
-                                        {{- amountBenefitVochers | money(true, benefitVoucherCurrency) -}}
-                                        {% include atom('icon') with {
-                                            data: {
-                                                name: 'benefit-point',
-                                            },
-                                        } only %}
+                                    <span class="{{ config.name }}">{{ price | money }}</span>&nbsp;-&nbsp;<span class="{{ config.name }}__deal-vouchers {{ config.name }}--benefit_voucher">{{- amountBenefitVochers | money(true, benefitVoucherCurrency) -}}
+                                    {% include atom('icon') with {
+                                        data: {
+                                            name: 'benefit-point',
+                                        },
+                                    } only %}
                                     </span>
                                 </div>
                             </div>
-
-                    {% elseif data.productItem.product_sp_amount is defined%}
-
-                    {% elseif isShoppingPointsDealActive == true %}
-                            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                            {% set benefitDealPrice = data.productItem.benefitVoucherDealData.salesPrice * data.productItem.quantity %}
+                            <span class="{{ config.name }}__summary-price">{{ benefitDealPrice | money }}</span>
+                        {% endif %}
+                        {% if isShoppingPointsDealActive == true %}
                             {% set amountShoppingPoints = data.shoppingPoints * data.productItem.quantity %}
                             <div class="{{ config.name }}__benefit-deal benefit-deal-formatter">
                                 <div>
-                                    <span class="{{ config.name }}">{{ price | money }}</span>
-
-                                    <span class="{{ config.name }}__deal-vouchers  {{ config.name }}--shopping_points" style="color: #5cb885;">
-                                        -&nbsp;
-                                        {{- data.productItem.concreteAttributes.product_sp_amount | formatShoppingPoints -}}
+                                    <span class="{{ config.name }}">{{ price | money }}</span><span class="{{ config.name }}__deal-vouchers {{ config.name }}--shopping_points" style="color: #5cb885;">&nbsp;-&nbsp;{{- data.productItem.concreteAttributes.product_sp_amount | formatShoppingPoints -}}
                                         {% include atom('icon') with {
                                             data: {
                                                 name: 'shopping-point',
                                             },
                                         } only %}
                                     </span>
+                                    {% set shoppingPointsDealprice = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
                                 </div>
                             </div>
+                            <span class="{{ config.name }}__summary-price">{{ shoppingPointsDealprice | money }}</span>
                         {% endif %}
                     {% endif %}
                 {% endblock %}
 
-                <div style="margin-top: -3em;">
+                <div>
                     {% block price %}
-                        {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
-                        {% if isBenefitVoucherDealActive == true %}
-                            {% set price = data.productItem.benefitVoucherDealData.salesPrice * data.productItem.quantity %}
-                            <br>
-                            <br>
-                        {% elseif isShoppingPointsDealActive == true %}
-                            <br>
-                            <br>
-                            {% set price = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
-                        {% else %}
-
-                        {% endif %}
                         {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
-
                         <span style="float: left;" class="{{ config.name }}__quantity">{{ 'cart.item_quantity' | trans }}: {{ data.productItem.quantity }}</span>
-
                         {% if can('SeePricePermissionPlugin') %}
-                            <span class="{{ config.name }}" style="float: right;">{{ price | money }}</span>
+                            {% if isBenefitVoucherDealActive == false and isShoppingPointsDealActive == false %}
+                                <span class="{{ config.name }}__summary-price">{{ price | money }}</span>
+                                {% endif %}
                         {% else %}
                             {{ 'customer.access.cannot_see_price' | trans }}
                         {% endif %}
-
                     {% endblock %}
                 </div>
 
@@ -174,14 +155,6 @@
                                 } only %}
                             {% endif %}
                         {% endblock %}
-
-                        <div class="grid grid--justify grid--gap">
-                            <div class="col">
-
-                            </div>
-
-                            {% block state %}{% endblock %}
-                        </div>
 
                         {% if canEditCart %}
                             <div class="spacing-top spacing-top--big col">
