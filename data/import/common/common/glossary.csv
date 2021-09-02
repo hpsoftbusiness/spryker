@@ -423,7 +423,7 @@ countries.iso.FR,France,fr_FR
 countries.iso.GB,Royaume-Uni,fr_FR
 countries.iso.GR,Grèce,fr_FR
 countries.iso.HR,Croatie,fr_FR
-countries.iso.HU,Faim,fr_FR
+countries.iso.HU,Hongrie,fr_FR
 countries.iso.IE,Irlande,fr_FR
 countries.iso.IM,île de Man,fr_FR
 countries.iso.IT,Italie,fr_FR
@@ -1954,7 +1954,7 @@ countries.iso.FR,Francia,it_IT
 countries.iso.GB,Regno Unito,it_IT
 countries.iso.GR,Grecia,it_IT
 countries.iso.HR,Croazia,it_IT
-countries.iso.HU,Affamato,it_IT
+countries.iso.HU,Ungheria,it_IT
 countries.iso.IE,Irlanda,it_IT
 countries.iso.IM,Isola di Man,it_IT
 countries.iso.IT,Italia,it_IT
@@ -3489,7 +3489,7 @@ countries.iso.FR,Francja,pl_PL
 countries.iso.GB,Zjednoczone Królestwo,pl_PL
 countries.iso.GR,Grecja,pl_PL
 countries.iso.HR,Chorwacja,pl_PL
-countries.iso.HU,Głodny,pl_PL
+countries.iso.HU,Węgry,pl_PL
 countries.iso.IE,Irlandia,pl_PL
 countries.iso.IM,Wyspa Man,pl_PL
 countries.iso.IT,Włochy,pl_PL
@@ -5030,7 +5030,7 @@ countries.iso.FR,France,en_US
 countries.iso.GB,United Kingdom,en_US
 countries.iso.GR,Greece,en_US
 countries.iso.HR,Croatia,en_US
-countries.iso.HU,Hungry,en_US
+countries.iso.HU,Hungary,en_US
 countries.iso.IE,Ireland,en_US
 countries.iso.IM,Isle of Man,en_US
 countries.iso.IT,Italy,en_US
@@ -6586,7 +6586,7 @@ countries.iso.FR,Frankreich,de_DE
 countries.iso.GB,Vereinigtes Königreich,de_DE
 countries.iso.GR,Griechenland,de_DE
 countries.iso.HR,Kroatien,de_DE
-countries.iso.HU,Hungrig,de_DE
+countries.iso.HU,Ungarn,de_DE
 countries.iso.IE,Irland,de_DE
 countries.iso.IM,Insel Man,de_DE
 countries.iso.IT,Italien,de_DE
@@ -8099,7 +8099,7 @@ countries.iso.FR,Francia,es_ES
 countries.iso.GB,Reino Unido,es_ES
 countries.iso.GR,Grecia,es_ES
 countries.iso.HR,Croacia,es_ES
-countries.iso.HU,Hambriento,es_ES
+countries.iso.HU,Hungría,es_ES
 countries.iso.IE,Irlanda,es_ES
 countries.iso.IM,Isla del hombre,es_ES
 countries.iso.IT,Italia,es_ES
@@ -9630,7 +9630,7 @@ countries.iso.FR,Francie,cs_CZ
 countries.iso.GB,Spojené království,cs_CZ
 countries.iso.GR,Řecko,cs_CZ
 countries.iso.HR,Chorvatsko,cs_CZ
-countries.iso.HU,Hladový,cs_CZ
+countries.iso.HU,Maďarsko,cs_CZ
 countries.iso.IE,Irsko,cs_CZ
 countries.iso.IM,Isle of Man,cs_CZ
 countries.iso.IT,Itálie,cs_CZ
@@ -11161,7 +11161,7 @@ countries.iso.FR,Frankrike,sv_SE
 countries.iso.GB,Storbritannien,sv_SE
 countries.iso.GR,Grekland,sv_SE
 countries.iso.HR,Kroatien,sv_SE
-countries.iso.HU,Hungrig,sv_SE
+countries.iso.HU,Ungern,sv_SE
 countries.iso.IE,Irland,sv_SE
 countries.iso.IM,ö av man,sv_SE
 countries.iso.IT,Italien,sv_SE
@@ -12692,7 +12692,7 @@ countries.iso.FR,Francija,sl_SI
 countries.iso.GB,Združeno kraljestvo,sl_SI
 countries.iso.GR,Grčija,sl_SI
 countries.iso.HR,Hrvaška,sl_SI
-countries.iso.HU,Lačen,sl_SI
+countries.iso.HU,Madžarska,sl_SI
 countries.iso.IE,Irska,sl_SI
 countries.iso.IM,otok Man,sl_SI
 countries.iso.IT,Italija,sl_SI
@@ -14223,7 +14223,7 @@ countries.iso.FR,França,pt_PT
 countries.iso.GB,Reino Unido,pt_PT
 countries.iso.GR,Grécia,pt_PT
 countries.iso.HR,Croácia,pt_PT
-countries.iso.HU,Com fome,pt_PT
+countries.iso.HU,Hungria,pt_PT
 countries.iso.IE,Irlanda,pt_PT
 countries.iso.IM,Ilha de Man,pt_PT
 countries.iso.IT,Itália,pt_PT
@@ -15754,7 +15754,7 @@ countries.iso.FR,Frankrike,nb_NO
 countries.iso.GB,Storbritannia,nb_NO
 countries.iso.GR,Hellas,nb_NO
 countries.iso.HR,Kroatia,nb_NO
-countries.iso.HU,Sulten,nb_NO
+countries.iso.HU,Ungarn,nb_NO
 countries.iso.IE,Irland,nb_NO
 countries.iso.IM,Isle of Man,nb_NO
 countries.iso.IT,Italia,nb_NO
@@ -17285,7 +17285,7 @@ countries.iso.FR,Francúzsko,sk_SK
 countries.iso.GB,Spojene kralovstvo,sk_SK
 countries.iso.GR,Grécko,sk_SK
 countries.iso.HR,Chorvátsko,sk_SK
-countries.iso.HU,Hladný,sk_SK
+countries.iso.HU,Maďarsko,sk_SK
 countries.iso.IE,Írsko,sk_SK
 countries.iso.IM,ostrov Man,sk_SK
 countries.iso.IT,Taliansko,sk_SK
@@ -18816,7 +18816,7 @@ countries.iso.FR,Frankrijk,nl_NL
 countries.iso.GB,Verenigd Koningkrijk,nl_NL
 countries.iso.GR,Griekenland,nl_NL
 countries.iso.HR,Kroatië,nl_NL
-countries.iso.HU,Hongerig,nl_NL
+countries.iso.HU,Hongarije,nl_NL
 countries.iso.IE,Ierland,nl_NL
 countries.iso.IM,Isle of Man,nl_NL
 countries.iso.IT,Italië,nl_NL
