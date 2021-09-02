@@ -9,6 +9,7 @@ namespace Pyz\Zed\Cart;
 
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealQuoteChangeObserverPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\CartItemBenefitPricePlugin;
 use Pyz\Zed\Cart\Plugin\ShipmentDefaultCartExpander;
 use Pyz\Zed\MyWorldPayment\Communication\Plugin\Cart\RemoveMyWorldPaymentsChoicePlugin;
 use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
@@ -88,6 +89,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
+            new CartItemBenefitPricePlugin(),
             new BenefitDealItemExpanderPlugin(),
         ];
     }

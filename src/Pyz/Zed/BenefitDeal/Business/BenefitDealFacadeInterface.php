@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\BenefitDeal\Business;
 
+use Generated\Shared\Transfer\CartChangeTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -102,4 +103,11 @@ interface BenefitDealFacadeInterface
      * @return void
      */
     public function expandItemsWithBenefitDealsData(iterable $itemTransfers, ?string $currencyIsoCode = null): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     */
+    public function expandItemsWithBenefitPrice(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
 }
