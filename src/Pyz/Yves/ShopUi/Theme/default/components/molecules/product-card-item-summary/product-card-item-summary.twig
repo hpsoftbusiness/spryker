@@ -114,7 +114,7 @@
                             {% set amountShoppingPoints = data.shoppingPoints * data.productItem.quantity %}
                             <div class="{{ config.name }}__benefit-deal benefit-deal-formatter">
                                 <div>
-                                    <span class="{{ config.name }}">{{ price | money }}</span><span class="{{ config.name }}__deal-vouchers {{ config.name }}--shopping_points" style="color: #5cb885;">&nbsp;-&nbsp;{{- data.productItem.concreteAttributes.product_sp_amount | formatShoppingPoints -}}
+                                    <span class="{{ config.name }}">{{ price | money }}</span><span class="{{ config.name }}__deal-vouchers {{ config.name }}--shopping_points" style="color: #5cb885;">&nbsp;-&nbsp;{{- (data.productItem.concreteAttributes.product_sp_amount * data.productItem.quantity) | formatShoppingPoints -}}
                                         {% include atom('icon') with {
                                             data: {
                                                 name: 'shopping-point',

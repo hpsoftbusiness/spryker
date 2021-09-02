@@ -244,7 +244,7 @@ class PaymentPreConditionChecker implements PreConditionCheckerInterface
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $benefitVoucherDealData = $itemTransfer->getBenefitVoucherDealData();
             if ($benefitVoucherDealData && $benefitVoucherDealData->getAmount()) {
-                $amount += $benefitVoucherDealData->getAmount();
+                $amount += $benefitVoucherDealData->getAmount() * $itemTransfer->getQuantity();
             }
         }
 
