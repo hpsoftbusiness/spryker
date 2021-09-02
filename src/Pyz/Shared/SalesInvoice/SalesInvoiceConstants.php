@@ -12,4 +12,5 @@ use Spryker\Shared\SalesInvoice\SalesInvoiceConstants as SprykerSalesInvoiceCons
 interface SalesInvoiceConstants extends SprykerSalesInvoiceConstants
 {
     public const ORDER_INVOICE_RECIPIENTS_BCC = 'SALES_INVOICE:ORDER_INVOICE_RECIPIENTS_BCC';
+    public const ORDER_INVOICE_RECIPIENTS_TO = 'SALES_INVOICE:ORDER_INVOICE_RECIPIENTS_TO';
 }
