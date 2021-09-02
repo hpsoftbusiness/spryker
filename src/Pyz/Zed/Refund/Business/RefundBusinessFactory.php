@@ -13,9 +13,12 @@ use Pyz\Zed\Refund\Business\Calculator\Item\ItemPaymentRefundCalculator;
 use Pyz\Zed\Refund\Business\Calculator\Item\ItemPaymentRefundCalculatorInterface;
 use Pyz\Zed\Refund\Business\Calculator\Payment\RefundablePaymentCalculator;
 use Pyz\Zed\Refund\Business\Calculator\Payment\RefundablePaymentCalculatorInterface;
+use Pyz\Zed\Refund\Business\Model\ExternalPaymentRemover;
+use Pyz\Zed\Refund\Business\Model\ExternalPaymentRemoverInterface;
 use Pyz\Zed\Refund\Business\Model\RefundCalculator;
 use Pyz\Zed\Refund\Business\Model\RefundCalculator\ExpenseRefundCalculator;
 use Pyz\Zed\Refund\Business\Model\RefundCalculator\ItemRefundCalculator;
+use Pyz\Zed\Refund\Business\Model\RefundCalculatorInterface as ModelRefundCalculatorInterface;
 use Pyz\Zed\Refund\Business\Model\RefundSaver;
 use Pyz\Zed\Refund\Business\Processor\Aggregator\PaymentRefundsAggregator;
 use Pyz\Zed\Refund\Business\Processor\Aggregator\PaymentRefundsAggregatorInterface;
@@ -27,7 +30,6 @@ use Pyz\Zed\Refund\Business\Validator\RefundValidator;
 use Pyz\Zed\Refund\Business\Validator\RefundValidatorInterface;
 use Pyz\Zed\Refund\RefundDependencyProvider;
 use Spryker\Zed\Refund\Business\Model\RefundCalculator\RefundCalculatorInterface as SpecifiedRefundCalculatorInterface;
-use Spryker\Zed\Refund\Business\Model\RefundCalculatorInterface;
 use Spryker\Zed\Refund\Business\Model\RefundSaverInterface;
 use Spryker\Zed\Refund\Business\RefundBusinessFactory as SprykerRefundBusinessFactory;
 
@@ -83,14 +85,15 @@ class RefundBusinessFactory extends SprykerRefundBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\Refund\Business\Model\RefundCalculatorInterface
+     * @return \Pyz\Zed\Refund\Business\Model\RefundCalculatorInterface
      */
-    public function createRefundCalculator(): RefundCalculatorInterface
+    public function createRefundCalculator(): ModelRefundCalculatorInterface
     {
         return new RefundCalculator(
             $this->getRefundCalculatorPlugins(),
             $this->getSalesFacade(),
-            $this->createRefundablePaymentCalculator()
+            $this->createRefundablePaymentCalculator(),
+            $this->createExternalPaymentRemover()
         );
     }
 
@@ -143,6 +146,16 @@ class RefundBusinessFactory extends SprykerRefundBusinessFactory
             $this->getSalesFacade(),
             $this->getEntityManager(),
             $this->getRefundValidatorPlugins()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\Refund\Business\Model\ExternalPaymentRemoverInterface
+     */
+    protected function createExternalPaymentRemover(): ExternalPaymentRemoverInterface
+    {
+        return new ExternalPaymentRemover(
+            $this->getSalesFacade()
         );
     }
 
