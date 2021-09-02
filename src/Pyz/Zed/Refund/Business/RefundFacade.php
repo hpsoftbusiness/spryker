@@ -9,7 +9,6 @@ namespace Pyz\Zed\Refund\Business;
 
 use Generated\Shared\Transfer\ExpenseRefundTransfer;
 use Generated\Shared\Transfer\ItemRefundTransfer;
-use Generated\Shared\Transfer\RefundTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Refund\Business\RefundFacade as SprykerRefundFacade;
 
@@ -69,20 +68,5 @@ class RefundFacade extends SprykerRefundFacade implements RefundFacadeInterface
     public function saveOrderExpenseRefund(ExpenseRefundTransfer $expenseRefundTransfer): void
     {
         $this->getEntityManager()->saveSalesExpenseRefund($expenseRefundTransfer);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @api
-     *
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $salesOrderItems
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     *
-     * @return \Generated\Shared\Transfer\RefundTransfer
-     */
-    public function calculateRefundWithoutExternalPayment(array $salesOrderItems, SpySalesOrder $salesOrderEntity): RefundTransfer
-    {
-        return $this->getFactory()->createRefundCalculator()->calculateRefundWithoutExternalPayment($salesOrderItems, $salesOrderEntity);
     }
 }

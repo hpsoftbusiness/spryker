@@ -9,7 +9,6 @@ namespace Pyz\Zed\Refund\Business;
 
 use Generated\Shared\Transfer\ExpenseRefundTransfer;
 use Generated\Shared\Transfer\ItemRefundTransfer;
-use Generated\Shared\Transfer\RefundTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Refund\Business\RefundFacadeInterface as SprykerRefundFacadeInterface;
 
@@ -70,20 +69,4 @@ interface RefundFacadeInterface extends SprykerRefundFacadeInterface
      * @return void
      */
     public function saveOrderExpenseRefund(ExpenseRefundTransfer $expenseRefundTransfer): void;
-
-    /**
-     * Specification:
-     * - Calculates refund amount for given OrderTransfer and OrderItems which should be refunded.
-     * - Adds refundable amount to RefundTransfer.
-     * - Adds items with canceled amount to RefundTransfer.
-     * - Uses calculator plugin stack for calculation.
-     *
-     * @api
-     *
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $salesOrderItems
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     *
-     * @return \Generated\Shared\Transfer\RefundTransfer
-     */
-    public function calculateRefundWithoutExternalPayment(array $salesOrderItems, SpySalesOrder $salesOrderEntity): RefundTransfer;
 }

@@ -13,7 +13,7 @@ use Pyz\Zed\Refund\Business\Calculator\Payment\RefundablePaymentCalculatorInterf
 use Spryker\Zed\Refund\Business\Model\RefundCalculator as SprykerRefundCalculator;
 use Spryker\Zed\Refund\Dependency\Facade\RefundToSalesInterface;
 
-class RefundCalculator extends SprykerRefundCalculator implements RefundCalculatorInterface
+class RefundCalculator extends SprykerRefundCalculator
 {
     /**
      * @var \Pyz\Zed\Refund\Business\Calculator\Payment\RefundablePaymentCalculatorInterface
@@ -21,25 +21,18 @@ class RefundCalculator extends SprykerRefundCalculator implements RefundCalculat
     private $refundablePaymentCalculator;
 
     /**
-     * @var \Pyz\Zed\Refund\Business\Model\ExternalPaymentRemoverInterface
-     */
-    protected $externalPaymentRemover;
-
-    /**
      * @param \Spryker\Zed\Refund\Dependency\Plugin\RefundCalculatorPluginInterface[] $refundCalculatorPlugins
      * @param \Spryker\Zed\Refund\Dependency\Facade\RefundToSalesInterface $salesFacade
      * @param \Pyz\Zed\Refund\Business\Calculator\Payment\RefundablePaymentCalculatorInterface $refundablePaymentCalculator
-     * @param \Pyz\Zed\Refund\Business\Model\ExternalPaymentRemoverInterface $externalPaymentRemover
      */
     public function __construct(
         array $refundCalculatorPlugins,
         RefundToSalesInterface $salesFacade,
-        RefundablePaymentCalculatorInterface $refundablePaymentCalculator,
-        ExternalPaymentRemoverInterface $externalPaymentRemover
+        RefundablePaymentCalculatorInterface $refundablePaymentCalculator
     ) {
         parent::__construct($refundCalculatorPlugins, $salesFacade);
+
         $this->refundablePaymentCalculator = $refundablePaymentCalculator;
-        $this->externalPaymentRemover = $externalPaymentRemover;
     }
 
     /**
@@ -60,20 +53,6 @@ class RefundCalculator extends SprykerRefundCalculator implements RefundCalculat
         foreach ($this->refundCalculatorPlugins as $refundCalculatorPlugin) {
             $refundTransfer = $refundCalculatorPlugin->calculateRefund($refundTransfer, $orderTransfer, $salesOrderItems);
         }
-
-        return $refundTransfer;
-    }
-
-    /**
-     * @param array $salesOrderItems
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     *
-     * @return \Generated\Shared\Transfer\RefundTransfer
-     */
-    public function calculateRefundWithoutExternalPayment(array $salesOrderItems, SpySalesOrder $salesOrderEntity): RefundTransfer
-    {
-        $refundTransfer = $this->calculateRefund($salesOrderItems, $salesOrderEntity);
-        $this->externalPaymentRemover->removeExternalPayments($refundTransfer, $salesOrderEntity->getIdSalesOrder());
 
         return $refundTransfer;
     }
