@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <transfers xmlns="spryker:transfer-01"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
 
     <transfer name="ProductPageSearch">
         <property name="isAffiliate" type="bool"/>
@@ -14,5 +14,12 @@
         <property name="isAffiliate" type="bool"/>
         <property name="benefitStore" type="bool"/>
         <property name="shoppingPointStore" type="bool"/>
+        <property name="ecDeals" type="bool"/>
+        <property name="onlyEcDeals" type="bool"/>
+        <property name="benefitDeals" type="bool"/>
+        <property name="shoppingPointDeals" type="bool"/>
+        <property name="bvDeal" type="BvDeal"/>
+        <property name="spDeal" type="SpDeal"/>
+        <property name="customerGroup" type="array"/>
     </transfer>
 </transfers>

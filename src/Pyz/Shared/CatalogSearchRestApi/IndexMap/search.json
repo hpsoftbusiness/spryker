@@ -13,6 +13,26 @@
         "shopping-point-store": {
           "type": "boolean",
           "include_in_all": false
+        },
+        "ec-deals": {
+          "type": "boolean",
+          "include_in_all": false
+        },
+        "benefit-deals": {
+          "type": "boolean",
+          "include_in_all": false
+        },
+        "shopping-point-deals": {
+          "type": "boolean",
+          "include_in_all": false
+        },
+        "only-ec-deals": {
+          "type": "boolean",
+          "include_in_all": false
+        },
+        "customer-group": {
+          "type": "object",
+          "include_in_all": false
         }
       }
     }

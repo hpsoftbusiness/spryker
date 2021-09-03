@@ -40,11 +40,15 @@ class ProductAbstractSellableExpanderPlugin extends AbstractPlugin implements Ca
     private function collectSellableAttributes(array $abstractProductData): array
     {
         $sellableAttributes = [];
-        $attributes = $abstractProductData[self::ATTRIBUTES_KEY];
+        $attributes = $abstractProductData[self::ATTRIBUTES_KEY] ?? [];
 
         foreach ($attributes as $key => $value) {
             if (strpos($key, self::ATTRIBUTE_SELLABLE_PREFIX) !== false) {
-                $sellableAttributes[$key] = (bool)$this->extractSingularAttributeValue($value);
+                $sellableAttributes[str_replace(
+                    self::ATTRIBUTE_SELLABLE_PREFIX,
+                    '',
+                    $key
+                )] = (bool)$this->extractSingularAttributeValue($value);
             }
         }
 

@@ -100,6 +100,14 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
+     * @return \Generated\Shared\Transfer\ProductsResponseApiTransfer
+     */
+    protected function createResponseTransfer(): ProductsResponseApiTransfer
+    {
+        return new ProductsResponseApiTransfer();
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
@@ -206,16 +214,12 @@ class TransferMapper implements TransferMapperInterface
     protected function getBenefitApi(ProductAbstractTransfer $productAbstractTransfer): ProductBenefitApiTransfer
     {
         $benefitApi = new ProductBenefitApiTransfer();
-        $benefitApi->setCashbackAmount(
-            $this->formatAmount(
-                $productAbstractTransfer->getAttributes()['cashback_amount'] ?? null
-            )
-        )
-            ->setShoppingPointsAmount(
-                $this->formatAmount(
-                    $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
-                )
-            );
+        $benefitApi->setCashbackAmount($this->formatAmount(
+            $productAbstractTransfer->getAttributes()['cashback_amount'] ?? null
+        ))
+            ->setShoppingPointsAmount($this->formatAmount(
+                $productAbstractTransfer->getAttributes()['shopping_points'] ?? null
+            ));
 
         return $benefitApi;
     }

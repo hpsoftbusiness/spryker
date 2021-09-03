@@ -73,4 +73,28 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     {
         return static::CHUNK_SIZE;
     }
+
+    /**
+     * @return string
+     */
+    public function getProductAbstractNotSellableFacetName(): string
+    {
+        return CatalogConfig::PRODUCT_ABSTRACT_NOT_SELLABLE_FACET_NAME;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAbstractCustomerGroupFacetName(): string
+    {
+        return CatalogConfig::PRODUCT_ABSTRACT_CUSTOMER_GROUP_FACET_NAME;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductAbstractNotCustomerGroupFacetName(): string
+    {
+        return CatalogConfig::PRODUCT_ABSTRACT_NOT_CUSTOMER_GROUP_FACET_NAME;
+    }
 }

@@ -10,6 +10,27 @@
         },
         "shopping-point-store": {
           "type": "boolean"
+        },
+        "ec-deals": {
+          "type": "boolean"
+        },
+        "benefit-deals": {
+          "type": "boolean"
+        },
+        "shopping-point-deals": {
+          "type": "boolean"
+        },
+        "only-ec-deals": {
+          "type": "boolean"
+        },
+        "bv-deal": {
+          "type": "object"
+        },
+        "sp-deal": {
+          "type": "object"
+        },
+        "customer-group": {
+          "type": "object"
         }
       }
     }

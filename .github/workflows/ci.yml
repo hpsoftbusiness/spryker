@@ -153,7 +153,7 @@ jobs:
               run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 
             - name: Run PHPStan
-              run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/
+              run: php -d memory_limit=-1 vendor/bin/phpstan analyze --debug -l 5 -c phpstan.neon src/
 
     php-74-mariadb-acceptance-alpine:
         name: "PHP 7.3 / MariaDB / Acceptance / Alpine"

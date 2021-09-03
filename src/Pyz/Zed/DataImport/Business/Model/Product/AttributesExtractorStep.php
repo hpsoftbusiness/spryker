@@ -15,6 +15,8 @@ class AttributesExtractorStep implements DataImportStepInterface
 {
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_AFFILIATE_ATTRIBUTES = 'affiliate_attributes';
+    public const KEY_CASHBACK_AMOUNT = 'cashback_amount';
+    public const KEY_SHOPPING_POINTS = 'shopping_points';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -44,6 +46,12 @@ class AttributesExtractorStep implements DataImportStepInterface
                     } elseif (strtoupper($attributeValue) === 'TRUE' || strtoupper($attributeValue) === 'FALSE' || $attributeValue === "") {
                         $attributes[$attributeKey] = strtoupper($attributeValue) === 'TRUE';
                     } else {
+                        if ($attributeKey === self::KEY_CASHBACK_AMOUNT) {
+                            $attributeValue = (int)((string)((float)str_replace(',', '.', $attributeValue) * 100));
+                        }
+                        if ($attributeKey === self::KEY_SHOPPING_POINTS) {
+                            $attributeValue = (int)$attributeValue;
+                        }
                         $attributes[$attributeKey] = $attributeValue;
                     }
                 }
@@ -58,7 +66,12 @@ class AttributesExtractorStep implements DataImportStepInterface
         foreach ($extraAttributesListKey as $key) {
             $attributes[$key] = $dataSet[$key];
         }
-
+        if (!in_array(self::KEY_CASHBACK_AMOUNT, array_keys($attributes))) {
+            $attributes[self::KEY_CASHBACK_AMOUNT] = 0;
+        }
+        if (!in_array(self::KEY_SHOPPING_POINTS, array_keys($attributes))) {
+            $attributes[self::KEY_SHOPPING_POINTS] = 0;
+        }
         $dataSet[static::KEY_ATTRIBUTES] = $attributes;
         $dataSet[static::KEY_AFFILIATE_ATTRIBUTES] = $affiliateAttributes;
     }
