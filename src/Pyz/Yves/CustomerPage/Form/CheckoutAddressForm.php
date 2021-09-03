@@ -90,7 +90,7 @@ class CheckoutAddressForm extends SprykerCheckoutAddressForm
         $validationGroup = $this->getValidationGroup($options);
 
         return new Regex([
-            'pattern' => '/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/m',
+            'pattern' => '/^(\+\d{1,3}[- ]?)?\d{10}$/',
             'message' => 'validator.check.phone',
             'groups' => $validationGroup,
         ]);

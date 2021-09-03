@@ -3089,6 +3089,10 @@ validator.check.phone,Błędny numer telefonu,pl_PL
 validator.check.phone,Invalid phone number,en_US
 validator.check.phone,ungültige Rufnummer,de_DE
 validator.check.phone,ungültige Rufnummer,de_AT
+validator.check.phone.plus,Numer telefonu nie zawiera znaku +,pl_PL
+validator.check.phone.plus,Phone number should contains + sign,en_US
+validator.check.phone.plus,Die Rufnummer sollte ein Pluszeichen enthalten,de_DE
+validator.check.phone.plus,Die Rufnummer sollte ein Pluszeichen enthalten,de_AT
 agent.login.password,Hasło,pl_PL
 agent.login.title,Uzyskaj dostęp do swojego konta,pl_PL
 auth.email,E-mail,pl_PL
@@ -3658,7 +3662,7 @@ customer.address.is_default_billing,To domyślny adres rozliczeniowy,pl_PL
 customer.address.is_default_shipping,To domyślny adres dostawy,pl_PL
 customer.address.last_name,Nazwisko,pl_PL
 customer.address.number,Numer domu,pl_PL
-customer.address.phone,Numer telefonu (na ewentualne pytania dotyczące dostawy),pl_PL
+customer.address.phone,Numer telefonu (na ewentualne pytania dotyczące dostawy z prefixem np. +48),pl_PL
 customer.address.placeholder.optional,Opcjonalny,pl_PL
 customer.address.save_new_address,Zapisz nowy adres w książce adresowej,pl_PL
 customer.address.state,Stan,pl_PL
@@ -5199,7 +5203,7 @@ customer.address.is_default_billing,Is default billing address,en_US
 customer.address.is_default_shipping,Is default shipping address,en_US
 customer.address.last_name,Last Name,en_US
 customer.address.number,House Number,en_US
-customer.address.phone,Telephone number (for possible questions regarding delivery),en_US
+customer.address.phone,Telephone number (for possible questions regarding delivery including country prefix ex. +44),en_US
 customer.address.placeholder.optional,Optional,en_US
 customer.address.save_new_address,Save new address to address book,en_US
 customer.address.state,State,en_US
@@ -6755,7 +6759,7 @@ customer.address.is_default_billing,Standard Rechnungsadresse,de_DE
 customer.address.is_default_shipping,Standard Lieferadresse,de_DE
 customer.address.last_name,Nachname,de_DE
 customer.address.number,Hausnummer,de_DE
-customer.address.phone,Telefonnummer (für mögliche Rückfragen bei der Zustellung),de_DE
+customer.address.phone,Telefonnummer (für mögliche Rückfragen bei der Zustellung einschließlich des Präfixes zum Beispiel +49),de_DE
 customer.address.placeholder.optional,Optional,de_DE
 customer.address.save_new_address,Neue Adresse in Adressbuch speichern,de_DE
 customer.address.state,Bundesland,de_DE
