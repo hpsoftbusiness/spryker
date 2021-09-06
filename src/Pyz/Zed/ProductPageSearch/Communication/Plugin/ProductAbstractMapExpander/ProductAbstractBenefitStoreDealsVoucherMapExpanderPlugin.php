@@ -28,7 +28,6 @@ class ProductAbstractBenefitStoreDealsVoucherMapExpanderPlugin extends AbstractP
     private const KEY_ATTRIBUTES = 'attributes';
     private const KEY_ATTRIBUTE_PRODUCT_SP_AMOUNT = 'product_sp_amount';
     private const KEY_ATTRIBUTE_BENEFIT_STORE = 'benefit_store';
-    private const KEY_ATTRIBUTE_SHOPPING_POINTS = 'shopping_points';
     private const KEY_ATTRIBUTE_SHOPPING_POINT_STORE = 'shopping_point_store';
     private const KEY_PRICES = 'prices';
     private const KEY_PRICES_GROSS_MODE = 'GROSS_MODE';
@@ -50,7 +49,6 @@ class ProductAbstractBenefitStoreDealsVoucherMapExpanderPlugin extends AbstractP
         LocaleTransfer $localeTransfer
     ): PageMapTransfer {
         $benefitStoreSalesPrice = $this->getBenefitStoreSalesPrice($productData);
-        $shoppingPoint = $this->getShoppingPoint($productData);
 
         $benefitAmount = $this->getBenefitAmount($productData);
         $benefitStore = $this->getBenefitStore($productData);
@@ -68,7 +66,7 @@ class ProductAbstractBenefitStoreDealsVoucherMapExpanderPlugin extends AbstractP
             $pageMapBuilder->addSearchResultData($pageMapTransfer, self::KEY_BV_DEAL, $bvDeal->toArray());
         }
         if ($isShoppingPointDeals) {
-            $spDeal = (new SpDealTransfer())->setSpItemPrice($benefitStoreSalesPrice)->setSpAmount($shoppingPoint);
+            $spDeal = (new SpDealTransfer())->setSpItemPrice($benefitStoreSalesPrice)->setSpAmount($productSpAmount);
             $pageMapTransfer->setSpDeal($spDeal);
             $pageMapBuilder->addSearchResultData($pageMapTransfer, self::KEY_SP_DEAL, $spDeal->toArray());
         }
@@ -148,15 +146,5 @@ class ProductAbstractBenefitStoreDealsVoucherMapExpanderPlugin extends AbstractP
     private function getProductSpAmount(array $productData): int
     {
         return (int)($productData[self::KEY_ATTRIBUTES][self::KEY_ATTRIBUTE_PRODUCT_SP_AMOUNT] ?? 0);
-    }
-
-    /**
-     * @param array $productData
-     *
-     * @return int
-     */
-    private function getShoppingPoint(array $productData): int
-    {
-        return (int)($productData[self::KEY_ATTRIBUTES][self::KEY_ATTRIBUTE_SHOPPING_POINTS] ?? 0);
     }
 }

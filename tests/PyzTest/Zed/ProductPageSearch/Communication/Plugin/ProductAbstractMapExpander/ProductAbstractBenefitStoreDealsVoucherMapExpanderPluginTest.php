@@ -200,7 +200,7 @@ class ProductAbstractBenefitStoreDealsVoucherMapExpanderPluginTest extends Abstr
                 ],
                 true,
                 false,
-                [self::KEY_SP_ITEM_PRICE => 123, self::KEY_SP_AMOUNT => 3],
+                [self::KEY_SP_ITEM_PRICE => 123, self::KEY_SP_AMOUNT => 1],
                 null,
             ],
             'flagsSetFalseIfBenefitAmountNotExist' => [
@@ -223,7 +223,7 @@ class ProductAbstractBenefitStoreDealsVoucherMapExpanderPluginTest extends Abstr
                 ],
                 true,
                 false,
-                [self::KEY_SP_ITEM_PRICE => 123, self::KEY_SP_AMOUNT => 3],
+                [self::KEY_SP_ITEM_PRICE => 123, self::KEY_SP_AMOUNT => 1],
                 null,
             ],
             'flagsSetFalseIfShoppingPointNotExist' => [
