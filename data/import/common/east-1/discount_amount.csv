@@ -1,0 +1,5 @@
+discount_key,store,currency,value_net,value_gross
+discount_2,PL,PLN,4500,5000
+discount_2,SK,EUR,4500,5000
+discount_2,CZ,CZK,4500,5000
+
