@@ -1,0 +1,5 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,NO,NOK,495,495
+myworld_standard_shipment_method,FI,EUR,495,495
+myworld_standard_shipment_method,DK,DKK,495,495
+myworld_standard_shipment_method,SE,SEK,495,495

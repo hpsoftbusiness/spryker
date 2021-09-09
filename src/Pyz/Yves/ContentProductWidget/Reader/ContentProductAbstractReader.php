@@ -75,11 +75,11 @@ class ContentProductAbstractReader extends SprykerContentProductAbstractReader
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer[] $productAbstractViewCollection
+     * @param \Generated\Shared\Transfer\ProductViewTransfer[]|null $productAbstractViewCollection
      *
      * @return \Generated\Shared\Transfer\ProductViewTransfer[]
      */
-    private function filterByRestrictedProducts(array $productAbstractViewCollection): array
+    private function filterByRestrictedProducts(?array $productAbstractViewCollection): array
     {
         foreach ($productAbstractViewCollection as $key => $item) {
             if ($this->productListStorageClient->isProductAbstractRestricted($item->getIdProductAbstract())) {
