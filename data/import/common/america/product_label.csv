@@ -1,0 +1,7 @@
+name,is_active,is_dynamic,is_exclusive,front_end_reference,valid_from,valid_to,name.en_US,product_abstract_skus,priority
+Standard label,1,0,0,,,,Standard Label,,1
+NEW,1,1,0,template:tag,,,New,,2
+SALE,1,1,0,highlight,,,SALE %,,3
+BENEFIT,1,1,0,template:tag,,,BENEFIT,,1
+SHOPPING_POINT,1,1,0,template:tag,,,SHOPPING_POINT,,1
+INSTEAD_OF,1,1,1,template:instead-of,,,Instead Of,,2

@@ -655,4 +655,5 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'SE' => ['en' => 'en_US', 'sv' => 'sv_SE'],
     'CH' => ['en' => 'en_US', 'de' => 'de_CH', 'it' => 'it_CH', 'fr' => 'fr_CH'],
     'GB' => ['en' => 'en_GB'],
+    'US' => ['en' => 'en_US'],
 ];
