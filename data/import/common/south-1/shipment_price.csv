@@ -1,0 +1,5 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,IT,EUR,495,495
+myworld_standard_shipment_method,FR,EUR,495,495
+myworld_standard_shipment_method,GR,EUR,495,495
+
