@@ -1,0 +1,16 @@
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.et_EE,title.lv_LV,title.lt_LT,url.et_EE,url.lv_LV,url.lt_LT,css_class.et_EE,css_class.lv_LV,css_class.lt_LT
+FOOTER_NAVIGATION_LEGAL,node_key_33,,cms_page,Imprint,/en/imprint,,,,Imprint,Imprint,Imprint,/et/impressum,/lv/impressum,/lt/impressum,,,
+FOOTER_NAVIGATION_LEGAL,node_key_35,,cms_page,Privacy Policy,/en/privacy,,,,Privacy Policy,Privacy Policy,Privacy Policy,/et/datenschutz,/lv/datenschutz,/lt/datenschutz,,,
+FOOTER_NAVIGATION_LEGAL,node_key_94,,cms_page,Terms and Conditions,/en/gtc,,,,Terms and Conditions,Terms and Conditions,Terms and Conditions,/et/agb,/lv/agb,/lt/agb,,,
+FOOTER_NAVIGATION_LEGAL,node_key_95,,cms_page,Terms of use,/en/terms-of-use,,,,Terms of use,Terms of use,Terms of use,/et/nutzungsbedingungen,/lv/nutzungsbedingungen,/lt/nutzungsbedingungen,,,
+FOOTER_NAVIGATION_INFO,node_key_96,,cms_page,About myWorld.com,/en/about-us,,,,About myWorld.com,About myWorld.com,About myWorld.com,/et/uber-uns,/lv/uber-uns,/lt/uber-uns,,,
+PAYMENT_PROVIDERS,node_key_36,,label,Paypal,,paypal,,,Paypal,Paypal,Paypal,,,,paypal,paypal,paypal
+PAYMENT_PROVIDERS,node_key_37,,label,Klarna,,klarna,,,Klarna,Klarna,Klarna,,,,klarna,klarna,klarna
+SHIPMENT_PROVIDERS,node_key_38,,label,DHL,,dhl,,,DHL,DHL,DHL,,,,dhl,dhl,dhl
+SOCIAL_LINKS,node_key_39,,external_url,Twitter,https://twitter.com/myWorld_uk/,twitter,,,Twitter,Twitter,Twitter,https://twitter.com/myWorld_de/,https://twitter.com/myWorld_de/,https://twitter.com/myWorld_de/,twitter,twitter,twitter
+SOCIAL_LINKS,node_key_40,,external_url,Pinterest,https://www.pinterest.de/myworld_uk/,pinterest,,,Pinterest,Pinterest,Pinterest,https://www.pinterest.com/myworld_de/,https://www.pinterest.com/myworld_de/,https://www.pinterest.com/myworld_de/,pinterest,pinterest,pinterest
+SOCIAL_LINKS,node_key_41,,external_url,Instagram,https://www.instagram.com/myworld.com_uk/,instagram,,,Instagram,Instagram,Instagram,https://www.instagram.com/myworld.com_deutschland/,https://www.instagram.com/myworld.com_deutschland/,https://www.instagram.com/myworld.com_deutschland/,instagram,instagram,instagram
+SOCIAL_LINKS,node_key_42,,external_url,Facebook,https://www.facebook.com/myWorldcomUK/,facebook,,,Facebook,Facebook,Facebook,https://www.facebook.com/myworldcom-deutschland-838309199874712/,https://www.facebook.com/myworldcom-deutschland-838309199874712/,https://www.facebook.com/myworldcom-deutschland-838309199874712/,facebook,facebook,facebook
+PARTNERS,node_key_91,,label,Paypal,,paypal,,,Paypal,Paypal,Paypal,,,,paypal,paypal,paypal
+PARTNERS,node_key_92,,label,Klarna,,klarna,,,Klarna,Klarna,Klarna,,,,klarna,klarna,klarna
+PARTNERS,node_key_93,,label,DHL,,dhl,,,DHL,DHL,DHL,,,,dhl,dhl,dhl
