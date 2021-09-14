@@ -336,17 +336,18 @@ class TransferMapper implements TransferMapperInterface
     ): ProductBvDealApiTransfer {
         $defaultPrice = $this->getDefaultPrice($productAbstractTransfer);
         $benefitPrice = $this->getBenefitPrice($productAbstractTransfer);
-        $benefitAmount = $defaultPrice->getGrossAmount() - $benefitPrice->getGrossAmount();
+        $benefitPriceGrossAmount = $benefitPrice ? $benefitPrice->getGrossAmount() : null;
+        $benefitAmount = $benefitPriceGrossAmount ? $defaultPrice->getGrossAmount() - $benefitPriceGrossAmount : null;
         $productBcDealApi = new ProductBvDealApiTransfer();
         $productBcDealApi
             ->setBvItemPrice(
                 $this->formatAmount(
-                    $benefitPrice->getGrossAmount() / 100
+                    $benefitPriceGrossAmount ? $benefitPriceGrossAmount / 100 : null
                 )
             )
             ->setBvAmount(
                 $this->formatAmount(
-                    $benefitAmount / 100
+                    $benefitAmount ? $benefitAmount / 100 : null
                 )
             );
 
@@ -363,12 +364,13 @@ class TransferMapper implements TransferMapperInterface
     ): ProductSpDealApiTransfer {
         $spAmountKey = Config::get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_SHOPPING_POINTS_AMOUNT);
         $benefitPrice = $this->getBenefitPrice($productAbstractTransfer);
+        $benefitPriceGrossAmount = $benefitPrice ? $benefitPrice->getGrossAmount() : null;
 
         $productSpDealApi = new ProductSpDealApiTransfer();
         $productSpDealApi
             ->setSpItemPrice(
                 $this->formatAmount(
-                    $benefitPrice->getGrossAmount() / 100
+                    $benefitPriceGrossAmount ? $benefitPriceGrossAmount / 100 : null
                 )
             )
             ->setSpAmount(
