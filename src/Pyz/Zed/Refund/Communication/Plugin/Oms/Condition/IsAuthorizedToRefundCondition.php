@@ -8,7 +8,6 @@
 namespace Pyz\Zed\Refund\Communication\Plugin\Oms\Condition;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
-use Pyz\Zed\Refund\RefundConfig;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 
@@ -17,7 +16,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
  * @method \Pyz\Zed\Refund\RefundConfig getConfig()
  * @method \Pyz\Zed\Refund\Communication\RefundCommunicationFactory getFactory()
  */
-class IsRefundedCondition extends AbstractPlugin implements ConditionInterface
+class IsAuthorizedToRefundCondition extends AbstractPlugin implements ConditionInterface
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
@@ -26,16 +25,13 @@ class IsRefundedCondition extends AbstractPlugin implements ConditionInterface
      */
     public function check(SpySalesOrderItem $orderItem): bool
     {
-        if ($orderItem->getPyzSalesOrderItemRefunds()->isEmpty()) {
-            return false;
-        }
+        $aclFacade = $this->getFactory()->getAclFacade();
 
-        foreach ($orderItem->getPyzSalesOrderItemRefunds() as $pyzSalesOrderItemRefund) {
-            if ($pyzSalesOrderItemRefund->getStatus() !== RefundConfig::PAYMENT_REFUND_STATUS_PROCESSED) {
-                return false;
-            }
-        }
-
-        return true;
+        return $aclFacade->checkAccess(
+            $aclFacade->getCurrentUser(),
+            'Refund',
+            'Refund',
+            'refund'
+        );
     }
 }

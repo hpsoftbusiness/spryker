@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\Refund\Communication\Plugin\Oms\Condition;
 
+use DateTime;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
-use Pyz\Zed\Refund\RefundConfig;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 
@@ -17,7 +17,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
  * @method \Pyz\Zed\Refund\RefundConfig getConfig()
  * @method \Pyz\Zed\Refund\Communication\RefundCommunicationFactory getFactory()
  */
-class IsRefundedCondition extends AbstractPlugin implements ConditionInterface
+class IsPossibleToRefundAfterClosingCondition extends AbstractPlugin implements ConditionInterface
 {
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
@@ -26,16 +26,12 @@ class IsRefundedCondition extends AbstractPlugin implements ConditionInterface
      */
     public function check(SpySalesOrderItem $orderItem): bool
     {
-        if ($orderItem->getPyzSalesOrderItemRefunds()->isEmpty()) {
-            return false;
-        }
+        $isAuthorizedToRefund = $this->getFactory()->createIsAuthorizedToRefundCondition()->check($orderItem);
+        $isNotRefunded = !$this->getFactory()->createIsRefundedCondition()->check($orderItem);
+        /** @var \Orm\Zed\Oms\Persistence\Base\SpyOmsOrderItemStateHistory $lastState */
+        $lastState = $orderItem->getStateHistories()->getFirst();
+        $isClosedLessThanTwoYearsAgo = $lastState->getCreatedAt() > (new DateTime())->modify('2 years ago');
 
-        foreach ($orderItem->getPyzSalesOrderItemRefunds() as $pyzSalesOrderItemRefund) {
-            if ($pyzSalesOrderItemRefund->getStatus() !== RefundConfig::PAYMENT_REFUND_STATUS_PROCESSED) {
-                return false;
-            }
-        }
-
-        return true;
+        return $isAuthorizedToRefund && $isNotRefunded && $isClosedLessThanTwoYearsAgo;
     }
 }

@@ -20,12 +20,12 @@
             <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
             <event name="process refund" onEnter="true" command="Refund/Process"/>
             <event name="validate refund" onEnter="true" command="Refund/Validate"/>
-            <event name="refund manually" manual="true" command="Refund/ManualRefund"/>
-            <event name="retry refund" manual="true"/>
+            <event name="refund manually" manual="true" condition="Refund/IsAuthorizedToRefund" command="Refund/ManualRefund"/>
+            <event name="retry refund" manual="true" condition="Refund/IsAuthorizedToRefund"/>
             <event name="pass" onEnter="true"/>
             <event name="pass 5 minute" timeout="5 minute"/>
             <event name="pass 10 minute" timeout="10 minute"/>
-            <event name="skip timeout" manual="true"/>
+            <event name="skip timeout" manual="true" condition="Refund/IsAuthorizedToRefund"/>
         </events>
 
         <transitions>
