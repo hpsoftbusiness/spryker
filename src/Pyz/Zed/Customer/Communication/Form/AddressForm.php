@@ -8,6 +8,8 @@
 namespace Pyz\Zed\Customer\Communication\Form;
 
 use Spryker\Zed\Customer\Communication\Form\AddressForm as SprykerAddressForm;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -134,6 +136,78 @@ class AddressForm extends SprykerAddressForm
             'required' => true,
             'constraints' => [
                 new NotBlank(),
+                new Length(['max' => 255]),
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $choices
+     *
+     * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
+     */
+    protected function addSalutationField(FormBuilderInterface $builder, array $choices)
+    {
+        $builder->add(static::FIELD_SALUTATION, ChoiceType::class, [
+            'label' => 'Salutation',
+            'placeholder' => 'Select one',
+            'required' => false,
+            'choices' => array_flip($choices),
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
+     */
+    protected function addCommentField(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_COMMENT, TextareaType::class, [
+            'label' => 'Comment',
+            'required' => false,
+            'constraints' => [
+                new Length(['max' => 255]),
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
+     */
+    protected function addCompanyField(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_COMPANY, TextType::class, [
+            'label' => 'Company',
+            'required' => false,
+            'constraints' => [
+                new Length(['max' => 255]),
+            ],
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return \Spryker\Zed\Customer\Communication\Form\AddressForm
+     */
+    protected function addAddress3Field(FormBuilderInterface $builder)
+    {
+        $builder->add(static::FIELD_ADDRESS_3, TextType::class, [
+            'label' => 'Address line 3',
+            'required' => false,
+            'constraints' => [
                 new Length(['max' => 255]),
             ],
         ]);
