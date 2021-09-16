@@ -1,7 +1,7 @@
 <?php
 
+use Pyz\Shared\Config\Application\Environment;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
-use Spryker\Shared\Config\Application\Environment;
 use Spryker\Shared\ErrorHandler\ErrorHandlerEnvironment;
 
 require __DIR__ . '/maintenance/maintenance.php';

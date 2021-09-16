@@ -42,14 +42,11 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
         ],
         'locales' => [
             // first entry is default
-            'en' => 'en_US',
-            'de' => 'de_DE',
-            'at' => 'de_AT',
+            'en_US',
+            'de_DE',
+            'de_AT',
         ],
 
-        // internal and shop
-//        'currencyIsoCode' => 'EUR',
-//        'currencyIsoCodes' => ['EUR'],
         'queuePools' => [
             'synchronizationPool' => [],
         ],

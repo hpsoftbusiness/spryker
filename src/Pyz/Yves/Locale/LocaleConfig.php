@@ -19,4 +19,16 @@ class LocaleConfig extends AbstractBundleConfig
     {
         return $this->get(LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS, []);
     }
+
+    /**
+     * @param string $store
+     *
+     * @return array
+     */
+    public function getLocalsByStore(string $store): array
+    {
+        $localsPerStore = $this->get(LocaleConstants::LOCALS_PER_STORES, []);
+
+        return $localsPerStore[$store] ?? [];
+    }
 }

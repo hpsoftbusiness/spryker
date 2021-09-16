@@ -165,6 +165,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         $syncTransferData = new SynchronizationDataTransfer();
 
         $syncTransferData->setReference($data[$keySuffix]);
+        $syncTransferData->setLocale($data['data']['locale_name']);
         $keyBuilder = $this->synchronizationService->getStorageKeyBuilder($resourceName);
 
         return $keyBuilder->generateKey($syncTransferData);

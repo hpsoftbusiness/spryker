@@ -5,6 +5,11 @@
         <behavior name="event">
             <parameter name="spy_url_all" column="*"/>
         </behavior>
+
+        <unique name="spy_url_unique_key">
+            <unique-column name="url"/>
+            <unique-column name="fk_locale"/>
+        </unique>
     </table>
 
     <table name="spy_url_redirect">

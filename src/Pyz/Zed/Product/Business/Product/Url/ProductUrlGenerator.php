@@ -13,9 +13,6 @@ use Spryker\Zed\Product\Business\Product\Url\ProductUrlGenerator as SprykerProdu
 
 class ProductUrlGenerator extends SprykerProductUrlGenerator
 {
-    protected const CRUTCH_LANGUAGE_IDENTIFIER = 'at';
-    protected const CRUTCH_LOCALE = 'de_AT';
-
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
@@ -33,10 +30,6 @@ class ProductUrlGenerator extends SprykerProductUrlGenerator
             )
         );
         $languageIdentifier = mb_substr($localeTransfer->getLocaleName(), 0, 2);
-
-        if ($localeTransfer->getLocaleName() === self::CRUTCH_LOCALE) {
-            $languageIdentifier = self::CRUTCH_LANGUAGE_IDENTIFIER;
-        }
 
         return '/' . $languageIdentifier . '/' . $productName . '-' . $productAbstractTransfer->getIdProductAbstract();
     }

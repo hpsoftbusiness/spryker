@@ -628,7 +628,7 @@ $config[DataImportConstants::SPRYKER_CLUSTER] = getenv('SPRYKER_CLUSTER') ?? 'EU
 // ----------------------- Locals for per store -----------------------------
 // ----------------------------------------------------------------------------
 $config[LocaleConstants::LOCALS_PER_STORES] = [
-    'AT' => ['en' => 'en_US', 'at' => 'de_AT'],
+    'AT' => ['en' => 'en_US', 'de' => 'de_AT'],
     'DE' => ['en' => 'en_US', 'de' => 'de_DE'],
     'IT' => ['en' => 'en_US', 'it' => 'it_IT'],
     'PT' => ['en' => 'en_US', 'pt' => 'pt_PT'],

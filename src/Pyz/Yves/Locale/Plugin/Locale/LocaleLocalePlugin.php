@@ -30,7 +30,8 @@ class LocaleLocalePlugin extends SprykerLocaleLocalePlugin
     protected function getLocaleName(): string
     {
         $currentLocale = $this->getClient()->getCurrentLocale();
-        $locales = $this->getFactory()->getStore()->getLocales();
+        $store = $this->getFactory()->getStore()->getStoreName();
+        $locales = $this->getConfig()->getLocalsByStore($store);
         $requestUri = $this->getRequestUri();
         $headerLanguage = $this->extractRequestHeaderLocaleCode();
         if ($headerLanguage) {
