@@ -1085,6 +1085,7 @@ oms.state.turnover-cancellation-failed,Remboursement,fr_FR
 oms.state.turnover-created,Expédié,fr_FR
 oms.state.turnover-creation-failed,Expédié,fr_FR
 oms.state.waiting-for-tracking-number,En cours,fr_FR
+oms.state.invoice-generated,Invoice generated,fr_FR
 order_cancel_widget.cancel_order,annuler la commande,fr_FR
 order_cancel_widget.order.cancelled,La commande a été annulée avec succès.,fr_FR
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,fr_FR
@@ -2616,6 +2617,7 @@ oms.state.turnover-cancellation-failed,Rimborso,it_IT
 oms.state.turnover-created,Spedito,it_IT
 oms.state.turnover-creation-failed,Spedito,it_IT
 oms.state.waiting-for-tracking-number,In corso,it_IT
+oms.state.invoice-generated,Invoice generated,it_IT
 order_cancel_widget.cancel_order,Annulla Ordine,it_IT
 order_cancel_widget.order.cancelled,L'ordine è stato annullato con successo.,it_IT
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,it_IT
@@ -4155,6 +4157,7 @@ oms.state.turnover-cancellation-failed,Zwrot,pl_PL
 oms.state.turnover-created,Wysłane,pl_PL
 oms.state.turnover-creation-failed,Wysłane,pl_PL
 oms.state.waiting-for-tracking-number,W trakcie,pl_PL
+oms.state.invoice-generated,Invoice generated,pl_PL
 order_cancel_widget.cancel_order,Anuluj zamówienie,pl_PL
 order_cancel_widget.order.cancelled,Zamówienie zostało pomyślnie anulowane.,pl_PL
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,pl_PL
@@ -5696,6 +5699,7 @@ oms.state.turnover-cancellation-failed,Refund,en_US
 oms.state.turnover-created,Shipped,en_US
 oms.state.turnover-creation-failed,Shipped,en_US
 oms.state.waiting-for-tracking-number,In progress,en_US
+oms.state.invoice-generated,Invoice generated,en_US
 order_cancel_widget.cancel_order,Cancel Order,en_US
 order_cancel_widget.order.cancelled,Order was canceled successfully.,en_US
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g,en_US
@@ -7252,6 +7256,7 @@ oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
 oms.state.turnover-created,Versandt,de_DE
 oms.state.turnover-creation-failed,Versandt,de_DE
 oms.state.waiting-for-tracking-number,In Arbeit,de_DE
+oms.state.invoice-generated,Invoice generated,de_DE
 order_cancel_widget.cancel_order,Bestellung stornieren,de_DE
 order_cancel_widget.order.cancelled,Die Bestellung wurde erfolgreich storniert.,de_DE
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g,de_DE
@@ -8765,6 +8770,7 @@ oms.state.turnover-cancellation-failed,Reembolso,es_ES
 oms.state.turnover-created,Enviado,es_ES
 oms.state.turnover-creation-failed,Enviado,es_ES
 oms.state.waiting-for-tracking-number,En curso,es_ES
+oms.state.invoice-generated,Invoice generated,es_ES
 order_cancel_widget.cancel_order,Cancelar orden,es_ES
 order_cancel_widget.order.cancelled,El pedido se canceló correctamente.,es_ES
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,es_ES
@@ -10296,6 +10302,7 @@ oms.state.turnover-cancellation-failed,Vrácení peněz,cs_CZ
 oms.state.turnover-created,Odesláno,cs_CZ
 oms.state.turnover-creation-failed,Odesláno,cs_CZ
 oms.state.waiting-for-tracking-number,Probíhá,cs_CZ
+oms.state.invoice-generated,Invoice generated,cs_CZ
 order_cancel_widget.cancel_order,Zrušit objednávku,cs_CZ
 order_cancel_widget.order.cancelled,Objednávka byla úspěšně zrušena.,cs_CZ
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Registr handels: FN389134g,cs_CZ
@@ -11827,6 +11834,7 @@ oms.state.turnover-cancellation-failed,Återbetalning,sv_SE
 oms.state.turnover-created,Levereras,sv_SE
 oms.state.turnover-creation-failed,Levereras,sv_SE
 oms.state.waiting-for-tracking-number,Pågående,sv_SE
+oms.state.invoice-generated,Invoice generated,sv_SE
 order_cancel_widget.cancel_order,Avbryt beställningen,sv_SE
 order_cancel_widget.order.cancelled,Beställningen avbröts.,sv_SE
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,sv_SE
@@ -13358,6 +13366,7 @@ oms.state.turnover-cancellation-failed,Vračilo kupnine,sl_SI
 oms.state.turnover-created,Odposlano,sl_SI
 oms.state.turnover-creation-failed,Odposlano,sl_SI
 oms.state.waiting-for-tracking-number,V postopku,sl_SI
+oms.state.invoice-generated,Invoice generated,sl_SI
 order_cancel_widget.cancel_order,Prekliči naročilo,sl_SI
 order_cancel_widget.order.cancelled,Naročilo je bilo uspešno preklicano.,sl_SI
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 - A-8010 Graz - UID: ATU67661657 <br> Handelsregister: FN389134g,sl_SI
@@ -14889,6 +14898,7 @@ oms.state.turnover-cancellation-failed,Reembolso,pt_PT
 oms.state.turnover-created,Enviado,pt_PT
 oms.state.turnover-creation-failed,Enviado,pt_PT
 oms.state.waiting-for-tracking-number,Em andamento,pt_PT
+oms.state.invoice-generated,Invoice generated,pt_PT
 order_cancel_widget.cancel_order,Cancelar pedido,pt_PT
 order_cancel_widget.order.cancelled,O pedido foi cancelado com sucesso.,pt_PT
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,pt_PT
@@ -16420,6 +16430,7 @@ oms.state.turnover-cancellation-failed,Refusjon,nb_NO
 oms.state.turnover-created,Sendes,nb_NO
 oms.state.turnover-creation-failed,Sendes,nb_NO
 oms.state.waiting-for-tracking-number,I prosess,nb_NO
+oms.state.invoice-generated,Invoice generated,nb_NO
 order_cancel_widget.cancel_order,Avbryt bestillingen,nb_NO
 order_cancel_widget.order.cancelled,Bestillingen ble kansellert.,nb_NO
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,nb_NO
@@ -17951,6 +17962,7 @@ oms.state.turnover-cancellation-failed,Vrátenie peňazí,sk_SK
 oms.state.turnover-created,Dodané,sk_SK
 oms.state.turnover-creation-failed,Dodané,sk_SK
 oms.state.waiting-for-tracking-number,Prebieha,sk_SK
+oms.state.invoice-generated,Invoice generated,sk_SK
 order_cancel_widget.cancel_order,Zrušiť objednávku,sk_SK
 order_cancel_widget.order.cancelled,Objednávka bola úspešne zrušená.,sk_SK
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Registrovaný tovar: FN389134g,sk_SK
@@ -19482,6 +19494,7 @@ oms.state.turnover-cancellation-failed,Terugbetaling,nl_NL
 oms.state.turnover-created,Verzonden,nl_NL
 oms.state.turnover-creation-failed,Verzonden,nl_NL
 oms.state.waiting-for-tracking-number,Bezig,nl_NL
+oms.state.invoice-generated,Invoice generated,nl_NL
 order_cancel_widget.cancel_order,Annuleer bestelling,nl_NL
 order_cancel_widget.order.cancelled,Bestelling is succesvol geannuleerd.,nl_NL
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,nl_NL
@@ -20123,5 +20136,6 @@ payment.payment_provider.nopayment,Nopayment,en_US
 payment.payment_provider.nopayment,Nopayment,de_DE
 payment.payment_method.dummy_prepayment,Prepayment,en_US
 payment.payment_method.dummy_prepayment,Prepayment,de_DE
+oms.state.invoice-generated,Invoice generated,
 product.filter.deal,Deal,en_US
 product.filter.deal,Deal,de_DE
