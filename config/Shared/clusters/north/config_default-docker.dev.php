@@ -20,10 +20,10 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 //    }
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
-        'NO' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmZpLm15d29ybGQubG9jYWw.G_j8xZJxufm3E92I-wXZW2fphYUa1NOoHHgK48TFUnA',
-        'FI' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLm5vLm15d29ybGQubG9jYWw.1xxQdViYRpbHwd1CW6kC-KEajxiM4d7a8rAfiMTzslE',
-        'DK' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLnNlLm15d29ybGQubG9jYWw.4dEYOcii01AmLbFub10jgrKNqjJJDgcT4Vh2-iyr7dM',
-        'SE' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmRrLm15d29ybGQubG9jYWw.y8j8x2aeIHu22B2Fxbf3wOPJHqyVk0MQynqIsLD-aMU',
+        'NO' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLm5vLm15d29ybGQubG9jYWw.1xxQdViYRpbHwd1CW6kC-KEajxiM4d7a8rAfiMTzslE',
+        'FI' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmZpLm15d29ybGQubG9jYWw.G_j8xZJxufm3E92I-wXZW2fphYUa1NOoHHgK48TFUnA',
+        'DK' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmRrLm15d29ybGQubG9jYWw.y8j8x2aeIHu22B2Fxbf3wOPJHqyVk0MQynqIsLD-aMU',
+        'SE' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLnNlLm15d29ybGQubG9jYWw.4dEYOcii01AmLbFub10jgrKNqjJJDgcT4Vh2-iyr7dM',
     ],
 ];
 

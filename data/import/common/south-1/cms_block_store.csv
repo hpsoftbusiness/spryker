@@ -84,7 +84,8 @@ cms-block-email--order-confirmation--text,FR
 cms-block-email--order-shipped--html,FR
 cms-block-email--order-shipped--text,FR
 cms-block-email--shipping-confirmation--html,FR
-cms-block-email--shipping-confirmation--text,GR
+cms-block-email--shipping-confirmation--text,FR
+blck-1,GR
 blck-2,GR
 blck-3,GR
 blck-4,GR

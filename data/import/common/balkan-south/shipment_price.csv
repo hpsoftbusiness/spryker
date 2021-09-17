@@ -1,0 +1,5 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,BG,BGN,495,495
+myworld_standard_shipment_method,MK,MKD,495,495
+myworld_standard_shipment_method,AL,ALL,495,495
+myworld_standard_shipment_method,XK,EUR,495,495

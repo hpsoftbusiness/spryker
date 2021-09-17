@@ -20,10 +20,10 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 //    }
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
-        'NO' => 'pub.v2.8216083088630330.aHR0cHM6Ly9kay5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.MnoAGDbiKPyqKSe2ok6Me2Aj0EemstrMIa8odi1Do5U',
-        'FI' => 'pub.v2.8216083088630330.aHR0cHM6Ly9zZS5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.r1YaGnReXBzkj0idykXeuLLLrSXCCZH8pgulns7uooY',
-        'DK' => 'pub.v2.8216083088630330.aHR0cHM6Ly9uby5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.G_DoOgvix2eWWbHeJb55nc1S0Lj1a32K-3965s0MPRo',
-        'SE' => 'pub.v2.8216083088630330.aHR0cHM6Ly9maS5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.Fv8r0jFbz6idaj58KfcmJnNdSrKrJtAs543Ws2HuEZ0',
+        'NO' => 'pub.v2.8216083088630330.aHR0cHM6Ly9uby5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.G_DoOgvix2eWWbHeJb55nc1S0Lj1a32K-3965s0MPRo',
+        'FI' => 'pub.v2.8216083088630330.aHR0cHM6Ly9maS5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.Fv8r0jFbz6idaj58KfcmJnNdSrKrJtAs543Ws2HuEZ0',
+        'DK' => 'pub.v2.8216083088630330.aHR0cHM6Ly9kay5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.MnoAGDbiKPyqKSe2ok6Me2Aj0EemstrMIa8odi1Do5U',
+        'SE' => 'pub.v2.8216083088630330.aHR0cHM6Ly9zZS5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.r1YaGnReXBzkj0idykXeuLLLrSXCCZH8pgulns7uooY',
     ],
 ];
 

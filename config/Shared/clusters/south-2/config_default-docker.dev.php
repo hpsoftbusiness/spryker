@@ -17,8 +17,8 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 //    }
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
-        'ES' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLnB0Lm15d29ybGQubG9jYWw.uNF1n_otTMcQQatevrKfDeGHIf8A81PLICDF7hnLPoY',
-        'PT' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmVzLm15d29ybGQubG9jYWw.jNBstbM0QmXHUwpXITND9-QPBMfvFWMGJPPeMXCHuo4',
+        'ES' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLmVzLm15d29ybGQubG9jYWw.jNBstbM0QmXHUwpXITND9-QPBMfvFWMGJPPeMXCHuo4',
+        'PT' => 'pub.v2.8216083088630330.aHR0cHM6Ly95dmVzLnB0Lm15d29ybGQubG9jYWw.uNF1n_otTMcQQatevrKfDeGHIf8A81PLICDF7hnLPoY',
     ],
 ];
 

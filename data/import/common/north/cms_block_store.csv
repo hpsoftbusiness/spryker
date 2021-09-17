@@ -84,7 +84,8 @@ cms-block-email--order-confirmation--text,FI
 cms-block-email--order-shipped--html,FI
 cms-block-email--order-shipped--text,FI
 cms-block-email--shipping-confirmation--html,FI
-cms-block-email--shipping-confirmation--text,DK
+cms-block-email--shipping-confirmation--text,FI
+blck-1,DK
 blck-2,DK
 blck-3,DK
 blck-4,DK

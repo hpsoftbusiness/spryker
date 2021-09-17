@@ -1,0 +1,6 @@
+key,filter_type,position,key.en_US,key.bg_BG,key.mk_MK,key.sq_AL,key.sr_RS
+color,multi-select,1,Color,Farbe,Farbe,Farbe,Farbe
+size,multi-select,2,Size,Größe,Größe,Größe,Größe
+benefit_store,single-select,3,Benefit Store,Vorteil Geschäft,Vorteil Geschäft,Vorteil Geschäft,Vorteil Geschäft
+shopping_point_store,single-select,4,Shopping Point Store,Einkaufspunkt Geschäft,Einkaufspunkt Geschäft,Einkaufspunkt Geschäft,Einkaufspunkt Geschäft
+brand,multi-select,5,Brand,Marke,Marke,Marke,Marke
