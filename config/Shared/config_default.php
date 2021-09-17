@@ -636,7 +636,7 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'RO' => ['en' => 'en_US', 'ro' => 'ro_RO'],
     'SK' => ['en' => 'en_US', 'sk' => 'sk_SK'],
     'SL' => ['en' => 'en_US', 'sl' => 'sl_SI'],
-    'BE' => ['en' => 'en_US', 'nl' => 'nl_BE', 'fr' => 'fr_ BE'],
+    'BE' => ['en' => 'en_US', 'nl' => 'nl_BE', 'fr' => 'fr_BE'],
     'BG' => ['en' => 'en_US', 'bg' => 'bg_BG'],
     'HR' => ['en' => 'en_US', 'hr' => 'hr_HR'],
     'CZ' => ['en' => 'en_US', 'cs' => 'cs_CZ'],

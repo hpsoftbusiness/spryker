@@ -1,0 +1,6 @@
+discount_key,store,currency,value_net,value_gross
+discount_2,GB,GBP,4500,5000
+discount_2,BE,EUR,4500,5000
+discount_2,IE,EUR,4500,5000
+discount_2,NL,EUR,4500,5000
+
