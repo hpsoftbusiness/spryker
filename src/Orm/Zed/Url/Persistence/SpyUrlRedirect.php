@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Url\Persistence;
 
-use Spryker\Zed\Url\Persistence\Propel\AbstractSpyUrlRedirect as BaseSpyUrlRedirect;
+use Pyz\Zed\Url\Persistence\Propel\AbstractSpyUrlRedirect as BaseSpyUrlRedirect;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_url_redirect' table.

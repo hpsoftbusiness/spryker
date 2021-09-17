@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Url\Business;
 
 use Pyz\Zed\Url\Business\Url\UrlCreator;
+use Pyz\Zed\Url\Business\Url\UrlUpdater;
 use Spryker\Zed\Url\Business\UrlBusinessFactory as SprykerUrlBusinessFactory;
 
 class UrlBusinessFactory extends SprykerUrlBusinessFactory
@@ -22,5 +23,17 @@ class UrlBusinessFactory extends SprykerUrlBusinessFactory
         $this->attachUrlCreatorObservers($urlCreator);
 
         return $urlCreator;
+    }
+
+    /**
+     * @return \Pyz\Zed\Url\Business\Url\UrlUpdater
+     */
+    public function createUrlUpdater(): UrlUpdater
+    {
+        $urlUpdater = new UrlUpdater($this->getQueryContainer(), $this->createUrlReader(), $this->createUrlActivator());
+
+        $this->attachUrlUpdaterObservers($urlUpdater);
+
+        return $urlUpdater;
     }
 }
