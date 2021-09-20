@@ -48,22 +48,22 @@ actions:
     source: data/import/common/east-1/product_management_attribute.csv
 
 #4. Combined product
-  - data_entity: combined-product-abstract
-    source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: combined-product-abstract-store
-    source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: combined-product-concrete
-    source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: combined-product-image
-    source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: combined-product-price
-    source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: combined-product-stock
-    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-abstract
+#    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-abstract-store
+#    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-concrete
+#    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-image
+#    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-price
+#    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-stock
+#    source: data/import/common/east-1/combined_product_local.csv
 #  - data_entity: product-stock
 #    source: data/import/common/common/product_stock.csv
-  - data_entity: combined-product-group
-    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: combined-product-group
+#    source: data/import/common/east-1/combined_product_local.csv
 
 
 #5. Merchandising Setup import
@@ -76,13 +76,13 @@ actions:
   - data_entity: product-review
     source: data/import/common/common/product_review.csv
   - data_entity: product-label
-    source: data/import/common/common/product_label.csv
+    source: data/import/common/east-1/product_label.csv
   - data_entity: product-set
     source: data/import/common/common/product_set.csv
   - data_entity: product-search-attribute-map
     source: data/import/common/common/product_search_attribute_map.csv
   - data_entity: product-search-attribute
-    source: data/import/common/common/product_search_attribute.csv
+    source: data/import/common/east-1/product_search_attribute.csv
   - data_entity: discount-amount
     source: data/import/common/east-1/discount_amount.csv
   - data_entity: product-discontinued
@@ -110,8 +110,8 @@ actions:
   - data_entity: product-list-customer-group
     source: data/import/common/common/product_list_to_customer_group.csv
   - data_entity: combined-product-list-product-concrete
-    source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: configurable-bundle-template
+#    source: data/import/common/east-1/combined_product_local.csv
+#  - data_entity: configurable-bundle-template
     source: data/import/common/common/configurable_bundle_template.csv
   - data_entity: configurable-bundle-template-slot
     source: data/import/common/common/configurable_bundle_template_slot.csv
@@ -122,16 +122,16 @@ actions:
 #7. Content Management Setup import
   - data_entity: content-banner
     source: data/import/common/common/content_banner.csv
-  - data_entity: content-product-abstract-list
-    source: data/import/common/common/content_product_abstract_list.csv
+#  - data_entity: content-product-abstract-list
+#    source: data/import/common/common/content_product_abstract_list.csv
   - data_entity: content-product-set
     source: data/import/common/common/content_product_set.csv
   - data_entity: cms-template
     source: data/import/common/common/cms_template.csv
   - data_entity: cms-block
-    source: data/import/common/common/cms_block.csv
+    source: data/import/common/east-1/cms_block.csv
   - data_entity: cms-page
-    source: data/import/common/common/cms_page.csv
+    source: data/import/common/east-1/cms_page.csv
   - data_entity: cms-slot-template
     source: data/import/common/common/cms_slot_template.csv
   - data_entity: cms-slot
@@ -143,7 +143,7 @@ actions:
   - data_entity: cms-block-store
     source: data/import/common/east-1/cms_block_store.csv
   - data_entity: navigation-node
-    source: data/import/common/common/navigation_node.csv
+    source: data/import/common/east-1/navigation_node.csv
   - data_entity: content-navigation
     source: data/import/common/common/content_navigation.csv
 
@@ -152,19 +152,19 @@ actions:
     source: data/import/common/common/mime_type.csv
 
 #9. Merchant Setup import
-  - data_entity: merchant
-    source: data/import/common/east-1/marketplace/merchant-local.csv
-  - data_entity: merchant-store
-    source: data/import/common/east-1/marketplace/merchant-local.csv
-  - data_entity: merchant-profile
-    source: data/import/common/east-1/marketplace/merchant-local.csv
-  - data_entity: merchant-profile-address
-    source: data/import/common/east-1/marketplace/merchant-local.csv
-#  - data_entity: merchant-product
-#    source: data/import/common/common/marketplace/merchant_product.csv
-  - data_entity: merchant-product-offer
-    source: data/import/common/east-1/marketplace/merchant_product_offer.csv
-  - data_entity: merchant-product-offer-store
-    source: data/import/common/east-1/marketplace/merchant_product_offer_store.csv
-  - data_entity: price-product-offer
-    source: data/import/common/east-1/marketplace/price_product_offer.csv
+#  - data_entity: merchant
+#    source: data/import/common/east-1/marketplace/merchant-local.csv
+#  - data_entity: merchant-store
+#    source: data/import/common/east-1/marketplace/merchant-local.csv
+#  - data_entity: merchant-profile
+#    source: data/import/common/east-1/marketplace/merchant-local.csv
+#  - data_entity: merchant-profile-address
+#    source: data/import/common/east-1/marketplace/merchant-local.csv
+##  - data_entity: merchant-product
+##    source: data/import/common/common/marketplace/merchant_product.csv
+#  - data_entity: merchant-product-offer
+#    source: data/import/common/east-1/marketplace/merchant_product_offer.csv
+#  - data_entity: merchant-product-offer-store
+#    source: data/import/common/east-1/marketplace/merchant_product_offer_store.csv
+#  - data_entity: price-product-offer
+#    source: data/import/common/east-1/marketplace/price_product_offer.csv

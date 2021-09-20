@@ -1,4 +1,4 @@
-ename,is_active,is_dynamic,is_exclusive,front_end_reference,valid_from,valid_to,name.en_US,product_abstract_skus,priority,name.pl_PL,name.sk_Sk,name.cs_CZ
+name,is_active,is_dynamic,is_exclusive,front_end_reference,valid_from,valid_to,name.en_US,product_abstract_skus,priority,name.pl_PL,name.sk_Sk,name.cs_CZ
 Standard label,1,0,0,,,,Standard Label,,1,Standard Label,Standard Label,Standard Label
 NEW,1,1,0,template:tag,,,New,,2,Neu,Neu,Neu
 SALE,1,1,0,highlight,,,SALE %,,3,SALE %,SALE %,SALE %
