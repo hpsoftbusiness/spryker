@@ -44,13 +44,13 @@ environment: docker.demo
 image:
     tag: spryker/php:7.3-alpine3.12
     environment:
-        SPRYKER_CLUSTER: "north"
-        SPRYKER_DEFAULT_STORE: "NO"
-        SPRYKER_ACTIVE_STORES: "NO,FI,DK,SE"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r north/pre-deploy -vvv"
+        SPRYKER_CLUSTER: "east-2"
+        SPRYKER_DEFAULT_STORE: "HU"
+        SPRYKER_ACTIVE_STORES: "HU,RO,MD"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r east-2/pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r north/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r north/destructive-stag --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r east-2/production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r east-2/destructive-stag --no-ansi -vvv"
         WEB_PROPERTY_ID: "GTM-53PNGR9"
     php:
         ini:
@@ -77,125 +77,102 @@ assets:
             level: 5
 
 regions:
-    north:
+    east-2:
         services:
             database:
-                database: myworld_staging-north
+                database: myworld_staging-east-2
                 username: spryker
                 password: secret
 
         stores:
-            NO:
+            HU:
                 services:
                     broker:
-                        namespace: no_queue
+                        namespace: hu_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: no_search
+                        namespace: hu_search
                     session:
                         namespace: 1
-            FI:
+            RO:
                 services:
                     broker:
-                        namespace: fi_queue
+                        namespace: ro_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: fi_search
+                        namespace: ro_search
                     session:
                         namespace: 1
-            DK:
+            MD:
                 services:
                     broker:
-                        namespace: dk_queue
+                        namespace: md_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: dk_search
-                    session:
-                        namespace: 1
-            SE:
-                services:
-                    broker:
-                        namespace: se_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: se_search
+                        namespace: md_search
                     session:
                         namespace: 1
 
 groups:
-    north:
-        region: north
+    east-2:
+        region: east-2
         applications:
             Redirects:
                 application: static
                 endpoints:
-                    no.myworld-mca.cloud.spryker.toys:
-                        store: NO
+                    hu.myworld.cloud.spryker.toys:
+                        store: HU
                         redirect:
                             type: 302
-                            url: www.no.myworld-mca.cloud.spryker.toys
-                    fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
+                            url: www.hu.myworld.cloud.spryker.toys
+                    ro.myworld.cloud.spryker.toys:
+                        store: RO
                         redirect:
                             type: 302
-                            url: www.fi.myworld-mca.cloud.spryker.toys
-                    dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
+                            url: www.ro.myworld.cloud.spryker.toys
+                    md.myworld.cloud.spryker.toys:
+                        store: MD
                         redirect:
                             type: 302
-                            url: www.dk.myworld-mca.cloud.spryker.toys
-                    se.myworld-mca.cloud.spryker.toys:
-                        store: SE
-                        redirect:
-                            type: 302
-                            url: www.se.myworld-mca.cloud.spryker.toys
+                            url: www.md.myworld.cloud.spryker.toys
             Yves:
                 application: yves
                 endpoints:
-                    www.no.myworld-mca.cloud.spryker.toys:
-                        store: NO
+                    www.hu.myworld.cloud.spryker.toys:
+                        store: HU
                         <<: *frontend-auth
-                    www.fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
+                    www.ro.myworld.cloud.spryker.toys:
+                        store: RO
                         <<: *frontend-auth
-                    www.dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
-                        <<: *frontend-auth
-                    www.se.myworld-mca.cloud.spryker.toys:
-                        store: SE
+                    www.md.myworld.cloud.spryker.toys:
+                        store: MD
                         <<: *frontend-auth
             Zed:
                 application: zed
                 http:
                     max-request-body-size: 1600m
                 endpoints:
-                    zed.no.myworld-mca.cloud.spryker.toys:
-                        store: NO
+                    zed.hu.myworld.cloud.spryker.toys:
+                        store: HU
                         <<: *frontend-auth
-                    zed.fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
+                    zed.ro.myworld.cloud.spryker.toys:
+                        store: RO
                         <<: *frontend-auth
-                    zed.dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
-                        <<: *frontend-auth
-                    zed.se.myworld-mca.cloud.spryker.toys:
-                        store: SE
+                    zed.md.myworld.cloud.spryker.toys:
+                        store: MD
                         <<: *frontend-auth
             Glue:
                 application: glue
                 endpoints:
-                    glue.no.myworld-mca.cloud.spryker.toys:
-                        store: NO
-                    glue.fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
-                    glue.dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
-                    glue.se.myworld-mca.cloud.spryker.toys:
-                        store: SE
+                    glue.hu.myworld.cloud.spryker.toys:
+                        store: HU
+                    glue.ro.myworld.cloud.spryker.toys:
+                        store: RO
+                    glue.md.myworld.cloud.spryker.toys:
+                        store: MD
 
 services:
     database:
@@ -213,7 +190,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            rabbitmq.myworld-mca-north.cloud.spryker.toys:
+            rabbitmq.myworld-mca-east-2.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -232,11 +209,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            jenkins.myworld-mca-north.cloud.spryker.toys:
+            jenkins.myworld-mca-east-2.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.myworld-mca-north.cloud.spryker.toys:
+            mail.myworld-mca-east-2.cloud.spryker.toys:
 
 docker:
 
@@ -253,7 +230,7 @@ docker:
             enabled: false
 
     testing:
-        store: NO
+        store: HU
 
     mount:
         baked:

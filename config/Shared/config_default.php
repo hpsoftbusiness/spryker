@@ -659,4 +659,5 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'MK' => ['en' => 'en_US', 'mk' => 'mk_MK'],
     'AL' => ['en' => 'en_US', 'sq' => 'sq_AL'],
     'XK' => ['en' => 'en_US', 'sr' => 'sr_RS', 'sq' => 'sq_AL'],
+    'MD' => ['en' => 'en_US', 'ro' => 'ro_MD'],
 ];

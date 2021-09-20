@@ -31,33 +31,44 @@ x-frontend-auth: &frontend-auth
     auth:
         engine: basic
         users:
-            -   username: cloud
-                password: cloud
+            -   username: myworld
+                password: cloudgolive
         exclude:
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
 
+x-backend-auth: &backend-auth
+    <<: *real-ip
+    auth:
+        engine: basic
+        users:
+            -   username: myworldadmin
+                password: cloudadmin
+        exclude:
+            - '${ALLOWED_IP}' # AWS gateway
+            - 185.60.20.0/24 # PayOne
+
+
 namespace: spryker-cloud
 tag: '1.0'
 
-environment: docker.demo
+environment: docker.prod
 image:
     tag: spryker/php:7.3-alpine3.12
     environment:
-        SPRYKER_CLUSTER: "north"
-        SPRYKER_DEFAULT_STORE: "NO"
-        SPRYKER_ACTIVE_STORES: "NO,FI,DK,SE"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r north/pre-deploy -vvv"
+        SPRYKER_CLUSTER: "east-2"
+        SPRYKER_DEFAULT_STORE: "HU"
+        SPRYKER_ACTIVE_STORES: "HU,RO,MD"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r east-2/pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r north/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r north/destructive-stag --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r east-2/production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r east-2/destructive --no-ansi -vvv"
         WEB_PROPERTY_ID: "GTM-53PNGR9"
     php:
         ini:
             "post_max_size": 1024M
             "upload_max_filesize": 1024M
-            "opcache.enable_cli": 1
-            "apc.enable_cli": 1
+            "memory_limit": 3000M
         enabled-extensions:
             - blackfire
             - newrelic
@@ -77,126 +88,103 @@ assets:
             level: 5
 
 regions:
-    north:
+    east-2:
         services:
+            mail:
+                sender:
+                    name: myWorld-No-Reply
+                    email: noreply@marketplace.myworld.com
             database:
-                database: myworld_staging-north
+                database: myworld_prod_east-2
                 username: spryker
                 password: secret
 
         stores:
-            NO:
+            HU:
                 services:
                     broker:
-                        namespace: no_queue
+                        namespace: hu_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: no_search
+                        namespace: hu_search
                     session:
-                        namespace: 1
-            FI:
+                        namespace: 2
+            RO:
                 services:
                     broker:
-                        namespace: fi_queue
+                        namespace: ro_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: fi_search
+                        namespace: ro_search
                     session:
-                        namespace: 1
-            DK:
+                        namespace: 2
+            MD:
                 services:
                     broker:
-                        namespace: dk_queue
+                        namespace: md_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: dk_search
+                        namespace: md_search
                     session:
-                        namespace: 1
-            SE:
-                services:
-                    broker:
-                        namespace: se_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: se_search
-                    session:
-                        namespace: 1
+                        namespace: 2
 
 groups:
-    north:
-        region: north
+    east-2:
+        region: east-2
         applications:
             Redirects:
                 application: static
                 endpoints:
-                    no.myworld-mca.cloud.spryker.toys:
-                        store: NO
+                    hu.marketplace.myworld.com:
+                        store: HU
                         redirect:
                             type: 302
-                            url: www.no.myworld-mca.cloud.spryker.toys
-                    fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
+                            url: www.hu.marketplace.myworld.com
+                    ro.marketplace.myworld.com:
+                        store: RO
                         redirect:
                             type: 302
-                            url: www.fi.myworld-mca.cloud.spryker.toys
-                    dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
+                            url: www.ro.marketplace.myworld.com
+                    md.marketplace.myworld.com:
+                        store: MD
                         redirect:
                             type: 302
-                            url: www.dk.myworld-mca.cloud.spryker.toys
-                    se.myworld-mca.cloud.spryker.toys:
-                        store: SE
-                        redirect:
-                            type: 302
-                            url: www.se.myworld-mca.cloud.spryker.toys
+                            url: www.md.marketplace.myworld.com
             Yves:
                 application: yves
                 endpoints:
-                    www.no.myworld-mca.cloud.spryker.toys:
-                        store: NO
-                        <<: *frontend-auth
-                    www.fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
-                        <<: *frontend-auth
-                    www.dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
-                        <<: *frontend-auth
-                    www.se.myworld-mca.cloud.spryker.toys:
-                        store: SE
-                        <<: *frontend-auth
+                    www.hu.marketplace.myworld.com:
+                        store: HU
+                    www.ro.marketplace.myworld.com:
+                        store: RO
+                    www.md.marketplace.myworld.com:
+                        store: MD
             Zed:
                 application: zed
                 http:
                     max-request-body-size: 1600m
                 endpoints:
-                    zed.no.myworld-mca.cloud.spryker.toys:
-                        store: NO
-                        <<: *frontend-auth
-                    zed.fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
-                        <<: *frontend-auth
-                    zed.dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
-                        <<: *frontend-auth
-                    zed.se.myworld-mca.cloud.spryker.toys:
-                        store: SE
-                        <<: *frontend-auth
+                    zed.hu.marketplace.myworld.com:
+                        store: HU
+                        <<: *backend-auth
+                    zed.ro.marketplace.myworld.com:
+                        store: RO
+                        <<: *backend-auth
+                    zed.md.marketplace.myworld.com:
+                        store: MD
+                        <<: *backend-auth
             Glue:
                 application: glue
                 endpoints:
-                    glue.no.myworld-mca.cloud.spryker.toys:
-                        store: NO
-                    glue.fi.myworld-mca.cloud.spryker.toys:
-                        store: FI
-                    glue.dk.myworld-mca.cloud.spryker.toys:
-                        store: DK
-                    glue.se.myworld-mca.cloud.spryker.toys:
-                        store: SE
-
+                    glue.hu.marketplace.myworld.com:
+                        store: HU
+                    glue.ro.marketplace.myworld.com:
+                        store: RO
+                    glue.md.marketplace.myworld.com:
+                        store: MD
 services:
     database:
         engine: mysql
@@ -205,7 +193,7 @@ services:
             username: "root"
             password: "secret"
         endpoints:
-            localhost:5432:
+            localhost:3306:
                 protocol: tcp
     broker:
         engine: rabbitmq
@@ -213,7 +201,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            rabbitmq.myworld-mca-north.cloud.spryker.toys:
+            rabbitmq.east-2.marketplace.myworld.coms:
             localhost:5672:
                 protocol: tcp
     session:
@@ -232,11 +220,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            jenkins.myworld-mca-north.cloud.spryker.toys:
+            jenkins.east-2.marketplace.myworld.coms:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.myworld-mca-north.cloud.spryker.toys:
+            mail.east-2.marketplace.myworld.coms:
 
 docker:
 
@@ -253,7 +241,7 @@ docker:
             enabled: false
 
     testing:
-        store: NO
+        store: HU
 
     mount:
         baked:

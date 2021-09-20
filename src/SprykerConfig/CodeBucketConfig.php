@@ -48,6 +48,7 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
             'MK',
             'AL',
             'XK',
+            'MD',
         ];
     }
 
