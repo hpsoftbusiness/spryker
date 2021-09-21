@@ -1,0 +1,233 @@
+version: "0.1"
+
+namespace: myworld_b2c_dev
+tag: 'dev'
+
+environment: docker.dev
+image:
+    tag: spryker/php:7.3-alpine3.12
+    environment:
+        SPRYKER_CLUSTER: "balkan"
+        SPRYKER_DEFAULT_STORE: "SI"
+        SPRYKER_ACTIVE_STORES: "SI,HR,BA,RS,ME"
+    php:
+        ini:
+            "post_max_size": 600m
+            "upload_max_filesize": 600m
+            "memory_limit": 3000M
+            "opcache.enable_cli": 0
+            "opcache.enable": 1
+            "apc.enable_cli": 1
+        enabled-extensions:
+            - blackfire
+composer:
+    mode: ''
+    autoload: ''
+assets:
+    mode: development
+
+regions:
+    balkan:
+        services:
+            database:
+                database: balkan-docker
+                username: spryker
+                password: secret
+
+        stores:
+            HR:
+                services:
+                    broker:
+                        namespace: hr-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: hr_search
+            SI:
+                services:
+                    broker:
+                        namespace: si-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: si_search
+            BA:
+                services:
+                    broker:
+                        namespace: ba-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: ba_search
+            RS:
+                services:
+                    broker:
+                        namespace: rs-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: rs_search
+            ME:
+                services:
+                    broker:
+                        namespace: me-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: me_search
+groups:
+    balkan:
+        region: balkan
+        applications:
+            yves_eu:
+                application: yves
+                endpoints:
+                    yves.hr.myworld.local:
+                        store: HR
+                        services:
+                            session:
+                                namespace: 1
+                    yves.si.myworld.local:
+                        store: SI
+                        services:
+                            session:
+                                namespace: 2
+                    yves.ba.myworld.local:
+                        store: BA
+                        services:
+                            session:
+                                namespace: 3
+                    yves.rs.myworld.local:
+                        store: RS
+                        services:
+                            session:
+                                namespace: 4
+                    yves.me.myworld.local:
+                        store: ME
+                        services:
+                            session:
+                                namespace: 5
+            glue_eu:
+                application: glue
+                endpoints:
+                    glue.hr.myworld.local:
+                        store: HR
+                    glue.si.myworld.local:
+                        store: SI
+                    glue.ba.myworld.local:
+                        store: BA
+                    glue.rs.myworld.local:
+                        store: RS
+                    glue.me.myworld.local:
+                        store: ME
+            zed_eu:
+                application: zed
+                http:
+                    max-request-body-size: 1600m
+                endpoints:
+                    zed.hr.myworld.local:
+                        store: HR
+                        services:
+                            session:
+                                namespace: 6
+                    zed.si.myworld.local:
+                        store: SI
+                        services:
+                            session:
+                                namespace: 6
+                    zed.ba.myworld.local:
+                        store: BA
+                        services:
+                            session:
+                                namespace: 6
+                    zed.rs.myworld.local:
+                        store: RS
+                        services:
+                            session:
+                                namespace: 6
+                    zed.me.myworld.local:
+                        store: ME
+                        services:
+                            session:
+                                namespace: 6
+services:
+    database:
+        engine: mysql
+        version: mariadb-10.5
+        root:
+            username: "root"
+            password: "secret"
+        endpoints:
+            localhost:3306:
+                protocol: tcp
+    broker:
+        engine: rabbitmq
+        api:
+            username: "spryker"
+            password: "secret"
+        endpoints:
+            queue.myworld.local:
+            localhost:5672:
+                protocol: tcp
+    session:
+        engine: redis
+    key_value_store:
+        engine: redis
+        endpoints:
+            localhost:16379:
+                protocol: tcp
+    search:
+        engine: elastic
+        version: 6.8
+        endpoints:
+            localhost:9200:
+                protocol: tcp
+    scheduler:
+        engine: jenkins
+        endpoints:
+            scheduler.myworld.local:
+    mail_catcher:
+        engine: mailhog
+        endpoints:
+            mail.myworld.local:
+    swagger:
+        engine: swagger-ui
+        endpoints:
+            swagger.myworld.local:
+    redis-gui:
+        engine: redis-commander
+        endpoints:
+            redis-commander.myworld.local:
+    dashboard:
+        engine: dashboard
+        endpoints:
+            spryker.local:
+    webdriver:
+        engine: chromedriver
+
+docker:
+
+    ssl:
+        enabled: true
+        redirect: true
+
+    testing:
+        store: SI
+
+    debug:
+        enabled: true
+        xdebug:
+            enabled: true
+
+    mount:
+        native:
+            platforms:
+                - linux
+
+        mutagen:
+            platforms:
+                - macos
+
+        docker-sync:
+            platforms:
+                - windows

@@ -635,7 +635,7 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'PL' => ['en' => 'en_US', 'pl' => 'pl_PL'],
     'RO' => ['en' => 'en_US', 'ro' => 'ro_RO'],
     'SK' => ['en' => 'en_US', 'sk' => 'sk_SK'],
-    'SL' => ['en' => 'en_US', 'sl' => 'sl_SI'],
+    'SI' => ['en' => 'en_US', 'si' => 'sl_SI'],
     'BE' => ['en' => 'en_US', 'nl' => 'nl_BE', 'fr' => 'fr_BE'],
     'BG' => ['en' => 'en_US', 'bg' => 'bg_BG'],
     'HR' => ['en' => 'en_US', 'hr' => 'hr_HR'],
@@ -660,4 +660,7 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'AL' => ['en' => 'en_US', 'sq' => 'sq_AL'],
     'XK' => ['en' => 'en_US', 'sr' => 'sr_RS', 'sq' => 'sq_AL'],
     'MD' => ['en' => 'en_US', 'ro' => 'ro_MD'],
+    'BA' => ['en' => 'en_US', 'bs' => 'bs_BA'],
+    'RS' => ['en' => 'en_US', 'sr' => 'sr_RS'],
+    'ME' => ['en' => 'en_US', 'sr' => 'sr_ME'],
 ];

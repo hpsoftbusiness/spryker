@@ -1,0 +1,15 @@
+env:
+    NEW_RELIC_ENABLED: 0
+
+stores:
+    - SI
+    - HR
+    - BA
+    - RS
+    - ME
+
+sections:
+    scheduler-stop:
+        scheduler-clean:
+            command: 'vendor/bin/console scheduler:suspend -vvv --no-ansi'
+            stores: true
