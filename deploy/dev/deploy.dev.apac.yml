@@ -1,0 +1,273 @@
+version: "0.1"
+
+namespace: myworld_b2c_dev
+tag: 'dev'
+
+environment: docker.dev
+image:
+    tag: spryker/php:7.3-alpine3.12
+    environment:
+        SPRYKER_CLUSTER: "apac"
+        SPRYKER_DEFAULT_STORE: "MY"
+        SPRYKER_ACTIVE_STORES: "MY,HK,AU,NZ,PH,TH,MO"
+    php:
+        ini:
+            "post_max_size": 600m
+            "upload_max_filesize": 600m
+            "memory_limit": 3000M
+            "opcache.enable_cli": 0
+            "opcache.enable": 1
+            "apc.enable_cli": 1
+        enabled-extensions:
+            - blackfire
+composer:
+    mode: ''
+    autoload: ''
+assets:
+    mode: development
+
+regions:
+    apac:
+        services:
+            database:
+                database: apac-docker
+                username: spryker
+                password: secret
+
+        stores:
+            HK:
+                services:
+                    broker:
+                        namespace: hk-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: hk_search
+            MY:
+                services:
+                    broker:
+                        namespace: my-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: my_search
+            AU:
+                services:
+                    broker:
+                        namespace: au-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: au_search
+            NZ:
+                services:
+                    broker:
+                        namespace: nz-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: nz_search
+            PH:
+                services:
+                    broker:
+                        namespace: ph-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: ph_search
+            TH:
+                services:
+                    broker:
+                        namespace: th-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: th_search
+            MO:
+                services:
+                    broker:
+                        namespace: mo-docker
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: mo_search
+groups:
+    apac:
+        region: apac
+        applications:
+            yves_eu:
+                application: yves
+                endpoints:
+                    yves.hk.myworld.local:
+                        store: HK
+                        services:
+                            session:
+                                namespace: 1
+                    yves.my.myworld.local:
+                        store: MY
+                        services:
+                            session:
+                                namespace: 2
+                    yves.au.myworld.local:
+                        store: AU
+                        services:
+                            session:
+                                namespace: 4
+                    yves.nz.myworld.local:
+                        store: NZ
+                        services:
+                            session:
+                                namespace: 5
+                    yves.ph.myworld.local:
+                        store: PH
+                        services:
+                            session:
+                                namespace: 6
+                    yves.th.myworld.local:
+                        store: TH
+                        services:
+                            session:
+                                namespace: 7
+                    yves.mo.myworld.local:
+                        store: MO
+                        services:
+                            session:
+                                namespace: 8
+            glue_eu:
+                application: glue
+                endpoints:
+                    glue.hk.myworld.local:
+                        store: HK
+                    glue.my.myworld.local:
+                        store: MY
+                    glue.au.myworld.local:
+                        store: AU
+                    glue.nz.myworld.local:
+                        store: NZ
+                    glue.ph.myworld.local:
+                        store: PH
+                    glue.th.myworld.local:
+                        store: TH
+                    glue.mo.myworld.local:
+                        store: MO
+            zed_eu:
+                application: zed
+                http:
+                    max-request-body-size: 1600m
+                endpoints:
+                    zed.hk.myworld.local:
+                        store: HK
+                        services:
+                            session:
+                                namespace: 3
+                    zed.my.myworld.local:
+                        store: MY
+                        services:
+                            session:
+                                namespace: 3
+                    zed.au.myworld.local:
+                        store: AU
+                        services:
+                            session:
+                                namespace: 3
+                    zed.nz.myworld.local:
+                        store: NZ
+                        services:
+                            session:
+                                namespace: 3
+                    zed.ph.myworld.local:
+                        store: PH
+                        services:
+                            session:
+                                namespace: 3
+                    zed.th.myworld.local:
+                        store: TH
+                        services:
+                            session:
+                                namespace: 3
+                    zed.mo.myworld.local:
+                        store: MO
+                        services:
+                            session:
+                                namespace: 3
+services:
+    database:
+        engine: mysql
+        version: mariadb-10.5
+        root:
+            username: "root"
+            password: "secret"
+        endpoints:
+            localhost:3306:
+                protocol: tcp
+    broker:
+        engine: rabbitmq
+        api:
+            username: "spryker"
+            password: "secret"
+        endpoints:
+            queue.myworld.local:
+            localhost:5672:
+                protocol: tcp
+    session:
+        engine: redis
+    key_value_store:
+        engine: redis
+        endpoints:
+            localhost:16379:
+                protocol: tcp
+    search:
+        engine: elastic
+        version: 6.8
+        endpoints:
+            localhost:9200:
+                protocol: tcp
+    scheduler:
+        engine: jenkins
+        endpoints:
+            scheduler.myworld.local:
+    mail_catcher:
+        engine: mailhog
+        endpoints:
+            mail.myworld.local:
+    swagger:
+        engine: swagger-ui
+        endpoints:
+            swagger.myworld.local:
+    redis-gui:
+        engine: redis-commander
+        endpoints:
+            redis-commander.myworld.local:
+    dashboard:
+        engine: dashboard
+        endpoints:
+            spryker.local:
+    webdriver:
+        engine: chromedriver
+
+docker:
+
+    ssl:
+        enabled: true
+        redirect: true
+
+    testing:
+        store: MY
+
+    debug:
+        enabled: true
+        xdebug:
+            enabled: true
+
+    mount:
+        native:
+            platforms:
+                - linux
+
+        mutagen:
+            platforms:
+                - macos
+
+        docker-sync:
+            platforms:
+                - windows

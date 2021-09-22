@@ -57,6 +57,13 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
             'BR',
             'CO',
             'MX',
+            'MY',
+            'HK',
+            'AU',
+            'NZ',
+            'PH',
+            'TH',
+            'MO',
         ];
     }
 

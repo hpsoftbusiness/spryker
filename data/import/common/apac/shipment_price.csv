@@ -1,0 +1,8 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,MY,MYR,495,495
+myworld_standard_shipment_method,HK,HKD,495,495
+myworld_standard_shipment_method,AU,AUD,495,495
+myworld_standard_shipment_method,NZ,NZD,495,495
+myworld_standard_shipment_method,PH,PHP,495,495
+myworld_standard_shipment_method,TH,THB,495,495
+myworld_standard_shipment_method,MO,MOP,495,495

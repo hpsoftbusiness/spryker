@@ -1,0 +1,6 @@
+key,filter_type,position,key.en_US
+color,multi-select,1,Color
+size,multi-select,2,Size
+benefit_store,single-select,3,Benefit Store
+shopping_point_store,single-select,4,Shopping Point Store
+brand,multi-select,5,Brand

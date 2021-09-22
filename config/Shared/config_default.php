@@ -667,4 +667,11 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'BR' => ['en' => 'en_US', 'pt' => 'pt_BR'],
     'CO' => ['en' => 'en_US', 'es' => 'es_CO'],
     'MX' => ['en' => 'en_US', 'es' => 'es_MX'],
+    'MY' => ['en' => 'en_US'],
+    'HK' => ['en' => 'en_US'],
+    'AU' => ['en' => 'en_US'],
+    'NZ' => ['en' => 'en_US'],
+    'PH' => ['en' => 'en_US'],
+    'TH' => ['en' => 'en_US'],
+    'MO' => ['en' => 'en_US'],
 ];
