@@ -1,0 +1,5 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,CA,CAD,495,495
+myworld_standard_shipment_method,BR,BRL,495,495
+myworld_standard_shipment_method,CO,COP,495,495
+myworld_standard_shipment_method,MX,MXN,495,495
