@@ -8,7 +8,7 @@
     $adyen-name: '.adyen-checkout';
 
     img[src*="amex.svg"] {
-        background-image: url('/assets/current/default/images/logo-amex.svg') !important;
+        background-image: url('../images/logo-amex.svg') !important;
         background-repeat: no-repeat;
         overflow: hidden;
         width: 100%;
