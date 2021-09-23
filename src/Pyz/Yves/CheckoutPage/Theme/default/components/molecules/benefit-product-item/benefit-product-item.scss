@@ -1,4 +1,5 @@
 @mixin checkout-page-benefit-product-item($name: '.benefit-product-item') {
+    $image-width: rem(110);
     #{$name} {
         @include helper-font-size(small);
         display: flex;
@@ -7,20 +8,20 @@
         border-bottom: rem(1) solid $setting-color-gray-2;
 
         &__image {
-            width: rem(120);
-            margin-right: rem(20);
+            width: $image-width;
+            padding: 0!important;
         }
 
         &__meta {
             @include helper-font-size(default);
             flex-grow: 1;
             align-self: center;
+            margin-left: rem(20);
         }
 
         &__title {
             font: fw(regular) rem(15) $setting-font-family;
             margin-bottom: map-get($setting-spacing, default);
-            white-space: nowrap;
             overflow: hidden;
         }
 
@@ -70,6 +71,7 @@
 
         &__meta-wrapper {
             flex-grow: 1;
+            width: calc(100% - #{$image-width});
 
             @include helper-breakpoint(lg) {
                 display: flex;
