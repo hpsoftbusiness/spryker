@@ -25,8 +25,10 @@ use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\ManualRefundCommand;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\MyWorldRefundOnFailedPaymentCommand;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\ProcessRefundCommand;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Command\ValidateRefundCommand;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsAuthorizedToRefundCondition;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsFailedCondition;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsPendingCondition;
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsPossibleToRefundAfterClosingCondition;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsRefundedCondition;
 use Pyz\Zed\Stock\Communication\Plugin\Command\DeductStockCommandPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
@@ -200,6 +202,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new IsFailedCondition(), 'Refund/IsFailed');
             $conditionCollection->add(new IsPendingCondition(), 'Refund/IsPending');
             $conditionCollection->add(new IsRefundedCondition(), 'Refund/IsRefunded');
+            $conditionCollection->add(new IsAuthorizedToRefundCondition(), 'Refund/IsAuthorizedToRefund');
+            $conditionCollection->add(new IsPossibleToRefundAfterClosingCondition(), 'Refund/IsPossibleToRefundAfterClosing');
 
             return $conditionCollection;
         });

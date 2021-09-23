@@ -617,7 +617,7 @@ abstract class AbstractDataImportFacadeTest extends Unit
 
         $productImageSet = $this->getProductImageFacade()->getCombinedConcreteImageSets(
             $productConcrete->getIdProductConcrete(),
-            null,
+            0,
             null
         );
         $this->assertCount(1, $productImageSet);

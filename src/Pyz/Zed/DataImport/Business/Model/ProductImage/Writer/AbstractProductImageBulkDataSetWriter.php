@@ -184,6 +184,18 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
             $productImageData[CombinedProductImageHydratorStep::KEY_FK_PRODUCT] = null;
         }
 
-        static::$productImageDataCollection[] = $productImageData;
+        $abstractProductImageData = $productImageData;
+        $abstractProductImageData[CombinedProductImageHydratorStep::KEY_FK_PRODUCT] = null;
+
+        static::$productImageDataCollection[] = $abstractProductImageData;
+
+        if ($productImageData[CombinedProductImageHydratorStep::KEY_FK_PRODUCT]) {
+            $concreteProductImageData = $productImageData;
+            $concreteProductImageData[CombinedProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT] = null;
+            $concreteProductImageData[CombinedProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY] .= '_concrete';
+            $concreteProductImageData[CombinedProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_SET_KEY] .= '_concrete';
+
+            static::$productImageDataCollection[] = $concreteProductImageData;
+        }
     }
 }
