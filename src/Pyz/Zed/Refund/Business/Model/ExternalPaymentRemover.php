@@ -55,6 +55,16 @@ class ExternalPaymentRemover implements ExternalPaymentRemoverInterface
                 }
             }
         }
+
+        foreach ($refundTransfer->getExpenses() as $expense) {
+            $expenseRefunds = $expense->getRefunds();
+            foreach ($expenseRefunds as $index => $expenseRefund) {
+                $idSalesPayment = $expenseRefund->getFkSalesPayment();
+                if ($this->isExternalPayment($idSalesPayment, $externalPayments)) {
+                    $expenseRefunds->offsetUnset($index);
+                }
+            }
+        }
     }
 
     /**
