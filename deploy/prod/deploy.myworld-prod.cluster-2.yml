@@ -128,40 +128,40 @@ groups:
             Redirects:
                 application: static
                 endpoints:
-                    it.marketplace.myworld.com:
+                    it.products.myworld.com:
                         store: IT
                         redirect:
                             type: 302
-                            url: www.it.marketplace.myworld.com
-                    pt.marketplace.myworld.com:
+                            url: www.it.products.myworld.com
+                    pt.products.myworld.com:
                         store: PT
                         redirect:
                             type: 302
-                            url: www.pt.marketplace.myworld.com
+                            url: www.pt.products.myworld.com
             Yves:
                 application: yves
                 endpoints:
-                    www.it.marketplace.myworld.com:
+                    www.it.products.myworld.com:
                         store: IT
-                    www.pt.marketplace.myworld.com:
+                    www.pt.products.myworld.com:
                         store: PT
             Zed:
                 application: zed
                 http:
                     max-request-body-size: 1600m
                 endpoints:
-                    zed.it.marketplace.myworld.com:
+                    zed.it.products.myworld.com:
                         store: IT
                         <<: *backend-auth
-                    zed.pt.marketplace.myworld.com:
+                    zed.pt.products.myworld.com:
                         store: PT
                         <<: *backend-auth
             Glue:
                 application: glue
                 endpoints:
-                    glue.it.marketplace.myworld.com:
+                    glue.it.products.myworld.com:
                         store: IT
-                    glue.pt.marketplace.myworld.com:
+                    glue.pt.products.myworld.com:
                         store: PT
 
 services:
@@ -180,7 +180,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            rabbitmq.marketplace.myworld.coms:
+            rabbitmq.products.myworld.coms:
             localhost:5672:
                 protocol: tcp
     session:
@@ -199,11 +199,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            jenkins.marketplace.myworld.coms:
+            jenkins.products.myworld.coms:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.marketplace.myworld.coms:
+            mail.products.myworld.coms:
 
 docker:
 

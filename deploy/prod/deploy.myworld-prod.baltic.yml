@@ -138,52 +138,52 @@ groups:
             Redirects:
                 application: static
                 endpoints:
-                    ee.marketplace.myworld.com:
+                    ee.products.myworld.com:
                         store: EE
                         redirect:
                             type: 302
-                            url: www.ee.marketplace.myworld.com
-                    lv.marketplace.myworld.com:
+                            url: www.ee.products.myworld.com
+                    lv.products.myworld.com:
                         store: LV
                         redirect:
                             type: 302
-                            url: www.lv.marketplace.myworld.com
-                    lt.marketplace.myworld.com:
+                            url: www.lv.products.myworld.com
+                    lt.products.myworld.com:
                         store: LT
                         redirect:
                             type: 302
-                            url: www.lt.marketplace.myworld.com
+                            url: www.lt.products.myworld.com
             Yves:
                 application: yves
                 endpoints:
-                    www.ee.marketplace.myworld.com:
+                    www.ee.products.myworld.com:
                         store: EE
-                    www.lv.marketplace.myworld.com:
+                    www.lv.products.myworld.com:
                         store: LV
-                    www.lt.marketplace.myworld.com:
+                    www.lt.products.myworld.com:
                         store: LT
             Zed:
                 application: zed
                 http:
                     max-request-body-size: 1600m
                 endpoints:
-                    zed.ee.marketplace.myworld.com:
+                    zed.ee.products.myworld.com:
                         store: EE
                         <<: *backend-auth
-                    zed.lv.marketplace.myworld.com:
+                    zed.lv.products.myworld.com:
                         store: LV
                         <<: *backend-auth
-                    zed.lt.marketplace.myworld.com:
+                    zed.lt.products.myworld.com:
                         store: LT
                         <<: *backend-auth
             Glue:
                 application: glue
                 endpoints:
-                    glue.ee.marketplace.myworld.com:
+                    glue.ee.products.myworld.com:
                         store: EE
-                    glue.lv.marketplace.myworld.com:
+                    glue.lv.products.myworld.com:
                         store: LV
-                    glue.lt.marketplace.myworld.com:
+                    glue.lt.products.myworld.com:
                         store: LT
 services:
     database:
@@ -201,7 +201,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            rabbitmq.baltic.marketplace.myworld.coms:
+            rabbitmq.baltic.products.myworld.coms:
             localhost:5672:
                 protocol: tcp
     session:
@@ -220,11 +220,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            jenkins.baltic.marketplace.myworld.coms:
+            jenkins.baltic.products.myworld.coms:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.baltic.marketplace.myworld.coms:
+            mail.baltic.products.myworld.coms:
 
 docker:
 
