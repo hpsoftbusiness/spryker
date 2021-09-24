@@ -31,6 +31,6 @@ class ProductUrlGenerator extends SprykerProductUrlGenerator
         );
         $languageIdentifier = mb_substr($localeTransfer->getLocaleName(), 0, 2);
 
-        return '/' . $languageIdentifier . '/' . $productName . '-' . $productAbstractTransfer->getIdProductAbstract();
+        return '/' . $languageIdentifier . '/' . $productName . '-' . mb_strtolower($productAbstractTransfer->getSku());
     }
 }

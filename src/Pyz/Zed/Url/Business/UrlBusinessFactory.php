@@ -11,6 +11,9 @@ use Pyz\Zed\Url\Business\Url\UrlCreator;
 use Pyz\Zed\Url\Business\Url\UrlUpdater;
 use Spryker\Zed\Url\Business\UrlBusinessFactory as SprykerUrlBusinessFactory;
 
+/**
+ * @method \Pyz\Zed\Url\Persistence\UrlQueryContainerInterface getQueryContainer()
+ */
 class UrlBusinessFactory extends SprykerUrlBusinessFactory
 {
     /**
