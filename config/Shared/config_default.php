@@ -674,4 +674,7 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'PH' => ['en' => 'en_US'],
     'TH' => ['en' => 'en_US'],
     'MO' => ['en' => 'en_US'],
+    'BY' => ['en' => 'en_US', 'be' => 'be_BY'],
+    'UA' => ['en' => 'en_US', 'uk' => 'uk_UA'],
+    'RU' => ['en' => 'en_US', 'ru' => 'ru_RU'],
 ];

@@ -1,0 +1,5 @@
+shipment_method_key,store,currency,value_net,value_gross
+myworld_standard_shipment_method,BY,BYN,495,495
+myworld_standard_shipment_method,UA,UAH,495,495
+myworld_standard_shipment_method,RU,RUB,495,495
+

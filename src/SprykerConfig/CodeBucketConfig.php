@@ -64,6 +64,9 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
             'PH',
             'TH',
             'MO',
+            'BY',
+            'UA',
+            'RU',
         ];
     }
 
