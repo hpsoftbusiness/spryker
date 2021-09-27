@@ -59,7 +59,7 @@ sections:
 
     demodata:
         import-region-demodata:
-            command: "vendor/bin/console data:import --config=data/import/production/full_east-1.yml"
+            command: "vendor/bin/console data:import --config=data/import/local/full_east-1.yml"
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"
