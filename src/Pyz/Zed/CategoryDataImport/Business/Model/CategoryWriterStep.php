@@ -127,7 +127,7 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
      */
     protected function createNavigationNode(DataSetInterface $dataSet, string $navigationMode)
     {
-        if ($dataSet[static::KEY_PARENT_CATEGORY_KEY] !== 'demoshop') {
+        if ($dataSet[static::KEY_PARENT_CATEGORY_KEY] !== static::DEFAULT_ROOT_CATEGORY) {
             return;
         }
 
