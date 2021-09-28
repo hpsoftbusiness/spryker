@@ -158,10 +158,13 @@ groups:
                 endpoints:
                     www.pl.products.myworld.com:
                         store: PL
+                        <<: *frontend-auth
                     www.sk.products.myworld.com:
                         store: SK
+                        <<: *frontend-auth
                     www.cz.products.myworld.com:
                         store: CZ
+                        <<: *frontend-auth
             Zed:
                 application: zed
                 http:
