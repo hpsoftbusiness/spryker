@@ -145,25 +145,30 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $abstractProductUrl = $localizedAttributes[static::COLUMN_URL];
+            $sku = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU];
 
-            if ($abstractProductUrl === "") {
-                $locales = array_flip($dataSet[static::KEY_LOCALES]);
-                $localeCode = strtok($locales[$idLocale], '_');
-                $sku = $dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU];
-                $abstractProductUrl = $this->utilTextService->generateSlug($localizedAttributes[static::COLUMN_NAME] . '-' . $sku);
-                $abstractProductUrl = '/' . $localeCode . '/' . $abstractProductUrl;
+            if ($localizedAttributes[static::COLUMN_NAME] !== $sku) {
+                if ($abstractProductUrl === "") {
+                    $locales = array_flip($dataSet[static::KEY_LOCALES]);
+                    $localeCode = strtok($locales[$idLocale], '_');
+
+                    $abstractProductUrl = $this->utilTextService->generateSlug(
+                        $localizedAttributes[static::COLUMN_NAME] . '-' . $sku
+                    );
+                    $abstractProductUrl = '/' . $localeCode . '/' . $abstractProductUrl;
+                }
+
+                $urlEntityTransfer = new SpyUrlEntityTransfer();
+
+                $urlEntityTransfer
+                    ->setFkLocale($idLocale)
+                    ->setUrl($abstractProductUrl);
+
+                $urlsTransfer[] = [
+                    static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU],
+                    static::KEY_PRODUCT_URL_TRASNFER => $urlEntityTransfer,
+                ];
             }
-
-            $urlEntityTransfer = new SpyUrlEntityTransfer();
-
-            $urlEntityTransfer
-                ->setFkLocale($idLocale)
-                ->setUrl($abstractProductUrl);
-
-            $urlsTransfer[] = [
-                static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU] ?: $dataSet[static::COLUMN_CONCRETE_SKU],
-                static::KEY_PRODUCT_URL_TRASNFER => $urlEntityTransfer,
-            ];
         }
 
         $dataSet[static::DATA_PRODUCT_URL_TRANSFER] = $urlsTransfer;
