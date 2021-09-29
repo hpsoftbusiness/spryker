@@ -37,10 +37,7 @@
 
     {% if data.prices.discountTotal %}
         {{ _self.itemDiscounts(data.voucherDiscounts, 'cart.vouchers', config.name) }}
-        {% set cartRuleDiscounts = data.cartRuleDiscounts | filter (discount => discount.discountType != 'internal_discount') %}
-        {% if cartRuleDiscounts | length %}
-            {{ _self.itemDiscounts(data.cartRuleDiscounts, 'cart.discounts', config.name) }}
-        {% endif %}
+        {{ _self.itemDiscounts(data.cartRuleDiscounts, 'cart.discounts', config.name) }}
     {% endif %}
 
     {% widget 'SalesOrderThresholdWidgetPlugin' args [data.expenses] with {config: config} only %}

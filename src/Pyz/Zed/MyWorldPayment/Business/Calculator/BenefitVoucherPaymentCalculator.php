@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
+use Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
@@ -25,12 +26,20 @@ class BenefitVoucherPaymentCalculator implements
     private $myWorldPaymentConfig;
 
     /**
+     * @var \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface
+     */
+    protected $itemTransferDealsChecker;
+
+    /**
      * @param \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig $myWorldPaymentConfig
+     * @param \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface $itemTransferDealsChecker
      */
     public function __construct(
-        MyWorldPaymentConfig $myWorldPaymentConfig
+        MyWorldPaymentConfig $myWorldPaymentConfig,
+        ItemTransferDealsCheckerInterface $itemTransferDealsChecker
     ) {
         $this->myWorldPaymentConfig = $myWorldPaymentConfig;
+        $this->itemTransferDealsChecker = $itemTransferDealsChecker;
     }
 
     /**
@@ -95,7 +104,7 @@ class BenefitVoucherPaymentCalculator implements
                 break;
             }
 
-            if (!$this->assertItemBenefitVoucherApplicable($itemTransfer)) {
+            if (!$this->itemTransferDealsChecker->hasBenefitVoucherDeals($itemTransfer)) {
                 continue;
             }
 
@@ -210,25 +219,6 @@ class BenefitVoucherPaymentCalculator implements
             $itemTransfer->requireTotalUsedBenefitVouchersAmount();
 
             return $itemTransfer->getUseBenefitVoucher();
-        } catch (RequiredTransferPropertyException $exception) {
-            return false;
-        }
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
-    private function assertItemBenefitVoucherApplicable(ItemTransfer $itemTransfer): bool
-    {
-        try {
-            $itemTransfer->requireBenefitVoucherDealData();
-            $itemTransfer->getBenefitVoucherDealData()->requireSalesPrice();
-            $itemTransfer->getBenefitVoucherDealData()->requireAmount();
-            $itemTransfer->getBenefitVoucherDealData()->requireIsStore();
-
-            return $itemTransfer->getBenefitVoucherDealData()->getIsStore();
         } catch (RequiredTransferPropertyException $exception) {
             return false;
         }

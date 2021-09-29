@@ -11,9 +11,10 @@ use Pyz\Zed\Discount\Communication\Plugin\Calculator\BenefitPriceDiscountCalcula
 use Pyz\Zed\Discount\Communication\Plugin\Collector\ShoppingPointsItemDiscountCollectorPlugin;
 use Pyz\Zed\Discount\Communication\Plugin\InternalDiscount\ShoppingPointsDiscountPlugin;
 use Pyz\Zed\Discount\Communication\Plugin\InternalDiscountCollectorStrategyPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Discount\DiscountableItemWithDealsFilterPlugin;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Discount\HideBenefitPriceCalculatorDiscountFormDataProviderExpanderPlugin;
 use Spryker\Zed\CustomerGroupDiscountConnector\Communication\Plugin\DecisionRule\CustomerGroupDecisionRulePlugin;
 use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormDataExpanderPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormExpanderPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCleanerPostUpdatePlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCollectorStrategyPlugin;
@@ -126,6 +127,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
         return [
             new DiscountPromotionFilterCollectedItemsPlugin(),
             new GiftCardDiscountableItemFilterPlugin(), #GiftCardFeature
+            new DiscountableItemWithDealsFilterPlugin(),
         ];
     }
 
@@ -197,7 +199,8 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     protected function getDiscountFormDataProviderExpanderPlugins()
     {
         return [
-            new DiscountPromotionCalculationFormDataExpanderPlugin(),
+            // new DiscountPromotionCalculationFormDataExpanderPlugin(),
+            new HideBenefitPriceCalculatorDiscountFormDataProviderExpanderPlugin(),
         ];
     }
 

@@ -80,6 +80,14 @@
                 {% endif %}</span>
 
         </div>
+
+        {% if data.quote.totals.discountTotalWithoutShoppingPoints %}
+            <div class="{{ config.name }}__total grid grid--middle grid--justify">
+                <strong class="{{ config.name }}__total-text col">{{ 'cart.discounts' | trans }}</strong>
+                <strong class="{{ config.name }}__total-text col">- {{ data.quote.totals.discountTotalWithoutShoppingPoints | money }}</strong>
+            </div>
+        {% endif %}
+
         <div class="{{ config.name }}__total grid grid--middle grid--justify">
             <strong class="{{ config.name }}__total-text col">{{ 'cart.total' | trans }}</strong>
             <span class="{{ config.name }}__vat" style="margin-left: -13rem;">

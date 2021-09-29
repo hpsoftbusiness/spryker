@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig getConfig()
  * @method \Pyz\Zed\MyWorldPayment\Communication\MyWorldPaymentCommunicationFactory getFactory()
  */
-class TurnoverOrderCalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
+class DiscountTotalWithoutShoppingPointsCalculationPlugin extends AbstractPlugin implements CalculationPluginInterface
 {
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
@@ -25,6 +25,6 @@ class TurnoverOrderCalculationPlugin extends AbstractPlugin implements Calculati
      */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer): void
     {
-        $this->getFacade()->recalculateOrderTurnover($calculableObjectTransfer);
+        $this->getFacade()->recalculateQuoteDiscountTotalWithoutShoppingPoints($calculableObjectTransfer);
     }
 }

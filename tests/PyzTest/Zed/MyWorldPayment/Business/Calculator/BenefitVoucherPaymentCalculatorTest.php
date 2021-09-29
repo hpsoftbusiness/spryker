@@ -333,8 +333,12 @@ class BenefitVoucherPaymentCalculatorTest extends Unit
      */
     private function createBenefitVoucherPaymentCalculator(): BenefitVoucherPaymentCalculator
     {
+        /** @var \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentBusinessFactory $myWorldBusinessFactory */
+        $myWorldBusinessFactory = $this->tester->getFactory('MyWorldPayment');
+
         return new BenefitVoucherPaymentCalculator(
-            $this->tester->getConfig()
+            $this->tester->getConfig(),
+            $myWorldBusinessFactory->createItemTransferDealsChecker()
         );
     }
 }

@@ -10,7 +10,7 @@ namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Pyz\Service\Customer\CustomerServiceInterface;
-use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
+use Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface;
 
 class ShoppingPointsPaymentCalculator implements
     MyWorldPaymentQuoteCalculatorInterface,
@@ -22,11 +22,20 @@ class ShoppingPointsPaymentCalculator implements
     private $customerService;
 
     /**
-     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
+     * @var \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface
      */
-    public function __construct(CustomerServiceInterface $customerService)
-    {
+    protected $itemTransferDealsChecker;
+
+    /**
+     * @param \Pyz\Service\Customer\CustomerServiceInterface $customerService
+     * @param \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface $itemTransferDealsChecker
+     */
+    public function __construct(
+        CustomerServiceInterface $customerService,
+        ItemTransferDealsCheckerInterface $itemTransferDealsChecker
+    ) {
         $this->customerService = $customerService;
+        $this->itemTransferDealsChecker = $itemTransferDealsChecker;
     }
 
     /**
@@ -45,7 +54,7 @@ class ShoppingPointsPaymentCalculator implements
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
             if (!$itemTransfer->getUseShoppingPoints()
                 || $availableShoppingPointsAmount === (float)0
-                || !$this->assertItemShoppingPointsDeal($itemTransfer)
+                || !$this->itemTransferDealsChecker->hasShoppingPointsDeals($itemTransfer)
             ) {
                 $itemTransfer->setTotalUsedShoppingPointsAmount(0);
                 $itemTransfer->setUseShoppingPoints(false);
@@ -73,7 +82,7 @@ class ShoppingPointsPaymentCalculator implements
     public function recalculateOrder(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
-            if (!$itemTransfer->getUseShoppingPoints() || !$this->assertItemShoppingPointsDeal($itemTransfer)) {
+            if (!$itemTransfer->getUseShoppingPoints() || !$this->itemTransferDealsChecker->hasShoppingPointsDeals($itemTransfer)) {
                 continue;
             }
 
@@ -131,25 +140,5 @@ class ShoppingPointsPaymentCalculator implements
         }
 
         $itemTransfer->setTotalUsedShoppingPointsAmount($totalShoppingPointsForItem);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
-    private function assertItemShoppingPointsDeal(ItemTransfer $itemTransfer): bool
-    {
-        try {
-            $itemTransfer->requireShoppingPointsDeal();
-            $itemTransfer->getShoppingPointsDeal()->requireIsActive();
-            $itemTransfer->getShoppingPointsDeal()->requireShoppingPointsQuantity();
-            $itemTransfer->getShoppingPointsDeal()->requirePrice();
-        } catch (RequiredTransferPropertyException $exception) {
-            return false;
-        }
-
-        return $itemTransfer->getShoppingPointsDeal()->getShoppingPointsQuantity() > 0
-            && $itemTransfer->getShoppingPointsDeal()->getPrice() > 0;
     }
 }

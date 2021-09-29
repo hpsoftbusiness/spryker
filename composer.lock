@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c2b695aae32780bf0eea199271cfa25",
+    "content-hash": "a7e334a0425cdfd38e9cf6fef83d82af",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -18595,16 +18595,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.11.3",
+            "version": "9.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "5c7ccb31901053c1c428bbc9e278608ebd982fcd"
+                "reference": "6295b2c795e5aa544b134158b7499e89c7a35b63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/5c7ccb31901053c1c428bbc9e278608ebd982fcd",
-                "reference": "5c7ccb31901053c1c428bbc9e278608ebd982fcd",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/6295b2c795e5aa544b134158b7499e89c7a35b63",
+                "reference": "6295b2c795e5aa544b134158b7499e89c7a35b63",
                 "shasum": ""
             },
             "require": {
@@ -18662,7 +18662,10 @@
                 "proprietary"
             ],
             "description": "Discount module",
-            "time": "2021-02-15T10:43:54+00:00"
+            "support": {
+                "source": "https://github.com/spryker/discount/tree/9.17.1"
+            },
+            "time": "2021-09-10T13:49:24+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -18750,20 +18753,20 @@
         },
         {
             "name": "spryker/discount-promotion",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotion.git",
-                "reference": "7b1af57d659e6b0a5e838580a5854bcd491a8a29"
+                "reference": "8dc5466c0e54ee909145eae562acceb37e914973"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/7b1af57d659e6b0a5e838580a5854bcd491a8a29",
-                "reference": "7b1af57d659e6b0a5e838580a5854bcd491a8a29",
+                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/8dc5466c0e54ee909145eae562acceb37e914973",
+                "reference": "8dc5466c0e54ee909145eae562acceb37e914973",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/availability": "^9.0.0",
                 "spryker/cart-extension": "^1.5.0 || ^2.1.0 || ^4.0.0",
                 "spryker/discount": "^7.2.4 || ^9.0.0",
@@ -18804,7 +18807,10 @@
                 "proprietary"
             ],
             "description": "DiscountPromotion module",
-            "time": "2020-06-15T13:30:47+00:00"
+            "support": {
+                "source": "https://github.com/spryker/discount-promotion/tree/4.2.2"
+            },
+            "time": "2021-06-11T12:21:39+00:00"
         },
         {
             "name": "spryker/discount-promotions-rest-api",
