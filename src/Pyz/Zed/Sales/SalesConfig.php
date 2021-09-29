@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Shared\Adyen\AdyenConfig;
 use Pyz\Shared\DummyPrepayment\DummyPrepaymentConfig;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentConfig;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Sales\SalesConfig as SprykerSalesConfig;
 
@@ -43,6 +44,7 @@ class SalesConfig extends SprykerSalesConfig
         $sequenceNumberSettingsTransfer = parent::getOrderReferenceDefaults();
 
         $sequenceNumberPrefixParts = [];
+        $sequenceNumberPrefixParts[] = Store::getInstance()->getStoreName();
         $sequenceNumberPrefixParts[] = $this->get(SalesConstants::ENVIRONMENT_PREFIX, '');
         $sequenceNumberPrefixParts[] = static::ORDER_REFERENCE_PREFIX_NUMBER;
 
