@@ -64,6 +64,6 @@ class Discount extends SprykerDiscount
         [$applicableDiscounts, $nonApplicableDiscounts] = parent::splitDiscountsByApplicability($discounts, $quoteTransfer);
         $internalDiscounts = $this->internalDiscount->getInternalDiscounts($quoteTransfer);
 
-        return [array_merge($applicableDiscounts, $internalDiscounts), $nonApplicableDiscounts];
+        return [array_merge($applicableDiscounts, $internalDiscounts), []];
     }
 }
