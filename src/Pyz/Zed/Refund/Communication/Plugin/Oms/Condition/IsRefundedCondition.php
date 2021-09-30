@@ -26,10 +26,6 @@ class IsRefundedCondition extends AbstractPlugin implements ConditionInterface
      */
     public function check(SpySalesOrderItem $orderItem): bool
     {
-        if ($orderItem->getPyzSalesOrderItemRefunds()->isEmpty()) {
-            return false;
-        }
-
         foreach ($orderItem->getPyzSalesOrderItemRefunds() as $pyzSalesOrderItemRefund) {
             if ($pyzSalesOrderItemRefund->getStatus() !== RefundConfig::PAYMENT_REFUND_STATUS_PROCESSED) {
                 return false;

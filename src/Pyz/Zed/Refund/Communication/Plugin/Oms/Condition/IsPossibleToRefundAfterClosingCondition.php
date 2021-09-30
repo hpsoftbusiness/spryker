@@ -19,6 +19,8 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
  */
 class IsPossibleToRefundAfterClosingCondition extends AbstractPlugin implements ConditionInterface
 {
+    protected const OMS_STATE_REFUNDED = 'refunded';
+
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
@@ -27,11 +29,27 @@ class IsPossibleToRefundAfterClosingCondition extends AbstractPlugin implements 
     public function check(SpySalesOrderItem $orderItem): bool
     {
         $isAuthorizedToRefund = $this->getFactory()->createIsAuthorizedToRefundCondition()->check($orderItem);
-        $isNotRefunded = !$this->getFactory()->createIsRefundedCondition()->check($orderItem);
+        $isNotRefunded = !$this->checkOrderItemWasRefundedBefore($orderItem);
         /** @var \Orm\Zed\Oms\Persistence\Base\SpyOmsOrderItemStateHistory $lastState */
         $lastState = $orderItem->getStateHistories()->getFirst();
         $isClosedLessThanTwoYearsAgo = $lastState->getCreatedAt() > (new DateTime())->modify('2 years ago');
 
         return $isAuthorizedToRefund && $isNotRefunded && $isClosedLessThanTwoYearsAgo;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
+     *
+     * @return bool
+     */
+    public function checkOrderItemWasRefundedBefore(SpySalesOrderItem $orderItem): bool
+    {
+        foreach ($orderItem->getStateHistories() as $state) {
+            if ($state->getState()->getName() === self::OMS_STATE_REFUNDED) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
