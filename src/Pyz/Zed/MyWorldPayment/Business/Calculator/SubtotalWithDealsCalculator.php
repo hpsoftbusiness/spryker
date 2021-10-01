@@ -8,11 +8,23 @@
 namespace Pyz\Zed\MyWorldPayment\Business\Calculator;
 
 use Generated\Shared\Transfer\CalculableObjectTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
-use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
+use Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface;
 
 class SubtotalWithDealsCalculator implements MyWorldPaymentQuoteCalculatorInterface
 {
+    /**
+     * @var \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface
+     */
+    protected $itemTransferDealsChecker;
+
+    /**
+     * @param \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface $itemTransferDealsChecker
+     */
+    public function __construct(ItemTransferDealsCheckerInterface $itemTransferDealsChecker)
+    {
+        $this->itemTransferDealsChecker = $itemTransferDealsChecker;
+    }
+
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      *
@@ -26,11 +38,11 @@ class SubtotalWithDealsCalculator implements MyWorldPaymentQuoteCalculatorInterf
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
             $price = $itemTransfer->getUnitPrice();
 
-            if ($this->hasShoppingPointsDeals($itemTransfer)) {
+            if ($this->itemTransferDealsChecker->hasShoppingPointsDeals($itemTransfer)) {
                 $price = $itemTransfer->getShoppingPointsDeal()->getPrice();
             }
 
-            if ($this->hasBenefitVoucherDeals($itemTransfer)) {
+            if ($this->itemTransferDealsChecker->hasBenefitVoucherDeals($itemTransfer)) {
                 $price = $itemTransfer->getBenefitVoucherDealData()->getSalesPrice();
             }
 
@@ -40,44 +52,5 @@ class SubtotalWithDealsCalculator implements MyWorldPaymentQuoteCalculatorInterf
         $calculableObjectTransfer->getTotals()->setSubtotalWithDeals($subtotal);
 
         return $calculableObjectTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
-    protected function hasBenefitVoucherDeals(ItemTransfer $itemTransfer): bool
-    {
-        try {
-            $itemTransfer->requireBenefitVoucherDealData();
-            $itemTransfer->getBenefitVoucherDealData()->requireSalesPrice();
-            $itemTransfer->getBenefitVoucherDealData()->requireAmount();
-            $itemTransfer->getBenefitVoucherDealData()->requireIsStore();
-
-            return $itemTransfer->getBenefitVoucherDealData()->getIsStore();
-        } catch (RequiredTransferPropertyException $exception) {
-            return false;
-        }
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
-    protected function hasShoppingPointsDeals(ItemTransfer $itemTransfer): bool
-    {
-        try {
-            $itemTransfer->requireShoppingPointsDeal();
-            $itemTransfer->getShoppingPointsDeal()->requireIsActive();
-            $itemTransfer->getShoppingPointsDeal()->requireShoppingPointsQuantity();
-            $itemTransfer->getShoppingPointsDeal()->requirePrice();
-
-            return $itemTransfer->getShoppingPointsDeal()->getShoppingPointsQuantity() > 0
-                && $itemTransfer->getShoppingPointsDeal()->getPrice() > 0;
-        } catch (RequiredTransferPropertyException $exception) {
-            return false;
-        }
     }
 }

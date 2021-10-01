@@ -91,6 +91,7 @@
     <transfer name="Totals">
         <property name="subtotalWithDeals" type="int"/>
         <property name="grandTotalWithDeals" type="int"/>
+        <property name="discountTotalWithoutShoppingPoints" type="int"/>
     </transfer>
 
     <transfer name="BenefitVoucherDealData">

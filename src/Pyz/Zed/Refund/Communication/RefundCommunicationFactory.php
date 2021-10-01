@@ -8,7 +8,6 @@
 namespace Pyz\Zed\Refund\Communication;
 
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsAuthorizedToRefundCondition;
-use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsRefundedCondition;
 use Pyz\Zed\Refund\RefundDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 use Spryker\Zed\Acl\Business\AclFacadeInterface;
@@ -49,13 +48,5 @@ class RefundCommunicationFactory extends SprykerRefundCommunicationFactory
     public function createIsAuthorizedToRefundCondition(): IsAuthorizedToRefundCondition
     {
         return new IsAuthorizedToRefundCondition();
-    }
-
-    /**
-     * @return \Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsRefundedCondition
-     */
-    public function createIsRefundedCondition(): IsRefundedCondition
-    {
-        return new IsRefundedCondition();
     }
 }

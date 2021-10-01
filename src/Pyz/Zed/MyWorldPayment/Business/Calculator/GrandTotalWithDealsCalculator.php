@@ -21,6 +21,8 @@ class GrandTotalWithDealsCalculator implements MyWorldPaymentQuoteCalculatorInte
     {
         $grandTotal = $calculableObjectTransfer->getTotals()->getSubtotalWithDeals();
 
+        $grandTotal -= $calculableObjectTransfer->getTotals()->getDiscountTotalWithoutShoppingPoints();
+
         /** @var \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer */
         foreach ($calculableObjectTransfer->getExpenses() as $expenseTransfer) {
             if ($expenseTransfer->getType() === ShipmentConfig::SHIPMENT_EXPENSE_TYPE) {

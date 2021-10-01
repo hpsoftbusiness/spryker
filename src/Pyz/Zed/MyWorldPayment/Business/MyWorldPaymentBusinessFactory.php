@@ -11,6 +11,7 @@ use Pyz\Service\Customer\CustomerServiceInterface;
 use Pyz\Zed\CustomerGroup\Persistence\CustomerGroupQueryContainerInterface;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\BenefitVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\CashbackPaymentCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Calculator\DiscountTotalWithoutShoppingPointsCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherMarketerPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\EVoucherPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\GrandTotalWithDealsCalculator;
@@ -19,6 +20,8 @@ use Pyz\Zed\MyWorldPayment\Business\Calculator\SegmentNumberCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\ShoppingPointsPaymentCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\SubtotalWithDealsCalculator;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\TurnoverCalculator;
+use Pyz\Zed\MyWorldPayment\Business\Discount\DiscountableItemWithDealsFilter;
+use Pyz\Zed\MyWorldPayment\Business\Discount\DiscountableItemWithDealsFilterInterface;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\BenefitVoucherDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\CashbackDirectPaymentTransferGenerator;
 use Pyz\Zed\MyWorldPayment\Business\Generator\DirectPayment\EVoucherDirectPaymentTransferGenerator;
@@ -40,6 +43,8 @@ use Pyz\Zed\MyWorldPayment\Business\Refund\RefundProcessor;
 use Pyz\Zed\MyWorldPayment\Business\Refund\RefundProcessorInterface;
 use Pyz\Zed\MyWorldPayment\Business\RequestDispatcher\MyWorldPaymentApiRequestDispatcher;
 use Pyz\Zed\MyWorldPayment\Business\RequestDispatcher\RequestDispatcherInterface;
+use Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsChecker;
+use Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface;
 use Pyz\Zed\MyWorldPayment\MyWorldPaymentDependencyProvider;
 use Pyz\Zed\MyWorldPaymentApi\Business\MyWorldPaymentApiFacadeInterface;
 use Spryker\Client\Locale\LocaleClientInterface;
@@ -125,7 +130,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createBenefitVoucherPaymentCalculator()
     {
-        return new BenefitVoucherPaymentCalculator($this->getConfig());
+        return new BenefitVoucherPaymentCalculator($this->getConfig(), $this->createItemTransferDealsChecker());
     }
 
     /**
@@ -133,7 +138,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createShoppingPointsPaymentCalculator()
     {
-        return new ShoppingPointsPaymentCalculator($this->getCustomerService());
+        return new ShoppingPointsPaymentCalculator($this->getCustomerService(), $this->createItemTransferDealsChecker());
     }
 
     /**
@@ -141,7 +146,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createTurnoverCalculator()
     {
-        return new TurnoverCalculator();
+        return new TurnoverCalculator($this->createItemTransferDealsChecker());
     }
 
     /**
@@ -157,7 +162,7 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
      */
     public function createSubtotalWithDealsCalculator()
     {
-        return new SubtotalWithDealsCalculator();
+        return new SubtotalWithDealsCalculator($this->createItemTransferDealsChecker());
     }
 
     /**
@@ -166,6 +171,14 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function createGrandTotalWithDealsCalculator()
     {
         return new GrandTotalWithDealsCalculator();
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Calculator\DiscountTotalWithoutShoppingPointsCalculator
+     */
+    public function createDiscountTotalWithoutShoppingPointsCalculator()
+    {
+        return new DiscountTotalWithoutShoppingPointsCalculator();
     }
 
     /**
@@ -325,5 +338,21 @@ class MyWorldPaymentBusinessFactory extends AbstractBusinessFactory
     public function getCustomerService(): CustomerServiceInterface
     {
         return $this->getProvidedDependency(MyWorldPaymentDependencyProvider::SERVICE_CUSTOMER);
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Utils\ItemTransferDealsCheckerInterface
+     */
+    public function createItemTransferDealsChecker(): ItemTransferDealsCheckerInterface
+    {
+        return new ItemTransferDealsChecker();
+    }
+
+    /**
+     * @return \Pyz\Zed\MyWorldPayment\Business\Discount\DiscountableItemWithDealsFilterInterface
+     */
+    public function createDiscountableItemWithDealsFilter(): DiscountableItemWithDealsFilterInterface
+    {
+        return new DiscountableItemWithDealsFilter($this->createItemTransferDealsChecker());
     }
 }

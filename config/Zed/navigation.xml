@@ -303,6 +303,13 @@
         <icon>fa-tags</icon>
         <uri>#</uri>
         <pages>
+            <discount>
+                <label>Discount</label>
+                <title>Discount</title>
+                <bundle>discount</bundle>
+                <controller>index</controller>
+                <action>list</action>
+            </discount>
             <product-relation-gui>
                 <label>Product Relations</label>
                 <title>Product Relations</title>
