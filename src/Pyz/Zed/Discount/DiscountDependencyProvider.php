@@ -199,7 +199,6 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     protected function getDiscountFormDataProviderExpanderPlugins()
     {
         return [
-            // new DiscountPromotionCalculationFormDataExpanderPlugin(),
             new HideBenefitPriceCalculatorDiscountFormDataProviderExpanderPlugin(),
         ];
     }
