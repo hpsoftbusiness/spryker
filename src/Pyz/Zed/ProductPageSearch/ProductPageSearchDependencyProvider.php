@@ -17,6 +17,7 @@ use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\Pr
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractCustomerNotGroupFacetPageMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractDealFacetPageMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractEliteClubDealsMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractFeaturedMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractNotSellableFacetPageMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractSellableFacetPageMapExpanderPlugin;
 use Spryker\Shared\MerchantProductOfferSearch\MerchantProductOfferSearchConfig;
@@ -174,6 +175,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductAbstractCustomerNotGroupFacetPageMapExpanderPlugin(),
             new ProductAbstractCustomerGroupMapExpanderPlugin(),
             new ProductAbstractDealFacetPageMapExpanderPlugin(),
+            new ProductAbstractFeaturedMapExpanderPlugin(),
         ];
     }
 
