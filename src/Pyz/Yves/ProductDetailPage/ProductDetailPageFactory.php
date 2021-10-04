@@ -8,7 +8,7 @@
 namespace Pyz\Yves\ProductDetailPage;
 
 use Pyz\Client\Customer\CustomerClientInterface;
-use Pyz\Client\ProductAttribute\ProductAttributeClientInterface;
+use Pyz\Client\ProductAttributeStorage\ProductAttributeStorageClientInterface;
 use Pyz\Client\Sso\SsoClientInterface;
 use Pyz\Service\ProductAffiliate\ProductAffiliateServiceInterface;
 use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
@@ -37,11 +37,11 @@ class ProductDetailPageFactory extends SprykerShopProductDetailPageFactory
     }
 
     /**
-     * @return \Pyz\Client\ProductAttribute\ProductAttributeClientInterface
+     * @return \Pyz\Client\ProductAttributeStorage\ProductAttributeStorageClientInterface
      */
-    public function getProductAttributeClient(): ProductAttributeClientInterface
+    public function getProductAttributeStorageClient(): ProductAttributeStorageClientInterface
     {
-        return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_PRODUCT_ATTRIBUTE);
+        return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_PRODUCT_ATTRIBUTE_STORAGE);
     }
 
     /**
