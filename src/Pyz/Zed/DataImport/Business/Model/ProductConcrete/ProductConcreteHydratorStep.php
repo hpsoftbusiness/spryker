@@ -95,8 +95,9 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
         $isActive = true;
         if (isset($dataSet[static::KEY_IS_ACTIVE])) {
-            $isActive = $dataSet[static::KEY_IS_ACTIVE] === 'TRUE' || $dataSet[static::KEY_IS_ACTIVE] ?? true;
+            $isActive = ($dataSet[static::KEY_IS_ACTIVE] ?? 'FALSE') === 'TRUE';
         }
+
         $productEntityTransfer
             ->setIsActive($isActive)
             ->setAttributes(addslashes(json_encode($dataSet[static::KEY_ATTRIBUTES])));
