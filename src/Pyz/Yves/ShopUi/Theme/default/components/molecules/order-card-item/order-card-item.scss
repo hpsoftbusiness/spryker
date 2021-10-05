@@ -209,6 +209,11 @@
             color: $setting-color-yellow;
         }
 
+        &__quantity {
+            font: fw(regular) rem(16) $setting-font-family;
+            color: #909090;
+        }
+
         @content;
     }
 }

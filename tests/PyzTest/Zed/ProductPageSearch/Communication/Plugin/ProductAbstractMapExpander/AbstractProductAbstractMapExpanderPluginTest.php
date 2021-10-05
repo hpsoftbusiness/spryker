@@ -39,8 +39,11 @@ class AbstractProductAbstractMapExpanderPluginTest extends Unit
      *
      * @return void
      */
-    protected function assertMappedSearchResultDataValue(PageMapTransfer $pageMapTransfer, string $parameterKey, $value): void
-    {
+    protected function assertMappedSearchResultDataValue(
+        PageMapTransfer $pageMapTransfer,
+        string $parameterKey,
+        $value
+    ): void {
         $mappedValue = $this->findMappedSearchResultDataValue($pageMapTransfer, $parameterKey);
 
         self::assertNotNull($mappedValue);
@@ -82,6 +85,21 @@ class AbstractProductAbstractMapExpanderPluginTest extends Unit
         $productData = [];
         foreach ($productAttributes as $key => $value) {
             $productData[ProductPageSearchTransfer::ATTRIBUTES][$key][] = $value;
+        }
+
+        return $productData;
+    }
+
+    /**
+     * @param array $productTestedData
+     *
+     * @return array
+     */
+    protected function getProductData(array $productTestedData): array
+    {
+        $productData = [];
+        foreach ($productTestedData as $key => $value) {
+            $productData[$key] = $value;
         }
 
         return $productData;

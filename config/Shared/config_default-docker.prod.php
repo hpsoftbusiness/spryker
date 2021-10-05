@@ -52,9 +52,11 @@ $config[OmsConstants::MAIL_ORDER_IN_PROCESSING_RECIPIENTS] = [
     'mterm@myworld.com' => 'Warehouse Manager',
 ];
 
-$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_TO] = [
     'mp.vendormgmt@myworld.com' => 'Warehouse Manager',
 ];
+
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_BCC] = [];
 
 // ----------------------------------------------------------------------------
 // ----------------------- MyWorld Marketplace API ----------------------------

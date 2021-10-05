@@ -1,11 +1,11 @@
 @mixin shop-ui-money-price($name: '.money-price') {
     #{$name} {
         &__amount {
-            font-size: inherit;
+            font-size: rem(24);
 
             &--original {
                 text-decoration: line-through;
-                font-size: rem(12);
+                font-size: rem(24);
                 color: $setting-color-gray-4;
                 min-height: rem(18);
             }
@@ -19,6 +19,10 @@
             @include helper-breakpoint-media-min($md-min) {
                 text-align: right;
             }
+        }
+
+        .product-benefit-price__second > span:nth-child(1) > span:nth-child(1) {
+            font-size: rem(16);
         }
 
         &--bold {
@@ -37,24 +41,24 @@
             }
         }
 
-        &--pdp & {
-            &__amount {
-                font: fw(bold) map-get($setting-font-size, 2) $setting-font-family;
-            }
-        }
-
-        &--pdp-benefit & {
-            &__amount {
-                font: fw(bold) map-get($setting-font-size, 2) $setting-font-family;
-            }
-        }
-
         &--strikethrough & {
             &__amount {
                 text-decoration: line-through;
-                color: $setting-color-gray-5;
-                min-height: rem(18);
+                color: $setting-color-black;
+                font-size: rem(24);
             }
+        }
+
+        &--strikethrough-shopping & {
+            &__amount {
+                text-decoration: line-through;
+                color: $setting-color-black;
+                font-size: rem(24);
+            }
+        }
+
+        .money-price .money-price--pdp {
+            font-size: rem(16);
         }
     }
 }

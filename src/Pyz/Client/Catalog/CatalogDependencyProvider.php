@@ -7,14 +7,22 @@
 
 namespace Pyz\Client\Catalog;
 
+use Pyz\Client\Catalog\Plugin\ConfigTransferBuilder\ProductAbstractCustomerGroupFacetConfigTransferBuilderPlugin;
+use Pyz\Client\Catalog\Plugin\ConfigTransferBuilder\ProductAbstractDealFacetConfigTransferBuilderPlugin;
+use Pyz\Client\Catalog\Plugin\ConfigTransferBuilder\ProductAbstractNotCustomerGroupFacetConfigTransferBuilderPlugin;
+use Pyz\Client\Catalog\Plugin\ConfigTransferBuilder\ProductAbstractNotSellableFacetConfigTransferBuilderPlugin;
 use Pyz\Client\Catalog\Plugin\ConfigTransferBuilder\ProductAbstractSellableFacetConfigTransferBuilderPlugin;
 use Pyz\Client\Catalog\Plugin\Elasticsearch\Query\CatalogVisibilitySearchQueryPlugin;
 use Pyz\Client\Customer\Plugin\SearchExtension\ProductListQueryExpanderPlugin as CustomerProductListQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\BenefitStoreQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\BenefitVoucherDealsQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CategoryFacetQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CmsPageFilterQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\EliteClubDealsQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\IsAffiliateQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\SellableQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\ShoppingPointDealsQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\ShoppingPointStoreQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
@@ -36,7 +44,6 @@ use Spryker\Client\MerchantProductOfferSearch\Plugin\MerchantReferenceQueryExpan
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\CompletionQueryExpanderPlugin;
-use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\IsActiveInDateRangeQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\IsActiveQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\LocalizedQueryExpanderPlugin;
@@ -84,6 +91,11 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new PriceFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
             new ProductAbstractSellableFacetConfigTransferBuilderPlugin(),
+            new ProductAbstractNotSellableFacetConfigTransferBuilderPlugin(),
+            new ProductAbstractCustomerGroupFacetConfigTransferBuilderPlugin(),
+            new ProductAbstractNotCustomerGroupFacetConfigTransferBuilderPlugin(),
+            new ProductAbstractDealFacetConfigTransferBuilderPlugin(),
+
         ];
     }
 
@@ -103,7 +115,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Catalog\Plugin\Elasticsearch\Query\ProductCatalogSearchQueryPlugin
      */
-    protected function createCatalogSearchQueryPlugin()
+    protected function createCatalogSearchQueryPlugin(): ProductCatalogSearchQueryPlugin
     {
         return new ProductCatalogSearchQueryPlugin();
     }
@@ -134,6 +146,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsAffiliateQueryExpanderPlugin(),
             new BenefitStoreQueryExpanderPlugin(),
             new ShoppingPointStoreQueryExpanderPlugin(),
+            new EliteClubDealsQueryExpanderPlugin(),
+            new BenefitVoucherDealsQueryExpanderPlugin(),
+            new ShoppingPointDealsQueryExpanderPlugin(),
         ];
     }
 
@@ -231,9 +246,12 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
      */
     protected function addCatalogVisibilitySearchQueryPlugin(Container $container)
     {
-        $container->set(static::CATALOG_VISIBILITY_SEARCH_QUERY_PLUGIN, function () {
-            return new CatalogVisibilitySearchQueryPlugin();
-        });
+        $container->set(
+            static::CATALOG_VISIBILITY_SEARCH_QUERY_PLUGIN,
+            function () {
+                return new CatalogVisibilitySearchQueryPlugin();
+            }
+        );
 
         return $container;
     }
@@ -245,20 +263,23 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
      */
     protected function addCatalogVisibilitySearchQueryExpanderPlugins(Container $container)
     {
-        $container->set(static::CATALOG_VISIBILITY_SEARCH_QUERY_EXPANDER_PLUGINS, function () {
-            return [
-                new StoreQueryExpanderPlugin(),
-                new ProductPriceQueryExpanderPlugin(),
-                new IsActiveQueryExpanderPlugin(),
-                new IsActiveInDateRangeQueryExpanderPlugin(),
-                new CustomerProductListQueryExpanderPlugin(),
+        $container->set(
+            static::CATALOG_VISIBILITY_SEARCH_QUERY_EXPANDER_PLUGINS,
+            function () {
+                return [
+                    new StoreQueryExpanderPlugin(),
+                    new ProductPriceQueryExpanderPlugin(),
+                    new IsActiveQueryExpanderPlugin(),
+                    new IsActiveInDateRangeQueryExpanderPlugin(),
+                    new CustomerProductListQueryExpanderPlugin(),
 
-                /**
-                 * CategoryFacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
-                 */
-                new CategoryFacetQueryExpanderPlugin(),
-            ];
-        });
+                    /**
+                     * CategoryFacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
+                     */
+                    new CategoryFacetQueryExpanderPlugin(),
+                ];
+            }
+        );
 
         return $container;
     }
@@ -270,11 +291,14 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
      */
     protected function addCatalogVisibilitySearchResultFormatterPlugins(Container $container)
     {
-        $container->set(static::CATALOG_VISIBILITY_SEARCH_RESULT_FORMATTER_PLUGINS, function () {
-            return [
-                new FacetResultFormatterPlugin(),
-            ];
-        });
+        $container->set(
+            static::CATALOG_VISIBILITY_SEARCH_RESULT_FORMATTER_PLUGINS,
+            function () {
+                return [
+                    new FacetResultFormatterPlugin(),
+                ];
+            }
+        );
 
         return $container;
     }

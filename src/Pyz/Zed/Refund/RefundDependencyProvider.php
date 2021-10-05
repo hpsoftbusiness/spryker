@@ -30,6 +30,7 @@ class RefundDependencyProvider extends SprykerRefundDependencyProvider
     public const PLUGIN_EXPENSE_PAYMENT_REFUND_CALCULATOR = 'PLUGIN_EXPENSE_PAYMENT_REFUND_CALCULATOR';
     public const PLUGIN_REFUND_PROCESSOR = 'PLUGIN_REFUND_PROCESSOR';
     public const PLUGIN_REFUND_VALIDATOR = 'PLUGIN_REFUND_VALIDATOR';
+    public const FACADE_ACL = 'FACADE_ACL';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -59,6 +60,7 @@ class RefundDependencyProvider extends SprykerRefundDependencyProvider
         $container = parent::provideCommunicationLayerDependencies($container);
 
         $this->addSalesFacade($container);
+        $this->addAclFacade($container);
         $this->addItemRefundCalculatorPlugin($container);
         $this->addExpenseRefundCalculatorPlugin($container);
 
@@ -74,6 +76,20 @@ class RefundDependencyProvider extends SprykerRefundDependencyProvider
     {
         $container->set(self::FACADE_SALES, static function (Container $container) {
             return $container->getLocator()->sales()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addAclFacade(Container $container): Container
+    {
+        $container->set(self::FACADE_ACL, static function (Container $container) {
+            return $container->getLocator()->acl()->facade();
         });
 
         return $container;

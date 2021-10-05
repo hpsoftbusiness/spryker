@@ -16,6 +16,8 @@
         <property name="shoppingPointsAmount" type="float"/>
         <property name="benefitAmount" type="float"/>
         <property name="benefitSalesPrice" type="int"/>
+        <property name="benefitStore" type="bool"/>
+        <property name="shoppingPointStore" type="bool"/>
     </transfer>
 
     <transfer name="ProductAbstract">

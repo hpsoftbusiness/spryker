@@ -9,8 +9,12 @@ namespace Pyz\Zed\Cart;
 
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealItemExpanderPlugin;
 use Pyz\Zed\BenefitDeal\Communication\Plugin\Cart\BenefitDealQuoteChangeObserverPlugin;
+use Pyz\Zed\BenefitDeal\Communication\Plugin\CartItemBenefitPricePlugin;
+use Pyz\Zed\Cart\Plugin\ShipmentDefaultCartExpander;
+use Pyz\Zed\MyWorldPayment\Communication\Plugin\Cart\RemoveMyWorldPaymentsChoicePlugin;
 use Pyz\Zed\ProductAffiliate\Communication\Plugin\Cart\ProductAffiliateCartPreCheckPlugin;
 use Pyz\Zed\ProductUrlCartConnector\Communication\Plugin\ProductUrlCartExpanderPlugin;
+use Pyz\Zed\Shipment\Business\ShipmentFacadeInterface;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
@@ -80,10 +84,12 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartItemWithBundleGroupKeyExpanderPlugin(),
             new ProductImageCartPlugin(),
             new CartGroupPromotionItems(),
+            new ShipmentDefaultCartExpander($this->getShipmentFacade($container)),
             new CartShipmentExpanderPlugin(),
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
+            new CartItemBenefitPricePlugin(),
             new BenefitDealItemExpanderPlugin(),
         ];
     }
@@ -128,6 +134,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
             new ConfiguredBundleQuantityPostSavePlugin(),
+            new RemoveMyWorldPaymentsChoicePlugin(),
         ];
     }
 
@@ -200,5 +207,15 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new ConfiguredBundleQuantityCartTerminationPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Pyz\Zed\Shipment\Business\ShipmentFacadeInterface
+     */
+    protected function getShipmentFacade(Container $container): ShipmentFacadeInterface
+    {
+        return $container->getLocator()->shipment()->facade();
     }
 }

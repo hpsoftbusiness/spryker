@@ -8,6 +8,7 @@ parameters:
     excludes_analyse:
         - %rootDir%/../../../src/Generated/*
         - %rootDir%/../../../src/Orm/*
+        - %rootDir%/../../../src/Pyz/Zed/ProductPageSearch/Communication/Plugin/ProductAbstractMapExpander/*
 
     bootstrap: %rootDir%/../../../phpstan-bootstrap.php
 

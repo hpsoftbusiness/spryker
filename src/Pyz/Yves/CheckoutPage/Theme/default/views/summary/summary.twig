@@ -32,7 +32,7 @@
                     {% set cartItem = item.bundleProduct ?? item %}
                     {% set isGiftCardExists = cartItem.giftCardMetadata is not null and cartItem.giftCardMetadata.isGiftCard %}
 
-                    {% embed molecule('order-card-item') with {
+                    {% embed molecule('order-card-item-summary') with {
                         modifiers: ['expand', 'secondary', 'alternative', 'right-indent-from-tablet'],
                         data: {
                             productItem: cartItem,
@@ -65,18 +65,6 @@
                             <div class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--sm-12 col--lg-7">
                                 {{ data.productItem.name }}
                             </div>
-                        {% endblock %}
-
-                        {% block options %}
-                            {% if data.productItem.concreteAttributes is not empty %}
-                                <ul>
-                                    {% for key, item in data.productItem.concreteAttributes | filterAttributes %}
-                                        {% if key in ['size', 'color', 'brand'] %}
-                                            <li>{{ ('product.attribute.' ~ key) | trans }}: {{ item }}</li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
                         {% endblock %}
 
                         {% block bundles %}
@@ -130,6 +118,8 @@
             {{ 'checkout.step.summary.total' | trans }}
         </h3>
         <div class="col col--sm-12">
+            {% widget 'CartCodeFormWidget' args [data.transfer] only %}{% endwidget %}
+
             {% embed molecule('form') with {
                 modifiers: ['checkout-actions'],
                 data: {

@@ -11,4 +11,5 @@ use Spryker\Shared\Shipment\ShipmentConfig as SprykerShipmentConfig;
 
 class ShipmentConfig extends SprykerShipmentConfig
 {
+    public const DEFAULT_SHIPMENT_METHOD_ID = 1;
 }

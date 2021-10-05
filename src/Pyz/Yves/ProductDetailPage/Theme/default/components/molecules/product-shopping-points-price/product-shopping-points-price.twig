@@ -19,7 +19,7 @@
 
     <div class="row {{ config.name }}__benefit">
         {% include molecule('money-price') with {
-            modifiers: ['strikethrough'],
+            modifiers: ['strikethrough-shopping'],
             data: {
                 amount: data.defaultPriceAmount,
                 priceVatText: null
@@ -27,7 +27,7 @@
         } only %}
 
         <span class="{{ config.name }}__benefit-amount">
-            &#8208;&nbsp;{{ data.shoppingPointsAmount | number_format(2, '.', ',') }}
+            &#8208;&nbsp;{{ data.shoppingPointsAmount | formatShoppingPoints }}
             {% include atom('icon') with {
                 class: config.name ~ '__icon',
                 modifiers: ['medium-up'],

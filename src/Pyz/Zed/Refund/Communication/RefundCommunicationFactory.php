@@ -7,8 +7,10 @@
 
 namespace Pyz\Zed\Refund\Communication;
 
+use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsAuthorizedToRefundCondition;
 use Pyz\Zed\Refund\RefundDependencyProvider;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
+use Spryker\Zed\Acl\Business\AclFacadeInterface;
 use Spryker\Zed\Refund\Communication\RefundCommunicationFactory as SprykerRefundCommunicationFactory;
 
 class RefundCommunicationFactory extends SprykerRefundCommunicationFactory
@@ -22,6 +24,14 @@ class RefundCommunicationFactory extends SprykerRefundCommunicationFactory
     }
 
     /**
+     * @return \Spryker\Zed\Acl\Business\AclFacadeInterface
+     */
+    public function getAclFacade(): AclFacadeInterface
+    {
+        return $this->getProvidedDependency(RefundDependencyProvider::FACADE_ACL);
+    }
+
+    /**
      * @return \Spryker\Zed\Refund\Dependency\Plugin\RefundCalculatorPluginInterface[]
      */
     public function getRefundCalculatorPlugins(): array
@@ -30,5 +40,13 @@ class RefundCommunicationFactory extends SprykerRefundCommunicationFactory
             $this->getProvidedDependency(RefundDependencyProvider::PLUGIN_ITEM_REFUND_CALCULATOR),
             $this->getProvidedDependency(RefundDependencyProvider::PLUGIN_EXPENSE_REFUND_CALCULATOR),
         ];
+    }
+
+    /**
+     * @return \Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsAuthorizedToRefundCondition
+     */
+    public function createIsAuthorizedToRefundCondition(): IsAuthorizedToRefundCondition
+    {
+        return new IsAuthorizedToRefundCondition();
     }
 }

@@ -9,6 +9,7 @@ namespace Pyz\Zed\MyWorldPayment\Business;
 
 use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\CollectedDiscountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\PaymentDataResponseTransfer;
@@ -209,12 +210,29 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
      *
      * @return void
      */
-    public function recalculateOrderTurnover(CalculableObjectTransfer $calculableObjectTransfer): void
+    public function recalculateQuoteSubtotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void
     {
-        $this
-            ->getFactory()
-            ->createTurnoverCalculator()
-            ->recalculateOrder($calculableObjectTransfer);
+        $this->getFactory()->createSubtotalWithDealsCalculator()->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteGrandTotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this->getFactory()->createGrandTotalWithDealsCalculator()->recalculateQuote($calculableObjectTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteDiscountTotalWithoutShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void
+    {
+        $this->getFactory()->createDiscountTotalWithoutShoppingPointsCalculator()->recalculateQuote($calculableObjectTransfer);
     }
 
     /**
@@ -251,5 +269,15 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
     public function processRefunds(array $refundTransfers): void
     {
         $this->getFactory()->createRefundProcessor()->processRefunds($refundTransfers);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CollectedDiscountTransfer $collectedDiscountTransfer
+     *
+     * @return \Generated\Shared\Transfer\CollectedDiscountTransfer
+     */
+    public function filterDiscountableItemWithDeals(CollectedDiscountTransfer $collectedDiscountTransfer): CollectedDiscountTransfer
+    {
+        return $this->getFactory()->createDiscountableItemWithDealsFilter()->filter($collectedDiscountTransfer);
     }
 }

@@ -32,6 +32,17 @@
   },
   "mappings": {
     "page": {
+      "dynamic_templates": {
+        "3": {
+          "search-result-data.attributes.deal": {
+            "path_match": "search-result-data.attributes.deal",
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "text"
+            }
+          }
+        }
+      },
       "properties": {
         "full-text": {
           "analyzer": "fulltext_index_analyzer",

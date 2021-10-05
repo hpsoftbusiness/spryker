@@ -29,15 +29,23 @@
         {% else %}
             <li class="{{ config.name }}__list-item">
                 {% set paymentMethodTranslationKey = 'payment.payment_method.' ~ (payment.paymentMethod | pascalToSnakeCase) %}
+
+                {% if paymentMethodTranslationKey == 'payment.payment_method.e_voucher'
+                    or paymentMethodTranslationKey == 'payment.payment_method.cashback' %}
+                    <p class="{{ config.name }}__myworld_e_payment">myWorld ePayment</p>
+                {% endif %}
+
                 {{ paymentMethodTranslationKey | trans }}
                 <span class="float-right">- {{ payment.amount | money }}</span>
             </li>
         {% endif %}
     {% endfor %}
 
+
     {% if data.cart.totals.grandTotal != data.cart.totals.priceToPay %}
         <li class="{{ config.name }}__list-item">
-            {{ 'cart.total.price_to_pay' | trans }}<strong class="float-right">{{ data.cart.totals.priceToPay | money }}</strong>
+            <strong>{{ 'cart.total.price_to_pay' | trans }}</strong>
+            <strong class="float-right">{{ data.cart.totals.priceToPay | money }}</strong>
         </li>
     {% endif %}
 {% endblock %}

@@ -10,9 +10,11 @@
 } %}
 
 {% set originalPrice = data.product.prices.ORIGINAL ?? null %}
+{% set defaultPrice = data.product.prices.DEFAULT ?? null %}
 {% set benefitPrice = data.product.prices.BENEFIT ?? null %}
-{% set benefitVoucherDealEnabled = data.product.benefitAmount is not null and benefitPrice is not null and benefitPrice != 0.00 %}
-{% set shoppingPointsDealEnabled = data.product.shoppingPointsAmount is not null and benefitPrice is not null %}
+{% set benefitAmount = (defaultPrice ?? 0) - (benefitPrice ?? 0) %}
+{% set benefitVoucherDealEnabled = (data.product.benefitStore ?? false) and (benefitPrice is not null) and (benefitPrice > 0) %}
+{% set shoppingPointsDealEnabled = (data.product.shoppingPointStore ?? false) and (data.product.shoppingPointsAmount is not null) and (data.product.shoppingPointsAmount > 0) and (benefitPrice is not null) and (benefitPrice > 0) %}
 
 {% block body %}
     {% block benefitDealPrice %}
@@ -22,7 +24,7 @@
                 data: {
                     regularPrice: data.product.price,
                     price: originalPrice,
-                    amount: data.product.benefitAmount,
+                    amount: benefitAmount,
                     promotionPrice: benefitPrice
                 }
             } only %}

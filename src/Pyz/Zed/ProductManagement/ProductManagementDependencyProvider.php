@@ -48,6 +48,22 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+
+        $container->set(static::FACADE_PRODUCT, function (Container $container) {
+            return new ProductManagementToProductBridge($container->getLocator()->product()->facade());
+        });
+
+        return $container;
+    }
+
+    /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
     protected function getStoreRelationFormTypePlugin()

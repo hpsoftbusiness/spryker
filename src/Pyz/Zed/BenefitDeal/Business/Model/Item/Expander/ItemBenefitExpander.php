@@ -9,21 +9,13 @@ namespace Pyz\Zed\BenefitDeal\Business\Model\Item\Expander;
 
 use Generated\Shared\Transfer\BenefitVoucherDealDataTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\PriceProductFilterTransfer;
 use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
-use Pyz\Shared\PriceProduct\PriceProductConfig;
 use Pyz\Zed\BenefitDeal\BenefitDealConfig;
-use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Client\Store\StoreClientInterface;
 use Spryker\Shared\Kernel\Transfer\Exception\RequiredTransferPropertyException;
 
 class ItemBenefitExpander implements ItemBenefitExpanderInterface
 {
-    /**
-     * @var \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface
-     */
-    private $priceProductFacade;
-
     /**
      * @var \Spryker\Client\Store\StoreClientInterface
      */
@@ -35,16 +27,13 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
     private $config;
 
     /**
-     * @param \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
      * @param \Spryker\Client\Store\StoreClientInterface $storeClient
      * @param \Pyz\Zed\BenefitDeal\BenefitDealConfig $config
      */
     public function __construct(
-        PriceProductFacadeInterface $priceProductFacade,
         StoreClientInterface $storeClient,
         BenefitDealConfig $config
     ) {
-        $this->priceProductFacade = $priceProductFacade;
         $this->storeClient = $storeClient;
         $this->config = $config;
     }
@@ -81,7 +70,7 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
         $benefitVoucher = new BenefitVoucherDealDataTransfer();
         $benefitVoucher->setAmount($this->getBenefitVoucherAmount($itemTransfer));
         $benefitVoucher->setIsStore($this->isBenefitVoucherStoreActive($itemTransfer));
-        $benefitVoucher->setSalesPrice($this->getBenefitPriceAmount($itemTransfer, $currencyIsoCode));
+        $benefitVoucher->setSalesPrice($this->getBenefitPriceAmount($itemTransfer));
 
         if ($this->assertBenefitVoucherDealData($benefitVoucher)) {
             $itemTransfer->setBenefitVoucherDealData($benefitVoucher);
@@ -98,7 +87,7 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
     {
         $shoppingPointsDealTransfer = new ShoppingPointsDealTransfer();
         $shoppingPointsDealTransfer->setIsActive($this->isShoppingPointStoreActive($itemTransfer));
-        $shoppingPointsDealTransfer->setPrice($this->getBenefitPriceAmount($itemTransfer, $currencyIsoCode));
+        $shoppingPointsDealTransfer->setPrice($this->getBenefitPriceAmount($itemTransfer));
         $shoppingPointsDealTransfer->setShoppingPointsQuantity($this->getShoppingPointsQuantity($itemTransfer));
 
         if ($this->assertShoppingPointsDealData($shoppingPointsDealTransfer)) {
@@ -144,30 +133,24 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return int|null
+     * @return int
      */
-    private function getBenefitVoucherAmount(ItemTransfer $itemTransfer): ?int
+    private function getBenefitVoucherAmount(ItemTransfer $itemTransfer): int
     {
-        $benefitVoucherAmount = $itemTransfer->getConcreteAttributes()[$this->config->getBenefitVoucherAmountAttributeName()] ?? null;
+        $defaultPrice = $itemTransfer->getOriginUnitGrossPrice();
+        $benefitPrice = $itemTransfer->getBenefitUnitGrossPrice();
 
-        if ($benefitVoucherAmount !== null) {
-            $benefitVoucherAmount = (int)$benefitVoucherAmount * 100;
-        }
-
-        return $benefitVoucherAmount;
+        return $defaultPrice - $benefitPrice;
     }
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param string $currencyIsoCode
      *
      * @return int|null
      */
-    private function getBenefitPriceAmount(ItemTransfer $itemTransfer, string $currencyIsoCode): ?int
+    private function getBenefitPriceAmount(ItemTransfer $itemTransfer): ?int
     {
-        $priceProductFilter = $this->createPriceProductFilterTransfer($itemTransfer, $currencyIsoCode);
-
-        return $this->priceProductFacade->findPriceFor($priceProductFilter);
+        return $itemTransfer->getBenefitUnitGrossPrice();
     }
 
     /**
@@ -204,25 +187,5 @@ class ItemBenefitExpander implements ItemBenefitExpanderInterface
         } catch (RequiredTransferPropertyException $exception) {
             return false;
         }
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param string $currencyIsoCode
-     *
-     * @return \Generated\Shared\Transfer\PriceProductFilterTransfer
-     */
-    private function createPriceProductFilterTransfer(
-        ItemTransfer $itemTransfer,
-        string $currencyIsoCode
-    ): PriceProductFilterTransfer {
-        $storeTransfer = $this->storeClient->getCurrentStore();
-
-        return (new PriceProductFilterTransfer())
-            ->fromArray($itemTransfer->toArray(), true)
-            ->setStoreName($storeTransfer->getName())
-            ->setPriceMode(PriceProductConfig::PRICE_GROSS_MODE)
-            ->setCurrencyIsoCode($currencyIsoCode)
-            ->setPriceTypeName($this->priceProductFacade->getBenefitPriceTypeName());
     }
 }

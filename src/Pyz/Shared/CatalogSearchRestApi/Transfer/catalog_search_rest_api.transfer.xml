@@ -11,11 +11,37 @@
         <property name="brand" type="string"/>
         <property name="benefit" type="RestCatalogSearchProductBenefit"/>
         <property name="sellable" type="array"/>
+        <property name="customerGroup" type="array"/>
         <property name="attributes" type="array"/>
+        <property name="shoppingPoints" type="int"/>
+        <property name="cashbackAmount" type="int"/>
+        <property name="eliteClub" type="bool"/>
+        <property name="eliteClubOnly" type="bool"/>
+        <property name="benefitDeals" type="bool"/>
+        <property name="bvDeal" type="BvDeal"/>
+        <property name="shoppingPointDeals" type="bool"/>
+        <property name="spDeal" type="SpDeal"/>
+        <property name="customerGroup" type="array"/>
     </transfer>
 
     <transfer name="RestCatalogSearchProductBenefit">
         <property name="shoppingPoints" type="int"/>
         <property name="cashbackAmount" type="int"/>
     </transfer>
+
+    <transfer name="RestCatalogSearchSuggestionAbstractProducts">
+        <property name="shoppingPoints" type="int"/>
+        <property name="cashbackAmount" type="int"/>
+    </transfer>
+
+    <transfer name="BvDeal">
+        <property name="bvItemPrice" type="int"/>
+        <property name="bvAmount" type="int"/>
+    </transfer>
+
+    <transfer name="SpDeal">
+        <property name="spItemPrice" type="int"/>
+        <property name="spAmount" type="int"/>
+    </transfer>
+
 </transfers>

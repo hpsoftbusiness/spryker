@@ -7,8 +7,8 @@ export default class BenefitDealSummary extends Component {
     protected finalAmountSelector: string;
     protected recalculateRoute: string;
     protected benefitVouchersAmountSelector: string;
-    protected benefitVouchersAmountId: string;
     protected totalUsedShoppingPointsSelector: string;
+    protected request: any;
     protected readyCallback(): void {
     }
 
@@ -19,25 +19,40 @@ export default class BenefitDealSummary extends Component {
         this.recalculateRoute = '/calculation/recalculate';
         this.finalAmountSelector = '#benefit-deal-summary__final-amount';
         this.totalUsedShoppingPointsSelector = '.benefit-deal-summary__total-used-shopping-points';
-
         $(this.useShoppingPointSelector).prop('checked', true);
+        this.request = null;
         this.recalculatePriceToPay();
         this.onInputChange();
     }
 
     protected onInputChange(): void {
         let self = this;
+        let timer, delay = 500;
         $(self.benefitVouchersAmountSelector).on('input', function() {
-            self.recalculatePriceToPay();
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                self.recalculatePriceToPay();
+            }, delay);
         });
     }
 
     protected recalculatePriceToPay(): void {
         let self = this;
-        $.post(self.recalculateRoute, self.getRecalculateCallData(), function(data) {
-            $(self.finalAmountSelector).text(data.totals_formatted.price_to_pay);
-            self.updateTotalUsedShoppingPoints(data);
-            document.getElementById(self.benefitVouchersAmountId).value = data.total_used_benefit_vouchers_amount / 100;
+        self.request = $.ajax({
+            url: self.getLocaleFromUrl() +self.recalculateRoute,
+            type: 'POST',
+            data: self.getRecalculateCallData(),
+            dataType: 'JSON',
+            beforeSend : function() {
+                if(self.request != null) {
+                    self.request.abort();
+                }
+            },
+            success: function(json) {
+                self.updateFinalAmount(json)
+                self.updateTotalUsedShoppingPoints(json);
+                self.updateUsedBenefitVoucher(json);
+            },
         });
     }
 
@@ -61,5 +76,26 @@ export default class BenefitDealSummary extends Component {
     protected updateTotalUsedShoppingPoints(data): void
     {
         $(this.totalUsedShoppingPointsSelector).text(data.total_used_shopping_points_amount);
+    }
+
+    protected updateFinalAmount(data): void
+    {
+        $(this.finalAmountSelector).text(data.totals_formatted.price_to_pay);
+    }
+
+    protected updateUsedBenefitVoucher(data): void
+    {
+        $(this.benefitVouchersAmountSelector).text(data.total_used_benefit_vouchers_amount / 100);
+    }
+
+    protected getLocaleFromUrl(): string
+    {
+        let countryUrlPrefix = '';
+        let pathArray = window.location.pathname.split('/');
+        if(typeof (pathArray[1]) === 'string' && pathArray[1].length == 2){
+            countryUrlPrefix = '/' + pathArray[1];
+        }
+
+        return countryUrlPrefix;
     }
 }

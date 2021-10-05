@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductManagement\Business;
 
+use Generated\Shared\Transfer\ProductGroupActionTransfer;
 use Spryker\Zed\ProductManagement\Business\ProductManagementFacadeInterface as SprykerProductManagementFacadeInterface;
 
 interface ProductManagementFacadeInterface extends SprykerProductManagementFacadeInterface
@@ -15,4 +16,11 @@ interface ProductManagementFacadeInterface extends SprykerProductManagementFacad
      * @return array
      */
     public function getDefaultAttributes(): array;
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductGroupActionTransfer $groupActionTransfer
+     *
+     * @return void
+     */
+    public function groupAction(ProductGroupActionTransfer $groupActionTransfer): void;
 }

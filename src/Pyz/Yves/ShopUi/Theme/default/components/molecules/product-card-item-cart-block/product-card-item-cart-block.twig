@@ -1,0 +1,249 @@
+{% extends model('component') %}
+{% import model('component') as component %}
+
+{% define config = {
+    name: 'product-card-item',
+    tag: 'article',
+} %}
+
+{% define data = {
+    product: {},
+    productItem: required,
+    attributes: [],
+    options: [],
+    idQuote: data.product.idQuote | default(null),
+    isPromotionItem: false,
+    canEditCart: true,
+    additionalContainerClass: 'grid--middle grid--justify grid--no-wrap',
+    productOptionsModifiers: [],
+    cashback: null,
+    shoppingPoints: null,
+    showCashbackPoints: data.showCashbackPoints | default(true),
+    customer: null,
+    currencyIsoCode: null,
+    showRemoveTranslation: data.showRemoveTranslation | default(true),
+} %}
+
+{% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) and data.canEditCart %}
+{% set productItemBox = (data.productItem.productOptions is defined and data.productItem.productOptions is empty) ? '' : config.name ~ '__box--with-options' %}
+
+{% block body %}
+    <div class="{{ component.renderClass(config.name ~ '__box', modifiers) }} {{ productItemBox }}">
+        <div class="grid {{ data.additionalContainerClass }}">
+            {% block image %}
+                <a href="{{ data.productItem.url }}"
+                   class="{{ component.renderClass(config.name ~ '__image', modifiers) }} col">
+                    {% include molecule('product-image') with {
+                        modifiers: ['no-indent'],
+                        data: {
+                            name: data.productItem.name | default,
+                            image: data.productItem.images[0].externalUrlLarge | default(null),
+                        },
+                    } only %}
+
+                    {% block productAbstractLabels %}
+                        {% widget 'ProductAbstractLabelWidget' args [data.productItem.idProductAbstract] with {
+                            data: {
+                                parentJsName: config.jsName,
+                            },
+                        } only %}{% endwidget %}
+                    {% endblock %}
+
+                    {% block labels %}{% endblock %}
+                    {% block groups %}{% endblock %}
+                </a>
+            {% endblock %}
+
+            <div class="{{ component.renderClass(config.name ~ '__content', modifiers) }} col">
+                <div class="grid grid--justify grid--middle {{ config.name }}__margin-bottom" style="margin-top: -1em;">
+                    {% block title %}
+                        <a href="{{ data.productItem.url }}"
+                           class="{{ component.renderClass(config.name ~ '__title', modifiers) }} col col--lg-8 col--sm-12">
+                            {{ data.productItem.name }}
+                        </a>
+                    {% endblock %}
+                    {% if canEditCart %}
+                        <span class="grid grid--middle grid--center">
+                            {% if data.showRemoveTranslation %}
+                                <span class="{{ config.name }}__delete-product">{{- 'cart.delete.buttton' | trans -}}</span>&nbsp;
+                            {% endif %}
+                        </span>
+                        {% widget 'RemoveFromCartFormWidget' args [data.productItem, random()] only %}
+                            {% block embeddedData %}
+                                <button class="link link--remove"
+                                        data-init-single-click {{ qa('add-to-cart-button') }}>
+                                        <span class="grid grid--middle grid--center">
+                                            {% include atom('icon') with {
+                                                class: 'spacing-right spacing-right--small',
+                                                data: {
+                                                    name: 'remove',
+                                                },
+                                            } only %}
+                                        </span>
+                                </button>
+                            {% endblock %}
+                        {% endwidget %}
+                    {% endif %}
+                </div>
+
+                {% set isBenefitVoucherDealActive = data.productItem.benefitVoucherDealData.isStore ?? false %}
+                {% set isShoppingPointsDealActive = data.productItem.shoppingPointsDeal.isActive ?? false %}
+
+                {% if isBenefitVoucherDealActive == false and isShoppingPointsDealActive == false %}
+                    <div class="grid grid--right">
+                        {% set cashback = data.cashback %}
+                        {% set showCashbackPoints = data.showCashbackPoints %}
+                        {% if cashback and showCashbackPoints %}
+                            <div style="margin-top: -1em;">
+                            {% include molecule('cashback') with {
+                                class: config.name ~ '__cashback col',
+                                modifiers: ['small'],
+                                data: {
+                                    cashback: cashback,
+                                    shoppingPoints: data.shoppingPoints,
+                                    iconModifiers: [''],
+                                },
+                            } only %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                {% if not data.isPromotionItem %}
+                <div class="{{ component.renderClass(config.name ~ '__options', modifiers) }}">
+                    {% block options %}
+                        {% if data.attributes is not empty %}
+                            {% include molecule('product-item-variant-selector') with {
+                                data: {
+                                    productItem: data.productItem,
+                                    productItemAttributes: data.attributes | filterAttributes
+                                }
+                            } only %}
+                        {% endif %}
+                    {% endblock %}
+
+                    <div class="grid grid--justify grid--gap" style="margin-top: -0.8rem;">
+                        <div class="col left">
+                            {% block quantity %}
+                                {% if canEditCart %}
+                                    {% widget 'CartChangeQuantityFormWidget' args [data.productItem, not canEditCart] only %}
+                                        {% block embeddedData %}
+                                            {% include molecule('product-quantity-input') with {
+                                                data: {
+                                                    maxQuantity: data.cartItem.maxQuantity,
+                                                    value: data.cartItem.quantity,
+                                                },
+                                            } only %}
+
+                                            <input type="hidden" value="{{ data.cartItem.groupKey }}"
+                                                   name="groupKey">
+                                        {% endblock %}
+                                    {% endwidget %}
+                                {% else %}
+                                    <span class="{{ config.name }}__quantity {{ config.name }}__quantity2">
+                                                {{ 'cart.item_quantity' | trans }}: {{ data.productItem.quantity }}
+                                            </span>
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+
+                        <div class="col right">
+                            <div class="row">
+                                {% block benefitPrice %}
+                                    {% set benefitVoucherCurrency = data.currencyIsoCode %}
+
+                                    {% if can('SeePricePermissionPlugin') %}
+                                        {% if isBenefitVoucherDealActive == true %}
+                                            {% set amountBenefitVochers = data.productItem.benefitVoucherDealData.amount * data.productItem.quantity %}
+                                            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                                            {% set summaryUnitPrice = price * data.productItem.quantity %}
+                                            <div class="{{ config.name }}__benefit-deal" style="margin-top: -0.3em;">
+                                                <div>
+                                                    <span class="{{ config.name }}">{{ summaryUnitPrice | money }}</span>
+                                                    -&nbsp;
+                                                    <span
+                                                        class="{{ config.name }}__deal-vouchers {{ config.name }}--benefit_voucher">
+                                                            {{- amountBenefitVochers | money(true, benefitVoucherCurrency) -}}
+                                                        {% include atom('icon') with {
+                                                            data: {
+                                                                name: 'benefit-point',
+                                                            },
+                                                        } only %}
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        {% elseif isShoppingPointsDealActive == true %}
+                                            {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice : data.productItem.price %}
+                                            {% set summaryUnitPrice = price * data.productItem.quantity %}
+                                            {% set amountShoppingPoints = data.productItem.shoppingPointsDeal.shoppingPointsQuantity * data.productItem.quantity %}
+                                            <div class="{{ config.name }}__benefit-deal">
+                                                <div>
+                                                        <span
+                                                            class="{{ config.name }}">{{ summaryUnitPrice | money }}</span>
+                                                    <span
+                                                        class="{{ config.name }}__deal-vouchers  {{ config.name }}--shopping_points">
+                                                                -&nbsp;
+                                                                {{ amountShoppingPoints | formatShoppingPoints }}
+                                                        {% include atom('icon') with {
+                                                            data: {
+                                                                name: 'shopping-point',
+                                                            },
+                                                        } only %}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+
+                            <div class="row right {{ config.name }}__price">
+                                {% block price %}
+                                    {% set price = data.productItem.unitPrice is defined ? data.productItem.unitPrice * data.productItem.quantity : data.productItem.price * data.productItem.quantity %}
+                                    {% if isBenefitVoucherDealActive == true %}
+                                        {% set price = data.productItem.benefitVoucherDealData.salesPrice * data.productItem.quantity %}
+                                    {% elseif isShoppingPointsDealActive == true %}
+                                        {% set price = data.productItem.shoppingPointsDeal.price * data.productItem.quantity %}
+                                    {% endif %}
+                                    {% set productItemSubTotal = data.productItem.quantity is not empty ? data.productItem.quantity * price : price %}
+
+                                    {% if can('SeePricePermissionPlugin') %}
+                                        <span class="{{ config.name }}__price-bottom">{{ price | money }}</span>
+                                    {% else %}
+                                        {{ 'customer.access.cannot_see_price' | trans }}
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+
+                        </div>
+                        {% block state %}{% endblock %}
+                    </div>
+                    {% endif %}
+
+                    {% block content %}{% endblock %}
+                    {% block actions %}{% endblock %}
+                </div>
+
+                {% block additionalInfo %}{% endblock %}
+            </div>
+
+            {% block bundles %}
+                {% widget 'ProductBundleCartItemsListWidget' args [data.productItem, data.product] only %}{% endwidget %}
+            {% endblock %}
+
+            {% block summary %}
+                {% if data.productItem.productOptions is defined and data.productItem.productOptions is not empty %}
+                    <div class="grid grid--right">
+                        {% include molecule('product-item-summary') with {
+                            class: 'col',
+                            modifiers: data.productOptionsModifiers,
+                            data: {
+                                productItem: data.productItem,
+                            },
+                        } only %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

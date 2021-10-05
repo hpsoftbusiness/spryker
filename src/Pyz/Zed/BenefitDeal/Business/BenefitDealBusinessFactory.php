@@ -8,6 +8,8 @@
 namespace Pyz\Zed\BenefitDeal\Business;
 
 use Pyz\Zed\BenefitDeal\BenefitDealDependencyProvider;
+use Pyz\Zed\BenefitDeal\Business\Cart\Item\ItemBenefitPriceExpander;
+use Pyz\Zed\BenefitDeal\Business\Cart\Item\ItemBenefitPriceExpanderInterface;
 use Pyz\Zed\BenefitDeal\Business\Label\ProductAbstractRelationReader;
 use Pyz\Zed\BenefitDeal\Business\Label\ProductAbstractRelationReaderInterface;
 use Pyz\Zed\BenefitDeal\Business\Model\BenefitDealReader;
@@ -95,7 +97,6 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
     public function createItemBenefitExpander(): ItemBenefitExpanderInterface
     {
         return new ItemBenefitExpander(
-            $this->getPriceProductFacade(),
             $this->getStoreClient(),
             $this->getConfig()
         );
@@ -123,6 +124,17 @@ class BenefitDealBusinessFactory extends AbstractBusinessFactory
     public function getPriceProductFacade(): PriceProductFacadeInterface
     {
         return $this->getProvidedDependency(BenefitDealDependencyProvider::FACADE_PRICE_PRODUCT);
+    }
+
+    /**
+     * @return \Pyz\Zed\BenefitDeal\Business\Cart\Item\ItemBenefitPriceExpanderInterface
+     */
+    public function createItemBenefitPriceExpander(): ItemBenefitPriceExpanderInterface
+    {
+        return new ItemBenefitPriceExpander(
+            $this->getPriceProductFacade(),
+            $this->getStoreClient()
+        );
     }
 
     /**

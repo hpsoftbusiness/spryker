@@ -9,6 +9,7 @@ namespace Pyz\Zed\MyWorldPayment\Business;
 
 use Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\CollectedDiscountTransfer;
 use Generated\Shared\Transfer\MyWorldApiRequestTransfer;
 use Generated\Shared\Transfer\MyWorldApiResponseTransfer;
 use Generated\Shared\Transfer\PaymentDataResponseTransfer;
@@ -138,7 +139,21 @@ interface MyWorldPaymentFacadeInterface
      *
      * @return void
      */
-    public function recalculateOrderTurnover(CalculableObjectTransfer $calculableObjectTransfer): void;
+    public function recalculateQuoteSubtotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteGrandTotalWithDeals(CalculableObjectTransfer $calculableObjectTransfer): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
+     *
+     * @return void
+     */
+    public function recalculateQuoteDiscountTotalWithoutShoppingPoints(CalculableObjectTransfer $calculableObjectTransfer): void;
 
     /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
@@ -160,4 +175,11 @@ interface MyWorldPaymentFacadeInterface
      * @return void
      */
     public function processRefunds(array $refundTransfers): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\CollectedDiscountTransfer $collectedDiscountTransfer
+     *
+     * @return \Generated\Shared\Transfer\CollectedDiscountTransfer
+     */
+    public function filterDiscountableItemWithDeals(CollectedDiscountTransfer $collectedDiscountTransfer): CollectedDiscountTransfer;
 }

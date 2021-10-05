@@ -10,7 +10,14 @@ namespace Pyz\Zed\ProductPageSearch;
 use Pyz\Zed\NavigationStorage\Communication\Plugin\ProductPageSearch\CategoryNavigationProductPageSearchPublishTriggerPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAffiliateMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractAttributesMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreDealsVoucherMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractBenefitStoreFlagMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractCustomerGroupFacetPageMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractCustomerGroupMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractCustomerNotGroupFacetPageMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractDealFacetPageMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractEliteClubDealsMapExpanderPlugin;
+use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractNotSellableFacetPageMapExpanderPlugin;
 use Pyz\Zed\ProductPageSearch\Communication\Plugin\ProductAbstractMapExpander\ProductAbstractSellableFacetPageMapExpanderPlugin;
 use Spryker\Shared\MerchantProductOfferSearch\MerchantProductOfferSearchConfig;
 use Spryker\Shared\MerchantProductSearch\MerchantProductSearchConfig;
@@ -93,9 +100,12 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
      */
     protected function addProductAbstractPageAfterPublishPlugins(Container $container): Container
     {
-        $container->set(static::PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH, [
-            new CategoryNavigationProductPageSearchPublishTriggerPlugin(),
-        ]);
+        $container->set(
+            static::PLUGIN_PRODUCT_ABSTRACT_PAGE_AFTER_PUBLISH,
+            [
+                new CategoryNavigationProductPageSearchPublishTriggerPlugin(),
+            ]
+        );
 
         return $container;
     }
@@ -107,11 +117,16 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     {
         $dataExpanderPlugins = [];
 
-        $dataExpanderPlugins[ProductLabelSearchConfig::PLUGIN_PRODUCT_LABEL_DATA] = new ProductLabelDataLoaderExpanderPlugin();
-        $dataExpanderPlugins[ProductListSearchConfig::PLUGIN_PRODUCT_LIST_DATA] = new ProductListDataLoadExpanderPlugin();
-        $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_CATEGORY_PAGE_DATA] = new ProductCategoryPageDataLoaderExpanderPlugin();
-        $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_PRICE_PAGE_DATA] = new PricePageDataLoaderExpanderPlugin();
-        $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_IMAGE_PAGE_DATA] = new ProductImagePageDataLoaderExpanderPlugin();
+        $dataExpanderPlugins[ProductLabelSearchConfig::PLUGIN_PRODUCT_LABEL_DATA] = new ProductLabelDataLoaderExpanderPlugin(
+        );
+        $dataExpanderPlugins[ProductListSearchConfig::PLUGIN_PRODUCT_LIST_DATA] = new ProductListDataLoadExpanderPlugin(
+        );
+        $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_CATEGORY_PAGE_DATA] = new ProductCategoryPageDataLoaderExpanderPlugin(
+        );
+        $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_PRICE_PAGE_DATA] = new PricePageDataLoaderExpanderPlugin(
+        );
+        $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_IMAGE_PAGE_DATA] = new ProductImagePageDataLoaderExpanderPlugin(
+        );
         $dataExpanderPlugins[MerchantProductSearchConfig::PLUGIN_MERCHANT_PRODUCT_DATA] = new MerchantMerchantProductPageDataExpanderPlugin();
         $dataExpanderPlugins[MerchantProductOfferSearchConfig::PLUGIN_PRODUCT_MERCHANT_DATA] = new MerchantProductPageDataExpanderPlugin();
 
@@ -149,9 +164,16 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductAbstractBenefitStoreFlagMapExpanderPlugin(),
             new ProductAbstractAttributesMapExpanderPlugin(),
             new ProductAbstractSellableFacetPageMapExpanderPlugin(),
+            new ProductAbstractNotSellableFacetPageMapExpanderPlugin(),
+            new ProductAbstractEliteClubDealsMapExpanderPlugin(),
             new MerchantProductAbstractMapExpanderPlugin(),
             new MerchantNamesProductAbstractMapExpanderPlugin(),
             new MerchantReferencesProductAbstractsMapExpanderPlugin(),
+            new ProductAbstractBenefitStoreDealsVoucherMapExpanderPlugin(),
+            new ProductAbstractCustomerGroupFacetPageMapExpanderPlugin(),
+            new ProductAbstractCustomerNotGroupFacetPageMapExpanderPlugin(),
+            new ProductAbstractCustomerGroupMapExpanderPlugin(),
+            new ProductAbstractDealFacetPageMapExpanderPlugin(),
         ];
     }
 

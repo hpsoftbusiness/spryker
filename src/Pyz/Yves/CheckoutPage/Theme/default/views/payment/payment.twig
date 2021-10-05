@@ -1,7 +1,7 @@
 {% extends view('payment', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    grandTotal: _view.quoteTransfer.totals.grandTotal,
+    priceToPay: _view.quoteTransfer.totals.priceToPay,
 } %}
 
 {% block content %}
@@ -24,7 +24,7 @@
                 'Adyen/credit-card': ['credit-card', 'adyen'],
                 'DummyPrepayment/prepayment': ['prepayment', 'dummyPrepayment'],
             },
-            grandTotal: data.grandTotal,
+            priceToPay: data.priceToPay,
         },
     } only %}
         {% block fieldset %}
@@ -36,7 +36,7 @@
                     customerEVoucherOnBehalfOfMarketerBalance: data.form.vars.customer_balances.MyWorldEVoucherOnBehalfOfMarketer ?? 0,
                     customerCashbackBalance: data.form.vars.customer_balances.MyWorldCashbackAccount ?? 0,
                     currencyIsoCode: data.form.vars.currency_code,
-                    grandTotal: data.grandTotal,
+                    priceToPay: data.priceToPay,
                 },
             } only %}
 

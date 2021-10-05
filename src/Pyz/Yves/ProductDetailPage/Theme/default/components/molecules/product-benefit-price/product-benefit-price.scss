@@ -3,19 +3,21 @@
 
     #{$name} {
         &__title-text {
-            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            font: fw(medium) rem(16) $setting-font-family;
         }
 
         &__benefit-price-amount {
-            color: $benefit-voucher-main-color;
+            color: $setting-color-black;
 
             & > svg {
                 padding-left: 0.1em;
                 color: $benefit-voucher-main-color;
                 fill: $benefit-voucher-main-color;
-                margin-top: -0.8em;
+                margin-top: -0.2em;
                 transform: scale(1.5);
             }
+
+            font: fw(regular) rem(16) $setting-font-family;
         }
 
         &__vat {
@@ -25,11 +27,30 @@
         }
 
         &__plus {
-            font: fw(bold) map-get($setting-font-size, 3) $setting-font-family;
+            color: #ff902e;
+            font: rem(16);
         }
 
-        span.money-price:nth-child(2) > span:nth-child(1) {
-            color: #909090;
+        .money-price__second .money-price__amount  {
+            font: rem(16);
+        }
+
+
+        &__low-price {
+            font: fw(bold) rem(24) $setting-font-family;
+        }
+
+        .money-price--pdp {
+            color: #ff902e;
+        }
+
+        .product-benefit-price__benefit-price-amount > span:nth-child(1) > span:nth-child(1) {
+            text-decoration: line-through;
+            font-size:rem(16);
+        }
+
+        .product-benefit-price__second > span:nth-child(1) > span:nth-child(1) {
+            font-size:rem(16);
         }
         @content;
     }

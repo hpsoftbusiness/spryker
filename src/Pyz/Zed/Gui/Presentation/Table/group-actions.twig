@@ -1,0 +1,7 @@
+<div class="table__group-action">
+    <strong>Action</strong>
+    {{ form_start(config.groupActions) }}
+        {{ form_widget(config.groupActions, {'attr': {'class': 'table__group-action--form-widget'}}) }}
+        <input type="submit" class="btn btn-sm" value="{{ 'execute' | trans }}"/>
+    {{ form_end(config.groupActions) }}
+</div>

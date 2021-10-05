@@ -4,9 +4,21 @@
         background-color: $setting-color-white;
         z-index: $setting-zi-header;
         box-shadow: 0 rem(2) rem(6) 0 $setting-color-alpha-2;
+        height: 60px;
+        padding: 5px 0px;
 
         @include helper-breakpoint-media-min($xl-min) {
-            padding-top: 0;
+            padding: 5px 0px;
+        }
+
+        @include helper-breakpoint-media-min($xxl-min){
+            height: 70px;
+            padding: 11px 0px;
+        }
+
+        @include helper-breakpoint-media-max($lg-min){
+            height: 56px;
+            padding: 8px 0px;
         }
 
         &--border-less-bottom {
@@ -38,11 +50,7 @@
         }
 
         &__row {
-            padding: rem(10);
-
-            @include helper-breakpoint-media-min($xl-min) {
-                padding: rem(14) rem(30);
-            }
+            padding: 0px rem(10);
         }
 
         &__navigation-top {

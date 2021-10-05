@@ -7,7 +7,10 @@
 
 namespace Pyz\Zed\ProductManagement\Communication;
 
+use Pyz\Zed\ProductManagement\Communication\Form\TableFilter\StatusTableFilterForm;
+use Pyz\Zed\ProductManagement\Communication\Form\TableGroupActionForm;
 use Pyz\Zed\ProductManagement\Communication\Table\ProductTable;
+use Pyz\Zed\ProductManagement\Communication\Transfer\ProductFormTransferMapper;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\ProductManagement\Communication\ProductManagementCommunicationFactory as SprykerProductManagementCommunicationFactory;
 
@@ -23,7 +26,40 @@ class ProductManagementCommunicationFactory extends SprykerProductManagementComm
             $this->getLocaleFacade()->getCurrentLocale(),
             $this->createProductTypeHelper(),
             $this->getRepository(),
-            $this->getProductTableDataExpanderPlugins()
+            $this->getProductTableDataExpanderPlugins(),
+            $this->createStatusTableFilterForm(),
+            $this->createTableGroupActionForm()
         );
+    }
+
+    /**
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function createTableGroupActionForm()
+    {
+        return $this->getFormFactory()->create(TableGroupActionForm::class);
+    }
+
+    /**
+     * @return \Pyz\Zed\ProductManagement\Communication\Transfer\ProductFormTransferMapper
+     */
+    public function createProductFormTransferGenerator()
+    {
+        return new ProductFormTransferMapper(
+            $this->getProductQueryContainer(),
+            $this->getQueryContainer(),
+            $this->getLocaleFacade(),
+            $this->createLocaleProvider(),
+            $this->getProductFormTransferMapperExpanderPlugins(),
+            $this->createProductConcreteSuperAttributeFilterHelper()
+        );
+    }
+
+    /**
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    protected function createStatusTableFilterForm()
+    {
+        return $this->getFormFactory()->create(StatusTableFilterForm::class);
     }
 }

@@ -1,0 +1,19 @@
+.table-filter-row {
+
+    .table-filter-cell {
+        border: none;
+        background: none;
+
+        .form-group {
+            display: block;
+
+            & + .form-group {
+                margin: 5px 0;
+            }
+
+            input[type=checkbox] {
+                margin-left: 5px;
+            }
+        }
+    }
+}

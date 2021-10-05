@@ -9,6 +9,7 @@ namespace Pyz\Zed\Customer\Communication\Form;
 
 use Spryker\Zed\Customer\Communication\Form\CustomerUpdateForm as SprykerCustomerUpdateForm;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -126,6 +127,24 @@ class CustomerUpdateForm extends SprykerCustomerUpdateForm
         $builder->add(self::FIELD_IS_ACTIVE, CheckboxType::class, [
             'label' => 'Is active',
             'disabled' => 'disabled',
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $choices
+     *
+     * @return $this
+     */
+    protected function addSalutationField(FormBuilderInterface $builder, array $choices)
+    {
+        $builder->add(self::FIELD_SALUTATION, ChoiceType::class, [
+            'label' => 'Salutation',
+            'placeholder' => 'Select one',
+            'required' => false,
+            'choices' => array_flip($choices),
         ]);
 
         return $this;

@@ -93,6 +93,7 @@ cart.pre.check.shipment.failed,Impossible d'appliquer ces modifications. La mét
 cart.price,Prix,fr_FR
 cart.price.grand.total,Montant total,fr_FR
 cart.price.subtotal,Total,fr_FR
+cart.price.subtotal_wo_deals,Total,fr_FR
 cart.product-option,Options de produit,fr_FR
 cart.promotion.items,Produits promotionnels,fr_FR
 cart.quantity.adjusted,La quantité d'article demandée a été ajustée dans la mesure où la quantité sélectionnée n'est pas disponible.,fr_FR
@@ -422,7 +423,7 @@ countries.iso.FR,France,fr_FR
 countries.iso.GB,Royaume-Uni,fr_FR
 countries.iso.GR,Grèce,fr_FR
 countries.iso.HR,Croatie,fr_FR
-countries.iso.HU,Faim,fr_FR
+countries.iso.HU,Hongrie,fr_FR
 countries.iso.IE,Irlande,fr_FR
 countries.iso.IM,île de Man,fr_FR
 countries.iso.IT,Italie,fr_FR
@@ -1084,6 +1085,7 @@ oms.state.turnover-cancellation-failed,Remboursement,fr_FR
 oms.state.turnover-created,Expédié,fr_FR
 oms.state.turnover-creation-failed,Expédié,fr_FR
 oms.state.waiting-for-tracking-number,En cours,fr_FR
+oms.state.invoice-generated,Invoice generated,fr_FR
 order_cancel_widget.cancel_order,annuler la commande,fr_FR
 order_cancel_widget.order.cancelled,La commande a été annulée avec succès.,fr_FR
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,fr_FR
@@ -1623,6 +1625,7 @@ cart.pre.check.shipment.failed,Non è possibile applicare queste modifiche. Il m
 cart.price,Prezzo,it_IT
 cart.price.grand.total,Importo totale,it_IT
 cart.price.subtotal,totale parziale,it_IT
+cart.price.subtotal_wo_deals,totale parziale,it_IT
 cart.product-option,Opzioni di prodotto,it_IT
 cart.promotion.items,Prodotti promozionali,it_IT
 cart.quantity.adjusted,La quantità dell'articolo richiesta è stata rettificata nella misura in cui la quantità selezionata non è disponibile.,it_IT
@@ -1952,7 +1955,7 @@ countries.iso.FR,Francia,it_IT
 countries.iso.GB,Regno Unito,it_IT
 countries.iso.GR,Grecia,it_IT
 countries.iso.HR,Croazia,it_IT
-countries.iso.HU,Affamato,it_IT
+countries.iso.HU,Ungheria,it_IT
 countries.iso.IE,Irlanda,it_IT
 countries.iso.IM,Isola di Man,it_IT
 countries.iso.IT,Italia,it_IT
@@ -2614,6 +2617,7 @@ oms.state.turnover-cancellation-failed,Rimborso,it_IT
 oms.state.turnover-created,Spedito,it_IT
 oms.state.turnover-creation-failed,Spedito,it_IT
 oms.state.waiting-for-tracking-number,In corso,it_IT
+oms.state.invoice-generated,Invoice generated,it_IT
 order_cancel_widget.cancel_order,Annulla Ordine,it_IT
 order_cancel_widget.order.cancelled,L'ordine è stato annullato con successo.,it_IT
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,it_IT
@@ -3087,6 +3091,10 @@ validator.check.phone,Błędny numer telefonu,pl_PL
 validator.check.phone,Invalid phone number,en_US
 validator.check.phone,ungültige Rufnummer,de_DE
 validator.check.phone,ungültige Rufnummer,de_AT
+validator.check.phone.plus,Numer telefonu nie zawiera znaku +,pl_PL
+validator.check.phone.plus,Phone number should contains + sign,en_US
+validator.check.phone.plus,Die Rufnummer sollte ein Pluszeichen enthalten,de_DE
+validator.check.phone.plus,Die Rufnummer sollte ein Pluszeichen enthalten,de_AT
 agent.login.password,Hasło,pl_PL
 agent.login.title,Uzyskaj dostęp do swojego konta,pl_PL
 auth.email,E-mail,pl_PL
@@ -3157,6 +3165,7 @@ cart.pre.check.shipment.failed,Nie można zastosować tych zmian. Nie znaleziono
 cart.price,Cena £,pl_PL
 cart.price.grand.total,Całkowita kwota,pl_PL
 cart.price.subtotal,Suma częściowa,pl_PL
+cart.price.subtotal_wo_deals,Suma częściowa,pl_PL
 cart.product-option,Opcje produktu,pl_PL
 cart.promotion.items,Produkty promocyjne,pl_PL
 cart.quantity.adjusted,"Żądana ilość pozycji została dostosowana, ponieważ wybrana ilość nie jest dostępna.",pl_PL
@@ -3486,7 +3495,7 @@ countries.iso.FR,Francja,pl_PL
 countries.iso.GB,Zjednoczone Królestwo,pl_PL
 countries.iso.GR,Grecja,pl_PL
 countries.iso.HR,Chorwacja,pl_PL
-countries.iso.HU,Głodny,pl_PL
+countries.iso.HU,Węgry,pl_PL
 countries.iso.IE,Irlandia,pl_PL
 countries.iso.IM,Wyspa Man,pl_PL
 countries.iso.IT,Włochy,pl_PL
@@ -3655,7 +3664,7 @@ customer.address.is_default_billing,To domyślny adres rozliczeniowy,pl_PL
 customer.address.is_default_shipping,To domyślny adres dostawy,pl_PL
 customer.address.last_name,Nazwisko,pl_PL
 customer.address.number,Numer domu,pl_PL
-customer.address.phone,Numer telefonu (na ewentualne pytania dotyczące dostawy),pl_PL
+customer.address.phone,Numer telefonu (na ewentualne pytania dotyczące dostawy z prefixem np. +48),pl_PL
 customer.address.placeholder.optional,Opcjonalny,pl_PL
 customer.address.save_new_address,Zapisz nowy adres w książce adresowej,pl_PL
 customer.address.state,Stan,pl_PL
@@ -4148,6 +4157,7 @@ oms.state.turnover-cancellation-failed,Zwrot,pl_PL
 oms.state.turnover-created,Wysłane,pl_PL
 oms.state.turnover-creation-failed,Wysłane,pl_PL
 oms.state.waiting-for-tracking-number,W trakcie,pl_PL
+oms.state.invoice-generated,Invoice generated,pl_PL
 order_cancel_widget.cancel_order,Anuluj zamówienie,pl_PL
 order_cancel_widget.order.cancelled,Zamówienie zostało pomyślnie anulowane.,pl_PL
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,pl_PL
@@ -4643,6 +4653,7 @@ availability_notification_subscription.mail.unsubscribe,"Want to change how you 
 cart.add-to-shopping-list.form.placeholder,Enter name of a new shopping list,en_US
 cart.cart,Cart,en_US
 cart.checkout,Checkout,en_US
+cart.delete.button,Delete,en_US
 cart.code.apply.failed,Code could not be applied,en_US
 cart.code.enter-code,Enter voucher/gift card code,en_US
 cart.discounts,Discounts,en_US
@@ -4692,6 +4703,7 @@ cart.price,Price,en_US
 cart.price.grand.total,Total,en_US
 cart.price.grand.total,Gesamt,de_DE
 cart.price.subtotal,Subtotal,en_US
+cart.price.subtotal_wo_deals,Total,en_US
 cart.product-option,Product Options,en_US
 cart.promotion.items,Promotional products,en_US
 cart.quantity.adjusted,Requested item quantity was adjusted as far as selected quantity is not available.,en_US
@@ -4699,12 +4711,14 @@ cart.remove.items.success,Products were removed successfully,en_US
 cart.sales-order-threshold,Minimum Order Value,en_US
 cart.select.default_value,Please select a value,en_US
 cart.shipping,Shipping,en_US
+cart.shipping_standard,Shipping standard,en_US
 cart.shipping.order-item,+ Shipping,en_US
 cart.title_content,Shopping Cart,en_US
 cart.title_sidebar,Order overview,en_US
 cart.total,Total,en_US
+cart.total_wo_deals,Total,en_US
 cart.total.discount,Discount,en_US
-cart.total.price_to_pay,Total Price to pay,en_US
+cart.total.price_to_pay,Price to pay,en_US
 cart.total.price_to_pay,Gesamtpreis to pay,de_DE
 cart.total.tax_total,Tax,en_US
 cart.validate.items.price.changed,Prices have been changed for products with SKU '%sku%'.,en_US
@@ -4793,7 +4807,7 @@ checkout.step.summary,Go to Summary,en_US
 checkout.step.summary.billing_address,Billing Address,en_US
 checkout.step.summary.delivery_address,Delivery Address,en_US
 checkout.step.summary.delivery_method,Delivery method,en_US
-checkout.step.summary.grand_total,Grand Total,en_US
+checkout.step.summary.grand_total,Total,en_US
 checkout.step.summary.items,Items,en_US
 checkout.step.summary.overview,Overview,en_US
 checkout.step.summary.overview,Bestellübersicht,de_DE
@@ -4805,7 +4819,7 @@ checkout.step.summary.shipping,Shipment,en_US
 checkout.step.summary.sms_code_input_error,The SMS Code was not correct,en_US
 checkout.step.summary.sms_code_send_error,Send SMS Code ended in an error,en_US
 checkout.step.summary.sub_total,Subtotal,en_US
-checkout.step.summary.tax,Tax,en_US
+checkout.step.summary.tax,incl. Tax,en_US
 checkout.step.summary.title,Summary,en_US
 checkout.step.summary.total,Complete checkout,en_US
 checkout.step.summary.tracking_code,Delivery Tracking Code,en_US
@@ -5023,7 +5037,7 @@ countries.iso.FR,France,en_US
 countries.iso.GB,United Kingdom,en_US
 countries.iso.GR,Greece,en_US
 countries.iso.HR,Croatia,en_US
-countries.iso.HU,Hungry,en_US
+countries.iso.HU,Hungary,en_US
 countries.iso.IE,Ireland,en_US
 countries.iso.IM,Isle of Man,en_US
 countries.iso.IT,Italy,en_US
@@ -5192,7 +5206,7 @@ customer.address.is_default_billing,Is default billing address,en_US
 customer.address.is_default_shipping,Is default shipping address,en_US
 customer.address.last_name,Last Name,en_US
 customer.address.number,House Number,en_US
-customer.address.phone,Telephone number (for possible questions regarding delivery),en_US
+customer.address.phone,Telephone number (for possible questions regarding delivery including country prefix ex. +44),en_US
 customer.address.placeholder.optional,Optional,en_US
 customer.address.save_new_address,Save new address to address book,en_US
 customer.address.state,State,en_US
@@ -5685,6 +5699,7 @@ oms.state.turnover-cancellation-failed,Refund,en_US
 oms.state.turnover-created,Shipped,en_US
 oms.state.turnover-creation-failed,Shipped,en_US
 oms.state.waiting-for-tracking-number,In progress,en_US
+oms.state.invoice-generated,Invoice generated,en_US
 order_cancel_widget.cancel_order,Cancel Order,en_US
 order_cancel_widget.order.cancelled,Order was canceled successfully.,en_US
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g,en_US
@@ -5818,6 +5833,8 @@ payment.step.api_request.error,"Sorry, something went wrong with the payment. Pl
 pdp.include.vat,incl. VAT,en_US
 pdp.include.tax,incl. Tax,en_US
 pdp.include.tax,inklusive Steuern,de_DE
+cart.include.vat,incl. VAT,en_US
+cart.include.tax,inklusive Steuern,de_DE
 pdp.price.from,from,en_US
 persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US
@@ -6200,6 +6217,7 @@ cart.add-to-shopping-list.form.error.empty_name,Bitte gebe den Namen der Einkauf
 cart.add-to-shopping-list.form.placeholder,Gebe den Namen einer neuen Einkaufsliste ein,de_DE
 cart.cart,Warenkorb,de_DE
 cart.checkout,Zur Kasse,de_DE
+cart.delete.button,Löschen,de_DE
 cart.code.apply.failed,Gutscheincode konnte nicht angewendet werden,de_DE
 cart.code.enter-code,Gutscheincode/Geschenkgutscheincode eingeben,de_DE
 cart.discounts,Rabatte,de_DE
@@ -6244,6 +6262,7 @@ cart.pre.check.shipment.failed,Diese Änderungen können nicht angewendet werden
 cart.price,Preis,de_DE
 cart.price.grand.total,Zu zahlender Betrag,de_DE
 cart.price.subtotal,Zwischensumme,de_DE
+cart.price.subtotal_wo_deals,Originalpreis ohne Benefits,de_DE
 cart.product-option,Produktoptionen,de_DE
 cart.promotion.items,Aktionsprodukte,de_DE
 cart.quantity.adjusted,"Die angeforderte Artikelmenge wurde angepasst, soweit die ausgewählte Menge nicht verfügbar ist.",de_DE
@@ -6251,10 +6270,12 @@ cart.remove.items.success,Produkte wurden erfolgreich aus dem Warenkorb entfernt
 cart.sales-order-threshold,Mindestbestellwert,de_DE
 cart.select.default_value,Bitte einen Wert auswählen,de_DE
 cart.shipping,Versand,de_DE
+cart.shipping_standard,Versandstandard,de_DE
 cart.shipping.order-item,+ Versand,de_DE
 cart.title_content,Einkaufswagen,de_DE
 cart.title_sidebar,Bestellübersicht,de_DE
 cart.total,Gesamt,de_DE
+cart.total_wo_deals,Originalpreis ohne Benefits,de_DE
 cart.total.discount,Rabatt,de_DE
 cart.total.price_to_pay,Zu bezahlender Betrag,de_DE
 cart.total.tax_total,Mehrwertsteuer,de_DE
@@ -6573,7 +6594,7 @@ countries.iso.FR,Frankreich,de_DE
 countries.iso.GB,Vereinigtes Königreich,de_DE
 countries.iso.GR,Griechenland,de_DE
 countries.iso.HR,Kroatien,de_DE
-countries.iso.HU,Hungrig,de_DE
+countries.iso.HU,Ungarn,de_DE
 countries.iso.IE,Irland,de_DE
 countries.iso.IM,Insel Man,de_DE
 countries.iso.IT,Italien,de_DE
@@ -6742,7 +6763,7 @@ customer.address.is_default_billing,Standard Rechnungsadresse,de_DE
 customer.address.is_default_shipping,Standard Lieferadresse,de_DE
 customer.address.last_name,Nachname,de_DE
 customer.address.number,Hausnummer,de_DE
-customer.address.phone,Telefonnummer (für mögliche Rückfragen bei der Zustellung),de_DE
+customer.address.phone,Telefonnummer (für mögliche Rückfragen bei der Zustellung einschließlich des Präfixes zum Beispiel +49),de_DE
 customer.address.placeholder.optional,Optional,de_DE
 customer.address.save_new_address,Neue Adresse in Adressbuch speichern,de_DE
 customer.address.state,Bundesland,de_DE
@@ -7235,6 +7256,7 @@ oms.state.turnover-cancellation-failed,Rückerstattung,de_DE
 oms.state.turnover-created,Versandt,de_DE
 oms.state.turnover-creation-failed,Versandt,de_DE
 oms.state.waiting-for-tracking-number,In Arbeit,de_DE
+oms.state.invoice-generated,Invoice generated,de_DE
 order_cancel_widget.cancel_order,Bestellung stornieren,de_DE
 order_cancel_widget.order.cancelled,Die Bestellung wurde erfolgreich storniert.,de_DE
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br>A-8010 Graz <br>UID: ATU67661657 <br>Handelsregister: FN389134g,de_DE
@@ -7756,6 +7778,7 @@ cart.pre.check.shipment.failed,No se pueden aplicar estos cambios. No se encontr
 cart.price,Precio,es_ES
 cart.price.grand.total,Cantidad total,es_ES
 cart.price.subtotal,Total parcial,es_ES
+cart.price.subtotal_wo_deals,Total parcial,es_ES
 cart.product-option,Opciones de producto,es_ES
 cart.promotion.items,Productos promocionales,es_ES
 cart.quantity.adjusted,La cantidad de artículo solicitada se ajustó en la medida en que la cantidad seleccionada no está disponible.,es_ES
@@ -8085,7 +8108,7 @@ countries.iso.FR,Francia,es_ES
 countries.iso.GB,Reino Unido,es_ES
 countries.iso.GR,Grecia,es_ES
 countries.iso.HR,Croacia,es_ES
-countries.iso.HU,Hambriento,es_ES
+countries.iso.HU,Hungría,es_ES
 countries.iso.IE,Irlanda,es_ES
 countries.iso.IM,Isla del hombre,es_ES
 countries.iso.IT,Italia,es_ES
@@ -8747,6 +8770,7 @@ oms.state.turnover-cancellation-failed,Reembolso,es_ES
 oms.state.turnover-created,Enviado,es_ES
 oms.state.turnover-creation-failed,Enviado,es_ES
 oms.state.waiting-for-tracking-number,En curso,es_ES
+oms.state.invoice-generated,Invoice generated,es_ES
 order_cancel_widget.cancel_order,Cancelar orden,es_ES
 order_cancel_widget.order.cancelled,El pedido se canceló correctamente.,es_ES
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,es_ES
@@ -9286,6 +9310,7 @@ cart.pre.check.shipment.failed,Tyto změny nelze použít. Způsob přepravy neb
 cart.price,Cena,cs_CZ
 cart.price.grand.total,Celková částka,cs_CZ
 cart.price.subtotal,Mezisoučet,cs_CZ
+cart.price.subtotal_wo_deals,Mezisoučet,cs_CZ
 cart.product-option,Možnosti produktu,cs_CZ
 cart.promotion.items,Reklamní produkty,cs_CZ
 cart.quantity.adjusted,"Množství požadované položky bylo upraveno, pokud vybrané množství není k dispozici.",cs_CZ
@@ -9615,7 +9640,7 @@ countries.iso.FR,Francie,cs_CZ
 countries.iso.GB,Spojené království,cs_CZ
 countries.iso.GR,Řecko,cs_CZ
 countries.iso.HR,Chorvatsko,cs_CZ
-countries.iso.HU,Hladový,cs_CZ
+countries.iso.HU,Maďarsko,cs_CZ
 countries.iso.IE,Irsko,cs_CZ
 countries.iso.IM,Isle of Man,cs_CZ
 countries.iso.IT,Itálie,cs_CZ
@@ -10277,6 +10302,7 @@ oms.state.turnover-cancellation-failed,Vrácení peněz,cs_CZ
 oms.state.turnover-created,Odesláno,cs_CZ
 oms.state.turnover-creation-failed,Odesláno,cs_CZ
 oms.state.waiting-for-tracking-number,Probíhá,cs_CZ
+oms.state.invoice-generated,Invoice generated,cs_CZ
 order_cancel_widget.cancel_order,Zrušit objednávku,cs_CZ
 order_cancel_widget.order.cancelled,Objednávka byla úspěšně zrušena.,cs_CZ
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Registr handels: FN389134g,cs_CZ
@@ -10816,6 +10842,7 @@ cart.pre.check.shipment.failed,Kan inte tillämpa dessa ändringar. Leveransmeto
 cart.price,Pris,sv_SE
 cart.price.grand.total,Totala summan,sv_SE
 cart.price.subtotal,Delsumma,sv_SE
+cart.price.subtotal_wo_deals,Delsumma,sv_SE
 cart.product-option,Produktalternativ,sv_SE
 cart.promotion.items,Kampanjprodukter,sv_SE
 cart.quantity.adjusted,Den begärda artikelkvantiteten justerades så långt den valda kvantiteten inte är tillgänglig.,sv_SE
@@ -11145,7 +11172,7 @@ countries.iso.FR,Frankrike,sv_SE
 countries.iso.GB,Storbritannien,sv_SE
 countries.iso.GR,Grekland,sv_SE
 countries.iso.HR,Kroatien,sv_SE
-countries.iso.HU,Hungrig,sv_SE
+countries.iso.HU,Ungern,sv_SE
 countries.iso.IE,Irland,sv_SE
 countries.iso.IM,ö av man,sv_SE
 countries.iso.IT,Italien,sv_SE
@@ -11807,6 +11834,7 @@ oms.state.turnover-cancellation-failed,Återbetalning,sv_SE
 oms.state.turnover-created,Levereras,sv_SE
 oms.state.turnover-creation-failed,Levereras,sv_SE
 oms.state.waiting-for-tracking-number,Pågående,sv_SE
+oms.state.invoice-generated,Invoice generated,sv_SE
 order_cancel_widget.cancel_order,Avbryt beställningen,sv_SE
 order_cancel_widget.order.cancelled,Beställningen avbröts.,sv_SE
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,sv_SE
@@ -12346,6 +12374,7 @@ cart.pre.check.shipment.failed,Teh sprememb ni mogoče uporabiti. Način pošilj
 cart.price,Cena,sl_SI
 cart.price.grand.total,Skupni znesek,sl_SI
 cart.price.subtotal,Vmesni seštevek,sl_SI
+cart.price.subtotal_wo_deals,Vmesni seštevek,sl_SI
 cart.product-option,Možnosti izdelka,sl_SI
 cart.promotion.items,Promocijski izdelki,sl_SI
 cart.quantity.adjusted,"Zahtevana količina izdelka je bila prilagojena, kolikor izbrana količina ni na voljo.",sl_SI
@@ -12675,7 +12704,7 @@ countries.iso.FR,Francija,sl_SI
 countries.iso.GB,Združeno kraljestvo,sl_SI
 countries.iso.GR,Grčija,sl_SI
 countries.iso.HR,Hrvaška,sl_SI
-countries.iso.HU,Lačen,sl_SI
+countries.iso.HU,Madžarska,sl_SI
 countries.iso.IE,Irska,sl_SI
 countries.iso.IM,otok Man,sl_SI
 countries.iso.IT,Italija,sl_SI
@@ -13337,6 +13366,7 @@ oms.state.turnover-cancellation-failed,Vračilo kupnine,sl_SI
 oms.state.turnover-created,Odposlano,sl_SI
 oms.state.turnover-creation-failed,Odposlano,sl_SI
 oms.state.waiting-for-tracking-number,V postopku,sl_SI
+oms.state.invoice-generated,Invoice generated,sl_SI
 order_cancel_widget.cancel_order,Prekliči naročilo,sl_SI
 order_cancel_widget.order.cancelled,Naročilo je bilo uspešno preklicano.,sl_SI
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 - A-8010 Graz - UID: ATU67661657 <br> Handelsregister: FN389134g,sl_SI
@@ -13876,6 +13906,7 @@ cart.pre.check.shipment.failed,Não é possível aplicar essas alterações. O m
 cart.price,Preço,pt_PT
 cart.price.grand.total,Montante total,pt_PT
 cart.price.subtotal,Subtotal,pt_PT
+cart.price.subtotal_wo_deals,Subtotal,pt_PT
 cart.product-option,Opções de Produto,pt_PT
 cart.promotion.items,Produtos promocionais,pt_PT
 cart.quantity.adjusted,"A quantidade de item solicitada foi ajustada, uma vez que a quantidade selecionada não está disponível.",pt_PT
@@ -14205,7 +14236,7 @@ countries.iso.FR,França,pt_PT
 countries.iso.GB,Reino Unido,pt_PT
 countries.iso.GR,Grécia,pt_PT
 countries.iso.HR,Croácia,pt_PT
-countries.iso.HU,Com fome,pt_PT
+countries.iso.HU,Hungria,pt_PT
 countries.iso.IE,Irlanda,pt_PT
 countries.iso.IM,Ilha de Man,pt_PT
 countries.iso.IT,Itália,pt_PT
@@ -14867,6 +14898,7 @@ oms.state.turnover-cancellation-failed,Reembolso,pt_PT
 oms.state.turnover-created,Enviado,pt_PT
 oms.state.turnover-creation-failed,Enviado,pt_PT
 oms.state.waiting-for-tracking-number,Em andamento,pt_PT
+oms.state.invoice-generated,Invoice generated,pt_PT
 order_cancel_widget.cancel_order,Cancelar pedido,pt_PT
 order_cancel_widget.order.cancelled,O pedido foi cancelado com sucesso.,pt_PT
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,pt_PT
@@ -15406,6 +15438,7 @@ cart.pre.check.shipment.failed,Kan ikke bruke disse endringene. Forsendelsesmeto
 cart.price,Pris,nb_NO
 cart.price.grand.total,Totale mengden,nb_NO
 cart.price.subtotal,Delsum,nb_NO
+cart.price.subtotal_wo_deals,Delsum,nb_NO
 cart.product-option,Produktalternativer,nb_NO
 cart.promotion.items,Salgsfremmende produkter,nb_NO
 cart.quantity.adjusted,Forespurt varemengde ble justert så langt det valgte antallet ikke er tilgjengelig.,nb_NO
@@ -15735,7 +15768,7 @@ countries.iso.FR,Frankrike,nb_NO
 countries.iso.GB,Storbritannia,nb_NO
 countries.iso.GR,Hellas,nb_NO
 countries.iso.HR,Kroatia,nb_NO
-countries.iso.HU,Sulten,nb_NO
+countries.iso.HU,Ungarn,nb_NO
 countries.iso.IE,Irland,nb_NO
 countries.iso.IM,Isle of Man,nb_NO
 countries.iso.IT,Italia,nb_NO
@@ -16397,6 +16430,7 @@ oms.state.turnover-cancellation-failed,Refusjon,nb_NO
 oms.state.turnover-created,Sendes,nb_NO
 oms.state.turnover-creation-failed,Sendes,nb_NO
 oms.state.waiting-for-tracking-number,I prosess,nb_NO
+oms.state.invoice-generated,Invoice generated,nb_NO
 order_cancel_widget.cancel_order,Avbryt bestillingen,nb_NO
 order_cancel_widget.order.cancelled,Bestillingen ble kansellert.,nb_NO
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,nb_NO
@@ -16936,6 +16970,7 @@ cart.pre.check.shipment.failed,Tieto zmeny nie je možné použiť. Metóda prep
 cart.price,cena,sk_SK
 cart.price.grand.total,Celková suma,sk_SK
 cart.price.subtotal,Medzisúčet,sk_SK
+cart.price.subtotal_wo_deals,Medzisúčet,sk_SK
 cart.product-option,Možnosti produktu,sk_SK
 cart.promotion.items,Reklamné výrobky,sk_SK
 cart.quantity.adjusted,"Požadované množstvo položky bolo upravené, pokiaľ vybrané množstvo nie je k dispozícii.",sk_SK
@@ -17265,7 +17300,7 @@ countries.iso.FR,Francúzsko,sk_SK
 countries.iso.GB,Spojene kralovstvo,sk_SK
 countries.iso.GR,Grécko,sk_SK
 countries.iso.HR,Chorvátsko,sk_SK
-countries.iso.HU,Hladný,sk_SK
+countries.iso.HU,Maďarsko,sk_SK
 countries.iso.IE,Írsko,sk_SK
 countries.iso.IM,ostrov Man,sk_SK
 countries.iso.IT,Taliansko,sk_SK
@@ -17927,6 +17962,7 @@ oms.state.turnover-cancellation-failed,Vrátenie peňazí,sk_SK
 oms.state.turnover-created,Dodané,sk_SK
 oms.state.turnover-creation-failed,Dodané,sk_SK
 oms.state.waiting-for-tracking-number,Prebieha,sk_SK
+oms.state.invoice-generated,Invoice generated,sk_SK
 order_cancel_widget.cancel_order,Zrušiť objednávku,sk_SK
 order_cancel_widget.order.cancelled,Objednávka bola úspešne zrušená.,sk_SK
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Registrovaný tovar: FN389134g,sk_SK
@@ -18466,6 +18502,7 @@ cart.pre.check.shipment.failed,Deze wijzigingen kunnen niet worden toegepast. De
 cart.price,Prijs,nl_NL
 cart.price.grand.total,Totale hoeveelheid,nl_NL
 cart.price.subtotal,Subtotaal,nl_NL
+cart.price.subtotal_wo_deals,Subtotaal,nl_NL
 cart.product-option,Productopties,nl_NL
 cart.promotion.items,Reclame producten,nl_NL
 cart.quantity.adjusted,Het aangevraagde aantal artikelen is aangepast voor zover het geselecteerde aantal niet beschikbaar is.,nl_NL
@@ -18795,7 +18832,7 @@ countries.iso.FR,Frankrijk,nl_NL
 countries.iso.GB,Verenigd Koningkrijk,nl_NL
 countries.iso.GR,Griekenland,nl_NL
 countries.iso.HR,Kroatië,nl_NL
-countries.iso.HU,Hongerig,nl_NL
+countries.iso.HU,Hongarije,nl_NL
 countries.iso.IE,Ierland,nl_NL
 countries.iso.IM,Isle of Man,nl_NL
 countries.iso.IT,Italië,nl_NL
@@ -19457,6 +19494,7 @@ oms.state.turnover-cancellation-failed,Terugbetaling,nl_NL
 oms.state.turnover-created,Verzonden,nl_NL
 oms.state.turnover-creation-failed,Verzonden,nl_NL
 oms.state.waiting-for-tracking-number,Bezig,nl_NL
+oms.state.invoice-generated,Invoice generated,nl_NL
 order_cancel_widget.cancel_order,Annuleer bestelling,nl_NL
 order_cancel_widget.order.cancelled,Bestelling is succesvol geannuleerd.,nl_NL
 order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,nl_NL
@@ -19924,8 +19962,8 @@ pdp.price.regular_price,"Regular Preis",de_DE
 pdp.price.regular_price,"Regular price",en_US
 pdp.price.shopping_points_price,Shopping Point Deal,de_DE
 pdp.price.shopping_points_price,Shopping Point Deal,en_US
-pdp.price.benefit_voucher_price,Benefit Voucher Price,de_DE
-pdp.price.benefit_voucher_price,Benefit Voucher Price,en_US
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,de_DE
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,en_US
 page.checkout.summary.sms_code,SMS Code,de_DE
 page.checkout.summary.sms_code,SMS Code,en_US
 checkout.step.summary.sms_code_send_error,Es gab leider einen Fehler beim zusenden des SMS Codes,de_DE
@@ -19996,10 +20034,14 @@ checkout.step.error.sub_title,Order failed due to errors:,de_DE
 checkout.step.error.sub_title,Order failed due to errors:,en_US
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,de_DE
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,en_US
-checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount".,de_DE
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Leider haben Sie nicht genug SP, um dieses Produkt mit einem Rabatt zu kaufen.",de_DE
 checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Unfortunately, you do not have enough SP to purchase this product at a discount.",en_US
-checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount. Needed amount: %currency% %needAmount%, your balance: %currency% %balanceAmount%",de_DE
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Leider haben Sie nicht genug SP, um dieses Produkt mit einem Rabatt zu kaufen. Benötigte Menge: %currency% %needAmount%, Ihr Guthaben: %currency% %balanceAmount%",de_DE
 checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Unfortunately, you do not have enough BV to purchase this product at a discount. Needed amount: %currency% %needAmount%, your balance: %currency% %balanceAmount%",en_US
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Lieber Kunde, Sie müssen mindestens %needAmount% %currency% von Ihrem Benefit Voucher Guthaben ausgeben, um ein Benefit Voucher Deal Produkt erhalten zu können.",de_DE
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Dear Customer, You need to spend at least %needAmount% %currency% from your Benefit Voucher Balance to get a Benefit Voucher Deal Product.",en_US
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,"Maximaler Betrag sollte %maxAmount% %currency% sein (maximaler BV-Betrag)",de_DE
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,"Max amount should be %maxAmount% %currency% (max amount of BV). Please verify",en_US
 checkout.currency.my_world.shopping_points,Redeemed Shopping Points,de_DE
 checkout.currency.my_world.shopping_points,Redeemed Shopping Points,en_US
 auth.login-button,Login mit myWorld,de_DE
@@ -20008,8 +20050,8 @@ checkout.payment.myworld.payment_methods.title,myWorld ePayment,de_DE
 checkout.payment.myworld.payment_methods.title,myWorld ePayment,en_US
 checkout.payment.myworld.payment_methods.subtitle,Du kannst zwischen folgenden myWorld ePayment-Methoden wahlen (optional):,de_DE
 checkout.payment.myworld.payment_methods.subtitle,You can choose between the following myWorld ePayment methods (optional):,en_US
-checkout.payment.myworld.payment_methods.method.evoucher,myWorld eVoucher,de_DE
-checkout.payment.myworld.payment_methods.method.evoucher,myWorld eVoucher,en_US
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,de_DE
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,en_US
 checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher(Marketer),de_DE
 checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher(Marketer),en_US
 checkout.payment.myworld.payment_methods.method.cashback,Cashback,de_DE
@@ -20018,8 +20060,8 @@ checkout.payment.myworld.payment_methods.balance_text,Saldo,de_DE
 checkout.payment.myworld.payment_methods.balance_text,Balance,en_US
 product_detail_page.benefit_price.benefit_amount,max %amount%,de_DE
 product_detail_page.benefit_price.benefit_amount,max %amount%,en_US
-customer.balance.my_world_e_voucher,myWorld eVoucher,de_DE
-customer.balance.my_world_e_voucher,myWorld eVoucher,en_US
+customer.balance.my_world_e_voucher,eVoucher,de_DE
+customer.balance.my_world_e_voucher,eVoucher,en_US
 customer.balance.my_world_cashback_account,Cashback,de_DE
 customer.balance.my_world_cashback_account,Cashback,en_US
 customer.balance.my_world_benefit_voucher_account,Benefit Voucher,de_DE
@@ -20068,20 +20110,20 @@ product_item.benefit_deal.or,or,en_US
 product_item.benefit_deal.or,oder,de_DE
 customer.balance.into,Du hast:,de_DE
 customer.balance.into,You have:,en_US
-BenefitVouchers,Benefit Vouchers,en_US
-BenefitVouchers,Benefit Vouchers,de_DE
+BenefitVouchers,Benefit Voucher,en_US
+BenefitVouchers,Benefit Voucher,de_DE
 discount.internal.shopping_points,Shopping Points,en_US
 discount.internal.shopping_points,Shopping Points,de_DE
 customer.order.priceToPay,Sum,en_US
 customer.order.priceToPay,Summe,de_DE
 payment.payment_method.adyen_credit_card,Credit Card,en_US
 payment.payment_method.adyen_credit_card,Credit Card,de_DE
-payment.payment_method.benefit_vouchers,Benefit Vouchers,en_US
-payment.payment_method.benefit_vouchers,Benefit Vouchers,de_DE
+payment.payment_method.benefit_vouchers,Benefit Voucher,en_US
+payment.payment_method.benefit_vouchers,Benefit Voucher,de_DE
 payment.payment_method.cashback,Cashback,en_US
 payment.payment_method.cashback,Cashback,de_DE
-payment.payment_method.e_voucher,myWorld eVoucher,en_US
-payment.payment_method.e_voucher,myWorld eVoucher,de_DE
+payment.payment_method.e_voucher,eVoucher,en_US
+payment.payment_method.e_voucher,eVoucher,de_DE
 payment.payment_method.e_voucher_marketer,myWorld eVoucher(Marketer),en_US
 payment.payment_method.e_voucher_marketer,myWorld eVoucher(Marketer),de_DE
 payment.payment_method.paid,Bezahlt,de_DE
@@ -20094,3 +20136,6 @@ payment.payment_provider.nopayment,Nopayment,en_US
 payment.payment_provider.nopayment,Nopayment,de_DE
 payment.payment_method.dummy_prepayment,Prepayment,en_US
 payment.payment_method.dummy_prepayment,Prepayment,de_DE
+oms.state.invoice-generated,Invoice generated,
+product.filter.deal,Deal,en_US
+product.filter.deal,Deal,de_DE

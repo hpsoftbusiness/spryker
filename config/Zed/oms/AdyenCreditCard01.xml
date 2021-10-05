@@ -26,7 +26,6 @@
             <state name="shipped"/>
             <state name="invoice generated"/>
             <state name="invoice with tracking number sent"/>
-            <state name="refund calculated"/>
             <state name="closed"/>
         </states>
 
@@ -39,12 +38,12 @@
             <event name="start turnover creation process" onEnter="true"/>
             <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
             <event name="confirm shipping" onEnter="true" command="Oms/SendShippingConfirmation"/>
-            <event name="initiate refund process" manual="true"/>
+            <event name="initiate refund process" manual="true" condition="Refund/IsAuthorizedToRefund"/>
+            <event name="initiate refund process after close" manual="true" condition="Refund/IsPossibleToRefundAfterClosing"/>
             <event name="start turnover cancellation process" onEnter="true"/>
             <event name="close" timeout="20days"/>
             <event name="pass" onEnter="true"/>
             <event name="pass 1 minute" timeout="1 minute"/>
-            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
         </events>
 
         <transitions>
@@ -156,12 +155,6 @@
 
             <transition>
                 <source>turnover cancelled</source>
-                <target>refund calculated</target>
-                <event>calculate refund</event>
-            </transition>
-
-            <transition>
-                <source>refund calculated</source>
                 <target>closed</target>
                 <event>pass</event>
             </transition>
@@ -176,6 +169,12 @@
                 <source>cancelled</source>
                 <target>myWorld refund due to payment failure</target>
                 <event>pass</event>
+            </transition>
+
+            <transition>
+                <source>closed</source>
+                <target>ready for refund</target>
+                <event>initiate refund process after close</event>
             </transition>
         </transitions>
     </process>

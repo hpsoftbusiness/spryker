@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Discount\Business;
 
 use Pyz\Zed\Discount\Business\Calculator\Discount;
+use Pyz\Zed\Discount\Business\Calculator\FilteredCalculator;
 use Pyz\Zed\Discount\Business\Calculator\InternalDiscount;
 use Pyz\Zed\Discount\Business\Calculator\InternalDiscountInterface;
 use Pyz\Zed\Discount\Business\Collector\InternalDiscountCollector;
@@ -38,6 +39,25 @@ class DiscountBusinessFactory extends SprykerDiscountBusinessFactory
         $discount->setDiscountApplicableFilterPlugins($this->getDiscountApplicableFilterPlugins());
 
         return $discount;
+    }
+
+    /**
+     * @return \Spryker\Zed\Discount\Business\Calculator\CalculatorInterface
+     */
+    protected function createCalculator()
+    {
+        $calculator = new FilteredCalculator(
+            $this->createCollectorBuilder(),
+            $this->getMessengerFacade(),
+            $this->createDistributor(),
+            $this->getCalculatorPlugins(),
+            $this->getCollectedDiscountGroupingPlugins(),
+            $this->createDiscountableItemFilter()
+        );
+
+        $calculator->setCollectorStrategyResolver($this->createCollectorResolver());
+
+        return $calculator;
     }
 
     /**

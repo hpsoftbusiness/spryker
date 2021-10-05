@@ -64,6 +64,10 @@ $product-item-border-radius: rem(10);
             @include helper-font-size(small);
         }
 
+        &__price .icon{
+            margin-top: -4px;
+        }
+
         &__original_price {
             display: block;
             color: $setting-color-dark;
@@ -103,7 +107,7 @@ $product-item-border-radius: rem(10);
         }
 
         &__footer_content_logo_img {
-            max-width: 50%;
+            max-width: 56%;
             float: right;
         }
 

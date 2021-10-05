@@ -9,6 +9,11 @@ namespace Pyz\Client\Locale;
 
 use Spryker\Client\Locale\LocaleClientInterface as SprykerLocaleClientInterface;
 
+/**
+ * Interface LocaleClientInterface
+ *
+ * @package Pyz\Client\Locale
+ */
 interface LocaleClientInterface extends SprykerLocaleClientInterface
 {
     /**
@@ -46,4 +51,16 @@ interface LocaleClientInterface extends SprykerLocaleClientInterface
      * @return string|null
      */
     public function findLocaleRelatedByCountryCode(string $countryIsoCode): ?string;
+
+    /**
+     * Specification:
+     * - Format . or , due to country
+     *
+     * @api
+     *
+     * @param float $amount
+     *
+     * @return string
+     */
+    public function formatNumberDueToCountry(float $amount): string;
 }

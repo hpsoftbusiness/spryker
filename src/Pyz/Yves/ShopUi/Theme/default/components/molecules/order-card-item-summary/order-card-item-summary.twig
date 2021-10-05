@@ -1,0 +1,20 @@
+{% extends molecule('product-card-item-summary', 'ShopUi') %}
+{% import model('component') as component %}
+
+{% define config = {
+    name: 'order-card-item',
+    tag: 'article',
+} %}
+
+{% macro renderPrice(originalPrice = null, modifiers, defaultPrice, showVatText = true) %}
+    {% include molecule('money-price') with {
+        modifiers: ['medium'],
+        class: component.renderClass('order-card-item__price', modifiers),
+        data: {
+            originalAmount: originalPrice,
+            priceVatText: showVatText is same as true ? 'pdp.include.vat' : null
+        },
+    } only %}
+{% endmacro %}
+
+

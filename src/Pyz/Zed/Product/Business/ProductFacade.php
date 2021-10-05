@@ -11,6 +11,7 @@ use Spryker\Zed\Product\Business\ProductFacade as SprykerProductFacade;
 
 /**
  * @method \Pyz\Zed\Product\Business\ProductBusinessFactory getFactory()
+ * @method \Pyz\Zed\Product\Persistence\ProductRepositoryInterface getRepository()
  */
 class ProductFacade extends SprykerProductFacade implements ProductFacadeInterface
 {
@@ -46,5 +47,15 @@ class ProductFacade extends SprykerProductFacade implements ProductFacadeInterfa
     public function getRawProductAbstractsByProductAbstractIds(array $productAbstractIds): array
     {
         return $this->getRepository()->getRawProductAbstractsByProductAbstractIds($productAbstractIds);
+    }
+
+    /**
+     * @param int[] $idsProductAbstract
+     *
+     * @return int[]
+     */
+    public function findProductConcreteIdsByAbstractProductIds(array $idsProductAbstract): array
+    {
+        return $this->getRepository()->findProductConcreteIdsByAbstractProductIds($idsProductAbstract);
     }
 }

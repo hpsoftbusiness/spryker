@@ -35,13 +35,13 @@ class CustomerGroupStorageListener extends AbstractPlugin implements EventHandle
             case CustomerGroupEvents::CUSTOMER_GROUP_PUBLISH:
             case CustomerGroupProductListEvents::ENTITY_PYZ_CUSTOMER_GROUP_TO_PRODUCT_LIST_CREATE:
             case CustomerGroupProductListEvents::ENTITY_PYZ_CUSTOMER_GROUP_TO_PRODUCT_LIST_UPDATE:
-                /* @phpstan-ignore-next-line */
+                // @phpstan-ignore-next-line
                 $this->getFacade()->publish((int)$transfer->getId());
                 break;
             case CustomerGroupEvents::ENTITY_SPY_CUSTOMER_GROUP_DELETE:
             case CustomerGroupProductListEvents::ENTITY_PYZ_CUSTOMER_GROUP_TO_PRODUCT_LIST_DELETE:
             case CustomerGroupEvents::CUSTOMER_GROUP_UNPUBLISH:
-                /* @phpstan-ignore-next-line */
+                // @phpstan-ignore-next-line
                 $this->getFacade()->unpublish((int)$transfer->getId());
                 break;
         }

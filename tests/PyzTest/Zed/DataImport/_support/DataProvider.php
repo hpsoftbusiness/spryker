@@ -77,7 +77,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
     ];
 // Concrete product data for first abstract product from data/import/common/DE/combined_product_local.csv
     private const PRODUCT_CONCRETE_1_NAME_EN = 'EliteClub Women`s T-Shirt in black with clear rhinestones';
@@ -143,7 +143,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
 
     ];
 
@@ -211,7 +211,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
     ];
 
 // Concrete product data for first abstract product from data/import/common/DE/combined_product_local.csv
@@ -278,7 +278,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
     ];
 
 // Concrete product data for first abstract product from data/import/common/DE/combined_product_local.csv
@@ -345,7 +345,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
     ];
 
 // Concrete product data for first abstract product from data/import/common/DE/combined_product_local.csv
@@ -412,7 +412,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
     ];
 
 // Concrete product data for first abstract product from data/import/common/DE/combined_product_local.csv
@@ -479,7 +479,7 @@ class DataProvider
         'benefit_store' => true,
         'shopping_point_store' => false,
         'cashback_amount' => 3,
-        'shopping_points' => '2',
+        'shopping_points' => 2,
     ];
 
     //  Last affiliate product data from data/import/common/DE/combined_product_local.csv

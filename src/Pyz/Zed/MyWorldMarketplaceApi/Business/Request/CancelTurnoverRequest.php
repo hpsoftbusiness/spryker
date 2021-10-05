@@ -7,146 +7,37 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
-use Generated\Shared\Transfer\OrderTransfer;
-use Generated\Shared\Transfer\TurnoverTransfer;
-use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
-use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
-use Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface;
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
-
-class CancelTurnoverRequest implements CancelTurnoverRequestInterface
+class CancelTurnoverRequest extends TurnoverRequest
 {
     /**
-     * @var \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface
-     */
-    protected $myWorldMarketplaceApiClient;
-
-    /**
-     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
-     */
-    protected $utilEncodingService;
-
-    /**
-     * @var \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface
-     */
-    protected $myWorldMarketplaceApiEntityManager;
-
-    /**
-     * @var \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig
-     */
-    protected $myWorldMarketplaceApiConfig;
-
-    /**
-     * @param \Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface $myWorldMarketplaceApiClient
-     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
-     * @param \Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManagerInterface $myWorldMarketplaceApiEntityManager
-     * @param \Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
-     */
-    public function __construct(
-        MyWorldMarketplaceApiClientInterface $myWorldMarketplaceApiClient,
-        UtilEncodingServiceInterface $utilEncodingService,
-        MyWorldMarketplaceApiEntityManagerInterface $myWorldMarketplaceApiEntityManager,
-        MyWorldMarketplaceApiConfig $myWorldMarketplaceApiConfig
-    ) {
-        $this->myWorldMarketplaceApiClient = $myWorldMarketplaceApiClient;
-        $this->utilEncodingService = $utilEncodingService;
-        $this->myWorldMarketplaceApiEntityManager = $myWorldMarketplaceApiEntityManager;
-        $this->myWorldMarketplaceApiConfig = $myWorldMarketplaceApiConfig;
-    }
-
-    /**
-     * @param int[] $orderItemIds
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\TurnoverTransfer $turnoverTransfer
-     *
-     * @return void
-     */
-    public function request(array $orderItemIds, OrderTransfer $orderTransfer, TurnoverTransfer $turnoverTransfer): void
-    {
-        $myWorldMarketplaceApiResponseTransfer = $this->myWorldMarketplaceApiClient->performApiRequest(
-            $this->buildRequestUrl($orderTransfer),
-            $this->getRequestParams($orderTransfer, $turnoverTransfer)
-        );
-
-        if (!$myWorldMarketplaceApiResponseTransfer->getIsSuccess()) {
-            return;
-        }
-
-        $this->myWorldMarketplaceApiEntityManager->setIsTurnoverCancelled($orderItemIds);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
      * @return string
      */
-    protected function buildRequestUrl(OrderTransfer $orderTransfer): string
+    protected function getUrl(): string
     {
         return sprintf(
             '%s/dealers/%s/turnovers/%s/cancel',
             $this->myWorldMarketplaceApiConfig->getApiUrl(),
-            $this->getDealerId($orderTransfer),
-            $this->getTurnoverReference($orderTransfer)
+            $this->turnoverRequestHelper->getDealerId($this->orderTransfer),
+            $this->itemTransfer->getTurnoverReference()
         );
     }
 
     /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return string
-     */
-    protected function getDealerId(OrderTransfer $orderTransfer): string
-    {
-        $dealerIdCountryMap = $this->myWorldMarketplaceApiConfig->getDealerIdCountryMap();
-        $iso2Code = $orderTransfer->getCustomerCountryId();
-
-        if (!isset($dealerIdCountryMap[$iso2Code])) {
-            return $this->myWorldMarketplaceApiConfig->getDealerIdDefault();
-        }
-
-        return $dealerIdCountryMap[$iso2Code];
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\TurnoverTransfer $turnoverTransfer
-     *
      * @return array
      */
-    protected function getRequestParams(OrderTransfer $orderTransfer, TurnoverTransfer $turnoverTransfer): array
+    protected function getBody(): array
     {
-        $accessTokenTransfer = $this->myWorldMarketplaceApiClient->getAccessToken();
-        $accessTokenTransfer->requireAccessToken();
-
-        $requestBody = $this->utilEncodingService->encodeJson(
-            [
-                'Amount' => bcdiv((string)$turnoverTransfer->getAmount(), '100', 2),
-                'Currency' => $orderTransfer->getCurrencyIsoCode(),
-            ]
-        );
-
         return [
-            'headers' => [
-                'Authorization' => sprintf('Bearer %s', $accessTokenTransfer->getAccessToken()),
-                'Accept' => 'application/vnd.myworld.services-v1+json',
-                'Content-Type' => 'application/json',
-            ],
-            'body' => $requestBody,
+            'Amount' => bcdiv((string)$this->itemTransfer->getTurnoverAmount(), '100', 2),
+            'Currency' => $this->orderTransfer->getCurrencyIsoCode(),
         ];
     }
 
     /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return string
+     * @return void
      */
-    protected function getTurnoverReference(OrderTransfer $orderTransfer): string
+    protected function onSuccess(): void
     {
-        return sprintf(
-            '%s-%s-%s',
-            $this->myWorldMarketplaceApiConfig->getOrderReferencePrefix(),
-            $orderTransfer->getOrderReference(),
-            strtotime($orderTransfer->getCreatedAt())
-        );
+        $this->myWorldMarketplaceApiEntityManager->setTurnoverCancelled($this->itemTransfer->getIdSalesOrderItem());
     }
 }

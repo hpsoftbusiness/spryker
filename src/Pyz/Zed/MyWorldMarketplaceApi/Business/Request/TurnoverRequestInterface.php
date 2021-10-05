@@ -7,15 +7,10 @@
 
 namespace Pyz\Zed\MyWorldMarketplaceApi\Business\Request;
 
-use Generated\Shared\Transfer\OrderTransfer;
-
 interface TurnoverRequestInterface
 {
     /**
-     * @param int[] $orderItemIds
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
      * @return void
      */
-    public function request(array $orderItemIds, OrderTransfer $orderTransfer): void;
+    public function send(): void;
 }

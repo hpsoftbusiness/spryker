@@ -44,6 +44,10 @@
             visibility: hidden;
             transform-origin: top center;
         }
+
+        &__container .flag {
+            display: none;
+        }
     }
 }
 

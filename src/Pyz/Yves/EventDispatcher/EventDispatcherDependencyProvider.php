@@ -10,6 +10,7 @@ namespace Pyz\Yves\EventDispatcher;
 use Pyz\Yves\Country\Plugin\EventDispatcher\CountryEventDispatcherPlugin;
 use Pyz\Yves\Currency\Plugin\EventDispatcher\CurrencyEventDispatcherPlugin;
 use Pyz\Yves\Router\Plugin\EventDispatcher\LocaleStoreRedirectEventDispatcherPlugin;
+use Pyz\Yves\Sso\Plugin\AutoLoginPlugin;
 use Spryker\Yves\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
 use Spryker\Yves\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Yves\Http\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
@@ -63,6 +64,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new SecurityBlockerCustomerEventDispatcherPlugin(),
             new SecurityBlockerAgentEventDispatcherPlugin(),
             new LocaleStoreRedirectEventDispatcherPlugin(),
+            new AutoLoginPlugin(),
         ];
     }
 }

@@ -25,48 +25,56 @@
 
     <div class="row">
         {% embed molecule('form') with {
-                modifiers: ['checkout-actions', 'checkout-form-elements'],
-                data: {
-                    form: _view.benefit_deal_collection_form,
-                    benefitVouchersCurrencyCode: _view.customerBalance.benefitVouchersCurrencyCode,
-                    submit: {
-                        enable: true,
-                        text: 'checkout.step.payment' | trans,
-                        class: 'form__action--checkout button  button--large button--expand  js-payment-form__submit',
-                    },
-                    cancel: {
-                        enable: true,
-                        url: data.backUrl,
-                        text: 'general.back.button' | trans,
-                        class: 'form__action--checkout button button--hollow button--expand',
-                    },
+            modifiers: ['checkout-actions', 'checkout-form-elements'],
+            data: {
+                form: _view.benefit_deal_collection_form,
+                benefitVouchersCurrencyCode: _view.customerBalance.benefitVouchersCurrencyCode,
+                submit: {
+                    enable: true,
+                    text: 'checkout.step.payment' | trans,
+                    class: 'form__action--checkout button  button--large button--expand  js-payment-form__submit',
                 },
-            } only %}
-                {% block fieldset %}
-                    <div>
-                        {% for key, item in data.form.benefitItems %}
-                            {% include molecule('benefit-product-item', 'CheckoutPage') with {
-                                data: {
-                                    item: item,
-                                    formType: item.children | keys | first,
-                                    product: item.vars.value,
-                                    benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,
-                                },
-                            } only %}
-                        {% endfor %}
-                    </div>
-
-                    <div class="page-layout-cart__col page-layout-cart__col--sidebar">
-                        {% include molecule('benefit-deal-summary', 'BenefitDeal') with {
+                cancel: {
+                    enable: true,
+                    url: data.backUrl,
+                    text: 'general.back.button' | trans,
+                    class: 'form__action--checkout button button--hollow button--expand',
+                },
+            },
+        } only %}
+            {% block fieldset %}
+                <div>
+                    {% set total = 0 %}
+                    {% set totalBenefit = 0 %}
+                    {% for key, item in data.form.benefitItems %}
+                        {% include molecule('benefit-product-item', 'CheckoutPage') with {
                             data: {
-                                cart: _view.quoteTransfer,
-                                isQuoteValid: true,
-                                isQuoteEditable: false,
-                                form: data.form,
+                                total: total,
+                                item: item,
+                                formType: item.children | keys | first,
+                                product: item.vars.value,
+                                benefitVouchersCurrencyCode: data.benefitVouchersCurrencyCode,
                             },
                         } only %}
-                    </div>
-                {% endblock %}
-            {% endembed %}
+                    {% endfor %}
+
+                    {% if (totalBenefit / 100 < _view.customerBalance.benefitVouchersBalance) %}
+                        <input type="hidden" id="total" value="{{ totalBenefit / 100 }}">
+                    {% endif %}
+                </div>
+
+                <div class="page-layout-cart__col page-layout-cart__col--sidebar">
+                    {% include molecule('benefit-deal-summary', 'BenefitDeal') with {
+                        data: {
+                            cart: _view.quoteTransfer,
+                            isQuoteValid: true,
+                            isQuoteEditable: false,
+                            form: data.form,
+                        },
+                    } only %}
+                </div>
+            {% endblock %}
+        {% endembed %}
     </div>
+
 {% endblock %}

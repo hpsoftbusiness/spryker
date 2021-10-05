@@ -17,6 +17,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     public const CLIENT_SSO = 'CLIENT_SSO';
     public const CLIENT_COUNTRY = 'CLIENT_COUNTRY';
     public const CLIENT_CUSTOMER_GROUP = 'CLIENT_CUSTOMER_GROUP';
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -29,6 +30,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         $container = $this->addSsoClient($container);
         $container = $this->addCountryClient($container);
         $container = $this->addCustomerGroupClient($container);
+        $container = $this->addLocaleClient($container);
 
         return $container;
     }
@@ -124,6 +126,20 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         $container->set(static::CLIENT_CUSTOMER_GROUP, function (Container $container) {
             return $container->getLocator()->customerGroup()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addLocaleClient(Container $container)
+    {
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
+            return $container->getLocator()->locale()->client();
         });
 
         return $container;

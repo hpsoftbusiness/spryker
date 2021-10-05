@@ -15,6 +15,7 @@ use Orm\Zed\Sales\Persistence\Map\SpySalesOrderItemTableMap;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery;
 use Pyz\Client\MyWorldMarketplaceApi\MyWorldMarketplaceApiClientInterface;
 use Pyz\Zed\MyWorldMarketplaceApi\Business\Request\CreateTurnoverRequest;
+use Pyz\Zed\MyWorldMarketplaceApi\Business\Request\TurnoverRequestHelper;
 use Pyz\Zed\MyWorldMarketplaceApi\MyWorldMarketplaceApiConfig;
 use Pyz\Zed\MyWorldMarketplaceApi\Persistence\MyWorldMarketplaceApiEntityManager;
 use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
@@ -59,13 +60,6 @@ class CreateTurnoverRequestTest extends Unit
     {
         $this->myWorldMarketPlaceApiClientMock = $this->createMock(MyWorldMarketplaceApiClientInterface::class);
         $this->customerFacadeMock = $this->createMock(CustomerFacadeInterface::class);
-        $this->sut = new CreateTurnoverRequest(
-            $this->myWorldMarketPlaceApiClientMock,
-            $this->customerFacadeMock,
-            $this->tester->getLocator()->utilEncoding()->service(),
-            new MyWorldMarketplaceApiEntityManager(),
-            new MyWorldMarketplaceApiConfig()
-        );
     }
 
     /**
@@ -116,7 +110,19 @@ class CreateTurnoverRequestTest extends Unit
             ->facade()
             ->findOrderByIdSalesOrder($idSalesOrder);
 
-        $this->sut->request($orderItemIds, $order);
+        foreach ($orderItemIds as $id) {
+            $this->sut = CreateTurnoverRequest::create(
+                new MyWorldMarketplaceApiConfig(),
+                $this->myWorldMarketPlaceApiClientMock,
+                $this->tester->getLocator()->utilEncoding()->service(),
+                new MyWorldMarketplaceApiEntityManager(),
+                new TurnoverRequestHelper($this->customerFacadeMock, new MyWorldMarketplaceApiConfig()),
+                $order,
+                $id
+            );
+
+            $this->sut->send();
+        }
 
         $actualTurnoverCreatedItemIds = SpySalesOrderItemQuery::create()
             ->select(SpySalesOrderItemTableMap::COL_ID_SALES_ORDER_ITEM)

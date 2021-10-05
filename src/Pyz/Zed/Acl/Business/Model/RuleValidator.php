@@ -24,8 +24,8 @@ class RuleValidator extends SprykerRuleValidator
     {
         $result = parent::assert($rule, $bundle, $controller, $action);
 
-        // if there isn't access for table action, check also index action
-        if (!$result && preg_match('/table$/', $action)) {
+        // if there isn't access for table or group-function action, check also index action
+        if (!$result && preg_match('/table|group-function$/', $action)) {
             $result = parent::assert($rule, $bundle, $controller, 'index');
         }
 

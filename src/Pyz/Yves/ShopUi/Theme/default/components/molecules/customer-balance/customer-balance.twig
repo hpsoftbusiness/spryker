@@ -16,7 +16,7 @@
     </div>
     {% if data.shoppingPointBalance %}
         <div class="{{ config.name }}__point-balance">
-            {{ data.shoppingPointBalance }}
+            {{ data.shoppingPointBalance | formatShoppingPoints }}
             {% include atom('icon') with {
                 data: {
                     name: 'shopping-point',
@@ -24,9 +24,11 @@
             } only %}
         </div>
     {% endif %}
+
     {% if data.benefitVouchersBalance %}
         <div class="{{ config.name }}__benefit-voucher-balance">
-            {{ data.benefitVouchersBalance | money(true, data.benefitVouchersCurrencyCode) }}
+            <input id="benefitVoucherAmount" type="hidden" value="{{ data.benefitVouchersBalance }}">
+            {{ (data.benefitVouchersBalance / 100) | formatShoppingPoints }}
             {% include atom('icon') with {
                 data: {
                     name: 'benefit-point',

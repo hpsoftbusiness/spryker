@@ -12,6 +12,7 @@ use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\CalculableObjectBuilder;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\ShoppingPointsDealTransfer;
 use Pyz\Zed\MyWorldPayment\Business\Calculator\TurnoverCalculator;
 
 /**
@@ -42,83 +43,68 @@ class TurnoverCalculatorTest extends Unit
      */
     protected function _before(): void
     {
-        $this->sut = new TurnoverCalculator();
+        /** @var \Pyz\Zed\MyWorldPayment\Business\MyWorldPaymentBusinessFactory $myWorldBusinessFactory */
+        $myWorldBusinessFactory = $this->tester->getFactory('MyWorldPayment');
+        $this->sut = new TurnoverCalculator($myWorldBusinessFactory->createItemTransferDealsChecker());
     }
 
     /**
-     * @dataProvider dataProviderQuote
+     * @dataProvider dataProvider
      *
-     * @param array $calculableObjectData
-     * @param array $expectedTurnoverAmounts
+     * @param array $item
+     * @param int $expectedTurnoverAmount
      *
      * @return void
      */
-    public function testIfSegmentNumberIsCorrectAfterQuoteRecalculation(
-        array $calculableObjectData,
-        array $expectedTurnoverAmounts
-    ): void {
-        $calculableObject = (new CalculableObjectBuilder($calculableObjectData))->build();
+    public function testTurnoverAmount(array $item, int $expectedTurnoverAmount): void
+    {
+        /** @var \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObject */
+        $calculableObject = (new CalculableObjectBuilder([
+            CalculableObjectTransfer::ITEMS => [$item],
+        ]))->build();
+
         $this->sut->recalculateQuote($calculableObject);
 
-        foreach ($calculableObject->getItems() as $key => $item) {
-            $this->assertSame(
-                $expectedTurnoverAmounts[$key],
-                $item->getTurnoverAmount()
-            );
-        }
+        $this->assertSame($expectedTurnoverAmount, $calculableObject->getItems()[0]->getTurnoverAmount());
     }
 
     /**
      * @return array
      */
-    public function dataProviderQuote(): array
+    public function dataProvider(): array
     {
         return [
-            'single item with benefit price' => [
-                'calculableObjectData' => [
-                    CalculableObjectTransfer::ITEMS => [
-                        [
-                            ItemTransfer::SUM_BENEFIT_PRICE => 1000,
-                            ItemTransfer::SUM_PRICE => 2000,
-                        ],
-                    ],
+            'not SP item' => [
+                'item' => [
+                    ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION => 1000,
                 ],
-                'expectedTurnoverAmounts' => [
-                    1000,
-                ],
+                'expectedTurnoverAmount' => 1000,
             ],
-            'two items with benefit price' => [
-                'calculableObjectData' => [
-                    CalculableObjectTransfer::ITEMS => [
-                        [
-                            ItemTransfer::SUM_BENEFIT_PRICE => 1000,
-                            ItemTransfer::SUM_PRICE => 2000,
-                        ],
-                        [
-                            ItemTransfer::SUM_BENEFIT_PRICE => 5000,
-                            ItemTransfer::SUM_PRICE => 10000,
-                        ],
+            'SP item' => [
+                'item' => [
+                    ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION => 1000,
+                    ItemTransfer::UNIT_PRICE => 1500,
+                    ItemTransfer::QUANTITY => 1,
+                    ItemTransfer::SHOPPING_POINTS_DEAL => [
+                        ShoppingPointsDealTransfer::PRICE => 1000,
+                        ShoppingPointsDealTransfer::IS_ACTIVE => true,
+                        ShoppingPointsDealTransfer::SHOPPING_POINTS_QUANTITY => 1,
                     ],
                 ],
-                'expectedTurnoverAmounts' => [
-                    1000, 5000,
-                ],
+                'expectedTurnoverAmount' => 1500,
             ],
-            'two items with benefit price and sum price' => [
-                'calculableObjectData' => [
-                    CalculableObjectTransfer::ITEMS => [
-                        [
-                            ItemTransfer::SUM_BENEFIT_PRICE => 1000,
-                            ItemTransfer::SUM_PRICE => 2000,
-                        ],
-                        [
-                            ItemTransfer::SUM_PRICE => 10000,
-                        ],
+            'multiple SP item' => [
+                'item' => [
+                    ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION => 1000,
+                    ItemTransfer::UNIT_PRICE => 600,
+                    ItemTransfer::QUANTITY => 2,
+                    ItemTransfer::SHOPPING_POINTS_DEAL => [
+                        ShoppingPointsDealTransfer::PRICE => 500,
+                        ShoppingPointsDealTransfer::IS_ACTIVE => true,
+                        ShoppingPointsDealTransfer::SHOPPING_POINTS_QUANTITY => 1,
                     ],
                 ],
-                'expectedTurnoverAmounts' => [
-                    1000, 10000,
-                ],
+                'expectedTurnoverAmount' => 1200,
             ],
         ];
     }

@@ -44,4 +44,14 @@ class LocaleClient extends SprykerLocaleClient implements
     {
         return $this->getFactory()->createLocaleCountryResolver()->findLocaleRelatedByCountryCode($countryIsoCode);
     }
+
+    /**
+     * @param float $amount
+     *
+     * @return string
+     */
+    public function formatNumberDueToCountry(float $amount): string
+    {
+        return $this->getFactory()->createDecimalCountryFormatter()->format($amount);
+    }
 }

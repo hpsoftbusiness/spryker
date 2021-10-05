@@ -4,7 +4,11 @@
             background-color: $setting-color-black;
             display: flex;
             align-items: stretch;
-            height: 34px;
+            height: 30px;
+
+            @include helper-breakpoint-media-min($xxl-min){
+                height: 34px;
+            }
         }
 
         &__item {
@@ -12,21 +16,21 @@
             height: 34px;
             width: 120px;
 
+            @include helper-breakpoint-media-min($xxl-min){
+                height: 34px;
+            }
+
             @include helper-breakpoint-media-min($lg-min) {
                 border-bottom: none;
             }
         }
 
         &__link {
-            padding: 0;
             width: 100%;
-            display: block;
             position: relative;
-
-            @media (max-width: 959px) {
-                margin: rem(15) 0;
-                padding: 0;
-            }
+            height: 100%;
+            padding: 0;
+            display: block;
 
             @include helper-breakpoint-media-min($lg-min) {
                 @include helper-effect-transition(background-color);
@@ -34,9 +38,6 @@
                 align-items: center;
                 padding: rem(4) rem(25);
                 min-height: 100%;
-                //#{$name}__item:first-child & {
-                //    padding-left: rem(30);
-                //}
             }
 
             &:hover,
@@ -48,15 +49,10 @@
         }
 
         &__image {
-            display: block;
-            /* max-width: unset; */
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
-            //display: block;
-            //max-width: unset;
-            //max-height: unset;
         }
 
         &__dropdown {

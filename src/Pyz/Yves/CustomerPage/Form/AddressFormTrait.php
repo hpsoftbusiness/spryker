@@ -10,6 +10,7 @@ namespace Pyz\Yves\CustomerPage\Form;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 
 trait AddressFormTrait
 {
@@ -163,6 +164,7 @@ trait AddressFormTrait
                 $this->createNotBlankConstraint($options),
                 $this->createMaxLengthConstraint($options),
                 $this->createPhoneNumberConstraint($options),
+                $this->createPhoneNumberPrefixConstraint($options),
             ],
         ]);
 
@@ -282,5 +284,21 @@ trait AddressFormTrait
         ]);
 
         return $this;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return \Symfony\Component\Validator\Constraints\Regex
+     */
+    public function createPhoneNumberPrefixConstraint(array $options)
+    {
+        $validationGroup = $this->getValidationGroup($options);
+
+        return new Regex([
+            'pattern' => '/\+/',
+            'message' => 'validator.check.phone.plus',
+            'groups' => $validationGroup,
+        ]);
     }
 }
