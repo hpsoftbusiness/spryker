@@ -14,13 +14,9 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeFacadeInterface as Spr
 interface ProductAttributeFacadeInterface extends SprykerProductAttributeFacadeInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-     *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
-    public function getKeysToShowOnPdp(
-        ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-    ): ProductAttributeKeysCollectionTransfer;
+    public function getKeysToShowOnPdp(): ProductAttributeKeysCollectionTransfer;
 
     /**
      * Specification:
