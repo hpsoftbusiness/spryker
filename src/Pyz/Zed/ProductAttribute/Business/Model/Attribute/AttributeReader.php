@@ -25,15 +25,20 @@ class AttributeReader extends SprykerAttributeReader implements AttributeReaderI
     protected $productAttributeTransferMapper;
 
     /**
+     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+     *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
-    public function getKeysToShowOnPdp(): ProductAttributeKeysCollectionTransfer
-    {
+    public function getKeysToShowOnPdp(
+        ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
+    ): ProductAttributeKeysCollectionTransfer {
         /** @var \Propel\Runtime\Collection\ArrayCollection $arrayCollection */
         $arrayCollection = $this->productAttributeQueryContainer
             ->queryProductAttributeCollection()
             ->filterByShowOnPdp(true)
-            ->joinSpyProductAttributeKey()
+            ->useSpyProductAttributeKeyQuery()
+            ->filterByKey_In($productAttributeKeysCollectionTransfer->getKeys())
+            ->endUse()
             ->select('SpyProductAttributeKey.Key')
             ->find();
 
