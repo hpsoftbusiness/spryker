@@ -23,6 +23,9 @@ use Pyz\Zed\ProductApi\ProductApiConfig;
 use Pyz\Zed\ProductCategory\Business\ProductCategoryFacadeInterface;
 use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class ProductApi implements ProductApiInterface
 {
     /**

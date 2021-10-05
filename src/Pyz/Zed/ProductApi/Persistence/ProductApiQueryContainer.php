@@ -12,6 +12,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
 /**
  * @method \Pyz\Zed\ProductApi\Persistence\ProductApiPersistenceFactory getFactory()
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
  */
 class ProductApiQueryContainer extends AbstractQueryContainer implements ProductApiQueryContainerInterface
 {

@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Api\ApiConstants;
+use Pyz\Shared\ApiKeyAuthRestApi\ApiKeyAuthRestApiConstants;
 use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Country\CountryConstants;
@@ -566,6 +567,8 @@ if (class_exists(TestifyConstants::class)) {
 
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '*';
 
+$config[ApiKeyAuthRestApiConstants::API_KEY] = 'GSEH@VH@yd+e"kbm^?,^224&U,9L_wXL';
+
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
 // ----------------------------------------------------------------------------
@@ -591,7 +594,7 @@ $config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = 'MW';
 // ----------------------------------------------------------------------------
 // ------------------------------ ZED API ------------------------------------
 // ----------------------------------------------------------------------------
-
+// TODO: @deprecated Please remove this when you remove the Product Feed API from ZED.
 $config[ApiConstants::X_SPRYKER_API_KEY] = 'GSEH@VH@yd+e"kbm^?,^224&U,9L_wXL';
 
 // ----------------------------------------------------------------------------

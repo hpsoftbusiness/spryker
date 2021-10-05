@@ -11,6 +11,9 @@ use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class ProductApiToProductMime implements ProductApiToProductInterface
 {
     /**

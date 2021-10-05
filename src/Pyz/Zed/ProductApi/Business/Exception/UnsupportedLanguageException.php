@@ -11,6 +11,9 @@ use Exception;
 use Spryker\Zed\Api\ApiConfig;
 use Throwable;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class UnsupportedLanguageException extends Exception
 {
     /**

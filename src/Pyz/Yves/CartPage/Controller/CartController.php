@@ -9,6 +9,7 @@ namespace Pyz\Yves\CartPage\Controller;
 
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerCartController;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
+use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -42,6 +43,33 @@ class CartController extends SprykerCartController
         parent::removeAction($request, $sku);
 
         return $this->redirect($request);
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string $sku
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeWithoutValidateTokenAction(Request $request, $sku)
+    {
+        $groupKey = $request->get('groupKey', null);
+
+        if (!$this->canRemoveCartItem()) {
+            $this->addErrorMessage(static::MESSAGE_PERMISSION_FAILED);
+
+            return $this->redirectResponseInternal(CartPageRouteProviderPlugin::ROUTE_NAME_CART);
+        }
+
+        $this->getFactory()
+            ->getCartClient()
+            ->removeItem($sku, $groupKey);
+
+        $this->getFactory()
+            ->getZedRequestClient()
+            ->addResponseMessagesToMessenger();
+
+        return $this->jsonResponse([]);
     }
 
     /**

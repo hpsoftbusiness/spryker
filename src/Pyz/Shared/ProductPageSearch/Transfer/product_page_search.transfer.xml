@@ -14,6 +14,7 @@
         <property name="isAffiliate" type="bool"/>
         <property name="benefitStore" type="bool"/>
         <property name="shoppingPointStore" type="bool"/>
+        <property name="featuredProduct" type="bool"/>
         <property name="ecDeals" type="bool"/>
         <property name="onlyEcDeals" type="bool"/>
         <property name="benefitDeals" type="bool"/>

@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductApi\Dependency\QueryContainer;
 
 use Generated\Shared\Transfer\ApiItemTransfer;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 interface ProductApiToApiInterface
 {
     /**

@@ -12,6 +12,9 @@ use Pyz\Zed\ProductApi\Dependency\QueryContainer\ProductApiToApiBridgeMime;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class ProductApiDependencyProvider extends AbstractBundleDependencyProvider
 {
     public const QUERY_CONTAINER_API = 'QUERY_CONTAINER_API';

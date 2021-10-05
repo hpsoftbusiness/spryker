@@ -14,6 +14,10 @@
           "type": "boolean",
           "include_in_all": false
         },
+        "featured-product": {
+          "type": "boolean",
+          "include_in_all": false
+        },
         "ec-deals": {
           "type": "boolean",
           "include_in_all": false

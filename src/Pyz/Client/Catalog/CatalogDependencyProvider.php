@@ -20,6 +20,7 @@ use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CategoryFacetQueryExpand
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\CmsPageFilterQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\EliteClubDealsQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
+use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\FeaturedProductQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\IsAffiliateQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\SellableQueryExpanderPlugin;
 use Pyz\Client\SearchElasticsearch\Plugin\QueryExpander\ShoppingPointDealsQueryExpanderPlugin;
@@ -149,6 +150,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new EliteClubDealsQueryExpanderPlugin(),
             new BenefitVoucherDealsQueryExpanderPlugin(),
             new ShoppingPointDealsQueryExpanderPlugin(),
+            new FeaturedProductQueryExpanderPlugin(),
         ];
     }
 

@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductApi\Business\Model\Validator;
 
 use Generated\Shared\Transfer\ApiRequestTransfer;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 interface LanguageValidatorInterface
 {
     /**

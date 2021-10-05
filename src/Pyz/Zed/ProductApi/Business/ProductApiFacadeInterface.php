@@ -10,6 +10,9 @@ namespace Pyz\Zed\ProductApi\Business;
 use Generated\Shared\Transfer\ApiItemTransfer;
 use Generated\Shared\Transfer\ApiRequestTransfer;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 interface ProductApiFacadeInterface
 {
     /**

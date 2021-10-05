@@ -13,6 +13,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
  * @method \Pyz\Zed\ProductApi\Business\ProductApiBusinessFactory getFactory()
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
  */
 class ProductApiFacade extends AbstractFacade implements ProductApiFacadeInterface
 {

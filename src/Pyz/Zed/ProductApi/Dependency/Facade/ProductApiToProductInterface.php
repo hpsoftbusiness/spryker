@@ -10,6 +10,9 @@ namespace Pyz\Zed\ProductApi\Dependency\Facade;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 interface ProductApiToProductInterface
 {
     /**

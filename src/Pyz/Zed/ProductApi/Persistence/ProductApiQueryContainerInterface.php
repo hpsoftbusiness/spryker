@@ -10,6 +10,9 @@ namespace Pyz\Zed\ProductApi\Persistence;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Spryker\Zed\Kernel\Persistence\QueryContainer\QueryContainerInterface;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 interface ProductApiQueryContainerInterface extends QueryContainerInterface
 {
     /**

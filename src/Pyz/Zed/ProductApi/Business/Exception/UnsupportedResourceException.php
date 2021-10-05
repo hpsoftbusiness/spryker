@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductApi\Business\Exception;
 
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class UnsupportedResourceException extends BadRequestHttpException
 {
     public const MESSAGE = 'There is no such resource: "%s"';
