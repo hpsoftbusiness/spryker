@@ -133,7 +133,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             $productSearchEntityTransfer = new SpyProductSearchEntityTransfer();
             $productSearchEntityTransfer
                 ->setFkLocale($idLocale)
-                ->setIsSearchable($localizedAttributes[static::COLUMN_IS_SEARCHABLE] ? 1 : 0);
+                ->setIsSearchable($localizedAttributes[static::COLUMN_IS_SEARCHABLE] ? true : false);
 
             $localizedAttributeTransfer[] = [
                 static::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER => $productLocalizedAttributesEntityTransfer,
