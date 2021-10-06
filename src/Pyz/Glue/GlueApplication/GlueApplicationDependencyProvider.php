@@ -7,6 +7,16 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Pyz\Glue\ApiKeyAuthRestApi\Plugin\RestUserFinderByApiKeyPlugin;
+use Pyz\Glue\ApiKeyAuthRestApi\Plugin\RestUserValidatorByApiKeyPlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\BenefitVoucherProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\EliteClubProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\FeaturedProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\LyconetProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\OneSenseProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\OnlyEliteClubDealProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\RegularProductFeedResourceRoutePlugin;
+use Pyz\Glue\ProductFeedRestApi\Plugin\ShoppingPointProductFeedResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenRestRequestValidatorPlugin;
@@ -184,6 +194,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ReturnsResourceRoutePlugin(),
             new CartCodesResourceRoutePlugin(),
             new GuestCartCodesResourceRoutePlugin(),
+            new RegularProductFeedResourceRoutePlugin(),
+            new BenefitVoucherProductFeedResourceRoutePlugin(),
+            new ShoppingPointProductFeedResourceRoutePlugin(),
+            new EliteClubProductFeedResourceRoutePlugin(),
+            new OneSenseProductFeedResourceRoutePlugin(),
+            new LyconetProductFeedResourceRoutePlugin(),
+            new FeaturedProductFeedResourceRoutePlugin(),
+            new OnlyEliteClubDealProductFeedResourceRoutePlugin(),
         ];
     }
 
@@ -438,6 +456,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new RestUserFinderByAccessTokenPlugin(),
+            new RestUserFinderByApiKeyPlugin(),
         ];
     }
 
@@ -451,6 +470,16 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new EventDispatcherApplicationPlugin(),
             new GlueApplicationApplicationPlugin(),
             new RouterApplicationPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestUserValidatorPluginInterface[]
+     */
+    protected function getRestUserValidatorPlugins(): array
+    {
+        return [
+            new RestUserValidatorByApiKeyPlugin(),
         ];
     }
 }

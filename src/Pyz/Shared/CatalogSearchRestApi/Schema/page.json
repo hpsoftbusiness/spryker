@@ -11,6 +11,9 @@
         "shopping-point-store": {
           "type": "boolean"
         },
+        "featured-product": {
+          "type": "boolean"
+        },
         "ec-deals": {
           "type": "boolean"
         },

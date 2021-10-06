@@ -12,6 +12,9 @@ use Pyz\Shared\ProductApi\ProductApiConstants;
 use Pyz\Zed\ProductApi\Business\Exception\UnsupportedLanguageException;
 use Spryker\Shared\Kernel\Store;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class LanguageValidator implements LanguageValidatorInterface
 {
     /**

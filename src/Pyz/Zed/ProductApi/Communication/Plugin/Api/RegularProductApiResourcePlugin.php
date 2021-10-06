@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductApi\Communication\Plugin\Api;
 
 use Pyz\Zed\ProductApi\ProductApiConfig;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class RegularProductApiResourcePlugin extends AbstractProductApiResourcePlugin
 {
     /**

@@ -17,16 +17,13 @@ use Spryker\Zed\ProductAttribute\Business\ProductAttributeFacade as SprykerProdu
 class ProductAttributeFacade extends SprykerProductAttributeFacade implements ProductAttributeFacadeInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-     *
      * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
      */
-    public function getKeysToShowOnPdp(
-        ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-    ): ProductAttributeKeysCollectionTransfer {
+    public function getKeysToShowOnPdp(): ProductAttributeKeysCollectionTransfer
+    {
         return $this->getFactory()
             ->createAttributeReader()
-            ->getKeysToShowOnPdp($productAttributeKeysCollectionTransfer);
+            ->getKeysToShowOnPdp();
     }
 
     /**

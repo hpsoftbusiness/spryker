@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductApi;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class ProductApiConfig extends AbstractBundleConfig
 {
     public const RESOURCE_PRODUCTS = 'products';

@@ -14,6 +14,9 @@ use Generated\Shared\Transfer\ProductApiTransfer;
 use Generated\Shared\Transfer\ProductsResponseApiTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 interface TransferMapperInterface
 {
     /**

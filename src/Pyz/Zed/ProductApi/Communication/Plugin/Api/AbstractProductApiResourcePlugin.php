@@ -19,6 +19,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\ProductApi\Business\ProductApiFacadeInterface getFacade()
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
  */
 abstract class AbstractProductApiResourcePlugin extends AbstractPlugin implements
     ApiResourcePluginInterface,

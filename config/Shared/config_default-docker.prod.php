@@ -1,6 +1,7 @@
 <?php
 
 use Pyz\Shared\Api\ApiConstants;
+use Pyz\Shared\ApiKeyAuthRestApi\ApiKeyAuthRestApiConstants;
 use Pyz\Shared\CheckoutPage\CheckoutPageConstants;
 use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Currency\CurrencyConstants;
@@ -72,7 +73,7 @@ $config[ProductDataImportConstants::STORAGE_NAME] = 'aws-files-import';
 // ----------------------------------------------------------------------------
 // ------------------------------ ZED API ------------------------------------
 // ----------------------------------------------------------------------------
-
+// TODO: @deprecated Please remove this when you remove the Product Feed API from ZED.
 $config[ApiConstants::X_SPRYKER_API_KEY] = '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
 
 require 'common/config_my-world-payment.php';
@@ -96,6 +97,12 @@ $config[CountryConstants::IS_MULTI_COUNTRY_FEATURE_ENABLED] = false;
 $config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ API -----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY');
 
 if (!empty(getenv('SPRYKER_CLUSTER'))) {
     return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.prod.php');

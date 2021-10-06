@@ -25,6 +25,9 @@ use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 
+/**
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
+ */
 class TransferMapper implements TransferMapperInterface
 {
     /**

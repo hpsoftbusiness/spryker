@@ -2,6 +2,7 @@
 
 {% define config = {
     name: 'benefit-product-item',
+    tag: 'benefit-product-item',
 } %}
 
 {% define data = {
@@ -31,11 +32,17 @@
         <div class="{{ config.name }}__meta">
             <h2 class="{{ config.name }}__title">{{ product.name }}</h2>
 
-                <strong><span class="{{ config.name }}__quantity">{{ 'benefit_deal.item_quantity' | trans }}</span></strong> {{ product.quantity }}
-
+                <strong><span
+                    class="{{ config.name }}__quantity">{{ 'benefit_deal.item_quantity' | trans }}</span></strong> {{ product.quantity }}
         </div>
 
         <div class="{{ config.name }}__benefites">
+            <button type="button" data-url="/cart/remove-without-validate-token/{{ product.sku }}/{{ product.groupKey}}"
+                    class="link link--remove order-overview-removal-product-link"><span class="grid grid--middle grid--center">
+                    <svg class="icon spacing-right spacing-right--small" data-qa="component icon" title="remove"><use
+                            xlink:href="#:remove"></use></svg></span>
+            </button>
+
             {% if data.formType == 'useBenefitVoucher' %}
                 {% set benefitVoucherDeal = product.benefitVoucherDealData %}
                 {% set benefitVoucherSalesPrice = benefitVoucherDeal.salesPrice * product.quantity %}

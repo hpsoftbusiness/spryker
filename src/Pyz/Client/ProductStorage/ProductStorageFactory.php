@@ -7,7 +7,10 @@
 
 namespace Pyz\Client\ProductStorage;
 
+use Pyz\Client\ProductStorage\Filter\ProductAbstractAttributeMapWithoutRestrictionFilter;
+use Spryker\Client\ProductStorage\Filter\ProductAbstractAttributeMapRestrictionFilterInterface;
 use Spryker\Client\ProductStorage\ProductStorageFactory as SprykerProductStorageFactory;
+use Spryker\Client\ProductStorage\Storage\ProductAbstractStorageReader;
 use Spryker\Shared\Money\Converter\DecimalToIntegerConverter;
 
 /**
@@ -21,5 +24,28 @@ class ProductStorageFactory extends SprykerProductStorageFactory
     public function createDecimalToIntegerConverter()
     {
         return new DecimalToIntegerConverter();
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorage\Storage\ProductAbstractStorageReaderInterface
+     */
+    public function createProductAbstractStorageReaderWithoutRestrictions()
+    {
+        return new ProductAbstractStorageReader(
+            $this->getStorageClient(),
+            $this->getSynchronizationService(),
+            $this->getStoreClient(),
+            $this->createProductAbstractAttributeMapWithoutRestrictionFilter(),
+            [],
+            []
+        );
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorage\Filter\ProductAbstractAttributeMapRestrictionFilterInterface
+     */
+    public function createProductAbstractAttributeMapWithoutRestrictionFilter(): ProductAbstractAttributeMapRestrictionFilterInterface
+    {
+        return new ProductAbstractAttributeMapWithoutRestrictionFilter();
     }
 }

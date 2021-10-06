@@ -25,6 +25,7 @@ use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 /**
  * @method \Pyz\Zed\ProductApi\ProductApiConfig getConfig()
  * @method \Pyz\Zed\ProductApi\Persistence\ProductApiQueryContainerInterface getQueryContainer()
+ * @deprecated Please use Glue API instead (Pyz/Glue/ProductFeedRestApi)
  */
 class ProductApiBusinessFactory extends AbstractBusinessFactory
 {
