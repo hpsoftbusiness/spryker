@@ -144,8 +144,8 @@ abstract class AbstractProductAbstractBulkPdoDataSetWriter implements DataSetWri
             $localizedAttributeArray = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER]->modifiedToArray();
             $localizedAttributeArray[self::COLUMN_ABSTRACT_SKU] = $productAbstractLocalizedTransfer[static::COLUMN_ABSTRACT_SKU];
             $localizedAttributeArray[self::COLUMN_META_DESCRIPTION] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[self::COLUMN_META_DESCRIPTION]);
-            $localizedAttributeArray[self::COLUMN_NAME] = str_replace(',', '', $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[self::COLUMN_NAME]));
-            $localizedAttributeArray[self::COLUMN_DESCRIPTION] = str_replace(',', '', $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[self::COLUMN_DESCRIPTION]));
+            $localizedAttributeArray[self::COLUMN_NAME] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[self::COLUMN_NAME]);
+            $localizedAttributeArray[self::COLUMN_DESCRIPTION] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[self::COLUMN_DESCRIPTION]);
 
             static::$productAbstractLocalizedAttributesCollection[$productAbstractLocalizedTransfer[static::COLUMN_ABSTRACT_SKU]][$idLocale] = $localizedAttributeArray;
         }
