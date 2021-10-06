@@ -13,6 +13,7 @@ use Pyz\Yves\Country\Plugin\CheckoutPage\CountryAddressExpanderPlugin;
 use Pyz\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\DummyPaymentStepHandlerPlugin;
 use Pyz\Yves\DummyPrepayment\Plugin\StepEngine\SubForm\DummyPrepaymentSubFormPlugin;
+use Pyz\Yves\StepEngineExtension\Dependency\Plugin\DefaultShippingMethodPlugin;
 use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
@@ -313,5 +314,15 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         });
 
         return $container;
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\StepEngine\CheckoutPageStepEnginePreRenderPluginInterface[]
+     */
+    protected function getCheckoutPageStepEnginePreRenderPlugins(): array
+    {
+        return [
+            new DefaultShippingMethodPlugin(),
+        ];
     }
 }

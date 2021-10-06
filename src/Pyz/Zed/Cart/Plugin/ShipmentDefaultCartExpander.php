@@ -42,14 +42,25 @@ class ShipmentDefaultCartExpander implements ItemExpanderPluginInterface
             return $cartChangeTransfer;
         }
 
-        $shippingMethodTransfer = $this->shipmentFacade->getDefaultShipmentMethod();
         $shipmentTransfer = new ShipmentTransfer();
-        $shipmentTransfer->setMethod($shippingMethodTransfer);
+
+        $shippingMethodTransfer = $this->shipmentFacade->createDefaultShipmentMethodTransfer();
+
+        $shipmentTransfer
+            ->setMethod($shippingMethodTransfer)
+            ->setShipmentSelection((string)$shippingMethodTransfer->getIdShipmentMethod());
 
         $quoteTransfer->setShipment($shipmentTransfer);
         $quoteTransfer->addExpense(
             $this->createShippingExpenseTransfer($shipmentTransfer)
         );
+
+        foreach ($quoteTransfer->getItems() as $item) {
+            $itemShipment = $item->getShipment() ?? $shipmentTransfer;
+            $itemShipment->setShipmentSelection((string)$itemShipment->getMethod()->getIdShipmentMethod());
+
+            $item->setShipment($itemShipment);
+        }
 
         return $cartChangeTransfer->setQuote($quoteTransfer);
     }

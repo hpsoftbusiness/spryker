@@ -16,4 +16,14 @@ interface ShipmentMethodReaderInterface extends SprykerShipmentMethodReaderInter
      * @return \Generated\Shared\Transfer\ShipmentMethodTransfer|null
      */
     public function getDefaultShipmentMethod(): ?ShipmentMethodTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer|null
+     */
+    public function getFirstAvailableShipmentMethod(): ?ShipmentMethodTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
+     */
+    public function fetchDefaultOrFirstAvailableShipmentMethod(): ShipmentMethodTransfer;
 }
