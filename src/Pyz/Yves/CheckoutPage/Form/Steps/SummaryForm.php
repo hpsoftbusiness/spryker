@@ -18,11 +18,13 @@ class SummaryForm extends SprykerSummaryForm
 {
     public const OPTION_SMS_CODE = 'OPTION_SMS_CODE';
 
-    protected const FIELD_SMS_CODE = QuoteTransfer::SMS_CODE;
+    public const FIELD_SMS_CODE = QuoteTransfer::SMS_CODE;
 
     protected const LENGTH_ERROR_MESSAGE = 'You need to enter exactly 6 characters';
 
     protected const VALIDATION_NOT_BLANK_MESSAGE = 'validation.not_blank';
+
+    protected const GLOSSARY_SMS_CODE = 'page.checkout.summary.sms_code';
 
     /**
      * Builds the form.
@@ -66,7 +68,7 @@ class SummaryForm extends SprykerSummaryForm
     protected function addSmsCodeField(FormBuilderInterface $builder, array $options)
     {
         $builder->add(static::FIELD_SMS_CODE, TextType::class, [
-            'label' => $options[static::OPTION_SMS_CODE],
+            'label' => static::GLOSSARY_SMS_CODE,
             'attr' => [
                 'maxlength' => 6,
             ],

@@ -57,6 +57,11 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
     protected $customerClient;
 
     /**
+     * @var bool
+     */
+    protected $shouldMakeRedirect;
+
+    /**
      * @param \Symfony\Component\Security\Http\HttpUtils $httpUtils
      * @param \Pyz\Client\Sso\SsoClientInterface $ssoClient
      * @param \Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface $authenticationSuccessHandler
@@ -78,6 +83,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
         $this->authenticationFailureHandler = $authenticationFailureHandler;
         $this->locale = $locale;
         $this->customerClient = $customerClient;
+        $this->shouldMakeRedirect = true;
     }
 
     /**
@@ -125,6 +131,7 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
         }
 
         if ($this->isAccessTokenAboutToExpire()) {
+            $this->shouldMakeRedirect = false;
             $ssoAccessTokenTransfer = $this->refreshAccessToken();
 
             if (!$ssoAccessTokenTransfer->getIdToken()) {
@@ -185,7 +192,11 @@ class SsoAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        return $this->authenticationSuccessHandler->onAuthenticationSuccess($request, $token);
+        if ($this->shouldMakeRedirect) {
+            return $this->authenticationSuccessHandler->onAuthenticationSuccess($request, $token);
+        }
+
+        return null;
     }
 
     /**

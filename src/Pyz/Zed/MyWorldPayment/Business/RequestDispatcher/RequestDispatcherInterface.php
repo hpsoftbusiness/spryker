@@ -29,6 +29,13 @@ interface RequestDispatcherInterface
     public function dispatchSendSmsCodeToCustomer(MyWorldApiRequestTransfer $apiRequestTransfer): MyWorldApiResponseTransfer;
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
+     */
+    public function dispatchSmsCodeRequestToCustomerByQuote(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer;
+
+    /**
      * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $apiRequestTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer

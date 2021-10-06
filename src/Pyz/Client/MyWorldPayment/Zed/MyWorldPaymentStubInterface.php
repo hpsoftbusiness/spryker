@@ -22,11 +22,11 @@ interface MyWorldPaymentStubInterface
     public function createPaymentSession(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer;
 
     /**
-     * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
-    public function sendSmsCodeToCustomer(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer;
+    public function sendSmsCodeToCustomerByQuote(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer;
 
     /**
      * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
