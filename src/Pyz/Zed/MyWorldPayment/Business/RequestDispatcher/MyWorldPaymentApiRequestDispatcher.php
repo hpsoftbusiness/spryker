@@ -77,6 +77,20 @@ class MyWorldPaymentApiRequestDispatcher implements RequestDispatcherInterface
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
+     */
+    public function dispatchSmsCodeRequestToCustomerByQuote(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer
+    {
+        $requestTransfer = $this->apiTransferGenerator->createPerformGenerateSmsCodeRequest($quoteTransfer);
+        $responseTransfer = $this->myWorldPaymentApiFacade->performGenerateSmsCodeApiCall($requestTransfer);
+        $this->paymentApiLog->save($requestTransfer, $responseTransfer);
+
+        return $responseTransfer;
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $apiRequestTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer

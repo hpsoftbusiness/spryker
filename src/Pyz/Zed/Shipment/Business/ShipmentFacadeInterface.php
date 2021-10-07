@@ -16,7 +16,7 @@ use Spryker\Zed\Shipment\Business\ShipmentFacadeInterface as SprykerShipmentFaca
 interface ShipmentFacadeInterface extends SprykerShipmentFacadeInterface
 {
     /**
-     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer|null
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
      */
-    public function getDefaultShipmentMethod(): ?ShipmentMethodTransfer;
+    public function createDefaultShipmentMethodTransfer(): ShipmentMethodTransfer;
 }

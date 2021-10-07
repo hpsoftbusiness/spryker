@@ -29,13 +29,13 @@ class GatewayController extends AbstractGatewayController
     }
 
     /**
-     * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
-    public function sendSmsCodeToCustomerAction(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer
+    public function sendSmsCodeToCustomerByQuoteAction(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer
     {
-        return $this->getFacade()->sendSmsCodeToCustomer($myWorldApiRequestTransfer);
+        return $this->getFacade()->sendSmsCodeToCustomerByQuote($quoteTransfer);
     }
 
     /**

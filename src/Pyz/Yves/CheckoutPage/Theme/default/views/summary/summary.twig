@@ -3,6 +3,7 @@
 
 {% define data = {
     payment: _view.quoteTransfer.payment,
+    smsCodeFieldName: _view.smsCodeFieldName,
 } %}
 
 {% block content %}
@@ -141,6 +142,7 @@
                     overview: data.overview,
                     cart: data.cart,
                     acceptTermsFieldName: data.acceptTermsFieldName,
+                    smsCodeFieldName: data.smsCodeFieldName,
                 },
             } only %}
                 {% block field %}
@@ -155,6 +157,19 @@
                                 'target-class-name': config.jsName ~ '__submit-button',
                             },
                         }) }}
+                    {% elseif fieldName == embed.smsCodeFieldName %}
+
+                        {{ parent() }}
+{#                      TODO in case of turn Email notification enter URL in JS also#}
+                        {% include molecule('summary-sms-modal', 'CheckoutPage') with {
+                            data: {
+                                isSmsEnabled: true,
+                                phoneNumber: embed.cart.billingAddress.phone,
+                                isEmailEnabled: false,
+                                email: embed.cart.customer.email,
+                            },
+                        } only %}
+
                     {% else %}
                         {{ parent() }}
                     {% endif %}

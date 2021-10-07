@@ -8,21 +8,67 @@
 namespace Pyz\Zed\Shipment\Business\ShipmentMethod;
 
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
-use Pyz\Shared\Shipment\ShipmentConfig;
+use Pyz\Zed\Shipment\Persistence\ShipmentRepositoryInterface;
 use Spryker\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodReader as SprykerShipmentMethodReader;
+use Spryker\Zed\Shipment\Dependency\Facade\ShipmentToCurrencyInterface;
+use Spryker\Zed\Shipment\Dependency\Facade\ShipmentToStoreInterface;
 
 /**
  * Class ShipmentMethodReader
  *
  * @package Pyz\Zed\Shipment\Business\ShipmentMethod
+ *
+ * @property \Pyz\Zed\Shipment\Persistence\ShipmentRepositoryInterface $shipmentRepository
  */
 class ShipmentMethodReader extends SprykerShipmentMethodReader implements ShipmentMethodReaderInterface
 {
+    /**
+     * @var \Spryker\Zed\Shipment\Dependency\Facade\ShipmentToStoreInterface
+     */
+    protected $storeFacade;
+
+    /**
+     * @param \Pyz\Zed\Shipment\Persistence\ShipmentRepositoryInterface $shipmentRepository
+     * @param \Spryker\Zed\Shipment\Dependency\Facade\ShipmentToCurrencyInterface $currencyFacade
+     * @param \Spryker\Zed\Shipment\Dependency\Facade\ShipmentToStoreInterface $storeFacade
+     */
+    public function __construct(
+        ShipmentRepositoryInterface $shipmentRepository,
+        ShipmentToCurrencyInterface $currencyFacade,
+        ShipmentToStoreInterface $storeFacade
+    ) {
+        parent::__construct($shipmentRepository, $currencyFacade);
+        $this->storeFacade = $storeFacade;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
+     */
+    public function fetchDefaultOrFirstAvailableShipmentMethod(): ShipmentMethodTransfer
+    {
+        return $this->getDefaultShipmentMethod()
+            ?: $this->getFirstAvailableShipmentMethod()
+            ?: new ShipmentMethodTransfer();
+    }
+
     /**
      * @return \Generated\Shared\Transfer\ShipmentMethodTransfer|null
      */
     public function getDefaultShipmentMethod(): ?ShipmentMethodTransfer
     {
-        return $this->findShipmentMethodById(ShipmentConfig::DEFAULT_SHIPMENT_METHOD_ID);
+        $storeId = $this->storeFacade->getCurrentStore()->getIdStore();
+
+        return $this->shipmentRepository->getDefaultShipmentMethodByStoreId($storeId);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer|null
+     */
+    public function getFirstAvailableShipmentMethod(): ?ShipmentMethodTransfer
+    {
+        $storeId = $this->storeFacade->getCurrentStore()->getIdStore();
+        $methods = $this->shipmentRepository->getActiveShipmentMethodsForStore($storeId);
+
+        return current($methods);
     }
 }

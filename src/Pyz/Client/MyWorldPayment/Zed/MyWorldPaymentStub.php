@@ -45,15 +45,15 @@ class MyWorldPaymentStub extends ZedRequestStub implements MyWorldPaymentStubInt
     }
 
     /**
-     * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
-    public function sendSmsCodeToCustomer(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer
+    public function sendSmsCodeToCustomerByQuote(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer
     {
         return (new MyWorldApiResponseTransfer())
             ->fromArray(
-                $this->zedStub->call('/my-world-payment/gateway/send-sms-code-to-customer', $myWorldApiRequestTransfer)->toArray()
+                $this->zedStub->call('/my-world-payment/gateway/send-sms-code-to-customer-by-quote', $quoteTransfer)->toArray()
             );
     }
 

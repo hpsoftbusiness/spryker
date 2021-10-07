@@ -38,13 +38,13 @@ class MyWorldPaymentClient extends AbstractClient implements MyWorldPaymentClien
     }
 
     /**
-     * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
      */
-    public function sendSmsCodeToCustomer(MyWorldApiRequestTransfer $myWorldApiRequestTransfer): MyWorldApiResponseTransfer
+    public function sendSmsCodeToCustomerByQuote(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer
     {
-        return $this->getZedStub()->sendSmsCodeToCustomer($myWorldApiRequestTransfer);
+        return $this->getZedStub()->sendSmsCodeToCustomerByQuote($quoteTransfer);
     }
 
     /**

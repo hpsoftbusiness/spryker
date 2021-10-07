@@ -194,7 +194,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
             new RouterApplicationPlugin(),
-            new TranslatorApplicationPlugin(),
             new HttpApplicationPlugin(),
             new SessionApplicationPlugin(),
             new SecurityApplicationPlugin(),
