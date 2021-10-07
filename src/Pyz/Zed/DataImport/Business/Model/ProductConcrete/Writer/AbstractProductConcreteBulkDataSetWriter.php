@@ -180,14 +180,12 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
             $localizedAttributeArray = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER]->modifiedToArray();
 
             $localizedAttributeArray[ProductConcreteHydratorStep::KEY_SKU] = $concreteSku;
-            $localizedAttributeArray[self::COLUMN_NAME] = $this->dataFormatter->replaceDoubleQuotes(
-                $localizedAttributeArray[self::COLUMN_NAME]
-            );
-            $localizedAttributeArray[self::COLUMN_DESCRIPTION] = str_replace(
+            $localizedAttributeArray[self::COLUMN_NAME] = str_replace(',', '', $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[self::COLUMN_NAME]));
+            $localizedAttributeArray[self::COLUMN_DESCRIPTION] = str_replace(',', '', str_replace(
                 '"',
                 '',
                 $localizedAttributeArray[self::COLUMN_DESCRIPTION]
-            );
+            ));
 
             $concreteSku = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_SKU];
             $idLocale = $localizedAttributeArray[ProductConcreteHydratorStep::KEY_FK_LOCALE];
