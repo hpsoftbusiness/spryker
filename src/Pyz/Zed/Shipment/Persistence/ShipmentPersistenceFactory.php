@@ -7,8 +7,12 @@
 
 namespace Pyz\Zed\Shipment\Persistence;
 
+use Orm\Zed\Shipment\Persistence\PyzShipmentDefaultMethodQuery;
 use Pyz\Zed\Shipment\Persistence\Propel\Mapper\ShipmentMapper as PyzShipmentMapper;
+use Pyz\Zed\Shipment\Persistence\Propel\Mapper\ShipmentMethodMapper;
+use Pyz\Zed\Shipment\Persistence\Propel\Mapper\StoreRelationMapper;
 use Spryker\Zed\Shipment\Persistence\Propel\Mapper\ShipmentMapper;
+use Spryker\Zed\Shipment\Persistence\Propel\Mapper\ShipmentMethodMapperInterface;
 use Spryker\Zed\Shipment\Persistence\ShipmentPersistenceFactory as SprykerShipmentPersistenceFactory;
 
 /**
@@ -25,5 +29,29 @@ class ShipmentPersistenceFactory extends SprykerShipmentPersistenceFactory
     public function createShipmentMapper(): ShipmentMapper
     {
         return new PyzShipmentMapper();
+    }
+
+    /**
+     * @return \Orm\Zed\Shipment\Persistence\PyzShipmentDefaultMethodQuery
+     */
+    public function createShipmentDefaultMethodQuery(): PyzShipmentDefaultMethodQuery
+    {
+        return PyzShipmentDefaultMethodQuery::create();
+    }
+
+    /**
+     * @return \Pyz\Zed\Shipment\Persistence\Propel\Mapper\StoreRelationMapper
+     */
+    public function createPyzStoreRelationMapper(): StoreRelationMapper
+    {
+        return new StoreRelationMapper();
+    }
+
+    /**
+     * @return \Spryker\Zed\Shipment\Persistence\Propel\Mapper\ShipmentMethodMapperInterface
+     */
+    public function createShipmentMethodMapper(): ShipmentMethodMapperInterface
+    {
+        return new ShipmentMethodMapper($this->createPyzStoreRelationMapper());
     }
 }

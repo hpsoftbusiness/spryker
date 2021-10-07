@@ -16,12 +16,12 @@ use Spryker\Zed\Shipment\Business\ShipmentFacade as SprykerShipmentFacade;
 class ShipmentFacade extends SprykerShipmentFacade implements ShipmentFacadeInterface
 {
     /**
-     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer|null
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
      */
-    public function getDefaultShipmentMethod(): ?ShipmentMethodTransfer
+    public function createDefaultShipmentMethodTransfer(): ShipmentMethodTransfer
     {
         return $this->getFactory()
             ->createShipmentMethodReader()
-            ->getDefaultShipmentMethod();
+            ->fetchDefaultOrFirstAvailableShipmentMethod();
     }
 }

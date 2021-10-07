@@ -13,8 +13,6 @@ use SprykerShop\Yves\CheckoutPage\Form\DataProvider\SummaryFormDataProvider as S
 
 class SummaryFormDataProvider extends SprykerSummaryFormDataProvider
 {
-    protected const GLOSSARY_SMS_CODE = 'page.checkout.summary.sms_code';
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -37,7 +35,7 @@ class SummaryFormDataProvider extends SprykerSummaryFormDataProvider
 
         if ($quoteTransfer->getMyWorldPaymentSessionId(
         ) && $quoteTransfer->getMyWorldPaymentIsSmsAuthenticationRequired()) {
-            $options[SummaryForm::OPTION_SMS_CODE] = self::GLOSSARY_SMS_CODE;
+            $options[SummaryForm::OPTION_SMS_CODE] = true;
         }
 
         return $options;

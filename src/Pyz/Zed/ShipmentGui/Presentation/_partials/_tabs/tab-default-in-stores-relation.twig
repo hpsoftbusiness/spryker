@@ -1,0 +1,5 @@
+{% if shipmentMethodForm.defaultInStoresRelation is defined %}
+    {{ form_row(shipmentMethodForm.defaultInStoresRelation.id_stores, { 'label': 'Default in the following store(s)' | trans }) }}
+{% endif %}
+
+{{ form_rest(shipmentMethodForm.defaultInStoresRelation) }}

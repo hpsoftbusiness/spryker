@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Client\ProductAttribute;
+namespace Pyz\Zed\ProductAttributeStorage\Persistence;
 
 use Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer;
 
-interface ProductAttributeClientInterface
+interface ProductAttributeStorageEntityManagerInterface
 {
     /**
      * Get keys to Shown On Pdp
@@ -18,9 +18,9 @@ interface ProductAttributeClientInterface
      *
      * @param \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
      *
-     * @return \Generated\Shared\Transfer\ProductAttributeKeysCollectionTransfer
+     * @return void
      */
-    public function getKeysToShowOnPdp(
+    public function storeAttributeVisibilityData(
         ProductAttributeKeysCollectionTransfer $productAttributeKeysCollectionTransfer
-    ): ProductAttributeKeysCollectionTransfer;
+    ): void;
 }

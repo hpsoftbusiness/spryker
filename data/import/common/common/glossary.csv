@@ -4829,6 +4829,20 @@ checkout.summary.item.bundle.description,Items in the bundle:,en_US
 checkout.summary.item.option.description,Product options:,en_US
 checkout.thank.you,Thank you,en_US
 checkout.this.is.shop,This is a shop,en_US
+checkout.step.summary.modal.link,Did not receive a Code?,en_US
+checkout.step.summary.modal.title,Did not receive a pin code?,en_US
+checkout.step.summary.modal.info,How would you like to receive your PIN Code?,en_US
+checkout.step.summary.modal.phone,Number:,en_US
+checkout.step.summary.modal.email,Email:,en_US
+checkout.step.summary.modal.email_radio_label,Generate new verification Code sent via eMail,en_US
+checkout.step.summary.modal.sms_radio_label,Generate new verification Code sent via SMS,en_US
+checkout.step.summary.modal.submit,Send PIN Code,en_US
+checkout.step.summary.modal.resend_already_by_mail,"Code was sent via E-Mail, please check also your SPAM folder.",en_US
+checkout.step.summary.modal.resend_already_by_sms,"Code was sent via SMS, please check.",en_US
+checkout.step.summary.modal.resend_retry,"You can try to send again within:",en_US
+checkout.step.summary.modal.error_when_resending_by_sms,"There is an error while trying to send the code via SMS, please try again later.",en_US
+checkout.step.summary.modal.please_wait_30_seconds,"Please wait 30 seconds to request a new code.",en_US
+checkout.step.summary.modal.error_session_expired,"Your payment session has expired, please return to the payment step.",en_US
 cms.page.filter.per,Per Page,en_US
 cms.page.itemsFound,Items found,en_US
 cms.page.sort.name_asc,Sort by name ascending,en_US
@@ -6386,6 +6400,20 @@ checkout.summary.item.bundle.description,Produkte in diesem Bündel:,de_DE
 checkout.summary.item.option.description,Produktoptionen:,de_DE
 checkout.thank.you,Vielen Dank,de_DE
 checkout.this.is.shop,Das ist ein Shop,de_DE
+checkout.step.summary.modal.link,Sie haben keinen Code erhalten?,de_DE
+checkout.step.summary.modal.title,Sie haben keinen PIN-Code erhalten?,de_DE
+checkout.step.summary.modal.info,Wie möchten Sie Ihren PIN-Code erhalten?,de_DE
+checkout.step.summary.modal.phone,Nummer:,de_DE
+checkout.step.summary.modal.email,Email:,de_DE
+checkout.step.summary.modal.email_radio_label,Generieren Sie einen neuen Verifizierungscode der per eMail gesendet wird,de_DE
+checkout.step.summary.modal.sms_radio_label,Generieren Sie einen neuen Bestätigungscode der per SMS gesendet wird,de_DE
+checkout.step.summary.modal.submit,PIN-Code senden,de_DE
+checkout.step.summary.modal.resend_already_by_mail,"Code wurde per E-Mail verschickt, bitte überprüfen Sie auch Ihren SPAM-Ordner.",de_DE
+checkout.step.summary.modal.resend_already_by_sms,"Code wurde per SMS verschickt, bitte überprüfen Sie auch Ihren SPAM-Ordner.",de_DE
+checkout.step.summary.modal.resend_retry,"Sie können versuchen, innerhalb von:",de_DE
+checkout.step.summary.modal.error_when_resending_by_sms,"Beim Versuch, den Code per SMS zu senden, ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",de_DE
+checkout.step.summary.modal.please_wait_30_seconds,"Bitte warten Sie 30 Sekunden, um einen neuen Code anzufordern.",de_DE
+checkout.step.summary.modal.error_session_expired,"Ihr Zahlungsvorgang ist abgelaufen, bitte kehren Sie zum Zahlungsschritt zurück.",de_DE
 cms.page.filter.per,Pro Seite,de_DE
 cms.page.itemsFound,Artikel gefunden,de_DE
 cms.page.sort.name_asc,Nach Name aufsteigend sortieren,de_DE

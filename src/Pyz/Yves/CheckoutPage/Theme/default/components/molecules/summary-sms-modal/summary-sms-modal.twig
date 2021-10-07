@@ -1,0 +1,74 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'summary-sms-modal',
+    tag: 'summary-sms-modal',
+} %}
+
+{% define data = {
+    isSmsEnabled: required,
+    isEmailEnabled: required,
+    phoneNumber: required,
+    email: required,
+} %}
+
+{% block body %}
+    {% set isSmsEnabled = data.smsUrl | default (true) %}
+    {% set isEmailEnabled = data.isEmailEnabled | default (false) %}
+    {% set phoneNumber = data.phoneNumber %}
+    {% set email = data.email %}
+    <input type="checkbox" id="modal">
+    <label for="modal" class="col col--sm-12">
+         <span id="notification_already_sent_by_email"
+               class="{{ config.name }}__hidden">{{ 'checkout.step.summary.modal.resend_already_by_mail' | trans }}
+        </span>
+        <span id="notification_already_sent_by_sms" class="{{ config.name }}__hidden">
+            {{ 'checkout.step.summary.modal.resend_already_by_sms' | trans }}
+        </span>
+        <span class="{{ config.name }}__hidden" id="modal_timer">
+            {{ 'checkout.step.summary.modal.resend_retry' | trans }}
+                <span id="modal_timer_counter">30</span>
+            </span>
+        <span class="{{ config.name }}__link">
+            {{ 'checkout.step.summary.modal.link' | trans }}
+        </span>
+    </label>
+    <label for="modal" class="{{ config.name }}__background {{ config.name }}__hidden"></label>
+    <div class="{{ config.name }}__modal  {{ config.name }}__hidden">
+        <div class="{{ config.name }}__modal-container">
+            <div class="{{ config.name }}__modal-header">
+                <h3>{{ 'checkout.step.summary.modal.link' | trans }}</h3>
+                <label for="modal" class="{{ config.name }}__icon_close">
+                    {% include atom('icon') with {
+                        class: config.name ~ '__icon-close',
+                        data: {
+                            name: 'close'
+                        }
+                    } only %}
+                </label>
+            </div>
+            <p class="{{ config.name }}__info">{{ 'checkout.step.summary.modal.info' | trans }}</p>
+            <div class="{{ config.name }}__options">
+                <input type="radio" name="resendPin" value="resendPinBySms"
+                       class="{{ config.name }}__radio"
+                       {% if not isSmsEnabled %}disabled{% endif %}>
+                <label class="{{ config.name }}__modal-radio-label"
+                       for="resendPinBySms">{{ 'checkout.step.summary.modal.sms_radio_label' | trans }}</label>
+                <p class="{{ config.name }}__customer-data">{{ 'checkout.step.summary.modal.phone' | trans }}
+                    &nbsp;{{ phoneNumber }}</p>
+            </div>
+            <div class="{{ config.name }}__options">
+                <input type="radio" name="resendPin" value="resendPinByEmail"
+                       class="{{ config.name }}__radio"
+                       {% if not isEmailEnabled %}disabled{% endif %}>
+                <label class="{{ config.name }}__modal-radio-label"
+                       for="resendPinByEmail">{{ 'checkout.step.summary.modal.email_radio_label' | trans }}
+                </label>
+                <p class="{{ config.name }}__customer-data">{{ 'checkout.step.summary.modal.email' | trans }}
+                    &nbsp;{{ email }}</p>
+            </div>
+            <input type="button" id="resendPinSubmit" class="{{ config.name }}__button" value="Send PIN Code">
+        </div>
+    </div>
+
+{% endblock %}

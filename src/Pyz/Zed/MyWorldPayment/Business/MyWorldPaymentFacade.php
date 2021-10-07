@@ -49,6 +49,18 @@ class MyWorldPaymentFacade extends AbstractFacade implements MyWorldPaymentFacad
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer
+     */
+    public function sendSmsCodeToCustomerByQuote(QuoteTransfer $quoteTransfer): MyWorldApiResponseTransfer
+    {
+        return $this->getFactory()
+            ->createMyWorldPaymentApiRequestDispatcher()
+            ->dispatchSmsCodeRequestToCustomerByQuote($quoteTransfer);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\MyWorldApiRequestTransfer $myWorldApiRequestTransfer
      *
      * @return \Generated\Shared\Transfer\MyWorldApiResponseTransfer

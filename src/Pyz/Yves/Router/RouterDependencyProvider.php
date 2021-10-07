@@ -12,6 +12,7 @@ use Pyz\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Pyz\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
+use Pyz\Yves\MyWorldPayment\Plugin\Router\MyWorldPaymentRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\SslPostAddRouteManipulatorPlugin;
@@ -110,6 +111,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new OrderCancelWidgetRouteProviderPlugin(),
             new AdyenRouteProviderPlugin(),
             new CalculationRouteProviderPlugin(),
+            new MyWorldPaymentRouteProviderPlugin(),
         ];
     }
 

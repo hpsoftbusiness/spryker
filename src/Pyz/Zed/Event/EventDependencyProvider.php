@@ -9,6 +9,7 @@ namespace Pyz\Zed\Event;
 
 use Pyz\Zed\CustomerGroupStorage\Communication\Plugin\Event\Subscriber\CustomerGroupStorageEventSubscriber;
 use Pyz\Zed\ProductAbstractAttribute\Communication\Plugin\Event\Subscriber\ProductAbstractAttributeEventSubscriber;
+use Pyz\Zed\ProductAttributeStorage\Communication\Plugin\Event\Subscriber\ProductManagementAttributeVisibilityStorageEventSubscriber;
 use Pyz\Zed\ProductStorage\Communication\Plugin\Event\Subscriber\ProductStorageEventSubscriber;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
@@ -121,6 +122,8 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new CustomerGroupStorageEventSubscriber());
 
         $eventSubscriberCollection->add(new ProductAbstractAttributeEventSubscriber());
+
+        $eventSubscriberCollection->add(new ProductManagementAttributeVisibilityStorageEventSubscriber());
 
         /**
          * Search Events

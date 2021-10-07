@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Yves\CheckoutPage\Form\Steps\SummaryForm;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
@@ -102,6 +103,7 @@ class SummaryStep extends SprykerSummaryStep
     {
         $viewData = parent::getTemplateVariables($quoteTransfer);
         $viewData['showCashbackPoints'] = !$this->hasBenefitDealsApplied($quoteTransfer);
+        $viewData['smsCodeFieldName'] = SummaryForm::FIELD_SMS_CODE;
 
         return $viewData;
     }
