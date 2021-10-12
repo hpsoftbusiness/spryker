@@ -45,23 +45,6 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 
-/* Oms */
-$jobs[] = [
-    'name' => 'check-oms-conditions',
-    'command' => '$PHP_BIN vendor/bin/console oms:check-condition',
-    'schedule' => '* * * * *',
-    'enable' => true,
-    'stores' => $allStores,
-];
-
-$jobs[] = [
-    'name' => 'check-oms-timeouts',
-    'command' => '$PHP_BIN vendor/bin/console oms:check-timeout',
-    'schedule' => '* * * * *',
-    'enable' => true,
-    'stores' => $allStores,
-];
-
 $jobs[] = [
     'name' => 'clear-oms-locks',
     'command' => '$PHP_BIN vendor/bin/console oms:clear-locks',
@@ -172,3 +155,22 @@ $jobs[] = [
     'enable' => true,
     'stores' => $allStores,
 ];
+
+foreach ($allStores as $store) {
+    /* Oms */
+    $jobs[] = [
+        'name' => 'check-oms-conditions',
+        'command' => '$PHP_BIN vendor/bin/console oms:check-condition --store-name=' . $store,
+        'schedule' => '* * * * *',
+        'enable' => true,
+        'stores' => $store,
+    ];
+
+    $jobs[] = [
+        'name' => 'check-oms-timeouts',
+        'command' => '$PHP_BIN vendor/bin/console oms:check-timeout --store-name=' . $store,
+        'schedule' => '* * * * *',
+        'enable' => true,
+        'stores' => $store,
+    ];
+}

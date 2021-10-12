@@ -77,7 +77,7 @@ gender,text,yes,no,"Male, Female",Gender,"Male, Female",Geschlecht,Geschlecht,"M
 featured_products,checkbox,no,no,1,Featured products,,Ausgewählte Produkte,Ausgewählte Produkte,,
 benefit_store_sales_price,text,yes,no,"",Benefit Store Sales Price,,Benefit Store Sales Price,Benefit Store Sales Price,,
 benefit_amount,number,yes,no,,Benefit Amount,,Benefit Store,Benefit Store,,
-benefit_store,text,yes,no,,Benefit Store ,,Benefit Store ,Benefit Store ,,
+benefit_store,checkbox,yes,no,,Benefit Store ,,Benefit Store ,Benefit Store ,,
 shopping_point_store,checkbox,yes,no,"",shopping_point_store,,shopping_point_store,shopping_point_store,,
 product_sp_amount,text,yes,no,"",product_sp_amount,,product_sp_amount,product_sp_amount,,
 office_dealer_id,text,yes,no,"",office_dealer_id,,office_dealer_id,office_dealer_id,,
