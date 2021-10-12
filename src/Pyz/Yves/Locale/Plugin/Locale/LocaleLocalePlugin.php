@@ -25,60 +25,11 @@ class LocaleLocalePlugin extends SprykerLocaleLocalePlugin
     private $request;
 
     /**
-     * @return string
-     */
-    protected function getLocaleName(): string
-    {
-        $currentLocale = $this->getClient()->getCurrentLocale();
-        $store = $this->getFactory()->getStore()->getStoreName();
-        $locales = $this->getConfig()->getLocalsByStore($store);
-        $requestUri = $this->getRequestUri();
-        $headerLanguage = $this->extractRequestHeaderLocaleCode();
-        if ($headerLanguage) {
-            $this->getContainer()->set(self::HEADER_ACCEPT_LANGUAGE, $headerLanguage);
-        }
-
-        if ($requestUri) {
-            $localeCode = $this->extractLocaleCode($requestUri);
-            if ($localeCode !== false && isset($locales[$localeCode])) {
-                return $locales[$localeCode];
-            }
-        }
-//         TODO:: uncomment and fix
-//        $customerCountryLocale = $this->getCustomerCountryLocale();
-//        if ($customerCountryLocale) {
-//            return $customerCountryLocale;
-//        }
-
-        return $locales[$headerLanguage] ?? $currentLocale;
-    }
-
-    /**
      * @return string|null
      */
     protected function getRequestUri(): ?string
     {
         return $this->getRequest()->server->get(static::REQUEST_URI);
-    }
-
-    /**
-     * @return string|null
-     */
-    private function extractRequestHeaderLocaleCode(): ?string
-    {
-        $acceptLanguage = (string)$this->getRequest()->headers->get(self::HEADER_ACCEPT_LANGUAGE, '');
-
-        return $this->negotiateLanguage($acceptLanguage);
-    }
-
-    /**
-     * @param string $acceptLanguage
-     *
-     * @return string|null
-     */
-    private function negotiateLanguage(string $acceptLanguage): ?string
-    {
-        return $this->getFactory()->createLanguageNegotiationHandler()->getLanguageIsoCode($acceptLanguage);
     }
 
     /**
@@ -92,46 +43,4 @@ class LocaleLocalePlugin extends SprykerLocaleLocalePlugin
 
         return $this->request;
     }
-
-//    /**
-//     * @return string|null
-//     */
-//    private function getCustomerCountryLocale(): ?string
-//    {
-//        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-//        if (!$customerTransfer || !$customerTransfer->getCountryId()) {
-//            return null;
-//        }
-//
-//        $countryCode = $customerTransfer->getCountryId();
-//        if (!$this->isCountrySupported($countryCode)) {
-//            return null;
-//        }
-//
-//        return $this->getLocaleByCountryCode($countryCode);
-//    }
-//
-//    /**
-//     * @param string $countryCode
-//     *
-//     * @return bool
-//     */
-//    private function isCountrySupported(string $countryCode): bool
-//    {
-//        $storeCountries = $this->getFactory()->getStore()->getCountries();
-//
-//        return in_array(strtoupper($countryCode), $storeCountries);
-//    }
-//
-//    /**
-//     * @param string $countryCode
-//     *
-//     * @return string|null
-//     */
-//    private function getLocaleByCountryCode(string $countryCode): ?string
-//    {
-//        $countryToLocaleRelations = $this->getConfig()->getCountryToLocaleRelations();
-//
-//        return $countryToLocaleRelations[strtoupper($countryCode)] ?? null;
-//    }
 }
