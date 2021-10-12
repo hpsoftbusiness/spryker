@@ -10,7 +10,6 @@ namespace Pyz\Glue\ProductFeedRestApi\Processor\Reader\ReaderExpander;
 
 use Spryker\Client\ProductCategoryStorage\ProductCategoryStorageClientInterface;
 use Spryker\Shared\Kernel\Store;
-use function Functional\last;
 
 class CategoryExpanderPlugin implements ReaderExpanderInterface
 {
@@ -62,8 +61,8 @@ class CategoryExpanderPlugin implements ReaderExpanderInterface
         foreach ($catalogSearchResult[self::PRODUCTS] as &$singleProductResult) {
             $id = $singleProductResult['id_product_abstract'];
             /** @var \Generated\Shared\Transfer\ProductCategoryStorageTransfer $lastCategory */
-            $lastCategory = last($productAbstractCategories[$id]);
-            $singleProductResult['category'] = $lastCategory->getName();
+            $lastCategory = end($productAbstractCategories[$id]);
+            $singleProductResult['category'] = $lastCategory ? $lastCategory->getName() : null;
         }
 
         return $catalogSearchResult;
