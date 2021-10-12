@@ -62,7 +62,7 @@ class CategoryExpanderPlugin implements ReaderExpanderInterface
             $id = $singleProductResult['id_product_abstract'];
             /** @var \Generated\Shared\Transfer\ProductCategoryStorageTransfer $lastCategory */
             $lastCategory = end($productAbstractCategories[$id]);
-            $singleProductResult['category'] = $lastCategory ? $lastCategory->getName() : null;
+            $singleProductResult['category'] = $lastCategory->getName();
         }
 
         return $catalogSearchResult;
