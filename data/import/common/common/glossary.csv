@@ -20268,3 +20268,55 @@ oms.state.turnover-creation-failed,Wysłane,pl_PL
 oms.state.waiting-for-tracking-number,W trakcie,pl_PL
 product.filter.deal,Deal,en_US
 product.filter.deal,Deal,de_DE
+checkout.step.summary.modal.resend_already_by_mail,"Kod został wysłany e-mailem, sprawdź również folder SPAM.",pl_PL
+checkout.step.summary.modal.resend_already_by_sms,"Kod został wysłany SMS-em, sprawdź.",pl_PL
+checkout.step.summary.modal.resend_retry,Możesz spróbować wysłać ponownie poprzez:,pl_PL
+checkout.step.summary.modal.link,Nie otrzymałeś kodu?,pl_PL
+checkout.step.summary.modal.info,Jak chcesz otrzymać kod PIN?,pl_PL
+checkout.step.summary.modal.sms_radio_label,Wygeneruj nowy kod weryfikacyjny wysłany SMS-em,pl_PL
+checkout.step.summary.modal.phone,Numer:,pl_PL
+checkout.step.summary.modal.email_radio_label,Wygeneruj nowy kod weryfikacyjny wysłany e-mailem,pl_PL
+checkout.step.summary.modal.email,E-mail:,pl_PL
+checkout.step.summary.modal.please_wait_30_seconds,"Poczekaj 30 sekund, aby poprosić o nowy kod.",pl_PL
+checkout.step.summary.modal.error_session_expired,"Twoja sesja płatności wygasła, wróć do kroku płatności.",pl_PL
+checkout.step.summary.modal.error_when_resending_by_sms,"Wystąpił błąd podczas próby wysłania kodu SMS-em, spróbuj ponownie później.",pl_PL
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Niestety nie masz wystarczającej ilości SP, aby kupić ten produkt ze zniżką.",pl_PL
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Niestety, nie masz wystarczającej ilości BV, aby kupić ten produkt ze zniżką. Potrzebna kwota: %currency% %needAmount%, Twoje saldo: %currency% %balanceAmount%",pl_PL
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Drogi Kliencie, musisz wydać co najmniej %needAmount% %currency% ze swojego salda Benefit Vouchera, aby otrzymać produkt w ramach Benefit Voucher Deal.",pl_PL
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,Maksymalna kwota powinna wynosić %maxAmount% %currency% (maksymalna kwota BV). Zweryfikuj.,pl_PL
+oms.state.failed,Błąd,pl_PL
+oms.state.myworld_payment_pending,Oczekująca płatność myWorld,pl_PL
+oms.state.my_world_refund_due_to_payment_failure,Zwrot do myWorld z powodu niepowodzenia płatności,pl_PL
+oms.state.my_world_refunded,Zwrot do myWorld,pl_PL
+oms.state.my_world_refund_failed,Zwrot do myWorld nie powiódł się,pl_PL
+oms.state.ready_for_refund,Gotowy do zwrotu,pl_PL
+oms.state.calculating_refund,Obliczanie zwrotu,pl_PL
+oms.state.processing_refund,Przetwarzanie zwrotu,pl_PL
+oms.state.validating_refund,Weryfikowanie zwrotu,pl_PL
+oms.state.refund_failed,Zwrot środków nie powiódł się,pl_PL
+oms.state.refund_pending_next_try,Oczekuje na zwrot przy kolejnej próbie,pl_PL
+oms.state.refund_pending,Oczekiwanie na zwrot środków,pl_PL
+oms.state.refunded,Zwrócono,pl_PL
+oms.state.reserved,Zarezerwowano,pl_PL
+oms.state.invoice-generated,Wygenerowano fakturę,pl_PL
+oms.state.turnover-cancelled,Anulowano obrót,pl_PL
+customer.balance.my_world_e_voucher,eVoucher,pl_PL
+customer.balance.my_world_cashback_account,Cashback,pl_PL
+customer.balance.my_world_benefit_voucher_account,Benefit Voucher,pl_PL
+customer.balance.my_world_shopping_points_account,Shopping Points,pl_PL
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,pl_PL
+checkout.step.benefit_deal.title,Przegląd zamówień,pl_PL
+cart.include.vat,wraz z VAT,pl_PL
+customer.balance.into,Masz:,pl_PL
+checkout.payment.myworld.payment_methods.title,myWorld ePayment,pl_PL
+checkout.payment.myworld.payment_methods.subtitle,Możesz wybrać jedną z następujących metod myWorld ePayment (opcjonalnie):,pl_PL
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,pl_PL
+checkout.payment.myworld.payment_methods.method.cashback,Cashback,pl_PL
+payment.payment_method.adyen_credit_card,Credit Card,pl_PL
+payment.payment_method.benefit_vouchers,Benefit Voucher,pl_PL
+payment.payment_provider.adyen,Adyen,pl_PL
+customer.order.priceToPay,Suma,pl_PL
+payment.payment_method.dummy_prepayment,Przedpłata,pl_PL
+discount.internal.shopping_points,Shopping Points,pl_PL
+payment.payment_method.paid,Płatny,pl_PL
+payment.payment_method.cashback,Cashback,pl_PL
