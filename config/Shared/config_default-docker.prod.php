@@ -102,7 +102,7 @@ $config[EventConstants::LOGGER_ACTIVE] = true;
 // ------------------------------ API -----------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY');
+$config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY') ?: '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
 
 if (!empty(getenv('SPRYKER_CLUSTER'))) {
     return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.prod.php');
