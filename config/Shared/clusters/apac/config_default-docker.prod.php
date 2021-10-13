@@ -3,8 +3,10 @@
 
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 
+$config[CountryConstants::CLUSTER_COUNTRIES] = ['MY', 'HK', 'AU', 'NZ', 'PH', 'TH', 'MO'];
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'MY' => 'en_US',
     'HK' => 'en_US',

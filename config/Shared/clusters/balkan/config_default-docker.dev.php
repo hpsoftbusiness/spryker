@@ -3,8 +3,10 @@
 
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 
+$config[CountryConstants::CLUSTER_COUNTRIES] = ['SI', 'HR', 'BA', 'RS', 'ME'];
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'SI' => 'sl_SI',
     'HR' => 'hr_HR',

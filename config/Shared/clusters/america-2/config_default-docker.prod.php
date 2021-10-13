@@ -3,8 +3,10 @@
 
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 
+$config[CountryConstants::CLUSTER_COUNTRIES] = ['CA', 'BR', 'CO', 'MX'];
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'CA' => 'fr_CA',
     'BR' => 'pt_BR',

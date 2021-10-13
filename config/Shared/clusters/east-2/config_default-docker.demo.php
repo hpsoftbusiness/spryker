@@ -3,9 +3,11 @@
 
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 
+$config[CountryConstants::CLUSTER_COUNTRIES] = ['HU', 'RO', 'MD'];
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'HU' => 'hu_HU',
     'RO' => 'ro_RO',

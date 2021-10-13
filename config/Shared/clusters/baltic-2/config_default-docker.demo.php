@@ -3,8 +3,10 @@
 
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 
+$config[CountryConstants::CLUSTER_COUNTRIES] = ['BY', 'UA', 'RU'];
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'BY' => 'be_BY',
     'UA' => 'uk_UA',

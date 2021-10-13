@@ -3,9 +3,11 @@
 
 
 use Pyz\Shared\Adyen\AdyenConstants;
+use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
 
+$config[CountryConstants::CLUSTER_COUNTRIES] = ['ES', 'PT'];
 $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'ES' => 'es_ES',
     'PT' => 'pt_PT',
