@@ -8,6 +8,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Glue\ProductFeedRestApi\Processor\Reader\ReaderExpander;
 
+use Generated\Shared\Transfer\ProductCategoryStorageTransfer;
 use Spryker\Client\ProductCategoryStorage\ProductCategoryStorageClientInterface;
 use Spryker\Shared\Kernel\Store;
 
@@ -60,9 +61,14 @@ class CategoryExpanderPlugin implements ReaderExpanderInterface
 
         foreach ($catalogSearchResult[self::PRODUCTS] as &$singleProductResult) {
             $id = $singleProductResult['id_product_abstract'];
-            /** @var \Generated\Shared\Transfer\ProductCategoryStorageTransfer $lastCategory */
-            $lastCategory = end($productAbstractCategories[$id]);
-            $singleProductResult['category'] = $lastCategory->getName();
+            /** @var \Generated\Shared\Transfer\ProductCategoryStorageTransfer|false $lastCategory */
+            $categories = $productAbstractCategories[$id] ?? [];
+            $lastCategory = end($categories);
+            if ($lastCategory instanceof ProductCategoryStorageTransfer) {
+                $singleProductResult['category'] = $lastCategory->getName() ?? '';
+            } else {
+                $singleProductResult['category'] = '';
+            }
         }
 
         return $catalogSearchResult;
