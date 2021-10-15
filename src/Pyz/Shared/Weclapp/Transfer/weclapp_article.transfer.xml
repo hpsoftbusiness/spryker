@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="WeclappArticle">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="applyCashDiscount" type="bool"/>
+        <property name="articleNumber" type="string"/>
+        <property name="articleType" type="string"/>
+        <property name="systemCode" type="string"/>
+        <property name="availableInSale" type="bool"/>
+        <property name="availableInShop" type="bool"/>
+        <property name="billOfMaterialPartDeliveryPossible" type="bool"/>
+        <property name="batchNumberRequired" type="bool"/>
+        <property name="name" type="string"/>
+        <property name="taxRateType" type="string"/>
+        <property name="unitName" type="string"/>
+        <property name="ean" type="string"/>
+        <property name="countryOfOriginCode" type="string"/>
+        <property name="manufacturerPartNumber" type="string"/>
+        <property name="manufacturerName" type="string"/>
+        <property name="articleLength" type="string"/>
+        <property name="articleWidth" type="string"/>
+        <property name="articleHeight" type="string"/>
+        <property name="articleNetWeight" type="string"/>
+        <property name="articleGrossWeight" type="string"/>
+        <property name="active" type="bool"/>
+        <property name="customsTariffNumber" type="string"/>
+        <property name="articleCategoryId" type="string"/>
+        <property name="procurementLeadDays" type="int"/>
+        <property name="productionArticle" type="bool"/>
+        <property name="serialNumberRequired" type="bool"/>
+        <property name="showOnDeliveryNote" type="bool"/>
+        <property name="useSalesBillOfMaterialItemPrices" type="bool"/>
+        <property name="useSalesBillOfMaterialItemPricesForPurchase" type="bool"/>
+        <property name="supplySources" type="WeclappArticleSupplySource[]" singular="supplySource"/>
+    </transfer>
+
+    <transfer name="WeclappArticleSupplySource">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="articleSupplySourceId" type="string"/>
+        <property name="createdDate" type="int"/>
+        <property name="lastModifiedDate" type="int"/>
+    </transfer>
+</transfers>

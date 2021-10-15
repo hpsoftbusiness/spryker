@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="WeclappCustomer">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="partyType" type="string"/>
+        <property name="personCompany" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="customerNumber" type="string"/>
+        <property name="email" type="string"/>
+        <property name="birthDate" type="int"/>
+        <property name="mobilePhone1" type="string"/>
+        <property name="referenceNumber" type="string"/>
+        <property name="optInPhone" type="bool"/>
+        <property name="optInSms" type="bool"/>
+        <property name="optIn" type="bool"/>
+        <property name="optInLetter" type="bool"/>
+        <property name="addresses" type="WeclappCustomerAddress[]" singular="address"/>
+        <property name="customAttributes" type="WeclappCustomerCustomAttribute[]" singular="customAttribute"/>
+        <property name="blocked" type="bool"/>
+        <property name="currencyId" type="string"/>
+        <property name="currencyName" type="string"/>
+        <property name="deliveryAddressId" type="string"/>
+        <property name="deliveryBlock" type="bool"/>
+        <property name="insolvent" type="bool"/>
+        <property name="insured" type="bool"/>
+        <property name="invoiceAddressId" type="string"/>
+        <property name="deliveryAddressId" type="string"/>
+        <property name="primaryAddressId" type="string"/>
+        <property name="responsibleUserFixed" type="bool"/>
+        <property name="responsibleUserId" type="string"/>
+        <property name="responsibleUserUsername" type="string"/>
+        <property name="salesChannel" type="string"/>
+        <property name="salesPartner" type="bool"/>
+        <property name="useCustomsTariffNumber" type="bool"/>
+        <property name="salutation" type="string"/>
+    </transfer>
+
+    <transfer name="WeclappCustomerAddress">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="countryCode" type="string"/>
+        <property name="city" type="string"/>
+        <property name="street1" type="string"/>
+        <property name="street2" type="string"/>
+        <property name="zipcode" type="string"/>
+        <property name="deliveryAddress" type="bool"/>
+        <property name="invoiceAddress" type="bool"/>
+        <property name="primeAddress" type="bool"/>
+    </transfer>
+
+    <transfer name="WeclappCustomerCustomAttribute">
+        <property name="attributeDefinitionId" type="string"/>
+        <property name="stringValue" type="string"/>
+    </transfer>
+</transfers>

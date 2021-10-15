@@ -19,6 +19,10 @@
         <property name="customerCountryId" type="string"/>
     </transfer>
 
+    <transfer name="CustomerCriteriaFilter">
+        <property name="idCustomers" type="int[]"/>
+    </transfer>
+
     <transfer name="Address">
         <property name="store" type="string"/>
     </transfer>

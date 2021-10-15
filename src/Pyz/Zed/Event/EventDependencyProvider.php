@@ -11,6 +11,15 @@ use Pyz\Zed\CustomerGroupStorage\Communication\Plugin\Event\Subscriber\CustomerG
 use Pyz\Zed\ProductAbstractAttribute\Communication\Plugin\Event\Subscriber\ProductAbstractAttributeEventSubscriber;
 use Pyz\Zed\ProductAttributeStorage\Communication\Plugin\Event\Subscriber\ProductManagementAttributeVisibilityStorageEventSubscriber;
 use Pyz\Zed\ProductStorage\Communication\Plugin\Event\Subscriber\ProductStorageEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappCategoryAttributeEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappCategoryEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappCategoryNodeEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappCustomerAddressEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappCustomerEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappProductCategoryEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappProductEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappProductLocalizedAttributesEventSubscriber;
+use Pyz\Zed\Weclapp\Communication\Plugin\Event\Subscriber\WeclappTaxRateEventSubscriber;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
 use Spryker\Zed\CategoryImageStorage\Communication\Plugin\Event\Subscriber\CategoryImageStorageEventSubscriber;
@@ -144,6 +153,19 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new MerchantProductOfferSearchEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
+
+        /**
+         * Weclapp events
+         */
+        $eventSubscriberCollection->add(new WeclappCustomerEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappCustomerAddressEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappCategoryEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappCategoryAttributeEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappCategoryNodeEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappTaxRateEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappProductEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappProductLocalizedAttributesEventSubscriber());
+        $eventSubscriberCollection->add(new WeclappProductCategoryEventSubscriber());
 
         return $eventSubscriberCollection;
     }

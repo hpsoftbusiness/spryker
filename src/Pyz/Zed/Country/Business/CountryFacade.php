@@ -7,12 +7,22 @@
 
 namespace Pyz\Zed\Country\Business;
 
+use Generated\Shared\Transfer\CountryTransfer;
 use Spryker\Zed\Country\Business\CountryFacade as SprykerCountryFacade;
 
 /**
  * @method \Spryker\Zed\Country\Business\CountryBusinessFactory getFactory()
- * @method \Spryker\Zed\Country\Persistence\CountryRepositoryInterface getRepository()
+ * @method \Pyz\Zed\Country\Persistence\CountryRepositoryInterface getRepository()
  */
 class CountryFacade extends SprykerCountryFacade implements CountryFacadeInterface
 {
+    /**
+     * @param string $countryName
+     *
+     * @return \Generated\Shared\Transfer\CountryTransfer|null
+     */
+    public function getCountryByName(string $countryName): ?CountryTransfer
+    {
+        return $this->getRepository()->getCountryByName($countryName);
+    }
 }

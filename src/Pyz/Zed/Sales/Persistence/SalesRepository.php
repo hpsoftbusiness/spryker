@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Sales\Persistence;
 
 use Generated\Shared\Transfer\SalesOrderFilterTransfer;
+use Orm\Zed\Sales\Persistence\Map\SpySalesOrderItemTableMap;
 use Orm\Zed\Sales\Persistence\Map\SpySalesOrderTableMap;
 use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -77,5 +78,22 @@ class SalesRepository extends SprykerSalesRepository implements SalesRepositoryI
         }
 
         return $spySalesOrderQuery;
+    }
+
+    /**
+     * @param string $orderReference
+     *
+     * @return array
+     */
+    public function getOrderItemsIdsByOrderReference(string $orderReference): array
+    {
+        return $this->getFactory()
+            ->createSalesOrderItemQuery()
+            ->useOrderQuery()
+                ->filterByOrderReference($orderReference)
+            ->endUse()
+            ->select(SpySalesOrderItemTableMap::COL_ID_SALES_ORDER_ITEM)
+            ->find()
+            ->toArray();
     }
 }

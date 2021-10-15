@@ -25,4 +25,11 @@ interface SalesRepositoryInterface extends SprykerSalesRepositoryInterface
      * @return array
      */
     public function getSpyOmsOrderItemStatesByIds(array $stateIds): array;
+
+    /**
+     * @param string $orderReference
+     *
+     * @return array
+     */
+    public function getOrderItemsIdsByOrderReference(string $orderReference): array;
 }

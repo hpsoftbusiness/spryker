@@ -17,6 +17,7 @@ use Pyz\Glue\ProductFeedRestApi\Plugin\OneSenseProductFeedResourceRoutePlugin;
 use Pyz\Glue\ProductFeedRestApi\Plugin\OnlyEliteClubDealProductFeedResourceRoutePlugin;
 use Pyz\Glue\ProductFeedRestApi\Plugin\RegularProductFeedResourceRoutePlugin;
 use Pyz\Glue\ProductFeedRestApi\Plugin\ShoppingPointProductFeedResourceRoutePlugin;
+use Pyz\Glue\WeclappRestApi\Plugin\WeclappWebhooksResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenRestRequestValidatorPlugin;
@@ -194,6 +195,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ReturnsResourceRoutePlugin(),
             new CartCodesResourceRoutePlugin(),
             new GuestCartCodesResourceRoutePlugin(),
+            new WeclappWebhooksResourceRoutePlugin(),
             new RegularProductFeedResourceRoutePlugin(),
             new BenefitVoucherProductFeedResourceRoutePlugin(),
             new ShoppingPointProductFeedResourceRoutePlugin(),

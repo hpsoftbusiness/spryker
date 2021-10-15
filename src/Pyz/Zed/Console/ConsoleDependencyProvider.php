@@ -17,6 +17,10 @@ use Pyz\Zed\ProductDataImport\Communication\Console\ProductDataImportConsole;
 use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Pyz\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Pyz\Zed\QueueErrorChecker\Communication\Console\QueueErrorCheckerConsole;
+use Pyz\Zed\Weclapp\Communication\Console\WeclappCategoryExportConsole;
+use Pyz\Zed\Weclapp\Communication\Console\WeclappInitialDataExportConsole;
+use Pyz\Zed\Weclapp\Communication\Console\WeclappProductExportConsole;
+use Pyz\Zed\Weclapp\Communication\Console\WeclappTaxRateExportConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -342,6 +346,11 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ProductOfferValidityConsole(),
             new ProductDataHealerConsole(),
             new QueueErrorCheckerConsole(),
+
+            new WeclappCategoryExportConsole(),
+            new WeclappTaxRateExportConsole(),
+            new WeclappProductExportConsole(),
+            new WeclappInitialDataExportConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

@@ -2,8 +2,15 @@
 <database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Category\Persistence" package="src.Orm.Zed.Category.Persistence">
 
     <table name="spy_category">
+        <column name="id_weclapp_article_category" size="64" type="VARCHAR"/>
         <behavior name="event">
-            <parameter name="spy_category_all" column="*"/>
+            <parameter name="spy_category_id_category" column="id_category"/>
+            <parameter name="spy_category_fk_category_template" column="fk_category_template"/>
+            <parameter name="spy_category_category_key" column="category_key"/>
+            <parameter name="spy_category_is_active" column="is_active"/>
+            <parameter name="spy_category_is_clickable" column="is_clickable"/>
+            <parameter name="spy_category_is_in_menu" column="is_in_menu"/>
+            <parameter name="spy_category_is_searchable" column="is_searchable"/>
         </behavior>
     </table>
 

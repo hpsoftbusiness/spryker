@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Stock\Persistence;
 
 use Generated\Shared\Transfer\StockCriteriaFilterTransfer;
+use Generated\Shared\Transfer\StockTransfer;
 use Orm\Zed\Stock\Persistence\SpyStockQuery;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Stock\Persistence\StockRepository as SprykerStockRepository;
@@ -55,5 +56,26 @@ class StockRepository extends SprykerStockRepository implements StockRepositoryI
         }
 
         return $stockQuery;
+    }
+
+    /**
+     * @param string $idWeclappWarehouse
+     *
+     * @return \Generated\Shared\Transfer\StockTransfer|null
+     */
+    public function findStockByIdWeclappWarehouse(string $idWeclappWarehouse): ?StockTransfer
+    {
+        $stockEntity = $this->getFactory()
+            ->createStockQuery()
+            ->filterByIdWeclappWarehouse($idWeclappWarehouse)
+            ->findOne();
+
+        if ($stockEntity === null) {
+            return null;
+        }
+
+        return $this->getFactory()
+            ->createStockMapper()
+            ->mapStockEntityToStockTransfer($stockEntity, new StockTransfer());
     }
 }

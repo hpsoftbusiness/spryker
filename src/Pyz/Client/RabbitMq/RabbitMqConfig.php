@@ -7,8 +7,10 @@
 
 namespace Pyz\Client\RabbitMq;
 
+use Pyz\Shared\ApiLog\ApiLogConfig;
 use Pyz\Shared\CustomerGroupStorage\CustomerGroupStorageConstants;
 use Pyz\Shared\ProductAttributeStorage\ProductAttributeStorageConstants;
+use Pyz\Shared\Weclapp\WeclappConfig;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -64,6 +66,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             [
                 MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
                 MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
+                WeclappConfig::WECLAPP_QUEUE,
+                ApiLogConfig::API_LOG_QUEUE,
             ]
         );
     }

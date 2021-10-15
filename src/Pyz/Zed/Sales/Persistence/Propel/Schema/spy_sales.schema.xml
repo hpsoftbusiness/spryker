@@ -16,5 +16,6 @@
     <table name="spy_sales_order_item">
         <column name="segment_number" type="INTEGER"/>
         <column name="turnover_amount" type="INTEGER"/>
+        <column name="id_weclapp_tax" size="64" type="VARCHAR"/>
     </table>
 </database>

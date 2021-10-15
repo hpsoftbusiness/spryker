@@ -34,7 +34,7 @@
             <event name="send order in processing email" onEnter="true" command="Oms/SendOrderInProcessing"/>
             <event name="cancel payment" manual="true"/>
             <event name="capture payment" timeout="1hour" manual="true"/>
-            <event name="ship the order" manual="true" command="Stock/DeductStock"/>
+            <event name="ship the order" command="Sales/SaveDeliveryTrackingCode"/>
             <event name="start turnover creation process" onEnter="true"/>
             <event name="generate invoice" onEnter="true" command="Invoice/Generate"/>
             <event name="confirm shipping" onEnter="true" command="Oms/SendShippingConfirmation"/>
@@ -44,6 +44,8 @@
             <event name="close" timeout="20days"/>
             <event name="pass" onEnter="true"/>
             <event name="pass 1 minute" timeout="1 minute"/>
+            <event name="calculate refund" onEnter="true" command="Oms/RefundCalculation"/>
+            <event name="export order to weclapp" onEnter="true" command="Weclapp/ExportOrder"/>
         </events>
 
         <transitions>
@@ -108,7 +110,7 @@
             <transition happy="true">
                 <source>package packed</source>
                 <target>waiting for tracking number</target>
-                <event>pass</event>
+                <event>export order to weclapp</event>
             </transition>
 
             <transition happy="true">

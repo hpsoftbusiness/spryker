@@ -7,8 +7,10 @@
 
 namespace Pyz\Zed\Queue;
 
+use Pyz\Shared\ApiLog\ApiLogConfig;
 use Pyz\Shared\CustomerGroupStorage\CustomerGroupStorageConstants;
 use Pyz\Shared\ProductAttributeStorage\ProductAttributeStorageConstants;
+use Pyz\Shared\Weclapp\WeclappConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
@@ -111,6 +113,8 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             ProductAttributeStorageConstants::PRODUCT_ATTRIBUTE_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             CustomerGroupStorageConstants::CUSTOMER_GROUP_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+            WeclappConfig::WECLAPP_QUEUE => new EventQueueMessageProcessorPlugin(),
+            ApiLogConfig::API_LOG_QUEUE => new EventQueueMessageProcessorPlugin(),
         ];
     }
 }

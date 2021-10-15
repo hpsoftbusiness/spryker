@@ -18,6 +18,10 @@
         <index name="spy_customer-my_world_customer_number">
             <index-column name="my_world_customer_number"/>
         </index>
+
+        <behavior name="event">
+            <parameter name="spy_customer_all" column="*"/>
+        </behavior>
     </table>
 
     <table name="spy_customer_address" idMethod="native">
@@ -25,6 +29,10 @@
         <column name="vat_number" size="255" type="VARCHAR"/>
         <column name="state" size="255" type="VARCHAR"/>
         <column name="store" size="2" type="VARCHAR"/>
+
+        <behavior name="event">
+            <parameter name="spy_customer_address_all" column="*"/>
+        </behavior>
     </table>
 
 </database>

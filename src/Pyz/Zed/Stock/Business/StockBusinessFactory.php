@@ -9,6 +9,8 @@ namespace Pyz\Zed\Stock\Business;
 
 use Pyz\Zed\Stock\Business\Expander\OrderExpander;
 use Pyz\Zed\Stock\Business\Expander\OrderExpanderInterface;
+use Pyz\Zed\Stock\Business\Model\Writer;
+use Pyz\Zed\Stock\Business\Model\WriterInterface;
 use Spryker\Zed\Stock\Business\StockBusinessFactory as SprykerStockBusinessFactory;
 
 /**
@@ -23,6 +25,20 @@ class StockBusinessFactory extends SprykerStockBusinessFactory
     {
         return new OrderExpander(
             $this->getRepository()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\Stock\Business\Model\WriterInterface
+     */
+    public function createWriterModel(): WriterInterface
+    {
+        return new Writer(
+            $this->getQueryContainer(),
+            $this->createStockReader(),
+            $this->createStockProductReader(),
+            $this->getTouchFacade(),
+            $this->getStockUpdateHandlerPlugins()
         );
     }
 }

@@ -9,6 +9,7 @@ namespace Pyz\Zed\Queue\Business;
 
 use Generated\Shared\Transfer\QueueDumpRequestTransfer;
 use Generated\Shared\Transfer\QueueDumpResponseTransfer;
+use Generated\Shared\Transfer\QueueNameWithMessageTransfer;
 use Spryker\Zed\Queue\Business\QueueFacade as SprykerQueueFacade;
 
 /**
@@ -31,5 +32,17 @@ class QueueFacade extends SprykerQueueFacade implements QueueFacadeInterface
         return $this->getFactory()
             ->createQueueDumperForQueueChecker()
             ->dumpQueue($queueNameRequestTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QueueNameWithMessageTransfer $queueNameWithMessageTransfer
+     *
+     * @return void
+     */
+    public function sendMessage(QueueNameWithMessageTransfer $queueNameWithMessageTransfer): void
+    {
+        $this->getFactory()
+            ->createQueueSender()
+            ->sendMessage($queueNameWithMessageTransfer);
     }
 }

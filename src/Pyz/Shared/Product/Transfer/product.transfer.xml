@@ -28,6 +28,8 @@
 
     <transfer name="ProductConcrete">
         <property name="isRemoved" type="bool"/>
+        <property name="categoryCollection" type="CategoryCollection"/>
+        <property name="countryOfOrigin" type="Country"/>
     </transfer>
 
 </transfers>

@@ -15,6 +15,27 @@ use Spryker\Zed\Product\Persistence\Mapper\ProductMapper as SprykerProductMapper
 class ProductMapper extends SprykerProductMapper
 {
     /**
+     * @param \Orm\Zed\Product\Persistence\SpyProduct $productConcreteEntity
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     *
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    public function mapProductConcreteEntityToTransfer(
+        SpyProduct $productConcreteEntity,
+        ProductConcreteTransfer $productConcreteTransfer
+    ): ProductConcreteTransfer {
+        $productConcreteTransfer = parent::mapProductConcreteEntityToTransfer(
+            $productConcreteEntity,
+            $productConcreteTransfer
+        );
+        $productConcreteTransfer->setIsAffiliate(
+            $productConcreteEntity->getSpyProductAbstract()->getIsAffiliate()
+        );
+
+        return $productConcreteTransfer;
+    }
+
+    /**
      * @param \Orm\Zed\Product\Persistence\SpyProduct $productEntity
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      *

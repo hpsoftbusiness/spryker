@@ -30,7 +30,8 @@ use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsFailedCondition;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsPendingCondition;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsPossibleToRefundAfterClosingCondition;
 use Pyz\Zed\Refund\Communication\Plugin\Oms\Condition\IsRefundedCondition;
-use Pyz\Zed\Stock\Communication\Plugin\Command\DeductStockCommandPlugin;
+use Pyz\Zed\Sales\Communication\Plugin\Command\SaveDeliveryTrackingCodeCommandPlugin;
+use Pyz\Zed\Weclapp\Communication\Plugin\Oms\Command\WeclappExportOrderCommand;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Condition\IsGiftCardConditionPlugin;
@@ -136,7 +137,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
             $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
             $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
-            $commandCollection->add(new DeductStockCommandPlugin(), 'Stock/DeductStock');
+            $commandCollection->add(new SaveDeliveryTrackingCodeCommandPlugin(), 'Sales/SaveDeliveryTrackingCode');
 
             // ----- Adyen
             $commandCollection->add(new AuthorizePlugin(), 'Adyen/Authorize');
@@ -155,6 +156,9 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new ValidateRefundCommand(), 'Refund/Validate');
             $commandCollection->add(new MyWorldRefundOnFailedPaymentCommand(), 'Refund/MyWorldOnFailedPayment');
             $commandCollection->add(new ManualRefundCommand(), 'Refund/ManualRefund');
+
+            // ----- Weclapp
+            $commandCollection->add(new WeclappExportOrderCommand(), 'Weclapp/ExportOrder');
 
             return $commandCollection;
         });

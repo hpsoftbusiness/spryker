@@ -8,13 +8,14 @@
 namespace Pyz\Zed\Country\Persistence;
 
 use Generated\Shared\Transfer\CountryCollectionTransfer;
+use Generated\Shared\Transfer\CountryTransfer;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Country\Persistence\CountryRepository as SprykerCountryRepository;
 
 /**
  * @method \Spryker\Zed\Country\Persistence\CountryPersistenceFactory getFactory()
  */
-class CountryRepository extends SprykerCountryRepository
+class CountryRepository extends SprykerCountryRepository implements CountryRepositoryInterface
 {
     /**
      * @param string[] $iso2Codes
@@ -33,5 +34,26 @@ class CountryRepository extends SprykerCountryRepository
         return $this->getFactory()
             ->createCountryMapper()
             ->mapCountryTransferCollection($countries);
+    }
+
+    /**
+     * @param string $countryName
+     *
+     * @return \Generated\Shared\Transfer\CountryTransfer|null
+     */
+    public function getCountryByName(string $countryName): ?CountryTransfer
+    {
+        $countryQuery = $this->getFactory()
+            ->createCountryQuery()
+            ->filterByName($countryName);
+        $countryEntityTransfer = $this->buildQueryFromCriteria($countryQuery)->findOne();
+
+        if ($countryEntityTransfer === null) {
+            return null;
+        }
+
+        return $this->getFactory()
+            ->createCountryMapper()
+            ->mapCountryTransfer($countryEntityTransfer);
     }
 }

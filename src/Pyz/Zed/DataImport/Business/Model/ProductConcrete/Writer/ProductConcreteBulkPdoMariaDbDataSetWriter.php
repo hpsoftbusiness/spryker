@@ -175,6 +175,7 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
                     ProductEvents::PRODUCT_CONCRETE_PUBLISH,
                     (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT]
                 );
+                DataImporterPublisher::addEvent(ProductEvents::ENTITY_SPY_PRODUCT_CREATE, (int)$columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT]);
             }
         }
     }

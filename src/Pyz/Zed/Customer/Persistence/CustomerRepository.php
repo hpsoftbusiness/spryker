@@ -8,7 +8,9 @@
 namespace Pyz\Zed\Customer\Persistence;
 
 use Generated\Shared\Transfer\AddressCriteriaFilterTransfer;
+use Generated\Shared\Transfer\CustomerCriteriaFilterTransfer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddressQuery;
+use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
 use Spryker\Zed\Customer\Persistence\CustomerRepository as SprykerCustomerRepository;
 
 /**
@@ -36,5 +38,22 @@ class CustomerRepository extends SprykerCustomerRepository
         }
 
         return $addressQuery;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerCriteriaFilterTransfer $customerCriteriaFilterTransfer
+     *
+     * @return \Orm\Zed\Customer\Persistence\SpyCustomerQuery
+     */
+    protected function queryCustomersByCriteria(
+        CustomerCriteriaFilterTransfer $customerCriteriaFilterTransfer
+    ): SpyCustomerQuery {
+        $query = parent::queryCustomersByCriteria($customerCriteriaFilterTransfer);
+
+        if ($customerCriteriaFilterTransfer->getIdCustomers()) {
+            $query->filterByIdCustomer_In($customerCriteriaFilterTransfer->getIdCustomers());
+        }
+
+        return $query;
     }
 }

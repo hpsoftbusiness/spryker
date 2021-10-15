@@ -99,9 +99,16 @@ $config[CurrencyConstants::IS_MULTI_CURRENCY_FEATURE_ENABLED] = false;
 $config[EventConstants::LOGGER_ACTIVE] = true;
 
 // ----------------------------------------------------------------------------
+// ------------------ Weclapp integration -------------------------------------
+// ----------------------------------------------------------------------------
+
+require 'common/config_weclapp-prod.php';
+
+// ----------------------------------------------------------------------------
 // ------------------------------ API -----------------------------------------
 // ----------------------------------------------------------------------------
 
+$config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY') ?: '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
 $config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY') ?: '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
 
 if (!empty(getenv('SPRYKER_CLUSTER'))) {

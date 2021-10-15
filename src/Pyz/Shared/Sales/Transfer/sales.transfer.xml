@@ -14,4 +14,8 @@
         <property name="mainPayment" type="Payment"/>
     </transfer>
 
+    <transfer name="Item">
+        <property name="idWeclappTax" type="string"/>
+    </transfer>
+
 </transfers>

@@ -39,4 +39,11 @@ interface SalesFacadeInterface extends SprykerSalesFacadeInterface
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
     public function getOrderForExportByIdSalesOrder(int $idSalesOrder): OrderTransfer;
+
+    /**
+     * @param string $orderReference
+     *
+     * @return array
+     */
+    public function getOrderItemsIdsByOrderReference(string $orderReference): array;
 }

@@ -74,6 +74,12 @@ require 'common/config_my-world-payment.php';
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
 
+// ----------------------------------------------------------------------------
+// ------------------ Weclapp integration -------------------------------------
+// ----------------------------------------------------------------------------
+
+require 'common/config_weclapp-demo.php';
+
 $config[DataImportConstants::NEED_STORE_RELATION_VALIDATION] = getenv('NEED_STORE_RELATION_VALIDATION') ?? false;
 
 if (!empty(getenv('SPRYKER_CLUSTER'))) {

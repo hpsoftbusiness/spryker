@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="WeclappSalesOrder">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="commercialLanguage" type="string"/>
+        <property name="customerId" type="string"/>
+        <property name="customerNumber" type="string"/>
+        <property name="deliveryAddress" type="WeclappSalesOrderAddress"/>
+        <property name="deliveryEmailAddresses" type="WeclappSalesOrderEmailAddresses"/>
+        <property name="invoiceAddress" type="WeclappSalesOrderAddress"/>
+        <property name="salesInvoiceEmailAddresses" type="WeclappSalesOrderEmailAddresses"/>
+        <property name="orderItems" type="WeclappSalesOrderItem[]" singular="orderItem"/>
+        <property name="orderNumber" type="string"/>
+        <property name="orderDate" type="int"/>
+        <property name="recordCurrencyId" type="string"/>
+        <property name="recordCurrencyName" type="string"/>
+        <property name="paymentMethodId" type="string"/>
+        <property name="paymentMethodName" type="string"/>
+        <property name="shippingCostItems" type="WeclappSalesOrderShippingCostItem[]" singular="shippingCostItem"/>
+    </transfer>
+
+    <transfer name="WeclappSalesOrderAddress">
+        <property name="city" type="string"/>
+        <property name="company" type="string"/>
+        <property name="countryCode" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="phoneNumber" type="string"/>
+        <property name="salutation" type="string"/>
+        <property name="street1" type="string"/>
+        <property name="street2" type="string"/>
+        <property name="zipCode" type="string"/>
+    </transfer>
+
+    <transfer name="WeclappSalesOrderEmailAddresses">
+        <property name="bccAddresses" type="string"/>
+        <property name="ccAddresses" type="string"/>
+        <property name="toAddresses" type="string"/>
+    </transfer>
+
+    <transfer name="WeclappSalesOrderItem">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="articleId" type="string"/>
+        <property name="articleNumber" type="string"/>
+        <property name="quantity" type="string"/>
+        <property name="manualUnitPrice" type="bool"/>
+        <property name="unitPrice" type="string"/>
+        <property name="taxId" type="string"/>
+        <property name="taxName" type="string"/>
+    </transfer>
+
+    <transfer name="WeclappSalesOrderShippingCostItem">
+        <property name="id" type="string"/>
+        <property name="version" type="string"/>
+        <property name="articleId" type="string"/>
+        <property name="articleNumber" type="string"/>
+        <property name="grossAmount" type="string"/>
+        <property name="grossAmountInCompanyCurrency" type="string"/>
+        <property name="manualUnitCost" type="string"/>
+        <property name="manualUnitPrice" type="string"/>
+        <property name="netAmount" type="string"/>
+        <property name="netAmountInCompanyCurrency" type="string"/>
+        <property name="taxId" type="string"/>
+        <property name="taxName" type="string"/>
+        <property name="unitCost" type="string"/>
+        <property name="unitCostInCompanyCurrency" type="string"/>
+        <property name="unitPrice" type="string"/>
+        <property name="unitPriceInCompanyCurrency" type="string"/>
+    </transfer>
+</transfers>

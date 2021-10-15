@@ -10,8 +10,12 @@
     </table>
 
     <table name="spy_tax_rate">
+        <column name="id_weclapp_tax" type="VARCHAR" size="64"/>
         <behavior name="event">
-            <parameter name="spy_tax_rate_all" column="*"/>
+            <parameter name="spy_tax_rate_id_tax_rate" column="id_tax_rate"/>
+            <parameter name="spy_tax_rate_fk_country" column="fk_country"/>
+            <parameter name="spy_tax_rate_name" column="name"/>
+            <parameter name="spy_tax_rate_rate" column="rate"/>
         </behavior>
     </table>
 

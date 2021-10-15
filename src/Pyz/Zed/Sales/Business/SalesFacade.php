@@ -44,4 +44,15 @@ class SalesFacade extends SprykerSalesFacade implements SalesFacadeInterface, Re
             ->createOrderForExportHydrator()
             ->hydrateOrderTransferFromPersistenceByIdSalesOrder($idSalesOrder);
     }
+
+    /**
+     * @param string $orderReference
+     *
+     * @return array
+     */
+    public function getOrderItemsIdsByOrderReference(string $orderReference): array
+    {
+        return $this->getRepository()
+            ->getOrderItemsIdsByOrderReference($orderReference);
+    }
 }

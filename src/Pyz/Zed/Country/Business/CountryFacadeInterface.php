@@ -7,9 +7,16 @@
 
 namespace Pyz\Zed\Country\Business;
 
+use Generated\Shared\Transfer\CountryTransfer;
 use Spryker\Zed\Country\Business\CountryFacadeInterface as SprykerCountryFacadeInterface;
 use Spryker\Zed\Sales\Dependency\Facade\SalesToCountryInterface;
 
 interface CountryFacadeInterface extends SprykerCountryFacadeInterface, SalesToCountryInterface
 {
+    /**
+     * @param string $countryName
+     *
+     * @return \Generated\Shared\Transfer\CountryTransfer|null
+     */
+    public function getCountryByName(string $countryName): ?CountryTransfer;
 }
