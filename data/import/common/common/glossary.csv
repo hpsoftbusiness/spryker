@@ -18779,11 +18779,6 @@ checkout.step.summary.sub_total,Suma częściowa,pl_PL
 Shipping standard,Wysyłka standardowa,pl_PL
 checkout.step.summary.grand_total,Suma,pl_PL
 checkout.step.summary.tax,w tym podatek,pl_PL
-checkout.payment.myworld.payment_methods.title,checkout.payment.myworld.payment_methods.title,pl_PL
-checkout.payment.myworld.payment_methods.subtitle,checkout.payment.myworld.payment_methods.subtitle,pl_PL
-checkout.payment.myworld.payment_methods.method.evoucher,checkout.payment.myworld.payment_methods.method.evoucher,pl_PL
-checkout.payment.myworld.payment_methods.method.evoucher_marketer,checkout.payment.myworld.payment_methods.method.evoucher_marketer,pl_PL
-checkout.payment.myworld.payment_methods.method.cashback,checkout.payment.myworld.payment_methods.method.cashback,pl_PL
 page.checkout.shipment.shipping_address.title,Adres dostawy,pl_PL
 page.checkout.shipment.shipping_method_heading,Sposób wysyłki,pl_PL
 shipment.lead.time,Czas dostawy: ok. 3-7 dni roboczych,pl_PL
@@ -19747,7 +19742,7 @@ mail.order.shipped.subject,Twoje zamówienie %orderReference% jest w drodze,pl_P
 mail.order.shipped.text,Twoje zamówienie jest już w drodze.,pl_PL
 mail.sender.email,noreply@demo-spryker.com,pl_PL
 mail.sender.name,Spryker Brak odpowiedzi,pl_PL
-mail.shipping.confirmation.subject,Twoje zamówienie z myWorld.com  idOrder% zostało wysłane,pl_PL
+mail.shipping.confirmation.subject,Twoje zamówienie z myWorld.com %idOrder% zostało wysłane,pl_PL
 mail.trans.availability_notification_subscription.subtitle,"Otrzymasz wiadomość e-mail, gdy produkt będzie ponownie dostępny.",pl_PL
 mail.trans.availability_notification_subscription.title,Właśnie poinformowaliśmy nasz zespół zakupowy o Twojej subskrypcji!,pl_PL
 mail.trans.availability_notification.subtitle,Koniec czekania! Dodaj teraz ten produkt do koszyka.,pl_PL
@@ -20312,6 +20307,9 @@ checkout.payment.myworld.payment_methods.title,myWorld ePayment,pl_PL
 checkout.payment.myworld.payment_methods.subtitle,Możesz wybrać jedną z następujących metod myWorld ePayment (opcjonalnie):,pl_PL
 checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,pl_PL
 checkout.payment.myworld.payment_methods.method.cashback,Cashback,pl_PL
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher(Marketer),pl_PL
+payment.payment_method.e_voucher,eVoucher,pl_PL
+payment.payment_method.e_voucher_marketer,myWorld eVoucher(Marketer),pl_PL
 payment.payment_method.adyen_credit_card,Credit Card,pl_PL
 payment.payment_method.benefit_vouchers,Benefit Voucher,pl_PL
 payment.payment_provider.adyen,Adyen,pl_PL
