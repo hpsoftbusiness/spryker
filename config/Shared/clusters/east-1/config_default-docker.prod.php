@@ -19,12 +19,12 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 // TODO:: create ORIGIN KEYS for prod environment
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
-        'PL' => getenv('ADYEN_ORIGIN_KEYS_PL') ?: '',
+        'PL' => getenv('ADYEN_ORIGIN_KEYS_PL') ?: utf8_encode('pub.v2.1116342036411490.aHR0cHM6Ly93d3cucGwucHJvZHVjdHMubXl3b3JsZC5jb20.wSi9XtNFC2US30uCZQqDilIE4bFju3Ax0QH1BflEGro'),
         'SK' => getenv('ADYEN_ORIGIN_KEYS_SK') ?: '',
         'CZ' => getenv('ADYEN_ORIGIN_KEYS_CZ') ?: '',
     ],
     'API_KEYS' => [
-        'PL' => getenv('ADYEN_API_KEY_PL') ?: '',
+        'PL' => getenv('ADYEN_API_KEY_PL') ?: utf8_encode('AQEphmfxK4rNYxxLw0m/n3Q5qf3VZZJ6AoFGXER6axXEMbrOFdpcMdrh61MQwV1bDb7kfNy1WIxIIkxgBw==-m8GFYYJErBtYjjciOM7wbi3vPSdsdigpivb1AqF6mVs=-[;]z4?@R)%rLud7L'),
         'SK' => getenv('ADYEN_API_KEY_SK') ?: '',
         'CZ' => getenv('ADYEN_API_KEY_CZ') ?: '',
     ],
