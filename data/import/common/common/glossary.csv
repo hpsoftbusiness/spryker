@@ -19756,7 +19756,7 @@ mail.trans.availability_notification_unsubscribed.subtitle,"Nie otrzymasz powiad
 mail.trans.availability_notification_unsubscribed.title.part1,Twoja subskrypcja,pl_PL
 mail.trans.availability_notification_unsubscribed.title.part2,zostało anulowane,pl_PL
 mail.trans.common.go_to_shop,Idź do sklepu,pl_PL
-mail.trans.common.hello_for_first_name,cześć,pl_PL
+mail.trans.common.hello_for_first_name,Witaj,pl_PL
 mail.trans.common.my_account,Moje konto,pl_PL
 mail.trans.company_status.title,Status Twojej firmy został zmieniony na,pl_PL
 mail.trans.customer_registration.change_info,"Możesz zmienić swoje dane (adres dostawy, adres e-mail, hasło itp.) na Moje konto",pl_PL
@@ -19769,13 +19769,13 @@ mail.trans.customer_restore_password.change_password,Zmień hasło,pl_PL
 mail.trans.customer_restore_password.subtitle,"Ktoś zażądał nowego hasła do Twojego konta w sklepie Spryker. Jeśli to nie Ty, zignoruj tę wiadomość e-mail. Jeśli to ty, postępuj zgodnie z instrukcjami w poniższym przycisku.",pl_PL
 mail.trans.customer_restore_password.title,Nowe hasło do Twojego konta w Spryker Shop,pl_PL
 mail.trans.footer.contact_email_address,info@spryker.com,pl_PL
-mail.trans.footer.for_more_information,"Aby uzyskać więcej informacji na temat prawa do odstąpienia od umowy i warunków, kliknij nazwę sprzedawcy u góry. Masz dodatkowe pytania? W takim razie na pewno znajdziesz właściwe odpowiedzi w naszym obszarze usług.",pl_PL
+mail.trans.footer.for_more_information,"Aby uzyskać więcej informacji na temat prawa do odstąpienia od umowy oraz warunków, kliknij nazwę sprzedawcy u góry. Masz dodatkowe pytania? Wszelkie odpowiedzi znajdziesz w naszym obszarze obsługi Klienta.",pl_PL
 mail.trans.footer.if_you_have_further_questions,W przypadku dalszych pytań prosimy o kontakt z naszym działem obsługi klienta pod adresem,pl_PL
 mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,pl_PL
 mail.trans.footer.shop_city,Berlin,pl_PL
 mail.trans.footer.shop_name,Spryker Systems GmbH,pl_PL
 mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,pl_PL
-mail.trans.footer.shopping_experience,Nie możemy się doczekać kolejnej wizyty!,pl_PL
+mail.trans.footer.shopping_experience,DO ZOBACZENIA NASTĘPNYM RAZEM,pl_PL
 mail.trans.footer.shop_zip_code,10115,pl_PL
 mail.trans.footer.your_team,Twój zespół myWorld.com,pl_PL
 mail.trans.gift_card_delivery.subtitle,Twój kod karty podarunkowej to,pl_PL
@@ -19787,14 +19787,14 @@ mail.trans.newsletter_subscribed.subtitle,"Dołożymy wszelkich starań, aby dos
 mail.trans.newsletter_subscribed.title,"Cieszymy się, że zapisałeś się do naszego newslettera.",pl_PL
 mail.trans.newsletter_unsubscribed.subtitle,Twój adres e-mail został wypisany z newslettera Spryker Shop. Zawsze możesz zarządzać swoją subskrypcją w swoim profilu klienta.,pl_PL
 mail.trans.newsletter_unsubscribed.title,"Przykro nam, że odchodzisz ...",pl_PL
-mail.trans.order.billing_address,Adres rozliczeniowy,pl_PL
-mail.trans.order_confirmation.subtitle,"Jak tylko Twoja przesyłka będzie w drodze, otrzymasz od nas osobne potwierdzenie wysyłki e-mailem. W przypadku dostaw częściowych otrzymasz osobne powiadomienie o każdej dostawie. Aby wyświetlić swoje zamówienie, przejdź do sekcji „Moje zamówienia” w witrynie myWorld.com.",pl_PL
-mail.trans.order_confirmation.title,Dziękujemy za zamówienie!,pl_PL
+mail.trans.order.billing_address,Dane do faktury,pl_PL
+mail.trans.order_confirmation.subtitle,"Jak tylko Twoja paczka zostanie nadana, otrzymasz od nas e-mailem osobne potwierdzenie wysyłki. W przypadku dostaw częściowych otrzymasz osobne powiadomienie dla każdej dostawy. Aby wyświetlić swoje zamówienie, odwiedź sekcję „Moje zamówienia” na myWorld.com.",pl_PL
+mail.trans.order_confirmation.title,Dziękujemy za twoje zamówienie!,pl_PL
 mail.trans.order.delivery_address,Adres dostawy,pl_PL
 mail.trans.order.delivery_address.company_data,Dane firmy:,pl_PL
-mail.trans.order.delivery_method,Sposób dostawy,pl_PL
+mail.trans.order.delivery_method,Metoda dostawy,pl_PL
 mail.trans.order.discounts_total,Zniżka,pl_PL
-mail.trans.order.grand_total,Całkowite zamówienie łącznie z faktura VAT,pl_PL
+mail.trans.order.grand_total,Razem z VAT,pl_PL
 mail.trans.order_in_processing.title,Właśnie złożono nowe zamówienie,pl_PL
 mail.trans.order.order_date,Data zamówienia,pl_PL
 mail.trans.order.order_details,Szczegóły zamówienia,pl_PL
@@ -19802,19 +19802,19 @@ mail.trans.order.order_reference,Numer zamówienia,pl_PL
 mail.trans.order.payment_method,Metoda płatności,pl_PL
 mail.trans.order.quantity,Ilość,pl_PL
 mail.trans.order.requested_delivery_date,Wymagana data dostawy,pl_PL
-mail.trans.order.shipment_costs_total,Przesyłka zaw. faktura VAT,pl_PL
+mail.trans.order.shipment_costs_total,Koszt dostawy z VAT,pl_PL
 mail.trans.order.shipment_for_number.part1,Wysyłka,pl_PL
 mail.trans.order.shipment_for_number.part2,z,pl_PL
 mail.trans.order_shipped.title,Twoje zamówienie jest w drodze!,pl_PL
 mail.trans.order.stock_name,Sprzedawane przez:,pl_PL
-mail.trans.order.subtotal,Razem łącznie faktura VAT,pl_PL
-mail.trans.order.taxes,Podatki,pl_PL
+mail.trans.order.subtotal,Suma częściowa z VAT,pl_PL
+mail.trans.order.taxes,W tym VAT,pl_PL
 mail.trans.order.tracking_code,Śledź dostawę,pl_PL
 mail.trans.restore_password.change_password,Zmień hasło,pl_PL
 mail.trans.restore_password.subtitle,"Ktoś zażądał nowego hasła do Twojego konta Spryker Back Office. Jeśli to nie Ty, zignoruj tę wiadomość e-mail. Jeśli to ty, postępuj zgodnie z instrukcjami w poniższym przycisku",pl_PL
 mail.trans.restore_password.title,Nowe hasło do Twojego konta Spryker Back Office,pl_PL
-mail.trans.shipping_confirmation.subtitle,"Informujemy, że Twoje zamówienie lub jego części zostały wysłane. W przypadku dostaw częściowych otrzymasz osobne powiadomienie o każdej dostawie. Gdy tylko sprzedawca udostępni fakturę, znajdziesz ją na swoim koncie klienta w sekcji „Moje zamówienia”.",pl_PL
-mail.trans.shipping_confirmation.title,Twoje zamówienie jest już w drodze do Ciebie,pl_PL
+mail.trans.shipping_confirmation.subtitle,"Informujemy, że Twoje zamówienie lub jego część zostało wysłane. W przypadku dostaw częściowych otrzymasz osobne powiadomienie dla każdej paczki. Gdy tylko sprzedawca udostępni fakturę, znajdziesz ją na swoim koncie klienta w sekcji „Moje zamówienia”.",pl_PL
+mail.trans.shipping_confirmation.title,Twoje zamówienie jest w drodze do Ciebie,pl_PL
 measurement_units.item.name,Produkt,pl_PL
 measurement_units.new-price,Nowa cena,pl_PL
 measurement_units.recommendation.between-units-info,Wybrana ilość mieści się w przedziale między 2 jednostkami podstawowymi,pl_PL
