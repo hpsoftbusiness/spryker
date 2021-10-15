@@ -81,7 +81,7 @@
         <td width="350" class="align-top">
             <p>
                 {{ 'order_invoice.invoice_template.table.grant_total' | trans }}
-                <strong class="float-right">{{ order.totals.grandTotal | money }}</strong>
+                <strong class="float-right">{{ order.totals.grandTotal | money(true, order.currencyIsoCode) }}</strong>
             </p>
             <p>
                 {{ 'order_invoice.invoice_template.table.order_reference' | trans }}
