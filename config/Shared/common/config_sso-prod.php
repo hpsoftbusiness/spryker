@@ -6,6 +6,7 @@
  */
 
 use Pyz\Shared\Sso\SsoConstants;
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 
 // ----------------------------------------------------------------------------
@@ -28,8 +29,11 @@ $config[SsoConstants::CLIENT_SECRET] = getenv('SSO_CLIENT_SECRET');
 $config[SsoConstants::USER_AGENT] = 'Spryker/202009.0';
 $config[SsoConstants::SCOPE] = 'openid';
 
-$config[SsoConstants::REDIRECT_URL] = getenv('SSO_REDIRECT_URL') ?: 'https://www.marketplace.myworld.com/login_check';
-
+$config[SsoConstants::REDIRECT_URL] = sprintf(
+    '%s/%s',
+    $config[ApplicationConstants::BASE_URL_YVES],
+    $config[SsoConstants::LOGIN_CHECK_PATH]
+);
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($config[KernelConstants::DOMAIN_WHITELIST], [
     'id-test.cashbackworld.com', // SSO Oauth domain
     'id.cashbackworld.com', // SSO Oauth domain
