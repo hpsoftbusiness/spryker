@@ -177,7 +177,7 @@ groups:
                         <<: *backend-auth
                     zed.cz.products.myworld.com:
                         store: CZ
-                        <<: *backend-auth
+                        <<: *frontend-auth
             Glue:
                 application: glue
                 endpoints:
