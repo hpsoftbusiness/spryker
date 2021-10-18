@@ -5,9 +5,9 @@
     tag: 'gdpr-tag',
 } %}
 
-{% set link %}
+{%- set link -%}
     <a class="{{ config.name }}__link" href="{{ 'footer.logo.link.privacy' | trans }}">{{ 'gdpr.privacy_policy' | trans }}</a>
-{% endset %}
+{%- endset -%}
 
 {% block body %}
     <div

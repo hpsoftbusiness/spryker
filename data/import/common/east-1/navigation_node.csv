@@ -1,9 +1,9 @@
 navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.pl_PL,title.sk_Sk,title.cs_CZ,url.pl_PL,url.sk_Sk,url.cs_CZ,css_class.pl_PL,css_class.sk_Sk,css_class.cs_CZ
 FOOTER_NAVIGATION_LEGAL,node_key_33,,cms_page,Imprint,/en/imprint,,,,Imprint,Imprint,Imprint,/pl/impressum,/sk/impressum,/cs/impressum,,,
-FOOTER_NAVIGATION_LEGAL,node_key_35,,cms_page,Privacy Policy,/en/privacy,,,,Privacy Policy,Privacy Policy,Privacy Policy,/pl/datenschutz,/sk/datenschutz,/cs/datenschutz,,,
-FOOTER_NAVIGATION_LEGAL,node_key_94,,cms_page,Terms and Conditions,/en/gtc,,,,Terms and Conditions,Terms and Conditions,Terms and Conditions,/pl/agb,/sk/agb,/cs/agb,,,
-FOOTER_NAVIGATION_LEGAL,node_key_95,,cms_page,Terms of use,/en/terms-of-use,,,,Terms of use,Terms of use,Terms of use,/pl/nutzungsbedingungen,/sk/nutzungsbedingungen,/cs/nutzungsbedingungen,,,
-FOOTER_NAVIGATION_INFO,node_key_96,,cms_page,About myWorld.com,/en/about-us,,,,About myWorld.com,About myWorld.com,About myWorld.com,/pl/uber-uns,/sk/uber-uns,/cs/uber-uns,,,
+FOOTER_NAVIGATION_LEGAL,node_key_35,,cms_page,Privacy Policy,/en/privacy,,,,Polityka prywatności,Privacy Policy,Privacy Policy,/pl/datenschutz,/sk/datenschutz,/cs/datenschutz,,,
+FOOTER_NAVIGATION_LEGAL,node_key_94,,cms_page,Terms and Conditions,/en/gtc,,,,Regulamin,Terms and Conditions,Terms and Conditions,/pl/agb,/sk/agb,/cs/agb,,,
+FOOTER_NAVIGATION_LEGAL,node_key_95,,cms_page,Terms of use,/en/terms-of-use,,,,Warunki korzystania,Terms of use,Terms of use,/pl/nutzungsbedingungen,/sk/nutzungsbedingungen,/cs/nutzungsbedingungen,,,
+FOOTER_NAVIGATION_INFO,node_key_96,,cms_page,About myWorld.com,/en/about-us,,,,O myWorld.com,About myWorld.com,About myWorld.com,/pl/uber-uns,/sk/uber-uns,/cs/uber-uns,,,
 PAYMENT_PROVIDERS,node_key_36,,label,Paypal,,paypal,,,Paypal,Paypal,Paypal,,,,paypal,paypal,paypal
 PAYMENT_PROVIDERS,node_key_37,,label,Klarna,,klarna,,,Klarna,Klarna,Klarna,,,,klarna,klarna,klarna
 SHIPMENT_PROVIDERS,node_key_38,,label,DHL,,dhl,,,DHL,DHL,DHL,,,,dhl,dhl,dhl

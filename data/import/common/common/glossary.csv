@@ -18637,7 +18637,7 @@ pagination.next,Kolejny,pl_PL
 global.search,Szukaj,pl_PL
 cart.item_quantity,Ilość,pl_PL
 forms.submit-btn,Zatwierdź,pl_PL
-general.back.button,Z powrotem,pl_PL
+general.back.button,Cofnij,pl_PL
 customer.profile.title,Moje konto,pl_PL
 checkout.step.summary.overview,Przegląd,pl_PL
 customer.account.order_history,Historia zamówień,pl_PL
@@ -18648,14 +18648,14 @@ cart.product-option,Opcje produktu,pl_PL
 cart.cart,Koszyk,pl_PL
 cart.price.subtotal,Suma częściowa,pl_PL
 cart.shipping_standard,Standardowa wysyłka,pl_PL
-cart.total,Całkowity,pl_PL
-pdp.include.vat,zaw. faktura VAT,pl_PL
-cart.checkout,Sprawdzić,pl_PL
+cart.total,Koszt całkowity,pl_PL
+pdp.include.vat,zaw. podatek VAT,pl_PL
+cart.checkout,Potwierdź zakup,pl_PL
 cart_widget.empty_text,Twój koszyk jest pusty. Wypełnij go wszystkimi swoimi marzeniami dotyczącymi technologii.,pl_PL
 global.cashback,Cashback,pl_PL
 remove,Usunąć,pl_PL
 customer.access.cannot_see_price,"Zaloguj się, aby zobaczyć cenę",pl_PL
-message.submit_link,Dobrze!,pl_PL
+message.submit_link,OK!,pl_PL
 cart.delete.button,Usuń,pl_PL
 customer.balance.into,customer.balance.into,pl_PL
 global.home,Dom,pl_PL
@@ -18663,9 +18663,9 @@ global.no_image_available,Obraz nie dostępny,pl_PL
 footer.logo.url,/,pl_PL
 global.button.more,Więcej,pl_PL
 global.button.less,Mniej,pl_PL
-footer.logo.link.privacy,/ pl / Prywatność,pl_PL
-gdpr.privacy_policy,Polityka prywatności,pl_PL
-gdpr.message,"Używamy plików cookies na naszej stronie internetowej, aby nasze usługi były bardziej wydajne i przyjazne dla użytkownika. Dlatego wybierz „Akceptuj pliki cookies”! Przeczytaj nasz% link%, aby uzyskać dalsze informacje.",pl_PL
+footer.logo.link.privacy,/pl/Prywatnosc,pl_PL
+gdpr.privacy_policy,Politykę prywatności,pl_PL
+gdpr.message,"Używamy plików cookies na naszej stronie internetowej, aby nasze usługi były bardziej wydajne i przyjazne dla użytkownika. Dlatego wybierz „Akceptuj pliki cookies”! Przeczytaj naszą %link%, aby uzyskać dalsze informacje.",pl_PL
 gdpr.accept_cookies,Akceptuję cookies,pl_PL
 customer.order.billing_address,Adres rozliczeniowy,pl_PL
 customer.order.shipping_address,Adres wysyłki,pl_PL
@@ -18695,7 +18695,7 @@ global.search.results.view,Widok,pl_PL
 cms.page.sort.relevance,Sortuj według trafności,pl_PL
 cms.page.itemsFound,Znalezione przedmioty,pl_PL
 cms.page.filter.per,Na stronę,pl_PL
-general.edit.button,Edytować,pl_PL
+general.edit.button,Edytuj,pl_PL
 customer.account.newsletter,Newsletter,pl_PL
 customer.newsletter.subscribed,Zapisano się do newslettera,pl_PL
 customer.newsletter.not_subscribed,Brak subskrypcji newslettera,pl_PL
@@ -18737,9 +18737,9 @@ catalog.no-results,Brak wyników.,pl_PL
 product.view,Widok,pl_PL
 catalog.filter_section.show_all,Pokaż więcej,pl_PL
 catalog.filter_section.show_less,Pokaż mniej,pl_PL
-catalog.sort.relevance,Stosowność,pl_PL
+catalog.sort.relevance,Domyślnie,pl_PL
 catalog.itemsFound,Wyniki,pl_PL
-catalog.sort.by,Sortuj według,pl_PL
+catalog.sort.by,Sortuj,pl_PL
 product.filter.benefit_store,product.filter.benefit_store,pl_PL
 catalog.view.mode.grid,Siatka,pl_PL
 catalog.view.mode.list,Lista,pl_PL
@@ -18753,12 +18753,12 @@ checkout.step.summary.title,Podsumowanie,pl_PL
 page.checkout.shipment.shipment_group_heading,Wysyłka %current% z %total%,pl_PL
 checkout.step.summary.payment,Płatność,pl_PL
 checkout.step.summary.billing_address,Adres rozliczeniowy,pl_PL
-checkout.step.summary.total,Dokończ,pl_PL
+checkout.step.summary.total,Przegląd płatności,pl_PL
 checkout.step.place.order,Wyślij zamówienie,pl_PL
 checkout.step.benefit_deal.title,checkout.step.benefit_deal.title,pl_PL
 checkout.step.payment,Przejdź do płatności,pl_PL
 checkout.step.shipment.title,Wysyłka,pl_PL
-general.next.button,Kolejny,pl_PL
+general.next.button,Dalej,pl_PL
 personal.address.heading,Dane osobowe,pl_PL
 company.address.heading,Dane firmy,pl_PL
 page.checkout.address.billing.address_select,Wybierz adres rozliczeniowy,pl_PL
@@ -18772,7 +18772,7 @@ checkout.customer.auth_as_guest,Kupuj jako gość,pl_PL
 forms.forgot-password,Zapomniałeś hasła,pl_PL
 checkout.customer.auth_as_login,Zaloguj się,pl_PL
 forms.submit.login,Zaloguj się,pl_PL
-benefit_deal.item_quantity,Quantity:,pl_PL
+benefit_deal.item_quantity,Ilość:,pl_PL
 checkout.step.benefit_deal.use_shopping_points,Use Shopping Points deal,pl_PL
 checkout.payment.myworld.payment_methods.balance_text,Balance,pl_PL
 checkout.step.summary.sub_total,Suma częściowa,pl_PL
@@ -18780,11 +18780,11 @@ Shipping standard,Wysyłka standardowa,pl_PL
 checkout.step.summary.grand_total,Suma,pl_PL
 checkout.step.summary.tax,w tym podatek,pl_PL
 page.checkout.shipment.shipping_address.title,Adres dostawy,pl_PL
-page.checkout.shipment.shipping_method_heading,Sposób wysyłki,pl_PL
+page.checkout.shipment.shipping_method_heading,Czas dostawy,pl_PL
 shipment.lead.time,Czas dostawy: ok. 3-7 dni roboczych,pl_PL
 checkout.step.summary.delivery_address,Adres dostawy,pl_PL
 checkout.step.summary.uid,UID,pl_PL
-checkout.step.summary.delivery_method,Sposób dostawy,pl_PL
+checkout.step.summary.delivery_method,Czas dostawy,pl_PL
 checkout.step.summary.tracking_code,Kod śledzenia dostawy,pl_PL
 checkout.payment.checkbox.use_evoucher_balance,Użyj %price% swojego %balance% Cashback / salda myWorld eVouchera,pl_PL
 checkout.payment.cashback_balance,Saldo Cashback / myWorld eVoucher:,pl_PL
@@ -18812,8 +18812,8 @@ product.set.detail.no-products,Brak produktów w zestawie,pl_PL
 cart.voucher.redeem,Zrealizuj kod,pl_PL
 cart.code.enter-code,Wpisz kod kuponu / karty podarunkowej,pl_PL
 customer.order.reorder,Zmień kolejność,pl_PL
-customer.order.reorder_selected,Zmień kolejność wybranych elementów,pl_PL
-customer.order.reorder_all,Zmień kolejność wszystkich,pl_PL
+customer.order.reorder_selected,Zamów tylko wybrane,pl_PL
+customer.order.reorder_all,Zamów wszystko,pl_PL
 product_discontinued_widget.note,Uwaga,pl_PL
 agent.login.title,Uzyskaj dostęp do swojego konta,pl_PL
 agent.account.page_title,Agent,pl_PL
@@ -18825,8 +18825,8 @@ product.attribute.variant.reset,Wyczyść,pl_PL
 product.attribute.not_available,product.attribute.not_available,pl_PL
 page.detail.affiliate-product-action,Idź do sklepu,pl_PL
 cart.price.grand.total,Całkowita kwota,pl_PL
-checkout.step.benefit_deal.total_used_shopping_points,Used Total Shopping Points,pl_PL
-checkout.step.benefit_deal.benefit_voucher,Used total Benefit Voucher amount,pl_PL
+checkout.step.benefit_deal.total_used_shopping_points,Suma Shopping Points,pl_PL
+checkout.step.benefit_deal.benefit_voucher,Suma Benefit Voucher amount,pl_PL
 cart.total.price_to_pay,Kwota do zapłaty,pl_PL
 configurable_bundle_note.form.save,Zapisać,pl_PL
 configured_bundle_note_widget.edit_note,Edytować,pl_PL
@@ -18834,7 +18834,7 @@ configured_bundle_note_widget.remove_note,Usunąć,pl_PL
 configurable_bundle_note.enter_note,Dodaj notatkę do skonfigurowanego zestawu,pl_PL
 cart.vouchers,Kupony,pl_PL
 cart.vouchers.clear-all,Wyczyść wszystko,pl_PL
-cart.voucher.remove,Usunąć,pl_PL
+cart.voucher.remove,Usuń,pl_PL
 cart.discounts,Rabaty,pl_PL
 cart.voucher-title,Kod rabatowy,pl_PL
 product_search_widget.search.no_results,Nie znaleziono produktów.,pl_PL
@@ -18876,17 +18876,17 @@ customer.account.wishlist.add_all_available_to_cart,Dodaj wszystkie dostępne pr
 customer.account.wishlist.overview.name,Nazwa,pl_PL
 customer.account.wishlist.overview.item_count,Liczba pozycji,pl_PL
 customer.account.wishlist.overview.date,Data utworzenia,pl_PL
-customer.account.wishlist.overview.enter_name,Wpisz imię tutaj,pl_PL
+customer.account.wishlist.overview.enter_name,Wprowadź nazwę,pl_PL
 wishlist.form.save,Zapisać,pl_PL
-customer.account.wishlist.overview.edit,Edytować,pl_PL
-customer.account.wishlist.overview.delete,Skasować,pl_PL
-customer.account.wishlist.overview.add_new,Dodaj nową listę życzeń,pl_PL
+customer.account.wishlist.overview.edit,Edytuj,pl_PL
+customer.account.wishlist.overview.delete,Usuń,pl_PL
+customer.account.wishlist.overview.add_new,Stwórz listę życzeń,pl_PL
 customer.account.wishlist.product,Produkt,pl_PL
 customer.account.wishlist.price,Cena,pl_PL
 customer.account.wishlist.availability,Dostępność,pl_PL
 customer.account.wishlist.available,Dostępny,pl_PL
 customer.account.wishlist.not_available,Obecnie niedostępne,pl_PL
-customer.account.wishlist.remove,Usunąć,pl_PL
+customer.account.wishlist.remove,Usuń,pl_PL
 customer.account.wishlist.add-to-cart,Dodaj do koszyka,pl_PL
 catalog.sale,Sprzedaż,pl_PL
 replacement_for_widget.replacement_for,Zamiennik,pl_PL
@@ -18899,7 +18899,7 @@ bundle.title,Pakiet zawiera,pl_PL
 page.product.seller,Sprzedawca,pl_PL
 page.product.condition,Stan,pl_PL
 page.product.status,Nowy,pl_PL
-pdp.include.tax,w tym podatek,pl_PL
+pdp.include.tax,W tym podatek,pl_PL
 page.product.shipping-fee-from,Wysyłka z,pl_PL
 product.attribute.sku,SKU,pl_PL
 afiliate.legal.text,"Ten produkt jest sprzedawany przez sprzedawcę będącego stroną trzecią. Sprzedawca ponosi wyłączną odpowiedzialność za ceny, opis produktów, stany magazynowe i wysyłkę. Jeśli chodzi o odpowiedzialność myWorld za hiperłącza i ich zawartość, odnosimy się do warunków korzystania z myWorld marketplace.",pl_PL
@@ -18931,8 +18931,8 @@ customer.order.payment_method,Metoda płatności,pl_PL
 customer.account.no_order,W tej chwili brak zamówień,pl_PL
 customer.order.order_id,Identyfikator zamówienia,pl_PL
 customer.order.date,Data zamówienia,pl_PL
-customer.order.total,Całkowity,pl_PL
-customer.order.items_state,Stan pozycji,pl_PL
+customer.order.total,Koszt całkowity,pl_PL
+customer.order.items_state,Status zamówienia,pl_PL
 customer.order.view_order,Wyświetl zamówienie,pl_PL
 customer.order.subTotal,Suma częściowa,pl_PL
 customer.order.expenseTotal,Koszty przesyłki (łącznie),pl_PL
@@ -18941,10 +18941,10 @@ customer.order.remunerationTotal,Łączne wynagrodzenie,pl_PL
 customer.order.refundTotal,Całkowity zwrot kosztów,pl_PL
 customer.order.taxTotal,Podatek,pl_PL
 customer.order.priceToPay,customer.order.priceToPay,pl_PL
-customer.account.shopping_points_and_cashback,Shopping Points & Cashback,pl_PL
+customer.account.shopping_points_and_cashback,Shopping Points i Cashback,pl_PL
 order_cancel_widget.cancel_order,Anuluj zamówienie,pl_PL
 customer.profile.order_details,Szczegóły zamówienia,pl_PL
-customer.order.payment,Zapłata,pl_PL
+customer.order.payment,Metody płatności,pl_PL
 customer.order.grandTotal,Łączna suma,pl_PL
 customer.account.overview,Przegląd,pl_PL
 product.multiple.affiliates,Więcej niż jedna oferta,pl_PL
@@ -18989,7 +18989,7 @@ customer.order_history.apply,Apply,pl_PL
 customer.order.item_quantity,Ilość,pl_PL
 customer.order.item_amount,customer.order.item_amount,pl_PL
 customer.order.delivery_address,Adres dostawy,pl_PL
-customer.order.delivery_method,Sposób dostawy,pl_PL
+customer.order.delivery_method,Czas dostawy,pl_PL
 customer.order.requested_delivery_date,Wymagana data dostawy,pl_PL
 customer.order.bundled_items,Przedmioty w zestawie:,pl_PL
 customer.order.options,Opcje produktu:,pl_PL
@@ -19214,10 +19214,10 @@ catalog.loading,Ładowanie,pl_PL
 catalog.next,kontyntynuj,pl_PL
 catalog.prev,z powrotem,pl_PL
 catalog.sort,Sortowanie,pl_PL
-catalog.sort.name_asc,Nazwa rosnąco,pl_PL
-catalog.sort.name_desc,Nazwa malejąco,pl_PL
-catalog.sort.price_asc,Cena rosnąco,pl_PL
-catalog.sort.price_desc,Cena malejąco,pl_PL
+catalog.sort.name_asc,Nazwy od A do Z,pl_PL
+catalog.sort.name_desc,Nazwy od Z do A,pl_PL
+catalog.sort.price_asc,Ceny od najniższej,pl_PL
+catalog.sort.price_desc,Ceny od najwyższej,pl_PL
 catalog.sort.rating,Oceny produktów,pl_PL
 checkout.customer.auth_as_user,Zapisz się,pl_PL
 checkout.giftcard.label,Karta podarunkowa,pl_PL
@@ -19550,12 +19550,12 @@ customer.address.is_default_billing,To domyślny adres rozliczeniowy,pl_PL
 customer.address.is_default_shipping,To domyślny adres dostawy,pl_PL
 customer.address.last_name,Nazwisko,pl_PL
 customer.address.number,Numer domu,pl_PL
-customer.address.phone,Numer telefonu (na ewentualne pytania dotyczące dostawy z prefixem np. +48),pl_PL
-customer.address.placeholder.optional,Opcjonalny,pl_PL
+customer.address.phone,"Numer telefonu (na ewentualne pytania dotyczące dostawy, numer telefonu z prefixem np. +48)",pl_PL
+customer.address.placeholder.optional,Opcjonalne,pl_PL
 customer.address.save_new_address,Zapisz nowy adres w książce adresowej,pl_PL
-customer.address.state,Stan,pl_PL
+customer.address.state,Województwo,pl_PL
 customer.address.updated,Adres został pomyślnie zaktualizowany,pl_PL
-customer.address.vat_number,"Numer NIP,VAT Number""",pl_PL
+customer.address.vat_number,"Numer NIP lub VAT",pl_PL
 customer.address.zip_code,Kod pocztowy,pl_PL
 customer.anonymization.failed,Twoje konto nie mogło zostać usunięte,pl_PL
 customer.anonymization.success,Twoje konto zostało pomyślnie usunięte,pl_PL
@@ -20301,8 +20301,8 @@ customer.balance.my_world_benefit_voucher_account,Benefit Voucher,pl_PL
 customer.balance.my_world_shopping_points_account,Shopping Points,pl_PL
 pdp.price.benefit_voucher_price,Benefit Voucher Deal,pl_PL
 checkout.step.benefit_deal.title,Przegląd zamówień,pl_PL
-cart.include.vat,wraz z VAT,pl_PL
-customer.balance.into,Masz:,pl_PL
+cart.include.vat,zaw. podatek VAT,pl_PL
+customer.balance.into,Posiadasz:,pl_PL
 checkout.payment.myworld.payment_methods.title,myWorld ePayment,pl_PL
 checkout.payment.myworld.payment_methods.subtitle,Możesz wybrać jedną z następujących metod myWorld ePayment (opcjonalnie):,pl_PL
 checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,pl_PL
