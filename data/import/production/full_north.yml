@@ -1,0 +1,8 @@
+#'full' data import for local environment.
+version: 0
+
+actions:
+  - data_entity: cms-block
+    source: data/import/common/common/cms_block.csv
+  - data_entity: cms-block-store
+    source: data/import/common/north/cms_block_store.csv
