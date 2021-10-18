@@ -158,7 +158,6 @@ groups:
                 endpoints:
                     www.pl.products.myworld.com:
                         store: PL
-                        <<: *frontend-auth
                     www.sk.products.myworld.com:
                         store: SK
                         <<: *frontend-auth
