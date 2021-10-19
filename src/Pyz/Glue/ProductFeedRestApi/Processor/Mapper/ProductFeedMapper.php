@@ -330,7 +330,19 @@ class ProductFeedMapper
 
         $moneyTransfer = $this->moneyClient->fromInteger($amount, $this->store->getCurrencyIsoCode());
 
-        return $this->moneyClient->formatWithoutSymbol($moneyTransfer);
+        $formattedAmount = $this->moneyClient->formatWithoutSymbol($moneyTransfer);
+
+        return $this->removeSpace($formattedAmount);
+    }
+
+    /**
+     * @param string $formattedAmount
+     *
+     * @return string
+     */
+    protected function removeSpace(string $formattedAmount): string
+    {
+        return str_replace(' ', '', $formattedAmount);
     }
 
     /**
