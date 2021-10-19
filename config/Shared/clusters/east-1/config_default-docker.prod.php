@@ -48,4 +48,4 @@ $adyenSplitAccounts = [
 $config[AdyenConstants::SPLIT_ACCOUNT] = $adyenSplitAccounts[APPLICATION_STORE];
 $config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.05;
 
-$config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = 'B6AFC7E1-9410-4E82-AA43-AA3000C95203';
+$config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '681aca46-da57-4337-8acc-adc6008db275';
