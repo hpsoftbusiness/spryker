@@ -6,3 +6,9 @@ actions:
     source: data/import/common/common/cms_block.csv
   - data_entity: cms-block-store
     source: data/import/common/north/cms_block_store.csv
+  - data_entity: cms-slot-template
+    source: data/import/common/common/cms_slot_template.csv
+  - data_entity: cms-slot
+    source: data/import/common/common/cms_slot.csv
+  - data_entity: cms-slot-block
+    source: data/import/common/common/cms_slot_block.csv
