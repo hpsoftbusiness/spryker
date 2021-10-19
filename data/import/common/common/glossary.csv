@@ -18561,6 +18561,7 @@ customer.balance.my_world_shopping_points_account,Shopping Points,de_DE
 customer.balance.my_world_shopping_points_account,Shopping Points,en_US
 customer.balance.my_world_e_voucher_on_behalf_of_marketer,myWorld eVoucher(Marketer),de_DE
 customer.balance.my_world_e_voucher_on_behalf_of_marketer,myWorld eVoucher(Marketer),en_US
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,myWorld eVoucher(Marketer),pl_PL
 oms.state.failed,fehlgeschlagen,de_DE
 oms.state.failed,Failed,en_US
 oms.state.myworld_payment_pending,MyWorld payment pending,de_DE
@@ -18663,7 +18664,7 @@ global.no_image_available,Obraz nie dostępny,pl_PL
 footer.logo.url,/,pl_PL
 global.button.more,Więcej,pl_PL
 global.button.less,Mniej,pl_PL
-footer.logo.link.privacy,/pl/Prywatnosc,pl_PL
+footer.logo.link.privacy,/pl/privacy,pl_PL
 gdpr.privacy_policy,Politykę prywatności,pl_PL
 gdpr.message,"Używamy plików cookies na naszej stronie internetowej, aby nasze usługi były bardziej wydajne i przyjazne dla użytkownika. Dlatego wybierz „Akceptuj pliki cookies”! Przeczytaj naszą %link%, aby uzyskać dalsze informacje.",pl_PL
 gdpr.accept_cookies,Akceptuję cookies,pl_PL
@@ -18745,7 +18746,7 @@ catalog.view.mode.grid,Siatka,pl_PL
 catalog.view.mode.list,Lista,pl_PL
 catalog.filter.button,Zastosować,pl_PL
 catalog.filter.resetAllFilters,Zresetuj wszystkie filtry,pl_PL
-page.checkout.payment.3d_secure_text,"Please make sure that the credit card you entered has been verified for the new 3d Secure system. Without this verification the transaction will not be possible, for more information please contact your credit card provider.",pl_PL
+page.checkout.payment.3d_secure_text,"Upewnij się, że wprowadzona karta kredytowa została zweryfikowana pod kątem nowego systemu 3d Secure. Bez tej weryfikacji transakcja nie będzie możliwa. Aby uzyskać więcej informacji, skontaktuj się z dostawcą karty kredytowej.",pl_PL
 page.checkout.payment.cc_text,"Dane karty kredytowej nie są przechowywane ani przetwarzane przez myWorld. myWorld korzysta z Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Holandia, do przetwarzania płatności kartą kredytową. myWorld zlecił firmie myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, operacyjną obsługę procesu płatności.",pl_PL
 checkout.payment.provider.payment_methods,Metody Płatności,pl_PL
 checkout.step.summary,Przejdź do podsumowania,pl_PL
@@ -18780,11 +18781,11 @@ Shipping standard,Wysyłka standardowa,pl_PL
 checkout.step.summary.grand_total,Suma,pl_PL
 checkout.step.summary.tax,w tym podatek,pl_PL
 page.checkout.shipment.shipping_address.title,Adres dostawy,pl_PL
-page.checkout.shipment.shipping_method_heading,Czas dostawy,pl_PL
+page.checkout.shipment.shipping_method_heading,Typ i czas dostawy,pl_PL
 shipment.lead.time,Czas dostawy: ok. 3-7 dni roboczych,pl_PL
 checkout.step.summary.delivery_address,Adres dostawy,pl_PL
 checkout.step.summary.uid,UID,pl_PL
-checkout.step.summary.delivery_method,Czas dostawy,pl_PL
+checkout.step.summary.delivery_method,Typ i czas dostawy,pl_PL
 checkout.step.summary.tracking_code,Kod śledzenia dostawy,pl_PL
 checkout.payment.checkbox.use_evoucher_balance,Użyj %price% swojego %balance% Cashback / salda myWorld eVouchera,pl_PL
 checkout.payment.cashback_balance,Saldo Cashback / myWorld eVoucher:,pl_PL
@@ -18826,7 +18827,7 @@ product.attribute.not_available,product.attribute.not_available,pl_PL
 page.detail.affiliate-product-action,Idź do sklepu,pl_PL
 cart.price.grand.total,Całkowita kwota,pl_PL
 checkout.step.benefit_deal.total_used_shopping_points,Suma Shopping Points,pl_PL
-checkout.step.benefit_deal.benefit_voucher,Suma Benefit Voucher amount,pl_PL
+checkout.step.benefit_deal.benefit_voucher,Suma Benefit Voucher,pl_PL
 cart.total.price_to_pay,Kwota do zapłaty,pl_PL
 configurable_bundle_note.form.save,Zapisać,pl_PL
 configured_bundle_note_widget.edit_note,Edytować,pl_PL
@@ -19200,7 +19201,7 @@ cart.total.discount,Zniżka,pl_PL
 cart.validate.items.price.changed,Ceny produktów z kodem SKU '%sku%' zostały zmienione.,pl_PL
 cart.voucher.apply.failed,Twój kod kuponu jest nieprawidłowy.,pl_PL
 cart.voucher.apply.non_applicable,Kod kuponu jest nieprawidłowy,pl_PL
-cart.voucher.apply.successful,Twój kod kuponu został zastosowany,pl_PL
+cart.voucher.apply.successful,Twój kupon został przyjęty,pl_PL
 catalog.currency,€,pl_PL
 catalog.filter.active,Aktywny filtr,pl_PL
 catalog.filter.extras,Inne cechy,pl_PL
@@ -20017,7 +20018,7 @@ page.detail.dimensions,Pomiary,pl_PL
 page.imprint.title,Imprint,pl_PL
 page.imprint.url,/en/imprint,pl_PL
 page.privacy.title,Dane prywatne,pl_PL
-page.privacy.url,/pl/prywatność,pl_PL
+page.privacy.url,/pl/privacy,pl_PL
 page.terms.title,GTC,pl_PL
 page.terms.url,/pl/gtc,pl_PL
 password.confirm,Potwierdź hasło,pl_PL
