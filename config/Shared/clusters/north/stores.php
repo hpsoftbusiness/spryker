@@ -19,6 +19,13 @@ $currencies = [
 
 $countriesPerStore = [];
 
+$timeZoneByStore = [
+    'NO' => 'Europe/Oslo',
+    'FI' => 'Europe/Helsinki',
+    'DK' => 'Europe/Copenhagen',
+    'SE' => 'Europe/Stockholm',
+];
+
 if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     $activeStores = array_map('trim', explode(',', getenv('SPRYKER_ACTIVE_STORES')));
 
@@ -66,6 +73,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
         $template['countries'] = $countriesPerStore[$store] ?? [$store];
         $template['currencyIsoCode'] = $currencies['currencyIsoCode'][$store] ?? 'EUR';
         $template['currencyIsoCodes'] = $currencies['currencyIsoCodes'][$store] ?? ['EUR'];
+        $template['contexts']['*']['timezone'] = $timeZoneByStore[$store] ?? 'Europe/Berlin';
         $stores[$store] = $template;
         $stores[$store]['storesWithSharedPersistence'] = array_diff($activeStores, [$store]);
         $stores[$store]['queuePools']['synchronizationPool'] = array_map(
