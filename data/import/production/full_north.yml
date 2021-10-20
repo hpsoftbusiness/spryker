@@ -16,3 +16,9 @@ actions:
     source: data/import/common/common/cms_slot.csv
   - data_entity: cms-slot-block
     source: data/import/common/common/cms_slot_block.csv
+  - data_entity: navigation
+    source: data/import/common/common/navigation.csv
+  - data_entity: navigation-node
+    source: data/import/common/north/navigation_node.csv
+  - data_entity: content-navigation
+    source: data/import/common/common/content_navigation.csv
