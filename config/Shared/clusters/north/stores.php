@@ -57,7 +57,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
         'locales' => [
             // first entry is default
             'en' => 'en_US',
-            'nn' => 'nn_NO',
+            'nb' => 'nb_NO',
             'fi' => 'fi_FI',
             'da' => 'da_DK',
             'sv' => 'sv_SE',

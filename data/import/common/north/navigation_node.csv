@@ -1,4 +1,4 @@
-navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.nn_NO,title.fi_FI,title.da_DK,title.sv_SE,url.nn_NO,url.fi_FI,url.da_DK,url.sv_SE,css_class.nn_NO,css_class.fi_FI,css_class.da_DK,css_class.sv_SE
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.nb_NO,title.fi_FI,title.da_DK,title.sv_SE,url.nb_NO,url.fi_FI,url.da_DK,url.sv_SE,css_class.nb_NO,css_class.fi_FI,css_class.da_DK,css_class.sv_SE
 FOOTER_NAVIGATION_INFO,node_key_96,,cms_page,About myWorld.com,/en/about-us,,,,,,,,,,,,,,,
 FOOTER_NAVIGATION_INFO,,,cms_page,EliteClub,/en/eliteclub,,,,,,,,,,,,,,,
 FOOTER_NAVIGATION_INFO,,,cms_page,Lyconet,/en/lyconet-store,,,,,,,,,,,,,,,

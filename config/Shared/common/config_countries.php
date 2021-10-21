@@ -18,6 +18,6 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
     'SI' => 'sl_SI',
     'IT' => 'it_IT',
     'PT' => 'pt_PT',
-    'NO' => 'nn_NO',
+    'NO' => 'nb_NO',
     'SK' => 'sk_SK',
 ];
