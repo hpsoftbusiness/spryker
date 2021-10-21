@@ -129,7 +129,7 @@ actions:
 
 #7. Content Management Setup import
   - data_entity: content-banner
-    source: data/import/common/common/content_banner.csv
+    source: data/import/common/north/content_banner.csv
   - data_entity: content-product-abstract-list
     source: data/import/common/north/content_product_abstract_list.csv
   - data_entity: content-product-set
