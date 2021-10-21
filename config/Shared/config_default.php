@@ -660,7 +660,7 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'LV' => ['en' => 'en_US', 'lv' => 'lv_LV', 'ru' => 'ru_RU'],
     'LT' => ['en' => 'en_US', 'lt' => 'lt_LT', 'ru' => 'ru_RU'],
     'NL' => ['en' => 'en_US', 'nl' => 'nl_NL'],
-    'NO' => ['en' => 'en_US', 'nb' => 'nb_NO'],
+    'NO' => ['nb' => 'nb_NO', 'en' => 'en_US'],
     'SE' => ['en' => 'en_US', 'sv' => 'sv_SE'],
     'CH' => ['en' => 'en_US', 'de' => 'de_CH', 'it' => 'it_CH', 'fr' => 'fr_CH'],
     'GB' => ['en' => 'en_GB'],
