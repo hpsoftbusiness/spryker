@@ -18744,7 +18744,7 @@ catalog.sort.by,Sortuj,pl_PL
 product.filter.benefit_store,product.filter.benefit_store,pl_PL
 catalog.view.mode.grid,Siatka,pl_PL
 catalog.view.mode.list,Lista,pl_PL
-catalog.filter.button,Zastosować,pl_PL
+catalog.filter.button,Zastosuj,pl_PL
 catalog.filter.resetAllFilters,Zresetuj wszystkie filtry,pl_PL
 page.checkout.payment.3d_secure_text,"Upewnij się, że wprowadzona karta kredytowa została zweryfikowana pod kątem nowego systemu 3d Secure. Bez tej weryfikacji transakcja nie będzie możliwa. Aby uzyskać więcej informacji, skontaktuj się z dostawcą karty kredytowej.",pl_PL
 page.checkout.payment.cc_text,"Dane karty kredytowej nie są przechowywane ani przetwarzane przez myWorld. myWorld korzysta z Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Holandia, do przetwarzania płatności kartą kredytową. myWorld zlecił firmie myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, operacyjną obsługę procesu płatności.",pl_PL
@@ -18812,7 +18812,7 @@ product.detail.out_of_stock,Ten produkt jest aktualnie niedostępny.,pl_PL
 product.set.detail.no-products,Brak produktów w zestawie,pl_PL
 cart.voucher.redeem,Zrealizuj kod,pl_PL
 cart.code.enter-code,Wpisz kod kuponu / karty podarunkowej,pl_PL
-customer.order.reorder,Zmień kolejność,pl_PL
+customer.order.reorder,Zamów ponownie,pl_PL
 customer.order.reorder_selected,Zamów tylko wybrane,pl_PL
 customer.order.reorder_all,Zamów wszystko,pl_PL
 product_discontinued_widget.note,Uwaga,pl_PL
@@ -18830,7 +18830,7 @@ checkout.step.benefit_deal.total_used_shopping_points,Suma Shopping Points,pl_PL
 checkout.step.benefit_deal.benefit_voucher,Suma Benefit Voucher,pl_PL
 cart.total.price_to_pay,Kwota do zapłaty,pl_PL
 configurable_bundle_note.form.save,Zapisać,pl_PL
-configured_bundle_note_widget.edit_note,Edytować,pl_PL
+configured_bundle_note_widget.edit_note,Edytuj,pl_PL
 configured_bundle_note_widget.remove_note,Usunąć,pl_PL
 configurable_bundle_note.enter_note,Dodaj notatkę do skonfigurowanego zestawu,pl_PL
 cart.vouchers,Kupony,pl_PL
@@ -18840,7 +18840,7 @@ cart.discounts,Rabaty,pl_PL
 cart.voucher-title,Kod rabatowy,pl_PL
 product_search_widget.search.no_results,Nie znaleziono produktów.,pl_PL
 configurable_bundle_page.configurator.slot_page.back_link,Powrót do zestawów,pl_PL
-configurable_bundle_page.edit,Edytować,pl_PL
+configurable_bundle_page.edit,Edytuj,pl_PL
 configurable_bundle_page.configurator.summary_page_total,Razem,pl_PL
 configurable_bundle_page.configurator.sku,SKU:,pl_PL
 cart_note.form.save,Zapisać,pl_PL
@@ -18923,10 +18923,10 @@ customer.profile.delete.description,Spowoduje to usunięcie wszystkich informacj
 customer.forgotten-password.title,Odzyskaj moje hasło,pl_PL
 customer.forgotten-password.description,Wprowadź adres e-mail powiązany z Twoim kontem.,pl_PL
 customer.order.all_orders,Zobacz zamówienia,pl_PL
-customer.account.address,Adresy,pl_PL
+customer.account.address,Adres,pl_PL
 customer.account.edit_address_information,Edytuj informacje adresowe,pl_PL
-customer.profile.address.edit,Edytować,pl_PL
-customer.profile.address.delete,Skasować,pl_PL
+customer.profile.address.edit,Edytuj,pl_PL
+customer.profile.address.delete,Usuń,pl_PL
 customer.account.button.add_new_address,Dodaj nowy adres,pl_PL
 customer.order.payment_method,Metoda płatności,pl_PL
 customer.account.no_order,W tej chwili brak zamówień,pl_PL
@@ -19111,7 +19111,7 @@ availability_notification.successfully_unsubscribed,Anulowano subskrypcję,pl_PL
 availability_notification.successfully_unsubscribed_text,"Zrezygnowałeś z otrzymywania powiadomień, gdy produkt będzie ponownie dostępny",pl_PL
 checkout.step.error.title,Twoje zamówienie nie zostało złożone.,pl_PL
 checkout.step.error.text,Coś poszło nie tak. Przepraszamy.,pl_PL
-checkout.step.payment.title,Zapłata,pl_PL
+checkout.step.payment.title,Płatność,pl_PL
 checkout.step.summary.products,Produkty,pl_PL
 checkout.step.summary.requested_delivery_date,Wymagana data dostawy,pl_PL
 page.checkout.summary.complete_checkout,Kompletna płatność,pl_PL
@@ -19246,13 +19246,13 @@ cms.page.sort.name_desc,Sortuj malejąco według nazwy,pl_PL
 cms-product-group.category.link.text,Przeglądaj więcej,pl_PL
 company.account,Konto firmowe,pl_PL
 company.account.add_new_address,Zdefiniuj nowy adres,pl_PL
-company.account.address,Adresy,pl_PL
+company.account.address,Adres,pl_PL
 company.account.address.address1,Ulica,pl_PL
 company.account.address.address3,Dodatek do adresu,pl_PL
 company.account.address.city,Miasto,pl_PL
 company.account.address.country,Kraj,pl_PL
-company.account.address.delete,Skasować,pl_PL
-company.account.address.edit,Edytować,pl_PL
+company.account.address.delete,Usuń,pl_PL
+company.account.address.edit,Edytuj,pl_PL
 company.account.address.is_default_billing,To domyślny adres rozliczeniowy,pl_PL
 company.account.address.number,Numer,pl_PL
 company.account.address.phone,Numer telefonu,pl_PL
@@ -19261,13 +19261,13 @@ company.account.authorization.success,Pomyślnie zarejestrowano,pl_PL
 company.account.billing_address,Domyślny adres rozliczeniowy,pl_PL
 company.account.business_unit,Jednostki biznesowe,pl_PL
 company.account.business_unit.add,Utwórz jednostkę biznesową,pl_PL
-company.account.business_unit.address,Adresy,pl_PL
+company.account.business_unit.address,Adres,pl_PL
 company.account.business_unit.create,Stwórz,pl_PL
-company.account.business_unit.delete,Skasować,pl_PL
+company.account.business_unit.delete,Usuń,pl_PL
 company.account.business_unit.delete.confirmation.warning,Ostrzeżenie,pl_PL
 company.account.business_unit.details,Szczegóły,pl_PL
-company.account.business_unit.edit,Edytować,pl_PL
-company.account.business_unit.edit_information,Edytować,pl_PL
+company.account.business_unit.edit,Edytuj,pl_PL
+company.account.business_unit.edit_information,Edytuj,pl_PL
 company.account.business_unit.email,E-mail,pl_PL
 company.account.business_unit.external_url,Zewnętrzny adres URL,pl_PL
 company.account.business_unit.name,Nazwa,pl_PL
@@ -19278,7 +19278,7 @@ company.account.company_role,Role,pl_PL
 company.account.company_role.add,Dodaj nową rolę,pl_PL
 company.account.company_role.default,Domyślna,pl_PL
 company.account.company_role.details,Detale,pl_PL
-company.account.company_role.edit,Edytować,pl_PL
+company.account.company_role.edit,Edytuj,pl_PL
 company.account.company_role.edit_information,Edytuj informacje o roli,pl_PL
 company.account.company_role.is_default,Jest domyślna,pl_PL
 company.account.company_role.name,Nazwa,pl_PL
@@ -19297,11 +19297,11 @@ company.account.company_role.view,Widok,pl_PL
 company.account.company_user,Użytkownicy,pl_PL
 company.account.company_user.add,Dodaj nowego użytkownika,pl_PL
 company.account.company_user.business_unit,Jednostka biznesowa,pl_PL
-company.account.company_user.delete,Skasować,pl_PL
+company.account.company_user.delete,Usuń,pl_PL
 company.account.company_user.delete.back,Z powrotem,pl_PL
 company.account.company_user.delete.successful,Użytkownik został usunięty,pl_PL
 company.account.company_user.disable,Wyłączyć,pl_PL
-company.account.company_user.edit,Edytować,pl_PL
+company.account.company_user.edit,Edytuj,pl_PL
 company.account.company_user.edit_information,Edytuj informacje o użytkowniku,pl_PL
 company.account.company_user.enable,Włączyć,pl_PL
 company.account.company_user.name,Nazwa,pl_PL
@@ -19491,7 +19491,7 @@ customer.account.shopping_list.overview.add_new,Dodaj nową listę zakupów,pl_P
 customer.account.shopping_list.overview.add_shopping_list_to_cart,Dodaj wybrane listy zakupów do koszyka,pl_PL
 customer.account.shopping_list.overview.created_date,Data utworzenia,pl_PL
 customer.account.shopping_list.overview.create.success,Lista zakupów została pomyślnie utworzona.,pl_PL
-customer.account.shopping_list.overview.delete,Skasować,pl_PL
+customer.account.shopping_list.overview.delete,Usuń,pl_PL
 customer.account.shopping_list.overview.dismiss,Odrzuć,pl_PL
 customer.account.shopping_list.overview.edit,Zmień nazwę,pl_PL
 customer.account.shopping_list.overview.empty,Nie masz jeszcze żadnych list zakupów.,pl_PL
@@ -19561,7 +19561,7 @@ customer.address.zip_code,Kod pocztowy,pl_PL
 customer.anonymization.failed,Twoje konto nie mogło zostać usunięte,pl_PL
 customer.anonymization.success,Twoje konto zostało pomyślnie usunięte,pl_PL
 customer.authentication.failed,Uwierzytelnianie nie powiodło się,pl_PL
-customer.authentication.succeeded,Logowanie powiodło się,pl_PL
+customer.authentication.succeeded,Logowanie się powiodło,pl_PL
 customer.authorization.account_confirmed,"Twój adres e-mail został zweryfikowany. Proszę się zalogować, aby kontynuować.",pl_PL
 customer.authorization.invalid_account,"Aby się zalogować, musisz najpierw potwierdzić swój adres e-mail",pl_PL
 customer.authorization.success,"Prawie na miejscu! Wyślemy Ci wiadomość e-mail, aby potwierdzić Twój adres e-mail. Potwierdź to, aby móc się zalogować.",pl_PL
@@ -19872,7 +19872,7 @@ multi_cart.form.quote.name,Nazwa koszyka,pl_PL
 multi_cart_page.cart_clear.success,Koszyk został pomyślnie wyczyszczony,pl_PL
 multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Koszyki zakupowe,pl_PL
 multi_cart_page.cart_delete_confirmation.cancel,Anuluj,pl_PL
-multi_cart_page.cart_delete_confirmation.delete,Skasować,pl_PL
+multi_cart_page.cart_delete_confirmation.delete,Usuń,pl_PL
 multi_cart_page.cart_delete_confirmation.from_all_of_them,Zostanie usunięty ze wszystkich,pl_PL
 multi_cart_page.cart_delete_confirmation.shared_with,Jest udostępniany następującym użytkownikom,pl_PL
 multi_cart_page.cart_delete_confirmation.trying_to_delete,Próbujesz usunąć koszyk,pl_PL

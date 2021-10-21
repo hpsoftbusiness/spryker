@@ -5,7 +5,6 @@
     customerDeleteFormClone: _view.customerDeleteFormCloner,
 
     title: 'customer.account.address' | trans,
-    activePage: 'address',
 } %}
 
 {% block customerContent %}
@@ -15,7 +14,7 @@
                 <div class="box">
                     {% embed molecule('title-box', 'CustomerPage') with {
                         data: {
-                            title: data.activePage ~ loop.index,
+                            title: data.title ~ ' ' ~ loop.index,
                         },
                         embed: {
                             address: address,
