@@ -11,5 +11,5 @@ use Generated\Shared\Search\PageIndexMap;
 
 class FeaturedProductQueryExpanderPlugin extends AbstractBoolQueryExpanderPlugin
 {
-    protected const BOOL_PARAMETER_INDEXED_FIELD_NAME = PageIndexMap::FEATURED_PRODUCTS;
+    protected const BOOL_PARAMETER_INDEXED_FIELD_NAME = PageIndexMap::FEATURED_PRODUCT;
 }

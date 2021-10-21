@@ -60,13 +60,12 @@ class ProductReader implements ProductReaderInterface
      *
      * @return array
      */
-    public function findFeaturedBenefitVoucherProducts(array $requestParameters): array
+    public function findBenefitVoucherProducts(array $requestParameters): array
     {
         $catalogSearchResult = $this
             ->productFeedClient
             ->catalogSearch('', [
                 'benefit-store' => true,
-                'featured-products' => true,
             ]);
 
         return $this->extendResults($catalogSearchResult);
@@ -152,7 +151,7 @@ class ProductReader implements ProductReaderInterface
         $catalogSearchResult = $this
             ->productFeedClient
             ->catalogSearch('', [
-                'featured-products' => true,
+                'featured-product' => true,
             ]);
 
         return $this->extendResults($catalogSearchResult);

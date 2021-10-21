@@ -22,7 +22,7 @@ interface ProductReaderInterface
      *
      * @return array
      */
-    public function findFeaturedBenefitVoucherProducts(array $requestParameters): array;
+    public function findBenefitVoucherProducts(array $requestParameters): array;
 
     /**
      * @param array $requestParameters

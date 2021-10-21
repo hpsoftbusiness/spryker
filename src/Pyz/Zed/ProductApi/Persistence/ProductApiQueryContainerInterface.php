@@ -30,7 +30,7 @@ interface ProductApiQueryContainerInterface extends QueryContainerInterface
     /**
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function queryFeaturedBvDeals(): SpyProductAbstractQuery;
+    public function queryBvDeals(): SpyProductAbstractQuery;
 
     /**
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery

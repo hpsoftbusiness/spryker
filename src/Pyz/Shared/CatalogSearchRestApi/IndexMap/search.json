@@ -14,7 +14,7 @@
           "type": "boolean",
           "include_in_all": false
         },
-        "featured-products": {
+        "featured-product": {
           "type": "boolean",
           "include_in_all": false
         },

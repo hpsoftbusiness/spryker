@@ -37,7 +37,7 @@ class ProductAbstractFeaturedMapExpanderPlugin extends AbstractPlugin implements
         LocaleTransfer $localeTransfer
     ) {
         $productAttributes = $productData[ProductPageSearchTransfer::ATTRIBUTES] ?? [];
-        $pageMapTransfer->setFeaturedProducts((bool)($productAttributes[self::ATTRIBUTE_KEY_FEATURED_PRODUCT] ?? false));
+        $pageMapTransfer->setFeaturedProduct((bool)($productAttributes[self::ATTRIBUTE_KEY_FEATURED_PRODUCT] ?? false));
 
         return $pageMapTransfer;
     }
