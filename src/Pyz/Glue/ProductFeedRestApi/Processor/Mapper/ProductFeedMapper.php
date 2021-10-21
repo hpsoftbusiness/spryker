@@ -328,29 +328,15 @@ class ProductFeedMapper
             return null;
         }
 
-        $moneyTransfer = $this->moneyClient->fromInteger($amount, $this->store->getCurrencyIsoCode());
-
-        $formattedAmount = $this->moneyClient->formatWithoutSymbol($moneyTransfer);
-
-        return $this->removeSpace($formattedAmount);
+        return $this->formatNumber($amount / 100);
     }
 
     /**
-     * @param string $formattedAmount
-     *
-     * @return string
-     */
-    protected function removeSpace(string $formattedAmount): string
-    {
-        return str_replace(' ', '', $formattedAmount);
-    }
-
-    /**
-     * @param int|null $amount
+     * @param int|float|null $amount
      *
      * @return string|null
      */
-    protected function formatNumber(?int $amount): ?string
+    protected function formatNumber($amount): ?string
     {
         if ($amount === null) {
             return null;

@@ -35,7 +35,7 @@ class ProductFeedClient extends AbstractClient implements ProductFeedClientInter
             ->getSearchQuery()
             ->setSort([
                 'search-result-data.id_product_abstract' => [
-                    'order' => 'desc',
+                    'order' => 'asc',
                     'mode' => 'min',
                 ],
             ]);

@@ -169,6 +169,7 @@ class CatalogSearchReader
     {
         return [
             'page' => $restRequest->getHttpRequest()->get('page', 1),
+            'ipp' => $restRequest->getHttpRequest()->get('ipp', 100),
         ];
     }
 
