@@ -135,7 +135,7 @@ class CategoryWriterStep extends SprykerCategoryWriterStep
             $this->idNavigationNodeBuffer[$navigationMode] = $this->resolveIdNavigation($navigationMode);
         }
 
-        $navigationNodeKey = strtolower($navigationMode . static::NODE_KEY_SUFFIX . $dataSet[static::KEY_URL_ID]);
+        $navigationNodeKey = strtolower($navigationMode . static::NODE_KEY_SUFFIX . $dataSet[static::KEY_CATEGORY_KEY]);
         $navigationNodeEntity = SpyNavigationNodeQuery::create()
             ->filterByFkNavigation($this->idNavigationNodeBuffer[$navigationMode])
             ->filterByNodeKey($navigationNodeKey)
