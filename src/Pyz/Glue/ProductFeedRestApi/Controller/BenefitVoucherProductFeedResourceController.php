@@ -48,6 +48,6 @@ class BenefitVoucherProductFeedResourceController extends AbstractController
     {
         return $this->getFactory()
             ->createCatalogSearchReader()
-            ->findBenefitVoucherProducts($restRequest);
+            ->findFeaturedBenefitVoucherProducts($restRequest);
     }
 }

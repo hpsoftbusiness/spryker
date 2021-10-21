@@ -67,9 +67,9 @@ class CatalogSearchReader
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function findBenefitVoucherProducts(RestRequestInterface $restRequest): RestResponseInterface
+    public function findFeaturedBenefitVoucherProducts(RestRequestInterface $restRequest): RestResponseInterface
     {
-        $searchResult = $this->productReader->findBenefitVoucherProducts(
+        $searchResult = $this->productReader->findFeaturedBenefitVoucherProducts(
             $this->getPageRequestParameters($restRequest)
         );
 

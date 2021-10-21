@@ -43,10 +43,11 @@ class ProductApiQueryContainer extends AbstractQueryContainer implements Product
     /**
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function queryBvDeals(): SpyProductAbstractQuery
+    public function queryFeaturedBvDeals(): SpyProductAbstractQuery
     {
         return $this->queryFind()
-            ->where("JSON_VALUE(attributes, '$.benefit_store') IS TRUE");
+            ->where("JSON_VALUE(attributes, '$.benefit_store') IS TRUE")
+            ->where("JSON_VALUE(attributes, '$.featured_products') IS TRUE");
     }
 
     /**
