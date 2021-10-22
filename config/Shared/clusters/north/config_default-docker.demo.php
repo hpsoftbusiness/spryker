@@ -32,3 +32,9 @@ $adyenCredentials = [
 $config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = $adyenCredentials['ORIGIN_KEYS'][APPLICATION_STORE];
 
 $config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '31d25f30-e540-4825-b602-adc7009eded8';
+
+// ----------------------------------------------------------------------------
+// ------------------ Weclapp integration -------------------------------------
+// ----------------------------------------------------------------------------
+
+require 'common/config_weclapp-default.php';
