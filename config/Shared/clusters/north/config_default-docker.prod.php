@@ -38,4 +38,4 @@ $config[AdyenApiConstants::API_KEY] = $adyenCredentials['API_KEYS'][APPLICATION_
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNTS'][APPLICATION_STORE];
 $config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = $adyenCredentials['ORIGIN_KEYS'][APPLICATION_STORE];
 
-$config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '8F8D1A16-E266-4906-9528-AA310068B044';
+$config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '31d25f30-e540-4825-b602-adc7009eded8';
