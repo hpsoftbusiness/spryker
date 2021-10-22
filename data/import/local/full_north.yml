@@ -50,22 +50,22 @@ actions:
     source: data/import/common/north/product_management_attribute.csv
 
 #4. Combined product
-#  - data_entity: combined-product-abstract
-#    source: data/import/common/north/combined_product_local.csv
-#  - data_entity: combined-product-abstract-store
-#    source: data/import/common/north/combined_product_local.csv
-#  - data_entity: combined-product-concrete
-#    source: data/import/common/north/combined_product_local.csv
-#  - data_entity: combined-product-image
-#    source: data/import/common/north/combined_product_local.csv
-#  - data_entity: combined-product-price
-#    source: data/import/common/north/combined_product_local.csv
-#  - data_entity: combined-product-stock
-#    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-abstract
+    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-abstract-store
+    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-concrete
+    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-image
+    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-price
+    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-stock
+    source: data/import/common/north/combined_product_local.csv
 #  - data_entity: product-stock
 #    source: data/import/common/common/product_stock.csv
-#  - data_entity: combined-product-group
-#    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-group
+    source: data/import/common/north/combined_product_local.csv
 
 
 #5. Merchandising Setup import
@@ -117,8 +117,8 @@ actions:
     source: data/import/common/common/product_list_to_category.csv
   - data_entity: product-list-customer-group
     source: data/import/common/common/product_list_to_customer_group.csv
-#  - data_entity: combined-product-list-product-concrete
-#    source: data/import/common/north/combined_product_local.csv
+  - data_entity: combined-product-list-product-concrete
+    source: data/import/common/north/combined_product_local.csv
   - data_entity: configurable-bundle-template
     source: data/import/common/common/configurable_bundle_template.csv
   - data_entity: configurable-bundle-template-slot
@@ -130,8 +130,8 @@ actions:
 #7. Content Management Setup import
   - data_entity: content-banner
     source: data/import/common/north/content_banner.csv
-#  - data_entity: content-product-abstract-list
-#    source: data/import/common/north/content_product_abstract_list.csv
+  - data_entity: content-product-abstract-list
+    source: data/import/common/north/content_product_abstract_list.csv
   - data_entity: content-product-set
     source: data/import/common/common/content_product_set.csv
   - data_entity: cms-template
