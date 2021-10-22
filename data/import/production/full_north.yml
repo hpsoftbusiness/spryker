@@ -26,5 +26,9 @@ actions:
     source: data/import/common/north/content_banner.csv
   - data_entity: content-product-abstract-list
     source: data/import/common/north/content_product_abstract_list.csv
+  - data_entity: product-attribute-key
+    source: data/import/common/north/product_attribute_key.csv
+  - data_entity: product-management-attribute
+    source: data/import/common/north/product_management_attribute.csv
   - data_entity: product-search-attribute
     source: data/import/common/north/product_search_attribute.csv
