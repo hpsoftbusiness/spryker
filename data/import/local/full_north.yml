@@ -45,7 +45,7 @@ actions:
   - data_entity: category
     source: data/import/common/north/category.csv
   - data_entity: product-attribute-key
-    source: data/import/common/common/product_attribute_key.csv
+    source: data/import/common/north/product_attribute_key.csv
   - data_entity: product-management-attribute
     source: data/import/common/north/product_management_attribute.csv
 
