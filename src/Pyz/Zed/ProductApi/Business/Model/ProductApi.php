@@ -147,7 +147,7 @@ class ProductApi implements ProductApiInterface
             case ProductApiConfig::RESOURCE_PRODUCTS:
                 return $this->queryContainer->queryRegularProducts();
             case ProductApiConfig::RESOURCE_BVDEALS:
-                return $this->queryContainer->queryBvDeals();
+                return $this->queryContainer->queryFeaturedBvDeals();
             case ProductApiConfig::RESOURCE_SPDEALS:
                 return $this->queryContainer->querySpDeals();
             case ProductApiConfig::RESOURCE_ELITE_CLUB:
