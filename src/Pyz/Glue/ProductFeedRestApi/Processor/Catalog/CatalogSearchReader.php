@@ -81,9 +81,9 @@ class CatalogSearchReader
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function findShoppingPointProducts(RestRequestInterface $restRequest): RestResponseInterface
+    public function findFeaturedShoppingPointProducts(RestRequestInterface $restRequest): RestResponseInterface
     {
-        $searchResult = $this->productReader->findShoppingPointProducts(
+        $searchResult = $this->productReader->findFeaturedShoppingPointProducts(
             $this->getPageRequestParameters($restRequest)
         );
 
@@ -137,9 +137,9 @@ class CatalogSearchReader
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function findFeaturedProducts(RestRequestInterface $restRequest): RestResponseInterface
+    public function findFeaturedRegularProducts(RestRequestInterface $restRequest): RestResponseInterface
     {
-        $searchResult = $this->productReader->findFeaturedProducts(
+        $searchResult = $this->productReader->findFeaturedRegularProducts(
             $this->getPageRequestParameters($restRequest)
         );
 

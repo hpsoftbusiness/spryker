@@ -77,12 +77,13 @@ class ProductReader implements ProductReaderInterface
      *
      * @return array
      */
-    public function findShoppingPointProducts(array $requestParameters): array
+    public function findFeaturedShoppingPointProducts(array $requestParameters): array
     {
         $catalogSearchResult = $this
             ->productFeedClient
             ->catalogSearch('', [
                 'shopping-point-store' => true,
+                'featured-product' => true,
             ]);
 
         return $this->extendResults($catalogSearchResult);
@@ -147,11 +148,13 @@ class ProductReader implements ProductReaderInterface
      *
      * @return array
      */
-    public function findFeaturedProducts(array $requestParameters): array
+    public function findFeaturedRegularProducts(array $requestParameters): array
     {
         $catalogSearchResult = $this
             ->productFeedClient
             ->catalogSearch('', [
+                'benefit-store' => false,
+                'shopping-point-store' => false,
                 'featured-product' => true,
             ]);
 

@@ -29,7 +29,7 @@ interface ProductReaderInterface
      *
      * @return array
      */
-    public function findShoppingPointProducts(array $requestParameters): array;
+    public function findFeaturedShoppingPointProducts(array $requestParameters): array;
 
     /**
      * @param array $requestParameters
@@ -57,7 +57,7 @@ interface ProductReaderInterface
      *
      * @return array
      */
-    public function findFeaturedProducts(array $requestParameters): array;
+    public function findFeaturedRegularProducts(array $requestParameters): array;
 
     /**
      * @param array $requestParameters

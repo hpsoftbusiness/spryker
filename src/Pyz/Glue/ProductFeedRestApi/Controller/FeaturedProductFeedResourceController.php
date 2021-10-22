@@ -48,6 +48,6 @@ class FeaturedProductFeedResourceController extends AbstractController
     {
         return $this->getFactory()
             ->createCatalogSearchReader()
-            ->findFeaturedProducts($restRequest);
+            ->findFeaturedRegularProducts($restRequest);
     }
 }

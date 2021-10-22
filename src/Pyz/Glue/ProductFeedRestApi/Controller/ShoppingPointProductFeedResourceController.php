@@ -48,6 +48,6 @@ class ShoppingPointProductFeedResourceController extends AbstractController
     {
         return $this->getFactory()
             ->createCatalogSearchReader()
-            ->findShoppingPointProducts($restRequest);
+            ->findFeaturedShoppingPointProducts($restRequest);
     }
 }
