@@ -18829,7 +18829,7 @@ cart.price.grand.total,Całkowita kwota,pl_PL
 checkout.step.benefit_deal.total_used_shopping_points,Suma Shopping Points,pl_PL
 checkout.step.benefit_deal.benefit_voucher,Suma Benefit Voucher,pl_PL
 cart.total.price_to_pay,Kwota do zapłaty,pl_PL
-configurable_bundle_note.form.save,Zapisać,pl_PL
+configurable_bundle_note.form.save,Zapisz,pl_PL
 configured_bundle_note_widget.edit_note,Edytuj,pl_PL
 configured_bundle_note_widget.remove_note,Usunąć,pl_PL
 configurable_bundle_note.enter_note,Dodaj notatkę do skonfigurowanego zestawu,pl_PL
@@ -18843,7 +18843,7 @@ configurable_bundle_page.configurator.slot_page.back_link,Powrót do zestawów,p
 configurable_bundle_page.edit,Edytuj,pl_PL
 configurable_bundle_page.configurator.summary_page_total,Razem,pl_PL
 configurable_bundle_page.configurator.sku,SKU:,pl_PL
-cart_note.form.save,Zapisać,pl_PL
+cart_note.form.save,Zapisz,pl_PL
 cart.note-title,Uwaga do koszyka,pl_PL
 product.sets,Zestawy produktów,pl_PL
 product.sets.no-results,Brak wyników.,pl_PL
@@ -18878,7 +18878,7 @@ customer.account.wishlist.overview.name,Nazwa,pl_PL
 customer.account.wishlist.overview.item_count,Liczba pozycji,pl_PL
 customer.account.wishlist.overview.date,Data utworzenia,pl_PL
 customer.account.wishlist.overview.enter_name,Wprowadź nazwę,pl_PL
-wishlist.form.save,Zapisać,pl_PL
+wishlist.form.save,Zapisz,pl_PL
 customer.account.wishlist.overview.edit,Edytuj,pl_PL
 customer.account.wishlist.overview.delete,Usuń,pl_PL
 customer.account.wishlist.overview.add_new,Stwórz listę życzeń,pl_PL
@@ -19646,7 +19646,7 @@ forms.email,E-mail,pl_PL
 forms.first-name,Imię,pl_PL
 forms.last-name,Nazwisko,pl_PL
 forms.password,Hasło,pl_PL
-forms.save-btn,Zapisać,pl_PL
+forms.save-btn,Zapisz,pl_PL
 global.accept.terms.and.conditions,Zaakceptuj regulamin,pl_PL
 global.benefit.competitive_prices,Konkurencyjne ceny,pl_PL
 global.benefit.free_returns,Darmowe zwroty,pl_PL
@@ -20152,7 +20152,7 @@ sales_product_bundle_widget.returnable_text,Zwrot do:,pl_PL
 samsung.search.link,/pl/ search?q=samsung,pl_PL
 shared_cart.form.customer,Nazwa klienta,pl_PL
 shared_cart.form.data_empty,"Brak użytkowników, którym możesz udostępnić koszyk.",pl_PL
-shared_cart.form.save_button,Zapisać,pl_PL
+shared_cart.form.save_button,Zapisz,pl_PL
 shared_cart.form.select_customer,Wybierz klienta,pl_PL
 shared_cart.form.select_permissions,Wybierz poziom dostępu,pl_PL
 shared_cart.form.share_button,Dzielić,pl_PL
