@@ -78,12 +78,6 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
         $reservationItems = $this->getReservationsBySkus($skus);
 
         $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
-
-        $sharedStores = $storeTransfer->getStoresWithSharedPersistence();
-        foreach ($sharedStores as $storeName) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
-        }
     }
 
     /**

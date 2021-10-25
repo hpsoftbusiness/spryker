@@ -200,11 +200,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $storeTransfer = $this->storeFacade->getCurrentStore();
         $storeIds = [$storeTransfer->getIdStore()];
 
-        foreach ($storeTransfer->getStoresWithSharedPersistence() as $storeName) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $storeIds[] = $storeTransfer->getIdStore();
-        }
-
         return $storeIds;
     }
 
@@ -218,11 +213,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $storeTransfer = $this->storeFacade->getCurrentStore();
 
         $this->updateAvailabilityForStore($dataSet, $storeTransfer);
-
-        foreach ($storeTransfer->getStoresWithSharedPersistence() as $storeName) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $this->updateAvailabilityForStore($dataSet, $storeTransfer);
-        }
     }
 
     /**
