@@ -176,7 +176,7 @@ $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
     'preload' => true,
 ];
 
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/quote-request($|/)|^(/en|/de)?/comment($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!/add)($|/)|^(/en|/de)?/checkout($|/))';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/[a-z]{2})?customer($|/)|^(/[a-z]{2})?wishlist($|/)|^(/[a-z]{2})?shopping-list($|/)|^(/[a-z]{2})?quote-request($|/)|^(/[a-z]{2})?comment($|/)|^(/[a-z]{2})?company(?!/register)($|/)|^(/[a-z]{2})?multi-cart($|/)|^(/[a-z]{2})?shared-cart($|/)|^(/[a-z]{2})?cart(?!/add)($|/)|^(/[a-z]{2})?checkout($|/))';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 $config[CustomerPageConstants::CUSTOMER_REMEMBER_ME_SECRET] = 'hundnase';
 $config[CustomerPageConstants::CUSTOMER_REMEMBER_ME_LIFETIME] = 31536000;

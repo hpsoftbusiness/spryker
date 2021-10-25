@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 /**
  * This file is part of the Spryker Commerce OS.
@@ -8,20 +8,10 @@
 namespace Pyz\Yves\CustomerPage\Controller;
 
 use Generated\Shared\Transfer\CustomerTransfer;
-use SprykerShop\Yves\CustomerPage\Controller\CustomerController as SprykerCustomerController;
+use SprykerShop\Yves\CustomerPage\Controller\DeleteController as SprykerDeleteController;
 
-class CustomerController extends SprykerCustomerController
+class DeleteController extends SprykerDeleteController
 {
-    /**
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    protected function executeIndexAction()
-    {
-        $this->getFactory()->getCustomerClient()->markCustomerAsDirty();
-
-        return parent::executeIndexAction();
-    }
-
     /**
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */

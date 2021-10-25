@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage\Controller;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use SprykerShop\Yves\CustomerPage\Controller\AuthController as SprykerAuthController;
 use SprykerShop\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 
@@ -60,5 +61,13 @@ class AuthController extends SprykerAuthController
             'loginForm' => $loginForm->createView(),
             'registerForm' => null,
         ];
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function getLoggedInCustomerTransfer()
+    {
+        return parent::getLoggedInCustomerTransfer() ?? new CustomerTransfer();
     }
 }

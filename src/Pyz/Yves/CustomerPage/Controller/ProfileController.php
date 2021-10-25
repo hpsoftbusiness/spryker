@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage\Controller;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Controller\ProfileController as SprykerProfileController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,5 +22,13 @@ class ProfileController extends SprykerProfileController
     public function indexAction(Request $request)
     {
         return $this->redirectResponseInternal(CustomerPageRouteProviderPlugin::ROUTE_NAME_CUSTOMER_OVERVIEW);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function getLoggedInCustomerTransfer()
+    {
+        return parent::getLoggedInCustomerTransfer() ?? new CustomerTransfer();
     }
 }
