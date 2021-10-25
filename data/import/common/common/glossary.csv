@@ -1112,7 +1112,7 @@ order_invoice.invoice_template.table.price,Prix,fr_FR
 order_invoice.invoice_template.table.quantity,Qté d'article,fr_FR
 order_invoice.invoice_template.table.subtotal,Total,fr_FR
 order_invoice.invoice_template.table.tax,Taux d'imposition,fr_FR
-order_invoice.invoice_template.table.tax.included,ceci inclut% tax_rate %% TVA net,fr_FR
+order_invoice.invoice_template.table.tax.included,ceci inclut %tax_rate%% TVA net,fr_FR
 order_invoice.invoice_template.table.tax.name,T.V.A.,fr_FR
 order_invoice.invoice_template.table.uid,UID:,fr_FR
 packaging_unit_type.box.name,Boîte,fr_FR
@@ -2644,7 +2644,7 @@ order_invoice.invoice_template.table.price,Prezzo,it_IT
 order_invoice.invoice_template.table.quantity,Articolo Qtà,it_IT
 order_invoice.invoice_template.table.subtotal,totale parziale,it_IT
 order_invoice.invoice_template.table.tax,Aliquota fiscale,it_IT
-order_invoice.invoice_template.table.tax.included,questo include% tax_rate %% IVA netta,it_IT
+order_invoice.invoice_template.table.tax.included,questo include %tax_rate%% IVA netta,it_IT
 order_invoice.invoice_template.table.tax.name,I.V.A.,it_IT
 order_invoice.invoice_template.table.uid,UID:,it_IT
 packaging_unit_type.box.name,Scatola,it_IT
@@ -7288,7 +7288,7 @@ order_invoice.invoice_template.table.price,Precio,es_ES
 order_invoice.invoice_template.table.quantity,Cantidad del artículo,es_ES
 order_invoice.invoice_template.table.subtotal,Total parcial,es_ES
 order_invoice.invoice_template.table.tax,Tasa de impuesto,es_ES
-order_invoice.invoice_template.table.tax.included,esto incluye% tax_rate %% IVA neto,es_ES
+order_invoice.invoice_template.table.tax.included,esto incluye %tax_rate%% IVA neto,es_ES
 order_invoice.invoice_template.table.tax.name,IVA,es_ES
 order_invoice.invoice_template.table.uid,UID:,es_ES
 packaging_unit_type.box.name,Caja,es_ES
@@ -8820,7 +8820,7 @@ order_invoice.invoice_template.table.price,Cena,cs_CZ
 order_invoice.invoice_template.table.quantity,Množství položky,cs_CZ
 order_invoice.invoice_template.table.subtotal,Mezisoučet,cs_CZ
 order_invoice.invoice_template.table.tax,Sazba daně,cs_CZ
-order_invoice.invoice_template.table.tax.included,to zahrnuje% tax_rate %% DPH netto,cs_CZ
+order_invoice.invoice_template.table.tax.included,to zahrnuje %tax_rate%% DPH netto,cs_CZ
 order_invoice.invoice_template.table.tax.name,káď,cs_CZ
 order_invoice.invoice_template.table.uid,UID:,cs_CZ
 packaging_unit_type.box.name,Krabice,cs_CZ
@@ -10352,7 +10352,7 @@ order_invoice.invoice_template.table.price,Pris,sv_SE
 order_invoice.invoice_template.table.quantity,Artikelantal,sv_SE
 order_invoice.invoice_template.table.subtotal,Delsumma,sv_SE
 order_invoice.invoice_template.table.tax,Skattenivå,sv_SE
-order_invoice.invoice_template.table.tax.included,detta inkluderar% tax_rate %% moms netto,sv_SE
+order_invoice.invoice_template.table.tax.included,detta inkluderar %tax_rate%% moms netto,sv_SE
 order_invoice.invoice_template.table.tax.name,MOMS,sv_SE
 order_invoice.invoice_template.table.uid,UID:,sv_SE
 packaging_unit_type.box.name,Låda,sv_SE
@@ -11884,7 +11884,7 @@ order_invoice.invoice_template.table.price,Cena,sl_SI
 order_invoice.invoice_template.table.quantity,Količina izdelka,sl_SI
 order_invoice.invoice_template.table.subtotal,Vmesni seštevek,sl_SI
 order_invoice.invoice_template.table.tax,Davčna stopnja,sl_SI
-order_invoice.invoice_template.table.tax.included,to vključuje% davka_stopa %% DDV neto,sl_SI
+order_invoice.invoice_template.table.tax.included,to vključuje %tax_rate%% DDV neto,sl_SI
 order_invoice.invoice_template.table.tax.name,DDV,sl_SI
 order_invoice.invoice_template.table.uid,UID:,sl_SI
 packaging_unit_type.box.name,Škatla,sl_SI
@@ -13416,7 +13416,7 @@ order_invoice.invoice_template.table.price,Preço,pt_PT
 order_invoice.invoice_template.table.quantity,Item Qty,pt_PT
 order_invoice.invoice_template.table.subtotal,Subtotal,pt_PT
 order_invoice.invoice_template.table.tax,Taxa de imposto,pt_PT
-order_invoice.invoice_template.table.tax.included,isto inclui% tax_rate %% IVA líquido,pt_PT
+order_invoice.invoice_template.table.tax.included,isto inclui %tax_rate%% IVA líquido,pt_PT
 order_invoice.invoice_template.table.tax.name,CUBA,pt_PT
 order_invoice.invoice_template.table.uid,UID:,pt_PT
 packaging_unit_type.box.name,Caixa,pt_PT
@@ -14948,7 +14948,7 @@ order_invoice.invoice_template.table.price,Pris,nb_NO
 order_invoice.invoice_template.table.quantity,Antall stk,nb_NO
 order_invoice.invoice_template.table.subtotal,Delsum,nb_NO
 order_invoice.invoice_template.table.tax,Skattesats,nb_NO
-order_invoice.invoice_template.table.tax.included,dette inkluderer% tax_rate %% VAT netto,nb_NO
+order_invoice.invoice_template.table.tax.included,dette inkluderer %tax_rate%% VAT netto,nb_NO
 order_invoice.invoice_template.table.tax.name,Mva,nb_NO
 order_invoice.invoice_template.table.uid,UID:,nb_NO
 packaging_unit_type.box.name,Eske,nb_NO
@@ -16480,7 +16480,7 @@ order_invoice.invoice_template.table.price,cena,sk_SK
 order_invoice.invoice_template.table.quantity,Množstvo položky,sk_SK
 order_invoice.invoice_template.table.subtotal,Medzisúčet,sk_SK
 order_invoice.invoice_template.table.tax,Sadzba dane,sk_SK
-order_invoice.invoice_template.table.tax.included,to zahŕňa% tax_rate %% DPH bez DPH,sk_SK
+order_invoice.invoice_template.table.tax.included,to zahŕňa %tax_rate%% DPH bez DPH,sk_SK
 order_invoice.invoice_template.table.tax.name,DPH,sk_SK
 order_invoice.invoice_template.table.uid,UID:,sk_SK
 packaging_unit_type.box.name,Krabica,sk_SK
@@ -18012,7 +18012,7 @@ order_invoice.invoice_template.table.price,Prijs,nl_NL
 order_invoice.invoice_template.table.quantity,Artikel Aantal,nl_NL
 order_invoice.invoice_template.table.subtotal,Subtotaal,nl_NL
 order_invoice.invoice_template.table.tax,Belastingtarief,nl_NL
-order_invoice.invoice_template.table.tax.included,dit is inclusief% tax_rate %% BTW netto,nl_NL
+order_invoice.invoice_template.table.tax.included,dit is inclusief %tax_rate%% BTW netto,nl_NL
 order_invoice.invoice_template.table.tax.name,VAT,nl_NL
 order_invoice.invoice_template.table.uid,UID:,nl_NL
 packaging_unit_type.box.name,Doos,nl_NL
@@ -19955,7 +19955,7 @@ order_invoice.invoice_template.table.price,Cena,pl_PL
 order_invoice.invoice_template.table.quantity,Pozycja Ilość,pl_PL
 order_invoice.invoice_template.table.subtotal,Suma częściowa,pl_PL
 order_invoice.invoice_template.table.tax,Wysokość podatku,pl_PL
-order_invoice.invoice_template.table.tax.included,obejmuje to % tax_rate %% VAT netto,pl_PL
+order_invoice.invoice_template.table.tax.included,obejmuje to %tax_rate%% VAT netto,pl_PL
 order_invoice.invoice_template.table.tax.name,faktura VAT,pl_PL
 order_invoice.invoice_template.table.uid,UID:,pl_PL
 packaging_unit_type.box.name,Pudełko,pl_PL
@@ -20319,3 +20319,99 @@ payment.payment_method.dummy_prepayment,Przedpłata,pl_PL
 discount.internal.shopping_points,Shopping Points,pl_PL
 payment.payment_method.paid,Płatny,pl_PL
 payment.payment_method.cashback,Cashback,pl_PL
+cart.shipping_standard,Standard frakt,nb_NO
+cart.delete.button,Slett,nb_NO
+customer.balance.into,Du har:,nb_NO
+auth.login-button,Logg inn med myWorld,nb_NO
+cart.include.vat,inkl. MVA.,nb_NO
+merchant_product_offer.sold_by,Solgt av,nb_NO
+merchant_product_offer.view_seller,Se forhandler,nb_NO
+product.filter.benefit_store,produkt.filter.benefit-store,nb_NO
+page.checkout.payment.3d_secure_text,Kontroller at bankkortet du har angitt er bekreftet for det nye 3d Secure -systemet. Uten denne bekreftelsen vil ikke transaksjonen være mulig. Kontakt din kortleverandør for mer informasjon.,nb_NO
+checkout.step.benefit_deal.title,Bestillingsoversikt,nb_NO
+Shipping standard,Standart frakt,nb_NO
+checkout.payment.myworld.payment_methods.title,myWorld ePayment,nb_NO
+checkout.payment.myworld.payment_methods.subtitle,Du kan velge mellom følgende myWorld ePayment -metoder (valgfritt):,nb_NO
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,nb_NO
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher(Marketer),nb_NO
+checkout.payment.myworld.payment_methods.method.cashback,Penger tilbake,nb_NO
+checkout.step.summary.modal.resend_already_by_mail,Koden ble sendt via e-post. Sjekk også spam-mappen din.,nb_NO
+checkout.step.summary.modal.resend_already_by_sms,"Koden ble sendt via SMS, sjekk",nb_NO
+checkout.step.summary.modal.resend_retry,Du kan prøve å sende igjen innenfor:,nb_NO
+checkout.step.summary.modal.link,Fikk du ikke en kode?,nb_NO
+checkout.step.summary.modal.info,Hvordan vil du motta PIN-koden din?,nb_NO
+checkout.step.summary.modal.sms_radio_label,Generer ny bekreftelseskode via SMS,nb_NO
+checkout.step.summary.modal.phone,Nummer:,nb_NO
+checkout.step.summary.modal.email_radio_label,Generer ny bekreftelseskode via e -post,nb_NO
+checkout.step.summary.modal.email,E-post:,nb_NO
+checkout.step.benefit_deal.items,Produkter,nb_NO
+checkout.step.benefit_deal.with_method,med,nb_NO
+checkout.step.error.sub_title,Bestillingen mislyktes på grunn av feil:,nb_NO
+checkout.step.error.link,Gå til handlekurven,nb_NO
+product.attribute.not_available,produkt. Egenskap. Ikke_tilgjengelig,nb_NO
+pdp.price.shopping_points_price,Shopping Point Deals,nb_NO
+pdp.include.tax,inkl. MVA.,nb_NO
+product_detail_page.desclaimer_text,Ansvarsfraskrivelse,nb_NO
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,nb_NO
+customer.order.priceToPay,Sum,nb_NO
+persistent_cart_share_page.preview, Forhåndsvisning: %title%,nb_NO
+cart_page.quote.label.locked_cart, handlekurv låst,nb_NO
+persistent_cart.quote.label.locked_cart.by_quote_approval,Handlekurven er låst av en godkjenningsprosess og handlekurvredigering er deaktivert. Klikk for å låse opp handlekurven,nb_NO
+persistent_cart.quote.label.locked_cart.by_quote_request,Handlekurven er låst av en forespørsel om tilbud og handlekurvredigering er deaktivert. Klikk for å låse opp handlekurven,nb_NO
+persistent_cart.quote.label.locked_cart,Handlevognen er låst og handlekurvredigering er deaktivert. Klikk for å låse opp handlekurven,nb_NO
+persistent_cart.quote.button.reset_lock,Reset låsing,nb_NO
+persistent_cart.quote.label.discarded_locked_cart,Dine nåværende modifikasjoner blir tapt.,nb_NO
+cart.quick_add_to_cart,Legg raskt til i handlekurven,nb_NO
+cart.quick_add_to_cart.submit,Legg i handlekurv,nb_NO
+cart.empty,Handlekurven din er tom!,nb_NO
+customer.order.item_amount,Beløp,nb_NO
+merchant_profile.email,Epostadresse,nb_NO
+merchant_profile.address,Adresse,nb_NO
+merchant_profile.phone,Telefon,nb_NO
+merchant_profile.delivery_time,Leveringstid,nb_NO
+merchant_profile.terms_and_conditions,Betingelser og vilkår,nb_NO
+merchant_profile.cancellation_policy,Avbestillingsregler,nb_NO
+merchant_profile.imprint,Avtrykk,nb_NO
+merchant_profile.privacy,Personvern,nb_NO
+custom_reason,toll_årsak,nb_NO
+Reset,Nullstille,nb_NO
+global.show,Vis ,nb_NO
+global.hide,Skjul,nb_NO
+password.weak,Svak,nb_NO
+password.medium,Medium,nb_NO
+password.strong,Sterk,nb_NO
+password.very_strong,Meget sterk,nb_NO
+password.message,Prøv å forlenge passordet eller legge til tall eller symboler.,nb_NO
+clipboard.copy.success,Kopiert til utklippstavlen!,nb_NO
+clipboard.copy.error,Kopiering til utklippstavlen støttes ikke av nettleseren din. Prøv å kopiere teksten manuelt.,nb_NO
+footer.copyright.content_text,bunntekst for opphavsrettslig innhold,nb_NO
+footer.copyright.text,bunntekst.opphavsrett.tekst,nb_NO
+merchant_product.sold_by,produkt_selges av,nb_NO
+catalog.filter.show_hide_button,Vis/skjul filter,nb_NO
+error.429,For mange forespørsler,nb_NO
+quick-order.search.no_results,Varen ble ikke funnet,nb_NO
+summary_node_bundle_items_summary,- %quantity% x %name%,nb_NO
+summary_node_option_value,+ %value%,nb_NO
+checkout.step.summary.modal.please_wait_30_seconds,Vent 30 sekunder for å be om en ny kode.,nb_NO
+checkout.step.summary.modal.error_session_expired,Betalingsøkten din er utløpt. Gå tilbake til betaling.,nb_NO
+checkout.step.summary.modal.error_when_resending_by_sms,Det oppstod en feil under forsøk på å sende koden via SMS. Prøv igjen senere.,nb_NO
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,Dessverre har du ikke nok SP til å kjøpe dette produktet med rabatt.,nb_NO
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Dessverre har du ikke nok BV til å kjøpe dette produktet med rabatt. Nødvendig beløp: %currency% %needAmount%, your balance: %currency% %balanceAmount%",nb_NO
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Kjære kunde, du må bruke minst %needAmount% %currency% fra din Benefit Voucher Balance fo å få et Benefit Voucher Deal produkt.",nb_NO
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,Maks beløp bør være %maxAmount% %currency% (maks beløp BV). Vennligst bekreft,nb_NO
+oms.state.failed,Mislyktes,nb_NO
+oms.state.myworld_payment_pending,MyWorld -betaling venter,nb_NO
+oms.state.my_world_refund_due_to_payment_failure,MyWorld-refusjon på grunn av betalingsfeil,nb_NO
+oms.state.my_world_refunded,MyWorld tilbakebetalt,nb_NO
+oms.state.my_world_refund_failed,MyWorld-refusjon mislyktes,nb_NO
+oms.state.ready_for_refund,Klar for refusjon,nb_NO
+oms.state.calculating_refund,Beregner refusjon,nb_NO
+oms.state.processing_refund,Behandler refusjon,nb_NO
+oms.state.validating_refund,Validerer refusjon,nb_NO
+oms.state.refund_failed,Refusjon mislyktes,nb_NO
+oms.state.refund_pending_next_try,Ventende refusjon neste forsøk,nb_NO
+oms.state.refund_pending,Refusjon venter,nb_NO
+oms.state.refunded,Refunderes,nb_NO
+oms.state.reserved,Reservert,nb_NO
+oms.state.invoice-generated,Faktura generert,nb_NO
+oms.state.turnover-cancelled,Kansellert omsetning,nb_NO
