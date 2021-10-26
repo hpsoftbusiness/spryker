@@ -17,7 +17,7 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
-        'NO' => 'pub.v2.8015571693343839.aHR0cHM6Ly93d3cubm8ubXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.LfKWPKRv1hxXhL-dUrW-yQPE1dHsiXN44WqEjHz2oVA',
+        'NO' => 'pub.v2.8216083088630330.aHR0cHM6Ly93d3cubm8ubXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.hpm-_-7bcupaZZzvb8YiqdFnHLTj9dZbUkvYtOCGRYA',
         'FI' => 'pub.v2.8015571693343839.aHR0cHM6Ly93d3cuZmkubXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.QAK4XdSH6j_EKTpId0B4X_BcrN4r2FvrJJdy9GFnRSg',
         'DK' => 'pub.v2.8015571693343839.aHR0cHM6Ly93d3cuZGsubXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.MghQOkvISzdIYkvUywCUwxhkC976pZjIwObFXQbrwuU',
         'SE' => 'pub.v2.8015571693343839.aHR0cHM6Ly93d3cuc2UubXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.u9Je4N-4DafMbQ7MsjYdWubDD_lRhQKYPOSXOLL7kKs',
