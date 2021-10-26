@@ -98,28 +98,30 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
         $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
         $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
 
-        $abstractAvailabilityQueryParams = [
-            count($abstractAvailabilityData),
-            $this->dataFormatter->formatStringList(array_column($abstractAvailabilityData, static::KEY_SKU)),
-            $this->dataFormatter->formatStringList(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
-            $this->dataFormatter->formatStringList(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
-        ];
+        if (count($abstractAvailabilityData) > 0) {
+            $abstractAvailabilityQueryParams = [
+                count($abstractAvailabilityData),
+                $this->dataFormatter->formatStringList(array_column($abstractAvailabilityData, static::KEY_SKU)),
+                $this->dataFormatter->formatStringList(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
+                $this->dataFormatter->formatStringList(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
+            ];
 
-        $availabilityAbstractIds = $this->propelExecutor->execute(
-            $this->productStockSql->createAbstractAvailabilitySQL(),
-            $abstractAvailabilityQueryParams
-        );
+            $availabilityAbstractIds = $this->propelExecutor->execute(
+                $this->productStockSql->createAbstractAvailabilitySQL(),
+                $abstractAvailabilityQueryParams
+            );
 
-        $this->collectAvailabilityAbstractIds($availabilityAbstractIds);
+            $this->collectAvailabilityAbstractIds($availabilityAbstractIds);
 
-        $availabilityQueryParams = [
-            count($concreteAvailabilityData),
-            $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_SKU)),
-            $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
-            $this->dataFormatter->formatBooleanList(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
-            $this->dataFormatter->formatStringList(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
-        ];
+            $availabilityQueryParams = [
+                count($concreteAvailabilityData),
+                $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_SKU)),
+                $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
+                $this->dataFormatter->formatBooleanList(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
+                $this->dataFormatter->formatStringList(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
+            ];
 
-        $this->propelExecutor->execute($this->productStockSql->createAvailabilitySQL(), $availabilityQueryParams);
+            $this->propelExecutor->execute($this->productStockSql->createAvailabilitySQL(), $availabilityQueryParams);
+        }
     }
 }
