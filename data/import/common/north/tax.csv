@@ -1,0 +1,5 @@
+tax_set_name,country_name,tax_rate_name,tax_rate_percent
+Standard Tax,Norway,Norway Standard,20
+Standard Tax,Finland,Finland Standard,20
+Standard Tax,Denmark,Denmark Standard,20
+Standard Tax,Sweden,Sweden Standard,20

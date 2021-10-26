@@ -165,7 +165,7 @@ checkout.giftcard.label,Carte cadeau,fr_FR
 checkout.nothing.will.be.sent,"Par conséquent, bien sûr, rien ne sera envoyé!",fr_FR
 checkout.payment.cashback_balance,Solde Cashback / eVoucher myWorld:,fr_FR
 checkout.payment.cashback_info,"Si vous avez un crédit Cashback ou un crédit eVoucher myWorld, celui-ci sera affiché ici et vous pourrez l'utiliser pour le paiement. <br/> Remarque: ils ne peuvent être utilisés que comme paiement pour les articles vendus par myWorld.",fr_FR
-checkout.payment.checkbox.use_evoucher_balance,Utilisez% price% de votre% solde% Cashback / solde de myWorld eVoucher,fr_FR
+checkout.payment.checkbox.use_evoucher_balance,Utilisez %price% de votre %balance% Cashback / solde de myWorld eVoucher,fr_FR
 checkout.payment_method.invalid,Le paiement à la caisse n'est pas valide,fr_FR
 checkout.payment.provider.DummyPayment,méthodes de payement,fr_FR
 checkout.payment.provider.payment_methods,méthodes de payement,fr_FR
@@ -880,12 +880,12 @@ mail.order.confirmation.shipment_details,Détails de l'envoi,fr_FR
 mail.order.confirmation.shipment_number,Numéro d'expédition,fr_FR
 mail.order.confirmation.shipping_address,Adresse de livraison,fr_FR
 mail.order.confirmation.shipping_method,Méthode d'expédition,fr_FR
-mail.order.confirmation.subject,Votre commande myWorld.com% idOrder%,fr_FR
+mail.order.confirmation.subject,Votre commande myWorld.com %idOrder%,fr_FR
 mail.order.confirmation.text_line_1,Merci pour vos achats chez Spryker Shop!,fr_FR
 mail.order.confirmation.text_line_2,Nous vous écrivons pour vous informer que nous avons reçu votre commande. Vous recevrez une confirmation d'expédition par e-mail de notre part dès que la commande aura été envoyée.,fr_FR
 mail.order.confirmation.text_line_3,"Nous espérons que votre commande vous plaira. Si vous changez d'avis, vous pouvez revenir dans les 14 jours.",fr_FR
 mail.order.in-processing.subject,Nouvelle commande vient de passer,fr_FR
-mail.order_invoice.subject,Facture pour votre commande myWorld.com% idOrder%,fr_FR
+mail.order_invoice.subject,Facture pour votre commande myWorld.com %idOrder%,fr_FR
 mail.order.shipped.date,Date de commande,fr_FR
 mail.order.shipped.details,Détails de votre commande,fr_FR
 mail.order.shipped.footer.text_line_1,Passe une bonne journée!,fr_FR
@@ -893,11 +893,11 @@ mail.order.shipped.footer.text_line_2,Votre boutique Spryker,fr_FR
 mail.order.shipped.order_number,Numéro de commande,fr_FR
 mail.order.shipped.price_including_tax,Prix total TTC,fr_FR
 mail.order.shipped.salutation,Bonjour,fr_FR
-mail.order.shipped.subject,Votre commande% orderReference% est en cours,fr_FR
+mail.order.shipped.subject,Votre commande %orderReference% est en cours,fr_FR
 mail.order.shipped.text,Votre commande est déjà en cours.,fr_FR
 mail.sender.email,noreply@demo-spryker.com,fr_FR
 mail.sender.name,Spryker sans réponse,fr_FR
-mail.shipping.confirmation.subject,Votre commande myWorld.com% idOrder% a été envoyée,fr_FR
+mail.shipping.confirmation.subject,Votre commande myWorld.com %idOrder% a été envoyée,fr_FR
 mail.trans.availability_notification_subscription.subtitle,Vous recevrez un e-mail lorsque le produit sera de nouveau disponible.,fr_FR
 mail.trans.availability_notification_subscription.title,Nous venons d'informer notre équipe d'achat de votre abonnement!,fr_FR
 mail.trans.availability_notification.subtitle,L'attente est terminée! Ajoutez ce produit à votre panier maintenant.,fr_FR
@@ -1019,7 +1019,7 @@ measurement_units.standard.weight.ucwt.name,Cent poids américains,fr_FR
 measurement_units.standard.weight.usou.name,Once américaine,fr_FR
 measurement_units.standard.weight.ustn.name,Tonne américaine,fr_FR
 message.submit_link,D'accord!,fr_FR
-multi_cart.cart.set_default.success,Le panier '% quote%' a été défini avec succès dans votre panier actif.,fr_FR
+multi_cart.cart.set_default.success,Le panier '%quote%' a été défini avec succès dans votre panier actif.,fr_FR
 multi_cart.form.create_cart,Ajouter un nouveau panier,fr_FR
 multi_cart.form.edit_cart,Changer de nom,fr_FR
 multi_cart.form.edit_cart_information,Modifier les informations du panier,fr_FR
@@ -1043,7 +1043,7 @@ multi_cart_widget.cart.add,Créer un nouveau panier,fr_FR
 multi_cart_widget.cart.cart,Chariot,fr_FR
 multi_cart_widget.cart.cart_name,Nom du panier,fr_FR
 multi_cart_widget.cart.carts,Chariots,fr_FR
-multi_cart_widget.cart.created.success,Le panier '% quoteName%' a été créé avec succès,fr_FR
+multi_cart_widget.cart.created.success,Le panier '%quoteName%' a été créé avec succès,fr_FR
 multi_cart_widget.cart.default,actif,fr_FR
 multi_cart_widget.cart.item,Article,fr_FR
 multi_cart_widget.cart.items,Articles,fr_FR
@@ -1165,7 +1165,7 @@ page.checkout.shipment.next-step,Continuer vers la méthode de paiement,fr_FR
 page.checkout.shipment.requested_delivery_date.label,Date de livraison requise,fr_FR
 page.checkout.shipment.requested_delivery_date.placeholder,Laissez-le vide si vous le souhaitez dès que possible,fr_FR
 page.checkout.shipment.requested_delivery_date.title,Quand souhaitez-vous être livré?,fr_FR
-page.checkout.shipment.shipment_group_heading,Expédition% actuel% du% total%,fr_FR
+page.checkout.shipment.shipment_group_heading,Expédition %actuel% du %total%,fr_FR
 page.checkout.shipment.shipping_address.title,Adresse de livraison,fr_FR
 page.checkout.shipment.shipping_method_heading,Mode de livraison,fr_FR
 page.checkout.shipping.day,journée,fr_FR
@@ -1222,8 +1222,8 @@ persistent_cart.error.quote.not_available,Le panier n'existe pas,fr_FR
 persistent_cart.quote.remove.can_not_remove_last_cart,Le client doit avoir au moins un panier,fr_FR
 persistent_cart.quote.remove.success,Le panier a bien été supprimé,fr_FR
 personal.address.heading,Données personnelles,fr_FR
-place_order.pre_check.product_discontinued,"Le produit '% name%' n'est plus produit, veuillez en choisir un autre",fr_FR
-price-cart-connector.info.concrete-product-without-price.removed,L'article% sku% sans prix a été supprimé de votre panier.,fr_FR
+place_order.pre_check.product_discontinued,"Le produit '%name%' n'est plus produit, veuillez en choisir un autre",fr_FR
+price-cart-connector.info.concrete-product-without-price.removed,L'article %sku% sans prix a été supprimé de votre panier.,fr_FR
 price.mode.gross_mode,Prix bruts,fr_FR
 price.mode.net_mode,Prix nets,fr_FR
 price.mode.switch.error,Impossible de changer de mode de prix lorsqu'il y a des articles dans le panier.,fr_FR
@@ -1286,14 +1286,14 @@ product.attribute.waterproof_up_to,Étanche jusqu'à,fr_FR
 product.attribute.weight,Poids,fr_FR
 product.attribute.white_balance,balance des blancs,fr_FR
 product.attribute.width,Largeur,fr_FR
-product_bundle.unavailable,Le produit '% productSku%' du bundle Le produit '% bundleSku%' n'est pas disponible pour le moment,fr_FR
-product-cart.info.concrete-product-inactive.removed,L'article inactif% sku% a été supprimé de votre panier.,fr_FR
-product-cart.info.restricted-product.removed,L'article% sku% a été supprimé du panier car il a été désactivé.,fr_FR
+product_bundle.unavailable,Le produit '%productSku%' du bundle Le produit '%bundleSku%' n'est pas disponible pour le moment,fr_FR
+product-cart.info.concrete-product-inactive.removed,L'article inactif %sku% a été supprimé de votre panier.,fr_FR
+product-cart.info.restricted-product.removed,L'article %sku% a été supprimé du panier car il a été désactivé.,fr_FR
 product_cart_item.remove,× supprimer,fr_FR
 product-cart.validation.error.abstract-product-exists,"Produit """" sku """" introuvable",fr_FR
 product-cart.validation.error.concrete-product-exists,"Produit """" sku """" introuvable",fr_FR
 product-cart.validation.error.concrete-product-inactive,"Le produit """" sku """" n'est pas actif.",fr_FR
-product-cart.validation.error.product-option-value-price-exists,Prix de l'option de produit introuvable pour le produit '% sku%'.,fr_FR
+product-cart.validation.error.product-option-value-price-exists,Prix de l'option de produit introuvable pour le produit '%sku%'.,fr_FR
 product.detail.out_of_stock,Ce produit n'est pas disponible pour le moment.,fr_FR
 product_discontinued.super_attribute_discontinued,Discontinué,fr_FR
 product_discontinued_widget.note,Noter,fr_FR
@@ -1357,7 +1357,7 @@ quick-order.paste-order.errors.text-order-format-incorrect,Le format de la comma
 quick-order.paste-order.input-placeholder.copy-paste-order,Collez votre commande ici,fr_FR
 quick-order.paste-order.title,Collez votre commande,fr_FR
 remove,Supprimer,fr_FR
-reorder.info.restricted-product.removed,L'article% sku% n'a pas pu être ajouté au panier car il a été désactivé.,fr_FR
+reorder.info.restricted-product.removed,L'article %sku% n'a pas pu être ajouté au panier car il a été désactivé.,fr_FR
 replacement_for_widget.replacement_for,Remplacement pour,fr_FR
 return.create_return.validation.items_error,Le retour ne peut pas être crédité pour cet ensemble d'articles,fr_FR
 return.create_return.validation.returnable_items_error,Le retour ne peut pas être créé car il contient des articles non retournables,fr_FR
@@ -1413,7 +1413,7 @@ return_page.slip.return_reference,Retour Réf,fr_FR
 return_page.slip.total_price,Prix total,fr_FR
 return_page.table.actions,-,fr_FR
 return_page.title,Créer un retour,fr_FR
-return.return_policy.returnable_till.message,Renvoyable jusqu'au:% date%,fr_FR
+return.return_policy.returnable_till.message,Renvoyable jusqu'au: %date%,fr_FR
 return.return_reasons.damaged.name,Endommagé,fr_FR
 return.return_reasons.no_longer_needed.name,Ne sont plus nécessaires,fr_FR
 return.return_reasons.wrong-item.name,Élément erroné,fr_FR
@@ -1477,7 +1477,7 @@ shipment.lead.time,Délai de livraison: env. 3-7 jours ouvrables,fr_FR
 shipment.standart.description,2-4 jours ouvrables,fr_FR
 shipment.standart.name,Livraison Standard,fr_FR
 shipment.validation.not_found,Méthode d'expédition introuvable.,fr_FR
-shipping.address.country.validation.not_found,Pays de l'adresse de livraison introuvable pour le code de pays:% code%,fr_FR
+shipping.address.country.validation.not_found,Pays de l'adresse de livraison introuvable pour le code de pays: %code%,fr_FR
 shipping.address.validation.is_missing,L'adresse de livraison est manquante,fr_FR
 shopping_list_add_items_widget.add_to_shopping_list,Ajouter à la liste de courses,fr_FR
 shopping_list.cart.items_add.failed,Les éléments n'ont pas pu être ajoutés à la liste,fr_FR
@@ -1513,12 +1513,12 @@ wishlist.form.save,Sauvegarder,fr_FR
 wishlist.title,Liste de souhaits,fr_FR
 wishlist.validation.error.name.already_exists,Une wishlist du même nom existe déjà.,fr_FR
 wishlist.wishlist,Liste de souhaits,fr_FR
-availability_notification_subscription.mail.unsubscribed.body,Vous ne serez pas averti lorsque le produit% name% sera à nouveau disponible.,fr_FR
-availability_notification_subscription.mail.unsubscribed.subject,Vous ne serez pas averti lorsque le produit% name% sera à nouveau disponible.,fr_FR
+availability_notification_subscription.mail.unsubscribed.body,Vous ne serez pas averti lorsque le produit %name% sera à nouveau disponible.,fr_FR
+availability_notification_subscription.mail.unsubscribed.subject,Vous ne serez pas averti lorsque le produit %name% sera à nouveau disponible.,fr_FR
 availability_notification.successfully_unsubscribed,Désabonnement réussi,fr_FR
 availability_notification.successfully_unsubscribed_text,Vous vous êtes désabonné avec succès de la notification lorsque le produit est à nouveau disponible,fr_FR
 availability_notification.unsubscribed,Désabonnement réussi,fr_FR
-billing.address.country.validation.not_found,Pays de l'adresse de facturation introuvable pour le code de pays:% code%,fr_FR
+billing.address.country.validation.not_found,Pays de l'adresse de facturation introuvable pour le code de pays: %code%,fr_FR
 billing.address.validation.is_missing,L'adresse de facturation est manquante,fr_FR
 bundle.title,Le forfait comprend,fr_FR
 business_on_behalf_widget.change_company_user,Changer d'utilisateur de l'entreprise,fr_FR
@@ -1572,12 +1572,12 @@ availability_notification.subscribed,Iscrizione riuscita,it_IT
 availability_notification_subscription.mail.copyright,"<em> Copyright © nome azienda anno corrente, Tutti i diritti riservati. </em> <br> <br>",it_IT
 availability_notification_subscription.mail.notification.body,"L'attesa è finita, ora puoi aggiungere questo prodotto all'interno del tuo carrello.",it_IT
 availability_notification_subscription.mail.notification.buy_now,Acquista ora,it_IT
-availability_notification_subscription.mail.notification.head,% name% è di nuovo disponibile!,it_IT
-availability_notification_subscription.mail.notification.subject,% name% è di nuovo disponibile!,it_IT
+availability_notification_subscription.mail.notification.head,%name% è di nuovo disponibile!,it_IT
+availability_notification_subscription.mail.notification.subject,%name% è di nuovo disponibile!,it_IT
 availability_notification_subscription.mail.subscribed.body,Riceverai una mail quando il prodotto sarà nuovamente disponibile,it_IT
 availability_notification_subscription.mail.subscribed.head,Abbiamo appena informato il nostro team di acquisto del tuo abbonamento!,it_IT
 availability_notification_subscription.mail.subscribed.subject,Abbiamo appena informato il nostro team di acquisto del tuo abbonamento!,it_IT
-availability_notification_subscription.mail.unsubscribe,"Vuoi cambiare il modo in cui ricevi queste email? <br> Puoi <a target = ""_ blank"" href = ""% link%"" style = ""mso-line-height-rule: esattamente; -ms-text-size-Adjust: 100%; - webkit-text-size-Adjust: 100%; color: # 656565; font-weight: normal; text-decoration: underline; ""> annulla l'iscrizione a questo elenco </a>.",it_IT
+availability_notification_subscription.mail.unsubscribe,"Vuoi cambiare il modo in cui ricevi queste email? <br> Puoi <a target = ""_ blank"" href = ""%link%"" style = ""mso-line-height-rule: esattamente; -ms-text-size-Adjust: 100%; - webkit-text-size-Adjust: 100%; color: # 656565; font-weight: normal; text-decoration: underline; ""> annulla l'iscrizione a questo elenco </a>.",it_IT
 cart.add-to-shopping-list.form.placeholder,Immettere il nome di una nuova lista della spesa,it_IT
 cart.cart,Carrello,it_IT
 cart.checkout,Check-out,it_IT
@@ -1595,12 +1595,12 @@ cart.item.bundle.description,Articoli nel pacchetto:,it_IT
 cart.item.item_price,Prezzo dell'articolo,it_IT
 cart.item.item_total,Totale articolo,it_IT
 cart.item.option.description,Opzioni di prodotto:,it_IT
-cart.item.option.pre.check.validation.error.exists,"Non puoi riordinare direttamente il prodotto% name%, aggiungilo al carrello separatamente.",it_IT
+cart.item.option.pre.check.validation.error.exists,"Non puoi riordinare direttamente il prodotto %name%, aggiungilo al carrello separatamente.",it_IT
 cart.item_quantity,Quantità,it_IT
 cart.item.remove.confirm,Sei sicuro di voler rimuovere questo articolo?,it_IT
 cart.item.sku,SKU,it_IT
 cart_note.cart_page.cart.note_added,La nota è stata aggiunta con successo al carrello,it_IT
-cart_note.cart_page.item.note_added,"La nota è stata aggiunta con successo all'elemento ""% sku%""",it_IT
+cart_note.cart_page.item.note_added,"La nota è stata aggiunta con successo all'elemento ""%sku%""",it_IT
 cart_note.checkout_page.item_note,Nota,it_IT
 cart_note.checkout_page.quote_note,Nota del carrello,it_IT
 cart_note.customer_page.item_note,Voce dell'ordine Nota,it_IT
@@ -2697,7 +2697,7 @@ page.checkout.shipment.next-step,Continua su Metodo di pagamento,it_IT
 page.checkout.shipment.requested_delivery_date.label,Data di consegna richiesta,it_IT
 page.checkout.shipment.requested_delivery_date.placeholder,Lascialo vuoto se lo desideri al più presto,it_IT
 page.checkout.shipment.requested_delivery_date.title,Quando vuoi essere consegnato?,it_IT
-page.checkout.shipment.shipment_group_heading,Spedizione% attuale% di% totale%,it_IT
+page.checkout.shipment.shipment_group_heading,Spedizione% attuale% di %total%,it_IT
 page.checkout.shipment.shipping_address.title,Indirizzo di consegna,it_IT
 page.checkout.shipment.shipping_method_heading,metodo di spedizione,it_IT
 page.checkout.shipping.day,giorno,it_IT
@@ -7341,7 +7341,7 @@ page.checkout.shipment.next-step,Continuar con el método de pago,es_ES
 page.checkout.shipment.requested_delivery_date.label,Fecha de entrega requerida,es_ES
 page.checkout.shipment.requested_delivery_date.placeholder,Déjelo vacío si lo desea lo antes posible,es_ES
 page.checkout.shipment.requested_delivery_date.title,¿Cuándo quieres que te entreguen?,es_ES
-page.checkout.shipment.shipment_group_heading,Envío% actual% del% total%,es_ES
+page.checkout.shipment.shipment_group_heading,Envío% actual% del %total%,es_ES
 page.checkout.shipment.shipping_address.title,Dirección de entrega,es_ES
 page.checkout.shipment.shipping_method_heading,Método de envío,es_ES
 page.checkout.shipping.day,día,es_ES
@@ -7589,7 +7589,7 @@ return_page.slip.return_reference,Devolver Ref,es_ES
 return_page.slip.total_price,Precio total,es_ES
 return_page.table.actions,-,es_ES
 return_page.title,Crear devolución,es_ES
-return.return_policy.returnable_till.message,Retornable hasta:% fecha%,es_ES
+return.return_policy.returnable_till.message,Retornable hasta: %date%,es_ES
 return.return_reasons.damaged.name,Dañado,es_ES
 return.return_reasons.no_longer_needed.name,Ya no es necesario,es_ES
 return.return_reasons.wrong-item.name,Artículo incorrecto,es_ES
@@ -8873,7 +8873,7 @@ page.checkout.shipment.next-step,Pokračujte na způsob platby,cs_CZ
 page.checkout.shipment.requested_delivery_date.label,Požadované datum dovozu,cs_CZ
 page.checkout.shipment.requested_delivery_date.placeholder,"Nechte to prázdné, pokud to chcete ASAP",cs_CZ
 page.checkout.shipment.requested_delivery_date.title,Kdy chcete být doručeni?,cs_CZ
-page.checkout.shipment.shipment_group_heading,Zásilka% aktuální% z% celkem%,cs_CZ
+page.checkout.shipment.shipment_group_heading,Zásilka% aktuální% z %total%,cs_CZ
 page.checkout.shipment.shipping_address.title,Doručovací adresa,cs_CZ
 page.checkout.shipment.shipping_method_heading,Způsob dopravy,cs_CZ
 page.checkout.shipping.day,den,cs_CZ
@@ -9121,7 +9121,7 @@ return_page.slip.return_reference,Zpět Ref,cs_CZ
 return_page.slip.total_price,Celková cena,cs_CZ
 return_page.table.actions,-,cs_CZ
 return_page.title,Vytvořit návrat,cs_CZ
-return.return_policy.returnable_till.message,Vratné do:% datum%,cs_CZ
+return.return_policy.returnable_till.message,Vratné do: %date%,cs_CZ
 return.return_reasons.damaged.name,Poškozené,cs_CZ
 return.return_reasons.no_longer_needed.name,Už není potřeba,cs_CZ
 return.return_reasons.wrong-item.name,Špatná věc,cs_CZ
@@ -10405,7 +10405,7 @@ page.checkout.shipment.next-step,Fortsätt till betalningsmetod,sv_SE
 page.checkout.shipment.requested_delivery_date.label,Begärt leveransdatum,sv_SE
 page.checkout.shipment.requested_delivery_date.placeholder,Lämna den tom om du vill ha den ASAP,sv_SE
 page.checkout.shipment.requested_delivery_date.title,När vill du bli levererad?,sv_SE
-page.checkout.shipment.shipment_group_heading,Leverans% nuvarande% av% totalt%,sv_SE
+page.checkout.shipment.shipment_group_heading,Leverans% nuvarande% av %total%,sv_SE
 page.checkout.shipment.shipping_address.title,Leveransadress,sv_SE
 page.checkout.shipment.shipping_method_heading,Frakt metod,sv_SE
 page.checkout.shipping.day,dag,sv_SE
@@ -10653,7 +10653,7 @@ return_page.slip.return_reference,Retur Ref,sv_SE
 return_page.slip.total_price,Totalbelopp,sv_SE
 return_page.table.actions,-,sv_SE
 return_page.title,Skapa retur,sv_SE
-return.return_policy.returnable_till.message,Retur till:% datum%,sv_SE
+return.return_policy.returnable_till.message,Retur till: %date%,sv_SE
 return.return_reasons.damaged.name,Skadad,sv_SE
 return.return_reasons.no_longer_needed.name,Behövs inte längre,sv_SE
 return.return_reasons.wrong-item.name,Fel sak,sv_SE
@@ -11937,7 +11937,7 @@ page.checkout.shipment.next-step,Nadaljujte do načina plačila,sl_SI
 page.checkout.shipment.requested_delivery_date.label,Zahtevani datum dostave,sl_SI
 page.checkout.shipment.requested_delivery_date.placeholder,"Pustite prazno, če ga želite čim prej",sl_SI
 page.checkout.shipment.requested_delivery_date.title,Kdaj želite biti dostavljeni?,sl_SI
-page.checkout.shipment.shipment_group_heading,Pošiljka% trenutno%%% skupaj%,sl_SI
+page.checkout.shipment.shipment_group_heading,Pošiljka% trenutno% %total%,sl_SI
 page.checkout.shipment.shipping_address.title,Dostavni naslov,sl_SI
 page.checkout.shipment.shipping_method_heading,Način pošiljanja,sl_SI
 page.checkout.shipping.day,dan,sl_SI
@@ -12185,7 +12185,7 @@ return_page.slip.return_reference,Vrnitev Ref,sl_SI
 return_page.slip.total_price,Skupna cena,sl_SI
 return_page.table.actions,-,sl_SI
 return_page.title,Ustvari vrnitev,sl_SI
-return.return_policy.returnable_till.message,Vrnitev do:% datum%,sl_SI
+return.return_policy.returnable_till.message,Vrnitev do: %date%,sl_SI
 return.return_reasons.damaged.name,Poškodovan,sl_SI
 return.return_reasons.no_longer_needed.name,Ni več potrebno,sl_SI
 return.return_reasons.wrong-item.name,Napačen izdelek,sl_SI
@@ -13469,7 +13469,7 @@ page.checkout.shipment.next-step,Continue para o método de pagamento,pt_PT
 page.checkout.shipment.requested_delivery_date.label,Data de entrega solicitada,pt_PT
 page.checkout.shipment.requested_delivery_date.placeholder,Deixe em branco se quiser o mais rápido possível,pt_PT
 page.checkout.shipment.requested_delivery_date.title,Quando você quer ser entregue?,pt_PT
-page.checkout.shipment.shipment_group_heading,Remessa% current% de% total%,pt_PT
+page.checkout.shipment.shipment_group_heading,Remessa% current% de %total%,pt_PT
 page.checkout.shipment.shipping_address.title,Endereço de entrega,pt_PT
 page.checkout.shipment.shipping_method_heading,método de envio,pt_PT
 page.checkout.shipping.day,dia,pt_PT
@@ -13717,7 +13717,7 @@ return_page.slip.return_reference,Ref. De Devolução,pt_PT
 return_page.slip.total_price,Preço total,pt_PT
 return_page.table.actions,-,pt_PT
 return_page.title,Criar Devolução,pt_PT
-return.return_policy.returnable_till.message,Retornável até:% date%,pt_PT
+return.return_policy.returnable_till.message,Retornável até: %date%,pt_PT
 return.return_reasons.damaged.name,Estragado,pt_PT
 return.return_reasons.no_longer_needed.name,Não é mais necessário,pt_PT
 return.return_reasons.wrong-item.name,Item errado,pt_PT
@@ -13876,12 +13876,12 @@ availability_notification.subscribed,Abonnement er vellykket,nb_NO
 availability_notification_subscription.mail.copyright,"<em> Copyright © nåværende år firmanavn, Alle rettigheter forbeholdt. </em> <br> <br>",nb_NO
 availability_notification_subscription.mail.notification.body,"Ventetiden er over, du kan nå legge til dette produktet i handlekurven din.",nb_NO
 availability_notification_subscription.mail.notification.buy_now,Kjøp nå,nb_NO
-availability_notification_subscription.mail.notification.head,% name% er tilgjengelig igjen!,nb_NO
-availability_notification_subscription.mail.notification.subject,% name% er tilgjengelig igjen!,nb_NO
+availability_notification_subscription.mail.notification.head,%name% er tilgjengelig igjen!,nb_NO
+availability_notification_subscription.mail.notification.subject,%name% er tilgjengelig igjen!,nb_NO
 availability_notification_subscription.mail.subscribed.body,Du vil motta en e-post når produktet vil være tilgjengelig igjen,nb_NO
 availability_notification_subscription.mail.subscribed.head,Vi informerte nettopp kjøpeteamet vårt om abonnementet ditt!,nb_NO
 availability_notification_subscription.mail.subscribed.subject,Vi informerte nettopp kjøpeteamet vårt om abonnementet ditt!,nb_NO
-availability_notification_subscription.mail.unsubscribe,"Vil du endre hvordan du mottar disse e-postene? <br> Du kan <a target = ""_ blank"" href = ""% link%"" style = ""mso-line-height-rule: exact; -ms-text-size-adjust: 100%; - webkit-text-size-adjust: 100%; color: # 656565; font-weight: normal; text-decoration: underline; ""> melder deg av denne listen </a>.",nb_NO
+availability_notification_subscription.mail.unsubscribe,"Vil du endre hvordan du mottar disse e-postene? <br> Du kan <a target = ""_ blank"" href = ""%link%"" style = ""mso-line-height-rule: exact; -ms-text-size-adjust: 100%; - webkit-text-size-adjust: 100%; color: # 656565; font-weight: normal; text-decoration: underline; ""> melder deg av denne listen </a>.",nb_NO
 cart.add-to-shopping-list.form.placeholder,Skriv inn navnet på en ny handleliste,nb_NO
 cart.cart,Handlevogn,nb_NO
 cart.checkout,Sjekk ut,nb_NO
@@ -13899,12 +13899,12 @@ cart.item.bundle.description,Varer i pakken:,nb_NO
 cart.item.item_price,Varepris,nb_NO
 cart.item.item_total,Varen totalt,nb_NO
 cart.item.option.description,Produktalternativer:,nb_NO
-cart.item.option.pre.check.validation.error.exists,"Du kan ikke omorganisere produktet% name% direkte, vennligst legg det til i handlekurven din separat.",nb_NO
+cart.item.option.pre.check.validation.error.exists,"Du kan ikke omorganisere produktet %name% direkte, vennligst legg det til i handlekurven din separat.",nb_NO
 cart.item_quantity,Mengde,nb_NO
 cart.item.remove.confirm,Er du sikker på at du vil fjerne dette elementet?,nb_NO
 cart.item.sku,SKU,nb_NO
 cart_note.cart_page.cart.note_added,Merknaden er lagt til i handlekurven,nb_NO
-cart_note.cart_page.item.note_added,Merknaden er lagt til elementet '% sku%',nb_NO
+cart_note.cart_page.item.note_added,Merknaden er lagt til elementet '%sku%',nb_NO
 cart_note.checkout_page.item_note,Merk,nb_NO
 cart_note.checkout_page.quote_note,Handlekurv Merknad,nb_NO
 cart_note.customer_page.item_note,Bestillingsvare Merknad,nb_NO
@@ -13916,15 +13916,15 @@ cart_note.quote_form.enter_note,Legg til et notat for handlekurven,nb_NO
 cart_note.quote_form.placeholder,Skriv inn notatet,nb_NO
 cart.note-title,Handlekurv Merknad,nb_NO
 cart_page.error_message.unexpected_error,Det oppstod en uventet feil.,nb_NO
-cart.pre.check.affiliate.failed,Varen% sku% kan ikke legges til i handlekurven.,nb_NO
-cart.pre.check.availability.failed,Artikkel% sku% har bare tilgjengelighet på% lager%.,nb_NO
-cart.pre.check.availability.failed.empty,Varen% sku% er ikke lenger tilgjengelig.,nb_NO
-cart.pre.check.price.failed,Pris i valgt valuta ble ikke funnet for produkt med sku '% sku%'. Endre valuta eller fjern produktet fra bestillingen.,nb_NO
-cart.pre.check.product_discontinued,Produktet '% name%' er avviklet. Velg et alternativt produkt.,nb_NO
-cart.pre.check.quantity.interval.failed,Mengdeintervallkrav for produkt-SKU '% sku%' er ikke oppfylt.,nb_NO
-cart.pre.check.quantity.max.failed,Maksimalt antall for produkt-SKU '% sku%' er overskredet.,nb_NO
-cart.pre.check.quantity.min.failed,Minimumskrav til antall for produkt-SKU '% sku%' er ikke oppfylt.,nb_NO
-cart.pre.check.quantity.value.failed,Feil mengde for produkt-SKU '% sku%'.,nb_NO
+cart.pre.check.affiliate.failed,Varen %sku% kan ikke legges til i handlekurven.,nb_NO
+cart.pre.check.availability.failed,Artikkel %sku% har bare tilgjengelighet på %lager%.,nb_NO
+cart.pre.check.availability.failed.empty,Varen %sku% er ikke lenger tilgjengelig.,nb_NO
+cart.pre.check.price.failed,Pris i valgt valuta ble ikke funnet for produkt med sku '%sku%'. Endre valuta eller fjern produktet fra bestillingen.,nb_NO
+cart.pre.check.product_discontinued,Produktet '%name%' er avviklet. Velg et alternativt produkt.,nb_NO
+cart.pre.check.quantity.interval.failed,Mengdeintervallkrav for produkt-SKU '%sku%' er ikke oppfylt.,nb_NO
+cart.pre.check.quantity.max.failed,Maksimalt antall for produkt-SKU '%sku%' er overskredet.,nb_NO
+cart.pre.check.quantity.min.failed,Minimumskrav til antall for produkt-SKU '%sku%' er ikke oppfylt.,nb_NO
+cart.pre.check.quantity.value.failed,Feil mengde for produkt-SKU '%sku%'.,nb_NO
 cart.pre.check.shipment.failed,Kan ikke bruke disse endringene. Forsendelsesmetoden ble ikke funnet. Velg en annen forsendelsesmetode.,nb_NO
 cart.price,Pris,nb_NO
 cart.price.grand.total,Totale mengden,nb_NO
@@ -13944,7 +13944,7 @@ cart.total,Total,nb_NO
 cart.total.discount,Rabatt,nb_NO
 cart.total.price_to_pay,Pris å betale,nb_NO
 cart.total.tax_total,Avgift,nb_NO
-cart.validate.items.price.changed,Prisene er endret for produkter med SKU '% sku%'.,nb_NO
+cart.validate.items.price.changed,Prisene er endret for produkter med SKU '%sku%'.,nb_NO
 cart.voucher.apply.failed,Kupongkoden din er ugyldig.,nb_NO
 cart.voucher.apply.non_applicable,Kupongkoden er ugyldig,nb_NO
 cart.voucher.apply.successful,Kupongkoden din er brukt,nb_NO
@@ -14001,7 +14001,7 @@ checkout.giftcard.label,Gavekort,nb_NO
 checkout.nothing.will.be.sent,Derfor vil selvfølgelig ingenting sendes!,nb_NO
 checkout.payment.cashback_balance,Cashback / myWorld eVoucher-saldo:,nb_NO
 checkout.payment.cashback_info,"Hvis du har Cashback-kreditt eller myWorld eVoucher-kreditt, vises dette her, og du kan bruke det til betaling. <br/> Merk: Disse kan bare brukes som betaling for varer som selges av myWorld.",nb_NO
-checkout.payment.checkbox.use_evoucher_balance,Bruk% pris% av% balansen% Cashback / myWorld eVoucher-saldo,nb_NO
+checkout.payment.checkbox.use_evoucher_balance,Bruk %price% av %balance% Cashback / myWorld eVoucher-saldo,nb_NO
 checkout.payment_method.invalid,Kassebetaling er ikke gyldig,nb_NO
 checkout.payment.provider.DummyPayment,betalingsmetoder,nb_NO
 checkout.payment.provider.payment_methods,betalingsmetoder,nb_NO
@@ -14199,10 +14199,10 @@ configurable_bundle_page.configurable_bundle_list,Konfigurerbar pakke liste,nb_N
 configurable_bundle_page.configurator,Konfigurator,nb_NO
 configurable_bundle_page.configurator.added_to_cart,Konfigurert pakke ble lagt til i handlekurven.,nb_NO
 configurable_bundle_page.configurator.add_to_cart,Legg i handlekurv,nb_NO
-configurable_bundle_page.configurator.product_became_unavailable,Produkt med SKU '% sku%' konfigurert for spor med ID '% id%' ble utilgjengelig.,nb_NO
+configurable_bundle_page.configurator.product_became_unavailable,Produkt med SKU '%sku%' konfigurert for spor med ID '%id%' ble utilgjengelig.,nb_NO
 configurable_bundle_page.configurator.selected_product,Valgt produkt,nb_NO
 configurable_bundle_page.configurator.sku,Sku:,nb_NO
-configurable_bundle_page.configurator.slot_became_unavailable,Konfigurert spor med ID '% id%' ble utilgjengelig.,nb_NO
+configurable_bundle_page.configurator.slot_became_unavailable,Konfigurert spor med ID '%id%' ble utilgjengelig.,nb_NO
 configurable_bundle_page.configurator.slot_page.back_link,Tilbake til bunter,nb_NO
 configurable_bundle_page.configurator.summary,Sammendrag,nb_NO
 configurable_bundle_page.configurator.summary_page_locked,Produkt for minst ett spor bør konfigureres til å gå til Sammendrag-siden.,nb_NO
@@ -14318,13 +14318,13 @@ customer.account.shopping_list.availability,Tilgjengelighet,nb_NO
 customer.account.shopping_list.available,Tilgjengelig,nb_NO
 customer.account.shopping_list.clear.success,Handlelisten ble fjernet.,nb_NO
 customer.account.shopping_list.create.failed,Oppretting av handleliste mislyktes.,nb_NO
-customer.account.shopping_list.create.success,Listen '% name%' ble opprettet.,nb_NO
+customer.account.shopping_list.create.success,Listen '%name%' ble opprettet.,nb_NO
 customer.account.shopping_list.delete.failed,Handlelisten ble ikke slettet.,nb_NO
 customer.account.shopping_list.delete.it_belongs_to_follow,Det tilhører følgende,nb_NO
 customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,Det vil bli slettet fra dem alle,nb_NO
 customer.account.shopping_list.delete.success,Handlelisten ble slettet.,nb_NO
 customer.account.shopping_list.delete.warning,Advarsel,nb_NO
-customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Du prøver å slette handlelisten <a href=""""%link%"""">% name% </a>",nb_NO
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Du prøver å slette handlelisten <a href=""""%link%"""">%name% </a>",nb_NO
 customer.account.shopping_list.empty,For øyeblikket er det ingen varer i handlelisten din.,nb_NO
 customer.account.shopping_list.error.cannot_update,Kan ikke oppdatere handlelisten.,nb_NO
 customer.account.shopping_list.error.duplicate_name,En handleliste med samme navn eksisterer allerede.,nb_NO
@@ -14332,8 +14332,8 @@ customer.account.shopping_list.item.added_all_available_to_cart,Tilgjengelige va
 customer.account.shopping_list.item.added_all_available_to_cart.failed,Ikke alle elementene er lagt til i handlekurven,nb_NO
 customer.account.shopping_list.item.added_to_cart,Varen ble lagt i handlekurven.,nb_NO
 customer.account.shopping_list.item.added_to_cart.failed,Varen ble ikke lagt i handlekurven.,nb_NO
-customer.account.shopping_list.item.add.failed,Varen% sku% kunne ikke legges til listen.,nb_NO
-customer.account.shopping_list.item.add.success,Element% sku% ble lagt til listen.,nb_NO
+customer.account.shopping_list.item.add.failed,Varen %sku% kunne ikke legges til listen.,nb_NO
+customer.account.shopping_list.item.add.success,Element %sku% ble lagt til listen.,nb_NO
 customer.account.shopping_list.item.not_added,Kunne ikke legge til produkt i handlelisten.,nb_NO
 customer.account.shopping_list.item.remove.failed,Produktet ble ikke fjernet fra handlelisten.,nb_NO
 customer.account.shopping_list.item.remove.success,Produktet ble fjernet.,nb_NO
@@ -14548,7 +14548,7 @@ customer.table.actions,Handlinger,nb_NO
 customer.token.invalid,Token er ugyldig,nb_NO
 discount.quote_change.discount.amount_changed,"Rabattene du valgte for de følgende varene, har endret seg",nb_NO
 discount.quote_change.discount.not_available,Rabattene du har valgt for følgende varer er ikke lenger tilgjengelig,nb_NO
-discount.quote_change.does_not_apply_for_currency,"Kupongen """"% code% """" ble deaktivert fordi den ikke gjelder for denne valutaen.",nb_NO
+discount.quote_change.does_not_apply_for_currency,"Kupongen """"%code% """" ble deaktivert fordi den ikke gjelder for denne valutaen.",nb_NO
 discount.successfully.applied,"Rabatten """" visningsnavn """" er brukt",nb_NO
 discount.voucher_code.usage_limit.reached,Grensen for bruk av kupongkode er nådd,nb_NO
 DummyPaymentCreditCard,Kredittkort,nb_NO
@@ -14601,7 +14601,7 @@ forms.submit-btn,Sende inn,nb_NO
 forms.submit.login,Logg Inn,nb_NO
 forms.submit.register,Registrere,nb_NO
 gdpr.accept_cookies,Godta informasjonskapsler,nb_NO
-gdpr.message,Vi bruker informasjonskapsler på nettstedet vårt for å gjøre tjenestene våre mer effektive og mer brukervennlige. Velg derfor 'Godta informasjonskapsler'! Les% link% for mer informasjon.,nb_NO
+gdpr.message,Vi bruker informasjonskapsler på nettstedet vårt for å gjøre tjenestene våre mer effektive og mer brukervennlige. Velg derfor 'Godta informasjonskapsler'! Les %link% for mer informasjon.,nb_NO
 gdpr.privacy_policy,Personvernregler,nb_NO
 general.back.button,Tilbake,nb_NO
 general.cancel.button,Avbryt,nb_NO
@@ -14681,8 +14681,8 @@ mail.company.status.denied,Nektet,nb_NO
 mail.company.status.pending,Venter på godkjenning,nb_NO
 mail.company.status.subject,Bedriften din har endret status,nb_NO
 mail.company.status.text,Bedriften din har endret status til:,nb_NO
-mail.company.user.invitation.body.html,"Hei% name%, du har blitt invitert til å bli med i en firmakonto på Spryker Demo-hop. Følg denne <a href=""%invitationLink%""> lenken </a> for å fullføre registreringen.",nb_NO
-mail.company.user.invitation.body.text,"Hei% name%, du er invitert til å bli med i en firmakonto i Spryker Demo-butikken. Følg denne lenken% invitationLink% for å fullføre registreringen",nb_NO
+mail.company.user.invitation.body.html,"Hei %name%, du har blitt invitert til å bli med i en firmakonto på Spryker Demo-hop. Følg denne <a href=""%invitationLink%""> lenken </a> for å fullføre registreringen.",nb_NO
+mail.company.user.invitation.body.text,"Hei %name%, du er invitert til å bli med i en firmakonto i Spryker Demo-butikken. Følg denne lenken %invitationLink% for å fullføre registreringen",nb_NO
 mail.company.user.invitation.subject,Invitasjon,nb_NO
 mail.customer.registration.subject,Takk for at du registrerte deg hos Spryker Shop!,nb_NO
 mail.customer.registration.text,Takk for at du registrerte deg hos Spryker Shop!,nb_NO
@@ -14716,12 +14716,12 @@ mail.order.confirmation.shipment_details,Forsendelse detaljer,nb_NO
 mail.order.confirmation.shipment_number,Forsendelsesnummer,nb_NO
 mail.order.confirmation.shipping_address,Leveringsadresse,nb_NO
 mail.order.confirmation.shipping_method,Forsendelsesmetode,nb_NO
-mail.order.confirmation.subject,MyWorld.com-bestillingen% idOrder%,nb_NO
+mail.order.confirmation.subject,MyWorld.com-bestillingen %idOrder%,nb_NO
 mail.order.confirmation.text_line_1,Takk for at du handlet i Spryker Shop!,nb_NO
 mail.order.confirmation.text_line_2,Vi skriver for å fortelle deg at vi har fått bestillingen din. Du vil motta en leveringsbekreftelse på e-post fra oss så snart bestillingen er sendt.,nb_NO
 mail.order.confirmation.text_line_3,"Vi håper du liker bestillingen din. Hvis du ombestemmer deg, kan du komme tilbake innen 14 dager.",nb_NO
 mail.order.in-processing.subject,Ny ordre akkurat plassert,nb_NO
-mail.order_invoice.subject,Faktura for myWorld.com-bestillingen% idOrder%,nb_NO
+mail.order_invoice.subject,Faktura for myWorld.com-bestillingen %idOrder%,nb_NO
 mail.order.shipped.date,Dato for bestilling,nb_NO
 mail.order.shipped.details,Detaljer om bestillingen din,nb_NO
 mail.order.shipped.footer.text_line_1,Ha en flott dag!,nb_NO
@@ -14729,11 +14729,11 @@ mail.order.shipped.footer.text_line_2,Din Spryker-butikk,nb_NO
 mail.order.shipped.order_number,Ordrenummer,nb_NO
 mail.order.shipped.price_including_tax,Totalpris inkludert avgifter,nb_NO
 mail.order.shipped.salutation,Hallo,nb_NO
-mail.order.shipped.subject,Din bestilling% orderReference% er på vei,nb_NO
+mail.order.shipped.subject,Din bestilling %orderReference% er på vei,nb_NO
 mail.order.shipped.text,Bestillingen din er allerede på vei.,nb_NO
 mail.sender.email,noreply@demo-spryker.com,nb_NO
 mail.sender.name,Spryker Nei-svar,nb_NO
-mail.shipping.confirmation.subject,MyWorld.com-bestillingen% idOrder% er sendt,nb_NO
+mail.shipping.confirmation.subject,MyWorld.com-bestillingen %idOrder% er sendt,nb_NO
 mail.trans.availability_notification_subscription.subtitle,Du vil motta en e-post når produktet er tilgjengelig igjen.,nb_NO
 mail.trans.availability_notification_subscription.title,Vi informerte nettopp kjøpeteamet vårt om abonnementet ditt!,nb_NO
 mail.trans.availability_notification.subtitle,Ventetiden er over! Legg dette produktet i handlekurven din nå.,nb_NO
@@ -14855,7 +14855,7 @@ measurement_units.standard.weight.ucwt.name,USAs hundrevekt,nb_NO
 measurement_units.standard.weight.usou.name,US unse,nb_NO
 measurement_units.standard.weight.ustn.name,US Ton,nb_NO
 message.submit_link,Ok!,nb_NO
-multi_cart.cart.set_default.success,Handlekurven '% quote%' har blitt satt til den aktive handlekurven din.,nb_NO
+multi_cart.cart.set_default.success,Handlekurven '%quote%' har blitt satt til den aktive handlekurven din.,nb_NO
 multi_cart.form.create_cart,Legg til ny vogn,nb_NO
 multi_cart.form.edit_cart,Endre navn,nb_NO
 multi_cart.form.edit_cart_information,Rediger informasjon om handlevognen,nb_NO
@@ -14879,7 +14879,7 @@ multi_cart_widget.cart.add,Lag ny handlevogn,nb_NO
 multi_cart_widget.cart.cart,Handlevogn,nb_NO
 multi_cart_widget.cart.cart_name,Handlekurvenavn,nb_NO
 multi_cart_widget.cart.carts,Vogner,nb_NO
-multi_cart_widget.cart.created.success,Handlekurven '% quoteName%' ble opprettet,nb_NO
+multi_cart_widget.cart.created.success,Handlekurven '%quoteName%' ble opprettet,nb_NO
 multi_cart_widget.cart.default,Aktiv,nb_NO
 multi_cart_widget.cart.item,Punkt,nb_NO
 multi_cart_widget.cart.items,Varer,nb_NO
@@ -15001,7 +15001,7 @@ page.checkout.shipment.next-step,Fortsett til betalingsmåte,nb_NO
 page.checkout.shipment.requested_delivery_date.label,Forespurt leveringsdato,nb_NO
 page.checkout.shipment.requested_delivery_date.placeholder,La den være tom hvis du vil ha den ASAP,nb_NO
 page.checkout.shipment.requested_delivery_date.title,Når vil du bli levert?,nb_NO
-page.checkout.shipment.shipment_group_heading,Forsendelse% nåværende% av% totalt%,nb_NO
+page.checkout.shipment.shipment_group_heading,Forsendelse %current% av %total%,nb_NO
 page.checkout.shipment.shipping_address.title,Leveringsadresse,nb_NO
 page.checkout.shipment.shipping_method_heading,Forsendelsesmetode,nb_NO
 page.checkout.shipping.day,dag,nb_NO
@@ -15058,8 +15058,8 @@ persistent_cart.error.quote.not_available,Handlekurven eksisterer ikke,nb_NO
 persistent_cart.quote.remove.can_not_remove_last_cart,Kunden skal ha minst en vogn,nb_NO
 persistent_cart.quote.remove.success,Handlevognen ble slettet,nb_NO
 personal.address.heading,Personlig informasjon,nb_NO
-place_order.pre_check.product_discontinued,Produktet '% name%' er avviklet. Velg et alternativt produkt,nb_NO
-price-cart-connector.info.concrete-product-without-price.removed,Varen% sku% uten pris ble fjernet fra handlekurven.,nb_NO
+place_order.pre_check.product_discontinued,Produktet '%name%' er avviklet. Velg et alternativt produkt,nb_NO
+price-cart-connector.info.concrete-product-without-price.removed,Varen %sku% uten pris ble fjernet fra handlekurven.,nb_NO
 price.mode.gross_mode,Bruttopriser,nb_NO
 price.mode.net_mode,Netto priser,nb_NO
 price.mode.switch.error,Kan ikke bytte prismodus når det er varer i handlekurven.,nb_NO
@@ -15122,14 +15122,14 @@ product.attribute.waterproof_up_to,Vanntett opp til,nb_NO
 product.attribute.weight,Vekt,nb_NO
 product.attribute.white_balance,hvit balanse,nb_NO
 product.attribute.width,Bredde,nb_NO
-product_bundle.unavailable,Produktet '% productSku%' i pakken Produktet '% bundleSku%' er ikke tilgjengelig for øyeblikket,nb_NO
-product-cart.info.concrete-product-inactive.removed,Inaktiv vare% sku% ble fjernet fra handlekurven.,nb_NO
-product-cart.info.restricted-product.removed,Varen% sku% ble fjernet fra handlekurven fordi den ble deaktivert.,nb_NO
+product_bundle.unavailable,Produktet '%productSku%' i pakken Produktet '%bundleSku%' er ikke tilgjengelig for øyeblikket,nb_NO
+product-cart.info.concrete-product-inactive.removed,Inaktiv vare %sku% ble fjernet fra handlekurven.,nb_NO
+product-cart.info.restricted-product.removed,Varen %sku% ble fjernet fra handlekurven fordi den ble deaktivert.,nb_NO
 product_cart_item.remove,× fjern,nb_NO
 product-cart.validation.error.abstract-product-exists,"Produktet ""sku"" ""ble ikke funnet",nb_NO
 product-cart.validation.error.concrete-product-exists,"Produktet """" sku """" ble ikke funnet",nb_NO
 product-cart.validation.error.concrete-product-inactive,"Produktet """" sku """" er ikke aktivt.",nb_NO
-product-cart.validation.error.product-option-value-price-exists,Produktalternativpris ble ikke funnet for produktet '% sku%'.,nb_NO
+product-cart.validation.error.product-option-value-price-exists,Produktalternativpris ble ikke funnet for produktet '%sku%'.,nb_NO
 product.detail.out_of_stock,Dette produktet er foreløpig ikke tilgjengelig.,nb_NO
 product_discontinued.super_attribute_discontinued,Utgått,nb_NO
 product_discontinued_widget.note,Merk,nb_NO
@@ -15193,7 +15193,7 @@ quick-order.paste-order.errors.text-order-format-incorrect,Bestillingsformat er 
 quick-order.paste-order.input-placeholder.copy-paste-order,Lim inn bestillingen din her,nb_NO
 quick-order.paste-order.title,Lim inn bestillingen din,nb_NO
 remove,Fjerne,nb_NO
-reorder.info.restricted-product.removed,Varen% sku% kunne ikke legges til i handlekurven fordi den ble deaktivert.,nb_NO
+reorder.info.restricted-product.removed,Varen %sku% kunne ikke legges til i handlekurven fordi den ble deaktivert.,nb_NO
 replacement_for_widget.replacement_for,Erstatning for,nb_NO
 return.create_return.validation.items_error,Retur kan ikke gjøres for dette settet med varer,nb_NO
 return.create_return.validation.returnable_items_error,Retur kan ikke opprettes ettersom den inneholder varer som ikke kan returneres,nb_NO
@@ -15249,7 +15249,7 @@ return_page.slip.return_reference,Retur Ref,nb_NO
 return_page.slip.total_price,Totalpris,nb_NO
 return_page.table.actions,-,nb_NO
 return_page.title,Lag retur,nb_NO
-return.return_policy.returnable_till.message,Retur til:% dato%,nb_NO
+return.return_policy.returnable_till.message,Retur til: %date%,nb_NO
 return.return_reasons.damaged.name,Skadet,nb_NO
 return.return_reasons.no_longer_needed.name,Ikke lenger nødvendig,nb_NO
 return.return_reasons.wrong-item.name,Feil objekt,nb_NO
@@ -15313,7 +15313,7 @@ shipment.lead.time,Leveringstid: ca. 3-7 virkedager,nb_NO
 shipment.standart.description,2-4 virkedager,nb_NO
 shipment.standart.name,Standard Leveranse,nb_NO
 shipment.validation.not_found,Forsendelsesmetode ikke funnet.,nb_NO
-shipping.address.country.validation.not_found,Land for leveringsadresse ble ikke funnet for landskode:% code%,nb_NO
+shipping.address.country.validation.not_found,Land for leveringsadresse ble ikke funnet for landskode: %code%,nb_NO
 shipping.address.validation.is_missing,Leveringsadresse mangler,nb_NO
 shopping_list_add_items_widget.add_to_shopping_list,Legg til i handlelisten,nb_NO
 shopping_list.cart.items_add.failed,Elementer kunne ikke legges til i listen,nb_NO
@@ -15349,12 +15349,12 @@ wishlist.form.save,Lagre,nb_NO
 wishlist.title,Ønskeliste,nb_NO
 wishlist.validation.error.name.already_exists,En ønskeliste med samme navn eksisterer allerede.,nb_NO
 wishlist.wishlist,Ønskeliste,nb_NO
-availability_notification_subscription.mail.unsubscribed.body,Du vil ikke bli varslet når produkt% name% vil være tilgjengelig igjen.,nb_NO
-availability_notification_subscription.mail.unsubscribed.subject,Du vil ikke bli varslet når produkt% name% vil være tilgjengelig igjen.,nb_NO
+availability_notification_subscription.mail.unsubscribed.body,Du vil ikke bli varslet når produkt %name% vil være tilgjengelig igjen.,nb_NO
+availability_notification_subscription.mail.unsubscribed.subject,Du vil ikke bli varslet når produkt %name% vil være tilgjengelig igjen.,nb_NO
 availability_notification.successfully_unsubscribed,Avmeldingen ble fullført,nb_NO
 availability_notification.successfully_unsubscribed_text,Du har avsluttet abonnementet fra å bli varslet når produktet er tilgjengelig igjen,nb_NO
 availability_notification.unsubscribed,Avmeldingen ble fullført,nb_NO
-billing.address.country.validation.not_found,Land for faktureringsadresse ble ikke funnet for landskode:% code%,nb_NO
+billing.address.country.validation.not_found,Land for faktureringsadresse ble ikke funnet for landskode: %code%,nb_NO
 billing.address.validation.is_missing,Faktureringsadresse mangler,nb_NO
 bundle.title,Pakke inkluderer,nb_NO
 business_on_behalf_widget.change_company_user,Bytt bedriftsbruker,nb_NO

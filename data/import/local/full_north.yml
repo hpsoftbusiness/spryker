@@ -14,7 +14,7 @@ actions:
   - data_entity: glossary
     source: data/import/common/common/glossary.csv
   - data_entity: tax
-    source: data/import/common/common/tax.csv
+    source: data/import/common/north/tax.csv
   - data_entity: shipment
     source: data/import/common/common/shipment.csv
   - data_entity: shipment-price
