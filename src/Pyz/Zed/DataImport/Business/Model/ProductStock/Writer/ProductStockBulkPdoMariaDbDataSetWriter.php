@@ -112,7 +112,9 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
             );
 
             $this->collectAvailabilityAbstractIds($availabilityAbstractIds);
+        }
 
+        if (count($concreteAvailabilityData) > 0) {
             $availabilityQueryParams = [
                 count($concreteAvailabilityData),
                 $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_SKU)),
