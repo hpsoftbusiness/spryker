@@ -11,6 +11,7 @@ use Exception;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Generated\Shared\Transfer\DataImporterReportMessageTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
+use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface;
 use Spryker\Shared\ErrorHandler\ErrorLogger;
 use Spryker\Zed\DataImport\Business\Exception\DataImportException;
@@ -69,6 +70,9 @@ class DataImporterDataSetWriterAwareConditional extends DataImporterDataSetWrite
         $dataImporterReportTransfer = $this->prepareDataImportReport($dataReader, $source);
 
         $this->beforeImport();
+
+        Propel::disableInstancePooling();
+
         $imported = $dataImporterReportTransfer->getImportedDataSetCount();
         foreach ($dataReader as $dataSet) {
             try {

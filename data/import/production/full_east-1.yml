@@ -12,7 +12,7 @@ actions:
   - data_entity: customer
     source: data/import/common/common/customer.csv
   - data_entity: glossary
-    source: data/import/common/east-1/glossary_local.csv
+    source: data/import/common/common/glossary.csv
   - data_entity: tax
     source: data/import/common/common/tax.csv
   - data_entity: shipment
@@ -47,7 +47,7 @@ actions:
   - data_entity: product-management-attribute
     source: data/import/common/east-1/product_management_attribute.csv
 
-#4.1 Combined product PL
+#4. Combined product
   - data_entity: combined-product-abstract
     source: data/import/common/east-1/combined_product_local.csv
   - data_entity: combined-product-abstract-store
@@ -64,42 +64,6 @@ actions:
 #    source: data/import/common/common/product_stock.csv
   - data_entity: combined-product-group
     source: data/import/common/east-1/combined_product_local.csv
-
-#4.2 Combined product SK
-  - data_entity: combined-product-abstract
-    source: data/import/common/east-1/combined_product_local_SK.csv
-  - data_entity: combined-product-abstract-store
-    source: data/import/common/east-1/combined_product_local_SK.csv
-  - data_entity: combined-product-concrete
-    source: data/import/common/east-1/combined_product_local_SK.csv
-  - data_entity: combined-product-image
-    source: data/import/common/east-1/combined_product_local_SK.csv
-  - data_entity: combined-product-price
-    source: data/import/common/east-1/combined_product_local_SK.csv
-  - data_entity: combined-product-stock
-    source: data/import/common/east-1/combined_product_local_SK.csv
-#  - data_entity: product-stock
-#    source: data/import/common/common/product_stock.csv
-  - data_entity: combined-product-group
-    source: data/import/common/east-1/combined_product_local_SK.csv
-
-#4.3 Combined product CZ
-  - data_entity: combined-product-abstract
-    source: data/import/common/east-1/combined_product_local_CZ.csv
-  - data_entity: combined-product-abstract-store
-    source: data/import/common/east-1/combined_product_local_CZ.csv
-  - data_entity: combined-product-concrete
-    source: data/import/common/east-1/combined_product_local_CZ.csv
-  - data_entity: combined-product-image
-    source: data/import/common/east-1/combined_product_local_CZ.csv
-  - data_entity: combined-product-price
-    source: data/import/common/east-1/combined_product_local_CZ.csv
-  - data_entity: combined-product-stock
-    source: data/import/common/east-1/combined_product_local_CZ.csv
-#  - data_entity: product-stock
-#    source: data/import/common/common/product_stock.csv
-  - data_entity: combined-product-group
-    source: data/import/common/east-1/combined_product_local_CZ.csv
 
 
 #5. Merchandising Setup import
@@ -147,10 +111,6 @@ actions:
     source: data/import/common/common/product_list_to_customer_group.csv
   - data_entity: combined-product-list-product-concrete
     source: data/import/common/east-1/combined_product_local.csv
-  - data_entity: combined-product-list-product-concrete
-    source: data/import/common/east-1/combined_product_local_SK.csv
-  - data_entity: combined-product-list-product-concrete
-    source: data/import/common/east-1/combined_product_local_CZ.csv
   - data_entity: configurable-bundle-template
     source: data/import/common/common/configurable_bundle_template.csv
   - data_entity: configurable-bundle-template-slot
