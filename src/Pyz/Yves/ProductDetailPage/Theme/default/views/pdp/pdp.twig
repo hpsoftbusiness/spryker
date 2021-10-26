@@ -11,6 +11,7 @@
     title: product.metaTitle | default(_view.product.name),
     metaDescription: _view.product.metaDescription | default,
     metaKeywords: _view.product.metaKeywords | default,
+    shippingPriceFrom: _view.shippingPriceFrom | default(4.95),
 } %}
 
 {% block metaTitle %}{{ data.title }} | {{data.metaTitle}}{% endblock %}
@@ -60,7 +61,8 @@
                             data: {
                                 product: data.product,
                                 isBundle: data.bundleItems,
-                                bundleItems: data.bundleItems
+                                bundleItems: data.bundleItems,
+                                shippingPriceFrom: data.shippingPriceFrom
                             }
                         } only %}
                     {% endif %}

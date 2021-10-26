@@ -84,7 +84,7 @@ class ProductController extends SprykerShopProductController
             );
             $viewData['product']->setAffiliateData($affiliateData);
         }
-
+        $viewData['shippingPriceFrom'] = $this->getFactory()->getConfig()->getDefaultShipmentPrice();
 //        if ($viewData['product']->getIsAffiliate()) {
 //            $affiliateData = $viewData['product']->getAffiliateData();
 //            $affiliateData['trackingUrl'] = $this->getProductAffiliateTrackingUrl(

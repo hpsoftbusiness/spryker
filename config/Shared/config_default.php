@@ -12,6 +12,7 @@ use Pyz\Shared\GoogleAnalytic\GoogleAnalyticConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Shared\Oms\OmsConstants;
 use Pyz\Shared\ProductDataImport\ProductDataImportConstants;
+use Pyz\Shared\ProductDetailPage\ProductDetailPageConstants;
 use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
@@ -686,4 +687,10 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
     'BY' => ['be' => 'be_BY', 'en' => 'en_US'],
     'UA' => ['uk' => 'uk_UA', 'en' => 'en_US'],
     'RU' => ['ru' => 'ru_RU', 'en' => 'en_US'],
+];
+
+//TODO:: removed after refactoring as price should be getting from default shipment method from ZED
+$config[ProductDetailPageConstants::DEFAULT_SHIPMENT_PRICE] = [
+    'PL' => 22.99,
+    'NO' => 180.00,
 ];

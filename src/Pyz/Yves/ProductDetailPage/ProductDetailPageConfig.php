@@ -8,6 +8,8 @@
 namespace Pyz\Yves\ProductDetailPage;
 
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
+use Pyz\Shared\ProductDetailPage\ProductDetailPageConstants;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleConfig;
 
 class ProductDetailPageConfig extends AbstractBundleConfig
@@ -50,5 +52,17 @@ class ProductDetailPageConfig extends AbstractBundleConfig
     public function getProductAttributeKeyBenefitAmount(): string
     {
         return $this->get(MyWorldPaymentConstants::PRODUCT_ATTRIBUTE_KEY_BENEFIT_AMOUNT);
+    }
+
+    /**
+     * TODO: removed after refactoring default shipment price
+     *
+     * @return float
+     */
+    public function getDefaultShipmentPrice(): float
+    {
+        $defaultsShipmentPricesPerStore = $this->get(ProductDetailPageConstants::DEFAULT_SHIPMENT_PRICE, []);
+
+        return $defaultsShipmentPricesPerStore[Store::getInstance()->getStorePrefix()] ?? 4.95;
     }
 }
