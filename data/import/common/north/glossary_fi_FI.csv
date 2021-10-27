@@ -1,0 +1,1653 @@
+key,translation,locale
+validator.check.phone,Väärä puhelinnumero,fi_FI
+account.newsletter.text,"Rekisteröidy uutiskirjeemme ja pysy aina ajan tasalla! Hanki päivityksiä uusimmista älypuhelimista ja kulutuskuluista, parhaimmista tuotemerkeistä ja edullisista tarjouksista.",fi_FI
+address.city,Kaupunki,fi_FI
+address.salutation,Tervehdys,fi_FI
+address.street,Katu,fi_FI
+address.street_nr,Määrä,fi_FI
+address.zip_code,Postinumero,fi_FI
+AdyenCreditCard,Luottokortti,fi_FI
+adyen.payment.error.cc_cvv,Tarkista CVC-koodi,fi_FI
+adyen.payment.error.cc_month,Tarkista luottokortin kuukausi,fi_FI
+adyen.payment.error.cc_number,Tarkista luottokortin numero,fi_FI
+adyen.payment.error.cc_year,Tarkista luottokorttivuosi,fi_FI
+afiliate.legal.text,"Tämän tuotteen myydä kolmannen osapuolen myyjä. Myyjä on yksin vastuussa hinnoittelusta, tuotekuvauksesta, varastotasosta ja merenkulusta. Myworldin vastuu hyperlinksistä ja niiden sisältöä varten viitataan MyWorld Marketplacelle sovellettaviin käyttöehtoihin.",fi_FI
+agent.account.overview,Yleiskatsaus,fi_FI
+agent.account.page_title,Agentti,fi_FI
+agent.account.profile_data,Agenttiprofiili,fi_FI
+agent.account.quote_request,Lainauspyynnöt,fi_FI
+agent.authentication.failed,Todennus epäonnistui,fi_FI
+agent.autocomplete.no_results,Ei tuloksia,fi_FI
+agent.confirm_user_selection,Vahvistaa,fi_FI
+agent.control_bar.customer_name,Asiakas:,fi_FI
+agent.control_bar.logout,Kirjautua ulos,fi_FI
+agent.control_bar.logout_as_customer,Lopeta asiakastuki,fi_FI
+agent.control_bar.username,Agent:,fi_FI
+agent.login.email,Sähköposti,fi_FI
+agent.login.password,Salasana,fi_FI
+agent.login.title,Kirjaudu tiliisi,fi_FI
+auth.email,Sähköposti,fi_FI
+auth.im-already-customer,minulla on jo tunnus,fi_FI
+auth.im-new-customer,Uusi asiakas,fi_FI
+auth.login,Kirjaudu,fi_FI
+auth.password,Salasana,fi_FI
+auth.password-forgot,Unohdettu?,fi_FI
+auth.register,Rekisteri,fi_FI
+autocomplete.placeholder,Hae,fi_FI
+availability_notification.do_not_notify_me,"Älä ilmoita minulle, kun takaisin varastossa",fi_FI
+availability_notification.email_address,Sähköpostiosoite,fi_FI
+availability_notification.notify_me,"Ilmoita minulle, kun takaisin varastossa",fi_FI
+availability_notification.subscribed,Onnistuneesti merkitty,fi_FI
+availability_notification_subscription.mail.copyright,"<em> Copyright © Nykyinen vuosi Yrityksen nimi, kaikki oikeudet pidätetään. </ em> <br> <br>",fi_FI
+availability_notification_subscription.mail.notification.body,"Odotus on ohi, voit nyt lisätä tämän tuotteen ostoskorissasi.",fi_FI
+availability_notification_subscription.mail.notification.buy_now,Osta nyt,fi_FI
+availability_notification_subscription.mail.notification.head,%name% on jälleen saatavilla!,fi_FI
+availability_notification_subscription.mail.notification.subject,%name% on jälleen saatavilla!,fi_FI
+availability_notification_subscription.mail.subscribed.body,"Saat sähköpostiviestin, kun tuote on jälleen käytettävissä",fi_FI
+availability_notification_subscription.mail.subscribed.head,Ilmoitimme vain ostotiimin tilauksesta!,fi_FI
+availability_notification_subscription.mail.subscribed.subject,Ilmoitimme vain ostotiimin tilauksesta!,fi_FI
+availability_notification_subscription.mail.unsubscribe,"Haluatko muuttaa, miten saat nämä sähköpostit? Text-size-säätö: 100SKIP @ Skip. / A>.",fi_FI
+cart.add-to-shopping-list.form.placeholder,Anna uuden ostoslistan nimi,fi_FI
+cart.cart,Kori,fi_FI
+cart.checkout,Tarkista,fi_FI
+cart.delete.button,Poistaa,fi_FI
+cart.code.apply.failed,Koodia ei voitu käyttää,fi_FI
+cart.code.enter-code,Syötä kuponki / lahjakortin koodi,fi_FI
+cart.discounts,Alennukset,fi_FI
+cart.empty.button,Tutustu tarjouksiin,fi_FI
+cart.empty.description,"Ostoskori vain halu on kerätä parhaat tarjoukset, lahjat ja monet muut suuret tuotteet sinulle. Joten täytä ostoskorin toiveesi ja tee siitä järkeä!",fi_FI
+cart.empty.title,Ostoskori on tyhjä!,fi_FI
+cart.giftcard.apply.failed,Lahjakorttia ei sovelleta,fi_FI
+cart.giftcard.apply.successful,Lahjakorttikoodi on sovellettu,fi_FI
+cart.giftcard.label,Lahjakortti,fi_FI
+cart.item_attributes_needed,Valitse lisää attribuutteja,fi_FI
+cart.item.bundle.description,Nipun kohteita:,fi_FI
+cart.item.item_price,Kohta hinta,fi_FI
+cart.item.item_total,Kohta yhteensä,fi_FI
+cart.item.option.description,Tuotevalinnat:,fi_FI
+benefit_deal.item_quantity,Määrä:,fi_FI
+benefit_deal.product.attribute.manufacturer_name,Brändi:,fi_FI
+cart.item.option.pre.check.validation.error.exists,"Et voi järjestää uudelleen tuotteen %name% suoraan, lisää se ostoskoriin erikseen.",fi_FI
+cart.item_quantity,Määrä,fi_FI
+cart.item.remove.confirm,"Oletko varma, että haluat poistaa tämän kohteen?",fi_FI
+cart.item.sku,Sku,fi_FI
+cart_note.cart_page.cart.note_added,Huomautus on lisätty onnistuneesti koriin,fi_FI
+cart_note.cart_page.item.note_added,"Huomaa on lisätty onnistuneesti kohtaan ""%sku%""",fi_FI
+cart_note.checkout_page.item_note,Huomautus,fi_FI
+cart_note.checkout_page.quote_note,Ostoskori Huomautus,fi_FI
+cart_note.customer_page.item_note,Tilauskohta Huomautus,fi_FI
+cart_note.customer_page.order_note,Tilaus,fi_FI
+cart_note.form.save,Tallentaa,fi_FI
+cart_note.item_form.enter_note,Lisää kohde kohteelle,fi_FI
+cart_note.item_form.placeholder,Anna muistiinpano,fi_FI
+cart_note.quote_form.enter_note,Lisää ostoskoriin,fi_FI
+cart_note.quote_form.placeholder,Anna muistiinpano,fi_FI
+cart.note-title,Ostoskori Huomautus,fi_FI
+cart_page.error_message.unexpected_error,Odottamaton virhe tapahtui.,fi_FI
+cart.pre.check.affiliate.failed,Kohde %sku% ei voi lisätä ostoskoriin.,fi_FI
+cart.pre.check.availability.failed,Kohde %sku% on vain %stock%.,fi_FI
+cart.pre.check.availability.failed.empty,Kohde %sku% ei enää ole käytettävissä.,fi_FI
+cart.pre.check.price.failed,Hinta valitusta valuutasta ei löytynyt tuotteesta SKU '%sku%'. Vaihda valuutta tai poista tuote tilauksesta.,fi_FI
+cart.pre.check.product_discontinued,"Tuote '%name%' on lopetettu, valitse vaihtoehtoinen.",fi_FI
+cart.pre.check.quantity.interval.failed,"Määrävälit tuotteen SKU '%sku% ""ei täyty.",fi_FI
+cart.pre.check.quantity.max.failed,"Tuotteen enimmäismäärä SKU '%sku% ""ylittyy.",fi_FI
+cart.pre.check.quantity.min.failed,"Tuotteen vähimmäismäärät SKU '%sku% ""eivät täyty.",fi_FI
+cart.pre.check.quantity.value.failed,Väärä määrä tuotteeseen SKU '%sku%'.,fi_FI
+cart.pre.check.shipment.failed,Näitä muutoksia ei voi soveltaa. Lähetysmenetelmä ei löydy. Valitse toinen lähetysmenetelmä.,fi_FI
+cart.price,Hinta,fi_FI
+cart.price.grand.total,Kaikki yhteensä,fi_FI
+cart.price.subtotal,Välisumma,fi_FI
+cart.price.subtotal_wo_deals,Kaikki yhteensä,fi_FI
+cart.product-option,Tuotevalinnat,fi_FI
+cart.promotion.items,Mainostuotteet,fi_FI
+cart.quantity.adjusted,Pyydetty kohteen määrä säädettiin valittuun määrään ei ole saatavilla.,fi_FI
+cart.remove.items.success,Tuotteet poistettiin onnistuneesti,fi_FI
+cart.sales-order-threshold,Vähimmäisjärjestys,fi_FI
+cart.select.default_value,Valitse arvo,fi_FI
+cart.shipping,laivaus,fi_FI
+cart.shipping_standard,Shipping Standard,fi_FI
+cart.shipping.order-item,+ Toimitus,fi_FI
+cart.title_content,Ostoskärry,fi_FI
+cart.title_sidebar,Tilauksen yleiskatsaus,fi_FI
+cart.total,Kaikki yhteensä,fi_FI
+cart.total_wo_deals,Kaikki yhteensä,fi_FI
+cart.total.discount,Alennus,fi_FI
+cart.total.price_to_pay,Hinta maksaa,fi_FI
+cart.total.tax_total,Verottaa,fi_FI
+cart.validate.items.price.changed,"Hinnat on muutettu tuotteille, joilla on SKU '%sku%'.",fi_FI
+cart.voucher.apply.failed,Techer-koodi on virheellinen.,fi_FI
+cart.voucher.apply.non_applicable,Voucher-koodi on virheellinen,fi_FI
+cart.voucher.apply.successful,Kuponkikoodi on sovellettu,fi_FI
+cart.voucher.redeem,Lunasta koodi,fi_FI
+cart.voucher.remove,Poista,fi_FI
+cart.vouchers,Kuponkeja,fi_FI
+cart.vouchers.clear-all,Tyhjennä,fi_FI
+cart.voucher-title,Kuponkikoodi,fi_FI
+cart_widget.empty_text,Ostoskorisi on tyhjä. Mene täyttämään se kaikki tech toiveet ja unelmat.,fi_FI
+cart.your-order,Tilauksesi,fi_FI
+catalog.currency,€,fi_FI
+catalog.filter.active,Aktiivinen suodatin,fi_FI
+catalog.filter.activeFilters,Aktiiviset suodattimet,fi_FI
+catalog.filter.active_rating_up,Tähdet ja ylös,fi_FI
+catalog.filter.button,Käytä,fi_FI
+catalog.filter.extras,Muut ominaisuudet,fi_FI
+catalog.filter.filter,Suodattimet / lajittelu,fi_FI
+catalog.filter.hide,Piilota suodatin,fi_FI
+catalog.filter.main_color,Väri,fi_FI
+catalog.filter.per,Per sivu,fi_FI
+catalog.filter.pricerangeFrom,peräkkäin,fi_FI
+catalog.filter.pricerangeTo,jllek,fi_FI
+catalog.filter.rangeFrom,Valikoima,fi_FI
+catalog.filter.rangeTo,jllek,fi_FI
+catalog.filter.rating_up,Ja ylös,fi_FI
+catalog.filter.resetAllFilters,Nollaa kaikki suodattimet,fi_FI
+catalog.filter_section.show_all,Näytä lisää,fi_FI
+catalog.filter_section.show_less,Näytä vähemmän,fi_FI
+catalog.filter.show,Aseta suodatin,fi_FI
+catalog.itemsFound,Tulokset,fi_FI
+catalog.loading,Ladataan,fi_FI
+catalog.new,Uusi,fi_FI
+catalog.next,jatkaa,fi_FI
+catalog.no-results,Ei tuloksia.,fi_FI
+catalog.prev,takaisin,fi_FI
+catalog.sale,Myynti,fi_FI
+catalog.sort,Lajittelu,fi_FI
+catalog.sort.by,Järjestä,fi_FI
+catalog.sort.name_asc,Nimi Nouseva,fi_FI
+catalog.sort.name_desc,Nimi laskeva,fi_FI
+catalog.sort.price_asc,Hinta nouseva,fi_FI
+catalog.sort.price_desc,Hinta laskeva,fi_FI
+catalog.sort.rating,Tuoten arvosanat,fi_FI
+catalog.sort.relevance,Merkityksellisyys,fi_FI
+catalog.view.mode.grid,Ruudukko,fi_FI
+catalog.view.mode.list,Lista,fi_FI
+checkout.customer.auth_as_guest,Ostaa vieras,fi_FI
+checkout.customer.auth_as_login,Kirjaudu sisään,fi_FI
+checkout.customer.auth_as_user,Kirjaudu,fi_FI
+checkout.customer.order_as_guest,Tilata vieraana,fi_FI
+checkout.customer.proceed_as_guest,Jatka vieraana,fi_FI
+checkout.customer.proceed_as_user,Jatka rekisteröityneenä käyttäjänä (rekisteröidy),fi_FI
+checkout.giftcard.label,Lahjakortti,fi_FI
+checkout.nothing.will.be.sent,Siksi tietenkin mikään ei lähetetä!,fi_FI
+checkout.payment.cashback_balance,Cashback / Myworld Evoucher Tasapaino:,fi_FI
+checkout.payment.cashback_info,"Jos sinulla on Cashback Credit tai Myworld Evoucher Credit, tämä näkyy tässä ja voit käyttää sitä maksua varten. <br/> Huomautus: Näitä voidaan käyttää vain MyWorldin myymien kohteiden maksuna.",fi_FI
+checkout.payment.checkbox.use_evoucher_balance,Käytä %price% osilla osoitteesta %balance% Cashback / Myworld Evoucher Balance,fi_FI
+checkout.payment_method.invalid,Checkout-maksu ei ole kelvollinen,fi_FI
+checkout.payment.provider.DummyPayment,maksutavat,fi_FI
+checkout.payment.provider.payment_methods,maksutavat,fi_FI
+checkout.pre.check.shipment.failed,Virheellinen toimitusmenetelmä %method_name% (%carrier_name%).,fi_FI
+checkout.sales-order-threshold,Vähimmäisjärjestys,fi_FI
+checkout.step.address.is_sellable,"Hyvä asiakas, tuotteet eivät valitettavasti ole saatavilla toimitusosoitteesi.",fi_FI
+checkout.step.address.select_address,Valitse osoite,fi_FI
+checkout.step.address.title,Osoite,fi_FI
+checkout.step.confirm_payment.error,Maksussa oli jotain väärin,fi_FI
+checkout.step.customer.title,Kirjaudu sisään,fi_FI
+checkout.step.error.text,Jotain meni pieleen. Anteeksi.,fi_FI
+checkout.step.error.title,Tilauksesi ei ole asetettu.,fi_FI
+checkout.step.payment,Mene maksuun,fi_FI
+checkout.step.payment.must_be_older_than_18_years,Sinun on oltava vähintään 18-vuotias.,fi_FI
+checkout.step.payment.title,Maksu,fi_FI
+checkout.step.place.order,Lähetä tilauksesi,fi_FI
+checkout.step.shipment,Siirry lähetykseen,fi_FI
+checkout.step.shipment.provider.a,Dhl,fi_FI
+checkout.step.shipment.provider.b,Hermes,fi_FI
+checkout.step.shipment.title,Lähetys,fi_FI
+checkout.step.success.link,"Siirry ""Oma tili""",fi_FI
+checkout.step.success.sub_title,Tilauksesi on sijoitettu onnistuneesti.,fi_FI
+checkout.step.success.text,Saat tilauksen vahvistussähköpostin muutamassa minuutissa. Voit tarkistaa ja seurata tilauksesi tilissäsi.,fi_FI
+checkout.step.success.title,Kiitos.,fi_FI
+checkout.step.summary,Siirry yhteenvetoon,fi_FI
+checkout.step.summary.billing_address,postitusosoite,fi_FI
+checkout.step.summary.delivery_address,Toimitusosoite,fi_FI
+checkout.step.summary.delivery_method,Toimitustapa,fi_FI
+checkout.step.summary.grand_total,Kaikki yhteensä,fi_FI
+checkout.step.summary.items,Tuotteet,fi_FI
+checkout.step.summary.overview,Yleiskatsaus,fi_FI
+checkout.step.summary.payment,Maksu,fi_FI
+checkout.step.summary.products,Tuotteet,fi_FI
+checkout.step.summary.requested_delivery_date,Pyydetty toimituspäivä,fi_FI
+checkout.step.summary.shipment_costs_total,Lähetyskustannukset (yhteensä),fi_FI
+checkout.step.summary.shipping,Lähetys,fi_FI
+checkout.step.summary.sms_code_input_error,SMS-koodi ei ollut oikea,fi_FI
+checkout.step.summary.sms_code_send_error,Lähetä SMS-koodi päättyi virheeseen,fi_FI
+checkout.step.summary.sub_total,Välisumma,fi_FI
+checkout.step.summary.tax,sis. Verottaa,fi_FI
+checkout.step.summary.title,Yhteenveto,fi_FI
+checkout.step.summary.total,Täydellinen kassalle,fi_FI
+checkout.step.summary.tracking_code,Toimituksen seurantakoodi,fi_FI
+checkout.step.summary.uid,Uid,fi_FI
+checkout.step.summary.with_method,Kanssa,fi_FI
+checkout.summary.item.bundle.description,Nipun kohteita:,fi_FI
+checkout.summary.item.option.description,Tuotevalinnat:,fi_FI
+checkout.thank.you,Kiitos,fi_FI
+checkout.this.is.shop,Tämä on kauppa,fi_FI
+checkout.step.summary.modal.link,Ei saanut koodia?,fi_FI
+checkout.step.summary.modal.title,Ei saanut PIN-koodia?,fi_FI
+checkout.step.summary.modal.info,Miten haluat saada PIN-koodin?,fi_FI
+checkout.step.summary.modal.phone,Määrä:,fi_FI
+checkout.step.summary.modal.email,Sähköposti:,fi_FI
+checkout.step.summary.modal.email_radio_label,Luo uusi vahvistuskoodi lähetetty sähköpostitse,fi_FI
+checkout.step.summary.modal.sms_radio_label,Luo uusi vahvistuskoodi lähetetty tekstiviestillä,fi_FI
+checkout.step.summary.modal.submit,Lähetä PIN-koodi,fi_FI
+checkout.step.summary.modal.resend_already_by_mail,"Koodi lähetettiin sähköpostitse, tarkista myös roskapostisi kansio.",fi_FI
+checkout.step.summary.modal.resend_already_by_sms,"Koodi lähetettiin tekstiviestillä, tarkista.",fi_FI
+checkout.step.summary.modal.resend_retry,Voit yrittää lähettää uudelleen:,fi_FI
+checkout.step.summary.modal.error_when_resending_by_sms,"On virhe, kun yrität lähettää koodia tekstiviestillä, yritä myöhemmin uudelleen.",fi_FI
+checkout.step.summary.modal.please_wait_30_seconds,Odota 30 sekuntia pyytääksesi uutta koodia.,fi_FI
+checkout.step.summary.modal.error_session_expired,"Maksusiessasi on päättynyt, palaa maksuvaiheeseen.",fi_FI
+cms.page.filter.per,Per sivu,fi_FI
+cms.page.itemsFound,Kohteita löytyi,fi_FI
+cms.page.sort.name_asc,Lajittele nimi nouseva,fi_FI
+cms.page.sort.name_desc,Lajittele nimen mukaan laskeva,fi_FI
+cms.page.sort.relevance,Lajittele merkityksellisyydestä,fi_FI
+cms.preview.access_denied,Et ole kirjautunut sisään tai sinulla ei ole lupaa käyttää tätä sivua.,fi_FI
+cms-product-group.category.link.text,Tutustu lisää,fi_FI
+company.account,Yrityksen tili,fi_FI
+company.account.add_new_address,Määritä uusi osoite,fi_FI
+company.account.address,Osoitteet,fi_FI
+company.account.address.address1,Katu,fi_FI
+company.account.address.address3,Osoite,fi_FI
+company.account.address.city,Kaupunki,fi_FI
+company.account.address.country,Maa,fi_FI
+company.account.address.delete,Poistaa,fi_FI
+company.account.address.edit,Muokata,fi_FI
+company.account.address.is_default_billing,On oletuslasku Osoite,fi_FI
+company.account.address.number,Määrä,fi_FI
+company.account.address.phone,Puhelinnumero,fi_FI
+company.account.address.zip_code,Postinumero,fi_FI
+company.account.authorization.success,Rekisteröinti onnistui,fi_FI
+company.account.billing_address,Oletus laskutusosoite,fi_FI
+company.account.business_unit,Liiketoimintayksiköt,fi_FI
+company.account.business_unit.add,Luo liiketoimintayksikkö,fi_FI
+company.account.business_unit.address,Osoitteet,fi_FI
+company.account.business_unit.create,Luoda,fi_FI
+company.account.business_unit.delete,Poistaa,fi_FI
+company.account.business_unit.delete.confirmation.warning,Varoitus,fi_FI
+company.account.business_unit.details,Yksityiskohdat,fi_FI
+company.account.business_unit.edit,Muokata,fi_FI
+company.account.business_unit.edit_information,Muokata,fi_FI
+company.account.business_unit.email,Sähköposti,fi_FI
+company.account.business_unit.external_url,Ulkoinen URL-osoite,fi_FI
+company.account.business_unit.name,Nimi,fi_FI
+company.account.business_unit.phone,Puhelinnumero,fi_FI
+company.account.business_unit.view,Näkymä,fi_FI
+company.account.company_name,Yrityksen nimi,fi_FI
+company.account.company_role,Roolit,fi_FI
+company.account.company_role.add,Lisää uusi rooli,fi_FI
+company.account.company_role.default,Oletusarvo,fi_FI
+company.account.company_role.details,Yksityiskohdat,fi_FI
+company.account.company_role.edit,Muokata,fi_FI
+company.account.company_role.edit_information,Muokkaa roolitietoja,fi_FI
+company.account.company_role.is_default,On oletusarvo,fi_FI
+company.account.company_role.name,Nimi,fi_FI
+company.account.company_role.permission.assign,Antaa,fi_FI
+company.account.company_role.permission.assigned,Määrätty,fi_FI
+company.account.company_role.permission.configure,Konfiguroida,fi_FI
+company.account.company_role.permission.key,Avain,fi_FI
+company.account.company_role.permission.manage,Hallinnoi käyttöoikeuksia,fi_FI
+company.account.company_role.permissions,Oikeudet,fi_FI
+company.account.company_role.permission.status,Tila,fi_FI
+company.account.company_role.permission.unassign,Universign,fi_FI
+company.account.company_role.permission.unassigned,Sovittu,fi_FI
+company.account.company_role.user.manage,Hallitse yrityksen käyttäjiä,fi_FI
+company.account.company_role.users,Käyttäjät,fi_FI
+company.account.company_role.view,Näkymä,fi_FI
+company.account.company_user,Käyttäjät,fi_FI
+company.account.company_user.add,Lisää uusi käyttäjä,fi_FI
+company.account.company_user.business_unit,Liiketoimintayksikkö,fi_FI
+company.account.company_user.delete,Poistaa,fi_FI
+company.account.company_user.delete.back,Takaisin,fi_FI
+company.account.company_user.delete.successful,Käyttäjä on poistettu,fi_FI
+company.account.company_user.disable,Poista käytöstä,fi_FI
+company.account.company_user.edit,Muokata,fi_FI
+company.account.company_user.edit_information,Muokkaa käyttäjätietoja,fi_FI
+company.account.company_user.enable,ota käyttöön,fi_FI
+company.account.company_user.name,Nimi,fi_FI
+company.account.company_user.role,Rooli,fi_FI
+company.account.company_user.status.disable.error,Yrityksen käyttäjä ei voi poistaa käytöstä,fi_FI
+company.account.company_user.status.disable.error.cannot_disable_yourself,Et saa poistaa itsesi käytöstä,fi_FI
+company.account.company_user.status.disable.success,Yrityksen käyttäjä onnistui käytöstä,fi_FI
+company.account.company_user.status.enable.error,Yrityksen käyttäjä ei voi ottaa käyttöön,fi_FI
+company.account.company_user.status.enable.error.cannot_enable_yourself,Et saa ottaa itseäsi,fi_FI
+company.account.company_user.status.enable.success,Yrityksen käyttäjä onnistuneesti käytössä,fi_FI
+company.account.edit_address_information,Muokkaa osoitetietoja,fi_FI
+company.account.login.email,Sähköposti,fi_FI
+company.account.login.password,Salasana,fi_FI
+company.account.login.title,Kirjaudu tiliisi,fi_FI
+company.account.name,Yrityksen nimi,fi_FI
+company.account.overview,Yleiskatsaus,fi_FI
+company.account.page-title,Minun yhtiöni,fi_FI
+company.account.registration.title,Luo tili,fi_FI
+company.account.shipping_address,oletustoimitusosoite,fi_FI
+company.account.table.actions,Toiminnot,fi_FI
+company.address.heading,Yrityksen tiedot,fi_FI
+company.company_business_unit.delete.error.has_users,"Et voi poistaa liiketoimintayksikköä, kun se sisältää käyttäjiä",fi_FI
+company.company_role.delete.error.has_users,"Et voi poistaa roolia, kun se sisältää käyttäjiä",fi_FI
+company_page.company_business_unit_restricted_message,Sinulla ei ole oikeuksia suorittaa tätä toimintaa,fi_FI
+company_page.company_user_restricted_message,Säännölliset asiakkaat eivät saa toimia yrityksen sivuilla,fi_FI
+company_user.business_on_behalf.error.company_not_active,"Et voi valita tämän yrityksen käyttäjä, yritys ei ole aktiivinen.",fi_FI
+company_user.business_on_behalf.error.company_user_invalid,"Et voi valita tämän yrityksen käyttäjä, se on virheellinen.",fi_FI
+company_user.change_company_user,Vaihda yrityksen käyttäjä,fi_FI
+company.user.first_name,Etunimi,fi_FI
+company.user.invitation.accepted,Kutsusi on jo käytetty,fi_FI
+company.user.invitation.actions,Toiminnot,fi_FI
+company.user.invitation.business.unit,Liiketoimintayksikkö,fi_FI
+company.user.invitation.delete.button,Poistaa,fi_FI
+company.user.invitation.delete.confirmation.question,Haluatko varmasti poistaa kutsun?,fi_FI
+company.user.invitation.deleted.error.message,Kutsua ei poisteta,fi_FI
+company.user.invitation.deleted.success.message,Kutsu poistetaan onnistuneesti,fi_FI
+company.user.invitation.delete.title,Poista kutsu,fi_FI
+company.user.invitation.expired,Kutsusi on vanhentunut,fi_FI
+company.user.invitation.file,Kutsutiedosto,fi_FI
+company.user.invitation.first.name,Etunimi,fi_FI
+company.user.invitation.import.download.errors.file,"Joitakin kutsuja ei tuotu. Napsauta <a href=""""%link%""> täältä </a>, jos haluat ladata virheet",fi_FI
+company.user.invitation.imported.title.plural,Tuodut kutsut,fi_FI
+company.user.invitation.import.error.message,Kutsut Tuonti epäonnistui,fi_FI
+company.user.invitation.import.file.invalid,Tuo tiedosto ei ole kelvollinen,fi_FI
+company.user.invitation.import.title,Tuo uusia kutsuja,fi_FI
+company.user.invitation.invalid,Kutsu ei ole kelvollinen,fi_FI
+company.user.invitation.invite_users,Kutsu käyttäjiä,fi_FI
+company.user.invitation.last.name,Sukunimi,fi_FI
+company.user.invitation.mail,Posti,fi_FI
+company.user.invitation.not.found.message,Kutsu ei löydy,fi_FI
+company.user.invitation.resend.button,Uudelleen lähettää,fi_FI
+company.user.invitation.resend.confirmation.question,Haluatko varmasti lähettää kutsun uudelleen?,fi_FI
+company.user.invitation.resend.title,Lähetä kutsu uudelleen,fi_FI
+company.user.invitation.resent.error.message,Kutsu ei ollut väärä,fi_FI
+company.user.invitation.resent.success.message,Kutsu:,fi_FI
+company.user.invitation.send.all.button,Lähetä kaikki,fi_FI
+company.user.invitation.send.button,Lähettää,fi_FI
+company.user.invitation.sent.all.error.message,Joitakin kutsuja ei lähetetty,fi_FI
+company.user.invitation.sent.all.none.found.message,Ei kutsuja lähettämään löydettyjä,fi_FI
+company.user.invitation.sent.all.success.message,Kaikki kutsut lähetettiin onnistuneesti,fi_FI
+company.user.invitation.sent.error.message,Kutsua ei lähetetty,fi_FI
+company.user.invitation.sent.success.message,Kutsu lähetetään onnistuneesti,fi_FI
+company.user.invitation.status,Tila,fi_FI
+company.user.invitation.status.accepted,Hyväksytty,fi_FI
+company.user.invitation.status.new,Ei lähetetty,fi_FI
+company.user.invitation.status.pending,Vireillä,fi_FI
+company.user.invitation.title.plural,Kutsut,fi_FI
+company.user.last_name,Sukunimi,fi_FI
+company_user.no_company,Mikään yritys,fi_FI
+company_user.remember_choice,Muista valinta,fi_FI
+company.user.salutation.dr,DR.,fi_FI
+company.user.salutation.mr,Herra.,fi_FI
+company.user.salutation.mrs,Rouva.,fi_FI
+company.user.salutation.ms,Neiti.,fi_FI
+configurable_bundle_note.enter_note,Lisää muistiinpano määritettyyn nipun,fi_FI
+configurable_bundle_note.form.save,Tallentaa,fi_FI
+configurable_bundle_note.note,Määritetty nippu Huomautus:,fi_FI
+configurable_bundle_note.note_added,Huomautus on lisätty onnistuneesti konfiguroidun nipun,fi_FI
+configurable_bundle_page.choose_bundle_to_configure,Valitse Bundle määrittääksesi,fi_FI
+configurable_bundle_page.configurable_bundle_list,Konfiguroitavissa oleva nipun luettelo,fi_FI
+configurable_bundle_page.configurator,Konfiguraattori,fi_FI
+configurable_bundle_page.configurator.added_to_cart,Määritetty nippu lisätty onnistuneesti koriin.,fi_FI
+configurable_bundle_page.configurator.add_to_cart,Lisää ostoskoriin,fi_FI
+configurable_bundle_page.configurator.product_became_unavailable,"Tuote sku '%sku% ""määritetty korttipaikka id"" %id% ""ei ole käytettävissä.",fi_FI
+configurable_bundle_page.configurator.selected_product,Valittu tuote,fi_FI
+configurable_bundle_page.configurator.sku,SKU:,fi_FI
+configurable_bundle_page.configurator.slot_became_unavailable,Määritetty paikka id '%id%' ei ole käytettävissä.,fi_FI
+configurable_bundle_page.configurator.slot_page.back_link,Takaisin nippuihin,fi_FI
+configurable_bundle_page.configurator.summary,Yhteenveto,fi_FI
+configurable_bundle_page.configurator.summary_page_locked,Tuote vähintään yhdelle korttipaikkaan on määritettävä vierailemaan yhteenvetosivulla.,fi_FI
+configurable_bundle_page.configurator.summary_page_total,Kaikki yhteensä,fi_FI
+configurable_bundle_page.configurator.templates_not_found,Mallia ei ole saatavilla.,fi_FI
+configurable_bundle_page.configurator.tip.header,Luo oma nippu.,fi_FI
+configurable_bundle_page.configurator.tip.text,"Jos haluat luoda paketin, valitse korttipaikka vasemmalta puolelta ja valitse tuote luettelosta.",fi_FI
+configurable_bundle_page.edit,Muokata,fi_FI
+configurable_bundle_page.invalid_template_slot_combination,Virheellinen malli / Slot-yhdistelmä.,fi_FI
+configurable_bundle_page.select,Valitse,fi_FI
+configurable_bundle_page.template_not_found,Konfiguroitavaa nipun mallia ei löydy.,fi_FI
+configurable_bundle_page.unselect,Unohtumaton,fi_FI
+configurable_bundle.slot.validation.error.not_exists,Määritä Bundle Template -paikkaa ei ole olemassa.,fi_FI
+configurable_bundle.templates.configurable-bundle-all-in.name,Kaikki peliin,fi_FI
+configurable_bundle.template_slots.slot-1.name,Paikka 1,fi_FI
+configurable_bundle.template_slots.slot-2.name,Paikka 2,fi_FI
+configurable_bundle.template_slots.slot-3.name,Paikka 3,fi_FI
+configurable_bundle.template_slots.slot-4.name,Slot 4,fi_FI
+configurable_bundle.template_slots.slot-5.name,Paikka 5,fi_FI
+configurable_bundle.template_slots.slot-6.name,Paikka 6,fi_FI
+configurable_bundle.templates.smartstation.name,SmartStation Kit,fi_FI
+configurable_bundle.template.validation.error.already_activated,Määritettävissä oleva nipun malli on jo aktivoitu.,fi_FI
+configurable_bundle.template.validation.error.already_deactivated,Konfiguroitavissa oleva nipun malli on jo deaktivoitu käytöstä.,fi_FI
+configurable_bundle.template.validation.error.not_exists,Konfiguroitavaa nipun mallia ei ole olemassa.,fi_FI
+configured_bundle.bundle_total,Bundle Yhteensä:,fi_FI
+configured_bundle_cart.error.configured_bundle_cannot_be_added,Määritettyä nippua ei voi lisätä ostoskoriin.,fi_FI
+configured_bundle_cart.error.configured_bundle_cannot_be_removed,Määritettyä nippua ei voi poistaa ostoskorista.,fi_FI
+configured_bundle_cart.error.configured_bundle_cannot_be_updated,Määritettyä nippua ei voi päivittää.,fi_FI
+configured_bundle_cart.error.configured_bundle_not_found,"Määritetty nippu, jossa on mukana sku, ei löydy ostoskorista.",fi_FI
+configured_bundle.item_sku,SKU:,fi_FI
+configured_bundle_note_widget.edit_note,Muokata,fi_FI
+configured_bundle_note_widget.remove_note,Poista,fi_FI
+configured_bundle.order.items,Nipun kohteita:,fi_FI
+configured_bundle.price,Tuote Hinta:,fi_FI
+configured_bundle.quantity,Määrä:,fi_FI
+configured_bundle.remove,Poista,fi_FI
+configured_bundle.total,Kohta yhteensä:,fi_FI
+configured_bundle_widget.configured_bundle.removed,Määritetty nippu poistetaan onnistuneesti.,fi_FI
+configured_bundle_widget.configured_bundle.updated,Määritetty nippu päivitetty onnistuneesti.,fi_FI
+configured_bundle_widget.items,Tuotteet,fi_FI
+configured_bundle_widget.multiplier,x,fi_FI
+countries.iso.AT,Itävalta,fi_FI
+countries.iso.BE,Belgia,fi_FI
+countries.iso.BG,Bulgaria,fi_FI
+countries.iso.CH,Sveitsi,fi_FI
+countries.iso.CY,Kypros,fi_FI
+countries.iso.CZ,Tšekin tasavalta,fi_FI
+countries.iso.DE,Saksa,fi_FI
+countries.iso.DK,Tanska,fi_FI
+countries.iso.EE,Viro,fi_FI
+countries.iso.ES,Espanja,fi_FI
+countries.iso.FI,Suomi,fi_FI
+countries.iso.FR,Ranska,fi_FI
+countries.iso.GB,Yhdistynyt kuningaskunta,fi_FI
+countries.iso.GR,Kreikka,fi_FI
+countries.iso.HR,Kroatia,fi_FI
+countries.iso.HU,Unkari,fi_FI
+countries.iso.IE,Irlanti,fi_FI
+countries.iso.IM,Mansaari,fi_FI
+countries.iso.IT,Italia,fi_FI
+countries.iso.LT,Liettua,fi_FI
+countries.iso.LU,Luxemburg,fi_FI
+countries.iso.LV,Latvia,fi_FI
+countries.iso.MC,Monaco,fi_FI
+countries.iso.MT,Malta,fi_FI
+countries.iso.NL,Alankomaat,fi_FI
+countries.iso.NO,Norja,fi_FI
+countries.iso.PL,Puola,fi_FI
+countries.iso.PT,Portugali,fi_FI
+countries.iso.RO,Romania,fi_FI
+countries.iso.SE,Ruotsi,fi_FI
+countries.iso.SI,Slovenia,fi_FI
+countries.iso.SK,Slovakia,fi_FI
+customer.access.cannot_see_price,Kirjaudu sisään nähdäksesi hinnan,fi_FI
+customer.account,Asiakastili,fi_FI
+customer.account.additional_addresses,Lisäosoitteet,fi_FI
+customer.account.add_new_address,Määritä uusi osoite,fi_FI
+customer.account.address,Osoitteet,fi_FI
+customer.account.available.benefit.voucher.amount,Käytettävissä oleva etuuskuponki,fi_FI
+customer.account.available.cashback.amount,Käytettävissä oleva Cashback-määrä,fi_FI
+customer.account.available.shopping.point.amount,Saatavana oleva osaston määrä,fi_FI
+customer.account.button.add_new_address,Lisää uusi osoite,fi_FI
+customer.account.contact,Ottaa yhteyttä,fi_FI
+customer.account.default_billing_address,Oletus laskutusosoite,fi_FI
+customer.account.default_shipping_address,oletustoimitusosoite,fi_FI
+customer.account.deliver_to_multiple_addresses,Toimita useisiin osoitteisiin,fi_FI
+customer.account.edit_address_information,Muokkaa osoitetietoja,fi_FI
+customer.account.last_orders,Viimeiset tilaukset,fi_FI
+customer.account.newsletter,Uutiskirje,fi_FI
+customer.account.no_order,Ei tilauksia tällä hetkellä,fi_FI
+customer.account.no_orders,Ei tilauksia tällä hetkellä,fi_FI
+customer.account.order_history,Tilausten historia,fi_FI
+customer.account.overview,Yleiskatsaus,fi_FI
+customer.account.please_specify_billing_address,Määritä laskutusosoite,fi_FI
+customer.account.please_specify_shipping_address,Määritä toimitusosoite,fi_FI
+customer.account.print_shopping_list.table.barcode,Viivakoodi,fi_FI
+customer.account.print_shopping_list.table.default_price,Oletushinta,fi_FI
+customer.account.print_shopping_list.table.note,Huomautus,fi_FI
+customer.account.print_shopping_list.table.product_name,Tuotteen nimi,fi_FI
+customer.account.print_shopping_list.table.product_sku,Tuote SKU,fi_FI
+customer.account.print_shopping_list.title.shopping_list_id,Ostoslistan tunnus,fi_FI
+customer.account.print_shopping_list.title.shopping_list_name,Ostoslistan nimi,fi_FI
+customer.account.profile_data,Profiili,fi_FI
+customer.account.shopping_list,Ostoslistot,fi_FI
+customer.account.shopping_list.access,Pääsy,fi_FI
+customer.account.shopping_list.access.full_access,Täysi pääsy,fi_FI
+customer.account.shopping_list.access.read_only,Lue ainoastaan,fi_FI
+customer.account.shopping_list.add_all_available_to_cart,Lisää kaikki käytettävissä olevat tuotteet ostoskoriin,fi_FI
+customer.account.shopping_list.add_item.success,Tuote on lisätty ostoslistalle.,fi_FI
+customer.account.shopping_list.add_selected_items_to_cart,Lisää valitut kohteet ostoskoriin,fi_FI
+customer.account.shopping_list.add-to-cart,Lisää ostoskoriin,fi_FI
+customer.account.shopping_list.availability,Saatavuus,fi_FI
+customer.account.shopping_list.available,Saatavilla,fi_FI
+customer.account.shopping_list.clear.success,Ostosluettelo poistettiin onnistuneesti.,fi_FI
+customer.account.shopping_list.create.failed,Ostoslistan luominen epäonnistui.,fi_FI
+customer.account.shopping_list.create.success,"Luettelo ""%name%"" luotiin onnistuneesti.",fi_FI
+customer.account.shopping_list.delete.failed,Ostosluetteloa ei poisteta.,fi_FI
+customer.account.shopping_list.delete.it_belongs_to_follow,Se kuuluu seuraaviin,fi_FI
+customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,Se poistetaan kaikista niistä,fi_FI
+customer.account.shopping_list.delete.success,Ostoslista poistettu onnistuneesti.,fi_FI
+customer.account.shopping_list.delete.warning,Varoitus,fi_FI
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Yrität poistaa ostoslistan <a href=""""%link%""""> %name% </a>",fi_FI
+customer.account.shopping_list.empty,Tällä hetkellä ostoslistasi ei ole kohteita.,fi_FI
+customer.account.shopping_list.error.cannot_update,Ei voi päivittää ostoslistaa.,fi_FI
+customer.account.shopping_list.error.duplicate_name,"Ostoslista, jossa on sama nimi, on jo olemassa.",fi_FI
+customer.account.shopping_list.item.added_all_available_to_cart,Saatavilla olevat kohteet lisätään ostoskoriin onnistuneesti.,fi_FI
+customer.account.shopping_list.item.added_all_available_to_cart.failed,Kaikki kohteet eivät lisätty ostoskoriin,fi_FI
+customer.account.shopping_list.item.added_to_cart,Kohde lisätään ostoskoriin onnistuneesti.,fi_FI
+customer.account.shopping_list.item.added_to_cart.failed,Kohta ei lisätty ostoskoriin.,fi_FI
+customer.account.shopping_list.item.add.failed,Kohde %sku% ei voitu lisätä luetteloon.,fi_FI
+customer.account.shopping_list.item.add.success,Kohde %sku% lisättiin luetteloon.,fi_FI
+customer.account.shopping_list.item.not_added,Tuotteen lisääminen epäonnistui ostoslistaan.,fi_FI
+customer.account.shopping_list.item.remove.failed,Tuotetta ei poisteta ostoslistalta.,fi_FI
+customer.account.shopping_list.item.remove.success,Tuote poistetaan onnistuneesti.,fi_FI
+customer.account.shopping_list.items.added_to_cart,Ostoskoriin lisätyt kohteet onnistuneesti.,fi_FI
+customer.account.shopping_list.items.added_to_cart.failed,Kohteita ei lisätty ostoskoriin.,fi_FI
+customer.account.shopping_list.items.added_to_cart.not_found,Ostoskorissa ei ole käytettävissä olevia tuotteita.,fi_FI
+customer.account.shopping_list.items.added_to_cart.select_list,Vähintään yksi ostoslista on valittava.,fi_FI
+customer.account.shopping_list.item.select_item,Vähintään yksi tuote on valittava.,fi_FI
+customer.account.shopping_list.not_available,Tällä hetkellä ei saatavilla,fi_FI
+customer.account.shopping_list.overview.actions,Toiminnot,fi_FI
+customer.account.shopping_list.overview.add_new,Lisää uusi ostoslista,fi_FI
+customer.account.shopping_list.overview.add_shopping_list_to_cart,Lisää valitut ostoslistoja ostoskoriin,fi_FI
+customer.account.shopping_list.overview.created_date,Päivämäärä luotu,fi_FI
+customer.account.shopping_list.overview.create.success,Ostoslista on luotu onnistuneesti.,fi_FI
+customer.account.shopping_list.overview.delete,Poistaa,fi_FI
+customer.account.shopping_list.overview.dismiss,Hylkää,fi_FI
+customer.account.shopping_list.overview.edit,Nimeä uudelleen,fi_FI
+customer.account.shopping_list.overview.empty,Sinulla ei ole vielä ostoslistoja.,fi_FI
+customer.account.shopping_list.overview.enter_name,Anna nimi tähän,fi_FI
+customer.account.shopping_list.overview.form.new,Luo uusi ostoslista,fi_FI
+customer.account.shopping_list.overview.item_count,Esineiden määrä,fi_FI
+customer.account.shopping_list.overview.modified_date,Viimeisen päivityksen päivämäärä,fi_FI
+customer.account.shopping_list.overview.name,Luettelon nimi,fi_FI
+customer.account.shopping_list.overview.owner,"Käyttäjä, joka on luonut luettelon",fi_FI
+customer.account.shopping_list.overview.print,Tulosta,fi_FI
+customer.account.shopping_list.overview.share,Jaa,fi_FI
+customer.account.shopping_list.overview.shared_with,Jaettu,fi_FI
+customer.account.shopping_list.overview.title,Hallitse ostoslistoja,fi_FI
+customer.account.shopping_list.overview.variant,Variantti,fi_FI
+customer.account.shopping_list.overview.view,Näkymä,fi_FI
+customer.account.shopping_list.price,Hinta,fi_FI
+customer.account.shopping_list.print_shopping_list,Tulosta ostoslista,fi_FI
+customer.account.shopping_list.product,Tuote,fi_FI
+customer.account.shopping_list.quantity,Määrä,fi_FI
+customer.account.shopping_list.remove,Poista,fi_FI
+customer.account.shopping_list.share.error.one_id_required,Valitse joko asiakas tai liiketoimintayksikkö jakamaan ostoslista,fi_FI
+customer.account.shopping_list.share.from.share,Jaa,fi_FI
+customer.account.shopping_list.share.from.share_with,Jaa ostoslista:,fi_FI
+customer.account.shopping_list.share.select_company_business_unit,Valitse liiketoimintayksikkö,fi_FI
+customer.account.shopping_list.share.select_company_user,Valitse asiakas,fi_FI
+customer.account.shopping_list.share.select_permission,Valitse käyttöoikeus,fi_FI
+customer.account.shopping_list.share.share_shopping_list_fail,Tämä ostoslista on jaettu ennen tämän yksikön kanssa,fi_FI
+customer.account.shopping_list.share.share_shopping_list_successful,Ostosluettelon jakaminen oli onnistunut,fi_FI
+customer.account.shopping_list.updated,Ostoslista päivitetty onnistuneesti,fi_FI
+customer.account.shopping_points_and_cashback,Ostokset ja Cashback,fi_FI
+customer.account.wishlist,Toivomuslista,fi_FI
+customer.account.wishlist.add_all_available_to_cart,Lisää kaikki käytettävissä olevat tuotteet ostoskoriin,fi_FI
+customer.account.wishlist.add-to-cart,Lisää ostoskoriin,fi_FI
+customer.account.wishlist.availability,Saatavuus,fi_FI
+customer.account.wishlist.available,Saatavilla,fi_FI
+customer.account.wishlist.continue-shopping,Jatka ostoksia,fi_FI
+customer.account.wishlist.created,Toivelistaan ​​luotiin onnistuneesti.,fi_FI
+customer.account.wishlist.deleted,Wishlist poistettu onnistuneesti.,fi_FI
+customer.account.wishlist.empty,Tällä hetkellä toivelistallasi ei ole kohteita.,fi_FI
+customer.account.wishlist.item.moved_all_available_to_cart,Saatavilla olevat kohteet siirrettiin ostoskoriin onnistumaan.,fi_FI
+customer.account.wishlist.item.moved_all_available_to_cart.failed,Kaikki kohteet siirretään ostoskoriin,fi_FI
+customer.account.wishlist.item.moved_to_cart,Kohde siirrettiin ostoskoriin onnistumaan.,fi_FI
+customer.account.wishlist.item.moved_to_cart.failed,Kohta ei siirretty ostoskoriin.,fi_FI
+customer.account.wishlist.item.not_added,Tuotteen lisääminen epäonnistui Wishlist.,fi_FI
+customer.account.wishlist.item.removed,Tuote poistetaan onnistuneesti.,fi_FI
+customer.account.wishlist.not_available,Tällä hetkellä ei saatavilla,fi_FI
+customer.account.wishlist.overview.add_new,Lisää uusi toivomuslista,fi_FI
+customer.account.wishlist.overview.date,Luomispäivä,fi_FI
+customer.account.wishlist.overview.delete,Poistaa,fi_FI
+customer.account.wishlist.overview.edit,Muokata,fi_FI
+customer.account.wishlist.overview.empty,Sinulla ei ole vielä luetteloita.,fi_FI
+customer.account.wishlist.overview.enter_name,Anna nimi tähän,fi_FI
+customer.account.wishlist.overview.item_count,Tuotteiden #,fi_FI
+customer.account.wishlist.overview.name,Nimi,fi_FI
+customer.account.wishlist.overview.price,Hinta,fi_FI
+customer.account.wishlist.overview.sku,Sku,fi_FI
+customer.account.wishlist.overview.title,Hallitse toivelistajia,fi_FI
+customer.account.wishlist.overview.variant,Variantti,fi_FI
+customer.account.wishlist.price,Hinta,fi_FI
+customer.account.wishlist.product,Tuote,fi_FI
+customer.account.wishlist.product-not-available,Tämä tuote ei ole tällä hetkellä käytettävissä.,fi_FI
+customer.account.wishlist.remove,Poista,fi_FI
+customer.account.wishlist.updated,Toivelilehti päivitetty onnistuneesti,fi_FI
+customer.account.wishlist.view-in-shop,Näkymä,fi_FI
+customer.address.added,Osoite lisättiin onnistuneesti,fi_FI
+customer.address.address1,Katu,fi_FI
+customer.address.address2,Talonumero,fi_FI
+customer.address.address3,Lisäinformaatio,fi_FI
+customer.address.address4,Lisää lisää Toimitustietoja,fi_FI
+customer.address.city,Kaupunki,fi_FI
+customer.address.company,Yrityksen nimi,fi_FI
+customer.address.country,Maa,fi_FI
+customer.address.delete.failed,Osoitetta ei voitu poistaa,fi_FI
+customer.address.delete.success,Osoite poistettu onnistuneesti,fi_FI
+customer.address.first_name,Etunimi,fi_FI
+customer.address.is_default_billing,On oletuslasku Osoite,fi_FI
+customer.address.is_default_shipping,On oletusosoite,fi_FI
+customer.address.last_name,Sukunimi,fi_FI
+customer.address.number,Talonumero,fi_FI
+customer.address.phone,"Puhelinnumero (mahdollisten toimituskysymyksen osalta, mukaan lukien maan etuliite ex. +44)",fi_FI
+customer.address.placeholder.optional,Valinnainen,fi_FI
+customer.address.save_new_address,Tallenna uusi osoite osoitekirjaan,fi_FI
+customer.address.state,Osavaltio,fi_FI
+customer.address.updated,Osoite päivitettiin onnistuneesti,fi_FI
+customer.address.vat_number,ALV-numero,fi_FI
+customer.address.zip_code,Postinumero,fi_FI
+customer.anonymization.failed,Tilisi ei voitu poistaa,fi_FI
+customer.anonymization.success,Tilisi on poistettu onnistuneesti,fi_FI
+customer.authentication.failed,Todennus epäonnistui,fi_FI
+customer.authentication.succeeded,Kirjautuminen oli onnistunut,fi_FI
+customer.authorization.account_confirmed,Sähköpostiosoitteesi on vahvistettu. Kirjaudu sisään jatkaaksesi.,fi_FI
+customer.authorization.invalid_account,Sinun on ensin vahvistettava sähköpostiosoitteesi ennen kuin pystyt kirjautumaan sisään,fi_FI
+customer.authorization.success,Melkein siellä! Lähetämme sinulle sähköpostin vahvistamaan sähköpostiosoitteesi. Vahvista se voi kirjautua sisään.,fi_FI
+customer.authorization.validate_email_address,Melkein siellä! Lähetämme sinulle sähköpostin vahvistamaan sähköpostiosoitteesi. Vahvista se voi kirjautua sisään.,fi_FI
+customer.billingSameAsShipping,Laskutusosoite Sama kuin toimitusosoite,fi_FI
+customer.birth_date,Syntymäaika (DD.MM.YYYY),fi_FI
+customer.customer_id,Id,fi_FI
+customer.email,Sähköposti,fi_FI
+customer.email.already.used,Sähköposti jo käytetty,fi_FI
+customer.email.format.invalid,Virheellinen sähköpostiosoite,fi_FI
+customer.email.invalid,sähköpostiosoite on virheellinen,fi_FI
+customer.error.confirm_email_link.invalid_or_used,Tämä sähköpostin vahvistuslinkki on virheellinen tai sitä on jo käytetty.,fi_FI
+customer.first_name,Etunimi,fi_FI
+customer.forgotten-password.description,Anna tilillesi liittyvä sähköpostiosoite.,fi_FI
+customer.forgotten_password.email,Sähköpostiosoite,fi_FI
+customer.forgotten-password.title,Palauta salasana,fi_FI
+customer.last_name,Sukunimi,fi_FI
+customer.login,Kirjaudu sisään,fi_FI
+customer.login.email,Sähköposti,fi_FI
+customer.login.failed,Kirjautuminen epäonnistui,fi_FI
+customer.login.password,Salasana,fi_FI
+customer.login.title,Kirjaudu tiliisi,fi_FI
+customer.logout,Kirjautua ulos,fi_FI
+customer.newsletter.not_subscribed,Ei uutiskirjeen tilausta,fi_FI
+customer.newsletter.subscribed,Uutiskirje merkitsi,fi_FI
+customer.newsletter.subscription,Uutiskirjeen asetukset,fi_FI
+customer.newsletter.subscription_agreement,Hyväksyn uutiskirjeen tilauksen,fi_FI
+customer.order.all_orders,Näytä tilaukset,fi_FI
+customer.order.billing_address,Postitusosoite,fi_FI
+customer.order.bundled_items,Nipun kohteita:,fi_FI
+customer.order.canceledTotal,Peruutettu määrä,fi_FI
+customer.order.complete_checkout,Täydellinen kassalle,fi_FI
+customer.order.date,Tilauspäivämäärä,fi_FI
+customer.order.delivery_address,Toimitusosoite,fi_FI
+customer.order.delivery_method,Toimitustapa,fi_FI
+customer.order.discount.total,Alennus,fi_FI
+customer.order.expenseTotal,Lähetyskustannukset (yhteensä),fi_FI
+customer.order.grandTotal,Loppusumma,fi_FI
+customer.order.item_price,Hinta mukaan lukien. arvonlisävero,fi_FI
+customer.order.item_quantity,Määrä,fi_FI
+customer.order.item_sku,Sku,fi_FI
+customer.order.items_state,Tuotteet,fi_FI
+customer.order.item_sum,Kohta yhteensä,fi_FI
+customer.order.options,Tuotevalinnat:,fi_FI
+customer.order.order_id,tilausnumero,fi_FI
+customer.order.payment,Maksu,fi_FI
+customer.order.payment_method,Maksutapa,fi_FI
+customer.order.product_name,Tuotteen nimi,fi_FI
+customer.order.products,Tuotteet,fi_FI
+customer.order.refundTotal,Palautus yhteensä,fi_FI
+customer.order.remunerationTotal,Palkkaus yhteensä,fi_FI
+customer.order.reorder,Järjestää uudelleen,fi_FI
+customer.order.reorder_all,Järjestä kaikki,fi_FI
+customer.order.reorder.error.unable_to_reorder_items,"Et voi palauttaa niitä tuotteita suoraan, lisää ne ostoskoriin erikseen",fi_FI
+customer.order.reorder_selected,Valittujen kohteiden uudelleenjärjestely,fi_FI
+customer.order.requested_delivery_date,Pyydetty toimituspäivä,fi_FI
+customer.order.shipment,Lähetys,fi_FI
+customer.order.shipment_method,Lähetys,fi_FI
+customer.order.shipping_address,Toimitusosoite,fi_FI
+customer.order.subTotal,Välisumma,fi_FI
+customer.order.taxTotal,Verottaa,fi_FI
+customer.order.total,Kaikki yhteensä,fi_FI
+customer.order.view_all,Näytä kaikki,fi_FI
+customer.order.view_order,Katso tilaus,fi_FI
+customer.password,Salasana,fi_FI
+customer.password.changed,Salasanasi muutettiin onnistuneesti,fi_FI
+customer.password.change.success,Salasanan muutos onnistuu,fi_FI
+customer.password.confirm.new_password,Vahvista salasana,fi_FI
+customer.password.invalid,Salasana on virheellinen,fi_FI
+customer.password.invalid_password,Nykyinen salasana on väärä,fi_FI
+customer.password.old_password,vanha salasana,fi_FI
+customer.password.recovery.mail.sent,"Jos tähän sähköpostiosoitteeseen liittyy tili, saat sähköpostiviestin, jossa on lisäohjeita",fi_FI
+customer.password.request.new_password,uusi salasana,fi_FI
+customer.password.restore,Aseta uusi salasana,fi_FI
+customer.password.update,Vaihda salasana,fi_FI
+customer.phone,Puhelinnumero,fi_FI
+customer.profile,Tilini,fi_FI
+customer.profile.address.delete,Poistaa,fi_FI
+customer.profile.address.edit,Muokata,fi_FI
+customer.profile.change.success,Profiili tallennetaan onnistuneesti,fi_FI
+customer.profile.confirm.new_password,Vahvista uusi salasana,fi_FI
+customer.profile.delete,Poista tili,fi_FI
+customer.profile.delete.confirmation_question,Haluatko varmasti poistaa tilisi?,fi_FI
+customer.profile.delete.description,Tämä poistaa kaikki tilin tiedot.,fi_FI
+customer.profile.email,Sähköposti,fi_FI
+customer.profile.first_name,Etunimi,fi_FI
+customer.profile.last_name,Sukunimi,fi_FI
+customer.profile.link,Profiilini,fi_FI
+customer.profile.old_password,vanha salasana,fi_FI
+customer.profile.order_details,Tilauksen tiedot,fi_FI
+customer.profile.order_details.giftcard.label,Lahjakortti,fi_FI
+customer.profile.order_history,Viimeiset tilaukset,fi_FI
+customer.profile.phone,Puhelin,fi_FI
+customer.profile.request.new_password,uusi salasana,fi_FI
+customer.profile.title,Tilini,fi_FI
+customer.profile.update,Päivitä profiili,fi_FI
+customer.register,Rekisteri,fi_FI
+customer.registration.title,Luo tili,fi_FI
+customer.reset.password.error.already.loggedIn,Toinen asiakas on jo kirjautunut sisään. Kirjaudu ulos palauttaa salasanasi.,fi_FI
+customer.salutation.dr,DR.,fi_FI
+customer.salutation.mr,Herra.,fi_FI
+customer.salutation.mrs,Rouva.,fi_FI
+customer.salutation.ms,Neiti.,fi_FI
+customer.signin,Kirjaudu sisään,fi_FI
+customer.signup,Uusi asiakas?,fi_FI
+customer.table.actions,Toiminnot,fi_FI
+customer.token.invalid,Token on virheellinen,fi_FI
+discount.quote_change.discount.amount_changed,Seuraaviin kohteisiin valitsit alennukset SKUS ovat muuttuneet,fi_FI
+discount.quote_change.discount.not_available,Seuraaville kohteille olet valinnut alennukset SKUS ei ole enää käytettävissä,fi_FI
+discount.quote_change.does_not_apply_for_currency,"Voucher """" %code% """" ei ole poistettu käytöstä, koska se ei koske tätä valuutta.",fi_FI
+discount.successfully.applied,"Alennus """" display_name """" on käytetty onnistuneesti",fi_FI
+discount.voucher_code.usage_limit.reached,Voucher Code Käyttöraja saavutettu,fi_FI
+DummyPaymentCreditCard,Luottokortti,fi_FI
+dummyPaymentCreditCard.card_expires,Päättymispäivä,fi_FI
+dummyPaymentCreditCard.card_number,Kortin numero,fi_FI
+dummyPaymentCreditCard.card_security_code,CVC,fi_FI
+dummyPaymentCreditCard.card_type,Korttityyppi,fi_FI
+dummyPaymentCreditCard.hidden_numbers,*********,fi_FI
+dummyPaymentCreditCard.name_on_card,Nimi Kortissa,fi_FI
+DummyPaymentInvoice,Lasku,fi_FI
+dummyPaymentInvoice.date_of_birth,Syntymäaika,fi_FI
+dummyPaymentInvoice.invoice,Maksa laskulla:,fi_FI
+DummyPrepayment,Esimaksu,fi_FI
+dummyPrepayment.prepaymentbank-info,MWS Myworld Solutions AG: <br/> Unicredit Bank ITÄVALTA <br/> IBAN: AT19 1200 0529 5900 6605 <br/> BIC: BKAUATWW,fi_FI
+email.orderEmail.salutationFemale,Neiti Rouva.,fi_FI
+email.orderEmail.salutationMale,Herra.,fi_FI
+error.404,"Pahoittelut, jotain meni pieleen",fi_FI
+error.404_description,Tätä sivua ei löydy. Palaa takaisin,fi_FI
+error_page.home_link,Mene kotisivulle,fi_FI
+error_page.text,Emme löytäneet etsimäsi sivua.,fi_FI
+error_page.title,Sivua ei löydetty.,fi_FI
+footer.facebook.url,https://www.facebook.com/myWorld.FI/,fi_FI
+footer.follow,Seuraa meitä,fi_FI
+footer.instagram.url,https://www.instagram.com/myworld.suomi/,fi_FI
+footer.logo.link.imprint,/ fi / jälki,fi_FI
+footer.logo.link.privacy,/ en / yksityisyys,fi_FI
+footer.logo.text,Rakennettu,fi_FI
+footer.logo.url,/,fi_FI
+footer.navigation_title.customer_service,Asiakaspalvelu,fi_FI
+footer.navigation_title.information,Tiedot,fi_FI
+footer.navigation_title.legal_information,Oikeudelliset tiedot,fi_FI
+footer.navigation_title.propositions,Ansaitse rahaa myworldilla,fi_FI
+footer.official_partner,Virallinen kumppani,fi_FI
+footer.pinterest.url,https://www.pinterest.com/myworldfficial/,fi_FI
+footer.providers__title,Lähetys ja maksu,fi_FI
+footer_subscribe.subscription_placeholder,Lisää sähköposti,fi_FI
+footer_subscribe.subscription_text,Rekisteröidy ja pysy aina ajan tasalla,fi_FI
+footer.twitter.url,https://twitter.com/myworld_uk,fi_FI
+footer.youtube.url,https://www.youtube.com/channel/uccdwfbarbzg98deud_-l_uq?sub_confirmation=1,fi_FI
+form.csrf.error.text,Jotain meni pieleen. Anteeksi.,fi_FI
+forms.accept_terms,Hyväksy ehdot,fi_FI
+forms.confirm-password,Vahvista salasana,fi_FI
+forms.email,Sähköposti,fi_FI
+forms.first-name,Etunimi,fi_FI
+forms.forgot-password,Unohtuiko salasana,fi_FI
+forms.last-name,Sukunimi,fi_FI
+forms.password,Salasana,fi_FI
+forms.save-btn,Tallentaa,fi_FI
+forms.submit-btn,Lähetä,fi_FI
+forms.submit.login,Kirjaudu sisään,fi_FI
+forms.submit.register,Rekisteri,fi_FI
+gdpr.accept_cookies,Hyväksy evästeet,fi_FI
+gdpr.message,"Käytämme evästeitä verkkosivuillamme, jotta palvelut tehokkaampi ja käyttäjäystävällisempi. Siksi valitse 'Hyväksy evästeet'! Lue lisätietoja %link%.",fi_FI
+gdpr.privacy_policy,Tietosuojakäytäntö,fi_FI
+general.back.button,Takaisin,fi_FI
+general.cancel.button,Peruuttaa,fi_FI
+general.edit.button,Muokata,fi_FI
+general.next.button,Seuraava,fi_FI
+global.accept.terms.and.conditions,Hyväksy ehdot,fi_FI
+global.add-to-cart,Lisää ostoskoriin,fi_FI
+global.back_homepage,takaisin kotisivulle,fi_FI
+global.benefit.competitive_prices,Kilpailukykyiset hinnat,fi_FI
+global.benefit.free_returns,Ilmaiset palautukset,fi_FI
+global.benefit.warranty,3 vuoden takuu,fi_FI
+global.button.less,Vähemmän,fi_FI
+global.button.more,Lisää,fi_FI
+global.cart,Kori,fi_FI
+global.cashback,Vaihtorahat,fi_FI
+global.categories,kaikki kategoriat,fi_FI
+global.close,kiinni,fi_FI
+global.company,Yhtiö,fi_FI
+global.create.account,Luo tili,fi_FI
+global.email.address,Sähköpostiosoite,fi_FI
+global.get_in_touch,Ota yhteyttä,fi_FI
+global.header.categories,kaikki kategoriat,fi_FI
+global.header.services,Myworld-palvelut,fi_FI
+global.home,Koti,fi_FI
+global.login,Kirjaudu sisään,fi_FI
+global.newsletter,Uutiskirje,fi_FI
+global.no_image_available,Ei kuvaa saatavilla,fi_FI
+global.order.ascendent,A-z,fi_FI
+global.order.descendent,Z-a,fi_FI
+global.partners,Kumppanit,fi_FI
+global.password,Salasana,fi_FI
+global.payment_providers,Maksupalveluntarjoajat,fi_FI
+global.permission.failed,Tämä toimenpide on kielletty,fi_FI
+global.quantity_symbol,x,fi_FI
+global.recover.password,Palauta salasana,fi_FI
+global.register,Rekisteröidy nyt,fi_FI
+global.search,Hae,fi_FI
+global.search.pages,Sivut,fi_FI
+global.search.results,Hakutulokset,fi_FI
+global.search.results.view,Näkymä,fi_FI
+global.search.spellingSuggestion,Tarkoititko,fi_FI
+global.search.suggestion.in_categories,Luokat,fi_FI
+global.search.suggestion.in_cms,Sivut,fi_FI
+global.search.suggestion.in_products,Tuotteet,fi_FI
+global.search.suggestion.no_result,Mitään ei löytynyt…,fi_FI
+global.search.suggestions,Hakuehdotukset,fi_FI
+global.search.suggestion.see_all_products,Katso kaikki tuotteet,fi_FI
+global.shipment_providers,Lähetyksen tarjoajat,fi_FI
+global.social,Sosiaalinen media,fi_FI
+global.spryker.motto,Teknologia laatu,fi_FI
+global.spryker.shop,myworld.com,fi_FI
+homepage.carousel.next,Seuraava,fi_FI
+homepage.carousel.previous,Edellinen,fi_FI
+invoice.company.address,SPRYKER SYSTEMS GMBH <br/> Julie-Wolfthorn-Straße 1 <br /> 10115 Berliini / Saksa,fi_FI
+invoice.company.bank.information,Pankin nimi <br/> IBAN 1234 5678 9123 4567 89 <br /> BIC 12345678 <br/> Handelslsregister ABC123456 <br /> Steunummer 12/345/6789,fi_FI
+invoice.company.contact.information,+49 (0) 30 2084983 50 <br/> hello@spryker.com,fi_FI
+invoice.created.at,Laskutus päivämäärä,fi_FI
+invoice.customer.number,Asiakasviite,fi_FI
+invoice.header,Lasku,fi_FI
+invoice.order.address.billing,Postitusosoite,fi_FI
+invoice.order.address.shipping,Toimitusosoite,fi_FI
+invoice.order.expenses.total,Postituskulut,fi_FI
+invoice.order.grand_total,LOPPUSUMMA,fi_FI
+invoice.order.item.price,Kohta hinta,fi_FI
+invoice.order.item.price_total,Kohta yhteensä,fi_FI
+invoice.order.item.product_name,TUOTTEEN NIMI,fi_FI
+invoice.order.item.quantity,MÄÄRÄ,fi_FI
+invoice.order.item.sku,Sku,fi_FI
+invoice.order.number,Tilauksen viite,fi_FI
+invoice.order.tax_amount,Sis. arvonlisävero,fi_FI
+item,Kohde,fi_FI
+jumbotron.smartphones.link,/ en / Telecom - & - Navigointi / älypuhelimet,fi_FI
+jumbotron.smart_watches.link,/ fi / Smart-Wearbles / SmartWatches,fi_FI
+jumbotron.tablets.link,/ fi / Tietokoneet / Tabletit,fi_FI
+mail.company.status.approved,Hyväksytty,fi_FI
+mail.company.status.denied,Kielletty,fi_FI
+mail.company.status.pending,Odottaa hyväksyntää,fi_FI
+mail.company.status.subject,Yrityksesi on muuttunut aseman,fi_FI
+mail.company.status.text,Yrityksesi on muuttunut aseman:,fi_FI
+mail.company.user.invitation.body.html,"Hei %name%, olet pyydetty liittymään yrityksen tilille SPRYKER-demo-hopiin, noudata tätä <a href=""%invitationlink%""> Link </ A > Voit suorittaa rekisteröinnin",fi_FI
+mail.company.user.invitation.body.text,"Hei %name%, sinut on kutsuttu liittymään yrityksen tilille SPRYKER DEMO -myymälässä, seuraa tätä linkkiä osoitteessa %invitationlink% rekisteröintiä varten",fi_FI
+mail.company.user.invitation.subject,Kutsu,fi_FI
+mail.customer.registration.subject,"Kiitos, että olet kirjautunut Spryker Shopin kanssa!",fi_FI
+mail.customer.registration.text,"Kiitos, että olet kirjautunut Spryker Shopin kanssa!",fi_FI
+mail.customer.restore_password_confirmation.subject,Salasanasi muutettiin onnistuneesti!,fi_FI
+mail.customer.restore_password_confirmation.text,Salasanasi muutettiin onnistuneesti!,fi_FI
+mail.customer.restore_password.subject,Uusi salasana SPRYKER SHOP -tilillesi,fi_FI
+mail.customer.restore_password.text,"""Joku on pyytänyt uutta salasanaa SPRYKER-myymälän tilillesi. Jos et ole sinä, vain sivuuta tämä sähköposti. Jos näin on, noudata linkkiä Bellow:""",fi_FI
+mail.giftCard.delivery.subject,Lahjakortti!,fi_FI
+mail.giftCard.delivery.text,"Hyvä asiakas, Kiitos, että ostat lahjakortin myymälässamme. Lahjakorttikoodi on:",fi_FI
+mail.giftCard.usage.subject,"Kiitos, että käytät lahjakorttia!",fi_FI
+mail.newsletter.subscribed.footer.text,Odotamme seuraavaa vierailustasi!,fi_FI
+mail.newsletter.subscribed.subject,Tervetuloa SPRYKER-uutiskirjeeseen,fi_FI
+mail.newsletter.subscribed.text,"Olemme innoissaan, että olet rekisteröitynyt uudellemetterille. Teemme parhaamme toimittamaan sinulle tärkeimmät ja jännittävät uutiset ja päivitykset.",fi_FI
+mail.newsletter.unsubscribed.subject,Olen pahoillani kun lähdet…,fi_FI
+mail.newsletter.unsubscribed.text,"Sähköpostiosoitteesi on peruutettu SPRYKER Shop Uutiskirjeestä, mutta voit aina hallita tilaustasi asiakasprofiilissasi.",fi_FI
+mail.order.confirmation.billing_address,Postitusosoite,fi_FI
+mail.order.confirmation.date,Tilauspäivä,fi_FI
+mail.order.confirmation.delivery_date,Pyydetty toimituspäivä,fi_FI
+mail.order.confirmation.details,Tiedot tilauksesta,fi_FI
+mail.order.confirmation.footer.text_line_1,Hyvää päivän jatkoa!,fi_FI
+mail.order.confirmation.footer.text_line_2,SPRYKER SHOP,fi_FI
+mail.order.confirmation.item_price_including_tax,Kokonaisosan hinta mukaan lukien verot,fi_FI
+mail.order.confirmation.item_quantity,Tuoten määrä,fi_FI
+mail.order.confirmation.item_sku,Artikel SKU,fi_FI
+mail.order.confirmation.order_number,Tilausnumero,fi_FI
+mail.order.confirmation.price_including_tax,Yhteensä hinta mukaan lukien verot,fi_FI
+mail.order.confirmation.products_in_shipment,Tuotteet lähetys,fi_FI
+mail.order.confirmation.product_title,Tuotteen nimi,fi_FI
+mail.order.confirmation.salutation,Hei,fi_FI
+mail.order.confirmation.shipment_details,Kuljetus yksityiskohdat,fi_FI
+mail.order.confirmation.shipment_number,Lähetysnumero,fi_FI
+mail.order.confirmation.shipping_address,Toimitusosoite,fi_FI
+mail.order.confirmation.shipping_method,Lähetysmenetelmä,fi_FI
+mail.order.confirmation.subject,Oma myworld.com tilaus %idorder%,fi_FI
+mail.order.confirmation.text_line_1,Kiitos ostoksista Spryker Shopissa!,fi_FI
+mail.order.confirmation.text_line_2,"Kirjoitamme kertoa teille, että saimme tilauksesi. Saat lähetysvahvistuksen sähköpostitse meiltä heti, kun tilaus on lähetetty.",fi_FI
+mail.order.confirmation.text_line_3,"Toivomme, että pidät tilauksesi. Jos muutat mieltäsi, voit palata 14 päivän kuluessa.",fi_FI
+mail.order.in-processing.subject,Uusi järjestys juuri sijoitettu,fi_FI
+mail.order_invoice.subject,Lasku myworld.com Tilaa %idorder%,fi_FI
+mail.order.shipped.date,Tilauspäivä,fi_FI
+mail.order.shipped.details,Tiedot tilauksesta,fi_FI
+mail.order.shipped.footer.text_line_1,Hyvää päivän jatkoa!,fi_FI
+mail.order.shipped.footer.text_line_2,SPRYKER SHOP,fi_FI
+mail.order.shipped.order_number,Tilausnumero,fi_FI
+mail.order.shipped.price_including_tax,Yhteensä hinta mukaan lukien verot,fi_FI
+mail.order.shipped.salutation,Hei,fi_FI
+mail.order.shipped.subject,Tilauksesi %orderreference% on matkalla,fi_FI
+mail.order.shipped.text,Tilauksesi on jo matkalla.,fi_FI
+mail.sender.email,noreply@demo-spryker.com,fi_FI
+mail.sender.name,SPRYKER NO-VASTAUS,fi_FI
+mail.shipping.confirmation.subject,Myworld.com tilaus %idorder% on lähetetty,fi_FI
+mail.trans.availability_notification_subscription.subtitle,"Saat sähköpostiviestin, kun tuote on jälleen saatavilla.",fi_FI
+mail.trans.availability_notification_subscription.title,Ilmoitimme vain ostotiimin tilauksesta!,fi_FI
+mail.trans.availability_notification.subtitle,Odotus on ohi! Lisää tämä tuote kortille nyt.,fi_FI
+mail.trans.availability_notification.title.part2,on jälleen saatavilla!,fi_FI
+mail.trans.availability_notification_unsubscribed.subtitle,"Sinua ei ilmoiteta, kun tuote on jälleen käytettävissä.",fi_FI
+mail.trans.availability_notification_unsubscribed.title.part1,Tilauksesi,fi_FI
+mail.trans.availability_notification_unsubscribed.title.part2,peruttiin,fi_FI
+mail.trans.common.go_to_shop,Mennä kauppaan,fi_FI
+mail.trans.common.hello_for_first_name,Hei,fi_FI
+mail.trans.common.my_account,Tilini,fi_FI
+mail.trans.company_status.title,Yrityksen tila on muutettu,fi_FI
+mail.trans.customer_registration.change_info,"Voit muuttaa tietojasi (toimitusosoite, sähköpostiosoite, salasana jne.)",fi_FI
+mail.trans.customer_registration.confirmation_link,Vahvista sähköpostiosoitteesi,fi_FI
+mail.trans.customerRegistration.confirmationLink,Vahvista sähköpostiosoitteesi,fi_FI
+mail.trans.customer_registration.registration_success,Rekisteröinti SPRYKER-myymälään onnistui!,fi_FI
+mail.trans.customer_registration.title,"Kiitos, että olet kirjautunut Spryker Shopin kanssa!",fi_FI
+mail.trans.customer_restored_password_confirmation.title,Salasanasi muutettiin onnistuneesti,fi_FI
+mail.trans.customer_restore_password.change_password,Vaihda salasana,fi_FI
+mail.trans.customer_restore_password.subtitle,"Joku on pyytänyt uuden salasanan SPRYKER-myymälän tilillesi. Jos tämä ei ole sinua, ota huomioon tämä sähköposti. Jos se olisi sinä, noudata alla olevaa painiketta.",fi_FI
+mail.trans.customer_restore_password.title,Uusi salasana SPRYKER SHOP -tilillesi,fi_FI
+mail.trans.footer.contact_email_address,info@spryhker.com,fi_FI
+mail.trans.footer.for_more_information,Lisätietoja peruuttamisoikeudesta ja ehdoista ja ehtoista napsauttamalla yläosassa olevaa myyjän nimeä. Onko sinulla muita kysymyksiä? Sitten olet varmasti löytänyt oikeat vastaukset palvelualueellamme.,fi_FI
+mail.trans.footer.if_you_have_further_questions,"Jos sinulla on kysyttävää, ota yhteyttä asiakaspalveluun",fi_FI
+mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,fi_FI
+mail.trans.footer.shop_city,Berliini,fi_FI
+mail.trans.footer.shop_name,SPRYKER SYSTEMS GMBH,fi_FI
+mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,fi_FI
+mail.trans.footer.shopping_experience,Odotamme seuraavaa vierailustasi!,fi_FI
+mail.trans.footer.shop_zip_code,10115,fi_FI
+mail.trans.footer.your_team,Oma myworld.com joukkue,fi_FI
+mail.trans.gift_card_delivery.subtitle,Lahjakorttikoodi on,fi_FI
+mail.trans.gift_card_delivery.title,"Hyvä asiakas, kiitos, että ostat lahjakortin myymälässämme.",fi_FI
+mail.trans.gift_card_usage.subtitle,Lahjakorttikoodi on,fi_FI
+mail.trans.gift_card_usage.title,Olet juuri käyttänyt lahjakorttia!,fi_FI
+mail.trans.header.shop_name,Spreker Shop,fi_FI
+mail.trans.newsletter_subscribed.subtitle,Teemme parhaamme toimittamaan tärkeimmät ja jännittävät uutiset ja päivitykset.,fi_FI
+mail.trans.newsletter_subscribed.title,"Olemme innoissaan, että olet allekirjoittanut uutiskirjeemme.",fi_FI
+mail.trans.newsletter_unsubscribed.subtitle,Sähköpostiosoitteesi on peruutettu SPRYKER Shop Uutiskirjeestä. Voit aina hallita tilaustasi asiakasprofiilissasi.,fi_FI
+mail.trans.newsletter_unsubscribed.title,Olen pahoillani kun lähdet...,fi_FI
+mail.trans.order.billing_address,postitusosoite,fi_FI
+mail.trans.order_confirmation.subtitle,"Heti kun paketti on matkalla, saat erillisen toimitusvahvistuksen meiltä sähköpostitse. Osittaisten toimitusten tapauksessa saat jokaisen toimituksen erillisen ilmoituksen. Jos haluat nähdä tilauksesi, käy Myworld.comin Omat tilaukset -osiossa MyWorld.com.",fi_FI
+mail.trans.order_confirmation.title,Kiitos tilauksestasi!,fi_FI
+mail.trans.order.delivery_address,Toimitusosoite,fi_FI
+mail.trans.order.delivery_address.company_data,Yrityksen tiedot:,fi_FI
+mail.trans.order.delivery_method,Toimitustapa,fi_FI
+mail.trans.order.discounts_total,Alennus,fi_FI
+mail.trans.order.grand_total,Yhteensä tilaus sis. arvonlisävero,fi_FI
+mail.trans.order_in_processing.title,Uusi järjestys juuri sijoitettu,fi_FI
+mail.trans.order.order_date,Tilauspäivämäärä,fi_FI
+mail.trans.order.order_details,Tilauksen tiedot,fi_FI
+mail.trans.order.order_reference,Tilausnumero,fi_FI
+mail.trans.order.payment_method,Maksutapa,fi_FI
+mail.trans.order.quantity,Määrä,fi_FI
+mail.trans.order.requested_delivery_date,Pyydetty toimituspäivä,fi_FI
+mail.trans.order.shipment_costs_total,Toimitus sis. arvonlisävero,fi_FI
+mail.trans.order.shipment_for_number.part1,Lähetys,fi_FI
+mail.trans.order.shipment_for_number.part2,of,fi_FI
+mail.trans.order_shipped.title,Tilauksesi on matkalla!,fi_FI
+mail.trans.order.stock_name,Myynyt:,fi_FI
+mail.trans.order.subtotal,Subtotal sis. arvonlisävero,fi_FI
+mail.trans.order.taxes,Verot,fi_FI
+mail.trans.order.tracking_code,Toimitus,fi_FI
+mail.trans.restore_password.change_password,Vaihda salasana,fi_FI
+mail.trans.restore_password.subtitle,"Joku on pyytänyt uutta salasanaa SPRYKER Back Office -tilillesi. Jos se ei ole sinua, ota tämä sähköpostiisi sivuuttanut. Jos se oli sinä, noudata painikkeen ohjeita",fi_FI
+mail.trans.restore_password.title,Uusi salasana SPRYKER Back Office -tilillesi,fi_FI
+mail.trans.shipping_confirmation.subtitle,"Haluamme kertoa teille, että tilauksesi tai tilauksesi osat on lähetetty. Osittaisten toimitusten tapauksessa saat jokaisen toimituksen erillisen ilmoituksen. Heti kun myyjä on tehnyt laskun saatavilla, löydät sen asiakastilisi alla ""Omat tilaukset"".",fi_FI
+mail.trans.shipping_confirmation.title,Tilauksesi on matkalla sinulle,fi_FI
+measurement_units.item.name,Kohde,fi_FI
+measurement_units.new-price,Uusi hinta,fi_FI
+measurement_units.recommendation.between-units-info,Valittu määrä on 2 perusyksikköä,fi_FI
+measurement_units.recommendation.max-violation,Tuotteen enimmäismäärät eivät täyty,fi_FI
+measurement_units.recommendation.min-violation,Tuotteiden vähimmäisvaatimukset eivät täyty,fi_FI
+measurement_units.recommendation.suggestion,Haluatko lisätä,fi_FI
+measurement_units.standard.area.acre.name,Hehtaarin,fi_FI
+measurement_units.standard.area.ares.name,Ovat,fi_FI
+measurement_units.standard.area.hect.name,Hehtaari,fi_FI
+measurement_units.standard.area.scmt.name,Neliökerros,fi_FI
+measurement_units.standard.area.smet.name,Neliömetri,fi_FI
+measurement_units.standard.area.smil.name,Neliömimetri,fi_FI
+measurement_units.standard.area.sqfo.name,Neliöjalka,fi_FI
+measurement_units.standard.area.sqin.name,Neliöpuu,fi_FI
+measurement_units.standard.area.sqki.name,Neliökilometri,fi_FI
+measurement_units.standard.area.sqmi.name,Neliömaili,fi_FI
+measurement_units.standard.area.sqya.name,Neliöpiha,fi_FI
+measurement_units.standard.barl.name,Tynnyri,fi_FI
+measurement_units.standard.bcuf.name,Miljardia kuutiometriä,fi_FI
+measurement_units.standard.bdft.name,Levyt jalat,fi_FI
+measurement_units.standard.busl.name,Vakka,fi_FI
+measurement_units.standard.cbme.name,Kuutiometri,fi_FI
+measurement_units.standard.celi.name,Centilitre,fi_FI
+measurement_units.standard.dgeu.name,Diesel gallon ekvivalentti,fi_FI
+measurement_units.standard.gbga.name,GB gallona,fi_FI
+measurement_units.standard.gbpi.name,GB Pint,fi_FI
+measurement_units.standard.gbqa.name,GB Quart,fi_FI
+measurement_units.standard.ggeu.name,Bensiini gallon ekvivalentti,fi_FI
+measurement_units.standard.length.cmet.name,Senttimetri,fi_FI
+measurement_units.standard.length.foot.name,Jalka,fi_FI
+measurement_units.standard.length.inch.name,Tuumaa,fi_FI
+measurement_units.standard.length.kmet.name,Kilometri,fi_FI
+measurement_units.standard.length.metr.name,Mittari,fi_FI
+measurement_units.standard.length.mile.name,Maili,fi_FI
+measurement_units.standard.length.mmet.name,Millimetri,fi_FI
+measurement_units.standard.length.yard.name,Piha,fi_FI
+measurement_units.standard.litr.name,Litra,fi_FI
+measurement_units.standard.miba.name,Miljoona Barrel,fi_FI
+measurement_units.standard.mili.name,Milli litra,fi_FI
+measurement_units.standard.usga.name,US gallona,fi_FI
+measurement_units.standard.uspi.name,US Pint,fi_FI
+measurement_units.standard.usqa.name,US Quart,fi_FI
+measurement_units.standard.weight.gbou.name,GB unssia,fi_FI
+measurement_units.standard.weight.gbtn.name,GB ton,fi_FI
+measurement_units.standard.weight.gram.name,Gramma,fi_FI
+measurement_units.standard.weight.huwg.name,Sentneri,fi_FI
+measurement_units.standard.weight.kilo.name,Kilo,fi_FI
+measurement_units.standard.weight.oztr.name,Troy unssi,fi_FI
+measurement_units.standard.weight.pund.name,Punta,fi_FI
+measurement_units.standard.weight.tone.name,Tonni,fi_FI
+measurement_units.standard.weight.ucwt.name,Yhdysvaltain satapaino,fi_FI
+measurement_units.standard.weight.usou.name,Yhdysvaltain unssia,fi_FI
+measurement_units.standard.weight.ustn.name,US tonni,fi_FI
+message.submit_link,Ok!,fi_FI
+multi_cart.cart.set_default.success,Ostoskori '%quote%' on onnistuneesti asetettu Active Cart.,fi_FI
+multi_cart.form.create_cart,Lisää uusi korkki,fi_FI
+multi_cart.form.edit_cart,Vaihtaa nimeä,fi_FI
+multi_cart.form.edit_cart_information,Muokkaa ostoskoria tietoja,fi_FI
+multi_cart.form.quote.name,Ostoskori nimi,fi_FI
+multi_cart_page.cart_clear.success,Ostoskori selvitettiin onnistuneesti,fi_FI
+multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Ostoskärryt,fi_FI
+multi_cart_page.cart_delete_confirmation.cancel,Peruuttaa,fi_FI
+multi_cart_page.cart_delete_confirmation.delete,Poistaa,fi_FI
+multi_cart_page.cart_delete_confirmation.from_all_of_them,Se poistetaan kaikista niistä,fi_FI
+multi_cart_page.cart_delete_confirmation.shared_with,Se jaetaan seuraavien käyttäjien kanssa,fi_FI
+multi_cart_page.cart_delete_confirmation.trying_to_delete,Yrität poistaa ostoskorin,fi_FI
+multi_cart_page.cart_delete_confirmation.warning,Varoitus,fi_FI
+multi_cart_widget.cart.action.change_name,Vaihtaa nimeä,fi_FI
+multi_cart_widget.cart.action.clear,Kirkas,fi_FI
+multi_cart_widget.cart.action.delete,Poista kori,fi_FI
+multi_cart_widget.cart.action.duplicate,Kaksoiskappale,fi_FI
+multi_cart_widget.cart.actions,Toiminnot,fi_FI
+multi_cart_widget.cart.action.set_default,Aseta aktiivinen,fi_FI
+multi_cart_widget.cart.action.view,Tarkemmat tiedot,fi_FI
+multi_cart_widget.cart.add,Luo uusi korkki,fi_FI
+multi_cart_widget.cart.cart,Kori,fi_FI
+multi_cart_widget.cart.cart_name,Ostoskori nimi,fi_FI
+multi_cart_widget.cart.carts,Kärryt,fi_FI
+multi_cart_widget.cart.created.success,"Ostoskori '%quotaname% ""luotiin onnistuneesti",fi_FI
+multi_cart_widget.cart.default,Aktiivinen,fi_FI
+multi_cart_widget.cart.item,Kohde,fi_FI
+multi_cart_widget.cart.items,Tuotteet,fi_FI
+multi_cart_widget.cart.list,Ostoskorin luettelo,fi_FI
+multi_cart_widget.cart.remove.confirm,"Oletko varma, että haluat poistaa tämän ostoskorin?",fi_FI
+multi_cart_widget.cart.status,Tila,fi_FI
+multi_cart_widget.cart.sub_total,Sub yhteensä,fi_FI
+multi_cart_widget.cart.updated.success,Ostoskori päivitetty onnistuneesti,fi_FI
+multi_cart_widget.cart.view_all,Näytä kaikki kärryt,fi_FI
+navigation.menu.categories,Luokat,fi_FI
+navigation.menu.have-a-look,Se kannattaa katsoa,fi_FI
+newsletter.form.subscribe,Tilata,fi_FI
+newsletter.subscribe,Sähköposti,fi_FI
+newsletter.subscription.already_subscribed,Olet jo merkitty uutiskirjeeseen,fi_FI
+newsletter.subscription.email_format_invalid,Virheellinen sähköpostiosoite,fi_FI
+newsletter.subscription.success,Olet onnistuneesti merkitty uutiskirjeeseen,fi_FI
+newsletter.unsubscription.success,Olet onnistuneesti peruutettu uutiskirjeestä,fi_FI
+oms.state.authorization-pending-next-try,Meneillään,fi_FI
+oms.state.cancellation-pending,Peruutus,fi_FI
+oms.state.cancellation-pending-next-try,Peruutus,fi_FI
+oms.state.cancelled,Peruutettu,fi_FI
+oms.state.capture-failed-clarification,Meneillään,fi_FI
+oms.state.capture pending,Meneillään,fi_FI
+oms.state.capture-pending,-,fi_FI
+oms.state.capture-pending-next-try,Meneillään,fi_FI
+oms.state.closed,Suljettu,fi_FI
+oms.state.invalid,Peruutettu,fi_FI
+oms.state.invoice-with-tracking-number-sent,Toimitettu,fi_FI
+oms.state.new,Uusi,fi_FI
+oms.state.order-confirmation-email-sent,Meneillään,fi_FI
+oms.state.order-in-processing-email-sent,Meneillään,fi_FI
+oms.state.ready-for-refund,Maksun palautus,fi_FI
+oms.state.ready-for-turnover-cancellation,Maksun palautus,fi_FI
+oms.state.ready-for-turnover-creation,Toimitettu,fi_FI
+oms.state.refund-failed-clarification,Maksun palautus,fi_FI
+oms.state.refund-pending,Maksun palautus,fi_FI
+oms.state.refund-pending-next-try,Maksun palautus,fi_FI
+oms.state.turnover-cancellation-failed,Maksun palautus,fi_FI
+oms.state.turnover-created,Toimitettu,fi_FI
+oms.state.turnover-creation-failed,Toimitettu,fi_FI
+oms.state.waiting-for-tracking-number,Meneillään,fi_FI
+oms.state.invoice-generated,Lasku syntyy,fi_FI
+order_cancel_widget.cancel_order,Peruuta tilaus,fi_FI
+order_cancel_widget.order.cancelled,Tilaus peruutettiin onnistuneesti.,fi_FI
+order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134G,fi_FI
+order_invoice.invoice_template.company.group,Unternehmensgruppe Spreker Systems GmbH,fi_FI
+order_invoice.invoice_template.company.name,MWS Myworld Solutions AG,fi_FI
+order_invoice.invoice_template.introduction,Veloitamme sinut seuraavista tavaroista:,fi_FI
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berliini,fi_FI
+order_invoice.invoice_template.merchant.name,Spreker Systems GmbH Berliini,fi_FI
+order_invoice.invoice_template.reference,Lasku NR.,fi_FI
+order_invoice.invoice_template.table.bottom_text,"Toimitamme ja toimimme yksinomaan yleisten ehtojen mukaisesti, joiden kanssa olet tuttu.",fi_FI
+order_invoice.invoice_template.table.cashback_customer_number,Cashback Asiakasnumero:,fi_FI
+order_invoice.invoice_template.table.discount,Alennus,fi_FI
+order_invoice.invoice_template.table.grandtotal,loppusumma,fi_FI
+order_invoice.invoice_template.table.grant_total,Suuri yhteensä:,fi_FI
+order_invoice.invoice_template.table.gross_price,Bruttohinta,fi_FI
+order_invoice.invoice_template.table.invoice_date,Laskun sukupolven päivämäärä:,fi_FI
+order_invoice.invoice_template.table.name,Artikkelin nimi,fi_FI
+order_invoice.invoice_template.table.net_price,Nettohinta,fi_FI
+order_invoice.invoice_template.table.number,Pos.,fi_FI
+order_invoice.invoice_template.table.order_date,Tilauspäivämäärä:,fi_FI
+order_invoice.invoice_template.table.order_reference,Tilausnumero:,fi_FI
+order_invoice.invoice_template.table.payment_reference,Maksuviite,fi_FI
+order_invoice.invoice_template.table.price,Hinta,fi_FI
+order_invoice.invoice_template.table.quantity,Tuote QTY,fi_FI
+order_invoice.invoice_template.table.subtotal,Välisumma,fi_FI
+order_invoice.invoice_template.table.tax,Veroaste,fi_FI
+order_invoice.invoice_template.table.tax.included,Tämä sisältää %tax_rate%% ALV-verkko,fi_FI
+order_invoice.invoice_template.table.tax.name,arvonlisävero,fi_FI
+order_invoice.invoice_template.table.uid,UID:,fi_FI
+packaging_unit_type.box.name,Laatikko,fi_FI
+packaging_unit_type.giftbox.name,Lahjapaketti,fi_FI
+packaging_unit_type.item.name,Kohde,fi_FI
+packaging_unit_type.pack_100.name,Pakkaus 100,fi_FI
+packaging_unit_type.pack_20.name,Pack 20,fi_FI
+packaging_unit_type.pack_500.name,Pack 500,fi_FI
+packaging_unit_type.pack_mixed.name,Sekalaiset ruuvit laatikot,fi_FI
+packaging_unit_type.palette.name,Paletti,fi_FI
+packaging_unit_type.ring_500.name,Rengas (500m),fi_FI
+packaging_unit_type.valentines_special.name,Ystävänpäivä,fi_FI
+page.checkout.address.address-example,Esimerkki: </br> Wayne Manor 1 </BR> 10292 Gotham City </br> z.h. Alfred Pennyworth,fi_FI
+page.checkout.address.address_select.label,Valitse toimitusosoite,fi_FI
+page.checkout.address.address_select.placeholder,Valitse osoite,fi_FI
+page.checkout.address.billing-address,postitusosoite,fi_FI
+page.checkout.address.billing.address_select,Valitse laskutusosoite,fi_FI
+page.checkout.address.billing-isnt-shipping-address,Eri toimitusosoite,fi_FI
+page.checkout.address.billing-same-as-shipping,Laskutus sama kuin toimitus,fi_FI
+page.checkout.address.delivery.address_select,Valitse toimitusosoite,fi_FI
+page.checkout.address.different_billing_address,Käytä eri laskutusosoitetta,fi_FI
+page.checkout.address.different_delivery_address,Käytä eri toimitusosoitetta,fi_FI
+page.checkout.address.edit,Muokkaa osoitetietoja,fi_FI
+page.checkout.address.heading,1. Osoitetiedot,fi_FI
+page.checkout.address.manage_your_addresses,Hallitse osoitteitasi,fi_FI
+page.checkout.address.multi_shipment.title,Määritä jokainen tuote omaan toimitusosoitteeseensa,fi_FI
+page.checkout.address.name,Nimi,fi_FI
+page.checkout.address.next-step,Jatka Shippment-menetelmää,fi_FI
+page.checkout.address.option_group.company_business_unit,Liiketoiminnan osoitteet,fi_FI
+page.checkout.address.option_group.customer,Asiakkaan osoitteet,fi_FI
+page.checkout.address.shipping-address,Toimitusosoite,fi_FI
+page.checkout.address.use_selected_address,Käytä valittua osoitetta,fi_FI
+page.checkout.client.existing,Olemassaoleva asiakas,fi_FI
+page.checkout.client.new,Uusi asiakas,fi_FI
+page.checkout.create_account,Luo asiakastili,fi_FI
+page.checkout.errors,Tarkista merkintäsi.,fi_FI
+page.checkout.finalize.buy-now,Osta nyt,fi_FI
+page.checkout.finalize.enter-voucher,Syötä alennuskoodi,fi_FI
+page.checkout.finalize.heading,4. Tarkista ja viimeistele tilaus,fi_FI
+page.checkout.finalize.tos,"Klikkaamalla painiketta """" Osta nyt """" Vahvistan GTC: t.",fi_FI
+page.checkout.payment.cc_text,"Luottokorttitietoja ei tallenneta tai käsitellä myworld. Myworld käyttää ADYEN N.V., Simon Camggelstraat 6-50, 1011 DJ Amsterdam, Alankomaat, käsittelemään luottokorttimaksuja. Myworld on tilannut Myworld International Limited, 3. kerros, 40 Bank Street, London E14 5NR, Yhdistynyt kuningaskunta, kun maksuprosessin operatiivinen käsittely.",fi_FI
+page.checkout.payment.edit,Muokkaa maksutapaa,fi_FI
+page.checkout.payment.heading,3. Maksutapa,fi_FI
+page.checkout.payment.next-step,Jatka järjestyksen viimeistelyä,fi_FI
+page.checkout.shipment.edit,Muokkaa lähetysmenetelmää,fi_FI
+page.checkout.shipment.heading,2. Toimitusmenetelmä,fi_FI
+page.checkout.shipment.item.price,Hinta,fi_FI
+page.checkout.shipment.item.quantity,Määrä,fi_FI
+page.checkout.shipment.next-step,Jatka maksutapaa,fi_FI
+page.checkout.shipment.requested_delivery_date.label,Pyydetty toimituspäivä,fi_FI
+page.checkout.shipment.requested_delivery_date.placeholder,"Jätä se tyhjäksi, jos haluat sen ASAP",fi_FI
+page.checkout.shipment.requested_delivery_date.title,Milloin haluat toimittaa?,fi_FI
+page.checkout.shipment.shipment_group_heading,Lähetys %current% %total%,fi_FI
+page.checkout.shipment.shipping_address.title,Toimitusosoite,fi_FI
+page.checkout.shipment.shipping_method_heading,toimitustapa,fi_FI
+page.checkout.shipping.day,päivä,fi_FI
+page.checkout.shipping.days,päivät,fi_FI
+page.checkout.shipping.delivery_time,Toimitusaika:,fi_FI
+page.checkout.shipping.price,Hinta:,fi_FI
+page.checkout.summary.accept_terms_and_conditions,Hyväksyn käyttöehdot,fi_FI
+page.checkout.summary.billing,Laskutusosoite,fi_FI
+page.checkout.summary.card_expires,Päättymispäivä,fi_FI
+page.checkout.summary.card_number,Kortin numero,fi_FI
+page.checkout.summary.card_type,Korttityyppi,fi_FI
+page.checkout.summary.complete_checkout,Täydellinen kassalle,fi_FI
+page.checkout.summary.date_of_birth,Syntymäaika,fi_FI
+page.checkout.summary.name_on_card,Nimi Kortissa,fi_FI
+page.checkout.summary.products,Tuotteet,fi_FI
+page.checkout.summary.shipping,Toimitusosoite,fi_FI
+page.checkout.summary.sms_code,SMS-koodi,fi_FI
+page.checkout.terms,Hyväksyn yleiset ehdot.,fi_FI
+page.detail.add-to-cart,Lisää ostoskoriin,fi_FI
+page.detail.add-to-shopping-list,Lisää ostoslistalle,fi_FI
+page.detail.add-to-wishlist,Lisää toivelistaan,fi_FI
+page.detail.affiliate-product-action,Mennä kauppaan,fi_FI
+page.detail.dimensions,Mitat,fi_FI
+page.detail.volume_price.price,Hinta,fi_FI
+page.detail.volume_price.quantity,Määrä,fi_FI
+page.imprint.title,Jälki,fi_FI
+page.imprint.url,/ fi / jälki,fi_FI
+page.privacy.title,Tietosuoja,fi_FI
+page.privacy.url,/ en / yksityisyys,fi_FI
+page.product.by,mennessä,fi_FI
+page.product.condition,Kunto,fi_FI
+page.product.details,Yksityiskohdat,fi_FI
+page.product.details.slider_image,Tuotekuva,fi_FI
+page.product.details.slider_thumbnail,Tuotekuva,fi_FI
+page.product.seller,Myyjä,fi_FI
+page.product.shipping-fee-from,Plus lähetys alkaen,fi_FI
+page.product.similar-products,saatat myös pitää,fi_FI
+page.product.status,Uusi,fi_FI
+page.product.upsell-products,Samankaltaiset tuotteet,fi_FI
+page.terms.title,GTC,fi_FI
+page.terms.url,/ EN / GTC,fi_FI
+pagination.next,Seuraava,fi_FI
+pagination.previous,Edellinen,fi_FI
+password.confirm,Vahvista passwort,fi_FI
+payment.creditcard,Luottokortti,fi_FI
+payment.dummy-payment.credit-card,Maksa seuraavalla luottokortilla:,fi_FI
+payment.invoice,Lasku,fi_FI
+payment.paypal,Paypal,fi_FI
+payment.prepay,Esimaksu,fi_FI
+payment.step.api_request.error,"Anteeksi, jotain meni pieleen maksun kanssa. Yritä uudelleen myöhemmin!",fi_FI
+pdp.include.vat,sis. arvonlisävero,fi_FI
+pdp.include.tax,sis. Verottaa,fi_FI
+cart.include.vat,sis. arvonlisävero,fi_FI
+pdp.price.from,peräkkäin,fi_FI
+persistent_cart.error.quote.not_available,Ostoskori ei ole olemassa,fi_FI
+persistent_cart.quote.remove.can_not_remove_last_cart,Asiakkaalla pitäisi olla vähintään yksi ostoskori,fi_FI
+persistent_cart.quote.remove.success,Ostoskori poistettu onnistuneesti,fi_FI
+personal.address.heading,Henkilökohtaiset tiedot,fi_FI
+place_order.pre_check.product_discontinued,"Tuote '%name%' on lopetettu, valitse vaihtoehtoinen yksi",fi_FI
+price-cart-connector.info.concrete-product-without-price.removed,Kohde %sku% ilman hintaa poistettiin ostoskoristasi.,fi_FI
+price.mode.gross_mode,Bruttohinnat,fi_FI
+price.mode.net_mode,Nettohinnat,fi_FI
+price.mode.switch.error,"Ei voi vaihtaa hintatilaa, kun ostoskorissa on kohteita.",fi_FI
+product.access.denied,Valitettavasti tämä tuote ei ole käytettävissä.,fi_FI
+product_alternative_widget.add_to_shopping_list,Lisää ostoslistalle,fi_FI
+product_alternative_widget.add_to_wishlist,Lisää toivelistaan,fi_FI
+product_alternative_widget.alternative_for,Vaihtoehtoinen nimi,fi_FI
+product_alternative_widget.not_applicable,N / a,fi_FI
+product_alternative_widget.product_alternative,Vaihtoehtoiset tuotteet,fi_FI
+product_alternative_widget.product_status.discontinued,Keskeytetty,fi_FI
+product_alternative_widget.show_all,Näytä kaikki,fi_FI
+product.multiple.affiliates,Useampi kuin yksi tarjous,fi_FI
+product.attribute.battery,Akku,fi_FI
+product.attribute.benefit_store,Hyötykauppa,fi_FI
+product.attribute.camera,Kamera,fi_FI
+product.attribute.cashback_amount,Vaihtorahat,fi_FI
+product.attribute.color,Väri,fi_FI
+product.attribute.description,Kuvaus,fi_FI
+product.attribute.design,Design,fi_FI
+product.attribute.display,Näyttö,fi_FI
+product.attribute.focus,Keskittyä,fi_FI
+product.attribute.gps,Gps,fi_FI
+product.attribute.graphics,Grafiikka,fi_FI
+product.attribute.image_big,Kuva iso,fi_FI
+product.attribute.image_quality,Kuvanlaatu,fi_FI
+product.attribute.image_small,Kuva pieni,fi_FI
+product.attribute.iso_en,ISO,fi_FI
+product.attribute.lens_system,Linssijärjestelmä,fi_FI
+product.attribute.license,Lisenssi,fi_FI
+product.attribute.long_description,pitkä kuvaus,fi_FI
+product.attribute.manufacturer_name,Brändi,fi_FI
+product.attribute.memory,Muisti,fi_FI
+product.attribute._none,Valitse arvo,fi_FI
+product.attribute.processor,Jalostaja,fi_FI
+product.attribute.processor_boost_frequency,Prosessorin lisäys,fi_FI
+product.attribute.product_id,Tuotetunnus,fi_FI
+product.attribute.product_stock.name,Myyjä,fi_FI
+product.attribute.screen,Näyttö,fi_FI
+product.attribute.shopping_points,Ostokset,fi_FI
+product.attribute.shopping_point_store,Shopping Point Store,fi_FI
+product.attribute.short_description,Lyhyt kuvaus,fi_FI
+product.attribute.shutter,Sulkija,fi_FI
+product.attribute.sku,Sku,fi_FI
+product.attribute.slug,etana,fi_FI
+product.attribute.storage,Varastointi,fi_FI
+product.attribute.themes,Teemat,fi_FI
+product.attribute.thermal_design_power,Lämpörakenne,fi_FI
+product.attribute.total_megapixels,Megapikselit yhteensä,fi_FI
+product.attribute.touchscreen,Kosketusnäyttö,fi_FI
+product.attribute.touch_technology,Kosketustekniikka,fi_FI
+product.attribute.usb_port,USB-portti,fi_FI
+product.attribute.usb_version,USB-versio,fi_FI
+product.attribute.variant_id,Id,fi_FI
+product.attribute.variant.reset,Nollata,fi_FI
+product.attribute.video,Video,fi_FI
+product.attribute.video_recording_modes,Videon tallennustilat,fi_FI
+product.attribute.voice_recording,Äänittäminen,fi_FI
+product.attribute.waterproof,Vedenkestävä,fi_FI
+product.attribute.waterproof_up_to,Vedenpitävä,fi_FI
+product.attribute.weight,Paino,fi_FI
+product.attribute.white_balance,valkotasapaino,fi_FI
+product.attribute.width,Leveys,fi_FI
+product_bundle.unavailable,Tuote '%productsku%' nippu tuotteen '%bundlesku%' ei ole tällä hetkellä saatavilla,fi_FI
+product-cart.info.concrete-product-inactive.removed,Ei-aktiivinen kohde %sku% poistettiin ostoskoristasi.,fi_FI
+product-cart.info.restricted-product.removed,"Tuote %sku% poistettiin ostoskorista, koska se on deaktivoinut.",fi_FI
+product_cart_item.remove,× Poista,fi_FI
+product-cart.validation.error.abstract-product-exists,"Tuote """" SKU """" ei löydy",fi_FI
+product-cart.validation.error.concrete-product-exists,"Tuote """" SKU """" ei löydy",fi_FI
+product-cart.validation.error.concrete-product-inactive,"Tuote """" SKU """" ei ole aktiivinen.",fi_FI
+product-cart.validation.error.product-option-value-price-exists,Tuotevalikoima Hinta ei löydy tuotteesta '%sku%'.,fi_FI
+product.detail.out_of_stock,Tämä tuote ei tällä hetkellä ole käytettävissä.,fi_FI
+product_discontinued.super_attribute_discontinued,Keskeytetty,fi_FI
+product_discontinued_widget.note,Huomautus,fi_FI
+product.filter.category,Luokat,fi_FI
+product.filter.label,Etiketti,fi_FI
+product.filter.price,Hinta,fi_FI
+product.filter.price-default-chf-gross_mode,Hinta,fi_FI
+product.filter.price-default-chf-net_mode,Hinta,fi_FI
+product.filter.price-default-eur-gross_mode,Hinta,fi_FI
+product.filter.price-default-eur-net_mode,Hinta,fi_FI
+product.filter.rating,Luokitukset,fi_FI
+product.groups,Tuoteryhmät,fi_FI
+product.measurement.sales_unit,Myyntiyksikkö,fi_FI
+product.product_options,Tuotevalinnat,fi_FI
+product.product_options_select,Valitse vaihtoehto,fi_FI
+product_review.average_ratings,Keskimääräinen arvio,fi_FI
+product_review.error.no_customer,Kirjaudu sisään käyttääksesi tätä ominaisuutta.,fi_FI
+product_review.no_reviews,Ei vielä tarkistusta tähän tuotteeseen,fi_FI
+product_review.on,päällä,fi_FI
+product_review.product_ratings,Tuoten arvosanat,fi_FI
+product_review.product_reviews,Tuotearvostelut,fi_FI
+product_review.ratings_reviews,Arvostelut ja arvostelut,fi_FI
+product_review.submit.add_a_review,Kirjoita arvostelu,fi_FI
+product_review.submit.description,Kuvaus,fi_FI
+product_review.submit.error,Katsaus ei ole lähettänyt.,fi_FI
+product_review.submit.nickname,Nimi,fi_FI
+product_review.submit.rating,Luokitus,fi_FI
+product_review.submit.rating.none,Luokitusta ei valittu,fi_FI
+product_review.submit.success,Tuotetarkastus lähetettiin onnistuneesti.,fi_FI
+product_review.submit.summary,Yhteenveto,fi_FI
+product_review.summary.out_of,poissa jstk,fi_FI
+product_review.summary.review,arvostelu,fi_FI
+product_review.summary.reviews,arvostelut,fi_FI
+product_review.summary.star,Tähti,fi_FI
+product_review.summary.stars,Tähdet,fi_FI
+product_search_widget.search.no_results,Tuotteita ei löytynyt.,fi_FI
+product_search_widget.search.product_discontinued_prefix,[Lopetettu],fi_FI
+product.set.detail.add-all-to-cart,Lisää kaikki koriin,fi_FI
+product.set.detail.no-products,Ei tuotteita sarjassa,fi_FI
+product.set.detail.set-contents,Tuotteet tässä sarjassa,fi_FI
+product.sets,Tuoteasetukset,fi_FI
+product.sets.no-results,Ei tuloksia.,fi_FI
+product.sets.widget.title,Osta kokoelma,fi_FI
+product.unavailable,Tuote on loppu varastosta,fi_FI
+product.variants,Tuotevariantit,fi_FI
+product.view,Näkymä,fi_FI
+profile.form.salutation,Tervehdys,fi_FI
+quick-order.button.add-more-rows,Lisää lisää rivejä,fi_FI
+quick-order.button.clear-all-rows,Tyhjennä kaikki rivit,fi_FI
+quick-order.button.create-order,Luo tilaus,fi_FI
+quick-order.errors.items-required,Anna vähintään yksi tuote SKU,fi_FI
+quick-order.errors.quantity-required,Määrä on oltava vähintään 1,fi_FI
+quick-order.input-label.qty,#,fi_FI
+quick-order.input-label.sku,Sku,fi_FI
+quick-order.message.success.the-form-items-have-been-successfully-cleared,Lomakkeet on poistettu onnistuneesti.,fi_FI
+quick-order.page-title,Nopea järjestys,fi_FI
+quick-order.paste-order.button.verify,Tarkistaa,fi_FI
+quick-order.paste-order.description,"Kopioi ja liitä tilauksesi kohdassa # ja määrä, jotka on erotettu välilyönteillä, puolipisteillä tai pilkuilla.",fi_FI
+quick-order.paste-order.errors.parser.separator-not-detected,Erottoria ei ole määritelty.,fi_FI
+quick-order.paste-order.errors.text-order-format-incorrect,Tilausmuoto on virheellinen.,fi_FI
+quick-order.paste-order.input-placeholder.copy-paste-order,Liitä tilauksesi täällä,fi_FI
+quick-order.paste-order.title,Liitä tilauksesi,fi_FI
+remove,Poista,fi_FI
+reorder.info.restricted-product.removed,"Tuote %sku% ei voitu lisätä ostoskoriin, koska se on deaktivoitu.",fi_FI
+replacement_for_widget.replacement_for,Korvaaminen,fi_FI
+return.create_return.validation.items_error,Palaa ei voi käyttää tätä joukkoa kohteita,fi_FI
+return.create_return.validation.returnable_items_error,"Palaa ei voi luoda, koska se sisältää palautettavia kohteita",fi_FI
+return.create_return.validation.store_error,Paluuta ei voi luoda - väärä kauppa on valittu,fi_FI
+return_page.account.no_return,Ei palautuksia tällä hetkellä,fi_FI
+return_page.breadcrumb.create_return,Luo palautus,fi_FI
+return_page.breadcrumb.returns,Palaa,fi_FI
+return_page.button.create_return,Palata,fi_FI
+return_page.button.return_list,Palaa,fi_FI
+return_page.button_text,Luo palautus,fi_FI
+return_page.create_return.select_all_checkbox,Valitse kaikki,fi_FI
+return_page.create_return.validation.selected_items,Vähintään yksi tuote on valittava.,fi_FI
+return_page.default_title,Palaa,fi_FI
+return_page.details.actions.back_to_list,Takaisin listalle,fi_FI
+return_page.details.actions.print_slip,Print Slip,fi_FI
+return_page.details.page_title,Palauta tiedot,fi_FI
+return_page.details.total.items_to_return,Tuotteet palauttamiseksi,fi_FI
+return_page.details.total.items_to_return.count,tuotteet,fi_FI
+return_page.details.total.remuneration_total,Palkkaus yhteensä,fi_FI
+return_page.item.options,Tuotevalinnat:,fi_FI
+return_page.item_sku,SKU:,fi_FI
+return_page.list.title,Palaa,fi_FI
+return_page.order_date,Tilauspäivämäärä:,fi_FI
+return_page.order_reference,Tilaa Ref:,fi_FI
+return_page.quantity,Määrä:,fi_FI
+return_page.returnable_state,Ei palautettavissa,fi_FI
+return_page.return.created,"Paluu, joka on luotu onnistuneesti",fi_FI
+return_page.return_date,Palautuspäivä:,fi_FI
+return_page.return.date,Palautuspäivä,fi_FI
+return_page.return.items_state,Tuotteet,fi_FI
+return_page.return.number_of_items,Kohteiden lukumäärä,fi_FI
+return_page.return.order_ref,Tilauksen viite,fi_FI
+return_page.return.print_return,Print Slip,fi_FI
+return_page.return_reasons.custom_reason.placeholder,Mukautettu syy,fi_FI
+return_page.return_reasons.empty,-,fi_FI
+return_page.return_reasons.select_reason.placeholder,Valitse syy,fi_FI
+return_page.return_reasons.title,Syy:,fi_FI
+return_page.return_reference,Return Ref:,fi_FI
+return_page.return.return_ref,Palauta viite,fi_FI
+return_page.return.title,Luo palautus,fi_FI
+return_page.return.view_return,Näytä paluu,fi_FI
+return_page.slip.barcode,Viivakoodi,fi_FI
+return_page.slip.default_price,Oletushinta,fi_FI
+return_page.slip.items_to_return,Tuotteet palauttamiseksi,fi_FI
+return_page.slip.order_reference,Tilaus ref,fi_FI
+return_page.slip.product_name,tuotteen nimi,fi_FI
+return_page.slip.product_sku,Tuote SKU,fi_FI
+return_page.slip.quantity,Kpl,fi_FI
+return_page.slip.remuneration_total,Palkkaus yhteensä,fi_FI
+return_page.slip.return_date,Palautuspäivä,fi_FI
+return_page.slip.return_reason,Palauta syy,fi_FI
+return_page.slip.return_reference,Palata Ref,fi_FI
+return_page.slip.total_price,Kokonaishinta,fi_FI
+return_page.table.actions,-,fi_FI
+return_page.title,Luo palautus,fi_FI
+return.return_policy.returnable_till.message,Palautettava kunnes: %date%,fi_FI
+return.return_reasons.damaged.name,Vaurioitunut,fi_FI
+return.return_reasons.no_longer_needed.name,Ei enää tarvittu,fi_FI
+return.return_reasons.wrong-item.name,Väärä tavara,fi_FI
+sales_configured_bundle_widget.quantity,Määrä:,fi_FI
+sales_configured_bundle_widget.returnable_state,Ei palautettavissa,fi_FI
+sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,Huomaa: määritetyn nipun tuotteet lisättiin ostoskoriin yksittäisinä tuotteina.,fi_FI
+sales.error.customer_order_not_found,Asiakasjärjestystä ei löydy.,fi_FI
+sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Tilaa ei voi peruuttaa väärän kohteen tilan vuoksi.,fi_FI
+sales-order-threshold.expense.name,Lisämaksu,fi_FI
+sales-order-threshold.hard-maximum-threshold.de.chf.message,"Ostoskorin arvo ei voi olla suurempi kuin {{kynnys}}. Poista joitakin kohteita, jotta voit jatkaa tilausta",fi_FI
+sales-order-threshold.hard-maximum-threshold.de.eur.message,"Ostoskorin arvo ei voi olla suurempi kuin {{kynnys}}. Poista joitakin kohteita, jotta voit jatkaa tilausta",fi_FI
+sales-order-threshold.hard-minimum-threshold.de.chf.message,Sinun pitäisi lisätä kohteita {{kynnys}} toimittaa suositeltava kynnys. Et voi jatkaa kassalla,fi_FI
+sales-order-threshold.hard-minimum-threshold.de.eur.message,Sinun pitäisi lisätä kohteita {{kynnys}} toimittaa suositeltava kynnys. Et voi jatkaa kassalla,fi_FI
+sales-order-threshold.soft-minimum-threshold.de.chf.message,"Sinun on lisättävä kohteita {{kynnys}} toimittamaan suositeltava kynnys, mutta jos haluat jatkaa kassalle.",fi_FI
+sales-order-threshold.soft-minimum-threshold.de.eur.message,"Sinun on lisättävä kohteita {{kynnys}} toimittamaan suositeltava kynnys, mutta jos haluat jatkaa kassalle.",fi_FI
+sales-order-threshold.strategy.soft-minimum-threshold-fixed-fee,Lisämaksu,fi_FI
+sales-order-threshold.strategy.soft-minimum-threshold-flexible-fee,Lisämaksu,fi_FI
+sales_product_bundle_widget.item.options,Tuotevalinnat:,fi_FI
+sales_product_bundle_widget.item_sku,SKU:,fi_FI
+sales_product_bundle_widget.quantity,Määrä:,fi_FI
+sales_product_bundle_widget.returnable_state,Ei palautettavissa,fi_FI
+sales_product_bundle_widget.returnable_text,Palautettava:,fi_FI
+samsung.search.link,/ EN / Etsi? Q = Samsung,fi_FI
+shared_cart.form.customer,Asiakkaan nimi,fi_FI
+shared_cart.form.data_empty,"Ei ole käyttäjiä, joiden kanssa voit jakaa ostoskorin.",fi_FI
+shared_cart.form.save_button,Tallentaa,fi_FI
+shared_cart.form.select_customer,Valitse asiakas,fi_FI
+shared_cart.form.select_permissions,Valitse käyttöoikeus,fi_FI
+shared_cart.form.share_button,Jaa,fi_FI
+shared_cart.form.share_cart,Jaa ostoskärry,fi_FI
+shared_cart.form.share_cart.title,"Jaa ostoskori """" CART_NAME """"",fi_FI
+shared_cart_page.share.success,Ostoskori jaettiin onnistuneesti,fi_FI
+shared_cart_page.unshare.success,Ostoskori oli menestyksekkäästi,fi_FI
+shared_cart.share.breadcrumbs.share,Jaa,fi_FI
+shared_cart.share.breadcrumbs.shopping_carts,Ostoskärryt,fi_FI
+shared_cart.share.error.already_exist,Ostoskori oli jo jaettu tämän asiakkaan kanssa,fi_FI
+shared_cart.share.form.users,Käyttäjät,fi_FI
+shared_cart.share_list.permissions.FULL_ACCESS,Täysi pääsy,fi_FI
+shared_cart.share_list.permissions.NO_ACCESS,Ei pääsyä,fi_FI
+shared_cart.share_list.permissions.READ_ONLY,Lue ainoastaan,fi_FI
+shared_cart_widget.add_product.separate,Lisää erilliseksi kohteeksi,fi_FI
+shared_cart_widget.cart.dismiss,Hylkää,fi_FI
+shared_cart_widget.cart.share,Jaa ostoskärry,fi_FI
+shared_cart_widget.cart.unshare,Unshare cart,fi_FI
+shared_cart_widget.share_list.actions,Toiminnot,fi_FI
+shared_cart_widget.share_list.action.unshare,Unshare cart,fi_FI
+shared_cart_widget.share_list.customer_name,Asiakkaan nimi,fi_FI
+shared_cart_widget.share_list.permission,Käyttötaso,fi_FI
+shared_cart_widget.share_list.shared_with,Ostoskori jaettu,fi_FI
+shipment.dhl,Dhl,fi_FI
+shipment.dhl.express.description,100 000 sitoutuneiden työntekijöiden voimamme toimii maailmanlaajuisesti. Paikallinen osaaminen ja ainutlaatuinen verkko tekevät meistä kansainväliset asiantuntijat.,fi_FI
+shipment.dhl.express.name,Ilmaista,fi_FI
+shipment.dhl.paket.description,"DHL Paket on helppo, edullinen, nopea ja luotettava kuljetuspalvelu yli 220 maahan ympäri maailmaa.",fi_FI
+shipment.dhl.paket.name,Paketti,fi_FI
+shipment.dpd,DPD,fi_FI
+shipment.express.description,24-48 tuntia (työpäivät),fi_FI
+shipment.express.name,Ilmaista,fi_FI
+shipment.hermes,Hermes,fi_FI
+shipment.international.parcel.service,Kansainväliset pakettipalvelut,fi_FI
+shipment.lead.time,Toimitusaika: n. 3-7 työpäivää,fi_FI
+shipment.standart.description,2-4 työpäivää,fi_FI
+shipment.standart.name,tavallinen kuljetus,fi_FI
+shipment.validation.not_found,Lähetysmenetelmää ei löydy.,fi_FI
+shipping.address.country.validation.not_found,Toimitusosoite Maa ei löydy maakoodista: %code%,fi_FI
+shipping.address.validation.is_missing,Toimitusosoite puuttuu,fi_FI
+shopping_list_add_items_widget.add_to_shopping_list,Lisää ostoslistalle,fi_FI
+shopping_list.cart.items_add.failed,Kohteita ei voitu lisätä luetteloon,fi_FI
+shopping_list.cart.items_add.success,Tuotteet lisättiin luetteloon,fi_FI
+shopping_list.item_note,Huomautus:,fi_FI
+shopping_list.item_note.add,Lisää liite +,fi_FI
+shopping_list.item_quantity,Määrä,fi_FI
+shopping_list.not_applicable,N / a,fi_FI
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Oletko varma, että sinä, mitä irrottaa ostoslistan?",fi_FI
+shopping_list_page.dismiss.failed,Ostoslista ei hylättiin.,fi_FI
+shopping_list_page.dismiss.success,Ostoslista hylättiin onnistuneesti.,fi_FI
+shopping_list.remove_all_items,Poista kaikki,fi_FI
+shopping_list.shopping_list,Ostoslista,fi_FI
+smartphones.category.link,/ en / Telecom - & - Navigointi / älypuhelimet,fi_FI
+This field should contain exactly 5 digits.,Tämän kentän tulisi sisältää täsmälleen 5 numeroa.,fi_FI
+This value is not valid.,Tämä arvo ei ole kelvollinen.,fi_FI
+This value is not valid (accepted format e.g.: 12c).,Tämä arvo ei ole kelvollinen (hyväksytty muoto esim. 12c).,fi_FI
+This value should not be blank.,Tämä arvo ei saisi olla tyhjä.,fi_FI
+validation.address_number,Tämä arvo ei ole kelvollinen (hyväksytty muoto esim. 12c).,fi_FI
+validation.choice,Tuotteen arviointi on valittava.,fi_FI
+validation.email,Tämä arvo ei ole kelvollinen sähköpostiosoite.,fi_FI
+validation.invalid_date,Päivämäärän pitäisi olla oikeassa muodossa% s.,fi_FI
+validation.min_length,Tämän kentän on oltava vähintään {{Limit}} merkkiä pitkä.,fi_FI
+validation.not_blank,Tämä arvo ei saisi olla tyhjä.,fi_FI
+validation.zip_code,Tämän kentän tulisi sisältää täsmälleen 5 numeroa.,fi_FI
+validator.constraints.password.do_not_match,Salasanat eivät vastaa,fi_FI
+whishlist.increase,Lisääntyä,fi_FI
+whishlist.move.to.cart,Siirry koriin,fi_FI
+whishlist.reduce,Vähentää,fi_FI
+whishlist.remove,Poista,fi_FI
+whishlist.whishlist,Vishlista,fi_FI
+wishlist.form.save,Tallentaa,fi_FI
+wishlist.title,Toivomuslista,fi_FI
+wishlist.validation.error.name.already_exists,"Yhtenäytön, jolla on sama nimi, on jo olemassa.",fi_FI
+wishlist.wishlist,Toivomuslista,fi_FI
+availability_notification_subscription.mail.unsubscribed.body,"Sinua ei ilmoiteta, kun tuote %name% on jälleen käytettävissä.",fi_FI
+availability_notification_subscription.mail.unsubscribed.subject,"Sinua ei ilmoiteta, kun tuote %name% on jälleen käytettävissä.",fi_FI
+availability_notification.successfully_unsubscribed,Onnistuneesti peruutettu,fi_FI
+availability_notification.successfully_unsubscribed_text,"Olet onnistuneesti peruutettu ilmoittamatta, kun tuote on jälleen saatavilla",fi_FI
+availability_notification.unsubscribed,Onnistuneesti peruutettu,fi_FI
+billing.address.country.validation.not_found,Laskutusosoite Maa ei löydy maakoodista: %code%,fi_FI
+billing.address.validation.is_missing,Laskutusosoite puuttuu,fi_FI
+bundle.title,Nippu sisältää,fi_FI
+business_on_behalf_widget.change_company_user,Vaihda yrityksen käyttäjä,fi_FI
+business_on_behalf_widget.no_selected_company,Ei valittu yritys,fi_FI
+camcorders.category.link,/ fi / Cameras - & - Camcorders / Digitaalikamerat?,fi_FI
+cameras.category.link,/ fi / Kamerat - & - Videokamerat / Digitaalikamerat,fi_FI
+cart.add.items.error.text,Jotain meni pieleen. Anteeksi.,fi_FI
+cart.add.items.success,Tuotteet ovat lisänneet onnistuneesti,fi_FI
+cart.add-to-shopping-list,Lisää ostoslistalle,fi_FI
+cart.add-to-shopping-list.form,Tallenna ostoskori ostoslistaan,fi_FI
+cart.add-to-shopping-list.form.add_new,Lisää uusi ostoslista,fi_FI
+cart.add-to-shopping-list.form.error.empty_name,Anna ostoslistan nimi,fi_FI
+gdpr.message,"Käytämme evästeitä verkkosivuillamme, jotta palvelut tehokkaampi ja käyttäjäystävällisempi. Siksi valitse 'Hyväksy evästeet'! Lue lisätietoja %link%.",fi_FI
+gdpr.privacy_policy,Tietosuojakäytäntö,fi_FI
+gdpr.accept_cookies,Hyväksy evästeet,fi_FI
+discount.quote_change.does_not_apply_for_currency,"Kuponki ""%code%"" ei ole poistettu käytöstä, koska se ei koske tätä valuutta.",fi_FI
+shipment.lead.time,Toimitusaika: n. 3-7 työpäivää,fi_FI
+pdp.include.vat,sis. arvonlisävero,fi_FI
+pdp.price.from,peräkkäin,fi_FI
+pdp.price,Hinta,fi_FI
+pdp.price.regular_price,Normaalihinta,fi_FI
+pdp.price.shopping_points_price,Ostokset Point Deal,fi_FI
+pdp.price.benefit_voucher_price,Etusivu Voucher Deal,fi_FI
+page.checkout.summary.sms_code,SMS-koodi,fi_FI
+checkout.step.summary.sms_code_send_error,Lähetä SMS-koodi päättyi virheeseen,fi_FI
+checkout.step.summary.sms_code_input_error,SMS-koodi ei ollut oikea,fi_FI
+checkout.step.confirm_payment.error,Maksussa oli jotain väärin,fi_FI
+checkout.payment.cashback_balance,Cashback / Myworld Evoucher Tasapaino:,fi_FI
+checkout.payment.cashback_info,"Jos sinulla on Cashback Credit tai Myworld Evoucher Credit, tämä näkyy tässä ja voit käyttää sitä maksua varten. <br/> Huomautus: Näitä voidaan käyttää vain MyWorldin myymien kohteiden maksuna.",fi_FI
+checkout.payment.checkbox.use_evoucher_balance,Käytä %price% osilla osoitteesta %balance% Cashback / Myworld Evoucher Balance,fi_FI
+payment.step.api_request.error,"Anteeksi, jotain meni pieleen maksun kanssa. Yritä uudelleen myöhemmin!",fi_FI
+checkout.step.benefit_deal.title,Tilauksen yleiskatsaus,fi_FI
+checkout.step.benefit_deal.use_voucher,Käytä etuuskuponkia (BV) alennusta varten,fi_FI
+checkout.step.benefit_deal.items,Tuotteet,fi_FI
+checkout.step.benefit_deal.with_method,kanssa,fi_FI
+checkout.step.benefit_deal.or,tai,fi_FI
+checkout.step.benefit_deal.benefit_voucher,Käytetty Yhteensä etuuskuponkeri,fi_FI
+checkout.step.benefit_deal.total_used_shopping_points,Käytetyt kokonaisostospisteet,fi_FI
+merchant_profile.email,Sähköpostiosoite,fi_FI
+merchant_profile.address,Osoite,fi_FI
+merchant_profile.phone,Puhelin,fi_FI
+merchant_profile.terms_and_conditions,käyttöehdot,fi_FI
+merchant_profile.cancellation_policy,Peruutuskäytäntö,fi_FI
+merchant_profile.imprint,Jälki,fi_FI
+merchant_profile.privacy,Tietosuoja,fi_FI
+merchant_profile.delivery_time,Toimitusaika,fi_FI
+error.429,Liian monta pyyntöä,fi_FI
+security_blocker_page.error.account_blocked,Liian monta kirjautumista yrityksesi osoitteesta. Odota %minute% minuuttia ennen kuin yrität uudelleen.,fi_FI
+merchant_product_offer.view_seller,Näytä myyjä,fi_FI
+merchant_product_offer.sold_by,Myynyt,fi_FI
+product.filter.merchant_name,Kauppias,fi_FI
+checkout.payment.my_world.error.transaction_failed,Maksutapahtuma epäonnistui,fi_FI
+checkout.payment.my_world.error.transaction_exceeded_value,Maksutapahtuma ylitetty määrä,fi_FI
+checkout.payment.my_world.error.transaction_batch_failed,Maksutapahtumaa ei käsitelty toisen erän tapahtuman epäonnistumisen vuoksi,fi_FI
+checkout.payment.my_world.error.transaction_option_not_found,Maksutapahtuma epäonnistui tuntemattoman maksuvaihtoehdon vuoksi,fi_FI
+checkout.step.error.link,Siirry koriin,fi_FI
+checkout.step.error.sub_title,Tilaus epäonnistui virheiden vuoksi:,fi_FI
+checkout.step.benefit_deal.use_shopping_points,Käytä ostopisteitä,fi_FI
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,Valitettavasti sinulla ei ole tarpeeksi SP ostaa tämä tuote alennuksella.,fi_FI
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Valitettavasti sinulla ei ole tarpeeksi BV ostaa tämän tuotteen alennuksella. Tarvittava määrä: %currency% %needamount%, tasapaino: %currency% %balancamount%",fi_FI
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Hyvä asiakas, sinun täytyy viettää ainakin %needamount% %currency% hyötyä Voucher Balance saada hyöty Voucher Deal Product.",fi_FI
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,Max summa pitäisi olla %maxamount% %currency% (maksimi BV). Vahvista,fi_FI
+checkout.currency.my_world.shopping_points,Lunastetut ostospisteet,fi_FI
+auth.login-button,Kirjaudu sisään MyWorld,fi_FI
+checkout.payment.myworld.payment_methods.title,Myworld Epain,fi_FI
+checkout.payment.myworld.payment_methods.subtitle,Voit valita seuraavien MyWorld Epraymentin menetelmien (valinnainen) välillä:,fi_FI
+checkout.payment.myworld.payment_methods.method.evoucher,evocouch,fi_FI
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,Myworld Evoucher (Marketer),fi_FI
+checkout.payment.myworld.payment_methods.method.cashback,Vaihtorahat,fi_FI
+checkout.payment.myworld.payment_methods.balance_text,Saldo,fi_FI
+product_detail_page.benefit_price.benefit_amount,max %amount%,fi_FI
+customer.balance.my_world_e_voucher,evocouch,fi_FI
+customer.balance.my_world_cashback_account,Vaihtorahat,fi_FI
+customer.balance.my_world_benefit_voucher_account,Etuuskuponki,fi_FI
+customer.balance.my_world_shopping_points_account,Ostokset,fi_FI
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,Myworld Evoucher (Marketer),fi_FI
+oms.state.failed,Epäonnistui,fi_FI
+oms.state.myworld_payment_pending,Myworld maksu vireillä,fi_FI
+oms.state.my_world_refund_due_to_payment_failure,Myworld hyvitys maksuvirheen vuoksi,fi_FI
+oms.state.my_world_refunded,Myworld palautettiin,fi_FI
+oms.state.my_world_refund_failed,Myworld-hyvitys epäonnistui,fi_FI
+oms.state.ready_for_refund,Valmiina palautukseen,fi_FI
+oms.state.calculating_refund,Palautuksen laskeminen,fi_FI
+oms.state.processing_refund,Jalostustuki,fi_FI
+oms.state.validating_refund,Palautuksen vahvistaminen,fi_FI
+oms.state.refund_failed,Palautus epäonnistui,fi_FI
+oms.state.refund_pending_next_try,Odottaa palautusta seuraavana,fi_FI
+oms.state.refund_pending,Palautus vireillä,fi_FI
+oms.state.refunded,Palauttaa,fi_FI
+oms.state.reserved,Varattu,fi_FI
+oms.state.invoice-generated,Lasku syntyy,fi_FI
+oms.state.turnover-cancelled,Liikevaihto peruutettiin,fi_FI
+product_detail_page.desclaimer_text,Desclaimer,fi_FI
+page.checkout.payment.3d_secure_text,"Varmista, että antamasi luottokortti on vahvistettu uudelle 3D-suojatulle järjestelmälle. Ilman tätä tarkistusta tapahtuma ei ole mahdollista, jos lisätietoja saat luottokorttipalveluntarjoajalta.",fi_FI
+product_item.benefit_deal.or,tai,fi_FI
+customer.balance.into,Sinulla on:,fi_FI
+BenefitVouchers,Etuuskuponki,fi_FI
+discount.internal.shopping_points,Ostokset,fi_FI
+customer.order.priceToPay,Summa,fi_FI
+payment.payment_method.adyen_credit_card,Luottokortti,fi_FI
+payment.payment_method.benefit_vouchers,Etuuskuponki,fi_FI
+payment.payment_method.cashback,Vaihtorahat,fi_FI
+payment.payment_method.e_voucher,evocouch,fi_FI
+payment.payment_method.e_voucher_marketer,Myworld Evoucher (Marketer),fi_FI
+payment.payment_method.paid,Maksettu,fi_FI
+payment.payment_provider.adyen,Adyen,fi_FI
+payment.payment_provider.my_world,Minun maailmani,fi_FI
+payment.payment_provider.nopayment,Ei maksua,fi_FI
+payment.payment_method.dummy_prepayment,Esimaksu,fi_FI
+product.filter.deal,Sopimus,fi_FI

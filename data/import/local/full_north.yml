@@ -13,6 +13,8 @@ actions:
     source: data/import/common/common/customer.csv
   - data_entity: glossary
     source: data/import/common/common/glossary.csv
+  - data_entity: glossary
+    source: data/import/common/north/glossary_fi_FI.csv
   - data_entity: tax
     source: data/import/common/north/tax.csv
   - data_entity: shipment
