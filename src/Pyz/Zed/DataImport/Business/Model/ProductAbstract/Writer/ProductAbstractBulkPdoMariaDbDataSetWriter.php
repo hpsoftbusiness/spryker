@@ -33,7 +33,10 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
             $statement = $connection->prepare($sql);
             $statement->execute();
 
-            $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU);
+            $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(
+                static::$productAbstractCollection,
+                ProductAbstractHydratorStep::KEY_SKU
+            );
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowCount = count($rawAbstractSkus);
 
@@ -64,6 +67,7 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
                 $abstractSkus,
             ]);
 
+            $this->cleanUpExistProductUrl($rawAbstractSkus);
             foreach ($result as $columns) {
                 $abstractSku = $columns[ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU];
                 $idProductAbstract = (int)$columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
@@ -73,12 +77,14 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
                 }
                 static::$productCategoryCollection[$abstractSku][ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU] = $idProductAbstract;
 
-                foreach (static::$productUrlCollection[$abstractSku] as $idLocale => $productUrlData) {
-                    static::$productUrlCollection[$abstractSku][$idLocale][ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU] = $idProductAbstract;
-                    static::$productUrlListCollection[$abstractSku . $idLocale] = [
-                        ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU => $idProductAbstract,
-                        ProductAbstractHydratorStep::KEY_FK_LOCALE => $idLocale,
-                    ];
+                if (isset(static::$productUrlCollection[$abstractSku])) {
+                    foreach (static::$productUrlCollection[$abstractSku] as $idLocale => $productUrlData) {
+                        static::$productUrlCollection[$abstractSku][$idLocale][ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU] = $idProductAbstract;
+                        static::$productUrlListCollection[$abstractSku . $idLocale] = [
+                            ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU => $idProductAbstract,
+                            ProductAbstractHydratorStep::KEY_FK_LOCALE => $idLocale,
+                        ];
+                    }
                 }
             }
         }
@@ -121,8 +127,14 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
             $statement->execute();
 
             foreach (static::$productCategoryCollection as $columns) {
-                DataImporterPublisher::addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, (int)$columns[ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU]);
-                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, (int)$columns[ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU]);
+                DataImporterPublisher::addEvent(
+                    ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH,
+                    (int)$columns[ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU]
+                );
+                DataImporterPublisher::addEvent(
+                    ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
+                    (int)$columns[ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU]
+                );
             }
         }
     }
@@ -143,11 +155,17 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
             $statement = $connection->prepare($sql);
             $statement->execute();
 
-            $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productUrlListCollection, ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU);
+            $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(
+                static::$productUrlListCollection,
+                ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU
+            );
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowCount = count($rawAbstractSkus);
             $idLocale = $this->dataFormatter->formatPriceStringList(
-                $this->dataFormatter->getCollectionDataByKey(static::$productUrlListCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE),
+                $this->dataFormatter->getCollectionDataByKey(
+                    static::$productUrlListCollection,
+                    ProductAbstractHydratorStep::KEY_FK_LOCALE
+                ),
                 $rowCount
             );
 
@@ -177,14 +195,50 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
                     LEFT JOIN spy_url ON spy_url.fk_locale = input.fkLocale AND spy_url.fk_resource_product_abstract = input.fkResourceProductAbstract
             ) SELECT records.id_url FROM records';
 
-            $result = $this->propelExecutor->execute($sql, [
-                $rowCount,
-                $idLocale,
-                $abstractSkus,
-            ]);
+            $result = $this->propelExecutor->execute(
+                $sql,
+                [
+                    $rowCount,
+                    $idLocale,
+                    $abstractSkus,
+                ]
+            );
 
             foreach ($result as $columns) {
-                DataImporterPublisher::addEvent(UrlEvents::URL_PUBLISH, (int)$columns[ProductAbstractHydratorStep::KEY_ID_URL]);
+                DataImporterPublisher::addEvent(
+                    UrlEvents::URL_PUBLISH,
+                    (int)$columns[ProductAbstractHydratorStep::KEY_ID_URL]
+                );
+            }
+        }
+    }
+
+    /**
+     * @param array $abstractSkus
+     *
+     * @return void
+     */
+    protected function cleanUpExistProductUrl(array $abstractSkus): void
+    {
+        $qMarks = str_repeat('?,', count($abstractSkus) - 1) . '?';
+        $sql = "
+            SELECT spa.sku as sku,
+                   spy_url.fk_locale as locale
+            FROM spy_url
+                     LEFT JOIN spy_product_abstract spa on spy_url.fk_resource_product_abstract = spa.id_product_abstract
+            WHERE spa.sku in ($qMarks)
+        ";
+
+        $existUrls = $this->propelExecutor->execute(
+            $sql,
+            $abstractSkus
+        );
+        foreach ($existUrls as $existUrl) {
+                unset(self::$productUrlCollection[$existUrl['sku']][$existUrl['locale']]);
+        }
+        foreach (self::$productUrlCollection as $sku => $value) {
+            if (empty($value)) {
+                unset(self::$productUrlCollection[$sku]);
             }
         }
     }
