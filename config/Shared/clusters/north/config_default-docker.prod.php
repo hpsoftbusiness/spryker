@@ -39,9 +39,10 @@ $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNTS
 $config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = $adyenCredentials['ORIGIN_KEYS'][APPLICATION_STORE];
 
 $adyenSplitAccounts = [
-    'PL' => '147890109',
-    'SK' => '',
-    'CZ' => '',
+    'NO' => '147890109',
+    'FI' => '',
+    'DK' => '',
+    'SE' => ''
 ];
 
 $config[AdyenConstants::SPLIT_ACCOUNT] = $adyenSplitAccounts[APPLICATION_STORE];
