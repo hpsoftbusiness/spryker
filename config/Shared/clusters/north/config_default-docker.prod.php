@@ -42,7 +42,7 @@ $adyenSplitAccounts = [
     'NO' => '147890109',
     'FI' => '',
     'DK' => '',
-    'SE' => ''
+    'SE' => '',
 ];
 
 $config[AdyenConstants::SPLIT_ACCOUNT] = $adyenSplitAccounts[APPLICATION_STORE];
