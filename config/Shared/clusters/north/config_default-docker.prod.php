@@ -38,6 +38,15 @@ $config[AdyenApiConstants::API_KEY] = $adyenCredentials['API_KEYS'][APPLICATION_
 $config[AdyenConstants::MERCHANT_ACCOUNT] = $adyenCredentials['MERCHANT_ACCOUNTS'][APPLICATION_STORE];
 $config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = $adyenCredentials['ORIGIN_KEYS'][APPLICATION_STORE];
 
+$adyenSplitAccounts = [
+    'PL' => '147890109',
+    'SK' => '',
+    'CZ' => '',
+];
+
+$config[AdyenConstants::SPLIT_ACCOUNT] = $adyenSplitAccounts[APPLICATION_STORE];
+$config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0;
+
 $config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '31d25f30-e540-4825-b602-adc7009eded8';
 
 // ----------------------------------------------------------------------------

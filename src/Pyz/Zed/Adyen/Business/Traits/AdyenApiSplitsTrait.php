@@ -42,16 +42,20 @@ trait AdyenApiSplitsTrait
             ->setAccount($this->config->getSplitAccount())
             ->setReference($splitMarketplaceReference);
 
-        $commissionSplitTransfer = (new AdyenApiSplitTransfer())
-            ->setAmount(
-                (new AdyenApiAmountTransfer())->setValue($commissionAmount)
-            )
-            ->setType(SharedAdyenConfig::SPLIT_TYPE_COMMISSION)
-            ->setReference($splitCommissionReference);
+        if ($commissionAmount > 0) {
+            $commissionSplitTransfer = (new AdyenApiSplitTransfer())
+                ->setAmount(
+                    (new AdyenApiAmountTransfer())->setValue($commissionAmount)
+                )
+                ->setType(SharedAdyenConfig::SPLIT_TYPE_COMMISSION)
+                ->setReference($splitCommissionReference);
 
-        return new ArrayObject([
-            $marketplaceSplitTransfer,
-            $commissionSplitTransfer,
-        ]);
+            return new ArrayObject([
+                $marketplaceSplitTransfer,
+                $commissionSplitTransfer,
+            ]);
+        }
+
+        return new ArrayObject([$marketplaceSplitTransfer]);
     }
 }
