@@ -69,7 +69,7 @@ class TurnoverRequestHelper implements TurnoverRequestHelperInterface
     public function getDealerId(OrderTransfer $orderTransfer): string
     {
         $dealerIdCountryMap = $this->myWorldMarketplaceApiConfig->getDealerIdCountryMap();
-        $iso2Code = $orderTransfer->getCustomerCountryId();
+        $iso2Code = $orderTransfer->getStore();
 
         if (!isset($dealerIdCountryMap[$iso2Code])) {
             return $this->myWorldMarketplaceApiConfig->getDealerIdDefault();
