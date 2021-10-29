@@ -12,7 +12,7 @@ actions:
   - data_entity: customer
     source: data/import/common/common/customer.csv
   - data_entity: glossary
-    source: data/import/common/east-1/glossary_local.csv
+    source: data/import/common/common/glossary.csv
   - data_entity: tax
     source: data/import/common/common/tax.csv
   - data_entity: shipment
