@@ -1,0 +1,4 @@
+discount_key,store,currency,value_net,value_gross
+discount_1,IT,EUR,,500
+discount_1,FR,EUR,,500
+discount_1,GR,EUR,,500

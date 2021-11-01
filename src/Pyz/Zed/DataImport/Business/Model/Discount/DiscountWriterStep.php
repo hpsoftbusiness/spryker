@@ -35,6 +35,7 @@ class DiscountWriterStep implements DataImportStepInterface
     public const KEY_COLLECTOR_QUERY_STRING = 'collector_query_string';
     public const KEY_PROMOTION_SKU = 'promotion_sku';
     public const KEY_PROMOTION_QUANTITY = 'promotion_quantity';
+    public const KEY_MINIMUM_ITEM_AMOUNT = 'minimum_item_amount';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -72,6 +73,7 @@ class DiscountWriterStep implements DataImportStepInterface
             ->setDiscountType($dataSet[static::KEY_DISCOUNT_TYPE])
             ->setDecisionRuleQueryString($dataSet[static::KEY_DECISION_RULE_QUERY_STRING])
             ->setCollectorQueryString($dataSet[static::KEY_COLLECTOR_QUERY_STRING])
+            ->setMinimumItemAmount($dataSet[static::KEY_MINIMUM_ITEM_AMOUNT])
             ->save();
 
         $this->saveDiscountPromotion($dataSet, $discountEntity);

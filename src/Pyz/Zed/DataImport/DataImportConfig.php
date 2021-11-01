@@ -76,6 +76,6 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getNeedStoreRelationValidation(): bool
     {
-        return (bool)$this->get(DataImportConstants::NEED_STORE_RELATION_VALIDATION, true);
+        return (bool)$this->get(DataImportConstants::NEED_STORE_RELATION_VALIDATION, false);
     }
 }

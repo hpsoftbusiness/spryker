@@ -1,1 +1,2 @@
-discount_key,display_name,description,amount,calculator_plugin,is_exclusive,is_active,valid_from,valid_to,decision_rule_query_string,collector_query_string,discount_type,promotion_sku,promotion_quantity
+discount_key,display_name,description,amount,calculator_plugin,is_exclusive,is_active,valid_from,valid_to,decision_rule_query_string,collector_query_string,discount_type,promotion_sku,promotion_quantity,minimum_item_amount
+discount_1,Welcome,,,PLUGIN_CALCULATOR_FIXED,0,1,2020-01-01,2021-12-31,sub-total > 49.99 AND item-price > 4.99,item-price > 4.99,voucher,,,2

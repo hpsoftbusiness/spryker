@@ -1,0 +1,1837 @@
+key,translation,locale
+auth.login-button,Accedi con MyWorld.,it_IT
+BenefitVouchers,Voucher di beneficio,it_IT
+benefit_deal.item_quantity,Quantità:,it_IT
+benefit_deal.product.attribute.manufacturer_name,Marca:,it_IT
+cart.delete.button,Elimina,it_IT
+cart.include.vat,incl. I.V.A.,it_IT
+cart.shipping_standard,Standard di spedizione,it_IT
+cart.total_wo_deals,Totale,it_IT
+checkout.currency.my_world.shopping_points,Punti dello shopping riscattati,it_IT
+checkout.payment.myworld.payment_methods.balance_text,Bilancia,it_IT
+checkout.payment.myworld.payment_methods.method.cashback,Rimborso,it_IT
+checkout.payment.myworld.payment_methods.method.evoucher,favoucher,it_IT
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,MyWorld EVoucher (Marketer),it_IT
+checkout.payment.myworld.payment_methods.subtitle,È possibile scegliere tra i seguenti metodi di epilogo MyWorld (facoltativo):,it_IT
+checkout.payment.myworld.payment_methods.title,EPYMENT MYWORLD.,it_IT
+checkout.payment.my_world.error.transaction_batch_failed,La transazione di pagamento non è stata elaborata a causa di un altro fallimento della transazione batch,it_IT
+checkout.payment.my_world.error.transaction_exceeded_value,Importo di transazione di pagamento superato l'importo disponibile,it_IT
+checkout.payment.my_world.error.transaction_failed,Transazione di pagamento Non è riuscita,it_IT
+checkout.payment.my_world.error.transaction_option_not_found,La transazione di pagamento non è riuscita a causa dell'opzione di pagamento sconosciuta,it_IT
+checkout.step.benefit_deal.benefit_voucher,Importo del buono beneficio totale utilizzato,it_IT
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,L'importo massimo dovrebbe essere %maxamount% %currency% (quantità massima di BV). Si prega di verificare,it_IT
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Sfortunatamente, non hai abbastanza BV per acquistare questo prodotto a uno sconto. Quantità necessaria: %currency% %needamount.skip.needamount%, il tuo saldo: %currency% %balanceamount%",it_IT
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Sfortunatamente, non hai abbastanza SP per acquistare questo prodotto a uno sconto.",it_IT
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Gentile cliente, è necessario spendere almeno %needamount% %currency% dal tuo bucher Bilancio Bilancia per ottenere un prodotto Deal Deal Buonorder.",it_IT
+checkout.step.benefit_deal.items,Elementi,it_IT
+checkout.step.benefit_deal.or,o,it_IT
+checkout.step.benefit_deal.title,Panoramica dell'ordine,it_IT
+checkout.step.benefit_deal.total_used_shopping_points,Usato total shopping punti,it_IT
+checkout.step.benefit_deal.use_shopping_points,Utilizzare l'affare dei punti dello shopping,it_IT
+checkout.step.benefit_deal.use_voucher,Utilizzare i buoni di beneficio (BV) per lo sconto,it_IT
+checkout.step.benefit_deal.with_method,insieme a,it_IT
+checkout.step.error.link,Vai al carrello,it_IT
+checkout.step.error.sub_title,Ordine non riuscito a causa di errori:,it_IT
+checkout.step.summary.modal.email,E-mail:,it_IT
+checkout.step.summary.modal.email_radio_label,Genera nuovo codice di verifica inviato via e-mail,it_IT
+checkout.step.summary.modal.error_session_expired,"La sessione di pagamento è scaduta, si prega di tornare alla fase di pagamento.",it_IT
+checkout.step.summary.modal.error_when_resending_by_sms,"C'è un errore durante il tentativo di inviare il codice tramite SMS, riprova più tardi.",it_IT
+checkout.step.summary.modal.info,Come ti piacerebbe ricevere il tuo codice PIN?,it_IT
+checkout.step.summary.modal.link,Non ha ricevuto un codice?,it_IT
+checkout.step.summary.modal.phone,Numero:,it_IT
+checkout.step.summary.modal.please_wait_30_seconds,Attendere 30 secondi per richiedere un nuovo codice.,it_IT
+checkout.step.summary.modal.resend_already_by_mail,"Il codice è stato inviato via e-mail, controlla anche la cartella spam.",it_IT
+checkout.step.summary.modal.resend_already_by_sms,"Il codice è stato inviato tramite SMS, si prega di verificare.",it_IT
+checkout.step.summary.modal.resend_retry,Puoi provare a inviare di nuovo dentro:,it_IT
+checkout.step.summary.modal.sms_radio_label,Genera nuovo codice di verifica inviato tramite SMS,it_IT
+checkout.step.summary.modal.submit,Invia codice PIN.,it_IT
+checkout.step.summary.modal.title,Non ha ricevuto un codice PIN?,it_IT
+customer.balance.into,Hai:,it_IT
+customer.balance.my_world_benefit_voucher_account,Voucher di beneficio,it_IT
+customer.balance.my_world_cashback_account,Rimborso,it_IT
+customer.balance.my_world_e_voucher,favoucher,it_IT
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,MyWorld EVoucher (Marketer),it_IT
+customer.balance.my_world_shopping_points_account,Punti dello shopping,it_IT
+customer.order.priceToPay,Somma,it_IT
+discount.internal.shopping_points,Punti dello shopping,it_IT
+error.429,Troppe richieste,it_IT
+merchant_product_offer.sold_by,Venduto da,it_IT
+merchant_product_offer.view_seller,Visualizza il venditore,it_IT
+merchant_profile.address,Indirizzo,it_IT
+merchant_profile.cancellation_policy,Politica di cancellazione,it_IT
+merchant_profile.delivery_time,Tempo di consegna,it_IT
+merchant_profile.email,Indirizzo email,it_IT
+merchant_profile.imprint,Impronta,it_IT
+merchant_profile.phone,Telefono,it_IT
+merchant_profile.privacy,Privacy dei dati,it_IT
+merchant_profile.terms_and_conditions,Termini & Condizioni,it_IT
+oms.state.calculating_refund,Calcolo del rimborso,it_IT
+oms.state.failed,Non riuscito,it_IT
+oms.state.myworld_payment_pending,Pendendo il pagamento MyWorld.,it_IT
+oms.state.my_world_refunded,MyWorld rimborsato,it_IT
+oms.state.my_world_refund_due_to_payment_failure,Rimborso di myworld a causa del fallimento del pagamento,it_IT
+oms.state.my_world_refund_failed,Il rimborso di MyWorld non è riuscito,it_IT
+oms.state.processing_refund,Rimborso della lavorazione,it_IT
+oms.state.ready_for_refund,Pronto per il rimborso,it_IT
+oms.state.refunded,Rimborsato,it_IT
+oms.state.refund_failed,Rimborso non riuscito,it_IT
+oms.state.refund_pending,Rimborso in attesa,it_IT
+oms.state.refund_pending_next_try,Provare il rimborso successivo Prova,it_IT
+oms.state.reserved,Riservato,it_IT
+oms.state.turnover-cancelled,Fatturato annullato,it_IT
+oms.state.validating_refund,Convalidare il rimborso,it_IT
+page.checkout.payment.3d_secure_text,"Assicurati che la carta di credito inserita sia stata verificata per il nuovo sistema sicuro 3D. Senza questa verifica, la transazione non sarà possibile, per ulteriori informazioni, contattare il fornitore di carte di credito.",it_IT
+payment.payment_method.adyen_credit_card,Carta di credito,it_IT
+payment.payment_method.benefit_vouchers,Voucher di beneficio,it_IT
+payment.payment_method.cashback,Rimborso,it_IT
+payment.payment_method.dummy_prepayment,Pagamento anticipato,it_IT
+payment.payment_method.e_voucher,favoucher,it_IT
+payment.payment_method.e_voucher_marketer,MyWorld EVoucher (Marketer),it_IT
+payment.payment_method.paid,Pagato,it_IT
+payment.payment_provider.adyen,Adyen.,it_IT
+payment.payment_provider.my_world,Il mio mondo,it_IT
+payment.payment_provider.nopayment,Nessun pagamento,it_IT
+pdp.include.tax,incl. Imposta,it_IT
+pdp.price,Prezzo,it_IT
+pdp.price.benefit_voucher_price,AFFARE BENEFICARE,it_IT
+pdp.price.regular_price,Prezzo regolare,it_IT
+pdp.price.shopping_points_price,Affare del punto di acquisto,it_IT
+product.filter.merchant_name,Mercante,it_IT
+product_detail_page.benefit_price.benefit_amount,max %amount%.,it_IT
+product_detail_page.desclaimer_text,Desclaimer.,it_IT
+product_item.benefit_deal.or,o,it_IT
+security_blocker_page.error.account_blocked,Troppi log in tentativi dal tuo indirizzo. Per favore aspetta %minutes% minuti prima di riprovare.,it_IT
+validator.check.phone,Numero di telefono invalido,it_IT
+auth.login-button,Connectez-vous avec MyWorld,fr_FR
+BenefitVouchers,Avantage Voucher,fr_FR
+benefit_deal.item_quantity,Quantité:,fr_FR
+benefit_deal.product.attribute.manufacturer_name,Marque:,fr_FR
+cart.delete.button,Effacer,fr_FR
+cart.include.vat,incl. T.V.A.,fr_FR
+cart.shipping_standard,Standard d'expédition,fr_FR
+cart.total_wo_deals,Le total,fr_FR
+checkout.currency.my_world.shopping_points,Points d'achat rachetés,fr_FR
+checkout.payment.myworld.payment_methods.balance_text,Équilibre,fr_FR
+checkout.payment.myworld.payment_methods.method.cashback,Remboursement,fr_FR
+checkout.payment.myworld.payment_methods.method.evoucher,évènement,fr_FR
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,myworld evoucher (marketing),fr_FR
+checkout.payment.myworld.payment_methods.subtitle,Vous pouvez choisir entre les méthodes d'épayement MyWorld suivantes (facultatif):,fr_FR
+checkout.payment.myworld.payment_methods.title,epayment myworld,fr_FR
+checkout.payment.my_world.error.transaction_batch_failed,La transaction de paiement n'a pas été traitée en raison d'une autre transaction par lots échouant,fr_FR
+checkout.payment.my_world.error.transaction_exceeded_value,Montant de la transaction de paiement dépassée le montant disponible,fr_FR
+checkout.payment.my_world.error.transaction_failed,La transaction de paiement a échoué,fr_FR
+checkout.payment.my_world.error.transaction_option_not_found,La transaction de paiement a échoué en raison de l'option de paiement inconnu,fr_FR
+checkout.step.benefit_deal.benefit_voucher,Quantité d'achat total d'avantage total d'occasion,fr_FR
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,Le montant maximal devrait être %maxamount% skip@skip.currency.ski.com (montant maximum de BV). Veuillez vérifier,fr_FR
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Malheureusement, vous n'avez pas assez de BV pour acheter ce produit à une réduction. Montant nécessaire: %currency% %needamount.ski.com, votre solde: skip@skip.currency% %balanceamount%",fr_FR
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Malheureusement, vous n'avez pas assez de SP pour acheter ce produit à une remise.",fr_FR
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Cher client, vous devez dépenser au moins %needamount% %Currency% de votre béquille de votre bon d'avantage pour obtenir un produit de transaction d'avantage.",fr_FR
+checkout.step.benefit_deal.items,Articles,fr_FR
+checkout.step.benefit_deal.or,ou,fr_FR
+checkout.step.benefit_deal.title,Vue d'ensemble des commandes,fr_FR
+checkout.step.benefit_deal.total_used_shopping_points,Points d'achat total d'occasion,fr_FR
+checkout.step.benefit_deal.use_shopping_points,Utiliser des points d'achat,fr_FR
+checkout.step.benefit_deal.use_voucher,Utilisez les bons d'avantage (BV) pour escompter,fr_FR
+checkout.step.benefit_deal.with_method,avec,fr_FR
+checkout.step.error.link,Aller au panier,fr_FR
+checkout.step.error.sub_title,La commande a échoué en raison d'erreurs:,fr_FR
+checkout.step.summary.modal.email,E-mail:,fr_FR
+checkout.step.summary.modal.email_radio_label,Générer un nouveau code de vérification envoyé par courrier électronique,fr_FR
+checkout.step.summary.modal.error_session_expired,"Votre session de paiement a expiré, veuillez revenir à l'étape de paiement.",fr_FR
+checkout.step.summary.modal.error_when_resending_by_sms,"Il y a une erreur lors de la tentative d'envoi du code via SMS, veuillez réessayer ultérieurement.",fr_FR
+checkout.step.summary.modal.info,Comment voudriez-vous recevoir votre code PIN?,fr_FR
+checkout.step.summary.modal.link,N'a pas reçu de code?,fr_FR
+checkout.step.summary.modal.phone,Nombre:,fr_FR
+checkout.step.summary.modal.please_wait_30_seconds,Veuillez patienter 30 secondes pour demander un nouveau code.,fr_FR
+checkout.step.summary.modal.resend_already_by_mail,"Le code a été envoyé par e-mail, veuillez vérifier également votre dossier SPAM.",fr_FR
+checkout.step.summary.modal.resend_already_by_sms,"Le code a été envoyé via SMS, veuillez vérifier.",fr_FR
+checkout.step.summary.modal.resend_retry,Vous pouvez essayer d'envoyer à nouveau dans:,fr_FR
+checkout.step.summary.modal.sms_radio_label,Générer un nouveau code de vérification envoyé via SMS,fr_FR
+checkout.step.summary.modal.submit,Envoyer code PIN,fr_FR
+checkout.step.summary.modal.title,N'a pas reçu de code PIN?,fr_FR
+customer.balance.into,Tu as:,fr_FR
+customer.balance.my_world_benefit_voucher_account,Avantage Voucher,fr_FR
+customer.balance.my_world_cashback_account,Remboursement,fr_FR
+customer.balance.my_world_e_voucher,évènement,fr_FR
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,myworld evoucher (marketing),fr_FR
+customer.balance.my_world_shopping_points_account,Points de shopping,fr_FR
+customer.order.priceToPay,Somme,fr_FR
+discount.internal.shopping_points,Points de shopping,fr_FR
+error.429,Trop de demandes,fr_FR
+merchant_product_offer.sold_by,Vendu par,fr_FR
+merchant_product_offer.view_seller,Voir le vendeur,fr_FR
+merchant_profile.address,Adresse,fr_FR
+merchant_profile.cancellation_policy,Politique d'annulation,fr_FR
+merchant_profile.delivery_time,Heure de livraison,fr_FR
+merchant_profile.email,Adresse e-mail,fr_FR
+merchant_profile.imprint,Imprimer,fr_FR
+merchant_profile.phone,Téléphone,fr_FR
+merchant_profile.privacy,La confidentialité des données,fr_FR
+merchant_profile.terms_and_conditions,termes et conditions,fr_FR
+oms.state.calculating_refund,Calcul de remboursement,fr_FR
+oms.state.failed,Échoué,fr_FR
+oms.state.myworld_payment_pending,MyWorld Paiement en attente,fr_FR
+oms.state.my_world_refunded,Myworld remboursé,fr_FR
+oms.state.my_world_refund_due_to_payment_failure,Remboursement myworld en raison de l'échec du paiement,fr_FR
+oms.state.my_world_refund_failed,MyWorld Remboursement a échoué,fr_FR
+oms.state.processing_refund,Remboursement de traitement,fr_FR
+oms.state.ready_for_refund,Prêt pour le remboursement,fr_FR
+oms.state.refunded,Remboursé,fr_FR
+oms.state.refund_failed,Remboursement a échoué,fr_FR
+oms.state.refund_pending,Remboursement en attente,fr_FR
+oms.state.refund_pending_next_try,En attente de remboursement suivant essayer,fr_FR
+oms.state.reserved,Réservé,fr_FR
+oms.state.turnover-cancelled,Le chiffre d'affaires annulé,fr_FR
+oms.state.validating_refund,Valider le remboursement,fr_FR
+page.checkout.payment.3d_secure_text,"Assurez-vous que la carte de crédit que vous avez entrée a été vérifiée pour le nouveau système sécurisé 3D. Sans cette vérification, la transaction ne sera pas possible, pour plus d'informations, veuillez contacter votre fournisseur de carte de crédit.",fr_FR
+payment.payment_method.adyen_credit_card,Carte de crédit,fr_FR
+payment.payment_method.benefit_vouchers,Avantage Voucher,fr_FR
+payment.payment_method.cashback,Remboursement,fr_FR
+payment.payment_method.dummy_prepayment,Prépaiement,fr_FR
+payment.payment_method.e_voucher,évènement,fr_FR
+payment.payment_method.e_voucher_marketer,myworld evoucher (marketing),fr_FR
+payment.payment_method.paid,Payé,fr_FR
+payment.payment_provider.adyen,Adyen,fr_FR
+payment.payment_provider.my_world,Mon monde,fr_FR
+payment.payment_provider.nopayment,Pas de paiement,fr_FR
+pdp.include.tax,incl. Impôt,fr_FR
+pdp.price,Prix,fr_FR
+pdp.price.benefit_voucher_price,Offre de bons d'avantage,fr_FR
+pdp.price.regular_price,Prix ​​habituel,fr_FR
+pdp.price.shopping_points_price,Point de shopping,fr_FR
+product.filter.merchant_name,marchande,fr_FR
+product_detail_page.benefit_price.benefit_amount,max skip@skip.amount.ski.com,fr_FR
+product_detail_page.desclaimer_text,Desclaimer,fr_FR
+product_item.benefit_deal.or,ou,fr_FR
+security_blocker_page.error.account_blocked,Trop de journal tentatives de votre adresse. Veuillez patienter %minutes% minutes avant d'essayer à nouveau.,fr_FR
+validator.check.phone,Numéro de téléphone invalide,fr_FR
+wishlist.wishlist,Λίστα επιθυμιών,el_GR
+wishlist.validation.error.name.already_exists,Μια λίστα επιθυμιών με το ίδιο όνομα υπάρχει ήδη.,el_GR
+wishlist.title,Λίστα επιθυμιών,el_GR
+wishlist.form.save,Αποθηκεύσετε,el_GR
+whishlist.whishlist,Λάτρεις,el_GR
+whishlist.remove,Αφαιρώ,el_GR
+whishlist.reduce,Περιορίζω,el_GR
+whishlist.move.to.cart,Μετακίνηση στο καλάθι,el_GR
+whishlist.increase,Αυξάνουν,el_GR
+validator.constraints.password.do_not_match,Οι κωδικοί πρόσβασης δεν ταιριάζουν,el_GR
+validator.check.phone,Μη έγκυρος αριθμός τηλεφώνου,el_GR
+validation.zip_code,Αυτό το πεδίο πρέπει να περιέχει ακριβώς 5 ψηφία.,el_GR
+validation.not_blank,Αυτή η τιμή δεν πρέπει να είναι κενή.,el_GR
+validation.min_length,Αυτό το πεδίο πρέπει να είναι τουλάχιστον {{limit}} χαρακτήρες.,el_GR
+validation.invalid_date,Η ημερομηνία θα πρέπει να είναι σε σωστή μορφή% s.,el_GR
+validation.email,Αυτή η τιμή δεν είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου.,el_GR
+validation.choice,Η βαθμολογία του προϊόντος πρέπει να επιλεγεί.,el_GR
+validation.address_number,Αυτή η τιμή δεν είναι έγκυρη (αποδεκτή μορφή π.χ.: 12C).,el_GR
+smartphones.category.link,/ EN / TELECOM - & - Πλοήγηση / Smartphones,el_GR
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,Είστε βέβαιοι ότι εσείς τι να απορρίψετε την λίστα αγορών;,el_GR
+shopping_list_page.dismiss.success,Ο κατάλογος αγορών απορρίφθηκε με επιτυχία.,el_GR
+shopping_list_page.dismiss.failed,Ο κατάλογος αγορών δεν απορρίφθηκε.,el_GR
+shopping_list_add_items_widget.add_to_shopping_list,Προσθήκη στη λίστα αγορών,el_GR
+shopping_list.shopping_list,Λίστα με τα ψώνια,el_GR
+shopping_list.remove_all_items,Αφαίρεση όλων,el_GR
+shopping_list.not_applicable,N / a,el_GR
+shopping_list.item_quantity,Ποσότητα,el_GR
+shopping_list.item_note.add,Προσθέστε μια σημείωση +,el_GR
+shopping_list.item_note,Σημείωση:,el_GR
+shopping_list.cart.items_add.success,Τα στοιχεία προστέθηκαν στη λίστα,el_GR
+shopping_list.cart.items_add.failed,Δεν ήταν δυνατή η προσθήκη στοιχείων στη λίστα,el_GR
+shipping.address.validation.is_missing,Η διεύθυνση αποστολής λείπει,el_GR
+shipping.address.country.validation.not_found,Διεύθυνση αποστολής Χώρα που δεν βρέθηκε για κωδικό χώρας: %code%,el_GR
+shipment.validation.not_found,Η μέθοδος αποστολής δεν βρέθηκε.,el_GR
+shipment.standart.name,Απλή Αποστολή,el_GR
+shipment.standart.description,2-4 εργάσιμες ημέρες,el_GR
+shipment.lead.time,Χρόνος παράδοσης: Περίπου. 3-7 εργάσιμες ημέρες,el_GR
+shipment.international.parcel.service,Διεθνείς υπηρεσίες δεμάτων,el_GR
+shipment.hermes,Ερμής,el_GR
+shipment.express.name,Εξπρές,el_GR
+shipment.express.description,24-48 ώρες (εργάσιμες ημέρες),el_GR
+shipment.dpd,Dpd,el_GR
+shipment.dhl.paket.name,Πακέτο,el_GR
+shipment.dhl.paket.description,"Το DHL Paket είναι η εύκολη, οικονομικά προσιτή, γρήγορη και αξιόπιστη υπηρεσία αποστολής σε περισσότερες από 220 χώρες σε όλο τον κόσμο.",el_GR
+shipment.dhl.express.name,Εξπρές,el_GR
+shipment.dhl.express.description,Η δύναμή μας 100.000 εργαζόμενων εργαζομένων εργάζεται σε όλο τον κόσμο. Τοπική τεχνογνωσία και το μοναδικό μας δίκτυο μας κάνουν τους διεθνείς ειδικούς σας.,el_GR
+shipment.dhl,Dhl,el_GR
+shared_cart_widget.share_list.shared_with,Το καλάθι μοιράστηκε με,el_GR
+shared_cart_widget.share_list.permission,Επίπεδο πρόσβασης,el_GR
+shared_cart_widget.share_list.customer_name,Ονομα πελάτη,el_GR
+shared_cart_widget.share_list.actions,Ενέργειες,el_GR
+shared_cart_widget.share_list.action.unshare,Άσπρο καλάθι,el_GR
+shared_cart_widget.cart.unshare,Άσπρο καλάθι,el_GR
+shared_cart_widget.cart.share,Μετοχή καλαθιού,el_GR
+shared_cart_widget.cart.dismiss,Απολύω,el_GR
+shared_cart_widget.add_product.separate,Προσθέστε ως ξεχωριστό στοιχείο,el_GR
+shared_cart_page.unshare.success,Το καλάθι ήταν επιτυχώς απογοητευμένο,el_GR
+shared_cart_page.share.success,Το καλάθι μοιράστηκε με επιτυχία,el_GR
+shared_cart.share_list.permissions.READ_ONLY,Μόνο για ανάγνωση,el_GR
+shared_cart.share_list.permissions.NO_ACCESS,Καμία πρόσβαση,el_GR
+shared_cart.share_list.permissions.FULL_ACCESS,Πλήρης πρόσβαση,el_GR
+shared_cart.share.form.users,Χρήστες,el_GR
+shared_cart.share.error.already_exist,Το καλάθι ήταν ήδη κοινόχρηστο με αυτόν τον πελάτη,el_GR
+shared_cart.share.breadcrumbs.shopping_carts,Καροτσάκια,el_GR
+shared_cart.share.breadcrumbs.share,Μερίδιο,el_GR
+shared_cart.form.share_cart.title,"Καλάθι μετοχών """" cart_name """"",el_GR
+shared_cart.form.share_cart,Μετοχή καλαθιού,el_GR
+shared_cart.form.share_button,Μερίδιο,el_GR
+shared_cart.form.select_permissions,Επιλέξτε Επίπεδο πρόσβασης,el_GR
+shared_cart.form.select_customer,Επιλέξτε Πελάτη,el_GR
+shared_cart.form.save_button,Αποθηκεύσετε,el_GR
+shared_cart.form.data_empty,Δεν υπάρχουν χρήστες με τους οποίους μπορείτε να μοιραστείτε το καλάθι αγορών.,el_GR
+shared_cart.form.customer,Ονομα πελάτη,el_GR
+security_blocker_page.error.account_blocked,Πάρα πολλοί σύνδεσμοι προσπαθειών από τη διεύθυνσή σας. Παρακαλώ περιμένετε %minutes% λεπτά πριν δοκιμάσετε ξανά.,el_GR
+samsung.search.link,/ en / αναζήτηση? Q = samsung,el_GR
+sales_product_bundle_widget.returnable_text,Επιστροφή μέχρι:,el_GR
+sales_product_bundle_widget.returnable_state,Δεν επιστρέφεται,el_GR
+sales_product_bundle_widget.quantity,Ποσότητα:,el_GR
+sales_product_bundle_widget.item_sku,Sku:,el_GR
+sales_product_bundle_widget.item.options,Επιλογές προϊόντων:,el_GR
+sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,Παρακαλείστε να σημειώσετε ότι τα στοιχεία από τη διαμορφωμένη δέσμη προστέθηκαν στο καλάθι ως μεμονωμένα προϊόντα.,el_GR
+sales_configured_bundle_widget.returnable_state,Δεν επιστρέφεται,el_GR
+sales_configured_bundle_widget.quantity,Ποσότητα:,el_GR
+sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Η παραγγελία δεν μπορεί να ακυρωθεί λόγω λανθασμένης κατάστασης του στοιχείου.,el_GR
+sales.error.customer_order_not_found,Η εντολή του πελάτη δεν βρέθηκε.,el_GR
+sales-order-threshold.strategy.soft-minimum-threshold-flexible-fee,Προσαύξηση,el_GR
+sales-order-threshold.strategy.soft-minimum-threshold-fixed-fee,Προσαύξηση,el_GR
+sales-order-threshold.soft-minimum-threshold.de.eur.message,"Πρέπει να προσθέσετε αντικείμενα για το {{κατώφλι}} για να περάσετε ένα συνιστώμενο όριο, αλλά αν θέλετε να προχωρήσετε στο checkout.",el_GR
+sales-order-threshold.soft-minimum-threshold.de.chf.message,"Πρέπει να προσθέσετε αντικείμενα για το {{κατώφλι}} για να περάσετε ένα συνιστώμενο όριο, αλλά αν θέλετε να προχωρήσετε στο checkout.",el_GR
+sales-order-threshold.hard-minimum-threshold.de.eur.message,Θα πρέπει να προσθέσετε στοιχεία για το {{όριο}} για να περάσετε ένα συνιστώμενο όριο. Δεν μπορείτε να προχωρήσετε με το checkout,el_GR
+sales-order-threshold.hard-minimum-threshold.de.chf.message,Θα πρέπει να προσθέσετε στοιχεία για το {{όριο}} για να περάσετε ένα συνιστώμενο όριο. Δεν μπορείτε να προχωρήσετε με το checkout,el_GR
+sales-order-threshold.hard-maximum-threshold.de.eur.message,Η τιμή του καλαθιού δεν μπορεί να είναι υψηλότερη από το {{κατώφλι}}. Καταργήστε κάποια στοιχεία για να προχωρήσετε με την παραγγελία,el_GR
+sales-order-threshold.hard-maximum-threshold.de.chf.message,Η τιμή του καλαθιού δεν μπορεί να είναι υψηλότερη από το {{κατώφλι}}. Καταργήστε κάποια στοιχεία για να προχωρήσετε με την παραγγελία,el_GR
+sales-order-threshold.expense.name,Προσαύξηση,el_GR
+return_page.title,Δημιουργία επιστροφής,el_GR
+return_page.table.actions,-,el_GR
+return_page.slip.total_price,Συνολικό ποσό,el_GR
+return_page.slip.return_reference,Επιστροφή Ref,el_GR
+return_page.slip.return_reason,Επιστρέψτε τον λόγο,el_GR
+return_page.slip.return_date,Ημερομηνία επιστροφής,el_GR
+return_page.slip.remuneration_total,Σύνολο αμοιβών,el_GR
+return_page.slip.quantity,Κτύπος,el_GR
+return_page.slip.product_sku,Προϊόν SKU,el_GR
+return_page.slip.product_name,Ονομασία προϊόντος,el_GR
+return_page.slip.order_reference,Παραγγελία αναφορών,el_GR
+return_page.slip.items_to_return,Αντικείμενα που επιστρέφουν,el_GR
+return_page.slip.default_price,Προεπιλεγμένη τιμή,el_GR
+return_page.slip.barcode,Γραμμωτός κώδικας,el_GR
+return_page.returnable_state,Δεν επιστρέφεται,el_GR
+return_page.return_reference,Επιστροφή Ref:,el_GR
+return_page.return_reasons.title,Λόγος:,el_GR
+return_page.return_reasons.select_reason.placeholder,Επιλέξτε Λόγος,el_GR
+return_page.return_reasons.empty,-,el_GR
+return_page.return_reasons.custom_reason.placeholder,Προσαρμοσμένος λόγος,el_GR
+return_page.return_date,Ημερομηνία επιστροφής:,el_GR
+return_page.return.view_return,Προβολή επιστροφής,el_GR
+return_page.return.title,Δημιουργία επιστροφής,el_GR
+return_page.return.return_ref,Αναφορά επιστροφής,el_GR
+return_page.return.print_return,Εκτύπωση,el_GR
+return_page.return.order_ref,Παρατηρήστε την αναφορά,el_GR
+return_page.return.number_of_items,Αριθμός αντικειμένων,el_GR
+return_page.return.items_state,Στοιχεία κατάσταση,el_GR
+return_page.return.date,Ημερομηνία επιστροφής,el_GR
+return_page.return.created,Η επιστροφή δημιουργήθηκε με επιτυχία,el_GR
+return_page.quantity,Ποσότητα:,el_GR
+return_page.order_reference,Παραγγελία Ref:,el_GR
+return_page.order_date,Ημερομηνία παραγγελίας:,el_GR
+return_page.list.title,Επιστρέφει,el_GR
+return_page.item_sku,Sku:,el_GR
+return_page.item.options,Επιλογές προϊόντων:,el_GR
+return_page.details.total.remuneration_total,Σύνολο αμοιβών,el_GR
+return_page.details.total.items_to_return.count,αντικείμενα,el_GR
+return_page.details.total.items_to_return,Αντικείμενα που επιστρέφουν,el_GR
+return_page.details.page_title,Λεπτομέρειες επιστροφής,el_GR
+return_page.details.actions.print_slip,Εκτύπωση,el_GR
+return_page.details.actions.back_to_list,Πίσω στη λίστα,el_GR
+return_page.default_title,Επιστρέφει,el_GR
+return_page.create_return.validation.selected_items,Πρέπει να επιλεγεί τουλάχιστον ένα προϊόν.,el_GR
+return_page.create_return.select_all_checkbox,Επιλογή όλων,el_GR
+return_page.button_text,Δημιουργία επιστροφής,el_GR
+return_page.button.return_list,Επιστρέφει,el_GR
+return_page.button.create_return,ΕΠΙΣΤΡΟΦΗ,el_GR
+return_page.breadcrumb.returns,Επιστρέφει,el_GR
+return_page.breadcrumb.create_return,Δημιουργία επιστροφής,el_GR
+return_page.account.no_return,Δεν επιστρέφει αυτή τη στιγμή,el_GR
+return.return_reasons.wrong-item.name,Λάθος πράγμα,el_GR
+return.return_reasons.no_longer_needed.name,Δεν είναι πια απαραίτητο,el_GR
+return.return_reasons.damaged.name,Σκάρτος,el_GR
+return.return_policy.returnable_till.message,Επιστροφή μέχρι: %date%,el_GR
+return.create_return.validation.store_error,Η επιστροφή δεν μπορεί να δημιουργηθεί - έχει επιλεγεί ένα λάθος κατάστημα,el_GR
+return.create_return.validation.returnable_items_error,Η επιστροφή δεν μπορεί να δημιουργηθεί καθώς περιέχει μη επιστρεφόμενα στοιχεία,el_GR
+return.create_return.validation.items_error,Η επιστροφή δεν μπορεί να κριθεί για αυτό το σύνολο αντικειμένων,el_GR
+replacement_for_widget.replacement_for,Αντικατάσταση για,el_GR
+reorder.info.restricted-product.removed,Το στοιχείο %sku% δεν μπορούσε να προστεθεί στο καλάθι επειδή απενεργοποιήθηκε.,el_GR
+remove,Αφαιρώ,el_GR
+quick-order.paste-order.title,Επικολλήστε την παραγγελία σας,el_GR
+quick-order.paste-order.input-placeholder.copy-paste-order,Επικολλήστε την παραγγελία σας εδώ,el_GR
+quick-order.paste-order.errors.text-order-format-incorrect,Η μορφή παραγγελίας είναι εσφαλμένη.,el_GR
+quick-order.paste-order.errors.parser.separator-not-detected,Ο διαχωριστής δεν ορίζεται.,el_GR
+quick-order.paste-order.description,"Αντιγράψτε και επικολλήστε την παραγγελία σας με το στοιχείο # και την ποσότητα που χωρίζονται από κενά, ερωτηματικά ή κόμματα.",el_GR
+quick-order.paste-order.button.verify,Επαληθεύω,el_GR
+quick-order.page-title,Γρήγορη σειρά,el_GR
+quick-order.message.success.the-form-items-have-been-successfully-cleared,Τα στοιχεία της φόρμας έχουν εκκαθαριστεί με επιτυχία.,el_GR
+quick-order.input-label.sku,Σκι,el_GR
+quick-order.input-label.qty,# Qty,el_GR
+quick-order.errors.quantity-required,Η ποσότητα πρέπει να είναι τουλάχιστον 1,el_GR
+quick-order.errors.items-required,Εισαγάγετε τουλάχιστον ένα προϊόν SKU,el_GR
+quick-order.button.create-order,Δημιουργία παραγγελίας,el_GR
+quick-order.button.clear-all-rows,Καθαρίστε όλες τις σειρές,el_GR
+quick-order.button.add-more-rows,Προσθέστε περισσότερες σειρές,el_GR
+profile.form.salutation,Χαιρετισμός,el_GR
+product_search_widget.search.product_discontinued_prefix,[Διακοπεί],el_GR
+product_search_widget.search.no_results,Τα προϊόντα δεν βρέθηκαν.,el_GR
+product_review.summary.stars,Αστέρια,el_GR
+product_review.summary.star,Αστέρι,el_GR
+product_review.summary.reviews,σχόλια,el_GR
+product_review.summary.review,ανασκόπηση,el_GR
+product_review.summary.out_of,εκτός,el_GR
+product_review.submit.summary,Περίληψη,el_GR
+product_review.submit.success,Η επανεξέταση του προϊόντος υποβλήθηκε με επιτυχία.,el_GR
+product_review.submit.rating.none,Δεν επιλέχθηκε βαθμολογία,el_GR
+product_review.submit.rating,Εκτίμηση,el_GR
+product_review.submit.nickname,Ονομα,el_GR
+product_review.submit.error,Η αναθεώρηση δεν έχει στείλει.,el_GR
+product_review.submit.description,Περιγραφή,el_GR
+product_review.submit.add_a_review,Γράψτε μια κριτική,el_GR
+product_review.ratings_reviews,Αξιολογήσεις & Κριτικές,el_GR
+product_review.product_reviews,Κριτικές προϊόντων,el_GR
+product_review.product_ratings,Βαθμολογίες προϊόντων,el_GR
+product_review.on,επί,el_GR
+product_review.no_reviews,Δεν υπάρχει επανεξέταση για αυτό το προϊόν ακόμα,el_GR
+product_review.error.no_customer,Συνδεθείτε για να αποκτήσετε πρόσβαση σε αυτή τη λειτουργία.,el_GR
+product_review.average_ratings,Μέση βαθμολογία,el_GR
+product_item.benefit_deal.or,ή,el_GR
+product_discontinued_widget.note,Σημείωση,el_GR
+product_discontinued.super_attribute_discontinued,Διακόπτεται,el_GR
+product_detail_page.desclaimer_text,Απροσδιόριστος,el_GR
+product_detail_page.benefit_price.benefit_amount,max %mount%,el_GR
+product_cart_item.remove,× αφαίρεση,el_GR
+product_bundle.unavailable,Προϊόν '%productsku%' στο bundle προϊόν '%bundlesku%' δεν είναι διαθέσιμη αυτή τη στιγμή,el_GR
+product_alternative_widget.show_all,Προβολή όλων,el_GR
+product_alternative_widget.product_status.discontinued,Διακόπτεται,el_GR
+product_alternative_widget.product_alternative,Εναλλακτικά προϊόντα,el_GR
+product_alternative_widget.not_applicable,N / a,el_GR
+product_alternative_widget.alternative_for,Εναλλακτική λύση για το όνομα,el_GR
+product_alternative_widget.add_to_wishlist,Πρόσθεσε στην λίστα επιθυμιών,el_GR
+product_alternative_widget.add_to_shopping_list,Προσθήκη στη λίστα αγορών,el_GR
+product.view,Θέα,el_GR
+product.variants,Παραλλαγές προϊόντων,el_GR
+product.unavailable,Το προϊόν είναι εκτός αποθέματος,el_GR
+product.sets.widget.title,Αγοράστε τη συλλογή,el_GR
+product.sets.no-results,Χωρίς αποτέλεσμα.,el_GR
+product.sets,Σετ προϊόντων,el_GR
+product.set.detail.set-contents,Προϊόντα σε αυτό το σύνολο,el_GR
+product.set.detail.no-products,Δεν υπάρχουν προϊόντα στο σύνολο,el_GR
+product.set.detail.add-all-to-cart,Προσθέστε όλα στο καλάθι,el_GR
+product.product_options_select,Επιλέξτε μια επιλογή,el_GR
+product.product_options,Επιλογές προϊόντων,el_GR
+product.multiple.affiliates,Περισσότερες από μία προσφορές,el_GR
+product.measurement.sales_unit,Μονάδα πωλήσεων,el_GR
+product.groups,Ομάδες προϊόντων,el_GR
+product.filter.rating,Ακροαματικότητα,el_GR
+product.filter.price-default-eur-net_mode,Τιμή,el_GR
+product.filter.price-default-eur-gross_mode,Τιμή,el_GR
+product.filter.price-default-chf-net_mode,Τιμή,el_GR
+product.filter.price-default-chf-gross_mode,Τιμή,el_GR
+product.filter.price,Τιμή,el_GR
+product.filter.merchant_name,Εμπορος,el_GR
+product.filter.label,Επιγραφή,el_GR
+product.filter.category,Κατηγορία,el_GR
+product.detail.out_of_stock,Αυτό το προϊόν δεν είναι διαθέσιμο αυτή την στιγμή.,el_GR
+product.attribute.white_balance,ισορροπία του λευκού χρώματος,el_GR
+product.attribute.waterproof_up_to,Αδιάβροχο μέχρι,el_GR
+product.attribute.waterproof,Αδιάβροχο,el_GR
+product.attribute.voice_recording,Εγγραφή φωνής,el_GR
+product.attribute.video_recording_modes,Λειτουργίες εγγραφής βίντεο,el_GR
+product.attribute.video,βίντεο,el_GR
+product.attribute.variant_id,ταυτότητα,el_GR
+product.attribute.variant.reset,Επαναφορά,el_GR
+product.attribute.usb_version,Έκδοση USB,el_GR
+product.attribute.usb_port,θύρα USB,el_GR
+product.attribute.touchscreen,Οθόνη αφής,el_GR
+product.attribute.touch_technology,Τεχνολογία αφής,el_GR
+product.attribute.total_megapixels,Συνολικά megapixel,el_GR
+product.attribute.thermal_design_power,Ισχύς θερμικής σχεδίασης,el_GR
+product.attribute.themes,Θέματα,el_GR
+product.attribute.storage,Αποθήκευση,el_GR
+product.attribute.slug,γυμνοσάλιαγκας,el_GR
+product.attribute.sku,Σκι,el_GR
+product.attribute.shutter,Παραθυρόφυλλο,el_GR
+product.attribute.short_description,Σύντομη περιγραφή,el_GR
+product.attribute.screen,Οθόνη,el_GR
+product.attribute.product_stock.name,Πωλητής,el_GR
+product.attribute.product_id,Αναγνωριστικό προϊόντος,el_GR
+product.attribute.processor_boost_frequency,Επεξεργαστής,el_GR
+product.attribute.processor,Επεξεργαστής,el_GR
+product.attribute.memory,Μνήμη,el_GR
+product.attribute.manufacturer_name,Μάρκα,el_GR
+product.attribute.long_description,μεγάλη περιγραφή,el_GR
+product.attribute.license,Αδεια,el_GR
+product.attribute.lens_system,Σύστημα φακού,el_GR
+product.attribute.iso_en,Iso,el_GR
+product.attribute.image_small,Εικόνα μικρό,el_GR
+product.attribute.image_quality,Ποιότητα εικόνας,el_GR
+product.attribute.image_big,Εικόνα μεγάλο,el_GR
+product.attribute.graphics,Γραφικά,el_GR
+product.attribute.gps,Gps,el_GR
+product.attribute.focus,Συγκεντρώνω,el_GR
+product.attribute.display,Απεικόνιση,el_GR
+product.attribute.design,Σχέδιο,el_GR
+product.attribute.description,Περιγραφή,el_GR
+product.attribute.camera,ΦΩΤΟΓΡΑΦΙΚΗ ΜΗΧΑΝΗ,el_GR
+product.attribute.battery,Μπαταρία,el_GR
+product.attribute._none,Επιλέξτε μια τιμή,el_GR
+product.access.denied,"Λυπούμαστε, αυτό το προϊόν δεν είναι διαθέσιμο.",el_GR
+product-cart.validation.error.product-option-value-price-exists,Η τιμή επιλογής προϊόντος δεν βρέθηκε για το προϊόν '%sku%'.,el_GR
+product-cart.validation.error.concrete-product-inactive,"Το προϊόν """" SKU """" δεν είναι ενεργό.",el_GR
+product-cart.validation.error.concrete-product-exists,"Προϊόν """" sku """" δεν βρέθηκε",el_GR
+product-cart.validation.error.abstract-product-exists,"Προϊόν """" sku """" δεν βρέθηκε",el_GR
+product-cart.info.restricted-product.removed,Το στοιχείο %sku% αφαιρέθηκε από το καλάθι επειδή απενεργοποιήθηκε.,el_GR
+product-cart.info.concrete-product-inactive.removed,Ανενεργό στοιχείο %sku% αφαιρέθηκε από το καλάθι αγορών σας.,el_GR
+price.mode.switch.error,Δεν είναι δυνατή η εναλλαγή της λειτουργίας των τιμών όταν υπάρχουν αντικείμενα στο καλάθι.,el_GR
+price.mode.net_mode,Καθαρές τιμές,el_GR
+price.mode.gross_mode,Ακαθάριστες τιμές,el_GR
+price-cart-connector.info.concrete-product-without-price.removed,Στοιχείο %sku% χωρίς τιμή αφαιρέθηκε από το καλάθι αγορών σας.,el_GR
+place_order.pre_check.product_discontinued,"Προϊόν '%name%' διακόπτεται, παρακαλώ επιλέξτε μια εναλλακτική λύση",el_GR
+personal.address.heading,Προσωπικά δεδομένα,el_GR
+persistent_cart.quote.remove.success,Καλάθι διαγράφηκε με επιτυχία,el_GR
+persistent_cart.quote.remove.can_not_remove_last_cart,Ο πελάτης θα πρέπει να έχει τουλάχιστον ένα καλάθι,el_GR
+persistent_cart.error.quote.not_available,Το καλάθι δεν υπάρχει,el_GR
+pdp.price.shopping_points_price,Σημείο αγορών,el_GR
+pdp.price.regular_price,Κανονική τιμή,el_GR
+pdp.price.from,από,el_GR
+pdp.price.benefit_voucher_price,Παροχή συμφωνίας κουπονιών,el_GR
+pdp.price,Τιμή,el_GR
+pdp.include.vat,συμπεριλ. ΔΕΞΑΜΕΝΗ,el_GR
+pdp.include.tax,συμπεριλ. Φόρος,el_GR
+payment.step.api_request.error,"Λυπούμαστε, κάτι πήγε στραβά με την πληρωμή. Παρακαλώ προσπαθήστε ξανά αργότερα!",el_GR
+payment.prepay,Προπληρωμή,el_GR
+payment.paypal,Paypal,el_GR
+payment.payment_provider.nopayment,Νοπάρισμα,el_GR
+payment.payment_provider.my_world,Ο κόσμος μου,el_GR
+payment.payment_provider.adyen,Adyen,el_GR
+payment.payment_method.paid,επί πληρωμή,el_GR
+payment.payment_method.e_voucher_marketer,MyWorld Evoucher (Marketer),el_GR
+payment.payment_method.e_voucher,εκκεντρικός,el_GR
+payment.payment_method.dummy_prepayment,Προπληρωμή,el_GR
+payment.payment_method.cashback,Επιστροφή χρημάτων,el_GR
+payment.payment_method.benefit_vouchers,Παροχή δελτίο,el_GR
+payment.payment_method.adyen_credit_card,Πιστωτική κάρτα,el_GR
+payment.invoice,Τιμολόγιο,el_GR
+payment.dummy-payment.credit-card,Πληρώστε με την ακόλουθη πιστωτική κάρτα:,el_GR
+payment.creditcard,Πιστωτική κάρτα,el_GR
+password.confirm,Επιβεβαιώστε το Passwort,el_GR
+pagination.previous,Προηγούμενος,el_GR
+pagination.next,Επόμενο,el_GR
+page.terms.url,/ en / gtc,el_GR
+page.terms.title,Gtc,el_GR
+page.product.upsell-products,Παρόμοια προϊόντα,el_GR
+page.product.status,Νέος,el_GR
+page.product.similar-products,Μπορεί επίσης να σας αρέσει,el_GR
+page.product.shipping-fee-from,συν τη ναυτιλία από,el_GR
+page.product.seller,Πωλητής,el_GR
+page.product.details.slider_thumbnail,Εικόνα προϊόντος,el_GR
+page.product.details.slider_image,Εικόνα προϊόντος,el_GR
+page.product.details,Λεπτομέριες,el_GR
+page.product.condition,Κατάσταση,el_GR
+page.product.by,με,el_GR
+page.privacy.url,/ en / Απορρήτου,el_GR
+page.privacy.title,Ιδιωτικότητα δεδομένων,el_GR
+page.imprint.url,/ en / αποτύπωμα,el_GR
+page.imprint.title,Αποτύπωμα,el_GR
+page.detail.volume_price.quantity,Ποσότητα,el_GR
+page.detail.volume_price.price,Τιμή,el_GR
+page.detail.dimensions,Μετρήσεις,el_GR
+page.detail.affiliate-product-action,Πηγαίνετε στο κατάστημα,el_GR
+page.detail.add-to-wishlist,Πρόσθεσε στην λίστα επιθυμιών,el_GR
+page.detail.add-to-shopping-list,Προσθήκη στη λίστα αγορών,el_GR
+page.detail.add-to-cart,Προσθήκη στο καλάθι,el_GR
+page.checkout.terms,Δεχόμαστε τους Γενικούς Όρους και Προϋποθέσεις.,el_GR
+page.checkout.summary.sms_code,Κωδικός SMS,el_GR
+page.checkout.summary.shipping,Διεύθυνση αποστολής,el_GR
+page.checkout.summary.products,Προϊόντα,el_GR
+page.checkout.summary.name_on_card,Όνομα στην κάρτα,el_GR
+page.checkout.summary.date_of_birth,Ημερομηνια γεννησης,el_GR
+page.checkout.summary.complete_checkout,Ολοκληρώστε το Checkout,el_GR
+page.checkout.summary.card_type,Τύπος κάρτας,el_GR
+page.checkout.summary.card_number,Αριθμός κάρτας,el_GR
+page.checkout.summary.card_expires,Ημερομηνία λήξης,el_GR
+page.checkout.summary.billing,Διεύθυνση τιμολογίου,el_GR
+page.checkout.summary.accept_terms_and_conditions,Αποδέχομαι τους όρους και τις προϋποθέσεις,el_GR
+page.checkout.shipping.price,Τιμή:,el_GR
+page.checkout.shipping.delivery_time,Ωρα παράδοσης:,el_GR
+page.checkout.shipping.days,μέρες,el_GR
+page.checkout.shipping.day,ημέρα,el_GR
+page.checkout.shipment.shipping_method_heading,Μέθοδος αποστολής,el_GR
+page.checkout.shipment.shipping_address.title,Διεύθυνση παράδοσης,el_GR
+page.checkout.shipment.shipment_group_heading,Αποστολή %current% του %total%,el_GR
+page.checkout.shipment.requested_delivery_date.title,Πότε θέλετε να παραδοθείτε;,el_GR
+page.checkout.shipment.requested_delivery_date.placeholder,Αφήστε το κενό αν θέλετε το ASAP,el_GR
+page.checkout.shipment.requested_delivery_date.label,Ζητήθηκε η ημερομηνία παράδοσης,el_GR
+page.checkout.shipment.next-step,Συνεχίστε τη μέθοδο πληρωμής,el_GR
+page.checkout.shipment.item.quantity,Ποσό,el_GR
+page.checkout.shipment.item.price,Τιμή,el_GR
+page.checkout.shipment.heading,2. Μέθοδος αποστολής,el_GR
+page.checkout.shipment.edit,Επεξεργασία της μεθόδου αποστολής,el_GR
+page.checkout.payment.next-step,Συνεχίστε να ολοκληρώνετε την παραγγελία,el_GR
+page.checkout.payment.heading,3. Μέθοδος πληρωμής,el_GR
+page.checkout.payment.edit,Επεξεργασία μεθόδου πληρωμής,el_GR
+page.checkout.payment.cc_text,"Τα δεδομένα της πιστωτικής κάρτας δεν αποθηκεύονται ή επεξεργάζονται από το MyWorld. Ο MyWorld χρησιμοποιεί Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Ολλανδία, για να επεξεργαστεί τις πληρωμές με πιστωτικές κάρτες. Ο MyWorld έχει αναθέσει το MyWorld International Limited, 3ος όροφος, 40 Bank Street, Λονδίνο E14 5NR, Ηνωμένο Βασίλειο, με την επιχειρησιακή επεξεργασία της διαδικασίας πληρωμής.",el_GR
+page.checkout.payment.3d_secure_text,"Βεβαιωθείτε ότι η πιστωτική κάρτα που καταχωρίσατε έχει επαληθευτεί για το νέο ασφαλές σύστημα 3D. Χωρίς αυτήν την επαλήθευση, η συναλλαγή δεν θα είναι δυνατή, για περισσότερες πληροφορίες, επικοινωνήστε με τον πάροχο πιστωτικών καρτών.",el_GR
+page.checkout.finalize.tos,"Με ένα κλικ στο κουμπί """" Αγοράστε τώρα """" Επιβεβαιώνω τα GTCs.",el_GR
+page.checkout.finalize.heading,4. Ελέγξτε και ολοκληρώστε την παραγγελία,el_GR
+page.checkout.finalize.enter-voucher,Εισαγάγετε τον κωδικό κουπονιού,el_GR
+page.checkout.finalize.buy-now,Αγορασε τωρα,el_GR
+page.checkout.errors,Ελέγξτε την καταχώρησή σας.,el_GR
+page.checkout.create_account,Δημιουργία λογαριασμού πελάτη,el_GR
+page.checkout.client.new,Νέος πελάτης,el_GR
+page.checkout.client.existing,Υπάρχων πελάτης,el_GR
+page.checkout.address.use_selected_address,Χρησιμοποιήστε την επιλεγμένη διεύθυνση,el_GR
+page.checkout.address.shipping-address,Διεύθυνση παράδοσης,el_GR
+page.checkout.address.option_group.customer,Διευθύνσεις πελατών,el_GR
+page.checkout.address.option_group.company_business_unit,Επιχειρηματικές διευθύνσεις,el_GR
+page.checkout.address.next-step,Συνεχίστε στη μέθοδο αποστολής,el_GR
+page.checkout.address.name,Ονομα,el_GR
+page.checkout.address.multi_shipment.title,Ορίστε κάθε προϊόν στη δική του διεύθυνση παράδοσης,el_GR
+page.checkout.address.manage_your_addresses,Διαχειριστείτε τις διευθύνσεις σας,el_GR
+page.checkout.address.heading,1. Διεύθυνση διεύθυνσης,el_GR
+page.checkout.address.edit,Επεξεργασία δεδομένων διεύθυνσης,el_GR
+page.checkout.address.different_delivery_address,Χρησιμοποιήστε μια διαφορετική διεύθυνση παράδοσης,el_GR
+page.checkout.address.different_billing_address,Χρησιμοποιήστε μια διαφορετική διεύθυνση χρέωσης,el_GR
+page.checkout.address.delivery.address_select,Επιλέξτε μια διεύθυνση παράδοσης,el_GR
+page.checkout.address.billing.address_select,Επιλέξτε μια διεύθυνση χρέωσης,el_GR
+page.checkout.address.billing-same-as-shipping,Χτίζοντας το ίδιο με τη ναυτιλία,el_GR
+page.checkout.address.billing-isnt-shipping-address,Διαφορετική διεύθυνση παράδοσης,el_GR
+page.checkout.address.billing-address,διεύθυνση χρέωσης,el_GR
+page.checkout.address.address_select.placeholder,Επιλέξτε μια διεύθυνση,el_GR
+page.checkout.address.address_select.label,Επιλέξτε μια διεύθυνση παράδοσης,el_GR
+page.checkout.address.address-example,Παράδειγμα: </BR> Wayne Manor 1 </BR> 10292 Gotham City </BR> Z.H. Alfred pennyworth,el_GR
+packaging_unit_type.valentines_special.name,Ειδική του Αγίου Βαλεντίνου,el_GR
+packaging_unit_type.ring_500.name,Δαχτυλίδι (500m),el_GR
+packaging_unit_type.palette.name,Παλέτα,el_GR
+packaging_unit_type.pack_mixed.name,Μικτά κουτιά βιδών,el_GR
+packaging_unit_type.pack_500.name,Πακέτο 500,el_GR
+packaging_unit_type.pack_20.name,Πακέτο 20,el_GR
+packaging_unit_type.pack_100.name,Πακέτο 100,el_GR
+packaging_unit_type.item.name,Είδος,el_GR
+packaging_unit_type.giftbox.name,Συσκευασία δώρου,el_GR
+packaging_unit_type.box.name,Κουτί,el_GR
+order_invoice.invoice_template.table.uid,Uid:,el_GR
+order_invoice.invoice_template.table.tax.name,ΔΕΞΑΜΕΝΗ,el_GR
+order_invoice.invoice_template.table.tax.included,Αυτό περιλαμβάνει %tax_rate%% vat net,el_GR
+order_invoice.invoice_template.table.tax,Φορολογικός συντελεστής,el_GR
+order_invoice.invoice_template.table.subtotal,ΜΕΡΙΚΟ ΣΥΝΟΛΟ,el_GR
+order_invoice.invoice_template.table.quantity,Στοιχείο Ποσότητα,el_GR
+order_invoice.invoice_template.table.price,Τιμή,el_GR
+order_invoice.invoice_template.table.payment_reference,Αναφορά πληρωμής,el_GR
+order_invoice.invoice_template.table.order_reference,Ο αριθμός παραγγελίας:,el_GR
+order_invoice.invoice_template.table.order_date,Ημερομηνία παραγγελίας:,el_GR
+order_invoice.invoice_template.table.number,Θέση.,el_GR
+order_invoice.invoice_template.table.net_price,Καθαρή τιμή,el_GR
+order_invoice.invoice_template.table.name,Όνομα άρθρου,el_GR
+order_invoice.invoice_template.table.invoice_date,Ημερομηνία παραγωγής τιμολογίου:,el_GR
+order_invoice.invoice_template.table.gross_price,Ακαθάριστη τιμή,el_GR
+order_invoice.invoice_template.table.grant_total,Το μεγάλο σύνολο:,el_GR
+order_invoice.invoice_template.table.grandtotal,σύνολο,el_GR
+order_invoice.invoice_template.table.discount,Εκπτωση,el_GR
+order_invoice.invoice_template.table.cashback_customer_number,Αριθμός πελάτη Cashback:,el_GR
+order_invoice.invoice_template.table.bottom_text,Παραδίδουμε και εκτελούμε αποκλειστικά υπό τους Γενικούς μας Όρους και Προϋποθέσεις Επιχειρήσεων με τις οποίες είστε εξοικειωμένοι.,el_GR
+order_invoice.invoice_template.reference,Τιμολόγιο NR.,el_GR
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Βερολίνο,el_GR
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Βερολίνο,el_GR
+order_invoice.invoice_template.introduction,Σας χρεώνουμε για τα ακόλουθα αγαθά:,el_GR
+order_invoice.invoice_template.company.name,MWS MyWorld Solutions AG,el_GR
+order_invoice.invoice_template.company.group,Unternehmensgruppe spryker systems gmbh,el_GR
+order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: atu67661657 <br> Handelsregister: fn389134g,el_GR
+order_cancel_widget.order.cancelled,Η παραγγελία ακυρώθηκε με επιτυχία.,el_GR
+order_cancel_widget.cancel_order,Ακύρωση παραγγελίας,el_GR
+oms.state.waiting-for-tracking-number,Σε εξέλιξη,el_GR
+oms.state.validating_refund,Επικύρωση της επιστροφής,el_GR
+oms.state.turnover-creation-failed,Αποστέλλεται,el_GR
+oms.state.turnover-created,Αποστέλλεται,el_GR
+oms.state.turnover-cancelled,Ο κύκλος εργασιών ακυρώθηκε,el_GR
+oms.state.turnover-cancellation-failed,Επιστροφή χρημάτων,el_GR
+oms.state.reserved,Κατοχυρωμένα,el_GR
+oms.state.refunded,Επιστρεπτέος,el_GR
+oms.state.refund_pending_next_try,Εν αναμονή της επιστροφής της επόμενης δοκιμής,el_GR
+oms.state.refund_pending,Επιστροφή χρημάτων,el_GR
+oms.state.refund_failed,Η επιστροφή απέτυχε,el_GR
+oms.state.refund-pending-next-try,Επιστροφή χρημάτων,el_GR
+oms.state.refund-pending,Επιστροφή χρημάτων,el_GR
+oms.state.refund-failed-clarification,Επιστροφή χρημάτων,el_GR
+oms.state.ready_for_refund,Έτοιμη για επιστροφή χρημάτων,el_GR
+oms.state.ready-for-turnover-creation,Αποστέλλεται,el_GR
+oms.state.ready-for-turnover-cancellation,Επιστροφή χρημάτων,el_GR
+oms.state.ready-for-refund,Επιστροφή χρημάτων,el_GR
+oms.state.processing_refund,Επαναφορά επεξεργασίας,el_GR
+oms.state.order-in-processing-email-sent,Σε εξέλιξη,el_GR
+oms.state.order-confirmation-email-sent,Σε εξέλιξη,el_GR
+oms.state.new,Νέος,el_GR
+oms.state.myworld_payment_pending,Πληρωμή MyWorld που εκκρεμεί,el_GR
+oms.state.my_world_refunded,Ο MyWorld επιστρέφεται,el_GR
+oms.state.my_world_refund_failed,Η επιστροφή του MyWorld απέτυχε,el_GR
+oms.state.my_world_refund_due_to_payment_failure,Myworld επιστροφή λόγω αποτυχίας πληρωμής,el_GR
+oms.state.invoice-with-tracking-number-sent,Αποστέλλεται,el_GR
+oms.state.invoice-generated,Τιμολόγιο που δημιουργήθηκε,el_GR
+oms.state.invalid,Ακυρώθηκε,el_GR
+oms.state.failed,Απέτυχε,el_GR
+oms.state.closed,Κλειστό,el_GR
+oms.state.capture-pending-next-try,Σε εξέλιξη,el_GR
+oms.state.capture-pending,-,el_GR
+oms.state.capture-failed-clarification,Σε εξέλιξη,el_GR
+oms.state.capture pending,Σε εξέλιξη,el_GR
+oms.state.cancelled,Ακυρώθηκε,el_GR
+oms.state.cancellation-pending-next-try,Ακύρωση,el_GR
+oms.state.cancellation-pending,Ακύρωση,el_GR
+oms.state.calculating_refund,Υπολογισμός επιστροφής,el_GR
+oms.state.authorization-pending-next-try,Σε εξέλιξη,el_GR
+newsletter.unsubscription.success,Εσείς αποσυνδεθείτε με επιτυχία από το ενημερωτικό δελτίο,el_GR
+newsletter.subscription.success,Έχετε εγγραφεί με επιτυχία στο ενημερωτικό δελτίο,el_GR
+newsletter.subscription.email_format_invalid,Μη έγκυρη μορφή διεύθυνσης ηλεκτρονικού ταχυδρομείου,el_GR
+newsletter.subscription.already_subscribed,Είστε ήδη εγγραφείτε στο ενημερωτικό δελτίο,el_GR
+newsletter.subscribe,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+newsletter.form.subscribe,Εγγραφείτε,el_GR
+navigation.menu.have-a-look,Αξίζει μια ματιά,el_GR
+navigation.menu.categories,Κατηγορία,el_GR
+multi_cart_widget.cart.view_all,Δείτε όλα τα καροτσάκια,el_GR
+multi_cart_widget.cart.updated.success,Το καλάθι ενημερώθηκε με επιτυχία,el_GR
+multi_cart_widget.cart.sub_total,ΜΕΡΙΚΟ ΣΥΝΟΛΟ,el_GR
+multi_cart_widget.cart.status,Κατάσταση,el_GR
+multi_cart_widget.cart.remove.confirm,Είστε βέβαιοι ότι θέλετε να αφαιρέσετε αυτό το καλάθι;,el_GR
+multi_cart_widget.cart.list,Λίστα καλαθιού,el_GR
+multi_cart_widget.cart.items,Αντικείμενα,el_GR
+multi_cart_widget.cart.item,Είδος,el_GR
+multi_cart_widget.cart.default,Ενεργός,el_GR
+multi_cart_widget.cart.created.success,Καλάθι '%quotename%' δημιουργήθηκε με επιτυχία,el_GR
+multi_cart_widget.cart.carts,Καροτσάκια,el_GR
+multi_cart_widget.cart.cart_name,Όνομα καλαθιού,el_GR
+multi_cart_widget.cart.cart,Καροτσάκι,el_GR
+multi_cart_widget.cart.add,Δημιουργία νέου καλαθιού,el_GR
+multi_cart_widget.cart.actions,Ενέργειες,el_GR
+multi_cart_widget.cart.action.view,Δείτε λεπτομέρειες,el_GR
+multi_cart_widget.cart.action.set_default,Ενεργός,el_GR
+multi_cart_widget.cart.action.duplicate,Αντίγραφο,el_GR
+multi_cart_widget.cart.action.delete,Διαγράψτε το καλάθι,el_GR
+multi_cart_widget.cart.action.clear,Καθαρό καλάθι,el_GR
+multi_cart_widget.cart.action.change_name,Αλλαξε όνομα,el_GR
+multi_cart_page.cart_delete_confirmation.warning,Προειδοποίηση,el_GR
+multi_cart_page.cart_delete_confirmation.trying_to_delete,Προσπαθείτε να διαγράψετε το καλάθι,el_GR
+multi_cart_page.cart_delete_confirmation.shared_with,Κοινοποιείται με τους ακόλουθους χρήστες,el_GR
+multi_cart_page.cart_delete_confirmation.from_all_of_them,Θα διαγραφεί από όλους τους,el_GR
+multi_cart_page.cart_delete_confirmation.delete,Διαγράφω,el_GR
+multi_cart_page.cart_delete_confirmation.cancel,Ματαίωση,el_GR
+multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Καροτσάκια,el_GR
+multi_cart_page.cart_clear.success,Το καλάθι διαγράφηκε με επιτυχία,el_GR
+multi_cart.form.quote.name,Όνομα καλαθιού,el_GR
+multi_cart.form.edit_cart_information,Επεξεργασία πληροφοριών καλαθιού,el_GR
+multi_cart.form.edit_cart,Αλλαξε όνομα,el_GR
+multi_cart.form.create_cart,Προσθέστε νέο καλάθι,el_GR
+multi_cart.cart.set_default.success,Το καλάθι '%quote%' έχει ρυθμιστεί με επιτυχία στο ενεργό σας καλάθι.,el_GR
+message.submit_link,Εντάξει!,el_GR
+merchant_profile.terms_and_conditions,όροι και Προϋποθέσεις,el_GR
+merchant_profile.privacy,Ιδιωτικότητα δεδομένων,el_GR
+merchant_profile.phone,Τηλέφωνο,el_GR
+merchant_profile.imprint,Αποτύπωμα,el_GR
+merchant_profile.email,Διεύθυνση ηλεκτρονικού ταχυδρομείου,el_GR
+merchant_profile.delivery_time,Ωρα παράδοσης,el_GR
+merchant_profile.cancellation_policy,Πολιτική ακύρωσης,el_GR
+merchant_profile.address,Διεύθυνση,el_GR
+merchant_product_offer.view_seller,Θέα στον πωλητή,el_GR
+merchant_product_offer.sold_by,Πουλήθηκε από,el_GR
+measurement_units.standard.weight.ustn.name,ΗΠΑ Ton,el_GR
+measurement_units.standard.weight.usou.name,ΗΠΑ ουγκιά,el_GR
+measurement_units.standard.weight.ucwt.name,ΗΠΑ εκατοστά,el_GR
+measurement_units.standard.weight.tone.name,Τόνος,el_GR
+measurement_units.standard.weight.pund.name,Λίβρα,el_GR
+measurement_units.standard.weight.oztr.name,Troy ουγκιά,el_GR
+measurement_units.standard.weight.kilo.name,Κιλό,el_GR
+measurement_units.standard.weight.huwg.name,Εκατόβαρο,el_GR
+measurement_units.standard.weight.gram.name,Γραμμάριο,el_GR
+measurement_units.standard.weight.gbtn.name,Gb ton,el_GR
+measurement_units.standard.weight.gbou.name,Gb ουγκιά,el_GR
+measurement_units.standard.usqa.name,Εμάς quart,el_GR
+measurement_units.standard.uspi.name,Αμερικανική πίντα,el_GR
+measurement_units.standard.usga.name,Αμερικανός γαλόνι,el_GR
+measurement_units.standard.mili.name,Milli λίτρο,el_GR
+measurement_units.standard.miba.name,Εκατομμύριο βαρέλι,el_GR
+measurement_units.standard.litr.name,Λίτρο,el_GR
+measurement_units.standard.length.yard.name,Αυλή,el_GR
+measurement_units.standard.length.mmet.name,Χιλιοστόμετρο,el_GR
+measurement_units.standard.length.mile.name,Μίλι,el_GR
+measurement_units.standard.length.metr.name,Μετρητής,el_GR
+measurement_units.standard.length.kmet.name,Χιλιόμετρο,el_GR
+measurement_units.standard.length.inch.name,Ιντσα,el_GR
+measurement_units.standard.length.foot.name,Πόδι,el_GR
+measurement_units.standard.length.cmet.name,Εκατοστόμετρο,el_GR
+measurement_units.standard.ggeu.name,Ισοδύναμο βενζίνης,el_GR
+measurement_units.standard.gbqa.name,Gb quart,el_GR
+measurement_units.standard.gbpi.name,Gb pint,el_GR
+measurement_units.standard.gbga.name,Gb γαλόνι,el_GR
+measurement_units.standard.dgeu.name,Ισοδύναμο ντίζελ γαλόνι,el_GR
+measurement_units.standard.celi.name,Εκατοστόλιτρο,el_GR
+measurement_units.standard.cbme.name,Κυβικό μέτρο,el_GR
+measurement_units.standard.busl.name,Βατσέλι,el_GR
+measurement_units.standard.bdft.name,Σκάφους,el_GR
+measurement_units.standard.bcuf.name,Δισεκατομμύρια κυβικά πόδια,el_GR
+measurement_units.standard.barl.name,Βαρέλι,el_GR
+measurement_units.standard.area.sqya.name,Τετραγωνική αυλή,el_GR
+measurement_units.standard.area.sqmi.name,Τετραγωνικό μίλι,el_GR
+measurement_units.standard.area.sqki.name,Τετραγωνικό χιλιόμετρο,el_GR
+measurement_units.standard.area.sqin.name,Τετράγωνο ίντσα,el_GR
+measurement_units.standard.area.sqfo.name,Τετραγωνικό πόδι,el_GR
+measurement_units.standard.area.smil.name,Τετράγωνο χιλιοστό,el_GR
+measurement_units.standard.area.smet.name,Τετραγωνικό μέτρο,el_GR
+measurement_units.standard.area.scmt.name,Τετραγωνικό εκατοστό,el_GR
+measurement_units.standard.area.hect.name,Εκτάριο,el_GR
+measurement_units.standard.area.ares.name,Είναι,el_GR
+measurement_units.standard.area.acre.name,Στρέμμα,el_GR
+measurement_units.recommendation.suggestion,Θα θέλατε να προσθέσετε,el_GR
+measurement_units.recommendation.min-violation,Οι ελάχιστες απαιτήσεις ποσότητας για το προϊόν δεν πληρούνται,el_GR
+measurement_units.recommendation.max-violation,Οι μέγιστες απαιτήσεις ποσότητας για το προϊόν δεν πληρούνται,el_GR
+measurement_units.recommendation.between-units-info,Η ποσότητα που έχετε επιλέξει είναι μεταξύ 2 μονάδων βάσης,el_GR
+measurement_units.new-price,Νέα τιμή,el_GR
+measurement_units.item.name,Είδος,el_GR
+mail.trans.shipping_confirmation.title,Η παραγγελία σας είναι στο δρόμο προς εσάς,el_GR
+mail.trans.shipping_confirmation.subtitle,"Θα θέλαμε να σας ενημερώσουμε ότι η παραγγελία σας ή τα μέρη της παραγγελίας σας έχουν αποσταλεί. Σε περίπτωση μερικών παραδόσεων, θα λάβετε μια ξεχωριστή ειδοποίηση για κάθε παράδοση. Μόλις ο πωλητής έχει κάνει το τιμολόγιο διαθέσιμο, θα το βρείτε στον λογαριασμό σας στον πελάτη κάτω από τις παραγγελίες μου.",el_GR
+mail.trans.restore_password.title,Νέος κωδικός πρόσβασης για τον λογαριασμό σας στο Spryker Back Office,el_GR
+mail.trans.restore_password.subtitle,"Κάποιος έχει ζητήσει έναν νέο κωδικό πρόσβασης για το λογαριασμό σας Spryker Back Office. Αν δεν ήταν εσύ, παρακαλώ αγνοήστε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου. Εάν ήταν εσύ, ακολουθήστε τις οδηγίες στο παρακάτω κουμπί",el_GR
+mail.trans.restore_password.change_password,Αλλαξε κωδικό,el_GR
+mail.trans.order_shipped.title,Η παραγγελία σας είναι στο δρόμο της!,el_GR
+mail.trans.order_in_processing.title,Νέα τάξη μόλις τοποθετήθηκε,el_GR
+mail.trans.order_confirmation.title,Ευχαριστούμε για την παραγγελία σας!,el_GR
+mail.trans.order_confirmation.subtitle,"Μόλις το πακέτο σας είναι στο δρόμο σας, θα λάβετε μια ξεχωριστή επιβεβαίωση αποστολής από εμάς μέσω ηλεκτρονικού ταχυδρομείου. Σε περίπτωση μερικών παραδόσεων, θα λάβετε μια ξεχωριστή ειδοποίηση για κάθε παράδοση. Για να δείτε την παραγγελία σας, επισκεφθείτε την ενότητα ""My Borders"" του MyWorld.com.",el_GR
+mail.trans.order.tracking_code,Παρακολούθηση,el_GR
+mail.trans.order.taxes,Φόροι,el_GR
+mail.trans.order.subtotal,Υποστηρικτική συμπεριλ. ΔΕΞΑΜΕΝΗ,el_GR
+mail.trans.order.stock_name,Πουλήθηκε από:,el_GR
+mail.trans.order.shipment_for_number.part2,του,el_GR
+mail.trans.order.shipment_for_number.part1,Αποστολή,el_GR
+mail.trans.order.shipment_costs_total,Αποστολή. ΔΕΞΑΜΕΝΗ,el_GR
+mail.trans.order.requested_delivery_date,Ζητήθηκε η ημερομηνία παράδοσης,el_GR
+mail.trans.order.quantity,Ποσό,el_GR
+mail.trans.order.payment_method,Μέθοδος πληρωμής,el_GR
+mail.trans.order.order_reference,Αριθμός παραγγελίας,el_GR
+mail.trans.order.order_details,Λεπτομέρειες Παραγγελίας,el_GR
+mail.trans.order.order_date,Ημερομηνία παραγγελίας,el_GR
+mail.trans.order.grand_total,Συνολική εντολή συμπεριλαμβανομένου. ΔΕΞΑΜΕΝΗ,el_GR
+mail.trans.order.discounts_total,Εκπτωση,el_GR
+mail.trans.order.delivery_method,Μέθοδος παράδοσης,el_GR
+mail.trans.order.delivery_address.company_data,Δεδομένα εταιρείας:,el_GR
+mail.trans.order.delivery_address,Διεύθυνση παράδοσης,el_GR
+mail.trans.order.billing_address,διεύθυνση χρέωσης,el_GR
+mail.trans.newsletter_unsubscribed.title,Λυπάμαι που σε βλέπω να φεύγεις...,el_GR
+mail.trans.newsletter_unsubscribed.subtitle,Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας έχει καταγραφεί από το ενημερωτικό δελτίο Spryker Shop. Μπορείτε πάντα να διαχειριστείτε τη συνδρομή σας στο προφίλ του πελάτη σας.,el_GR
+mail.trans.newsletter_subscribed.title,Είμαστε ενθουσιασμένοι που έχετε εγγραφεί για το ενημερωτικό μας δελτίο.,el_GR
+mail.trans.newsletter_subscribed.subtitle,Θα κάνουμε το καλύτερο δυνατό για να παραδώσουμε τις πιο σχετικές και συναρπαστικές ειδήσεις και ενημερώσεις.,el_GR
+mail.trans.header.shop_name,Spryker κατάστημα,el_GR
+mail.trans.gift_card_usage.title,Μόλις χρησιμοποιούσατε μια κάρτα δώρων!,el_GR
+mail.trans.gift_card_usage.subtitle,Ο κωδικός κάρτας δώρων σας είναι,el_GR
+mail.trans.gift_card_delivery.title,"Αγαπητέ πελάτη, Σας ευχαριστούμε που αγοράσατε μια κάρτα δώρων στο κατάστημά μας.",el_GR
+mail.trans.gift_card_delivery.subtitle,Ο κωδικός κάρτας δώρων σας είναι,el_GR
+mail.trans.footer.your_team,Η ομάδα MyWorld.com,el_GR
+mail.trans.footer.shopping_experience,Ανυπομονούμε την επόμενη επίσκεψή σας!,el_GR
+mail.trans.footer.shop_zip_code,#VALUE!,el_GR
+mail.trans.footer.shop_phone,#ERROR!,el_GR
+mail.trans.footer.shop_name,Spryker Systems GmbH,el_GR
+mail.trans.footer.shop_city,Βερολίνο,el_GR
+mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,el_GR
+mail.trans.footer.if_you_have_further_questions,"Εάν έχετε περαιτέρω ερωτήσεις, επικοινωνήστε με την υπηρεσία εξυπηρέτησης πελατών σας στο",el_GR
+mail.trans.footer.for_more_information,"Για περισσότερες πληροφορίες σχετικά με το δικαίωμα απόσυρσης και τους όρους και τις προϋποθέσεις, κάντε κλικ στο όνομα του πωλητή στην κορυφή. Έχετε περισσότερες ερωτήσεις; Στη συνέχεια, είστε σίγουροι ότι θα βρείτε τις σωστές απαντήσεις στην περιοχή εξυπηρέτησης.",el_GR
+mail.trans.footer.contact_email_address,info@spryker.com,el_GR
+mail.trans.customer_restored_password_confirmation.title,Ο κωδικός πρόσβασής σας άλλαξε με επιτυχία,el_GR
+mail.trans.customer_restore_password.title,Νέος κωδικός πρόσβασης για το λογαριασμό Spryker Shop,el_GR
+mail.trans.customer_restore_password.subtitle,"Κάποιος έχει ζητήσει έναν νέο κωδικό πρόσβασης για το λογαριασμό Spryker Shop. Αν αυτό δεν ήταν εσύ, παρακαλώ αγνοήστε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου. Εάν ήσασταν, ακολουθήστε τις οδηγίες στο παρακάτω κουμπί.",el_GR
+mail.trans.customer_restore_password.change_password,Αλλαξε κωδικό,el_GR
+mail.trans.customer_registration.title,Σας ευχαριστούμε που εγγραφείτε με το Spryker Shop!,el_GR
+mail.trans.customer_registration.registration_success,Η εγγραφή σας στο Spryker Shop ήταν επιτυχής!,el_GR
+mail.trans.customer_registration.confirmation_link,Επικύρωση της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας,el_GR
+mail.trans.customer_registration.change_info,"Μπορείτε να αλλάξετε τις πληροφορίες σας (Διεύθυνση παράδοσης, διεύθυνση ηλεκτρονικού ταχυδρομείου, κωδικός πρόσβασης κ.λπ.) στο λογαριασμό μου",el_GR
+mail.trans.customerRegistration.confirmationLink,Επικύρωση της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας,el_GR
+mail.trans.company_status.title,Η κατάσταση της εταιρείας σας έχει αλλάξει σε,el_GR
+mail.trans.common.my_account,Ο λογαριασμός μου,el_GR
+mail.trans.common.hello_for_first_name,γεια σας,el_GR
+mail.trans.common.go_to_shop,Πηγαίνετε στο κατάστημα,el_GR
+mail.trans.availability_notification_unsubscribed.title.part2,ακυρώθηκε,el_GR
+mail.trans.availability_notification_unsubscribed.title.part1,Η συνδρομή σας στο,el_GR
+mail.trans.availability_notification_unsubscribed.subtitle,Δεν θα ειδοποιηθείτε όταν το προϊόν είναι και πάλι διαθέσιμο.,el_GR
+mail.trans.availability_notification_subscription.title,Μόλις ενημερώσαμε την ομάδα αγοράς μας για τη συνδρομή σας!,el_GR
+mail.trans.availability_notification_subscription.subtitle,Θα λάβετε ένα μήνυμα ηλεκτρονικού ταχυδρομείου όταν το προϊόν είναι διαθέσιμο ξανά.,el_GR
+mail.trans.availability_notification.title.part2,είναι διαθέσιμη ξανά!,el_GR
+mail.trans.availability_notification.subtitle,Η αναμονή τελείωσε! Προσθέστε αυτό το προϊόν στο καλάθι σας τώρα.,el_GR
+mail.shipping.confirmation.subject,Η παραγγελία myworld.com %idorder% έχει σταλεί,el_GR
+mail.sender.name,Spryker no-απάντηση,el_GR
+mail.sender.email,noreply@demo-spryker.com,el_GR
+mail.order_invoice.subject,Τιμολόγιο για τη σειρά myworld.com %idorder%,el_GR
+mail.order.shipped.text,Η παραγγελία σας είναι ήδη στο δρόμο της.,el_GR
+mail.order.shipped.subject,Η παραγγελία σας %orderReference% είναι στο δρόμο του,el_GR
+mail.order.shipped.salutation,γεια σας,el_GR
+mail.order.shipped.price_including_tax,Συνολική τιμή συμπεριλαμβανομένων των φόρων,el_GR
+mail.order.shipped.order_number,Αριθμός παραγγελίας,el_GR
+mail.order.shipped.footer.text_line_2,Το κατάστημα spryker σας,el_GR
+mail.order.shipped.footer.text_line_1,Να έχεις μια υπέροχη μέρα!,el_GR
+mail.order.shipped.details,Λεπτομέρειες σχετικά με την παραγγελία σας,el_GR
+mail.order.shipped.date,Ημερομηνία παραγγελίας,el_GR
+mail.order.in-processing.subject,Νέα τάξη μόλις τοποθετήθηκε,el_GR
+mail.order.confirmation.text_line_3,"Ελπίζουμε να σας αρέσει η παραγγελία σας. Σε περίπτωση που αλλάξετε γνώμη, μπορείτε να επιστρέψετε εντός 14 ημερών.",el_GR
+mail.order.confirmation.text_line_2,Γράφουμε για να σας ενημερώσουμε ότι έχουμε την παραγγελία σας. Θα λάβετε μια αποστολή επιβεβαίωση μέσω ηλεκτρονικού ταχυδρομείου από εμάς μόλις αποσταλεί η παραγγελία.,el_GR
+mail.order.confirmation.text_line_1,Σας ευχαριστούμε για τα ψώνια στο Spryker Shop!,el_GR
+mail.order.confirmation.subject,Το myworld.com παραγγείλετε %idorder%,el_GR
+mail.order.confirmation.shipping_method,Μέθοδος αποστολής,el_GR
+mail.order.confirmation.shipping_address,Διεύθυνση παράδοσης,el_GR
+mail.order.confirmation.shipment_number,Αριθμός αποστολής,el_GR
+mail.order.confirmation.shipment_details,Λεπτομέρειες αποστολής,el_GR
+mail.order.confirmation.salutation,γεια σας,el_GR
+mail.order.confirmation.products_in_shipment,Προϊόντα με αποστολή,el_GR
+mail.order.confirmation.product_title,Τίτλος προϊόντος,el_GR
+mail.order.confirmation.price_including_tax,Συνολική τιμή συμπεριλαμβανομένων των φόρων,el_GR
+mail.order.confirmation.order_number,Αριθμός παραγγελίας,el_GR
+mail.order.confirmation.item_sku,Artikel sku,el_GR
+mail.order.confirmation.item_quantity,Ποσότητα στοιχείου,el_GR
+mail.order.confirmation.item_price_including_tax,"Συνολική τιμή του στοιχείου, συμπεριλαμβανομένων των φόρων",el_GR
+mail.order.confirmation.footer.text_line_2,Το κατάστημα spryker σας,el_GR
+mail.order.confirmation.footer.text_line_1,Να έχεις μια υπέροχη μέρα!,el_GR
+mail.order.confirmation.details,Λεπτομέρειες σχετικά με την παραγγελία σας,el_GR
+mail.order.confirmation.delivery_date,Ζητήθηκε η ημερομηνία παράδοσης,el_GR
+mail.order.confirmation.date,Ημερομηνία παραγγελίας,el_GR
+mail.order.confirmation.billing_address,Διεύθυνση χρέωσης,el_GR
+mail.newsletter.unsubscribed.text,"Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας έχει καταγραφεί από το ενημερωτικό δελτίο Spryker Shop, αλλά μπορείτε πάντα να διαχειρίζεστε τη συνδρομή σας στο προφίλ του πελάτη σας.",el_GR
+mail.newsletter.unsubscribed.subject,Λυπάμαι που σε βλέπω να φεύγεις…,el_GR
+mail.newsletter.subscribed.text,Είμαστε ενθουσιασμένοι που έχετε εγγραφεί για το νέο μας. Θα κάνουμε το καλύτερο δυνατό για να σας παραδώσουμε τα πιο συναφείς και συναρπαστικές ειδήσεις και ενημερώσεις.,el_GR
+mail.newsletter.subscribed.subject,Καλώς ήλθατε στο Newsletter Spryker,el_GR
+mail.newsletter.subscribed.footer.text,Ανυπομονούμε την επόμενη επίσκεψή σας!,el_GR
+mail.giftCard.usage.subject,Σας ευχαριστούμε για τη χρήση μιας κάρτας δώρων!,el_GR
+mail.giftCard.delivery.text,"Αγαπητέ πελάτη, σας ευχαριστώ που αγοράζετε μια κάρτα δώρων στο κατάστημά μας. Ο κωδικός κάρτας δώρων σας είναι:",el_GR
+mail.giftCard.delivery.subject,Η κάρτα δώρων σας!,el_GR
+mail.customer.restore_password_confirmation.text,Ο κωδικός πρόσβασής σας άλλαξε με επιτυχία!,el_GR
+mail.customer.restore_password_confirmation.subject,Ο κωδικός πρόσβασής σας άλλαξε με επιτυχία!,el_GR
+mail.customer.restore_password.text,"""Κάποιος έχει ζητήσει έναν νέο κωδικό πρόσβασης για τον λογαριασμό Spryker Shop. Αν δεν είστε εσείς, απλά αγνοήστε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου. Αν είστε εσείς, ακολουθήστε τον σύνδεσμο Bellow:""",el_GR
+mail.customer.restore_password.subject,Νέος κωδικός πρόσβασης για το λογαριασμό Spryker Shop,el_GR
+mail.customer.registration.text,Σας ευχαριστούμε που εγγραφείτε με το Spryker Shop!,el_GR
+mail.customer.registration.subject,Σας ευχαριστούμε που εγγραφείτε με το Spryker Shop!,el_GR
+mail.company.user.invitation.subject,Πρόσκληση,el_GR
+mail.company.user.invitation.body.text,"Hi %name%, έχετε κληθεί να συμμετάσχετε σε έναν λογαριασμό εταιρείας στο κατάστημα spryker demo, ακολουθήστε αυτόν τον σύνδεσμο %invitationlink% για να ολοκληρώσετε την εγγραφή σας",el_GR
+mail.company.user.invitation.body.html,"Hi %name%, έχετε καλέσει να συμμετάσχετε σε έναν λογαριασμό εταιρείας στο spryker demo-hop, παρακαλώ ακολουθήστε αυτό το <a href=""%invitationlink%""> link </ a > Για να ολοκληρώσετε την εγγραφή σας",el_GR
+mail.company.status.text,Η εταιρεία σας έχει αλλάξει την κατάσταση σε:,el_GR
+mail.company.status.subject,Η εταιρεία σας έχει αλλάξει την κατάσταση,el_GR
+mail.company.status.pending,Αναμονή για έγκριση,el_GR
+mail.company.status.denied,Αρνήσιος,el_GR
+mail.company.status.approved,Εγκεκριμένος,el_GR
+jumbotron.tablets.link,/ en / Υπολογιστές / δισκία,el_GR
+jumbotron.smartphones.link,/ EN / TELECOM - & - Πλοήγηση / Smartphones,el_GR
+jumbotron.smart_watches.link,/ en / smart-wearables / smartwatches,el_GR
+item,Είδος,el_GR
+invoice.order.tax_amount,Συμπεριλ. ΔΕΞΑΜΕΝΗ,el_GR
+invoice.order.number,Παρατηρήστε την αναφορά,el_GR
+invoice.order.item.sku,Σκι,el_GR
+invoice.order.item.quantity,ΠΟΣΟΤΗΤΑ,el_GR
+invoice.order.item.product_name,ΟΝΟΜΑΣΙΑ ΠΡΟΪΟΝΤΟΣ,el_GR
+invoice.order.item.price_total,Συνολικό στοιχείο,el_GR
+invoice.order.item.price,ΤΙΜΗ ΠΡΟΙΟΝΤΟΣ,el_GR
+invoice.order.grand_total,ΣΥΝΟΛΟ,el_GR
+invoice.order.expenses.total,Εξοδα αποστολής,el_GR
+invoice.order.address.shipping,Διεύθυνση αποστολής,el_GR
+invoice.order.address.billing,Διεύθυνση χρέωσης,el_GR
+invoice.header,Τιμολόγιο,el_GR
+invoice.customer.number,Αναφορά πελάτη,el_GR
+invoice.created.at,Την ημερομηνία του τιμολογίου,el_GR
+invoice.company.contact.information,#ERROR!,el_GR
+invoice.company.bank.information,Όνομα τράπεζας <br/> IBAN 1234 5678 9123 4567 89 <br/> BIC 12345678 <br/> Handelsregister ABC123456 <br /> Steuernummer 12/345/6789,el_GR
+invoice.company.address,Spryker Systems GmbH <br/> Julie-WolfThorn-Straße 1 <br /> 10115 Βερολίνο / Γερμανία,el_GR
+homepage.carousel.previous,Προηγούμενος,el_GR
+homepage.carousel.next,Επόμενο,el_GR
+global.spryker.shop,myworld.com,el_GR
+global.spryker.motto,Τεχνολογία με ποιότητα,el_GR
+global.social,Μεσα ΚΟΙΝΩΝΙΚΗΣ ΔΙΚΤΥΩΣΗΣ,el_GR
+global.shipment_providers,Εμπορικοί πάροχοι αποστολής,el_GR
+global.search.suggestions,Προτάσεις αναζήτησης,el_GR
+global.search.suggestion.see_all_products,Δείτε όλα τα προϊόντα,el_GR
+global.search.suggestion.no_result,Δεν βρέθηκε τίποτα…,el_GR
+global.search.suggestion.in_products,Προϊόντα,el_GR
+global.search.suggestion.in_cms,Σελίδες,el_GR
+global.search.suggestion.in_categories,Κατηγορία,el_GR
+global.search.spellingSuggestion,Εννοείς,el_GR
+global.search.results.view,Θέα,el_GR
+global.search.results,Αποτελέσματα αναζήτησης,el_GR
+global.search.pages,Σελίδες,el_GR
+global.search,Αναζήτηση,el_GR
+global.register,Κάνε εγγραφή τώρα,el_GR
+global.recover.password,Ανάκτηση κωδικού πρόσβασης,el_GR
+global.quantity_symbol,Χ,el_GR
+global.permission.failed,Αυτή η ενέργεια απαγορεύεται,el_GR
+global.payment_providers,Πάροχοι πληρωμών,el_GR
+global.password,Κωδικός πρόσβασης,el_GR
+global.partners,Συνεργάτες,el_GR
+global.order.descendent,Z-a,el_GR
+global.order.ascendent,A-z,el_GR
+global.no_image_available,Μη διαθέσιμη εικόνα,el_GR
+global.newsletter,Ενημερωτικό δελτίο,el_GR
+global.login,Σύνδεση,el_GR
+global.home,Σπίτι,el_GR
+global.header.services,Υπηρεσίες MyWorld,el_GR
+global.header.categories,Όλες οι κατηγορίες,el_GR
+global.get_in_touch,Ερχομαι σε επαφή,el_GR
+global.email.address,Διεύθυνση ηλεκτρονικού ταχυδρομείου,el_GR
+global.create.account,Δημιουργήστε λογαριασμό,el_GR
+global.company,Εταιρία,el_GR
+global.close,Κλείσε,el_GR
+global.categories,Όλες οι κατηγορίες,el_GR
+global.cashback,Επιστροφή χρημάτων,el_GR
+global.cart,Καροτσάκι,el_GR
+global.button.more,Περισσότερο,el_GR
+global.button.less,Πιο λιγο,el_GR
+global.benefit.warranty,3 χρόνια εγγύηση,el_GR
+global.benefit.free_returns,Δωρεάν επιστροφές,el_GR
+global.benefit.competitive_prices,ΑΝΤΑΓΩΝΙΣΤΙΚΕΣ ΤΙΜΕΣ,el_GR
+global.back_homepage,Επιστροφή στην αρχική σελίδα,el_GR
+global.add-to-cart,Προσθήκη στο καλάθι,el_GR
+global.accept.terms.and.conditions,Αποδεχτείτε τους όρους και τις προϋποθέσεις,el_GR
+general.next.button,Επόμενο,el_GR
+general.edit.button,Επεξεργασία,el_GR
+general.cancel.button,Ματαίωση,el_GR
+general.back.button,Πίσω,el_GR
+gdpr.privacy_policy,Πολιτική απορρήτου,el_GR
+gdpr.message,"Χρησιμοποιούμε cookies στην ιστοσελίδα μας για να κάνουμε τις υπηρεσίες μας πιο αποτελεσματική και πιο φιλική προς το χρήστη. Επομένως, επιλέξτε ""Αποδοχή cookies""! Διαβάστε το %link% για περισσότερες πληροφορίες.",el_GR
+gdpr.accept_cookies,Αποδεχτείτε τα cookies,el_GR
+forms.submit.register,Κανω ΕΓΓΡΑΦΗ,el_GR
+forms.submit.login,Σύνδεση,el_GR
+forms.submit-btn,υποβάλλουν,el_GR
+forms.save-btn,Αποθηκεύσετε,el_GR
+forms.password,Κωδικός πρόσβασης,el_GR
+forms.last-name,Επίθετο,el_GR
+forms.forgot-password,Ξεχάσατε τον κωδικό,el_GR
+forms.first-name,Ονομα,el_GR
+forms.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+forms.confirm-password,Επιβεβαίωση Κωδικού,el_GR
+forms.accept_terms,Αποδεχτείτε τους όρους,el_GR
+form.csrf.error.text,Κάτι πήγε στραβά. Συγνώμη.,el_GR
+footer_subscribe.subscription_text,Εγγραφείτε και παραμείνετε πάντα ενημερωμένοι,el_GR
+footer_subscribe.subscription_placeholder,Προσθήκη ηλεκτρονικού ταχυδρομείου,el_GR
+footer.youtube.url,https://www.youtube.com/channel/uccdwfbarbzg98deud_-l_uq?sub_confirmation=1,el_GR
+footer.twitter.url,https://twitter.com/myworld_uk,el_GR
+footer.providers__title,Αποστολή και πληρωμή,el_GR
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,el_GR
+footer.official_partner,Επίσημος συνεργάτης,el_GR
+footer.navigation_title.propositions,Κερδίστε χρήματα με το MyWorld,el_GR
+footer.navigation_title.legal_information,Νομικές πληροφορίες,el_GR
+footer.navigation_title.information,Πληροφορίες,el_GR
+footer.navigation_title.customer_service,Εξυπηρέτηση πελατών,el_GR
+footer.logo.url,/,el_GR
+footer.logo.text,Χτισμένο με,el_GR
+footer.logo.link.privacy,/ en / Απορρήτου,el_GR
+footer.logo.link.imprint,/ en / αποτύπωμα,el_GR
+footer.instagram.url,https://www.instagram.com/myworld.global/,el_GR
+footer.follow,Ακολουθησε μας,el_GR
+footer.facebook.url,https://www.facebook.com/myWorldGreece.Shopping,el_GR
+footer.facebook.url,https://www.facebook.com/myWorld.Italia,it_IT
+footer.facebook.url,https://www.facebook.com/myWorld.France,fr_FR
+error_page.title,Η σελίδα δεν βρέθηκε.,el_GR
+error_page.text,Δεν μπορούσαμε να βρούμε τη σελίδα που ψάχνετε.,el_GR
+error_page.home_link,ΠΗΓΑΙΝΕ ΣΤΗΝ ΑΡΧΙΚΗ ΣΕΛΙΔΑ,el_GR
+error.429,Πάρα πολλά αιτήματα,el_GR
+error.404_description,Αυτή η σελίδα δεν μπορεί να βρεθεί. Παρακαλώ επιστρέψτε,el_GR
+error.404,"Συγνώμη, κάτι πήγε στραβά",el_GR
+email.orderEmail.salutationMale,Κύριος.,el_GR
+email.orderEmail.salutationFemale,Κα / mrs.,el_GR
+dummyPrepayment.prepaymentbank-info,MWS MyWorld Solutions AG: <br/> Unicredit Τράπεζα Αυστρία <br/> IBAN: AT19 1200 0529 5900 6605 <br/> BIC: BKAUATWW,el_GR
+dummyPaymentInvoice.invoice,Πληρώστε με το τιμολόγιο:,el_GR
+dummyPaymentInvoice.date_of_birth,Ημερομηνια γεννησης,el_GR
+dummyPaymentCreditCard.name_on_card,Όνομα στην κάρτα,el_GR
+dummyPaymentCreditCard.hidden_numbers,*********,el_GR
+dummyPaymentCreditCard.card_type,Τύπος κάρτας,el_GR
+dummyPaymentCreditCard.card_security_code,Cvc,el_GR
+dummyPaymentCreditCard.card_number,Αριθμός κάρτας,el_GR
+dummyPaymentCreditCard.card_expires,Ημερομηνία λήξης,el_GR
+discount.voucher_code.usage_limit.reached,Το όριο χρήσης κώδικα κουπονιού έφτασε,el_GR
+discount.successfully.applied,"Η έκπτωση """" display_name """" έχει εφαρμοστεί με επιτυχία",el_GR
+discount.quote_change.does_not_apply_for_currency,"Το κουπόνι ""%code%"" απενεργοποιήθηκε επειδή δεν ισχύει για αυτό το νόμισμα.",el_GR
+discount.quote_change.discount.not_available,Οι εκπτώσεις που έχετε επιλέξει για τα ακόλουθα στοιχεία Skus δεν είναι πλέον διαθέσιμα,el_GR
+discount.quote_change.discount.amount_changed,Οι εκπτώσεις που επιλέξατε για τα ακόλουθα στοιχεία Skus έχουν αλλάξει,el_GR
+discount.internal.shopping_points,Σημεία αγορών,el_GR
+customer.token.invalid,Το διακριτικό είναι άκυρο,el_GR
+customer.table.actions,Ενέργειες,el_GR
+customer.signup,Νέος πελάτης?,el_GR
+customer.signin,Συνδεθείτε,el_GR
+customer.salutation.ms,Κυρία.,el_GR
+customer.salutation.mrs,Κυρία.,el_GR
+customer.salutation.mr,Κύριος.,el_GR
+customer.salutation.dr,Δρ,el_GR
+customer.reset.password.error.already.loggedIn,Ένας άλλος πελάτης που έχει ήδη συνδεθεί. Παρακαλώ αποσυνδεθείτε για να επαναφέρετε τον κωδικό πρόσβασής σας.,el_GR
+customer.registration.title,Δημιουργήστε λογαριασμό,el_GR
+customer.register,Κανω ΕΓΓΡΑΦΗ,el_GR
+customer.profile.update,Ανανέωση προφίλ,el_GR
+customer.profile.title,Ο λογαριασμός μου,el_GR
+customer.profile.request.new_password,Νέος Κωδικός,el_GR
+customer.profile.phone,Τηλέφωνο,el_GR
+customer.profile.order_history,Τελευταίες παραγγελίες,el_GR
+customer.profile.order_details.giftcard.label,Δωροκάρτα,el_GR
+customer.profile.order_details,Λεπτομέρειες Παραγγελίας,el_GR
+customer.profile.old_password,ΠΑΛΙΟΣ ΚΩΔΙΚΟΣ,el_GR
+customer.profile.link,Το ΠΡΟΦΙΛ μου,el_GR
+customer.profile.last_name,Επίθετο,el_GR
+customer.profile.first_name,Ονομα,el_GR
+customer.profile.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+customer.profile.delete.description,Αυτό θα διαγράψει όλες τις πληροφορίες λογαριασμού.,el_GR
+customer.profile.delete.confirmation_question,Είστε βέβαιοι ότι θέλετε να διαγράψετε το λογαριασμό σας;,el_GR
+customer.profile.delete,Διαγραφή λογαριασμού,el_GR
+customer.profile.confirm.new_password,Επιβεβαιώστε τον καινούριο σας κωδικό,el_GR
+customer.profile.change.success,Το προφίλ αποθηκεύτηκε με επιτυχία,el_GR
+customer.profile.address.edit,Επεξεργασία,el_GR
+customer.profile.address.delete,Διαγράφω,el_GR
+customer.profile,Ο λογαριασμός μου,el_GR
+customer.phone,Αριθμός τηλεφώνου,el_GR
+customer.password.update,Άλλαξε κωδικό,el_GR
+customer.password.restore,Ορίστε έναν νέο κωδικό πρόσβασης,el_GR
+customer.password.request.new_password,Νέος Κωδικός,el_GR
+customer.password.recovery.mail.sent,"Εάν υπάρχει ένας λογαριασμός που σχετίζεται με αυτή τη διεύθυνση ηλεκτρονικού ταχυδρομείου, θα λάβετε ένα μήνυμα ηλεκτρονικού ταχυδρομείου με περαιτέρω οδηγίες",el_GR
+customer.password.old_password,ΠΑΛΙΟΣ ΚΩΔΙΚΟΣ,el_GR
+customer.password.invalid_password,Ο τρέχων κωδικός πρόσβασης είναι λάθος,el_GR
+customer.password.invalid,Ο κωδικός είναι μη έγκυρος,el_GR
+customer.password.confirm.new_password,Επιβεβαίωση Κωδικού,el_GR
+customer.password.changed,Ο κωδικός πρόσβασής σας άλλαξε με επιτυχία,el_GR
+customer.password.change.success,Αλλαγή κωδικού πρόσβασης επιτυχής,el_GR
+customer.password,Κωδικός πρόσβασης,el_GR
+customer.order.view_order,Προβολή σειράς,el_GR
+customer.order.view_all,Προβολή όλων,el_GR
+customer.order.total,Σύνολο,el_GR
+customer.order.taxTotal,Φόρος,el_GR
+customer.order.subTotal,ΜΕΡΙΚΟ ΣΥΝΟΛΟ,el_GR
+customer.order.shipping_address,Διεύθυνση αποστολής,el_GR
+customer.order.shipment_method,Αποστολή,el_GR
+customer.order.shipment,Αποστολή,el_GR
+customer.order.requested_delivery_date,Ζητήθηκε η ημερομηνία παράδοσης,el_GR
+customer.order.reorder_selected,Αναδιάταξη επιλεγμένων στοιχείων,el_GR
+customer.order.reorder_all,Αναδιατάξεις όλα,el_GR
+customer.order.reorder.error.unable_to_reorder_items,"Δεν μπορείτε να αναδιατυπώσετε αυτά τα προϊόντα απευθείας, παρακαλώ προσθέστε τα στο καλάθι σας ξεχωριστά",el_GR
+customer.order.reorder,Παραγγέλλω πάλι,el_GR
+customer.order.remunerationTotal,Σύνολο αμοιβών,el_GR
+customer.order.refundTotal,Συνολική επιστροφή χρημάτων,el_GR
+customer.order.products,Προϊόντα,el_GR
+customer.order.product_name,Ονομασία προϊόντος,el_GR
+customer.order.priceToPay,Αθροισμα,el_GR
+customer.order.payment_method,Μέθοδος πληρωμής,el_GR
+customer.order.payment,Πληρωμή,el_GR
+customer.order.order_id,Αριθμός Παραγγελίας,el_GR
+customer.order.options,Επιλογές προϊόντων:,el_GR
+customer.order.items_state,Στοιχεία κατάσταση,el_GR
+customer.order.item_sum,Συνολικό στοιχείο,el_GR
+customer.order.item_sku,Σκι,el_GR
+customer.order.item_quantity,Ποσότητα,el_GR
+customer.order.item_price,Τιμή συμπεριλαμβάνω. ΔΕΞΑΜΕΝΗ,el_GR
+customer.order.grandTotal,Σύνολο,el_GR
+customer.order.expenseTotal,Κόστος αποστολής (σύνολο),el_GR
+customer.order.discount.total,Εκπτωση,el_GR
+customer.order.delivery_method,Μέθοδος παράδοσης,el_GR
+customer.order.delivery_address,Διεύθυνση παράδοσης,el_GR
+customer.order.date,Ημερομηνία παραγγελίας,el_GR
+customer.order.complete_checkout,Ολοκληρώστε το Checkout,el_GR
+customer.order.canceledTotal,Ακυρωμένο ποσό,el_GR
+customer.order.bundled_items,Στοιχεία στη δέσμη:,el_GR
+customer.order.billing_address,Διεύθυνση χρέωσης,el_GR
+customer.order.all_orders,Προβολή παραγγελιών,el_GR
+customer.newsletter.subscription_agreement,Συμφωνώ με τη συνδρομή του Newsletter,el_GR
+customer.newsletter.subscription,Ρυθμίσεις ενημερωτικού δελτίου,el_GR
+customer.newsletter.subscribed,Ενημερωτικό δελτίο εγγραφής,el_GR
+customer.newsletter.not_subscribed,Δεν υπάρχει συνδρομή ενημερωτικού δελτίου,el_GR
+customer.logout,Αποσύνδεση,el_GR
+customer.login.title,Αποκτήστε πρόσβαση στο λογαριασμό σας,el_GR
+customer.login.password,Κωδικός πρόσβασης,el_GR
+customer.login.failed,Η σύνδεση απέτυχε,el_GR
+customer.login.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+customer.login,Σύνδεση,el_GR
+customer.last_name,Επίθετο,el_GR
+customer.forgotten_password.email,Διεύθυνση ηλεκτρονικού ταχυδρομείου,el_GR
+customer.forgotten-password.title,Ανακτήστε τον κωδικό μου,el_GR
+customer.forgotten-password.description,Εισαγάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου που σχετίζεται με το λογαριασμό σας.,el_GR
+customer.first_name,Ονομα,el_GR
+customer.error.confirm_email_link.invalid_or_used,Αυτός ο σύνδεσμος επαλήθευσης ηλεκτρονικού ταχυδρομείου δεν είναι έγκυρος ή έχει ήδη χρησιμοποιηθεί.,el_GR
+customer.email.invalid,Η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι έγκυρη,el_GR
+customer.email.format.invalid,Μη έγκυρη μορφή διεύθυνσης ηλεκτρονικού ταχυδρομείου,el_GR
+customer.email.already.used,Το μήνυμα ηλεκτρονικού ταχυδρομείου που έχει ήδη χρησιμοποιηθεί,el_GR
+customer.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+customer.customer_id,ταυτότητα,el_GR
+customer.birth_date,Ημερομηνία γέννησης (DD.MM.YYYY),el_GR
+customer.billingSameAsShipping,Διεύθυνση χρέωσης ίδια με τη διεύθυνση αποστολής,el_GR
+customer.balance.my_world_shopping_points_account,Σημεία αγορών,el_GR
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,MyWorld Evoucher (Marketer),el_GR
+customer.balance.my_world_e_voucher,εκκεντρικός,el_GR
+customer.balance.my_world_cashback_account,Επιστροφή χρημάτων,el_GR
+customer.balance.my_world_benefit_voucher_account,Παροχή δελτίο,el_GR
+customer.balance.into,Εχεις:,el_GR
+customer.authorization.validate_email_address,Σχεδόν έτοιμο! Σας στέλνουμε ένα μήνυμα ηλεκτρονικού ταχυδρομείου για να επικυρώσετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας. Επιβεβαιώστε ότι μπορείτε να συνδεθείτε.,el_GR
+customer.authorization.success,Σχεδόν έτοιμο! Σας στέλνουμε ένα μήνυμα ηλεκτρονικού ταχυδρομείου για να επικυρώσετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας. Επιβεβαιώστε ότι μπορείτε να συνδεθείτε.,el_GR
+customer.authorization.invalid_account,Πρέπει πρώτα να επικυρώσετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας πριν μπορέσετε να συνδεθείτε,el_GR
+customer.authorization.account_confirmed,Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας επικυρώνεται. Παρακαλώ συνδεθείτε για να συνεχίσετε.,el_GR
+customer.authentication.succeeded,Η σύνδεση ήταν επιτυχής,el_GR
+customer.authentication.failed,Η ταυτοποίηση απέτυχε,el_GR
+customer.anonymization.success,Ο λογαριασμός σας έχει διαγραφεί με επιτυχία,el_GR
+customer.anonymization.failed,Ο λογαριασμός σας δεν μπορούσε να διαγραφεί,el_GR
+customer.address.zip_code,ΤΑΧΥΔΡΟΜΙΚΟΣ ΚΩΔΙΚΟΣ,el_GR
+customer.address.vat_number,Αριθμός ΦΠΑ,el_GR
+customer.address.updated,Η διεύθυνση ενημερώθηκε με επιτυχία,el_GR
+customer.address.state,κατάσταση,el_GR
+customer.address.save_new_address,Αποθηκεύστε νέα διεύθυνση στο βιβλίο διευθύνσεων,el_GR
+customer.address.placeholder.optional,Προαιρετικός,el_GR
+customer.address.phone,"Αριθμός τηλεφώνου (για πιθανές ερωτήσεις σχετικά με την παράδοση, συμπεριλαμβανομένου του προθέματος χώρας ex. +44)",el_GR
+customer.address.number,Τον αριθμό του σπιτιού,el_GR
+customer.address.last_name,Επίθετο,el_GR
+customer.address.is_default_shipping,Είναι προεπιλεγμένη διεύθυνση αποστολής,el_GR
+customer.address.is_default_billing,Είναι προεπιλεγμένη διεύθυνση χρέωσης,el_GR
+customer.address.first_name,Ονομα,el_GR
+customer.address.delete.success,Η διεύθυνση διαγράφηκε με επιτυχία,el_GR
+customer.address.delete.failed,Η διεύθυνση δεν μπορούσε να διαγραφεί,el_GR
+customer.address.country,Χώρα,el_GR
+customer.address.company,Ονομα εταιρείας,el_GR
+customer.address.city,Πόλη,el_GR
+customer.address.address4,Περισσότερες επιπλέον πληροφορίες αποστολής,el_GR
+customer.address.address3,Επιπλέον πληροφορίες,el_GR
+customer.address.address2,Τον αριθμό του σπιτιού,el_GR
+customer.address.address1,Δρόμος,el_GR
+customer.address.added,Η διεύθυνση προστέθηκε με επιτυχία,el_GR
+customer.account.wishlist.view-in-shop,Θέα,el_GR
+customer.account.wishlist.updated,Η λίστα επιθυμιών ενημερώθηκε με επιτυχία,el_GR
+customer.account.wishlist.remove,Αφαιρώ,el_GR
+customer.account.wishlist.product-not-available,Αυτό το προϊόν δεν είναι διαθέσιμο προς το παρόν.,el_GR
+customer.account.wishlist.product,Προϊόν,el_GR
+customer.account.wishlist.price,Τιμή,el_GR
+customer.account.wishlist.overview.variant,Παραλαγή,el_GR
+customer.account.wishlist.overview.title,Διαχειριστείτε τις λίστες επιθυμιών,el_GR
+customer.account.wishlist.overview.sku,Σκι,el_GR
+customer.account.wishlist.overview.price,Τιμή,el_GR
+customer.account.wishlist.overview.name,Ονομα,el_GR
+customer.account.wishlist.overview.item_count,# αντικειμένων,el_GR
+customer.account.wishlist.overview.enter_name,Εισαγάγετε το όνομα εδώ,el_GR
+customer.account.wishlist.overview.empty,Δεν έχετε ακόμη λίστες ακόμα.,el_GR
+customer.account.wishlist.overview.edit,Επεξεργασία,el_GR
+customer.account.wishlist.overview.delete,Διαγράφω,el_GR
+customer.account.wishlist.overview.date,Ημερομηνία δημιουργίας,el_GR
+customer.account.wishlist.overview.add_new,Προσθέστε νέα λίστα επιθυμιών,el_GR
+customer.account.wishlist.not_available,Προσωρινά μη διαθέσιμο,el_GR
+customer.account.wishlist.item.removed,Το προϊόν αφαιρείται με επιτυχία.,el_GR
+customer.account.wishlist.item.not_added,Αποτυχία προσθήκης προϊόντος στη λίστα επιθυμιών.,el_GR
+customer.account.wishlist.item.moved_to_cart.failed,Το στοιχείο δεν μετακομίστηκε στο καλάθι.,el_GR
+customer.account.wishlist.item.moved_to_cart,Το στοιχείο μετακόμισε στο καλάθι με επιτυχία.,el_GR
+customer.account.wishlist.item.moved_all_available_to_cart.failed,Όχι όλα τα στοιχεία μετακινούνται στο καλάθι με επιτυχία,el_GR
+customer.account.wishlist.item.moved_all_available_to_cart,Τα διαθέσιμα στοιχεία μεταφέρθηκαν με επιτυχία στο καλάθι.,el_GR
+customer.account.wishlist.empty,"Επί του παρόντος, δεν υπάρχουν στοιχεία στη λίστα επιθυμιών σας.",el_GR
+customer.account.wishlist.deleted,Η λίστα επιθυμιών διαγράφηκε με επιτυχία.,el_GR
+customer.account.wishlist.created,Wishlist Δημιουργήθηκε με επιτυχία.,el_GR
+customer.account.wishlist.continue-shopping,Συνεχίστε τις αγορές,el_GR
+customer.account.wishlist.available,Διαθέσιμος,el_GR
+customer.account.wishlist.availability,Διαθεσιμότητα,el_GR
+customer.account.wishlist.add_all_available_to_cart,Προσθέστε όλα τα διαθέσιμα προϊόντα στο καλάθι,el_GR
+customer.account.wishlist.add-to-cart,Προσθήκη στο καλάθι,el_GR
+customer.account.wishlist,Λίστα επιθυμιών,el_GR
+customer.account.shopping_points_and_cashback,Σημεία αγορών και επιστροφή,el_GR
+customer.account.shopping_list.updated,Η λίστα αγορών ενημερώθηκε με επιτυχία,el_GR
+customer.account.shopping_list.share.share_shopping_list_successful,Η ανταλλαγή λίστα αγορών ήταν επιτυχής,el_GR
+customer.account.shopping_list.share.share_shopping_list_fail,Αυτή η λίστα αγορών έχει μοιραστεί πριν από αυτή την οντότητα,el_GR
+customer.account.shopping_list.share.select_permission,Επιλέξτε Επίπεδο πρόσβασης,el_GR
+customer.account.shopping_list.share.select_company_user,Επιλέξτε Πελάτη,el_GR
+customer.account.shopping_list.share.select_company_business_unit,Επιλέξτε επιχειρηματική μονάδα,el_GR
+customer.account.shopping_list.share.from.share_with,Μοιραστείτε λίστα αγορών με:,el_GR
+customer.account.shopping_list.share.from.share,Μερίδιο,el_GR
+customer.account.shopping_list.share.error.one_id_required,Επιλέξτε οποιαδήποτε μονάδα πελάτη ή επιχείρησης για να μοιραστείτε τη λίστα αγορών με,el_GR
+customer.account.shopping_list.remove,Αφαιρώ,el_GR
+customer.account.shopping_list.quantity,Ποσότητα,el_GR
+customer.account.shopping_list.product,Προϊόν,el_GR
+customer.account.shopping_list.print_shopping_list,Εκτύπωση λίστα αγορών,el_GR
+customer.account.shopping_list.price,Τιμή,el_GR
+customer.account.shopping_list.overview.view,Θέα,el_GR
+customer.account.shopping_list.overview.variant,Παραλαγή,el_GR
+customer.account.shopping_list.overview.title,Διαχειριστείτε λίστες αγορών,el_GR
+customer.account.shopping_list.overview.shared_with,Μοιρασμένο με,el_GR
+customer.account.shopping_list.overview.share,Μερίδιο,el_GR
+customer.account.shopping_list.overview.print,Τυπώνω,el_GR
+customer.account.shopping_list.overview.owner,Χρήστης που δημιούργησε λίστα,el_GR
+customer.account.shopping_list.overview.name,Όνομα λίστας,el_GR
+customer.account.shopping_list.overview.modified_date,Ημερομηνία τελευταίας ενημέρωσης,el_GR
+customer.account.shopping_list.overview.item_count,Αριθμός αντικειμένων,el_GR
+customer.account.shopping_list.overview.form.new,Δημιουργήστε νέα λίστα αγορών,el_GR
+customer.account.shopping_list.overview.enter_name,Εισαγάγετε το όνομα εδώ,el_GR
+customer.account.shopping_list.overview.empty,Δεν έχετε ακόμα λίστα αγορών.,el_GR
+customer.account.shopping_list.overview.edit,Μετονομάζω,el_GR
+customer.account.shopping_list.overview.dismiss,Απολύω,el_GR
+customer.account.shopping_list.overview.delete,Διαγράφω,el_GR
+customer.account.shopping_list.overview.created_date,Ημερομηνία Δημιουργίας,el_GR
+customer.account.shopping_list.overview.create.success,Η λίστα αγορών έχει δημιουργηθεί με επιτυχία.,el_GR
+customer.account.shopping_list.overview.add_shopping_list_to_cart,Προσθέστε επιλεγμένες λίστες αγορών στο καλάθι,el_GR
+customer.account.shopping_list.overview.add_new,Προσθέστε νέα λίστα αγορών,el_GR
+customer.account.shopping_list.overview.actions,Ενέργειες,el_GR
+customer.account.shopping_list.not_available,Προσωρινά μη διαθέσιμο,el_GR
+customer.account.shopping_list.items.added_to_cart.select_list,Πρέπει να επιλεγεί τουλάχιστον μία λίστα αγορών.,el_GR
+customer.account.shopping_list.items.added_to_cart.not_found,Δεν υπάρχουν διαθέσιμα προϊόντα για την προσθήκη στο καλάθι.,el_GR
+customer.account.shopping_list.items.added_to_cart.failed,Τα αντικείμενα δεν προστέθηκαν στο καλάθι.,el_GR
+customer.account.shopping_list.items.added_to_cart,Στοιχεία που προστέθηκαν στο καλάθι με επιτυχία.,el_GR
+customer.account.shopping_list.item.select_item,Πρέπει να επιλεγεί τουλάχιστον ένα προϊόν.,el_GR
+customer.account.shopping_list.item.remove.success,Το προϊόν αφαιρείται με επιτυχία.,el_GR
+customer.account.shopping_list.item.remove.failed,Το προϊόν δεν καταργήθηκε από τη λίστα αγορών.,el_GR
+customer.account.shopping_list.item.not_added,Αποτυχία προσθήκης προϊόντος στη λίστα αγορών.,el_GR
+customer.account.shopping_list.item.added_to_cart.failed,Το στοιχείο δεν προστέθηκε στο καλάθι.,el_GR
+customer.account.shopping_list.item.added_to_cart,Το στοιχείο προστέθηκε στο καλάθι με επιτυχία.,el_GR
+customer.account.shopping_list.item.added_all_available_to_cart.failed,Δεν προστίθενται όλα τα στοιχεία στο καλάθι με επιτυχία,el_GR
+customer.account.shopping_list.item.added_all_available_to_cart,Διαθέσιμα στοιχεία που προστέθηκαν στο καλάθι με επιτυχία.,el_GR
+customer.account.shopping_list.item.add.success,Στοιχείο %sku% προστέθηκε στη λίστα.,el_GR
+customer.account.shopping_list.item.add.failed,Το στοιχείο %sku% δεν μπορούσε να προστεθεί στη λίστα.,el_GR
+customer.account.shopping_list.error.duplicate_name,Υπάρχει ήδη μια λίστα αγορών με το ίδιο όνομα.,el_GR
+customer.account.shopping_list.error.cannot_update,Δεν είναι δυνατή η ενημέρωση της λίστας αγορών.,el_GR
+customer.account.shopping_list.empty,"Επί του παρόντος, δεν υπάρχουν στοιχεία στη λίστα αγορών σας.",el_GR
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Προσπαθείτε να διαγράψετε τη λίστα αγορών <a href=""""%link%""> %name% </a>",el_GR
+customer.account.shopping_list.delete.warning,Προειδοποίηση,el_GR
+customer.account.shopping_list.delete.success,Η λίστα αγορών διαγράφηκε με επιτυχία.,el_GR
+customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,Θα διαγραφεί από όλους τους,el_GR
+customer.account.shopping_list.delete.it_belongs_to_follow,Ανήκει να ακολουθήσει,el_GR
+customer.account.shopping_list.delete.failed,Η λίστα αγορών δεν διαγράφηκε.,el_GR
+customer.account.shopping_list.create.success,"Λίστα ""%name%"" δημιουργήθηκε με επιτυχία.",el_GR
+customer.account.shopping_list.create.failed,Η δημιουργία λίστας αγορών απέτυχε.,el_GR
+customer.account.shopping_list.clear.success,Ο κατάλογος αγορών εκκαθαρίστηκε επιτυχώς.,el_GR
+customer.account.shopping_list.available,Διαθέσιμος,el_GR
+customer.account.shopping_list.availability,Διαθεσιμότητα,el_GR
+customer.account.shopping_list.add_selected_items_to_cart,Προσθέστε τα επιλεγμένα στοιχεία στο καλάθι,el_GR
+customer.account.shopping_list.add_item.success,Το στοιχείο έχει προστεθεί στη λίστα αγορών.,el_GR
+customer.account.shopping_list.add_all_available_to_cart,Προσθέστε όλα τα διαθέσιμα προϊόντα στο καλάθι,el_GR
+customer.account.shopping_list.add-to-cart,Προσθήκη στο καλάθι,el_GR
+customer.account.shopping_list.access.read_only,Μόνο για ανάγνωση,el_GR
+customer.account.shopping_list.access.full_access,Πλήρης πρόσβαση,el_GR
+customer.account.shopping_list.access,Πρόσβαση,el_GR
+customer.account.shopping_list,Λίστες αγορών,el_GR
+customer.account.profile_data,Προφίλ,el_GR
+customer.account.print_shopping_list.title.shopping_list_name,Όνομα λίστας αγορών,el_GR
+customer.account.print_shopping_list.title.shopping_list_id,Αναγνωριστικό λίστας αγορών,el_GR
+customer.account.print_shopping_list.table.product_sku,Προϊόν SKU,el_GR
+customer.account.print_shopping_list.table.product_name,Ονομασία προϊόντος,el_GR
+customer.account.print_shopping_list.table.note,Σημείωση,el_GR
+customer.account.print_shopping_list.table.default_price,Προεπιλεγμένη τιμή,el_GR
+customer.account.print_shopping_list.table.barcode,Γραμμωτός κώδικας,el_GR
+customer.account.please_specify_shipping_address,Προσδιορίστε τη διεύθυνση αποστολής,el_GR
+customer.account.please_specify_billing_address,Προσδιορίστε τη διεύθυνση χρέωσης,el_GR
+customer.account.overview,ΣΦΑΙΡΙΚΗ ΕΙΚΟΝΑ,el_GR
+customer.account.order_history,Ιστορικό παραγγελιών,el_GR
+customer.account.no_orders,Δεν υπάρχουν παραγγελίες αυτή τη στιγμή,el_GR
+customer.account.no_order,Δεν υπάρχουν παραγγελίες αυτή τη στιγμή,el_GR
+customer.account.newsletter,Ενημερωτικό δελτίο,el_GR
+customer.account.last_orders,Τελευταίες παραγγελίες,el_GR
+customer.account.edit_address_information,Επεξεργασία πληροφοριών διεύθυνσης,el_GR
+customer.account.deliver_to_multiple_addresses,Παραδώστε σε πολλές διευθύνσεις,el_GR
+customer.account.default_shipping_address,Προεπιλεγμένη διεύθυνση αποστολής,el_GR
+customer.account.default_billing_address,Προεπιλεγμένη διεύθυνση χρέωσης,el_GR
+customer.account.contact,Επικοινωνία,el_GR
+customer.account.button.add_new_address,Προσθήκη νέας διεύθυνσης,el_GR
+customer.account.available.shopping.point.amount,Διαθέσιμο ποσό αγορών,el_GR
+customer.account.available.cashback.amount,Διαθέσιμο ποσό Cashback,el_GR
+customer.account.available.benefit.voucher.amount,Διαθέσιμο ποσό δελφορίου,el_GR
+customer.account.address,Διευθύνσεις,el_GR
+customer.account.additional_addresses,Πρόσθετες διευθύνσεις,el_GR
+customer.account.add_new_address,Καθορίστε τη νέα διεύθυνση,el_GR
+customer.account,Λογαριασμός πελάτη,el_GR
+customer.access.cannot_see_price,Παρακαλώ συνδεθείτε για να δείτε την τιμή,el_GR
+countries.iso.SK,Σλοβακία,el_GR
+countries.iso.SI,Σλοβενία,el_GR
+countries.iso.SE,Σουηδία,el_GR
+countries.iso.RO,Ρουμανία,el_GR
+countries.iso.PT,Πορτογαλία,el_GR
+countries.iso.PL,Πολωνία,el_GR
+countries.iso.NO,Νορβηγία,el_GR
+countries.iso.NL,Ολλανδία,el_GR
+countries.iso.MT,Μάλτα,el_GR
+countries.iso.MC,Μονακό,el_GR
+countries.iso.LV,Λετονία,el_GR
+countries.iso.LU,Λουξεμβούργο,el_GR
+countries.iso.LT,Λιθουανία,el_GR
+countries.iso.IT,Ιταλία,el_GR
+countries.iso.IM,Νήσος του ανθρώπου,el_GR
+countries.iso.IE,Ιρλανδία,el_GR
+countries.iso.HU,Ουγγαρία,el_GR
+countries.iso.HR,Κροατία,el_GR
+countries.iso.GR,Ελλάδα,el_GR
+countries.iso.GB,Ηνωμένο Βασίλειο,el_GR
+countries.iso.FR,Γαλλία,el_GR
+countries.iso.FI,Φινλανδία,el_GR
+countries.iso.ES,Ισπανία,el_GR
+countries.iso.EE,Εσθονία,el_GR
+countries.iso.DK,Δανία,el_GR
+countries.iso.DE,Γερμανία,el_GR
+countries.iso.CZ,Τσεχική Δημοκρατία,el_GR
+countries.iso.CY,Κύπρος,el_GR
+countries.iso.CH,Ελβετία,el_GR
+countries.iso.BG,Βουλγαρία,el_GR
+countries.iso.BE,Βέλγιο,el_GR
+countries.iso.AT,Αυστρία,el_GR
+configured_bundle_widget.multiplier,Χ,el_GR
+configured_bundle_widget.items,Αντικείμενα,el_GR
+configured_bundle_widget.configured_bundle.updated,Η ρυθμισμένη δέσμη ενημερώθηκε με επιτυχία.,el_GR
+configured_bundle_widget.configured_bundle.removed,Η διαμορφωμένη δέσμη αφαιρείται με επιτυχία.,el_GR
+configured_bundle_note_widget.remove_note,Αφαιρώ,el_GR
+configured_bundle_note_widget.edit_note,Επεξεργασία,el_GR
+configured_bundle_cart.error.configured_bundle_not_found,Διαμορφωμένη δέσμη με παρεχόμενη SKU που δεν βρίσκεται στο καλάθι.,el_GR
+configured_bundle_cart.error.configured_bundle_cannot_be_updated,Η ρυθμισμένη δέσμη δεν μπορεί να ενημερωθεί.,el_GR
+configured_bundle_cart.error.configured_bundle_cannot_be_removed,Η διαμορφωμένη δέσμη δεν μπορεί να αφαιρεθεί από το καλάθι.,el_GR
+configured_bundle_cart.error.configured_bundle_cannot_be_added,Η διαμορφωμένη δέσμη δεν μπορεί να προστεθεί στο καλάθι.,el_GR
+configured_bundle.total,Στοιχείο Σύνολο:,el_GR
+configured_bundle.remove,Αφαιρώ,el_GR
+configured_bundle.quantity,Ποσότητα:,el_GR
+configured_bundle.price,Τιμη προιοντος:,el_GR
+configured_bundle.order.items,Στοιχεία στη δέσμη:,el_GR
+configured_bundle.item_sku,Sku:,el_GR
+configured_bundle.bundle_total,Σύνολο δέσμης:,el_GR
+configurable_bundle_page.unselect,Μη επιλέγω,el_GR
+configurable_bundle_page.template_not_found,Το πρότυπο ρύθμισης δέσμης δεν βρέθηκε.,el_GR
+configurable_bundle_page.select,Επιλέγω,el_GR
+configurable_bundle_page.invalid_template_slot_combination,Μη έγκυρο συνδυασμό προτύπου / υποδοχής.,el_GR
+configurable_bundle_page.edit,Επεξεργασία,el_GR
+configurable_bundle_page.configurator.tip.text,"Για να δημιουργήσετε τη δέσμη, επιλέξτε την υποδοχή από την αριστερή πλευρά και επιλέξτε το προϊόν από τη λίστα.",el_GR
+configurable_bundle_page.configurator.tip.header,Δημιουργήστε τη δική σας δέσμη.,el_GR
+configurable_bundle_page.configurator.templates_not_found,Δεν υπάρχουν διαθέσιμα πρότυπα.,el_GR
+configurable_bundle_page.configurator.summary_page_total,Σύνολο,el_GR
+configurable_bundle_page.configurator.summary_page_locked,Το προϊόν για τουλάχιστον μία υποδοχή πρέπει να διαμορφωθεί για να επισκεφθεί η σύνοψη.,el_GR
+configurable_bundle_page.configurator.summary,Περίληψη,el_GR
+configurable_bundle_page.configurator.slot_page.back_link,Επιστροφή στις δέσμες,el_GR
+configurable_bundle_page.configurator.slot_became_unavailable,"Διαμορφωμένη υποδοχή με id '%id%', δεν ήταν διαθέσιμη.",el_GR
+configurable_bundle_page.configurator.sku,Sku:,el_GR
+configurable_bundle_page.configurator.selected_product,Επιλεγμένο προϊόν,el_GR
+configurable_bundle_page.configurator.product_became_unavailable,Προϊόν με sku '%sku%' διαμορφωμένο για υποδοχή με id '%id%' δεν είναι διαθέσιμο.,el_GR
+configurable_bundle_page.configurator.added_to_cart,Διαμορφωμένη δέσμη με επιτυχία προστέθηκε στο καλάθι.,el_GR
+configurable_bundle_page.configurator.add_to_cart,Προσθήκη στο καλάθι,el_GR
+configurable_bundle_page.configurator,Διαμορφωτής,el_GR
+configurable_bundle_page.configurable_bundle_list,Ρυθμιζόμενη λίστα πακέτων,el_GR
+configurable_bundle_page.choose_bundle_to_configure,Επιλέξτε δέσμη για να διαμορφώσετε,el_GR
+configurable_bundle_note.note_added,Σημείωση έχει προστεθεί με επιτυχία στη διαμορφωμένη δέσμη,el_GR
+configurable_bundle_note.note,Διαμορφωμένη δέσμη Σημείωση:,el_GR
+configurable_bundle_note.form.save,Αποθηκεύσετε,el_GR
+configurable_bundle_note.enter_note,Προσθέστε μια σημείωση για τη διαμορφωμένη δέσμη,el_GR
+configurable_bundle.templates.smartstation.name,Κιτ smartstation,el_GR
+configurable_bundle.templates.configurable-bundle-all-in.name,Ολα μέσα,el_GR
+configurable_bundle.template_slots.slot-6.name,Υποδοχή 6,el_GR
+configurable_bundle.template_slots.slot-5.name,Κουλοχέρη 5,el_GR
+configurable_bundle.template_slots.slot-4.name,Υποδοχή 4,el_GR
+configurable_bundle.template_slots.slot-3.name,Υποδοχή 3,el_GR
+configurable_bundle.template_slots.slot-2.name,Υποδοχή 2,el_GR
+configurable_bundle.template_slots.slot-1.name,Υποδοχή 1,el_GR
+configurable_bundle.template.validation.error.not_exists,Το ρυθμιζόμενο πρότυπο δέσμης δεν υπάρχει.,el_GR
+configurable_bundle.template.validation.error.already_deactivated,Το ρυθμιζόμενο πρότυπο δέσμης είναι ήδη απενεργοποιημένο.,el_GR
+configurable_bundle.template.validation.error.already_activated,Το ρυθμιζόμενο πρότυπο δέσμης είναι ήδη ενεργοποιημένο.,el_GR
+configurable_bundle.slot.validation.error.not_exists,Η ρυθμιζόμενη υποδοχή προτύπου δέσμης δεν υπάρχει.,el_GR
+company_user.remember_choice,Θυμηθείτε την επιλογή,el_GR
+company_user.no_company,Καμία εταιρεία,el_GR
+company_user.change_company_user,Αλλαγή χρήστη της εταιρείας,el_GR
+company_user.business_on_behalf.error.company_user_invalid,"Δεν μπορείτε να επιλέξετε αυτόν τον χρήστη της εταιρείας, δεν είναι έγκυρη.",el_GR
+company_user.business_on_behalf.error.company_not_active,"Δεν μπορείτε να επιλέξετε αυτόν τον χρήστη της εταιρείας, η εταιρεία δεν είναι ενεργή.",el_GR
+company_page.company_user_restricted_message,Οι τακτικοί πελάτες δεν επιτρέπεται να λειτουργούν σε εταιρικές σελίδες,el_GR
+company_page.company_business_unit_restricted_message,Δεν έχετε δικαιώματα για να εκτελέσετε αυτή τη λειτουργία,el_GR
+company.user.salutation.ms,Κυρία.,el_GR
+company.user.salutation.mrs,Κυρία.,el_GR
+company.user.salutation.mr,Κύριος.,el_GR
+company.user.salutation.dr,Δρ,el_GR
+company.user.last_name,Επίθετο,el_GR
+company.user.invitation.title.plural,Προσκλήσεις,el_GR
+company.user.invitation.status.pending,εκκρεμής,el_GR
+company.user.invitation.status.new,Δεν εστάλη,el_GR
+company.user.invitation.status.accepted,Αποδεκτό,el_GR
+company.user.invitation.status,Κατάσταση,el_GR
+company.user.invitation.sent.success.message,Πρόσκληση που αποστέλλεται με επιτυχία,el_GR
+company.user.invitation.sent.error.message,Η πρόσκληση δεν στάλθηκε,el_GR
+company.user.invitation.sent.all.success.message,Όλες οι προσκλήσεις έστειλαν επιτυχώς,el_GR
+company.user.invitation.sent.all.none.found.message,Δεν υπάρχουν προσκλήσεις για την αποστολή που βρέθηκαν,el_GR
+company.user.invitation.sent.all.error.message,Ορισμένες προσκλήσεις απέτυχαν να σταλούν,el_GR
+company.user.invitation.send.button,Στείλετε,el_GR
+company.user.invitation.send.all.button,Στείλε τα όλα,el_GR
+company.user.invitation.resent.success.message,Πρόσκληση με επιτυχία,el_GR
+company.user.invitation.resent.error.message,Η πρόσκληση δεν ήταν ανυπόμονος,el_GR
+company.user.invitation.resend.title,Ξαναστέλνω πρόσκληση,el_GR
+company.user.invitation.resend.confirmation.question,Είστε βέβαιοι ότι θέλετε να στείλετε ξανά την πρόσκληση;,el_GR
+company.user.invitation.resend.button,Ξαναβλέπω,el_GR
+company.user.invitation.not.found.message,Πρόσκληση που δεν βρέθηκε,el_GR
+company.user.invitation.mail,Ταχυδρομείο,el_GR
+company.user.invitation.last.name,Επίθετο,el_GR
+company.user.invitation.invite_users,Προσκαλέστε τους χρήστες,el_GR
+company.user.invitation.invalid,Η πρόσκλησή σας δεν είναι έγκυρη,el_GR
+company.user.invitation.imported.title.plural,Εισαγόμενες προσκλήσεις,el_GR
+company.user.invitation.import.title,Εισαγωγή νέων προσκλήσεων,el_GR
+company.user.invitation.import.file.invalid,Το αρχείο εισαγωγής δεν είναι έγκυρο,el_GR
+company.user.invitation.import.error.message,Η εισαγωγή προσκλήσεων απέτυχε,el_GR
+company.user.invitation.import.download.errors.file,"Ορισμένες προσκλήσεις απέτυχαν να εισαχθούν. Κάντε κλικ στο <a href=""""%link%""""> εδώ </a> για να κατεβάσετε το αρχείο σφαλμάτων",el_GR
+company.user.invitation.first.name,Ονομα,el_GR
+company.user.invitation.file,Αρχείο προσκλήσεων,el_GR
+company.user.invitation.expired,Η πρόσκλησή σας έχει λήξει,el_GR
+company.user.invitation.deleted.success.message,Η πρόσκληση διαγράφηκε με επιτυχία,el_GR
+company.user.invitation.deleted.error.message,Η πρόσκληση δεν διαγράφηκε,el_GR
+company.user.invitation.delete.title,Διαγραφή πρόσκλησης,el_GR
+company.user.invitation.delete.confirmation.question,Είστε βέβαιοι ότι θέλετε να διαγράψετε την πρόσκληση;,el_GR
+company.user.invitation.delete.button,Διαγράφω,el_GR
+company.user.invitation.business.unit,Επιχειρηματική μονάδα,el_GR
+company.user.invitation.actions,Ενέργειες,el_GR
+company.user.invitation.accepted,Η πρόσκλησή σας έχει ήδη χρησιμοποιηθεί,el_GR
+company.user.first_name,Ονομα,el_GR
+company.company_role.delete.error.has_users,Δεν μπορείτε να διαγράψετε ένα ρόλο ενώ περιέχει χρήστες,el_GR
+company.company_business_unit.delete.error.has_users,Δεν μπορείτε να διαγράψετε μια επιχειρηματική μονάδα ενώ περιέχει χρήστες,el_GR
+company.address.heading,Εταιρεία,el_GR
+company.account.table.actions,Ενέργειες,el_GR
+company.account.shipping_address,Προεπιλεγμένη διεύθυνση αποστολής,el_GR
+company.account.registration.title,Δημιουργήστε λογαριασμό,el_GR
+company.account.page-title,Η εταιρεία μου,el_GR
+company.account.overview,ΣΦΑΙΡΙΚΗ ΕΙΚΟΝΑ,el_GR
+company.account.name,Όνομα εταιρείας,el_GR
+company.account.login.title,Αποκτήστε πρόσβαση στο λογαριασμό σας,el_GR
+company.account.login.password,Κωδικός πρόσβασης,el_GR
+company.account.login.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+company.account.edit_address_information,Επεξεργασία πληροφοριών διεύθυνσης,el_GR
+company.account.company_user.status.enable.success,Ο χρήστης της εταιρείας ενεργοποιήθηκε με επιτυχία,el_GR
+company.account.company_user.status.enable.error.cannot_enable_yourself,Δεν επιτρέπεται να ενεργοποιήσετε τον εαυτό σας,el_GR
+company.account.company_user.status.enable.error,Ο χρήστης της εταιρείας δεν μπορεί να ενεργοποιηθεί,el_GR
+company.account.company_user.status.disable.success,Ο χρήστης της εταιρείας απενεργοποιήθηκε με επιτυχία,el_GR
+company.account.company_user.status.disable.error.cannot_disable_yourself,Δεν επιτρέπεται να απενεργοποιήσετε τον εαυτό σας,el_GR
+company.account.company_user.status.disable.error,Ο χρήστης της εταιρείας δεν μπορεί να απενεργοποιηθεί,el_GR
+company.account.company_user.role,Ρόλος,el_GR
+company.account.company_user.name,Ονομα,el_GR
+company.account.company_user.enable,επιτρέπω,el_GR
+company.account.company_user.edit_information,Επεξεργασία πληροφοριών χρήστη,el_GR
+company.account.company_user.edit,Επεξεργασία,el_GR
+company.account.company_user.disable,Καθιστώ ανίκανο,el_GR
+company.account.company_user.delete.successful,Ο χρήστης έχει διαγραφεί,el_GR
+company.account.company_user.delete.back,Πίσω,el_GR
+company.account.company_user.delete,Διαγράφω,el_GR
+company.account.company_user.business_unit,Επιχειρηματική μονάδα,el_GR
+company.account.company_user.add,Προσθέστε νέο χρήστη,el_GR
+company.account.company_user,Χρήστες,el_GR
+company.account.company_role.view,Θέα,el_GR
+company.account.company_role.users,Χρήστες,el_GR
+company.account.company_role.user.manage,Διαχείριση των χρηστών της εταιρείας,el_GR
+company.account.company_role.permissions,Δικαιώματα,el_GR
+company.account.company_role.permission.unassigned,Ξεριζώμενος,el_GR
+company.account.company_role.permission.unassign,Ξελαβή,el_GR
+company.account.company_role.permission.status,Κατάσταση,el_GR
+company.account.company_role.permission.manage,Διαχείριση δικαιωμάτων,el_GR
+company.account.company_role.permission.key,Κλειδί,el_GR
+company.account.company_role.permission.configure,Διαμορφώστε,el_GR
+company.account.company_role.permission.assigned,Ανατεθεί,el_GR
+company.account.company_role.permission.assign,Αναθέτω,el_GR
+company.account.company_role.name,Ονομα,el_GR
+company.account.company_role.is_default,Είναι προεπιλογή,el_GR
+company.account.company_role.edit_information,Επεξεργασία πληροφοριών ρόλων,el_GR
+company.account.company_role.edit,Επεξεργασία,el_GR
+company.account.company_role.details,Λεπτομέριες,el_GR
+company.account.company_role.default,Προκαθορισμένο,el_GR
+company.account.company_role.add,Προσθέστε νέο ρόλο,el_GR
+company.account.company_role,Ρόλοι,el_GR
+company.account.company_name,Ονομα εταιρείας,el_GR
+company.account.business_unit.view,Θέα,el_GR
+company.account.business_unit.phone,Αριθμός τηλεφώνου,el_GR
+company.account.business_unit.name,Ονομα,el_GR
+company.account.business_unit.external_url,Εξωτερική διεύθυνση URL,el_GR
+company.account.business_unit.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+company.account.business_unit.edit_information,Επεξεργασία,el_GR
+company.account.business_unit.edit,Επεξεργασία,el_GR
+company.account.business_unit.details,Λεπτομέριες,el_GR
+company.account.business_unit.delete.confirmation.warning,Προειδοποίηση,el_GR
+company.account.business_unit.delete,Διαγράφω,el_GR
+company.account.business_unit.create,Δημιουργώ,el_GR
+company.account.business_unit.address,Διευθύνσεις,el_GR
+company.account.business_unit.add,Δημιουργία επιχειρηματικής μονάδας,el_GR
+company.account.business_unit,Επιχειρηματικές μονάδες,el_GR
+company.account.billing_address,Προεπιλεγμένη διεύθυνση χρέωσης,el_GR
+company.account.authorization.success,Επιτυχής Εγγραφή,el_GR
+company.account.address.zip_code,Ταχυδρομικός κώδικας,el_GR
+company.account.address.phone,Αριθμός τηλεφώνου,el_GR
+company.account.address.number,Αριθμός,el_GR
+company.account.address.is_default_billing,Είναι προεπιλεγμένη διεύθυνση χρέωσης,el_GR
+company.account.address.edit,Επεξεργασία,el_GR
+company.account.address.delete,Διαγράφω,el_GR
+company.account.address.country,Χώρα,el_GR
+company.account.address.city,Πόλη,el_GR
+company.account.address.address3,Προσθήκη στη διεύθυνση,el_GR
+company.account.address.address1,Δρόμος,el_GR
+company.account.address,Διευθύνσεις,el_GR
+company.account.add_new_address,Καθορίστε τη νέα διεύθυνση,el_GR
+company.account,Εταιρικό λογαριασμό,el_GR
+cms.preview.access_denied,Δεν είστε συνδεδεμένοι ή δεν έχετε δικαίωμα πρόσβασης σε αυτήν τη σελίδα.,el_GR
+cms.page.sort.relevance,Ταξινόμηση ανά συνάφεια,el_GR
+cms.page.sort.name_desc,Ταξινόμηση κατά όνομα φθίνουσα,el_GR
+cms.page.sort.name_asc,Ταξινόμηση κατά όνομα Αύξουσα,el_GR
+cms.page.itemsFound,Αντικείμενα που βρέθηκαν,el_GR
+cms.page.filter.per,Ανά σελίδα,el_GR
+cms-product-group.category.link.text,Εξερευνήστε περισσότερα,el_GR
+checkout.this.is.shop,Αυτό είναι ένα κατάστημα,el_GR
+checkout.thank.you,Σας ευχαριστώ,el_GR
+checkout.summary.item.option.description,Επιλογές προϊόντων:,el_GR
+checkout.summary.item.bundle.description,Στοιχεία στη δέσμη:,el_GR
+checkout.step.summary.with_method,Με,el_GR
+checkout.step.summary.uid,Uid,el_GR
+checkout.step.summary.tracking_code,Κωδικός παρακολούθησης παράδοσης,el_GR
+checkout.step.summary.total,Ολοκληρώστε το Checkout,el_GR
+checkout.step.summary.title,Περίληψη,el_GR
+checkout.step.summary.tax,συμπεριλ. Φόρος,el_GR
+checkout.step.summary.sub_total,ΜΕΡΙΚΟ ΣΥΝΟΛΟ,el_GR
+checkout.step.summary.sms_code_send_error,Στείλτε τον κωδικό SMS που τελείωσε σε ένα σφάλμα,el_GR
+checkout.step.summary.sms_code_input_error,Ο κωδικός SMS δεν ήταν σωστός,el_GR
+checkout.step.summary.shipping,Αποστολή,el_GR
+checkout.step.summary.shipment_costs_total,Κόστος αποστολής (σύνολο),el_GR
+checkout.step.summary.requested_delivery_date,Ζητήθηκε η ημερομηνία παράδοσης,el_GR
+checkout.step.summary.products,Προϊόντα,el_GR
+checkout.step.summary.payment,Πληρωμή,el_GR
+checkout.step.summary.overview,ΣΦΑΙΡΙΚΗ ΕΙΚΟΝΑ,el_GR
+checkout.step.summary.modal.title,Δεν έλαβε κωδικό PIN;,el_GR
+checkout.step.summary.modal.submit,Αποστολή κωδικού PIN,el_GR
+checkout.step.summary.modal.sms_radio_label,Δημιουργία νέου κωδικού επαλήθευσης που αποστέλλεται μέσω SMS,el_GR
+checkout.step.summary.modal.resend_retry,Μπορείτε να προσπαθήσετε να στείλετε ξανά μέσα:,el_GR
+checkout.step.summary.modal.resend_already_by_sms,"Ο κώδικας αποστέλλεται μέσω SMS, ελέγξτε.",el_GR
+checkout.step.summary.modal.resend_already_by_mail,"Ο κώδικας αποστέλλεται μέσω ηλεκτρονικού ταχυδρομείου, ελέγξτε επίσης το φάκελο Spam.",el_GR
+checkout.step.summary.modal.please_wait_30_seconds,Περιμένετε 30 δευτερόλεπτα για να ζητήσετε έναν νέο κώδικα.,el_GR
+checkout.step.summary.modal.phone,Αριθμός:,el_GR
+checkout.step.summary.modal.link,Δεν έλαβε κωδικό;,el_GR
+checkout.step.summary.modal.info,Πώς θα θέλατε να λάβετε τον κωδικό PIN σας;,el_GR
+checkout.step.summary.modal.error_when_resending_by_sms,"Υπάρχει ένα σφάλμα κατά την προσπάθεια αποστολής του κώδικα μέσω SMS, δοκιμάστε ξανά αργότερα.",el_GR
+checkout.step.summary.modal.error_session_expired,"Η συνεδρία σας πληρωμής έχει λήξει, επιστρέψτε στο βήμα πληρωμής.",el_GR
+checkout.step.summary.modal.email_radio_label,Δημιουργία νέου κωδικού επαλήθευσης που αποστέλλεται μέσω ηλεκτρονικού ταχυδρομείου,el_GR
+checkout.step.summary.modal.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ:,el_GR
+checkout.step.summary.items,Αντικείμενα,el_GR
+checkout.step.summary.grand_total,Σύνολο,el_GR
+checkout.step.summary.delivery_method,Μέθοδος παράδοσης,el_GR
+checkout.step.summary.delivery_address,Διεύθυνση παράδοσης,el_GR
+checkout.step.summary.billing_address,διεύθυνση χρέωσης,el_GR
+checkout.step.summary,Πηγαίνετε στη σύνοψη,el_GR
+checkout.step.success.title,Σας ευχαριστώ.,el_GR
+checkout.step.success.text,Θα λάβετε το ηλεκτρονικό ταχυδρομείο επιβεβαίωσης παραγγελίας σε λίγα λεπτά. Μπορείτε να ελέγξετε και να παρακολουθήσετε την παραγγελία σας στο λογαριασμό σας.,el_GR
+checkout.step.success.sub_title,Η παραγγελία σας έχει τοποθετηθεί με επιτυχία.,el_GR
+checkout.step.success.link,"Πήγαινε στο Ο Λογαριασμός Μου""",el_GR
+checkout.step.shipment.title,Αποστολή,el_GR
+checkout.step.shipment.provider.b,Ερμής,el_GR
+checkout.step.shipment.provider.a,Dhl,el_GR
+checkout.step.shipment,Μεταβείτε στην αποστολή,el_GR
+checkout.step.place.order,Υποβάλετε την παραγγελία σας,el_GR
+checkout.step.payment.title,Πληρωμή,el_GR
+checkout.step.payment.must_be_older_than_18_years,Πρέπει να είστε τουλάχιστον 18 ετών.,el_GR
+checkout.step.payment,Πηγαίνετε στην πληρωμή,el_GR
+checkout.step.error.title,Η παραγγελία σας δεν έχει τοποθετηθεί.,el_GR
+checkout.step.error.text,Κάτι πήγε στραβά. Συγνώμη.,el_GR
+checkout.step.error.sub_title,Η παραγγελία απέτυχε λόγω σφαλμάτων:,el_GR
+checkout.step.error.link,Πηγαίνω στο καλάθι,el_GR
+checkout.step.customer.title,Σύνδεση,el_GR
+checkout.step.confirm_payment.error,Πήγε κάτι λάθος στην πληρωμή,el_GR
+checkout.step.benefit_deal.with_method,με,el_GR
+checkout.step.benefit_deal.use_voucher,Χρησιμοποιήστε τα δελτία παροχών (BV) για έκπτωση,el_GR
+checkout.step.benefit_deal.use_shopping_points,Χρησιμοποιήστε τα σημεία αγορών,el_GR
+checkout.step.benefit_deal.total_used_shopping_points,Χρησιμοποιούνται συνολικά σημεία αγορών,el_GR
+checkout.step.benefit_deal.title,Επισκόπηση παραγγελιών,el_GR
+checkout.step.benefit_deal.or,ή,el_GR
+checkout.step.benefit_deal.items,Αντικείμενα,el_GR
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Αγαπητέ πελάτη, πρέπει να ξοδέψετε τουλάχιστον %needamount% %currency% από την ισορροπία των δελτίων σας για να πάρετε ένα προϊόν Deal Vuffer Deal.",el_GR
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Δυστυχώς, δεν έχετε αρκετό SP για να αγοράσετε αυτό το προϊόν με έκπτωση.",el_GR
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Δυστυχώς, δεν έχετε αρκετό BV για να αγοράσετε αυτό το προϊόν με έκπτωση. Χρειάζεται ποσό: %currency% %needamount%, το υπόλοιπό σας: %currency% %balanceamount%",el_GR
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,Το μέγιστο ποσό πρέπει να είναι %maxamount% %currency% (μέγιστο ποσό BV). Επαληθεύστε,el_GR
+checkout.step.benefit_deal.benefit_voucher,Χρησιμοποιείται συνολικό ποσό δελφορίου,el_GR
+checkout.step.address.title,Διεύθυνση,el_GR
+checkout.step.address.select_address,Επιλέξτε μια διεύθυνση,el_GR
+checkout.step.address.is_sellable,"Αγαπητέ πελάτη, τα προϊόντα δεν είναι δυστυχώς διαθέσιμα στη διεύθυνση παράδοσης.",el_GR
+checkout.sales-order-threshold,Ελάχιστη τιμή παραγγελίας,el_GR
+checkout.pre.check.shipment.failed,Μη έγκυρη μέθοδος αποστολής %method_name% (%carrier_name%).,el_GR
+checkout.payment_method.invalid,Η πληρωμή πληρωμής δεν είναι έγκυρη,el_GR
+checkout.payment.provider.payment_methods,μέθοδοι πληρωμής,el_GR
+checkout.payment.provider.DummyPayment,μέθοδοι πληρωμής,el_GR
+checkout.payment.myworld.payment_methods.title,myworld epayment,el_GR
+checkout.payment.myworld.payment_methods.subtitle,Μπορείτε να επιλέξετε μεταξύ των ακόλουθων μεθόδων epayment MyWorld (προαιρετικό):,el_GR
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,MyWorld Evoucher (Marketer),el_GR
+checkout.payment.myworld.payment_methods.method.evoucher,εκκεντρικός,el_GR
+checkout.payment.myworld.payment_methods.method.cashback,Επιστροφή χρημάτων,el_GR
+checkout.payment.myworld.payment_methods.balance_text,Ισορροπία,el_GR
+checkout.payment.my_world.error.transaction_option_not_found,Η συναλλαγή πληρωμής απέτυχε λόγω της άγνωστης επιλογής πληρωμής,el_GR
+checkout.payment.my_world.error.transaction_failed,Η συναλλαγή πληρωμής απέτυχε,el_GR
+checkout.payment.my_world.error.transaction_exceeded_value,Το ποσό της συναλλαγής πληρωμής υπερέβη το διαθέσιμο ποσό,el_GR
+checkout.payment.my_world.error.transaction_batch_failed,Η συναλλαγή πληρωμής δεν υποβλήθηκε σε επεξεργασία λόγω άλλης αποτυχίας συναλλαγής παρτίδας,el_GR
+checkout.payment.checkbox.use_evoucher_balance,Χρησιμοποιήστε το %price% του %balance% Cashback / MyWorld Evoucher Balance,el_GR
+checkout.payment.cashback_info,"Εάν έχετε Cashback Credit ή MyWorld Evoucher Credit, αυτό θα εμφανιστεί εδώ και μπορείτε να το χρησιμοποιήσετε για πληρωμή. <br/> Σημείωση: Αυτά μπορούν να χρησιμοποιηθούν μόνο ως πληρωμή για αντικείμενα που πωλούνται από το MyWorld.",el_GR
+checkout.payment.cashback_balance,Cashback / MyWorld Evoucher Balance:,el_GR
+checkout.nothing.will.be.sent,"Επομένως, φυσικά, τίποτα δεν θα σταλεί!",el_GR
+checkout.giftcard.label,Δωροκάρτα,el_GR
+checkout.customer.proceed_as_user,Προχωρήστε ως εγγεγραμμένος χρήστης (εγγραφείτε),el_GR
+checkout.customer.proceed_as_guest,Προχωρήστε ως επισκέπτης,el_GR
+checkout.customer.order_as_guest,Διαταγή ως επισκέπτης,el_GR
+checkout.customer.auth_as_user,Εγγραφείτε,el_GR
+checkout.customer.auth_as_login,Σύνδεση,el_GR
+checkout.customer.auth_as_guest,Αγοράστε ως επισκέπτης,el_GR
+checkout.currency.my_world.shopping_points,Εξαργυρωμένα σημεία αγορών,el_GR
+catalog.view.mode.list,Λίστα,el_GR
+catalog.view.mode.grid,Πλέγμα,el_GR
+catalog.sort.relevance,Συνάφεια,el_GR
+catalog.sort.rating,Βαθμολογίες προϊόντων,el_GR
+catalog.sort.price_desc,Τιμή φθίνουσα,el_GR
+catalog.sort.price_asc,Τιμή αύξουσα,el_GR
+catalog.sort.name_desc,Όνομα φθίνουσα,el_GR
+catalog.sort.name_asc,Όνομα αύξουσα,el_GR
+catalog.sort.by,Ταξινόμηση κατά,el_GR
+catalog.sort,Ταξινόμηση,el_GR
+catalog.sale,Πώληση,el_GR
+catalog.prev,πίσω,el_GR
+catalog.no-results,Χωρίς αποτέλεσμα.,el_GR
+catalog.next,να συνεχίσει,el_GR
+catalog.new,Νέος,el_GR
+catalog.loading,Φόρτωση,el_GR
+catalog.itemsFound,Αποτελέσματα,el_GR
+catalog.filter_section.show_less,Δείξε λιγότερο,el_GR
+catalog.filter_section.show_all,Δείτε περισσότερα,el_GR
+catalog.filter.show,Εισαγωγή φίλτρου,el_GR
+catalog.filter.resetAllFilters,Επαναφέρετε όλα τα φίλτρα,el_GR
+catalog.filter.rating_up,& Πάνω,el_GR
+catalog.filter.rangeTo,προς το,el_GR
+catalog.filter.rangeFrom,Φάσμα,el_GR
+catalog.filter.pricerangeTo,προς το,el_GR
+catalog.filter.pricerangeFrom,από,el_GR
+catalog.filter.per,Ανά σελίδα,el_GR
+catalog.filter.main_color,Χρώμα,el_GR
+catalog.filter.hide,απόκρυψη φίλτρου,el_GR
+catalog.filter.filter,Φίλτρα / Ταξινόμηση,el_GR
+catalog.filter.extras,Άλλα χαρακτηριστικά,el_GR
+catalog.filter.button,Ισχύουν,el_GR
+catalog.filter.active_rating_up,Stars & Up,el_GR
+catalog.filter.activeFilters,Ενεργά φίλτρα,el_GR
+catalog.filter.active,Ενεργό φίλτρο,el_GR
+catalog.currency,€,el_GR
+cart_widget.empty_text,Το καλάθι σας είναι άδειο. Πηγαίνετε γεμίστε με όλες τις ελπίδες και τα όνειρά σας.,el_GR
+cart_page.error_message.unexpected_error,Παρουσιάστηκε μη αναμενόμενο σφάλμα.,el_GR
+cart_note.quote_form.placeholder,Εισάγετε τη σημείωσή σας,el_GR
+cart_note.quote_form.enter_note,Προσθέστε μια σημείωση για το καλάθι,el_GR
+cart_note.item_form.placeholder,Εισάγετε τη σημείωσή σας,el_GR
+cart_note.item_form.enter_note,Προσθέστε μια σημείωση για το στοιχείο,el_GR
+cart_note.form.save,Αποθηκεύσετε,el_GR
+cart_note.customer_page.order_note,Σημείωση παραγγελίας,el_GR
+cart_note.customer_page.item_note,Σημείωση στοιχείου παραγγελίας,el_GR
+cart_note.checkout_page.quote_note,Καροτσάκι,el_GR
+cart_note.checkout_page.item_note,Σημείωση,el_GR
+cart_note.cart_page.item.note_added,Σημείωση έχει προστεθεί με επιτυχία στο στοιχείο '%sku%',el_GR
+cart_note.cart_page.cart.note_added,Σημείωση έχει προστεθεί με επιτυχία στο καλάθι,el_GR
+cart.your-order,Παραγγελία σας,el_GR
+cart.vouchers.clear-all,Τα καθαρίζω όλα,el_GR
+cart.vouchers,Κουπόνια,el_GR
+cart.voucher.remove,Αφαιρώ,el_GR
+cart.voucher.redeem,Εξαργύρωση κωδικού,el_GR
+cart.voucher.apply.successful,Ο κώδικας κουπονιού έχει εφαρμοστεί,el_GR
+cart.voucher.apply.non_applicable,Ο κωδικός κουπονιού δεν είναι έγκυρος,el_GR
+cart.voucher.apply.failed,Ο κωδικός κουπονιού σας είναι άκυρος.,el_GR
+cart.voucher-title,Κωδικό κουπονιού,el_GR
+cart.validate.items.price.changed,Οι τιμές έχουν αλλάξει για προϊόντα με %sku%.,el_GR
+cart.total_wo_deals,Σύνολο,el_GR
+cart.total.tax_total,Φόρος,el_GR
+cart.total.price_to_pay,Τιμή για πληρωμή,el_GR
+cart.total.discount,Εκπτωση,el_GR
+cart.total,Σύνολο,el_GR
+cart.title_sidebar,Επισκόπηση παραγγελιών,el_GR
+cart.title_content,Καλάθι αγορών,el_GR
+cart.shipping_standard,Πρότυπο αποστολής,el_GR
+cart.shipping.order-item,#NAME?,el_GR
+cart.shipping,Αποστολή,el_GR
+cart.select.default_value,Επιλέξτε μια τιμή,el_GR
+cart.sales-order-threshold,Ελάχιστη τιμή παραγγελίας,el_GR
+cart.remove.items.success,Τα προϊόντα αφαιρέθηκαν με επιτυχία,el_GR
+cart.quantity.adjusted,Η ζητούμενη ποσότητα στοιχείου προσαρμόστηκε όσον αφορά την επιλεγμένη ποσότητα δεν είναι διαθέσιμη.,el_GR
+cart.promotion.items,Προωθητικά προϊόντα,el_GR
+cart.product-option,Επιλογές προϊόντων,el_GR
+cart.price.subtotal_wo_deals,Σύνολο,el_GR
+cart.price.subtotal,ΜΕΡΙΚΟ ΣΥΝΟΛΟ,el_GR
+cart.price.grand.total,Σύνολο,el_GR
+cart.price,Τιμή,el_GR
+cart.pre.check.shipment.failed,Δεν μπορεί να εφαρμόσει αυτές τις αλλαγές. Η μέθοδος αποστολής δεν βρέθηκε. Επιλέξτε άλλη μέθοδο αποστολής.,el_GR
+cart.pre.check.quantity.value.failed,Λάθος ποσότητα για το προϊόν sku %sku%.,el_GR
+cart.pre.check.quantity.min.failed,"Δεν πληρούνται ελάχιστες απαιτήσεις ποσότητας για το προϊόν sku ""%sku%"".",el_GR
+cart.pre.check.quantity.max.failed,Η μέγιστη ποσότητα για το προϊόν Sku '%sku%' ξεπεράστηκε.,el_GR
+cart.pre.check.quantity.interval.failed,Οι απαιτήσεις διαστήματος ποσότητας για το προϊόν Sku '%sku%' δεν πληρούνται.,el_GR
+cart.pre.check.product_discontinued,"Προϊόν '%name%' Διακόπτεται, επιλέξτε μια εναλλακτική λύση.",el_GR
+cart.pre.check.price.failed,Τιμή σε επιλεγμένο νόμισμα Δεν βρέθηκε για το προϊόν με %sku%. Αλλάξτε το νόμισμα ή αφαιρέστε το προϊόν από τη σειρά.,el_GR
+cart.pre.check.availability.failed.empty,Στοιχείο %sku% δεν είναι πλέον διαθέσιμο.,el_GR
+cart.pre.check.availability.failed,Στοιχείο %sku% Έχει μόνο διαθεσιμότητα %stock%.,el_GR
+cart.pre.check.affiliate.failed,Στοιχείο %sku% δεν μπορεί να προστεθεί στο καλάθι.,el_GR
+cart.note-title,Καροτσάκι,el_GR
+cart.item_quantity,Ποσότητα,el_GR
+cart.item_attributes_needed,Επιλέξτε περισσότερα χαρακτηριστικά,el_GR
+cart.item.sku,Σκι,el_GR
+cart.item.remove.confirm,Είστε βέβαιοι ότι θέλετε να καταργήσετε αυτό το στοιχείο;,el_GR
+cart.item.option.pre.check.validation.error.exists,"Δεν μπορείτε να αναδιατάξετε ξανά το προϊόν %name%, παρακαλώ προσθέστε το στο καλάθι σας ξεχωριστά.",el_GR
+cart.item.option.description,Επιλογές προϊόντων:,el_GR
+cart.item.item_total,Συνολικό στοιχείο,el_GR
+cart.item.item_price,Τιμη προιοντος,el_GR
+cart.item.bundle.description,Στοιχεία στη δέσμη:,el_GR
+cart.include.vat,συμπεριλ. ΔΕΞΑΜΕΝΗ,el_GR
+cart.giftcard.label,Δωροκάρτα,el_GR
+cart.giftcard.apply.successful,Ο κωδικός κάρτας δώρων σας έχει εφαρμοστεί,el_GR
+cart.giftcard.apply.failed,Η κάρτα δώρων δεν ισχύει,el_GR
+cart.empty.title,Το καλάθι αγορών σας είναι άδειο!,el_GR
+cart.empty.description,"Η μόνο επιθυμία του καλαθιού είναι να συλλέξει τις καλύτερες προσφορές, δώρα και πολλά άλλα μεγάλα προϊόντα για εσάς. Έτσι εκπληρώστε την επιθυμία του καλαθιού σας και το έχετε νόημα!",el_GR
+cart.empty.button,Ελέγξτε τις προσφορές,el_GR
+cart.discounts,Εκπτώσεις,el_GR
+cart.delete.button,Διαγράφω,el_GR
+cart.code.enter-code,Εισαγάγετε τον κωδικό κουπονιού / δώρων,el_GR
+cart.code.apply.failed,Δεν ήταν δυνατή η εφαρμογή του κώδικα,el_GR
+cart.checkout,ολοκλήρωση παραγγελίας,el_GR
+cart.cart,Καροτσάκι,el_GR
+cart.add.items.success,Τα στοιχεία προστέθηκαν με επιτυχία,el_GR
+cart.add.items.error.text,Κάτι πήγε στραβά. Συγνώμη.,el_GR
+cart.add-to-shopping-list.form.placeholder,Εισαγάγετε το όνομα μιας νέας λίστας αγορών,el_GR
+cart.add-to-shopping-list.form.error.empty_name,Παρακαλώ εισάγετε το όνομα λίστας αγορών,el_GR
+cart.add-to-shopping-list.form.add_new,Προσθέστε νέα λίστα αγορών,el_GR
+cart.add-to-shopping-list.form,Αποθηκεύστε το καλάθι σε μια λίστα αγορών,el_GR
+cart.add-to-shopping-list,Προσθήκη στη λίστα αγορών,el_GR
+cameras.category.link,/ en / cameras - & - βιντεοκάμερες / ψηφιακές κάμερες,el_GR
+camcorders.category.link,/ en / cameras - & - βιντεοκάμερες / ψηφιακές κάμερες;,el_GR
+business_on_behalf_widget.no_selected_company,Καμία επιλεγμένη εταιρεία,el_GR
+business_on_behalf_widget.change_company_user,Αλλαγή χρήστη της εταιρείας,el_GR
+bundle.title,Δέσμη περιλαμβάνει,el_GR
+billing.address.validation.is_missing,Η διεύθυνση χρέωσης λείπει,el_GR
+billing.address.country.validation.not_found,Χώρα χρέωσης Χώρα που δεν βρέθηκε για κωδικό χώρας: %code%,el_GR
+benefit_deal.product.attribute.manufacturer_name,Μάρκα:,el_GR
+benefit_deal.item_quantity,Ποσότητα:,el_GR
+availability_notification_subscription.mail.unsubscribed.subject,Δεν θα ειδοποιηθείτε όταν το προϊόν %name% θα είναι και πάλι διαθέσιμο.,el_GR
+availability_notification_subscription.mail.unsubscribed.body,Δεν θα ειδοποιηθείτε όταν το προϊόν %name% θα είναι και πάλι διαθέσιμο.,el_GR
+availability_notification_subscription.mail.unsubscribe,"Θέλετε να αλλάξετε τον τρόπο με τον οποίο λαμβάνετε αυτά τα μηνύματα ηλεκτρονικού ταχυδρομείου; <br> Μπορείτε να <a target = ""_ blank"" href = ""%link%"" style = ""mso-line-Ύψος-κανόνας: Ακριβώς; -ms- Μέγεθος κειμένου: 100skip @ skip.; - webkit-μέγεθος-μέγεθος-ρυθμίστε: 100.skip.com; Χρώμα: # 656565; Γραμματοσειρά: Κανονική; Κείμενο-διακόσμηση: Υπογραμμίστε """" / A>.",el_GR
+availability_notification_subscription.mail.subscribed.subject,Μόλις ενημερώσαμε την ομάδα αγοράς μας για τη συνδρομή σας!,el_GR
+availability_notification_subscription.mail.subscribed.head,Μόλις ενημερώσαμε την ομάδα αγοράς μας για τη συνδρομή σας!,el_GR
+availability_notification_subscription.mail.subscribed.body,Θα λάβετε ένα μήνυμα ηλεκτρονικού ταχυδρομείου όταν το προϊόν θα είναι διαθέσιμο ξανά,el_GR
+availability_notification_subscription.mail.notification.subject,%name% είναι διαθέσιμη ξανά!,el_GR
+availability_notification_subscription.mail.notification.head,%name% είναι διαθέσιμη ξανά!,el_GR
+availability_notification_subscription.mail.notification.buy_now,Αγορασε τωρα,el_GR
+availability_notification_subscription.mail.notification.body,"Η αναμονή έχει τελειώσει, μπορείτε τώρα να προσθέσετε αυτό το προϊόν μέσα στο καλάθι σας.",el_GR
+availability_notification_subscription.mail.copyright,"<em> Copyright © Τρέχον έτος Όνομα Εταιρείας, όλα τα δικαιώματα διατηρούνται. </ em> <br> <br>",el_GR
+availability_notification.unsubscribed,Επιτυχώς καταργηθείσα,el_GR
+availability_notification.successfully_unsubscribed_text,Έχετε καταγραφεί με επιτυχία από την ειδοποίηση όταν το προϊόν είναι διαθέσιμο ξανά,el_GR
+availability_notification.successfully_unsubscribed,Επιτυχώς καταργηθείσα,el_GR
+availability_notification.subscribed,Επιτυχώς εγγραφεί,el_GR
+availability_notification.notify_me,Ειδοποιήστε με όταν είστε πίσω στο απόθεμα,el_GR
+availability_notification.email_address,Διεύθυνση ηλεκτρονικού ταχυδρομείου,el_GR
+availability_notification.do_not_notify_me,Μην το ειδοποιείτε όταν είστε πίσω στο απόθεμα,el_GR
+autocomplete.placeholder,Αναζήτηση,el_GR
+auth.register,Κανω ΕΓΓΡΑΦΗ,el_GR
+auth.password-forgot,Ξεχασμένος?,el_GR
+auth.password,Κωδικός πρόσβασης,el_GR
+auth.login-button,Σύνδεση με το MyWorld,el_GR
+auth.login,Εγγραφείτε,el_GR
+auth.im-new-customer,Νέος πελάτης,el_GR
+auth.im-already-customer,Έχω ήδη ένα λογαριασμό,el_GR
+auth.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+agent.login.title,Αποκτήστε πρόσβαση στο λογαριασμό σας,el_GR
+agent.login.password,Κωδικός πρόσβασης,el_GR
+agent.login.email,ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ,el_GR
+agent.control_bar.username,Μέσο:,el_GR
+agent.control_bar.logout_as_customer,Τελική βοήθεια πελατών,el_GR
+agent.control_bar.logout,Αποσύνδεση,el_GR
+agent.control_bar.customer_name,Πελάτης:,el_GR
+agent.confirm_user_selection,Επιβεβαιώνω,el_GR
+agent.autocomplete.no_results,Δεν βρέθηκαν αποτελέσματα,el_GR
+agent.authentication.failed,Η ταυτοποίηση απέτυχε,el_GR
+agent.account.quote_request,Αιτήσεις για προσφορά,el_GR
+agent.account.profile_data,Προφίλ πράκτορα,el_GR
+agent.account.page_title,Μέσο,el_GR
+agent.account.overview,ΣΦΑΙΡΙΚΗ ΕΙΚΟΝΑ,el_GR
+afiliate.legal.text,"Αυτό το προϊόν πωλείται από έναν πωλητή τρίτου μέρους. Ο πωλητής είναι αποκλειστικά υπεύθυνος για την τιμολόγηση, την περιγραφή των προϊόντων, τα επίπεδα αποθεμάτων και τη ναυτιλία. Όσον αφορά την ευθύνη του MyWorld για υπερσυνδέσμους και το περιεχόμενό τους, αναφερόμαστε στους όρους χρήσης που ισχύουν για την αγορά MyWorld.",el_GR
+adyen.payment.error.cc_year,Ελέγξτε το έτος πιστωτικής κάρτας,el_GR
+adyen.payment.error.cc_number,Ελέγξτε τον αριθμό της πιστωτικής κάρτας,el_GR
+adyen.payment.error.cc_month,Ελέγξτε τον μήνα πιστωτικής κάρτας,el_GR
+adyen.payment.error.cc_cvv,Ελέγξτε τον κωδικό CVC,el_GR
+address.zip_code,Ταχυδρομικός κώδικας,el_GR
+address.street_nr,Αριθμός,el_GR
+address.street,Δρόμος,el_GR
+address.salutation,Χαιρετισμός,el_GR
+address.city,Πόλη,el_GR
+account.newsletter.text,"Εγγραφείτε για το ενημερωτικό μας δελτίο και πάντα να μείνετε ενημερωμένοι! Λάβετε ενημερώσεις σχετικά με τις τελευταίες smartphones και τις τάσεις των ποδιών, κορυφαίες μάρκες και εξαιρετικές προσφορές.",el_GR
+This value should not be blank.,Αυτή η τιμή δεν πρέπει να είναι κενή.,el_GR
+This value is not valid.,Αυτή η τιμή δεν είναι έγκυρη.,el_GR
+This value is not valid (accepted format e.g.: 12c).,Αυτή η τιμή δεν είναι έγκυρη (αποδεκτή μορφή π.χ.: 12C).,el_GR
+This field should contain exactly 5 digits.,Αυτό το πεδίο πρέπει να περιέχει ακριβώς 5 ψηφία.,el_GR
+DummyPrepayment,Προπληρωμή,el_GR
+DummyPaymentInvoice,Τιμολόγιο,el_GR
+DummyPaymentCreditCard,Πιστωτική κάρτα,el_GR
+BenefitVouchers,Παροχή δελτίο,el_GR
+AdyenCreditCard,Πιστωτική κάρτα,el_GR

@@ -1,0 +1,554 @@
+abstract_sku,concrete_sku,product.name.fr_FR,product.name.en_US,product.description.fr_FR,product.description.en_US,product_abstract_store.store_name,product_abstract.category_product_order,product_abstract.color_code,product_abstract.category_key,product_abstract.category_product_order,product_abstract.color_code,product_abstract.tax_set_name,product_abstract.new_from,product_abstract.new_to,product_abstract.meta_title.de_DE,product_abstract.meta_title.en_US,product_abstract.meta_description.de_DE,product_abstract.meta_description.en_US,product_abstract.meta_keywords.de_DE,product_abstract.meta_keywords.en_US,product_abstract.url.de_DE,product_abstract.url.en_US,product_concrete.bundled,product_concrete.is_quantity_splittable,product_concrete.is_searchable.fr_FR,product_concrete.is_searchable.en_US,product.assigned_product_type,product_stock.name,product_stock.quantity,product_stock.is_never_out_of_stock,product_price.assigned_product_type,product_price.price_type,product_price.store,product_price.currency,product_price.value_net,product_price.value_gross,product_price.price_data.volume_prices,product_image.assigned_product_type,product_image.image_set_name,product_image.product_image_key,product_image.external_url_large,product_image.external_url_small,product_image.locale,is_active,product.attribute_key_48,product.value_48,product.attribute_key_49,product.value_49,product.attribute_key_95,product.value_95,product.attribute_key_11,product.value_11,product.attribute_key_96,product.value_96,product.attribute_key_97,product.value_97,product.attribute_key_24,product.value_24,product.attribute_key_25,product.value_25,product.attribute_key_98,product.value_98,product.attribute_key_99,product.value_99,product.attribute_key_100,product.value_100,product.attribute_key_20,product.value_20,product.attribute_key_101,product.value_101,product.attribute_key_27,product.value_27,product.attribute_key_12,product.value_12,product.attribute_key_14,product.value_14,product.attribute_key_28,product.value_28,product.attribute_key_29,product.value_29,product.attribute_key_41,product.value_41,product.attribute_key_13,product.value_13,product.attribute_key_30,product.value_30,product.attribute_key_42,product.value_42,product.attribute_key_31,product.value_31,product.attribute_key_102,product.value_102,product.attribute_key_26,product.value_26,product.attribute_key_15,product.value_15,product.attribute_key_32,product.value_32,product.attribute_key_33,product.value_33,product.attribute_key_103,product.value_103,product.attribute_key_16,product.value_16,product.attribute_key_35,product.value_35,product.attribute_key_36,product.value_36,product.attribute_key_34,product.value_34,product.attribute_key_38,product.value_38,product.attribute_key_104,product.value_104,product.attribute_key_105,product.value_105,product.attribute_key_106,product.value_106,product.attribute_key_107,product.value_107,product.attribute_key_37,product.value_37,product.attribute_key_108,product.value_108,product.attribute_key_109,product.value_109,product.attribute_key_39,product.value_39,product.attribute_key_17,product.value_17,product.attribute_key_110,product.value_110,product.attribute_key_111,product.value_111,product.attribute_key_18,product.value_18,product.attribute_key_19,product.value_19,product.attribute_key_112,product.value_112,product.attribute_key_40,product.value_40,product.attribute_key_113,product.value_113,product.attribute_key_23,product.value_23,product.attribute_key_22,product.value_22,product.attribute_key_21,product.value_21,product.attribute_key_114,product.value_114,product.attribute_key_115,product.value_115,product.attribute_key_116,product.value_116,product.attribute_key_117,product.value_117,product.attribute_key_43,product.value_43,product.attribute_key_44,product.value_44,product.attribute_key_45,product.value_45,product.attribute_key_46,product.value_46,product.attribute_key_47,product.value_47,product.attribute_key_128,product.value_128,product.attribute_key_56,product.value_56,product.attribute_key_58,product.value_58,product.attribute_key_57,product.value_57,product.attribute_key_86,product.value_86,product.attribute_key_85,product.value_85,product.attribute_key_78,product.value_78,product.attribute_key_59,product.value_59,product.attribute_key_60,product.value_60,product.attribute_key_79,product.value_79,product.attribute_key_124 ,product.value_124,product.attribute_key_05,product.value_05,product.attribute_key_05.de_DE,product.value_05.de_DE,product.attribute_key_06,product.value_06,product.attribute_key_06.de_DE,product.value_06.de_DE,product.attribute_key_08,product.value_08,product.attribute_key_08.de_DE,product.value_08.de_DE,product.attribute_key_93,product.value_93,product.attribute_key_93.de_DE,product.value_93.de_DE,product.attribute_key_94,product.value_94,product.attribute_key_94.de_DE,product.value_94.de_DE,product.attribute_key_118,product.value_118,product.attribute_key_118.de_DE,product.value_118.de_DE,product.attribute_key_119,product.value_119,product.attribute_key_120,product.value_120,product.attribute_key_120.de_DE,product.value_120.de_DE,product.attribute_key_130,product.value_130,product.attribute_key_130.de_DE,product.value_130.de_DE,product.attribute_key_88,product.value_88,product.attribute_key_89,product.value_89,product.attribute_key_07,product.value_07,product.attribute_key_07.de_DE,product.value_07.de_DE,product.attribute_key_01,product.value_01,product.attribute_key_02,product.value_02,product.attribute_key_03,product.value_03,product.attribute_key_82,product.value_82,product.attribute_key_83,product.value_83,product.attribute_key_04,product.value_04,product.attribute_key_52,product.value_52,product.attribute_key_53,product.value_53,product.attribute_key_54,product.value_54,product.attribute_key_136,product.value_136,product.attribute_key_55,product.value_55,product.attribute_key_121,product.value_121,product.attribute_key_70,product.value_70,product.attribute_key_61,product.value_61,product.attribute_key_61.de_DE,product.value_61.de_DE,product.attribute_key_61,product.value_61,product.attribute_key_64,product.value_64,product.attribute_key_63,product.value_63,product.attribute_key_134,product.value_134,product.attribute_key_134.de_DE,product.value_134.de_DE,product.attribute_key_90,product.value_90,product.attribute_key_90.de_DE,product.value_90.de_DE,product.attribute_key_91,product.value_91,product.attribute_key_110,product.value_110,product.attribute_key_110.de_DE,product.value_110.de_DE,product.attribute_key_50,product.value_50,product.attribute_key_92,product.value_92,product.attribute_key_09,product.value_09,product.attribute_key_71,product.value_71,product.attribute_key_72,product.value_72,product.attribute_key_123,product.value_123,product.attribute_key_125,product.value_125,product.attribute_key_126,product.value_126,product.attribute_key_127,product.value_127,product.attribute_key_73,product.value_73,product.attribute_key_76,product.value_76,product.attribute_key_77,product.value_77,product.attribute_key_122,product.value_122,product.attribute_key_74 ,product.value_74
+O9120103410122,9120103410122,ONESENSE Vitamin C Ultra 60 kapsułek,ONESENSE Vitamin C Ultra 60 Capsules,"<p>Poczuj siłę<br />
+WZMOCNIJ SWÓJ UKŁAD ODPORNOŚCIOWY!<br />
+WITAMINA C ULTRA</p>
+
+<p>Jagoda camu camu jest jednym z najbardziej skoncentrowanych na świecie źródeł witaminy C w każdym owocu — to czyni ją wyjątkową jagodą o mocy! Ma działanie przeciwutleniające i wspomaga regenerację komórek. Wśród tych różnorodnych efektów jednym z najważniejszych jest stymulacja układu odpornościowego w walce z infekcjami i przeziębieniami oraz ochrona skóry przed uszkodzeniem przez wolne rodniki.</p>
+
+<p>W przeciwieństwie do syntetycznej witaminy C, naturalne minerały i aminokwasy maksymalizują zdolność wchłaniania witaminy C, cynku i żelaza. Właściwości ochronne komórek ONESENSE Vitamin C Ultra pomagają również poprawić wygląd skóry i chronią przed starzeniem.</p>
+
+<p>ONESENSE Witamina C Ultra jest idealna dla Ciebie, jeśli chcesz poczuć się lepiej i zdrowiej. Jeśli prowadzisz szybki tryb życia i regularnie jesteś narażony na stres, możesz mieć zwiększone zapotrzebowanie na witaminę C, aby wspomóc ochronę.</p>
+
+<p>Witamina C przyczynia się do:<br />
+&byk; normalnego funkcjonowania układu odpornościowego<br />
+&byk; zapobiegania starzeniu się komórek<br />
+&byk; poprawy wchłaniania żelaza</p>
+
+<p>VITAMIN C ULTRA z 240 mg naturalnej witaminy C w kapsułce 60 kapsułek<br />
+Zalecane spożycie: 1 kapsułka dziennie Z posiłkiem i dużą ilością płynów (woda, sok itp.) Składniki na kapsułkę: 480 mg ekstraktu camu camu z 50% witaminy C, 212,50 mg celuloa mikrokryst. (wypełniacz), kapsułka roślinna 120 mg z hydroksypropylometylocelulozy, ekstrakt z ananasa 9 mg 4:1, 7,50 mg ekstrakt z otrębów ryżowych, 6 mg ekstrakt z białych szparagów 50:1, 5 mg ekstrakt z papai 10-20:1, 5 mg ekstrakt z owoców acai/palmy 4-5:1, 5 mg ekstrakt z jabłka 5:1, 5 mg ekstrakt z jagód 5:1, 3 mg ekstrakt z oliwek 4:1, 3 mg ekstrakt z jarmużu 10:1, 3 mg zmielony korzeń marchwi, 3 mg ekstraktu z brokułów 10:1, 3 mg ekstraktu z cebuli łącznie 4:1, 870 mg Uwaga: Nie należy przekraczać zalecanej ilości do spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Uwaga: Nie przekraczać zalecanego dziennego poziomu spożycia. Suplementy z naturalną witaminą C z ekstraktu z camu camu oraz z ekstraktem z owoców i warzyw 480 mg ekstraktu z camu camu 50% witaminy C = 240 mg naturalnej witaminy. C = 300 % RWS* na kapsułkę * = referencyjne wartości odżywcze<br />
+Przechowywanie: Przechowywać pojemnik szczelnie zamknięty po użyciu. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość opakowania: 60 kapsułek po 870 mg.<br />
+Nie zawiera: glutenu, sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu.<br />
+Ilość netto: 52,2 g<br />
+</p>","<p>Sense the Strength<br />
+STRENGTHEN YOUR IMMUNE SYSTEM!<br />
+VITAMIN C ULTRA</p>
+
+<p>The camu camu berry is one of the world&rsquo;s most concentrated sources of vitamin C in any fruit - this makes it a unique power berry! It has an antioxidant effect and encourages cell regeneration. Among these diverse effects, one of the most important is the stimulation of the immune system in the fight against infections and colds, and it protects your skin from free radical damage.</p>
+
+<p>Unlike synthetic vitamin C, the natural minerals and amino acids maximise the absorption capacity of vitamin C, zinc and iron. The cell-protecting properties of ONESENSE Vitamin C Ultra also help to improve the appearance of the skin and protect against ageing.</p>
+
+<p>ONESENSE Vitamin C Ultra is ideal for you if you would like to feel fitter and healthier. If you have a fast-paced lifestyle and you are regularly exposed to stress, you may have an increased need for vitamin C to help support your defences.</p>
+
+<p>Vitamin C contributes to the:<br />
+&bull; normal functioning of the immune system<br />
+&bull; prevention of cell ageing<br />
+&bull; improvement of iron absorption</p>
+
+<p>VITAMIN C ULTRA with 240 mg natural vitamin C per capsule 60 capsules<br />
+Recommended intake: 1 capsule per day WITH a meal and some fluids (water, juice etc.) Ingredients per capsule: 480 mg camu camu extract with 50 % vitamin C, 212.50 mg microcryst. Cellulose (filter), 120 mg plant-based capsule out of hydroxypropylmethylcellulose, 9 mg pineapple extract 4:1, 7.50 mg rice bran extract, 6 mg white asparagus extract 50:1, 5 mg papaya extract 10-20:1, 5 mg acai/palm fruit extract 4-5:1, 5 mg apple extract 5:1, 5 mg blueberry extract 5:1, 3 mg olive extract 4:1, 3 mg kale extract 10:1, 3 mg milled carrot root, 3 mg broccoli extract 10:1, 3 mg onion extract 4:1, 870 mg in total Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Warning: Do not exceed the recommended daily level of consumption. Supplements with natural vitamin C from the camu camu extract and with fruit and vegetable extract 480 mg camu camu extract 50 % vitamin C = 240 mg natural vitamin. C = 300 % NRV* per capsule * = nutrient reference values<br />
+Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 60 capsules each 870 mg.<br />
+Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate.<br />
+Net quantity: 52.2 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410122.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410122.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"57,05",regular_sales_price,"174,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-90010257,ean,9120103410122,gtin,09120103410122,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410139,9120103410139,ONESENSE OPC Ultra 60 kapsułek,ONESENSE OPC Ultra 60 Capsules,"<p>Poczuj witalność<br />
+ANTI-AGING OD WEWNĄTRZ <br />
+OPC ULTRA</p>
+
+<p>ONESENSE OPC Ultra to jeden z najsilniejszych antyoksydantów wspierających obronę Twojego organizmu. OPC neutralizuje wolne rodniki oraz wspomaga produkcję i naprawę tkanki łącznej. Wysoce skuteczna substancja witalna chroni komórki, stymuluje produkcję kolagenu, a tym samym pomaga uzyskać młodszy wygląd!</p>
+
+<p>ONESENSE OPC Ultra wspomaga również gojenie się ran i skutecznie zwalcza procesy zapalne. Ponieważ może hamować uwalnianie histaminy, jest również często stosowany jako naturalny środek przeciwhistaminowy w przypadku alergii.</p>
+
+<p>OPC może przedłużyć i wzmocnić skuteczność witamin. Tak więc z ONESENSE OPC Ultra możesz zapobiec objawom niedoboru. Przyjmowane witaminy mogą pozostać aktywne nawet dziesięć razy dłużej, a ich działanie może zostać wzmocnione.</p>
+
+<p>OPC Ultra przyczynia się do:<br />
+&byk; ochrony przed wolnymi rodnikami i starzeniem się komórek<br />
+&byk; przyspieszenia gojenia się ran<br />
+&byk; wzrostu produkcji kolagenu</p>
+
+<p>OPC ULTRA ponad 500 mg czystego OPC z resweratrolem 60 kapsułek<br />
+Zalecane spożycie: 1 kapsułka dziennie (rano lub wieczorem) około 30-60 minut PRZED posiłkiem z dużą ilością płynów (woda, sok itp.) Składniki na kapsułkę: 427 mg ekstraktu z kory sosny 120:1 (95% OPC = 406 mg), 10 mg celuloza mikrokryst. (wypełniacz), 136 mg ekstraktu z winogron (90% OPC = 122 mg) 120 mg kapsułka roślinna z hydroksypropylometylocelulozy, 10 mg jap. Ekstrakt z rdestu ptasiego (50% resweratrol), 17 mg ekstraktu z otrębów ryżowych, łącznie 720 mg. Uwaga: Nie należy przekraczać zalecanej ilości do spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Ostrzeżenie: nie przekraczaj zalecanego dziennego poziomu spożycia.<br />
+Suplementy z OPC i resweratrolem, 528 mg OPC i 5 mg resweratrolu na kapsułkę<br />
+Przechowywanie: Przechowywać pojemnik szczelnie zamknięty po użyciu. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód opakowania Zawartość opakowania: 60 kapsułek po 720 mg. Nie zawiera: glutenu, sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu.<br />
+Ilość netto: 43,2 g<br />
+</p>","<p>Sense the Vitality<br />
+ANTI-AGING FROM THE INSIDE <br />
+OPC ULTRA</p>
+
+<p>ONESENSE OPC Ultra is one of the strongest antioxidants to support the defence of your organism. OPC neutralises free radicals and supports the production and repair of connective tissue. The highly effective vital substance protects the cells, stimulates collagen production and thus helps to achieve a more youthful appearance!</p>
+
+<p>ONESENSE OPC Ultra also promotes wound healing and effectively fights inflammatory processes. As it can inhibit the release of histamine, it is also often used as a natural antihistamine for allergies.</p>
+
+<p>OPC can prolong and enhance the effectiveness of vitamins. Thus, with ONESENSE OPC Ultra you can help prevent symptoms of deficiency. The ingested vitamins can stay active for up to ten times longer and their effect can be increased.</p>
+
+<p>OPC Ultra contributes to the:<br />
+&bull; protection against free radicals and cell ageing<br />
+&bull; acceleration of wound healing<br />
+&bull; increase of collagen production</p>
+
+<p>OPC ULTRA over 500 mg pure OPC with resveratrol 60 capsules<br />
+Recommended intake: 1 capsule per day (morning or evening) about 30-60 minutes PRIOR to a meal with lots of fluids (water, juice, etc.) Ingredients per capsule: 427 mg pine bark extract 120:1 (95 % OPC = 406 mg), 10 mg microcryst. Cellulose (filling), 136 mg grape extract (90 % OPC = 122 mg) 120 mg plant-based capsule out of hydroxypropylmethylcellulose, 10 mg jap. Knotgrass extract (50 % resveratrol), 17 mg rice bran extract, 720 mg in total Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Warning: Do not exceed the recommended daily level of consumption.<br />
+Supplements with OPC and resveratrol, 528 mg OPC and 5 mg resveratrol per capsule<br />
+Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 60 capsules each 720 mg. Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate.<br />
+Net quantity: 43.2 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410139.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410139.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"46,1",regular_sales_price,"199,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-90010259,ean,9120103410139,gtin,09120103410139,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410146,9120103410146,ONESENSE Weihrauch Original (wyciąg z kadzidłowca) 60 kapsułek,ONESENSE Frankincense Original 60 Capsules,"<p>Poczuj ulgę<br />
+SKUTECZNE ZWALCZAJ ZAPALENIA <br />
+WEIHRAUCH ORIGINAL </p>
+
+<p>Produkty z kadzidłowca ONESENSE oparte są na recepturze buddyjskich mnichów, która została opracowana w oparciu o najnowsze odkrycia i dzięki temu może jeszcze lepiej rozwinąć swoje działanie. Szczególnie w przypadku przewlekłego zapalenia stawów można uzyskać dobre wyniki leczenia za pomocą kadzidła. </p>
+
+<p>ONESENSE Weihrauch Original zapewnia pozytywne działanie kadzidłowca w praktycznej formie kapsułek. Kwasy bosweliowe zawarte w żywicy kadzidłowca działają w naturalny sposób i dlatego są w dużej mierze wolne od skutków ubocznych.</p>
+
+<p> Kadzidłowiec przyczynia sie do: <br />
+& byk; hamowania stanu zapalnego <br />
+& byk; przyspieszenia powrotu do zdrowia po infekcjach <br />
+& byk; ma działanie przeciwbakteryjne i uspokajające </p>
+
+<p> WEIHRAUCH ORIGINAL kompleks kadzideł, 60 kapsułek <br />
+Zalecenia dotyczące spożycia: Spożywać 1 kapsułkę 2 x dziennie KRÓTKO PRZED posiłkiem popijając niewielką ilością płynu (woda, sok owocowy itp.). Składniki na kapsułkę: 225 mg ekstraktu z kadzidła 4:1 (boswellia serrata z 65% kwasem B.), 175 mg sproszkowanego małża zielonego, 121,50 mg celuloza mikrokryst. (wypełniacz), 120 mg wegetariańska kapsułka celulozowa HPMC (Vegi-Caps), 75 mg proszku z chrząstki rekina, 75 mg metylosulfonylometanu (=MSM), 35 mg wodorofosforanu wapnia, 35 mg węglanu wapnia, 7,50 mg ekstraktu z otrębów ryżowych, 1 mg dwutlenku krzemu, łącznie 870 mg. Uwaga: Suplementy diety nie mogą być stosowane jako substytut zbilansowanej i zróżnicowanej diety oraz zdrowego stylu życia. Ostrzeżenie: Nie przekraczać podanego dziennego spożycia. Suplement diety zawierający kadzidło, małż zielonowargowy, chrząstkę rekina i MSM. Przechowywanie: Po użyciu przechowywać puszkę szczelnie zamkniętą. Przechowuj ten produkt poza zasięgiem małych dzieci. Przechowywać w suchym i chronionym przed światłem miejscu. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość puszki: 60 kaps. po 870 mg. Nie zawiera: glutenu, barwników, konserwantów, aromatów, orzechów, soi, składników mleka, jajek, stearynianu magnezu. <br />
+Ilość netto: 52,2 g <br />
+</p>","<p>Sense the Relief<br />
+FIGHTING INFLAMMATION EFFECTIVELY <br />
+FRANKINCENSE ORIGINAL </p>
+
+<p>The ONESENSE products are based on an original recipe of Buddhist monks. Over the years this has been refined and brought up to date in correspondence with the latest findings to increase its efficiency even more. Especially in the case of chronic inflammation of joints, frankincense can support good treatment results. </p>
+
+<p>ONESENSE Frankincense Original delivers the positive effect of frankincense in a practical capsule. A component in frankincense, boswellic acid, works in a natural way and is therefore largely free of side effects.</p>
+
+<p>Frankincense contributes to:<br />
+&bull; the inhibition of inflammation<br />
+&bull; accelerated recovery from infections<br />
+&bull; an antimicrobial and calming effect</p>
+
+<p>FRANKINCENSE ORIGINAL frankincense complex 60 capsules<br />
+Recommended intake: 1 capsule 2 x daily SHORTLY BEFORE a meal with some liquid (water, fruit juice, etc.). Ingredients per capsule: 225 mg frankincense extract 4:1, (Boswellia serrata with 65 % B. acid), 175 mg green lipped mussel powder, 121.50 mg microcryst. cellulose (filler), 120 mg vegetarian HPMC (Vegi-Caps) cellulose capsule, 75 mg shark cartilage powder, 75 mg Methyl Sulfonyl Methane (= MSM), 35 mg calcium hydrogen phosphate, 35 mg calcium carbonate, 7.50 mg rice bran extract, 1 mg silicon dioxide, 870 mg total weight. Note: Food supplements do not substitute a healthy and balanced diet and a healthy lifestyle. Warning: Do not exceed the recommended daily dose. Food supplement with frankincense, green lipped mussel, shark cartilage and MSM. Storage: Keep the container securely closed after use. Keep away from children. Store in a cool and dry place, away from direct sunlight. Best before end: see bottom.<br />
+Content: 60 capsules a 870 mg. Free from: gluten, gelatine, yeast, colourants, preservatives, flavouring substances, nuts, soya, milk components, fish, eggs, magnesium stearates.<br />
+Net weight: 52.2 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410146.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410146.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,54,regular_sales_price,"199,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,09-09432,ean,9120103410146,gtin,09120103410146,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410153,9120103410153,ONESENSE Healthy Box 3x 60 kapsułek,ONESENSE Healthy Box 3x 60 capsules,"<p>Poczuj dobre samopoczucie<br />
+THE ONESENSE FEEL-GOOD BOX <br />
+HEALTHY BOX</p>
+
+<p>The Healthy Box to prawdziwy pakiet mocy i zawiera trzy wybrane produkty ONESENSE, które zapewnią Ci zdrowie i kondycję na co dzień. Kombinacja produktów została starannie dobrana, aby ich funkcje idealnie się uzupełniały, wzmacniając Twoją obronę i poprawiając ogólne samopoczucie.</p>
+
+<p>ONESENSE Healthy Box zawiera:<br />
+ONESENSE Olej z kryla: Kwasy tłuszczowe omega-3 z oleju z kryla wspierają ochronę naczyń krwionośnych, zmniejszają zmęczenie i poprawiają ogólne samopoczucie.</p>
+
+<p>ONESENSE OPC Ultra: Silny przeciwutleniacz, OPC pomaga chronić przed wolnymi rodnikami i starzeniem się komórek. OPC może również przyspieszyć gojenie się ran i zwiększyć produkcję kolagenu.</p>
+
+<p>ONESENSE Witamina C Ultra: Naturalna witamina C z jagody camu camu może wspierać normalne funkcjonowanie układu odpornościowego i poprawiać wchłanianie żelaza.</p>
+
+<p>Aktywne składniki Healthy Box przyczyniają się do:<br />
+&byk; normalnego funkcjonowania układu odpornościowego<br />
+&byk; ochrony komórek, skóry i naczyń krwionośnych<br />
+&byk; lepszego samopoczucia</p>
+
+<p>OMEGA 3 KRILL OIL z 4 mg astaksantyny 60 kapsułek<br />
+Zalecane spożycie: 1 kapsułka dziennie połykana w całości Z posiłkiem i płynami (woda, sok itp.) Składniki na kapsułkę: 500 mg olej z kryla euphausia superba, 178,50 mg żelatyna, 178,50 mg woda, 62,50 mg substancja utrzymująca wilgoć glicerol, 5 mg witamina E olej, całkowita masa kapsułki 730 mg. Zawartość w kapsułce: 200 mg fosfolipidów morskich, 120 mg kwasów tłuszczowych Omega-3, 60 mg EPA (= kwas eikozapentaenowy), 32,5 mg DHA (= kwas dokozaheksaenowy),<br />
+4 mg astaksantyny Uwaga: Nie należy przekraczać zalecanej ilości spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia.<br />
+Suplementy z ekstraktem lipidowym ze skorupiaka z kryla antarktycznego Euphasia superba.<br />
+Przechowywanie: Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość opakowania: 60 kapsułek po 730 mg. Nie zawiera: glutenu, sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu. Ostrzeżenie: nie przekraczaj zalecanego dziennego poziomu spożycia.<br />
+Ilość netto: 43,8 g</p>
+
+<p>OPC ULTRA ponad 500 mg czystego OPC z resweratrolem 60 kapsułek<br />
+Zalecane spożycie: 1 kapsułka dziennie (rano lub wieczorem) około 30-60 minut PRZED posiłkiem z dużą ilością płynów (woda, sok itp.). Składniki na kapsułkę: 427 mg ekstraktu z kory sosny 120:1 (95% OPC = 406 mg), 10 mg celuloza mikrokryst. (wypełniacz), 136 mg ekstraktu z winogron (90% OPC = 122 mg) 120 mg kapsułka roślinna z hydroksypropylometylocelulozy, 10 mg jap. ekstraktu z rdestu ptasiego (50% resweratrol), 17 mg ekstraktu z otrębów ryżowych, łącznie 720 mg Uwaga: Nie należy przekraczać zalecanej ilości do spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Ostrzeżenie: nie przekraczaj zalecanego dziennego poziomu spożycia.<br />
+Suplementy z OPC i resweratrolem, 528 mg OPC i 5 mg resweratrolu na kapsułkę<br />
+Przechowywanie: Przechowywać pojemnik szczelnie zamknięty po użyciu. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość opakowania: 60 kapsułek po 720 mg. Nie zawiera: glutenu,<br />
+sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jaj, stearynianu magnezu.<br />
+Ilość netto: 43,2 g</p>
+
+<p>VITAMIN C ULTRA z 240 mg naturalnej witaminy C w kapsułce 60 kapsułek<br />
+Zalecane spożycie: 1 kapsułka dziennie PODCZAS posiłku i z płynami (woda, sok itp.) Składniki na kapsułkę: 480 mg ekstraktu camu camu z 50% witaminy C, 212,50 mg celuloza mikrokryst. (wypełniacz), kapsułka roślinna 120 mg z hydroksypropylometylocelulozy, ekstrakt z ananasa 9 mg 4:1, 7,50 mg ekstrakt z otrębów ryżowych, 6 mg ekstrakt z białych szparagów 50:1, 5 mg ekstrakt z papai 10-20:1, 5 mg ekstrakt z owoców acai/palmy 4-5:1, 5 mg ekstrakt z jabłka 5:1, 5 mg ekstrakt z jagód 5:1, 3 mg ekstrakt z oliwek 4:1, 3 mg ekstrakt z jarmużu 10:1, 3 mg zmielony korzeń marchwi, 3 mg ekstraktu z brokułów 10:1, 3 mg ekstraktu z cebuli łącznie 4:1, 870 mg. Uwaga: Nie należy przekraczać zalecanej ilości do spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Ostrzeżenie: nie przekraczaj zalecanego dziennego poziomu spożycia.<br />
+Suplementy z naturalną witaminą C z ekstraktu z camu camu oraz z ekstraktem z owoców i warzyw 480 mg ekstraktu z camu camu 50% witaminy C = 240 mg naturalnej witaminy. C = 300 % RWS* na kapsułkę * = referencyjne wartości odżywcze<br />
+Przechowywanie: Przechowywać pojemnik szczelnie zamknięty po użyciu. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość opakowania: 60 kapsułek po 870 mg.<br />
+Nie zawiera: glutenu, sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu.<br />
+Ilość netto: 52,2 g<br />
+</p>","<p>Sense the Wellbeing<br />
+THE ONESENSE FEEL-GOOD BOX <br />
+HEALTHY BOX</p>
+
+<p>The Healthy Box is a real powerhouse and includes three selected ONESENSE products that get you through everyday life fit and healthy. The combination of products has been carefully curated so that their functions ideally complement each other to strengthen your defences and increase your overall well-being.</p>
+
+<p>The ONESENSE Healthy Box contains:<br />
+ONESENSE Krill Oil: The omega-3 fatty acids from krill oil support the protection of blood vessels, reduce fatigue, and improve overall well-being.</p>
+
+<p>ONESENSE OPC Ultra: A powerful antioxidant, OPC helps protect against free radicals and cell ageing. OPC can also accelerate wound healing and increase collagen production.</p>
+
+<p>ONESENSE Vitamin C Ultra: The natural vitamin C of the camu camu berry can support the normal functioning of the immune system and improve iron absorption.</p>
+
+<p>The active ingredients of Healthy Box support:<br />
+&bull; the normal functioning of the immune system<br />
+&bull; the protection of cells, skin, and blood vessels<br />
+&bull; a better sense of overall well-being</p>
+
+<p>OMEGA 3 KRILL OIL with 4 mg astaxanthin 60 capsules<br />
+Recommended intake: 1 capsule per day swallowed whole WITH a meal and some fluids (water, juice etc.) Ingredients per capsule: 500 mg euphausia superba krill oil, 178.50 mg gelatine, 178.50 mg water, 62.50 mg humectant glycerol, 5 mg vitamin E oil, 730 mg total capsule weight. Content value per capsule: 200 mg marine phospholipides, 120 mg Omega-3 fatty acid, 60 mg EPA (= eicosapentaenoic acid), 32.5 mg DHA (= docosahexaenoic acid),<br />
+4 mg astaxanthin Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle.<br />
+Supplements with lipid extract from the crustacean Antarctic Krill Euphasia superba.<br />
+Storage: Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 60 capsules each 730 mg. Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate. Warning: Do not exceed the recommended daily level of consumption.<br />
+Net quantity: 43.8 g</p>
+
+<p>OPC ULTRA over 500 mg pure OPC with resveratrol 60 capsules<br />
+Recommended intake: 1 capsule per day (morning or evening) about 30-60 minutes PRIOR to a meal with lots of fluids (water, juice, etc.) Ingredients per capsule: 427 mg pine bark extract 120:1 (95 % OPC = 406 mg), 10 mg microcryst. Cellulose (filling), 136 mg grape extract (90 % OPC = 122 mg) 120 mg plant-based capsule out of hydroxypropylmethylcellulose, 10 mg jap. Knotgrass extract (50 % resveratrol), 17 mg rice bran extract, 720 mg in total Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Warning: Do not exceed the recommended daily level of consumption.<br />
+Supplements with OPC and resveratrol, 528 mg OPC and 5 mg resveratrol per capsule<br />
+Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 60 capsules each 720 mg. Free from: gluten,<br />
+artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate.<br />
+Net quantity: 43.2 g</p>
+
+<p>VITAMIN C ULTRA with 240 mg natural vitamin C per capsule 60 capsules<br />
+Recommended intake: 1 capsule per day WITH a meal and some fluids (water, juice etc.) Ingredients per capsule: 480 mg camu camu extract with 50 % vitamin C, 212.50 mg microcryst. Cellulose (filter), 120 mg plant-based capsule out of hydroxypropylmethylcellulose, 9 mg pineapple extract 4:1, 7.50 mg rice bran extract, 6 mg white asparagus extract 50:1, 5 mg papaya extract 10-20:1, 5 mg acai/palm fruit extract 4-5:1, 5 mg apple extract 5:1, 5 mg blueberry extract 5:1, 3 mg olive extract 4:1, 3 mg kale extract 10:1, 3 mg milled carrot root, 3 mg broccoli extract 10:1, 3 mg onion extract 4:1, 870 mg in total Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Warning: Do not exceed the recommended daily level of consumption.<br />
+Supplements with natural vitamin C from the camu camu extract and with fruit and vegetable extract 480 mg camu camu extract 50 % vitamin C = 240 mg natural vitamin. C = 300 % NRV* per capsule * = nutrient reference values<br />
+Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 60 capsules each 870 mg.<br />
+Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate.<br />
+Net quantity: 52.2 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410153.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410153.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"171,4",regular_sales_price,"549,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-90010007,ean,9120103410153,gtin,09120103410153,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410160,9120103410160,ONESENSE All in One Drink 4x 250 ml,ONESENSE All in One Drink 4x 250 ml,"<p>Poczuj moc<br />
+ONE FOR ALL<br />
+ALL IN ONE</p>
+
+<p>Dzięki 13 witaminom i 10 minerałom All in One Drink zapewnia nieskomplikowane podstawowe zaopatrzenie we wszystkie mikroelementy. Kompozycja gwarantuje, że składniki idealnie się uzupełniają i dlatego są szczególnie dobrze przyswajalne przez organizm. </p>
+
+<p>Zdrowy shot witaminowy firmy ONESENSE zapewnia idealne pokrycie dziennego zapotrzebowania na wszystkie ważne witaminy, minerały i pierwiastki śladowe. Smaczny napój jest pełen zdrowych składników i oczywiście bez dodatku cukru, bez konserwantów i bez alkoholu.</p>
+
+<p>Wystarczy jeden łyk dziennie, aby napój All in One pokrywał spożycie najważniejszych witamin potrzebnych organizmowi. Poczuj więcej witalności i energii w codziennym życiu. Wzmocnij swój układ odpornościowy i zainwestuj w zdrową przyszłość!</p>
+
+<p> Aktywne składniki w All in One wspierają: <br />
+& byk; funkcjonalność układu odpornościowego <br />
+& byk; lepsze samopoczucie <br />
+& byk; zwiększoną witalność </p>
+
+<p>ALL IN ONE, koncentrat witaminowo-mineralny z sokiem z czerwonych winogron <br />
+Zalecenia dotyczące spożycia: Dorośli raz dziennie 30 ml, rozcieńczyć w proporcji 1:1 wodą, sokiem owocowym lub czymś podobnym. Składniki: woda, koncentrat soku z czerwonych winogron, proszek z owoców aceroli, mleczan wapnia, sole magnezowe kwasu cytrynowego, koncentrat soku z cytryny, octan DL-alfa tokoferylu, cyjanokobalamina, glukonian cynku, D-pantotenian wapnia, menachinon, ekstrakt z pestek winogron, nikolaborium sodu jodek, palmitynian retinylu, molibdenian sodu, chlorowodorek pirydoksyny, kwas foliowy, monoazotan tiaminy, D-biotyna, ryboflawina, glukonian miedzi, siarczan manganu, selenian sodu, chlorek chromu(III). Dzienna porcja dorośli 30 ml zawiera: 300 mg witaminy C naturalnej, 120 mg wapnia, 60 mg magnezu, 36 mg witaminy E, 25 g witaminy B12/kobalaminy, 5,3 mg cynku, 18 mg kwas pantotenowy/B5, 60 g witamina K2, 12,5 mg OPC, 800 g witamina A, 20 g witamina D3 wegańska, 10 mg niacyna, 90 956 ;g jod, 1 mg bor, 30 g molibden, 4,2 mg witamina B6/ pirydocyna 400 g witamina B9 / kwas foliowy 3,3 mg witamina B1 / tiamina 50% # 956 g biotyna / B7 - witamina H 4,2 mg witamina B2 / ryboflawina 0,6 mg miedź 1,2 mg mangan 33 g selen 24 g chromu. Uwaga: Suplementy diety nie mogą być stosowane jako substytut zbilansowanej i zróżnicowanej diety oraz zdrowego stylu życia. Ostrzeżenie: Nie przekraczać podanego dziennego spożycia. Suplement diety: Na bazie soku winogronowego ze wszystkimi 13 witaminami i 10 minerałami (naturalna witamina C z aceroli; witamina D3 wegańska). Przechowywanie: Nie pij bezpośrednio z butelki! Ten produkt jest: bez dodatków i bez aromatów. Aby zapobiec fermentacji tego produktu, butelkę należy NATYCHMIAST zamknąć po każdym użyciu, przechowywać w pozycji pionowej w lodówce i zużyć w ciągu 30 dni. Przechowywać w miejscu niedostępnym dla małych dzieci. Nieotwartą butelkę przechowywać w chłodnym miejscu, chronić przed światłem i w suchym miejscu (5 - 25 stopni). Najlepiej przed końcem: patrz zamknięcie. <br />
+Zawartość butelki: 250 ml <br />
+</p>","<p>Sense the Power<br />
+ONE FOR ALL<br />
+ALL IN ONE</p>
+
+<p>With a total of 13 vitamins and 10 minerals, the All in One Drink provides a convenient, basic supply of all micronutrients. The composition guarantees that the ingredients complement each other perfectly and are thus absorbed particularly well by the body.</p>
+
+<p>The healthy vitamin shot from ONESENSE offers an ideal coverage of your daily requirement of all the important vitamins, minerals and trace elements. This tasty drink is full of healthy ingredients and naturally contains no added sugar, no preservatives and no alcohol.</p>
+
+<p>With just one sip a day, feel more vital and energetic in your everyday life. Strengthen your defences and invest in a healthy future!</p>
+
+<p>The active ingredients of our All in One Drink support:<br />
+&bull; the normal functioning of the immune system<br />
+&bull; a better overall well-being<br />
+&bull; increased vitality</p>
+
+<p>ALL IN ONE Vitamin and mineral concentrate with red grape juice<br />
+Suggested intake: Adults: once a day 30 ml. Mix with water, fruit juice or any other similar non-alcoholic liquid in a ratio of 1:1. Ingredients: Water, red grape juice concentrate, acerola fruit powder, calcium lactate, magnesium citrate, concentrated lemon juice, DL alpha<br />
+tocopheryl acetate, cyanocobalamin, zinc gluconate, calcium D pantothenate, vitamin K2, grape seed extract, retinyl palmitate, vegan cholecalciferol, nicotinamide, potassium iodide, sodium tetraborate, sodium molybdate, pyridoxine hydrochloride, folic acid, thiamin mononitrate, D biotin, riboflavin, copper gluconate, manganese sulphate, sodium selenate, chromium III chloride. Note: Food supplements are not a substitute for a well-balanced, varied diet and a healthy lifestyle. Warning: Do not exceed the recommended daily dose. Food supplement: Red grape juice enriched with nutrients; contains all vitamins (natural vitamin C from acerola), the minerals calcium and magnesium, 8 micronutrients and OPC; for high-dose supply of nutrients for adolescents and adults; for a healthy metabolism Storage: Do not drink directly from the bottle. This product does not contain any alcohol or preservatives. After every use, close bottle IMMEDIATELY and store upright in refrigerator in order to prevent fermentation. Use within 25 days. Store out of reach of young children. Store unopened bottle in a cool and dry place (5 - 25.C). Best before: See cap.<br />
+Bottle content: 250 ml<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410160.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410160.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,TRUE,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"114,25",regular_sales_price,645,"",,shopping_points,5,cashback_amount,"0,05",benefit_store,TRUE,benefit_store_sales_price,495,benefit_amount,150,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,3A3,ean,9120103410160,gtin,09120103410160,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410177,9120103410177,ONESENSE Omega 3 Krill Oil 60 kapsułek,ONESENSE Omega 3 Krill Oil 60 Capsules,"<p>Poczuj ducha<br />
+OMEGA 3 Z ANTARKTYKI<br />
+OLEJ Z KRYLA OMEGA 3</p>
+
+<p>Spróbuj potrójnego działania oleju z kryla ONESENSE Omega 3! Połączenie wysokiej jakości kwasów tłuszczowych omega-3, fosfolipidów i astaksantyny zawartej w oleju z kryla ma wyjątkowy charakter i oferuje liczne korzyści dla zdrowia.</p>
+
+<p>Przyjmowanie kwasów tłuszczowych omega-3 z pożywienia jest niezbędne dla ludzi, ponieważ nie są one naturalnie wytwarzane przez organizm ludzki. Wspomagają utrzymanie układu odpornościowego, hamują stany zapalne oraz chronią serce i naczynia krwionośne przed złogami. Fosfolipidy morskie charakteryzują się wysoką biodostępnością, dzięki czemu mogą być optymalnie wykorzystywane przez organizm. Naturalna astaksantyna stabilizuje kwasy tłuszczowe omega-3 i ma silne działanie przeciwutleniające.</p>
+
+<p>ONESENSE Omega 3 Olej z Kryla jest wolny od zanieczyszczeń i jest znacznie lepiej trawiony przez organizm niż standardowe Omega-3. To sprawiło, że stał się popularną alternatywą.</p>
+
+<p>Kwasy tłuszczowe omega-3 przyczyniają się do:<br />
+&byk; zdrowego funkcjonowania serca i naczyń krwionośnych<br />
+&byk; zmniejszenia zmęczenia<br />
+&byk; poprawy ogólnego samopoczucia</p>
+
+<p>OMEGA 3 KRILL OIL z 4 mg astaksantyny 60 kapsułek<br />
+Zalecane spożycie: 1 kapsułka dziennie połykana w całości PODCZAS posiłku i z płynami (woda, sok itp.) Składniki na kapsułkę: 500 mg olej z kryla euphausia superba, 178,50 mg żelatyna, 178,50 mg woda, 62,50 mg substancja utrzymująca wilgoć glicerol, 5 mg witamina E olej, całkowita masa kapsułki 730 mg. Zawartość kapsułki: 200 mg fosfolipidów morskich, 120 mg kwasu tłuszczowego Omega-3, 60 mg EPA (= kwas eikozapentaenowy), 32,5 mg DHA (= kwas dokozaheksaenowy), 4 mg astaksantyny. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Suplementy z ekstraktem lipidowym ze skorupiaka z kryla antarktycznego Euphasia superba. Przechowywanie: Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód opakowania Zawartość opakowania: 60 kapsułek po 730 mg. Nie zawiera: glutenu, sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu. Ostrzeżenie: nie przekraczaj zalecanego dziennego poziomu spożycia.<br />
+Ilość netto: 43,8 g<br />
+</p>","<p>Sense the Spirit<br />
+OMEGA 3 FROM THE ANTARCTIC <br />
+OMEGA 3 KRILL OIL</p>
+
+<p>Try the triple effect of ONESENSE Omega 3 Krill Oil! The combination of high-quality omega-3 fatty acids, phospholipids and astaxanthin which is contained in krill oil is unique in nature and offers numerous benefits for your health.</p>
+
+<p>The intake of omega-3 fatty acids from food is vital for humans as they are not naturally produced by the human body. They support the maintenance of the immune system, inhibit inflammation, and protect the heart and blood vessels from deposits. The marine phospholipids are characterised by a high bioavailability and can therefore be optimally utilised by the body. The natural astaxanthin stabilises the omega-3 fatty acids and has a strong antioxidant effect.</p>
+
+<p>ONESENSE Omega 3 Krill Oil is contaminant-free and is much better digested through the body than standard Omega-3. This made it a popular alternative.</p>
+
+<p>Omega-3 fatty acids contribute to the:<br />
+&bull; healthy function of the heart and blood vessels<br />
+&bull; reduction of fatigue<br />
+&bull; improvement of general well-being</p>
+
+<p>OMEGA 3 KRILL OIL with 4 mg astaxanthin 60 capsules<br />
+Recommended intake: 1 capsule per day swallowed whole WITH a meal and some fluids (water, juice etc.) Ingredients per capsule: 500 mg euphausia superba krill oil, 178.50 mg gelatine, 178.50 mg water, 62.50 mg humectant glycerol, 5 mg vitamin E oil, 730 mg total capsule weight. Content value per capsule: 200 mg marine phospholipides, 120 mg Omega-3 fatty acid, 60 mg EPA (= eicosapentaenoic acid), 32.5 mg DHA (= docosahexaenoic acid), 4 mg astaxanthin Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Supplements with lipid extract from the crustacean Antarctic Krill Euphasia superba. Storage: Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 60 capsules each 730 mg. Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate. Warning: Do not exceed the recommended daily level of consumption.<br />
+Net quantity: 43.8 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410177.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410177.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"68,25",regular_sales_price,"224,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-1190010260,ean,9120103410177,gtin,09120103410177,"",,"",,taric_code,21069092,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410184,9120103410184,ONESENSE Vitamin B Complex 60 kapsułek,ONESENSE Vitamin B Complex 60 Capsules,"<p> Poczuj energię <br />
+ZWIĘKSZ ENERGIĘ I WITALNOŚĆ <br />
+VITAMIN B KOMPLEX</p>
+
+<p>Vitamin B Komplex zawiera wszystkie witaminy z grupy B. Odpowiadają one za sprawny przebieg metabolizmu energetycznego, węglowodanowego, białkowego i tłuszczowego. Ponadto każda witamina z grupy B spełnia w organizmie określone zadanie. W całości pomagają między innymi zmniejszyć zmęczenie i znużenie, zwiększyć sprawność umysłową i poziom energii, wzmocnić lub wzmocnić zęby, kości, włosy, skórę i paznokcie oraz poprawić nastrój.</p>
+
+<p>VITAMIN B KOMPLEX ONESENSE jest odpowiedni dla każdego, kto często czuje się apatycznie lub często ma problemy z trawieniem. Kompleks witamin z grupy B przywraca metabolizm! Witamina B może również dostarczyć nowej energii w przypadku stresu, stresu psychicznego lub nastrojów depresyjnych.</p>
+
+<p> Witamina B wspiera: <br />
+& byk; aktywny metabolizm <br />
+& byk; lepszą wydajność i więcej energii <br />
+& byk; zmniejszenie bezczynności </p>
+
+<p>VITAMIN B KOMPLEX, wysoka dawka, 60 kapsułek <br />
+Zalecenia dotyczące spożycia: Spożywać 1 kapsułkę dziennie z posiłkiem popijając dużą ilością płynu (woda, sok owocowy itp.). Składniki na kapsułkę: 201,22 mg witaminy B4 choliny 41% = 82,53 mg, 100 mg kapsułka roślinna wykonana z hydroksypropylometylocelulozy, 55 mg witaminy B8 inozytolu, 50 mg witaminy B12 cyjanokobalaminy 1% = 0,50 mg, 50 mg witaminy B3 nikotynamidu, 45 mg witaminy B5 D-pantotenian wapnia, 25 mg ekstrakt z aceroli w proszku 25% witamina C = 6,25 mg naturalna. Wit. C, 10 mg Wit.B1 Tiamina HCL, 10 mg Wit.B2 Ryboflawina, 10 mg Wit.B6 Pirydoksyna HCL, 4,62 mg Ekstrakt z otrębów ryżowych, 0,71 mg celuloza mikrokryst. (wypełniacz), 0,25 mg Wit.B7 biotyna, 0,20 mg kwasu foliowego wit.B9, łącznie 562 mg. Uwaga: Suplementy diety nie mogą być stosowane jako substytut zbilansowanej i zróżnicowanej diety oraz zdrowego stylu życia. Ostrzeżenie: Nie przekraczać podanego dziennego spożycia. Suplement diety zawierający wszystkie witaminy z grupy B i witaminę C RWS *% wartości w 1 kapsułce: * = referencyjne wartości odżywcze, Wit.B1 = 909,09% Wit.B2 = 714.29% Wit.Wit.B3 = 312,50%, Wit.B4 = brak dostępnych wartości referencyjnych, Wit.B5 = 750,00% Wit.B6 = 714,29% Wit.B7 = 500,00%, Wit.B8 = brak dostępnych wartości referencyjnych, Wit.B9 = 100,00% Wit.B12 = 20 000,00% Wit. C = 7,81%. Przechowywanie: Trzymaj słoik szczelnie zamknięty po użyciu. Przechowuj ten produkt poza zasięgiem małych dzieci. Przechowywać w suchym miejscu i chronić przed światłem. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość puszki: 60 kaps. po 559 mg. Nie zawiera: glutenu, barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jaj, stearynianu magnezu. <br />
+Ilość netto: 33,6 g <br />
+</p>","<p>Sense the Energy<br />
+FOR MORE ENERGY AND PERFORMANCE <br />
+VITAMIN B KOMPLEX</p>
+
+<p>The vitamin B complex contains all B vitamins. They are responsible for the smooth running of our energy, carbohydrate, protein, and fat metabolism. They contribute to reducing tiredness and fatigue, increasing mental performance and energy levels, strengthening teeth, bones, hair, skin, and nails. They even brightening our mood. In addition, each B vitamin fulfils a specific task in the organism.</p>
+
+<p>The ONESENSE Vitamin B Complex is designed for all those who are tired of feeling tired or those who frequently suffer from digestive problems. The vitamin B complex supports your normal energy yielding metabolism and contributes to the reduction of tiredness and fatigue.</p>
+
+<p>Vitamin B contributes to:<br />
+&bull; a normal energy yielding metabolism<br />
+&bull; better performance and more energy<br />
+&bull; the reduction of tiredness and fatigue</p>
+
+<p>VITAMIN B KOMPLEX high dose 60 capsules<br />
+Recommended intake: take 1 capsule with a meal with some liquid (water, fruit juice, etc.). Ingredients per capsule: 201.22 mg vit.B4 choline 41% = 82.53 mg, 100 mg plant-based capsule made of hydroxypropylmethylcellulose, 55 mg vit.B8 inositol, 50 mg vit.B12 cyanocobalamin 1% = 0.50 mg, 50 mg vit.B3 nicotinamide, 45 mg vit.B5 calcium D-pantothenat, 25 mg acerola extract powder 25 % vit.C = 6.25 mg natural vit.C, 10 mg vit.B1 thiamine HCL, 10 mg vit.B2 riboflavin, 10 mg vit.B6 pyridoxine HCL, 4.62 mg rice bran extract, 0.71 mg microcryst. cellulose (filler), 0.25 mg vit.B7 biotin, 0.20 mg vit.B9 folic acid, 562 mg total weight Note: Food supplements do not substitute a healthy and balanced diet and a healthy lifestyle. Warning: Do not exceed the recommended daily dose. Food supplement with all B vitamins and vit.C NRV* % per 1 capsule: * = nutrient reference values, vit.B1 = 909.09 % vit.B2 = 714.29 % vit. B3 = 312.50 %, vit.B4 = no reference values available, vit.B5 = 750.00 % vit.B6 = 714.29 % vit.B7 = 500.00 %, vit.B8 = no reference values available,vit.B9 = 100.00 % vit.B12 = 20,000.00 % vit.C = 7.81 %<br />
+Storage: Keep the container securely closed after use. Keep away from children. Store in a cool and dry place, away from direct sunlight. Best before end: see bottom<br />
+Content: 60 capsules . 559 mg. Free from: gluten, gelatine, yeast, colourants, preservatives, flavouring substances, nuts, soya, milk components, fish, eggs, magnesium stearates.<br />
+Net weight: 33.6 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410184.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410184.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"44,6",regular_sales_price,"174,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-20010256A,ean,9120103410184,gtin,09120103410184,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410191,9120103410191,ONESENSE Magnesium Spray 100ml,ONESENSE Magnesium Spray 100ml,"<p>Poczuj luz<br />
+ZWIĘKSZ SIŁĘ I WYTRZYMAŁOŚĆ <br />
+MAGNEZ W SPRAYU</p>
+
+<p> ONESENSE Magnesium Spray oferuje skuteczny sposób dostarczania organizmowi magnezu w szczególnie delikatny sposób, ponieważ olej jest nakładany bezpośrednio na skórę i stamtąd może wywierać wpływ na komórki . Zaleta: W przeciwieństwie do przyjmowania doustnego, przy stosowaniu ONESENSE Magnesium Spray nie należy oczekiwać działania przeczyszczającego nawet przy wyższych dawkach. </p>
+
+<p> Magnez jest potrzebny przede wszystkim do utrzymania zdrowych kości i zębów oraz do funkcjonowania mięśni gładkich. Ponieważ organizm nie może magazynować magnezu, należy go podawać regularnie. ONESENSE Magnesium Spray może szybko rozluźnić mięśnie i złagodzić ich skurcze, zwłaszcza po wysiłku fizycznym w życiu codziennym lub po aktywności sportowej. Olejek zapewnia również nawilżenie i odżywia skórę.</p>
+
+<p> Magnez przyczynia się do: <br />
+& byk; zrelaksowanych i silnych mięśni<br />
+& byk; złagodzenia skurczów mięśn<br />
+& byk; wzmocnienia kości i zębów</p>
+
+<p>MAGNESIUM SPRAY, produkt czysto naturalny. Głęboko skuteczny na skórę. Na ponad 800 sprayów Magnesium Spray nadaje się szczególnie do masażu sportowego po wysiłku fizycznym. Stosowanie: Spryskać skórę 4 do 5 aerozolami sprayu magnezowego dwa razy dziennie lub w razie potrzeby delikatnie wmasować. Uwaga: Jeśli wrażliwa skóra lekko mrowi, roztwór można w każdej chwili zmyć wodą. Nie spryskiwać oczu. Składniki: woda, chlorek magnezu (31%) z dawnego Morza Cechsztyńskiego (100% naturalny). Numer partii: patrz na dole. Najlepiej spożyć przed końcem: patrz na dole. <br />
+Ilość netto: 100ml 130g <br />
+</p>","<p>Sense the Easing<br />
+FOR MORE STRENGTH AND ENDURANCE<br />
+MAGNESIUM SPRAY</p>
+
+<p>The ONESENSE Magnesium Spray offers an efficient and particularly gentle way to supply the body with magnesium. The absorbable oil is applied to the skin tissue and directly unfolds its effect on the cells. One advantage: In contrast to oral supplementation, no laxative effect is to be expected when using ONESENSE Magnesium Spray, even when using a higher dosage.</p>
+
+<p>Magnesium is needed to maintain healthy bones and teeth and to relieve muscle tension. Since the body cannot store magnesium, it must be supplied regularly. Especially after physical stress in everyday life or sporting activities, ONESENSE Magnesium Spray can quickly relax the muscles and relieve muscle cramps. The oil also moisturises and cares for the skin.</p>
+
+<p>Magnesium contributes to the:<br />
+&bull; relaxation of muscles<br />
+&bull; alleviation of muscle contractions<br />
+&bull; maintenance of normal bones and teeth</p>
+
+<p>MAGNESIUM SPRAY pure natural product works deep within the skin&rsquo;s surface. More than 800 pumps Magnesium Spray is particularly suitable for fitness massages after physical exercise. The massage helps the dissolved magnesium to be absorbed by the skin and to have a nurturing and relaxing effect on the muscles. Application: spray 2 x daily or when necessary 4 to 5 pumps of Magnesium Spray directly onto the skin and slightly massage it in. Note: If your sensitive skin starts to tingle, wash it with water. Do not spray into eyes. lngredients: Water, magnesium chloride (31%) from the former Zechstein sea (100% natural) Solution No. see bottom. Best before end: see bottom.<br />
+Net weight: 100ml 130 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410191.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410191.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,30,regular_sales_price,"99,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-8001007,ean,9120103410191,gtin,09120103410191,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410207,9120103410207,ONESENSE Alkaline Shot Vial a 25ml,ONESENSE Alkaline Shot Vial a 25ml,"<p>Poczuj równowagę<br />
+DOPROWADŹ DO RÓWNOWAGI KWASOWO-ZASADOWEJ<br />
+ALKALICZNY STRZAŁ </p>
+
+<p>Zrównoważony poziom kwasowo-zasadowy jest ważny dla naszego dobrego samopoczucia i zdrowia. Przy nadmiernej kwasowości organizm nie jest w stanie rozłożyć wchłoniętych kwasów. Zamiast tego przechowuje kwasy w różnych obszarach, w których mogą powodować wiele problemów.</p>
+
+<p>Zastrzyk alkaliczny ONESENSE równoważy takie nadmierne zakwaszenie. Jest to skuteczna mieszanka mineralna na bazie kilku cytrynianów i węglanów z organicznie związanym cynkiem oraz witaminami B6 i B12. </p>
+
+<p>Wraz z dietą bogatą w zasady, nasz Alkaline Shot przesuwa kwasowość Twojego ciała z powrotem do zakresu neutralnego, jednocześnie dostarczając organizmowi niezbędnych minerałów, które mogły zostać utracone w wyniku nadkwasoty. Dzięki naszemu Alkaline Shot oferujemy trwałe i delikatne rozwiązanie na nadkwasotę.</p>
+
+<p>Aktywne składniki zastrzyku alkalicznego ONESENSE:<br />
+&byk; wnoszą istotny wkład w metabolizm energetyczny<br />
+&byk; wspierają równowagę elektrolitów <br />
+&byk; odgrywają ważną rolę w układzie odpornościowym</p>
+
+<p>ALKALICZNY SHOT, 14 shotów<br />
+Suplement diety w płynie: z 3 minerałami, cynkiem i witaminami B6 i B12. Zalecone dawkowanie: Wypij jeden shot 25 ml dziennie z posiłkiem nierozcieńczonym lub z jakimś płynem (woda, sok owocowy, itp.). Każda porcja zawiera: wodę, cytrynian trisodowy, cytrynian triwapniowy, cytrynian tripotasowy, dicytrynian trimagnezowy, organiczny syrop z agawy, węglan sodu, płynny aromat cytrynowy, glukonian cynku, hydroloryt pirydoksyny, cyjanokobalaminę. 1 shot 25 ml zawiera: 12,50 mcg/g wit. B12 (kobalamina), 1,40 mg Wit. B6 (pirydoksyna), cynk 5 mg, magnez 100 mg, wapń 200 mg, potas 300 mg, sód 500 mg. Uwaga: Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego trybu życia. Przechowywanie: Wyrzucić butelki po użyciu. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Termin przydatności do spożycia: patrz spód opakowania. Zawartość: 14 x 25 ml butelek Alkaline Shot. Ostrzeżenie: Nie należy przekraczać zalecanej dziennej porcji do spożycia.<br />
+Ilość netto: 25 ml każda<br />
+</p>","<p>Sense the Balance<br />
+GET YOUR ACID-ALKALINE LEVELS INTO BALANCE <br />
+ALKALINE SHOT </p>
+
+<p>Balanced acid-alkaline levels are important for our well-being and health. With excess acidity, the body becomes unable to break down absorbed acids. Instead, it stores the acids in various areas where they can cause a multitude of problems.</p>
+
+<p>The ONESENSE Alkaline Shot balances out such over-acidification. It is an effective mineral blend based on several citrates and carbonate with organically-bound zinc and vitamins B6 and B12. </p>
+
+<p>Together with an alkaline-rich diet, our Alkaline Shot shifts the acidity of your body back into the neutral range while also supplying the body with necessary minerals which may have been lost in the course of hyperacidity. With our Alkaline Shot, we are offering you a sustainable and gentle solution for hyperacidity.</p>
+
+<p>The active ingredients of the ONESENSE Alkaline Shot:<br />
+&bull; make an important contribution to the energy metabolism<br />
+&bull; promote a balance of electrolytes <br />
+&bull; play an important role in the immune system</p>
+
+<p>ALKALINE SHOT, 14 shots<br />
+Liquid food supplement: with 3 minerals, zinc and vitamins B6 and B12. Recommended dosage: Drink one 25 ml shot daily with a meal undiluted or with some sort of liquid (water, fruit juice, etc). Each portion contains: Water, tri-sodium citrate, tri-calcium citrate, tri-potassium citrate, tri-magnesium dicitrate, organic agave syrup, sodium carbonate, liquid lemon flavour, zinc gluconate, pyridoxine hydrolorite, cyanocobalamin. 1 shot of 25 ml contains: 12,50 mcg/&#956;g Vit. B12 (Cobalamin), 1,40 mg Vit. B6 (Pyridoxin), 5 mg Zinc, 100 mg Magnesium, 200 mg Calcium, 300 mg Potassium, 500 mg Sodium. Note: Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Storage: Discard the bottles after use. Keep this product out of reach of children. Store in a dry place and away from light. Use-by date: see bottom. Content: 14 x 25 ml bottles of Alkaline Shot. Warning: Do not exceed the recommended daily dose of consumption.<br />
+Net quantity: 25 ml each<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410207.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410207.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"70,1",regular_sales_price,"299,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,201200072,ean,9120103410207,gtin,09120103410207,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410214,9120103410214,ONESENSE Vitamin D3 + K2 30 kapsułek,ONESENSE Vitamin D3 + K2 30 Capsules,"<p>Poczuj szczęście <br />
+PO SŁONECZNEJ STRONIE ŻYCIA<br />
+WITAMINA D3 I K2</p>
+
+<p>Witamina D jest zwykle wytwarzana przez organizm po ekspozycji na światło słoneczne. W miesiącach jesienno-zimowych, kiedy ekspozycja na światło słoneczne może być minimalna, samosynteza może być zbyt niska, aby zaspokoić zapotrzebowanie. Kompleks witaminy D3 ONESENSE zawiera wysokiej jakości witaminę D w dużych dawkach. Uzupełnienie witaminy D pomaga zapobiegać objawom niedoboru.</p>
+
+<p>Witamina D bierze udział w wielu procesach metabolicznych w organizmie i reguluje na przykład równowagę wapniowo-fosforową. W ten sposób przyczynia się do wzmocnienia kości, zębów oraz prawidłowego funkcjonowania układu odpornościowego i nerwowego. Witamina D wnosi również ważny wkład w naszą równowagę hormonalną. Może poprawić nasz nastrój i zmniejszyć objawy depresji sezonowej.</p>
+
+<p>Witamina D przyczynia się do:<br />
+&byk; poprawy nastroju<br />
+&byk; zdrowych kości i naczyń krwionośnych<br />
+&byk; normalnego funkcjonowania układu odpornościowego</p>
+
+<p>D3 KOMPLEX 5.000 I.E. wysoka dawka 30 kapsułek<br />
+Zalecane spożycie: 1 kapsułkę 1 x dziennie popijając płynem (woda, sok owocowy itp.). Składniki na kapsułkę: 395,50 mgceluloza mikrokryst. (wypełniacz), 100 mg kapsułka roślinna wykonana z hydroksypropylometylocelulozy, 50 mg cholekalcyferolu (wit. D3 100 000 j.m./g równa się 0,125 mg wit. D3), 4,50 mg ekstraktu z otrębów ryżowych 550 mg masy całkowitej. Uwaga: Suplementy diety nie zastępują zdrowej i zbilansowanej diety oraz zdrowego trybu życia. Ostrzeżenie: Nie należy przekraczać zalecanej porcji do spożycia w ciągu dnia. Suplement diety z witaminą D3 125 g wit.D3 = 5000 I.E./I.U. = 2500 % RWS* * = referencyjne wartości odżywcze. Przechowywanie: Przechowywać pojemnik bezpiecznie zamknięty po użyciu. Trzymać z dala od dzieci. Przechowywać w chłodnym i suchym miejscu, z dala od bezpośredniego światła słonecznego. Najlepiej spożyć przed końcem: patrz spód opakowania.<br />
+Zawartość: 30 kapsułek. 550 mg. Nie zawiera: glutenu, żelatyny, drożdży, barwników, konserwantów, substancji smakowych, orzechów, soi, składników mleka, ryb, jajek, stearynianów magnezu.<br />
+Waga netto: 16,5 g<br />
+</p>","<p>Sense the Happiness <br />
+ON THE SUNNY SIDE OF LIFE <br />
+VITAMIN D3 AND K2</p>
+
+<p>Vitamin D is usually produced by the body after sunlight exposure. During fall and winter months when sunlight exposure may be minimal, the self-synthesis may be too low to meet the demand. The ONESENSE Vitamin D3 Complex contains high-quality vitamin D in a high dosage. Supplementing vitamin D helps prevent symptoms of deficiency.</p>
+
+<p>Vitamin D is involved in many metabolic processes in the body and regulates, for example, the calcium and phosphorus balance. It thus contributes to strong bones, teeth, and the normal functioning of the immune and nervous systems. Vitamin D also makes an important contribution to our hormonal balance. It can improve our mood and reduce the symptoms of seasonal depression.</p>
+
+<p>Vitamin D contributes to the:<br />
+&bull; regulation of mood<br />
+&bull; healthy bones and blood vessels<br />
+&bull; normal function of the immune system</p>
+
+<p>D3 KOMPLEX 5.000 I.E. high dose 30 capsules<br />
+Recommended intake: take 1 capsule 1 x daily with some liquid (water, fruit juice, etc.). Ingredients per capsule: 395.50 mg microcryst. cellulose (filler), 100 mg plant-based capsule made of hydroxypropylmethylcellulose, 50 mg cholecalciferol (Vit. D3 100.000 I.U./g equals 0.125 mg vit.D3), 4.50 mg rice bran extract 550 mg total weight. Note: Food supplements do not substitute a healthy and balanced diet and a healthy lifestyle. Warning: Do not exceed the recommended daily dose. Food supplement with vitamin D3 125 &#956;g vit.D3 = 5,000 I.E./I.U. = 2,500 % NRV* * = nutrient reference values. Storage: Keep the container securely closed after use. Keep away from children. Store in a cool and dry place, away from direct sunlight. Best before end: see bottom.<br />
+Content: 30 capsules. 550 mg. Free from: gluten, gelatine, yeast, colourants, preservatives, flavouring substances, nuts, soya, milk components, fish, eggs, magnesium stearates.<br />
+Net weight: 16,5 g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410214.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410214.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"53,75",regular_sales_price,"174,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,201100090,ean,9120103410214,gtin,09120103410214,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410221,9120103410221,ONESENSE balsam z kadzidłowca,ONESENSE Frankincense Balm,"<p>Poczuj ulgę<br />
+SKUTECZNIE ZWALCZANIE ZAPALENIA<br />
+BALSAM Z KADZIDŁOWCA </p>
+
+<p>Produkty z kadzidłowca ONESENSE oparte są na recepturze buddyjskich mnichów, która została opracowana w oparciu o najnowsze odkrycia i dzięki temu może jeszcze lepiej rozwinąć swoje działanie. Szczególnie w przypadku przewlekłego zapalenia stawów można uzyskać dobre wyniki leczenia za pomocą kadzidła. </p>
+
+<p>Balsam z kadzidłowca ONESENSE jest szczególnie polecany jako skuteczny produkt pielęgnacyjny przy reumatyzmie i chorobach skóry, ale balsam pomaga również łagodzić objawy zapalenia stawów i dny moczanowej. Kwasy bosweliowe zawarte w żywicy kadzidłowca działają w naturalny sposób i dlatego są w dużej mierze wolne od skutków ubocznych.</p>
+
+<p> Kadzidłowiec przyczynia się do: <br />
+& byk; hamowania stanu zapalnego <br />
+& byk; przyspieszonego powrotu do zdrowia po infekcjach <br />
+& byk; ma działanie przeciwbakteryjne i uspokajające </p>
+
+<p> BALSAM Z KADZIDŁOWCA, według przepisu mnichów buddyjskich.<br />
+W przepisie wykorzystano tajemnicę, którą od wieków strzegli buddyjscy mnisi. Austriacka firma producencka zrewidowała oryginalną recepturę i dostosowała ją do dzisiejszych potrzeb. Balsam ten wykonany jest na bazie naturalnych surowców, zgodnie z pierwotną tradycją. Stosowanie: W celu uzyskania optymalnych rezultatów zalecamy nakładanie tego balsamu kilka razy dziennie na skórę i pozostawienie go do działania.Składniki: aqua, mirystynian izopropylu, olej Prunus amygdalus dulcis, polisorbat 20, gliceryna, karbomer, olej boswellia carteii, trietanoloamina, fenoksyetanol, maris sal, glikol pentylenowy,<br />
+limonen, linolenian etylu, octan tokoferylu, ekstrakt enteromorpha compressa, ekstrakt z porphyra umbilicalis, ekstrakt z himantalii, ekstrakt z himantalii elongata, ekstrakt z ulva lactuca, ekstrakt z palmaria palmata, glikol decylenowy, glikol kaprylylowy, ekstrakt z liści rozmarynu lekarskiego, ekstrakt z liści arniki liny montowanej, ekstrakt z kwiatu retuszowca , octan retinylu, olej arachis hypogea, ekstrakt z helianthus annuus, sorbinian potasu, benzoesan sodu, tokoferol, BHT. Ostrzeżenie: Nie stosować na oczy lub błony śluzowe. Nie stosować u dzieci poniżej 3 roku życia. Stosuj tylko na skórę. W przypadku wystąpienia podrażnienia skóry należy natychmiast przerwać stosowanie. Przechowywanie: Po użyciu przechowywać puszkę szczelnie zamkniętą. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym i chronionym przed światłem miejscu. Najlepiej przed patrz spód opakowania. <br />
+Ilość netto: 100 ml <br />
+</p>","<p>Sense the Relief<br />
+FIGHTING INFLAMMATION EFFECTIVELY <br />
+FRANKINCENSE BALM </p>
+
+<p>The ONESENSE products are based on an original recipe of Buddhist monks. Over the years this has been refined and brought up to date in correspondence with the latest findings to increase its efficiency even more. Especially in the case of chronic inflammation of joints, frankincense can support good treatment results. </p>
+
+<p>ONESENSE Frankincense Balm is particularly recommended as effective care for rheumatism and skin irritations, but it can also help alleviate the symptoms of arthritis and gout. A component in frankincense, boswellic acid, works in a natural way and is therefore largely free of side effects.</p>
+
+<p>Frankincense contributes to:<br />
+&bull; the inhibition of inflammation<br />
+&bull; accelerated recovery from infections<br />
+&bull; an antimicrobial and calming effect</p>
+
+<p>FRANKINCENSE BALM a recipe by Buddhist monks.<br />
+Based on a century-long well-guarded secret recipe of Buddhist monks. The Austrian production company reviewed the original recipe and adjusted it to today&rsquo;s requirements. This balm is based on natural raw materials as prescribed in the original recipe. Application: For ideal results we recommend thinly applying this balm several times a day on your skin and letting it absorb.<br />
+Ingredients: aqua, isopropyl myristate, prunus amygdalus dulcis oil, polysorbate 20, glycerin, carbomer, boswellia carteii oil, triethanolamine, phenoxyethanol, maris sal, pentylene glycol,<br />
+limonene, ethyl linoleate, tocopheryl acetate, enteromorpha compressa extract, porphyra umbilicalis extract, himanthalia, himanthalia elongata extract, ulva lactuca extract, palmaria palmata extract, decylene glycol, caprylyl glycol, rosmarinus officinalis leaf extract, arnica montana flower extract, linalool, retinyl palmitate, retinyl acetate, arachis hypogaea oil, helianthus annuus extract, potassium sorbate, sodium benzoate, tocopherol, BHT. Warning: Do not apply to eyes or mucous membranes. Do not use for children under 3 years old. Only apply to skin.<br />
+If skin irritation occurs, stop using the balm. Storage: Keep the container securely closed after use. Keep away from children. Store in a cool and dry place, away from direct sunlight.<br />
+Best before: see bottom.<br />
+Net quantity: 100 ml<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410221.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410221.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"63,75",regular_sales_price,"149,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,17229,ean,9120103410221,gtin,09120103410221,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410238,9120103410238,ONESENSE Joint Complex Plus Vegan 90 kapsułek,ONESENSE Joint Complex Plus Vegan 90 Capsules,"<p>Poczuj zwinność<br />
+ZWIĘKSZ SWOJĄ MOBILNOŚĆ<br />
+JOINT COMPLEX PLUS VEGAN</p>
+
+<p>Wspieraj swoje ciało dzięki naszemu Joint Complex Plus Vegan! Przywróć swojej chrząstce to, czego potrzebuje - składniki zwiększają nawilżenie stawów i kolagen, jednocześnie zwalczając stany zapalne i rozpad chrząstki związany z wiekiem.</p>
+
+<p>Wegańskie kapsułki na stawy zawierają kombinację substancji, takich jak glukozamina, witamina C i mangan, specjalnie opracowana na potrzeby mocno obciążonych stawów. Połączenie może spowolnić proces starzenia się zdrowej chrząstki stawowej.</p>
+
+<p>Ponieważ wraz z wiekiem zmniejsza się wytwarzanie przez organizm najbardziej podstawowych materiałów budulcowych chrząstki, ścięgien, więzadeł i kości, w przypadku wystąpienia bólu stawów należy aktywować własne siły regeneracyjne organizmu. Poprzez interakcję poszczególnych składników, kapsułki stawowe zwiększają regenerację i wspierają normalne funkcjonowanie chrząstki, stawów i syntezę kolagenu.</p>
+
+<p>The Onesense Joint Complex Plus Vegan poprawia:<br />
+&byk; ruchomość chrząstki, więzadeł i ścięgien<br />
+&byk; amortyzację stawów<br />
+&byk; poślizg kości</p>
+
+<p>KOMPLEKS STAWÓW PLUS WEGAŃSKI, 90 kapsułek<br />
+Zalecane spożycie: 1 kapsułka rano, 1 w południe i 1 wieczorem, połykana w całości popijając odpowiednią ilością płynów (woda, sok itp.). Składniki na kapsułkę: GlucosaGreen&reg; Siarczan D-glukozaminy wegański, MSM (metylosulfonylometan), bezbarwna kapsułka roślinna z hydroksypropylometylocelulozy, L-arginina (HCL) wegańska, hialuronian sodu, siarczan Mythocondro&reg;chondroityny wegański, kwas askorbinowy, krzem, cytrynian cynku, sproszkowane drzewo pagody japońskiej, siarczan manganu, celuloza mikrokrystaliczna (wypełniacz). RWS* na 3 kapsułki: 100 mg witaminy C, 5 mg cynku, 1 mg manganu. Uwaga: Suplement diety nie powinien być stosowany jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego trybu życia. Przechowywanie: Przechowywać pojemnik szczelnie zamknięty po użyciu. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Termin przydatności do spożycia: patrz spód opakowania. Zawartość puszki: 90 kaps. po 910 mg każda. Ostrzeżenie: Nie należy przekraczać zalecanej dziennej porcji do spożycia.<br />
+Ilość netto: 81,9g<br />
+</p>","<p>Sense the Agility<br />
+INCREASE YOUR MOBILITY<br />
+JOINT COMPLEX PLUS VEGAN</p>
+
+<p>Support your body with our Joint Complex Plus Vegan! Give your cartilage back what it needs - the ingredients increase joint lubrication and collagen while combating inflammation and age-related cartilage breakdown. </p>
+
+<p>The vegan joint capsules contain a combination of substances such as glucosamine, vitamin C and manganese that is specially formulated to the needs of heavily stressed joints. The combination can slow down the ageing process of healthy joint cartilage.</p>
+
+<p>Since the body's own production of the most basic building materials of cartilage, tendons, ligaments and bone structure decreases with age, the body's own regeneration forces must be activated when joint pain occurs. Through the interaction of the individual ingredients, the joint capsules increase regeneration and support normal cartilage function, joints and collagen synthesis.</p>
+
+<p>The ONESENSE Joint Complex Plus Vegan improves:<br />
+&bull; the mobility of cartilage, ligaments and tendons<br />
+&bull; joint cushioning<br />
+&bull; gliding abilities</p>
+
+<p>JOINT COMPLEX PLUS VEGAN, 90 capsules<br />
+Recommended intake: 1 capsule in the morning, 1 at midday and 1 in the evening, swallowed whole with enough fluids (water, juice etc.). Ingredients per capsule: GlucosaGreen&reg; D-Glucosamine sulphate vegan, MSM (methylsulfonylmethane), colourless plant capsule from hydroxypropylmethylcellulose, L-arginine (HCL) vegan, sodium hyaluronate, Mythocondro&reg;chondroitin sulphate vegan, ascorbic acid, silicon, zinc citrate, Japanese Pagoda tree powder, manganese sulphate, microcrystalline cellulose (filler). NRV* for 3 capsules: 100 mg vitamin C, 5 mg zinc, 1 mg manganese. Note: Food supplement should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Use-by date: see bottom. Content: 90 cps. of 910 mg each. Warning: Do not exceed the recommended daily dose of consumption.<br />
+Net quantity: 81.9g<br />
+</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410238.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410238.jpg,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,TRUE,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"71,75",regular_sales_price,"264,5","",,shopping_points,5,cashback_amount,"0,05",benefit_store,FALSE,"",,"",,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,200900048,ean,9120103410238,gtin,09120103410238,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410245,9120103410245,ONESENSE Healthy Box 3x 30 kapsułek,ONESENSE Healthy Box 3x 30 capsules,No Description,No Description,FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410245.jpg,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410245.jpg,,FALSE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"171,4",regular_sales_price,645,"",,shopping_points,5,cashback_amount,"0,05",benefit_store,TRUE,benefit_store_sales_price,495,benefit_amount,150,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-90010008,ean,9120103410245,gtin,09120103410245,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",
+O9120103410252,9120103410252,ONESENSE Energy Box 3x 30 kapsułek,ONESENSE Energy Box 3x 30 capsules,"p>Poczuj sukces</p>
+<p>JTHE ONESENSE BOX FOR MORE POWER</p>
+<p>ENERGY BOX</p>
+<p>&nbsp;</p>
+<p>Czujesz się zmęczony i wyczerpany? W takim razie zyskaj energię z ONESENSE! Energy Box zawiera trzy idealnie dopasowane produkty, które redukują zmęczenie, wspomagają sprawność umysłową i zwiększają poziom energii. Wyciśnij więcej ze swoich 100%!</p>
+<p>&nbsp;</p>
+<p> ONESENSE Energy Box zawiera:</p>
+<p>Onesense Vitamin B Complex: Witamina B przyczynia się do prawidłowego metabolizmu energetycznego, lepszej wydajności oraz zmniejszenia uczucia zmęczenia i znużenia.</p>
+<p>&nbsp;</p>
+<p>ONESENSE Witamina C Ultra: Wspomagaj funkcjonalność Twojego układu odpornościowego w walce z zarazkami, przeziębieniami i wolnymi rodnikami dzięki naturalnej witaminie C z jagody camu camu.</p>
+<p>&nbsp;</p>
+<p>ONESENSE OPC Ultra: Wysoce skuteczna witalna substancja OPC chroni komórki, stymuluje produkcję kolagenu i przyspiesza gojenie ran.</p>
+<p>&nbsp;</p>
+<p>Aktywne składniki Energy Box wpływają na:</p>
+<ul>
+<li>poziom energii</li>
+<li>wydajność</li>
+<li>produkcję kolagenu</li>
+</ul>
+<p>&nbsp;</p>
+<p>VITAMIN B KOMPLEX, w wysokiej dawce 30 kapsułek</p>
+<p>Zalecane spożycie: 1 kapsułkę z posiłkiem popijając płynem (woda, sok owocowy itp.). Składniki na kapsułkę: 201,22 mg wit.B4 choliny 41% = 82,53 mg, 100 mg kapsułka roślinna wykonana z hydroksypropylometylocelulozy, 55 mg wit.B8 inozytol, 50 mg wit.B12 cyjanokobalamina 1% = 0,50 mg, 50 mg wit.B3 nikotynamid, 45 mg wit.B5 wapnia D-pantotenat, 25 mg ekstrakt z aceroli w proszku 25% wit.C = 6,25 mg naturalny wit.C, 10 mg wit.B1 tiamina HCL, 10 mg wit.B2 ryboflawina, 10mg wit.B6 chlorowodorek pirydoksyny, 4,62 mg ekstraktu z otrębów ryżowych, 0,71 mg mikrokryst. celuloza (wypełniacz), 0,25 mg wit.B7 biotyna, 0,20 mg wit.B9 kwas foliowy, 562 mg masy całkowitej Uwaga: Suplementy diety nie zastępują zdrowej i zbilansowanej diety oraz zdrowego trybu życia. Ostrzeżenie: Nie należy przekraczać zalecanej porcji do spożycia w ciągu dnia. Suplement diety zawierający wszystkie witaminy z grupy B i wit.C RWS* % na 1 kapsułkę: * = referencyjne wartości odżywcze, wit.B1 = 909,09 % wit.B2 = 714,29 % wit. B3 = 312,50 %, wit.B4 = brak dostępnych wartości referencyjnych, wit.B5 = 750,00 % wit.B6 = 714,29 % wit.B7 = 500,00%, wit.B8 = brak dostępnych wartości referencyjnych, wit.B9 = 100,00% wit. B12 = 20 000,00 % wit. C = 7,81 %</p>
+<p>Przechowywanie: po użyciu pojemnik powinien być bezpiecznie zamknięty. Trzymać z dala od dzieci. Przechowywać w chłodnym i suchym miejscu, z dala od bezpośredniego światła słonecznego. Najlepiej spożyć przed końcem: patrz spód opakowania</p>
+<p>Zawartość: 30 kapsułek. 559 mg. Nie zawiera: glutenu, żelatyny, drożdży, barwników, konserwantów, substancji smakowych, orzechów, soi, składników mleka, ryb, jajek, stearynianów magnezu.</p>
+<p>Waga netto: 16,8 g</p>
+<p>&nbsp;</p>
+<p>VITAMIN C ULTRA z 240 mg naturalnej witaminy C w kapsułce, 30 kapsułek</p>
+<p>Zalecane spożycie: 1 kapsułka dziennie PODCZAS posiłku iz kilkoma płynami (woda, sok itp.) Składniki na kapsułkę: 480 mg ekstraktu camu camu z 50% witaminy C, 212,50 mg mikrokryst. Celuloza (filtr), kapsułka roślinna 120 mg z hydroksypropylometylocelulozy, ekstrakt z ananasa 9 mg 4:1, 7,50 mg ekstrakt z otrębów ryżowych, 6 mg ekstrakt z białych szparagów 50:1, 5 mg ekstrakt z papai 10-20:1, 5 mg ekstrakt z owoców acai/palmy 4-5:1, 5 mg ekstrakt z jabłka 5:1, 5 mg ekstrakt z jagód 5:1, 3 mg ekstrakt z oliwek 4:1, 3 mg ekstrakt z jarmużu 10:1, 3 mg zmielony korzeń marchwi, 3 mg ekstraktu z brokułów 10:1, 3 mg ekstraktu z cebuli łącznie 4:1, 870 mg Uwaga: Nie należy przekraczać zalecanej ilości do spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Uwaga: Nie przekraczać zalecanego dziennego poziomu spożycia. Suplementy z naturalną witaminą C z ekstraktu z camu camu oraz z ekstraktem z owoców i warzyw 480 mg ekstraktu z camu camu 50% witaminy C = 240 mg naturalnej witaminy. C = 300% RWS* na kapsułkę * = referencyjne wartości odżywcze</p>
+<p>Przechowywanie: Po użyciu pojemnik powinien być szczelnie zamknięty. Przechowuj ten produkt w miejscu niedostępnym dla dzieci. Przechowywać w suchym miejscu i z dala od światła. Najlepiej spożyć przed końcem: patrz spód pojemnika. Zawartość pojemnika: 30 kapsułek po 870 mg.</p>
+<p>Bez: glutenu, sztucznych barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu.</p>
+<p>Ilość netto: 26,1 g</p>
+<p>&nbsp;</p>
+<p>OPC ULTRA ponad 500 mg czystego OPC z resweratrolem 30 kapsułek</p>
+<p>Zalecane spożycie: 1 kapsułka dziennie (rano lub wieczorem) około 30-60 minut PRZED posiłkiem z dużą ilością płynów (woda, sok itp.) Składniki na kapsułkę: 427 mg ekstraktu z kory sosny 120:1 (95 % OPC = 406 mg), 10 mg mikrokryst. Celuloza (nadzienie), 136 mg ekstraktu z winogron (90% OPC = 122 mg) 120 mg kapsułka roślinna z hydroksypropylometylocelulozy, 10 mg jap. Ekstrakt z rdestu ptasiego (50% resweratrol), 17 mg ekstraktu z otrębów ryżowych, łącznie 720 mg. Uwaga: Nie należy przekraczać zalecanej ilości do spożycia. Suplementy nie powinny być stosowane jako substytut zróżnicowanej i zbilansowanej diety oraz zdrowego stylu życia. Ostrzeżenie: nie przekraczaj zalecanego dziennego poziomu spożycia. </p>Suplement diety z OPC i resweratrolem, 528 mg OPC i 5 mg resweratrolu w jednej kapsułce! Przechowywanie: Po użyciu przechowywać puszkę szczelnie zamkniętą. Przechowuj ten produkt poza zasięgiem małych dzieci. Przechowywać w suchym miejscu i chronić przed światłem. Najlepiej spożyć przed końcem: patrz spód opakowania. Zawartość puszki: 30 kaps. & grób; 720 mg. Nie zawiera: glutenu, barwników, konserwantów, aromatów, orzechów, soi, składników mleka, ryb, jajek, stearynianu magnezu.</p>
+<p> Ilość netto: 21,6 g </p>","<p>Sense the Success</p>
+<p>THE ONESENSE BOX FOR MORE POWER</p>
+<p>ENERGY BOX</p>
+<p>&nbsp;</p>
+<p>Do you feel tired and exhausted? Then get your energy kick with ONESENSE! The Energy Box contains three perfectly matched products to reduce fatigue, promote mental performance and increase your energy level. Get more out of your 100%!</p>
+<p>&nbsp;</p>
+<p>The ONESENSE Energy Box contains:</p>
+<p>ONESENSE Vitamin B Complex: Vitamin B contributes to a normal energy yielding metabolism, better performance and the reduction of tiredness and fatigue.</p>
+<p>&nbsp;</p>
+<p>ONESENSE Vitamin C Ultra: Support the functionality of your immune system in the fight against germs, colds and free radicals with the natural vitamin C of the camu camu berry.</p>
+<p>&nbsp;</p>
+<p>ONESENSE OPC Ultra: The highly effective vital substance OPC protects the cells, stimulates collagen production and accelerates wound healing.</p>
+<p>&nbsp;</p>
+<p>The active ingredients of the Energy Box increase:</p>
+<ul>
+<li>the energy level</li>
+<li>the efficiency</li>
+<li>the collagen production</li>
+</ul>
+<p>&nbsp;</p>
+<p>VITAMIN B COMPLEX high dose 30 capsules</p>
+<p>Recommended intake: take 1 capsule with a meal with some liquid (water, fruit juice, etc.). Ingredients per capsule: 201.22 mg vit.B4 choline 41% = 82.53 mg, 100 mg plant-based capsule made of hydroxypropylmethylcellulose, 55 mg vit.B8 inositol, 50 mg vit.B12 cyanocobalamin 1% = 0.50 mg, 50 mg vit.B3 nicotinamide, 45 mg vit.B5 calcium D-pantothenat, 25 mg acerola extract powder 25 % vit.C = 6.25 mg natural vit.C, 10 mg vit.B1 thiamine HCL, 10 mg vit.B2 riboflavin, 10 mg vit.B6 pyridoxine HCL, 4.62 mg rice bran extract, 0.71 mg microcryst. cellulose (filler), 0.25 mg vit.B7 biotin, 0.20 mg vit.B9 folic acid, 562 mg total weight Note: Food supplements do not substitute a healthy and balanced diet and a healthy lifestyle. Warning: Do not exceed the recommended daily dose. Food supplement with all B vitamins and vit.C NRV* % per 1 capsule: * = nutrient reference values, vit.B1 = 909.09 % vit.B2 = 714.29 % vit. B3 = 312.50 %, vit.B4 = no reference values available, vit.B5 = 750.00 % vit.B6 = 714.29 % vit.B7 = 500.00 %, vit.B8 = no reference values available,vit.B9 = 100.00 % vit.B12 = 20,000.00 % vit.C = 7.81 %</p>
+<p>Storage: Keep the container securely closed after use. Keep away from children. Store in a cool and dry place, away from direct sunlight. Best before end: see bottom</p>
+<p>Content: 30 capsules. 559 mg. Free from: gluten, gelatine, yeast, colourants, preservatives, flavouring substances, nuts, soya, milk components, fish, eggs, magnesium stearates.</p>
+<p>Net weight: 16.8 g</p>
+<p>&nbsp;</p>
+<p>VITAMIN C ULTRA with 240 mg natural vitamin C per capsule 30 capsules</p>
+<p>Recommended intake: 1 capsule per day WITH a meal and some fluids (water, juice etc.) Ingredients per capsule: 480 mg camu camu extract with 50 % vitamin C, 212.50 mg microcryst. Cellulose (filter), 120 mg plant-based capsule out of hydroxypropylmethylcellulose, 9 mg pineapple extract 4:1, 7.50 mg rice bran extract, 6 mg white asparagus extract 50:1, 5 mg papaya extract 10-20:1, 5 mg acai/palm fruit extract 4-5:1, 5 mg apple extract 5:1, 5 mg blueberry extract 5:1, 3 mg olive extract 4:1, 3 mg kale extract 10:1, 3 mg milled carrot root, 3 mg broccoli extract 10:1, 3 mg onion extract 4:1, 870 mg in total Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Warning: Do not exceed the recommended daily level of consumption. Supplements with natural vitamin C from the camu camu extract and with fruit and vegetable extract 480 mg camu camu extract 50 % vitamin C = 240 mg natural vitamin. C = 300 % NRV* per capsule * = nutrient reference values</p>
+<p>Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 30 capsules each 870 mg.</p>
+<p>Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate.</p>
+<p>Net quantity: 26.1 g</p>
+<p>&nbsp;</p>
+<p>OPC ULTRA over 500 mg pure OPC with resveratrol 30 capsules</p>
+<p>Recommended intake: 1 capsule per day (morning or evening) about 30-60 minutes PRIOR to a meal with lots of fluids (water, juice, etc.) Ingredients per capsule: 427 mg pine bark extract 120:1 (95 % OPC = 406 mg), 10 mg microcryst. Cellulose (filling), 136 mg grape extract (90 % OPC = 122 mg) 120 mg plant-based capsule out of hydroxypropylmethylcellulose, 10 mg jap. Knotgrass extract (50 % resveratrol), 17 mg rice bran extract, 720 mg in total Note: The recommended consumption amount should not be exceeded. Supplements should not be used as a substitute for a varied and balanced diet and for a healthy lifestyle. Warning: Do not exceed the recommended daily level of consumption.</p>
+<p>Supplements with OPC and resveratrol, 528 mg OPC and 5 mg resveratrol per capsule</p>
+<p>Storage: Keep container tightly closed after use. Keep this product out of reach of children. Store in a dry place and away from light. Best before end: see underside of container Content of container: 30 capsules each 720 mg. Free from: gluten, artificial colouring, preservatives, flavourings, nuts, soy, milk constituents, fish, eggs, magnesium stearate.</p>
+<p>Net quantity: 21.6 g</p>",FR,,,SUB_30006 ,,,Standard Tax Set,,,,,,,,,,,,,1,1,,Graz (Austria),1,1,,,FR,EUR,,,,,,,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410252.jpg ,https://l.mwscdn.io/large/marketplace/Content/Produktfotos/9120103410252.jpg ,,TRUE,manufacturer,myWorld,brand,ONESENSE,sellable_ae,,sellable_at,TRUE,sellable_au,,sellable_ba,,sellable_be,,sellable_bg,TRUE,sellable_br,,sellable_by,,sellable_ca,,sellable_ch,TRUE,sellable_co,,sellable_cy,,sellable_cz,TRUE,sellable_de,TRUE,sellable_dk,TRUE,sellable_ee,TRUE,sellable_es,,sellable_fi,TRUE,sellable_fr,,sellable_gb,TRUE,sellable_gr,TRUE,sellable_hk,,sellable_hr,TRUE,sellable_hu,TRUE,sellable_ie,,sellable_im,,sellable_in,,sellable_it,TRUE,sellable_lt,TRUE,sellable_lu,,sellable_lv,TRUE,sellable_mc,,sellable_md,,sellable_me,,sellable_mk,,sellable_mo,,sellable_mt,,sellable_mx,,sellable_my,,sellable_nl,TRUE,sellable_no,,sellable_nz,,sellable_ph,,sellable_pl,TRUE,sellable_pt,TRUE,sellable_qa,,sellable_ro,,sellable_rs,,sellable_se,TRUE,sellable_si,TRUE,sellable_sk,TRUE,sellable_th,,sellable_tr,,sellable_us,,sellable_za,,customer_group_1,TRUE,customer_group_2,TRUE,customer_group_3,TRUE,customer_group_4,TRUE,customer_group_5,TRUE,customer_group_6,TRUE,purchase_price,"68,25",regular_sales_price,645,"",,shopping_points,5,cashback_amount,"0,05",benefit_store,TRUE,benefit_store_sales_price,495,benefit_amount,150,shopping_point_store,FALSE,"",,,,,,,,,,,,,,,,,,,,,,"",,"",,"",,"",,"",,product_type,Nutritional supplement,"",,"",,"",,"",,"",,mpn,2019-11-90010777,ean,9120103410252,gtin,09120103410252,"",,"",,taric_code,29369000,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,"",,marketer_only,TRUE,"",,"",,affiliate_product,0,"",,"",,"",,"",

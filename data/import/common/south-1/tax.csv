@@ -1,0 +1,4 @@
+tax_set_name,country_name,tax_rate_name,tax_rate_percent
+Standard Tax,Italy,Italy Standard,20
+Standard Tax,France,France Standard,20
+Standard Tax,Greece,Greece Standard,20

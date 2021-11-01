@@ -1,6 +1,9 @@
 key,filter_type,position,key.en_US,key.it_IT,key.fr_FR,key.el_GR
-color,multi-select,1,Color,Farbe,Farbe,Farbe
-size,multi-select,2,Size,Größe,Größe,Größe
-benefit_store,single-select,3,Benefit Store,Vorteil Geschäft,Vorteil Geschäft,Vorteil Geschäft
-shopping_point_store,single-select,4,Shopping Point Store,Einkaufspunkt Geschäft,Einkaufspunkt Geschäft,Einkaufspunkt Geschäft
-brand,multi-select,5,Brand,Marke,Marke,Marke
+color,multi-select,1,Color,Colore,Colore,Χρώμα
+size,multi-select,2,Size,Taglia,Taglia,Μέγεθος
+benefit_store,single-select,5,Benefit Store Deal,Deal depositario benefici,Deal Depostario Benefici,Παρεμπόδιση αποθήκευσης
+shopping_point_store,single-select,6,Shopping Point Deal,Affare del punto di acquisto,Affare del Punto di Acquisto,Σημείο αγορών
+brand,multi-select,3,Brand,Marca,Marca,Μάρκα
+age_restriction_fsk_usk,single-select,8,Age restriction,Limite di età,Limite di Età,Περιορισμός ηλικίας
+deal,multi-select,7,Deal,Affare,Afficher,Συμφωνία
+product_type,multi-select,4,Product type,Tipologia di prodotto,Tipologia di Prodotto,Τύπος Προϊόντος
