@@ -112,7 +112,7 @@ require 'common/config_weclapp-prod.php';
 $config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY') ?: '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
 $config[ApiKeyAuthRestApiConstants::API_KEY] = getenv('GLUE_APPLICATION_API_KEY') ?: '7=hj<K5nnbku}Rdhb5_E?[&k\a"hmmE}';
 
-$config[DataImportConstants::NEED_STORE_RELATION_VALIDATION] = (bool)getenv('NEED_STORE_RELATION_VALIDATION') ?? false;
+$config[DataImportConstants::NEED_STORE_RELATION_VALIDATION] = (bool)getenv('NEED_STORE_RELATION_VALIDATION') ?? true;
 
 if (!empty(getenv('SPRYKER_CLUSTER'))) {
     return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.prod.php');

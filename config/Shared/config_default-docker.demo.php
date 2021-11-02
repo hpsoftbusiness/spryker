@@ -80,7 +80,7 @@ $config[EventConstants::LOGGER_ACTIVE] = true;
 
 require 'common/config_weclapp-demo.php';
 
-$config[DataImportConstants::NEED_STORE_RELATION_VALIDATION] = (bool)getenv('NEED_STORE_RELATION_VALIDATION') ?? false;
+$config[DataImportConstants::NEED_STORE_RELATION_VALIDATION] = (bool)getenv('NEED_STORE_RELATION_VALIDATION') ?? true;
 
 if (!empty(getenv('SPRYKER_CLUSTER'))) {
     return require('clusters/' . getenv('SPRYKER_CLUSTER') . '/config_default-docker.demo.php');
