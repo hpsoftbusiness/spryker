@@ -86,4 +86,28 @@ class MyWorldPaymentClient extends AbstractClient implements MyWorldPaymentClien
     {
         return $this->getZedStub()->getAvailableInternalPaymentPrices($quoteTransfer);
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param int $paymentOptionId
+     *
+     * @return bool
+     */
+    public function assertInternalPaymentCoversPriceToPay(QuoteTransfer $quoteTransfer, int $paymentOptionId): bool
+    {
+        return $this->getFactory()->createMyWorldPaymentReader()->assertInternalPaymentCoversPriceToPay(
+            $quoteTransfer,
+            $paymentOptionId
+        );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return int|null
+     */
+    public function findUsedInternalPaymentMethodOptionId(QuoteTransfer $quoteTransfer): ?int
+    {
+        return $this->getFactory()->createMyWorldPaymentReader()->findUsedInternalPaymentMethodOptionId($quoteTransfer);
+    }
 }

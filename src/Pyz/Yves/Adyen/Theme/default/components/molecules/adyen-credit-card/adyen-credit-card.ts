@@ -1,31 +1,20 @@
-import  SprykerAdyenCreditCard from 'SprykerEcoAdyen/components/molecules/adyen-credit-card/adyen-credit-card';
+import SprykerAdyenCreditCard from 'SprykerEcoAdyen/components/molecules/adyen-credit-card/adyen-credit-card';
 
 export default class AdyenCreditCard extends SprykerAdyenCreditCard {
-    protected validationEnabled: boolean = true;
-
     protected mapEvents(): void {
         this.onInternalPaymentTriggerChange();
-
         super.mapEvents();
     }
 
     protected onInternalPaymentTriggerChange(): void {
-        document.addEventListener('internalPaymentSelected', (event: CustomEvent) => {
-            const isGrandTotalCoveredByInternalPaymentBalance = event.detail;
-            this.validationEnabled = !isGrandTotalCoveredByInternalPaymentBalance;
+        document.addEventListener('internalPaymentSelected', () => {
+            const ePaymentTriggers = Array.from(document.querySelector('myworld-payment').querySelectorAll('input'));
 
-            const selectedPaymentMethodTrigger = this.findSelectedPaymentMethodTrigger();
-            this.toggleSubmitButtonStateOnPaymentChange(selectedPaymentMethodTrigger);
-        })
-    }
+            if (this.paymentMethodTriggers.some((trigger) => trigger.checked)) {
+                return;
+            }
 
-    protected findSelectedPaymentMethodTrigger(): HTMLInputElement {
-        return this.paymentMethodTriggers.find((trigger: HTMLInputElement) => {
-            return trigger.checked;
+            this.submitButton.disabled = ePaymentTriggers.every((trigger) => !trigger.checked);
         });
-    }
-
-    protected set submitButtonState(state: boolean) {
-        this.submitButton.disabled = state && this.validationEnabled;
     }
 }

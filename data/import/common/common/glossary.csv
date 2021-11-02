@@ -15545,6 +15545,7 @@ discount.internal.shopping_points,Shopping Points,de_DE
 customer.order.priceToPay,Sum,en_US
 customer.order.priceToPay,Summe,de_DE
 payment.payment_method.adyen_credit_card,Credit Card,en_US
+payment.payment_method.error,Please use or add other payment method. You don't have enough funds to cover payment using following myWorld ePayment methods: cashback and evoucher,en_US
 payment.payment_method.adyen_credit_card,Credit Card,de_DE
 payment.payment_method.benefit_vouchers,Benefit Voucher,en_US
 payment.payment_method.benefit_vouchers,Benefit Voucher,de_DE

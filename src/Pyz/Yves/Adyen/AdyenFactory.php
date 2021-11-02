@@ -7,8 +7,7 @@
 
 namespace Pyz\Yves\Adyen;
 
-use Pyz\Client\Customer\CustomerClientInterface;
-use Pyz\Service\Customer\CustomerServiceInterface;
+use Pyz\Client\MyWorldPayment\MyWorldPaymentClient;
 use Pyz\Yves\Adyen\Form\CreditCardSubForm;
 use Pyz\Yves\Adyen\Form\Validation\CreditCardValidationGroupResolver;
 use Pyz\Yves\Adyen\Handler\AdyenPaymentHandler;
@@ -47,24 +46,15 @@ class AdyenFactory extends SprykerEcoAdyenFactory
     {
         return new CreditCardValidationGroupResolver(
             $this->getConfig(),
-            $this->getCustomerClient(),
-            $this->getCustomerService()
+            $this->getMyWorldPaymentClient()
         );
     }
 
     /**
-     * @return \Pyz\Client\Customer\CustomerClientInterface
+     * @return \Pyz\Client\MyWorldPayment\MyWorldPaymentClient
      */
-    public function getCustomerClient(): CustomerClientInterface
+    public function getMyWorldPaymentClient(): MyWorldPaymentClient
     {
-        return $this->getProvidedDependency(AdyenDependencyProvider::CLIENT_CUSTOMER);
-    }
-
-    /**
-     * @return \Pyz\Service\Customer\CustomerServiceInterface
-     */
-    public function getCustomerService(): CustomerServiceInterface
-    {
-        return $this->getProvidedDependency(AdyenDependencyProvider::SERVICE_CUSTOMER);
+        return $this->getProvidedDependency(AdyenDependencyProvider::CLIENT_MYWORLD_PAYMENT);
     }
 }

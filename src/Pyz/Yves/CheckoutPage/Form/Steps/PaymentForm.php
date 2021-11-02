@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage\Form\Steps;
 
 use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
+use Pyz\Yves\CheckoutPage\Form\Validation\PaymentSelectionValidationGroupResolver;
 use Spryker\Shared\Money\Converter\DecimalToIntegerConverterInterface;
 use SprykerShop\Yves\CheckoutPage\Form\Steps\PaymentForm as SpyPaymentForm;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -23,11 +24,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class PaymentForm extends SpyPaymentForm
 {
     public const OPTION_KEY_CUSTOMER_BALANCES = 'customer_balances';
+
     public const OPTION_KEY_CURRENCY_CODE = 'currency_code';
+
     public const FORM_NAME = 'myWorldPaymentForm';
 
     private const FORM_FIELD_USE_EVOUCHER_BALANCE = 'useEVoucherBalance';
+
     private const FORM_FIELD_USE_EVOUCHER_ON_BEHALF_OF_MARKETER = 'useEVoucherOnBehalfOfMarketer';
+
     private const FORM_FIELD_USE_CASHBACK_BALANCE = 'useCashbackBalance';
 
     /**
@@ -108,6 +113,15 @@ class PaymentForm extends SpyPaymentForm
 
         $resolver->setRequired(self::OPTION_KEY_CUSTOMER_BALANCES);
         $resolver->setRequired(self::OPTION_KEY_CURRENCY_CODE);
+        $resolver->setDefaults(['validation_groups' => $this->getValidationGroupResolver()]);
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Form\Validation\PaymentSelectionValidationGroupResolver
+     */
+    private function getValidationGroupResolver(): PaymentSelectionValidationGroupResolver
+    {
+        return $this->getFactory()->createPaymentSelectionValidationGroupResolver();
     }
 
     /**

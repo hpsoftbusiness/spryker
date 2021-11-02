@@ -12,8 +12,7 @@ use SprykerEco\Yves\Adyen\AdyenDependencyProvider as SprykerAdyenDependencyProvi
 
 class AdyenDependencyProvider extends SprykerAdyenDependencyProvider
 {
-    public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
-    public const SERVICE_CUSTOMER = 'SERVICE_CUSTOMER';
+    public const CLIENT_MYWORLD_PAYMENT = 'CLIENT_MYWORLD_PAYMENT';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -23,9 +22,7 @@ class AdyenDependencyProvider extends SprykerAdyenDependencyProvider
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
-
-        $this->addCustomerClient($container);
-        $this->addCustomerService($container);
+        $this->addMyWorldPaymentClient($container);
 
         return $container;
     }
@@ -35,24 +32,10 @@ class AdyenDependencyProvider extends SprykerAdyenDependencyProvider
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    private function addCustomerClient(Container $container): Container
+    private function addMyWorldPaymentClient(Container $container): Container
     {
-        $container->set(self::CLIENT_CUSTOMER, static function (Container $container) {
-            return $container->getLocator()->customer()->client();
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    private function addCustomerService(Container $container): Container
-    {
-        $container->set(self::SERVICE_CUSTOMER, static function (Container $container) {
-            return $container->getLocator()->customer()->service();
+        $container->set(self::CLIENT_MYWORLD_PAYMENT, static function (Container $container) {
+            return $container->getLocator()->myWorldPayment()->client();
         });
 
         return $container;

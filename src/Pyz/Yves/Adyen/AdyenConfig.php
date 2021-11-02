@@ -7,32 +7,18 @@
 
 namespace Pyz\Yves\Adyen;
 
-use Pyz\Shared\MyWorldPayment\MyWorldPaymentConstants;
 use SprykerEco\Yves\Adyen\AdyenConfig as SprykerAdyenConfig;
 
+/**
+ * @method \Pyz\Shared\Adyen\AdyenConfig getSharedConfig()
+ */
 class AdyenConfig extends SprykerAdyenConfig
 {
     /**
-     * @return int
+     * @return string
      */
-    public function getPaymentOptionIdEVoucher(): int
+    public function getAdyenCreditCardName(): string
     {
-        return $this->get(MyWorldPaymentConstants::OPTION_EVOUCHER);
-    }
-
-    /**
-     * @return int
-     */
-    public function getPaymentOptionIdEVoucherOnBehalfOfMarketer(): int
-    {
-        return $this->get(MyWorldPaymentConstants::OPTION_EVOUCHER_ON_BEHALF_OF_MARKETER);
-    }
-
-    /**
-     * @return int
-     */
-    public function getPaymentOptionIdCashback(): int
-    {
-        return $this->get(MyWorldPaymentConstants::OPTION_CASHBACK_ACCOUNT);
+        return $this->getSharedConfig()::ADYEN_CREDIT_CARD;
     }
 }

@@ -87,4 +87,29 @@ interface MyWorldPaymentClientInterface
      * @return \Generated\Shared\Transfer\AvailableInternalPaymentAmountTransfer
      */
     public function getAvailableInternalPaymentPrices(QuoteTransfer $quoteTransfer): AvailableInternalPaymentAmountTransfer;
+
+    /**
+     * Specification:
+     * check if internal payments methods cover product in cart
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param int $paymentOptionId
+     *
+     * @return bool
+     */
+    public function assertInternalPaymentCoversPriceToPay(QuoteTransfer $quoteTransfer, int $paymentOptionId): bool;
+
+    /**
+     * Specification:
+     * get internal payment method ids
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return int|null
+     */
+    public function findUsedInternalPaymentMethodOptionId(QuoteTransfer $quoteTransfer): ?int;
 }

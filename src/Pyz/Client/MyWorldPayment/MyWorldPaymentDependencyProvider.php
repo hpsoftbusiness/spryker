@@ -14,6 +14,10 @@ class MyWorldPaymentDependencyProvider extends AbstractDependencyProvider
 {
     public const CLIENT_ZED_REQUEST = 'CLIENT_ZED_REQUEST';
 
+    public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
+
+    public const SERVICE_CUSTOMER = 'SERVICE_CUSTOMER';
+
     /**
      * @param \Spryker\Client\Kernel\Container $container
      *
@@ -22,6 +26,8 @@ class MyWorldPaymentDependencyProvider extends AbstractDependencyProvider
     public function provideServiceLayerDependencies(Container $container)
     {
         $container = $this->addZedRequestClient($container);
+        $container = $this->addCustomerClient($container);
+        $container = $this->addCustomerService($container);
 
         return $container;
     }
@@ -36,6 +42,36 @@ class MyWorldPaymentDependencyProvider extends AbstractDependencyProvider
         $container[static::CLIENT_ZED_REQUEST] = function (Container $container) {
             return $container->getLocator()->zedRequest()->client();
         };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    private function addCustomerClient(Container $container): Container
+    {
+        $container->set(self::CLIENT_CUSTOMER, static function (Container $container) {
+
+            return $container->getLocator()->customer()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    private function addCustomerService(Container $container): Container
+    {
+        $container->set(self::SERVICE_CUSTOMER, static function (Container $container) {
+
+            return $container->getLocator()->customer()->service();
+        });
 
         return $container;
     }

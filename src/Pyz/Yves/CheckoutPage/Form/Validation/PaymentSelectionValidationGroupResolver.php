@@ -5,22 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\Adyen\Form\Validation;
+namespace Pyz\Yves\CheckoutPage\Form\Validation;
 
+use Pyz\Client\Messenger\MessengerClientInterface;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClient;
-use Pyz\Yves\Adyen\AdyenConfig;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Validator\Constraint;
 
-class CreditCardValidationGroupResolver
+class PaymentSelectionValidationGroupResolver
 {
     public const PRICE_TO_PAY_COVERED_BY_INTERNAL_PAYMENT_GROUP = 'PRICE_TO_PAY_COVERED_BY_INTERNAL_PAYMENT_GROUP';
-    public const NO_VALIDATE = 'NO_VALIDATE';
-
-    /**
-     * @var \Pyz\Yves\Adyen\AdyenConfig
-     */
-    private $config;
+    public const FLASH_GROUP = 'FLASH_GROUP';
 
     /**
      * @var \Pyz\Client\MyWorldPayment\MyWorldPaymentClient
@@ -28,15 +23,18 @@ class CreditCardValidationGroupResolver
     private $myWorldPaymentClient;
 
     /**
-     * @param \Pyz\Yves\Adyen\AdyenConfig $config
-     * @param \Pyz\Client\MyWorldPayment\MyWorldPaymentClient $myWorldPaymentClient
+     * @var \Pyz\Client\Messenger\MessengerClientInterface
      */
-    public function __construct(
-        AdyenConfig $config,
-        MyWorldPaymentClient $myWorldPaymentClient
-    ) {
-        $this->config = $config;
+    private $flashMessenger;
+
+    /**
+     * @param \Pyz\Client\MyWorldPayment\MyWorldPaymentClient $myWorldPaymentClient
+     * @param \Pyz\Client\Messenger\MessengerClientInterface $flashMessenger
+     */
+    public function __construct(MyWorldPaymentClient $myWorldPaymentClient, MessengerClientInterface $flashMessenger)
+    {
         $this->myWorldPaymentClient = $myWorldPaymentClient;
+        $this->flashMessenger = $flashMessenger;
     }
 
     /**
@@ -49,18 +47,25 @@ class CreditCardValidationGroupResolver
         /**
          * @var \Generated\Shared\Transfer\QuoteTransfer|null $quoteTransfer
          */
-        $quoteTransfer = $form->getParent()->getData();
+        $quoteTransfer = $form->getData();
 
-        if (!$quoteTransfer
-            || $quoteTransfer->getPayment()->getPaymentSelection() !== $this->config->getAdyenCreditCardName()
-        ) {
-            return [self::NO_VALIDATE];
+        if (!$quoteTransfer) {
+            return [Constraint::DEFAULT_GROUP];
         }
 
         $selectedInternalPaymentOptionId = $this->myWorldPaymentClient->findUsedInternalPaymentMethodOptionId($quoteTransfer);
 
+        if ($selectedInternalPaymentOptionId !== null
+            && !$quoteTransfer->getPayment()->getPaymentSelection()
+            && !$this->myWorldPaymentClient->assertInternalPaymentCoversPriceToPay($quoteTransfer, $selectedInternalPaymentOptionId)
+        ) {
+            $this->flashMessenger->addErrorMessage('payment.payment_method.error');
+
+            return [self::FLASH_GROUP];
+        }
+
         if ($selectedInternalPaymentOptionId === null
-            || !$this->myWorldPaymentClient->assertInternalPaymentCoversPriceToPay($quoteTransfer, $selectedInternalPaymentOptionId)
+            || $quoteTransfer->getPayment()->getPaymentSelection()
         ) {
             return [Constraint::DEFAULT_GROUP];
         }
