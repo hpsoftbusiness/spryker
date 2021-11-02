@@ -88,7 +88,13 @@ class CustomerHydrator implements CustomerHydratorInterface
             ->setSalutation(
                 $this->mapToWeclappSalutation($customerTransfer->getSalutation())
                 ?? $weclappCustomerTransfer->getSalutation()
-            );
+            )
+            ->setBlocked(false)
+            ->setDeliveryBlock(false)
+            ->setInsolvent(false)
+            ->setInsured(false)
+            ->setResponsibleUserFixed(false)
+            ->setSalesPartner(false);
 
         return $weclappCustomerTransfer;
     }
@@ -141,7 +147,8 @@ class CustomerHydrator implements CustomerHydratorInterface
                 ->setStreet2($address->getAddress3())
                 ->setZipcode($address->getZipCode())
                 ->setDeliveryAddress((int)$address->getIdCustomerAddress() === (int)$customerTransfer->getDefaultShippingAddress())
-                ->setInvoiceAddress((int)$address->getIdCustomerAddress() === (int)$customerTransfer->getDefaultBillingAddress());
+                ->setInvoiceAddress((int)$address->getIdCustomerAddress() === (int)$customerTransfer->getDefaultBillingAddress())
+                ->setPrimeAddress($key === 0);
 
             $weclappAddresses[$key] = $weclappAddress;
         }
