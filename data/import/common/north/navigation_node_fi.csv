@@ -1,0 +1,6 @@
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.nb_NO,title.fi_FI,title.da_DK,title.sv_SE,url.nb_NO,url.fi_FI,url.da_DK,url.sv_SE,css_class.nb_NO,css_class.fi_FI,css_class.da_DK,css_class.sv_SE
+FOOTER_NAVIGATION_LEGAL_FI,FOOTER_NAVIGATION_LEGAL_FI_1,,cms_page,Imprint,/en/imprint-fi,,,,,Imprint,,,,/fi/imprint-fi,,,,,,
+FOOTER_NAVIGATION_LEGAL_FI,FOOTER_NAVIGATION_LEGAL_FI_2,,cms_page,Privacy Policy,/en/privacy-fi,,,,,Privacy Policy,,,,/fi/privacy-fi,,,,,,
+FOOTER_NAVIGATION_LEGAL_FI,FOOTER_NAVIGATION_LEGAL_FI_3,,cms_page,Terms and Conditions,/en/gtc-fi,,,,,Terms and Conditions,,,,/fi/gtc-fi,,,,,,
+FOOTER_NAVIGATION_LEGAL_FI,FOOTER_NAVIGATION_LEGAL_FI_4,,cms_page,Terms of use,/en/terms-of-use-fi,,,,,Terms of use,,,,/fi/terms-of-use-fi,,,,,,
+FOOTER_NAVIGATION_LEGAL_FI,FOOTER_NAVIGATION_LEGAL_FI_5,,cms_page,Right of withdrawal,/en/row-fi,,,,,Right of withdrawal,,,,/fi/row-fi,,,,,,
