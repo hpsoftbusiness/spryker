@@ -130,7 +130,7 @@ class PaymentForm extends SpyPaymentForm
      *
      * @return void
      */
-    private function addUseEVoucherBalanceSubForm(
+    protected function addUseEVoucherBalanceSubForm(
         FormBuilderInterface $builder,
         CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
     ): void {
@@ -151,7 +151,7 @@ class PaymentForm extends SpyPaymentForm
      *
      * @return void
      */
-    private function addUseEVoucherOnBehalfOfMarketerSubForm(
+    protected function addUseEVoucherOnBehalfOfMarketerSubForm(
         FormBuilderInterface $builder,
         CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
     ): void {
@@ -172,7 +172,7 @@ class PaymentForm extends SpyPaymentForm
      *
      * @return void
      */
-    private function addUseCashbackBalanceSubForm(
+    protected function addUseCashbackBalanceSubForm(
         FormBuilderInterface $builder,
         CustomerBalanceByCurrencyTransfer $balanceByCurrencyTransfer
     ): void {
@@ -190,7 +190,7 @@ class PaymentForm extends SpyPaymentForm
     /**
      * @return callable[]
      */
-    private function getFormFieldMethodMap(): array
+    protected function getFormFieldMethodMap(): array
     {
         return [
             $this->getConfig()->getPaymentOptionIdEVoucher() =>
