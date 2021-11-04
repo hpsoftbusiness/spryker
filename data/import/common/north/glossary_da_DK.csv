@@ -1,0 +1,1653 @@
+key,translation,locale
+account.newsletter.text,"Tilmeld dig vores nyhedsbrev og hold dig altid opdateret! Få opdateringer om nyeste smartphones og wearables trends, top mærker og gode tilbud.",da_DK
+address.city,City.,da_DK
+address.salutation,Hilsen,da_DK
+address.street,Gade,da_DK
+address.street_nr,Nummer,da_DK
+address.zip_code,Postnummer,da_DK
+adyen.payment.error.cc_cvv,Kontroller CVC-koden,da_DK
+adyen.payment.error.cc_month,Tjek venligst kreditkort måneden,da_DK
+adyen.payment.error.cc_number,Tjek venligst kreditkortnummeret,da_DK
+adyen.payment.error.cc_year,Tjek venligst kreditkortåret,da_DK
+AdyenCreditCard,Kreditkort,da_DK
+afiliate.legal.text,"Dette produkt sælges af en tredjeparts sælger. Sælgeren er udelukkende ansvarlig for prissætning, produktbeskrivelse, lagerniveauer og forsendelse. Hvad angår MyWorlds ansvar for hyperlinks og deres indhold, henviser vi til vilkårene for brug, der gælder for MyWorld Marketplace.",da_DK
+agent.account.overview,Oversigt,da_DK
+agent.account.page_title,Agent,da_DK
+agent.account.profile_data,Agent Profile.,da_DK
+agent.account.quote_request,Anmodninger om citat,da_DK
+agent.authentication.failed,Godkendelse mislykkedes,da_DK
+agent.autocomplete.no_results,Ingen resultater fundet,da_DK
+agent.confirm_user_selection,Bekræfte,da_DK
+agent.control_bar.customer_name,Kunde:,da_DK
+agent.control_bar.logout,Log ud,da_DK
+agent.control_bar.logout_as_customer,Afslut kundeshjælp,da_DK
+agent.control_bar.username,Agent:,da_DK
+agent.login.email,Email.,da_DK
+agent.login.password,Adgangskode,da_DK
+agent.login.title,Få adgang til din konto,da_DK
+auth.email,E-mail.,da_DK
+auth.im-already-customer,jeg har allerede en konto,da_DK
+auth.im-new-customer,Ny kunde,da_DK
+auth.login,Tilmelde,da_DK
+auth.login-button,Log ind med myworld,da_DK
+auth.password,Adgangskode,da_DK
+auth.password-forgot,Glemt?,da_DK
+auth.register,Tilmeld,da_DK
+autocomplete.placeholder,Søg,da_DK
+availability_notification_subscription.mail.copyright,"<em> Copyright © Nuværende års firmanavn, alle rettigheder forbeholdes. </ em> <br> <br>",da_DK
+availability_notification_subscription.mail.notification.body,"Ventetiden er forbi, du kan nu tilføje dette produkt inde i din indkøbsvogn.",da_DK
+availability_notification_subscription.mail.notification.buy_now,Køb nu,da_DK
+availability_notification_subscription.mail.notification.head,%name% er tilgængelig igen!,da_DK
+availability_notification_subscription.mail.notification.subject,%name% er tilgængelig igen!,da_DK
+availability_notification_subscription.mail.subscribed.body,"Du modtager en email, når produktet vil være tilgængeligt igen",da_DK
+availability_notification_subscription.mail.subscribed.head,Vi har lige informeret vores købshold om dit abonnement!,da_DK
+availability_notification_subscription.mail.subscribed.subject,Vi har lige informeret vores købshold om dit abonnement!,da_DK
+availability_notification_subscription.mail.unsubscribe,"Vil du ændre, hvordan du modtager disse e-mails? <br> Du kan <et mål = ""_ blank"" href = ""%link%"" stil = ""MSO-line-højde-regel: Præcis; -ms- Tekststørrelsesjustering: 100SKIP @ Spring over.; - Webkit-Text-Size-justering: 100.Skip.com; Farve: # 656565; skrifttype: Normal; Tekst-dekoration: Understreget; ""> Afmeld af denne liste < / A>.",da_DK
+availability_notification_subscription.mail.unsubscribed.body,"Du vil ikke blive underrettet, når produktet spring@skip.name.Skip.com vil være tilgængeligt igen.",da_DK
+availability_notification_subscription.mail.unsubscribed.subject,"Du vil ikke blive underrettet, når produktet spring@skip.name.Skip.com vil være tilgængeligt igen.",da_DK
+availability_notification.do_not_notify_me,Giv mig ikke besked om tilbage på lager,da_DK
+availability_notification.email_address,Email adresse,da_DK
+availability_notification.notify_me,"Advisér mig, når den er tilbage på lager",da_DK
+availability_notification.subscribed,Med succes abonneret,da_DK
+availability_notification.successfully_unsubscribed,Med succes afmeldt,da_DK
+availability_notification.successfully_unsubscribed_text,"Du har med succes afmeldt fra at blive underrettet, når produktet er tilgængeligt igen",da_DK
+availability_notification.unsubscribed,Med succes afmeldt,da_DK
+benefit_deal.item_quantity,Antal:,da_DK
+benefit_deal.product.attribute.manufacturer_name,Mærke:,da_DK
+BenefitVouchers,Ydelseskupon,da_DK
+billing.address.country.validation.not_found,Faktureringsadresse Land ikke fundet for landekode: %code%,da_DK
+billing.address.validation.is_missing,Faktureringsadresse mangler,da_DK
+bundle.title,Bundle inkluderer,da_DK
+business_on_behalf_widget.change_company_user,Skift virksomhedsbrugere,da_DK
+business_on_behalf_widget.no_selected_company,Intet valgt selskab,da_DK
+camcorders.category.link,/ DA / Kameraer - & - Videokameraer / Digital-kameraer?,da_DK
+cameras.category.link,/ DA / Cameras - & - Videokameraer / Digital-kameraer,da_DK
+cart_note.cart_page.cart.note_added,Bemærk er blevet tilføjet til indkøbsvogn,da_DK
+cart_note.cart_page.item.note_added,Bemærk er blevet tilføjet til Item '%Sku%',da_DK
+cart_note.checkout_page.item_note,Bemærk,da_DK
+cart_note.checkout_page.quote_note,Vogn note.,da_DK
+cart_note.customer_page.item_note,Bestil vare note,da_DK
+cart_note.customer_page.order_note,Bestilling note,da_DK
+cart_note.form.save,Gemme,da_DK
+cart_note.item_form.enter_note,Tilføj en note for varen,da_DK
+cart_note.item_form.placeholder,Indtast din note,da_DK
+cart_note.quote_form.enter_note,Tilføj en note til vognen,da_DK
+cart_note.quote_form.placeholder,Indtast din note,da_DK
+cart_page.error_message.unexpected_error,Uventet fejl opstod.,da_DK
+cart_widget.empty_text,Din vogn er tom. Gå fyld det op med alle dine tekniske forhåbninger og drømme.,da_DK
+cart.add-to-shopping-list,Tilføj til indkøbsliste,da_DK
+cart.add-to-shopping-list.form,Gem vogn til en indkøbsliste,da_DK
+cart.add-to-shopping-list.form.add_new,Tilføj ny indkøbsliste,da_DK
+cart.add-to-shopping-list.form.error.empty_name,Indtast venligst indkøbsliste navn,da_DK
+cart.add-to-shopping-list.form.placeholder,Indtast navn på en ny indkøbsliste,da_DK
+cart.add.items.error.text,Noget gik galt. Undskyld.,da_DK
+cart.add.items.success,Varer tilføjet succes,da_DK
+cart.cart,Vogn,da_DK
+cart.checkout,Checkout.,da_DK
+cart.code.apply.failed,KODE kunne ikke anvendes,da_DK
+cart.code.enter-code,Indtast kupon / gavekortkode,da_DK
+cart.delete.button,Delete.,da_DK
+cart.discounts,Rabatter,da_DK
+cart.empty.button,Tjek tilbuddet,da_DK
+cart.empty.description,"Indkøbskurven er kun ønske er at indsamle de bedste tilbud, gaver og mange andre gode produkter til dig. Så opfyld din indkøbskurvs ønske og giver mening om det!",da_DK
+cart.empty.title,Din indkøbskurv er tom!,da_DK
+cart.giftcard.apply.failed,Gavekortet er ikke relevant,da_DK
+cart.giftcard.apply.successful,Din gavekortkode er blevet anvendt,da_DK
+cart.giftcard.label,Gavekort,da_DK
+cart.include.vat,inkl. Moms.,da_DK
+cart.item_attributes_needed,Vælg venligst flere attributter,da_DK
+cart.item_quantity,Antal,da_DK
+cart.item.bundle.description,Varer i bundtet:,da_DK
+cart.item.item_price,Varepris,da_DK
+cart.item.item_total,Vare i alt,da_DK
+cart.item.option.description,Produktindstillinger:,da_DK
+cart.item.option.pre.check.validation.error.exists,"Du kan ikke ombestille produktet %name% direkte, bedes du tilføje det til din indkøbsvogn separat.",da_DK
+cart.item.remove.confirm,"Er du sikker på, at du vil fjerne denne vare?",da_DK
+cart.item.sku,SKU.,da_DK
+cart.note-title,Vogn note.,da_DK
+cart.pre.check.affiliate.failed,Vare %sku% kan ikke tilføjes til vognen.,da_DK
+cart.pre.check.availability.failed,Vare %sku% har kun tilgængelighed af %stock%.,da_DK
+cart.pre.check.availability.failed.empty,Vare %sku% Ikke længere tilgængelig.,da_DK
+cart.pre.check.price.failed,"Pris i valgt valuta, der ikke findes for produkt med SKU '%sku%'. Venligst ændrer valutaen eller fjern produktet fra rækkefølge.",da_DK
+cart.pre.check.product_discontinued,"Produkt '%name%' er afbrudt, vær venlig at vælge en alternativ.",da_DK
+cart.pre.check.quantity.interval.failed,Mængde Interval Krav til produkt SKU '%sku%' er ikke opfyldt.,da_DK
+cart.pre.check.quantity.max.failed,Maksimal mængde for produkt SKU '%sku%' overskrides.,da_DK
+cart.pre.check.quantity.min.failed,Mindste kvantitetskrav til produkt SKU '%sku%' er ikke opfyldt.,da_DK
+cart.pre.check.quantity.value.failed,Forkert mængde for produkt SKU '%sku%'.,da_DK
+cart.pre.check.shipment.failed,Kan ikke anvende disse ændringer. Forsendelsesmetoden blev ikke fundet. Vælg venligst en anden forsendelsesmetode.,da_DK
+cart.price,Pris,da_DK
+cart.price.grand.total,i alt,da_DK
+cart.price.subtotal,Subtotal.,da_DK
+cart.price.subtotal_wo_deals,i alt,da_DK
+cart.product-option,Produkt muligheder.,da_DK
+cart.promotion.items,Salgsfremmende produkter.,da_DK
+cart.quantity.adjusted,"Ønsket postmængde blev justeret, så vidt det valgte mængde ikke er tilgængelig.",da_DK
+cart.remove.items.success,Produkterne blev fjernet med succes,da_DK
+cart.sales-order-threshold,Minimum ordre værdi.,da_DK
+cart.select.default_value,Vælg venligst en værdi,da_DK
+cart.shipping,Forsendelse,da_DK
+cart.shipping_standard,Forsendelsesstandard,da_DK
+cart.shipping.order-item,#NAME?,da_DK
+cart.title_content,Indkøbskurv,da_DK
+cart.title_sidebar,Bestil Oversigt,da_DK
+cart.total,i alt,da_DK
+cart.total_wo_deals,i alt,da_DK
+cart.total.discount,Rabat,da_DK
+cart.total.price_to_pay,Pris til at betale.,da_DK
+cart.total.tax_total,Skat,da_DK
+cart.validate.items.price.changed,Priserne er blevet ændret for produkter med SKU '%sku%'.,da_DK
+cart.voucher-title,Rabatkode,da_DK
+cart.voucher.apply.failed,Din kuponkode er ugyldig.,da_DK
+cart.voucher.apply.non_applicable,Voucher-koden er ugyldig,da_DK
+cart.voucher.apply.successful,Din kuponkode er blevet anvendt,da_DK
+cart.voucher.redeem,Indløs kode,da_DK
+cart.voucher.remove,Fjerne,da_DK
+cart.vouchers,Kuponer,da_DK
+cart.vouchers.clear-all,Slet alt,da_DK
+cart.your-order,Din bestilling,da_DK
+catalog.currency,€,da_DK
+catalog.filter_section.show_all,Vis mere,da_DK
+catalog.filter_section.show_less,Vis mindre,da_DK
+catalog.filter.active,Aktivt filter,da_DK
+catalog.filter.active_rating_up,Stars & Up.,da_DK
+catalog.filter.activeFilters,Aktive filtre.,da_DK
+catalog.filter.button,ansøge,da_DK
+catalog.filter.extras,Andre egenskaber.,da_DK
+catalog.filter.filter,Filtre / sortering,da_DK
+catalog.filter.hide,Skjul filter,da_DK
+catalog.filter.main_color,Farve,da_DK
+catalog.filter.per,Pr. Side,da_DK
+catalog.filter.pricerangeFrom,fra,da_DK
+catalog.filter.pricerangeTo,til,da_DK
+catalog.filter.rangeFrom,Rækkevidde af,da_DK
+catalog.filter.rangeTo,til,da_DK
+catalog.filter.rating_up,& UP.,da_DK
+catalog.filter.resetAllFilters,Nulstil alle filtre,da_DK
+catalog.filter.show,Indsæt filter,da_DK
+catalog.itemsFound,Resultater,da_DK
+catalog.loading,Indlæser,da_DK
+catalog.new,Ny,da_DK
+catalog.next,Blive ved,da_DK
+catalog.no-results,Ingen resultater.,da_DK
+catalog.prev,tilbage,da_DK
+catalog.sale,Salg,da_DK
+catalog.sort,Sortering,da_DK
+catalog.sort.by,Sorter efter,da_DK
+catalog.sort.name_asc,Navn Ascending.,da_DK
+catalog.sort.name_desc,Navn nedadgående,da_DK
+catalog.sort.price_asc,Pris stigende,da_DK
+catalog.sort.price_desc,Pris nedadgående,da_DK
+catalog.sort.rating,Produktgruder.,da_DK
+catalog.sort.relevance,Relevans.,da_DK
+catalog.view.mode.grid,Grid.,da_DK
+catalog.view.mode.list,Liste,da_DK
+checkout.currency.my_world.shopping_points,Indfriede indkøbspoints,da_DK
+checkout.customer.auth_as_guest,Køb som gæst,da_DK
+checkout.customer.auth_as_login,Log på,da_DK
+checkout.customer.auth_as_user,Tilmelde,da_DK
+checkout.customer.order_as_guest,Bestil som gæst,da_DK
+checkout.customer.proceed_as_guest,Fortsæt som gæst,da_DK
+checkout.customer.proceed_as_user,Fortsæt som en registreret bruger (tilmelding),da_DK
+checkout.giftcard.label,Gavekort,da_DK
+checkout.nothing.will.be.sent,Derfor vil der naturligvis ikke blive sendt noget!,da_DK
+checkout.payment_method.invalid,Checkout betaling er ikke gyldig,da_DK
+checkout.payment.cashback_balance,Cashback / MyWorld Everoucher Balance:,da_DK
+checkout.payment.cashback_balance,Cashback / MyWorld Everoucher Balance:,da_DK
+checkout.payment.cashback_info,"Hvis du har Cashback Credit eller MyWorld Everoucher Credit, vises dette her, og du kan bruge det til betaling. <br/> Bemærk: Disse kan kun bruges som betaling for varer, der sælges af MyWorld.",da_DK
+checkout.payment.cashback_info,"Hvis du har Cashback Credit eller MyWorld Everoucher Credit, vises dette her, og du kan bruge det til betaling. <br/> Bemærk: Disse kan kun bruges som betaling for varer, der sælges af MyWorld.",da_DK
+checkout.payment.checkbox.use_evoucher_balance,Brug %price% af din %balance% Cashback / MyWorld Everoucher Balance,da_DK
+checkout.payment.checkbox.use_evoucher_balance,Brug %price% af din %balance% Cashback / MyWorld Everoucher Balance,da_DK
+checkout.payment.my_world.error.transaction_batch_failed,Betalingstransaktion blev ikke behandlet på grund af en anden batch-transaktionsfejl,da_DK
+checkout.payment.my_world.error.transaction_exceeded_value,Betalingstransaktionsbeløb oversteg tilgængelig mængde,da_DK
+checkout.payment.my_world.error.transaction_failed,Betalingstransaktion mislykkedes,da_DK
+checkout.payment.my_world.error.transaction_option_not_found,Betalingstransaktion mislykkedes på grund af ukendt betalingsopsætning,da_DK
+checkout.payment.myworld.payment_methods.balance_text,Balance,da_DK
+checkout.payment.myworld.payment_methods.method.cashback,Penge tilbage,da_DK
+checkout.payment.myworld.payment_methods.method.evoucher,evoucher.,da_DK
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,myworld evoucher (marketing),da_DK
+checkout.payment.myworld.payment_methods.subtitle,Du kan vælge mellem følgende MyWorld Epayment Methods (Valgfrit):,da_DK
+checkout.payment.myworld.payment_methods.title,myworld ePayment.,da_DK
+checkout.payment.provider.DummyPayment,betalingsmetoder,da_DK
+checkout.payment.provider.payment_methods,betalingsmetoder,da_DK
+checkout.pre.check.shipment.failed,Ugyldig forsendelsesmetode %method_name% (%carrier_name%).,da_DK
+checkout.sales-order-threshold,Minimum ordre værdi.,da_DK
+checkout.step.address.is_sellable,"Kære kunde, produkter er desværre ikke tilgængelige i din leveringsadresse.",da_DK
+checkout.step.address.select_address,Vælg en adresse,da_DK
+checkout.step.address.title,Adresse,da_DK
+checkout.step.benefit_deal.benefit_voucher,Brugt Total ydelseskuponbeløb,da_DK
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,Max mængde skal være %maxamount% %currency% (Max mængden af ​​BV). Vær venlig at bekræfte,da_DK
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Desværre har du ikke nok BV til at købe dette produkt til en rabat. Nødvendigt beløb: %currency% %needamount%, din Balance: %currency% %BalanceAmount%",da_DK
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,Desværre har du ikke nok sp til at købe dette produkt til en rabat.,da_DK
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Kære kunde, du skal bruge mindst %needamount% hopp@skip.currency.skip.com fra din fordelskuponbalance for at få et ydelseskuponaftale Produkt.",da_DK
+checkout.step.benefit_deal.items,Varer,da_DK
+checkout.step.benefit_deal.or,eller,da_DK
+checkout.step.benefit_deal.title,Bestil Oversigt,da_DK
+checkout.step.benefit_deal.total_used_shopping_points,Brugte samlede indkøbspunkter,da_DK
+checkout.step.benefit_deal.use_shopping_points,Brug indkøbspointsaftale,da_DK
+checkout.step.benefit_deal.use_voucher,Brug ydelseskuponer (BV) til rabat,da_DK
+checkout.step.benefit_deal.with_method,med,da_DK
+checkout.step.confirm_payment.error,Der gik noget galt på betaling,da_DK
+checkout.step.confirm_payment.error,Der gik noget galt på betaling,da_DK
+checkout.step.customer.title,Log på,da_DK
+checkout.step.error.link,Gå til Cart.,da_DK
+checkout.step.error.sub_title,Bestilling mislykkedes på grund af fejl:,da_DK
+checkout.step.error.text,Noget gik galt. Undskyld.,da_DK
+checkout.step.error.title,Din ordre er ikke blevet placeret.,da_DK
+checkout.step.payment,Gå til betaling,da_DK
+checkout.step.payment.must_be_older_than_18_years,Du skal være mindst 18 år gammel.,da_DK
+checkout.step.payment.title,Betaling,da_DK
+checkout.step.place.order,Indsend din ordre,da_DK
+checkout.step.shipment,Gå til Forsendelse,da_DK
+checkout.step.shipment.provider.a,DHL.,da_DK
+checkout.step.shipment.provider.b,Hermes.,da_DK
+checkout.step.shipment.title,Forsendelse,da_DK
+checkout.step.success.link,"Gå til ""Min konto""",da_DK
+checkout.step.success.sub_title,Din ordre er blevet placeret med succes.,da_DK
+checkout.step.success.text,Du får ordrebekræftelses-emailen om et par minutter. Du kan tjekke og spore din ordre på din konto.,da_DK
+checkout.step.success.title,Tak skal du have.,da_DK
+checkout.step.summary,Gå til Sammenfatning,da_DK
+checkout.step.summary.billing_address,Betalingsadresse,da_DK
+checkout.step.summary.delivery_address,Leveringsadresse,da_DK
+checkout.step.summary.delivery_method,Leveringsmetode,da_DK
+checkout.step.summary.grand_total,i alt,da_DK
+checkout.step.summary.items,Varer,da_DK
+checkout.step.summary.modal.email,Email:,da_DK
+checkout.step.summary.modal.email_radio_label,Generer ny bekræftelseskode sendt via e-mail,da_DK
+checkout.step.summary.modal.error_session_expired,"Din betalingssession er udløbet, bedes du vende tilbage til betalingstrinnet.",da_DK
+checkout.step.summary.modal.error_when_resending_by_sms,"Der er en fejl, mens du forsøger at sende koden via SMS, prøv igen senere.",da_DK
+checkout.step.summary.modal.info,Hvordan vil du gerne modtage din PIN-kode?,da_DK
+checkout.step.summary.modal.link,Modtog ikke en kode?,da_DK
+checkout.step.summary.modal.phone,Nummer:,da_DK
+checkout.step.summary.modal.please_wait_30_seconds,Vent venligst 30 sekunder for at anmode om en ny kode.,da_DK
+checkout.step.summary.modal.resend_already_by_mail,"Kode blev sendt via e-mail, bedes du også kontrollere din spammappe.",da_DK
+checkout.step.summary.modal.resend_already_by_sms,"Kode blev sendt via SMS, bedes du tjekke.",da_DK
+checkout.step.summary.modal.resend_retry,Du kan prøve at sende igen indenfor:,da_DK
+checkout.step.summary.modal.sms_radio_label,Generer ny verifikationskode sendt via SMS,da_DK
+checkout.step.summary.modal.submit,Send PIN-kode,da_DK
+checkout.step.summary.modal.title,Modtog ikke en PIN-kode?,da_DK
+checkout.step.summary.overview,Oversigt,da_DK
+checkout.step.summary.payment,Betaling,da_DK
+checkout.step.summary.products,Produkter,da_DK
+checkout.step.summary.requested_delivery_date,Anmodet om leveringsdato,da_DK
+checkout.step.summary.shipment_costs_total,Forsendelsesomkostninger (i alt),da_DK
+checkout.step.summary.shipping,Forsendelse,da_DK
+checkout.step.summary.sms_code_input_error,SMS-koden var ikke korrekt,da_DK
+checkout.step.summary.sms_code_input_error,SMS-koden var ikke korrekt,da_DK
+checkout.step.summary.sms_code_send_error,Send SMS-kode sluttet i en fejl,da_DK
+checkout.step.summary.sms_code_send_error,Send SMS-kode sluttet i en fejl,da_DK
+checkout.step.summary.sub_total,Subtotal.,da_DK
+checkout.step.summary.tax,inkl. Skat,da_DK
+checkout.step.summary.title,Resumé,da_DK
+checkout.step.summary.total,Komplet checkout.,da_DK
+checkout.step.summary.tracking_code,Leveringssporingskode,da_DK
+checkout.step.summary.uid,UID.,da_DK
+checkout.step.summary.with_method,Med,da_DK
+checkout.summary.item.bundle.description,Varer i bundtet:,da_DK
+checkout.summary.item.option.description,Produktindstillinger:,da_DK
+checkout.thank.you,tak skal du have,da_DK
+checkout.this.is.shop,Dette er en butik,da_DK
+cms-product-group.category.link.text,Udforsk mere,da_DK
+cms.page.filter.per,Pr. Side,da_DK
+cms.page.itemsFound,Varer fundet,da_DK
+cms.page.sort.name_asc,Sorter efter navn Stigende,da_DK
+cms.page.sort.name_desc,Sorter efter navn faldende,da_DK
+cms.page.sort.relevance,Sorter efter relevans.,da_DK
+cms.preview.access_denied,"Du er ikke logget ind, eller du har ikke tilladelse til at få adgang til denne side.",da_DK
+company_page.company_business_unit_restricted_message,Du har ikke tilladelser til at udføre denne operation,da_DK
+company_page.company_user_restricted_message,Regelmæssige kunder må ikke fungere på virksomhedssider,da_DK
+company_user.business_on_behalf.error.company_not_active,"Du kan ikke vælge denne virksomheds bruger, firmaet er ikke aktiv.",da_DK
+company_user.business_on_behalf.error.company_user_invalid,"Du kan ikke vælge denne virksomheds bruger, den er ugyldig.",da_DK
+company_user.change_company_user,Skift virksomhedsbrugere,da_DK
+company_user.no_company,Intet selskab,da_DK
+company_user.remember_choice,Husk valg,da_DK
+company.account,Company Account.,da_DK
+company.account.add_new_address,Definer ny adresse,da_DK
+company.account.address,Adresser,da_DK
+company.account.address.address1,Gade,da_DK
+company.account.address.address3,Tilføjelse til adressen,da_DK
+company.account.address.city,City.,da_DK
+company.account.address.country,Land,da_DK
+company.account.address.delete,Delete.,da_DK
+company.account.address.edit,Redigere,da_DK
+company.account.address.is_default_billing,Er standard faktureringsadresse,da_DK
+company.account.address.number,Nummer,da_DK
+company.account.address.phone,Telefon nummer,da_DK
+company.account.address.zip_code,Postnummer,da_DK
+company.account.authorization.success,Registrering succesfuld,da_DK
+company.account.billing_address,Standard faktureringsadresse,da_DK
+company.account.business_unit,Forretningsenheder.,da_DK
+company.account.business_unit.add,Opret forretningsenhed,da_DK
+company.account.business_unit.address,Adresser,da_DK
+company.account.business_unit.create,skab,da_DK
+company.account.business_unit.delete,Delete.,da_DK
+company.account.business_unit.delete.confirmation.warning,Advarsel,da_DK
+company.account.business_unit.details,detaljer,da_DK
+company.account.business_unit.edit,Redigere,da_DK
+company.account.business_unit.edit_information,Redigere,da_DK
+company.account.business_unit.email,Email.,da_DK
+company.account.business_unit.external_url,ekstern Url,da_DK
+company.account.business_unit.name,Navn,da_DK
+company.account.business_unit.phone,Telefon nummer,da_DK
+company.account.business_unit.view,Udsigt,da_DK
+company.account.company_name,Firmanavn,da_DK
+company.account.company_role,Roller.,da_DK
+company.account.company_role.add,Tilføj ny rolle,da_DK
+company.account.company_role.default,Standard,da_DK
+company.account.company_role.details,detaljer,da_DK
+company.account.company_role.edit,Redigere,da_DK
+company.account.company_role.edit_information,Rediger rolle information,da_DK
+company.account.company_role.is_default,Er standard.,da_DK
+company.account.company_role.name,Navn,da_DK
+company.account.company_role.permission.assign,Tildele,da_DK
+company.account.company_role.permission.assigned,Tildelt,da_DK
+company.account.company_role.permission.configure,Konfigurere,da_DK
+company.account.company_role.permission.key,Nøgle,da_DK
+company.account.company_role.permission.manage,Administrer tilladelser,da_DK
+company.account.company_role.permission.status,Status.,da_DK
+company.account.company_role.permission.unassign,Unassign.,da_DK
+company.account.company_role.permission.unassigned,Unassigned.,da_DK
+company.account.company_role.permissions,Tilladelser,da_DK
+company.account.company_role.user.manage,Administrer tildelte virksomhedsbrugere,da_DK
+company.account.company_role.users,Brugere,da_DK
+company.account.company_role.view,Udsigt,da_DK
+company.account.company_user,Brugere,da_DK
+company.account.company_user.add,Tilføj ny bruger,da_DK
+company.account.company_user.business_unit,Forretningsenhed,da_DK
+company.account.company_user.delete,Delete.,da_DK
+company.account.company_user.delete.back,Tilbage,da_DK
+company.account.company_user.delete.successful,Brugeren er blevet slettet,da_DK
+company.account.company_user.disable,Deaktivere,da_DK
+company.account.company_user.edit,Redigere,da_DK
+company.account.company_user.edit_information,Rediger brugeroplysninger,da_DK
+company.account.company_user.enable,Aktivér.,da_DK
+company.account.company_user.name,Navn,da_DK
+company.account.company_user.role,Rolle,da_DK
+company.account.company_user.status.disable.error,Firmabruger kan ikke deaktiveres,da_DK
+company.account.company_user.status.disable.error.cannot_disable_yourself,Du har ikke lov til at deaktivere dig selv,da_DK
+company.account.company_user.status.disable.success,Firma bruger med succes deaktiveret,da_DK
+company.account.company_user.status.enable.error,Virksomhedsbruger kan ikke aktiveres,da_DK
+company.account.company_user.status.enable.error.cannot_enable_yourself,Du har ikke lov til at aktivere dig selv,da_DK
+company.account.company_user.status.enable.success,Firma bruger succesfuldt aktiveret,da_DK
+company.account.edit_address_information,Rediger adresseoplysninger,da_DK
+company.account.login.email,Email.,da_DK
+company.account.login.password,Adgangskode,da_DK
+company.account.login.title,Få adgang til din konto,da_DK
+company.account.name,firmanavn,da_DK
+company.account.overview,Oversigt,da_DK
+company.account.page-title,Mit firma,da_DK
+company.account.registration.title,Opret konto,da_DK
+company.account.shipping_address,Standard forsendelsesadresse,da_DK
+company.account.table.actions,Handlinger,da_DK
+company.address.heading,Virksomhedsdata.,da_DK
+company.company_business_unit.delete.error.has_users,"Du kan ikke slette en forretningsenhed, mens den indeholder brugere",da_DK
+company.company_role.delete.error.has_users,"Du kan ikke slette en rolle, mens den indeholder brugere",da_DK
+company.user.first_name,Fornavn,da_DK
+company.user.invitation.accepted,Din invitation er allerede blevet brugt,da_DK
+company.user.invitation.actions,Handlinger,da_DK
+company.user.invitation.business.unit,Forretningsenhed,da_DK
+company.user.invitation.delete.button,Delete.,da_DK
+company.user.invitation.delete.confirmation.question,"Er du sikker på, at du vil slette invitationen?",da_DK
+company.user.invitation.delete.title,Slet invitation,da_DK
+company.user.invitation.deleted.error.message,Invitation blev ikke slettet,da_DK
+company.user.invitation.deleted.success.message,Invitation slettet succes,da_DK
+company.user.invitation.expired,Din invitation er udløbet,da_DK
+company.user.invitation.file,Invitationer File.,da_DK
+company.user.invitation.first.name,Fornavn,da_DK
+company.user.invitation.import.download.errors.file,"Nogle invitationer undlod at blive importeret. Klik på <a href=""""%link%""""> her </a> for at downloade fejlfilen",da_DK
+company.user.invitation.import.error.message,Invitationer Import mislykkedes,da_DK
+company.user.invitation.import.file.invalid,Importfilen er ikke gyldig,da_DK
+company.user.invitation.import.title,Importer nye invitationer,da_DK
+company.user.invitation.imported.title.plural,Importerede invitationer.,da_DK
+company.user.invitation.invalid,Din invitation er ikke gyldig,da_DK
+company.user.invitation.invite_users,Invitere brugere,da_DK
+company.user.invitation.last.name,Efternavn,da_DK
+company.user.invitation.mail,Post,da_DK
+company.user.invitation.not.found.message,Invitation ikke fundet,da_DK
+company.user.invitation.resend.button,Sendes videresendelse,da_DK
+company.user.invitation.resend.confirmation.question,"Er du sikker på, at du vil sende invitationen til?",da_DK
+company.user.invitation.resend.title,Resend Invitation,da_DK
+company.user.invitation.resent.error.message,Invitation var ikke genstand,da_DK
+company.user.invitation.resent.success.message,Invitation resent succesfuldt,da_DK
+company.user.invitation.send.all.button,Send ALL,da_DK
+company.user.invitation.send.button,Sende,da_DK
+company.user.invitation.sent.all.error.message,Nogle invitationer kunne ikke sendes,da_DK
+company.user.invitation.sent.all.none.found.message,Ingen invitationer til at sende fundet,da_DK
+company.user.invitation.sent.all.success.message,Alle invitationer sendt med succes,da_DK
+company.user.invitation.sent.error.message,Invitation blev ikke sendt,da_DK
+company.user.invitation.sent.success.message,Invitation sendt med succes,da_DK
+company.user.invitation.status,Status.,da_DK
+company.user.invitation.status.accepted,Accepteret,da_DK
+company.user.invitation.status.new,Ikke sendt,da_DK
+company.user.invitation.status.pending,Verserende,da_DK
+company.user.invitation.title.plural,Invitationer.,da_DK
+company.user.last_name,Efternavn,da_DK
+company.user.salutation.dr,Dr.,da_DK
+company.user.salutation.mr,Hr.,da_DK
+company.user.salutation.mrs,Fru.,da_DK
+company.user.salutation.ms,Frk.,da_DK
+configurable_bundle_note.enter_note,Tilføj en note til den konfigurerede bundt,da_DK
+configurable_bundle_note.form.save,Gemme,da_DK
+configurable_bundle_note.note,Konfigureret Bundle Bemærk:,da_DK
+configurable_bundle_note.note_added,Bemærk er blevet tilføjet til konfigureret bundt,da_DK
+configurable_bundle_page.choose_bundle_to_configure,Vælg bundle for at konfigurere,da_DK
+configurable_bundle_page.configurable_bundle_list,Konfigurerbar bundle liste,da_DK
+configurable_bundle_page.configurator,Konfigurator.,da_DK
+configurable_bundle_page.configurator.add_to_cart,Tilføj til kurv,da_DK
+configurable_bundle_page.configurator.added_to_cart,Konfigureret bundle med succes tilføjet til indkøbsvogn.,da_DK
+configurable_bundle_page.configurator.product_became_unavailable,Produkt med SKU '%sku%' konfigureret til slot med id '%id%' blev utilgængelig.,da_DK
+configurable_bundle_page.configurator.selected_product,Valgt produkt.,da_DK
+configurable_bundle_page.configurator.sku,SKU:,da_DK
+configurable_bundle_page.configurator.slot_became_unavailable,Konfigureret slot med id '%id%' blev utilgængelig.,da_DK
+configurable_bundle_page.configurator.slot_page.back_link,Tilbage til bundter,da_DK
+configurable_bundle_page.configurator.summary,Resumé,da_DK
+configurable_bundle_page.configurator.summary_page_locked,Produktet til mindst en slot skal konfigureres til at besøge oversigtsside.,da_DK
+configurable_bundle_page.configurator.summary_page_total,i alt,da_DK
+configurable_bundle_page.configurator.templates_not_found,Der er ingen skabeloner til rådighed.,da_DK
+configurable_bundle_page.configurator.tip.header,Opret dit eget bundt.,da_DK
+configurable_bundle_page.configurator.tip.text,For at oprette bundtet skal du vælge spalten fra venstre side og vælge produktet fra listen.,da_DK
+configurable_bundle_page.edit,Redigere,da_DK
+configurable_bundle_page.invalid_template_slot_combination,Ugyldig skabelon / slot kombination.,da_DK
+configurable_bundle_page.select,Vælg,da_DK
+configurable_bundle_page.template_not_found,Konfigurerbar bundle skabelon ikke fundet.,da_DK
+configurable_bundle_page.unselect,Unselect.,da_DK
+configurable_bundle.slot.validation.error.not_exists,Konfigurerbar bundle skabelon slot eksisterer ikke.,da_DK
+configurable_bundle.template_slots.slot-1.name,Slot 1,da_DK
+configurable_bundle.template_slots.slot-2.name,Slot 2.,da_DK
+configurable_bundle.template_slots.slot-3.name,Slot 3.,da_DK
+configurable_bundle.template_slots.slot-4.name,Slot 4.,da_DK
+configurable_bundle.template_slots.slot-5.name,Slot 5.,da_DK
+configurable_bundle.template_slots.slot-6.name,Slot 6.,da_DK
+configurable_bundle.template.validation.error.already_activated,Konfigurerbar bundle skabelon er allerede aktiveret.,da_DK
+configurable_bundle.template.validation.error.already_deactivated,Konfigurerbar bundle skabelon er allerede deaktiveret.,da_DK
+configurable_bundle.template.validation.error.not_exists,Konfigurerbar bundle skabelon eksisterer ikke.,da_DK
+configurable_bundle.templates.configurable-bundle-all-in.name,Alt i,da_DK
+configurable_bundle.templates.smartstation.name,Smartstation kit,da_DK
+configured_bundle_cart.error.configured_bundle_cannot_be_added,Konfigureret bundle kan ikke tilføjes til indkøbsvogn.,da_DK
+configured_bundle_cart.error.configured_bundle_cannot_be_removed,Konfigureret bundle kan ikke fjernes fra vogn.,da_DK
+configured_bundle_cart.error.configured_bundle_cannot_be_updated,Konfigureret bundle kan ikke opdateres.,da_DK
+configured_bundle_cart.error.configured_bundle_not_found,Konfigureret bundle med forsynet SKU ikke fundet i indkøbsvogn.,da_DK
+configured_bundle_note_widget.edit_note,Redigere,da_DK
+configured_bundle_note_widget.remove_note,Fjerne,da_DK
+configured_bundle_widget.configured_bundle.removed,Konfigureret bundle fjernet succesfuldt.,da_DK
+configured_bundle_widget.configured_bundle.updated,Konfigureret pakke opdateret med succes.,da_DK
+configured_bundle_widget.items,Varer,da_DK
+configured_bundle_widget.multiplier,x,da_DK
+configured_bundle.bundle_total,Bundle I alt:,da_DK
+configured_bundle.item_sku,SKU:,da_DK
+configured_bundle.order.items,Varer i bundtet:,da_DK
+configured_bundle.price,Varepris:,da_DK
+configured_bundle.quantity,Antal:,da_DK
+configured_bundle.remove,Fjerne,da_DK
+configured_bundle.total,Vare total:,da_DK
+countries.iso.AT,Østrig.,da_DK
+countries.iso.BE,Belgien.,da_DK
+countries.iso.BG,Bulgarien.,da_DK
+countries.iso.CH,Schweiz,da_DK
+countries.iso.CY,Cypern,da_DK
+countries.iso.CZ,Tjekkiet,da_DK
+countries.iso.DE,Tyskland.,da_DK
+countries.iso.DK,Danmark,da_DK
+countries.iso.EE,Estland.,da_DK
+countries.iso.ES,Spanien.,da_DK
+countries.iso.FI,Finland.,da_DK
+countries.iso.FR,Frankrig.,da_DK
+countries.iso.GB,Det Forenede Kongerige,da_DK
+countries.iso.GR,Grækenland,da_DK
+countries.iso.HR,KROATIEN,da_DK
+countries.iso.HU,Ungarn.,da_DK
+countries.iso.IE,Irland.,da_DK
+countries.iso.IM,Isle of Man.,da_DK
+countries.iso.IT,Italien.,da_DK
+countries.iso.LT,Litauen,da_DK
+countries.iso.LU,Luxembourg.,da_DK
+countries.iso.LV,Letland.,da_DK
+countries.iso.MC,Monaco.,da_DK
+countries.iso.MT,Maltra,da_DK
+countries.iso.NL,Holland.,da_DK
+countries.iso.NO,Norge.,da_DK
+countries.iso.PL,Polen,da_DK
+countries.iso.PT,PORTUGAL.,da_DK
+countries.iso.RO,RUMÆNIEN,da_DK
+countries.iso.SE,Sverige,da_DK
+countries.iso.SI,Slovenien.,da_DK
+countries.iso.SK,Slovakiet.,da_DK
+customer.access.cannot_see_price,Venligst log ind for at se prisen,da_DK
+customer.account,Kundekonto.,da_DK
+customer.account.add_new_address,Definer ny adresse,da_DK
+customer.account.additional_addresses,Yderligere adresser.,da_DK
+customer.account.address,Adresser,da_DK
+customer.account.available.benefit.voucher.amount,Tilgængelig ydelseskuponbeløb,da_DK
+customer.account.available.cashback.amount,Tilgængelig cashback beløb,da_DK
+customer.account.available.shopping.point.amount,Tilgængelig Shopping Point Beløb,da_DK
+customer.account.button.add_new_address,Tilføj ny adresse,da_DK
+customer.account.contact,Kontakt,da_DK
+customer.account.default_billing_address,Standard faktureringsadresse,da_DK
+customer.account.default_shipping_address,Standard forsendelsesadresse,da_DK
+customer.account.deliver_to_multiple_addresses,Levere til flere adresser,da_DK
+customer.account.edit_address_information,Rediger adresseoplysninger,da_DK
+customer.account.last_orders,Sidste ordrer.,da_DK
+customer.account.newsletter,Nyhedsbrev.,da_DK
+customer.account.no_order,Ingen ordrer i øjeblikket,da_DK
+customer.account.no_orders,Ingen ordrer i øjeblikket,da_DK
+customer.account.order_history,Ordrer historie,da_DK
+customer.account.overview,Oversigt,da_DK
+customer.account.please_specify_billing_address,Angiv venligst faktureringsadresse,da_DK
+customer.account.please_specify_shipping_address,Angiv venligst forsendelsesadresse,da_DK
+customer.account.print_shopping_list.table.barcode,Stregkode.,da_DK
+customer.account.print_shopping_list.table.default_price,Standardpris,da_DK
+customer.account.print_shopping_list.table.note,Bemærk,da_DK
+customer.account.print_shopping_list.table.product_name,Produktnavn,da_DK
+customer.account.print_shopping_list.table.product_sku,Produkt SKU.,da_DK
+customer.account.print_shopping_list.title.shopping_list_id,Indkøbsliste ID.,da_DK
+customer.account.print_shopping_list.title.shopping_list_name,Indkøbsliste navn,da_DK
+customer.account.profile_data,Profil,da_DK
+customer.account.shopping_list,Shopping lister,da_DK
+customer.account.shopping_list.access,Adgang,da_DK
+customer.account.shopping_list.access.full_access,Fuld adgang.,da_DK
+customer.account.shopping_list.access.read_only,Læs kun,da_DK
+customer.account.shopping_list.add_all_available_to_cart,Tilføj alle tilgængelige produkter til indkøbsvogn,da_DK
+customer.account.shopping_list.add_item.success,Varen er blevet tilføjet til indkøbslisten.,da_DK
+customer.account.shopping_list.add_selected_items_to_cart,Tilføj udvalgte elementer til indkøbsvogn,da_DK
+customer.account.shopping_list.add-to-cart,Tilføj til kurv,da_DK
+customer.account.shopping_list.availability,Tilgængelighed,da_DK
+customer.account.shopping_list.available,Ledig,da_DK
+customer.account.shopping_list.clear.success,Indkøbsliste blev med succes ryddet.,da_DK
+customer.account.shopping_list.create.failed,Indkøbslisteoprettelse mislykkedes.,da_DK
+customer.account.shopping_list.create.success,Liste '%name%' blev oprettet med succes.,da_DK
+customer.account.shopping_list.delete.failed,Indkøbsliste blev ikke slettet.,da_DK
+customer.account.shopping_list.delete.it_belongs_to_follow,Det tilhører følgende,da_DK
+customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,Det vil blive slettet fra dem alle,da_DK
+customer.account.shopping_list.delete.success,Indkøbsliste slettet med succes.,da_DK
+customer.account.shopping_list.delete.warning,Advarsel,da_DK
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Du forsøger at slette indkøbsliste <a href=""""%link%""""> %name% </a>",da_DK
+customer.account.shopping_list.empty,I øjeblikket er der ingen ting i din indkøbsliste.,da_DK
+customer.account.shopping_list.error.cannot_update,Kan ikke opdatere indkøbsliste.,da_DK
+customer.account.shopping_list.error.duplicate_name,En indkøbsliste med samme navn eksisterer allerede.,da_DK
+customer.account.shopping_list.item.add.failed,Vare %sku% kunne ikke tilføjes til listen.,da_DK
+customer.account.shopping_list.item.add.success,Varenip@skip.sku.Skip.com blev tilføjet til listen.,da_DK
+customer.account.shopping_list.item.added_all_available_to_cart,Tilgængelige emner tilføjet til indkøbsvogn med succes.,da_DK
+customer.account.shopping_list.item.added_all_available_to_cart.failed,Ikke alle varer tilføjes til indkøbsvogn med succes,da_DK
+customer.account.shopping_list.item.added_to_cart,Vare tilføjet til indkøbsvogn med succes.,da_DK
+customer.account.shopping_list.item.added_to_cart.failed,Varen blev ikke tilføjet til indkøbsvogn.,da_DK
+customer.account.shopping_list.item.not_added,Kunne ikke tilføje produkt til indkøbsliste.,da_DK
+customer.account.shopping_list.item.remove.failed,Produktet blev ikke fjernet fra indkøbslisten.,da_DK
+customer.account.shopping_list.item.remove.success,Produkt fjernet med succes.,da_DK
+customer.account.shopping_list.item.select_item,Mindst et produkt skal vælges.,da_DK
+customer.account.shopping_list.items.added_to_cart,Varer tilføjet til indkøbsvogn med succes.,da_DK
+customer.account.shopping_list.items.added_to_cart.failed,Varer blev ikke tilføjet til indkøbsvogn.,da_DK
+customer.account.shopping_list.items.added_to_cart.not_found,Der er ingen produkter til rådighed for at tilføje til indkøbsvogn.,da_DK
+customer.account.shopping_list.items.added_to_cart.select_list,Mindst en indkøbsliste skal vælges.,da_DK
+customer.account.shopping_list.not_available,I øjeblikket ikke tilgængelig,da_DK
+customer.account.shopping_list.overview.actions,Handlinger,da_DK
+customer.account.shopping_list.overview.add_new,Tilføj ny indkøbsliste,da_DK
+customer.account.shopping_list.overview.add_shopping_list_to_cart,Tilføj udvalgte indkøbslister til indkøbsvogn,da_DK
+customer.account.shopping_list.overview.create.success,Indkøbsliste er blevet oprettet med succes.,da_DK
+customer.account.shopping_list.overview.created_date,Dato oprettet,da_DK
+customer.account.shopping_list.overview.delete,Delete.,da_DK
+customer.account.shopping_list.overview.dismiss,Afskedige,da_DK
+customer.account.shopping_list.overview.edit,Omdøb,da_DK
+customer.account.shopping_list.overview.empty,Du har ikke nogen indkøbslister endnu.,da_DK
+customer.account.shopping_list.overview.enter_name,Indtast navn her,da_DK
+customer.account.shopping_list.overview.form.new,Opret ny indkøbsliste,da_DK
+customer.account.shopping_list.overview.item_count,Antal stk,da_DK
+customer.account.shopping_list.overview.modified_date,Dato for sidste opdatering,da_DK
+customer.account.shopping_list.overview.name,Navn på liste,da_DK
+customer.account.shopping_list.overview.owner,"Bruger, der har oprettet liste",da_DK
+customer.account.shopping_list.overview.print,Print,da_DK
+customer.account.shopping_list.overview.share,Del,da_DK
+customer.account.shopping_list.overview.shared_with,Deles med,da_DK
+customer.account.shopping_list.overview.title,Administrer indkøbslister,da_DK
+customer.account.shopping_list.overview.variant,Variant.,da_DK
+customer.account.shopping_list.overview.view,Udsigt,da_DK
+customer.account.shopping_list.price,Pris,da_DK
+customer.account.shopping_list.print_shopping_list,Udskriv indkøbsliste,da_DK
+customer.account.shopping_list.product,Produkt,da_DK
+customer.account.shopping_list.quantity,Antal,da_DK
+customer.account.shopping_list.remove,Fjerne,da_DK
+customer.account.shopping_list.share.error.one_id_required,Vælg venligst enten kunde- eller forretningsenhed til at dele indkøbslisten med,da_DK
+customer.account.shopping_list.share.from.share,Del,da_DK
+customer.account.shopping_list.share.from.share_with,Del indkøbsliste med:,da_DK
+customer.account.shopping_list.share.select_company_business_unit,Vælg Business Unit,da_DK
+customer.account.shopping_list.share.select_company_user,Vælg kunde,da_DK
+customer.account.shopping_list.share.select_permission,Vælg Access Niveau,da_DK
+customer.account.shopping_list.share.share_shopping_list_fail,Denne indkøbsliste er blevet delt før med denne enhed,da_DK
+customer.account.shopping_list.share.share_shopping_list_successful,Deling af indkøbsliste var vellykket,da_DK
+customer.account.shopping_list.updated,Indkøbsliste opdateres med succes,da_DK
+customer.account.shopping_points_and_cashback,Shopping Points & Cashback,da_DK
+customer.account.wishlist,Ønskeseddel,da_DK
+customer.account.wishlist.add_all_available_to_cart,Tilføj alle tilgængelige produkter til indkøbsvogn,da_DK
+customer.account.wishlist.add-to-cart,Tilføj til kurv,da_DK
+customer.account.wishlist.availability,Tilgængelighed,da_DK
+customer.account.wishlist.available,Ledig,da_DK
+customer.account.wishlist.continue-shopping,Fortsætte med at handle,da_DK
+customer.account.wishlist.created,Ønskeliste skabt succesfuldt.,da_DK
+customer.account.wishlist.deleted,Øns ønskeliste Slettet med succes.,da_DK
+customer.account.wishlist.empty,I øjeblikket er der ingen ting i din ønskeliste.,da_DK
+customer.account.wishlist.item.moved_all_available_to_cart,Tilgængelige elementer flyttet til indkøbsvogn med succes.,da_DK
+customer.account.wishlist.item.moved_all_available_to_cart.failed,Ikke alle varer flyttes til kurv med succes,da_DK
+customer.account.wishlist.item.moved_to_cart,Varen flyttet til indkøbsvogn med succes.,da_DK
+customer.account.wishlist.item.moved_to_cart.failed,Varen blev ikke flyttet til vogn.,da_DK
+customer.account.wishlist.item.not_added,Kunne ikke tilføje produkt til ønskeliste.,da_DK
+customer.account.wishlist.item.removed,Produkt fjernet med succes.,da_DK
+customer.account.wishlist.not_available,I øjeblikket ikke tilgængelig,da_DK
+customer.account.wishlist.overview.add_new,Tilføj nyt kunde,da_DK
+customer.account.wishlist.overview.date,Dato for oprettelsen.,da_DK
+customer.account.wishlist.overview.delete,Delete.,da_DK
+customer.account.wishlist.overview.edit,Redigere,da_DK
+customer.account.wishlist.overview.empty,Du har ikke nogen lister endnu.,da_DK
+customer.account.wishlist.overview.enter_name,Indtast navn her,da_DK
+customer.account.wishlist.overview.item_count,# af varer.,da_DK
+customer.account.wishlist.overview.name,Navn,da_DK
+customer.account.wishlist.overview.price,Pris,da_DK
+customer.account.wishlist.overview.sku,SKU.,da_DK
+customer.account.wishlist.overview.title,Administrer WishLists.,da_DK
+customer.account.wishlist.overview.variant,Variant.,da_DK
+customer.account.wishlist.price,Pris,da_DK
+customer.account.wishlist.product,Produkt,da_DK
+customer.account.wishlist.product-not-available,Dette produkt er ikke tilgængeligt i øjeblikket.,da_DK
+customer.account.wishlist.remove,Fjerne,da_DK
+customer.account.wishlist.updated,Ønskes ønskeseddel opdateret,da_DK
+customer.account.wishlist.view-in-shop,Udsigt,da_DK
+customer.address.added,Adressen blev tilføjet,da_DK
+customer.address.address1,Gade,da_DK
+customer.address.address2,Husnummer,da_DK
+customer.address.address3,Yderligere Information,da_DK
+customer.address.address4,Flere ekstra forsendelsesoplysninger,da_DK
+customer.address.city,City.,da_DK
+customer.address.company,Firmanavn,da_DK
+customer.address.country,Land,da_DK
+customer.address.delete.failed,Adressen kunne ikke slettes,da_DK
+customer.address.delete.success,Adresse slettet succes,da_DK
+customer.address.first_name,Fornavn,da_DK
+customer.address.is_default_billing,Er standard faktureringsadresse,da_DK
+customer.address.is_default_shipping,Er standard forsendelsesadresse,da_DK
+customer.address.last_name,Efternavn,da_DK
+customer.address.number,Husnummer,da_DK
+customer.address.phone,Telefonnummer (for mulige spørgsmål vedrørende levering inklusive land præfiks ex. +44),da_DK
+customer.address.placeholder.optional,Valgfri,da_DK
+customer.address.save_new_address,Gem ny adresse til adressebog,da_DK
+customer.address.state,Stat,da_DK
+customer.address.updated,Adressen blev opdateret,da_DK
+customer.address.vat_number,Momsnummer,da_DK
+customer.address.zip_code,Postnummer,da_DK
+customer.anonymization.failed,Din konto kunne ikke slettes,da_DK
+customer.anonymization.success,Din konto er blevet slettet med succes,da_DK
+customer.authentication.failed,Godkendelse mislykkedes,da_DK
+customer.authentication.succeeded,Loginet var vellykket,da_DK
+customer.authorization.account_confirmed,Din e-mail-adresse er valideret. Log venligst ind for at fortsætte.,da_DK
+customer.authorization.invalid_account,"Du skal først validere din e-mail-adresse, før du er i stand til at logge ind",da_DK
+customer.authorization.success,Er der næsten! Vi sender dig en email for at validere din e-mail-adresse. Venligst bekræft det for at kunne logge ind.,da_DK
+customer.authorization.validate_email_address,Er der næsten! Vi sender dig en email for at validere din e-mail-adresse. Venligst bekræft det for at kunne logge ind.,da_DK
+customer.balance.into,Du har:,da_DK
+customer.balance.my_world_benefit_voucher_account,Ydelseskupon,da_DK
+customer.balance.my_world_cashback_account,Penge tilbage,da_DK
+customer.balance.my_world_e_voucher,evoucher.,da_DK
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,myworld evoucher (marketing),da_DK
+customer.balance.my_world_shopping_points_account,Shopping Points.,da_DK
+customer.billingSameAsShipping,Faktureringsadresse samme som forsendelsesadresse,da_DK
+customer.birth_date,Fødselsdato (dd.mm.yyyy),da_DK
+customer.customer_id,ID.,da_DK
+customer.email,E-mail.,da_DK
+customer.email.already.used,Email allerede brugt,da_DK
+customer.email.format.invalid,Ugyldigt e-mail-adresseformat,da_DK
+customer.email.invalid,Email adressen er ugyldig,da_DK
+customer.error.confirm_email_link.invalid_or_used,Denne e-mail-verifikationslink er ugyldigt eller er allerede blevet brugt.,da_DK
+customer.first_name,Fornavn,da_DK
+customer.forgotten_password.email,Email adresse,da_DK
+customer.forgotten-password.description,"Indtast den e-mail-adresse, der er knyttet til din konto.",da_DK
+customer.forgotten-password.title,Gendan mit kodeord,da_DK
+customer.last_name,Efternavn,da_DK
+customer.login,Log på,da_DK
+customer.login.email,Email.,da_DK
+customer.login.failed,Login mislykkedes,da_DK
+customer.login.password,Adgangskode,da_DK
+customer.login.title,Få adgang til din konto,da_DK
+customer.logout,Log ud,da_DK
+customer.newsletter.not_subscribed,Intet nyhedsbrev abonnement,da_DK
+customer.newsletter.subscribed,Nyhedsbrev abonneret,da_DK
+customer.newsletter.subscription,Nyhedsbrevindstillinger.,da_DK
+customer.newsletter.subscription_agreement,Jeg accepterer nyhedsbrev abonnement,da_DK
+customer.order.all_orders,Se ordrer,da_DK
+customer.order.billing_address,Betalingsadresse,da_DK
+customer.order.bundled_items,Varer i bundtet:,da_DK
+customer.order.canceledTotal,Annulleret beløb,da_DK
+customer.order.complete_checkout,Komplet checkout.,da_DK
+customer.order.date,Bestillingsdato,da_DK
+customer.order.delivery_address,Leveringsadresse,da_DK
+customer.order.delivery_method,Leveringsmetode,da_DK
+customer.order.discount.total,Rabat,da_DK
+customer.order.expenseTotal,Forsendelsesomkostninger (i alt),da_DK
+customer.order.grandTotal,Grand Total.,da_DK
+customer.order.item_price,Pris inkl. Moms.,da_DK
+customer.order.item_quantity,Antal,da_DK
+customer.order.item_sku,SKU.,da_DK
+customer.order.item_sum,Vare i alt,da_DK
+customer.order.items_state,Emner siger,da_DK
+customer.order.options,Produktindstillinger:,da_DK
+customer.order.order_id,Ordre ID,da_DK
+customer.order.payment,Betaling,da_DK
+customer.order.payment_method,Betalingsmetode,da_DK
+customer.order.priceToPay,Sum,da_DK
+customer.order.product_name,Produktnavn,da_DK
+customer.order.products,Produkter,da_DK
+customer.order.refundTotal,Refusion i alt,da_DK
+customer.order.remunerationTotal,Vederlag I alt,da_DK
+customer.order.reorder,Reorder.,da_DK
+customer.order.reorder_all,Bestil alt,da_DK
+customer.order.reorder_selected,Bestil udvalgte varer,da_DK
+customer.order.reorder.error.unable_to_reorder_items,"Du kan ikke ombestille disse produkter direkte, bedes du tilføje dem til din indkøbsvogn separat",da_DK
+customer.order.requested_delivery_date,Anmodet om leveringsdato,da_DK
+customer.order.shipment,Forsendelse,da_DK
+customer.order.shipment_method,Forsendelse,da_DK
+customer.order.shipping_address,Forsendelsesadresse,da_DK
+customer.order.subTotal,Subtotal.,da_DK
+customer.order.taxTotal,Skat,da_DK
+customer.order.total,i alt,da_DK
+customer.order.view_all,Se alt,da_DK
+customer.order.view_order,Se ordre,da_DK
+customer.password,Adgangskode,da_DK
+customer.password.change.success,Adgangskode Skift succesfuld,da_DK
+customer.password.changed,Dit kodeord blev ændret med succes,da_DK
+customer.password.confirm.new_password,Bekræft kodeord,da_DK
+customer.password.invalid,Adgangskoden er ugyldig,da_DK
+customer.password.invalid_password,Nuværende adgangskode er forkert,da_DK
+customer.password.old_password,Gammelt kodeord,da_DK
+customer.password.recovery.mail.sent,"Hvis der er en konto, der er knyttet til denne e-mail-adresse, modtager du en e-mail med yderligere instruktioner",da_DK
+customer.password.request.new_password,nyt kodeord,da_DK
+customer.password.restore,Indstil en ny adgangskode,da_DK
+customer.password.update,Skift kodeord,da_DK
+customer.phone,Telefon nummer,da_DK
+customer.profile,Min konto,da_DK
+customer.profile.address.delete,Delete.,da_DK
+customer.profile.address.edit,Redigere,da_DK
+customer.profile.change.success,Profilen blev gemt,da_DK
+customer.profile.confirm.new_password,Bekræft ny adgangskode,da_DK
+customer.profile.delete,Slet konto.,da_DK
+customer.profile.delete.confirmation_question,"Er du sikker på, at du vil slette din konto?",da_DK
+customer.profile.delete.description,Dette vil slette alle kontooplysningerne.,da_DK
+customer.profile.email,Email.,da_DK
+customer.profile.first_name,Fornavn,da_DK
+customer.profile.last_name,Efternavn,da_DK
+customer.profile.link,Min profil,da_DK
+customer.profile.old_password,Gammelt kodeord,da_DK
+customer.profile.order_details,Ordre detaljer,da_DK
+customer.profile.order_details.giftcard.label,Gavekort,da_DK
+customer.profile.order_history,Sidste ordrer.,da_DK
+customer.profile.phone,telefon,da_DK
+customer.profile.request.new_password,nyt kodeord,da_DK
+customer.profile.title,Min konto,da_DK
+customer.profile.update,Opdater profil,da_DK
+customer.register,Tilmeld,da_DK
+customer.registration.title,Opret konto,da_DK
+customer.reset.password.error.already.loggedIn,"En anden kunde, der allerede er logget ind. Log venligst ud for at nulstille dit kodeord.",da_DK
+customer.salutation.dr,Dr.,da_DK
+customer.salutation.mr,Hr.,da_DK
+customer.salutation.mrs,Fru.,da_DK
+customer.salutation.ms,Frk.,da_DK
+customer.signin,Log ind,da_DK
+customer.signup,Ny kunde?,da_DK
+customer.table.actions,Handlinger,da_DK
+customer.token.invalid,Token er ugyldig,da_DK
+discount.internal.shopping_points,Shopping Points.,da_DK
+discount.quote_change.discount.amount_changed,"De rabatter, du valgte for følgende punkter SKU'er, er ændret",da_DK
+discount.quote_change.discount.not_available,"De rabatter, du har valgt for følgende punkter SKU'er, er ikke længere tilgængelig",da_DK
+discount.quote_change.does_not_apply_for_currency,"Voucher """" %code% """" blev deaktiveret, fordi den ikke gælder for denne valuta.",da_DK
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" var deaktiveret, fordi den ikke gælder for denne valuta.",da_DK
+discount.successfully.applied,"Rabatten """" Display_Name """" er blevet anvendt succesfuldt",da_DK
+discount.voucher_code.usage_limit.reached,Voucher Code Anvendelsesgrænse nået,da_DK
+DummyPaymentCreditCard,Kreditkort,da_DK
+dummyPaymentCreditCard.card_expires,Udløbsdato,da_DK
+dummyPaymentCreditCard.card_number,Kortnummer,da_DK
+dummyPaymentCreditCard.card_security_code,CVC.,da_DK
+dummyPaymentCreditCard.card_type,Kort type,da_DK
+dummyPaymentCreditCard.hidden_numbers,*********,da_DK
+dummyPaymentCreditCard.name_on_card,Navn på kortet,da_DK
+DummyPaymentInvoice,Faktura,da_DK
+dummyPaymentInvoice.date_of_birth,Fødselsdato,da_DK
+dummyPaymentInvoice.invoice,Betal med faktura:,da_DK
+DummyPrepayment,Forudbetaling,da_DK
+dummyPrepayment.prepaymentbank-info,MWS MyWorld Solutions AG: <br/> Unicredit Bank Austria <br/> IBAN: AT19 1200 0529 5900 6605 <br/> BIC: BKAUSWW,da_DK
+email.orderEmail.salutationFemale,Fru / Mrs.,da_DK
+email.orderEmail.salutationMale,Hr.,da_DK
+error_page.home_link,Gå til HomePage.,da_DK
+error_page.text,"Vi kunne ikke finde den side, du leder efter.",da_DK
+error_page.title,Siden blev ikke fundet.,da_DK
+error.404,"undskyld, noget gik galt",da_DK
+error.404_description,Denne side kan ikke findes. Venligst gå tilbage,da_DK
+error.429,For mange anmodninger,da_DK
+footer_subscribe.subscription_placeholder,Tilføj e-mail.,da_DK
+footer_subscribe.subscription_text,Tilmeld dig og hold dig altid opdateret,da_DK
+footer.facebook.url,https://www.facebook.com/myWorld.DK,da_DK
+footer.follow,Følg os,da_DK
+footer.instagram.url,https://www.instagram.com/myworld.global/,da_DK
+footer.logo.link.imprint,/ DA / Imprint,da_DK
+footer.logo.link.privacy,/ DA / Privacy,da_DK
+footer.logo.text,Bygget med,da_DK
+footer.logo.url,/,da_DK
+footer.navigation_title.customer_service,Kunde service,da_DK
+footer.navigation_title.information,Information,da_DK
+footer.navigation_title.legal_information,Juridiske oplysninger,da_DK
+footer.navigation_title.propositions,Tjen penge med myworld,da_DK
+footer.official_partner,Officiel partner.,da_DK
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,da_DK
+footer.providers__title,Forsendelse og betaling,da_DK
+footer.twitter.url,https://twitter.com/myworld_UK.,da_DK
+footer.youtube.url,https://www.youtube.com/channel/uccdwfbarbzg98deud_-l_uq?sub_confirmation=1.,da_DK
+form.csrf.error.text,Noget gik galt. Undskyld.,da_DK
+forms.accept_terms,Acceptere vilkår,da_DK
+forms.confirm-password,Bekræft kodeord,da_DK
+forms.email,Email.,da_DK
+forms.first-name,Fornavn,da_DK
+forms.forgot-password,Glemt kodeord,da_DK
+forms.last-name,Efternavn,da_DK
+forms.password,Adgangskode,da_DK
+forms.save-btn,Gemme,da_DK
+forms.submit-btn,Indsend,da_DK
+forms.submit.login,Log på,da_DK
+forms.submit.register,Tilmeld,da_DK
+gdpr.accept_cookies,Accept cookies,da_DK
+gdpr.accept_cookies,Accept cookies,da_DK
+gdpr.message,Vi bruger cookies på vores hjemmeside for at gøre vores tjenester mere effektive og mere brugervenlige. Venligst vælg 'Accept cookies'! Læs venligst vores %link% for yderligere information.,da_DK
+gdpr.message,Vi bruger cookies på vores hjemmeside for at gøre vores tjenester mere effektive og mere brugervenlige. Venligst vælg 'Accept cookies'! Læs venligst vores %link% for yderligere information.,da_DK
+gdpr.privacy_policy,Fortrolighedspolitik,da_DK
+gdpr.privacy_policy,Fortrolighedspolitik,da_DK
+general.back.button,Tilbage,da_DK
+general.cancel.button,Afbestille,da_DK
+general.edit.button,Redigere,da_DK
+general.next.button,Næste,da_DK
+global.accept.terms.and.conditions,Acceptere vilkår og betingelser,da_DK
+global.add-to-cart,Tilføj til kurv,da_DK
+global.back_homepage,Tilbage til HomePage.,da_DK
+global.benefit.competitive_prices,Konkurrencedygtige priser.,da_DK
+global.benefit.free_returns,Gratis afkast,da_DK
+global.benefit.warranty,3 års garanti.,da_DK
+global.button.less,Mindre,da_DK
+global.button.more,Mere,da_DK
+global.cart,Vogn,da_DK
+global.cashback,Penge tilbage,da_DK
+global.categories,alle kategorier,da_DK
+global.close,Tæt,da_DK
+global.company,Selskab,da_DK
+global.create.account,Opret konto,da_DK
+global.email.address,Email adresse,da_DK
+global.get_in_touch,Kom i kontakt,da_DK
+global.header.categories,alle kategorier,da_DK
+global.header.services,myworld Services.,da_DK
+global.home,Hjem,da_DK
+global.login,Log på,da_DK
+global.newsletter,Nyhedsbrev.,da_DK
+global.no_image_available,Intet billede tilgængelig,da_DK
+global.order.ascendent,A-Z.,da_DK
+global.order.descendent,Z-A.,da_DK
+global.partners,Partnere,da_DK
+global.password,Adgangskode,da_DK
+global.payment_providers,Betalingsudbydere,da_DK
+global.permission.failed,Denne handling er forbudt,da_DK
+global.quantity_symbol,x,da_DK
+global.recover.password,Gendan adgangskode,da_DK
+global.register,Registrer nu,da_DK
+global.search,Søg,da_DK
+global.search.pages,sider,da_DK
+global.search.results,Søgeresultater,da_DK
+global.search.results.view,Udsigt,da_DK
+global.search.spellingSuggestion,Mente du,da_DK
+global.search.suggestion.in_categories,Kategorier,da_DK
+global.search.suggestion.in_cms,sider,da_DK
+global.search.suggestion.in_products,Produkter,da_DK
+global.search.suggestion.no_result,Intet fundet…,da_DK
+global.search.suggestion.see_all_products,Se alle produkter.,da_DK
+global.search.suggestions,Søg forslag,da_DK
+global.shipment_providers,Forsendelsesleverandører,da_DK
+global.social,Sociale medier,da_DK
+global.spryker.motto,teknologi med kvalitet,da_DK
+global.spryker.shop,myworld.com.,da_DK
+homepage.carousel.next,Næste,da_DK
+homepage.carousel.previous,Tidligere,da_DK
+invoice.company.address,Spryker Systems GmbH <br/> Julie-Wolfthorn-Straße 1 <br /> 10115 Berlin / Tyskland,da_DK
+invoice.company.bank.information,Banknavn <br/> IBAN 1234 5678 9123 4567 89 <br /> BIC 12345678 <br/> Handelsregister ABC123456 <br /> Steuernummer 12/345/6789,da_DK
+invoice.company.contact.information,#ERROR!,da_DK
+invoice.created.at,Fakturadato,da_DK
+invoice.customer.number,Kundereference,da_DK
+invoice.header,Faktura,da_DK
+invoice.order.address.billing,Betalingsadresse,da_DK
+invoice.order.address.shipping,Forsendelsesadresse,da_DK
+invoice.order.expenses.total,Forsendelsesomkostninger,da_DK
+invoice.order.grand_total,Grand Total.,da_DK
+invoice.order.item.price,Varepris,da_DK
+invoice.order.item.price_total,Vare i alt,da_DK
+invoice.order.item.product_name,PRODUKTNAVN,da_DK
+invoice.order.item.quantity,ANTAL,da_DK
+invoice.order.item.sku,SKU.,da_DK
+invoice.order.number,Ordrenummer,da_DK
+invoice.order.tax_amount,Inkl. Moms.,da_DK
+item,Vare,da_DK
+jumbotron.smart_watches.link,/ DA / Smart-Wearables / SmartWatches,da_DK
+jumbotron.smartphones.link,/ EN / Telecom - & - Navigation / Smartphones,da_DK
+jumbotron.tablets.link,/ en / computere / tabletter,da_DK
+mail.company.status.approved,godkendt,da_DK
+mail.company.status.denied,Nægtet,da_DK
+mail.company.status.pending,Venter på godkendelse,da_DK
+mail.company.status.subject,Din virksomhed har ændret status,da_DK
+mail.company.status.text,Dit firma har ændret status til:,da_DK
+mail.company.user.invitation.body.html,"Hi %name%, du er blevet inviteret til at deltage i en virksomhedskonto på Spryker Demohop, følg venligst denne <a href=""%invitationlink%""> link </ a > For at afslutte din registrering",da_DK
+mail.company.user.invitation.body.text,"Hej %name%, du er blevet inviteret til at deltage i en virksomhedskonto på Sprøg Demo Shop, følg venligst dette link %invitationLink% for at afslutte din registrering",da_DK
+mail.company.user.invitation.subject,Invitation,da_DK
+mail.customer.registration.subject,Tak for at tilmelde dig Spryker Shop!,da_DK
+mail.customer.registration.text,Tak for at tilmelde dig Spryker Shop!,da_DK
+mail.customer.restore_password_confirmation.subject,Dit kodeord blev ændret med succes!,da_DK
+mail.customer.restore_password_confirmation.text,Dit kodeord blev ændret med succes!,da_DK
+mail.customer.restore_password.subject,Ny adgangskode til din Spryker Shop-konto,da_DK
+mail.customer.restore_password.text,"Nogen har anmodet om en ny adgangskode til din Spryker Shop-konto. Hvis det ikke er dig, skal du bare ignorere denne email. Hvis det er dig, skal du følge linket Bellow:",da_DK
+mail.giftCard.delivery.subject,Dit gavekort!,da_DK
+mail.giftCard.delivery.text,"Kære kunde, tak for at købe et gavekort i vores butik. Din gavekortkode er:",da_DK
+mail.giftCard.usage.subject,Tak for at bruge et gavekort!,da_DK
+mail.newsletter.subscribed.footer.text,Vi glæder os til dit næste besøg!,da_DK
+mail.newsletter.subscribed.subject,Velkommen til Spryker Nyhedsbrev,da_DK
+mail.newsletter.subscribed.text,"Vi er begejstrede, du har tilmeldt os vores newletter. Vi vil gøre vores bedste for at levere dig de mest relevante og spændende nyheder og opdateringer.",da_DK
+mail.newsletter.unsubscribed.subject,Undskyld at se dig gå ...,da_DK
+mail.newsletter.unsubscribed.text,"Din e-mail-adresse er blevet afmeldt af Spryker Shop Nyhedsbrev, men du kan altid administrere dit abonnement i din kundeprofil.",da_DK
+mail.order_invoice.subject,Faktura til din MyWorld.com Bestil %Idorder%,da_DK
+mail.order.confirmation.billing_address,Betalingsadresse,da_DK
+mail.order.confirmation.date,Dato for ordre,da_DK
+mail.order.confirmation.delivery_date,Anmodet om leveringsdato,da_DK
+mail.order.confirmation.details,Detaljer om din ordre,da_DK
+mail.order.confirmation.footer.text_line_1,Hav en god dag!,da_DK
+mail.order.confirmation.footer.text_line_2,Din Spryker Shop.,da_DK
+mail.order.confirmation.item_price_including_tax,Samlet varepris inklusive skatter,da_DK
+mail.order.confirmation.item_quantity,Varemængde.,da_DK
+mail.order.confirmation.item_sku,Artikel SKU.,da_DK
+mail.order.confirmation.order_number,Ordrenummer,da_DK
+mail.order.confirmation.price_including_tax,Samlet pris inklusive skatter,da_DK
+mail.order.confirmation.product_title,Produkttitel,da_DK
+mail.order.confirmation.products_in_shipment,Produkter ved forsendelse,da_DK
+mail.order.confirmation.salutation,Hej,da_DK
+mail.order.confirmation.shipment_details,Forsendelsesoplysninger.,da_DK
+mail.order.confirmation.shipment_number,Forsendelsesnummer.,da_DK
+mail.order.confirmation.shipping_address,Leveringsadresse,da_DK
+mail.order.confirmation.shipping_method,Forsendelsesmetode,da_DK
+mail.order.confirmation.subject,Din MyWorld.com Bestil %Idorder%,da_DK
+mail.order.confirmation.text_line_1,Tak for shopping på Sprkker Shop!,da_DK
+mail.order.confirmation.text_line_2,"Vi skriver for at fortælle dig, at vi fik din ordre. Du modtager en forsendelsesbekræftelse via e-mail fra os, så snart ordren er blevet sendt.",da_DK
+mail.order.confirmation.text_line_3,"Vi håber du kan lide din ordre. Hvis du ændrer dit sind, kan du vende tilbage inden for 14 dage.",da_DK
+mail.order.in-processing.subject,Ny ordre lige placeret,da_DK
+mail.order.shipped.date,Dato for ordre,da_DK
+mail.order.shipped.details,Detaljer om din ordre,da_DK
+mail.order.shipped.footer.text_line_1,Hav en god dag!,da_DK
+mail.order.shipped.footer.text_line_2,Din Spryker Shop.,da_DK
+mail.order.shipped.order_number,Ordrenummer,da_DK
+mail.order.shipped.price_including_tax,Samlet pris inklusive skatter,da_DK
+mail.order.shipped.salutation,Hej,da_DK
+mail.order.shipped.subject,Din bestilling %orderReference% er på vej,da_DK
+mail.order.shipped.text,Din ordre er allerede på vej.,da_DK
+mail.sender.email,noreply@demo-spryker.com.,da_DK
+mail.sender.name,Spryker no-svar,da_DK
+mail.shipping.confirmation.subject,Din MyWorld.com Bestil %Idorder% er blevet sendt,da_DK
+mail.trans.availability_notification_subscription.subtitle,"Du modtager en e-mail, når produktet er tilgængeligt igen.",da_DK
+mail.trans.availability_notification_subscription.title,Vi har lige informeret vores købshold om dit abonnement!,da_DK
+mail.trans.availability_notification_unsubscribed.subtitle,"Du vil ikke blive underrettet, når produktet er tilgængeligt igen.",da_DK
+mail.trans.availability_notification_unsubscribed.title.part1,Dit abonnement til,da_DK
+mail.trans.availability_notification_unsubscribed.title.part2,blev annulleret,da_DK
+mail.trans.availability_notification.subtitle,Ventetiden er forbi! Tilføj dette produkt til din indkøbsvogn nu.,da_DK
+mail.trans.availability_notification.title.part2,er tilgængelig igen!,da_DK
+mail.trans.common.go_to_shop,Gå til Shop.,da_DK
+mail.trans.common.hello_for_first_name,Hej,da_DK
+mail.trans.common.my_account,Min konto,da_DK
+mail.trans.company_status.title,Status for din virksomhed er blevet ændret til,da_DK
+mail.trans.customer_registration.change_info,"Du kan ændre din information (leveringsadresse, e-mail-adresse, adgangskode osv.) I min konto",da_DK
+mail.trans.customer_registration.confirmation_link,Validér din e-mail-adresse,da_DK
+mail.trans.customer_registration.registration_success,Din registrering til Spryker Shop var vellykket!,da_DK
+mail.trans.customer_registration.title,Tak for at tilmelde dig Spryker Shop!,da_DK
+mail.trans.customer_restore_password.change_password,Skift kodeord,da_DK
+mail.trans.customer_restore_password.subtitle,"Nogen har anmodet om en ny adgangskode til din Spryker Shop-konto. Hvis dette ikke var dig, skal du ignorere denne email. Hvis det var dig, skal du følge instruktionerne i knappen nedenfor.",da_DK
+mail.trans.customer_restore_password.title,Ny adgangskode til din Spryker Shop-konto,da_DK
+mail.trans.customer_restored_password_confirmation.title,Dit kodeord blev ændret med succes,da_DK
+mail.trans.customerRegistration.confirmationLink,Validér din e-mail-adresse,da_DK
+mail.trans.footer.contact_email_address,info@spryker.com.,da_DK
+mail.trans.footer.for_more_information,"For mere information om ret til tilbagetrækning og vilkårene, klik på sælgerens navn øverst. Har du yderligere spørgsmål? Så er du sikker på at finde de rigtige svar i vores serviceområde.",da_DK
+mail.trans.footer.if_you_have_further_questions,"Hvis du har yderligere spørgsmål, bedes du kontakte vores kundeservice på",da_DK
+mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,da_DK
+mail.trans.footer.shop_city,Berlin.,da_DK
+mail.trans.footer.shop_name,Spryker Systems GmbH,da_DK
+mail.trans.footer.shop_phone,#ERROR!,da_DK
+mail.trans.footer.shop_zip_code,10115,da_DK
+mail.trans.footer.shopping_experience,Vi glæder os til dit næste besøg!,da_DK
+mail.trans.footer.your_team,Dit myworld.com team,da_DK
+mail.trans.gift_card_delivery.subtitle,Din gavekort kode er,da_DK
+mail.trans.gift_card_delivery.title,"Kære kunde, tak for at købe et gavekort i vores butik.",da_DK
+mail.trans.gift_card_usage.subtitle,Din gavekort kode er,da_DK
+mail.trans.gift_card_usage.title,Du har lige brugt et gavekort!,da_DK
+mail.trans.header.shop_name,Spryker Shop.,da_DK
+mail.trans.newsletter_subscribed.subtitle,Vi vil gøre vores bedste for at levere de mest relevante og spændende nyheder og opdateringer.,da_DK
+mail.trans.newsletter_subscribed.title,"Vi er begejstrede, du har tilmeldt vores nyhedsbrev.",da_DK
+mail.trans.newsletter_unsubscribed.subtitle,Din e-mail-adresse er blevet afmeldt af Spryker Shop Nyhedsbrev. Du kan altid administrere dit abonnement i din kundeprofil.,da_DK
+mail.trans.newsletter_unsubscribed.title,Undskyld at se dig gå ...,da_DK
+mail.trans.order_confirmation.subtitle,"Så snart din pakke er på vej, vil du modtage en separat forsendelsesbekræftelse fra os via e-mail. I tilfælde af delvise leverancer modtager du en separat anmeldelse for hver levering. For at se din ordre, besøg venligst 'My Orders' sektionen af ​​myworld.com.",da_DK
+mail.trans.order_confirmation.title,Tak for din ordre!,da_DK
+mail.trans.order_in_processing.title,Ny ordre lige placeret,da_DK
+mail.trans.order_shipped.title,Din ordre er på vej!,da_DK
+mail.trans.order.billing_address,Betalingsadresse,da_DK
+mail.trans.order.delivery_address,Leveringsadresse,da_DK
+mail.trans.order.delivery_address.company_data,Virksomhedsdata:,da_DK
+mail.trans.order.delivery_method,Leveringsmetode,da_DK
+mail.trans.order.discounts_total,Rabat,da_DK
+mail.trans.order.grand_total,Samlet ordre inkl. Moms.,da_DK
+mail.trans.order.order_date,Bestillingsdato,da_DK
+mail.trans.order.order_details,Ordre detaljer,da_DK
+mail.trans.order.order_reference,Ordrenummer,da_DK
+mail.trans.order.payment_method,Betalingsmetode,da_DK
+mail.trans.order.quantity,Beløb,da_DK
+mail.trans.order.requested_delivery_date,Anmodet om leveringsdato,da_DK
+mail.trans.order.shipment_costs_total,Forsendelse inkl. Moms.,da_DK
+mail.trans.order.shipment_for_number.part1,Forsendelse,da_DK
+mail.trans.order.shipment_for_number.part2,af,da_DK
+mail.trans.order.stock_name,Solgt af:,da_DK
+mail.trans.order.subtotal,Subtotal inkl. Moms.,da_DK
+mail.trans.order.taxes,Skatter,da_DK
+mail.trans.order.tracking_code,Spor levering,da_DK
+mail.trans.restore_password.change_password,Skift kodeord,da_DK
+mail.trans.restore_password.subtitle,"Nogen har anmodet om en ny adgangskode til din Sprkker Back Office-konto. Hvis det ikke var dig, skal du ignorere denne email. Hvis det var dig, skal du følge instruktionerne i knappen Bellow",da_DK
+mail.trans.restore_password.title,Ny adgangskode til din Spryker Back Office-konto,da_DK
+mail.trans.shipping_confirmation.subtitle,"Vi vil gerne informere dig om, at din ordre eller dele af din ordre er afsendt. I tilfælde af delvise leverancer modtager du en separat anmeldelse for hver levering. Så snart sælgeren har lavet fakturaen tilgængelig, finder du det på din kundekonto under 'Mine ordrer'.",da_DK
+mail.trans.shipping_confirmation.title,Din ordre er på vej til dig,da_DK
+measurement_units.item.name,Vare,da_DK
+measurement_units.new-price,Ny pris.,da_DK
+measurement_units.recommendation.between-units-info,"Den mængde, du har valgt, er mellem 2 baseenheder",da_DK
+measurement_units.recommendation.max-violation,Maksimal mængde krav til produkt er ikke opfyldt,da_DK
+measurement_units.recommendation.min-violation,Mindste kvantitetskrav til produkt er ikke opfyldt,da_DK
+measurement_units.recommendation.suggestion,Vil du gerne tilføje,da_DK
+measurement_units.standard.area.acre.name,Hektar,da_DK
+measurement_units.standard.area.ares.name,Er,da_DK
+measurement_units.standard.area.hect.name,Hektar.,da_DK
+measurement_units.standard.area.scmt.name,Kvadratcentimeter.,da_DK
+measurement_units.standard.area.smet.name,Kvadratmeter,da_DK
+measurement_units.standard.area.smil.name,Kvadratisk millimeter.,da_DK
+measurement_units.standard.area.sqfo.name,Kvadratfod,da_DK
+measurement_units.standard.area.sqin.name,Square inch.,da_DK
+measurement_units.standard.area.sqki.name,Kvadratkilometer,da_DK
+measurement_units.standard.area.sqmi.name,SQUARE MILE.,da_DK
+measurement_units.standard.area.sqya.name,Firkantet gård,da_DK
+measurement_units.standard.barl.name,Tønde,da_DK
+measurement_units.standard.bcuf.name,Milliarder kubikmeter,da_DK
+measurement_units.standard.bdft.name,Board Feet.,da_DK
+measurement_units.standard.busl.name,Bushel.,da_DK
+measurement_units.standard.cbme.name,Kubikmeter,da_DK
+measurement_units.standard.celi.name,Centilitre.,da_DK
+measurement_units.standard.dgeu.name,Diesel gallonækvivalent,da_DK
+measurement_units.standard.gbga.name,GB gallon.,da_DK
+measurement_units.standard.gbpi.name,GB Pint.,da_DK
+measurement_units.standard.gbqa.name,GB Quart.,da_DK
+measurement_units.standard.ggeu.name,Benzin gallonækvivalent,da_DK
+measurement_units.standard.length.cmet.name,Centimeter,da_DK
+measurement_units.standard.length.foot.name,Fod,da_DK
+measurement_units.standard.length.inch.name,Tommer,da_DK
+measurement_units.standard.length.kmet.name,Kilometer,da_DK
+measurement_units.standard.length.metr.name,Måler,da_DK
+measurement_units.standard.length.mile.name,Mil,da_DK
+measurement_units.standard.length.mmet.name,Millimeter.,da_DK
+measurement_units.standard.length.yard.name,Gård,da_DK
+measurement_units.standard.litr.name,Liter.,da_DK
+measurement_units.standard.miba.name,Million tønde,da_DK
+measurement_units.standard.mili.name,Milli liter.,da_DK
+measurement_units.standard.usga.name,Os gallon.,da_DK
+measurement_units.standard.uspi.name,US Pint.,da_DK
+measurement_units.standard.usqa.name,US Quart.,da_DK
+measurement_units.standard.weight.gbou.name,GB Ounce.,da_DK
+measurement_units.standard.weight.gbtn.name,GB ton,da_DK
+measurement_units.standard.weight.gram.name,Gram,da_DK
+measurement_units.standard.weight.huwg.name,Hundrede vægt,da_DK
+measurement_units.standard.weight.kilo.name,Kilo,da_DK
+measurement_units.standard.weight.oztr.name,Troy Ounce.,da_DK
+measurement_units.standard.weight.pund.name,Pund,da_DK
+measurement_units.standard.weight.tone.name,Ton,da_DK
+measurement_units.standard.weight.ucwt.name,Os hundrede vægtt,da_DK
+measurement_units.standard.weight.usou.name,Os ounce.,da_DK
+measurement_units.standard.weight.ustn.name,US TON.,da_DK
+merchant_product_offer.sold_by,Solgt af,da_DK
+merchant_product_offer.view_seller,Se sælger,da_DK
+merchant_profile.address,Adresse,da_DK
+merchant_profile.cancellation_policy,Afbestillingspolitik,da_DK
+merchant_profile.delivery_time,Leveringstid,da_DK
+merchant_profile.email,Email adresse,da_DK
+merchant_profile.imprint,Aftryk,da_DK
+merchant_profile.phone,telefon,da_DK
+merchant_profile.privacy,Data Privacy.,da_DK
+merchant_profile.terms_and_conditions,Vilkår og Betingelser,da_DK
+message.submit_link,Okay!,da_DK
+multi_cart_page.cart_clear.success,Vogn blev vellykket ryddet,da_DK
+multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Shopping Carts.,da_DK
+multi_cart_page.cart_delete_confirmation.cancel,Afbestille,da_DK
+multi_cart_page.cart_delete_confirmation.delete,Delete.,da_DK
+multi_cart_page.cart_delete_confirmation.from_all_of_them,Det vil blive slettet fra dem alle,da_DK
+multi_cart_page.cart_delete_confirmation.shared_with,Det deles med følgende brugere,da_DK
+multi_cart_page.cart_delete_confirmation.trying_to_delete,Du forsøger at slette vogn,da_DK
+multi_cart_page.cart_delete_confirmation.warning,Advarsel,da_DK
+multi_cart_widget.cart.action.change_name,Ændre navn,da_DK
+multi_cart_widget.cart.action.clear,Klar vogn,da_DK
+multi_cart_widget.cart.action.delete,Slet vogn,da_DK
+multi_cart_widget.cart.action.duplicate,Duplikere,da_DK
+multi_cart_widget.cart.action.set_default,Set Active.,da_DK
+multi_cart_widget.cart.action.view,Se detaljer,da_DK
+multi_cart_widget.cart.actions,Handlinger,da_DK
+multi_cart_widget.cart.add,Opret ny kurv,da_DK
+multi_cart_widget.cart.cart,Vogn,da_DK
+multi_cart_widget.cart.cart_name,Vognnavn.,da_DK
+multi_cart_widget.cart.carts,Varts.,da_DK
+multi_cart_widget.cart.created.success,Vogn '%quotename%' blev oprettet med succes,da_DK
+multi_cart_widget.cart.default,Aktiv,da_DK
+multi_cart_widget.cart.item,Vare,da_DK
+multi_cart_widget.cart.items,Varer,da_DK
+multi_cart_widget.cart.list,Vognliste,da_DK
+multi_cart_widget.cart.remove.confirm,"Er du sikker på, at du vil fjerne denne kurv?",da_DK
+multi_cart_widget.cart.status,Status.,da_DK
+multi_cart_widget.cart.sub_total,Sub total.,da_DK
+multi_cart_widget.cart.updated.success,Vogn opdateret succes,da_DK
+multi_cart_widget.cart.view_all,Se alle Carts,da_DK
+multi_cart.cart.set_default.success,Indkøbskurv '%quote%' er med succes blevet indstillet til din aktive vogn.,da_DK
+multi_cart.form.create_cart,Tilføj ny kurv,da_DK
+multi_cart.form.edit_cart,Ændre navn,da_DK
+multi_cart.form.edit_cart_information,Rediger kurven information,da_DK
+multi_cart.form.quote.name,Vognnavn.,da_DK
+navigation.menu.categories,Kategorier,da_DK
+navigation.menu.have-a-look,Det er værd at se,da_DK
+newsletter.form.subscribe,Abonnere,da_DK
+newsletter.subscribe,E-mail.,da_DK
+newsletter.subscription.already_subscribed,Du er allerede abonneret på nyhedsbrevet,da_DK
+newsletter.subscription.email_format_invalid,Ugyldigt e-mail-adresseformat,da_DK
+newsletter.subscription.success,Du har med succes abonneret på nyhedsbrevet,da_DK
+newsletter.unsubscription.success,Du afmeldte dig med succes fra nyhedsbrevet,da_DK
+oms.state.authorization-pending-next-try,I gang,da_DK
+oms.state.calculating_refund,Beregning af refusion,da_DK
+oms.state.cancellation-pending,Aflysning,da_DK
+oms.state.cancellation-pending-next-try,Aflysning,da_DK
+oms.state.cancelled,Annulleret,da_DK
+oms.state.capture pending,I gang,da_DK
+oms.state.capture-failed-clarification,I gang,da_DK
+oms.state.capture-pending,Rede -,da_DK
+oms.state.capture-pending-next-try,I gang,da_DK
+oms.state.closed,Lukket,da_DK
+oms.state.failed,mislykkedes,da_DK
+oms.state.invalid,Annulleret,da_DK
+oms.state.invoice-generated,Faktura genereret,da_DK
+oms.state.invoice-generated,Faktura genereret,da_DK
+oms.state.invoice-with-tracking-number-sent,Afsendt,da_DK
+oms.state.my_world_refund_due_to_payment_failure,Myworld refusion på grund af betalingssvigt,da_DK
+oms.state.my_world_refund_failed,Myworld refusion mislykkedes,da_DK
+oms.state.my_world_refunded,Myworld refunderet,da_DK
+oms.state.myworld_payment_pending,Myworld betaling af afventning,da_DK
+oms.state.new,Ny,da_DK
+oms.state.order-confirmation-email-sent,I gang,da_DK
+oms.state.order-in-processing-email-sent,I gang,da_DK
+oms.state.processing_refund,Behandling af refusion,da_DK
+oms.state.ready_for_refund,Klar til refusion,da_DK
+oms.state.ready-for-refund,Tilbagebetale,da_DK
+oms.state.ready-for-turnover-cancellation,Tilbagebetale,da_DK
+oms.state.ready-for-turnover-creation,Afsendt,da_DK
+oms.state.refund_failed,Refusion mislykkedes,da_DK
+oms.state.refund_pending,Refusion af afventning,da_DK
+oms.state.refund_pending_next_try,Afventer refusion næste forsøg,da_DK
+oms.state.refund-failed-clarification,Tilbagebetale,da_DK
+oms.state.refund-pending,Tilbagebetale,da_DK
+oms.state.refund-pending-next-try,Tilbagebetale,da_DK
+oms.state.refunded,Refunderet,da_DK
+oms.state.reserved,Reserveret,da_DK
+oms.state.turnover-cancellation-failed,Tilbagebetale,da_DK
+oms.state.turnover-cancelled,Omsætning annulleret,da_DK
+oms.state.turnover-created,Afsendt,da_DK
+oms.state.turnover-creation-failed,Afsendt,da_DK
+oms.state.validating_refund,Validering af refusion,da_DK
+oms.state.waiting-for-tracking-number,I gang,da_DK
+order_cancel_widget.cancel_order,Aflys ordre,da_DK
+order_cancel_widget.order.cancelled,Ordren blev annulleret med succes.,da_DK
+order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134G,da_DK
+order_invoice.invoice_template.company.group,UNTERNEHMENSGRUPPE SPRYKER SYSTEMER GMBH,da_DK
+order_invoice.invoice_template.company.name,MWS MyWorld Solutions AG,da_DK
+order_invoice.invoice_template.introduction,Vi opkræver hermed dig for følgende varer:,da_DK
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,da_DK
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,da_DK
+order_invoice.invoice_template.reference,Faktura Nr.,da_DK
+order_invoice.invoice_template.table.bottom_text,"Vi leverer og udfører udelukkende under vores generelle forretningsbetingelser, som du er bekendt med.",da_DK
+order_invoice.invoice_template.table.cashback_customer_number,Cashback Kunde nummer:,da_DK
+order_invoice.invoice_template.table.discount,Rabat,da_DK
+order_invoice.invoice_template.table.grandtotal,Grand Total.,da_DK
+order_invoice.invoice_template.table.grant_total,Den store samlede:,da_DK
+order_invoice.invoice_template.table.gross_price,Engros pris,da_DK
+order_invoice.invoice_template.table.invoice_date,Faktura Generation Dato:,da_DK
+order_invoice.invoice_template.table.name,Artikelnavn.,da_DK
+order_invoice.invoice_template.table.net_price,Netto pris,da_DK
+order_invoice.invoice_template.table.number,POS.,da_DK
+order_invoice.invoice_template.table.order_date,Bestillingsdato:,da_DK
+order_invoice.invoice_template.table.order_reference,Ordrenummeret:,da_DK
+order_invoice.invoice_template.table.payment_reference,Betalings reference,da_DK
+order_invoice.invoice_template.table.price,Pris,da_DK
+order_invoice.invoice_template.table.quantity,Vare qty.,da_DK
+order_invoice.invoice_template.table.subtotal,Subtotal.,da_DK
+order_invoice.invoice_template.table.tax,Skatteprocent,da_DK
+order_invoice.invoice_template.table.tax.included,Dette inkluderer %tax_rate%% moms net,da_DK
+order_invoice.invoice_template.table.tax.name,Moms.,da_DK
+order_invoice.invoice_template.table.uid,UID:,da_DK
+packaging_unit_type.box.name,Boks,da_DK
+packaging_unit_type.giftbox.name,Gaveæske,da_DK
+packaging_unit_type.item.name,Vare,da_DK
+packaging_unit_type.pack_100.name,Pakke 100.,da_DK
+packaging_unit_type.pack_20.name,Pakke 20.,da_DK
+packaging_unit_type.pack_500.name,Pack 500.,da_DK
+packaging_unit_type.pack_mixed.name,Blandede skruer bokse,da_DK
+packaging_unit_type.palette.name,Palette,da_DK
+packaging_unit_type.ring_500.name,Ring (500m),da_DK
+packaging_unit_type.valentines_special.name,Valentins specialitet,da_DK
+page.checkout.address.address_select.label,Vælg en leveringsadresse,da_DK
+page.checkout.address.address_select.placeholder,Vælg en adresse,da_DK
+page.checkout.address.address-example,Eksempel: </br> Wayne Manor 1 </br> 10292 Gotham City </br> z.h. Alfred Pennyworth.,da_DK
+page.checkout.address.billing-address,Betalingsadresse,da_DK
+page.checkout.address.billing-isnt-shipping-address,Forskellige leveringsadresse,da_DK
+page.checkout.address.billing-same-as-shipping,Fakturering samme som forsendelse,da_DK
+page.checkout.address.billing.address_select,Vælg en faktureringsadresse,da_DK
+page.checkout.address.delivery.address_select,Vælg en leveringsadresse,da_DK
+page.checkout.address.different_billing_address,Brug en anden faktureringsadresse,da_DK
+page.checkout.address.different_delivery_address,Brug en anden leveringsadresse,da_DK
+page.checkout.address.edit,Rediger Adress Data,da_DK
+page.checkout.address.heading,1. Adressedata,da_DK
+page.checkout.address.manage_your_addresses,Administrer dine adresser,da_DK
+page.checkout.address.multi_shipment.title,Tildel hvert produkt til sin egen leveringsadresse,da_DK
+page.checkout.address.name,Navn,da_DK
+page.checkout.address.next-step,Fortsæt til afskærmningsmetode,da_DK
+page.checkout.address.option_group.company_business_unit,Forretningsadresser.,da_DK
+page.checkout.address.option_group.customer,Kundeadresser.,da_DK
+page.checkout.address.shipping-address,Leveringsadresse,da_DK
+page.checkout.address.use_selected_address,Brug valgt adresse,da_DK
+page.checkout.client.existing,Eksisterende kunde,da_DK
+page.checkout.client.new,Ny kunde,da_DK
+page.checkout.create_account,Opret kundekonto,da_DK
+page.checkout.errors,Tjek venligst din post.,da_DK
+page.checkout.finalize.buy-now,Køb nu,da_DK
+page.checkout.finalize.enter-voucher,Indtast kuponkode,da_DK
+page.checkout.finalize.heading,4. Kontroller og færdiggør ordren,da_DK
+page.checkout.finalize.tos,"Med et klik til knappen """" Køb nu """" Jeg bekræfter GTC'erne.",da_DK
+page.checkout.payment.3d_secure_text,"Sørg for, at det kreditkort, du indtastede, er blevet verificeret for det nye 3D Secure System. Uden denne verifikation vil transaktionen ikke være mulig, for mere information kontakt venligst din kreditkortudbyder.",da_DK
+page.checkout.payment.cc_text,"Kreditkortdata gemmes ikke eller behandles af MyWorld. MyWorld bruger Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Holland, til at behandle kreditkortbetalinger. MyWorld har bestilt MyWorld International Limited, 3. sal, 40 Bank Street, London E14 5NR, UK, med den operationelle behandling af betalingsprocessen.",da_DK
+page.checkout.payment.edit,Rediger betalingsmetode,da_DK
+page.checkout.payment.heading,3. Betalingsmetode.,da_DK
+page.checkout.payment.next-step,Fortsæt med at færdiggøre ordren,da_DK
+page.checkout.shipment.edit,Rediger forsendelsesmetode,da_DK
+page.checkout.shipment.heading,2. Forsendelsesmetode,da_DK
+page.checkout.shipment.item.price,Pris,da_DK
+page.checkout.shipment.item.quantity,Beløb,da_DK
+page.checkout.shipment.next-step,Fortsæt til betalingsmetode,da_DK
+page.checkout.shipment.requested_delivery_date.label,Anmodet om leveringsdato,da_DK
+page.checkout.shipment.requested_delivery_date.placeholder,"Lad det være tomt, hvis du vil have det så hurtigt",da_DK
+page.checkout.shipment.requested_delivery_date.title,Hvornår vil du blive leveret?,da_DK
+page.checkout.shipment.shipment_group_heading,Forsendelse %current% af %total%,da_DK
+page.checkout.shipment.shipping_address.title,Leveringsadresse,da_DK
+page.checkout.shipment.shipping_method_heading,Fragtmetode,da_DK
+page.checkout.shipping.day,dag,da_DK
+page.checkout.shipping.days,dage,da_DK
+page.checkout.shipping.delivery_time,Leveringstid:,da_DK
+page.checkout.shipping.price,Pris:,da_DK
+page.checkout.summary.accept_terms_and_conditions,Jeg accepterer betingelserne,da_DK
+page.checkout.summary.billing,Faktura adresse,da_DK
+page.checkout.summary.card_expires,Udløbsdato,da_DK
+page.checkout.summary.card_number,Kortnummer,da_DK
+page.checkout.summary.card_type,Kort type,da_DK
+page.checkout.summary.complete_checkout,Komplet checkout.,da_DK
+page.checkout.summary.date_of_birth,Fødselsdato,da_DK
+page.checkout.summary.name_on_card,Navn på kortet,da_DK
+page.checkout.summary.products,Produkter,da_DK
+page.checkout.summary.shipping,Forsendelsesadresse,da_DK
+page.checkout.summary.sms_code,SMS-kode,da_DK
+page.checkout.summary.sms_code,SMS-kode,da_DK
+page.checkout.terms,Jeg accepterer de generelle vilkår og betingelser.,da_DK
+page.detail.add-to-cart,Tilføj til kurv,da_DK
+page.detail.add-to-shopping-list,Tilføj til indkøbsliste,da_DK
+page.detail.add-to-wishlist,Tilføj til ønskeliste,da_DK
+page.detail.affiliate-product-action,Gå til Shop.,da_DK
+page.detail.dimensions,Målinger.,da_DK
+page.detail.volume_price.price,Pris,da_DK
+page.detail.volume_price.quantity,Antal,da_DK
+page.imprint.title,Aftryk,da_DK
+page.imprint.url,/ DA / Imprint,da_DK
+page.privacy.title,Data Privacy.,da_DK
+page.privacy.url,/ DA / Privacy,da_DK
+page.product.by,ved,da_DK
+page.product.condition,Tilstand,da_DK
+page.product.details,detaljer,da_DK
+page.product.details.slider_image,Produktbillede.,da_DK
+page.product.details.slider_thumbnail,Produktbillede.,da_DK
+page.product.seller,Sælger,da_DK
+page.product.shipping-fee-from,plus fragt fra,da_DK
+page.product.similar-products,Du kan også lide,da_DK
+page.product.status,Ny,da_DK
+page.product.upsell-products,Lignende produkter.,da_DK
+page.terms.title,GTC.,da_DK
+page.terms.url,/ en / gtc,da_DK
+pagination.next,Næste,da_DK
+pagination.previous,Tidligere,da_DK
+password.confirm,Bekræft Passwort.,da_DK
+payment.creditcard,Kreditkort,da_DK
+payment.dummy-payment.credit-card,Betal med følgende kreditkort:,da_DK
+payment.invoice,Faktura,da_DK
+payment.payment_method.adyen_credit_card,Kreditkort,da_DK
+payment.payment_method.benefit_vouchers,Ydelseskupon,da_DK
+payment.payment_method.cashback,Penge tilbage,da_DK
+payment.payment_method.dummy_prepayment,Forudbetaling,da_DK
+payment.payment_method.e_voucher,evoucher.,da_DK
+payment.payment_method.e_voucher_marketer,myworld evoucher (marketing),da_DK
+payment.payment_method.paid,Betalt,da_DK
+payment.payment_provider.adyen,Adyen.,da_DK
+payment.payment_provider.my_world,Min verden,da_DK
+payment.payment_provider.nopayment,Nopayment.,da_DK
+payment.paypal,PayPal.,da_DK
+payment.prepay,Forudbetaling,da_DK
+payment.step.api_request.error,"Beklager, noget gik galt med betalingen. Prøv igen senere!",da_DK
+payment.step.api_request.error,"Beklager, noget gik galt med betalingen. Prøv igen senere!",da_DK
+pdp.include.tax,inkl. Skat,da_DK
+pdp.include.vat,inkl. Moms.,da_DK
+pdp.include.vat,inkl. Moms.,da_DK
+pdp.price,Pris,da_DK
+pdp.price.benefit_voucher_price,Benefit Voucher Deal.,da_DK
+pdp.price.from,fra,da_DK
+pdp.price.from,fra,da_DK
+pdp.price.regular_price,Normal pris,da_DK
+pdp.price.shopping_points_price,Shopping Point Deal.,da_DK
+persistent_cart.error.quote.not_available,Vogn eksisterer ikke,da_DK
+persistent_cart.quote.remove.can_not_remove_last_cart,Kunden skal have mindst en vogn,da_DK
+persistent_cart.quote.remove.success,Indkøbskurv slettet succes,da_DK
+personal.address.heading,Personlig data,da_DK
+place_order.pre_check.product_discontinued,"Produkt '%name%' er afbrudt, vær venlig at vælge en alternativ",da_DK
+price-cart-connector.info.concrete-product-without-price.removed,Vare %sku% uden pris blev fjernet fra din indkøbskurv.,da_DK
+price.mode.gross_mode,Brutto priser.,da_DK
+price.mode.net_mode,Nettopriser.,da_DK
+price.mode.switch.error,"Kan ikke skifte prismodus, når der er varer i vognen.",da_DK
+product_alternative_widget.add_to_shopping_list,Tilføj til indkøbsliste,da_DK
+product_alternative_widget.add_to_wishlist,Tilføj til ønskeliste,da_DK
+product_alternative_widget.alternative_for,Alternativ til navn,da_DK
+product_alternative_widget.not_applicable,N / A.,da_DK
+product_alternative_widget.product_alternative,Alternative produkter.,da_DK
+product_alternative_widget.product_status.discontinued,AFSLUTTET.,da_DK
+product_alternative_widget.show_all,Vis alt,da_DK
+product_bundle.unavailable,Produkt '%productsku%' i Bundle Product '%Bundlesku%' er ikke tilgængelig i øjeblikket,da_DK
+product_cart_item.remove,× Fjern,da_DK
+product_detail_page.benefit_price.benefit_amount,Max %amount%.,da_DK
+product_detail_page.desclaimer_text,Desclaimer.,da_DK
+product_discontinued_widget.note,Bemærk,da_DK
+product_discontinued.super_attribute_discontinued,AFSLUTTET.,da_DK
+product_item.benefit_deal.or,eller,da_DK
+product_review.average_ratings,Gennemsnitlig vurdering,da_DK
+product_review.error.no_customer,Venligst log ind for at få adgang til denne funktion.,da_DK
+product_review.no_reviews,Ingen anmeldelse for dette produkt endnu,da_DK
+product_review.on,på,da_DK
+product_review.product_ratings,Produktgruder.,da_DK
+product_review.product_reviews,Produktanmeldelser,da_DK
+product_review.ratings_reviews,Bedømmelser og anmeldelser,da_DK
+product_review.submit.add_a_review,Skrive en anmeldelse,da_DK
+product_review.submit.description,Beskrivelse,da_DK
+product_review.submit.error,Revisionen har ikke sendt.,da_DK
+product_review.submit.nickname,Navn,da_DK
+product_review.submit.rating,Bedømmelse,da_DK
+product_review.submit.rating.none,Ingen bedømmelse blev valgt,da_DK
+product_review.submit.success,Produktanmeldelse blev indsendt med succes.,da_DK
+product_review.submit.summary,Resumé,da_DK
+product_review.summary.out_of,ud af,da_DK
+product_review.summary.review,anmeldelse,da_DK
+product_review.summary.reviews,anmeldelser,da_DK
+product_review.summary.star,Stjerne,da_DK
+product_review.summary.stars,Stars.,da_DK
+product_search_widget.search.no_results,Produkter blev ikke fundet.,da_DK
+product_search_widget.search.product_discontinued_prefix,[AFSLUTTET],da_DK
+product-cart.info.concrete-product-inactive.removed,Inaktiv Iteme %Sku% blev fjernet fra din indkøbskurv.,da_DK
+product-cart.info.restricted-product.removed,"Varen spring@skip.sku.skip.com blev fjernet fra vognen, fordi den blev deaktiveret.",da_DK
+product-cart.validation.error.abstract-product-exists,"Produkt """" SKU """" ikke fundet",da_DK
+product-cart.validation.error.concrete-product-exists,"Produkt """" SKU """" ikke fundet",da_DK
+product-cart.validation.error.concrete-product-inactive,"Produkt """" SKU """" er ikke aktiv.",da_DK
+product-cart.validation.error.product-option-value-price-exists,Produktoptionspris ikke fundet for produkt '%sku%'.,da_DK
+product.access.denied,"Beklager, dette produkt er ikke tilgængeligt.",da_DK
+product.attribute._none,Vælg venligst en værdi,da_DK
+product.attribute.battery,Batteri,da_DK
+product.attribute.benefit_store,Nytte butik,da_DK
+product.attribute.camera,Kamera,da_DK
+product.attribute.cashback_amount,Penge tilbage,da_DK
+product.attribute.color,Farve,da_DK
+product.attribute.description,Beskrivelse,da_DK
+product.attribute.design,Design,da_DK
+product.attribute.display,Skærm,da_DK
+product.attribute.focus,Fokus,da_DK
+product.attribute.gps,GPS,da_DK
+product.attribute.graphics,Grafik.,da_DK
+product.attribute.image_big,Billede BIG.,da_DK
+product.attribute.image_quality,Billede kvalitet,da_DK
+product.attribute.image_small,Billede lille,da_DK
+product.attribute.iso_en,Iso.,da_DK
+product.attribute.lens_system,Lens system,da_DK
+product.attribute.license,Licens,da_DK
+product.attribute.long_description,Lang beskrivelse.,da_DK
+product.attribute.manufacturer_name,Mærke,da_DK
+product.attribute.memory,Hukommelse,da_DK
+product.attribute.processor,Processor.,da_DK
+product.attribute.processor_boost_frequency,Processor Boost.,da_DK
+product.attribute.product_id,Produkt ID.,da_DK
+product.attribute.product_stock.name,Sælger,da_DK
+product.attribute.screen,Skærmbillede,da_DK
+product.attribute.shopping_point_store,Shopping Point Store.,da_DK
+product.attribute.shopping_points,Shopping Points.,da_DK
+product.attribute.short_description,Kort beskrivelse,da_DK
+product.attribute.shutter,Lukker,da_DK
+product.attribute.sku,SKU.,da_DK
+product.attribute.slug,slug.,da_DK
+product.attribute.storage,Opbevaring,da_DK
+product.attribute.themes,Temaer.,da_DK
+product.attribute.thermal_design_power,Termisk Design Power.,da_DK
+product.attribute.total_megapixels,Total Megapixels.,da_DK
+product.attribute.touch_technology,Touch Technology.,da_DK
+product.attribute.touchscreen,Touchscreen.,da_DK
+product.attribute.usb_port,USB-port.,da_DK
+product.attribute.usb_version,USB version,da_DK
+product.attribute.variant_id,ID.,da_DK
+product.attribute.variant.reset,Nulstil,da_DK
+product.attribute.video,Video.,da_DK
+product.attribute.video_recording_modes,Videooptagelsestilstande,da_DK
+product.attribute.voice_recording,Stemme optagelse.,da_DK
+product.attribute.waterproof,Vandtæt,da_DK
+product.attribute.waterproof_up_to,Vandtæt op til,da_DK
+product.attribute.weight,Vægt,da_DK
+product.attribute.white_balance,hvidbalance,da_DK
+product.attribute.width,Bredde,da_DK
+product.detail.out_of_stock,Dette produkt er i øjeblikket ikke tilgængeligt.,da_DK
+product.filter.category,Kategorier,da_DK
+product.filter.deal,Del,da_DK
+product.filter.label,Etiket,da_DK
+product.filter.merchant_name,Købmand,da_DK
+product.filter.price,Pris,da_DK
+product.filter.price-default-chf-gross_mode,Pris,da_DK
+product.filter.price-default-chf-net_mode,Pris,da_DK
+product.filter.price-default-eur-gross_mode,Pris,da_DK
+product.filter.price-default-eur-net_mode,Pris,da_DK
+product.filter.rating,Ratings.,da_DK
+product.groups,Produktgrupper.,da_DK
+product.measurement.sales_unit,Salgsenhed,da_DK
+product.multiple.affiliates,Mere end et tilbud,da_DK
+product.product_options,Produkt muligheder.,da_DK
+product.product_options_select,Vælg en option,da_DK
+product.set.detail.add-all-to-cart,Tilføj alt til kurv,da_DK
+product.set.detail.no-products,Ingen produkter i sættet,da_DK
+product.set.detail.set-contents,Produkter i dette sæt,da_DK
+product.sets,Produktsæt,da_DK
+product.sets.no-results,Ingen resultater.,da_DK
+product.sets.widget.title,Køb samlingen,da_DK
+product.unavailable,Produktet er udsolgt,da_DK
+product.variants,Produktvarianter,da_DK
+product.view,Udsigt,da_DK
+profile.form.salutation,Hilsen,da_DK
+quick-order.button.add-more-rows,Tilføj flere rækker,da_DK
+quick-order.button.clear-all-rows,Ryd alle rækker,da_DK
+quick-order.button.create-order,Opret ordre,da_DK
+quick-order.errors.items-required,Indtast venligst mindst et produkt SKU,da_DK
+quick-order.errors.quantity-required,Mængden skal være mindst 1,da_DK
+quick-order.input-label.qty,# QTY.,da_DK
+quick-order.input-label.sku,SKU.,da_DK
+quick-order.message.success.the-form-items-have-been-successfully-cleared,Formularerne er blevet ryddet med succes.,da_DK
+quick-order.page-title,Hurtig ordre.,da_DK
+quick-order.paste-order.button.verify,Verificere,da_DK
+quick-order.paste-order.description,"Kopier og indsæt din ordre med varen # og mængde adskilt af mellemrum, semikoloner eller kommaer.",da_DK
+quick-order.paste-order.errors.parser.separator-not-detected,Separatoren er ikke defineret.,da_DK
+quick-order.paste-order.errors.text-order-format-incorrect,Ordreformat er forkert.,da_DK
+quick-order.paste-order.input-placeholder.copy-paste-order,Indsæt din ordre her,da_DK
+quick-order.paste-order.title,Indsæt din ordre,da_DK
+remove,Fjerne,da_DK
+reorder.info.restricted-product.removed,"Varen spring@skip.sku.skip.com kunne ikke tilføjes til indkøbsvogn, fordi den blev deaktiveret.",da_DK
+replacement_for_widget.replacement_for,Udskiftning for.,da_DK
+return_page.account.no_return,Ingen afkast i øjeblikket,da_DK
+return_page.breadcrumb.create_return,Opret retur,da_DK
+return_page.breadcrumb.returns,Vender tilbage,da_DK
+return_page.button_text,Opret retur,da_DK
+return_page.button.create_return,Vend tilbage,da_DK
+return_page.button.return_list,Vender tilbage,da_DK
+return_page.create_return.select_all_checkbox,Vælg alle,da_DK
+return_page.create_return.validation.selected_items,Mindst et produkt skal vælges.,da_DK
+return_page.default_title,Vender tilbage,da_DK
+return_page.details.actions.back_to_list,Tilbage til listen,da_DK
+return_page.details.actions.print_slip,Print Slip,da_DK
+return_page.details.page_title,Returoplysninger.,da_DK
+return_page.details.total.items_to_return,Emner til returnering,da_DK
+return_page.details.total.items_to_return.count,varer,da_DK
+return_page.details.total.remuneration_total,Vederlag I alt,da_DK
+return_page.item_sku,SKU:,da_DK
+return_page.item.options,Produktindstillinger:,da_DK
+return_page.list.title,Vender tilbage,da_DK
+return_page.order_date,Bestillingsdato:,da_DK
+return_page.order_reference,Bestilling Ref:,da_DK
+return_page.quantity,Antal:,da_DK
+return_page.return_date,Retur dato:,da_DK
+return_page.return_reasons.custom_reason.placeholder,Brugerdefineret årsag,da_DK
+return_page.return_reasons.empty,Rede -,da_DK
+return_page.return_reasons.select_reason.placeholder,Vælg Årsag,da_DK
+return_page.return_reasons.title,Grund:,da_DK
+return_page.return_reference,Returnere ref:,da_DK
+return_page.return.created,Retur oprettet med succes,da_DK
+return_page.return.date,Retur dato,da_DK
+return_page.return.items_state,Emner siger,da_DK
+return_page.return.number_of_items,Antal varer,da_DK
+return_page.return.order_ref,ordrenummer,da_DK
+return_page.return.print_return,Print Slip,da_DK
+return_page.return.return_ref,Returreference.,da_DK
+return_page.return.title,Opret retur,da_DK
+return_page.return.view_return,Se retur,da_DK
+return_page.returnable_state,Ikke-returneret,da_DK
+return_page.slip.barcode,Stregkode.,da_DK
+return_page.slip.default_price,Standardpris,da_DK
+return_page.slip.items_to_return,Emner til returnering,da_DK
+return_page.slip.order_reference,Bestil Ref,da_DK
+return_page.slip.product_name,produktnavn,da_DK
+return_page.slip.product_sku,Produkt SKU.,da_DK
+return_page.slip.quantity,QTY.,da_DK
+return_page.slip.remuneration_total,Vederlag I alt,da_DK
+return_page.slip.return_date,Retur dato,da_DK
+return_page.slip.return_reason,Retur Årsag,da_DK
+return_page.slip.return_reference,Returnere ref,da_DK
+return_page.slip.total_price,Total pris,da_DK
+return_page.table.actions,Rede -,da_DK
+return_page.title,Opret retur,da_DK
+return.create_return.validation.items_error,Retur kan ikke krumles for dette sæt af varer,da_DK
+return.create_return.validation.returnable_items_error,"Retur kan ikke oprettes, da det indeholder ikke-returnerbare varer",da_DK
+return.create_return.validation.store_error,Retur kan ikke oprettes - en forkert butik er valgt,da_DK
+return.return_policy.returnable_till.message,Returneres til: %date%,da_DK
+return.return_reasons.damaged.name,Beskadiget,da_DK
+return.return_reasons.no_longer_needed.name,Ikke længere nødvendigt,da_DK
+return.return_reasons.wrong-item.name,Forkert Item.,da_DK
+sales_configured_bundle_widget.quantity,Antal:,da_DK
+sales_configured_bundle_widget.returnable_state,Ikke-returneret,da_DK
+sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,Bemærk venligst: Varer fra den konfigurerede bundle blev tilføjet til vognen som individuelle produkter.,da_DK
+sales_product_bundle_widget.item_sku,SKU:,da_DK
+sales_product_bundle_widget.item.options,Produktindstillinger:,da_DK
+sales_product_bundle_widget.quantity,Antal:,da_DK
+sales_product_bundle_widget.returnable_state,Ikke-returneret,da_DK
+sales_product_bundle_widget.returnable_text,Returneres til:,da_DK
+sales-order-threshold.expense.name,Ekstragebyr,da_DK
+sales-order-threshold.hard-maximum-threshold.de.chf.message,Vognens værdi kan ikke være højere end {{tærskel}}. Fjern venligst nogle elementer for at fortsætte med ordren,da_DK
+sales-order-threshold.hard-maximum-threshold.de.eur.message,Vognens værdi kan ikke være højere end {{tærskel}}. Fjern venligst nogle elementer for at fortsætte med ordren,da_DK
+sales-order-threshold.hard-minimum-threshold.de.chf.message,Du skal tilføje varer til {{Threshold}} for at bestå en anbefalet tærskelværdi. Du kan ikke fortsætte med kassen,da_DK
+sales-order-threshold.hard-minimum-threshold.de.eur.message,Du skal tilføje varer til {{Threshold}} for at bestå en anbefalet tærskelværdi. Du kan ikke fortsætte med kassen,da_DK
+sales-order-threshold.soft-minimum-threshold.de.chf.message,"Du skal tilføje varer til {{Threshold}} for at bestå en anbefalet tærskel, men hvis du vil kunne fortsætte til kassen.",da_DK
+sales-order-threshold.soft-minimum-threshold.de.eur.message,"Du skal tilføje varer til {{Threshold}} for at bestå en anbefalet tærskel, men hvis du vil kunne fortsætte til kassen.",da_DK
+sales-order-threshold.strategy.soft-minimum-threshold-fixed-fee,Ekstragebyr,da_DK
+sales-order-threshold.strategy.soft-minimum-threshold-flexible-fee,Ekstragebyr,da_DK
+sales.error.customer_order_not_found,Kundeordre ikke fundet.,da_DK
+sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Bestilling kan ikke annulleres på grund af forkert vare tilstand.,da_DK
+samsung.search.link,/ DA / Søg? Q = Samsung,da_DK
+security_blocker_page.error.account_blocked,For mange log ind forsøg fra din adresse. Vent venligst %minutes% minutter før du prøver igen.,da_DK
+shared_cart_page.share.success,Vogn blev succesfuldt delte,da_DK
+shared_cart_page.unshare.success,Vognen var succesfuldt uskadt,da_DK
+shared_cart_widget.add_product.separate,Tilføj som separat vare,da_DK
+shared_cart_widget.cart.dismiss,Afskedige,da_DK
+shared_cart_widget.cart.share,Del Cart,da_DK
+shared_cart_widget.cart.unshare,Unshare cart.,da_DK
+shared_cart_widget.share_list.action.unshare,Unshare cart.,da_DK
+shared_cart_widget.share_list.actions,Handlinger,da_DK
+shared_cart_widget.share_list.customer_name,Kundenavn,da_DK
+shared_cart_widget.share_list.permission,Adgangsniveau,da_DK
+shared_cart_widget.share_list.shared_with,Vogn delt med,da_DK
+shared_cart.form.customer,Kundenavn,da_DK
+shared_cart.form.data_empty,Der er ingen brugere med hvem du kan dele indkøbskurven.,da_DK
+shared_cart.form.save_button,Gemme,da_DK
+shared_cart.form.select_customer,Vælg kunde,da_DK
+shared_cart.form.select_permissions,Vælg Access Niveau,da_DK
+shared_cart.form.share_button,Del,da_DK
+shared_cart.form.share_cart,Del Cart,da_DK
+shared_cart.form.share_cart.title,"Del Cart """" cart_name """"",da_DK
+shared_cart.share_list.permissions.FULL_ACCESS,Fuld adgang.,da_DK
+shared_cart.share_list.permissions.NO_ACCESS,Ingen adgang,da_DK
+shared_cart.share_list.permissions.READ_ONLY,Læs kun,da_DK
+shared_cart.share.breadcrumbs.share,Del,da_DK
+shared_cart.share.breadcrumbs.shopping_carts,Shopping Carts.,da_DK
+shared_cart.share.error.already_exist,Vogn blev allerede delt med denne kunde,da_DK
+shared_cart.share.form.users,Brugere,da_DK
+shipment.dhl,DHL.,da_DK
+shipment.dhl.express.description,Vores kraft på 100.000 engagerede medarbejdere arbejder over hele verden. Lokal knowhow og vores unikke netværk gør os til dine internationale specialister.,da_DK
+shipment.dhl.express.name,Express,da_DK
+shipment.dhl.paket.description,"DHL Paket er den nemme, overkommelige, hurtige og pålidelige forsendelsestjeneste til over 220 lande rundt om i verden.",da_DK
+shipment.dhl.paket.name,Pakke,da_DK
+shipment.dpd,DPD.,da_DK
+shipment.express.description,24-48 timer (arbejdsdage),da_DK
+shipment.express.name,Express,da_DK
+shipment.hermes,Hermes.,da_DK
+shipment.international.parcel.service,International Parcel Services.,da_DK
+shipment.lead.time,Leveringstid: Ca. 3-7 arbejdsdage,da_DK
+shipment.lead.time,Leveringstid: Ca. 3-7 arbejdsdage,da_DK
+shipment.standart.description,2-4 arbejdsdage,da_DK
+shipment.standart.name,Standard levering,da_DK
+shipment.validation.not_found,Forsendelsesmetode ikke fundet.,da_DK
+shipping.address.country.validation.not_found,Forsendelsesadresse Land ikke fundet for Landekode: %code%,da_DK
+shipping.address.validation.is_missing,Forsendelsesadresse mangler,da_DK
+shopping_list_add_items_widget.add_to_shopping_list,Tilføj til indkøbsliste,da_DK
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Er du sikker på, at du skal afskedige indkøbsliste?",da_DK
+shopping_list_page.dismiss.failed,Indkøbsliste blev ikke afskediget.,da_DK
+shopping_list_page.dismiss.success,Indkøbsliste blev afskediget med succes.,da_DK
+shopping_list.cart.items_add.failed,Varer kunne ikke tilføjes til listen,da_DK
+shopping_list.cart.items_add.success,Varer blev tilføjet til listen,da_DK
+shopping_list.item_note,Bemærk:,da_DK
+shopping_list.item_note.add,Tilføj en note +,da_DK
+shopping_list.item_quantity,Antal,da_DK
+shopping_list.not_applicable,N / A.,da_DK
+shopping_list.remove_all_items,Fjern alt,da_DK
+shopping_list.shopping_list,Indkøbsliste,da_DK
+smartphones.category.link,/ EN / Telecom - & - Navigation / Smartphones,da_DK
+This field should contain exactly 5 digits.,Dette felt skal indeholde nøjagtigt 5 cifre.,da_DK
+This value is not valid (accepted format e.g.: 12c).,Denne værdi er ikke gyldig (accepteret format E.G.: 12C).,da_DK
+This value is not valid.,Denne værdi er ikke gyldig.,da_DK
+This value should not be blank.,Denne værdi bør ikke være tom.,da_DK
+validation.address_number,Denne værdi er ikke gyldig (accepteret format E.G.: 12C).,da_DK
+validation.choice,Produktvurdering skal vælges.,da_DK
+validation.email,Denne værdi er ikke en gyldig email-adresse.,da_DK
+validation.invalid_date,Dato skal være i korrekt format% s.,da_DK
+validation.min_length,Dette felt skal være mindst {{limit}} tegn lange.,da_DK
+validation.not_blank,Denne værdi bør ikke være tom.,da_DK
+validation.zip_code,Dette felt skal indeholde nøjagtigt 5 cifre.,da_DK
+validator.check.phone,Ugyldigt telefonnummer,da_DK
+validator.constraints.password.do_not_match,Passwords matcher ikke,da_DK
+whishlist.increase,Øge,da_DK
+whishlist.move.to.cart,Flyt til Cart.,da_DK
+whishlist.reduce,Reducere,da_DK
+whishlist.remove,Fjerne,da_DK
+whishlist.whishlist,Whishlist.,da_DK
+wishlist.form.save,Gemme,da_DK
+wishlist.title,Ønskeseddel,da_DK
+wishlist.validation.error.name.already_exists,En ønskeliste med samme navn eksisterer allerede.,da_DK
+wishlist.wishlist,Ønskeseddel,da_DK

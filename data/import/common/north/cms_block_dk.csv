@@ -1,0 +1,2 @@
+block_key,block_name,template_name,template_path,active,placeholder.title.en_US,placeholder.description.en_US,placeholder.link.en_US,placeholder.content.en_US
+blck-nav-footer-dk,CMS block for the footer navigation (Danmark),Navigation block,@CmsBlock/template/navigation_block.twig,1,,"{{ content_navigation('navigation-footer-legal-dk', 'navigation-footer') }}{{ content_navigation('navigation-footer-info', 'navigation-footer') }}",,

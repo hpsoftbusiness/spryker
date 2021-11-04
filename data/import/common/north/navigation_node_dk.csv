@@ -1,0 +1,6 @@
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.nb_NO,title.fi_FI,title.da_DK,title.sv_SE,url.nb_NO,url.fi_FI,url.da_DK,url.sv_SE,css_class.nb_NO,css_class.fi_FI,css_class.da_DK,css_class.sv_SE
+FOOTER_NAVIGATION_LEGAL_DK,FOOTER_NAVIGATION_LEGAL_DK_1,,cms_page,Imprint,/en/imprint-dk,,,,,,Imprint,,,,/da/imprint-dk,,,,,
+FOOTER_NAVIGATION_LEGAL_DK,FOOTER_NAVIGATION_LEGAL_DK_2,,cms_page,Privacy Policy,/en/privacy-dk,,,,,,Privacy Policy,,,,/da/privacy-dk,,,,,
+FOOTER_NAVIGATION_LEGAL_DK,FOOTER_NAVIGATION_LEGAL_DK_3,,cms_page,Terms and Conditions,/en/gtc-dk,,,,,,Terms and Conditions,,,,/da/gtc-dk,,,,,
+FOOTER_NAVIGATION_LEGAL_DK,FOOTER_NAVIGATION_LEGAL_DK_4,,cms_page,Terms of use,/en/terms-of-use-dk,,,,,,Terms of use,,,,/da/terms-of-use-dk,,,,,
+FOOTER_NAVIGATION_LEGAL_DK,FOOTER_NAVIGATION_LEGAL_DK_5,,cms_page,Right of withdrawal,/en/row-dk,,,,,,Right of withdrawal,,,,/da/row-dk,,,,,

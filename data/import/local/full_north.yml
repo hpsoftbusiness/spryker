@@ -15,6 +15,8 @@ actions:
     source: data/import/common/common/glossary.csv
   - data_entity: glossary
     source: data/import/common/north/glossary_fi_FI.csv
+  - data_entity: glossary
+    source: data/import/common/north/glossary_da_DK.csv
   - data_entity: tax
     source: data/import/common/north/tax.csv
   - data_entity: shipment
@@ -42,6 +44,8 @@ actions:
     source: data/import/common/common/navigation.csv
   - data_entity: navigation
     source: data/import/common/north/navigation_fi.csv
+  - data_entity: navigation
+    source: data/import/common/north/navigation_dk.csv
 
 #3. Catalog Setup import
   - data_entity: category-template
@@ -144,10 +148,14 @@ actions:
     source: data/import/common/common/cms_block.csv
   - data_entity: cms-block
     source: data/import/common/north/cms_block_fi.csv
+  - data_entity: cms-block
+    source: data/import/common/north/cms_block_dk.csv
   - data_entity: cms-page
     source: data/import/common/north/cms_page_no.csv
   - data_entity: cms-page
     source: data/import/common/north/cms_page_fi.csv
+  - data_entity: cms-page
+    source: data/import/common/north/cms_page_dk.csv
   - data_entity: cms-slot-template
     source: data/import/common/common/cms_slot_template.csv
   - data_entity: cms-slot
@@ -156,6 +164,8 @@ actions:
     source: data/import/common/common/cms_slot_block.csv
   - data_entity: cms-slot-block
     source: data/import/common/north/cms_slot_block_fi.csv
+  - data_entity: cms-slot-block
+    source: data/import/common/north/cms_slot_block_dk.csv
   - data_entity: cms-page-store
     source: data/import/common/north/cms_page_store.csv
   - data_entity: cms-block-store
@@ -164,10 +174,14 @@ actions:
     source: data/import/common/north/navigation_node.csv
   - data_entity: navigation-node
     source: data/import/common/north/navigation_node_fi.csv
+  - data_entity: navigation-node
+    source: data/import/common/north/navigation_node_dk.csv
   - data_entity: content-navigation
     source: data/import/common/common/content_navigation.csv
   - data_entity: content-navigation
     source: data/import/common/north/content_navigation_fi.csv
+  - data_entity: content-navigation
+    source: data/import/common/north/content_navigation_dk.csv
 
 #8. Miscellaneous Setup import
   - data_entity: mime-type
