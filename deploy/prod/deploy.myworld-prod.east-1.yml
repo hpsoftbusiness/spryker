@@ -160,10 +160,8 @@ groups:
                         store: PL
                     www.sk.products.myworld.com:
                         store: SK
-                        <<: *frontend-auth
                     www.cz.products.myworld.com:
                         store: CZ
-                        <<: *frontend-auth
             Zed:
                 application: zed
                 http:
@@ -177,7 +175,7 @@ groups:
                         <<: *backend-auth
                     zed.cz.products.myworld.com:
                         store: CZ
-                        <<: *frontend-auth
+                        <<: *backend-auth
             Glue:
                 application: glue
                 endpoints:
