@@ -56,11 +56,11 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
         ],
         'locales' => [
             // first entry is default
-            'en' => 'en_US',
             'nb' => 'nb_NO',
             'fi' => 'fi_FI',
             'da' => 'da_DK',
             'sv' => 'sv_SE',
+            'en' => 'en_US',
         ],
 
         'queuePools' => [
