@@ -19,19 +19,19 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 // TODO:: create ORIGIN KEYS for prod environment
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
-        'PL' => getenv('ADYEN_ORIGIN_KEYS_PL') ?: utf8_encode('pub.v2.1116342036411490.aHR0cHM6Ly93d3cucGwucHJvZHVjdHMubXl3b3JsZC5jb20.wSi9XtNFC2US30uCZQqDilIE4bFju3Ax0QH1BflEGro'),
-        'SK' => getenv('ADYEN_ORIGIN_KEYS_SK') ?: '',
-        'CZ' => getenv('ADYEN_ORIGIN_KEYS_CZ') ?: '',
+        'PL' => getenv('ADYEN_ORIGIN_KEYS_PL'),
+        'SK' => getenv('ADYEN_ORIGIN_KEYS_SK'),
+        'CZ' => getenv('ADYEN_ORIGIN_KEYS_CZ'),
     ],
     'API_KEYS' => [
-        'PL' => getenv('ADYEN_API_KEY_PL') ?: utf8_encode('AQEphmfxK4rNYxxLw0m/n3Q5qf3VZZJ6AoFGXER6axXEMbrOFdpcMdrh61MQwV1bDb7kfNy1WIxIIkxgBw==-m8GFYYJErBtYjjciOM7wbi3vPSdsdigpivb1AqF6mVs=-[;]z4?@R)%rLud7L'),
-        'SK' => getenv('ADYEN_API_KEY_SK') ?: '',
-        'CZ' => getenv('ADYEN_API_KEY_CZ') ?: '',
+        'PL' => getenv('ADYEN_API_KEY_PL'),
+        'SK' => getenv('ADYEN_API_KEY_SK'),
+        'CZ' => getenv('ADYEN_API_KEY_CZ'),
     ],
     'MERCHANT_ACCOUNTS' => [
         'PL' => 'MyWorldPolandSpzoo',
-        'SK' => '',
-        'CZ' => '',
+        'SK' => 'MyWorldSlovakiaSro',
+        'CZ' => 'MyWorldsro',
     ],
 ];
 
@@ -41,11 +41,17 @@ $config[AdyenConstants::SDK_CHECKOUT_ORIGIN_KEY] = $adyenCredentials['ORIGIN_KEY
 
 $adyenSplitAccounts = [
     'PL' => '180783198',
-    'SK' => '',
-    'CZ' => '',
+    'SK' => '121195668',
+    'CZ' => '134217451',
 ];
 
 $config[AdyenConstants::SPLIT_ACCOUNT] = $adyenSplitAccounts[APPLICATION_STORE];
 $config[AdyenConstants::SPLIT_ACCOUNT_COMMISSION_INTEREST] = 0.05;
 
-$config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '681aca46-da57-4337-8acc-adc6008db275';
+$defaultDealerId = [
+    'PL' => '681aca46-da57-4337-8acc-adc6008db275',
+    'SK' => '338856FD-4D6C-40B5-8117-AAB0008676D1',
+    'CZ' => '77d0eca3-52d4-4102-8933-adc700c64393',
+];
+
+$config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = $defaultDealerId[APPLICATION_STORE];
