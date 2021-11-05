@@ -103,23 +103,28 @@
 {% block body %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% for navItem in data.linksVisiableAfterLogin %}
-            <div class="{{ config.name }}__item">
-                <a
-                    class="{{ config.name }}__link {{ navItem.name == 'nav-logo-marketplace-bw' ? config.name ~ '__link--active' }}"
-                    href="{{ navItem.targetUrl }}"
-                    target="_blank"
-                >
-                    <img
-                        src="{{ publicPath('images/' ~ (data.isLogoColored ? navItem.nameColored : navItem.name) ~ '.svg') }}"
-                        alt="{{ data.isLogoColored ? navItem.nameColored : navItem.name }}"
-                        class="{{ config.name }}__image"
-                    />
-                </a>
-            </div>
+            {% if constant('APPLICATION_STORE') == 'NO' and navItem.name == 'logo-onesense-w-bar'  %}
+            {% else %}
+                <div class="{{ config.name }}__item">
+                    <a
+                        class="{{ config.name }}__link {{ navItem.name == 'nav-logo-marketplace-bw' ? config.name ~ '__link--active' }}"
+                        href="{{ navItem.targetUrl }}"
+                        target="_blank"
+                    >
+                        <img
+                            src="{{ publicPath('images/' ~ (data.isLogoColored ? navItem.nameColored : navItem.name) ~ '.svg') }}"
+                            alt="{{ data.isLogoColored ? navItem.nameColored : navItem.name }}"
+                            class="{{ config.name }}__image"
+                        />
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %}
         {% else %}
     {% for navItem in data.inlineMenu %}
-        <div class="{{ config.name }}__item">
+        {% if constant('APPLICATION_STORE') == 'NO' and navItem.name == 'logo-onesense-w-bar'  %}
+            {% else %}
+            <div class="{{ config.name }}__item">
             <a
                 class="{{ config.name }}__link {{ navItem.name == 'nav-logo-marketplace-bw' ? config.name ~ '__link--active' }}"
                 href="{{ navItem.targetUrl }}"
@@ -132,6 +137,7 @@
                 />
             </a>
         </div>
+        {% endif %}
     {% endfor %}
 
 
