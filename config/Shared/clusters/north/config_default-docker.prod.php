@@ -4,6 +4,7 @@ use Pyz\Shared\Adyen\AdyenConstants;
 use Pyz\Shared\Country\CountryConstants;
 use Pyz\Shared\Locale\LocaleConstants;
 use Pyz\Shared\MyWorldMarketplaceApi\MyWorldMarketplaceApiConstants;
+use Pyz\Shared\SalesInvoice\SalesInvoiceConstants;
 use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 $config[CountryConstants::CLUSTER_COUNTRIES] = ['NO', 'FI', 'DK', 'SE'];
@@ -55,3 +56,11 @@ $config[MyWorldMarketplaceApiConstants::DEALER_ID_DEFAULT] = '31d25f30-e540-4825
 // ----------------------------------------------------------------------------
 
 require 'common/config_weclapp-prod.php';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MAIL ----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[SalesInvoiceConstants::ORDER_INVOICE_RECIPIENTS_TO] = [
+    'vendormgmt.no@myworld.com' => 'Warehouse Manager Norway',
+];
