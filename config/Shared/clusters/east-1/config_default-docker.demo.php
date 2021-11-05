@@ -18,8 +18,8 @@ $config[LocaleConstants::COUNTRY_TO_LOCALE_RELATIONS] = [
 $adyenCredentials = [
     'ORIGIN_KEYS' => [
         'PL' => 'pub.v2.8216083088630330.aHR0cHM6Ly9wbC5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.qLhpUh--skSQMZFYhK56Kn4O_HthI0MkoPWgyzo9Tyc',
-        'SK' => 'pub.v2.8216083088630330.aHR0cHM6Ly9zay5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.YUjhq_XcgKBCfIPDqEpG2Y23eUt5nD4HYeCB0i9wc_I',
-        'CZ' => 'pub.v2.8216068210552874.aHR0cHM6Ly9jei5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.xqJGMZJYLrLTNEJIk3X-RR7om28T-LPku6p0-kDJyZo',
+        'SK' => 'pub.v2.8216083088630330.aHR0cHM6Ly93d3cuc2subXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.5mxWBaCX3b3wYTAbmvn-tp26R0ygEmRCFlWMiFocsL4',
+        'CZ' => 'pub.v2.8216083088630330.aHR0cHM6Ly93d3cuc2subXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.5mxWBaCX3b3wYTAbmvn-tp26R0ygEmRCFlWMiFocsL4',
     ],
     'MERCHANT_ACCOUNTS' => [
         'PL' => 'MyWorldPolandSpzoo',
