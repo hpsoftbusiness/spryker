@@ -19,7 +19,7 @@ $adyenCredentials = [
     'ORIGIN_KEYS' => [
         'PL' => 'pub.v2.8216083088630330.aHR0cHM6Ly9wbC5teXdvcmxkLW1jYS5jbG91ZC5zcHJ5a2VyLnRveXM.qLhpUh--skSQMZFYhK56Kn4O_HthI0MkoPWgyzo9Tyc',
         'SK' => 'pub.v2.8216083088630330.aHR0cHM6Ly93d3cuc2subXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.5mxWBaCX3b3wYTAbmvn-tp26R0ygEmRCFlWMiFocsL4',
-        'CZ' => 'pub.v2.8216083088630330.aHR0cHM6Ly93d3cuc2subXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.5mxWBaCX3b3wYTAbmvn-tp26R0ygEmRCFlWMiFocsL4',
+        'CZ' => 'pub.v2.8216083088630330.aHR0cHM6Ly93d3cuY3oubXl3b3JsZC1tY2EuY2xvdWQuc3ByeWtlci50b3lz.7fm_0ORnp-x7PeBnWhiXkjnWDUXFqh6H8KWxh4Zk30o',
     ],
     'MERCHANT_ACCOUNTS' => [
         'PL' => 'MyWorldPolandSpzoo',
