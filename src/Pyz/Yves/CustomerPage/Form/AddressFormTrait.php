@@ -164,7 +164,6 @@ trait AddressFormTrait
                 $this->createNotBlankConstraint($options),
                 $this->createMaxLengthConstraint($options),
                 $this->createPhoneNumberConstraint($options),
-                $this->createPhoneNumberPrefixConstraint($options),
             ],
         ]);
 
@@ -291,13 +290,13 @@ trait AddressFormTrait
      *
      * @return \Symfony\Component\Validator\Constraints\Regex
      */
-    public function createPhoneNumberPrefixConstraint(array $options)
+    public function createPhoneNumberConstraint(array $options): Regex
     {
         $validationGroup = $this->getValidationGroup($options);
 
         return new Regex([
-            'pattern' => '/\+/',
-            'message' => 'validator.check.phone.plus',
+            'pattern' => '/^(\+|0)\d{7,15}$/',
+            'message' => 'validator.check.phone',
             'groups' => $validationGroup,
         ]);
     }
