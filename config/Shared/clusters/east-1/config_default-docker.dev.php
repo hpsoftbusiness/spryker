@@ -23,8 +23,8 @@ $adyenCredentials = [
     ],
     'MERCHANT_ACCOUNTS' => [
         'PL' => 'MyWorldPolandSpzoo',
-        'SK' => '',
-        'CZ' => '',
+        'SK' => 'MyWorldSlovakiaSro',
+        'CZ' => 'MyWorldsro',
     ],
 ];
 
