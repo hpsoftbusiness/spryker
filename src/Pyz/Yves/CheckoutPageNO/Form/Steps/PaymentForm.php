@@ -11,6 +11,9 @@ use Generated\Shared\Transfer\CustomerBalanceByCurrencyTransfer;
 use Pyz\Yves\CheckoutPage\Form\Steps\PaymentForm as PyzPaymentForm;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ */
 class PaymentForm extends PyzPaymentForm
 {
     /**
