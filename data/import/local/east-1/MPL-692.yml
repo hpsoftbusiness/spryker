@@ -17,10 +17,10 @@ actions:
       source: data/import/common/east-1/cms_page_cz.csv
 
     - data_entity: cms-page-store
-      source: data/import/common/east-1/cms_page_store.csv
+      source: data/import/common/east-1/cms_page_store_cz_sk.csv
 
     - data_entity: cms-block-store
-      source: data/import/common/east-1/cms_block_store.csv
+      source: data/import/common/east-1/cms_block_store_cz_sk.csv
 
     - data_entity: cms-slot-block
       source: data/import/common/east-1/cms_slot_block_sk.csv
