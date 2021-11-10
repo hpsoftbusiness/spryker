@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7e334a0425cdfd38e9cf6fef83d82af",
+    "content-hash": "cd5ddcd142d22b200dbc285e16d6306d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -34335,30 +34335,33 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.14.1",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "5493f98218a6a393ce99988992659fac00ed92c2"
+                "reference": "89955522102a15882c1b9ecc456172a7bcedb8d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/5493f98218a6a393ce99988992659fac00ed92c2",
-                "reference": "5493f98218a6a393ce99988992659fac00ed92c2",
+                "url": "https://api.github.com/repos/spryker/store/zipball/89955522102a15882c1b9ecc456172a7bcedb8d6",
+                "reference": "89955522102a15882c1b9ecc456172a7bcedb8d6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/quote-extension": "^1.4.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
-                "spryker/quote": "*"
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/config": "If you want to use StoreApplicationPlugin",
@@ -34382,7 +34385,10 @@
                 "proprietary"
             ],
             "description": "Store module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "support": {
+                "source": "https://github.com/spryker/store/tree/1.15.0"
+            },
+            "time": "2021-05-27T14:41:09+00:00"
         },
         {
             "name": "spryker/store-gui",
@@ -47281,5 +47287,5 @@
     "platform-overrides": {
         "php": "7.3.15"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

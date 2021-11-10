@@ -211,6 +211,7 @@
     "spryker/shipment-discount-connector": "^4.0.5",
     "spryker/shipments-rest-api": "^1.3.3",
     "spryker/silex": "^2.2.1",
+    "spryker/store": "~1.14",
     "spryker/stores-rest-api": "^1.0.4",
     "spryker/symfony": "^3.5",
     "spryker/tax-product-connector": "^4.3.1",
