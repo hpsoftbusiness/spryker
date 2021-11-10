@@ -71,7 +71,7 @@ class SalesOrderMapper implements SalesOrderMapperInterface
             $weclappSalesOrderItemTransfer->setArticleNumber($itemTransfer->getSkuOrFail())
                 ->setQuantity((string)$itemTransfer->getQuantityOrFail())
                 ->setManualUnitPrice(true)
-                ->setUnitPrice((string)($itemTransfer->getUnitPriceOrFail() / 100))
+                ->setUnitPrice((string)($itemTransfer->getUnitPriceToPayAggregationOrFail() / 100))
                 ->setTaxId($itemTransfer->getIdWeclappTaxOrFail());
 
             $weclappOrderItems[] = $weclappSalesOrderItemTransfer;
