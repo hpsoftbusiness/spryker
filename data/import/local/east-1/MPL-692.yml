@@ -1,0 +1,38 @@
+version: 0
+
+actions:
+    - data_entity: navigation
+      source: data/import/common/east-1/navigation_sk.csv
+    - data_entity: navigation
+      source: data/import/common/east-1/navigation_cz.csv
+
+    - data_entity: cms-block
+      source: data/import/common/east-1/cms_block_sk.csv
+    - data_entity: cms-block
+      source: data/import/common/east-1/cms_block_cz.csv
+
+    - data_entity: cms-page
+      source: data/import/common/east-1/cms_page_sk.csv
+    - data_entity: cms-page
+      source: data/import/common/east-1/cms_page_cz.csv
+
+    - data_entity: cms-page-store
+      source: data/import/common/east-1/cms_page_store.csv
+
+    - data_entity: cms-block-store
+      source: data/import/common/east-1/cms_block_store.csv
+
+    - data_entity: cms-slot-block
+      source: data/import/common/east-1/cms_slot_block_sk.csv
+    - data_entity: cms-slot-block
+      source: data/import/common/east-1/cms_slot_block_cz.csv
+
+    - data_entity: navigation-node
+      source: data/import/common/east-1/navigation_node_sk.csv
+    - data_entity: navigation-node
+      source: data/import/common/east-1/navigation_node_cz.csv
+
+    - data_entity: content-navigation
+      source: data/import/common/east-1/content_navigation_sk.csv
+    - data_entity: content-navigation
+      source: data/import/common/east-1/content_navigation_cz.csv
