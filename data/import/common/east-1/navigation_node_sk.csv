@@ -1,0 +1,6 @@
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.pl_PL,title.sk_SK,title.cs_CZ,url.pl_PL,url.sk_SK,url.cs_CZ,css_class.pl_PL,css_class.sk_SK,css_class.cs_CZ
+FOOTER_NAVIGATION_LEGAL_SK,FOOTER_NAVIGATION_LEGAL_SK_1,,cms_page,Imprint,/en/imprint-sk,,,,Imprint,Imprint,Imprint,/pl/imprint-sk,/sk/imprint-sk,/cs/imprint-sk,,,
+FOOTER_NAVIGATION_LEGAL_SK,FOOTER_NAVIGATION_LEGAL_SK_2,,cms_page,Privacy Policy,/en/privacy-sk,,,,Privacy Policy,Privacy Policy,Privacy Policy,/pl/privacy-sk,/sk/privacy-sk,/cs/privacy-sk,,,
+FOOTER_NAVIGATION_LEGAL_SK,FOOTER_NAVIGATION_LEGAL_SK_3,,cms_page,Terms and Conditions,/en/gtc-sk,,,,Terms and Conditions,Terms and Conditions,Terms and Conditions,/pl/gtc-sk,/sk/gtc-sk,/cs/gtc-sk,,,
+FOOTER_NAVIGATION_LEGAL_SK,FOOTER_NAVIGATION_LEGAL_SK_4,,cms_page,Terms of use,/en/terms-of-use-sk,,,,Terms of use,Terms of use,Terms of use,/pl/terms-of-use-sk,/sk/terms-of-use-sk,/cs/terms-of-use-sk,,,
+FOOTER_NAVIGATION_LEGAL_SK,FOOTER_NAVIGATION_LEGAL_SK_5,,cms_page,Right of withdrawal,/en/row-sk,,,,Right of withdrawal,Right of withdrawal,Right of withdrawal,/pl/row-sk,/sk/row-sk,/cs/row-sk,,,
