@@ -1,7 +1,7 @@
 name,is_active,is_dynamic,is_exclusive,front_end_reference,valid_from,valid_to,name.en_US,product_abstract_skus,priority,name.it_IT,name.fr_FR,name.el_GR
-Standard label,1,0,0,,,,Standard Label,,1,Etichetta standard,Shopping_point.,Shopping_point
-NEW,1,1,0,template:tag,,,New,,2,Nuovo,Saldi%,Πώληση%
-SALE,1,1,0,highlight,,,SALE %,,3,SALDI %,Nuovo,Νέος
-BENEFIT,1,1,0,template:tag,,,BENEFIT,,1,BENEFICIO,Invece di,Αντί
-SHOPPING_POINT,1,1,0,template:tag,,,SHOPPING_POINT,,1,Shopping_point.,Etichetta Standard,Τυπική ετικέτα
-INSTEAD_OF,1,1,1,template:instead-of,,,Instead Of,,2,Invece di,Bénéficios,ΟΦΕΛΟΣ
+Standard label,1,0,0,,,,Standard Label,,1,Etichetta Standard,Étiquette standard,τυποποιημένη σήμανση
+NEW,1,1,0,template:tag,,,New,,2,Nuovo,Neuf,νέο
+SALE,1,1,0,highlight,,,SALE %,,3,SALDI %,VENTE %,Έκπτωση %
+BENEFIT,1,1,0,template:tag,,,BENEFIT,,1,BENEFIT,AVANTAGE,BENEFIT
+SHOPPING_POINT,1,1,0,template:tag,,,SHOPPING_POINT,,1,SHOPPING_POINT,SHOPPING_POINT,SHOPPING_POINT
+INSTEAD_OF,1,1,1,template:instead-of,,,Instead Of,,2,Invece di,Au lieu de,αντί
