@@ -42,6 +42,8 @@ actions:
         source: data/import/common/common/navigation.csv
     -   data_entity: navigation
         source: data/import/common/south-1/navigation_fr.csv
+    -   data_entity: navigation
+        source: data/import/common/south-1/navigation_gr.csv
 
     #3. Catalog Setup import
     -   data_entity: category-template
@@ -178,10 +180,14 @@ actions:
         source: data/import/common/south-1/cms_block.csv
     -   data_entity: cms-block
         source: data/import/common/south-1/cms_block_fr.csv
+    -   data_entity: cms-block
+        source: data/import/common/south-1/cms_block_gr.csv
     -   data_entity: cms-page
         source: data/import/common/south-1/cms_page_local.csv
     -   data_entity: cms-page
         source: data/import/common/south-1/cms_page_fr.csv
+    -   data_entity: cms-page
+        source: data/import/common/south-1/cms_page_gr.csv
     -   data_entity: cms-slot-template
         source: data/import/common/common/cms_slot_template.csv
     -   data_entity: cms-slot
@@ -190,6 +196,8 @@ actions:
         source: data/import/common/common/cms_slot_block.csv
     -   data_entity: cms-slot-block
         source: data/import/common/south-1/cms_slot_block_fr.csv
+    -   data_entity: cms-slot-block
+        source: data/import/common/south-1/cms_slot_block_gr.csv
     -   data_entity: cms-page-store
         source: data/import/common/south-1/cms_page_store.csv
     -   data_entity: cms-block-store
@@ -198,10 +206,14 @@ actions:
         source: data/import/common/south-1/navigation_node_local.csv
     -   data_entity: navigation-node
         source: data/import/common/south-1/navigation_node_fr.csv
+    -   data_entity: navigation-node
+        source: data/import/common/south-1/navigation_node_gr.csv
     -   data_entity: content-navigation
         source: data/import/common/common/content_navigation.csv
     -   data_entity: content-navigation
         source: data/import/common/south-1/content_navigation_fr.csv
+    -   data_entity: content-navigation
+        source: data/import/common/south-1/content_navigation_gr.csv
 
     #8. Miscellaneous Setup import
     -   data_entity: mime-type
