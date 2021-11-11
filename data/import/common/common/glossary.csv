@@ -734,7 +734,7 @@ error.404_description,Cette page est introuvable. Veuillez revenir en arrière,f
 error_page.home_link,Aller à la page d'accueil,fr_FR
 error_page.text,Nous n'avons pas trouvé la page que vous recherchez.,fr_FR
 error_page.title,Page non trouvée.,fr_FR
-footer.facebook.url,https://www.facebook.com/myWorld.int,fr_FR
+footer.facebook.url,https://www.facebook.com/myWorld.France,fr_FR
 footer.follow,Suivez nous,fr_FR
 footer.instagram.url,https://www.instagram.com/myworld.global/,fr_FR
 footer.logo.link.imprint,/ fr / empreinte,fr_FR
@@ -2266,7 +2266,7 @@ error.404_description,Questa pagina non può essere trovata. Per favore torna in
 error_page.home_link,Vai alla pagina principale,it_IT
 error_page.text,Non siamo riusciti a trovare la pagina che stai cercando.,it_IT
 error_page.title,Pagina non trovata.,it_IT
-footer.facebook.url,https://www.facebook.com/myWorld.int,it_IT
+footer.facebook.url,https://www.facebook.com/myWorld.Italia,it_IT
 footer.follow,Seguici,it_IT
 footer.instagram.url,https://www.instagram.com/myworld.global/,it_IT
 footer.logo.link.imprint,/it/impronta,it_IT
@@ -20578,3 +20578,106 @@ wishlist.form.save,Uložiť,sk_SK
 wishlist.title,Zoznam želaní,sk_SK
 wishlist.validation.error.name.already_exists,Zoznam želaní s rovnakým názvom už existuje.,sk_SK
 wishlist.wishlist,Zoznam želaní,sk_SK
+auth.login-button,Accedi con myWorld,it_IT
+BenefitVouchers,Benefit Voucher,it_IT
+benefit_deal.item_quantity,Quantità:,it_IT
+benefit_deal.product.attribute.manufacturer_name,Marca:,it_IT
+cart.delete.button,Elimina,it_IT
+cart.include.vat,IVA inclusa,it_IT
+cart.shipping_standard,Spedizione standard,it_IT
+cart.total_wo_deals,Totale,it_IT
+checkout.currency.my_world.shopping_points,Shopping Points utilizzati,it_IT
+checkout.payment.myworld.payment_methods.balance_text,Bilancio,it_IT
+checkout.payment.myworld.payment_methods.method.cashback,Cashback,it_IT
+checkout.payment.myworld.payment_methods.method.evoucher,eVoucher,it_IT
+checkout.payment.myworld.payment_methods.method.evoucher_marketer,myWorld eVoucher (Marketer),it_IT
+checkout.payment.myworld.payment_methods.subtitle,Puoi scegliere tra i seguenti metodi di pagamento myWorld (facoltativo),it_IT
+checkout.payment.myworld.payment_methods.title,myWorld ePayment,it_IT
+checkout.payment.my_world.error.transaction_batch_failed,Il pagamento non è stato avviato a causa di un errore in un'altra transazione batch,it_IT
+checkout.payment.my_world.error.transaction_exceeded_value,L'importo di pagamento ha superato l'importo disponibile,it_IT
+checkout.payment.my_world.error.transaction_failed,Pagamento non riuscito,it_IT
+checkout.payment.my_world.error.transaction_option_not_found,Modalità di pagamento sconosciuta: pagamento non riuscito,it_IT
+checkout.step.benefit_deal.benefit_voucher,Importo totale del Benefit Voucher utilizzato,it_IT
+checkout.step.benefit_deal.error.amount_is_bigger_then_in_items,L'importo massimo dovrebbe essere %maxAmount% %currency% (massima quantità di Benefit Voucher). Si prega di verificare,it_IT
+checkout.step.benefit_deal.error.not_enough_benefit_voucher_balance,"Purtroppo, non hai abbastanza Benefit Voucher per acquistare questo prodotto a prezzo scontato. Quantità necessaria: %currency% %needAmount%, il tuo saldo: %currency% %balanceAmount%",it_IT
+checkout.step.benefit_deal.error.not_enough_shopping_points_balance,"Purtroppo, non hai abbastanza Shopping Points per acquistare questo prodotto a prezzo scontato",it_IT
+checkout.step.benefit_deal.error.not_spent_min_voucher_balance,"Gentile cliente, è necessario spendere almeno %needAmount% %currency% di Benefit Voucher per acquistare questo Deal.",it_IT
+checkout.step.benefit_deal.items,Items,it_IT
+checkout.step.benefit_deal.or,o,it_IT
+checkout.step.benefit_deal.title,Panoramica dell'ordine,it_IT
+checkout.step.benefit_deal.total_used_shopping_points,Shopping Points totali esauriti,it_IT
+checkout.step.benefit_deal.use_shopping_points,Usa i tuoi Shopping Points,it_IT
+checkout.step.benefit_deal.use_voucher,Usa i Benefit Voucher per ottenere uno sconto,it_IT
+checkout.step.benefit_deal.with_method,con,it_IT
+checkout.step.error.link,Vai al carrello,it_IT
+checkout.step.error.sub_title,Ordine non riuscito a causa dei seguenti errori:,it_IT
+checkout.step.summary.modal.email,E-mail:,it_IT
+checkout.step.summary.modal.email_radio_label,Genera un nuovo codice di verifica che verrà inviato tramite mail,it_IT
+checkout.step.summary.modal.error_session_expired,"La tua sessione di pagamento è scaduta, ti preghiamo di tornare alla fase precedente.",it_IT
+checkout.step.summary.modal.error_when_resending_by_sms,"Si è verificato un errore durante l'invio del codice via SMS, riprova più tardi.",it_IT
+checkout.step.summary.modal.info,Come vorresti ricevere il tuo codice PIN?,it_IT
+checkout.step.summary.modal.link,Non hai ricevuto un codice?,it_IT
+checkout.step.summary.modal.phone,Numero:,it_IT
+checkout.step.summary.modal.please_wait_30_seconds,Attendere 30 secondi per richiedere un nuovo codice.,it_IT
+checkout.step.summary.modal.resend_already_by_mail,Il codice è stato inviato tramite mail. Ricordati di controllare anche la tua cartella spam.,it_IT
+checkout.step.summary.modal.resend_already_by_sms,"Il codice è stato inviato tramite SMS, si prega di verificare.",it_IT
+checkout.step.summary.modal.resend_retry,Puoi provare a rimandarlo entro:,it_IT
+checkout.step.summary.modal.sms_radio_label,Genera un nuovo codice di verifica e ricevilo via SMS,it_IT
+checkout.step.summary.modal.submit,Invia codice PIN,it_IT
+checkout.step.summary.modal.title,Non hai ricevuto un codice PIN?,it_IT
+customer.balance.into,Hai:,it_IT
+customer.balance.my_world_benefit_voucher_account,Benefit Voucher,it_IT
+customer.balance.my_world_cashback_account,Cashback,it_IT
+customer.balance.my_world_e_voucher,eVoucher,it_IT
+customer.balance.my_world_e_voucher_on_behalf_of_marketer,myWorld eVoucher(Marketer),it_IT
+customer.balance.my_world_shopping_points_account,Shopping Points,it_IT
+customer.order.priceToPay,Somma,it_IT
+discount.internal.shopping_points,Shopping Points,it_IT
+error.429,Errore: troppe richieste sul server,it_IT
+merchant_product_offer.sold_by,Venduto da,it_IT
+merchant_product_offer.view_seller,Visualizza il rivenditore,it_IT
+merchant_profile.address,Indirizzo,it_IT
+merchant_profile.cancellation_policy,Politica di cancellazione,it_IT
+merchant_profile.delivery_time,Orario consegna,it_IT
+merchant_profile.email,Indirizzo e-mail,it_IT
+merchant_profile.imprint,Note legali,it_IT
+merchant_profile.phone,Telefono,it_IT
+merchant_profile.privacy,Privacy dei dati,it_IT
+merchant_profile.terms_and_conditions,Termini & Condizioni,it_IT
+oms.state.calculating_refund,Calcolo del rimborso,it_IT
+oms.state.failed,Non riuscito,it_IT
+oms.state.myworld_payment_pending,Pagamento myWorld in sospeso,it_IT
+oms.state.my_world_refunded,Rimborsato da myWorld,it_IT
+oms.state.my_world_refund_due_to_payment_failure,Pagamento non andato a buon fine. Rimborsato da myWorld,it_IT
+oms.state.my_world_refund_failed,Rimborso di myWorld non andato a buon fine,it_IT
+oms.state.processing_refund,Rimborso in elaborazione,it_IT
+oms.state.ready_for_refund,Pronto per il rimborso,it_IT
+oms.state.refunded,Rimborsato,it_IT
+oms.state.refund_failed,Rimborso non riuscito,it_IT
+oms.state.refund_pending,Rimborso in attesa,it_IT
+oms.state.refund_pending_next_try,Rimborso in attesa. Un secondo tentativo sarà eseguito a breve,it_IT
+oms.state.reserved,Prenotato,it_IT
+oms.state.turnover-cancelled,Transazione cancellata,it_IT
+oms.state.validating_refund,Convalida del rimborso,it_IT
+page.checkout.payment.3d_secure_text,"Assicurati che la carta di credito inserita sia stata verificata. Questo passaggio è necessario al fine di attivare il nostro protocollo di sicurezza 3-D. Senza questa verifica, la transazione non sarà possibile. Ti preghiamo di contattare il gestore della tua carta di credito per maggiori informazioni.",it_IT
+payment.payment_method.adyen_credit_card,Carta di credito,it_IT
+payment.payment_method.benefit_vouchers,Benefit Voucher,it_IT
+payment.payment_method.cashback,Cashback,it_IT
+payment.payment_method.dummy_prepayment,Pagamento anticipato,it_IT
+payment.payment_method.e_voucher,eVoucher,it_IT
+payment.payment_method.e_voucher_marketer,myWorld eVoucher(Marketer),it_IT
+payment.payment_method.paid,Pagato,it_IT
+payment.payment_provider.adyen,Adyen,it_IT
+payment.payment_provider.my_world,myWorld,it_IT
+payment.payment_provider.nopayment,Nessun pagamento,it_IT
+pdp.include.tax,Tassa inclusa,it_IT
+pdp.price,Prezzo,it_IT
+pdp.price.benefit_voucher_price,Benefit Voucher Deal,it_IT
+pdp.price.regular_price,Prezzo standard,it_IT
+pdp.price.shopping_points_price,Shopping Point Deal,it_IT
+product.filter.merchant_name,Merchant,it_IT
+product_detail_page.benefit_price.benefit_amount,max %amount%,it_IT
+product_detail_page.desclaimer_text,Disclaimer,it_IT
+product_item.benefit_deal.or,o,it_IT
+security_blocker_page.error.account_blocked,"Troppi tentativi di accesso dal tuo indirizzo. Per favore, aspetta %minutes% minuti prima di riprovare.",it_IT
+validator.check.phone,Numero di telefono non valido,it_IT
