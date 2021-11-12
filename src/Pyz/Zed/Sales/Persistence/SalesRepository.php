@@ -38,14 +38,23 @@ class SalesRepository extends SprykerSalesRepository implements SalesRepositoryI
 
     /**
      * @param array $stateIds
+     * @param string|null $storeName
      *
      * @return array
      */
-    public function getSpyOmsOrderItemStatesByIds(array $stateIds): array
+    public function getSpyOmsOrderItemStatesByIds(array $stateIds, ?string $storeName): array
     {
-        return $this->getFactory()->createOmsOrderItemStateQuery()
-            ->filterByIdOmsOrderItemState_In($stateIds)
-            ->find()
+        $query = $this->getFactory()->createOmsOrderItemStateQuery()
+            ->filterByIdOmsOrderItemState_In($stateIds);
+        if ($storeName) {
+            $query->useOrderItemQuery()
+                ->useOrderQuery()
+                ->filterByStore($storeName)
+                ->endUse()
+                ->endUse();
+        }
+
+        return $query->find()
             ->getData();
     }
 

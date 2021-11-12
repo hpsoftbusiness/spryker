@@ -21,10 +21,11 @@ interface SalesRepositoryInterface extends SprykerSalesRepositoryInterface
 
     /**
      * @param array $stateIds
+     * @param string|null $storeName
      *
      * @return array
      */
-    public function getSpyOmsOrderItemStatesByIds(array $stateIds): array;
+    public function getSpyOmsOrderItemStatesByIds(array $stateIds, ?string $storeName): array;
 
     /**
      * @param string $orderReference

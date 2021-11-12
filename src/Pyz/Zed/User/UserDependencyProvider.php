@@ -7,6 +7,11 @@
 
 namespace Pyz\Zed\User;
 
+use Pyz\Zed\UserStore\Communication\Plugin\Form\UserStoreFormExpanderPlugin;
+use Pyz\Zed\UserStore\Communication\Plugin\Table\UserStoreTableConfigExpanderPlugin;
+use Pyz\Zed\UserStore\Communication\Plugin\Table\UserStoreTableDataExpanderPlugin;
+use Pyz\Zed\UserStore\Communication\Plugin\User\AssignUserStorePreSavePlugin;
+use Pyz\Zed\UserStore\Communication\Plugin\User\UserStoreTransferExpanderPlugin;
 use Spryker\Zed\Acl\Communication\Plugin\GroupPlugin;
 use Spryker\Zed\AgentGui\Communication\Plugin\UserAgentFormExpanderPlugin;
 use Spryker\Zed\AgentGui\Communication\Plugin\UserAgentTableConfigExpanderPlugin;
@@ -52,6 +57,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
         return [
             new UserAgentFormExpanderPlugin(),
             new UserLocaleFormExpanderPlugin(),
+            new UserStoreFormExpanderPlugin(),
         ];
     }
 
@@ -62,6 +68,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserAgentTableConfigExpanderPlugin(),
+            new UserStoreTableConfigExpanderPlugin(),
         ];
     }
 
@@ -72,6 +79,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserAgentTableDataExpanderPlugin(),
+            new UserStoreTableDataExpanderPlugin(),
         ];
     }
 
@@ -82,6 +90,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new AssignUserLocalePreSavePlugin(),
+            new AssignUserStorePreSavePlugin(),
         ];
     }
 
@@ -92,6 +101,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserLocaleTransferExpanderPlugin(),
+            new UserStoreTransferExpanderPlugin(),
         ];
     }
 }
