@@ -63,6 +63,7 @@ class RefundDependencyProvider extends SprykerRefundDependencyProvider
         $this->addAclFacade($container);
         $this->addItemRefundCalculatorPlugin($container);
         $this->addExpenseRefundCalculatorPlugin($container);
+        $this->addCalculationFacade($container);
 
         return $container;
     }

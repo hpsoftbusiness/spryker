@@ -201,6 +201,7 @@
     "spryker/quote": "^2.14.3",
     "spryker/related-products-rest-api": "^1.3.2",
     "spryker/rest-request-validator": "^1.3.2",
+    "spryker/router": "^1.13.0",
     "spryker/sales-product-connector": "^1.4.0",
     "spryker/sales-returns-rest-api": "^1.0.0",
     "spryker/sales-statistics": "^1.2.0",
@@ -222,6 +223,7 @@
     "spryker/urls-rest-api": "^1.0.2",
     "spryker/uuid": "^1.0.0",
     "spryker/wishlists-rest-api": "^1.4.3",
+    "spryker/zed-navigation": "^1.12.0",
     "swiftmailer/swiftmailer": "^5.4.12",
     "symfony/http-client": "^5.2"
   },

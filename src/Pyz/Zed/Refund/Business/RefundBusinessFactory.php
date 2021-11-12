@@ -28,6 +28,7 @@ use Pyz\Zed\Refund\Business\RefundDetails\RefundDetailsCollector;
 use Pyz\Zed\Refund\Business\RefundDetails\RefundDetailsCollectorInterface;
 use Pyz\Zed\Refund\Business\Validator\RefundValidator;
 use Pyz\Zed\Refund\Business\Validator\RefundValidatorInterface;
+use Pyz\Zed\Refund\Persistence\RefundRepositoryInterface;
 use Pyz\Zed\Refund\RefundDependencyProvider;
 use Spryker\Zed\Refund\Business\Model\RefundCalculator\RefundCalculatorInterface as SpecifiedRefundCalculatorInterface;
 use Spryker\Zed\Refund\Business\Model\RefundSaverInterface;
@@ -147,6 +148,14 @@ class RefundBusinessFactory extends SprykerRefundBusinessFactory
             $this->getEntityManager(),
             $this->getRefundValidatorPlugins()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\Refund\Persistence\RefundRepositoryInterface
+     */
+    public function getRefundRepository(): RefundRepositoryInterface
+    {
+        return $this->getRepository();
     }
 
     /**

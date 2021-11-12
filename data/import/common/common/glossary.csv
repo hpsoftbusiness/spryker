@@ -3066,6 +3066,1542 @@ cart.add-to-shopping-list.form.error.empty_name,"Per favore, inserisci il nome d
 validator.check.phone,Invalid phone number,en_US
 validator.check.phone,ungültige Rufnummer,de_DE
 validator.check.phone,ungültige Rufnummer,de_AT
+account.newsletter.text,"Zapisz się do naszego newslettera i bądź zawsze na bieżąco! Otrzymuj informacje o najnowszych trendach w zakresie smartfonów i urządzeń do noszenia, najlepszych marek i świetnych ofertach.",pl_PL
+address.city,Miasto,pl_PL
+address.salutation,Pozdrowienie,pl_PL
+address.street,Ulica,pl_PL
+address.street_nr,Numer,pl_PL
+address.zip_code,Kod pocztowy,pl_PL
+AdyenCreditCard,Karta kredytowa,pl_PL
+adyen.payment.error.cc_cvv,Sprawdź kod CVC,pl_PL
+adyen.payment.error.cc_month,Sprawdź miesiąc karty kredytowej,pl_PL
+adyen.payment.error.cc_number,Sprawdź numer karty kredytowej,pl_PL
+adyen.payment.error.cc_year,Sprawdź rok karty kredytowej,pl_PL
+afiliate.legal.text,"Ten produkt jest sprzedawany przez sprzedawcę będącego stroną trzecią. Sprzedawca ponosi wyłączną odpowiedzialność za ceny, opis produktów, stany magazynowe i wysyłkę. Jeśli chodzi o odpowiedzialność myWorld za hiperłącza i ich zawartość, odnosimy się do warunków korzystania z myWorld marketplace.",pl_PL
+agent.account.overview,Przegląd,pl_PL
+agent.account.page_title,Agent,pl_PL
+agent.account.profile_data,Profil agenta,pl_PL
+agent.account.quote_request,Prośby o wycenę,pl_PL
+agent.authentication.failed,Uwierzytelnianie nie powiodło się,pl_PL
+agent.autocomplete.no_results,Nie znaleziono wyników,pl_PL
+agent.confirm_user_selection,Potwierdzać,pl_PL
+agent.control_bar.customer_name,Klient:,pl_PL
+agent.control_bar.logout,Wyloguj,pl_PL
+agent.control_bar.logout_as_customer,Pomoc dla klientów końcowych,pl_PL
+agent.control_bar.username,Agent:,pl_PL
+agent.login.email,E-mail,pl_PL
+validator.check.phone,Błędny numer telefonu. Poprawny format to: +48600325353,pl_PL
+validator.check.phone,Please enter correct phone number. For example number format: +16465573700,en_US
+validator.check.phone,Bitte geben Sie die richtige Telefonnummer ein. Zum Beispiel Nummernformat: +4930200990,de_DE
+validator.check.phone,Bitte geben Sie die richtige Telefonnummer ein. Zum Beispiel Nummernformat: +4330200990,de_AT
+agent.login.password,Hasło,pl_PL
+agent.login.title,Uzyskaj dostęp do swojego konta,pl_PL
+auth.email,E-mail,pl_PL
+auth.im-already-customer,mam już konto,pl_PL
+auth.im-new-customer,Nowy klient,pl_PL
+auth.login,Zapisz się,pl_PL
+auth.password,Hasło,pl_PL
+auth.password-forgot,Zapomniany?,pl_PL
+auth.register,Zarejestrować,pl_PL
+autocomplete.placeholder,Szukaj,pl_PL
+availability_notification.do_not_notify_me,"Nie powiadamiaj mnie, gdy będzie ponownie w magazynie",pl_PL
+availability_notification.email_address,Adres e-mail,pl_PL
+availability_notification.notify_me,"Powiadom mnie, gdy będzie ponownie w magazynie",pl_PL
+availability_notification.subscribed,Pomyślnie zasubskrybowano,pl_PL
+availability_notification_subscription.mail.copyright,"<em> Copyright © nazwa firmy z bieżącego roku, wszelkie prawa zastrzeżone. </em> <br> <br>",pl_PL
+availability_notification_subscription.mail.notification.body,"Koniec oczekiwania, możesz teraz dodać ten produkt do koszyka.",pl_PL
+availability_notification_subscription.mail.notification.buy_now,Kup Teraz,pl_PL
+availability_notification_subscription.mail.notification.head,% name% jest ponownie dostępny!,pl_PL
+availability_notification_subscription.mail.notification.subject,% name% jest ponownie dostępny!,pl_PL
+availability_notification_subscription.mail.subscribed.body,"Otrzymasz wiadomość e-mail, gdy produkt będzie ponownie dostępny",pl_PL
+availability_notification_subscription.mail.subscribed.head,Właśnie poinformowaliśmy nasz zespół zakupowy o Twojej subskrypcji!,pl_PL
+availability_notification_subscription.mail.subscribed.subject,Właśnie poinformowaliśmy nasz zespół zakupowy o Twojej subskrypcji!,pl_PL
+availability_notification_subscription.mail.unsubscribe,"Chcesz zmienić sposób otrzymywania tych e-maili? <br> Możesz <a target = ""_ blank"" href = ""% link%"" style = ""mso-line-height-rule: dokładnie; -ms-text-size-adjust: 100%; - webkit-text-size-adjust: 100%; color: # 656565; font-weight: normal; text-decoration: underline; ""> wypisz się z tej listy </a>.",pl_PL
+cart.add-to-shopping-list.form.placeholder,Wpisz nazwę nowej listy zakupów,pl_PL
+cart.cart,Wózek,pl_PL
+cart.checkout,Sprawdzić,pl_PL
+cart.code.apply.failed,Nie można zastosować kodu,pl_PL
+cart.code.enter-code,Wpisz kod kuponu / karty podarunkowej,pl_PL
+cart.discounts,Rabaty,pl_PL
+cart.empty.button,Sprawdź oferty,pl_PL
+cart.empty.description,"Jedynym pragnieniem koszyka jest zbieranie dla Ciebie najlepszych ofert, prezentów i wielu innych wspaniałych produktów. Spełnij więc życzenie swojego koszyka i nadaj mu sens!",pl_PL
+cart.empty.title,Twój koszyk jest pusty!,pl_PL
+cart.giftcard.apply.failed,Karta podarunkowa nie ma zastosowania,pl_PL
+cart.giftcard.apply.successful,Kod Twojej karty podarunkowej został zastosowany,pl_PL
+cart.giftcard.label,Karta podarunkowa,pl_PL
+cart.item_attributes_needed,Wybierz więcej atrybutów,pl_PL
+cart.item.bundle.description,Przedmioty w pakiecie:,pl_PL
+cart.item.item_price,Cena przedmiotu,pl_PL
+cart.item.item_total,Suma pozycji,pl_PL
+cart.item.option.description,Opcje produktu:,pl_PL
+cart.item.option.pre.check.validation.error.exists,"Nie możesz bezpośrednio ponownie zamówić produktu% name%, dodaj go do koszyka osobno.",pl_PL
+cart.item_quantity,Ilość,pl_PL
+cart.item.remove.confirm,Czy na pewno chcesz usunąć ten element?,pl_PL
+cart.item.sku,SKU,pl_PL
+cart_note.cart_page.cart.note_added,Notatka została pomyślnie dodana do koszyka,pl_PL
+cart_note.cart_page.item.note_added,Notatka została pomyślnie dodana do pozycji „% sku%”,pl_PL
+cart_note.checkout_page.item_note,Uwaga,pl_PL
+cart_note.checkout_page.quote_note,Uwaga do koszyka,pl_PL
+cart_note.customer_page.item_note,Pozycja zamówienia Uwaga,pl_PL
+cart_note.customer_page.order_note,Uwaga do zamówienia,pl_PL
+cart_note.form.save,Zapisać,pl_PL
+cart_note.item_form.enter_note,Dodaj notatkę do przedmiotu,pl_PL
+cart_note.item_form.placeholder,Wpisz swoją notatkę,pl_PL
+cart_note.quote_form.enter_note,Dodaj notatkę do koszyka,pl_PL
+cart_note.quote_form.placeholder,Wpisz swoją notatkę,pl_PL
+cart.note-title,Uwaga do koszyka,pl_PL
+cart_page.error_message.unexpected_error,Wystąpił niespodziewany błąd.,pl_PL
+cart.pre.check.affiliate.failed,Nie można dodać przedmiotu% sku% do koszyka.,pl_PL
+cart.pre.check.availability.failed,Element% sku% ma tylko dostępność% stock%.,pl_PL
+cart.pre.check.availability.failed.empty,Element% sku% nie jest już dostępny.,pl_PL
+cart.pre.check.price.failed,Nie znaleziono ceny w wybranej walucie dla produktu o numerze SKU „% sku%”. Zmień walutę lub usuń produkt z zamówienia.,pl_PL
+cart.pre.check.product_discontinued,Produkt „% name%” został wycofany. Wybierz inny.,pl_PL
+cart.pre.check.quantity.interval.failed,Wymagania dotyczące przedziału ilościowego dla SKU produktu „% sku%” nie są spełnione.,pl_PL
+cart.pre.check.quantity.max.failed,Przekroczono maksymalną ilość dla SKU produktu „% sku%”.,pl_PL
+cart.pre.check.quantity.min.failed,Minimalne wymagania dotyczące ilości dla SKU produktu „% sku%” nie są spełnione.,pl_PL
+cart.pre.check.quantity.value.failed,Niewłaściwa ilość dla SKU produktu „% sku%”.,pl_PL
+cart.pre.check.shipment.failed,Nie można zastosować tych zmian. Nie znaleziono metody wysyłki. Wybierz inną metodę wysyłki.,pl_PL
+cart.price,Cena £,pl_PL
+cart.price.grand.total,Całkowita kwota,pl_PL
+cart.price.subtotal,Suma częściowa,pl_PL
+cart.price.subtotal_wo_deals,Suma częściowa,pl_PL
+cart.product-option,Opcje produktu,pl_PL
+cart.promotion.items,Produkty promocyjne,pl_PL
+cart.quantity.adjusted,"Żądana ilość pozycji została dostosowana, ponieważ wybrana ilość nie jest dostępna.",pl_PL
+cart.remove.items.success,Produkty zostały pomyślnie usunięte,pl_PL
+cart.sales-order-threshold,Minimalna wartość zamówienia,pl_PL
+cart.select.default_value,Wybierz wartość,pl_PL
+cart.shipping,Wysyłka ,pl_PL
+cart.shipping.order-item,+ Wysyłka,pl_PL
+cart.title_content,Wózek sklepowy,pl_PL
+cart.title_sidebar,Przegląd zamówienia,pl_PL
+cart.total,Całkowity,pl_PL
+cart.total.discount,Zniżka,pl_PL
+cart.total.price_to_pay,Kwota do zapłaty,pl_PL
+cart.total.tax_total,Podatek,pl_PL
+cart.validate.items.price.changed,Ceny produktów z kodem SKU „% sku%” zostały zmienione.,pl_PL
+cart.voucher.apply.failed,Twój kod kuponu jest nieprawidłowy.,pl_PL
+cart.voucher.apply.non_applicable,Kod kuponu jest nieprawidłowy,pl_PL
+cart.voucher.apply.successful,Twój kod kuponu został zastosowany,pl_PL
+cart.voucher.redeem,Zrealizuj kod,pl_PL
+cart.voucher.remove,Usunąć,pl_PL
+cart.vouchers,Kupony,pl_PL
+cart.vouchers.clear-all,Wyczyść wszystko,pl_PL
+cart.voucher-title,Kod rabatowy,pl_PL
+cart_widget.empty_text,Twój koszyk jest pusty. Wypełnij go wszystkimi swoimi nadziejami i marzeniami dotyczącymi technologii.,pl_PL
+cart.your-order,Twoje zamówienie,pl_PL
+catalog.currency,€,pl_PL
+catalog.filter.active,Aktywny filtr,pl_PL
+catalog.filter.activeFilters,Aktywne filtry,pl_PL
+catalog.filter.active_rating_up,Gwiazdy i więcej,pl_PL
+catalog.filter.button,Zastosować,pl_PL
+catalog.filter.extras,Inne cechy,pl_PL
+catalog.filter.filter,Filtry / sortowanie,pl_PL
+catalog.filter.hide,ukryj filtr,pl_PL
+catalog.filter.main_color,Kolor,pl_PL
+catalog.filter.per,Na stronę,pl_PL
+catalog.filter.pricerangeFrom,z,pl_PL
+catalog.filter.pricerangeTo,do,pl_PL
+catalog.filter.rangeFrom,Zasięg,pl_PL
+catalog.filter.rangeTo,do,pl_PL
+catalog.filter.rating_up,& W górę,pl_PL
+catalog.filter.resetAllFilters,Zresetuj wszystkie filtry,pl_PL
+catalog.filter_section.show_all,Pokaż więcej,pl_PL
+catalog.filter_section.show_less,Pokaż mniej,pl_PL
+catalog.filter.show,włóż filtr,pl_PL
+catalog.itemsFound,Wyniki,pl_PL
+catalog.loading,Ładowanie,pl_PL
+catalog.new,Nowy,pl_PL
+catalog.next,kontyntynuj,pl_PL
+catalog.no-results,Brak wyników.,pl_PL
+catalog.prev,z powrotem,pl_PL
+catalog.sale,Sprzedaż,pl_PL
+catalog.sort,Sortowanie,pl_PL
+catalog.sort.by,Sortuj według,pl_PL
+catalog.sort.name_asc,Nazwa rosnąco,pl_PL
+catalog.sort.name_desc,Nazwa malejąco,pl_PL
+catalog.sort.price_asc,Cena rosnąco,pl_PL
+catalog.sort.price_desc,Cena malejąco,pl_PL
+catalog.sort.rating,Oceny produktów,pl_PL
+catalog.sort.relevance,Stosowność,pl_PL
+catalog.view.mode.grid,Krata,pl_PL
+catalog.view.mode.list,Lista,pl_PL
+checkout.customer.auth_as_guest,Kup jako gość,pl_PL
+checkout.customer.auth_as_login,Zaloguj sie,pl_PL
+checkout.customer.auth_as_user,Zapisz się,pl_PL
+checkout.customer.order_as_guest,Zamów jako gość,pl_PL
+checkout.customer.proceed_as_guest,Postępuj jako gość,pl_PL
+checkout.customer.proceed_as_user,Postępuj jako zarejestrowany użytkownik (zarejestruj się),pl_PL
+checkout.giftcard.label,Karta podarunkowa,pl_PL
+checkout.nothing.will.be.sent,Dlatego oczywiście nic nie zostanie wysłane!,pl_PL
+checkout.payment.cashback_balance,Saldo zwrotu gotówki / eVouchera myWorld:,pl_PL
+checkout.payment.cashback_info,"Jeśli masz doładowanie Cashback lub eVoucher myWorld, zostanie to pokazane tutaj i możesz je wykorzystać do dokonania płatności. <br/> Uwaga: Można ich używać tylko jako płatności za przedmioty sprzedawane przez myWorld.",pl_PL
+checkout.payment.checkbox.use_evoucher_balance,Użyj% price% swojego% balance% Cashback / salda myWorld eVoucher,pl_PL
+checkout.payment_method.invalid,Płatność w ramach kasy jest nieprawidłowa,pl_PL
+checkout.payment.provider.DummyPayment,Metody Płatności,pl_PL
+checkout.payment.provider.payment_methods,Metody Płatności,pl_PL
+checkout.pre.check.shipment.failed,Nieprawidłowa metoda wysyłki% nazwa_metody% (% carrier_name%).,pl_PL
+checkout.sales-order-threshold,Minimalna wartość zamówienia,pl_PL
+checkout.step.address.is_sellable,"Drogi Kliencie, niestety produkty nie są dostępne w Twoim adresie dostawy.",pl_PL
+checkout.step.address.select_address,Wybierz adres,pl_PL
+checkout.step.address.title,Adres,pl_PL
+checkout.step.confirm_payment.error,Coś poszło nie tak z płatnością,pl_PL
+checkout.step.customer.title,Zaloguj sie,pl_PL
+checkout.step.error.text,Coś poszło nie tak. Przepraszam.,pl_PL
+checkout.step.error.title,Twoje zamówienie nie zostało złożone.,pl_PL
+checkout.step.payment,Przejdź do płatności,pl_PL
+checkout.step.payment.must_be_older_than_18_years,Musisz mieć co najmniej 18 lat.,pl_PL
+checkout.step.payment.title,Zapłata,pl_PL
+checkout.step.place.order,Prześlij zamówienie,pl_PL
+checkout.step.shipment,Przejdź do wysyłki,pl_PL
+checkout.step.shipment.provider.a,DHL,pl_PL
+checkout.step.shipment.provider.b,Hermes,pl_PL
+checkout.step.shipment.title,Wysyłka,pl_PL
+checkout.step.success.link,Przejdź do „Moje konto”,pl_PL
+checkout.step.success.sub_title,Twoje zamówienie zostało pomyślnie złożone.,pl_PL
+checkout.step.success.text,W ciągu kilku minut otrzymasz wiadomość e-mail z potwierdzeniem zamówienia. Możesz sprawdzić i śledzić swoje zamówienie na swoim koncie.,pl_PL
+checkout.step.success.title,Dziękuję Ci.,pl_PL
+checkout.step.summary,Przejdź do podsumowania,pl_PL
+checkout.step.summary.billing_address,Adres rozliczeniowy,pl_PL
+checkout.step.summary.delivery_address,Adres dostawy,pl_PL
+checkout.step.summary.delivery_method,Sposób dostawy,pl_PL
+checkout.step.summary.grand_total,Łączna suma,pl_PL
+checkout.step.summary.items,Przedmiotów,pl_PL
+checkout.step.summary.overview,Przegląd,pl_PL
+checkout.step.summary.payment,Zapłata,pl_PL
+checkout.step.summary.products,Produkty,pl_PL
+checkout.step.summary.requested_delivery_date,Wymagana data dostawy,pl_PL
+checkout.step.summary.shipment_costs_total,Koszty przesyłki (łącznie),pl_PL
+checkout.step.summary.shipping,Wysyłka,pl_PL
+checkout.step.summary.sms_code_input_error,Kod SMS był nieprawidłowy,pl_PL
+checkout.step.summary.sms_code_send_error,Wysyłanie kodu SMS zakończyło się błędem,pl_PL
+checkout.step.summary.sub_total,Suma częściowa,pl_PL
+checkout.step.summary.tax,Podatek,pl_PL
+checkout.step.summary.title,streszczenie,pl_PL
+checkout.step.summary.total,Kompletna płatność,pl_PL
+checkout.step.summary.tracking_code,Kod śledzenia dostawy,pl_PL
+checkout.step.summary.uid,UID,pl_PL
+checkout.step.summary.with_method,Z,pl_PL
+checkout.summary.item.bundle.description,Przedmioty w pakiecie:,pl_PL
+checkout.summary.item.option.description,Opcje produktu:,pl_PL
+checkout.thank.you,Dziękuję Ci,pl_PL
+checkout.this.is.shop,To jest sklep demo,pl_PL
+cms.page.filter.per,Na stronę,pl_PL
+cms.page.itemsFound,Znalezione przedmioty,pl_PL
+cms.page.sort.name_asc,Sortuj według nazwy rosnąco,pl_PL
+cms.page.sort.name_desc,Sortuj malejąco według nazwy,pl_PL
+cms.page.sort.relevance,Sortuj według trafności,pl_PL
+cms.preview.access_denied,Nie jesteś zalogowany lub nie masz uprawnień dostępu do tej strony.,pl_PL
+cms-product-group.category.link.text,Przeglądaj więcej,pl_PL
+company.account,Konto firmowe,pl_PL
+company.account.add_new_address,Zdefiniuj nowy adres,pl_PL
+company.account.address,Adresy,pl_PL
+company.account.address.address1,Ulica,pl_PL
+company.account.address.address3,Dodatek do adresu,pl_PL
+company.account.address.city,Miasto,pl_PL
+company.account.address.country,Kraj,pl_PL
+company.account.address.delete,Kasować,pl_PL
+company.account.address.edit,Edytować,pl_PL
+company.account.address.is_default_billing,To domyślny adres rozliczeniowy,pl_PL
+company.account.address.number,Numer,pl_PL
+company.account.address.phone,Numer telefonu,pl_PL
+company.account.address.zip_code,Kod pocztowy,pl_PL
+company.account.authorization.success,Pomyślnie zarejestrowano,pl_PL
+company.account.billing_address,domyślny adres rozliczeniowy,pl_PL
+company.account.business_unit,Jednostki biznesowe,pl_PL
+company.account.business_unit.add,Utwórz jednostkę biznesową,pl_PL
+company.account.business_unit.address,Adresy,pl_PL
+company.account.business_unit.create,Stwórz,pl_PL
+company.account.business_unit.delete,Kasować,pl_PL
+company.account.business_unit.delete.confirmation.warning,Ostrzeżenie,pl_PL
+company.account.business_unit.details,Detale,pl_PL
+company.account.business_unit.edit,Edytować,pl_PL
+company.account.business_unit.edit_information,Edytować,pl_PL
+company.account.business_unit.email,E-mail,pl_PL
+company.account.business_unit.external_url,Zewnętrzny adres URL,pl_PL
+company.account.business_unit.name,Nazwa,pl_PL
+company.account.business_unit.phone,Numer telefonu,pl_PL
+company.account.business_unit.view,Widok,pl_PL
+company.account.company_name,Nazwa firmy,pl_PL
+company.account.company_role,Role,pl_PL
+company.account.company_role.add,Dodaj nową rolę,pl_PL
+company.account.company_role.default,Domyślna,pl_PL
+company.account.company_role.details,Detale,pl_PL
+company.account.company_role.edit,Edytować,pl_PL
+company.account.company_role.edit_information,Edytuj informacje o roli,pl_PL
+company.account.company_role.is_default,Jest domyślna,pl_PL
+company.account.company_role.name,Nazwa,pl_PL
+company.account.company_role.permission.assign,Przydzielać,pl_PL
+company.account.company_role.permission.assigned,Przydzielony,pl_PL
+company.account.company_role.permission.configure,Skonfiguruj,pl_PL
+company.account.company_role.permission.key,Klucz,pl_PL
+company.account.company_role.permission.manage,Zarządzaj uprawnieniami,pl_PL
+company.account.company_role.permissions,Uprawnienia,pl_PL
+company.account.company_role.permission.status,Status,pl_PL
+company.account.company_role.permission.unassign,Anuluj przypisanie,pl_PL
+company.account.company_role.permission.unassigned,Nieprzypisany,pl_PL
+company.account.company_role.user.manage,Zarządzaj przypisanymi użytkownikami firmy,pl_PL
+company.account.company_role.users,Użytkownicy,pl_PL
+company.account.company_role.view,Widok,pl_PL
+company.account.company_user,Użytkownicy,pl_PL
+company.account.company_user.add,Dodaj nowego użytkownika,pl_PL
+company.account.company_user.business_unit,Jednostka biznesowa,pl_PL
+company.account.company_user.delete,Kasować,pl_PL
+company.account.company_user.delete.back,Z powrotem,pl_PL
+company.account.company_user.delete.successful,Użytkownik został usunięty,pl_PL
+company.account.company_user.disable,Wyłączyć,pl_PL
+company.account.company_user.edit,Edytować,pl_PL
+company.account.company_user.edit_information,Edytuj informacje o użytkowniku,pl_PL
+company.account.company_user.enable,Włączyć,pl_PL
+company.account.company_user.name,Nazwa,pl_PL
+company.account.company_user.role,Rola,pl_PL
+company.account.company_user.status.disable.error,Nie można wyłączyć użytkownika firmowego,pl_PL
+company.account.company_user.status.disable.error.cannot_disable_yourself,Nie możesz się wyłączyć,pl_PL
+company.account.company_user.status.disable.success,Użytkownik firmowy został pomyślnie wyłączony,pl_PL
+company.account.company_user.status.enable.error,Nie można włączyć użytkownika firmowego,pl_PL
+company.account.company_user.status.enable.error.cannot_enable_yourself,Nie możesz sobie pozwolić,pl_PL
+company.account.company_user.status.enable.success,Użytkownik firmowy został pomyślnie włączony,pl_PL
+company.account.edit_address_information,Edytuj informacje adresowe,pl_PL
+company.account.login.email,E-mail,pl_PL
+company.account.login.password,Hasło,pl_PL
+company.account.login.title,Uzyskaj dostęp do swojego konta,pl_PL
+company.account.name,Nazwa firmy,pl_PL
+company.account.overview,Przegląd,pl_PL
+company.account.page-title,Moja firma,pl_PL
+company.account.registration.title,Utwórz konto,pl_PL
+company.account.shipping_address,Domyślny adres dostawy,pl_PL
+company.account.table.actions,działania,pl_PL
+company.address.heading,Dane firmy,pl_PL
+company.company_business_unit.delete.error.has_users,"Nie można usunąć jednostki biznesowej, która zawiera użytkowników",pl_PL
+company.company_role.delete.error.has_users,"Nie możesz usunąć roli, gdy zawiera ona użytkowników",pl_PL
+company_page.company_business_unit_restricted_message,Nie masz uprawnień do wykonania tej operacji,pl_PL
+company_page.company_user_restricted_message,Stali klienci nie mogą działać na stronach firmowych,pl_PL
+company_user.business_on_behalf.error.company_not_active,"Nie możesz wybrać tego użytkownika firmowego, firma nie jest aktywna.",pl_PL
+company_user.business_on_behalf.error.company_user_invalid,"Nie możesz wybrać tego użytkownika firmowego, jest on nieprawidłowy.",pl_PL
+company_user.change_company_user,Zmień użytkownika firmowego,pl_PL
+company.user.first_name,Imię,pl_PL
+company.user.invitation.accepted,Twoje zaproszenie zostało już wykorzystane,pl_PL
+company.user.invitation.actions,działania,pl_PL
+company.user.invitation.business.unit,Jednostka biznesowa,pl_PL
+company.user.invitation.delete.button,Kasować,pl_PL
+company.user.invitation.delete.confirmation.question,Czy na pewno chcesz usunąć zaproszenie?,pl_PL
+company.user.invitation.deleted.error.message,Zaproszenie nie zostało usunięte,pl_PL
+company.user.invitation.deleted.success.message,Zaproszenie zostało pomyślnie usunięte,pl_PL
+company.user.invitation.delete.title,Usuń zaproszenie,pl_PL
+company.user.invitation.expired,Twoje zaproszenie wygasło,pl_PL
+company.user.invitation.file,Plik zaproszeń,pl_PL
+company.user.invitation.first.name,Imię,pl_PL
+company.user.invitation.import.download.errors.file,"Nie udało się zaimportować niektórych zaproszeń. Kliknij <a href=""""%link%""""> tutaj </a>, aby pobrać plik błędów",pl_PL
+company.user.invitation.imported.title.plural,Zaimportowane zaproszenia,pl_PL
+company.user.invitation.import.error.message,Import zaproszeń nie powiódł się,pl_PL
+company.user.invitation.import.file.invalid,Plik importu jest nieprawidłowy,pl_PL
+company.user.invitation.import.title,Importuj nowe zaproszenia,pl_PL
+company.user.invitation.invalid,Twoje zaproszenie jest nieważne,pl_PL
+company.user.invitation.invite_users,Zaproś użytkowników,pl_PL
+company.user.invitation.last.name,Nazwisko,pl_PL
+company.user.invitation.mail,Poczta,pl_PL
+company.user.invitation.not.found.message,Nie znaleziono zaproszenia,pl_PL
+company.user.invitation.resend.button,Wysłać ponownie,pl_PL
+company.user.invitation.resend.confirmation.question,Czy na pewno chcesz ponownie wysłać zaproszenie?,pl_PL
+company.user.invitation.resend.title,Wyślij ponownie zaproszenie,pl_PL
+company.user.invitation.resent.error.message,Zaproszenie nie zostało wysłane ponownie,pl_PL
+company.user.invitation.resent.success.message,Zaproszenie zostało wysłane ponownie,pl_PL
+company.user.invitation.send.all.button,Wyślij wszystko,pl_PL
+company.user.invitation.send.button,Wysłać,pl_PL
+company.user.invitation.sent.all.error.message,Nie udało się wysłać niektórych zaproszeń,pl_PL
+company.user.invitation.sent.all.none.found.message,Nie znaleziono zaproszeń do wysłania,pl_PL
+company.user.invitation.sent.all.success.message,Wszystkie zaproszenia zostały wysłane pomyślnie,pl_PL
+company.user.invitation.sent.error.message,Zaproszenie nie zostało wysłane,pl_PL
+company.user.invitation.sent.success.message,Zaproszenie wysłane pomyślnie,pl_PL
+company.user.invitation.status,Status,pl_PL
+company.user.invitation.status.accepted,Przyjęty,pl_PL
+company.user.invitation.status.new,Nie wysłane,pl_PL
+company.user.invitation.status.pending,W oczekiwaniu,pl_PL
+company.user.invitation.title.plural,Zaproszenia,pl_PL
+company.user.last_name,Nazwisko,pl_PL
+company_user.no_company,Brak firmy,pl_PL
+company_user.remember_choice,Pamiętaj o wyborze,pl_PL
+company.user.salutation.dr,Dr.,pl_PL
+company.user.salutation.mr,Pan.,pl_PL
+company.user.salutation.mrs,Pani.,pl_PL
+company.user.salutation.ms,SM.,pl_PL
+configurable_bundle_note.enter_note,Dodaj notatkę do skonfigurowanego pakietu,pl_PL
+configurable_bundle_note.form.save,Zapisać,pl_PL
+configurable_bundle_note.note,Skonfigurowany pakiet Uwaga:,pl_PL
+configurable_bundle_note.note_added,Notatka została pomyślnie dodana do skonfigurowanego pakietu,pl_PL
+configurable_bundle_page.choose_bundle_to_configure,Wybierz pakiet do skonfigurowania,pl_PL
+configurable_bundle_page.configurable_bundle_list,Konfigurowalna lista pakietów,pl_PL
+configurable_bundle_page.configurator,Konfigurator,pl_PL
+configurable_bundle_page.configurator.added_to_cart,Skonfigurowany pakiet został pomyślnie dodany do koszyka.,pl_PL
+configurable_bundle_page.configurator.add_to_cart,Dodaj do koszyka,pl_PL
+configurable_bundle_page.configurator.product_became_unavailable,Produkt z kodem SKU „% sku%” skonfigurowanym dla boksu o identyfikatorze „% id%” stał się niedostępny.,pl_PL
+configurable_bundle_page.configurator.selected_product,Wybrany produkt,pl_PL
+configurable_bundle_page.configurator.sku,SKU:,pl_PL
+configurable_bundle_page.configurator.slot_became_unavailable,Skonfigurowany slot o identyfikatorze „% id%” stał się niedostępny.,pl_PL
+configurable_bundle_page.configurator.slot_page.back_link,Powrót do pakietów,pl_PL
+configurable_bundle_page.configurator.summary,streszczenie,pl_PL
+configurable_bundle_page.configurator.summary_page_locked,"Aby przejść na stronę Podsumowanie, należy skonfigurować produkt dla co najmniej jednego boksu.",pl_PL
+configurable_bundle_page.configurator.summary_page_total,Całkowity,pl_PL
+configurable_bundle_page.configurator.templates_not_found,Brak dostępnych szablonów.,pl_PL
+configurable_bundle_page.configurator.tip.header,Stwórz swój własny pakiet.,pl_PL
+configurable_bundle_page.configurator.tip.text,"Aby utworzyć paczkę, wybierz slot z lewej strony i wybierz produkt z listy.",pl_PL
+configurable_bundle_page.edit,Edytować,pl_PL
+configurable_bundle_page.invalid_template_slot_combination,Nieprawidłowa kombinacja szablonu / boksu.,pl_PL
+configurable_bundle_page.select,Wybierz,pl_PL
+configurable_bundle_page.template_not_found,Nie znaleziono konfigurowalnego szablonu pakietu.,pl_PL
+configurable_bundle_page.unselect,Odznacz,pl_PL
+configurable_bundle.slot.validation.error.not_exists,Konfigurowalny boks szablonu pakietu nie istnieje.,pl_PL
+configurable_bundle.templates.configurable-bundle-all-in.name,Wszystko w,pl_PL
+configurable_bundle.template_slots.slot-1.name,Slot 1,pl_PL
+configurable_bundle.template_slots.slot-2.name,Gniazdo 2,pl_PL
+configurable_bundle.template_slots.slot-3.name,Gniazdo 3,pl_PL
+configurable_bundle.template_slots.slot-4.name,Slot 4,pl_PL
+configurable_bundle.template_slots.slot-5.name,Slot 5,pl_PL
+configurable_bundle.template_slots.slot-6.name,Gniazdo 6,pl_PL
+configurable_bundle.templates.smartstation.name,Zestaw Smartstation,pl_PL
+configurable_bundle.template.validation.error.already_activated,Konfigurowalny szablon pakietu jest już aktywowany.,pl_PL
+configurable_bundle.template.validation.error.already_deactivated,Konfigurowalny szablon pakietu jest już dezaktywowany.,pl_PL
+configurable_bundle.template.validation.error.not_exists,Konfigurowalny szablon pakietu nie istnieje.,pl_PL
+configured_bundle.bundle_total,Łącznie w pakiecie:,pl_PL
+configured_bundle_cart.error.configured_bundle_cannot_be_added,Nie można dodać skonfigurowanego pakietu do koszyka.,pl_PL
+configured_bundle_cart.error.configured_bundle_cannot_be_removed,Skonfigurowanego pakietu nie można usunąć z koszyka.,pl_PL
+configured_bundle_cart.error.configured_bundle_cannot_be_updated,Nie można zaktualizować skonfigurowanego pakietu.,pl_PL
+configured_bundle_cart.error.configured_bundle_not_found,Nie znaleziono skonfigurowanego pakietu z dostarczonym kodem SKU w koszyku.,pl_PL
+configured_bundle.item_sku,SKU:,pl_PL
+configured_bundle_note_widget.edit_note,Edytować,pl_PL
+configured_bundle_note_widget.remove_note,Usunąć,pl_PL
+configured_bundle.order.items,Przedmioty w pakiecie:,pl_PL
+configured_bundle.price,Cena przedmiotu:,pl_PL
+configured_bundle.quantity,Ilość:,pl_PL
+configured_bundle.remove,Usunąć,pl_PL
+configured_bundle.total,Suma pozycji:,pl_PL
+configured_bundle_widget.configured_bundle.removed,Skonfigurowany pakiet został pomyślnie usunięty.,pl_PL
+configured_bundle_widget.configured_bundle.updated,Skonfigurowany pakiet został pomyślnie zaktualizowany.,pl_PL
+configured_bundle_widget.items,Przedmiotów,pl_PL
+configured_bundle_widget.multiplier,x,pl_PL
+countries.iso.AT,Austria,pl_PL
+countries.iso.BE,Belgia,pl_PL
+countries.iso.BG,Bułgaria,pl_PL
+countries.iso.CH,Szwajcaria,pl_PL
+countries.iso.CY,Cypr,pl_PL
+countries.iso.CZ,Republika Czeska,pl_PL
+countries.iso.DE,Niemcy,pl_PL
+countries.iso.DK,Dania,pl_PL
+countries.iso.EE,Estonia,pl_PL
+countries.iso.ES,Hiszpania,pl_PL
+countries.iso.FI,Finlandia,pl_PL
+countries.iso.FR,Francja,pl_PL
+countries.iso.GB,Zjednoczone Królestwo,pl_PL
+countries.iso.GR,Grecja,pl_PL
+countries.iso.HR,Chorwacja,pl_PL
+countries.iso.HU,Węgry,pl_PL
+countries.iso.IE,Irlandia,pl_PL
+countries.iso.IM,Wyspa Man,pl_PL
+countries.iso.IT,Włochy,pl_PL
+countries.iso.LT,Litwa,pl_PL
+countries.iso.LU,Luksemburg,pl_PL
+countries.iso.LV,Łotwa,pl_PL
+countries.iso.MC,Monako,pl_PL
+countries.iso.MT,Malta,pl_PL
+countries.iso.NL,Holandia,pl_PL
+countries.iso.NO,Norwegia,pl_PL
+countries.iso.PL,Polska,pl_PL
+countries.iso.PT,Portugalia,pl_PL
+countries.iso.RO,Rumunia,pl_PL
+countries.iso.SE,Szwecja,pl_PL
+countries.iso.SI,Słowenia,pl_PL
+countries.iso.SK,Słowacja,pl_PL
+customer.access.cannot_see_price,"Zaloguj się, aby zobaczyć cenę",pl_PL
+customer.account,Konto klienta,pl_PL
+customer.account.additional_addresses,Dodatkowe adresy,pl_PL
+customer.account.add_new_address,Zdefiniuj nowy adres,pl_PL
+customer.account.address,Adresy,pl_PL
+customer.account.available.benefit.voucher.amount,Dostępna kwota bonu zasiłkowego,pl_PL
+customer.account.available.cashback.amount,Dostępna kwota zwrotu gotówki,pl_PL
+customer.account.available.shopping.point.amount,Dostępna kwota punktów handlowych,pl_PL
+customer.account.button.add_new_address,Dodaj nowy adres,pl_PL
+customer.account.contact,Kontakt,pl_PL
+customer.account.default_billing_address,domyślny adres rozliczeniowy,pl_PL
+customer.account.default_shipping_address,Domyślny adres dostawy,pl_PL
+customer.account.deliver_to_multiple_addresses,Dostarcz na wiele adresów,pl_PL
+customer.account.edit_address_information,Edytuj informacje adresowe,pl_PL
+customer.account.last_orders,Ostatnie zamówienia,pl_PL
+customer.account.newsletter,Biuletyn,pl_PL
+customer.account.no_order,W tej chwili brak zamówień,pl_PL
+customer.account.no_orders,W tej chwili brak zamówień,pl_PL
+customer.account.order_history,Historia zamówień,pl_PL
+customer.account.overview,Przegląd,pl_PL
+customer.account.please_specify_billing_address,Podaj adres rozliczeniowy,pl_PL
+customer.account.please_specify_shipping_address,Określ adres wysyłki,pl_PL
+customer.account.print_shopping_list.table.barcode,kod kreskowy,pl_PL
+customer.account.print_shopping_list.table.default_price,Cena domyślna,pl_PL
+customer.account.print_shopping_list.table.note,Uwaga,pl_PL
+customer.account.print_shopping_list.table.product_name,Nazwa produktu,pl_PL
+customer.account.print_shopping_list.table.product_sku,Kod SKU produktu,pl_PL
+customer.account.print_shopping_list.title.shopping_list_id,Identyfikator listy zakupów,pl_PL
+customer.account.print_shopping_list.title.shopping_list_name,Nazwa listy zakupów,pl_PL
+customer.account.profile_data,Profil,pl_PL
+customer.account.shopping_list,Listy zakupów,pl_PL
+customer.account.shopping_list.access,Dostęp,pl_PL
+customer.account.shopping_list.access.full_access,Pełny dostęp,pl_PL
+customer.account.shopping_list.access.read_only,Tylko czytać,pl_PL
+customer.account.shopping_list.add_all_available_to_cart,Dodaj wszystkie dostępne produkty do koszyka,pl_PL
+customer.account.shopping_list.add_item.success,Przedmiot został dodany do listy zakupów.,pl_PL
+customer.account.shopping_list.add_selected_items_to_cart,Dodaj wybrane pozycje do koszyka,pl_PL
+customer.account.shopping_list.add-to-cart,Dodaj do koszyka,pl_PL
+customer.account.shopping_list.availability,Dostępność,pl_PL
+customer.account.shopping_list.available,Dostępny,pl_PL
+customer.account.shopping_list.clear.success,Lista zakupów została pomyślnie wyczyszczona.,pl_PL
+customer.account.shopping_list.create.failed,Tworzenie listy zakupów nie powiodło się.,pl_PL
+customer.account.shopping_list.create.success,Lista „% name%” została utworzona pomyślnie.,pl_PL
+customer.account.shopping_list.delete.failed,Lista zakupów nie została usunięta.,pl_PL
+customer.account.shopping_list.delete.it_belongs_to_follow,Należy do następujących,pl_PL
+customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,Zostanie usunięty ze wszystkich,pl_PL
+customer.account.shopping_list.delete.success,Lista zakupów została pomyślnie usunięta.,pl_PL
+customer.account.shopping_list.delete.warning,Ostrzeżenie,pl_PL
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Próbujesz usunąć listę zakupów <a href=""""%link%"""">% name% </a>",pl_PL
+customer.account.shopping_list.empty,Obecnie na Twojej liście zakupów nie ma żadnych pozycji.,pl_PL
+customer.account.shopping_list.error.cannot_update,Nie można zaktualizować listy zakupów.,pl_PL
+customer.account.shopping_list.error.duplicate_name,Lista zakupów o tej samej nazwie już istnieje.,pl_PL
+customer.account.shopping_list.item.added_all_available_to_cart,Dostępne przedmioty zostały pomyślnie dodane do koszyka.,pl_PL
+customer.account.shopping_list.item.added_all_available_to_cart.failed,Nie wszystkie pozycje zostały pomyślnie dodane do koszyka,pl_PL
+customer.account.shopping_list.item.added_to_cart,Przedmiot został pomyślnie dodany do koszyka.,pl_PL
+customer.account.shopping_list.item.added_to_cart.failed,Przedmiot nie został dodany do koszyka.,pl_PL
+customer.account.shopping_list.item.add.failed,Nie można dodać elementu% sku% do listy.,pl_PL
+customer.account.shopping_list.item.add.success,Element% sku% został dodany do listy.,pl_PL
+customer.account.shopping_list.item.not_added,Nie udało się dodać produktu do listy zakupów.,pl_PL
+customer.account.shopping_list.item.remove.failed,Produkt nie został usunięty z listy zakupów.,pl_PL
+customer.account.shopping_list.item.remove.success,Produkt został pomyślnie usunięty.,pl_PL
+customer.account.shopping_list.items.added_to_cart,Przedmioty zostały pomyślnie dodane do koszyka.,pl_PL
+customer.account.shopping_list.items.added_to_cart.failed,Pozycje nie zostały dodane do koszyka.,pl_PL
+customer.account.shopping_list.items.added_to_cart.not_found,Brak produktów do dodania do koszyka.,pl_PL
+customer.account.shopping_list.items.added_to_cart.select_list,Należy wybrać co najmniej jedną listę zakupów.,pl_PL
+customer.account.shopping_list.item.select_item,Należy wybrać co najmniej jeden produkt.,pl_PL
+customer.account.shopping_list.not_available,Obecnie niedostępne,pl_PL
+customer.account.shopping_list.overview.actions,działania,pl_PL
+customer.account.shopping_list.overview.add_new,Dodaj nową listę zakupów,pl_PL
+customer.account.shopping_list.overview.add_shopping_list_to_cart,Dodaj wybrane listy zakupów do koszyka,pl_PL
+customer.account.shopping_list.overview.created_date,Data utworzenia,pl_PL
+customer.account.shopping_list.overview.create.success,Lista zakupów została pomyślnie utworzona.,pl_PL
+customer.account.shopping_list.overview.delete,Kasować,pl_PL
+customer.account.shopping_list.overview.dismiss,Oddalić,pl_PL
+customer.account.shopping_list.overview.edit,Przemianować,pl_PL
+customer.account.shopping_list.overview.empty,Nie masz jeszcze żadnych list zakupów.,pl_PL
+customer.account.shopping_list.overview.enter_name,Wpisz imię tutaj,pl_PL
+customer.account.shopping_list.overview.form.new,Utwórz nową listę zakupów,pl_PL
+customer.account.shopping_list.overview.item_count,Liczba przedmiotów,pl_PL
+customer.account.shopping_list.overview.modified_date,Data ostatniej aktualizacji,pl_PL
+customer.account.shopping_list.overview.name,Nazwa listy,pl_PL
+customer.account.shopping_list.overview.owner,"Użytkownik, który utworzył listę",pl_PL
+customer.account.shopping_list.overview.print,Wydrukować,pl_PL
+customer.account.shopping_list.overview.share,Dzielić,pl_PL
+customer.account.shopping_list.overview.shared_with,Współdzielone z,pl_PL
+customer.account.shopping_list.overview.title,Zarządzaj listami zakupów,pl_PL
+customer.account.shopping_list.overview.variant,Wariant,pl_PL
+customer.account.shopping_list.overview.view,Widok,pl_PL
+customer.account.shopping_list.price,Cena £,pl_PL
+customer.account.shopping_list.print_shopping_list,Wydrukuj listę zakupów,pl_PL
+customer.account.shopping_list.product,Produkt,pl_PL
+customer.account.shopping_list.quantity,Ilość,pl_PL
+customer.account.shopping_list.remove,Usunąć,pl_PL
+customer.account.shopping_list.share.error.one_id_required,"Wybierz klienta lub jednostkę biznesową, której chcesz udostępnić listę zakupów",pl_PL
+customer.account.shopping_list.share.from.share,Dzielić,pl_PL
+customer.account.shopping_list.share.from.share_with,Udostępnij listę zakupów:,pl_PL
+customer.account.shopping_list.share.select_company_business_unit,Wybierz jednostkę biznesową,pl_PL
+customer.account.shopping_list.share.select_company_user,Wybierz klienta,pl_PL
+customer.account.shopping_list.share.select_permission,Wybierz poziom dostępu,pl_PL
+customer.account.shopping_list.share.share_shopping_list_fail,Ta lista zakupów została wcześniej udostępniona temu podmiotowi,pl_PL
+customer.account.shopping_list.share.share_shopping_list_successful,Udało się udostępnić listę zakupów,pl_PL
+customer.account.shopping_list.updated,Lista zakupów została zaktualizowana pomyślnie,pl_PL
+customer.account.shopping_points_and_cashback,Punkty handlowe i zwrot gotówki,pl_PL
+customer.account.wishlist,Lista życzeń,pl_PL
+customer.account.wishlist.add_all_available_to_cart,Dodaj wszystkie dostępne produkty do koszyka,pl_PL
+customer.account.wishlist.add-to-cart,Dodaj do koszyka,pl_PL
+customer.account.wishlist.availability,Dostępność,pl_PL
+customer.account.wishlist.available,Dostępny,pl_PL
+customer.account.wishlist.continue-shopping,Kontynuować zakupy,pl_PL
+customer.account.wishlist.created,Lista życzeń została utworzona pomyślnie.,pl_PL
+customer.account.wishlist.deleted,Lista życzeń została pomyślnie usunięta.,pl_PL
+customer.account.wishlist.empty,Obecnie na Twojej liście życzeń nie ma żadnych pozycji.,pl_PL
+customer.account.wishlist.item.moved_all_available_to_cart,Dostępne przedmioty zostały pomyślnie przeniesione do koszyka.,pl_PL
+customer.account.wishlist.item.moved_all_available_to_cart.failed,Nie wszystkie przedmioty zostały pomyślnie przeniesione do koszyka,pl_PL
+customer.account.wishlist.item.moved_to_cart,Przedmiot został pomyślnie przeniesiony do koszyka.,pl_PL
+customer.account.wishlist.item.moved_to_cart.failed,Przedmiot nie został przeniesiony do koszyka.,pl_PL
+customer.account.wishlist.item.not_added,Nie udało się dodać produktu do listy życzeń.,pl_PL
+customer.account.wishlist.item.removed,Produkt został pomyślnie usunięty.,pl_PL
+customer.account.wishlist.not_available,Obecnie niedostępne,pl_PL
+customer.account.wishlist.overview.add_new,Dodaj nową listę życzeń,pl_PL
+customer.account.wishlist.overview.date,Data utworzenia,pl_PL
+customer.account.wishlist.overview.delete,Kasować,pl_PL
+customer.account.wishlist.overview.edit,Edytować,pl_PL
+customer.account.wishlist.overview.empty,Nie masz jeszcze żadnych list.,pl_PL
+customer.account.wishlist.overview.enter_name,Wpisz imię tutaj,pl_PL
+customer.account.wishlist.overview.item_count,Liczba pozycji,pl_PL
+customer.account.wishlist.overview.name,Nazwa,pl_PL
+customer.account.wishlist.overview.price,Cena £,pl_PL
+customer.account.wishlist.overview.sku,Sku,pl_PL
+customer.account.wishlist.overview.title,Zarządzaj listami życzeń,pl_PL
+customer.account.wishlist.overview.variant,Wariant,pl_PL
+customer.account.wishlist.price,Cena £,pl_PL
+customer.account.wishlist.product,Produkt,pl_PL
+customer.account.wishlist.product-not-available,Ten produkt jest obecnie niedostępny.,pl_PL
+customer.account.wishlist.remove,Usunąć,pl_PL
+customer.account.wishlist.updated,Lista życzeń została pomyślnie zaktualizowana,pl_PL
+customer.account.wishlist.view-in-shop,Widok,pl_PL
+customer.address.added,Adres został pomyślnie dodany,pl_PL
+customer.address.address1,Ulica,pl_PL
+customer.address.address2,Numer domu,pl_PL
+customer.address.address3,Dodatkowe informacje,pl_PL
+customer.address.address4,Więcej dodatkowych informacji o wysyłce,pl_PL
+customer.address.city,Miasto,pl_PL
+customer.address.company,Nazwa firmy,pl_PL
+customer.address.country,Kraj,pl_PL
+customer.address.delete.failed,Nie udało się usunąć adresu,pl_PL
+customer.address.delete.success,Adres został pomyślnie usunięty,pl_PL
+customer.address.first_name,Imię,pl_PL
+customer.address.is_default_billing,To domyślny adres rozliczeniowy,pl_PL
+customer.address.is_default_shipping,To domyślny adres dostawy,pl_PL
+customer.address.last_name,Nazwisko,pl_PL
+customer.address.number,Numer domu,pl_PL
+customer.address.phone,Numer telefonu (na ewentualne pytania dotyczące dostawy z prefixem np. +48),pl_PL
+customer.address.placeholder.optional,Opcjonalny,pl_PL
+customer.address.save_new_address,Zapisz nowy adres w książce adresowej,pl_PL
+customer.address.state,Stan,pl_PL
+customer.address.updated,Adres został pomyślnie zaktualizowany,pl_PL
+customer.address.vat_number,Numer VAT,pl_PL
+customer.address.zip_code,Kod pocztowy,pl_PL
+customer.anonymization.failed,Twoje konto nie mogło zostać usunięte,pl_PL
+customer.anonymization.success,Twoje konto zostało pomyślnie usunięte,pl_PL
+customer.authentication.failed,Uwierzytelnianie nie powiodło się,pl_PL
+customer.authentication.succeeded,Logowanie powiodło się,pl_PL
+customer.authorization.account_confirmed,"Twój adres e-mail został zweryfikowany. Proszę się zalogować, aby kontynuować.",pl_PL
+customer.authorization.invalid_account,"Aby się zalogować, musisz najpierw potwierdzić swój adres e-mail",pl_PL
+customer.authorization.success,"Prawie na miejscu! Wyślemy Ci wiadomość e-mail, aby potwierdzić Twój adres e-mail. Potwierdź to, aby móc się zalogować.",pl_PL
+customer.authorization.validate_email_address,"Prawie na miejscu! Wyślemy Ci wiadomość e-mail, aby potwierdzić Twój adres e-mail. Potwierdź to, aby móc się zalogować.",pl_PL
+customer.billingSameAsShipping,Adres rozliczeniowy taki sam jak adres dostawy,pl_PL
+customer.birth_date,Data urodzenia (dd / mm / rrrr),pl_PL
+customer.customer_id,ID,pl_PL
+customer.email,E-mail,pl_PL
+customer.email.already.used,Adres e-mail już używany,pl_PL
+customer.email.format.invalid,Nieprawidłowy format adresu e-mail,pl_PL
+customer.email.invalid,Adres email jest nieprawidłowy,pl_PL
+customer.error.confirm_email_link.invalid_or_used,Ten link weryfikacyjny e-mail jest nieprawidłowy lub został już użyty.,pl_PL
+customer.first_name,Imię,pl_PL
+customer.forgotten-password.description,Wprowadź adres e-mail powiązany z Twoim kontem.,pl_PL
+customer.forgotten_password.email,Adres e-mail,pl_PL
+customer.forgotten-password.title,Odzyskaj moje hasło,pl_PL
+customer.last_name,Nazwisko,pl_PL
+customer.login,Zaloguj sie,pl_PL
+customer.login.email,E-mail,pl_PL
+customer.login.failed,Logowanie nie powiodło się,pl_PL
+customer.login.password,Hasło,pl_PL
+customer.login.title,Uzyskaj dostęp do swojego konta,pl_PL
+customer.logout,Wyloguj,pl_PL
+customer.newsletter.not_subscribed,Brak subskrypcji newslettera,pl_PL
+customer.newsletter.subscribed,Zapisano się do newslettera,pl_PL
+customer.newsletter.subscription,Ustawienia newslettera,pl_PL
+customer.newsletter.subscription_agreement,Wyrażam zgodę na zapis do newslettera,pl_PL
+customer.order.all_orders,Zobacz zamówienia,pl_PL
+customer.order.billing_address,Adres rozliczeniowy,pl_PL
+customer.order.bundled_items,Przedmioty w pakiecie:,pl_PL
+customer.order.canceledTotal,Kwota anulowana,pl_PL
+customer.order.complete_checkout,Kompletna płatność,pl_PL
+customer.order.date,Data zamówienia,pl_PL
+customer.order.delivery_address,Adres dostawy,pl_PL
+customer.order.delivery_method,Sposób dostawy,pl_PL
+customer.order.discount.total,Zniżka,pl_PL
+customer.order.expenseTotal,Koszty przesyłki (łącznie),pl_PL
+customer.order.grandTotal,Łączna suma,pl_PL
+customer.order.item_price,Cena zawiera faktura VAT,pl_PL
+customer.order.item_quantity,Ilość,pl_PL
+customer.order.item_sku,SKU,pl_PL
+customer.order.items_state,Stan pozycji,pl_PL
+customer.order.item_sum,Suma pozycji,pl_PL
+customer.order.options,Opcje produktu:,pl_PL
+customer.order.order_id,Identyfikator zamówienia,pl_PL
+customer.order.payment,Zapłata,pl_PL
+customer.order.payment_method,Metoda płatności,pl_PL
+customer.order.product_name,Nazwa produktu,pl_PL
+customer.order.products,Produkty,pl_PL
+customer.order.refundTotal,Całkowity zwrot kosztów,pl_PL
+customer.order.remunerationTotal,Łączne wynagrodzenie,pl_PL
+customer.order.reorder,Zmień kolejność,pl_PL
+customer.order.reorder_all,Zmień kolejność wszystkich,pl_PL
+customer.order.reorder.error.unable_to_reorder_items,"Nie możesz bezpośrednio zamawiać tych produktów, dodaj je osobno do koszyka",pl_PL
+customer.order.reorder_selected,Zmień kolejność wybranych elementów,pl_PL
+customer.order.requested_delivery_date,Wymagana data dostawy,pl_PL
+customer.order.shipment,Wysyłka,pl_PL
+customer.order.shipment_method,Wysyłka,pl_PL
+customer.order.shipping_address,Adres wysyłki,pl_PL
+customer.order.subTotal,Suma częściowa,pl_PL
+customer.order.taxTotal,Podatek,pl_PL
+customer.order.total,Całkowity,pl_PL
+customer.order.view_all,Pokaż wszystkie,pl_PL
+customer.order.view_order,Wyświetl zamówienie,pl_PL
+customer.password,Hasło,pl_PL
+customer.password.changed,Twoje hasło zostało pomyślnie zmienione,pl_PL
+customer.password.change.success,Zmiana hasła powiodła się,pl_PL
+customer.password.confirm.new_password,Potwierdź hasło,pl_PL
+customer.password.invalid,Hasło jest niewłaściwe,pl_PL
+customer.password.invalid_password,Aktualne hasło jest nieprawidłowe,pl_PL
+customer.password.old_password,Stare hasło,pl_PL
+customer.password.recovery.mail.sent,"Jeśli istnieje konto powiązane z tym adresem e-mail, otrzymasz wiadomość e-mail z dalszymi instrukcjami",pl_PL
+customer.password.request.new_password,nowe hasło,pl_PL
+customer.password.restore,Ustaw nowe hasło,pl_PL
+customer.password.update,Zmień hasło,pl_PL
+customer.phone,Numer telefonu,pl_PL
+customer.profile,Moje konto,pl_PL
+customer.profile.address.delete,Kasować,pl_PL
+customer.profile.address.edit,Edytować,pl_PL
+customer.profile.change.success,Profil został pomyślnie zapisany,pl_PL
+customer.profile.confirm.new_password,Potwierdź nowe hasło,pl_PL
+customer.profile.delete,Usuń konto,pl_PL
+customer.profile.delete.confirmation_question,Czy na pewno chcesz usunąć swoje konto?,pl_PL
+customer.profile.delete.description,Spowoduje to usunięcie wszystkich informacji o koncie.,pl_PL
+customer.profile.email,E-mail,pl_PL
+customer.profile.first_name,Imię,pl_PL
+customer.profile.last_name,Nazwisko,pl_PL
+customer.profile.link,Mój profil,pl_PL
+customer.profile.old_password,Stare hasło,pl_PL
+customer.profile.order_details,Szczegóły zamówienia,pl_PL
+customer.profile.order_details.giftcard.label,Karta podarunkowa,pl_PL
+customer.profile.order_history,Ostatnie zamówienia,pl_PL
+customer.profile.phone,Telefon,pl_PL
+customer.profile.request.new_password,nowe hasło,pl_PL
+customer.profile.title,Moje konto,pl_PL
+customer.profile.update,Zaktualizować profil,pl_PL
+customer.register,Zarejestrować,pl_PL
+customer.registration.title,Utwórz konto,pl_PL
+customer.reset.password.error.already.loggedIn,"Inny klient jest już zalogowany. Wyloguj się, aby zresetować hasło.",pl_PL
+customer.salutation.dr,Dr.,pl_PL
+customer.salutation.mr,Pan.,pl_PL
+customer.salutation.mrs,Pani.,pl_PL
+customer.salutation.ms,SM.,pl_PL
+customer.signin,Zaloguj się,pl_PL
+customer.signup,Nowy klient?,pl_PL
+customer.table.actions,działania,pl_PL
+customer.token.invalid,Token jest nieprawidłowy,pl_PL
+discount.quote_change.discount.amount_changed,"Zniżki, które wybrałeś dla następujących przedmiotów, uległy zmianie",pl_PL
+discount.quote_change.discount.not_available,"Rabaty, które wybrałeś dla następujących skusów przedmiotów, nie są już dostępne",pl_PL
+discount.quote_change.does_not_apply_for_currency,"Kupon „„% code% ”” został wyłączony, ponieważ nie dotyczy tej waluty.",pl_PL
+discount.successfully.applied,Rabat „„ display_name ”” został pomyślnie zastosowany,pl_PL
+discount.voucher_code.usage_limit.reached,Osiągnięto limit wykorzystania kodu kuponu,pl_PL
+DummyPaymentCreditCard,Karta kredytowa,pl_PL
+dummyPaymentCreditCard.card_expires,Data wygaśnięcia,pl_PL
+dummyPaymentCreditCard.card_number,Numer karty,pl_PL
+dummyPaymentCreditCard.card_security_code,CVC,pl_PL
+dummyPaymentCreditCard.card_type,Typ karty,pl_PL
+dummyPaymentCreditCard.hidden_numbers,*********,pl_PL
+dummyPaymentCreditCard.name_on_card,Imię i nazwisko na karcie,pl_PL
+DummyPaymentInvoice,Faktura,pl_PL
+dummyPaymentInvoice.date_of_birth,Data urodzenia,pl_PL
+dummyPaymentInvoice.invoice,Zapłać fakturą:,pl_PL
+DummyPrepayment,Przedpłata,pl_PL
+dummyPrepayment.prepaymentbank-info,mWS myWorld Solutions AG: <br/> Unicredit Bank Austria <br/> IBAN: AT19 1200 0529 5900 6605 <br/> BIC: BKAUATWW,pl_PL
+email.orderEmail.salutationFemale,Pani / Pani,pl_PL
+email.orderEmail.salutationMale,Pan.,pl_PL
+error.404,"Przepraszam, coś poszło nie tak",pl_PL
+error.404_description,"Nie można znaleźć tej strony. Wróć, proszę",pl_PL
+error_page.home_link,Wróć do strony głównej,pl_PL
+error_page.text,"Nie mogliśmy znaleźć strony, której szukasz.",pl_PL
+error_page.title,Strona nie znaleziona.,pl_PL
+footer.facebook.url,https://www.facebook.com/myWorld.int,pl_PL
+footer.follow,Podążaj za nami,pl_PL
+footer.instagram.url,https://www.instagram.com/myworld.global/,pl_PL
+footer.logo.link.imprint,/ en / imprint,pl_PL
+footer.logo.link.privacy,/ pl / prywatność,pl_PL
+footer.logo.text,Zbudowany z,pl_PL
+footer.logo.url,/,pl_PL
+footer.navigation_title.customer_service,Obsługa klienta,pl_PL
+footer.navigation_title.information,Informacja,pl_PL
+footer.navigation_title.legal_information,Informacje prawne,pl_PL
+footer.navigation_title.propositions,Zarabiaj z myWorld,pl_PL
+footer.official_partner,Oficjalny partner,pl_PL
+footer.pinterest.url,https://www.pinterest.com/myworldofficial/,pl_PL
+footer.providers__title,Wysyłka i płatność,pl_PL
+footer_subscribe.subscription_placeholder,Dodaj e-mail,pl_PL
+footer_subscribe.subscription_text,Zarejestruj się i bądź zawsze na bieżąco,pl_PL
+footer.twitter.url,https://twitter.com/myWorld_uk,pl_PL
+footer.youtube.url,https://www.youtube.com/channel/UCCdwFBArbzg98DeUD_-l_uQ?sub_confirmation=1,pl_PL
+form.csrf.error.text,Coś poszło nie tak. Przepraszam.,pl_PL
+forms.accept_terms,Akceptuję warunki,pl_PL
+forms.confirm-password,Potwierdź hasło,pl_PL
+forms.email,E-mail,pl_PL
+forms.first-name,Imię,pl_PL
+forms.forgot-password,Zapomniałeś hasła,pl_PL
+forms.last-name,Nazwisko,pl_PL
+forms.password,Hasło,pl_PL
+forms.save-btn,Zapisać,pl_PL
+forms.submit-btn,Zatwierdź,pl_PL
+forms.submit.login,Zaloguj sie,pl_PL
+forms.submit.register,Zarejestrować,pl_PL
+gdpr.accept_cookies,Akceptuje ciasteczka,pl_PL
+gdpr.message,"Używamy plików cookie na naszej stronie internetowej, aby nasze usługi były bardziej wydajne i przyjazne dla użytkownika. Dlatego wybierz „Akceptuj pliki cookie”! Przeczytaj nasz% link%, aby uzyskać dalsze informacje.",pl_PL
+gdpr.privacy_policy,Polityka prywatności,pl_PL
+general.back.button,Z powrotem,pl_PL
+general.cancel.button,Anuluj,pl_PL
+general.edit.button,Edytować,pl_PL
+general.next.button,Kolejny,pl_PL
+global.accept.terms.and.conditions,Zaakceptuj regulamin,pl_PL
+global.add-to-cart,Dodaj do koszyka,pl_PL
+global.back_homepage,powrót na stronę główną,pl_PL
+global.benefit.competitive_prices,Konkurencyjne ceny,pl_PL
+global.benefit.free_returns,Darmowe zwroty,pl_PL
+global.benefit.warranty,3 lata gwarancji,pl_PL
+global.button.less,Mniej,pl_PL
+global.button.more,Jeszcze,pl_PL
+global.cart,Wózek,pl_PL
+global.cashback,Zwrot gotówki,pl_PL
+global.categories,Wszystkie kategorie,pl_PL
+global.close,Blisko,pl_PL
+global.company,Firma,pl_PL
+global.create.account,Utwórz konto,pl_PL
+global.email.address,Adres e-mail,pl_PL
+global.get_in_touch,Skontaktuj się,pl_PL
+global.header.categories,Wszystkie kategorie,pl_PL
+global.header.services,Usługi myWorld,pl_PL
+global.home,Dom,pl_PL
+global.login,Zaloguj sie,pl_PL
+global.newsletter,Biuletyn,pl_PL
+global.no_image_available,Obraz nie dostępny,pl_PL
+global.order.ascendent,A-Z,pl_PL
+global.order.descendent,Z-A,pl_PL
+global.partners,Wzmacniacz,pl_PL
+global.password,Hasło,pl_PL
+global.payment_providers,Dostawcy płatności,pl_PL
+global.permission.failed,Ta czynność jest zabroniona,pl_PL
+global.quantity_symbol,x,pl_PL
+global.recover.password,Odzyskaj hasło,pl_PL
+global.register,Zarejestruj się teraz,pl_PL
+global.search,Szukaj,pl_PL
+global.search.pages,Strony,pl_PL
+global.search.results,Wyniki wyszukiwania,pl_PL
+global.search.results.view,Widok,pl_PL
+global.search.spellingSuggestion,Miałeś na myśli,pl_PL
+global.search.suggestion.in_categories,Kategorie,pl_PL
+global.search.suggestion.in_cms,Strony,pl_PL
+global.search.suggestion.in_products,Produkty,pl_PL
+global.search.suggestion.no_result,Nic nie znaleziono…,pl_PL
+global.search.suggestions,Sugestie wyszukiwania,pl_PL
+global.search.suggestion.see_all_products,Zobacz wszystkie produkty,pl_PL
+global.shipment_providers,Dostawcy przesyłek,pl_PL
+global.social,Media społecznościowe,pl_PL
+global.spryker.motto,technologia z jakością,pl_PL
+global.spryker.shop,myWorld.com,pl_PL
+homepage.carousel.next,Kolejny,pl_PL
+homepage.carousel.previous,Poprzedni,pl_PL
+invoice.company.address,Spryker Systems GmbH <br/> Julie-Wolfthorn-Straße 1 <br /> 10115 Berlin / Niemcy,pl_PL
+invoice.company.bank.information,Nazwa banku <br/> IBAN 1234 5678 9123 4567 89 <br /> BIC 12345678 <br/> Handelsregister ABC123456 <br /> Steuernummer 12/345/6789,pl_PL
+invoice.company.contact.information,+49 (0) 30 2084983 50 <br/> hello@spryker.com,pl_PL
+invoice.created.at,Data faktury,pl_PL
+invoice.customer.number,Referencje,pl_PL
+invoice.header,Faktura,pl_PL
+invoice.order.address.billing,Adres rozliczeniowy,pl_PL
+invoice.order.address.shipping,Adres wysyłki,pl_PL
+invoice.order.expenses.total,Koszty wysyłki,pl_PL
+invoice.order.grand_total,ŁĄCZNA SUMA,pl_PL
+invoice.order.item.price,CENA PRZEDMIOTU,pl_PL
+invoice.order.item.price_total,POZYCJA SUMA,pl_PL
+invoice.order.item.product_name,NAZWA PRODUKTU,pl_PL
+invoice.order.item.quantity,ILOŚĆ,pl_PL
+invoice.order.item.sku,SKU,pl_PL
+invoice.order.number,Numer zamówienia,pl_PL
+invoice.order.tax_amount,Zawiera faktura VAT,pl_PL
+item,Pozycja,pl_PL
+jumbotron.smartphones.link,/ pl / telecom - & - navigation / smartphones,pl_PL
+jumbotron.smart_watches.link,/ pl / smart-wearables / smartwatches,pl_PL
+jumbotron.tablets.link,/ pl / komputery / tablety,pl_PL
+mail.company.status.approved,Zatwierdzony,pl_PL
+mail.company.status.denied,Odmówiono,pl_PL
+mail.company.status.pending,Czekanie na zgodę,pl_PL
+mail.company.status.subject,Twoja firma zmieniła status,pl_PL
+mail.company.status.text,Twoja firma zmieniła status na:,pl_PL
+mail.company.user.invitation.body.html,"Cześć% name%, zostałeś zaproszony do dołączenia do konta firmowego w serwisie Spryker Demo-hop. Kliknij ten <a href=""%invitationLink%""> link </a>, aby dokończyć rejestrację",pl_PL
+mail.company.user.invitation.body.text,"Witaj% name%, zostałeś zaproszony do dołączenia do konta firmowego w sklepie demonstracyjnym Spryker, skorzystaj z tego linku% inviteLink%, aby dokończyć rejestrację",pl_PL
+mail.company.user.invitation.subject,Zaproszenie,pl_PL
+mail.customer.registration.subject,Dziękujemy za zarejestrowanie się w Spryker Shop!,pl_PL
+mail.customer.registration.text,Dziękujemy za zarejestrowanie się w Spryker Shop!,pl_PL
+mail.customer.restore_password_confirmation.subject,Twoje hasło zostało pomyślnie zmienione!,pl_PL
+mail.customer.restore_password_confirmation.text,Twoje hasło zostało pomyślnie zmienione!,pl_PL
+mail.customer.restore_password.subject,Nowe hasło do Twojego konta w Spryker Shop,pl_PL
+mail.customer.restore_password.text,"„Ktoś zażądał nowego hasła do Twojego konta w Spryker Shop. Jeśli to nie Ty, po prostu zignoruj tę wiadomość e-mail. Jeśli to Ty, skorzystaj z poniższego linku:”",pl_PL
+mail.giftCard.delivery.subject,Twoja karta podarunkowa!,pl_PL
+mail.giftCard.delivery.text,"Szanowny Kliencie, dziękujemy za zakup karty podarunkowej w naszym sklepie. Twój kod karty podarunkowej to:",pl_PL
+mail.giftCard.usage.subject,Dziękujemy za skorzystanie z karty podarunkowej!,pl_PL
+mail.newsletter.subscribed.footer.text,Nie możemy się doczekać kolejnej wizyty!,pl_PL
+mail.newsletter.subscribed.subject,Witamy w biuletynie Spryker,pl_PL
+mail.newsletter.subscribed.text,"Cieszymy się, że zapisałeś się do naszego newslettera. Dołożymy wszelkich starań, aby dostarczyć Ci najbardziej istotne i ekscytujące wiadomości i aktualizacje.",pl_PL
+mail.newsletter.unsubscribed.subject,"Przykro mi, że odchodzisz…",pl_PL
+mail.newsletter.unsubscribed.text,"Twój adres e-mail został wypisany z newslettera Spryker Shop, ale zawsze możesz zarządzać subskrypcją w swoim profilu klienta.",pl_PL
+mail.order.confirmation.billing_address,Adres rozliczeniowy,pl_PL
+mail.order.confirmation.date,Data zamówienia,pl_PL
+mail.order.confirmation.delivery_date,Wymagana data dostawy,pl_PL
+mail.order.confirmation.details,Szczegóły Twojego zamówienia,pl_PL
+mail.order.confirmation.footer.text_line_1,Miłego dnia!,pl_PL
+mail.order.confirmation.footer.text_line_2,Twój sklep Spryker,pl_PL
+mail.order.confirmation.item_price_including_tax,Łączna cena przedmiotu wraz z podatkami,pl_PL
+mail.order.confirmation.item_quantity,Ilość przedmiotów,pl_PL
+mail.order.confirmation.item_sku,Artikel SKU,pl_PL
+mail.order.confirmation.order_number,Numer zamówienia,pl_PL
+mail.order.confirmation.price_including_tax,Cena całkowita wraz z podatkami,pl_PL
+mail.order.confirmation.products_in_shipment,Produkty wysyłane,pl_PL
+mail.order.confirmation.product_title,Tytuł produktu,pl_PL
+mail.order.confirmation.salutation,cześć,pl_PL
+mail.order.confirmation.shipment_details,Szczegóły wysyłki,pl_PL
+mail.order.confirmation.shipment_number,Numer wysyłki,pl_PL
+mail.order.confirmation.shipping_address,Adres dostawy,pl_PL
+mail.order.confirmation.shipping_method,Sposób wysyłki,pl_PL
+mail.order.confirmation.subject,Twoje zamówienie na myWorld.com% idOrder%,pl_PL
+mail.order.confirmation.text_line_1,Dziękujemy za zakupy w sklepie Spryker!,pl_PL
+mail.order.confirmation.text_line_2,"Piszemy, aby poinformować Cię, że otrzymaliśmy Twoje zamówienie. Otrzymasz od nas potwierdzenie wysyłki e-mailem, gdy tylko zamówienie zostanie wysłane.",pl_PL
+mail.order.confirmation.text_line_3,"Mamy nadzieję, że podoba Ci się Twoje zamówienie. Jeśli zmienisz zdanie, możesz wrócić w ciągu 14 dni.",pl_PL
+mail.order.in-processing.subject,Właśnie złożono nowe zamówienie,pl_PL
+mail.order_invoice.subject,Faktura za zamówienie w witrynie myWorld.com% idOrder%,pl_PL
+mail.order.shipped.date,Data zamówienia,pl_PL
+mail.order.shipped.details,Szczegóły Twojego zamówienia,pl_PL
+mail.order.shipped.footer.text_line_1,Miłego dnia!,pl_PL
+mail.order.shipped.footer.text_line_2,Twój sklep Spryker,pl_PL
+mail.order.shipped.order_number,Numer zamówienia,pl_PL
+mail.order.shipped.price_including_tax,Cena całkowita wraz z podatkami,pl_PL
+mail.order.shipped.salutation,cześć,pl_PL
+mail.order.shipped.subject,Twoje zamówienie% orderReference% jest w drodze,pl_PL
+mail.order.shipped.text,Twoje zamówienie jest już w drodze.,pl_PL
+mail.sender.email,noreply@demo-spryker.com,pl_PL
+mail.sender.name,Spryker Brak odpowiedzi,pl_PL
+mail.shipping.confirmation.subject,Twoje zamówienie z myWorld.com% idOrder% zostało wysłane,pl_PL
+mail.trans.availability_notification_subscription.subtitle,"Otrzymasz wiadomość e-mail, gdy produkt będzie ponownie dostępny.",pl_PL
+mail.trans.availability_notification_subscription.title,Właśnie poinformowaliśmy nasz zespół zakupowy o Twojej subskrypcji!,pl_PL
+mail.trans.availability_notification.subtitle,Koniec czekania! Dodaj teraz ten produkt do koszyka.,pl_PL
+mail.trans.availability_notification.title.part2,jest ponownie dostępny!,pl_PL
+mail.trans.availability_notification_unsubscribed.subtitle,"Nie otrzymasz powiadomienia, gdy produkt będzie ponownie dostępny.",pl_PL
+mail.trans.availability_notification_unsubscribed.title.part1,Twoja subskrypcja,pl_PL
+mail.trans.availability_notification_unsubscribed.title.part2,zostało anulowane,pl_PL
+mail.trans.common.go_to_shop,Idź do sklepu,pl_PL
+mail.trans.common.hello_for_first_name,cześć,pl_PL
+mail.trans.common.my_account,Moje konto,pl_PL
+mail.trans.company_status.title,Status Twojej firmy został zmieniony na,pl_PL
+mail.trans.customer_registration.change_info,"Możesz zmienić swoje dane (adres dostawy, adres e-mail, hasło itp.) Na Moje konto",pl_PL
+mail.trans.customer_registration.confirmation_link,Potwierdź swój adres e-mail,pl_PL
+mail.trans.customerRegistration.confirmationLink,Potwierdź swój adres e-mail,pl_PL
+mail.trans.customer_registration.registration_success,Twoja rejestracja w sklepie Spryker przebiegła pomyślnie!,pl_PL
+mail.trans.customer_registration.title,Dziękujemy za zarejestrowanie się w Spryker Shop!,pl_PL
+mail.trans.customer_restored_password_confirmation.title,Twoje hasło zostało pomyślnie zmienione,pl_PL
+mail.trans.customer_restore_password.change_password,Zmień hasło,pl_PL
+mail.trans.customer_restore_password.subtitle,"Ktoś zażądał nowego hasła do Twojego konta w sklepie Spryker. Jeśli to nie Ty, zignoruj tę wiadomość e-mail. Jeśli to ty, postępuj zgodnie z instrukcjami w poniższym przycisku.",pl_PL
+mail.trans.customer_restore_password.title,Nowe hasło do Twojego konta w Spryker Shop,pl_PL
+mail.trans.footer.contact_email_address,info@spryker.com,pl_PL
+mail.trans.footer.for_more_information,"Aby uzyskać więcej informacji na temat prawa do odstąpienia od umowy i warunków, kliknij nazwę sprzedawcy u góry. Masz dodatkowe pytania? W takim razie na pewno znajdziesz właściwe odpowiedzi w naszym obszarze usług.",pl_PL
+mail.trans.footer.if_you_have_further_questions,W przypadku dalszych pytań prosimy o kontakt z naszym działem obsługi klienta pod adresem,pl_PL
+mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,pl_PL
+mail.trans.footer.shop_city,Berlin,pl_PL
+mail.trans.footer.shop_name,Spryker Systems GmbH,pl_PL
+mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,pl_PL
+mail.trans.footer.shopping_experience,Nie możemy się doczekać kolejnej wizyty!,pl_PL
+mail.trans.footer.shop_zip_code,10115,pl_PL
+mail.trans.footer.your_team,Twój zespół myWorld.com,pl_PL
+mail.trans.gift_card_delivery.subtitle,Twój kod karty podarunkowej to,pl_PL
+mail.trans.gift_card_delivery.title,"Szanowny Kliencie, dziękujemy za zakup karty podarunkowej w naszym sklepie.",pl_PL
+mail.trans.gift_card_usage.subtitle,Twój kod karty podarunkowej to,pl_PL
+mail.trans.gift_card_usage.title,Właśnie użyłeś karty podarunkowej!,pl_PL
+mail.trans.header.shop_name,Sklep Spryker,pl_PL
+mail.trans.newsletter_subscribed.subtitle,"Dołożymy wszelkich starań, aby dostarczać najbardziej istotne i ekscytujące wiadomości i aktualizacje.",pl_PL
+mail.trans.newsletter_subscribed.title,"Cieszymy się, że zapisałeś się do naszego newslettera.",pl_PL
+mail.trans.newsletter_unsubscribed.subtitle,Twój adres e-mail został wypisany z newslettera Spryker Shop. Zawsze możesz zarządzać swoją subskrypcją w swoim profilu klienta.,pl_PL
+mail.trans.newsletter_unsubscribed.title,"Przepraszam, że odchodzisz ...",pl_PL
+mail.trans.order.billing_address,Adres rozliczeniowy,pl_PL
+mail.trans.order_confirmation.subtitle,"jak tylko Twoja przesyłka będzie w drodze, otrzymasz od nas osobne potwierdzenie wysyłki e-mailem. W przypadku dostaw częściowych otrzymasz osobne powiadomienie o każdej dostawie. Aby wyświetlić swoje zamówienie, przejdź do sekcji „Moje zamówienia” w witrynie myWorld.com.",pl_PL
+mail.trans.order_confirmation.title,Dziękujemy za zamówienie!,pl_PL
+mail.trans.order.delivery_address,Adres dostawy,pl_PL
+mail.trans.order.delivery_address.company_data,Dane firmy:,pl_PL
+mail.trans.order.delivery_method,Sposób dostawy,pl_PL
+mail.trans.order.discounts_total,Zniżka,pl_PL
+mail.trans.order.grand_total,Całkowite zamówienie łącznie z faktura VAT,pl_PL
+mail.trans.order_in_processing.title,Właśnie złożono nowe zamówienie,pl_PL
+mail.trans.order.order_date,Data zamówienia,pl_PL
+mail.trans.order.order_details,Szczegóły zamówienia,pl_PL
+mail.trans.order.order_reference,Numer zamówienia,pl_PL
+mail.trans.order.payment_method,Metoda płatności,pl_PL
+mail.trans.order.quantity,Ilość,pl_PL
+mail.trans.order.requested_delivery_date,Wymagana data dostawy,pl_PL
+mail.trans.order.shipment_costs_total,Przesyłka zaw. faktura VAT,pl_PL
+mail.trans.order.shipment_for_number.part1,Wysyłka,pl_PL
+mail.trans.order.shipment_for_number.part2,z,pl_PL
+mail.trans.order_shipped.title,Twoje zamówienie jest w drodze!,pl_PL
+mail.trans.order.stock_name,Sprzedawane przez:,pl_PL
+mail.trans.order.subtotal,Razem łącznie faktura VAT,pl_PL
+mail.trans.order.taxes,Podatki,pl_PL
+mail.trans.order.tracking_code,Śledź dostawę,pl_PL
+mail.trans.restore_password.change_password,Zmień hasło,pl_PL
+mail.trans.restore_password.subtitle,"Ktoś zażądał nowego hasła do Twojego konta Spryker Back Office. Jeśli to nie Ty, zignoruj tę wiadomość e-mail. Jeśli to ty, postępuj zgodnie z instrukcjami w poniższym przycisku",pl_PL
+mail.trans.restore_password.title,Nowe hasło do Twojego konta Spryker Back Office,pl_PL
+mail.trans.shipping_confirmation.subtitle,"informujemy, że Twoje zamówienie lub jego części zostały wysłane. W przypadku dostaw częściowych otrzymasz osobne powiadomienie o każdej dostawie. Gdy tylko sprzedawca udostępni fakturę, znajdziesz ją na swoim koncie klienta w sekcji „Moje zamówienia”.",pl_PL
+mail.trans.shipping_confirmation.title,Twoje zamówienie jest już w drodze do Ciebie,pl_PL
+measurement_units.item.name,Pozycja,pl_PL
+measurement_units.new-price,Nowa cena,pl_PL
+measurement_units.recommendation.between-units-info,Wybrana ilość mieści się w przedziale między 2 jednostkami podstawowymi,pl_PL
+measurement_units.recommendation.max-violation,Nie są spełnione wymagania dotyczące maksymalnej ilości produktu,pl_PL
+measurement_units.recommendation.min-violation,Minimalne wymagania dotyczące ilości produktu nie są spełnione,pl_PL
+measurement_units.recommendation.suggestion,Czy chciałbyś dodać,pl_PL
+measurement_units.standard.area.acre.name,Akr,pl_PL
+measurement_units.standard.area.ares.name,Są,pl_PL
+measurement_units.standard.area.hect.name,Hektar,pl_PL
+measurement_units.standard.area.scmt.name,Centymetr kwadratowy,pl_PL
+measurement_units.standard.area.smet.name,Metr kwadratowy,pl_PL
+measurement_units.standard.area.smil.name,Milimetr kwadratowy,pl_PL
+measurement_units.standard.area.sqfo.name,Stóp kwadratowych,pl_PL
+measurement_units.standard.area.sqin.name,Cal kwadratowy,pl_PL
+measurement_units.standard.area.sqki.name,Kilometr kwadratowy,pl_PL
+measurement_units.standard.area.sqmi.name,Mila kwadratowa,pl_PL
+measurement_units.standard.area.sqya.name,Jard kwadratowy,pl_PL
+measurement_units.standard.barl.name,Beczka,pl_PL
+measurement_units.standard.bcuf.name,Miliard stóp sześciennych,pl_PL
+measurement_units.standard.bdft.name,Deska stóp,pl_PL
+measurement_units.standard.busl.name,Buszel,pl_PL
+measurement_units.standard.cbme.name,Metr sześcienny,pl_PL
+measurement_units.standard.celi.name,Centilitre,pl_PL
+measurement_units.standard.dgeu.name,Ekwiwalent galonów diesla,pl_PL
+measurement_units.standard.gbga.name,GB Gallon,pl_PL
+measurement_units.standard.gbpi.name,GB Pint,pl_PL
+measurement_units.standard.gbqa.name,Kwartał GB,pl_PL
+measurement_units.standard.ggeu.name,Ekwiwalent galonów benzyny,pl_PL
+measurement_units.standard.length.cmet.name,Centymetr,pl_PL
+measurement_units.standard.length.foot.name,Stopa,pl_PL
+measurement_units.standard.length.inch.name,Cal,pl_PL
+measurement_units.standard.length.kmet.name,Kilometr,pl_PL
+measurement_units.standard.length.metr.name,Metr,pl_PL
+measurement_units.standard.length.mile.name,Mila,pl_PL
+measurement_units.standard.length.mmet.name,Milimetr,pl_PL
+measurement_units.standard.length.yard.name,Dziedziniec,pl_PL
+measurement_units.standard.litr.name,Litr,pl_PL
+measurement_units.standard.miba.name,Million Barrel,pl_PL
+measurement_units.standard.mili.name,Milli Liter,pl_PL
+measurement_units.standard.usga.name,Galon amerykański,pl_PL
+measurement_units.standard.uspi.name,Amerykański Pint,pl_PL
+measurement_units.standard.usqa.name,Kwarta amerykańska,pl_PL
+measurement_units.standard.weight.gbou.name,GB Uncja,pl_PL
+measurement_units.standard.weight.gbtn.name,GB Ton,pl_PL
+measurement_units.standard.weight.gram.name,Gram,pl_PL
+measurement_units.standard.weight.huwg.name,Stetniczny,pl_PL
+measurement_units.standard.weight.kilo.name,Kilogram,pl_PL
+measurement_units.standard.weight.oztr.name,Uncja Troy,pl_PL
+measurement_units.standard.weight.pund.name,Funt,pl_PL
+measurement_units.standard.weight.tone.name,Tona,pl_PL
+measurement_units.standard.weight.ucwt.name,Amerykański set wagi,pl_PL
+measurement_units.standard.weight.usou.name,Uncja amerykańska,pl_PL
+measurement_units.standard.weight.ustn.name,US Ton,pl_PL
+message.submit_link,Dobrze!,pl_PL
+multi_cart.cart.set_default.success,Koszyk „% quote%” został pomyślnie ustawiony na Twój aktywny koszyk.,pl_PL
+multi_cart.form.create_cart,Dodaj nowy koszyk,pl_PL
+multi_cart.form.edit_cart,Zmień nazwę,pl_PL
+multi_cart.form.edit_cart_information,Edytuj informacje o koszyku,pl_PL
+multi_cart.form.quote.name,Nazwa koszyka,pl_PL
+multi_cart_page.cart_clear.success,Koszyk został pomyślnie wyczyszczony,pl_PL
+multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Wózki na zakupy,pl_PL
+multi_cart_page.cart_delete_confirmation.cancel,Anuluj,pl_PL
+multi_cart_page.cart_delete_confirmation.delete,Kasować,pl_PL
+multi_cart_page.cart_delete_confirmation.from_all_of_them,Zostanie usunięty ze wszystkich,pl_PL
+multi_cart_page.cart_delete_confirmation.shared_with,Jest udostępniany następującym użytkownikom,pl_PL
+multi_cart_page.cart_delete_confirmation.trying_to_delete,Próbujesz usunąć koszyk,pl_PL
+multi_cart_page.cart_delete_confirmation.warning,Ostrzeżenie,pl_PL
+multi_cart_widget.cart.action.change_name,Zmień nazwę,pl_PL
+multi_cart_widget.cart.action.clear,Wyczyść koszyk,pl_PL
+multi_cart_widget.cart.action.delete,Usuń koszyk,pl_PL
+multi_cart_widget.cart.action.duplicate,Duplikować,pl_PL
+multi_cart_widget.cart.actions,działania,pl_PL
+multi_cart_widget.cart.action.set_default,Ustaw jako aktywny,pl_PL
+multi_cart_widget.cart.action.view,Pokaż szczegóły,pl_PL
+multi_cart_widget.cart.add,Utwórz nowy koszyk,pl_PL
+multi_cart_widget.cart.cart,Wózek,pl_PL
+multi_cart_widget.cart.cart_name,Nazwa koszyka,pl_PL
+multi_cart_widget.cart.carts,Wózki,pl_PL
+multi_cart_widget.cart.created.success,Koszyk „% quoteName%” został utworzony pomyślnie,pl_PL
+multi_cart_widget.cart.default,Aktywny,pl_PL
+multi_cart_widget.cart.item,Pozycja,pl_PL
+multi_cart_widget.cart.items,Przedmiotów,pl_PL
+multi_cart_widget.cart.list,Lista koszyka,pl_PL
+multi_cart_widget.cart.remove.confirm,Czy na pewno chcesz usunąć ten koszyk?,pl_PL
+multi_cart_widget.cart.status,Status,pl_PL
+multi_cart_widget.cart.sub_total,Suma cząstkowa,pl_PL
+multi_cart_widget.cart.updated.success,Koszyk został zaktualizowany pomyślnie,pl_PL
+multi_cart_widget.cart.view_all,Wyświetl wszystkie wózki,pl_PL
+navigation.menu.categories,Kategorie,pl_PL
+navigation.menu.have-a-look,Warto zajrzeć,pl_PL
+newsletter.form.subscribe,Subskrybuj,pl_PL
+newsletter.subscribe,E-mail,pl_PL
+newsletter.subscription.already_subscribed,Jesteś już zapisany do newslettera,pl_PL
+newsletter.subscription.email_format_invalid,Nieprawidłowy format adresu e-mail,pl_PL
+newsletter.subscription.success,Pomyślnie zapisałeś się do newslettera,pl_PL
+newsletter.unsubscription.success,Pomyślnie wypisałeś się z newslettera,pl_PL
+oms.state.authorization-pending-next-try,W trakcie,pl_PL
+oms.state.cancellation-pending,Anulowanie,pl_PL
+oms.state.cancellation-pending-next-try,Anulowanie,pl_PL
+oms.state.cancelled,Anulowany,pl_PL
+oms.state.capture-failed-clarification,W trakcie,pl_PL
+oms.state.capture pending,W trakcie,pl_PL
+oms.state.capture-pending,-,pl_PL
+oms.state.capture-pending-next-try,W trakcie,pl_PL
+oms.state.closed,Zamknięte,pl_PL
+oms.state.invalid,Anulowany,pl_PL
+oms.state.invoice-with-tracking-number-sent,Wysłane,pl_PL
+oms.state.new,Nowy,pl_PL
+oms.state.order-confirmation-email-sent,W trakcie,pl_PL
+oms.state.order-in-processing-email-sent,W trakcie,pl_PL
+oms.state.ready-for-refund,Zwrot,pl_PL
+oms.state.ready-for-turnover-cancellation,Zwrot,pl_PL
+oms.state.ready-for-turnover-creation,Wysłane,pl_PL
+oms.state.refund-failed-clarification,Zwrot,pl_PL
+oms.state.refund-pending,Zwrot,pl_PL
+oms.state.refund-pending-next-try,Zwrot,pl_PL
+oms.state.turnover-cancellation-failed,Zwrot,pl_PL
+oms.state.turnover-created,Wysłane,pl_PL
+oms.state.turnover-creation-failed,Wysłane,pl_PL
+oms.state.waiting-for-tracking-number,W trakcie,pl_PL
+oms.state.invoice-generated,Invoice generated,pl_PL
+order_cancel_widget.cancel_order,Anuluj zamówienie,pl_PL
+order_cancel_widget.order.cancelled,Zamówienie zostało pomyślnie anulowane.,pl_PL
+order_invoice.invoice_template.company.address,Grazbachgasse 87-93 <br> A-8010 Graz <br> UID: ATU67661657 <br> Handelsregister: FN389134g,pl_PL
+order_invoice.invoice_template.company.group,Unternehmensgruppe Spryker Systems GmbH,pl_PL
+order_invoice.invoice_template.company.name,mWS myWorld Solutions AG,pl_PL
+order_invoice.invoice_template.introduction,Niniejszym pobieramy opłatę za następujące towary:,pl_PL
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,pl_PL
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,pl_PL
+order_invoice.invoice_template.reference,Nr faktury,pl_PL
+order_invoice.invoice_template.table.bottom_text,"Dostarczamy i wykonujemy wyłącznie zgodnie z naszymi Ogólnymi warunkami handlowymi, które znasz.",pl_PL
+order_invoice.invoice_template.table.cashback_customer_number,Numer klienta Cashback:,pl_PL
+order_invoice.invoice_template.table.discount,Zniżka,pl_PL
+order_invoice.invoice_template.table.grandtotal,Łączna suma,pl_PL
+order_invoice.invoice_template.table.grant_total,Suma całkowita:,pl_PL
+order_invoice.invoice_template.table.gross_price,Cena brutto,pl_PL
+order_invoice.invoice_template.table.invoice_date,Data wystawienia faktury:,pl_PL
+order_invoice.invoice_template.table.name,Nazwa artykułu,pl_PL
+order_invoice.invoice_template.table.net_price,Cena netto,pl_PL
+order_invoice.invoice_template.table.number,Poz.,pl_PL
+order_invoice.invoice_template.table.order_date,Data zamówienia:,pl_PL
+order_invoice.invoice_template.table.order_reference,Numer zamówienia:,pl_PL
+order_invoice.invoice_template.table.payment_reference,Referencje płatności,pl_PL
+order_invoice.invoice_template.table.price,Cena £,pl_PL
+order_invoice.invoice_template.table.quantity,Pozycja Ilość,pl_PL
+order_invoice.invoice_template.table.subtotal,Suma częściowa,pl_PL
+order_invoice.invoice_template.table.tax,Wysokość podatku,pl_PL
+order_invoice.invoice_template.table.tax.included,obejmuje to% tax_rate %% VAT netto,pl_PL
+order_invoice.invoice_template.table.tax.name,faktura VAT,pl_PL
+order_invoice.invoice_template.table.uid,UID:,pl_PL
+packaging_unit_type.box.name,Pudełko,pl_PL
+packaging_unit_type.giftbox.name,Pudełko na prezent,pl_PL
+packaging_unit_type.item.name,Pozycja,pl_PL
+packaging_unit_type.pack_100.name,Paczka 100,pl_PL
+packaging_unit_type.pack_20.name,Paczka 20,pl_PL
+packaging_unit_type.pack_500.name,Paczka 500,pl_PL
+packaging_unit_type.pack_mixed.name,Pudełka na śruby mieszane,pl_PL
+packaging_unit_type.palette.name,Paleta,pl_PL
+packaging_unit_type.ring_500.name,Pierścień (500 m),pl_PL
+packaging_unit_type.valentines_special.name,Walentynki specjalne,pl_PL
+page.checkout.address.address-example,Przykład: </br> Wayne Manor 1 </br> 10292 Gotham City </br> z.H. Alfred Pennyworth,pl_PL
+page.checkout.address.address_select.label,Wybierz adres dostawy,pl_PL
+page.checkout.address.address_select.placeholder,Wybierz adres,pl_PL
+page.checkout.address.billing-address,Adres rozliczeniowy,pl_PL
+page.checkout.address.billing.address_select,Wybierz adres rozliczeniowy,pl_PL
+page.checkout.address.billing-isnt-shipping-address,Inny adres dostawy,pl_PL
+page.checkout.address.billing-same-as-shipping,Płatności takie same jak za wysyłkę,pl_PL
+page.checkout.address.delivery.address_select,Wybierz adres dostawy,pl_PL
+page.checkout.address.different_billing_address,Użyj innego adresu rozliczeniowego,pl_PL
+page.checkout.address.different_delivery_address,Użyj innego adresu dostawy,pl_PL
+page.checkout.address.edit,edytuj dane adresowe,pl_PL
+page.checkout.address.heading,1. Dane adresowe,pl_PL
+page.checkout.address.manage_your_addresses,Zarządzaj swoimi adresami,pl_PL
+page.checkout.address.multi_shipment.title,Przypisz każdy produkt do jego własnego adresu dostawy,pl_PL
+page.checkout.address.name,Nazwa,pl_PL
+page.checkout.address.next-step,Przejdź do metody wysyłki,pl_PL
+page.checkout.address.option_group.company_business_unit,Adresy biznesowe,pl_PL
+page.checkout.address.option_group.customer,Adresy klientów,pl_PL
+page.checkout.address.shipping-address,Adres dostawy,pl_PL
+page.checkout.address.use_selected_address,Użyj wybranego adresu,pl_PL
+page.checkout.client.existing,Istniejący klient,pl_PL
+page.checkout.client.new,Nowy klient,pl_PL
+page.checkout.create_account,Utwórz konto klienta,pl_PL
+page.checkout.errors,Sprawdź swój wpis.,pl_PL
+page.checkout.finalize.buy-now,Kup Teraz,pl_PL
+page.checkout.finalize.enter-voucher,Wprowadź Kod Kuponu,pl_PL
+page.checkout.finalize.heading,4. Sprawdź i sfinalizuj zamówienie,pl_PL
+page.checkout.finalize.tos,Klikając na przycisk „Kup teraz” „potwierdzam OWS.,pl_PL
+page.checkout.payment.cc_text,"Dane karty kredytowej nie są przechowywane ani przetwarzane przez myWorld. myWorld korzysta z Adyen N.V., Simon Camiggelstraat 6-50, 1011 DJ Amsterdam, Holandia, do przetwarzania płatności kartą kredytową. myWorld zlecił firmie myWorld International Limited, 3rd Floor, 40 Bank Street, London E14 5NR, UK, operacyjną obsługę procesu płatności.",pl_PL
+page.checkout.payment.edit,edytuj metodę płatności,pl_PL
+page.checkout.payment.heading,3. Sposób płatności,pl_PL
+page.checkout.payment.next-step,"Kontynuuj, aby sfinalizować zamówienie",pl_PL
+page.checkout.shipment.edit,edytuj metodę wysyłki,pl_PL
+page.checkout.shipment.heading,2. Sposób wysyłki,pl_PL
+page.checkout.shipment.item.price,Cena £,pl_PL
+page.checkout.shipment.item.quantity,Ilość,pl_PL
+page.checkout.shipment.next-step,Przejdź do metody płatności,pl_PL
+page.checkout.shipment.requested_delivery_date.label,Wymagana data dostawy,pl_PL
+page.checkout.shipment.requested_delivery_date.placeholder,"Zostaw puste, jeśli chcesz to jak najszybciej",pl_PL
+page.checkout.shipment.requested_delivery_date.title,Kiedy chcesz być dostarczony?,pl_PL
+page.checkout.shipment.shipment_group_heading,Przesyłka% aktualna% z% całości%,pl_PL
+page.checkout.shipment.shipping_address.title,Adres dostawy,pl_PL
+page.checkout.shipment.shipping_method_heading,Sposób wysyłki,pl_PL
+page.checkout.shipping.day,dzień,pl_PL
+page.checkout.shipping.days,dni,pl_PL
+page.checkout.shipping.delivery_time,Czas dostawy:,pl_PL
+page.checkout.shipping.price,Cena £:,pl_PL
+page.checkout.summary.accept_terms_and_conditions,Akceptuję zasady i warunki,pl_PL
+page.checkout.summary.billing,Adres do faktury,pl_PL
+page.checkout.summary.card_expires,Data wygaśnięcia,pl_PL
+page.checkout.summary.card_number,Numer karty,pl_PL
+page.checkout.summary.card_type,Typ karty,pl_PL
+page.checkout.summary.complete_checkout,Kompletna płatność,pl_PL
+page.checkout.summary.date_of_birth,Data urodzenia,pl_PL
+page.checkout.summary.name_on_card,Imię i nazwisko na karcie,pl_PL
+page.checkout.summary.products,Produkty,pl_PL
+page.checkout.summary.shipping,adres wysyłki,pl_PL
+page.checkout.summary.sms_code,Kod SMS,pl_PL
+page.checkout.terms,Akceptuję ogólne warunki.,pl_PL
+page.detail.add-to-cart,Dodaj do koszyka,pl_PL
+page.detail.add-to-shopping-list,Dodaj do listy zakupów,pl_PL
+page.detail.add-to-wishlist,Dodaj do listy życzeń,pl_PL
+page.detail.affiliate-product-action,Idź do sklepu,pl_PL
+page.detail.dimensions,Pomiary,pl_PL
+page.detail.volume_price.price,Cena £,pl_PL
+page.detail.volume_price.quantity,Ilość,pl_PL
+page.imprint.title,Odcisk,pl_PL
+page.imprint.url,/ en / imprint,pl_PL
+page.privacy.title,Prywatność danych,pl_PL
+page.privacy.url,/ pl / prywatność,pl_PL
+page.product.by,przez,pl_PL
+page.product.condition,Stan: schorzenie,pl_PL
+page.product.details,Detale,pl_PL
+page.product.details.slider_image,obraz produktu,pl_PL
+page.product.details.slider_thumbnail,obraz produktu,pl_PL
+page.product.seller,Sprzedawca,pl_PL
+page.product.shipping-fee-from,Wysyłka z,pl_PL
+page.product.similar-products,Może ci się spodobać również,pl_PL
+page.product.status,Nowy,pl_PL
+page.product.upsell-products,Podobne produkty,pl_PL
+page.terms.title,GTC,pl_PL
+page.terms.url,/ pl / gtc,pl_PL
+pagination.next,Kolejny,pl_PL
+pagination.previous,Poprzedni,pl_PL
+password.confirm,Potwierdź hasło,pl_PL
+payment.creditcard,Karta kredytowa,pl_PL
+payment.dummy-payment.credit-card,Zapłać następującą kartą kredytową:,pl_PL
+payment.invoice,Faktura,pl_PL
+payment.paypal,PayPal,pl_PL
+payment.prepay,Przedpłata,pl_PL
+payment.step.api_request.error,"Przepraszamy, coś poszło nie tak z płatnością. Spróbuj ponownie później!",pl_PL
+pdp.include.vat,zaw. faktura VAT,pl_PL
+pdp.price.from,z,pl_PL
+persistent_cart.error.quote.not_available,Koszyk nie istnieje,pl_PL
+persistent_cart.quote.remove.can_not_remove_last_cart,Klient powinien mieć co najmniej jeden koszyk,pl_PL
+persistent_cart.quote.remove.success,Koszyk został pomyślnie usunięty,pl_PL
+personal.address.heading,Dane osobiste,pl_PL
+place_order.pre_check.product_discontinued,Produkt „% name%” został wycofany. Wybierz inny,pl_PL
+price-cart-connector.info.concrete-product-without-price.removed,Przedmiot% sku% bez ceny został usunięty z Twojego koszyka.,pl_PL
+price.mode.gross_mode,Ceny brutto,pl_PL
+price.mode.net_mode,Ceny netto,pl_PL
+price.mode.switch.error,"Nie można przełączyć trybu cenowego, gdy w koszyku znajdują się przedmioty.",pl_PL
+product.access.denied,"Przepraszamy, ten produkt jest niedostępny.",pl_PL
+product_alternative_widget.add_to_shopping_list,Dodaj do listy zakupów,pl_PL
+product_alternative_widget.add_to_wishlist,Dodaj do listy życzeń,pl_PL
+product_alternative_widget.alternative_for,Alternatywa dla nazwy,pl_PL
+product_alternative_widget.not_applicable,Nie dotyczy,pl_PL
+product_alternative_widget.product_alternative,Produkty alternatywne,pl_PL
+product_alternative_widget.product_status.discontinued,Przerwane,pl_PL
+product_alternative_widget.show_all,Pokaż wszystko,pl_PL
+product.multiple.affiliates,More than one offer,pl_PL
+product.attribute.battery,Bateria,pl_PL
+product.attribute.benefit_store,Sklep korzyści,pl_PL
+product.attribute.camera,Aparat fotograficzny,pl_PL
+product.attribute.cashback_amount,Zwrot gotówki,pl_PL
+product.attribute.color,Kolor,pl_PL
+product.attribute.description,Opis,pl_PL
+product.attribute.design,Projekt,pl_PL
+product.attribute.display,Pokaz,pl_PL
+product.attribute.focus,Skupiać,pl_PL
+product.attribute.gps,GPS,pl_PL
+product.attribute.graphics,Grafika,pl_PL
+product.attribute.image_big,Obraz duży,pl_PL
+product.attribute.image_quality,Jakość obrazu,pl_PL
+product.attribute.image_small,Mały obraz,pl_PL
+product.attribute.iso_en,ISO,pl_PL
+product.attribute.lens_system,System soczewek,pl_PL
+product.attribute.license,Licencja,pl_PL
+product.attribute.long_description,długi opis,pl_PL
+product.attribute.manufacturer_name,Marka,pl_PL
+product.attribute.memory,Pamięć,pl_PL
+product.attribute._none,Wybierz wartość,pl_PL
+product.attribute.processor,Edytor,pl_PL
+product.attribute.processor_boost_frequency,Przyspieszenie procesora,pl_PL
+product.attribute.product_id,ID produktu,pl_PL
+product.attribute.product_stock.name,Sprzedawca,pl_PL
+product.attribute.screen,Ekran,pl_PL
+product.attribute.shopping_points,Punkty handlowe,pl_PL
+product.attribute.shopping_point_store,Shopping Point Store,pl_PL
+product.attribute.short_description,krótki opis,pl_PL
+product.attribute.shutter,Migawka,pl_PL
+product.attribute.sku,SKU,pl_PL
+product.attribute.slug,ślimak,pl_PL
+product.attribute.storage,Przechowywanie,pl_PL
+product.attribute.themes,Motywy,pl_PL
+product.attribute.thermal_design_power,Projektowana moc cieplna,pl_PL
+product.attribute.total_megapixels,Całkowita liczba megapikseli,pl_PL
+product.attribute.touchscreen,Ekran dotykowy,pl_PL
+product.attribute.touch_technology,Technologia dotykowa,pl_PL
+product.attribute.usb_port,Port USB,pl_PL
+product.attribute.usb_version,Wersja USB,pl_PL
+product.attribute.variant_id,ID,pl_PL
+product.attribute.variant.reset,Resetowanie,pl_PL
+product.attribute.video,Wideo,pl_PL
+product.attribute.video_recording_modes,Tryby nagrywania wideo,pl_PL
+product.attribute.voice_recording,Nagrywanie głosu,pl_PL
+product.attribute.waterproof,Wodoodporny,pl_PL
+product.attribute.waterproof_up_to,Wodoodporny do,pl_PL
+product.attribute.weight,Waga,pl_PL
+product.attribute.white_balance,Balans bieli,pl_PL
+product.attribute.width,Szerokość,pl_PL
+product_bundle.unavailable,Produkt „% productSku%” w pakiecie Produkt „% bundleSku%” jest obecnie niedostępny,pl_PL
+product-cart.info.concrete-product-inactive.removed,Nieaktywny element% sku% został usunięty z Twojego koszyka.,pl_PL
+product-cart.info.restricted-product.removed,"Element% sku% został usunięty z koszyka, ponieważ został zdezaktywowany.",pl_PL
+product_cart_item.remove,× usuń,pl_PL
+product-cart.validation.error.abstract-product-exists,Nie znaleziono produktu „„ SKU ””,pl_PL
+product-cart.validation.error.concrete-product-exists,Nie znaleziono produktu „„ SKU ””,pl_PL
+product-cart.validation.error.concrete-product-inactive,Produkt „„ SKU ”” nie jest aktywny.,pl_PL
+product-cart.validation.error.product-option-value-price-exists,Nie znaleziono ceny opcji produktu dla produktu „% sku%”.,pl_PL
+product.detail.out_of_stock,Ten produkt jest aktualnie niedostępny.,pl_PL
+product_discontinued.super_attribute_discontinued,Przerwane,pl_PL
+product_discontinued_widget.note,Uwaga,pl_PL
+product.filter.category,Kategorie,pl_PL
+product.filter.label,Etykieta,pl_PL
+product.filter.price,Cena £,pl_PL
+product.filter.price-default-chf-gross_mode,Cena £,pl_PL
+product.filter.price-default-chf-net_mode,Cena £,pl_PL
+product.filter.price-default-eur-gross_mode,Cena £,pl_PL
+product.filter.price-default-eur-net_mode,Cena £,pl_PL
+product.filter.rating,Oceny,pl_PL
+product.groups,Grupy produktów,pl_PL
+product.measurement.sales_unit,Jednostka sprzedaży,pl_PL
+product.product_options,Opcje produktu,pl_PL
+product.product_options_select,Wybierz opcję,pl_PL
+product_review.average_ratings,Średnia ocena,pl_PL
+product_review.error.no_customer,"Zaloguj się, aby uzyskać dostęp do tej funkcji.",pl_PL
+product_review.no_reviews,Nie ma jeszcze recenzji tego produktu,pl_PL
+product_review.on,na,pl_PL
+product_review.product_ratings,Oceny produktów,pl_PL
+product_review.product_reviews,Recenzje produktu,pl_PL
+product_review.ratings_reviews,Oceny i recenzje,pl_PL
+product_review.submit.add_a_review,Napisać recenzję,pl_PL
+product_review.submit.description,Opis,pl_PL
+product_review.submit.error,Recenzja nie została wysłana.,pl_PL
+product_review.submit.nickname,Nazwa,pl_PL
+product_review.submit.rating,Ocena,pl_PL
+product_review.submit.rating.none,Nie wybrano żadnej oceny,pl_PL
+product_review.submit.success,Recenzja produktu została pomyślnie przesłana.,pl_PL
+product_review.submit.summary,streszczenie,pl_PL
+product_review.summary.out_of,poza,pl_PL
+product_review.summary.review,przejrzeć,pl_PL
+product_review.summary.reviews,Opinie,pl_PL
+product_review.summary.star,Gwiazda,pl_PL
+product_review.summary.stars,Gwiazdy,pl_PL
+product_search_widget.search.no_results,Nie znaleziono produktów.,pl_PL
+product_search_widget.search.product_discontinued_prefix,[Wycofane],pl_PL
+product.set.detail.add-all-to-cart,Dodaj wszystko do koszyka,pl_PL
+product.set.detail.no-products,Brak produktów w zestawie,pl_PL
+product.set.detail.set-contents,Produkty w tym zestawie,pl_PL
+product.sets,Zestawy produktów,pl_PL
+product.sets.no-results,Brak wyników.,pl_PL
+product.sets.widget.title,Kup kolekcję,pl_PL
+product.unavailable,Nie ma produktu na stanie,pl_PL
+product.variants,Warianty produktu,pl_PL
+product.view,Widok,pl_PL
+profile.form.salutation,Pozdrowienie,pl_PL
+quick-order.button.add-more-rows,Dodaj więcej wierszy,pl_PL
+quick-order.button.clear-all-rows,Wyczyść wszystkie wiersze,pl_PL
+quick-order.button.create-order,Utwórz zamówienie,pl_PL
+quick-order.errors.items-required,Wprowadź co najmniej jeden kod SKU produktu,pl_PL
+quick-order.errors.quantity-required,Ilość musi wynosić co najmniej 1,pl_PL
+quick-order.input-label.qty,# Ilość,pl_PL
+quick-order.input-label.sku,SKU,pl_PL
+quick-order.message.success.the-form-items-have-been-successfully-cleared,Pozycje formularza zostały pomyślnie wyczyszczone.,pl_PL
+quick-order.page-title,Szybkie zamówienie,pl_PL
+quick-order.paste-order.button.verify,Zweryfikować,pl_PL
+quick-order.paste-order.description,"Skopiuj i wklej swoje zamówienie, podając numer przedmiotu i ilość oddzielone spacjami, średnikami lub przecinkami.",pl_PL
+quick-order.paste-order.errors.parser.separator-not-detected,Separator nie jest zdefiniowany.,pl_PL
+quick-order.paste-order.errors.text-order-format-incorrect,Format zamówienia jest nieprawidłowy.,pl_PL
+quick-order.paste-order.input-placeholder.copy-paste-order,Wklej swoje zamówienie tutaj,pl_PL
+quick-order.paste-order.title,Wklej swoje zamówienie,pl_PL
+remove,Usunąć,pl_PL
+reorder.info.restricted-product.removed,"Nie można dodać elementu% sku% do koszyka, ponieważ został zdezaktywowany.",pl_PL
+replacement_for_widget.replacement_for,Zamiennik,pl_PL
+return.create_return.validation.items_error,W przypadku tego zestawu przedmiotów nie można utworzyć zwrotu,pl_PL
+return.create_return.validation.returnable_items_error,"Nie można utworzyć zwrotu, ponieważ zawiera elementy bezzwrotne",pl_PL
+return.create_return.validation.store_error,Nie można utworzyć zwrotu - wybrano niewłaściwy sklep,pl_PL
+return_page.account.no_return,W tej chwili nie ma zwrotów,pl_PL
+return_page.breadcrumb.create_return,Utwórz zwrot,pl_PL
+return_page.breadcrumb.returns,Zwroty,pl_PL
+return_page.button.create_return,Powrót,pl_PL
+return_page.button.return_list,Zwroty,pl_PL
+return_page.button_text,Utwórz zwrot,pl_PL
+return_page.create_return.select_all_checkbox,Zaznacz wszystko,pl_PL
+return_page.create_return.validation.selected_items,Należy wybrać co najmniej jeden produkt.,pl_PL
+return_page.default_title,Zwroty,pl_PL
+return_page.details.actions.back_to_list,Powrót do listy,pl_PL
+return_page.details.actions.print_slip,Drukuj Slip,pl_PL
+return_page.details.page_title,Szczegóły zwrotu,pl_PL
+return_page.details.total.items_to_return,Przedmioty do zwrotu,pl_PL
+return_page.details.total.items_to_return.count,przedmiotów,pl_PL
+return_page.details.total.remuneration_total,Łączne wynagrodzenie,pl_PL
+return_page.item.options,Opcje produktu:,pl_PL
+return_page.item_sku,SKU:,pl_PL
+return_page.list.title,Zwroty,pl_PL
+return_page.order_date,Data zamówienia:,pl_PL
+return_page.order_reference,Numer zamówienia:,pl_PL
+return_page.quantity,Ilość:,pl_PL
+return_page.returnable_state,Bezzwrotne,pl_PL
+return_page.return.created,Zwrot utworzony pomyślnie,pl_PL
+return_page.return_date,Data powrotu:,pl_PL
+return_page.return.date,Data powrotu,pl_PL
+return_page.return.items_state,Stan pozycji,pl_PL
+return_page.return.number_of_items,Liczba pozycji,pl_PL
+return_page.return.order_ref,Numer zamówienia,pl_PL
+return_page.return.print_return,Drukuj Slip,pl_PL
+return_page.return_reasons.custom_reason.placeholder,Niestandardowy powód,pl_PL
+return_page.return_reasons.empty,-,pl_PL
+return_page.return_reasons.select_reason.placeholder,Wybierz powód,pl_PL
+return_page.return_reasons.title,Powód:,pl_PL
+return_page.return_reference,Ref. Zwrotu:,pl_PL
+return_page.return.return_ref,Odniesienie do zwrotu,pl_PL
+return_page.return.title,Utwórz zwrot,pl_PL
+return_page.return.view_return,Zobacz powrót,pl_PL
+return_page.slip.barcode,kod kreskowy,pl_PL
+return_page.slip.default_price,Cena domyślna,pl_PL
+return_page.slip.items_to_return,Przedmioty do zwrotu,pl_PL
+return_page.slip.order_reference,Numer zamówienia,pl_PL
+return_page.slip.product_name,Nazwa produktu,pl_PL
+return_page.slip.product_sku,Kod SKU produktu,pl_PL
+return_page.slip.quantity,Ilość,pl_PL
+return_page.slip.remuneration_total,Łączne wynagrodzenie,pl_PL
+return_page.slip.return_date,Data powrotu,pl_PL
+return_page.slip.return_reason,Powód powrotu,pl_PL
+return_page.slip.return_reference,Zwrot Ref,pl_PL
+return_page.slip.total_price,Cena całkowita,pl_PL
+return_page.table.actions,-,pl_PL
+return_page.title,Utwórz zwrot,pl_PL
+return.return_policy.returnable_till.message,Możliwość zwrotu do:% date%,pl_PL
+return.return_reasons.damaged.name,Uszkodzony,pl_PL
+return.return_reasons.no_longer_needed.name,Nie jest już potrzebne,pl_PL
+return.return_reasons.wrong-item.name,Zły przedmiot,pl_PL
+sales_configured_bundle_widget.quantity,Ilość:,pl_PL
+sales_configured_bundle_widget.returnable_state,Bezzwrotne,pl_PL
+sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,Uwaga: Przedmioty ze skonfigurowanego pakietu zostały dodane do koszyka jako pojedyncze produkty.,pl_PL
+sales.error.customer_order_not_found,Nie znaleziono zamówienia klienta.,pl_PL
+sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Zamówienie nie może zostać anulowane z powodu złego stanu przedmiotu.,pl_PL
+sales-order-threshold.expense.name,Dopłata,pl_PL
+sales-order-threshold.hard-maximum-threshold.de.chf.message,"Wartość koszyka nie może być wyższa niż {{próg}}. Usuń niektóre elementy, aby kontynuować zamówienie",pl_PL
+sales-order-threshold.hard-maximum-threshold.de.eur.message,"Wartość koszyka nie może być wyższa niż {{próg}}. Usuń niektóre elementy, aby kontynuować zamówienie",pl_PL
+sales-order-threshold.hard-minimum-threshold.de.chf.message,"Należy dodać produkty za {{próg}}, aby przekroczyć zalecany próg. Nie możesz przejść do kasy",pl_PL
+sales-order-threshold.hard-minimum-threshold.de.eur.message,"Należy dodać produkty za {{próg}}, aby przekroczyć zalecany próg. Nie możesz przejść do kasy",pl_PL
+sales-order-threshold.soft-minimum-threshold.de.chf.message,"Aby przekroczyć zalecany próg, musisz dodać produkty za {{próg}}, ale jeśli chcesz, możesz przejść do kasy.",pl_PL
+sales-order-threshold.soft-minimum-threshold.de.eur.message,"Aby przekroczyć zalecany próg, musisz dodać produkty za {{próg}}, ale jeśli chcesz, możesz przejść do kasy.",pl_PL
+sales-order-threshold.strategy.soft-minimum-threshold-fixed-fee,Dopłata,pl_PL
+sales-order-threshold.strategy.soft-minimum-threshold-flexible-fee,Dopłata,pl_PL
+sales_product_bundle_widget.item.options,Opcje produktu:,pl_PL
+sales_product_bundle_widget.item_sku,SKU:,pl_PL
+sales_product_bundle_widget.quantity,Ilość:,pl_PL
+sales_product_bundle_widget.returnable_state,Bezzwrotne,pl_PL
+sales_product_bundle_widget.returnable_text,Zwrot do:,pl_PL
+samsung.search.link,/ pl / search? q = samsung,pl_PL
+shared_cart.form.customer,Nazwa klienta,pl_PL
+shared_cart.form.data_empty,"Brak użytkowników, którym możesz udostępnić koszyk.",pl_PL
+shared_cart.form.save_button,Zapisać,pl_PL
+shared_cart.form.select_customer,Wybierz klienta,pl_PL
+shared_cart.form.select_permissions,Wybierz poziom dostępu,pl_PL
+shared_cart.form.share_button,Dzielić,pl_PL
+shared_cart.form.share_cart,Udostępnij koszyk,pl_PL
+shared_cart.form.share_cart.title,Udostępnij koszyk „„ nazwa_koszyka ”,pl_PL
+shared_cart_page.share.success,Koszyk został pomyślnie udostępniony,pl_PL
+shared_cart_page.unshare.success,Koszyk został pomyślnie cofnięty,pl_PL
+shared_cart.share.breadcrumbs.share,Dzielić,pl_PL
+shared_cart.share.breadcrumbs.shopping_carts,Wózki na zakupy,pl_PL
+shared_cart.share.error.already_exist,Koszyk został już udostępniony temu klientowi,pl_PL
+shared_cart.share.form.users,Użytkownicy,pl_PL
+shared_cart.share_list.permissions.FULL_ACCESS,Pełny dostęp,pl_PL
+shared_cart.share_list.permissions.NO_ACCESS,Brak dostępu,pl_PL
+shared_cart.share_list.permissions.READ_ONLY,Tylko czytać,pl_PL
+shared_cart_widget.add_product.separate,Dodaj jako oddzielną pozycję,pl_PL
+shared_cart_widget.cart.dismiss,Oddalić,pl_PL
+shared_cart_widget.cart.share,Udostępnij koszyk,pl_PL
+shared_cart_widget.cart.unshare,Cofnij udostępnianie koszyka,pl_PL
+shared_cart_widget.share_list.actions,działania,pl_PL
+shared_cart_widget.share_list.action.unshare,Cofnij udostępnianie koszyka,pl_PL
+shared_cart_widget.share_list.customer_name,Nazwa klienta,pl_PL
+shared_cart_widget.share_list.permission,Poziom dostępu,pl_PL
+shared_cart_widget.share_list.shared_with,Koszyk udostępniony,pl_PL
+shipment.dhl,DHL,pl_PL
+shipment.dhl.express.description,"Nasza siła 100 000 zaangażowanych pracowników pracuje na całym świecie. Lokalne know-how i nasza wyjątkowa sieć sprawiają, że jesteśmy międzynarodowymi specjalistami.",pl_PL
+shipment.dhl.express.name,Wyrazić,pl_PL
+shipment.dhl.paket.description,"DHL Paket to łatwa, niedroga, szybka i niezawodna usługa wysyłkowa do ponad 220 krajów na całym świecie.",pl_PL
+shipment.dhl.paket.name,Pakiet,pl_PL
+shipment.dpd,DPD,pl_PL
+shipment.express.description,24-48 godzin (dni robocze),pl_PL
+shipment.express.name,Wyrazić,pl_PL
+shipment.hermes,Hermes,pl_PL
+shipment.international.parcel.service,Międzynarodowe usługi kurierskie,pl_PL
+shipment.lead.time,Czas dostawy: ok. 3-7 dni roboczych,pl_PL
+shipment.standart.description,2-4 dni robocze,pl_PL
+shipment.standart.name,standardowa dostawa,pl_PL
+shipment.validation.not_found,Nie znaleziono metody wysyłki.,pl_PL
+shipping.address.country.validation.not_found,Nie znaleziono kraju adresu dostawy dla kodu kraju:% code%,pl_PL
+shipping.address.validation.is_missing,Brak adresu dostawy,pl_PL
+shopping_list_add_items_widget.add_to_shopping_list,Dodaj do listy zakupów,pl_PL
+shopping_list.cart.items_add.failed,Nie można dodać pozycji do listy,pl_PL
+shopping_list.cart.items_add.success,Elementy zostały dodane do listy,pl_PL
+shopping_list.item_note,Uwaga:,pl_PL
+shopping_list.item_note.add,Dodaj notatkę +,pl_PL
+shopping_list.item_quantity,Ilość,pl_PL
+shopping_list.not_applicable,Nie dotyczy,pl_PL
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,Czy na pewno chcesz zamknąć listę zakupów?,pl_PL
+shopping_list_page.dismiss.failed,Lista zakupów nie została odrzucona.,pl_PL
+shopping_list_page.dismiss.success,Lista zakupów została pomyślnie odrzucona.,pl_PL
+shopping_list.remove_all_items,Usuń wszystko,pl_PL
+shopping_list.shopping_list,Lista zakupów,pl_PL
+smartphones.category.link,/ pl / telecom - & - navigation / smartphones,pl_PL
+This field should contain exactly 5 digits.,To pole powinno zawierać dokładnie 5 cyfr.,pl_PL
+This value is not valid.,Ta wartość jest nieprawidłowa.,pl_PL
+This value is not valid (accepted format e.g.: 12c).,Ta wartość jest nieprawidłowa (akceptowany format np .: 12c).,pl_PL
+This value should not be blank.,Ta wartość nie powinna być pusta.,pl_PL
+validation.address_number,"Ta wartość jest nieprawidłowa (akceptowany format, np .: 12c).",pl_PL
+validation.choice,Należy wybrać ocenę produktu.,pl_PL
+validation.email,Ta wartość nie jest prawidłowym adresem e-mail.,pl_PL
+validation.invalid_date,Data powinna mieć poprawny format% s.,pl_PL
+validation.min_length,To pole musi mieć co najmniej {{limit}} znaków.,pl_PL
+validation.not_blank,Ta wartość nie powinna być pusta.,pl_PL
+validation.zip_code,To pole powinno zawierać dokładnie 5 cyfr.,pl_PL
+validator.constraints.password.do_not_match,Hasła się nie zgadzają,pl_PL
+whishlist.increase,Zwiększać,pl_PL
+whishlist.move.to.cart,Przenieś do koszyka,pl_PL
+whishlist.reduce,Zmniejszyć,pl_PL
+whishlist.remove,Usunąć,pl_PL
+whishlist.whishlist,Lista życzeń,pl_PL
+wishlist.form.save,Zapisać,pl_PL
+wishlist.title,Lista życzeń,pl_PL
+wishlist.validation.error.name.already_exists,Lista życzeń o tej samej nazwie już istnieje.,pl_PL
+wishlist.wishlist,Lista życzeń,pl_PL
+availability_notification_subscription.mail.unsubscribed.body,"Nie otrzymasz powiadomienia, gdy produkt% name% będzie ponownie dostępny.",pl_PL
+availability_notification_subscription.mail.unsubscribed.subject,"Nie otrzymasz powiadomienia, gdy produkt% name% będzie ponownie dostępny.",pl_PL
+availability_notification.successfully_unsubscribed,Anulowano subskrypcję,pl_PL
+availability_notification.successfully_unsubscribed_text,"Zrezygnowałeś z otrzymywania powiadomień, gdy produkt będzie ponownie dostępny",pl_PL
+availability_notification.unsubscribed,Anulowano subskrypcję,pl_PL
+billing.address.country.validation.not_found,Nie znaleziono kraju adresu rozliczeniowego dla kodu kraju:% code%,pl_PL
+billing.address.validation.is_missing,Brak adresu rozliczeniowego,pl_PL
+bundle.title,Pakiet zawiera,pl_PL
+business_on_behalf_widget.change_company_user,Zmień użytkownika firmowego,pl_PL
+business_on_behalf_widget.no_selected_company,Brak wybranej firmy,pl_PL
+camcorders.category.link,/ pl / kamery - & - kamery / aparaty-cyfrowe?,pl_PL
+cameras.category.link,/ pl / kamery - & - kamery / aparaty cyfrowe,pl_PL
+cart.add.items.error.text,Coś poszło nie tak. Przepraszam.,pl_PL
+cart.add.items.success,Elementy zostały pomyślnie dodane,pl_PL
+cart.add-to-shopping-list,Dodaj do listy zakupów,pl_PL
+cart.add-to-shopping-list.form,Zapisz koszyk na liście zakupów,pl_PL
+cart.add-to-shopping-list.form.add_new,Dodaj nową listę zakupów,pl_PL
+cart.add-to-shopping-list.form.error.empty_name,Wpisz nazwę listy zakupów,pl_PL
 account.newsletter.text,"Sign up for our Newsletter and always stay up to date! Get updates about latest smartphones and wearables trends, top brands and great offers.",en_US
 address.city,City,en_US
 address.salutation,Salutation,en_US

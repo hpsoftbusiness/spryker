@@ -11,6 +11,7 @@ namespace Pyz\Zed\Refund\Business\Model;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\RefundTransfer;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig;
+use Pyz\Zed\Refund\RefundConfig;
 use Pyz\Zed\Sales\Business\SalesFacadeInterface;
 
 class ExternalPaymentRemover implements ExternalPaymentRemoverInterface
@@ -42,10 +43,6 @@ class ExternalPaymentRemover implements ExternalPaymentRemoverInterface
 
         $externalPayments = $this->getExternalPayments($orderTransfer);
 
-        foreach ($externalPayments as $externalPayment) {
-            $refundTransfer->setAmount($refundTransfer->getAmount() - $externalPayment->getAmount());
-        }
-
         foreach ($refundTransfer->getItems() as $item) {
             $refunds = $item->getRefunds();
             foreach ($refunds as $index => $refund) {
@@ -65,6 +62,8 @@ class ExternalPaymentRemover implements ExternalPaymentRemoverInterface
                 }
             }
         }
+
+        $this->fixRefundAmount($refundTransfer);
     }
 
     /**
@@ -94,5 +93,33 @@ class ExternalPaymentRemover implements ExternalPaymentRemoverInterface
     private function isExternalPayment(int $idSalesPayment, array $externalPayments): bool
     {
         return isset($externalPayments[$idSalesPayment]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\RefundTransfer $refundTransfer
+     *
+     * @return void
+     */
+    private function fixRefundAmount(RefundTransfer $refundTransfer)
+    {
+        $refundAmount = 0;
+        foreach ($refundTransfer->getItems() as $item) {
+            foreach ($item->getRefunds() as $itemRefund) {
+                if ($itemRefund->getStatus() === RefundConfig::PAYMENT_REFUND_STATUS_PROCESSED) {
+                    continue;
+                }
+                $refundAmount += $itemRefund->getAmount();
+            }
+        }
+
+        foreach ($refundTransfer->getExpenses() as $expense) {
+            foreach ($expense->getRefunds() as $expenseRefund) {
+                if ($expenseRefund->getStatus() === RefundConfig::PAYMENT_REFUND_STATUS_PROCESSED) {
+                    continue;
+                }
+                $refundAmount += $expenseRefund->getAmount();
+            }
+        }
+        $refundTransfer->setAmount($refundAmount);
     }
 }

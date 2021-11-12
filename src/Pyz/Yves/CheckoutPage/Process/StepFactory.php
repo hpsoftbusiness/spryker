@@ -105,6 +105,7 @@ class StepFactory extends SprykerShopStepFactory
             $this->getCheckoutClient(),
             $this->createSummaryStepPreConditionChecker(),
             $this->createSummaryStepPostConditionChecker(),
+            $this->getPyzQuoteClient(),
         );
     }
 

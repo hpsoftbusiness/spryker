@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\PaymentCodeValidateResponseTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Pyz\Client\MyWorldPayment\MyWorldPaymentClientInterface;
+use Pyz\Client\Quote\QuoteClientInterface;
 use Pyz\Shared\MyWorldPayment\MyWorldPaymentConfig as SharedMyWorldPaymentConfig;
 use Pyz\Yves\CheckoutPage\CheckoutPageConfig;
 use Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface;
@@ -222,7 +223,8 @@ class SummaryStepTest extends Unit
             self::STEP_ESCAPE_ROUTE,
             $this->mockCheckoutClient(),
             $this->createPreConditionChecker(),
-            $this->createPostConditionChecker()
+            $this->createPostConditionChecker(),
+            $this->mockQuoteClient()
         );
     }
 
@@ -292,6 +294,14 @@ class SummaryStepTest extends Unit
     private function mockFlashMessenger(): FlashMessengerInterface
     {
         return $this->createMock(FlashMessengerInterface::class);
+    }
+
+    /**
+     * @return \Pyz\Client\Quote\QuoteClientInterface
+     */
+    private function mockQuoteClient(): QuoteClientInterface
+    {
+        return $this->createMock(QuoteClientInterface::class);
     }
 
     /**
