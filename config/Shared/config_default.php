@@ -693,4 +693,9 @@ $config[LocaleConstants::LOCALS_PER_STORES] = [
 $config[ProductDetailPageConstants::DEFAULT_SHIPMENT_PRICE] = [
     'PL' => 22.99,
     'NO' => 180.00,
+    'SK' => 4.95,
+    'CZ' => 127.00,
+    'IT' => 7.95,
+    'FR' => 9.95,
+    'GR' => 9.95,
 ];
