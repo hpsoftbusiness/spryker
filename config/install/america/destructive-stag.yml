@@ -25,6 +25,9 @@ sections:
         clean-db:
             command: "vendor/bin/console propel:tables:drop -vvv --no-ansi"
 
+        import-user-permissions:
+            command: "vendor/bin/console data:import:user-permissions"
+
     init-storage:
         setup-search-create-sources:
             command: "vendor/bin/console search:setup:sources -vvv --no-ansi"

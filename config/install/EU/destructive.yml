@@ -66,6 +66,9 @@ sections:
             command: "vendor/bin/console product:check-validity"
             stores: true
 
+        import-user-permissions:
+            command: "vendor/bin/console data:import:user-permissions"
+
     scheduler-start:
         scheduler-setup:
             command: "vendor/bin/console scheduler:setup -vvv --no-ansi || true"
