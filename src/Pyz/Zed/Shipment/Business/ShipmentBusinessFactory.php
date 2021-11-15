@@ -9,12 +9,14 @@ namespace Pyz\Zed\Shipment\Business;
 
 use Pyz\Zed\Shipment\Business\Expander\QuoteShipmentExpander;
 use Pyz\Zed\Shipment\Business\Model\ShipmentTaxRateCalculator;
+use Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodCreator;
 use Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodDefaultInStoresRelationUpdater;
 use Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodDefaultInStoresRelationUpdaterInterface;
 use Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodReader;
 use Pyz\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodUpdater;
 use Spryker\Zed\Shipment\Business\Expander\QuoteShipmentExpanderInterface;
 use Spryker\Zed\Shipment\Business\ShipmentBusinessFactory as SprykerShipmentBusinessFactory;
+use Spryker\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodCreatorInterface;
 use Spryker\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodReaderInterface;
 use Spryker\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodUpdaterInterface;
 
@@ -90,6 +92,19 @@ class ShipmentBusinessFactory extends SprykerShipmentBusinessFactory
         return new ShipmentMethodDefaultInStoresRelationUpdater(
             $this->getRepository(),
             $this->getEntityManager()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\Shipment\Business\ShipmentMethod\ShipmentMethodCreatorInterface
+     */
+    public function createShipmentMethodCreator(): ShipmentMethodCreatorInterface
+    {
+        return new ShipmentMethodCreator(
+            $this->getEntityManager(),
+            $this->createMethodPrice(),
+            $this->createShipmentMethodStoreRelationUpdater(),
+            $this->createShipmentMethodDefaultInStoresRelationUpdater()
         );
     }
 }

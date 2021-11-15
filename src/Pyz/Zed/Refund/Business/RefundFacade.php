@@ -85,4 +85,24 @@ class RefundFacade extends SprykerRefundFacade implements RefundFacadeInterface
     {
         return $this->getFactory()->createRefundCalculator()->calculateRefundWithoutExternalPayment($salesOrderItems, $salesOrderEntity);
     }
+
+    /**
+     * @param int $idSalesOrder
+     *
+     * @return \Generated\Shared\Transfer\ItemRefundTransfer[]
+     */
+    public function findOrderItemRefundsByIdSalesOrder(int $idSalesOrder): array
+    {
+        return $this->getFactory()->getRefundRepository()->findOrderItemRefundsByIdSalesOrder($idSalesOrder);
+    }
+
+    /**
+     * @param int $idSalesOrder
+     *
+     * @return \Generated\Shared\Transfer\ExpenseRefundTransfer[]
+     */
+    public function findOrderExpenseRefundsByIdSalesOrder(int $idSalesOrder): array
+    {
+        return $this->getFactory()->getRefundRepository()->findOrderExpenseRefundsByIdSalesOrder($idSalesOrder);
+    }
 }

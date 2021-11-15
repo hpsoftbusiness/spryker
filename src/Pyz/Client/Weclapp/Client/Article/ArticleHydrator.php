@@ -103,7 +103,8 @@ class ArticleHydrator implements ArticleHydratorInterface
             ->setSerialNumberRequired(false)
             ->setShowOnDeliveryNote(true)
             ->setUseSalesBillOfMaterialItemPrices(false)
-            ->setUseSalesBillOfMaterialItemPricesForPurchase(false);
+            ->setUseSalesBillOfMaterialItemPricesForPurchase(false)
+            ->setUseAvailableForSalesChannels(false);
 
         return $weclappArticleTransfer;
     }

@@ -1,0 +1,6 @@
+navigation_key,node_key,parent_node_key,node_type,title.en_US,url.en_US,css_class.en_US,valid_from,valid_to,title.nb_NO,title.fi_FI,title.da_DK,title.sv_SE,url.nb_NO,url.fi_FI,url.da_DK,url.sv_SE,css_class.nb_NO,css_class.fi_FI,css_class.da_DK,css_class.sv_SE
+FOOTER_NAVIGATION_LEGAL_SE,FOOTER_NAVIGATION_LEGAL_SE_1,,cms_page,Imprint,/en/imprint-se,,,,,,,Imprint,,,,/sv/imprint-se,,,,
+FOOTER_NAVIGATION_LEGAL_SE,FOOTER_NAVIGATION_LEGAL_SE_2,,cms_page,Privacy Policy,/en/privacy-se,,,,,,,Privacy Policy,,,,/sv/privacy-se,,,,
+FOOTER_NAVIGATION_LEGAL_SE,FOOTER_NAVIGATION_LEGAL_SE_3,,cms_page,Terms and Conditions,/en/gtc-se,,,,,,,Terms and Conditions,,,,/sv/gtc-se,,,,
+FOOTER_NAVIGATION_LEGAL_SE,FOOTER_NAVIGATION_LEGAL_SE_4,,cms_page,Terms of use,/en/terms-of-use-se,,,,,,,Terms of use,,,,/sv/terms-of-use-se,,,,
+FOOTER_NAVIGATION_LEGAL_SE,FOOTER_NAVIGATION_LEGAL_SE_5,,cms_page,Right of withdrawal,/en/row-se,,,,,,,Right of withdrawal,,,,/sv/row-se,,,,

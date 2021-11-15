@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Console;
 
 use Pyz\Zed\Customer\Communication\Plugin\Console\CustomerSprykerCreateConsole;
+use Pyz\Zed\DataImport\Communication\Console\UserPermissionImport;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
@@ -351,6 +352,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new WeclappTaxRateExportConsole(),
             new WeclappProductExportConsole(),
             new WeclappInitialDataExportConsole(),
+
+            new UserPermissionImport(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

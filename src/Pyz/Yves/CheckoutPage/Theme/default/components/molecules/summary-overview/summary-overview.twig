@@ -2,24 +2,8 @@
 
 {% define data = {
     totalUsedShoppingPoints: _view.quoteTransfer.totalUsedShoppingPointsAmount ?? 0,
+    isQuoteEditable: _view.isQuoteEditable,
 } %}
-
-{% macro itemDiscounts(discounts, title, configName) %}
-    {% if discounts | length %}
-        <li class="{{ configName }}__list-item">
-            <span>{{ title | trans }}</span>
-
-            <div class="spacing-top">
-                {% for discount in discounts %}
-                    <div class="grid grid--justify">
-                        <span class="col col--sm-8 col--lg-10 text-secondary">{{ discount.displayName | trans }}</span>
-                        <span class="col col--expand text-right">- {{ discount.amount | money }}</span>
-                    </div>
-                {% endfor %}
-            </div>
-        </li>
-    {% endif %}
-{% endmacro %}
 
 {% block body %}
     <li class="{{ config.name }}__list-item">
@@ -36,8 +20,15 @@
     </li>
 
     {% if data.prices.discountTotal %}
-        {{ _self.itemDiscounts(data.voucherDiscounts, 'cart.vouchers', config.name) }}
-        {{ _self.itemDiscounts(data.cartRuleDiscounts, 'cart.discounts', config.name) }}
+        {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
+            class: config.name ~ '__list-item',
+            data: {
+                voucherDiscounts: data.voucherDiscounts,
+                ruleDiscounts: data.cartRuleDiscounts,
+                discountTotal: data.prices.discountTotal,
+                isQuoteEditable: data.isQuoteEditable,
+            },
+        } only %}
     {% endif %}
 
     {% widget 'SalesOrderThresholdWidgetPlugin' args [data.expenses] with {config: config} only %}

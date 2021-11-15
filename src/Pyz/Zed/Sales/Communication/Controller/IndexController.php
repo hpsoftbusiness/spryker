@@ -31,7 +31,8 @@ class IndexController extends SprykerIndexController
         $table = $this->getFactory()->createOrdersTable();
         $stateIds = $this->getQueryContainer()->querySalesOrderItem()->distinct()->select(['fk_oms_order_item_state'])->find()->getData();
 
-        $states = $this->getRepository()->getSpyOmsOrderItemStatesByIds($stateIds);
+        $restrictedUserStore = $this->getFactory()->getUserFacade()->getCurrentUser()->getStoreName();
+        $states = $this->getRepository()->getSpyOmsOrderItemStatesByIds($stateIds, $restrictedUserStore);
 
         $request = $this->getApplication()->get('request');
 

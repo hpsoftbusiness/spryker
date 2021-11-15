@@ -11,7 +11,7 @@
 
         &--voucher {
             margin-top: rem(32);
-            border-top: rem(1) dotted $setting-color-gray-3;
+            border-bottom: none;
 
             @include helper-breakpoint-media-min($lg-min) {
                 margin-top: rem(56);

@@ -61,6 +61,33 @@ use Spryker\Zed\TaxProductConnector\Communication\Plugin\Calculation\ProductItem
 
 class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 {
+    public const FACADE_REFUND = 'FACADE_REFUND';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addRefundFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addRefundFacade(Container $container)
+    {
+        $container->set(static::FACADE_REFUND, $container->getLocator()->refund()->facade());
+
+        return $container;
+    }
+
     /**
      * This calculator stack working with quote object which happens to be processed in cart/checkout
      *

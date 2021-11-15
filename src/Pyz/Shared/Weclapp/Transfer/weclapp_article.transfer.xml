@@ -36,6 +36,7 @@
         <property name="useSalesBillOfMaterialItemPrices" type="bool"/>
         <property name="useSalesBillOfMaterialItemPricesForPurchase" type="bool"/>
         <property name="supplySources" type="WeclappArticleSupplySource[]" singular="supplySource"/>
+        <property name="useAvailableForSalesChannels" type="bool"/>
     </transfer>
 
     <transfer name="WeclappArticleSupplySource">

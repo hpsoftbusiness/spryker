@@ -58,7 +58,7 @@ blck-7,SK
 blck-8,SK
 blck-nav-desktop,SK
 blck-nav-mobile,SK
-blck-nav-footer,SK
+blck-nav-footer-sk,SK
 cms-block-email--customer-registration--html,SK
 cms-block-email--customer-restore-password--html,SK
 cms-block-email--customer-restored-password-confirmation--html,SK
@@ -107,7 +107,7 @@ blck-7,CZ
 blck-8,CZ
 blck-nav-desktop,CZ
 blck-nav-mobile,CZ
-blck-nav-footer,CZ
+blck-nav-footer-cz,CZ
 cms-block-email--customer-registration--html,CZ
 cms-block-email--customer-restore-password--html,CZ
 cms-block-email--customer-restored-password-confirmation--html,CZ

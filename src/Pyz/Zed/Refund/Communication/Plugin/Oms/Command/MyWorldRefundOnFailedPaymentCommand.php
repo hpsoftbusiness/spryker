@@ -32,14 +32,30 @@ class MyWorldRefundOnFailedPaymentCommand extends AbstractPlugin implements Comm
             ->getFacade()
             ->calculateRefundWithoutExternalPayment($orderItems, $orderEntity);
 
-        $this
-            ->getFacade()
-            ->saveRefund($refundTransfer);
+        if ($refundTransfer->getAmount() > 0) {
+            $this
+                ->getFacade()
+                ->saveRefund($refundTransfer);
 
-        $this
-            ->getFacade()
-            ->processRefund($orderItems, $orderEntity);
+            $this
+                ->getFacade()
+                ->processRefund($orderItems, $orderEntity);
+        }
+
+        $this->recalculateOrder($orderEntity);
 
         return [];
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
+     *
+     * @return void
+     */
+    protected function recalculateOrder(SpySalesOrder $orderEntity): void
+    {
+        $orderTransfer = $this->getFactory()->getSalesFacade()->findOrderByIdSalesOrder($orderEntity->getIdSalesOrder());
+        $orderTransfer = $this->getFactory()->getCalculationFacade()->recalculateOrder($orderTransfer);
+        $this->getFactory()->getSalesFacade()->updateOrder($orderTransfer, $orderEntity->getIdSalesOrder());
     }
 }

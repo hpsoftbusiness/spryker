@@ -86,4 +86,18 @@ interface RefundFacadeInterface extends SprykerRefundFacadeInterface
      * @return \Generated\Shared\Transfer\RefundTransfer
      */
     public function calculateRefundWithoutExternalPayment(array $salesOrderItems, SpySalesOrder $salesOrderEntity): RefundTransfer;
+
+    /**
+     * @param int $idSalesOrder
+     *
+     * @return \Generated\Shared\Transfer\ItemRefundTransfer[]
+     */
+    public function findOrderItemRefundsByIdSalesOrder(int $idSalesOrder): array;
+
+    /**
+     * @param int $idSalesOrder
+     *
+     * @return \Generated\Shared\Transfer\ExpenseRefundTransfer[]
+     */
+    public function findOrderExpenseRefundsByIdSalesOrder(int $idSalesOrder): array;
 }

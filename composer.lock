@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7e334a0425cdfd38e9cf6fef83d82af",
+    "content-hash": "305ae14fded2f181ea497722aa9d3e8d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2617,6 +2617,10 @@
                 "orm",
                 "persistence"
             ],
+            "support": {
+                "issues": "https://github.com/propelorm/Propel2/issues",
+                "source": "https://github.com/propelorm/Propel2/tree/2.0.0-alpha11"
+            },
             "time": "2020-08-05T13:20:41+00:00"
         },
         {
@@ -30773,16 +30777,16 @@
         },
         {
             "name": "spryker/router",
-            "version": "1.11.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/router.git",
-                "reference": "6cce3e1a7d073b4d1e712ad5f1fab4b712e7922d"
+                "reference": "98df35ae0e07af9cbac63f37d65a30939995ad3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/router/zipball/6cce3e1a7d073b4d1e712ad5f1fab4b712e7922d",
-                "reference": "6cce3e1a7d073b4d1e712ad5f1fab4b712e7922d",
+                "url": "https://api.github.com/repos/spryker/router/zipball/98df35ae0e07af9cbac63f37d65a30939995ad3d",
+                "reference": "98df35ae0e07af9cbac63f37d65a30939995ad3d",
                 "shasum": ""
             },
             "require": {
@@ -30825,7 +30829,10 @@
                 "proprietary"
             ],
             "description": "Router module",
-            "time": "2020-12-10T09:49:26+00:00"
+            "support": {
+                "source": "https://github.com/spryker/router/tree/1.13.0"
+            },
+            "time": "2021-07-15T17:31:35+00:00"
         },
         {
             "name": "spryker/router-extension",
@@ -34335,30 +34342,33 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.14.1",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "5493f98218a6a393ce99988992659fac00ed92c2"
+                "reference": "89955522102a15882c1b9ecc456172a7bcedb8d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/5493f98218a6a393ce99988992659fac00ed92c2",
-                "reference": "5493f98218a6a393ce99988992659fac00ed92c2",
+                "url": "https://api.github.com/repos/spryker/store/zipball/89955522102a15882c1b9ecc456172a7bcedb8d6",
+                "reference": "89955522102a15882c1b9ecc456172a7bcedb8d6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/quote-extension": "^1.4.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
-                "spryker/quote": "*"
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/config": "If you want to use StoreApplicationPlugin",
@@ -34382,7 +34392,10 @@
                 "proprietary"
             ],
             "description": "Store module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "support": {
+                "source": "https://github.com/spryker/store/tree/1.15.0"
+            },
+            "time": "2021-05-27T14:41:09+00:00"
         },
         {
             "name": "spryker/store-gui",
@@ -36694,16 +36707,16 @@
         },
         {
             "name": "spryker/zed-navigation",
-            "version": "1.10.1",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-navigation.git",
-                "reference": "59d6a948b4c9988291a05cfa85440e3943b6b853"
+                "reference": "73e7732e309aa44908bf6de8547d475dcef5e619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/59d6a948b4c9988291a05cfa85440e3943b6b853",
-                "reference": "59d6a948b4c9988291a05cfa85440e3943b6b853",
+                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/73e7732e309aa44908bf6de8547d475dcef5e619",
+                "reference": "73e7732e309aa44908bf6de8547d475dcef5e619",
                 "shasum": ""
             },
             "require": {
@@ -36711,6 +36724,7 @@
                 "spryker/kernel": "^3.52.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/log": "^2.0.0 || ^3.0.0",
+                "spryker/router": "^1.12.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.8.0",
                 "spryker/twig-extension": "^1.0.0",
@@ -36748,7 +36762,10 @@
                 "proprietary"
             ],
             "description": "ZedNavigation module",
-            "time": "2021-02-19T12:29:33+00:00"
+            "support": {
+                "source": "https://github.com/spryker/zed-navigation/tree/1.12.0"
+            },
+            "time": "2021-07-20T10:43:11+00:00"
         },
         {
             "name": "spryker/zed-navigation-extension",
@@ -47281,5 +47298,5 @@
     "platform-overrides": {
         "php": "7.3.15"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

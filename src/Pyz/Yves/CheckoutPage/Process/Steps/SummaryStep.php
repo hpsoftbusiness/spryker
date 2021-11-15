@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Generated\Shared\Transfer\QuoteTransfer;
+use Pyz\Client\Quote\QuoteClientInterface;
 use Pyz\Yves\CheckoutPage\Form\Steps\SummaryForm;
 use Pyz\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
@@ -32,6 +33,11 @@ class SummaryStep extends SprykerSummaryStep
     private $postConditionChecker;
 
     /**
+     * @var \Pyz\Client\Quote\QuoteClientInterface
+     */
+    protected $quoteClient;
+
+    /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface $productBundleClient
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface $shipmentService
      * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
@@ -40,6 +46,7 @@ class SummaryStep extends SprykerSummaryStep
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface $checkoutClient
      * @param \Pyz\Yves\CheckoutPage\Process\Steps\PreConditionCheckerInterface $preConditionChecker
      * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface $postConditionChecker
+     * @param \Pyz\Client\Quote\QuoteClientInterface $quoteClient
      */
     public function __construct(
         CheckoutPageToProductBundleClientInterface $productBundleClient,
@@ -49,7 +56,8 @@ class SummaryStep extends SprykerSummaryStep
         $escapeRoute,
         CheckoutPageToCheckoutClientInterface $checkoutClient,
         PreConditionCheckerInterface $preConditionChecker,
-        PostConditionCheckerInterface $postConditionChecker
+        PostConditionCheckerInterface $postConditionChecker,
+        QuoteClientInterface $quoteClient
     ) {
         parent::__construct(
             $productBundleClient,
@@ -62,6 +70,7 @@ class SummaryStep extends SprykerSummaryStep
 
         $this->preConditionChecker = $preConditionChecker;
         $this->postConditionChecker = $postConditionChecker;
+        $this->quoteClient = $quoteClient;
     }
 
     /**
@@ -103,6 +112,7 @@ class SummaryStep extends SprykerSummaryStep
     {
         $viewData = parent::getTemplateVariables($quoteTransfer);
         $viewData['showCashbackPoints'] = !$this->hasBenefitDealsApplied($quoteTransfer);
+        $viewData['isQuoteEditable'] = $this->quoteClient->isQuoteEditable($quoteTransfer);
         $viewData['smsCodeFieldName'] = SummaryForm::FIELD_SMS_CODE;
 
         return $viewData;

@@ -59,7 +59,7 @@ sections:
 
     demodata:
         import-region-demodata:
-            command:  "NEED_STORE_RELATION_VALIDATION=0 "vendor/bin/console data:import --config=data/import/local/full_east-2.yml"
+            command: "NEED_STORE_RELATION_VALIDATION=0 vendor/bin/console data:import --config=data/import/local/full_east-2.yml"
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"
@@ -67,6 +67,9 @@ sections:
         check-product-validity:
             command: "vendor/bin/console product:check-validity"
             stores: true
+
+        import-user-permissions:
+            command: "vendor/bin/console data:import:user-permissions"
 
     scheduler-start:
         scheduler-setup:

@@ -25,6 +25,9 @@ sections:
         clean-db:
             command: "vendor/bin/console propel:tables:drop -vvv --no-ansi"
 
+        import-user-permissions:
+            command: "vendor/bin/console data:import:user-permissions"
+
     init-storage:
         setup-search-create-sources:
             command: "vendor/bin/console search:setup:sources -vvv --no-ansi"
@@ -57,7 +60,7 @@ sections:
 
     demodata:
         import-eu-region-demodata:
-            command:  "NEED_STORE_RELATION_VALIDATION=0 "vendor/bin/console data:import --config=data/import/local/full_america.yml"
+            command: "NEED_STORE_RELATION_VALIDATION=0 vendor/bin/console data:import --config=data/import/local/full_america.yml"
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"

@@ -8,15 +8,48 @@
 namespace Pyz\Zed\Sales\Communication\Table;
 
 use Orm\Zed\Sales\Persistence\Map\SpySalesOrderTableMap;
+use Spryker\Service\UtilDateTime\UtilDateTimeServiceInterface;
 use Spryker\Service\UtilText\Model\Url\Url;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 use Spryker\Zed\Sales\Communication\Table\OrdersTable as SprykerOrdersTable;
 use Spryker\Zed\Sales\Communication\Table\OrdersTableQueryBuilder;
+use Spryker\Zed\Sales\Communication\Table\OrdersTableQueryBuilderInterface;
+use Spryker\Zed\Sales\Dependency\Facade\SalesToCustomerInterface;
+use Spryker\Zed\Sales\Dependency\Facade\SalesToMoneyInterface;
+use Spryker\Zed\Sales\Dependency\Facade\SalesToUserInterface;
+use Spryker\Zed\Sales\Dependency\Service\SalesToUtilSanitizeInterface;
 
 class OrdersTable extends SprykerOrdersTable
 {
+    /**
+     * @var \Spryker\Zed\Sales\Dependency\Facade\SalesToUserInterface
+     */
+    protected $userFacade;
+
     private const EXPORT_URL = '/sales/index/export';
     private const STATE_FILTER = 'id-state';
+
+    /**
+     * @param \Spryker\Zed\Sales\Communication\Table\OrdersTableQueryBuilderInterface $queryBuilder
+     * @param \Spryker\Zed\Sales\Dependency\Facade\SalesToMoneyInterface $moneyFacade
+     * @param \Spryker\Zed\Sales\Dependency\Service\SalesToUtilSanitizeInterface $sanitizeService
+     * @param \Spryker\Service\UtilDateTime\UtilDateTimeServiceInterface $utilDateTimeService
+     * @param \Spryker\Zed\Sales\Dependency\Facade\SalesToCustomerInterface $customerFacade
+     * @param \Spryker\Zed\Sales\Dependency\Facade\SalesToUserInterface $userFacade
+     * @param array $salesTablePlugins
+     */
+    public function __construct(
+        OrdersTableQueryBuilderInterface $queryBuilder,
+        SalesToMoneyInterface $moneyFacade,
+        SalesToUtilSanitizeInterface $sanitizeService,
+        UtilDateTimeServiceInterface $utilDateTimeService,
+        SalesToCustomerInterface $customerFacade,
+        SalesToUserInterface $userFacade,
+        array $salesTablePlugins = []
+    ) {
+        parent::__construct($queryBuilder, $moneyFacade, $sanitizeService, $utilDateTimeService, $customerFacade, $salesTablePlugins);
+        $this->userFacade = $userFacade;
+    }
 
     /**
      * @return array
@@ -85,6 +118,11 @@ class OrdersTable extends SprykerOrdersTable
     protected function getQueryResults(TableConfiguration $config): array
     {
         $query = $this->buildQuery();
+        $userTransfer = $this->userFacade->getCurrentUser();
+        if ($userTransfer->getFkStore()) {
+            $query->filterByStore($userTransfer->getStoreName());
+        }
+
         $idState = $this->request->query->getInt(self::STATE_FILTER);
 
         if ($idState > 0) {

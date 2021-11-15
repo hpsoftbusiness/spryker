@@ -1,9 +1,9 @@
 key,filter_type,position,key.en_US,key.it_IT,key.fr_FR,key.el_GR
-color,multi-select,1,Color,Colore,Colore,Χρώμα
-size,multi-select,2,Size,Taglia,Taglia,Μέγεθος
-benefit_store,single-select,5,Benefit Store Deal,Deal depositario benefici,Deal Depostario Benefici,Παρεμπόδιση αποθήκευσης
-shopping_point_store,single-select,6,Shopping Point Deal,Affare del punto di acquisto,Affare del Punto di Acquisto,Σημείο αγορών
-brand,multi-select,3,Brand,Marca,Marca,Μάρκα
-age_restriction_fsk_usk,single-select,8,Age restriction,Limite di età,Limite di Età,Περιορισμός ηλικίας
-deal,multi-select,7,Deal,Affare,Afficher,Συμφωνία
-product_type,multi-select,4,Product type,Tipologia di prodotto,Tipologia di Prodotto,Τύπος Προϊόντος
+color,multi-select,1,Color,Colore,Couleur,χρώμα
+size,multi-select,2,Size,Taglia,Taille,μέγεθος
+benefit_store,single-select,5,Benefit Store Deal,Benefit Store Deal,Deal Benefit Store,Benefit Store Deal
+shopping_point_store,single-select,6,Shopping Point Deal,Shopping Point Deal,Deal Shopping Points,Shopping Point Deal
+brand,multi-select,3,Brand,Marca,Marque,εμπορικό σήμα
+age_restriction_fsk_usk,single-select,8,Age restriction,Limite d'età,Limite d'âge,περιορισμός ηλικίας
+deal,multi-select,7,Deal,Deal,Deal,Deal
+product_type,multi-select,4,Product type,Tipologia di prodotto,Type de produit,τύπος προϊόντος

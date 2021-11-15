@@ -16,9 +16,16 @@
             <event name="refund myWorld payments manually" manual="true"/>
             <event name="retry refund" manual="true"/>
             <event name="pass" onEnter="true"/>
+            <event name="restart refund" manual="true"/>
         </events>
 
         <transitions>
+            <transition>
+                <source>myWorld refunded</source>
+                <target>myWorld refund due to payment failure</target>
+                <event>restart refund</event>
+            </transition>
+
             <transition condition="Refund/IsRefunded" happy="true">
                 <source>myWorld refund due to payment failure</source>
                 <target>myWorld refunded</target>

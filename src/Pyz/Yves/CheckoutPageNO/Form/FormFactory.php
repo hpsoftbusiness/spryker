@@ -11,6 +11,9 @@ use Pyz\Yves\CheckoutPage\Form\FormFactory as PyzFormFactory;
 use Pyz\Yves\CheckoutPageNO\Form\Steps\PaymentForm;
 use Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface;
 
+/**
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ */
 class FormFactory extends PyzFormFactory
 {
     /**

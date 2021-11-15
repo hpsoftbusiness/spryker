@@ -9,6 +9,7 @@ namespace Pyz\Zed\Sales\Communication;
 
 use Pyz\Zed\Sales\Communication\Form\AddressForm;
 use Pyz\Zed\Sales\Communication\Form\DataProvider\AddressFormDataProvider;
+use Pyz\Zed\Sales\Communication\Table\CustomerOrdersTable;
 use Pyz\Zed\Sales\Communication\Table\OrdersTable;
 use Pyz\Zed\Sales\SalesDependencyProvider;
 use Spryker\Shared\Kernel\Store;
@@ -44,6 +45,27 @@ class SalesCommunicationFactory extends SprykerSalesCommunicationFactory
             $this->getProvidedDependency(SalesDependencyProvider::SERVICE_UTIL_SANITIZE),
             $this->getProvidedDependency(SalesDependencyProvider::SERVICE_DATE_FORMATTER),
             $this->getProvidedDependency(SalesDependencyProvider::FACADE_CUSTOMER),
+            $this->getUserFacade(),
+            $this->getSalesTablePlugins()
+        );
+    }
+
+    /**
+     * @param string $customerReference
+     *
+     * @return \Spryker\Zed\Sales\Communication\Table\CustomerOrdersTable
+     */
+    public function createCustomerOrdersTable($customerReference)
+    {
+        return new CustomerOrdersTable(
+            $this->createOrdersTableQueryBuilder(),
+            $this->getProvidedDependency(SprykerSalesDependencyProvider::FACADE_MONEY),
+            $this->getProvidedDependency(SalesDependencyProvider::SERVICE_UTIL_SANITIZE),
+            $this->getProvidedDependency(SalesDependencyProvider::SERVICE_DATE_FORMATTER),
+            $this->getProvidedDependency(SalesDependencyProvider::FACADE_CUSTOMER),
+            $customerReference,
+            $this->getQueryContainer(),
+            $this->getUserFacade(),
             $this->getSalesTablePlugins()
         );
     }

@@ -26,6 +26,7 @@
             <event name="pass 5 minute" timeout="5 minute"/>
             <event name="pass 10 minute" timeout="10 minute"/>
             <event name="skip timeout" manual="true" condition="Refund/IsAuthorizedToRefund"/>
+
         </events>
 
         <transitions>
